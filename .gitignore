@@ -1,1 +1,4 @@
 .gitignore
+secret.*
+*secret.*
+*sec*
