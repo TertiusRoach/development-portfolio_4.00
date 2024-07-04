@@ -1,0 +1,28 @@
+@import '../../../../pages/color-palette.scss';
+
+section {
+  //--|🠊 display: grid; 🠈|--//
+  div[class*='contact'] {
+    //--|🠋 Desktop (Landscape) - ☐ 🠋|--//
+    @media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
+      & {
+        //--|🠊 display: grid; 🠈|--//
+        background: $red-neon;
+      }
+    }
+    //--|🠋 Mobile (Portrait) - ☐ 🠋|--//
+    @media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+      & {
+        //--|🠊 display: grid; 🠈|--//
+        background: $blue-neon;
+      }
+    }
+    //--|🠋 Tablet (Square) - ☐ 🠋|--//
+    @media screen and (max-aspect-ratio: 16/9) and (min-aspect-ratio: 1/1) {
+      & {
+        //--|🠊 display: grid; 🠈|--//
+        background: $green-neon;
+      }
+    }
+  }
+}

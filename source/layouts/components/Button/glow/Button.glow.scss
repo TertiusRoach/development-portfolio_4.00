@@ -1,0 +1,71 @@
+@import '../../../../pages/color-palette.scss';
+
+button[class*='glow'] {
+  cursor: default;
+  background: none;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  filter: drop-shadow(0 0 0.5rem rgba(black, 0.75));
+  & {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      z-index: 1;
+      cursor: pointer;
+      position: relative;
+      margin: 0.5rem 1rem;
+      color: $primary-medium;
+      transition: color 0.25s ease-in-out;
+      filter: drop-shadow(0 0 4px black);
+
+      &:hover {
+        color: white;
+        filter: drop-shadow(0 0 4px rgba($primary-light, 0.25));
+      }
+      &:hover ~ div {
+        background: $primary-light;
+      }
+    }
+  }
+  div {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background: $primary-medium;
+    transition: 0.25s ease-in-out;
+
+    &::before {
+      opacity: 0;
+      content: '';
+      width: 8rem;
+      height: 8rem;
+      top: var(--y);
+      left: var(--x);
+      position: absolute;
+      border-radius: 50%;
+      border-radius: 0.25rem;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.5s, top 0s, left 0s;
+      background: radial-gradient(white, transparent, transparent);
+    }
+
+    &::after {
+      inset: 2px;
+      content: '';
+      position: absolute;
+      border-radius: 0.25rem;
+      background: radial-gradient(circle, rgba(black, 0.8) 0%, rgba(black, 0.75) 100%);
+    }
+  }
+  &:hover div::before {
+    //--|🠊 This keeps the glow when hoverwing over the button 🠈|--//
+    opacity: 1;
+  }
+}
