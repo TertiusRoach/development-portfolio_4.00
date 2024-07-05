@@ -1,3 +1,5 @@
 .build
 secret.*
 *secret.*
+node_modules
+package-*.json
