@@ -6,7 +6,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const pageName = 'index';
 module.exports = {
-  entry: `./source/pages/${pageName}/${pageName}.tsx`,
+  entry: './source/index.tsx',
   output: {
     filename: `${pageName}.js`,
     path: path.resolve(__dirname, 'public'),
