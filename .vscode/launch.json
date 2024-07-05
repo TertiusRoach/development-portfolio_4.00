@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Chrome Console",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Go Webpack",
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["run-script", "public"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Application",
+      "configurations": ["Go Webpack", "Chrome Console"]
+    }
+  ]
+}

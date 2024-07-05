@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "ES5",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    /* linting */
+    "strict": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "jsx": "react"
+  },
+  "include": ["source/", "source/mods/*", "source/pages/*", "source/tools/*"],
+  "exclude": ["node_modules/"]
+}
