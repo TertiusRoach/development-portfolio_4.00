@@ -282,6 +282,5 @@ root/
 > Babel
 
     npm install --save-dev babel-loader
-    npm install --save-dev @babel/preset-react
     npm install --save-dev babel-preset-es2015
-    npm install --save-dev @babel/preset-typescript
+    npm install --save-dev @babel/preset-react @babel/preset-typescript @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript

@@ -5,11 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const pageName = 'index';
+
 module.exports = {
   entry: './source/index.tsx',
   output: {
     filename: `${pageName}.js`,
     path: path.resolve(__dirname, 'public'),
+    clean: true, // Clean the output directory before emit
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -37,6 +39,11 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]', // Preserve original file names
+              context: 'source/assets', // Adjust the context if needed
+              outputPath: 'assets', // Output to 'public/assets' folder
+            },
           },
         ],
       },
@@ -49,15 +56,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Index Page',
-      template: `./source/pages/${pageName}/${pageName}.html`,
+      template: `./source/pages/${pageName}.html`,
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: `${pageName}.css`,
     }),
   ],
   devServer: {
     static: path.join(__dirname, 'public'),
     compress: true,
     port: 8080,
+    open: true, // Automatically open the browser
   },
 };
