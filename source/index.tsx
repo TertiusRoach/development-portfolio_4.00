@@ -2,15 +2,15 @@
 // console.log(`${window.location.search}`);
 
 const getPageId = () => {
-  const pathArray = window.location.pathname.split('/');
-  const HTMLpage = pathArray[pathArray.length - 1];
-  console.log(HTMLpage);
-
-  /*
+  //   const pathArray = window.location.pathname.split('/');
+  //   const HTMLpage = pathArray[pathArray.length - 1];
+  //   console.log(HTMLpage);
   const queryString = window.location.href;
   const urlParams = new URLSearchParams(queryString);
 
   console.log(`${queryString}`);
+  /*
+
   */
 
   // Get Window url via JavaScript with window
