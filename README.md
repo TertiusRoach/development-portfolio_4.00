@@ -42,7 +42,6 @@ GitGuardian?
 > Install Webpack globally (Onto Operating System)
 
     npm install -g react
-    npm install -g react-dom
     npm install -g typescript
     npm install -g webpack-cli
     npm install -g webpack-dev-server
@@ -50,6 +49,8 @@ GitGuardian?
 > Install Webpack and REACT Tools
 
     npm install --save-dev webpack
+    npm install --save-dev react-dom
+    npm install --save-dev bootstrap
     npm install --save-dev webpack-cli
     npm install --save-dev react-responsive
     npm install --save-dev webpack-dev-server
@@ -71,12 +72,19 @@ GitGuardian?
     npm install --save-dev node-sass
     npm install --save-dev @types/react
     npm install --save-dev @types/react-dom
+
     npm install --save-dev extract-text-webpack-plugin
 
 > Install jQuery
 
     npm install --save-dev jquery
     npm install --save-dev @types/jquery
+
+> I don't know what Babel does
+
+npm install --save-dev babel-loader
+npm install --save-dev babel-preset-es2015
+npm install --save-dev @babel/preset-react @babel/preset-typescript @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
 
 ## My VSC Shortcuts
 
@@ -278,9 +286,3 @@ root/
     └── webpack.config.js`
 
 ---
-
-> Babel
-
-    npm install --save-dev babel-loader
-    npm install --save-dev babel-preset-es2015
-    npm install --save-dev @babel/preset-react @babel/preset-typescript @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
