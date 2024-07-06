@@ -1,34 +1,26 @@
-// console.log('Note Here');
-// console.log(`${window.location.search}`);
+// index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const getPageId = () => {
-  //   const pathArray = window.location.pathname.split('/');
-  //   const HTMLpage = pathArray[pathArray.length - 1];
-  //   console.log(HTMLpage);
+// Import styles
+import '../source/styles/index.scss';
+
+function getPageId() {
   const queryString = window.location.href;
-  const urlParams = new URLSearchParams(queryString);
-
-  console.log(`${queryString}`);
-  /*
-
-  */
-
-  // Get Window url via JavaScript with window
-
-  // Split the string .split('.html');
-
-  // pageId: string = 'index'
-
-  return '';
-};
-getPageId();
+  const getHTML = queryString.split('.html')[0].split('/').pop();
+  return getHTML;
+}
 
 // blockTag: string = '<header>' | '<main>' | '<footer>' | '<leftbar>' | '<rightbar>' | '<overlay>'
-const getBlockTag = () => {
+function getBlockTag(blockTag: '<header>' | '<main>' | '<footer>' | '<leftbar>' | '<rightbar>' | '<overlay>') {
+  console.log(blockTag); // Should return the base name of the current HTML file
   return '';
-};
-
+}
 // deviceType: string = 'desktop-landscape' | 'mobile-portrait'
-const getDeviceType = () => {
+function getDeviceType() {
   return '';
-};
+}
+
+const Main = getBlockTag('<main>');
+
+console.log(Main);
