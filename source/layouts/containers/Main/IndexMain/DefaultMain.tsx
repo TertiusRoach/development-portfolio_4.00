@@ -5,7 +5,6 @@ const DefaultMain: React.FC = () => {
   return (
     <>
       <main style={{ zIndex: 0 }}>
-        <h1>Welcome to my App!</h1>
         <p>This is the main content area.</p>
       </main>
     </>
