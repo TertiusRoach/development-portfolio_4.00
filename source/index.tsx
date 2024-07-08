@@ -37,19 +37,8 @@ function Body() {
   let pageName = getIdentification() as string;
   let className = 'default' as string;
   let blockName: '<header>' | '<main>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>';
-  switch (getIdentification()) {
-    case 'index':
-      return (
-        <>
-          <IndexLeftbar />
-          {/* <IndexRightbar /> */}
-          {/* <IndexOverlay /> */}
 
-          {/* <IndexHeader /> */}
-          {/* <IndexMain /> */}
-          {/* <IndexFooter /> */}
-        </>
-      );
+  switch (getIdentification()) {
     case 'resume':
       return (
         <>
@@ -86,12 +75,24 @@ function Body() {
           {/* <UniversityFooter /> */}
         </>
       );
+    default:
+      return (
+        <>
+          <IndexLeftbar />
+          {/* <IndexRightbar /> */}
+          {/* <IndexOverlay /> */}
+
+          {/* <IndexHeader /> */}
+          {/* <IndexMain /> */}
+          {/* <IndexFooter /> */}
+        </>
+      );
   }
 }
 
-if (DefaultBody === null) {
-  console.error("Element with id 'index-body' not found.");
-} else if (DefaultBody !== null) {
+if (DefaultBody) {
   const root = ReactDOM.createRoot(DefaultBody);
   root.render(<Body />);
+} else {
+  console.error("Element with id 'index-body' not found.");
 }
