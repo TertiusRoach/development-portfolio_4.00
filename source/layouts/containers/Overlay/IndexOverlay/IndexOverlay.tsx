@@ -5,26 +5,34 @@ const IndexOverlay: React.FC = () => {
   console.log('IndexOverlay Loaded');
   let runJquery = () => {
     $('#index-overlay').on('click', () => {
-      var element = document.getElementById('index-overlay')?.className as string;
-      var status = element.split(' ').pop() as string;
-      // console.log(status);
-      switch (status) {
-        case 'visible':
-          $('#index-overlay.visible').toggleClass('hidden');
-          $('#index-overlay.visible').removeClass('visible');
-          setTimeout(() => {
-            $('#index-overlay').css('display', 'none');
-          }, 1000);
-          break;
-        case 'hidden':
-          $('#index-overlay.hidden').toggleClass('visible');
-          $('#index-overlay.hidden').removeClass('hidden');
-          setTimeout(() => {
-            $('#index-overlay').css('display', '');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
+      var element = document.getElementById('index-overlay') as HTMLElement;
+      var status = element?.className.split(' ').pop() as string;
+      var safety: boolean = element?.className.includes('blocked');
+      console.log(safety);
+      if (!safety) {
+        console.log('do nothing');
+        switch (status) {
+          case 'visible':
+            $('#index-overlay.visible').addClass('blocked');
+            $('#index-overlay.visible').toggleClass('hidden');
+            $('#index-overlay.visible').removeClass('visible');
+            setTimeout(() => {
+              $('#index-overlay').css('display', 'none');
+              $('#index-overlay').removeClass('blocked');
+            }, 1000);
+            break;
+          case 'hidden':
+            $('#index-overlay.hidden').toggleClass('visible');
+            $('#index-overlay.hidden').removeClass('hidden');
+            $('#index-overlay.hidden').addClass('blocked');
+            setTimeout(() => {
+              $('#index-overlay').css('display', '');
+              $('#index-overlay.hidden').removeClass('blocked');
+            }, 1000);
+            break;
+          default:
+            alert('ERROR!');
+        }
       }
     });
   };
