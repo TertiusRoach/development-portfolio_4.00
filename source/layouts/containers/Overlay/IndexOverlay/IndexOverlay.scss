@@ -1,0 +1,36 @@
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  }
+}
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 2rem 1fr 2rem / 3rem 1fr 3rem; //~~|🠊 rows / columns 🠈|~~//
+    .overlay-midground {
+      padding: 2rem 3rem;
+      grid-area: 2 / 2 / 3 / 3;
+      background: green;
+    }
+  }
+}
+
+section[id*='overlay'] {
+  display: grid;
+  //   background: red;
+  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
+  @include mobile-portrait();
+  @include desktop-landscape();
+  &[class*='hidden'] {
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  &[class*='visible'] {
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+}

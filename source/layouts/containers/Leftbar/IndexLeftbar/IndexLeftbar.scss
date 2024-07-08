@@ -26,13 +26,13 @@ aside[id*='leftbar'] {
 
   @include mobile-portrait();
   @include desktop-landscape();
-}
 
-aside[class*='collapsed'] {
-  transition: clip-path 0.25s;
-  clip-path: inset(0% 100% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
-}
-aside[class*='expanded'] {
-  transition: clip-path 0.25s;
-  clip-path: inset(0% 0% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+  &[class*='collapsed'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 100% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+  }
+  &[class*='expanded'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+  }
 }

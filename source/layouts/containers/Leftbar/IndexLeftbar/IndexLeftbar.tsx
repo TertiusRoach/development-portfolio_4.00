@@ -10,11 +10,11 @@ const IndexLeftbar: React.FC = () => {
       // console.log(status);
 
       if (status === 'expanded') {
-        $('.expanded').toggleClass('collapsed');
-        $('.expanded').removeClass('expanded');
+        $('#index-leftbar.expanded').toggleClass('collapsed');
+        $('#index-leftbar.expanded').removeClass('expanded');
       } else if (status === 'collapsed') {
-        $('.collapsed').toggleClass('expanded');
-        $('.collapsed').removeClass('collapsed');
+        $('#index-leftbar.collapsed').toggleClass('expanded');
+        $('#index-leftbar.collapsed').removeClass('collapsed');
       } else {
         alert('ERROR!');
       }

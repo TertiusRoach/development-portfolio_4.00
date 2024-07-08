@@ -1,0 +1,37 @@
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 3rem repeat(3, 1fr) 3rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  }
+}
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 2rem 1fr 2rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
+    .rightbar-midground {
+      padding: 2rem 3rem;
+      grid-area: 1 / 2 / 4 / 3;
+
+      background: red;
+    }
+  }
+}
+
+aside[id*='rightbar'] {
+  display: grid;
+  //   background: red;
+  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
+  @include mobile-portrait();
+  @include desktop-landscape();
+  &[class*='collapsed'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 100%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+  }
+  &[class*='expanded'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+  }
+}

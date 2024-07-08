@@ -79,8 +79,8 @@ function Body() {
       return (
         <>
           <IndexLeftbar />
-          {/* <IndexRightbar /> */}
-          {/* <IndexOverlay /> */}
+          <IndexRightbar />
+          <IndexOverlay />
 
           {/* <IndexHeader /> */}
           <IndexMain />
