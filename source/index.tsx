@@ -4,7 +4,12 @@ import ReactDOM from 'react-dom/client';
 
 import { getOrientation, getResolution, getIdentification } from './scripts/index';
 
-import DefaultMain from './layouts/containers/Main/IndexMain/DefaultMain';
+import IndexMain from './layouts/containers/Main/IndexMain/IndexMain';
+import IndexHeader from './layouts/containers/Header/IndexHeader/IndexHeader';
+import IndexFooter from './layouts/containers/Footer/IndexFooter/IndexFooter';
+import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay';
+import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
+import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
 /*
 import './layouts/containers/Footer/IndexFooter/DefaultFooter';
@@ -22,11 +27,26 @@ function Body() {
   console.log(getOrientation());
   console.log(getIdentification());
 
+  // className = 'default-blockName'
+
+  const information: Object = {
+    resolution: getResolution(),
+    orientation: getOrientation(),
+    identification: getIdentification(),
+  };
+  // let pageName: string = `${getIdentification}`
+  let className: string;
+  let blockName: '<header>' | '<main>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>';
+
   return (
     <>
-      {/* Replace with your actual content */}
-      <DefaultMain /> {/* Assuming DefaultMain provides your main content */}
-      {/* You can add other components here */}
+      <IndexLeftbar />
+      {/* <IndexRightbar /> */}
+      {/* <IndexOverlay /> */}
+
+      {/* <IndexHeader /> */}
+      {/* <IndexMain /> */}
+      {/* <IndexFooter /> */}
     </>
   );
 }
