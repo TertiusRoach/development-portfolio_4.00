@@ -6,11 +6,9 @@ const IndexOverlay: React.FC = () => {
   let runJquery = () => {
     $('#index-overlay').on('click', () => {
       var element = document.getElementById('index-overlay') as HTMLElement;
-      var status = element?.className.split(' ').pop() as string;
       var safety: boolean = element?.className.includes('blocked');
-      console.log(safety);
+      var status = element?.className.split(' ').pop() as string;
       if (!safety) {
-        console.log('do nothing');
         switch (status) {
           case 'visible':
             $('#index-overlay.visible').addClass('blocked');
@@ -22,9 +20,9 @@ const IndexOverlay: React.FC = () => {
             }, 1000);
             break;
           case 'hidden':
+            $('#index-overlay.hidden').addClass('blocked');
             $('#index-overlay.hidden').toggleClass('visible');
             $('#index-overlay.hidden').removeClass('hidden');
-            $('#index-overlay.hidden').addClass('blocked');
             setTimeout(() => {
               $('#index-overlay').css('display', '');
               $('#index-overlay.hidden').removeClass('blocked');

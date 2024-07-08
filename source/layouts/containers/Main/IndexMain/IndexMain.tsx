@@ -23,7 +23,35 @@ const IndexMain: React.FC = () => {
       }
     });
     $('#index-main .overlay-button').on('click', () => {
-      console.log('Overlay Button Clicked');
+      // console.log('Overlay Button Clicked');
+
+      var element = document.getElementById('index-overlay') as HTMLElement;
+      var safety: boolean = element?.className.includes('blocked');
+      var status = element?.className.split(' ').pop() as string;
+      if (!safety) {
+        switch (status) {
+          case 'visible':
+            $('#index-overlay.visible').addClass('blocked');
+            $('#index-overlay.visible').toggleClass('hidden');
+            setTimeout(() => {
+              $('#index-overlay').css('display', 'none');
+              $('#index-overlay').removeClass('blocked');
+              $('#index-overlay').removeClass('visible');
+            }, 1000);
+            break;
+          case 'hidden':
+            $('#index-overlay').css('display', 'grid');
+            $('#index-overlay.hidden').addClass('blocked');
+            $('#index-overlay.hidden').toggleClass('visible');
+            setTimeout(() => {
+              $('#index-overlay').removeClass('hidden');
+              $('#index-overlay').removeClass('blocked');
+            }, 1000);
+            break;
+          default:
+            alert('ERROR!');
+        }
+      }
     });
     $('#index-main .rightbar-button').on('click', () => {
       console.log('Rightbar Button Clicked');
