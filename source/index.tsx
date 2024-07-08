@@ -12,11 +12,11 @@ import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
 /*
-import './layouts/containers/Footer/IndexFooter/DefaultFooter';
-import './layouts/containers/Header/IndexHeader/DefaultHeader';
-import './layouts/containers/Overlay/IndexOverlay/DefaultOverlay';
-import './layouts/containers/Leftbar/IndexLeftbar/DefaultLeftbar';
-import './layouts/containers/Rightbar/IndexRightbar/DefaultRightbar';
+import './layouts/containers/Footer/IndexFooter/IndexFooter';
+import './layouts/containers/Header/IndexHeader/IndexHeader';
+import './layouts/containers/Overlay/IndexOverlay/IndexOverlay';
+import './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
+import './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 */
 
 // Simplified function definition (optional argument)
@@ -83,7 +83,7 @@ function Body() {
           {/* <IndexOverlay /> */}
 
           {/* <IndexHeader /> */}
-          {/* <IndexMain /> */}
+          <IndexMain />
           {/* <IndexFooter /> */}
         </>
       );

@@ -1,0 +1,23 @@
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+  }
+}
+
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+  }
+}
+
+main[id*='index'] {
+  display: grid;
+  //   background: red;
+  grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
+  background: green;
+  //   background: $primary-dark;
+
+  @include mobile-portrait();
+  @include desktop-landscape();
+}

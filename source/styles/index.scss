@@ -1,3 +1,7 @@
+// @import '../tools/vendors/bootstrap/5.3.3/css/'
+@import '../layouts/containers/color-palette.scss';
+@import '../layouts/containers/global-styling.scss';
+
 //--|🠋| Color Scheme |🠋|--//
 $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
 $primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
@@ -10,24 +14,6 @@ $secondary-light: #a2848f; //--🠊 rgba(162,132,143,1) 🠈--//
 $tertiary-dark: #392319; //--🠊 rgba(57,35,25,1) 🠈--//
 $tertiary-medium: #714631; //--🠊 rgba(113,70,49,1) 🠈--//
 $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
-
-// @import '../tools/vendors/bootstrap/5.3.3/css/'
-@import '../layouts/containers/color-palette.scss';
-@import '../layouts/containers/global-styling.scss';
-
-div[id*='index'] {
-  height: 100vh;
-  display: grid;
-  /* background: linear-gradient(140deg, $primary-dark 0%, $primary-medium 75%, $primary-dark 100%); */
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
-  }
-}
 
 @mixin orientation-testing {
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -86,19 +72,23 @@ div[id*='index'] {
   }
 }
 
-body {
-  height: 100vh; //~~|🠊 Force body's height to fit the screen 🠈|~~//
-  overflow: hidden; //~~|🠊 Hide the scrollbar completely 🠈|~~//
-  /*
-  background: linear-gradient(
-    140deg,
-    $primary-dark 0%,
-    $primary-medium 50%,
-    $primary-light 100%
-  ); //~~|🠊 Apply the background gradient 🠈|~~//
-  */
-
-  #index-body {
-    @include orientation-testing();
+div[id*='index-body'] {
+  height: 100vh;
+  display: grid;
+  /* background: linear-gradient(140deg, $primary-dark 0%, $primary-medium 75%, $primary-dark 100%); */
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
   }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
+  }
+  @include orientation-testing();
 }
+
+@import '../layouts/containers/Main/IndexMain/IndexMain.scss';
+@import '../layouts/containers/Header/IndexHeader/IndexHeader.scss';
+@import '../layouts/containers/Footer/IndexFooter/IndexFooter.scss';
+@import '../layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar.scss';
+@import '../layouts/containers/Rightbar/IndexRightbar/IndexRightbar.scss';

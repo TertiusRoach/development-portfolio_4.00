@@ -43,3 +43,15 @@
     font-weight: 300;
   }
 }
+body {
+  height: 100vh; //~~|🠊 Force body's height to fit the screen 🠈|~~//
+  overflow: hidden; //~~|🠊 Hide the scrollbar completely 🠈|~~//
+  /*
+  background: linear-gradient(
+    140deg,
+    $primary-dark 0%,
+    $primary-medium 50%,
+    $primary-light 100%
+  ); //~~|🠊 Apply the background gradient 🠈|~~//
+  */
+}
