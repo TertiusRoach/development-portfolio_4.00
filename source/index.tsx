@@ -34,21 +34,59 @@ function Body() {
     orientation: getOrientation(),
     identification: getIdentification(),
   };
-  // let pageName: string = `${getIdentification}`
-  let className: string;
+  let pageName = getIdentification() as string;
+  let className = 'default' as string;
   let blockName: '<header>' | '<main>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>';
+  switch (getIdentification()) {
+    case 'index':
+      return (
+        <>
+          <IndexLeftbar />
+          {/* <IndexRightbar /> */}
+          {/* <IndexOverlay /> */}
 
-  return (
-    <>
-      <IndexLeftbar />
-      {/* <IndexRightbar /> */}
-      {/* <IndexOverlay /> */}
+          {/* <IndexHeader /> */}
+          {/* <IndexMain /> */}
+          {/* <IndexFooter /> */}
+        </>
+      );
+    case 'resume':
+      return (
+        <>
+          {/* <ResumeLeftbar /> */}
+          {/* <ResumeRightbar /> */}
+          {/* <ResumeOverlay /> */}
 
-      {/* <IndexHeader /> */}
-      {/* <IndexMain /> */}
-      {/* <IndexFooter /> */}
-    </>
-  );
+          {/* <ResumeHeader /> */}
+          {/* <ResumeMain /> */}
+          {/* <ResumeFooter /> */}
+        </>
+      );
+    case 'ticket':
+      return (
+        <>
+          {/* <TicketLeftbar /> */}
+          {/* <TicketRightbar /> */}
+          {/* <TicketOverlay /> */}
+
+          {/* <TicketHeader /> */}
+          {/* <TicketMain /> */}
+          {/* <TicketFooter /> */}
+        </>
+      );
+    case 'university':
+      return (
+        <>
+          {/* <UniversityLeftbar /> */}
+          {/* <UniversityRightbar /> */}
+          {/* <UniversityOverlay /> */}
+
+          {/* <UniversityHeader /> */}
+          {/* <UniversityMain /> */}
+          {/* <UniversityFooter /> */}
+        </>
+      );
+  }
 }
 
 if (DefaultBody === null) {
