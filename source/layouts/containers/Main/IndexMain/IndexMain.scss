@@ -11,9 +11,14 @@
 }
 
 main[id*='index'] {
-  display: grid;
+  //   display: grid;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  //   flex-direction: row;
   //   background: red;
-  grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
 
   background: green;
   //   background: $primary-dark;

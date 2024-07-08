@@ -5,7 +5,7 @@ const IndexMain: React.FC = () => {
   console.log('IndexMain Loaded');
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <button style={{ display: 'none' }}>
+      <button>
         <h1>leftbar-button</h1>
       </button>
       <button>
