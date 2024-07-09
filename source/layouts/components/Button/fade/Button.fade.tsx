@@ -10,20 +10,37 @@ interface FadeProps {
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
 const ButtonFade: React.FC<FadeProps> = ({ label, state, align, text, icon }) => {
+  /*
   console.log(`Label: ${label}`);
   console.log(`State: ${state}`);
   console.log(`Align: ${align}`);
   console.log(`Text: ${text}`);
-  console.log(`Icon: ${icon}`);
-  return (
-    <>
-      <button>
-        <h6>{text}</h6>
-      </button>
-    </>
-  );
+  */
+  console.log(`Icon: ${!icon}`);
+  let renderButton = () => {
+    switch (!icon) {
+      case false:
+        return (
+          <>
+            <h3>{text}</h3>
+            <img src={icon} alt={text} />
+          </>
+        );
+      case true:
+        return (
+          <>
+            <h3>{text}</h3>
+          </>
+        );
+    }
+  };
+  return <button className={`${label} ${state} ${align}`}>{renderButton()}</button>;
 };
 export default ButtonFade;
+
+/*
+
+*/
 /*
 const ButtonFade: React.FC<FadeProps> = ({ className, icon, text, state, click: wrapperFunction }) => {
   let selectors: string = `${className} fade${state ? ` ${state}` : ''}`;

@@ -27,25 +27,29 @@ section[id*='overlay'] {
   @include desktop-landscape();
 
   &[class*='hidden'] {
-    animation: fadeOut 0.25s forwards;
+    animation: fadeOut 1s forwards;
   }
   &[class*='visible'] {
-    animation: fadeIn 0.25s forwards;
+    animation: fadeIn 1s forwards;
   }
   @keyframes fadeIn {
     from {
       opacity: 0;
+      filter: blur(1rem);
     }
     to {
       opacity: 1;
+      filter: blur(0);
     }
   }
   @keyframes fadeOut {
     from {
       opacity: 1;
+      filter: blur(0);
     }
     to {
       opacity: 0;
+      filter: blur(1rem);
     }
   }
 }

@@ -75,18 +75,30 @@ const IndexMain: React.FC = () => {
     });
   };
   setTimeout(runJquery, 1000);
+
+  let leftbarIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-right.svg';
+  let overlayIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/star.svg';
+  let rightbarIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <ButtonFade label="leftbar-button" state="downplay" align="left" text="Leftbar Button" icon="" />
+      <ButtonFade label="leftbar-button" state="downplay" align="left" text="View Left" icon={leftbarIcon} />
+
       {/* <button className="leftbar-button">
         <h1>leftbar-button</h1>
       </button> */}
-      <button className="overlay-button">
+      <ButtonFade label="overlay-button" state="highlight" align="center" text="View Overlay" />
+
+      {/* <button className="overlay-button">
         <h1>overlay-button</h1>
-      </button>
-      <button className="rightbar-button">
+      </button> */}
+
+      <ButtonFade label="rightbar-button" state="downplay" align="right" text="View Right" icon={rightbarIcon} />
+      {/* <button className="rightbar-button">
         <h1>rightbar-button</h1>
-      </button>
+      </button> */}
     </main>
   );
 };

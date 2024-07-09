@@ -1,8 +1,6 @@
-// @import '../tools/vendors/bootstrap/5.3.3/css/'
-@import '../layouts/containers/color-palette.scss';
+//--|🠋| Color Scheme |🠋|--//
 @import '../layouts/containers/global-styling.scss';
 
-//--|🠋| Color Scheme |🠋|--//
 $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
 $primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
 $primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
@@ -71,7 +69,6 @@ $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
     //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
   }
 }
-
 div[id*='index-body'] {
   height: 100vh;
   display: grid;
