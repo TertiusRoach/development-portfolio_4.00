@@ -1,15 +1,30 @@
-/*
 import React from 'react';
 import './Button.fade.scss';
-
 interface FadeProps {
-  className: string; //--|🠈 This className is used to position the button within a grid layout. 🠈|--//
-  icon: string;
+  label: string;
+  state: 'downplay' | 'highlight';
+  align: 'left' | 'center' | 'right';
   text: string;
-  state?: 'active';
-  click?: (element: React.MouseEvent<HTMLElement>) => void;
-}
+  icon?: string;
 
+  // click?: (element: React.MouseEvent<HTMLElement>) => void;
+}
+const ButtonFade: React.FC<FadeProps> = ({ label, state, align, text, icon }) => {
+  console.log(`Label: ${label}`);
+  console.log(`State: ${state}`);
+  console.log(`Align: ${align}`);
+  console.log(`Text: ${text}`);
+  console.log(`Icon: ${icon}`);
+  return (
+    <>
+      <button>
+        <h6>{text}</h6>
+      </button>
+    </>
+  );
+};
+export default ButtonFade;
+/*
 const ButtonFade: React.FC<FadeProps> = ({ className, icon, text, state, click: wrapperFunction }) => {
   let selectors: string = `${className} fade${state ? ` ${state}` : ''}`;
   //--|🠊 ? - Is a Ternary Operator and it checks if state has a value. 🠈|--//
@@ -22,5 +37,4 @@ const ButtonFade: React.FC<FadeProps> = ({ className, icon, text, state, click: 
   );
 };
 
-export default ButtonFade;
 */

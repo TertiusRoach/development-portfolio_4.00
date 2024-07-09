@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
 
+import ButtonFade from '../../../components/Button/fade/Button.fade';
+
 const IndexMain: React.FC = () => {
   console.log('IndexMain Loaded');
   let runJquery = () => {
@@ -40,7 +42,7 @@ const IndexMain: React.FC = () => {
             }, 1000);
             break;
           case 'hidden':
-            $('#index-overlay').css('display', 'grid');
+            $('#index-overlay.hidden').css('display', 'grid');
             $('#index-overlay.hidden').addClass('blocked');
             $('#index-overlay.hidden').toggleClass('visible');
             setTimeout(() => {
@@ -75,9 +77,10 @@ const IndexMain: React.FC = () => {
   setTimeout(runJquery, 1000);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <button className="leftbar-button">
+      <ButtonFade label="leftbar-button" state="downplay" align="left" text="Leftbar Button" icon="" />
+      {/* <button className="leftbar-button">
         <h1>leftbar-button</h1>
-      </button>
+      </button> */}
       <button className="overlay-button">
         <h1>overlay-button</h1>
       </button>
