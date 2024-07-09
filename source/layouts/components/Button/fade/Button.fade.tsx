@@ -1,5 +1,6 @@
 import React from 'react';
 import './Button.fade.scss';
+
 interface FadeProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   state: 'downplay' | 'highlight';
@@ -22,19 +23,16 @@ const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) =>
     icon: string,
     align: 'left' | 'center' | 'right'
   ) => {
-    if (icon !== 'undefined') {
-      switch (align) {
-        case 'left':
-          return (
-            <>
-              <h3 className={`${align}`} style={{ zIndex: 2 }}>
-                {text}
-              </h3>
-              <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-              <span className="button-background" style={{ zIndex: 0 }}></span>
-            </>
-          );
-      }
+    if (icon !== 'undefined' || '') {
+      return (
+        <>
+          <h3 className={`${align}`} style={{ zIndex: 2 }}>
+            {text}
+          </h3>
+          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
+          <span className="button-background" style={{ zIndex: 0 }}></span>
+        </>
+      );
     } else {
       return (
         <>

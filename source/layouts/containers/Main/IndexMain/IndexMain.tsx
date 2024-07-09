@@ -2,9 +2,12 @@ import $ from 'jquery';
 import React from 'react';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
+import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
 
 const IndexMain: React.FC = () => {
   console.log('IndexMain Loaded');
+  let pageName = getIdentification() as string;
+  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   let runJquery = () => {
     $('#index-main .leftbar-button').on('click', () => {
       console.log('Leftbar Button Clicked');
@@ -85,17 +88,15 @@ const IndexMain: React.FC = () => {
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       <ButtonFade block="leftbar" state="downplay" align="left" text="View Left" icon={leftbarIcon} />
+      <ButtonFade block="overlay" state="highlight" align="center" text="View Overlay" icon={overlayIcon} />
+      <ButtonFade block="rightbar" state="downplay" align="right" text="View Right" icon={rightbarIcon} />
 
       {/* <button className="leftbar-button">
         <h1>leftbar-button</h1>
       </button> */}
-      <ButtonFade block="overlay" state="highlight" align="center" text="View Overlay" />
-
       {/* <button className="overlay-button">
         <h1>overlay-button</h1>
       </button> */}
-
-      <ButtonFade block="rightbar" state="downplay" align="right" text="View Right" icon={rightbarIcon} />
       {/* <button className="rightbar-button">
         <h1>rightbar-button</h1>
       </button> */}

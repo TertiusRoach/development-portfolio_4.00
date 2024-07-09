@@ -11,33 +11,16 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
-/*
-import './layouts/containers/Footer/IndexFooter/IndexFooter';
-import './layouts/containers/Header/IndexHeader/IndexHeader';
-import './layouts/containers/Overlay/IndexOverlay/IndexOverlay';
-import './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
-import './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
-*/
-
-// Simplified function definition (optional argument)
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
-
 function Body() {
   console.log(getResolution());
   console.log(getOrientation());
   console.log(getIdentification());
-
-  // className = 'default-blockName'
-
   const information: Object = {
     resolution: getResolution(),
     orientation: getOrientation(),
     identification: getIdentification(),
   };
-  let pageName = getIdentification() as string;
-  let className = 'default' as string;
-  let blockName: '<header>' | '<main>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>';
-
   switch (getIdentification()) {
     case 'resume':
       return (
@@ -96,3 +79,13 @@ if (DefaultBody) {
 } else {
   console.error("Element with id 'index-body' not found.");
 }
+
+/*
+import './layouts/containers/Footer/IndexFooter/IndexFooter';
+import './layouts/containers/Header/IndexHeader/IndexHeader';
+import './layouts/containers/Overlay/IndexOverlay/IndexOverlay';
+import './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
+import './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
+*/
+
+// Simplified function definition (optional argument)
