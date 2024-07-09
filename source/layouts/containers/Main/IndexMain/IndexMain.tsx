@@ -84,18 +84,18 @@ const IndexMain: React.FC = () => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <ButtonFade label="leftbar-button" state="downplay" align="left" text="View Left" icon={leftbarIcon} />
+      <ButtonFade block="leftbar" state="downplay" align="left" text="View Left" icon={leftbarIcon} />
 
       {/* <button className="leftbar-button">
         <h1>leftbar-button</h1>
       </button> */}
-      <ButtonFade label="overlay-button" state="highlight" align="center" text="View Overlay" />
+      <ButtonFade block="overlay" state="highlight" align="center" text="View Overlay" />
 
       {/* <button className="overlay-button">
         <h1>overlay-button</h1>
       </button> */}
 
-      <ButtonFade label="rightbar-button" state="downplay" align="right" text="View Right" icon={rightbarIcon} />
+      <ButtonFade block="rightbar" state="downplay" align="right" text="View Right" icon={rightbarIcon} />
       {/* <button className="rightbar-button">
         <h1>rightbar-button</h1>
       </button> */}

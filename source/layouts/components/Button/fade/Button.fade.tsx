@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.fade.scss';
 interface FadeProps {
-  label: string;
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   state: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right';
   text: string;
@@ -9,32 +9,42 @@ interface FadeProps {
 
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
-const ButtonFade: React.FC<FadeProps> = ({ label, state, align, text, icon }) => {
+const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) => {
   /*
   console.log(`Label: ${label}`);
   console.log(`State: ${state}`);
   console.log(`Align: ${align}`);
   console.log(`Text: ${text}`);
   */
-  console.log(`Icon: ${!icon}`);
-  let renderButton = () => {
-    switch (!icon) {
-      case false:
-        return (
-          <>
-            <h3>{text}</h3>
-            <img src={icon} alt={text} />
-          </>
-        );
-      case true:
-        return (
-          <>
-            <h3>{text}</h3>
-          </>
-        );
+  // console.log(`Icon: ${!icon}`);
+  let renderButton = (
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
+    icon: string,
+    align: 'left' | 'center' | 'right'
+  ) => {
+    if (icon !== 'undefined') {
+      switch (align) {
+        case 'left':
+          return (
+            <>
+              <h3 className={`${align}`} style={{ zIndex: 2 }}>
+                {text}
+              </h3>
+              <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
+              <span className="button-background" style={{ zIndex: 0 }}></span>
+            </>
+          );
+      }
+    } else {
+      return (
+        <>
+          <h3>{text}</h3>
+        </>
+      );
     }
   };
-  return <button className={`${label} ${state} ${align}`}>{renderButton()}</button>;
+  const className = `${block}-button ${state} ${align}` as string;
+  return <button className={className}>{renderButton(block, `${icon}`, align)}</button>;
 };
 export default ButtonFade;
 
