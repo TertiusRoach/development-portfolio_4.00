@@ -4,10 +4,9 @@ import React from 'react';
 const IndexRightbar: React.FC = () => {
   console.log('IndexRightbar Loaded');
   let runJquery = () => {
-    $('#index-rightbar').on('click', () => {
+    $('#index-rightbar span[class*="background"]').on('click', () => {
       var element = document.getElementById('index-rightbar')?.className as string;
       var status = element.split(' ').pop() as string;
-      // console.log(status);
       switch (status) {
         case 'expanded':
           $('#index-rightbar.expanded').toggleClass('collapsed');
@@ -31,7 +30,7 @@ const IndexRightbar: React.FC = () => {
         </article>
 
         <span className="rightbar-foreground" style={{ zIndex: 2, display: 'none' }}></span>
-        <span className="rightbar-background" style={{ zIndex: 0, display: 'none' }}></span>
+        <span className="rightbar-background" style={{ zIndex: 0 }}></span>
       </aside>
     </>
   );

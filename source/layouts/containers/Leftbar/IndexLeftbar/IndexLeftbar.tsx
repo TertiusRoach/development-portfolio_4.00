@@ -4,7 +4,7 @@ import React from 'react';
 const IndexLeftbar: React.FC = () => {
   console.log('IndexLeftbar Loaded');
   let runJquery = () => {
-    $('#index-leftbar').on('click', () => {
+    $('#index-leftbar span[class*="background"]').on('click', () => {
       var element = document.getElementById('index-leftbar')?.className as string;
       var status = element.split(' ').pop() as string;
       // console.log(status);
@@ -30,7 +30,7 @@ const IndexLeftbar: React.FC = () => {
         </article>
 
         <span className="leftbar-foreground" style={{ zIndex: 2, display: 'none' }}></span>
-        <span className="leftbar-background" style={{ zIndex: 0, display: 'none' }}></span>
+        <span className="leftbar-background" style={{ zIndex: 0 }}></span>
       </aside>
     </>
   );

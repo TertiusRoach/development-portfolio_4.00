@@ -14,7 +14,11 @@
       padding: 2rem 3rem;
       grid-area: 1 / 1 / 4 / 2;
 
-      background: blue;
+      background: $blue-light;
+    }
+    .leftbar-background {
+      grid-area: 1 / 1 / 4 / 3;
+      background: rgba($blue-dark, 0.25);
     }
   }
 }

@@ -14,14 +14,17 @@
       padding: 2rem 3rem;
       grid-area: 1 / 2 / 4 / 3;
 
-      background: red;
+      background: $red-light;
+    }
+    .rightbar-background {
+      grid-area: 1 / 1 / 4 / 3;
+      background: rgba($red-dark, 0.25);
     }
   }
 }
 
 aside[id*='rightbar'] {
   display: grid;
-  //   background: red;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
 
   @include mobile-portrait();
