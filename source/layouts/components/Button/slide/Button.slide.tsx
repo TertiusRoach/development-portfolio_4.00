@@ -1,7 +1,7 @@
 import React from 'react';
-import './Button.frame.scss';
+import './Button.slide.scss';
 
-interface FrameProps {
+interface SlideProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   state: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right';
@@ -10,7 +10,7 @@ interface FrameProps {
 
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
-const ButtonFrame: React.FC<FrameProps> = ({ block, state, align, text, icon }) => {
+const ButtonSlide: React.FC<SlideProps> = ({ block, state, align, text, icon }) => {
   /*
   console.log(`Label: ${label}`);
   console.log(`State: ${state}`);
@@ -43,4 +43,4 @@ const ButtonFrame: React.FC<FrameProps> = ({ block, state, align, text, icon }) 
   const className = `${block}-button ${state} ${align}` as string;
   return <button className={className}>{renderButton(block, `${icon}`, align)}</button>;
 };
-export default ButtonFrame;
+export default ButtonSlide;

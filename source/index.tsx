@@ -65,9 +65,9 @@ function Body() {
           <IndexMain />
           <IndexFooter />
 
-          {/* <IndexLeftbar /> */}
-          {/* <IndexRightbar /> */}
-          {/* <IndexOverlay /> */}
+          <IndexLeftbar />
+          <IndexRightbar />
+          <IndexOverlay />
         </>
       );
   }
