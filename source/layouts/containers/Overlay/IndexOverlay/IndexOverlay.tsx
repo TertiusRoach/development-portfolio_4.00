@@ -6,7 +6,6 @@ interface InfoProps {
   identification: string;
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
-  console.log('IndexOverlay Loaded');
   let runJquery = () => {
     $('#index-overlay').on('click', () => {
       var element = document.getElementById('index-overlay') as HTMLElement;
@@ -51,6 +50,7 @@ const IndexOverlay: React.FC<InfoProps> = () => {
       </section>
     </>
   );
+  console.log('IndexOverlay Loaded');
 };
 
 export default IndexOverlay;

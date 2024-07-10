@@ -8,7 +8,6 @@ interface InfoProps {
   identification: string;
 }
 const IndexMain: React.FC<InfoProps> = () => {
-  console.log('IndexMain Loaded');
   let pageName = getIdentification() as string;
   let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   let runJquery = () => {
@@ -105,5 +104,6 @@ const IndexMain: React.FC<InfoProps> = () => {
       </button> */}
     </main>
   );
+  console.log('IndexMain Loaded');
 };
 export default IndexMain;

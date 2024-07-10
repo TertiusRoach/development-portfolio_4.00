@@ -6,7 +6,6 @@ interface InfoProps {
   identification: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  console.log('IndexLeftbar Loaded');
   let runJquery = () => {
     $('#index-leftbar span[class*="background"]').on('click', () => {
       var element = document.getElementById('index-leftbar')?.className as string;
@@ -38,5 +37,6 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
       </aside>
     </>
   );
+  console.log('IndexLeftbar Loaded');
 };
 export default IndexLeftbar;

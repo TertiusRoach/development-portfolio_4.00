@@ -11,8 +11,10 @@ interface FadeProps {
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
 const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) => {
+  /*
   const blockElement = document.getElementsByTagName('main')[0];
   console.log(blockElement);
+  */
 
   /*
   console.log(`Label: ${label}`);

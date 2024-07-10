@@ -6,7 +6,6 @@ interface InfoProps {
   identification: string;
 }
 const IndexRightbar: React.FC<InfoProps> = () => {
-  console.log('IndexRightbar Loaded');
   let runJquery = () => {
     $('#index-rightbar span[class*="background"]').on('click', () => {
       var element = document.getElementById('index-rightbar')?.className as string;
@@ -38,6 +37,7 @@ const IndexRightbar: React.FC<InfoProps> = () => {
       </aside>
     </>
   );
+  console.log('IndexRightbar Loaded');
 };
 
 export default IndexRightbar;
