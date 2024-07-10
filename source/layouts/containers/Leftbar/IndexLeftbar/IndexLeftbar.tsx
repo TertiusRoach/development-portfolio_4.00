@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import React from 'react';
-
 const IndexLeftbar: React.FC = () => {
   console.log('IndexLeftbar Loaded');
   let runJquery = () => {
@@ -35,5 +34,4 @@ const IndexLeftbar: React.FC = () => {
     </>
   );
 };
-
 export default IndexLeftbar;

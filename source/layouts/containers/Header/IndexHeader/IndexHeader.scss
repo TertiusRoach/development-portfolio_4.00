@@ -1,0 +1,21 @@
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 4rem / repeat(2, 1fr); //~~|🠊 rows / columns 🠈|~~//
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+  }
+}
+header[id*='index'] {
+  display: grid;
+  grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
+  background: $blue-dark !important;
+
+  @include mobile-portrait();
+  @include desktop-landscape();
+}

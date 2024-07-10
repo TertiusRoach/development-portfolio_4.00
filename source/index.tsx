@@ -61,13 +61,13 @@ function Body() {
     default:
       return (
         <>
-          <IndexLeftbar />
-          <IndexRightbar />
-          <IndexOverlay />
-
-          {/* <IndexHeader /> */}
+          <IndexHeader />
           <IndexMain />
-          {/* <IndexFooter /> */}
+          <IndexFooter />
+
+          {/* <IndexLeftbar /> */}
+          {/* <IndexRightbar /> */}
+          {/* <IndexOverlay /> */}
         </>
       );
   }

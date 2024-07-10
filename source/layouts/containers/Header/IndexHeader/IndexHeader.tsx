@@ -5,7 +5,8 @@ const IndexHeader: React.FC = () => {
   return (
     <>
       <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
-        <p>This is the header content area.</p>
+        <img src="" alt="" />
+        {/* <p>This is the header content area.</p> */}
       </header>
     </>
   );

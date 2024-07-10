@@ -1,0 +1,20 @@
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    // background: $primary-dark;
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    // background: $primary-dark;
+  }
+}
+footer[id*='index'] {
+  display: grid;
+  grid-area: 3 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  background: $red-light !important;
+
+  @include mobile-portrait();
+  @include desktop-landscape();
+}
