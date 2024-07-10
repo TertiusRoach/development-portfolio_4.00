@@ -27,7 +27,7 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
 
   return (
     <>
-      <aside id="index-leftbar" className="default-leftbar expanded" style={{ zIndex: 5 }}>
+      <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
         <article className="leftbar-midground" style={{ zIndex: 1 }}>
           <h1>Build style here.</h1>
         </article>

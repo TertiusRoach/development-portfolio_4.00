@@ -1,12 +1,18 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
-    // background: $primary-dark;
+    background: $red-dark;
   }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 6rem / 1fr auto; //~~|🠊 rows / columns 🠈|~~//
+
+    menu {
+      height: 6rem;
+    }
     // background: $primary-dark;
   }
 }

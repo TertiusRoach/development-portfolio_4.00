@@ -24,9 +24,9 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
             <ButtonFade
               block={block}
               align={align}
+              state="highlight"
               text={items[i].text}
               icon={items[i].icon}
-              state="highlight"
               key={items[i].text}
             />
           );
@@ -35,9 +35,9 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
             <ButtonFade
               block={block}
               align={align}
+              state="downplay"
               text={items[i].text}
               icon={items[i].icon}
-              state="downplay"
               key={items[i].text}
             />
           );

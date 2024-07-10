@@ -27,7 +27,7 @@ const IndexRightbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
   return (
     <>
-      <aside id="index-rightbar" className="default-rightbar expanded" style={{ zIndex: 4 }}>
+      <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 4 }}>
         <article className="rightbar-midground" style={{ zIndex: 1 }}>
           <h1>Build style here.</h1>
         </article>

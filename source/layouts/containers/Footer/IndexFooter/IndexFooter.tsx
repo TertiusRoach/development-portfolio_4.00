@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MenuButton from '../../../components/Menu/button/Menu.button';
+import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 interface InfoProps {
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;
@@ -38,7 +38,7 @@ const IndexFooter: React.FC<InfoProps> = ({ resolution, orientation, identificat
   return (
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
-        <MenuButton block="header" style="fade" items={buttons} align="center" />
+        <MenuAnchor block="footer" style="icon" items={buttons} align="center" />
       </footer>
     </>
   );

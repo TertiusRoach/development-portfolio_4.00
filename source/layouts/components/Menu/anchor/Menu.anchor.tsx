@@ -1,65 +1,123 @@
-// import React from 'react';
-// import './Button.fade.scss';
+// Menu.anchor.tsx
+import React from 'react';
+import './Menu.anchor.scss';
 
-// interface FadeProps {
-//   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-//   state: 'downplay' | 'highlight';
-//   align: 'left' | 'center' | 'right';
-//   text: string;
-//   icon?: string;
+import AnchorIcon from '../../Button/icon/Button.icon';
+import AnchorText from '../../Button/frame/Button.frame';
 
-//   // click?: (element: React.MouseEvent<HTMLElement>) => void;
-// }
-// const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) => {
-//   /*
-//   console.log(`Label: ${label}`);
-//   console.log(`State: ${state}`);
-//   console.log(`Align: ${align}`);
-//   console.log(`Text: ${text}`);
-//   */
-//   // console.log(`Icon: ${!icon}`);
-//   let renderButton = (
-//     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
-//     icon: string,
-//     align: 'left' | 'center' | 'right'
-//   ) => {
-//     if (icon !== 'undefined' || '') {
-//       return (
-//         <>
-//           <h3 className={`${align}`} style={{ zIndex: 2 }}>
-//             {text}
-//           </h3>
-//           <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-//           <span className="button-background" style={{ zIndex: 0 }}></span>
-//         </>
-//       );
-//     } else {
-//       return (
-//         <>
-//           <h3>{text}</h3>
-//         </>
-//       );
-//     }
-//   };
-//   const className = `${block}-button ${state} ${align}` as string;
-//   return <button className={className}>{renderButton(block, `${icon}`, align)}</button>;
-// };
-// export default ButtonFade;
+interface MenuProps {
+  style: 'icon' | 'text';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  items: { text: string; icon: string }[];
+  align: 'left' | 'center' | 'right';
+}
+const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
+  let buttonStyle = [];
+  for (let i = 0; i < items.length; i++) {
+    switch (style) {
+      case 'icon':
+        if (i === 0) {
+          buttonStyle.push(
+            <AnchorIcon
+              block={block}
+              align={align}
+              state="highlight"
+              text={items[i].text}
+              icon={items[i].icon}
+              key={items[i].text}
+            />
+          );
+        } else {
+          buttonStyle.push(
+            <AnchorIcon
+              block={block}
+              align={align}
+              state="downplay"
+              text={items[i].text}
+              icon={items[i].icon}
+              key={items[i].text}
+            />
+          );
+        }
+        break;
+      case 'text':
+        if (i === 0) {
+          buttonStyle.push(
+            <AnchorText
+              block={block}
+              align={align}
+              state="highlight"
+              text={items[i].text}
+              icon={items[i].icon}
+              key={items[i].text}
+            />
+          );
+        } else {
+          buttonStyle.push(
+            <AnchorText
+              block={block}
+              align={align}
+              state="downplay"
+              text={items[i].text}
+              icon={items[i].icon}
+              key={items[i].text}
+            />
+          );
+        }
+        break;
+    }
+  }
 
-// /*
+  switch (items.length) {
+    case 1:
+      return (
+        <menu className="one">
+          {buttonStyle}
+          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
+        </menu>
+      );
+    case 2:
+      return (
+        <menu className="two">
+          {buttonStyle}
+          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
+        </menu>
+      );
+    case 3:
+      return (
+        <menu className="three">
+          {buttonStyle}
+          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
+        </menu>
+      );
+    case 4:
+      return (
+        <menu className="four">
+          {buttonStyle}
+          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
+        </menu>
+      );
+    case 5:
+      return (
+        <menu className="five">
+          {buttonStyle}
+          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
+          {/* <ButtonFade block={block} align={align} text={items[4].text} icon={items[4].icon} state="downplay" /> */}
+        </menu>
+      );
+    default:
+      alert('Menu.button.tsx');
+      break;
+  }
+};
 
-// */
-// /*
-// const ButtonFade: React.FC<FadeProps> = ({ className, icon, text, state, click: wrapperFunction }) => {
-//   let selectors: string = `${className} fade${state ? ` ${state}` : ''}`;
-//   //--|🠊 ? - Is a Ternary Operator and it checks if state has a value. 🠈|--//
-//   //--|🠊 : - Is an Else Operator and adds nothing if the state has a falsy value. 🠈|--//
-//   return (
-//     <button className={selectors}>
-//       <img onClick={wrapperFunction} src={icon} alt={text.toLowerCase()} />
-//       <h6 onClick={wrapperFunction}>{text}</h6>
-//     </button>
-//   );
-// };
-
-// */
+export default MenuAnchor;

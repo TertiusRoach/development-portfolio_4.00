@@ -40,7 +40,7 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
   return (
     <>
-      <section id="index-overlay" className="default-overlay visible" style={{ zIndex: 3 }}>
+      <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3 }}>
         <article className="overlay-midground" style={{ zIndex: 1 }}>
           <h1>Build style here.</h1>
         </article>
