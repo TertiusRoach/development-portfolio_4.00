@@ -2,8 +2,8 @@
 import React from 'react';
 import './Menu.anchor.scss';
 
-import AnchorIcon from '../../Button/icon/Button.icon';
-import AnchorText from '../../Button/frame/Button.frame';
+import AnchorIcon from '../../Anchor/icon/Anchor.icon';
+import AnchorText from '../../Anchor/text/Anchor.text';
 
 interface MenuProps {
   style: 'icon' | 'text';
@@ -12,12 +12,12 @@ interface MenuProps {
   align: 'left' | 'center' | 'right';
 }
 const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
-  let buttonStyle = [];
+  let anchorStyle = [];
   for (let i = 0; i < items.length; i++) {
     switch (style) {
       case 'icon':
         if (i === 0) {
-          buttonStyle.push(
+          anchorStyle.push(
             <AnchorIcon
               block={block}
               align={align}
@@ -28,7 +28,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
             />
           );
         } else {
-          buttonStyle.push(
+          anchorStyle.push(
             <AnchorIcon
               block={block}
               align={align}
@@ -42,7 +42,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
         break;
       case 'text':
         if (i === 0) {
-          buttonStyle.push(
+          anchorStyle.push(
             <AnchorText
               block={block}
               align={align}
@@ -53,7 +53,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
             />
           );
         } else {
-          buttonStyle.push(
+          anchorStyle.push(
             <AnchorText
               block={block}
               align={align}
@@ -72,14 +72,14 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
     case 1:
       return (
         <menu className="one">
-          {buttonStyle}
+          {anchorStyle}
           {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
         </menu>
       );
     case 2:
       return (
         <menu className="two">
-          {buttonStyle}
+          {anchorStyle}
           {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
           {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
         </menu>
@@ -87,7 +87,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
     case 3:
       return (
         <menu className="three">
-          {buttonStyle}
+          {anchorStyle}
           {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
           {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
           {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
@@ -96,7 +96,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
     case 4:
       return (
         <menu className="four">
-          {buttonStyle}
+          {anchorStyle}
           {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
           {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
           {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
@@ -106,7 +106,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
     case 5:
       return (
         <menu className="five">
-          {buttonStyle}
+          {anchorStyle}
           {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
           {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
           {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}

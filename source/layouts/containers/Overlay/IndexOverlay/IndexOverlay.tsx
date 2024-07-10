@@ -23,12 +23,11 @@ const IndexOverlay: React.FC<InfoProps> = () => {
             }, 1000);
             break;
           case 'hidden':
-            $('#index-overlay.hidden').addClass('blocked');
+            $('#index-overlay.hidden').removeClass('blocked');
             $('#index-overlay.hidden').toggleClass('visible');
             $('#index-overlay.hidden').removeClass('hidden');
             setTimeout(() => {
               $('#index-overlay').css('display', '');
-              $('#index-overlay.hidden').removeClass('blocked');
             }, 1000);
             break;
           default:

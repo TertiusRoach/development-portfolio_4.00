@@ -3,13 +3,11 @@
   @media screen and (orientation: landscape) {
     //--|🠊 display: grid; 🠈|--//
     grid-template: 4rem / auto 1fr; //~~|🠊 rows / columns 🠈|~~//
-    .signature-adjacent {
-      height: 2rem;
-      margin: 1rem 3rem;
-    }
+    /*
     menu {
       background: $green-dark;
     }
+    */
   }
 }
 @mixin mobile-portrait {
@@ -24,8 +22,13 @@ header[id*='index'] {
   display: grid;
   grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
 
-  background: $blue-dark !important;
+  .signature-adjacent {
+    height: 2rem;
+    margin: 1rem 3rem;
+  }
 
   @include mobile-portrait();
   @include desktop-landscape();
+
+  background: $blue-neon !important;
 }

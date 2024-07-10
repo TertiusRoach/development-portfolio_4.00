@@ -41,8 +41,8 @@ const IndexMain: React.FC<InfoProps> = () => {
             $('#index-overlay.visible').addClass('blocked');
             $('#index-overlay.visible').toggleClass('hidden');
             setTimeout(() => {
-              $('#index-overlay').css('display', 'none');
               $('#index-overlay').removeClass('blocked');
+              $('#index-overlay').css('display', 'none');
               $('#index-overlay').removeClass('visible');
             }, 1000);
             break;
@@ -51,8 +51,8 @@ const IndexMain: React.FC<InfoProps> = () => {
             $('#index-overlay.hidden').addClass('blocked');
             $('#index-overlay.hidden').toggleClass('visible');
             setTimeout(() => {
-              $('#index-overlay').removeClass('hidden');
               $('#index-overlay').removeClass('blocked');
+              $('#index-overlay').removeClass('hidden');
             }, 1000);
             break;
           default:

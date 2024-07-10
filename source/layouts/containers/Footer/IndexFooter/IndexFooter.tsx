@@ -7,9 +7,6 @@ interface InfoProps {
   identification: string;
 }
 const IndexFooter: React.FC<InfoProps> = ({ resolution, orientation, identification }) => {
-  console.log('IndexFooter Loaded');
-  console.log('IndexHeader Loaded');
-
   console.log(resolution);
   console.log(orientation);
   console.log(identification);
@@ -42,6 +39,7 @@ const IndexFooter: React.FC<InfoProps> = ({ resolution, orientation, identificat
       </footer>
     </>
   );
+  console.log('IndexFooter Loaded');
 };
 
 export default IndexFooter;

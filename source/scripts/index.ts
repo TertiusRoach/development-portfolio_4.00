@@ -1,7 +1,12 @@
 // index.ts
 export function getIdentification() {
   const hyperlink: String = window.location.href;
-  return hyperlink.split('/').pop()?.split('.')[0] as String;
+  const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];
+  if (identification === '' || undefined || null) {
+    return 'index';
+  } else {
+    return hyperlink.split('/').pop()?.split('.')[0] as String;
+  }
 }
 
 export function getOrientation() {
