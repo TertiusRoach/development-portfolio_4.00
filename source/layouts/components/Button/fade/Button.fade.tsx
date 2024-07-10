@@ -2,15 +2,18 @@ import React from 'react';
 import './Button.fade.scss';
 
 interface FadeProps {
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  state: 'downplay' | 'highlight';
-  align: 'left' | 'center' | 'right';
   text: string;
   icon?: string;
+  state: 'downplay' | 'highlight';
+  align: 'left' | 'center' | 'right';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
 const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) => {
+  const blockElement = document.getElementsByTagName('main')[0];
+  console.log(blockElement);
+
   /*
   console.log(`Label: ${label}`);
   console.log(`State: ${state}`);
@@ -19,7 +22,7 @@ const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) =>
   */
   // console.log(`Icon: ${!icon}`);
   let renderButton = (
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
+    _block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
     icon: string,
     align: 'left' | 'center' | 'right'
   ) => {
