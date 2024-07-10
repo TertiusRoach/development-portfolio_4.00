@@ -1,5 +1,8 @@
 // index.ts
 export function getIdentification() {
+  const hyperlink = window.location.href as String;
+
+  console.log(hyperlink);
   return window.location.href.split('.html')[0].split('/').pop() as String;
 }
 

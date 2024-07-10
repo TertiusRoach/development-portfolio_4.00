@@ -2,7 +2,12 @@ import $ from 'jquery';
 import React from 'react';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
-const IndexMain: React.FC = () => {
+interface InfoProps {
+  resolution: string;
+  orientation: string | 'landscape' | 'portrait' | boolean;
+  identification: string;
+}
+const IndexMain: React.FC<InfoProps> = () => {
   console.log('IndexMain Loaded');
   let pageName = getIdentification() as string;
   let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';

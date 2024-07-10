@@ -1,6 +1,11 @@
 import $ from 'jquery';
 import React from 'react';
-const IndexLeftbar: React.FC = () => {
+interface InfoProps {
+  resolution: string;
+  orientation: string | 'landscape' | 'portrait' | boolean;
+  identification: string;
+}
+const IndexLeftbar: React.FC<InfoProps> = () => {
   console.log('IndexLeftbar Loaded');
   let runJquery = () => {
     $('#index-leftbar span[class*="background"]').on('click', () => {

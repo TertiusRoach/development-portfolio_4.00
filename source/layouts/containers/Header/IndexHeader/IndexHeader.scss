@@ -15,6 +15,9 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    menu {
+      display: none;
+    }
   }
 }
 header[id*='index'] {

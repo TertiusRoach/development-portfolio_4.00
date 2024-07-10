@@ -2,8 +2,7 @@ import React from 'react';
 import './styles/index.scss';
 import ReactDOM from 'react-dom/client';
 
-import { getOrientation, getResolution, getIdentification } from './scripts/index';
-
+// Import container components
 import IndexMain from './layouts/containers/Main/IndexMain/IndexMain';
 import IndexHeader from './layouts/containers/Header/IndexHeader/IndexHeader';
 import IndexFooter from './layouts/containers/Footer/IndexFooter/IndexFooter';
@@ -11,66 +10,51 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
+// Import functions (assuming they return strings)
+import { getResolution, getOrientation, getIdentification } from './scripts/index';
+
+// Optional utility function for media query handling (consider using a library like react-responsive)
+
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
+
 function Body() {
-  console.log(getResolution());
-  console.log(getOrientation());
-  console.log(getIdentification());
-  const information: Object = {
-    resolution: getResolution(),
-    orientation: getOrientation(),
-    identification: getIdentification(),
-  };
-  switch (getIdentification()) {
-    case 'resume':
-      return (
-        <>
-          {/* <ResumeLeftbar /> */}
-          {/* <ResumeRightbar /> */}
-          {/* <ResumeOverlay /> */}
+  // var getIdentification = 'index';
+  return (
+    <>
+      <IndexHeader
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
+      <IndexMain
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
+      <IndexFooter
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
 
-          {/* <ResumeHeader /> */}
-          {/* <ResumeMain /> */}
-          {/* <ResumeFooter /> */}
-        </>
-      );
-    case 'ticket':
-      return (
-        <>
-          {/* <TicketLeftbar /> */}
-          {/* <TicketRightbar /> */}
-          {/* <TicketOverlay /> */}
+      <IndexLeftbar
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
+      <IndexRightbar
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
 
-          {/* <TicketHeader /> */}
-          {/* <TicketMain /> */}
-          {/* <TicketFooter /> */}
-        </>
-      );
-    case 'university':
-      return (
-        <>
-          {/* <UniversityLeftbar /> */}
-          {/* <UniversityRightbar /> */}
-          {/* <UniversityOverlay /> */}
-
-          {/* <UniversityHeader /> */}
-          {/* <UniversityMain /> */}
-          {/* <UniversityFooter /> */}
-        </>
-      );
-    default:
-      return (
-        <>
-          <IndexHeader />
-          <IndexMain />
-          <IndexFooter />
-
-          <IndexLeftbar />
-          <IndexRightbar />
-          <IndexOverlay />
-        </>
-      );
-  }
+      <IndexOverlay
+        resolution={`${getResolution()}`}
+        orientation={`${getOrientation()}`}
+        identification={`${getIdentification()}`}
+      />
+    </>
+  );
 }
 
 if (DefaultBody) {
@@ -79,13 +63,20 @@ if (DefaultBody) {
 } else {
   console.error("Element with id 'index-body' not found.");
 }
+// const useMediaQuery = (query: string): boolean => {
+//   const [isMatch, setIsMatch] = React.useState(false);
 
-/*
-import './layouts/containers/Footer/IndexFooter/IndexFooter';
-import './layouts/containers/Header/IndexHeader/IndexHeader';
-import './layouts/containers/Overlay/IndexOverlay/IndexOverlay';
-import './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
-import './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
-*/
+//   React.useEffect(() => {
+//     const handleResize = () => setIsMatch(window.matchMedia(query).matches);
+//     window.addEventListener('resize', handleResize);
 
-// Simplified function definition (optional argument)
+//     handleResize(); // Call on initial render
+
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, [query]);
+
+//   return isMatch;
+// };
+
+// const landscape: boolean = useMediaQuery('@media screen and (orientation: landscape)'); // Adjust breakpoint as needed
+// const portrait: boolean = useMediaQuery('@media screen and (orientation: portrait)');

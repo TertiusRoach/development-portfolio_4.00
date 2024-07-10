@@ -1,7 +1,11 @@
 import $ from 'jquery';
 import React from 'react';
-
-const IndexOverlay: React.FC = () => {
+interface InfoProps {
+  resolution: string;
+  orientation: string | 'landscape' | 'portrait' | boolean;
+  identification: string;
+}
+const IndexOverlay: React.FC<InfoProps> = () => {
   console.log('IndexOverlay Loaded');
   let runJquery = () => {
     $('#index-overlay').on('click', () => {
