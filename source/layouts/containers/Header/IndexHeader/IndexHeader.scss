@@ -2,7 +2,14 @@
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     //--|🠊 display: grid; 🠈|--//
-    grid-template: 4rem / repeat(2, 1fr); //~~|🠊 rows / columns 🠈|~~//
+    grid-template: 4rem / auto 1fr; //~~|🠊 rows / columns 🠈|~~//
+    .signature-adjacent {
+      height: 2rem;
+      margin: 1rem 3rem;
+    }
+    menu {
+      background: $green-dark;
+    }
   }
 }
 @mixin mobile-portrait {

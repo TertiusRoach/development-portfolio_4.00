@@ -1,9 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
-
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
-
 const IndexMain: React.FC = () => {
   console.log('IndexMain Loaded');
   let pageName = getIdentification() as string;
@@ -103,5 +101,4 @@ const IndexMain: React.FC = () => {
     </main>
   );
 };
-
 export default IndexMain;
