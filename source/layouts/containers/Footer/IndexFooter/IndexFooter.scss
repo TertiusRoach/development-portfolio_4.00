@@ -14,7 +14,6 @@
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
   grid-template: 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
-
   menu {
     grid-area: 1 / 1 / 2 / 2;
     a {

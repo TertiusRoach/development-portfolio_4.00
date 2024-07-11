@@ -12,32 +12,25 @@ $tertiary-medium: #714631; //--🠊 rgba(113,70,49,1) 🠈--//
 $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    background: $primary-dark;
-  }
+  background: $primary-dark;
 }
 
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    background: $primary-dark;
-  }
+  background: $primary-dark;
 }
 
 main[id*='index'] {
-  //   display: grid;
-
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  //   flex-direction: row;
-  //   background: red;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  justify-content: space-around;
 
-  background: green;
-  //   background: $primary-dark;
-
-  @include mobile-portrait();
-  @include desktop-landscape();
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
 }

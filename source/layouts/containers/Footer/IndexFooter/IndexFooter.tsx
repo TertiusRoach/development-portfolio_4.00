@@ -65,7 +65,7 @@ const IndexFooter: React.FC<InfoProps> = () => {
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
         <MenuAnchor block="footer" style="icon" items={anchors} align="right" />
-        <MenuButton block="footer" style="fade" items={buttons} align="left" />
+        <MenuButton block="footer" style="fade" items={buttons} align="center" />
       </footer>
     </>
   );

@@ -28,8 +28,8 @@ const IndexMain: React.FC<InfoProps> = (icons) => {
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <ButtonFade block="leftbar" state="downplay" align="left" /*text="View Left"*/ icon={leftbarIcon} />
-      <ButtonFade block="overlay" state="highlight" align="center" icon={overlayIcon} /* text="View Overlay" */ />
+      <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbarIcon} /*text="View Left"*/ />
+      <ButtonFade block="overlay" state="highlight" align="center" icon={overlayIcon} text="My Career" />
       <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbarIcon} /* text="View Right" */ />
 
       {/* <button className="leftbar-button">
