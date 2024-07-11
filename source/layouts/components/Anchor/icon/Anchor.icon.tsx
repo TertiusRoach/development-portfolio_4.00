@@ -5,7 +5,7 @@ interface IconProps {
   icon: string;
   state: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right';
-  references: {
+  anchor: {
     name: string;
     href: string;
     icon: string;
@@ -17,11 +17,11 @@ interface IconProps {
 
   // click?: (element: React.MouseEvent<HTMLElement>) => void;
 }
-const AnchorIcon: React.FC<IconProps> = ({ block, state, align, icon, references }) => {
+const AnchorIcon: React.FC<IconProps> = ({ block, state, align, icon, anchor: info }) => {
   const className = `${block}-button ${state} ${align}` as string;
   return (
-    <a className={className} href={references.href} target={references.target}>
-      {renderAnchor(block, `${icon}`, align, references)}
+    <a className={className} href={info.href} target={info.target}>
+      {renderAnchor(block, `${icon}`, align, info)}
     </a>
   );
 };

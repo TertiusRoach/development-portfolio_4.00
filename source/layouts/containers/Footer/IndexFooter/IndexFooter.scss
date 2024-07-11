@@ -1,34 +1,38 @@
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    menu {
-      height: 6rem;
-      button {
-        display: none;
-      }
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem / repeat(2, 1fr); //~~|🠊 rows / columns 🠈|~~//
+  menu {
+    display: flex;
+    grid-area: 1 / 2 / 2 / 3;
+    justify-content: space-around;
+    button {
+      display: none;
     }
-    background: $red-neon !important;
   }
+  background: $red-neon !important;
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    //--|🠊 display: grid; 🠈|--//
-    grid-template: 6rem / 1fr auto; //~~|🠊 rows / columns 🠈|~~//
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
 
-    menu {
-      height: 6rem;
-      a {
-        display: none;
-      }
+  menu {
+    grid-area: 1 / 1 / 2 / 2;
+    a {
+      display: none;
     }
-    background: $blue-neon !important;
   }
+  background: $blue-neon !important;
 }
 footer[id*='index'] {
   display: grid;
   grid-area: 3 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
 
-  @include mobile-portrait();
-  @include desktop-landscape();
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
 }

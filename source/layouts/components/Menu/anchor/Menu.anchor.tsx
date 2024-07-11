@@ -29,7 +29,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, block }) => {
               align="center"
               state="highlight"
               icon={items[i].icon}
-              references={items[i]}
+              anchor={items[i]}
               key={items[i].href}
             />
           );
@@ -40,7 +40,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, block }) => {
               align="center"
               state="downplay"
               icon={items[i].icon}
-              references={items[i]}
+              anchor={items[i]}
               key={items[i].href}
             />
           );
