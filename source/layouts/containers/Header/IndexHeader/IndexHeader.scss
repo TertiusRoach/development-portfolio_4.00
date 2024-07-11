@@ -8,6 +8,7 @@
       background: $green-dark;
     }
     */
+    background: $red-neon !important;
   }
 }
 @mixin mobile-portrait {
@@ -16,6 +17,7 @@
     menu {
       display: none;
     }
+    background: $blue-neon !important;
   }
 }
 header[id*='index'] {
@@ -29,6 +31,4 @@ header[id*='index'] {
 
   @include mobile-portrait();
   @include desktop-landscape();
-
-  background: $blue-neon !important;
 }

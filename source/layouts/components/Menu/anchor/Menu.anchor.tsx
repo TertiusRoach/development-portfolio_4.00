@@ -7,9 +7,9 @@ import AnchorText from '../../Anchor/text/Anchor.text';
 
 interface MenuProps {
   style: 'icon' | 'text';
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  items: { text: string; icon: string }[];
   align: 'left' | 'center' | 'right';
+  items: { text: string; icon: string }[];
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
   let anchorStyle = [];
