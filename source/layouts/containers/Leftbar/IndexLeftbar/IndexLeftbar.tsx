@@ -1,12 +1,12 @@
 import $ from 'jquery';
 import React from 'react';
 import { useEffect } from 'react';
+import { iconsHREF } from '../../../..';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
   icons: Object;
-
   resolution?: string;
   orientation?: 'landscape' | 'portrait' | string;
   identification?: string;
@@ -58,11 +58,13 @@ function runJquery() {
         alert('ERROR!');
     }
   };
+  /*
   $('#index-leftbar footer[class*="midground"]').on('click', () => {
     if (getOrientation().includes('portrait')) {
       toggleState();
     }
   });
+  */
   $('#index-leftbar div[class*="background"] ul').on('click', () => {
     if (getOrientation().includes('portrait')) {
       toggleState();
