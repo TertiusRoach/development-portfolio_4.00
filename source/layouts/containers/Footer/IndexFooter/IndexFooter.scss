@@ -1,6 +1,12 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
+    menu {
+      height: 6rem;
+      button {
+        display: none;
+      }
+    }
     background: $red-neon !important;
   }
 }
@@ -12,6 +18,9 @@
 
     menu {
       height: 6rem;
+      a {
+        display: none;
+      }
     }
     background: $blue-neon !important;
   }

@@ -8,10 +8,16 @@ import AnchorText from '../../Anchor/text/Anchor.text';
 interface MenuProps {
   style: 'icon' | 'text';
   align: 'left' | 'center' | 'right';
-  items: { text: string; icon: string }[];
+  // items: { text: string; icon: string; href: string; }[];
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  items: {
+    name: string;
+    href: string;
+    icon: string;
+    target: '_blank' | '_parent' | '_self' | '_top' | string;
+  }[];
 }
-const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
+const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
   let anchorStyle = [];
   for (let i = 0; i < items.length; i++) {
     switch (style) {
@@ -22,9 +28,9 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
               block={block}
               align={align}
               state="highlight"
-              text={items[i].text}
               icon={items[i].icon}
-              key={items[i].text}
+              references={items[i]}
+              key={items[i].href}
             />
           );
         } else {
@@ -33,9 +39,9 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
               block={block}
               align={align}
               state="downplay"
-              text={items[i].text}
               icon={items[i].icon}
-              key={items[i].text}
+              references={items[i]}
+              key={items[i].href}
             />
           );
         }
@@ -47,9 +53,9 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
               block={block}
               align={align}
               state="highlight"
-              text={items[i].text}
-              icon={items[i].icon}
-              key={items[i].text}
+              text={items[i].icon}
+              references={items[i]}
+              key={items[i].href}
             />
           );
         } else {
@@ -58,9 +64,9 @@ const MenuAnchor: React.FC<MenuProps> = ({ block, style, items, align }) => {
               block={block}
               align={align}
               state="downplay"
-              text={items[i].text}
-              icon={items[i].icon}
-              key={items[i].text}
+              text={items[i].icon}
+              references={items[i]}
+              key={items[i].href}
             />
           );
         }

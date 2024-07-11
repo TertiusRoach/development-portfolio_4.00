@@ -15,32 +15,31 @@ const IndexFooter: React.FC<InfoProps> = () => {
   console.log(orientation);
   console.log(identification);
   */
-  let buttons = [
+  let icons = [
     {
-      text: 'Home',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
+      name: 'GitHub',
+      href: '',
+      icon: '',
+      target: '_blank',
     },
     {
-      text: 'Skills',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
+      href: '',
+      name: 'YouTube',
+      icon: '',
+      target: '_blank',
     },
     {
-      text: 'Contact',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
+      name: 'LinkedIn',
+      href: '',
+      icon: '',
+      target: '_blank',
     },
-    // {
-    //   text: 'Projects',
-    //   icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
-    // },
-    // {
-    //   text: 'Career',
-    //   icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
-    // },
   ];
+
   return (
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
-        <MenuAnchor block="footer" style="icon" items={buttons} align="center" />
+        <MenuAnchor block="footer" style="icon" items={icons} align="center" />
       </footer>
     </>
   );
