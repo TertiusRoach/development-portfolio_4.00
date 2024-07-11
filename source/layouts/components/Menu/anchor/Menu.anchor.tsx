@@ -17,7 +17,7 @@ interface MenuProps {
     target: '_blank' | '_parent' | '_self' | '_top' | string;
   }[];
 }
-const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
+const MenuAnchor: React.FC<MenuProps> = ({ style, items, block }) => {
   let anchorStyle = [];
   for (let i = 0; i < items.length; i++) {
     switch (style) {
@@ -26,7 +26,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
           anchorStyle.push(
             <AnchorIcon
               block={block}
-              align={align}
+              align="center"
               state="highlight"
               icon={items[i].icon}
               references={items[i]}
@@ -37,7 +37,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
           anchorStyle.push(
             <AnchorIcon
               block={block}
-              align={align}
+              align="center"
               state="downplay"
               icon={items[i].icon}
               references={items[i]}
@@ -51,7 +51,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
           anchorStyle.push(
             <AnchorText
               block={block}
-              align={align}
+              align="center"
               state="highlight"
               text={items[i].icon}
               references={items[i]}
@@ -62,7 +62,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ style, items, align, block }) => {
           anchorStyle.push(
             <AnchorText
               block={block}
-              align={align}
+              align="center"
               state="downplay"
               text={items[i].icon}
               references={items[i]}

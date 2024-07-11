@@ -18,20 +18,20 @@ const IndexFooter: React.FC<InfoProps> = () => {
   let icons = [
     {
       name: 'GitHub',
-      href: '',
-      icon: '',
+      href: 'https://github.com/TertiusRoach',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/github.svg',
       target: '_blank',
     },
     {
-      href: '',
       name: 'YouTube',
-      icon: '',
+      href: 'https://www.youtube.com/@TertiusRoach',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/youtube.svg',
       target: '_blank',
     },
     {
       name: 'LinkedIn',
-      href: '',
-      icon: '',
+      href: 'https://www.linkedin.com/in/tertius-roach/',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/linkedin.svg',
       target: '_blank',
     },
   ];
