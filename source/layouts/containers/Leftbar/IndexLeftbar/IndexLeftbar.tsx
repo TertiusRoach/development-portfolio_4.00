@@ -59,12 +59,15 @@ function runJquery() {
     }
   };
   $('#index-leftbar footer[class*="midground"]').on('click', () => {
-    // console.log('test');
-    toggleState();
-    // if (getOrientation().includes('portrait')) {
-    // }
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
   });
-
+  $('#index-leftbar div[class*="background"] ul').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
   $('#index-leftbar div[class*="background"] article').on('click', () => {
     if (getOrientation().includes('landscape')) {
       toggleState();

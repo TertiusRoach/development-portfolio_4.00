@@ -51,8 +51,15 @@ function runJquery() {
     }
   };
 
+  /*
   $('#index-rightbar footer[class*="midground"]').on('click', () => {
     toggleState();
+  });
+  */
+  $('#index-rightbar div[class*="background"] ul').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
   });
   $('#index-rightbar div[class*="background"] article').on('click', () => {
     if (getOrientation().includes('landscape')) {
