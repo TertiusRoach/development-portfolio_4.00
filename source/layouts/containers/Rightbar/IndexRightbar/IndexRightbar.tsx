@@ -50,13 +50,12 @@ function runJquery() {
         alert('ERROR!');
     }
   };
+
+  $('#index-rightbar footer[class*="midground"]').on('click', () => {
+    toggleState();
+  });
   $('#index-rightbar div[class*="background"] article').on('click', () => {
     if (getOrientation().includes('landscape')) {
-      toggleState();
-    }
-  });
-  $('#index-rightbar footer[class*="midground"]').on('click', () => {
-    if (getOrientation().includes('portrait')) {
       toggleState();
     }
   });

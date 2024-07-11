@@ -2,8 +2,8 @@ import React from 'react';
 import './Button.fade.scss';
 
 interface FadeProps {
-  text: string;
-  icon?: string;
+  text?: string;
+  icon: string | SVGElement;
   state: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right';
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';

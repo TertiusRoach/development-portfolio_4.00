@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 import { useEffect } from 'react';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
@@ -11,13 +12,19 @@ interface InfoProps {
   identification?: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  setTimeout(runJquery, 1000);
+  let close: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
+  let download: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
+  setTimeout(runJquery, 1000);
   return (
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
         <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
-        <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
+        <footer className="leftbar-midground" style={{ zIndex: 1 }}>
+          <ButtonFade block="footer" state="downplay" align="center" /*text="View Left"*/ icon={close} />
+        </footer>
 
         <div className="leftbar-background" style={{ zIndex: 0 }}>
           <ul className="leftbar-listing"></ul>
@@ -51,13 +58,15 @@ function runJquery() {
         alert('ERROR!');
     }
   };
+  $('#index-leftbar footer[class*="midground"]').on('click', () => {
+    // console.log('test');
+    toggleState();
+    // if (getOrientation().includes('portrait')) {
+    // }
+  });
+
   $('#index-leftbar div[class*="background"] article').on('click', () => {
     if (getOrientation().includes('landscape')) {
-      toggleState();
-    }
-  });
-  $('#index-leftbar footer[class*="midground"]').on('click', () => {
-    if (getOrientation().includes('portrait')) {
       toggleState();
     }
   });
