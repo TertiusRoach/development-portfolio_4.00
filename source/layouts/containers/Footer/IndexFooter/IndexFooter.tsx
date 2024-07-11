@@ -5,9 +5,9 @@ import { getResolution, getOrientation, getIdentification } from '../../../../sc
 interface InfoProps {
   icons: Object;
 
-  resolution: string;
-  orientation: string | 'landscape' | 'portrait' | boolean;
-  identification: string;
+  resolution?: string;
+  orientation?: string | 'landscape' | 'portrait' | boolean;
+  identification?: string;
 }
 const IndexFooter: React.FC<InfoProps> = () => {
   /*

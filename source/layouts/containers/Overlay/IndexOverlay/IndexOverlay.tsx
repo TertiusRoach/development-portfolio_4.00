@@ -3,9 +3,9 @@ import React from 'react';
 interface InfoProps {
   icons: Object;
 
-  resolution: string;
-  orientation: string | 'landscape' | 'portrait' | boolean;
-  identification: string;
+  resolution?: string;
+  orientation?: string | 'landscape' | 'portrait' | boolean;
+  identification?: string;
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
   let runJquery = () => {

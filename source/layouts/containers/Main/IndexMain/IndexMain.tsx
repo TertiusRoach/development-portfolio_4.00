@@ -8,9 +8,9 @@ import { getOrientation, getResolution, getIdentification } from '../../../../sc
 interface InfoProps {
   icons: Object;
 
-  resolution: string;
-  orientation: string | 'landscape' | 'portrait' | boolean;
-  identification: string;
+  resolution?: string;
+  orientation?: string | 'landscape' | 'portrait' | boolean;
+  identification?: string;
 }
 const IndexMain: React.FC<InfoProps> = () => {
   let pageName = getIdentification() as string;

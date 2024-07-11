@@ -6,9 +6,9 @@ import { getResolution, getOrientation, getIdentification } from '../../../../sc
 interface InfoProps {
   icons: Object;
 
-  resolution: string;
-  orientation: 'landscape' | 'portrait' | string;
-  identification: string;
+  resolution?: string;
+  orientation?: 'landscape' | 'portrait' | string;
+  identification?: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
