@@ -1,55 +1,74 @@
-@mixin mobile-portrait {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    //--|🠊 display: grid; 🠈|--//
-    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem; //~~|🠊 rows / columns 🠈|~~//
+  header[class*='foreground'] {
+    background: $green-neon;
+    grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  }
+  div[class*='midground'] {
+    background: $green-dark;
+    grid-area: 2 / 1 / 3 / 4;
+  }
+  footer[class*='background'] {
+    background: $green-neon;
+    grid-area: 3 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
 }
-@mixin desktop-landscape {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    //--|🠊 display: grid; 🠈|--//
-    grid-template: 2rem 1fr 2rem / 3rem 1fr 3rem; //~~|🠊 rows / columns 🠈|~~//
-    .overlay-midground {
-      padding: 2rem 3rem;
-      grid-area: 2 / 2 / 3 / 3;
-      background: green;
-    }
+
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  header[class*='foreground'] {
+    background: $green-neon;
+    grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  }
+  div[class*='midground'] {
+    background: $green-dark;
+    grid-area: 2 / 1 / 3 / 4;
+  }
+  footer[class*='background'] {
+    background: $green-neon;
+    grid-area: 3 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
 }
 
 section[id*='overlay'] {
   display: grid;
-  //   background: red;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-
-  @include mobile-portrait();
-  @include desktop-landscape();
 
   &[class*='hidden'] {
     animation: fadeOut 1s forwards;
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        filter: blur(0);
+      }
+      to {
+        opacity: 0;
+        filter: blur(1rem);
+      }
+    }
   }
   &[class*='visible'] {
     animation: fadeIn 1s forwards;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        filter: blur(1rem);
+      }
+      to {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
   }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      filter: blur(1rem);
-    }
-    to {
-      opacity: 1;
-      filter: blur(0);
-    }
+
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
   }
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      filter: blur(0);
-    }
-    to {
-      opacity: 0;
-      filter: blur(1rem);
-    }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
   }
 }

@@ -1,9 +1,7 @@
 // IndexHeader.tsx
 import React from 'react';
-import useMediaQuery from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 
-// Import functions (assuming they return strings)
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
@@ -13,9 +11,11 @@ interface InfoProps {
 }
 
 const IndexHeader: React.FC<InfoProps> = () => {
+  /*
   console.log(getResolution());
   console.log(getOrientation());
   console.log(getIdentification());
+  */
 
   let buttons = [
     {

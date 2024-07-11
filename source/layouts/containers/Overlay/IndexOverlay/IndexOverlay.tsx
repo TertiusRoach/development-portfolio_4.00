@@ -39,17 +39,17 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
   return (
     <>
-      <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3 }}>
-        <article className="overlay-midground" style={{ zIndex: 1 }}>
-          <h1>Build style here.</h1>
-        </article>
+      <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
+        <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
 
-        <span className="overlay-foreground" style={{ zIndex: 2, display: 'none' }}></span>
-        <span className="overlay-background" style={{ zIndex: 0, display: 'none' }}></span>
+        <div className="overlay-midground" style={{ zIndex: 1 }}>
+          <h1>Build style here.</h1>
+        </div>
+
+        <footer className="overlay-background" style={{ zIndex: 0 }}></footer>
       </section>
     </>
   );
   console.log('IndexOverlay Loaded');
 };
-
 export default IndexOverlay;

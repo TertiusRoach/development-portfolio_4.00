@@ -1,15 +1,18 @@
 import React from 'react';
-
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
+
+import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 interface InfoProps {
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;
   identification: string;
 }
-const IndexFooter: React.FC<InfoProps> = ({ resolution, orientation, identification }) => {
+const IndexFooter: React.FC<InfoProps> = () => {
+  /*
   console.log(resolution);
   console.log(orientation);
   console.log(identification);
+  */
   let buttons = [
     {
       text: 'Home',

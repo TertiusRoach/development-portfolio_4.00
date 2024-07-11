@@ -1,7 +1,10 @@
 import $ from 'jquery';
-import React from 'react';
+import React, { useEffect } from 'react';
+import useMediaQuery from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
+
 import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
+
 interface InfoProps {
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;

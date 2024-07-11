@@ -1,42 +1,62 @@
 import $ from 'jquery';
 import React from 'react';
+import { useEffect } from 'react';
+import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
+
 interface InfoProps {
   resolution: string;
-  orientation: string | 'landscape' | 'portrait' | boolean;
+  orientation: 'landscape' | 'portrait' | string;
   identification: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  let runJquery = () => {
-    $('#index-leftbar span[class*="background"]').on('click', () => {
-      var element = document.getElementById('index-leftbar')?.className as string;
-      var status = element.split(' ').pop() as string;
-      // console.log(status);
-
-      if (status === 'expanded') {
-        $('#index-leftbar.expanded').toggleClass('collapsed');
-        $('#index-leftbar.expanded').removeClass('expanded');
-      } else if (status === 'collapsed') {
-        $('#index-leftbar.collapsed').toggleClass('expanded');
-        $('#index-leftbar.collapsed').removeClass('collapsed');
-      } else {
-        alert('ERROR!');
-      }
-    });
-  };
   setTimeout(runJquery, 1000);
 
   return (
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
-        <article className="leftbar-midground" style={{ zIndex: 1 }}>
-          <h1>Build style here.</h1>
-        </article>
+        <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
+        <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
 
-        <span className="leftbar-foreground" style={{ zIndex: 2, display: 'none' }}></span>
-        <span className="leftbar-background" style={{ zIndex: 0 }}></span>
+        <div className="leftbar-background" style={{ zIndex: 0 }}>
+          <ul></ul>
+          <article></article>
+        </div>
       </aside>
     </>
   );
   console.log('IndexLeftbar Loaded');
 };
 export default IndexLeftbar;
+
+function runJquery() {
+  console.log(`Leftbar: ${getResolution()}`);
+  console.log(`Leftbar: ${getOrientation()}`);
+  console.log(`Leftbar: ${getIdentification()}`);
+
+  const toggleState = () => {
+    let element = document.getElementById('index-leftbar')?.className as string;
+    let status = element.split(' ').pop() as string;
+    switch (status) {
+      case 'expanded':
+        $('#index-leftbar.expanded').toggleClass('collapsed');
+        $('#index-leftbar.expanded').removeClass('expanded');
+        break;
+      case 'collapsed':
+        $('#index-leftbar.collapsed').toggleClass('expanded');
+        $('#index-leftbar.collapsed').removeClass('collapsed');
+        break;
+      default:
+        alert('ERROR!');
+    }
+  };
+  $('#index-leftbar div[class*="background"] article').on('click', () => {
+    if (getOrientation().includes('landscape')) {
+      toggleState();
+    }
+  });
+  $('#index-leftbar footer[class*="midground"]').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
+}
