@@ -55,28 +55,33 @@ function Body() {
         identification={`${getIdentification()}`}
       />
       <IndexMain
+        icons={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}
       />
       <IndexFooter
+        icons={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}
       />
 
       <IndexLeftbar
+        icons={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}
       />
       <IndexRightbar
+        icons={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}
       />
 
       <IndexOverlay
+        icons={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}

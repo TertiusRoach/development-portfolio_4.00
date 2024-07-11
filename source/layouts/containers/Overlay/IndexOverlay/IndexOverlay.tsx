@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
 interface InfoProps {
+  icons: Object;
+
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;
   identification: string;

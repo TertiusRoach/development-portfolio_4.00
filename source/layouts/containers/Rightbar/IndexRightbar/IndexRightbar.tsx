@@ -3,6 +3,8 @@ import React from 'react';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
+  icons: Object;
+
   resolution: string;
   orientation: 'landscape' | 'portrait' | string;
   identification: string;

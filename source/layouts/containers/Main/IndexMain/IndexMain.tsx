@@ -6,6 +6,8 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
+  icons: Object;
+
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;
   identification: string;

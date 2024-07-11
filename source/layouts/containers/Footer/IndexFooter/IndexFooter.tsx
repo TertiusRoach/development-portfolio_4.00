@@ -3,6 +3,8 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 interface InfoProps {
+  icons: Object;
+
   resolution: string;
   orientation: string | 'landscape' | 'portrait' | boolean;
   identification: string;
