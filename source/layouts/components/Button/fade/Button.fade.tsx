@@ -21,19 +21,21 @@ const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) =>
     if (icon) {
       return (
         <>
-          {desktop && (
-            <>
-              <h3 className={`${align}`} style={{ zIndex: 2 }}>
-                {text}
-              </h3>
-            </>
-          )}
           {mobile && (
             <>
               <h6 className={`${align}`} style={{ zIndex: 2 }}>
                 {text}
               </h6>
             </>
+          )}
+          {useMediaQuery({ query: '(min-width: 1000px)' }) ? (
+            <>
+              <h3 className={`${align}`} style={{ zIndex: 2 }}>
+                {text}
+              </h3>
+            </>
+          ) : (
+            <></>
           )}
           <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
           <span className="button-background" style={{ zIndex: 0 }}></span>
