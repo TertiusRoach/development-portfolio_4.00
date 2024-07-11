@@ -4,7 +4,7 @@ interface InfoProps {
   icons: Object;
 
   resolution?: string;
-  orientation?: string | 'landscape' | 'portrait' | boolean;
+  orientation?: string | 'landscape' | 'portrait';
   identification?: string;
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
