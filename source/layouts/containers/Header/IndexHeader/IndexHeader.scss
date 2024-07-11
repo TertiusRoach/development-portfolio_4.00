@@ -15,17 +15,19 @@
   background: $red-neon !important;
 }
 @mixin mobile-portrait {
-  grid-template: 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
   .signature-adjacent {
-    height: 3rem;
-    margin: 1.66rem 16.66%;
+    height: 75%;
+    grid-area: 2 / 2 / 3 / 3;
   }
   menu {
     height: 6rem;
     display: none;
+    /*
     button {
       display: none;
     }
+    */
   }
 
   background: $blue-neon !important;
