@@ -20,8 +20,8 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
         <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
 
         <div className="leftbar-background" style={{ zIndex: 0 }}>
-          <ul></ul>
-          <article></article>
+          <ul className="leftbar-listing"></ul>
+          <article className="leftbar-preview"></article>
         </div>
       </aside>
     </>
