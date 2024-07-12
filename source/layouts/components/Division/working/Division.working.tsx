@@ -1,6 +1,6 @@
 // Section.home.tsx
 import React from 'react';
-import './Section.home.scss';
+import './Division.working.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
@@ -12,43 +12,22 @@ interface HomeProps {
     orientation: string;
     identification: string;
   };
-  icons: {
-    close: string;
-    download: string;
-    home: string;
-    skills: string;
-    contact: string;
-    projects: string;
-    career: string;
-    viewOverlay: string;
-    viewLeftbar: string;
-    viewRightbar: string;
-    signatureStacked: string;
-    signatureAdjacent: string;
-    gitHub: string;
-    youTube: string;
-    linkedIn: string;
-  };
+  icon: string;
 }
 
-const SectionHome: React.FC<HomeProps> = ({ info }) => {
-  // Destructure info props for cleaner code
-  const { resolution, orientation, identification } = info;
-
-  // Parse resolution (consider robust parsing if format isn't guaranteed)
-  let width = parseInt(resolution.split('x')[0], 10);
-  let height = parseInt(resolution.split('x')[1], 10);
+const SectionHome: React.FC<HomeProps> = ({ icon }) => {
+  console.log(icon);
 
   return (
-    <section style={{ height: `${height}px`, width: `${width}px` }}>
+    <div>
+      <img src={icon} alt="Working" />
+
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>{/* <DivisionWorking info={info} /> Pass info props to DivisionWorking */}</>
-      )}
+      {useMediaQuery({ query: '(orientation: landscape)' }) && <></>}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && <>{/* Replace this with your mobile view content */}</>}
-    </section>
+      {useMediaQuery({ query: '(orientation: portrait)' }) && <></>}
+    </div>
   );
 };
 

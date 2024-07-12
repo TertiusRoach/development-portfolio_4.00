@@ -4,6 +4,8 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import DivisionWorking from '../../Division/working/Division.working';
+
 interface HomeProps {
   info: {
     resolution: string;
@@ -11,29 +13,37 @@ interface HomeProps {
     identification: string;
   };
   icons: {
-    close: string;
-    download: string;
     home: string;
+    close: string;
+    career: string;
     skills: string;
     contact: string;
+    working: string;
     projects: string;
-    career: string;
+    download: string;
+
     viewOverlay: string;
     viewLeftbar: string;
     viewRightbar: string;
+
     signatureStacked: string;
     signatureAdjacent: string;
+
     gitHub: string;
     youTube: string;
     linkedIn: string;
   };
 }
-const SectionHome: React.FC<HomeProps> = ({ info }) => {
-  //   console.log(icons.projects);
+const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
+  let working = icons.working as string;
+  console.log(icons);
+
   return (
     <section style={{ height: `${height}px`, width: `${width}px` }}>
+      <DivisionWorking info={info} icon={working} />
+
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && <></>}
 

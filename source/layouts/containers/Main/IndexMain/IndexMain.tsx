@@ -17,18 +17,22 @@ interface InfoProps {
     identification: string;
   };
   icons: {
-    close: string;
-    download: string;
     home: string;
+    close: string;
+    career: string;
     skills: string;
     contact: string;
+    working: string;
     projects: string;
-    career: string;
+    download: string;
+
     viewOverlay: string;
     viewLeftbar: string;
     viewRightbar: string;
+
     signatureStacked: string;
     signatureAdjacent: string;
+
     gitHub: string;
     youTube: string;
     linkedIn: string;
