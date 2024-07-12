@@ -25,6 +25,8 @@ function Body() {
     identification: `${getIdentification()}`,
   });
   const iconsHREF = {
+    working:
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/hard-hat.svg',
     close:
       'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg',
     download:
