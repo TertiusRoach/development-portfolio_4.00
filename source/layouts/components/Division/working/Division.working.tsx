@@ -11,7 +11,7 @@ interface HomeProps {
     identification: string;
   };
   icon: string;
-  align?: 'top' | 'right' | 'bottom' | 'left' | 'center';
+  align: 'top' | 'right' | 'bottom' | 'left' | 'center';
 }
 const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align }) => {
   let width = info.resolution.split('x')[0];
@@ -24,7 +24,7 @@ const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align }) => {
           <div style={{ height: `${height}px`, width: `${height}px` }}>
             <div className="working-icon">
               <div className={align} style={{ height: `${height}px`, width: `${width}px` }}>
-                <h1 style={{ height: `${height}px`, width: `${width}px` }} className="display-1">
+                <h1 className="display-1" style={{ height: `${height}px`, width: `${width}px` }}>
                   Working
                 </h1>
                 <img style={{ height: `${height}px`, width: `${height}px` }} src={icon} alt="Working" />
@@ -37,22 +37,16 @@ const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          {/* <div style={{ height: `${height}px`, width: `${width}px` }}>
-            <div className="working-icon">
-              <div className={align} style={{ height: `${height}px`, width: `${width}px` }}>
-                <h1 className="display-1" style={{ height: `${height}px`, width: `${Number(width) - 16}px` }}>
+          <div style={{ height: `${height}px`, width: `${width}px` }}>
+            <div className="working-icon" style={{ height: `${height}px`, width: `${width}px` }}>
+              <div className={align}>
+                <h1 className="display-1" style={{ height: `${height}px`, width: `${width}px` }}>
                   Working
                 </h1>
+                <img style={{ height: `${width}px`, width: `${width}px` }} src={icon} alt="Working" />
               </div>
             </div>
           </div>
-          <div style={{ height: `${height}px`, width: `${width}px` }}>
-            <div className="working-icon">
-              <div className={align} style={{ height: `${height}px`, width: `${width}px` }}>
-                <img style={{ height: `${height}px`, width: `${width}px` }} src={icon} alt="Working" />
-              </div>
-            </div>
-          </div> */}
         </>
       )}
     </div>

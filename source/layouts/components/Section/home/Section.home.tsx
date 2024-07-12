@@ -52,7 +52,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <DivisionWorking info={info} icon={working} />
+          <DivisionWorking align="center" info={info} icon={working} />
         </>
       )}
     </section>

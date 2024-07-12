@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     grid-area: 1 / 1 / 4 / 4;
-    grid-template-columns: repeat(3, auto);
+    // grid-template-columns: repeat(3, auto);
     position: relative;
     img,
     h1 {
@@ -34,33 +34,28 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
   div {
-    /*
+    overflow: hidden;
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content: center;
 
+    position: relative;
     grid-area: 2 / 2 / 3 / 3;
+    img,
     h1 {
-      height: 100%;
-      width: 100%;
-      background: red;
+      position: absolute;
+      grid-area: 2 / 2 / 3 / 3;
     }
-    img {
-      margin: 3rem 2rem;
-    }
-    .top {
-      align-items: flex-start;
-    }
-    .center {
-      align-items: center;
-    }
-    .bottom {
-      align-items: flex-end;
-    }
-      
-    */
   }
-
+  .top {
+    align-items: flex-start;
+  }
+  .center {
+    align-items: center;
+  }
+  .bottom {
+    align-items: flex-end;
+  }
   background: rgba($blue-neon, 0.25);
   //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
   //~~|🠊 background: rgba($blue-dark, 0.75); 🠈|~~//
@@ -122,35 +117,14 @@
 
 body {
   .working-icon {
+    height: 100%;
     display: grid;
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
       @include desktop-landscape();
-      height: 100%;
-      //--|🠊 display: grid; 🠈|--//
-      //   h1,
-      //   img {
-      //     display: flex;
-      //     align-items: center;
-      //     justify-content: center;
-      //     // height: 100%;
-
-      //     position: absolute;
-      //     & {
-      //       position: fixed;
-
-      //       //   width: 100vw;
-      //       //   height: 100vh;
-      //       //   display: flex;
-      //       //   align-items: center;
-      //       //   justify-content: center;
-      //       //   overflow: hidden; /* Prevents scrollbars */
-      //     }
-      //   }
     }
     //--|🠋 Mobile (Portrait) 🠋|--//
     @media screen and (orientation: portrait) {
-      // width: 100%;
       @include mobile-portrait();
     }
   }
