@@ -52,7 +52,7 @@ function Body() {
   return (
     <>
       <IndexHeader
-        icons={iconsHREF}
+        info={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}
@@ -71,7 +71,7 @@ function Body() {
       />
 
       <IndexLeftbar
-        icons={iconsHREF}
+        info={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}

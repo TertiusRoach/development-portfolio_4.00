@@ -30,9 +30,11 @@ const IndexRightbar: React.FC<InfoProps> = () => {
 export default IndexRightbar;
 
 function runJquery() {
+  /*
   console.log(`Rightbar: ${getResolution()}`);
   console.log(`Rightbar: ${getOrientation()}`);
   console.log(`Rightbar: ${getIdentification()}`);
+  */
 
   const toggleState = () => {
     let element = document.getElementById('index-rightbar')?.className as string;

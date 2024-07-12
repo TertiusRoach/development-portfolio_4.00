@@ -1,7 +1,7 @@
-// // Section.contact.tsx
-// import React from 'react';
-// import './Section.contact.scss';
-// import { useMediaQuery } from 'react-responsive';
+// Section.contact.tsx
+import React from 'react';
+import './Section.contact.scss';
+import { useMediaQuery } from 'react-responsive';
 
 // interface ContactProps {
 //   view: 'visible' | 'hidden';
@@ -73,21 +73,21 @@
 // };
 // export default SectionContact;
 
-// /*
-// // I feel this might be usefull
-//   // Function to log all elements recursively
-//   function logElements(element: HTMLElement) {
-//     let children = element.children;
-//     let i = 0;
+/*
+// I feel this might be usefull
+  // Function to log all elements recursively
+  function logElements(element: HTMLElement) {
+    let children = element.children;
+    let i = 0;
 
-//     while (i < children.length) {
-//       console.log(children[i]);
-//       // Recursively log the children of the current child element
-//       logElements(children[i] as HTMLElement);
-//       i++;
-//     }
-//   }
+    while (i < children.length) {
+      console.log(children[i]);
+      // Recursively log the children of the current child element
+      logElements(children[i] as HTMLElement);
+      i++;
+    }
+  }
 
-//   // Start logging from the section element
-//   logElements(section);
-//   */
+  // Start logging from the section element
+  logElements(section);
+  */

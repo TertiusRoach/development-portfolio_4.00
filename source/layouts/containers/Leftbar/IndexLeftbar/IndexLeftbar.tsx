@@ -6,16 +6,13 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
-  icons: Object;
+  info: Object;
   resolution?: string;
   orientation?: 'landscape' | 'portrait' | string;
   identification?: string;
 }
-const IndexLeftbar: React.FC<InfoProps> = () => {
-  let close: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-  let download: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
+const IndexLeftbar: React.FC<InfoProps> = (info) => {
+  // console.log(info);
 
   setTimeout(runJquery, 1000);
   return (
@@ -37,10 +34,17 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
 };
 export default IndexLeftbar;
 
+let close: string =
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
+let download: string =
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
+
 function runJquery() {
+  /*
   console.log(`Leftbar: ${getResolution()}`);
   console.log(`Leftbar: ${getOrientation()}`);
   console.log(`Leftbar: ${getIdentification()}`);
+  */
 
   const toggleState = () => {
     let element = document.getElementById('index-leftbar')?.className as string;

@@ -5,15 +5,15 @@ import MenuButton from '../../../components/Menu/button/Menu.button';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
-  icons: Object;
+  info: Object;
   resolution?: string;
   orientation?: string | 'landscape' | 'portrait' | boolean;
   identification?: string;
 }
 
-const IndexHeader: React.FC<InfoProps> = (icons) => {
-  console.log(icons);
+const IndexHeader: React.FC<InfoProps> = (info) => {
   /*
+  console.log(info);
   console.log(getResolution());
   console.log(getOrientation());
   console.log(getIdentification());

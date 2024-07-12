@@ -1,9 +1,7 @@
-// import React from 'react';
-// import './Section.home.scss';
-// import { useMediaQuery } from 'react-responsive';
-// import { useEffect, useRef, useState } from 'react';
-// import propelEffect from '../../canvas/Canvas.propel';
-// import ButtonGlow from '../../button/glow/Button.glow';
+import React from 'react';
+import './Section.home.scss';
+import { useMediaQuery } from 'react-responsive';
+import { useEffect, useRef, useState } from 'react';
 
 // interface HomeProps {
 //   view: 'visible' | 'hidden';
