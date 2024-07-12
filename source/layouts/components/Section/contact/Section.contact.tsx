@@ -28,7 +28,7 @@ interface ContactProps {
     linkedIn: string;
   };
 }
-const SectionContact: React.FC<ContactProps> = ({ info, icons }) => {
+const SectionContact: React.FC<ContactProps> = ({ info }) => {
   //   console.log(icons.projects);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];

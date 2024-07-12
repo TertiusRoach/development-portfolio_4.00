@@ -28,7 +28,7 @@ interface SkillsProps {
     linkedIn: string;
   };
 }
-const SectionSkills: React.FC<SkillsProps> = ({ info, icons }) => {
+const SectionSkills: React.FC<SkillsProps> = ({ info }) => {
   //   console.log(icons.projects);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -36,7 +36,7 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, icons }) => {
   /*
   console.log(`Width: ${width}`);
   console.log(`Height: ${height}`);
-  
+
   console.log(info.orientation);
   console.log(info.identification);
   */

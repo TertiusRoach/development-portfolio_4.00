@@ -28,7 +28,7 @@ interface HomeProps {
     linkedIn: string;
   };
 }
-const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
+const SectionHome: React.FC<HomeProps> = ({ info }) => {
   //   console.log(icons.projects);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];

@@ -37,7 +37,6 @@ interface InfoProps {
 
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   setTimeout(runJquery, 1000);
-
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       <SectionHome info={info} icons={icons} />
@@ -50,12 +49,6 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
     </main>
   );
   console.log('IndexMain Loaded');
-  /*
-  let pageName = getIdentification() as string;
-  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  console.log(info);
-  console.log(icons);
-  */
 };
 export default IndexMain;
 
@@ -135,3 +128,9 @@ function runJquery() {
     }
   });
 }
+/*
+  let pageName = getIdentification() as string;
+  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  console.log(info);
+  console.log(icons);
+  */

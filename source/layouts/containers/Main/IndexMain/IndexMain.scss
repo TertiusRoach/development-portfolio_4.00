@@ -1,3 +1,5 @@
+// IndexMain.scss
+
 //--|🠋| Résumé Scheme |🠋|--//
 $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
 $primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
@@ -20,10 +22,10 @@ $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 }
 
 main[id*='index'] {
-  display: flex;
-  align-items: center;
+  display: block;
+  overflow-y: scroll;
+  flex-direction: column;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  justify-content: space-around;
 
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
