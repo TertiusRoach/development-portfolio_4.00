@@ -42,13 +42,19 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
 
   return (
     <section style={{ height: `${height}px`, width: `${width}px` }}>
-      <DivisionWorking info={info} icon={working} />
-
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && <></>}
+      {useMediaQuery({ query: '(orientation: landscape)' }) && (
+        <>
+          <DivisionWorking align="center" info={info} icon={working} />
+        </>
+      )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && <></>}
+      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+        <>
+          <DivisionWorking info={info} icon={working} />
+        </>
+      )}
     </section>
   );
 

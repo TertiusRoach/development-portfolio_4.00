@@ -1,13 +1,13 @@
 @import '../../../containers/color-palette.scss';
 
 @mixin desktop-landscape {
-  border: 4px dashed $red-neon;
+  // border: 4px dashed $red-neon;
   background: rgba($red-light, 0.25);
   //~~|🠊 border: 4px dashed $red-neon; 🠈|~~//
   //~~|🠊 background: rgba($red-dark, 0.75); 🠈|~~//
 }
 @mixin mobile-portrait {
-  border: 4px dashed $blue-neon;
+  // border: 4px dashed $blue-neon;
   background: rgba($blue-light, 0.25);
   //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
   //~~|🠊 background: rgba($blue-dark, 0.75); 🠈|~~//

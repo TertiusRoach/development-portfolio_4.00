@@ -9,7 +9,7 @@
       display: none;
     }
   }
-  background: $red-neon !important;
+  background: rgba($red-neon, 0.25) !important;
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
@@ -20,7 +20,7 @@
       display: none;
     }
   }
-  background: $blue-neon !important;
+  background: rgba($blue-neon, 0.25) !important;
 }
 footer[id*='index'] {
   display: grid;

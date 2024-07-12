@@ -12,7 +12,7 @@
     }
   }
 
-  background: $red-neon !important;
+  background: rgba($red-neon, 0.25) !important;
 }
 @mixin mobile-portrait {
   grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
@@ -29,7 +29,7 @@
     */
   }
 
-  background: $blue-neon !important;
+  background: rgba($blue-neon, 0.25) !important;
 }
 header[id*='index'] {
   display: grid;
