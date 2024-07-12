@@ -4,6 +4,7 @@ import './Section.skills.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import DivisionWorking from '../../Division/working/Division.working';
 interface SkillsProps {
   info: {
     resolution: string;
@@ -11,6 +12,7 @@ interface SkillsProps {
     identification: string;
   };
   icons: {
+    working: string;
     close: string;
     download: string;
     home: string;
@@ -28,10 +30,10 @@ interface SkillsProps {
     linkedIn: string;
   };
 }
-const SectionSkills: React.FC<SkillsProps> = ({ info }) => {
-  //   console.log(icons.projects);
+const SectionSkills: React.FC<SkillsProps> = ({ info, icons }) => {
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
+  let working = icons.working as string;
 
   /*
   console.log(`Width: ${width}`);
@@ -43,11 +45,21 @@ const SectionSkills: React.FC<SkillsProps> = ({ info }) => {
 
   return (
     <section style={{ height: `${height}px`, width: `${width}px` }}>
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && <></>}
+      <section style={{ height: `${height}px`, width: `${width}px` }}>
+        {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+        {useMediaQuery({ query: '(orientation: landscape)' }) && (
+          <>
+            <DivisionWorking align="center" info={info} icon={working} />
+          </>
+        )}
 
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && <></>}
+        {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+        {useMediaQuery({ query: '(orientation: portrait)' }) && (
+          <>
+            <DivisionWorking align="center" info={info} icon={working} />
+          </>
+        )}
+      </section>
     </section>
   );
 };

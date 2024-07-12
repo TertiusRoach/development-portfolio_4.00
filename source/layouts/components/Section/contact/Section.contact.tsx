@@ -4,6 +4,7 @@ import './Section.contact.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import DivisionWorking from '../../Division/working/Division.working';
 interface ContactProps {
   info: {
     resolution: string;
@@ -11,6 +12,7 @@ interface ContactProps {
     identification: string;
   };
   icons: {
+    working: string;
     close: string;
     download: string;
     home: string;
@@ -28,10 +30,10 @@ interface ContactProps {
     linkedIn: string;
   };
 }
-const SectionContact: React.FC<ContactProps> = ({ info }) => {
-  //   console.log(icons.projects);
+const SectionContact: React.FC<ContactProps> = ({ info, icons }) => {
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
+  let working = icons.working as string;
 
   /*
   console.log(`Width: ${width}`);
@@ -44,10 +46,18 @@ const SectionContact: React.FC<ContactProps> = ({ info }) => {
   return (
     <section style={{ height: `${height}px`, width: `${width}px` }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && <></>}
+      {useMediaQuery({ query: '(orientation: landscape)' }) && (
+        <>
+          <DivisionWorking align="center" info={info} icon={working} />
+        </>
+      )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && <></>}
+      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+        <>
+          <DivisionWorking align="center" info={info} icon={working} />
+        </>
+      )}
     </section>
   );
 };
