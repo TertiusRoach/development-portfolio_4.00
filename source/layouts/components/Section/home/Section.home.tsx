@@ -4,6 +4,7 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
 
 interface HomeProps {
@@ -37,23 +38,27 @@ interface HomeProps {
 const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
+
   let working = icons.working as string;
+  let leftbar = icons.viewLeftbar as string;
+  let overlay = icons.viewOverlay as string;
+  let rightbar = icons.viewRightbar as string;
+
   console.log(icons);
 
   return (
     <section style={{ height: `${height}px`, width: `${width}px` }}>
+      <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbar} text="View Left" />
+      <ButtonFade block="overlay" state="downplay" align="center" icon={overlay} text="View Overlay" />
+      <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbar} text="View Right" />
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>
-          <DivisionWorking align="center" info={info} icon={working} />
-        </>
+        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
-        <>
-          <DivisionWorking align="center" info={info} icon={working} />
-        </>
+        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
       )}
     </section>
   );
