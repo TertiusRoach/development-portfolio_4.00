@@ -2,8 +2,7 @@ body {
   menu {
     grid-template-rows: 4rem;
     //--|🠊 display: grid; 🠈|--//
-    button,
-    a {
+    button {
       //--|🠉 display: grid; 🠉|--//
       &:nth-child(1),
       &:nth-child(1) {

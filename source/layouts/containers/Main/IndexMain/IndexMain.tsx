@@ -1,31 +1,61 @@
+// IndexMain.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
-import useMediaQuery from 'react-responsive';
-import ButtonFade from '../../../components/Button/fade/Button.fade';
+import { useMediaQuery } from 'react-responsive';
 
 import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
 
-interface InfoProps {
-  icons: Object;
-  resolution?: string;
-  orientation?: string | 'landscape' | 'portrait' | boolean;
-  identification?: string;
-}
-const IndexMain: React.FC<InfoProps> = (icons) => {
-  let pageName = getIdentification() as string;
-  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
+import SectionHome from '../../../components/Section/home/Section.home';
+import SectionSkills from '../../../components/Section/skills/Section.skills';
+import SectionContact from '../../../components/Section/contact/Section.contact';
 
-  console.log(icons);
+interface InfoProps {
+  info: {
+    resolution: string;
+    orientation: string;
+    identification: string;
+  };
+  icons: {
+    close: string;
+    download: string;
+    home: string;
+    skills: string;
+    contact: string;
+    projects: string;
+    career: string;
+    viewOverlay: string;
+    viewLeftbar: string;
+    viewRightbar: string;
+    signatureStacked: string;
+    signatureAdjacent: string;
+    gitHub: string;
+    youTube: string;
+    linkedIn: string;
+  };
+}
+
+const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   setTimeout(runJquery, 1000);
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
+      <SectionHome info={info} icons={icons} />
+      <SectionSkills info={info} icons={icons} />
+      <SectionContact info={info} icons={icons} />
+
       {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbarIcon} text="View Left" /> */}
       {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlayIcon} text="View Overlay" /> */}
       {/* <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbarIcon} text="View Right" /> */}
     </main>
   );
   console.log('IndexMain Loaded');
+  /*
+  let pageName = getIdentification() as string;
+  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  console.log(info);
+  console.log(icons);
+  */
 };
 export default IndexMain;
 
