@@ -12,41 +12,14 @@ interface InfoProps {
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
-  $('#index-leftbar').on('click', () => {
-    var element = document.getElementById('index-leftbar') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'expanded':
-          $('#index-leftbar.expanded').addClass('blocked');
-          $('#index-leftbar.expanded').toggleClass('collapsed');
-          $('#index-leftbar.expanded').removeClass('expanded');
-          setTimeout(() => {
-            $('#index-leftbar').css('display', 'none');
-            $('#index-leftbar').removeClass('blocked');
-          }, 1000);
-          break;
-        case 'collapsed':
-          $('#index-leftbar.collapsed').removeClass('blocked');
-          $('#index-leftbar.collapsed').toggleClass('expanded');
-          $('#index-leftbar.collapsed').removeClass('collapsed');
-          setTimeout(() => {
-            $('#index-leftbar').css('display', '');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
-      }
-    }
-  });
+
   return (
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
-        <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
-        <footer className="leftbar-midground" style={{ zIndex: 1 }}>
+        <header className="leftbar-foreground" style={{ zIndex: 2 }}>
           <ButtonFade block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
-        </footer>
+        </header>
+        <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
 
         <div className="leftbar-background" style={{ zIndex: 0 }}>
           <ul className="leftbar-listing">
@@ -62,11 +35,28 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
 };
 export default IndexLeftbar;
 
-let close: string =
+const close: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-let download: string =
+const download: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
+const toggleState = () => {
+  let element = document.getElementById('index-leftbar')?.className as string;
+  if (!element.includes('blocked')) {
+    var status = element.split(' ').pop() as string;
+    switch (status) {
+      case 'expanded':
+        $('#index-leftbar.expanded').toggleClass('collapsed');
+        $('#index-leftbar.expanded').removeClass('expanded');
+
+        break;
+      case 'collapsed':
+        $('#index-leftbar.collapsed').toggleClass('expanded');
+        $('#index-leftbar.collapsed').removeClass('collapsed');
+        break;
+    }
+  }
+};
 function runJquery() {
   /*
   console.log(`Leftbar: ${getResolution()}`);
@@ -74,23 +64,13 @@ function runJquery() {
   console.log(`Leftbar: ${getIdentification()}`);
   */
 
-  const toggleState = () => {
-    let element = document.getElementById('index-leftbar')?.className as string;
-    if (!element.includes('blocked')) {
-      var status = element.split(' ').pop() as string;
-      switch (status) {
-        case 'expanded':
-          $('#index-leftbar.expanded').toggleClass('collapsed');
-          $('#index-leftbar.expanded').removeClass('expanded');
-
-          break;
-        case 'collapsed':
-          $('#index-leftbar.collapsed').toggleClass('expanded');
-          $('#index-leftbar.collapsed').removeClass('collapsed');
-          break;
-      }
+  $('#index-leftbar').on('click', () => {
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-leftbar.expanded').addClass('collapsed');
+      $('#index-leftbar.collapsed').removeClass('expanded');
     }
-  };
+  });
   $('#index-leftbar div[class*="background"] ul').on('click', () => {
     if (getOrientation().includes('portrait')) {
       toggleState();

@@ -30,6 +30,18 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: 6rem 1fr 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
+    button {
+      width: 100%;
+      height: 100%;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        // width: 100%;
+      }
+    }
     background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }

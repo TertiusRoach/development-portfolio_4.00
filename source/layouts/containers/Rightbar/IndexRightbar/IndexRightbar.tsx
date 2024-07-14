@@ -44,10 +44,10 @@ const IndexRightbar: React.FC<InfoProps> = () => {
   return (
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
-        <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
-        <footer className="rightbar-midground" style={{ zIndex: 1 }}>
+        <header className="rightbar-foreground" style={{ zIndex: 2 }}>
           <ButtonFade block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
-        </footer>
+        </header>
+        <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
 
         <div className="rightbar-background" style={{ zIndex: 0 }}>
           <ul className="rightbar-listing">
