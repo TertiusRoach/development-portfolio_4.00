@@ -12,8 +12,8 @@ interface InfoProps {
 }
 
 const IndexHeader: React.FC<InfoProps> = (info) => {
-  /*
   console.log(info);
+  /*
   console.log(getResolution());
   console.log(getOrientation());
   console.log(getIdentification());
@@ -42,7 +42,7 @@ const IndexHeader: React.FC<InfoProps> = (info) => {
           src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/tertius-roach/signature-adjacent/primary-light.svg"
           alt="Tertius Roach"
         />
-        <MenuButton block="header" style="fade" items={buttons} align="left" />
+        <MenuButton block="header" style="fade" items={buttons} align="left" state="highlight" />
       </header>
     </>
   );

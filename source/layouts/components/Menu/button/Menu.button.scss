@@ -25,6 +25,17 @@ body {
         grid-area: 1 / 5 / 2 / 6; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
+    button[id*='active'] {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: white;
+        cursor: default;
+      }
+    }
   }
   menu {
     display: grid;

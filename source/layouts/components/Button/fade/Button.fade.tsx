@@ -1,36 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Button.fade.scss';
 import { useMediaQuery } from 'react-responsive';
 
 interface FadeProps {
   text?: string;
   icon: string | SVGElement;
-  state: 'downplay' | 'highlight';
+  view: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right';
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+
+  index: number;
 }
 
-const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) => {
+const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) => {
+  const [view, setState] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
+  const className = `${block}-button ${view} ${align}`;
+
+  const mouseEnter = () => {
+    setState('downplay');
+  };
+
+  const mouseLeave = () => {
+    setState('highlight');
+    /*
+    switch (block) {
+      case 'header':
+        break;
+      case 'main':
+        break;
+      case 'footer':
+        break;
+      case 'overlay':
+        break;
+      case 'leftbar':
+        break;
+      case 'rightbar':
+        break;
+    }
+    */
+  };
+
   const renderButton = (
-    _block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
     icon: string,
-    align: 'left' | 'center' | 'right'
+    align: 'left' | 'center' | 'right',
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar'
   ) => {
-    const desktop = useMediaQuery({ query: '(orientation: landscape)' });
-    const mobile = useMediaQuery({ query: '(orientation: portrait)' });
+    let desktop = useMediaQuery({ query: '(orientation: landscape)' });
+    let mobile = useMediaQuery({ query: '(orientation: portrait)' });
     if (icon) {
       return (
         <>
           {mobile && (
             <>
-              <h6 className={`${align}`} style={{ zIndex: 2 }}>
+              <h6 className={`${align} ${block}`} style={{ zIndex: 2 }}>
                 {text}
               </h6>
             </>
           )}
           {useMediaQuery({ query: '(min-width: 1000px)' }) ? (
             <>
-              <h3 className={`${align}`} style={{ zIndex: 2 }}>
+              <h3 className={`${align} ${block}`} style={{ zIndex: 2 }}>
                 {text}
               </h3>
             </>
@@ -50,9 +79,21 @@ const ButtonFade: React.FC<FadeProps> = ({ block, state, align, text, icon }) =>
     }
   };
 
-  const className = `${block}-button ${state} ${align}`;
+  if (index === 0) {
+    return (
+      <button id={`${block}-active`} className={className} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+        {renderButton(`${icon}`, align, block)}
+      </button>
+    );
+  } else {
+    return (
+      <button className={className} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+        {renderButton(`${icon}`, align, block)}
+      </button>
+    );
+  }
 
-  return <button className={className}>{renderButton(block, `${icon}`, align)}</button>;
+  return;
 };
 
 export default ButtonFade;

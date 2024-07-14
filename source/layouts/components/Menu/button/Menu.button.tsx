@@ -13,18 +13,21 @@ interface MenuProps {
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   items: { text: string; icon: string }[];
   align: 'left' | 'center' | 'right';
+  state: 'highlight' | 'downplay';
 }
 const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
   let buttonStyle = [];
+  // Only add highlight to the first ButtonFace. The rest should be downplay
   for (let i = 0; i < items.length; i++) {
     switch (style) {
       case 'fade':
         if (i === 0) {
           buttonStyle.push(
             <ButtonFade
+              index={i}
               block={block}
               align={align}
-              state="highlight"
+              view={'highlight'}
               text={items[i].text}
               icon={items[i].icon}
               key={items[i].text}
@@ -33,9 +36,10 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
         } else {
           buttonStyle.push(
             <ButtonFade
+              index={i}
               block={block}
               align={align}
-              state="downplay"
+              view={'downplay'}
               text={items[i].text}
               icon={items[i].icon}
               key={items[i].text}
