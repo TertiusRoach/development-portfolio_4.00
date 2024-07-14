@@ -2,12 +2,16 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
+    button {
+      width: 100%;
+      height: 100%;
+    }
     background: rgba($green-neon, 0.75);
-    grid-area: 1 / 2 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   footer[class*='midground'] {
     background: rgba($green-neon, 0.75);
-    grid-area: 3 / 2 / 4 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
 
   div[class*='background'] {
@@ -17,21 +21,23 @@
     ul {
       margin: 4rem 0;
       padding: 0;
-      grid-area: 1 / 2 / 2 / 3;
+      grid-area: 1 / 1 / 2 / 2;
       background: rgba($green-dark, 0.75);
     }
     article {
-      grid-area: 1 / 1 / 2 / 2;
+      grid-area: 1 / 2 / 2 / 3;
       background: rgba($green-light, 0.75);
     }
   }
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 6rem 1fr 6rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
-  //--|🠊 display: grid; 🠈|--//
   grid-template: 6rem 1fr 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
+    button {
+      width: 100%;
+      height: 100%;
+    }
     background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
@@ -59,16 +65,33 @@
     }
   }
 }
+
 aside[id*='rightbar'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 0% 0% 100%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+    clip-path: inset(0% 100% 0% 0%); /* Clip the top edge for collapsed state */
   }
+  /* Target elements with a class containing 'expanded' */
   &[class*='expanded'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 0% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+    clip-path: inset(0% 0% 0% 0%); /* No clipping for expanded state */
+  }
+
+  /* Animate the clip-path on state change (optional) */
+  @keyframes showRightbar {
+    from {
+      clip-path: inset(0% 0% 0% 100%); /* Clip the top edge for collapsed state */
+      /* Optionally use opacity and blur for additional effects */
+      // opacity: 1;
+      filter: blur(1rem);
+    }
+    to {
+      clip-path: inset(0% 0% 0% 0%); /* No clipping for expanded state */
+      // opacity: 1; /* Uncomment for opacity fade */
+      filter: blur(0); /* Uncomment for blur effect */
+    }
   }
 
   //--|🠋 Mobile (Portrait) 🠋|--//

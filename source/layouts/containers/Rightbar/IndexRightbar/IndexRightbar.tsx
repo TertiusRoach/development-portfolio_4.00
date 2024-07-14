@@ -6,46 +6,18 @@ import { getResolution, getOrientation, getIdentification } from '../../../../sc
 
 interface InfoProps {
   info: Object;
-
   resolution?: string;
   orientation?: 'landscape' | 'portrait' | string;
   identification?: string;
 }
 const IndexRightbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
-  $('#index-rightbar').on('click', () => {
-    var element = document.getElementById('index-rightbar') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'expanded':
-          $('#index-rightbar.expanded').addClass('blocked');
-          $('#index-rightbar.expanded').toggleClass('collapsed');
-          $('#index-rightbar.expanded').removeClass('expanded');
-          setTimeout(() => {
-            $('#index-rightbar').css('display', 'none');
-            $('#index-rightbar').removeClass('blocked');
-          }, 1000);
-          break;
-        case 'collapsed':
-          $('#index-rightbar.collapsed').removeClass('blocked');
-          $('#index-rightbar.collapsed').toggleClass('expanded');
-          $('#index-rightbar.collapsed').removeClass('collapsed');
-          setTimeout(() => {
-            $('#index-rightbar').css('display', '');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
-      }
-    }
-  });
+
   return (
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
         <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
+          <ButtonFade block="header" view="downplay" align="center" /*text="View Left"*/ icon={close} />
         </header>
         <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
 
@@ -58,45 +30,49 @@ const IndexRightbar: React.FC<InfoProps> = () => {
       </aside>
     </>
   );
-  console.log('IndexRightbar Loaded');
+  // console.log(info);
+  console.log('IndexLeftbar Loaded');
 };
 export default IndexRightbar;
-let close: string =
+
+const close: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-let download: string =
+const download: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
+const toggleState = () => {
+  let element = document.getElementById('index-rightbar')?.className as string;
+  if (!element.includes('blocked')) {
+    var status = element.split(' ').pop() as string;
+    switch (status) {
+      case 'expanded':
+        $('#index-rightbar.expanded').toggleClass('collapsed');
+        $('#index-rightbar.expanded').removeClass('expanded');
+
+        break;
+      case 'collapsed':
+        $('#index-rightbar.collapsed').toggleClass('expanded');
+        $('#index-rightbar.collapsed').removeClass('collapsed');
+        break;
+    }
+  }
+};
 function runJquery() {
   /*
-  console.log(`Rightbar: ${getResolution()}`);
-  console.log(`Rightbar: ${getOrientation()}`);
-  console.log(`Rightbar: ${getIdentification()}`);
+  console.log(`Leftbar: ${getResolution()}`);
+  console.log(`Leftbar: ${getOrientation()}`);
+  console.log(`Leftbar: ${getIdentification()}`);
   */
 
-  const toggleState = () => {
-    let element = document.getElementById('index-rightbar')?.className as string;
-    if (!element.includes('blocked')) {
-      var status = element.split(' ').pop() as string;
-      switch (status) {
-        case 'expanded':
-          $('#index-rightbar.expanded').toggleClass('collapsed');
-          $('#index-rightbar.expanded').removeClass('expanded');
-
-          break;
-        case 'collapsed':
-          $('#index-rightbar.collapsed').toggleClass('expanded');
-          $('#index-rightbar.collapsed').removeClass('collapsed');
-          break;
-      }
-    }
-  };
-  $('#index-rightbar div[class*="background"] ul').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
+  $('#index-rightbar').on('click', () => {
+    let safety = document.getElementById('index-rightbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-rightbar.expanded').addClass('collapsed');
+      $('#index-rightbar.collapsed').removeClass('expanded');
     }
   });
-  $('#index-rightbar div[class*="background"] article').on('click', () => {
-    if (getOrientation().includes('landscape')) {
+  $('#index-rightbar div[class*="background"] ul').on('click', () => {
+    if (getOrientation().includes('portrait')) {
       toggleState();
     }
   });
@@ -109,4 +85,12 @@ function runJquery() {
       }
     }
   });
+
+  /*
+  $('#index-rightbar footer[class*="midground"]').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
+  */
 }

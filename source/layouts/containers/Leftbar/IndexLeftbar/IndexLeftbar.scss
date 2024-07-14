@@ -2,11 +2,15 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
-    // background: rgba($green-neon, 0.75);
+    button {
+      width: 100%;
+      height: 100%;
+    }
+    background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   footer[class*='midground'] {
-    // background: rgba($green-neon, 0.75);
+    background: rgba($green-neon, 0.75);
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
 
@@ -33,14 +37,6 @@
     button {
       width: 100%;
       height: 100%;
-      // h1,
-      // h2,
-      // h3,
-      // h4,
-      // h5,
-      // h6 {
-      //   // width: 100%;
-      // }
     }
     background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
@@ -84,15 +80,15 @@ aside[id*='leftbar'] {
   }
 
   /* Animate the clip-path on state change (optional) */
-  @keyframes showLeftbar {
+  @keyframes showRightbar {
     from {
-      clip-path: inset(100% 0% 0% 0%); /* Clip the right edge for initial state */
+      clip-path: inset(0% 0% 0% 100%); /* Clip the top edge for collapsed state */
       /* Optionally use opacity and blur for additional effects */
       // opacity: 1;
       filter: blur(1rem);
     }
     to {
-      clip-path: inset(0% 0% 0% 0%); /* Clip back to normal on expanded state */
+      clip-path: inset(0% 0% 0% 0%); /* No clipping for expanded state */
       // opacity: 1; /* Uncomment for opacity fade */
       filter: blur(0); /* Uncomment for blur effect */
     }
