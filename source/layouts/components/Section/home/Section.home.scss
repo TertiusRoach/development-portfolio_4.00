@@ -2,16 +2,12 @@
 
 @mixin desktop-landscape {
   div {
-    border: 4px dashed $red-neon;
-    background: rgba($red-dark, 0.25);
     //~~|🠊 border: 4px dashed $red-neon; 🠈|~~//
     //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
   }
 }
 @mixin mobile-portrait {
   div {
-    border: 4px dashed $blue-neon;
-    background: rgba($blue-dark, 0.25);
     //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
     //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
   }

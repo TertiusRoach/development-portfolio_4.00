@@ -35,6 +35,12 @@ const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align }) => {
       className="working-division"
       style={{ height: `${dimensions.height}px`, width: `${dimensions.width}px` }}
     >
+      <div className={align}>
+        <h1 className="highlight display-1">Working</h1>
+      </div>
+      <div className={align}>
+        <img src={icon} alt="icon" />
+      </div>
       <div className={align}></div>
     </div>
   );

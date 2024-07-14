@@ -49,19 +49,23 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
   return (
     <section id={`${info.identification}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
       <DivisionWorking align="center" info={info} icon={working} />
-      {/* <DivisionWorking align="left" info={info} icon={working} /> */}
 
-      {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbar} text="View Left" /> */}
-      {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlay} text="View Overlay" /> */}
-      {/* <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbar} text="View Right" /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
+        <>
+          {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbar} text="View Left" /> */}
+          {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlay} text="View Overlay" /> */}
+          {/* <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbar} text="View Right" /> */}
+        </>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
-        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
+        <>
+          {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbar} text="View Left" /> */}
+          {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlay} text="View Overlay" /> */}
+          {/* <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbar} text="View Right" /> */}
+        </>
       )}
     </section>
   );
