@@ -12,6 +12,34 @@ interface InfoProps {
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
+  $('#index-leftbar').on('click', () => {
+    var element = document.getElementById('index-leftbar') as HTMLElement;
+    var safety: boolean = element?.className.includes('blocked');
+    var status = element?.className.split(' ').pop() as string;
+    if (!safety) {
+      switch (status) {
+        case 'expanded':
+          $('#index-leftbar.expanded').addClass('blocked');
+          $('#index-leftbar.expanded').toggleClass('collapsed');
+          $('#index-leftbar.expanded').removeClass('expanded');
+          setTimeout(() => {
+            $('#index-leftbar').css('display', 'none');
+            $('#index-leftbar').removeClass('blocked');
+          }, 1000);
+          break;
+        case 'collapsed':
+          $('#index-leftbar.collapsed').removeClass('blocked');
+          $('#index-leftbar.collapsed').toggleClass('expanded');
+          $('#index-leftbar.collapsed').removeClass('collapsed');
+          setTimeout(() => {
+            $('#index-leftbar').css('display', '');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
+    }
+  });
   return (
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
@@ -21,7 +49,9 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
         </footer>
 
         <div className="leftbar-background" style={{ zIndex: 0 }}>
-          <ul className="leftbar-listing"></ul>
+          <ul className="leftbar-listing">
+            <h1 className="content-1">Leftbar Listing</h1>
+          </ul>
           <article className="leftbar-preview"></article>
         </div>
       </aside>

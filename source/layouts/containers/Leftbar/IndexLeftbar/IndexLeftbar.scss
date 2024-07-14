@@ -2,11 +2,11 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
-    background: rgba($green-neon, 0.75);
+    // background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   footer[class*='midground'] {
-    background: rgba($green-neon, 0.75);
+    // background: rgba($green-neon, 0.75);
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
 
@@ -74,7 +74,7 @@ aside[id*='leftbar'] {
   /* Animate the clip-path on state change (optional) */
   @keyframes showLeftbar {
     from {
-      clip-path: inset(0% 0% 0% 100%); /* Clip the right edge for initial state */
+      clip-path: inset(100% 0% 0% 0%); /* Clip the right edge for initial state */
       /* Optionally use opacity and blur for additional effects */
       // opacity: 1;
       filter: blur(1rem);

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
+
 interface InfoProps {
   icons: Object;
 
