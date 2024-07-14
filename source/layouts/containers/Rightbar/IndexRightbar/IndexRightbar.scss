@@ -51,6 +51,8 @@
     grid-template: 1fr / 1fr; //~~|🠊 rows / columns 🠈|~~//
     ul {
       z-index: 1;
+      display: flex;
+      justify-content: flex-end;
       background: rgba($green-dark, 0.5);
     }
     article {
