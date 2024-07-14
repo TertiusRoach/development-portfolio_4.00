@@ -44,22 +44,20 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, icons }) => {
   */
 
   return (
-    <section style={{ height: `${height}px`, width: `${width}px` }}>
-      <section style={{ height: `${height}px`, width: `${width}px` }}>
-        {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-        {useMediaQuery({ query: '(orientation: landscape)' }) && (
-          <>
-            <DivisionWorking align="center" info={info} icon={working} />
-          </>
-        )}
+    <section id={`${info.identification}-skills`} style={{ height: `${height}px`, width: `${width}px` }}>
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {useMediaQuery({ query: '(orientation: landscape)' }) && (
+        <>
+          <DivisionWorking align="center" info={info} icon={working} />
+        </>
+      )}
 
-        {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-        {useMediaQuery({ query: '(orientation: portrait)' }) && (
-          <>
-            <DivisionWorking align="center" info={info} icon={working} />
-          </>
-        )}
-      </section>
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+        <>
+          <DivisionWorking align="center" info={info} icon={working} />
+        </>
+      )}
     </section>
   );
 };

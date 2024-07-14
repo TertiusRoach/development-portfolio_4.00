@@ -44,7 +44,7 @@ const SectionContact: React.FC<ContactProps> = ({ info, icons }) => {
   */
 
   return (
-    <section style={{ height: `${height}px`, width: `${width}px` }}>
+    <section id={`${info.identification}-contact`} style={{ height: `${height}px`, width: `${width}px` }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
