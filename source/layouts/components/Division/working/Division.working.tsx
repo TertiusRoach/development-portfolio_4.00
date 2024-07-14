@@ -1,8 +1,7 @@
 // Section.home.tsx
-import React from 'react';
 import './Division.working.scss';
+import React, { useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
 
 interface HomeProps {
   info: {
@@ -14,12 +13,32 @@ interface HomeProps {
   align: 'top' | 'right' | 'bottom' | 'left' | 'center';
 }
 const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align }) => {
+  const divisionReference = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (divisionReference.current) {
+      const width = info.resolution.split('x')[0];
+      const height = info.resolution.split('x')[1];
+
+      const element = divisionReference.current.parentElement;
+      if (element) {
+        console.log(element.nodeName);
+        // Additional logic with element if needed
+      }
+
+      // console.log(icon);
+      // console.log(align);
+    }
+  }, [info, icon, align]);
+  // let element = document.querySelector('.working-division').parentElement.nodeName as HTMLDivElement | null;
+
+  /*
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
-
   console.log(icon);
   console.log(align);
-  return <div className=""></div>;
+  */
+  return <div className="working-division" ref={divisionReference}></div>;
 };
 
 export default DivisionWorking;

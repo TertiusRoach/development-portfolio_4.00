@@ -44,7 +44,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
   let overlay = icons.viewOverlay as string;
   let rightbar = icons.viewRightbar as string;
 
-  console.log(icons);
+  // console.log(icons);
 
   return (
     <section id={`${info.identification}-home`} style={{ height: `${height}px`, width: `${width}px` }}>

@@ -121,6 +121,11 @@
 }
 
 body {
+  .working-division {
+    width: 500px;
+    height: 500px;
+    background: $green-dark;
+  }
   /*
   .working-icon {
     height: 100%;
