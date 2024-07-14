@@ -96,6 +96,11 @@ GitGuardian?
 //--| [🠋](https://www.compart.com/en/unicode/U+1F80B) |--//
 //--| [🠈](https://www.compart.com/en/unicode/U+1F808) |--//
 
+//--|🠉 _ 🠉|--//
+//--|🠊 _ 🠈|--//
+//--|🠋 _ 🠋|--//
+//--|🠈 _ 🠈|--//
+
 ### Terminology classNames
 
     .active

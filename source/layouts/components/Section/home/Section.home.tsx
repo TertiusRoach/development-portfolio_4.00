@@ -48,7 +48,15 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
 
   return (
     <section id={`${info.identification}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
-      <DivisionWorking align="center" info={info} icon={working} />
+      {/* <DivisionWorking align="center" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="top-left" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="top" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="top-right" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="right" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="bottom-right" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="bottom" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="bottom-left" info={info} icon={working} /> */}
+      {/* <DivisionWorking align="left" info={info} icon={working} /> */}
 
       {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbar} text="View Left" /> */}
       {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlay} text="View Overlay" /> */}
