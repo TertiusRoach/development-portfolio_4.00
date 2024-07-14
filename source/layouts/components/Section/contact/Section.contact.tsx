@@ -45,18 +45,16 @@ const SectionContact: React.FC<ContactProps> = ({ info, icons }) => {
 
   return (
     <section id={`${info.identification}-contact`} style={{ height: `${height}px`, width: `${width}px` }}>
+      <DivisionWorking align="right" info={info} icon={working} />
+
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>
-          <DivisionWorking align="center" info={info} icon={working} />
-        </>
+        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
-        <>
-          <DivisionWorking align="center" info={info} icon={working} />
-        </>
+        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
       )}
     </section>
   );
