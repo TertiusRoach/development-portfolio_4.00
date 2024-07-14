@@ -46,10 +46,6 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
       <SectionHome info={info} icons={icons} />
       <SectionSkills info={info} icons={icons} />
       <SectionContact info={info} icons={icons} />
-
-      {/* <ButtonFade block="leftbar" state="downplay" align="left" icon={leftbarIcon} text="View Left" /> */}
-      {/* <ButtonFade block="overlay" state="downplay" align="center" icon={overlayIcon} text="View Overlay" /> */}
-      {/* <ButtonFade block="rightbar" state="downplay" align="right" icon={rightbarIcon} text="View Right" /> */}
     </main>
   );
   console.log('IndexMain Loaded');

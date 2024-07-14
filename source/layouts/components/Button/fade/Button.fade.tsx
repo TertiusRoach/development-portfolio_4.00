@@ -4,12 +4,12 @@ import { useMediaQuery } from 'react-responsive';
 
 interface FadeProps {
   text?: string;
+  index?: number;
   icon: string | SVGElement;
+
   align: 'left' | 'center' | 'right';
   view: 'downplay' | 'highlight';
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-
-  index?: number;
 }
 
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) => {
