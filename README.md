@@ -46,12 +46,18 @@ GitGuardian?
     npm install -g webpack-cli
     npm install -g webpack-dev-server
 
-> Install Webpack and REACT Tools
+> Install Webpack, REACT, SASS and jQuery Tools
 
+    npm install --save-dev sass
+    npm install --save-dev jquery
     npm install --save-dev webpack
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
+    npm install --save-dev node-sass
     npm install --save-dev webpack-cli
+    npm install --save-dev @types/react
+    npm install --save-dev @types/jquery
+    npm install --save-dev @types/react-dom
     npm install --save-dev react-responsive
     npm install --save-dev webpack-dev-server
     npm install --save-dev copy-webpack-plugin
@@ -68,31 +74,22 @@ GitGuardian?
     npm install --save-dev file-loader
     npm install --save-dev style-loader
 
-    npm install --save-dev sass
-    npm install --save-dev node-sass
-    npm install --save-dev @types/react
-    npm install --save-dev @types/react-dom
+> Test Before Installing these Packages (I don't know what Babel does)
 
+    npm install --save-dev babel-loader
+    npm install --save-dev babel-preset-es2015
+    npm install --save-dev @babel/preset-react
+    npm install --save-dev @babel/preset-typescript
     npm install --save-dev extract-text-webpack-plugin
-
-> Install jQuery
-
-    npm install --save-dev jquery
-    npm install --save-dev @types/jquery
-
-> I don't know what Babel does
-
-npm install --save-dev babel-loader
-npm install --save-dev babel-preset-es2015
-npm install --save-dev @babel/preset-react @babel/preset-typescript @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
+    npm install --save-dev @babel/core @babel/preset-env
 
 ## My VSC Shortcuts
 
-    View Sections: Ctrl + K + 0
-    Launch Server: Ctrl + Shift + B
+    Open Run and Debug: Ctrl + Shift + D & F5
+    Collapse Sections: Ctrl + K + 0
     Select Dropdown: Ctrl + Spacebar
 
-### Design good comments.
+### Design Decoumentation
 
 //--| [🠉](https://www.compart.com/en/unicode/U+1F809) |--//
 //--| [🠊](https://www.compart.com/en/unicode/U+1F80A) |--//
@@ -111,165 +108,167 @@ npm install --save-dev @babel/preset-react @babel/preset-typescript @babel/core 
 
 # Folder Structure
 
-`
-plaintext
-root/
+This is the structure I will use going forward.
+
+    root/
+
+    │
 
     ├── .vscode/
 
-    │   └── launch.json
+    │ └── launch.json
 
     │
 
     ├── public/ # Final product for users
 
-    │   ├── index.css # Compiled CSS file
+    │ ├── index.css # Compiled CSS file
 
-    │   ├── index.js # Compiled JavaScript file
+    │ ├── index.js # Compiled JavaScript file
 
-    │   └── index.html # Entry point for the application
+    │ └── index.html # Entry point for the application
 
     │
 
     ├── source/
 
-    │   ├── assets/ # Images used by pages
+    │ ├── assets/ # Images used by pages
 
-    |   |
+    | |
 
-    │   ├── layouts/
+    │ ├── layouts/
 
-    │   |   ├── components/ # Reusable HTML components
+    │ | ├── components/ # Reusable HTML components
 
-    │   |   │   ├── Button/ # Contains <button> HTML elements
+    │ | │ ├── Button/ # Contains <button> HTML elements
 
-    │   |   │   │   ├── fade/
+    │ | │ │ ├── fade/
 
-    │   |   │   │   │   ├── Button.fade.scss
+    │ | │ │ │ ├── Button.fade.scss
 
-    │   |   │   │   │   └── Button.fade.tsx
+    │ | │ │ │ └── Button.fade.tsx
 
-    │   |   │   │   ├── glow/
+    │ | │ │ ├── glow/
 
-    │   |   │   │   │   ├── Button.glow.scss
+    │ | │ │ │ ├── Button.glow.scss
 
-    │   |   │   │   │   └── Button.glow.tsx
+    │ | │ │ │ └── Button.glow.tsx
 
-    │   |   │   │   └── ...etc
+    │ | │ │ └── ...etc
 
-    │   |   │   ├── Section/ # Contains <section> HTML elements
+    │ | │ ├── Section/ # Contains <section> HTML elements
 
-    │   |   │   │   ├── contact/
+    │ | │ │ ├── contact/
 
-    │   |   │   │   │   ├── Section.contact.scss
+    │ | │ │ │ ├── Section.contact.scss
 
-    │   |   │   │   │   └── Section.contact.tsx
+    │ | │ │ │ └── Section.contact.tsx
 
-    │   |   │   │   ├── home/
+    │ | │ │ ├── home/
 
-    │   |   │   │   │   ├── Section.home.scss
+    │ | │ │ │ ├── Section.home.scss
 
-    │   |   │   │   │   └── Section.home.tsx
+    │ | │ │ │ └── Section.home.tsx
 
-    │   |   │   │   ├── skills/
+    │ | │ │ ├── skills/
 
-    │   |   │   │   │   ├── Section.skills.scss
+    │ | │ │ │ ├── Section.skills.scss
 
-    │   |   │   │   │   └── Section.skills.tsx
+    │ | │ │ │ └── Section.skills.tsx
 
-    │   |   │   │   └── ...etc/
+    │ | │ │ └── ...etc/
 
-    │   |   │   └── ...etc/
+    │ | │ └── ...etc/
 
-    │   |   └── containers/ # Reusable HTML containers
+    │ | └── containers/ # Reusable HTML containers
 
-    │   |       ├── Footer/ # <footer style="z-index: 3;">
+    │ | ├── Footer/ # <footer style="z-index: 3;">
 
-    │   |       │   └── IndextFooter/ # Contains the default files for the selected page
+    │ | │ └── IndextFooter/ # Contains the default files for the selected page
 
-    │   |       │       ├──DefaultFooter.scss
+    │ | │ ├──DefaultFooter.scss
 
-    │   |       │       └──DefaultFooter.tsx
+    │ | │ └──DefaultFooter.tsx
 
-    │   |       ├── Header/ # <header style="z-index: 4;">
+    │ | ├── Header/ # <header style="z-index: 4;">
 
-    │   |       │   └── IndexHeader/ # Contains DefaultHeader.scss and DefaultHeader.tsx
+    │ | │ └── IndexHeader/ # Contains DefaultHeader.scss and DefaultHeader.tsx
 
-    │   |       │       ├──DefaultHeader.scss
+    │ | │ ├──DefaultHeader.scss
 
-    │   |       │       └──DefaultHeader.tsx
+    │ | │ └──DefaultHeader.tsx
 
-    │   |       ├── Leftbar/ # <aside style="z-index: 2;">
+    │ | ├── Leftbar/ # <aside style="z-index: 2;">
 
-    │   |       │   └── IndexLeftbar/ # Contains DefaultLeftbar.scss and DefaultLeftbar.tsx
+    │ | │ └── IndexLeftbar/ # Contains DefaultLeftbar.scss and DefaultLeftbar.tsx
 
-    │   |       │       ├──DefaultLeftbar.scss
+    │ | │ ├──DefaultLeftbar.scss
 
-    │   |       │       └──DefaultLeftbar.tsx
+    │ | │ └──DefaultLeftbar.tsx
 
-    │   |       ├── Main/ # <main style="z-index: 0;">
+    │ | ├── Main/ # <main style="z-index: 0;">
 
-    │   |       │   └── IndexMain/ # Contains DefaultMain.scss and DefaultMain.tsx
+    │ | │ └── IndexMain/ # Contains DefaultMain.scss and DefaultMain.tsx
 
-    │   |       │       ├──DefaultMain.scss
+    │ | │ ├──DefaultMain.scss
 
-    │   |       │       └──DefaultMain.tsx
+    │ | │ └──DefaultMain.tsx
 
-    │   |       ├── Overlay/ # <section style="z-index: 5">
+    │ | ├── Overlay/ # <section style="z-index: 5">
 
-    │   |       │   └── IndexOverlay/ # Contains DefaultOverlay.scss and DefaultOverlay.tsx
+    │ | │ └── IndexOverlay/ # Contains DefaultOverlay.scss and DefaultOverlay.tsx
 
-    │   |       │       ├──DefaultOverlay.scss
+    │ | │ ├──DefaultOverlay.scss
 
-    │   |       │       └──DefaultOverlay.tsx
+    │ | │ └──DefaultOverlay.tsx
 
-    │   |       └── Rightbar/ # <aside style="z-index: 1;">
+    │ | └── Rightbar/ # <aside style="z-index: 1;">
 
-    │   │           └── IndexRightbar/ # Contains DefaultRightbar.scss and DefaultRightbar.tsx
+    │ │ └── IndexRightbar/ # Contains DefaultRightbar.scss and DefaultRightbar.tsx
 
-    │   |               ├──DefaultRightbar.scss
+    │ | ├──DefaultRightbar.scss
 
-    │   |               └──DefaultRightbar.tsx
+    │ | └──DefaultRightbar.tsx
 
-    │   │
+    │ │
 
-    │   ├── modules/ # Reusable logic and utilities
+    │ ├── modules/ # Reusable logic and utilities
 
-    │   │   ├── api/ # API service modules
+    │ │ ├── api/ # API service modules
 
-    │   │   └── utilities/ # Utility functions
+    │ │ └── utilities/ # Utility functions
 
-    │   │
+    │ │
 
-    │   ├── pages/ # Dynamic React, Sass, and TypeScript pages
+    │ ├── pages/ # Dynamic React, Sass, and TypeScript pages
 
-    │   │   └── index.html # Main HTML page
+    │ │ └── index.html # Main HTML page
 
-    │   │
+    │ │
 
-    │   ├── scripts/ # TypeScript files for handling callbacks
+    │ ├── scripts/ # TypeScript files for handling callbacks
 
-    │   │   └── index.ts
+    │ │ └── index.ts
 
-    │   │
+    │ │
 
-    |   ├── server/
+    | ├── server/
 
-    │   |   ├── data/ # Contains files that communicate with the database
+    │ | ├── data/ # Contains files that communicate with the database
 
-    │   |   └── hooks/ # Contains backend framework code (if applicable)
+    │ | └── hooks/ # Contains backend framework code (if applicable)
 
-    |   |
+    | |
 
-    │   ├── styles/ # Global styling for the application
+    │ ├── styles/ # Global styling for the application
 
-    │   │   └── index.scss
+    │ │ └── index.scss
 
-    │   │
+    │ │
 
-    │   ├── tools/ # Projects used as reference
+    │ ├── tools/ # Projects used as reference
 
-    │   └── index.tsx # Entry point file linked to the HTML, calling scripts/ to load the application
+    │ └── index.tsx # Entry point file linked to the HTML, calling scripts/ to load the application
 
     │
 
@@ -283,6 +282,6 @@ root/
 
     ├── package-lock.json
 
-    └── webpack.config.js`
+    └── webpack.config.js
 
 ---
