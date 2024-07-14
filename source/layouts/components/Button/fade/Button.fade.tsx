@@ -14,30 +14,28 @@ interface FadeProps {
 
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) => {
   const [view, setState] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
-  const className = `${block}-button ${view} ${align}`;
 
   const mouseEnter = () => {
     setState('downplay');
   };
-
   const mouseLeave = () => {
     setState('highlight');
     /*
     switch (block) {
       case 'header':
         break;
-      case 'main':
-        break;
-      case 'footer':
-        break;
-      case 'overlay':
-        break;
-      case 'leftbar':
-        break;
-      case 'rightbar':
-        break;
-    }
-    */
+        case 'main':
+          break;
+          case 'footer':
+            break;
+            case 'overlay':
+              break;
+              case 'leftbar':
+                break;
+                case 'rightbar':
+                  break;
+                  }
+                  */
   };
 
   const renderButton = (
@@ -79,6 +77,7 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) =>
     }
   };
 
+  let className = `${block}-button ${view} ${align}`;
   if (index === 0) {
     return (
       <button id={`${block}-active`} className={className} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
@@ -92,8 +91,6 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) =>
       </button>
     );
   }
-
-  return;
 };
 
 export default ButtonFade;

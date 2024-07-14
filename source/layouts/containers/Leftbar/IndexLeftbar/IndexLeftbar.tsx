@@ -1,6 +1,5 @@
 import $ from 'jquery';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { iconsHREF } from '../../../..';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
@@ -11,9 +10,7 @@ interface InfoProps {
   orientation?: 'landscape' | 'portrait' | string;
   identification?: string;
 }
-const IndexLeftbar: React.FC<InfoProps> = (info) => {
-  // console.log(info);
-
+const IndexLeftbar: React.FC<InfoProps> = () => {
   setTimeout(runJquery, 1000);
   return (
     <>
@@ -30,6 +27,7 @@ const IndexLeftbar: React.FC<InfoProps> = (info) => {
       </aside>
     </>
   );
+  // console.log(info);
   console.log('IndexLeftbar Loaded');
 };
 export default IndexLeftbar;
@@ -48,20 +46,36 @@ function runJquery() {
 
   const toggleState = () => {
     let element = document.getElementById('index-leftbar')?.className as string;
-    let status = element.split(' ').pop() as string;
-    switch (status) {
-      case 'expanded':
-        $('#index-leftbar.expanded').toggleClass('collapsed');
-        $('#index-leftbar.expanded').removeClass('expanded');
-        break;
-      case 'collapsed':
-        $('#index-leftbar.collapsed').toggleClass('expanded');
-        $('#index-leftbar.collapsed').removeClass('collapsed');
-        break;
-      default:
-        alert('ERROR!');
+    if (!element.includes('blocked')) {
+      var status = element.split(' ').pop() as string;
+      switch (status) {
+        case 'expanded':
+          $('#index-leftbar.expanded').toggleClass('collapsed');
+          $('#index-leftbar.expanded').removeClass('expanded');
+
+          break;
+        case 'collapsed':
+          $('#index-leftbar.collapsed').toggleClass('expanded');
+          $('#index-leftbar.collapsed').removeClass('collapsed');
+          break;
+      }
     }
   };
+  $('#index-leftbar div[class*="background"] ul').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
+  $('#index-leftbar article[class*="preview"]').on('click', () => {
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      if (getOrientation().includes('landscape')) {
+        $('#index-leftbar.expanded').addClass('collapsed');
+        $('#index-leftbar.collapsed').removeClass('expanded');
+      }
+    }
+  });
+
   /*
   $('#index-leftbar footer[class*="midground"]').on('click', () => {
     if (getOrientation().includes('portrait')) {
@@ -69,14 +83,4 @@ function runJquery() {
     }
   });
   */
-  $('#index-leftbar div[class*="background"] ul').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
-    }
-  });
-  $('#index-leftbar div[class*="background"] article').on('click', () => {
-    if (getOrientation().includes('landscape')) {
-      toggleState();
-    }
-  });
 }

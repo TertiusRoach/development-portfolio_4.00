@@ -61,7 +61,7 @@ function Body() {
         identification={`${getIdentification()}`}
       />
       <IndexRightbar
-        icons={iconsHREF}
+        info={iconsHREF}
         resolution={`${getResolution()}`}
         orientation={`${getOrientation()}`}
         identification={`${getIdentification()}`}

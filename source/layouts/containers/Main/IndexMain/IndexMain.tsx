@@ -66,20 +66,33 @@ let rightbarIcon: string =
 function runJquery() {
   $('#index-main .leftbar-button').on('click', () => {
     console.log('Leftbar Button Clicked');
-    var element = document.getElementById('index-leftbar')?.className as string;
-    var status = element.split(' ').pop() as string;
-    // console.log(status);
-    switch (status) {
-      case 'expanded':
-        $('#index-leftbar.expanded').toggleClass('collapsed');
-        $('#index-leftbar.expanded').removeClass('expanded');
-        break;
-      case 'collapsed':
-        $('#index-leftbar.collapsed').toggleClass('expanded');
-        $('#index-leftbar.collapsed').removeClass('collapsed');
-        break;
-      default:
-        alert('ERROR!');
+    var element = document.getElementById('index-leftbar') as HTMLElement;
+    var safety: boolean = element?.className.includes('blocked');
+    var status = element?.className.split(' ').pop() as string;
+    if (!safety) {
+      switch (status) {
+        case 'expanded':
+          $('#index-leftbar.expanded').addClass('blocked');
+          $('#index-leftbar.expanded').addClass('expanded');
+          setTimeout(() => {
+            $('#index-leftbar').removeClass('blocked');
+            $('#index-leftbar').css('display', 'none');
+            $('#index-leftbar').removeClass('expanded');
+          }, 1000);
+
+          break;
+        case 'collapsed':
+          $('#index-leftbar.collapsed').css('display', 'grid');
+          $('#index-leftbar.collapsed').addClass('blocked');
+          $('#index-leftbar.collapsed').addClass('expanded');
+          setTimeout(() => {
+            $('#index-leftbar').removeClass('blocked');
+            $('#index-leftbar').removeClass('collapsed');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
     }
   });
   $('#index-main .overlay-button').on('click', () => {
@@ -115,26 +128,32 @@ function runJquery() {
   });
   $('#index-main .rightbar-button').on('click', () => {
     console.log('Rightbar Button Clicked');
-    var element = document.getElementById('index-rightbar')?.className as string;
-    var status = element.split(' ').pop() as string;
-    // console.log(status);
-    switch (status) {
-      case 'expanded':
-        $('#index-rightbar.expanded').toggleClass('collapsed');
-        $('#index-rightbar.expanded').removeClass('expanded');
-        break;
-      case 'collapsed':
-        $('#index-rightbar.collapsed').toggleClass('expanded');
-        $('#index-rightbar.collapsed').removeClass('collapsed');
-        break;
-      default:
-        alert('ERROR!');
+    var element = document.getElementById('index-rightbar') as HTMLElement;
+    var safety: boolean = element?.className.includes('blocked');
+    var status = element?.className.split(' ').pop() as string;
+    if (!safety) {
+      switch (status) {
+        case 'expanded':
+          $('#index-rightbar.expanded').addClass('blocked');
+          $('#index-rightbar.expanded').addClass('expanded');
+          setTimeout(() => {
+            $('#index-rightbar').css('display', 'none');
+            $('#index-rightbar').removeClass('blocked');
+            $('#index-rightbar').removeClass('expanded');
+          }, 1000);
+          break;
+        case 'collapsed':
+          $('#index-rightbar.collapsed').addClass('blocked');
+          $('#index-rightbar.collapsed').addClass('expanded');
+          $('#index-rightbar.collapsed').css('display', 'grid');
+          setTimeout(() => {
+            $('#index-rightbar').removeClass('blocked');
+            $('#index-rightbar').removeClass('collapsed');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
     }
   });
 }
-/*
-  let pageName = getIdentification() as string;
-  let blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  console.log(info);
-  console.log(icons);
-  */

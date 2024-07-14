@@ -63,11 +63,27 @@ aside[id*='leftbar'] {
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 100% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+    clip-path: inset(0% 100% 0% 0%); /* Clip the top edge for collapsed state */
   }
+  /* Target elements with a class containing 'expanded' */
   &[class*='expanded'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 0% 0% 0%); //~~|🠊 inset(top % right % bottom % left) 🠈|~~//
+    clip-path: inset(0% 0% 0% 0%); /* No clipping for expanded state */
+  }
+
+  /* Animate the clip-path on state change (optional) */
+  @keyframes showLeftbar {
+    from {
+      clip-path: inset(0% 0% 0% 100%); /* Clip the right edge for initial state */
+      /* Optionally use opacity and blur for additional effects */
+      // opacity: 1;
+      filter: blur(1rem);
+    }
+    to {
+      clip-path: inset(0% 0% 0% 0%); /* Clip back to normal on expanded state */
+      // opacity: 1; /* Uncomment for opacity fade */
+      filter: blur(0); /* Uncomment for blur effect */
+    }
   }
 
   //--|🠋 Mobile (Portrait) 🠋|--//
