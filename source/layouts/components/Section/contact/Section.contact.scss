@@ -62,7 +62,7 @@
 }
 
 body {
-  section {
+  section[id*='contact'] {
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
       @include desktop-landscape();

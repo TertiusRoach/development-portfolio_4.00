@@ -2,6 +2,7 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  /*
   grid-template: 2rem 1fr 2rem / 3rem 1fr 3rem;
   div {
     // display: grid;
@@ -29,9 +30,12 @@
   .right {
     justify-content: flex-end;
   }
+  background: rgba($red-neon, 0.25) !important;
+  */
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  /*
   grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
   div {
     overflow: hidden;
@@ -56,7 +60,8 @@
   .bottom {
     align-items: flex-end;
   }
-  background: rgba($blue-neon, 0.25);
+  background: rgba($blue-neon, 0.25) !important;
+  */
   //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
   //~~|🠊 background: rgba($blue-dark, 0.75); 🠈|~~//
 }
@@ -116,6 +121,7 @@
 }
 
 body {
+  /*
   .working-icon {
     height: 100%;
     display: grid;
@@ -128,6 +134,7 @@ body {
       @include mobile-portrait();
     }
   }
+  */
 
   #index-body {
     @include index-colors();
