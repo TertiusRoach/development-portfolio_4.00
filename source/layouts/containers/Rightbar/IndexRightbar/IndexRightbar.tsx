@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import React, { useEffect } from 'react';
 import { iconsHREF } from '../../../..';
+import React, { useEffect } from 'react';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
