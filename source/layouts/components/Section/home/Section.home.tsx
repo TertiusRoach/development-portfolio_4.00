@@ -53,18 +53,24 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <ButtonFade block="leftbar" view="downplay" align="left" icon={leftbar} text="View Left" />
+          <ButtonFade block="overlay" view="highlight" align="left" icon={icons.career} text="My Career" />
+          <ButtonFade block="main" view="downplay" align="right" icon={icons.contact} text="Contact Me" />
+
+          {/* <ButtonFade block="leftbar" view="downplay" align="left" icon={leftbar} text="View Left" />
           <ButtonFade block="overlay" view="downplay" align="center" icon={overlay} text="View Overlay" />
-          <ButtonFade block="rightbar" view="downplay" align="right" icon={rightbar} text="View Right" />
+          <ButtonFade block="rightbar" view="downplay" align="right" icon={rightbar} text="View Right" /> */}
         </>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <ButtonFade block="leftbar" view="downplay" align="left" icon={leftbar} text="View Left" />
+          <ButtonFade block="leftbar" view="downplay" align="left" icon={overlay} text="My Projects" />
+          <ButtonFade block="main" view="downplay" align="right" icon={leftbar} text="Contact Me" />
+
+          {/* <ButtonFade block="leftbar" view="downplay" align="left" icon={leftbar} text="View Left" />
           <ButtonFade block="overlay" view="downplay" align="center" icon={overlay} text="View Overlay" />
-          <ButtonFade block="rightbar" view="downplay" align="right" icon={rightbar} text="View Right" />
+          <ButtonFade block="rightbar" view="downplay" align="right" icon={rightbar} text="View Right" /> */}
         </>
       )}
     </section>

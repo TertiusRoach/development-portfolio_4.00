@@ -30,7 +30,7 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
               view={'highlight'}
               text={items[i].text}
               icon={items[i].icon}
-              key={items[i].text}
+              key={`${items[i].text}`}
             />
           );
         } else {
@@ -42,7 +42,7 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
               view={'downplay'}
               text={items[i].text}
               icon={items[i].icon}
-              key={items[i].text}
+              key={`${items[i].text}`}
             />
           );
         }
