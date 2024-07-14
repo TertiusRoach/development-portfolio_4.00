@@ -71,7 +71,7 @@ aside[id*='rightbar'] {
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 100% 0% 0%); /* Clip the top edge for collapsed state */
+    clip-path: inset(0% 0% 0% 100%); /* Clip the top edge for collapsed state */
   }
   /* Target elements with a class containing 'expanded' */
   &[class*='expanded'] {
