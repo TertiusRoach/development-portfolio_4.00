@@ -5,9 +5,6 @@
     display: flex;
     grid-area: 1 / 2 / 2 / 3;
     justify-content: space-around;
-    button {
-      // display: none;
-    }
   }
   background: rgba($red-neon, 0.25) !important;
 }
@@ -16,17 +13,11 @@
   grid-template: 6rem / 2rem repeat(4, 1fr) 2rem; //~~|🠊 rows / columns 🠈|~~//
   menu:first-child {
     grid-area: 1 / 2 / 2 / 5;
-    background: green !important;
+    // background: green !important;
   }
   button[class*='rightbar'] {
     grid-area: 1 / 5 / 2 / 6;
-    background: darkgreen !important;
-  }
-
-  menu {
-    a {
-      // display: none;
-    }
+    // background: darkgreen !important;
   }
   background: rgba($blue-neon, 0.25) !important;
 }

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
@@ -16,14 +17,9 @@ interface InfoProps {
   };
 }
 const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
+  setTimeout(runJquery, 1000);
   let desktop = useMediaQuery({ query: '(orientation: landscape)' });
   let mobile = useMediaQuery({ query: '(orientation: portrait)' });
-  /*
-  console.log(resolution);
-  console.log(orientation);
-  console.log(identification);
-  */
-
   return (
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
@@ -88,3 +84,35 @@ const buttons = [
   */
 ];
 export default IndexFooter;
+function runJquery() {
+  $('#index-footer .rightbar-button').on('click', () => {
+    console.log('Rightbar Button Clicked');
+    var element = document.getElementById('index-rightbar') as HTMLElement;
+    var safety: boolean = element?.className.includes('blocked');
+    var status = element?.className.split(' ').pop() as string;
+    if (!safety) {
+      switch (status) {
+        case 'expanded':
+          $('#index-rightbar.expanded').addClass('blocked');
+          $('#index-rightbar.expanded').addClass('expanded');
+          setTimeout(() => {
+            $('#index-rightbar').removeClass('blocked');
+            $('#index-rightbar').css('display', 'none');
+            $('#index-rightbar').removeClass('expanded');
+          }, 1000);
+          break;
+        case 'collapsed':
+          $('#index-rightbar.collapsed').css('display', 'grid');
+          $('#index-rightbar.collapsed').addClass('blocked');
+          $('#index-rightbar.collapsed').addClass('expanded');
+          setTimeout(() => {
+            $('#index-rightbar').removeClass('blocked');
+            $('#index-rightbar').removeClass('collapsed');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
+    }
+  });
+}
