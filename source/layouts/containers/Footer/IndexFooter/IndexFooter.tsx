@@ -1,76 +1,90 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
 
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 interface InfoProps {
-  icons: Object;
-
-  resolution?: string;
-  orientation?: string | 'landscape' | 'portrait' | boolean;
-  identification?: string;
+  icons: {
+    projects: string;
+  };
+  info: {
+    resolution: string;
+    orientation: string | 'landscape' | 'portrait';
+    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+  };
 }
-const IndexFooter: React.FC<InfoProps> = () => {
+const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
+  let desktop = useMediaQuery({ query: '(orientation: landscape)' });
+  let mobile = useMediaQuery({ query: '(orientation: portrait)' });
   /*
   console.log(resolution);
   console.log(orientation);
   console.log(identification);
   */
-  let anchors = [
-    {
-      name: 'GitHub',
-      href: 'https://github.com/TertiusRoach',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/github.svg',
-      target: '_blank',
-    },
-    {
-      name: 'YouTube',
-      href: 'https://www.youtube.com/@TertiusRoach',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/youtube.svg',
-      target: '_blank',
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/tertius-roach/',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/linkedin.svg',
-      target: '_blank',
-    },
-  ];
-  let buttons = [
-    {
-      text: 'Home',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
-    },
-    {
-      text: 'Skills',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
-    },
-    {
-      text: 'Contact',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
-    },
-    {
-      text: 'Projects',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
-    },
-    /*
-    {
-      text: 'Career',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
-    },
-    */
-  ];
 
   return (
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
-        <MenuAnchor block="footer" style="icon" items={anchors} align="right" />
-
-        <MenuButton block="rightbar" state="downplay" style="fade" items={buttons} align="center" />
+        {desktop && (
+          <>
+            <MenuAnchor block="main" items={anchors} style="icon" align="center" />
+          </>
+        )}
+        {mobile && (
+          <>
+            <MenuButton block="main" items={buttons} style="fade" align="center" />
+            <ButtonFade block="rightbar" view="downplay" align="right" icon={icons.projects} text="Projects" />
+          </>
+        )}
       </footer>
     </>
   );
   console.log('IndexFooter Loaded');
 };
-
+const anchors = [
+  {
+    name: 'GitHub',
+    href: 'https://github.com/TertiusRoach',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/github.svg',
+    target: '_blank',
+  },
+  {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@TertiusRoach',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/youtube.svg',
+    target: '_blank',
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/tertius-roach/',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/linkedin.svg',
+    target: '_blank',
+  },
+];
+const buttons = [
+  {
+    text: 'Home',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
+  },
+  {
+    text: 'Skills',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
+  },
+  {
+    text: 'Contact',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
+  },
+  // {
+  //   text: 'Projects',
+  //   icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
+  // },
+  /*
+  {
+    text: 'Career',
+    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
+  },
+  */
+];
 export default IndexFooter;

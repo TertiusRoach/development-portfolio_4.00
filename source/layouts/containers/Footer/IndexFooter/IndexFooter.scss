@@ -6,18 +6,26 @@
     grid-area: 1 / 2 / 2 / 3;
     justify-content: space-around;
     button {
-      display: none;
+      // display: none;
     }
   }
   background: rgba($red-neon, 0.25) !important;
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 6rem / 2rem repeat(4, 1fr) 2rem; //~~|🠊 rows / columns 🠈|~~//
+  menu:first-child {
+    grid-area: 1 / 2 / 2 / 5;
+    background: green !important;
+  }
+  button[class*='rightbar'] {
+    grid-area: 1 / 5 / 2 / 6;
+    background: darkgreen !important;
+  }
+
   menu {
-    grid-area: 1 / 1 / 2 / 2;
     a {
-      display: none;
+      // display: none;
     }
   }
   background: rgba($blue-neon, 0.25) !important;

@@ -48,24 +48,20 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) =>
     if (icon) {
       return (
         <>
-          {mobile && (
-            <>
-              <h6 className={`${align} ${block}`} style={{ zIndex: 2 }}>
-                {text}
-              </h6>
-            </>
-          )}
-          {useMediaQuery({ query: '(min-width: 1000px)' }) ? (
-            <>
+          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
+          <span className="button-background" style={{ zIndex: 0 }}></span>
+          <>
+            {desktop && (
               <h3 className={`${align} ${block}`} style={{ zIndex: 2 }}>
                 {text}
               </h3>
-            </>
-          ) : (
-            <></>
-          )}
-          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-          <span className="button-background" style={{ zIndex: 0 }}></span>
+            )}
+            {mobile && (
+              <h6 className={`${align} ${block}`} style={{ zIndex: 2 }}>
+                {text}
+              </h6>
+            )}
+          </>
         </>
       );
     } else {

@@ -38,21 +38,11 @@ function Body() {
   }, []);
   return (
     <>
-      <IndexHeader
-        info={iconsHREF}
-        resolution={`${getResolution()}`}
-        orientation={`${getOrientation()}`}
-        identification={`${getIdentification()}`}
-      />
+      <IndexHeader icons={iconsHREF} info={infoPROP} />
 
-      <IndexMain info={infoPROP} icons={iconsHREF} />
+      <IndexMain icons={iconsHREF} info={infoPROP} />
 
-      <IndexFooter
-        icons={iconsHREF}
-        resolution={`${getResolution()}`}
-        orientation={`${getOrientation()}`}
-        identification={`${getIdentification()}`}
-      />
+      <IndexFooter icons={iconsHREF} info={infoPROP} />
 
       <IndexLeftbar
         info={iconsHREF}

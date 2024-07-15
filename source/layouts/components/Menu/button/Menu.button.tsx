@@ -13,7 +13,7 @@ interface MenuProps {
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   items: { text: string; icon: string }[];
   align: 'left' | 'center' | 'right';
-  state: 'highlight' | 'downplay';
+  view?: 'highlight' | 'downplay';
 }
 const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
   let buttonStyle = [];

@@ -50,6 +50,14 @@
         margin: 1.5rem 0;
         // background: purple;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        padding: 0 0.5rem;
+      }
     }
   }
 }
@@ -78,7 +86,6 @@
         cursor: pointer;
       }
     }
-
     &.left {
       grid-template-columns: repeat(2, auto) 1fr;
       img {
