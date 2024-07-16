@@ -66,7 +66,6 @@ function runJquery() {
   });
 
   $('#index-rightbar header button').on('click', () => {
-    console.log('TEST');
     let safety = document.getElementById('index-rightbar')?.className as string;
     if (!safety.includes('blocked')) {
       $('#index-rightbar.expanded').addClass('collapsed');
