@@ -40,29 +40,30 @@ const close: string =
 const download: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
-const toggleState = () => {
-  let element = document.getElementById('index-leftbar')?.className as string;
-  if (!element.includes('blocked')) {
-    var status = element.split(' ').pop() as string;
-    switch (status) {
-      case 'expanded':
-        $('#index-leftbar.expanded').toggleClass('collapsed');
-        $('#index-leftbar.expanded').removeClass('expanded');
-
-        break;
-      case 'collapsed':
-        $('#index-leftbar.collapsed').toggleClass('expanded');
-        $('#index-leftbar.collapsed').removeClass('collapsed');
-        break;
-    }
-  }
-};
 function runJquery() {
-  /*
-  console.log(`Leftbar: ${getResolution()}`);
-  console.log(`Leftbar: ${getOrientation()}`);
-  console.log(`Leftbar: ${getIdentification()}`);
-  */
+  const toggleState = function () {
+    let element = document.getElementById('index-leftbar')?.className as string;
+    if (!element.includes('blocked')) {
+      var status = element.split(' ').pop() as string;
+      switch (status) {
+        case 'expanded':
+          $('#index-leftbar.expanded').toggleClass('collapsed');
+          $('#index-leftbar.expanded').removeClass('expanded');
+
+          break;
+        case 'collapsed':
+          $('#index-leftbar.collapsed').toggleClass('expanded');
+          $('#index-leftbar.collapsed').removeClass('collapsed');
+          break;
+      }
+    }
+  };
+
+  $('#index-leftbar div[class*="background"] ul').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
 
   $('#index-leftbar').on('click', () => {
     /*
@@ -72,11 +73,6 @@ function runJquery() {
       $('#index-leftbar.collapsed').removeClass('expanded');
     }
     */
-  });
-  $('#index-leftbar div[class*="background"] ul').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
-    }
   });
   $('#index-leftbar article[class*="preview"]').on('click', () => {
     /*
