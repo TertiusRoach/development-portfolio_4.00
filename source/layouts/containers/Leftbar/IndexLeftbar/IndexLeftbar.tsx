@@ -64,33 +64,11 @@ function runJquery() {
       toggleState();
     }
   });
-
-  $('#index-leftbar').on('click', () => {
-    /*
+  $('#index-leftbar header button').on('click', () => {
     let safety = document.getElementById('index-leftbar')?.className as string;
     if (!safety.includes('blocked')) {
       $('#index-leftbar.expanded').addClass('collapsed');
       $('#index-leftbar.collapsed').removeClass('expanded');
     }
-    */
   });
-  $('#index-leftbar article[class*="preview"]').on('click', () => {
-    /*
-    let safety = document.getElementById('index-leftbar')?.className as string;
-    if (!safety.includes('blocked')) {
-      if (getOrientation().includes('landscape')) {
-        $('#index-leftbar.expanded').addClass('collapsed');
-        $('#index-leftbar.collapsed').removeClass('expanded');
-      }
-    }
-    */
-  });
-
-  /*
-  $('#index-leftbar footer[class*="midground"]').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
-    }
-  });
-  */
 }

@@ -64,32 +64,13 @@ function runJquery() {
       toggleState();
     }
   });
-  $('#index-rightbar').on('click', () => {
-    /*
+
+  $('#index-rightbar header button').on('click', () => {
+    console.log('TEST');
     let safety = document.getElementById('index-rightbar')?.className as string;
     if (!safety.includes('blocked')) {
       $('#index-rightbar.expanded').addClass('collapsed');
       $('#index-rightbar.collapsed').removeClass('expanded');
     }
-    */
   });
-  $('#index-rightbar article[class*="preview"]').on('click', () => {
-    /*
-    let safety = document.getElementById('index-rightbar')?.className as string;
-    if (!safety.includes('blocked')) {
-      if (getOrientation().includes('landscape')) {
-        $('#index-rightbar.expanded').addClass('collapsed');
-        $('#index-rightbar.collapsed').removeClass('expanded');
-      }
-    }
-    */
-  });
-
-  /*
-  $('#index-rightbar footer[class*="midground"]').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
-    }
-  });
-  */
 }
