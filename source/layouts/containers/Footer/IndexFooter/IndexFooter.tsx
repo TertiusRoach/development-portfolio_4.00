@@ -1,11 +1,11 @@
 import $ from 'jquery';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getIndex, getScroll } from '../../../../scripts/index';
 interface InfoProps {
   icons: {
     projects: string;
@@ -18,6 +18,21 @@ interface InfoProps {
 }
 const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
   setTimeout(jQueryFooter, 2000);
+  useEffect(() => {
+    let handleClick = (event: JQuery.ClickEvent) => {
+      let target = event.currentTarget as HTMLButtonElement;
+      scrollToSection(target);
+      toggleID(target, 'footer');
+      // console.log('//--|🠊 Clicked on Header Element 🠈|--//');
+    };
+
+    $(`#${getIdentification()}-footer button[class*="footer"]`).on('click', handleClick);
+
+    return () => {
+      $(`#${getIdentification()}-footer button[class*="footer"]`).off('click', handleClick);
+    };
+  }, []);
+
   let desktop = useMediaQuery({ query: '(orientation: landscape)' });
   let mobile = useMediaQuery({ query: '(orientation: portrait)' });
   return (
@@ -128,4 +143,28 @@ function jQueryFooter() {
       return `#${button.id}`;
     }
   };
+}
+
+function scrollToSection(button: HTMLButtonElement) {
+  const label = button.className.split(' ')[0].split('-')[1] as string;
+  const mainElement = document.querySelector('#index-main') as HTMLElement;
+  const scrollingCalculations = getScroll(mainElement, label);
+
+  console.log(scrollingCalculations);
+
+  $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
+}
+function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
+  if (button.parentElement?.tagName === 'MENU') {
+    let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
+
+    if (activeButton) {
+      activeButton.removeAttribute('id');
+    } else {
+      console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
+    }
+
+    button.id = `${block}-active`;
+    return `#${button.id}`;
+  }
 }

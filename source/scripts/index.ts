@@ -37,31 +37,46 @@ export function getIndex(container: HTMLElement, label: string) {
     }
   }
 }
+
 export function getScroll(container: HTMLElement, label: string) {
-  let children = container.children as HTMLCollectionOf<HTMLElement>;
-  let scrolling = {
-    above: 0 - container.scrollTop,
+  // Reset the scrolling values before each call
+  const scrolling = {
+    above: 0,
     below: 0,
     active: 0,
     adjust: container.scrollTop,
     slot: getIndex(container, label),
   };
-  let slot = scrolling.slot as number;
 
+  // Get the index of the target section
+  const slot = scrolling.slot as number;
+
+  // Get all child elements of the container
+  const children = container.children as HTMLCollectionOf<HTMLElement>;
+
+  // Iterate over each child element to calculate scrolling values
   for (let i = 0; i < children.length; i++) {
+    // Extract the section label from the class name of the child element
     const current = children[i].className.split('-')[1];
-    if (slot < i) {
-      // Add the offsetHeight of all the elements above the slot.
-      scrolling.above += children[i].offsetHeight;
-    } else if (slot === i) {
-      // Change the value of scrolling.active to the height of this element.
+
+    // If the current element is the target section, set its height to scrolling.active
+    if (i === slot) {
       scrolling.active = children[i].offsetHeight;
-    } else if (slot > i) {
-      // Add the offsetHeight of all the elements below the slot.
+    }
+    // If the current element is above the target section, add its height to scrolling.above
+    else if (i < slot) {
+      scrolling.above += children[i].offsetHeight;
+    }
+    // If the current element is below the target section, add its height to scrolling.below
+    else {
       scrolling.below += children[i].offsetHeight;
     }
   }
-  // When the loop is done, return the calculated values
+
+  // Adjust the above value by subtracting the current scrollTop
+  scrolling.above -= container.scrollTop;
+
+  // Return the calculated scroll values
   return {
     above: scrolling.above,
     below: scrolling.below,

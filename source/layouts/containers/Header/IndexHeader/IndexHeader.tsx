@@ -1,10 +1,10 @@
 // IndexHeader.tsx
 import $ from 'jquery';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-
 import { getResolution, getOrientation, getIdentification, getIndex, getScroll } from '../../../../scripts/index';
+
 const buttons = [
   {
     text: 'Home',
@@ -33,54 +33,44 @@ interface InfoProps {
     identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
-
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
-  $('#index-header button[class*="header"]').on('click', function () {
-    console.log('//--|🠊 Clicked on Header Element 🠈|--//');
-    let target = this as HTMLButtonElement;
-    toggleID(target, 'header');
-    // console.log('Adding click listener'); // This will log a message each time the listener is attached
-    // console.log(event.currentTarget);
-    scrollToSection(target);
-  });
-  // setTimeout(jQueryHeader, 1000);
+  useEffect(() => {
+    let handleClick = (event: JQuery.ClickEvent) => {
+      let target = event.currentTarget as HTMLButtonElement;
+      scrollToSection(target);
+      toggleID(target, 'header');
+      // console.log('//--|🠊 Clicked on Header Element 🠈|--//');
+    };
 
-  let desktop = useMediaQuery({ query: '(orientation: landscape)' });
-  let mobile = useMediaQuery({ query: '(orientation: portrait)' });
+    $('#index-header button[class*="header"]').on('click', handleClick);
+
+    return () => {
+      $('#index-header button[class*="header"]').off('click', handleClick);
+    };
+  }, []);
+
+  const desktop = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile = useMediaQuery({ query: '(orientation: portrait)' });
 
   return (
-    <>
-      <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
-        <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
-        <>
-          {desktop && <MenuButton block="header" style="fade" align="left" items={buttons} />}
-          {/* {mobile && <></>} */}
-        </>
-      </header>
-    </>
+    <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
+      <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
+      {desktop && <MenuButton block="header" style="fade" align="left" items={buttons} />}
+      {/* {mobile && <></>} */}
+    </header>
   );
-  console.log('IndexHeader Loaded');
 };
 
 export default IndexHeader;
 
-function scrollToSection(event: HTMLButtonElement) {
-  const label = event.className.split(' ')[0].split('-')[1] as string;
+function scrollToSection(button: HTMLButtonElement) {
+  const label = button.className.split(' ')[0].split('-')[1] as string;
   const mainElement = document.querySelector('#index-main') as HTMLElement;
-  const sectionElement = document.querySelector(`section[class*="${label}"]`) as HTMLElement;
-  const scrollingCalculations: { above: Number; below: Number; active: Number; adjust: Number } = getScroll(
-    mainElement,
-    label
-  );
+  const scrollingCalculations = getScroll(mainElement, label);
 
   console.log(scrollingCalculations);
 
-  $('main').animate({ scrollTop: `+=${scrollingCalculations.adjust}px` }, 1000);
-
-  // console.log(`getScroll called for label: ${label}`);
-  // console.log(
-  //   `Above: ${scrolling.above}, Below: ${scrolling.below}, Active: ${scrolling.active}, Adjust: ${scrolling.adjust}`
-  // );
+  $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
 }
 function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
   if (button.parentElement?.tagName === 'MENU') {
@@ -95,10 +85,4 @@ function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
     button.id = `${block}-active`;
     return `#${button.id}`;
   }
-}
-
-function jQueryHeader() {
-  // $('button[class*="header"').on('click', (event) => {
-  // });
-  // console.log(document.querySelector('button[class*="header"]'));
 }
