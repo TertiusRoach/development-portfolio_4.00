@@ -154,6 +154,7 @@ function runJquery() {
   $('#index-main section').on('mouseenter', (event) => {
     toggleID(event.currentTarget as HTMLElement, 'main');
   });
+
   const toggleID = function (section: HTMLElement, block: 'main') {
     let label = section.className.split('-')[1];
     let activeSection = document.getElementById('main-active') as HTMLElement;
