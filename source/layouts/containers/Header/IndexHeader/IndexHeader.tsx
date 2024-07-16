@@ -1,4 +1,5 @@
 // IndexHeader.tsx
+import $ from 'jquery';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
@@ -17,8 +18,10 @@ interface InfoProps {
 }
 
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
+  setTimeout(runJquery, 1000);
   let desktop = useMediaQuery({ query: '(orientation: landscape)' });
   let mobile = useMediaQuery({ query: '(orientation: portrait)' });
+
   return (
     <>
       <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
@@ -48,7 +51,49 @@ const buttons = [
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
+
 export default IndexHeader;
+
+function runJquery() {
+  $('#index-footer button[class*="main"]').on('click', () => {
+    console.log('hioasdf;ioadfskjldasfjlk');
+
+    // let safety = document.getElementById('index-leftbar')?.className as string;
+    // if (!safety.includes('blocked')) {
+    //   $('#index-leftbar.expanded').addClass('collapsed');
+    //   $('#index-leftbar.collapsed').removeClass('expanded');
+    // }
+  });
+
+  /*
+
+  console.log(`Leftbar: ${getResolution()}`);
+  console.log(`Leftbar: ${getOrientation()}`);
+  console.log(`Leftbar: ${getIdentification()}`);
+  */
+  // });
+  // $('#index-leftbar div[class*="background"] ul').on('click', () => {
+  //   if (getOrientation().includes('portrait')) {
+  //     toggleState();
+  //   }
+  // });
+  // $('#index-leftbar article[class*="preview"]').on('click', () => {
+  //   let safety = document.getElementById('index-leftbar')?.className as string;
+  //   if (!safety.includes('blocked')) {
+  //     if (getOrientation().includes('landscape')) {
+  //       $('#index-leftbar.expanded').addClass('collapsed');
+  //       $('#index-leftbar.collapsed').removeClass('expanded');
+  //     }
+  //   }
+  // });
+  /*
+  $('#index-leftbar footer[class*="midground"]').on('click', () => {
+    if (getOrientation().includes('portrait')) {
+      toggleState();
+    }
+  });
+  */
+}
 /*
     {
       text: 'Projects',

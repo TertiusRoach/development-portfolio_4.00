@@ -49,12 +49,12 @@
       width: 100%;
       height: 100%;
     }
-    // background: rgba($green-neon, 0.75);
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: rgba($green-neon, 0.75);
   }
   footer[class*='midground'] {
-    // background: rgba($green-neon, 0.75);
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: rgba($green-neon, 0.75);
   }
   div[class*='background'] {
     display: inherit; //~~|🠈 display: grid; 🠈|~~//

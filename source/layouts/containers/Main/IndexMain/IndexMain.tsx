@@ -92,11 +92,9 @@ function runJquery() {
     }
   });
   $('#index-main .overlay-button').on('click', () => {
-    // console.log('Overlay Button Clicked');
-
-    var element = document.getElementById('index-overlay') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
+    const element = document.getElementById('index-overlay') as HTMLElement;
+    let safety: boolean = element?.className.includes('blocked');
+    let status = element?.className.split(' ').pop() as string;
     if (!safety) {
       switch (status) {
         case 'visible':
@@ -150,6 +148,22 @@ function runJquery() {
         default:
           alert('ERROR!');
       }
+    }
+  });
+
+  $('#index-leftbar header button').on('click', () => {
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-leftbar.expanded').addClass('collapsed');
+      $('#index-leftbar.collapsed').removeClass('expanded');
+    }
+  });
+  $('#index-rightbar header button').on('click', () => {
+    console.log('TEST');
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-rightbar.expanded').addClass('collapsed');
+      $('#index-rightbar.collapsed').removeClass('expanded');
     }
   });
 }

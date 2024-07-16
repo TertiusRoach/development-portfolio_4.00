@@ -65,11 +65,13 @@ function runJquery() {
   */
 
   $('#index-leftbar').on('click', () => {
+    /*
     let safety = document.getElementById('index-leftbar')?.className as string;
     if (!safety.includes('blocked')) {
       $('#index-leftbar.expanded').addClass('collapsed');
       $('#index-leftbar.collapsed').removeClass('expanded');
     }
+    */
   });
   $('#index-leftbar div[class*="background"] ul').on('click', () => {
     if (getOrientation().includes('portrait')) {
@@ -77,6 +79,7 @@ function runJquery() {
     }
   });
   $('#index-leftbar article[class*="preview"]').on('click', () => {
+    /*
     let safety = document.getElementById('index-leftbar')?.className as string;
     if (!safety.includes('blocked')) {
       if (getOrientation().includes('landscape')) {
@@ -84,6 +87,7 @@ function runJquery() {
         $('#index-leftbar.collapsed').removeClass('expanded');
       }
     }
+    */
   });
 
   /*
