@@ -37,7 +37,7 @@ interface HomeProps {
   };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
-const SectionHome: React.FC<HomeProps> = ({ info, icons, block }) => {
+const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
   setTimeout(runJquery, 1000);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -46,8 +46,14 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons, block }) => {
   let leftbar = icons.viewLeftbar as string;
   let overlay = icons.viewOverlay as string;
   let rightbar = icons.viewRightbar as string;
+  // if state is equal to 'activet' return '-active' else return ''
   return (
-    <section id={`${block}-active`} className={`${block}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
+    <section
+      id={state === 'active' ? `${block}-active` : ''}
+      className={`${block}-home`}
+      style={{ height: `${height}px`, width: `${width}px` }}
+    >
+      {/* Other content */}
       {/* <DivisionWorking align="center" info={info} icon={working} /> */}
 
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}

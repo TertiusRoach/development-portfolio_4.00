@@ -90,7 +90,7 @@ interface ContactProps {
   };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
-const SectionContact: React.FC<ContactProps> = ({ info, icons, block }) => {
+const SectionContact: React.FC<ContactProps> = ({ info, icons, block, state }) => {
   setTimeout(runJquery, 1000);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -100,7 +100,11 @@ const SectionContact: React.FC<ContactProps> = ({ info, icons, block }) => {
   let overlay = icons.viewOverlay as string;
   let rightbar = icons.viewRightbar as string;
   return (
-    <section id={`${block}-active`} className={`${block}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
+    <section
+      id={state === 'active' ? `${block}-active` : ''}
+      className={`${block}-contact`}
+      style={{ height: `${height}px`, width: `${width}px` }}
+    >
       <DivisionWorking align="right" info={info} icon={working} />
 
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
