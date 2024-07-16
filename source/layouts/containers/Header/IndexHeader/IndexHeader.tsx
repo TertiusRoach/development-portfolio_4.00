@@ -28,7 +28,7 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
         <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
 
         <>
-          {desktop && <MenuButton block="header" style="fade" items={buttons} align="left" />}
+          {desktop && <MenuButton block="header" style="fade" align="left" items={buttons} />}
           {mobile && <></>}
         </>
       </header>
@@ -40,14 +40,17 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 const buttons = [
   {
     text: 'Home',
+    label: 'home',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
   },
   {
     text: 'Skills',
+    label: 'skills',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
   },
   {
     text: 'Contact',
+    label: 'contact',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
@@ -56,17 +59,21 @@ export default IndexHeader;
 
 function runJquery() {
   $('#index-header button').on('click', function () {
+    let test = document.querySelector(`#main-active`) as HTMLElement;
+    console.log(test);
+    // setTimeout(() => , 1000);
     toggleID(this as HTMLElement, 'header');
 
-    let parent = this.parentElement as HTMLMenuElement;
-    let block = parent?.querySelector('button[id*="active"]') as HTMLButtonElement;
-    let link = block.id.split('-')[0];
+    // let parent = this.parentElement as HTMLMenuElement;
+    // let block = ;
+    // let link = block.id.split('-')[0];
 
-    console.log(link);
+    // console.log(link);
   });
 
   const toggleID = function (button: HTMLElement, block: 'header' | 'footer') {
     if (button.parentElement?.tagName === 'MENU') {
+      // console.log
       let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
 
       if (activeButton) {

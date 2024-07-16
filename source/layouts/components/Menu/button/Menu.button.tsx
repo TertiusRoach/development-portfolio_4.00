@@ -11,7 +11,7 @@ import ButtonSlide from '../../Button/slide/Button.slide';
 interface MenuProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
-  items: { text: string; icon: string }[];
+  items: { text: string; icon: string; label: string }[];
   align: 'left' | 'center' | 'right';
   view?: 'highlight' | 'downplay';
 }
@@ -24,24 +24,26 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
         if (i === 0) {
           buttonStyle.push(
             <ButtonFade
+              view={'highlight'}
               index={i}
               block={block}
               align={align}
-              view={'highlight'}
               text={items[i].text}
               icon={items[i].icon}
+              label={items[i].label}
               key={`${items[i].text}`}
             />
           );
         } else {
           buttonStyle.push(
             <ButtonFade
+              view={'downplay'}
               index={i}
               block={block}
               align={align}
-              view={'downplay'}
               text={items[i].text}
               icon={items[i].icon}
+              label={items[i].label}
               key={`${items[i].text}`}
             />
           );

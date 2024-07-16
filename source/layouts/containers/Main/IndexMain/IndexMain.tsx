@@ -60,19 +60,6 @@ let rightbarIcon: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
 
 function runJquery() {
-  const toggleID = function (block: 'main') {
-    let activeSection = document.querySelector(`#${block}-active`) as HTMLElement;
-
-    if (activeSection) {
-      activeSection.removeAttribute('id');
-    } else {
-      console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-    }
-
-    // section.id = `${block}-active`;
-    // return `#${section.id}`;
-  };
-
   $('#index-main .leftbar-button').on('click', () => {
     console.log('Leftbar Button Clicked');
     var element = document.getElementById('index-leftbar') as HTMLElement;
@@ -164,7 +151,15 @@ function runJquery() {
     }
   });
 
-  $('#index-main section').on('mouseenter', () => {
-    toggleID('main');
+  $('#index-main section').on('mouseenter', (event) => {
+    toggleID(event.currentTarget as HTMLElement, 'main');
   });
+  const toggleID = function (section: HTMLElement, block: 'main') {
+    let label = section.className.split('-')[1];
+    let activeSection = document.getElementById('main-active') as HTMLElement;
+    let selectSection = document.querySelector(`.${block}-${label}`) as HTMLElement;
+
+    activeSection.removeAttribute('id');
+    selectSection.setAttribute('id', 'main-active');
+  };
 }

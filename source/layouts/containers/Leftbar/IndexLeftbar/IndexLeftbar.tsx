@@ -17,7 +17,7 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
         <header className="leftbar-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
+          <ButtonFade label="projects" block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
         </header>
         <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
 

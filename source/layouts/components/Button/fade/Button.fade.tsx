@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+// Button.fade.tsx
 import './Button.fade.scss';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 interface FadeProps {
@@ -7,12 +8,13 @@ interface FadeProps {
   index?: number;
   icon: string | SVGElement;
 
-  align: 'left' | 'center' | 'right';
   view: 'downplay' | 'highlight';
+  align: 'left' | 'center' | 'right';
+  label?: 'home' | 'skills' | 'contact' | string;
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 
-const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) => {
+const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, label }) => {
   const [view, setState] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
 
   const mouseEnter = () => {
@@ -72,20 +74,44 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon }) =>
       );
     }
   };
-
-  let className = `${block}-button ${view} ${align}`;
-  if (index === 0) {
-    return (
-      <button id={`${block}-active`} className={className} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-        {renderButton(`${icon}`, align, block)}
-      </button>
-    );
+  if (label === undefined) {
+    if (index === 0) {
+      return (
+        <button
+          id={`${block}-active`}
+          className={`${block}-button ${view} ${align}`}
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+        >
+          {renderButton(`${icon}`, align, block)}
+        </button>
+      );
+    } else {
+      return (
+        <button className={`${block}-button ${view} ${align}`} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+          {renderButton(`${icon}`, align, block)}
+        </button>
+      );
+    }
   } else {
-    return (
-      <button className={className} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-        {renderButton(`${icon}`, align, block)}
-      </button>
-    );
+    if (index === 0) {
+      return (
+        <button
+          id={`${block}-active`}
+          className={`${block}-${label} ${view} ${align}`}
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+        >
+          {renderButton(`${icon}`, align, block)}
+        </button>
+      );
+    } else {
+      return (
+        <button className={`${block}-${label} ${view} ${align}`} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+          {renderButton(`${icon}`, align, block)}
+        </button>
+      );
+    }
   }
 };
 
