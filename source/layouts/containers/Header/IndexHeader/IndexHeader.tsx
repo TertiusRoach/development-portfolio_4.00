@@ -28,7 +28,7 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
         <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
 
         <>
-          {desktop && <MenuButton block="main" style="fade" items={buttons} align="left" />}
+          {desktop && <MenuButton block="header" style="fade" items={buttons} align="left" />}
           {mobile && <></>}
         </>
       </header>
@@ -55,15 +55,25 @@ const buttons = [
 export default IndexHeader;
 
 function runJquery() {
-  $('#index-footer button[class*="main"]').on('click', () => {
-    console.log('hioasdf;ioadfskjldasfjlk');
+  const toggleID = function (button: HTMLElement) {
+    let activeButton = document.querySelector('#header-active') as HTMLElement;
 
-    // let safety = document.getElementById('index-leftbar')?.className as string;
-    // if (!safety.includes('blocked')) {
-    //   $('#index-leftbar.expanded').addClass('collapsed');
-    //   $('#index-leftbar.collapsed').removeClass('expanded');
-    // }
+    if (activeButton) {
+      activeButton.removeAttribute('id');
+    } else {
+      console.log('No element with id "header-active" found.');
+    }
+
+    button.id = 'header-active';
+    console.log(button);
+  };
+
+  $('#index-header button').on('click', function () {
+    toggleID(this as HTMLElement);
   });
+
+  // $('#index-footer button[class*="main"]').on('click', () => {
+  // });
 
   /*
 
@@ -93,8 +103,7 @@ function runJquery() {
     }
   });
   */
-}
-/*
+  /*
     {
       text: 'Projects',
       icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
@@ -104,3 +113,4 @@ function runJquery() {
       icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
     },
     */
+}
