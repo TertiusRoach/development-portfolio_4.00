@@ -55,62 +55,28 @@ const buttons = [
 export default IndexHeader;
 
 function runJquery() {
-  const toggleID = function (button: HTMLElement) {
-    let activeButton = document.querySelector('#header-active') as HTMLElement;
-
-    if (activeButton) {
-      activeButton.removeAttribute('id');
-    } else {
-      console.log('No element with id "header-active" found.');
-    }
-
-    button.id = 'header-active';
-    console.log(button);
-  };
-
   $('#index-header button').on('click', function () {
-    toggleID(this as HTMLElement);
+    toggleID(this as HTMLElement, 'header');
+
+    let parent = this.parentElement as HTMLMenuElement;
+    let block = parent?.querySelector('button[id*="active"]') as HTMLButtonElement;
+    let link = block.id.split('-')[0];
+
+    console.log(link);
   });
 
-  // $('#index-footer button[class*="main"]').on('click', () => {
-  // });
+  const toggleID = function (button: HTMLElement, block: 'header' | 'footer') {
+    if (button.parentElement?.tagName === 'MENU') {
+      let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
 
-  /*
+      if (activeButton) {
+        activeButton.removeAttribute('id');
+      } else {
+        console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
+      }
 
-  console.log(`Leftbar: ${getResolution()}`);
-  console.log(`Leftbar: ${getOrientation()}`);
-  console.log(`Leftbar: ${getIdentification()}`);
-  */
-  // });
-  // $('#index-leftbar div[class*="background"] ul').on('click', () => {
-  //   if (getOrientation().includes('portrait')) {
-  //     toggleState();
-  //   }
-  // });
-  // $('#index-leftbar article[class*="preview"]').on('click', () => {
-  //   let safety = document.getElementById('index-leftbar')?.className as string;
-  //   if (!safety.includes('blocked')) {
-  //     if (getOrientation().includes('landscape')) {
-  //       $('#index-leftbar.expanded').addClass('collapsed');
-  //       $('#index-leftbar.collapsed').removeClass('expanded');
-  //     }
-  //   }
-  // });
-  /*
-  $('#index-leftbar footer[class*="midground"]').on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      toggleState();
+      button.id = `${block}-active`;
+      return `#${button.id}`;
     }
-  });
-  */
-  /*
-    {
-      text: 'Projects',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
-    },
-    {
-      text: 'Career',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
-    },
-    */
+  };
 }

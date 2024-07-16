@@ -25,13 +25,13 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
         {desktop && (
           <>
-            <MenuAnchor block="main" items={anchors} style="icon" align="center" />
+            <MenuAnchor block="footer" items={anchors} style="icon" align="center" />
           </>
         )}
         {mobile && (
           <>
-            <MenuButton block="main" items={buttons} style="fade" align="center" />
-            <ButtonFade block="rightbar" view="downplay" align="right" icon={icons.projects} text="Projects" />
+            <MenuButton block="footer" items={buttons} style="fade" align="center" />
+            <ButtonFade block={`rightbar`} view="downplay" align="right" icon={icons.projects} text="Projects" />
           </>
         )}
       </footer>
@@ -85,6 +85,10 @@ const buttons = [
 ];
 export default IndexFooter;
 function runJquery() {
+  $('#index-footer button').on('click', function () {
+    toggleID(this as HTMLElement, 'footer');
+  });
+
   $('#index-footer .rightbar-button').on('click', () => {
     console.log('Rightbar Button Clicked');
     var element = document.getElementById('index-rightbar') as HTMLElement;
@@ -115,4 +119,19 @@ function runJquery() {
       }
     }
   });
+
+  const toggleID = function (button: HTMLElement, block: 'header' | 'footer') {
+    if (button.parentElement?.tagName === 'MENU') {
+      let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
+
+      if (activeButton) {
+        activeButton.removeAttribute('id');
+      } else {
+        console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
+      }
+
+      button.id = `${block}-active`;
+      return `#${button.id}`;
+    }
+  };
 }

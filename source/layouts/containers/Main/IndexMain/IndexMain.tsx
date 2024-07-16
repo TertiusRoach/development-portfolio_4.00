@@ -43,9 +43,9 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   setTimeout(runJquery, 1000);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionHome info={info} icons={icons} />
-      <SectionSkills info={info} icons={icons} />
-      <SectionContact info={info} icons={icons} />
+      <SectionHome info={info} icons={icons} state="active" block="main" />
+      <SectionSkills info={info} icons={icons} block="main" />
+      <SectionContact info={info} icons={icons} block="main" />
     </main>
   );
   console.log('IndexMain Loaded');
@@ -60,6 +60,22 @@ let rightbarIcon: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
 
 function runJquery() {
+  $('#index-leftbar header button').on('click', () => {
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-leftbar.expanded').addClass('collapsed');
+      $('#index-leftbar.collapsed').removeClass('expanded');
+    }
+  });
+  $('#index-rightbar header button').on('click', () => {
+    console.log('TEST');
+    let safety = document.getElementById('index-leftbar')?.className as string;
+    if (!safety.includes('blocked')) {
+      $('#index-rightbar.expanded').addClass('collapsed');
+      $('#index-rightbar.collapsed').removeClass('expanded');
+    }
+  });
+
   $('#index-main .leftbar-button').on('click', () => {
     console.log('Leftbar Button Clicked');
     var element = document.getElementById('index-leftbar') as HTMLElement;
@@ -148,22 +164,6 @@ function runJquery() {
         default:
           alert('ERROR!');
       }
-    }
-  });
-
-  $('#index-leftbar header button').on('click', () => {
-    let safety = document.getElementById('index-leftbar')?.className as string;
-    if (!safety.includes('blocked')) {
-      $('#index-leftbar.expanded').addClass('collapsed');
-      $('#index-leftbar.collapsed').removeClass('expanded');
-    }
-  });
-  $('#index-rightbar header button').on('click', () => {
-    console.log('TEST');
-    let safety = document.getElementById('index-leftbar')?.className as string;
-    if (!safety.includes('blocked')) {
-      $('#index-rightbar.expanded').addClass('collapsed');
-      $('#index-rightbar.collapsed').removeClass('expanded');
     }
   });
 }

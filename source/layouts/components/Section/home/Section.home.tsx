@@ -8,6 +8,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
 
 interface HomeProps {
+  state?: 'active';
   info: {
     resolution: string;
     orientation: string;
@@ -34,8 +35,9 @@ interface HomeProps {
     youTube: string;
     linkedIn: string;
   };
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
-const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
+const SectionHome: React.FC<HomeProps> = ({ info, icons, block }) => {
   setTimeout(runJquery, 1000);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -45,7 +47,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons }) => {
   let overlay = icons.viewOverlay as string;
   let rightbar = icons.viewRightbar as string;
   return (
-    <section id={`${info.identification}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
+    <section id={`${block}-active`} className={`${block}-home`} style={{ height: `${height}px`, width: `${width}px` }}>
       {/* <DivisionWorking align="center" info={info} icon={working} /> */}
 
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
