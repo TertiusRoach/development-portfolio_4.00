@@ -79,7 +79,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
 export default SectionHome;
 
 function runJquery() {
-  console.log('Yay, jQuery!');
+  // console.log('Yay, jQuery!');
   // $('#index-main .leftbar-button').on('click', () => {
   //   console.log('Leftbar Button Clicked');
   //   var element = document.getElementById('index-leftbar') as HTMLElement;
@@ -95,7 +95,6 @@ function runJquery() {
   //           $('#index-leftbar').css('display', 'none');
   //           $('#index-leftbar').removeClass('expanded');
   //         }, 1000);
-
   //         break;
   //       case 'collapsed':
   //         $('#index-leftbar.collapsed').css('display', 'grid');
@@ -113,7 +112,6 @@ function runJquery() {
   // });
   // $('#index-main .overlay-button').on('click', () => {
   //   // console.log('Overlay Button Clicked');
-
   //   var element = document.getElementById('index-overlay') as HTMLElement;
   //   var safety: boolean = element?.className.includes('blocked');
   //   var status = element?.className.split(' ').pop() as string;

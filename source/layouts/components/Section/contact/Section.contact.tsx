@@ -122,5 +122,5 @@ const SectionContact: React.FC<ContactProps> = ({ info, icons, block, state }) =
 export default SectionContact;
 
 function runJquery() {
-  console.log('Yay, jQuery!');
+  // console.log('Yay, jQuery!');
 }

@@ -67,5 +67,5 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, icons, block, state }) => 
 export default SectionSkills;
 
 function runJquery() {
-  console.log('Yay, jQuery!');
+  // console.log('Yay, jQuery!');
 }

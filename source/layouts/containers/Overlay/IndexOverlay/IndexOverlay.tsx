@@ -9,37 +9,7 @@ interface InfoProps {
   identification?: string;
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
-  let runJquery = () => {
-    $('#index-overlay').on('click', () => {
-      var element = document.getElementById('index-overlay') as HTMLElement;
-      var safety: boolean = element?.className.includes('blocked');
-      var status = element?.className.split(' ').pop() as string;
-      if (!safety) {
-        switch (status) {
-          case 'visible':
-            $('#index-overlay.visible').addClass('blocked');
-            $('#index-overlay.visible').toggleClass('hidden');
-            $('#index-overlay.visible').removeClass('visible');
-            setTimeout(() => {
-              $('#index-overlay').css('display', 'none');
-              $('#index-overlay').removeClass('blocked');
-            }, 1000);
-            break;
-          case 'hidden':
-            $('#index-overlay.hidden').removeClass('blocked');
-            $('#index-overlay.hidden').toggleClass('visible');
-            $('#index-overlay.hidden').removeClass('hidden');
-            setTimeout(() => {
-              $('#index-overlay').css('display', '');
-            }, 1000);
-            break;
-          default:
-            alert('ERROR!');
-        }
-      }
-    });
-  };
-  setTimeout(runJquery, 1000);
+  setTimeout(jQueryOverlay, 4000);
   return (
     <>
       <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
@@ -56,3 +26,33 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   console.log('IndexOverlay Loaded');
 };
 export default IndexOverlay;
+function jQueryOverlay() {
+  $('#index-overlay').on('click', () => {
+    var element = document.getElementById('index-overlay') as HTMLElement;
+    var safety: boolean = element?.className.includes('blocked');
+    var status = element?.className.split(' ').pop() as string;
+    if (!safety) {
+      switch (status) {
+        case 'visible':
+          $('#index-overlay.visible').addClass('blocked');
+          $('#index-overlay.visible').toggleClass('hidden');
+          $('#index-overlay.visible').removeClass('visible');
+          setTimeout(() => {
+            $('#index-overlay').css('display', 'none');
+            $('#index-overlay').removeClass('blocked');
+          }, 1000);
+          break;
+        case 'hidden':
+          $('#index-overlay.hidden').removeClass('blocked');
+          $('#index-overlay.hidden').toggleClass('visible');
+          $('#index-overlay.hidden').removeClass('hidden');
+          setTimeout(() => {
+            $('#index-overlay').css('display', '');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
+    }
+  });
+}

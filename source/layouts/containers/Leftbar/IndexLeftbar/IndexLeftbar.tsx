@@ -4,6 +4,11 @@ import React, { useEffect } from 'react';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
+const close: string =
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
+const download: string =
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
+
 interface InfoProps {
   info: Object;
   resolution?: string;
@@ -11,7 +16,7 @@ interface InfoProps {
   identification?: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  setTimeout(runJquery, 1000);
+  setTimeout(jQueryLeftbar, 5000);
 
   return (
     <>
@@ -35,12 +40,7 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
 };
 export default IndexLeftbar;
 
-const close: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-const download: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
-
-function runJquery() {
+function jQueryLeftbar() {
   const toggleState = function () {
     let element = document.getElementById('index-leftbar')?.className as string;
     if (!element.includes('blocked')) {

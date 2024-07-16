@@ -40,11 +40,17 @@ interface InfoProps {
 }
 
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
-  setTimeout(runJquery, 1000);
+  setTimeout(jQueryMain, 3000);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       <SectionHome info={info} icons={icons} state="active" block="main" />
+      <div style={{ height: '256px', background: 'green' }}>
+        <h1 className="display-1">ADDSPACE!!!!</h1>
+      </div>
       <SectionSkills info={info} icons={icons} block="main" />
+      <div style={{ height: '568px', background: 'darkgreen' }}>
+        <h1 className="display-1">MORE ADDSPACE!!!!</h1>
+      </div>
       <SectionContact info={info} icons={icons} block="main" />
     </main>
   );
@@ -59,7 +65,7 @@ let overlayIcon: string =
 let rightbarIcon: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
 
-function runJquery() {
+function jQueryMain() {
   $('#index-main .leftbar-button').on('click', () => {
     console.log('Leftbar Button Clicked');
     var element = document.getElementById('index-leftbar') as HTMLElement;

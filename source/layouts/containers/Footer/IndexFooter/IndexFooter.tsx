@@ -17,7 +17,7 @@ interface InfoProps {
   };
 }
 const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
-  setTimeout(runJquery, 1000);
+  setTimeout(jQueryFooter, 2000);
   let desktop = useMediaQuery({ query: '(orientation: landscape)' });
   let mobile = useMediaQuery({ query: '(orientation: portrait)' });
   return (
@@ -62,29 +62,23 @@ const anchors = [
 const buttons = [
   {
     text: 'Home',
+    label: 'home',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
   },
   {
     text: 'Skills',
+    label: 'skills',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
   },
   {
     text: 'Contact',
+    label: 'contact',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
-  // {
-  //   text: 'Projects',
-  //   icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/code.svg',
-  // },
-  /*
-  {
-    text: 'Career',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/briefcase.svg',
-  },
-  */
 ];
 export default IndexFooter;
-function runJquery() {
+
+function jQueryFooter() {
   $('#index-footer button').on('click', function () {
     toggleID(this as HTMLElement, 'footer');
   });
