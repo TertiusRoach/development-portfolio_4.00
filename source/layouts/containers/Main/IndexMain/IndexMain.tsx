@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import { getOrientation, getResolution, getIdentification } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, showSection, showAside } from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import SectionHome from '../../../components/Section/home/Section.home';
@@ -38,9 +38,64 @@ interface InfoProps {
     linkedIn: string;
   };
 }
-
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
-  setTimeout(jQueryMain, 3000);
+  const blockName: String = 'main';
+  const pageName: String = getIdentification();
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  useEffect(() => {
+    let jQueryMain = function () {
+      console.log(`Orientation refresh for ${blockName}`);
+    };
+    setTimeout(jQueryMain, 2000);
+
+    $('#index-main .leftbar-button').on('click', function () {
+      let leftbar = this.classList[0].split('-')[0] as string;
+      showAside(leftbar as string);
+    });
+    $('#index-main .overlay-button').on('click', () => {
+      const element = document.getElementById('index-overlay') as HTMLElement;
+      let safety: boolean = element?.className.includes('blocked');
+      let status = element?.className.split(' ').pop() as string;
+      if (!safety) {
+        switch (status) {
+          case 'visible':
+            $('#index-overlay.visible').addClass('blocked');
+            $('#index-overlay.visible').toggleClass('hidden');
+            setTimeout(() => {
+              $('#index-overlay').removeClass('blocked');
+              $('#index-overlay').css('display', 'none');
+              $('#index-overlay').removeClass('visible');
+            }, 1000);
+            break;
+          case 'hidden':
+            $('#index-overlay.hidden').css('display', 'grid');
+            $('#index-overlay.hidden').addClass('blocked');
+            $('#index-overlay.hidden').toggleClass('visible');
+            setTimeout(() => {
+              $('#index-overlay').removeClass('blocked');
+              $('#index-overlay').removeClass('hidden');
+            }, 1000);
+            break;
+          default:
+            alert('ERROR!');
+        }
+      }
+    });
+    $('#index-main .rightbar-button').on('click', function () {
+      let rightbar = this.classList[0].split('-')[0] as string;
+      showAside(rightbar as string);
+    });
+
+    $('#index-main section').on('mouseenter', (event) => {
+      let selectLabel = event.currentTarget.className.split('-')[1] as string;
+      let activeSection = document.getElementById('main-active') as HTMLElement;
+      let selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
+
+      activeSection.removeAttribute('id');
+      selectSection.setAttribute('id', 'main-active');
+    });
+  }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       <SectionHome info={info} icons={icons} state="active" block="main" />
@@ -66,6 +121,7 @@ let rightbarIcon: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
 
 function jQueryMain() {
+  /*
   $('#index-main .leftbar-button').on('click', () => {
     console.log('Leftbar Button Clicked');
     var element = document.getElementById('index-leftbar') as HTMLElement;
@@ -169,4 +225,5 @@ function jQueryMain() {
     activeSection.removeAttribute('id');
     selectSection.setAttribute('id', 'main-active');
   };
+  */
 }

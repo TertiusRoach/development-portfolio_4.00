@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, getIndex, getScroll } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, showSection } from '../../../../scripts/index';
 
 const buttons = [
   {
@@ -34,23 +34,25 @@ interface InfoProps {
   };
 }
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
+  const blockName: String = 'header';
+  const pageName: String = getIdentification();
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+
   useEffect(() => {
-    let handleClick = (event: JQuery.ClickEvent) => {
-      let target = event.currentTarget as HTMLButtonElement;
-      scrollToSection(target);
-      toggleID(target, 'header');
-      // console.log('//--|🠊 Clicked on Header Element 🠈|--//');
+    let jQueryHeader = function () {
+      console.log(`Orientation refresh for ${blockName}`);
     };
-
-    $('#index-header button[class*="header"]').on('click', handleClick);
-
-    return () => {
-      $('#index-header button[class*="header"]').off('click', handleClick);
-    };
+    setTimeout(jQueryHeader, 1000);
+    $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+      //--|🠋 Safety Check 🠋|--//
+      if (!this.id) {
+        let buttonElement = this as HTMLButtonElement;
+        let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
+        showSection(buttonElement, mainElement, blockName);
+      }
+    });
   }, []);
-
-  const desktop = useMediaQuery({ query: '(orientation: landscape)' });
-  const mobile = useMediaQuery({ query: '(orientation: portrait)' });
 
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
@@ -62,27 +64,3 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 };
 
 export default IndexHeader;
-
-function scrollToSection(button: HTMLButtonElement) {
-  const label = button.className.split(' ')[0].split('-')[1] as string;
-  const mainElement = document.querySelector('#index-main') as HTMLElement;
-  const scrollingCalculations = getScroll(mainElement, label);
-
-  console.log(scrollingCalculations);
-
-  $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
-}
-function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
-  if (button.parentElement?.tagName === 'MENU') {
-    let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
-
-    if (activeButton) {
-      activeButton.removeAttribute('id');
-    } else {
-      console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-    }
-
-    button.id = `${block}-active`;
-    return `#${button.id}`;
-  }
-}

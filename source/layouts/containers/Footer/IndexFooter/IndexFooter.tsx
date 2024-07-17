@@ -1,11 +1,12 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, getIndex, getScroll } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, showSection, showAside } from '../../../../scripts/index';
 interface InfoProps {
   icons: {
     projects: string;
@@ -17,24 +18,31 @@ interface InfoProps {
   };
 }
 const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
-  setTimeout(jQueryFooter, 2000);
+  const blockName: String = 'footer';
+  const pageName: String = getIdentification();
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+
   useEffect(() => {
-    let handleClick = (event: JQuery.ClickEvent) => {
-      let target = event.currentTarget as HTMLButtonElement;
-      scrollToSection(target);
-      toggleID(target, 'footer');
-      // console.log('//--|🠊 Clicked on Header Element 🠈|--//');
+    let jQueryFooter = function () {
+      console.log(`Orientation refresh for ${blockName}`);
     };
+    setTimeout(jQueryFooter, 3000);
 
-    $(`#${getIdentification()}-footer button[class*="footer"]`).on('click', handleClick);
+    $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+      //--|🠋 Safety Check 🠋|--//
+      if (!this.id) {
+        let buttonElement = this as HTMLButtonElement;
+        let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
+        showSection(buttonElement, mainElement, 'footer');
+      }
+    });
 
-    return () => {
-      $(`#${getIdentification()}-footer button[class*="footer"]`).off('click', handleClick);
-    };
+    $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
+      let rightbar = this.classList[0].split('-')[0] as string;
+      showAside(rightbar);
+    });
   }, []);
-
-  let desktop = useMediaQuery({ query: '(orientation: landscape)' });
-  let mobile = useMediaQuery({ query: '(orientation: portrait)' });
   return (
     <>
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
@@ -93,78 +101,50 @@ const buttons = [
 ];
 export default IndexFooter;
 
-function jQueryFooter() {
-  $('#index-footer button').on('click', function () {
-    toggleID(this as HTMLElement, 'footer');
-  });
+// function scrollToSection(button: HTMLButtonElement) {
+//   /*
+//   const label = button.className.split(' ')[0].split('-')[1] as string;
+//   const mainElement = document.querySelector('#index-main') as HTMLElement;
+//   const scrollingCalculations = getScroll(mainElement, label);
 
-  $('#index-footer .rightbar-button').on('click', () => {
-    console.log('Rightbar Button Clicked');
-    var element = document.getElementById('index-rightbar') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'expanded':
-          $('#index-rightbar.expanded').addClass('blocked');
-          $('#index-rightbar.expanded').addClass('expanded');
-          setTimeout(() => {
-            $('#index-rightbar').removeClass('blocked');
-            $('#index-rightbar').css('display', 'none');
-            $('#index-rightbar').removeClass('expanded');
-          }, 1000);
-          break;
-        case 'collapsed':
-          $('#index-rightbar.collapsed').css('display', 'grid');
-          $('#index-rightbar.collapsed').addClass('blocked');
-          $('#index-rightbar.collapsed').addClass('expanded');
-          setTimeout(() => {
-            $('#index-rightbar').removeClass('blocked');
-            $('#index-rightbar').removeClass('collapsed');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
+//   console.log(scrollingCalculations);
+
+//   $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
+//   */
+// }
+// function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
+//   if (button.parentElement?.tagName === 'MENU') {
+//     let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
+
+//     if (activeButton) {
+//       activeButton.removeAttribute('id');
+//     } else {
+//       console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
+//     }
+
+//     button.id = `${block}-active`;
+//     return `#${button.id}`;
+//   }
+// }
+
+// function getIndex(container: HTMLElement, label: string) {
+//   console.log('FOOTER FUNCTION!');
+// }
+// function getScroll(container: HTMLElement, label: string) {
+//   console.log('FOOTER FUNCTION!');
+// }
+/*
+    $(`#${pageName}-${blockName} button`).on('click', function () {
+      if (this.parentElement?.tagName === 'MENU') {
+        let block = this.classList[0].split('-')[0];
+        let selected = document.querySelector(`#${block}-active`) as HTMLElement;
+        if (selected) {
+          selected.removeAttribute('id');
+        } else {
+          console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
+        }
+
+        this.id = `${block}-active`;
       }
-    }
-  });
-
-  const toggleID = function (button: HTMLElement, block: 'header' | 'footer') {
-    if (button.parentElement?.tagName === 'MENU') {
-      let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
-
-      if (activeButton) {
-        activeButton.removeAttribute('id');
-      } else {
-        console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-      }
-
-      button.id = `${block}-active`;
-      return `#${button.id}`;
-    }
-  };
-}
-
-function scrollToSection(button: HTMLButtonElement) {
-  const label = button.className.split(' ')[0].split('-')[1] as string;
-  const mainElement = document.querySelector('#index-main') as HTMLElement;
-  const scrollingCalculations = getScroll(mainElement, label);
-
-  console.log(scrollingCalculations);
-
-  $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
-}
-function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
-  if (button.parentElement?.tagName === 'MENU') {
-    let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
-
-    if (activeButton) {
-      activeButton.removeAttribute('id');
-    } else {
-      console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-    }
-
-    button.id = `${block}-active`;
-    return `#${button.id}`;
-  }
-}
+    });
+    */
