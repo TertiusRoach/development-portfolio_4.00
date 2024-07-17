@@ -105,7 +105,7 @@ const SectionContact: React.FC<ContactProps> = ({ info, icons, block, state }) =
       className={`${block}-contact`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      <DivisionWorking align="right" info={info} icon={working} />
+      <DivisionWorking align="center" text="Contact" info={info} icon={working} />
 
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (

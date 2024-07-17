@@ -50,7 +50,7 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, icons, block, state }) => 
       className={`${block}-skills`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      <DivisionWorking align="left" info={info} icon={working} />
+      <DivisionWorking align="center" text="Skills" info={info} icon={working} />
 
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
