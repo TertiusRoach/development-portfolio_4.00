@@ -39,62 +39,69 @@ interface InfoProps {
   };
 }
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
+  const timer: number = 1000;
   const blockName: String = 'main';
   const pageName: String = getIdentification();
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   useEffect(() => {
+    let element = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
     let jQueryMain = function () {
-      console.log(`Orientation refresh for ${blockName}`);
-    };
-    setTimeout(jQueryMain, 2000);
-
-    $('#index-main .leftbar-button').on('click', function () {
-      let leftbar = this.classList[0].split('-')[0] as string;
-      showAside(leftbar as string);
-    });
-    $('#index-main .overlay-button').on('click', () => {
-      const element = document.getElementById('index-overlay') as HTMLElement;
-      let safety: boolean = element?.className.includes('blocked');
-      let status = element?.className.split(' ').pop() as string;
-      if (!safety) {
-        switch (status) {
-          case 'visible':
-            $('#index-overlay.visible').addClass('blocked');
-            $('#index-overlay.visible').toggleClass('hidden');
-            setTimeout(() => {
-              $('#index-overlay').removeClass('blocked');
-              $('#index-overlay').css('display', 'none');
-              $('#index-overlay').removeClass('visible');
-            }, 1000);
-            break;
-          case 'hidden':
-            $('#index-overlay.hidden').css('display', 'grid');
-            $('#index-overlay.hidden').addClass('blocked');
-            $('#index-overlay.hidden').toggleClass('visible');
-            setTimeout(() => {
-              $('#index-overlay').removeClass('blocked');
-              $('#index-overlay').removeClass('hidden');
-            }, 1000);
-            break;
-          default:
-            alert('ERROR!');
+      $(`#${pageName}-${blockName} .leftbar-button`).on('click', function () {
+        let leftbar = this.classList[0].split('-')[0] as string;
+        showAside(leftbar as string);
+      });
+      $(`#${pageName}-${blockName} .overlay-button`).on('click', () => {
+        const element = document.getElementById('index-overlay') as HTMLElement;
+        let safety: boolean = element?.className.includes('blocked');
+        let status = element?.className.split(' ').pop() as string;
+        if (!safety) {
+          switch (status) {
+            case 'visible':
+              $('#index-overlay.visible').addClass('blocked');
+              $('#index-overlay.visible').toggleClass('hidden');
+              setTimeout(() => {
+                $('#index-overlay').removeClass('blocked');
+                $('#index-overlay').css('display', 'none');
+                $('#index-overlay').removeClass('visible');
+              }, 1000);
+              break;
+            case 'hidden':
+              $('#index-overlay.hidden').css('display', 'grid');
+              $('#index-overlay.hidden').addClass('blocked');
+              $('#index-overlay.hidden').toggleClass('visible');
+              setTimeout(() => {
+                $('#index-overlay').removeClass('blocked');
+                $('#index-overlay').removeClass('hidden');
+              }, 1000);
+              break;
+            default:
+              alert('ERROR!');
+          }
         }
-      }
-    });
-    $('#index-main .rightbar-button').on('click', function () {
-      let rightbar = this.classList[0].split('-')[0] as string;
-      showAside(rightbar as string);
-    });
+      });
+      $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
+        let rightbar = this.classList[0].split('-')[0] as string;
+        showAside(rightbar as string);
+      });
+      $(`#${pageName}-${blockName} section`).on('mouseenter', (event) => {
+        let selectLabel = event.currentTarget.className.split('-')[1] as string;
+        let activeSection = document.getElementById('main-active') as HTMLElement;
+        let selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
 
-    $('#index-main section').on('mouseenter', (event) => {
-      let selectLabel = event.currentTarget.className.split('-')[1] as string;
-      let activeSection = document.getElementById('main-active') as HTMLElement;
-      let selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
-
-      activeSection.removeAttribute('id');
-      selectSection.setAttribute('id', 'main-active');
-    });
+        activeSection.removeAttribute('id');
+        selectSection.setAttribute('id', 'main-active');
+      });
+      console.log(`Refreshed: jQuery ${blockName}`);
+    };
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(jQueryMain, timer);
+      },
+      false
+    );
+    setTimeout(jQueryMain, timer);
   }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>

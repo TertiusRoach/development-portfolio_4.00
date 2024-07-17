@@ -34,24 +34,33 @@ interface InfoProps {
   };
 }
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
+  const timer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
+    let element = document.getElementById(`${pageName}-${blockName}`);
     let jQueryHeader = function () {
-      console.log(`Orientation refresh for ${blockName}`);
+      $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+        //--|🠋 Safety Check 🠋|--//
+        if (!this.id) {
+          let buttonElement = this as HTMLButtonElement;
+          let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
+          showSection(buttonElement, mainElement, blockName);
+        }
+      });
+      console.log(`Refreshed: jQuery ${blockName}`);
     };
-    setTimeout(jQueryHeader, 1000);
-    $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
-      //--|🠋 Safety Check 🠋|--//
-      if (!this.id) {
-        let buttonElement = this as HTMLButtonElement;
-        let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-        showSection(buttonElement, mainElement, blockName);
-      }
-    });
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(jQueryHeader, timer);
+      },
+      false
+    );
+    setTimeout(jQueryHeader, timer);
   }, []);
 
   return (

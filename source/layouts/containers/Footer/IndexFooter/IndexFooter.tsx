@@ -7,61 +7,6 @@ import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
 import { getResolution, getOrientation, getIdentification, showSection, showAside } from '../../../../scripts/index';
-interface InfoProps {
-  icons: {
-    projects: string;
-  };
-  info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
-  };
-}
-const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
-  const blockName: String = 'footer';
-  const pageName: String = getIdentification();
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-
-  useEffect(() => {
-    let jQueryFooter = function () {
-      console.log(`Orientation refresh for ${blockName}`);
-    };
-    setTimeout(jQueryFooter, 3000);
-
-    $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
-      //--|🠋 Safety Check 🠋|--//
-      if (!this.id) {
-        let buttonElement = this as HTMLButtonElement;
-        let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-        showSection(buttonElement, mainElement, 'footer');
-      }
-    });
-
-    $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
-      let rightbar = this.classList[0].split('-')[0] as string;
-      showAside(rightbar);
-    });
-  }, []);
-  return (
-    <>
-      <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
-        {desktop && (
-          <>
-            <MenuAnchor block="footer" items={anchors} style="icon" align="center" />
-          </>
-        )}
-        {mobile && (
-          <>
-            <MenuButton block="footer" items={buttons} style="fade" align="center" />
-            <ButtonFade block={`rightbar`} view="downplay" align="right" icon={icons.projects} text="Projects" />
-          </>
-        )}
-      </footer>
-    </>
-  );
-  console.log('IndexFooter Loaded');
-};
 const anchors = [
   {
     name: 'GitHub',
@@ -99,6 +44,71 @@ const buttons = [
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
+
+interface InfoProps {
+  icons: {
+    projects: string;
+  };
+  info: {
+    resolution: string;
+    orientation: string | 'landscape' | 'portrait';
+    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+  };
+}
+const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
+  const timer: number = 2000;
+  const blockName: String = 'footer';
+  const pageName: String = getIdentification();
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+
+  useEffect(() => {
+    let element = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
+    let jQueryFooter = function () {
+      $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+        //--|🠋 Safety Check 🠋|--//
+        if (!this.id) {
+          let buttonElement = this as HTMLButtonElement;
+          let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
+          showSection(buttonElement, mainElement, 'footer');
+        }
+      });
+      $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
+        let rightbar = this.classList[0].split('-')[0] as string;
+        showAside(rightbar);
+      });
+      console.log(`Refreshed: jQuery ${blockName}`);
+    };
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(jQueryFooter, timer);
+      },
+      false
+    );
+    setTimeout(jQueryFooter, timer);
+  }, []);
+  return (
+    <>
+      {/* How do I refresh the useEffect everytime the screen rotates? */}
+      <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
+        {desktop && (
+          <>
+            <MenuAnchor block="footer" items={anchors} style="icon" align="center" />
+          </>
+        )}
+        {mobile && (
+          <>
+            <MenuButton block="footer" items={buttons} style="fade" align="center" />
+            <ButtonFade block={`rightbar`} view="downplay" align="right" icon={icons.projects} text="Projects" />
+          </>
+        )}
+      </footer>
+    </>
+  );
+  console.log('IndexFooter Loaded');
+};
+
 export default IndexFooter;
 
 // function scrollToSection(button: HTMLButtonElement) {
