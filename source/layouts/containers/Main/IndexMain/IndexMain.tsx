@@ -6,7 +6,7 @@ import {
   getResolution,
   getOrientation,
   getIdentification,
-  scrollMain,
+  scrollInfo,
   showAside,
   showSection,
   setActive,

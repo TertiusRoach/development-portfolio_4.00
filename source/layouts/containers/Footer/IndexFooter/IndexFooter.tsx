@@ -6,7 +6,7 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, scrollMain, showAside } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, scrollInfo, showAside } from '../../../../scripts/index';
 const anchors = [
   {
     name: 'GitHub',
@@ -56,37 +56,21 @@ interface InfoProps {
   };
 }
 const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
-  const timer: number = 2000;
+  const loadTimer: number = 2000;
   const blockName: String = 'footer';
   const pageName: String = getIdentification();
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
   useEffect(() => {
-    let element = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
-    let jQueryFooter = function () {
-      $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
-        //--|🠋 Safety Check 🠋|--//
-        if (!this.id) {
-          let buttonElement = this as HTMLButtonElement;
-          let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-          scrollMain(buttonElement, mainElement, 'footer');
-        }
-      });
-      $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
-        let rightbar = this.classList[0].split('-')[0] as string;
-        showAside(rightbar);
-      });
-      console.log(`Refreshed: jQuery ${blockName}`);
-    };
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(jQueryFooter, timer);
+        setTimeout(() => jQueryFooter(blockName, pageName), loadTimer);
       },
       false
     );
-    setTimeout(jQueryFooter, timer);
+    setTimeout(() => jQueryFooter(blockName, pageName), loadTimer);
   }, []);
   return (
     <>
@@ -110,51 +94,27 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
 };
 
 export default IndexFooter;
-
-// function scrollToSection(button: HTMLButtonElement) {
-//   /*
-//   const label = button.className.split(' ')[0].split('-')[1] as string;
-//   const mainElement = document.querySelector('#index-main') as HTMLElement;
-//   const scrollingCalculations = getScroll(mainElement, label);
-
-//   console.log(scrollingCalculations);
-
-//   $('main').animate({ scrollTop: `${scrollingCalculations.above}px` }, 1000);
-//   */
-// }
-// function toggleID(button: HTMLButtonElement, block: 'header' | 'footer') {
-//   if (button.parentElement?.tagName === 'MENU') {
-//     let activeButton = document.querySelector(`#${block}-active`) as HTMLElement;
-
-//     if (activeButton) {
-//       activeButton.removeAttribute('id');
-//     } else {
-//       console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-//     }
-
-//     button.id = `${block}-active`;
-//     return `#${button.id}`;
-//   }
-// }
-
-// function getIndex(container: HTMLElement, label: string) {
-//   console.log('FOOTER FUNCTION!');
-// }
-// function getScroll(container: HTMLElement, label: string) {
-//   console.log('FOOTER FUNCTION!');
-// }
-/*
-    $(`#${pageName}-${blockName} button`).on('click', function () {
-      if (this.parentElement?.tagName === 'MENU') {
-        let block = this.classList[0].split('-')[0];
-        let selected = document.querySelector(`#${block}-active`) as HTMLElement;
-        if (selected) {
-          selected.removeAttribute('id');
-        } else {
-          console.log(`//--|🠊 No Element: #${block}-active 🠈|--//`);
-        }
-
-        this.id = `${block}-active`;
+function jQueryFooter(blockName: String, pageName: String) {
+  $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+    //--|🠋 Safety Check 🠋|--//
+    if (!this.id) {
+      //--|🠋 Safety Check 🠋|--//
+      if (!this.id) {
+        const buttonElement = this as HTMLButtonElement;
+        const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+        const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
+        $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
       }
-    });
-    */
+      /*
+      let buttonElement = this as HTMLButtonElement;
+      let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
+      scrollInfo(buttonElement, mainElement, 'footer');
+      */
+    }
+  });
+  $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
+    let rightbar = this.classList[0].split('-')[0] as string;
+    showAside(rightbar);
+  });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}

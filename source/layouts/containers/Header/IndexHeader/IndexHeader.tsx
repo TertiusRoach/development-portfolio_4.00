@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, scrollMain } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, scrollInfo } from '../../../../scripts/index';
 
 const buttons = [
   {
@@ -37,30 +37,18 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
   const timer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
   useEffect(() => {
-    let element = document.getElementById(`${pageName}-${blockName}`);
-    let jQueryHeader = function () {
-      $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
-        //--|🠋 Safety Check 🠋|--//
-        if (!this.id) {
-          let buttonElement = this as HTMLButtonElement;
-          let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-          scrollMain(buttonElement, mainElement, blockName);
-        }
-      });
-      console.log(`Refreshed: jQuery ${blockName}`);
-    };
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(jQueryHeader, timer);
+        setTimeout(() => jQueryHeader(blockName, pageName), timer);
       },
       false
     );
-    setTimeout(jQueryHeader, timer);
+    setTimeout(() => jQueryHeader(blockName, pageName), timer);
   }, []);
 
   return (
@@ -73,3 +61,17 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 };
 
 export default IndexHeader;
+
+function jQueryHeader(blockName: String, pageName: String) {
+  const blockElement = `${pageName}-${blockName}`;
+  $(`#${blockElement} button[class*="${blockName}"]`).on('click', function () {
+    //--|🠋 Safety Check 🠋|--//
+    if (!this.id) {
+      const buttonElement = this as HTMLButtonElement;
+      const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+      const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+    }
+  });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}

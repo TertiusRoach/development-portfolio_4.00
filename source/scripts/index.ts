@@ -43,6 +43,7 @@ export const setActive = function (button: HTMLButtonElement, blockName: String)
     button.id = `${blockName}-active`;
   }
 };
+
 export function showSection(pageName: String, blockName: 'overlay' | String) {
   const element = document.getElementById('index-overlay') as HTMLElement;
   let safety: boolean = element?.className.includes('blocked');
@@ -106,7 +107,7 @@ export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
   }
 }
 
-export function scrollMain(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
+export function scrollInfo(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
   const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
     let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
     let scrollAmounts: { className: string; scrollAmount: number }[] = []; //--|🠈 Initialize an array to store the class names and scroll amounts 🠈|--//
@@ -133,6 +134,9 @@ export function scrollMain(button: HTMLButtonElement, container: HTMLElement, bl
   //--|🠋 If scrollPixels is found, animate the scroll to the calculated amount 🠋|--//
   if (scrollPixels) {
     setActive(button, blockName);
-    $(scrollElement).animate({ scrollTop: `${scrollPixels.scrollAmount}px` }, 1000);
+    return {
+      element: scrollElement,
+      scrollPixels: scrollPixels.scrollAmount,
+    };
   }
 }
