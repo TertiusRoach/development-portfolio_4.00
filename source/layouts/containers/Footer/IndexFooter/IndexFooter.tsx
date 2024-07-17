@@ -95,24 +95,17 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
 
 export default IndexFooter;
 function jQueryFooter(blockName: String, pageName: String) {
-  $(`#${pageName}-${blockName} button[class*="${blockName}"]`).on('click', function () {
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
-      //--|🠋 Safety Check 🠋|--//
-      if (!this.id) {
-        const buttonElement = this as HTMLButtonElement;
-        const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-        const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
-        $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-      }
-      /*
       let buttonElement = this as HTMLButtonElement;
-      let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-      scrollInfo(buttonElement, mainElement, 'footer');
-      */
+      let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+      let scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
   });
-  $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
+  $(`#${containerElement} .rightbar-button`).on('click', function () {
     let rightbar = this.classList[0].split('-')[0] as string;
     showAside(rightbar);
   });

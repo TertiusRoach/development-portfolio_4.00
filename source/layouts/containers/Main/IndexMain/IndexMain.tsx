@@ -79,54 +79,64 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
 export default IndexMain;
 
 function jQueryMain(blockName: String, pageName: String) {
-  const blockElement = `${pageName}-${blockName}`;
-  $(`#${blockElement} section`).on('mouseenter', function () {
-    // Get the selected label from the button class name
-    const selectLabel = this.className.split('-')[1];
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} section`)
+    .on('mouseenter', function () {
+      // Get the selected label from the button class name
+      const selectLabel = this.className.split('-')[1];
 
-    // Get currently active section and the selected section elements
-    const activeSection = document.getElementById('main-active') as HTMLElement;
-    const selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
+      // Get currently active section and the selected section elements
+      const activeSection = document.getElementById('main-active') as HTMLElement;
+      const selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
 
-    // Update the active section
-    if (activeSection) {
-      activeSection.removeAttribute('id');
-    }
-    if (selectSection) {
-      selectSection.setAttribute('id', 'main-active');
-    }
-
-    // Determine orientation and update the active button accordingly
-    const updateActiveButton = (activeId: string, buttonClass: string) => {
-      const activeButton = document.getElementById(activeId) as HTMLButtonElement;
-      const selectButton = document.querySelector(`.${buttonClass}-${selectLabel}`) as HTMLButtonElement;
-
-      if (activeButton) {
-        activeButton.removeAttribute('id');
+      // Update the active section
+      if (activeSection) {
+        activeSection.removeAttribute('id');
       }
-      if (selectButton) {
-        selectButton.setAttribute('id', activeId);
+      if (selectSection) {
+        selectSection.setAttribute('id', 'main-active');
       }
-    };
 
-    const orientation = getOrientation();
-    if (orientation === 'desktop-landscape') {
-      updateActiveButton('header-active', 'header');
-    } else if (orientation === 'mobile-portrait') {
-      updateActiveButton('footer-active', 'footer');
-    }
-  });
+      // Determine orientation and update the active button accordingly
+      const updateActiveButton = (activeId: string, buttonClass: string) => {
+        const activeButton = document.getElementById(activeId) as HTMLButtonElement;
+        const selectButton = document.querySelector(`.${buttonClass}-${selectLabel}`) as HTMLButtonElement;
 
-  $(`#${blockElement} .leftbar-button`).on('click', function () {
+        if (activeButton) {
+          activeButton.removeAttribute('id');
+        }
+        if (selectButton) {
+          selectButton.setAttribute('id', activeId);
+        }
+      };
+
+      const orientation = getOrientation();
+      if (orientation === 'desktop-landscape') {
+        updateActiveButton('header-active', 'header');
+      } else if (orientation === 'mobile-portrait') {
+        updateActiveButton('footer-active', 'footer');
+      }
+    })
+    .on('click', function () {
+      let block = this.id.split('-')[0];
+      let label = this.className.split('-')[1];
+      let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+      let buttonElement = document.querySelector(`.${block}-${label}`) as HTMLButtonElement;
+
+      const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 250);
+    });
+
+  $(`#${containerElement} .leftbar-button`).on('click', function () {
     let leftbar = this.classList[0].split('-')[0] as string;
     showAside(leftbar as string);
   });
-  $(`#${blockElement} .overlay-button`).on('click', function () {
+  $(`#${containerElement} .overlay-button`).on('click', function () {
     // console.log(overlay);
     let overlay = this.classList[0].split('-')[0] as string;
     showSection(pageName, overlay);
   });
-  $(`#${blockElement} .rightbar-button`).on('click', function () {
+  $(`#${containerElement} .rightbar-button`).on('click', function () {
     let rightbar = this.classList[0].split('-')[0] as string;
     showAside(rightbar as string);
   });
