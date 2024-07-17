@@ -6,7 +6,7 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, showSection, showAside } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, scrollMain, showAside } from '../../../../scripts/index';
 const anchors = [
   {
     name: 'GitHub',
@@ -70,7 +70,7 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
         if (!this.id) {
           let buttonElement = this as HTMLButtonElement;
           let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-          showSection(buttonElement, mainElement, 'footer');
+          scrollMain(buttonElement, mainElement, 'footer');
         }
       });
       $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {

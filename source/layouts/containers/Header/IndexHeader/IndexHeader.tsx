@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, showSection } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, scrollMain } from '../../../../scripts/index';
 
 const buttons = [
   {
@@ -48,7 +48,7 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
         if (!this.id) {
           let buttonElement = this as HTMLButtonElement;
           let mainElement = document.querySelector('main[id*="main"]') as HTMLElement;
-          showSection(buttonElement, mainElement, blockName);
+          scrollMain(buttonElement, mainElement, blockName);
         }
       });
       console.log(`Refreshed: jQuery ${blockName}`);

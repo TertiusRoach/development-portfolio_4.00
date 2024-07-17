@@ -38,29 +38,38 @@ interface HomeProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
-  setTimeout(runJquery, 1000);
+  useEffect(() => {
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(() => runJquery, 1000);
+      },
+      false
+    );
+    setTimeout(() => runJquery, 1000);
+  }, []);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
 
+  /*
   let working = icons.working as string;
   let leftbar = icons.viewLeftbar as string;
   let overlay = icons.viewOverlay as string;
   let rightbar = icons.viewRightbar as string;
+  */
   // if state is equal to 'activet' return '-active' else return ''
   return (
     <section
-      id={state === 'active' ? `${block}-active` : ''}
       className={`${block}-home`}
+      id={state === 'active' ? `${block}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/* Other content */}
-      {/* <DivisionWorking align="center" info={info} icon={working} /> */}
-
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
           <menu style={{ width: `${width}px` }}>
             <ButtonFade block="leftbar" view="downplay" align="left" icon={icons.viewLeftbar} text="View Left" />
+            <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="My Career" />
             <ButtonFade block="rightbar" view="highlight" align="right" icon={icons.projects} text="My Projects" />
           </menu>
           {/* <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="View Overlay" /> */}
@@ -70,7 +79,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <ButtonFade block="overlay" view="downplay" align="left" icon={icons.career} />
+          <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} />
         </>
       )}
     </section>
@@ -79,7 +88,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
 export default SectionHome;
 
 function runJquery() {
-  // console.log('Yay, jQuery!');
+  console.log('Yay, jQuery!');
   // $('#index-main .leftbar-button').on('click', () => {
   //   console.log('Leftbar Button Clicked');
   //   var element = document.getElementById('index-leftbar') as HTMLElement;

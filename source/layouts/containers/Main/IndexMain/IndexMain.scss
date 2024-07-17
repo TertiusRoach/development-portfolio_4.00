@@ -15,10 +15,16 @@ $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
 @mixin desktop-landscape {
   // background: $primary-dark;
+  #main-active {
+    background: rgba($red-neon, 0.125);
+  }
 }
 
 @mixin mobile-portrait {
   // background: $primary-dark;
+  #main-active {
+    background: rgba($blue-neon, 0.125);
+  }
 }
 
 main[id*='index'] {
@@ -26,6 +32,7 @@ main[id*='index'] {
   overflow-y: scroll;
   flex-direction: column;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
   &::-webkit-scrollbar {
     display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
   }

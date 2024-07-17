@@ -2,8 +2,15 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-
-import { getResolution, getOrientation, getIdentification, showSection, showAside } from '../../../../scripts/index';
+import {
+  getResolution,
+  getOrientation,
+  getIdentification,
+  scrollMain,
+  showAside,
+  showSection,
+  setActive,
+} from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import SectionHome from '../../../components/Section/home/Section.home';
@@ -45,67 +52,18 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   useEffect(() => {
-    let element = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
-    let jQueryMain = function () {
-      $(`#${pageName}-${blockName} .leftbar-button`).on('click', function () {
-        let leftbar = this.classList[0].split('-')[0] as string;
-        showAside(leftbar as string);
-      });
-      $(`#${pageName}-${blockName} .overlay-button`).on('click', () => {
-        const element = document.getElementById('index-overlay') as HTMLElement;
-        let safety: boolean = element?.className.includes('blocked');
-        let status = element?.className.split(' ').pop() as string;
-        if (!safety) {
-          switch (status) {
-            case 'visible':
-              $('#index-overlay.visible').addClass('blocked');
-              $('#index-overlay.visible').toggleClass('hidden');
-              setTimeout(() => {
-                $('#index-overlay').removeClass('blocked');
-                $('#index-overlay').css('display', 'none');
-                $('#index-overlay').removeClass('visible');
-              }, 1000);
-              break;
-            case 'hidden':
-              $('#index-overlay.hidden').css('display', 'grid');
-              $('#index-overlay.hidden').addClass('blocked');
-              $('#index-overlay.hidden').toggleClass('visible');
-              setTimeout(() => {
-                $('#index-overlay').removeClass('blocked');
-                $('#index-overlay').removeClass('hidden');
-              }, 1000);
-              break;
-            default:
-              alert('ERROR!');
-          }
-        }
-      });
-      $(`#${pageName}-${blockName} .rightbar-button`).on('click', function () {
-        let rightbar = this.classList[0].split('-')[0] as string;
-        showAside(rightbar as string);
-      });
-      $(`#${pageName}-${blockName} section`).on('mouseenter', (event) => {
-        let selectLabel = event.currentTarget.className.split('-')[1] as string;
-        let activeSection = document.getElementById('main-active') as HTMLElement;
-        let selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
-
-        activeSection.removeAttribute('id');
-        selectSection.setAttribute('id', 'main-active');
-      });
-      console.log(`Refreshed: jQuery ${blockName}`);
-    };
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(jQueryMain, timer);
+        setTimeout(() => jQueryMain(blockName, pageName), timer);
       },
       false
     );
-    setTimeout(jQueryMain, timer);
+    setTimeout(() => jQueryMain(blockName, pageName), timer);
   }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionHome info={info} icons={icons} state="active" block="main" />
+      <SectionHome info={info} icons={icons} block="main" state="active" />
       <div style={{ height: '256px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
@@ -120,117 +78,58 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
 };
 export default IndexMain;
 
-let leftbarIcon: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-right.svg';
-let overlayIcon: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/star.svg';
-let rightbarIcon: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d91af6bec60526e66cfb2dccee7248cce0ad035b/source/assets/svg-files/font-awesome/testing-icons/solid/angle-left.svg';
+function jQueryMain(blockName: String, pageName: String) {
+  const blockElement = `${pageName}-${blockName}`;
+  $(`#${blockElement} section`).on('mouseenter', function () {
+    // Get the selected label from the button class name
+    const selectLabel = this.className.split('-')[1];
 
-function jQueryMain() {
-  /*
-  $('#index-main .leftbar-button').on('click', () => {
-    console.log('Leftbar Button Clicked');
-    var element = document.getElementById('index-leftbar') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'expanded':
-          $('#index-leftbar.expanded').addClass('blocked');
-          $('#index-leftbar.expanded').addClass('expanded');
-          setTimeout(() => {
-            $('#index-leftbar').removeClass('blocked');
-            $('#index-leftbar').css('display', 'none');
-            $('#index-leftbar').removeClass('expanded');
-          }, 1000);
+    // Get currently active section and the selected section elements
+    const activeSection = document.getElementById('main-active') as HTMLElement;
+    const selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
 
-          break;
-        case 'collapsed':
-          $('#index-leftbar.collapsed').css('display', 'grid');
-          $('#index-leftbar.collapsed').addClass('blocked');
-          $('#index-leftbar.collapsed').addClass('expanded');
-          setTimeout(() => {
-            $('#index-leftbar').removeClass('blocked');
-            $('#index-leftbar').removeClass('collapsed');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
-      }
+    // Update the active section
+    if (activeSection) {
+      activeSection.removeAttribute('id');
     }
-  });
-  $('#index-main .overlay-button').on('click', () => {
-    const element = document.getElementById('index-overlay') as HTMLElement;
-    let safety: boolean = element?.className.includes('blocked');
-    let status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'visible':
-          $('#index-overlay.visible').addClass('blocked');
-          $('#index-overlay.visible').toggleClass('hidden');
-          setTimeout(() => {
-            $('#index-overlay').removeClass('blocked');
-            $('#index-overlay').css('display', 'none');
-            $('#index-overlay').removeClass('visible');
-          }, 1000);
-          break;
-        case 'hidden':
-          $('#index-overlay.hidden').css('display', 'grid');
-          $('#index-overlay.hidden').addClass('blocked');
-          $('#index-overlay.hidden').toggleClass('visible');
-          setTimeout(() => {
-            $('#index-overlay').removeClass('blocked');
-            $('#index-overlay').removeClass('hidden');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
-      }
+    if (selectSection) {
+      selectSection.setAttribute('id', 'main-active');
     }
-  });
-  $('#index-main .rightbar-button').on('click', () => {
-    console.log('Rightbar Button Clicked');
-    var element = document.getElementById('index-rightbar') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
-    if (!safety) {
-      switch (status) {
-        case 'expanded':
-          $('#index-rightbar.expanded').addClass('blocked');
-          $('#index-rightbar.expanded').addClass('expanded');
-          setTimeout(() => {
-            $('#index-rightbar').css('display', 'none');
-            $('#index-rightbar').removeClass('blocked');
-            $('#index-rightbar').removeClass('expanded');
-          }, 1000);
-          break;
-        case 'collapsed':
-          $('#index-rightbar.collapsed').addClass('blocked');
-          $('#index-rightbar.collapsed').addClass('expanded');
-          $('#index-rightbar.collapsed').css('display', 'grid');
-          setTimeout(() => {
-            $('#index-rightbar').removeClass('blocked');
-            $('#index-rightbar').removeClass('collapsed');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
+
+    // Determine orientation and update the active button accordingly
+    const updateActiveButton = (activeId: string, buttonClass: string) => {
+      const activeButton = document.getElementById(activeId) as HTMLButtonElement;
+      const selectButton = document.querySelector(`.${buttonClass}-${selectLabel}`) as HTMLButtonElement;
+
+      if (activeButton) {
+        activeButton.removeAttribute('id');
       }
+      if (selectButton) {
+        selectButton.setAttribute('id', activeId);
+      }
+    };
+
+    const orientation = getOrientation();
+    if (orientation === 'desktop-landscape') {
+      updateActiveButton('header-active', 'header');
+    } else if (orientation === 'mobile-portrait') {
+      updateActiveButton('footer-active', 'footer');
     }
   });
 
-  $('#index-main section').on('mouseenter', (event) => {
-    toggleID(event.currentTarget as HTMLElement, 'main');
+  $(`#${blockElement} .leftbar-button`).on('click', function () {
+    let leftbar = this.classList[0].split('-')[0] as string;
+    showAside(leftbar as string);
+  });
+  $(`#${blockElement} .overlay-button`).on('click', function () {
+    // console.log(overlay);
+    let overlay = this.classList[0].split('-')[0] as string;
+    showSection(pageName, overlay);
+  });
+  $(`#${blockElement} .rightbar-button`).on('click', function () {
+    let rightbar = this.classList[0].split('-')[0] as string;
+    showAside(rightbar as string);
   });
 
-  const toggleID = function (section: HTMLElement, block: 'main') {
-    let label = section.className.split('-')[1];
-    let activeSection = document.getElementById('main-active') as HTMLElement;
-    let selectSection = document.querySelector(`.${block}-${label}`) as HTMLElement;
-
-    activeSection.removeAttribute('id');
-    selectSection.setAttribute('id', 'main-active');
-  };
-  */
+  console.log(`Refreshed: jQuery ${blockName}`);
 }
