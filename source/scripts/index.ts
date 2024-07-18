@@ -76,7 +76,7 @@ export function showSection(pageName: String, blockName: 'overlay' | String) {
   }
 }
 
-export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
+export function showAside(blockName: 'leftbar' | 'rightbar' | String) {
   const pageName = getIdentification();
   const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   const safety: boolean = element?.className.includes('blocked');
@@ -127,16 +127,56 @@ export function scrollInfo(button: HTMLButtonElement, container: HTMLElement, bl
     //--|🠋 Return the array of class names and scroll amounts 🠈|--//
     return scrollAmounts;
   };
-  const scrollLabel = button.className.split(' ')[0].split('-')[1] as string; //--|🠈 Extract the label name from the button's class name 🠈|--//
+  const scrollTag = container.tagName.toLowerCase() as String; //--|🠈 Get the tag name of the container in lowercase 🠈|--//
+  const scrollLabel = button.className.split(' ')[0].split('-')[1] as String; //--|🠈 Extract the label name from the button's class name 🠈|--//
   const scrollPixels = setPixels(container).find((item) => item.className === scrollLabel); //--|🠈 Find the scroll amount for the section corresponding to the label name 🠈|--//
-  const scrollElement = container.tagName.toLowerCase() as string; //--|🠈 Get the tag name of the container in lowercase 🠈|--//
 
   //--|🠋 If scrollPixels is found, animate the scroll to the calculated amount 🠋|--//
   if (scrollPixels) {
     setActive(button, blockName);
     return {
-      element: scrollElement,
-      scrollPixels: scrollPixels.scrollAmount,
+      scrollTag: scrollTag as String,
+      scrollTop: scrollPixels.scrollAmount as Number,
     };
+  }
+}
+
+export function synchronizeNavigation(blockName: String, labelName: String) {
+  // Get currently active section and the selected section elements
+  const disableElement = document.getElementById('main-active') as HTMLElement | null;
+  const activateElement = document.querySelector(`.${blockName}-${labelName}`) as HTMLElement | null;
+
+  // Helper function to update active elements
+  const toggleElement = function (
+    disableElement: HTMLElement | HTMLButtonElement | null,
+    activateElement: HTMLElement | HTMLButtonElement | null,
+    id: string
+  ) {
+    if (disableElement) {
+      disableElement.removeAttribute('id');
+    }
+    if (activateElement) {
+      activateElement.setAttribute('id', id);
+    }
+  };
+
+  // Determine orientation and update the active button accordingly
+  let block: 'header' | 'footer' | '';
+  switch (getOrientation()) {
+    case 'desktop-landscape':
+      block = 'header';
+      break;
+    case 'mobile-portrait':
+      block = 'footer';
+      break;
+    default:
+      block = '';
+  }
+
+  if (block) {
+    let activeButton = document.querySelector(`#${block}-active`) as HTMLButtonElement;
+    let selectButton = document.querySelector(`.${block}-${labelName}`) as HTMLButtonElement;
+    toggleElement(activeButton, selectButton, `${block}-active`); // Update the <header> or <footer> element based on device orientation
+    toggleElement(disableElement, activateElement, 'main-active'); // Activate the <section> inside the <main> container
   }
 }

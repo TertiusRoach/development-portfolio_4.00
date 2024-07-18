@@ -22,7 +22,6 @@ const buttons = [
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
-
 interface InfoProps {
   icons: {
     signatureAdjacent: string;
@@ -34,7 +33,7 @@ interface InfoProps {
   };
 }
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
-  const timer: number = 0;
+  const loadTimer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
@@ -44,11 +43,11 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryHeader(blockName, pageName), timer);
+        setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
       },
       false
     );
-    setTimeout(() => jQueryHeader(blockName, pageName), timer);
+    setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
   }, []);
 
   return (
@@ -62,15 +61,15 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 
 export default IndexHeader;
 
-function jQueryHeader(blockName: String, pageName: String) {
+function jQueryHeader(pageName: String, blockName: String) {
   const blockElement = `${pageName}-${blockName}`;
   $(`#${blockElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       const buttonElement = this as HTMLButtonElement;
       const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+      // const scrollPixels =  as Number;
+      $(mainContainer).animate({ scrollTop: `${scrollInfo(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

@@ -10,6 +10,7 @@ import {
   showAside,
   showSection,
   setActive,
+  synchronizeNavigation,
 } from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
@@ -46,7 +47,7 @@ interface InfoProps {
   };
 }
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
-  const timer: number = 1000;
+  const loadTimer: number = 1000;
   const blockName: String = 'main';
   const pageName: String = getIdentification();
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
@@ -55,11 +56,11 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryMain(blockName, pageName), timer);
+        setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
       },
       false
     );
-    setTimeout(() => jQueryMain(blockName, pageName), timer);
+    setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
   }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
@@ -78,53 +79,22 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
 };
 export default IndexMain;
 
-function jQueryMain(blockName: String, pageName: String) {
+function jQueryMain(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} section`)
-    .on('mouseenter', function () {
-      // Get the selected label from the button class name
-      const selectLabel = this.className.split('-')[1];
-
-      // Get currently active section and the selected section elements
-      const activeSection = document.getElementById('main-active') as HTMLElement;
-      const selectSection = document.querySelector(`.${blockName}-${selectLabel}`) as HTMLElement;
-
-      // Update the active section
-      if (activeSection) {
-        activeSection.removeAttribute('id');
-      }
-      if (selectSection) {
-        selectSection.setAttribute('id', 'main-active');
-      }
-
-      // Determine orientation and update the active button accordingly
-      const updateActiveButton = (activeId: string, buttonClass: string) => {
-        const activeButton = document.getElementById(activeId) as HTMLButtonElement;
-        const selectButton = document.querySelector(`.${buttonClass}-${selectLabel}`) as HTMLButtonElement;
-
-        if (activeButton) {
-          activeButton.removeAttribute('id');
-        }
-        if (selectButton) {
-          selectButton.setAttribute('id', activeId);
-        }
-      };
-
-      const orientation = getOrientation();
-      if (orientation === 'desktop-landscape') {
-        updateActiveButton('header-active', 'header');
-      } else if (orientation === 'mobile-portrait') {
-        updateActiveButton('footer-active', 'footer');
-      }
-    })
     .on('click', function () {
-      let block = this.id.split('-')[0];
-      let label = this.className.split('-')[1];
-      let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      let buttonElement = document.querySelector(`.${block}-${label}`) as HTMLButtonElement;
-
-      const scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 250);
+      let labelName = this.className.split('-')[1];
+      let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
+      let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
+      synchronizeNavigation(blockName, labelName);
+      $(mainBlock).animate({ scrollTop: `${scrollInfo(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
+    })
+    .on('mouseenter', function () {
+      let labelName = this.className.split('-')[1];
+      //--|🠋 Safety Check 🠋|--//
+      if (!this.id) {
+        synchronizeNavigation(blockName, labelName);
+      }
     });
 
   $(`#${containerElement} .leftbar-button`).on('click', function () {

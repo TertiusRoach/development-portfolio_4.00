@@ -66,11 +66,11 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryFooter(blockName, pageName), loadTimer);
+        setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
       },
       false
     );
-    setTimeout(() => jQueryFooter(blockName, pageName), loadTimer);
+    setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
   return (
     <>
@@ -94,15 +94,15 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
 };
 
 export default IndexFooter;
-function jQueryFooter(blockName: String, pageName: String) {
+function jQueryFooter(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
-      let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      let scrollPixels = scrollInfo(buttonElement, mainContainer, blockName)?.scrollPixels as Number;
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+      const buttonElement = this as HTMLButtonElement;
+      const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+      // const scrollPixels =  as Number;
+      $(mainContainer).animate({ scrollTop: `${scrollInfo(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
     }
   });
   $(`#${containerElement} .rightbar-button`).on('click', function () {
