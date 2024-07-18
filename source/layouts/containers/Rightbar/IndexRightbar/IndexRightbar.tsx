@@ -10,13 +10,17 @@ const download: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
 interface InfoProps {
-  info: Object;
-  resolution?: string;
-  orientation?: 'landscape' | 'portrait' | string;
-  identification?: string;
+  icons: {
+    projects: string;
+  };
+  info: {
+    resolution: string;
+    orientation: string | 'landscape' | 'portrait';
+    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+  };
 }
 const IndexRightbar: React.FC<InfoProps> = () => {
-  const loadTimer: number = 4000;
+  const loadTimer: number = 5000;
   const blockName: String = 'rightbar';
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
@@ -35,7 +39,7 @@ const IndexRightbar: React.FC<InfoProps> = () => {
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
         <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade block="header" view="downplay" align="center" /*text="View Left"*/ icon={close} />
+          <ButtonFade label="close" block="header" view="downplay" align="center" icon={close} />
         </header>
         <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
 

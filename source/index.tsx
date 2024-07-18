@@ -38,31 +38,17 @@ function Body() {
   }, []);
   return (
     <>
-      <IndexHeader icons={iconsHREF} info={infoPROP} />
+      <IndexHeader icons={iconLinks} info={infoPROP} />
 
-      <IndexMain icons={iconsHREF} info={infoPROP} />
+      <IndexMain icons={iconLinks} info={infoPROP} />
 
-      <IndexFooter icons={iconsHREF} info={infoPROP} />
+      <IndexFooter icons={iconLinks} info={infoPROP} />
 
-      <IndexLeftbar
-        info={iconsHREF}
-        resolution={`${getResolution()}`}
-        orientation={`${getOrientation()}`}
-        identification={`${getIdentification()}`}
-      />
-      <IndexRightbar
-        info={iconsHREF}
-        resolution={`${getResolution()}`}
-        orientation={`${getOrientation()}`}
-        identification={`${getIdentification()}`}
-      />
+      <IndexLeftbar icons={iconLinks} info={infoPROP} />
 
-      <IndexOverlay
-        icons={iconsHREF}
-        resolution={`${getResolution()}`}
-        orientation={`${getOrientation()}`}
-        identification={`${getIdentification()}`}
-      />
+      <IndexRightbar icons={iconLinks} info={infoPROP} />
+
+      <IndexOverlay icons={iconLinks} info={infoPROP} />
     </>
   );
 }
@@ -74,7 +60,7 @@ if (DefaultBody) {
   console.error("Element with id 'index-body' not found.");
 }
 
-export const iconsHREF = {
+export const iconLinks = {
   working:
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/hard-hat.svg',
   close:

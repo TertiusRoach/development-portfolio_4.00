@@ -5,15 +5,36 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
-  icons: Object;
+  icons: {
+    home: string;
+    close: string;
+    career: string;
+    skills: string;
+    contact: string;
+    working: string;
+    projects: string;
+    download: string;
 
-  resolution?: string;
-  orientation?: string | 'landscape' | 'portrait';
-  identification?: string;
+    viewOverlay: string;
+    viewLeftbar: string;
+    viewRightbar: string;
+
+    signatureStacked: string;
+    signatureAdjacent: string;
+
+    gitHub: string;
+    youTube: string;
+    linkedIn: string;
+  };
+  info: {
+    resolution: string;
+    orientation: string | 'landscape' | 'portrait';
+    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+  };
 }
-const IndexOverlay: React.FC<InfoProps> = () => {
-  const loadTimer: number = 4000;
-  const blockName: String = 'rightbar';
+const IndexOverlay: React.FC<InfoProps> = ({ icons }) => {
+  const loadTimer: number = 3000;
+  const blockName: String = 'overlay';
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
@@ -30,7 +51,11 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   return (
     <>
       <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
-        <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
+        <header className="overlay-foreground" style={{ zIndex: 2 }}>
+          <ButtonFade label="close" block="overlay" view="downplay" align="center" icon={icons.close} />
+        </header>
+
+        {/* <header className="overlay-foreground" style={{ zIndex: 2 }}></header> */}
 
         <div className="overlay-midground" style={{ zIndex: 1 }}>
           <h1>Build style here.</h1>
@@ -45,10 +70,10 @@ const IndexOverlay: React.FC<InfoProps> = () => {
 export default IndexOverlay;
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement}`).on('click', () => {
-    var element = document.getElementById('index-overlay') as HTMLElement;
-    var safety: boolean = element?.className.includes('blocked');
-    var status = element?.className.split(' ').pop() as string;
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {
+    let element = document.getElementById('index-overlay') as HTMLElement;
+    let safety: boolean = element?.className.includes('blocked');
+    let status = element?.className.split(' ').pop() as string;
     if (!safety) {
       switch (status) {
         case 'visible':
@@ -72,5 +97,19 @@ function jQueryOverlay(pageName: String, blockName: String) {
           alert('ERROR!');
       }
     }
+    /*
+    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
+    if (!safety.includes('blocked')) {
+      $(`#${containerElement}.expanded`).addClass('collapsed');
+      $(`#${containerElement}.collapsed`).removeClass('expanded');
+    }
+    */
   });
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
+  /*
+  $(`#${containerElement}`).on('click', () => {
+
+  });
+  */
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

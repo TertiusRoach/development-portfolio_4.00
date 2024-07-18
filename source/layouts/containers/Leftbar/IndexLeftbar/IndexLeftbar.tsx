@@ -10,13 +10,17 @@ const download: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
 
 interface InfoProps {
-  info: Object;
-  resolution?: string;
-  orientation?: 'landscape' | 'portrait' | string;
-  identification?: string;
+  icons: {
+    projects: string;
+  };
+  info: {
+    resolution: string;
+    orientation: string | 'landscape' | 'portrait';
+    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+  };
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  const loadTimer: number = 3000;
+  const loadTimer: number = 4000;
   const blockName: String = 'leftbar';
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
@@ -35,7 +39,7 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
         <header className="leftbar-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade label="projects" block="footer" view="downplay" align="center" /*text="View Left"*/ icon={close} />
+          <ButtonFade label="close" block="header" view="downplay" align="center" /*text="View Left"*/ icon={close} />
         </header>
         <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
 

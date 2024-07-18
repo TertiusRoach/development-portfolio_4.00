@@ -51,7 +51,7 @@ const buttons = [
   },
 ];
 
-interface InfoProps {
+interface FooterProps {
   icons: {
     projects: string;
   };
@@ -61,7 +61,7 @@ interface InfoProps {
     identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
-const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
+const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
   const loadTimer: number = 2000;
   const blockName: String = 'footer';
   const pageName: String = getIdentification();
