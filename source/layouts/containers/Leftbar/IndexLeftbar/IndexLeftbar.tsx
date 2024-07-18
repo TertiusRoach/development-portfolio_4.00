@@ -75,7 +75,7 @@ function jQueryLeftbar(pageName: String, blockName: String) {
 
   $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
     if (getOrientation().includes('portrait')) {
-      toggleState(containerElement);
+      // toggleState(containerElement);
     }
   });
   $(`#${containerElement} .${blockName}-foreground`).on('click', () => {

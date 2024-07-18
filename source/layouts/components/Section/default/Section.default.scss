@@ -1,15 +1,15 @@
 @import '../../../containers/color-palette.scss';
 
 @mixin desktop-landscape {
-  padding: 4rem 6rem;
-
   //--|🠊 display: grid; 🠈|--//
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
+  padding: 4rem 6rem;
   //~~|🠊 border: 4px dashed $red-neon; 🠈|~~//
   //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
 }
 
 @mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+
   padding: 6rem 4rem;
   //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
   //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//

@@ -85,14 +85,14 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <MenuButton block="main" style="fade" align="center" info={buttons} />
+          <MenuButton style="fade" info={buttons} />
         </>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <MenuButton block="main" style="fade" align="center" info={buttons} />
+          <MenuButton style="fade" info={buttons} />
         </>
       )}
     </section>

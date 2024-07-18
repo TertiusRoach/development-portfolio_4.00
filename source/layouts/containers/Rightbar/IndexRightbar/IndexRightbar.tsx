@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { iconsHREF } from '../../../..';
 import React, { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
@@ -16,8 +17,21 @@ interface InfoProps {
   identification?: string;
 }
 const IndexRightbar: React.FC<InfoProps> = () => {
-  setTimeout(jQueryRightbar, 5000);
-
+  const loadTimer: number = 4000;
+  const blockName: String = 'rightbar';
+  const pageName: String = getIdentification();
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  useEffect(() => {
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
+      },
+      false
+    );
+    setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
+  }, []);
   return (
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
@@ -40,36 +54,36 @@ const IndexRightbar: React.FC<InfoProps> = () => {
 };
 export default IndexRightbar;
 
-function jQueryRightbar() {
-  const toggleState = function () {
-    let element = document.getElementById('index-rightbar')?.className as string;
+function jQueryRightbar(pageName: String, blockName: String) {
+  const containerElement = `${pageName}-${blockName}` as String;
+  const toggleState = function (containerElement: String) {
+    let element = document.querySelector(`#${containerElement}`)?.className as string;
     if (!element.includes('blocked')) {
       var status = element.split(' ').pop() as string;
       switch (status) {
         case 'expanded':
-          $('#index-rightbar.expanded').toggleClass('collapsed');
-          $('#index-rightbar.expanded').removeClass('expanded');
-
+          $(`#${containerElement}.expanded`).toggleClass('collapsed');
+          $(`#${containerElement}.expanded`).removeClass('expanded');
           break;
         case 'collapsed':
-          $('#index-rightbar.collapsed').toggleClass('expanded');
-          $('#index-rightbar.collapsed').removeClass('collapsed');
+          $(`#${containerElement}.collapsed`).toggleClass('expanded');
+          $(`#${containerElement}.collapsed`).removeClass('collapsed');
           break;
       }
     }
   };
 
-  $('#index-rightbar div[class*="background"] ul').on('click', () => {
+  $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
     if (getOrientation().includes('portrait')) {
-      toggleState();
+      // toggleState(containerElement);
     }
   });
-
-  $('#index-rightbar header button').on('click', () => {
-    let safety = document.getElementById('index-rightbar')?.className as string;
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {
+    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
-      $('#index-rightbar.expanded').addClass('collapsed');
-      $('#index-rightbar.collapsed').removeClass('expanded');
+      $(`#${containerElement}.expanded`).addClass('collapsed');
+      $(`#${containerElement}.collapsed`).removeClass('expanded');
     }
   });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
