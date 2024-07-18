@@ -89,8 +89,8 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
         )}
         {mobile && (
           <>
-            <MenuButton block="footer" info={buttons} style="fade" align="center" />
-            <ButtonFade block={`rightbar`} view="downplay" align="right" icon={icons.projects} text="Projects" />
+            <MenuButton info={buttons} style="fade" />
+            <ButtonFade text="Projects" block="rightbar" align="right" view="downplay" icon={icons.projects} />
           </>
         )}
       </footer>
@@ -107,7 +107,6 @@ function jQueryFooter(pageName: String, blockName: String) {
     if (!this.id) {
       const buttonElement = this as HTMLButtonElement;
       const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      // const scrollPixels =  as Number;
       $(mainContainer).animate({ scrollTop: `${scrollInfo(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
     }
   });

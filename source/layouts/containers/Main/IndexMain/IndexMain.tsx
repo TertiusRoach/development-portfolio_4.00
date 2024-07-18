@@ -89,7 +89,7 @@ function jQueryMain(pageName: String, blockName: String) {
       let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
       let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
       $(mainBlock).animate({ scrollTop: `${scrollInfo(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
-      // setTimeout(() => synchronizeNavigation(blockName, labelName), 1000);
+      setTimeout(() => synchronizeNavigation(blockName, labelName), 1000);
     })
     .on('mouseenter', function () {
       let labelName = this.className.split('-')[1];
