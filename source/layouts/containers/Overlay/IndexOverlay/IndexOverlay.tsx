@@ -1,5 +1,8 @@
 import $ from 'jquery';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
+import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
 interface InfoProps {
   icons: Object;
@@ -9,7 +12,21 @@ interface InfoProps {
   identification?: string;
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
-  setTimeout(jQueryOverlay, 4000);
+  const loadTimer: number = 4000;
+  const blockName: String = 'rightbar';
+  const pageName: String = getIdentification();
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  useEffect(() => {
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(() => jQueryOverlay(pageName, blockName), loadTimer);
+      },
+      false
+    );
+    setTimeout(() => jQueryOverlay(pageName, blockName), loadTimer);
+  }, []);
   return (
     <>
       <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
@@ -26,8 +43,9 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   console.log('IndexOverlay Loaded');
 };
 export default IndexOverlay;
-function jQueryOverlay() {
-  $('#index-overlay').on('click', () => {
+function jQueryOverlay(pageName: String, blockName: String) {
+  const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement}`).on('click', () => {
     var element = document.getElementById('index-overlay') as HTMLElement;
     var safety: boolean = element?.className.includes('blocked');
     var status = element?.className.split(' ').pop() as string;

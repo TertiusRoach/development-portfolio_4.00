@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { iconsHREF } from '../../../..';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';

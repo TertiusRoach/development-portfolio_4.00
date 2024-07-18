@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { iconsHREF } from '../../../..';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
@@ -56,22 +55,6 @@ export default IndexRightbar;
 
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  const toggleState = function (containerElement: String) {
-    let element = document.querySelector(`#${containerElement}`)?.className as string;
-    if (!element.includes('blocked')) {
-      var status = element.split(' ').pop() as string;
-      switch (status) {
-        case 'expanded':
-          $(`#${containerElement}.expanded`).toggleClass('collapsed');
-          $(`#${containerElement}.expanded`).removeClass('expanded');
-          break;
-        case 'collapsed':
-          $(`#${containerElement}.collapsed`).toggleClass('expanded');
-          $(`#${containerElement}.collapsed`).removeClass('collapsed');
-          break;
-      }
-    }
-  };
 
   $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
     if (getOrientation().includes('portrait')) {
@@ -85,5 +68,22 @@ function jQueryRightbar(pageName: String, blockName: String) {
       $(`#${containerElement}.collapsed`).removeClass('expanded');
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+
+  // const toggleState = function (containerElement: String) {
+  //   let element = document.querySelector(`#${containerElement}`)?.className as string;
+  //   if (!element.includes('blocked')) {
+  //     var status = element.split(' ').pop() as string;
+  //     switch (status) {
+  //       case 'expanded':
+  //         $(`#${containerElement}.expanded`).toggleClass('collapsed');
+  //         $(`#${containerElement}.expanded`).removeClass('expanded');
+  //         break;
+  //       case 'collapsed':
+  //         $(`#${containerElement}.collapsed`).toggleClass('expanded');
+  //         $(`#${containerElement}.collapsed`).removeClass('collapsed');
+  //         break;
+  //     }
+  //   }
+  // };
 }
