@@ -3,13 +3,13 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import {
+  showAside,
+  setActive,
+  scrollInfo,
+  showSection,
   getResolution,
   getOrientation,
   getIdentification,
-  scrollInfo,
-  showAside,
-  showSection,
-  setActive,
   synchronizeNavigation,
 } from '../../../../scripts/index';
 
@@ -17,6 +17,7 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import SectionHome from '../../../components/Section/home/Section.home';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';
+import SectionDefault from '../../../components/Section/default/Section.default';
 
 interface InfoProps {
   info: {
@@ -64,7 +65,8 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionHome info={info} icons={icons} block="main" state="active" />
+      <SectionDefault label="default" block="main" state="active" info={info} icons={icons} />
+      {/* <SectionHome info={info} icons={icons} block="main" state="active" />
       <div style={{ height: '256px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
@@ -72,7 +74,7 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
       <div style={{ height: '568px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div>
-      <SectionContact info={info} icons={icons} block="main" />
+      <SectionContact info={info} icons={icons} block="main" /> */}
     </main>
   );
   console.log('IndexMain Loaded');
