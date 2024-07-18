@@ -9,16 +9,22 @@ import ButtonFrame from '../../Button/frame/Button.frame';
 import ButtonSlide from '../../Button/slide/Button.slide';
 
 interface MenuProps {
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
-  items: { text: string; icon: string; label: string }[];
+  info: {
+    icon: string;
+    text: string;
+    label: 'rightbar' | string;
+    align: 'left' | 'center' | 'right' | string;
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
   align: 'left' | 'center' | 'right';
   view?: 'highlight' | 'downplay';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
-const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
+const MenuButton: React.FC<MenuProps> = ({ style, info, align }) => {
   let buttonStyle = [];
   // Only add highlight to the first ButtonFace. The rest should be downplay
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < info.length; i++) {
     switch (style) {
       case 'fade':
         if (i === 0) {
@@ -26,12 +32,12 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
             <ButtonFade
               view={'highlight'}
               index={i}
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              label={items[i].label}
-              key={`${items[i].text}`}
+              text={info[i].text}
+              icon={info[i].icon}
+              label={info[i].label}
+              align={info[i].align}
+              block={info[i].block}
+              key={`${info[i].text}`}
             />
           );
         } else {
@@ -39,12 +45,12 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
             <ButtonFade
               view={'downplay'}
               index={i}
-              block={block}
+              block={info[i].block}
               align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              label={items[i].label}
-              key={`${items[i].text}`}
+              text={info[i].text}
+              icon={info[i].icon}
+              label={info[i].label}
+              key={`${info[i].text}`}
             />
           );
         }
@@ -53,98 +59,23 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
         if (i === 0) {
           buttonStyle.push(
             <ButtonFrame
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="highlight"
-              key={items[i].text}
+              block={info[i].block}
+              align={info[i].align}
+              text={info[i].text}
+              icon={info[i].icon}
+              view="highlight"
+              key={info[i].text}
             />
           );
         } else {
           buttonStyle.push(
             <ButtonFrame
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="downplay"
-              key={items[i].text}
-            />
-          );
-        }
-        break;
-      case 'glow':
-        if (i === 0) {
-          buttonStyle.push(
-            <ButtonGlow
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="highlight"
-              key={items[i].text}
-            />
-          );
-        } else {
-          buttonStyle.push(
-            <ButtonGlow
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="downplay"
-              key={items[i].text}
-            />
-          );
-        }
-        break;
-      case 'icon':
-        if (i === 0) {
-          buttonStyle.push(
-            <ButtonIcon
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="highlight"
-              key={items[i].text}
-            />
-          );
-        } else {
-          buttonStyle.push(
-            <ButtonIcon
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="downplay"
-              key={items[i].text}
-            />
-          );
-        }
-        break;
-      case 'slide':
-        if (i === 0) {
-          buttonStyle.push(
-            <ButtonSlide
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="highlight"
-              key={items[i].text}
-            />
-          );
-        } else {
-          buttonStyle.push(
-            <ButtonSlide
-              block={block}
-              align={align}
-              text={items[i].text}
-              icon={items[i].icon}
-              state="downplay"
-              key={items[i].text}
+              block={info[i].block}
+              align={info[i].align}
+              text={info[i].text}
+              icon={info[i].icon}
+              view="downplay"
+              key={info[i].text}
             />
           );
         }
@@ -152,7 +83,7 @@ const MenuButton: React.FC<MenuProps> = ({ block, style, items, align }) => {
     }
   }
 
-  switch (items.length) {
+  switch (info.length) {
     case 1:
       return (
         <menu className="one">

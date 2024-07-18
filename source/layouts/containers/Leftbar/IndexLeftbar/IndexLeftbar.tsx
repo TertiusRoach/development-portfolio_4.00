@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { iconsHREF } from '../../../..';
 import React, { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
 
@@ -16,8 +17,21 @@ interface InfoProps {
   identification?: string;
 }
 const IndexLeftbar: React.FC<InfoProps> = () => {
-  setTimeout(jQueryLeftbar, 5000);
-
+  const loadTimer: number = 3000;
+  const blockName: String = 'leftbar';
+  const pageName: String = getIdentification();
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  useEffect(() => {
+    window.addEventListener(
+      'resize',
+      () => {
+        setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
+      },
+      false
+    );
+    setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
+  }, []);
   return (
     <>
       <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
@@ -40,35 +54,36 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
 };
 export default IndexLeftbar;
 
-function jQueryLeftbar() {
-  const toggleState = function () {
-    let element = document.getElementById('index-leftbar')?.className as string;
+function jQueryLeftbar(pageName: String, blockName: String) {
+  const containerElement = `${pageName}-${blockName}` as String;
+  const toggleState = function (containerElement: String) {
+    let element = document.querySelector(`#${containerElement}`)?.className as string;
     if (!element.includes('blocked')) {
       var status = element.split(' ').pop() as string;
       switch (status) {
         case 'expanded':
-          $('#index-leftbar.expanded').toggleClass('collapsed');
-          $('#index-leftbar.expanded').removeClass('expanded');
-
+          $(`#${containerElement}.expanded`).toggleClass('collapsed');
+          $(`#${containerElement}.expanded`).removeClass('expanded');
           break;
         case 'collapsed':
-          $('#index-leftbar.collapsed').toggleClass('expanded');
-          $('#index-leftbar.collapsed').removeClass('collapsed');
+          $(`#${containerElement}.collapsed`).toggleClass('expanded');
+          $(`#${containerElement}.collapsed`).removeClass('collapsed');
           break;
       }
     }
   };
 
-  $('#index-leftbar div[class*="background"] ul').on('click', () => {
+  $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
     if (getOrientation().includes('portrait')) {
-      toggleState();
+      toggleState(containerElement);
     }
   });
-  $('#index-leftbar header button').on('click', () => {
-    let safety = document.getElementById('index-leftbar')?.className as string;
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {
+    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
-      $('#index-leftbar.expanded').addClass('collapsed');
-      $('#index-leftbar.collapsed').removeClass('expanded');
+      $(`#${containerElement}.expanded`).addClass('collapsed');
+      $(`#${containerElement}.collapsed`).removeClass('expanded');
     }
   });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

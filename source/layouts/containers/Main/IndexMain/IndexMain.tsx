@@ -51,8 +51,8 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   const loadTimer: number = 1000;
   const blockName: String = 'main';
   const pageName: String = getIdentification();
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -65,8 +65,8 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   }, []);
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionDefault label="default" block="main" state="active" info={info} icons={icons} />
-      {/* <SectionHome info={info} icons={icons} block="main" state="active" />
+      <SectionDefault block="main" state="active" info={info} icons={icons} />
+      <SectionHome info={info} icons={icons} block="main" state="active" />
       <div style={{ height: '256px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
@@ -74,7 +74,7 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
       <div style={{ height: '568px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div>
-      <SectionContact info={info} icons={icons} block="main" /> */}
+      <SectionContact info={info} icons={icons} block="main" />
     </main>
   );
   console.log('IndexMain Loaded');
@@ -99,17 +99,18 @@ function jQueryMain(pageName: String, blockName: String) {
       }
     });
 
-  $(`#${containerElement} .leftbar-button`).on('click', function () {
-    let leftbar = this.classList[0].split('-')[0] as string;
+  $(`#${containerElement} .main-leftbar`).on('click', function () {
+    let leftbar = this.classList[0].split('-')[1] as string;
+    // alert(leftbar);
     showAside(leftbar as string);
   });
-  $(`#${containerElement} .overlay-button`).on('click', function () {
+  $(`#${containerElement} .main-overlay`).on('click', function () {
     // console.log(overlay);
-    let overlay = this.classList[0].split('-')[0] as string;
+    let overlay = this.classList[0].split('-')[1] as string;
     showSection(pageName, overlay);
   });
-  $(`#${containerElement} .rightbar-button`).on('click', function () {
-    let rightbar = this.classList[0].split('-')[0] as string;
+  $(`#${containerElement} .main-rightbar`).on('click', function () {
+    let rightbar = this.classList[0].split('-')[1] as string;
     showAside(rightbar as string);
   });
 

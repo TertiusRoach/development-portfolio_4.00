@@ -1,46 +1,60 @@
-import React from 'react';
 import './Button.frame.scss';
+import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 interface FrameProps {
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  state: 'downplay' | 'highlight';
-  align: 'left' | 'center' | 'right';
-  text: string;
-  icon?: string;
-
-  // click?: (element: React.MouseEvent<HTMLElement>) => void;
+  text?: string;
+  index?: number;
+  icon: string | SVGElement;
+  view: 'downplay' | 'highlight';
+  align: 'left' | 'center' | 'right' | string;
+  label?: 'home' | 'skills' | 'contact' | string;
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const ButtonFrame: React.FC<FrameProps> = ({ block, state, align, text, icon }) => {
-  /*
-  console.log(`Label: ${label}`);
-  console.log(`State: ${state}`);
-  console.log(`Align: ${align}`);
-  console.log(`Text: ${text}`);
-  */
-  let renderButton = (
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
-    icon: string,
-    align: 'left' | 'center' | 'right'
-  ) => {
-    if (icon !== 'undefined' || '') {
-      return (
-        <>
-          <h3 className={`${align}`} style={{ zIndex: 2 }}>
-            {text}
-          </h3>
-          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-          <span className="button-background" style={{ zIndex: 0 }}></span>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <h3>{text}</h3>
-        </>
-      );
-    }
+
+const ButtonFrame: React.FC<FrameProps> = ({ index, block, align, text, icon, label }) => {
+  const [view, setView] = useState<'highlight' | 'downplay'>('highlight');
+
+  const mouseEnter = () => {
+    setView('downplay');
   };
-  const className = `${block}-button ${state} ${align}` as string;
-  return <button className={className}>{renderButton(block, `${icon}`, align)}</button>;
+
+  const mouseLeave = () => {
+    setView('highlight');
+  };
+
+  const renderButtonContent = (icon: string, align: 'left' | 'center' | 'right', block: string) => {
+    const desktop = useMediaQuery({ query: '(orientation: landscape)' });
+    const mobile = useMediaQuery({ query: '(orientation: portrait)' });
+
+    return (
+      <>
+        {icon && <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />}
+        <span className="button-background" style={{ zIndex: 0 }}></span>
+        <>
+          {desktop && (
+            <h3 className={`${align} ${block}`} style={{ zIndex: 2 }}>
+              {text}
+            </h3>
+          )}
+          {mobile && (
+            <h6 className={`${align} ${block}`} style={{ zIndex: 2 }}>
+              {text}
+            </h6>
+          )}
+        </>
+      </>
+    );
+  };
+
+  const buttonClass = label ? `${block}-${label}` : `${block}-button`;
+  const buttonId = index === 0 ? `${block}-active` : undefined;
+
+  return (
+    <button id={buttonId} className={`${buttonClass} ${view} ${align}`} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+      {renderButtonContent(icon as string, align as 'left' | 'center' | 'right', block)}
+    </button>
+  );
 };
+
 export default ButtonFrame;

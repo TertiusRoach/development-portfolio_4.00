@@ -8,17 +8,23 @@ import { getResolution, getOrientation, getIdentification, scrollInfo } from '..
 const buttons = [
   {
     text: 'Home',
+    align: 'left',
     label: 'home',
+    block: 'header',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
   },
   {
+    align: 'left',
     text: 'Skills',
     label: 'skills',
+    block: 'header',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
   },
   {
+    align: 'left',
     text: 'Contact',
     label: 'contact',
+    block: 'header',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
@@ -52,9 +58,17 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
-      <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
-      {desktop && <MenuButton block="header" style="fade" align="left" items={buttons} />}
-      {/* {mobile && <></>} */}
+      {desktop && (
+        <>
+          <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
+          <MenuButton block="header" style="fade" align="left" info={buttons} />
+        </>
+      )}
+      {mobile && (
+        <>
+          <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
+        </>
+      )}
     </header>
   );
 };

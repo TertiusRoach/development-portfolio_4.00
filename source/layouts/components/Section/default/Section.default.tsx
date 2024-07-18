@@ -4,11 +4,11 @@ import './Section.default.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
 
 interface DefaultProps {
-  state?: 'active';
   info: {
     resolution: string;
     orientation: string;
@@ -36,9 +36,10 @@ interface DefaultProps {
     linkedIn: string;
   };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  label?: 'default';
+  state?: 'active';
+  label?: 'default' | 'home' | 'skills' | 'contact';
 }
-const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state, label }) => {
+const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) => {
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -51,36 +52,47 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state, lab
   }, []);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
+  let buttons = [
+    {
+      text: 'View Leftbar',
+      label: 'leftbar',
+      align: 'left',
+      block: 'main',
+      icon: icons.viewLeftbar,
+    },
+    {
+      text: 'View Overlay',
+      label: 'overlay',
+      align: 'center',
+      block: 'main',
+      icon: icons.viewOverlay,
+    },
+    {
+      text: 'View Rightbar',
+      label: 'rightbar',
+      align: 'right',
+      block: 'main',
+      icon: icons.viewRightbar,
+    },
+  ];
 
-  /*
-  let working = icons.working as string;
-  let leftbar = icons.viewLeftbar as string;
-  let overlay = icons.viewOverlay as string;
-  let rightbar = icons.viewRightbar as string;
-  */
-  // if state is equal to 'activet' return '-active' else return ''
   return (
     <section
-      className={`${block}-${label}`}
+      className={`${block}-default`}
       id={state === 'active' ? `${block}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <menu style={{ width: `${width}px` }}>
-            <ButtonFade block="leftbar" view="downplay" align="left" icon={icons.viewLeftbar} text="View Left" />
-            <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="My Career" />
-            <ButtonFade block="rightbar" view="highlight" align="right" icon={icons.projects} text="My Projects" />
-          </menu>
-          {/* <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="View Overlay" /> */}
+          <MenuButton block="main" style="fade" align="center" info={buttons} />
         </>
       )}
 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} />
+          <MenuButton block="main" style="fade" align="center" info={buttons} />
         </>
       )}
     </section>

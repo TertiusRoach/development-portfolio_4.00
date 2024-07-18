@@ -9,9 +9,9 @@ interface FadeProps {
   icon: string | SVGElement;
 
   view: 'downplay' | 'highlight';
-  align: 'left' | 'center' | 'right';
+  align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | String;
 }
 
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, label }) => {
@@ -42,8 +42,8 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, labe
 
   const renderButton = (
     icon: string,
-    align: 'left' | 'center' | 'right',
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar'
+    align: 'left' | 'center' | 'right' | String,
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | String
   ) => {
     let desktop = useMediaQuery({ query: '(orientation: landscape)' });
     let mobile = useMediaQuery({ query: '(orientation: portrait)' });

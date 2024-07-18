@@ -3,6 +3,8 @@
 @mixin desktop-landscape {
   padding: 4rem 6rem;
 
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
   //~~|🠊 border: 4px dashed $red-neon; 🠈|~~//
   //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
 }
@@ -14,10 +16,16 @@
 }
 
 body {
+  #index-body {
+    @include index-colors();
+  }
+  #resume-body {
+    @include resume-colors();
+  }
+
   main {
     section[class*='default'] {
       display: grid;
-      grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
 
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
@@ -28,12 +36,6 @@ body {
         @include mobile-portrait();
       }
     }
-  }
-  #index-body {
-    @include index-colors();
-  }
-  #resume-body {
-    @include resume-colors();
   }
 }
 

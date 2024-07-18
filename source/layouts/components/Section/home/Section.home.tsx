@@ -60,26 +60,21 @@ const SectionHome: React.FC<HomeProps> = ({ info, icons, block, state }) => {
   // if state is equal to 'activet' return '-active' else return ''
   return (
     <section
-      className={`${block}-home`}
       id={state === 'active' ? `${block}-active` : ''}
+      className={`${block}-home`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
+        //--|🠋 Desktop (Landscape) 🠋|--//
         <>
-          <menu style={{ width: `${width}px` }}>
-            <ButtonFade block="leftbar" view="downplay" align="left" icon={icons.viewLeftbar} text="View Left" />
-            <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="My Career" />
-            <ButtonFade block="rightbar" view="highlight" align="right" icon={icons.projects} text="My Projects" />
-          </menu>
-          {/* <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} text="View Overlay" /> */}
+          <DivisionWorking align="center" text="Home" info={info} icon={icons.home} />
         </>
       )}
 
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
+        //--|🠋 Mobile (Portrait) 🠋|--//
         <>
-          <ButtonFade block="overlay" view="downplay" align="center" icon={icons.career} />
+          <DivisionWorking align="center" text="Home" info={info} icon={icons.home} />
         </>
       )}
     </section>

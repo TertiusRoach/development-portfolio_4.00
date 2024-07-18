@@ -31,16 +31,22 @@ const buttons = [
   {
     text: 'Home',
     label: 'home',
+    align: 'center',
+    block: 'footer',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
   },
   {
     text: 'Skills',
     label: 'skills',
+    align: 'center',
+    block: 'footer',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
   },
   {
     text: 'Contact',
     label: 'contact',
+    align: 'center',
+    block: 'footer',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
@@ -83,7 +89,7 @@ const IndexFooter: React.FC<InfoProps> = ({ icons }) => {
         )}
         {mobile && (
           <>
-            <MenuButton block="footer" items={buttons} style="fade" align="center" />
+            <MenuButton block="footer" info={buttons} style="fade" align="center" />
             <ButtonFade block={`rightbar`} view="downplay" align="right" icon={icons.projects} text="Projects" />
           </>
         )}
