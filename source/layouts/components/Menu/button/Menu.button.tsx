@@ -28,7 +28,7 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
           buttonStyle.push(
             <ButtonFade
               index={i}
-              view={'highlight'}
+              view={'downplay'}
               text={info[i].text}
               icon={info[i].icon}
               label={info[i].label}

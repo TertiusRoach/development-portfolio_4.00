@@ -61,7 +61,7 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
       {desktop && (
         <>
           <img className="signature-adjacent" src={icons.signatureAdjacent} alt="Tertius Roach" />
-          <MenuButton block="header" style="fade" align="left" info={buttons} />
+          <MenuButton style="fade" info={buttons} />
         </>
       )}
       {mobile && (

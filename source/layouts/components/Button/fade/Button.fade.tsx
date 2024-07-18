@@ -1,52 +1,36 @@
-// Button.fade.tsx
 import './Button.fade.scss';
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 interface FadeProps {
+  icon: string;
   text?: string;
   index?: number;
-  icon: string | SVGElement;
-
   view: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | String;
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, label }) => {
-  const [view, setState] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
+  const [view, setView] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
 
   const mouseEnter = () => {
-    setState('downplay');
+    setView('downplay');
   };
+
   const mouseLeave = () => {
-    setState('highlight');
-    /*
-    switch (block) {
-      case 'header':
-        break;
-        case 'main':
-          break;
-          case 'footer':
-            break;
-            case 'overlay':
-              break;
-              case 'leftbar':
-                break;
-                case 'rightbar':
-                  break;
-                  }
-                  */
+    setView('highlight');
   };
 
   const renderButton = (
     icon: string,
-    align: 'left' | 'center' | 'right' | String,
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | String
+    align: 'left' | 'center' | 'right' | string,
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
   ) => {
-    let desktop = useMediaQuery({ query: '(orientation: landscape)' });
-    let mobile = useMediaQuery({ query: '(orientation: portrait)' });
+    const desktop = useMediaQuery({ query: '(orientation: landscape)' });
+    const mobile = useMediaQuery({ query: '(orientation: portrait)' });
+
     if (icon) {
       return (
         <>
@@ -74,45 +58,19 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, labe
       );
     }
   };
-  if (label === undefined) {
-    if (index === 0) {
-      return (
-        <button
-          id={`${block}-active`}
-          className={`${block}-button ${view} ${align}`}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-        >
-          {renderButton(`${icon}`, align, block)}
-        </button>
-      );
-    } else {
-      return (
-        <button className={`${block}-button ${view} ${align}`} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-          {renderButton(`${icon}`, align, block)}
-        </button>
-      );
-    }
-  } else {
-    if (index === 0) {
-      return (
-        <button
-          id={`${block}-active`}
-          className={`${block}-${label} ${view} ${align}`}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-        >
-          {renderButton(`${icon}`, align, block)}
-        </button>
-      );
-    } else {
-      return (
-        <button className={`${block}-${label} ${view} ${align}`} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-          {renderButton(`${icon}`, align, block)}
-        </button>
-      );
-    }
-  }
+
+  const buttonClass = label !== undefined ? `${block}-${label}` : `${block}-button`;
+
+  return (
+    <button
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+      className={`${buttonClass} ${view} ${align}`}
+      id={index === 0 ? `${block}-active` : undefined}
+    >
+      {renderButton(icon, align, block)}
+    </button>
+  );
 };
 
 export default ButtonFade;

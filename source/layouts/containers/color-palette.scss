@@ -101,15 +101,15 @@ $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
   $tertiary-medium: #714631; //--🠊 rgba(113,70,49,1) 🠈--//
   $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
-  //--|🠋| Highlight & Downplay |🠋|--//
-  button.highlight {
-    color: black;
-    // background: $primary-light;
-  }
-  button.downplay {
-    color: white;
-    // background: $primary-dark;
-  }
+  // //--|🠋| Highlight & Downplay |🠋|--//
+  // button.highlight {
+  //   color: black;
+  //   // background: $primary-light;
+  // }
+  // button.downplay {
+  //   color: white;
+  //   // background: $primary-dark;
+  // }
 }
 @mixin resume-colors {
   //--|🠋| Color Scheme |🠋|--//
