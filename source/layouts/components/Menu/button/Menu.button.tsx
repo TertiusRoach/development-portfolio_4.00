@@ -17,11 +17,8 @@ interface MenuProps {
     align: 'left' | 'center' | 'right' | string;
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
-  align: 'left' | 'center' | 'right';
-  view?: 'highlight' | 'downplay';
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
-const MenuButton: React.FC<MenuProps> = ({ style, info, align }) => {
+const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
   let buttonStyle = [];
   // Only add highlight to the first ButtonFace. The rest should be downplay
   for (let i = 0; i < info.length; i++) {
@@ -30,26 +27,26 @@ const MenuButton: React.FC<MenuProps> = ({ style, info, align }) => {
         if (i === 0) {
           buttonStyle.push(
             <ButtonFade
-              view={'highlight'}
               index={i}
+              view={'highlight'}
               text={info[i].text}
               icon={info[i].icon}
               label={info[i].label}
-              align={info[i].align}
               block={info[i].block}
+              align={info[i].align}
               key={`${info[i].text}`}
             />
           );
         } else {
           buttonStyle.push(
             <ButtonFade
-              view={'downplay'}
               index={i}
-              block={info[i].block}
-              align={align}
+              view={'downplay'}
               text={info[i].text}
               icon={info[i].icon}
               label={info[i].label}
+              block={info[i].block}
+              align={info[i].align}
               key={`${info[i].text}`}
             />
           );
@@ -59,23 +56,25 @@ const MenuButton: React.FC<MenuProps> = ({ style, info, align }) => {
         if (i === 0) {
           buttonStyle.push(
             <ButtonFrame
-              block={info[i].block}
-              align={info[i].align}
+              view="highlight"
               text={info[i].text}
               icon={info[i].icon}
-              view="highlight"
-              key={info[i].text}
+              label={info[i].label}
+              block={info[i].block}
+              align={info[i].align}
+              key={`${info[i].text}`}
             />
           );
         } else {
           buttonStyle.push(
             <ButtonFrame
-              block={info[i].block}
-              align={info[i].align}
+              view="downplay"
               text={info[i].text}
               icon={info[i].icon}
-              view="downplay"
-              key={info[i].text}
+              label={info[i].label}
+              block={info[i].block}
+              align={info[i].align}
+              key={`${info[i].text}`}
             />
           );
         }
@@ -85,52 +84,17 @@ const MenuButton: React.FC<MenuProps> = ({ style, info, align }) => {
 
   switch (info.length) {
     case 1:
-      return (
-        <menu className="one">
-          {buttonStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-        </menu>
-      );
+      return <menu className="one">{buttonStyle}</menu>;
     case 2:
-      return (
-        <menu className="two">
-          {buttonStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="two">{buttonStyle}</menu>;
     case 3:
-      return (
-        <menu className="three">
-          {buttonStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="three">{buttonStyle}</menu>;
     case 4:
-      return (
-        <menu className="four">
-          {buttonStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="four">{buttonStyle}</menu>;
     case 5:
-      return (
-        <menu className="five">
-          {buttonStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[4].text} icon={items[4].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="five">{buttonStyle}</menu>;
     default:
-      alert('Menu.button.tsx');
+      alert('Maximum of 5 Buttons Allowed');
       break;
   }
 };

@@ -88,31 +88,28 @@ function jQueryMain(pageName: String, blockName: String) {
       let labelName = this.className.split('-')[1];
       let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
       let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
-      synchronizeNavigation(blockName, labelName);
       $(mainBlock).animate({ scrollTop: `${scrollInfo(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
+      // setTimeout(() => synchronizeNavigation(blockName, labelName), 1000);
     })
     .on('mouseenter', function () {
       let labelName = this.className.split('-')[1];
-      //--|🠋 Safety Check 🠋|--//
-      if (!this.id) {
-        synchronizeNavigation(blockName, labelName);
-      }
+      synchronizeNavigation(blockName, labelName);
     });
 
-  $(`#${containerElement} .main-leftbar`).on('click', function () {
+  $(`#${containerElement} .${blockName}-leftbar`).on('click', function () {
     let leftbar = this.classList[0].split('-')[1] as string;
     // alert(leftbar);
     showAside(leftbar as string);
   });
-  $(`#${containerElement} .main-overlay`).on('click', function () {
+  $(`#${containerElement} .${blockName}-overlay`).on('click', function () {
     // console.log(overlay);
     let overlay = this.classList[0].split('-')[1] as string;
     showSection(pageName, overlay);
   });
-  $(`#${containerElement} .main-rightbar`).on('click', function () {
+  $(`#${containerElement} .${blockName}-rightbar`).on('click', function () {
     let rightbar = this.classList[0].split('-')[1] as string;
     showAside(rightbar as string);
   });
 
-  console.log(`Refreshed: jQuery ${blockName}`);
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
