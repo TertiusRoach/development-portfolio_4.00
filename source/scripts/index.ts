@@ -1,7 +1,4 @@
-// index.ts
-import $ from 'jquery';
-
-//--|🠋 Exports 🠋|--//
+//--|🠋 index.ts 🠋|--//
 export function getIdentification(): String {
   const hyperlink: String = window.location.href;
   const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];
@@ -11,7 +8,6 @@ export function getIdentification(): String {
     return hyperlink.split('/').pop()?.split('.')[0] as String;
   }
 }
-
 export function getOrientation(): String {
   const orientation = window.screen.orientation.type;
 
@@ -30,8 +26,7 @@ export function getResolution(): String {
 
   return resolution as String;
 }
-
-export const setActive = function (button: HTMLButtonElement, blockName: String): void {
+export function setActive(button: HTMLButtonElement, blockName: String): void {
   const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
   if (button.parentElement?.tagName === 'MENU') {
     if (activeButton) {
@@ -42,32 +37,43 @@ export const setActive = function (button: HTMLButtonElement, blockName: String)
 
     button.id = `${blockName}-active`;
   }
-};
-
-export function showSection(pageName: String, blockName: 'overlay' | String) {
+}
+export function showSection(pageName: string, blockName: 'overlay' | string) {
   const element = document.getElementById('index-overlay') as HTMLElement;
-  let safety: boolean = element?.className.includes('blocked');
-  let status = element?.className.split(' ').pop() as string;
+  if (!element) {
+    console.error('Element with ID "index-overlay" not found.');
+    return;
+  }
+
+  let safety: boolean = element.className.includes('blocked');
+  let status = element.className.split(' ').pop() as string;
+
   if (!safety) {
+    const targetElement = document.getElementById(`${pageName}-${blockName}`);
+    if (!targetElement) {
+      console.error(`Element with ID "${pageName}-${blockName}" not found.`);
+      return;
+    }
+
     switch (status) {
       case 'visible':
-        $(`#${pageName}-${blockName}.visible`).addClass('blocked');
-        $(`#${pageName}-${blockName}.visible`).toggleClass('hidden');
+        targetElement.classList.add('blocked');
+        targetElement.classList.toggle('hidden');
 
         setTimeout(() => {
-          $(`#${pageName}-${blockName}`).removeClass('blocked');
-          $(`#${pageName}-${blockName}`).css('display', 'none');
-          $(`#${pageName}-${blockName}`).removeClass('visible');
+          targetElement.classList.remove('blocked');
+          targetElement.style.display = 'none';
+          targetElement.classList.remove('visible');
         }, 1000);
         break;
       case 'hidden':
-        $(`#${pageName}-${blockName}.hidden`).addClass('blocked');
-        $(`#${pageName}-${blockName}.hidden`).css('display', 'grid');
-        $(`#${pageName}-${blockName}.hidden`).toggleClass('visible');
+        targetElement.classList.add('blocked');
+        targetElement.style.display = 'grid';
+        targetElement.classList.toggle('visible');
 
         setTimeout(() => {
-          $(`#${pageName}-${blockName}`).removeClass('blocked');
-          $(`#${pageName}-${blockName}`).removeClass('hidden');
+          targetElement.classList.remove('blocked');
+          targetElement.classList.remove('hidden');
         }, 1000);
         break;
       default:
@@ -75,30 +81,37 @@ export function showSection(pageName: String, blockName: 'overlay' | String) {
     }
   }
 }
-
-export function showAside(blockName: 'leftbar' | 'rightbar' | String) {
+export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
   const pageName = getIdentification();
   const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  const safety: boolean = element?.className.includes('blocked');
-  const status = element?.className.split(' ').pop() as string;
+  if (!element) {
+    console.error(`Element with ID "${pageName}-${blockName}" not found.`);
+    return;
+  }
+
+  const safety: boolean = element.className.includes('blocked');
+  const status = element.className.split(' ').pop() as string;
+
   if (!safety) {
     switch (status) {
       case 'expanded':
-        $(`#${pageName}-${blockName}.expanded`).addClass('blocked');
-        $(`#${pageName}-${blockName}.expanded`).addClass('expanded');
+        element.classList.add('blocked');
+        element.classList.add('expanded');
+
         setTimeout(() => {
-          $(`#${pageName}-${blockName}`).removeClass('blocked');
-          $(`#${pageName}-${blockName}`).css('display', 'none');
-          $(`#${pageName}-${blockName}`).removeClass('expanded');
+          element.classList.remove('blocked');
+          element.style.display = 'none';
+          element.classList.remove('expanded');
         }, 1000);
         break;
       case 'collapsed':
-        $(`#${pageName}-${blockName}.collapsed`).css('display', 'grid');
-        $(`#${pageName}-${blockName}.collapsed`).addClass('blocked');
-        $(`#${pageName}-${blockName}.collapsed`).addClass('expanded');
+        element.style.display = 'grid';
+        element.classList.add('blocked');
+        element.classList.add('expanded');
+
         setTimeout(() => {
-          $(`#${pageName}-${blockName}`).removeClass('blocked');
-          $(`#${pageName}-${blockName}`).removeClass('collapsed');
+          element.classList.remove('blocked');
+          element.classList.remove('collapsed');
         }, 1000);
         break;
       default:
@@ -106,7 +119,6 @@ export function showAside(blockName: 'leftbar' | 'rightbar' | String) {
     }
   }
 }
-
 export function scrollInfo(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
   const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
     let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
@@ -140,7 +152,6 @@ export function scrollInfo(button: HTMLButtonElement, container: HTMLElement, bl
     };
   }
 }
-
 export function synchronizeNavigation(blockName: String, labelName: String) {
   // Get currently active section and the selected section elements
   const disableElement = document.getElementById('main-active') as HTMLElement | null;
