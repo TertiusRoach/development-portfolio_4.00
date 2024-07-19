@@ -82,3 +82,22 @@ export const iconHREF = {
   signatureStacked: `${iconURI}/tertius-roach/signature-stacked/primary-light.svg`,
   signatureAdjacent: `${iconURI}/tertius-roach/signature-adjacent/primary-light.svg`,
 };
+/*
+console.log(iconHREF.home);
+console.log(iconHREF.close);
+console.log(iconHREF.career);
+console.log(iconHREF.skills);
+console.log(iconHREF.working);
+console.log(iconHREF.contact);
+console.log(iconHREF.download);
+console.log(iconHREF.projects);
+console.log(iconHREF.viewOverlay);
+console.log(iconHREF.viewLeftbar);
+console.log(iconHREF.viewRightbar);
+console.log(iconHREF.gitHub);
+console.log(iconHREF.youTube);
+console.log(iconHREF.linkedIn);
+console.log(iconHREF.signatureIcon);
+console.log(iconHREF.signatureStacked);
+console.log(iconHREF.signatureAdjacent);
+*/
