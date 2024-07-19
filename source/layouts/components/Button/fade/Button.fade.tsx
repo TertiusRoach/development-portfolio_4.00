@@ -40,31 +40,25 @@ function renderButton(
 ) {
   const desktop = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile = useMediaQuery({ query: '(orientation: portrait)' });
-
-  if (icon) {
-    return (
-      <>
-        <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-        <span className="button-background" style={{ zIndex: 0 }}></span>
+  return (
+    <>
+      <span className="button-background" style={{ zIndex: 0 }}></span>
+      {desktop && (
         <>
-          {desktop && (
-            <h3 className={`${align} ${block}`} style={{ zIndex: 2 }}>
-              {text}
-            </h3>
-          )}
-          {mobile && (
-            <h6 className={`${align} ${block} display-6`} style={{ zIndex: 2 }}>
-              {text}
-            </h6>
-          )}
+          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
+          <h3 className={`${align} ${block}`} style={{ zIndex: 2 }}>
+            {text}
+          </h3>
         </>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <h3>{text}</h3>
-      </>
-    );
-  }
+      )}
+      {mobile && (
+        <>
+          <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
+          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 2 }}>
+            {text}
+          </h6>
+        </>
+      )}
+    </>
+  );
 }

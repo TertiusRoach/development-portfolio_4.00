@@ -175,6 +175,18 @@
           animation: fadeIn 1s forwards;
         }
       }
+      & {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          @media screen and (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
     }
 
     // Target buttons that have an id containing 'active'
@@ -197,17 +209,37 @@
           color: white;
         }
       }
-
-      img {
-        animation: fadeOut 1s forwards;
+      &.downplay {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-medium;
+          animation: downplay 1s forwards;
+          filter: drop-shadow(0 0 1rem rgba(white, 1));
+        }
+        img {
+          animation: fadeIn 1s forwards;
+        }
       }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        animation: setActive 1s forwards;
+
+      & {
+        img {
+          animation: fadeOut 1s forwards;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          animation: setActive 1s forwards;
+          @media screen and (max-width: 767px) {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -240,15 +272,25 @@ body {
     }
   }
   @mixin mobile-portrait {
+    /* Target main, aside, and section elements */
     main,
     aside,
     section {
+      /* Set display to flexbox for flexible layout */
       display: flex;
+
+      /* Target button elements within the selected sections */
       button {
+        /* Set width to 100% of the container */
         width: 100%;
+        /* Set height to 6rem units (presumably rem) */
         height: 6rem;
+
+        /* Target image elements within the buttons */
         img {
+          /* Set image height to 6rem */
           height: 6rem;
+          /* Set margins for the image (no top/bottom and 1rem on left/right) */
           margin: 0 1rem;
         }
       }
@@ -268,7 +310,6 @@ body {
         h5,
         h6 {
           padding: 0 0.5rem;
-          overflow: visible;
         }
       }
     }
