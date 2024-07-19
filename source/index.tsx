@@ -61,7 +61,7 @@ if (DefaultBody) {
 }
 
 const iconURI: String =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7933f224694301f53e0de7771db12700668d8d55/source/assets/svg-files/archive-images';
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/748d0a01b3cab00f0a4f276612e5c83ddbfda8aa/source/assets/svg-files/archive-images';
 export const iconHREF = {
   home: `${iconURI}/font-awesome/solid/home.svg`,
   close: `${iconURI}/font-awesome/solid/times.svg`,
