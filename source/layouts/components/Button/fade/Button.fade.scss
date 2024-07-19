@@ -209,6 +209,7 @@
           color: white;
         }
       }
+      /*
       &.downplay {
         h1,
         h2,
@@ -224,6 +225,7 @@
           animation: fadeIn 1s forwards;
         }
       }
+      */
 
       & {
         img {
@@ -235,6 +237,7 @@
         h4,
         h5,
         h6 {
+          color: white;
           animation: setActive 1s forwards;
           @media screen and (max-width: 767px) {
             display: none;
