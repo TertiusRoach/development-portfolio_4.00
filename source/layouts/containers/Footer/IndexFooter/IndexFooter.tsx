@@ -98,7 +98,6 @@ const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
   );
   console.log('IndexFooter Loaded');
 };
-
 export default IndexFooter;
 function jQueryFooter(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;

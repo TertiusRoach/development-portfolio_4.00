@@ -12,15 +12,15 @@ interface FadeProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, label }) => {
-  const [view, setView] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
+  const [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
   const className = label !== undefined ? `${block}-${label}` : `${block}-button`;
   const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
 
   let mouseEnter = function () {
-    setView('downplay');
+    setView('highlight');
   };
   let mouseLeave = function () {
-    setView('highlight');
+    setView('downplay');
   };
 
   return (
@@ -53,7 +53,7 @@ function renderButton(
             </h3>
           )}
           {mobile && (
-            <h6 className={`${align} ${block}`} style={{ zIndex: 2 }}>
+            <h6 className={`${align} ${block} display-6`} style={{ zIndex: 2 }}>
               {text}
             </h6>
           )}

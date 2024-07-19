@@ -126,41 +126,27 @@
         }
       }
 
-      @keyframes downplay {
-        from {
-          color: $primary-medium;
-        }
-        to {
-          color: $primary-light;
-        }
-      }
       @keyframes highlight {
         from {
+          color: $primary-medium;
+          filter: drop-shadow(0 0 4px rgba(black, 1));
+        }
+        to {
           color: $primary-light;
+          filter: drop-shadow(0 0 4px rgba(white, 0.25));
+        }
+      }
+      @keyframes downplay {
+        from {
+          color: $primary-light;
+          filter: drop-shadow(0 0 4px rgba(white, 0.25));
         }
         to {
           color: $primary-medium;
+          filter: drop-shadow(0 0 4px rgba(black, 1));
         }
       }
 
-      h3,
-      h6,
-      img {
-        filter: drop-shadow(0 0 8px rgba(black, 1));
-      }
-      &.downplay {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          animation: highlight 1s forwards;
-        }
-        img {
-          animation: highlight 1s forwards;
-        }
-      }
       &.highlight {
         h1,
         h2,
@@ -170,6 +156,11 @@
         h6 {
           animation: highlight 1s forwards;
         }
+        img {
+          animation: fadeOut 1s forwards;
+        }
+      }
+      &.downplay {
         h1,
         h2,
         h3,
@@ -177,6 +168,8 @@
         h5,
         h6 {
           color: $primary-medium;
+          animation: downplay 1s forwards;
+          filter: drop-shadow(0 0 1rem rgba(white, 1));
         }
         img {
           animation: fadeIn 1s forwards;
@@ -186,28 +179,27 @@
 
     // Target buttons that have an id containing 'active'
     button[id*='active'] {
-      @keyframes remActive {
+      @keyframes fadeOut {
         from {
-          opacity: 0;
-          filter: blur(1rem);
-          color: $primary-light;
+          opacity: 1;
+          filter: blur(0);
         }
         to {
-          opacity: 1;
-          color: white;
-          filter: blur(0);
+          opacity: 0;
+          filter: blur(1rem);
         }
       }
       @keyframes setActive {
         from {
+          color: $primary-light;
         }
         to {
+          color: white;
         }
       }
 
       img {
-        animation: remActive 1s forwards;
-        filter: drop-shadow(0 0 4px rgba(black, 0.25));
+        animation: fadeOut 1s forwards;
       }
       h1,
       h2,
@@ -216,7 +208,6 @@
       h5,
       h6 {
         animation: setActive 1s forwards;
-        filter: drop-shadow(0 0 1rem rgba(black, 1));
       }
     }
   }
@@ -277,6 +268,7 @@ body {
         h5,
         h6 {
           padding: 0 0.5rem;
+          overflow: visible;
         }
       }
     }
