@@ -16,8 +16,7 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, labe
   const [view, setView] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
   const className = label !== undefined ? `${block}-${label}` : `${block}-button`;
 
-  // Conditionally apply the id only if index is 0 and block is not 'main'
-  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined;
+  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
 
   let mouseEnter = function () {
     setView('downplay');

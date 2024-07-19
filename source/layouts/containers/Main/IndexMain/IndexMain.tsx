@@ -10,7 +10,7 @@ import {
   getResolution,
   getOrientation,
   getIdentification,
-  synchronizeNavigation,
+  setMenu,
 } from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
@@ -89,11 +89,11 @@ function jQueryMain(pageName: String, blockName: String) {
       let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
       let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
       $(mainBlock).animate({ scrollTop: `${scrollInfo(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
-      setTimeout(() => synchronizeNavigation(blockName, labelName), 1000);
+      setTimeout(() => setMenu(blockName, labelName), 1000);
     })
     .on('mouseenter', function () {
       let labelName = this.className.split('-')[1];
-      synchronizeNavigation(blockName, labelName);
+      setMenu(blockName, labelName);
     });
 
   $(`#${containerElement} .${blockName}-leftbar`).on('click', function () {
