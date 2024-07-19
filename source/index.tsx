@@ -61,16 +61,16 @@ if (DefaultBody) {
 }
 
 const iconURI: String =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7933f224694301f53e0de7771db12700668d8d55/source/assets/svg-files';
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7933f224694301f53e0de7771db12700668d8d55/source/assets/svg-files/archive-images';
 export const iconHREF = {
-  working: `${iconURI}/font-awesome/solid/hard-hat.svg`,
-  close: `${iconURI}/font-awesome/solid/times.svg`,
-  download: `${iconURI}/font-awesome/solid/download.svg`,
   home: `${iconURI}/font-awesome/solid/home.svg`,
-  skills: `${iconURI}/font-awesome/solid/lightbulb.svg`,
-  contact: `${iconURI}/font-awesome/solid/phone.svg`,
-  projects: `${iconURI}/font-awesome/solid/code.svg`,
+  close: `${iconURI}/font-awesome/solid/times.svg`,
   career: `${iconURI}/font-awesome/solid/briefcase.svg`,
+  skills: `${iconURI}/font-awesome/solid/lightbulb.svg`,
+  working: `${iconURI}/font-awesome/solid/hard-hat.svg`,
+  contact: `${iconURI}/font-awesome/solid/phone.svg`,
+  download: `${iconURI}/font-awesome/solid/download.svg`,
+  projects: `${iconURI}/font-awesome/solid/code.svg`,
   viewOverlay: `${iconURI}/font-awesome/solid/star.svg`,
   viewLeftbar: `${iconURI}/font-awesome/solid/angle-right.svg`,
   viewRightbar: `${iconURI}/font-awesome/solid/angle-left.svg`,
