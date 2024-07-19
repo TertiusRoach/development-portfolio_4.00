@@ -1,4 +1,4 @@
-// Section.home.tsx
+// Section.default.tsx
 import React from 'react';
 import './Section.default.scss';
 import { useMediaQuery } from 'react-responsive';

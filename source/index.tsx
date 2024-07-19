@@ -61,25 +61,24 @@ if (DefaultBody) {
 }
 
 const iconURI: String =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome';
+  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7933f224694301f53e0de7771db12700668d8d55/source/assets/svg-files';
 export const iconHREF = {
-  working: `${iconURI}/solid/hard-hat.svg`,
-  close: `${iconURI}/solid/times.svg`,
-  download: `${iconURI}/solid/download.svg`,
-  home: `${iconURI}/solid/home.svg`,
-  skills: `${iconURI}/solid/lightbulb.svg`,
-  contact: `${iconURI}/solid/phone.svg`,
-  projects: `${iconURI}/solid/code.svg`,
-  career: `${iconURI}/solid/briefcase.svg`,
-  viewOverlay: `${iconURI}/solid/star.svg`,
-  viewLeftbar: `${iconURI}/solid/angle-right.svg`,
-  viewRightbar: `${iconURI}/solid/angle-left.svg`,
-  gitHub: `${iconURI}/brands/github.svg`,
-  youTube: `${iconURI}/brands/youtube.svg`,
-  linkedIn: `${iconURI}/brands/linkedin.svg`,
+  working: `${iconURI}/font-awesome/solid/hard-hat.svg`,
+  close: `${iconURI}/font-awesome/solid/times.svg`,
+  download: `${iconURI}/font-awesome/solid/download.svg`,
+  home: `${iconURI}/font-awesome/solid/home.svg`,
+  skills: `${iconURI}/font-awesome/solid/lightbulb.svg`,
+  contact: `${iconURI}/font-awesome/solid/phone.svg`,
+  projects: `${iconURI}/font-awesome/solid/code.svg`,
+  career: `${iconURI}/font-awesome/solid/briefcase.svg`,
+  viewOverlay: `${iconURI}/font-awesome/solid/star.svg`,
+  viewLeftbar: `${iconURI}/font-awesome/solid/angle-right.svg`,
+  viewRightbar: `${iconURI}/font-awesome/solid/angle-left.svg`,
+  gitHub: `${iconURI}/font-awesome/brands/github.svg`,
+  youTube: `${iconURI}/font-awesome/brands/youtube.svg`,
+  linkedIn: `${iconURI}/font-awesome/brands/linkedin.svg`,
 
-  signatureStacked:
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/tertius-roach/signature-stacked/primary-light.svg',
-  signatureAdjacent:
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/tertius-roach/signature-adjacent/primary-light.svg',
+  signatureIcon: `${iconURI}/tertius-roach/signature-icon/primary-light.svg`,
+  signatureStacked: `${iconURI}/tertius-roach/signature-stacked/primary-light.svg`,
+  signatureAdjacent: `${iconURI}/tertius-roach/signature-adjacent/primary-light.svg`,
 };

@@ -14,20 +14,23 @@ interface FadeProps {
 
 const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, label }) => {
   const [view, setView] = useState<'highlight' | 'downplay'>('highlight'); // Initial state
+  const className = label !== undefined ? `${block}-${label}` : `${block}-button`;
 
-  const mouseEnter = () => {
+  // Conditionally apply the id only if index is 0 and block is not 'main'
+  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined;
+
+  let mouseEnter = function () {
     setView('downplay');
   };
-
-  const mouseLeave = () => {
+  let mouseLeave = function () {
     setView('highlight');
   };
 
-  const renderButton = (
+  let renderButton = function (
     icon: string,
     align: 'left' | 'center' | 'right' | string,
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
-  ) => {
+  ) {
     const desktop = useMediaQuery({ query: '(orientation: landscape)' });
     const mobile = useMediaQuery({ query: '(orientation: portrait)' });
 
@@ -59,15 +62,8 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, labe
     }
   };
 
-  const buttonClass = label !== undefined ? `${block}-${label}` : `${block}-button`;
-
   return (
-    <button
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-      className={`${buttonClass} ${view} ${align}`}
-      id={index === 0 ? `${block}-active` : undefined}
-    >
+    <button onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${view} ${align}`} id={setActive}>
       {renderButton(icon, align, block)}
     </button>
   );
