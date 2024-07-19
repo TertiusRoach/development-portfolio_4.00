@@ -85,20 +85,6 @@
   }
 }
 @mixin button-effects {
-  // @mixin index-palette {
-  //   $primary-dark: #1f3131;
-  //   $primary-medium: #3d6262;
-  //   $primary-light: #9eb0b0;
-
-  //   $secondary-dark: #230510;
-  //   $secondary-medium: #450920;
-  //   $secondary-light: #a2848f;
-
-  //   $tertiary-dark: #392319;
-  //   $tertiary-medium: #714631;
-  //   $tertiary-light: #b8a298;
-  // }
-
   $primary-dark: #1f3131;
   $primary-medium: #3d6262;
   $primary-light: #9eb0b0;
@@ -119,40 +105,6 @@
   section[id*='overlay'] {
     // Target all buttons that do not have an id of 'header-active'
     button:not([id*='active']) {
-      &.downplay {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          animation: highlight 1s forwards;
-        }
-        img {
-          animation: fadeOut 1s forwards;
-        }
-      }
-      &.highlight {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          animation: downplay 1s forwards;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: $primary-medium;
-        }
-        img {
-          animation: fadeIn 1s forwards;
-        }
-      }
       @keyframes fadeOut {
         from {
           opacity: 1;
@@ -174,7 +126,7 @@
         }
       }
 
-      @keyframes highlight {
+      @keyframes downplay {
         from {
           color: $primary-medium;
         }
@@ -182,19 +134,80 @@
           color: $primary-light;
         }
       }
-      @keyframes downplay {
+      @keyframes highlight {
         from {
           color: $primary-light;
         }
         to {
           color: $primary-medium;
+        }
+      }
+
+      h3,
+      h6,
+      img {
+        filter: drop-shadow(0 0 8px rgba(black, 1));
+      }
+      &.downplay {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          animation: highlight 1s forwards;
+        }
+        img {
+          animation: highlight 1s forwards;
+        }
+      }
+      &.highlight {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          animation: highlight 1s forwards;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-medium;
+        }
+        img {
+          animation: fadeIn 1s forwards;
         }
       }
     }
+
     // Target buttons that have an id containing 'active'
     button[id*='active'] {
+      @keyframes remActive {
+        from {
+          opacity: 0;
+          filter: blur(1rem);
+          color: $primary-light;
+        }
+        to {
+          opacity: 1;
+          color: white;
+          filter: blur(0);
+        }
+      }
+      @keyframes setActive {
+        from {
+        }
+        to {
+        }
+      }
+
       img {
-        animation: fadeIn 1s forwards;
+        animation: remActive 1s forwards;
+        filter: drop-shadow(0 0 4px rgba(black, 0.25));
       }
       h1,
       h2,
@@ -202,25 +215,8 @@
       h4,
       h5,
       h6 {
-        animation: activate 1s forwards;
-      }
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        filter: blur(1rem);
-      }
-      to {
-        opacity: 1;
-        filter: blur(0);
-      }
-    }
-    @keyframes activate {
-      from {
-        color: $primary-light;
-      }
-      to {
-        color: white;
+        animation: setActive 1s forwards;
+        filter: drop-shadow(0 0 1rem rgba(black, 1));
       }
     }
   }
