@@ -97,14 +97,12 @@
   $tertiary-medium: #714631;
   $tertiary-light: #b8a298;
 
-  main[id*='main'],
   header[id*='header'],
   footer[id*='footer'],
   aside[id*='leftbar'],
   aside[id*='rightbar'],
   section[id*='overlay'] {
     button:not([id*='active']) {
-      // Target all buttons that do not have an id of 'header-active'
       &.highlight:hover {
         h1,
         h2,
@@ -134,6 +132,17 @@
           animation: downplay 1s backwards;
         }
       }
+      &.highlight {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-light;
+          animation: highlight 1s forwards;
+        }
+      }
       img[class*='medium'] {
         opacity: 1;
         animation: fadeIn 1s ease-in-out;
@@ -143,19 +152,17 @@
         animation: fadeOut 1s ease-in-out;
       }
     }
-
-    button[id*='active'] {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        color: white;
-      }
-    }
-    // Default Styling for Fade
     button {
+      &[id*='active'] {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: white;
+        }
+      }
       img[class*='dark'],
       img[class*='medium'],
       img[class*='light'] {
@@ -176,7 +183,95 @@
         filter: drop-shadow(0 0 4px rgba(black, 1));
         filter: drop-shadow(0 0 4px rgba(black, 1));
       }
-      @media screen and (max-width: 767px) {
+    }
+  }
+
+  main[id*='main'] {
+    button:not([id*='active']) {
+      &.downplay:hover {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          // color: $primary-light;
+          animation: highlight 1s forwards;
+        }
+        img[class*='light'] {
+          opacity: 1;
+          animation: fadeIn 1s forwards;
+        }
+        img[class*='medium'] {
+          opacity: 1;
+        }
+      }
+      &.highlight {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-medium;
+          animation: downplay 1s backwards;
+        }
+      }
+      &.downplay {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-light;
+          animation: highlight 1s forwards;
+        }
+      }
+      img[class*='medium'] {
+        opacity: 1;
+        animation: fadeIn 1s ease-in-out;
+      }
+      img[class*='light'] {
+        opacity: 0;
+        animation: fadeOut 1s ease-in-out;
+      }
+    }
+
+    // Default Styling for Fade
+    button {
+      &[id*='active'] {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: white;
+        }
+      }
+      img[class*='dark'],
+      img[class*='medium'],
+      img[class*='light'] {
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+      }
+
+      @media screen and (max-width: 1000px) {
         h1,
         h2,
         h3,
@@ -266,21 +361,13 @@ body {
     main,
     aside,
     section {
-      /* Set display to flexbox for flexible layout */
       display: flex;
-
-      /* Target button elements within the selected sections */
       button {
-        /* Set width to 100% of the container */
         width: 100%;
-        /* Set height to 6rem units (presumably rem) */
         height: 6rem;
 
-        /* Target image elements within the buttons */
         img {
-          /* Set image height to 6rem */
           height: 6rem;
-          /* Set margins for the image (no top/bottom and 1rem on left/right) */
           margin: 0 1rem;
         }
       }
@@ -300,6 +387,16 @@ body {
         h5,
         h6 {
           padding: 0 0.5rem;
+        }
+        @media screen and (max-width: 768px) {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            display: none;
+          }
         }
       }
     }

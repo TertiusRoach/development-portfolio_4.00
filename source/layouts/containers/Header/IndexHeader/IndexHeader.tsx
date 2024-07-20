@@ -5,37 +5,27 @@ import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import { getResolution, getOrientation, getIdentification, getScroll } from '../../../../scripts/index';
 
-const buttons = [
-  {
-    text: 'Home',
-    align: 'left',
-    label: 'home',
-    block: 'header',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
-  },
-  {
-    align: 'left',
-    text: 'Skills',
-    label: 'skills',
-    block: 'header',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
-  },
-  {
-    align: 'left',
-    text: 'Contact',
-    label: 'contact',
-    block: 'header',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
-  },
-];
 interface InfoProps {
   icons: {
+    home: string;
+    close: string;
+    career: string;
+    skills: string;
+    contact: string;
+    working: string;
+    projects: string;
+    download: string;
+
+    viewOverlay: string;
+    viewLeftbar: string;
+    viewRightbar: string;
+
+    signatureStacked: string;
     signatureAdjacent: string;
-  };
-  info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+
+    gitHub: string;
+    youTube: string;
+    linkedIn: string;
   };
 }
 const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
@@ -44,6 +34,32 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let buttons = [
+    {
+      text: 'Home',
+      label: 'home',
+      align: 'left',
+      block: 'header',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
+      view: 'downplay',
+    },
+    {
+      align: 'left',
+      label: 'skills',
+      text: 'Skills',
+      block: 'header',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
+      view: 'highlight',
+    },
+    {
+      text: 'Contact',
+      label: 'contact',
+      align: 'left',
+      block: 'header',
+      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
+      view: 'highlight',
+    },
+  ];
 
   useEffect(() => {
     window.addEventListener(
@@ -55,7 +71,6 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
     );
     setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
   }, []);
-
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
       {desktop && (

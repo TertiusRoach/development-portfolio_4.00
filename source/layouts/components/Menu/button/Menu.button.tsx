@@ -1,6 +1,7 @@
 // Menu.button.tsx
 import React from 'react';
 import './Menu.button.scss';
+import { getSVG } from '../../../../scripts';
 
 import ButtonFade from '../../Button/fade/Button.fade';
 import ButtonGlow from '../../Button/glow/Button.glow';
@@ -11,17 +12,20 @@ import ButtonSlide from '../../Button/slide/Button.slide';
 interface MenuProps {
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   info: {
-    icon: string | undefined;
     text: string;
+    icon: string | undefined;
     label: 'rightbar' | string;
+    view: 'highlight' | 'downplay' | string;
     align: 'left' | 'center' | 'right' | string;
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
 const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
   let buttonStyle = [];
+
   // Only add highlight to the first ButtonFace. The rest should be downplay
   for (let i = 0; i < info.length; i++) {
+    let icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string } | undefined;
     switch (style) {
       case 'fade':
         if (info[i].icon !== undefined) {
@@ -29,9 +33,9 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
             buttonStyle.push(
               <ButtonFade
                 index={i}
-                view={'highlight'}
+                style={'highlight'}
                 text={info[i].text}
-                icon={info[i].icon}
+                icon={icon}
                 label={info[i].label}
                 block={info[i].block}
                 align={info[i].align}
@@ -42,12 +46,12 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
             buttonStyle.push(
               <ButtonFade
                 index={i}
-                view={'downplay'}
-                icon={info[i].icon}
+                icon={icon}
+                style={'downplay'}
                 text={info[i].text}
                 label={info[i].label}
                 block={info[i].block}
-                align={info[i].align}
+                align={info[0].align}
                 key={`${info[i].text}`}
               />
             );
@@ -57,7 +61,7 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
             <ButtonFade
               index={i}
               icon={undefined}
-              view={'downplay'}
+              style={'highlight'}
               text={info[i].text}
               label={info[i].label}
               block={info[i].block}
@@ -68,31 +72,6 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
         }
         break;
       case 'frame':
-        if (i === 0) {
-          // buttonStyle.push(
-          //   <ButtonFrame
-          //     view="highlight"
-          //     text={info[i].text}
-          //     icon={info[i].icon}
-          //     label={info[i].label}
-          //     block={info[i].block}
-          //     align={info[i].align}
-          //     key={`${info[i].text}`}
-          //   />
-          // );
-        } else {
-          // buttonStyle.push(
-          //   <ButtonFrame
-          //     view="downplay"
-          //     text={info[i].text}
-          //     icon={info[i].icon}
-          //     label={info[i].label}
-          //     block={info[i].block}
-          //     align={info[i].align}
-          //     key={`${info[i].text}`}
-          //   />
-          // );
-        }
         break;
     }
   }

@@ -2,10 +2,11 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
+
+import { getResolution, getOrientation, getIdentification, getSVG } from '../../../../scripts/index';
 
 interface InfoProps {
-  icons: {
+  icon: {
     home: string;
     close: string;
     career: string;
@@ -32,7 +33,7 @@ interface InfoProps {
     identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
-const IndexOverlay: React.FC<InfoProps> = ({ icons }) => {
+const IndexOverlay: React.FC<InfoProps> = () => {
   const loadTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = getIdentification();
@@ -52,7 +53,13 @@ const IndexOverlay: React.FC<InfoProps> = ({ icons }) => {
     <>
       <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
         <header className="overlay-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade label="close" block="overlay" view="downplay" align="center" icon={icons.close} />
+          <ButtonFade
+            label="close"
+            block="overlay"
+            style="highlight"
+            align="center"
+            icon={getSVG('close') as { dark: string; medium: string; light: string }}
+          />
         </header>
 
         {/* <header className="overlay-foreground" style={{ zIndex: 2 }}></header> */}

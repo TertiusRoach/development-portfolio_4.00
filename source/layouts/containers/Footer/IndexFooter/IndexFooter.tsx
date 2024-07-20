@@ -53,7 +53,25 @@ const buttons = [
 
 interface FooterProps {
   icons: {
+    home: string;
+    close: string;
+    career: string;
+    skills: string;
+    contact: string;
+    working: string;
     projects: string;
+    download: string;
+
+    viewOverlay: string;
+    viewLeftbar: string;
+    viewRightbar: string;
+
+    signatureStacked: string;
+    signatureAdjacent: string;
+
+    gitHub: string;
+    youTube: string;
+    linkedIn: string;
   };
   info: {
     resolution: string;
@@ -90,7 +108,7 @@ const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
         {mobile && (
           <>
             <MenuButton info={buttons} style="fade" />
-            <ButtonFade text="Projects" block="rightbar" align="right" view="downplay" icon={icons.projects} />
+            <ButtonFade text="Projects" block="rightbar" align="right" style="downplay" icon={icons.projects} />
           </>
         )}
       </footer>

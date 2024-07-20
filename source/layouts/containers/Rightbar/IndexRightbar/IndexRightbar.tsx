@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import { getResolution, getOrientation, getIdentification } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getSVG } from '../../../../scripts/index';
 
 const close: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
@@ -39,7 +39,14 @@ const IndexRightbar: React.FC<InfoProps> = () => {
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
         <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade label="close" block="header" view="downplay" align="center" icon={close} />
+          <ButtonFade
+            text=""
+            label="close"
+            block="rightbar"
+            style="highlight"
+            align="center"
+            icon={getSVG('close') as { dark: string; medium: string; light: string }}
+          />
         </header>
         <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
 

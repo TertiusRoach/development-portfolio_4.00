@@ -104,7 +104,7 @@ function jQueryMain(pageName: String, blockName: String) {
   $(`#${containerElement} .${blockName}-overlay`).on('click', function () {
     // console.log(overlay);
     let overlay = this.classList[0].split('-')[1] as string;
-    showSection(pageName, overlay);
+    showSection(`${getIdentification()}`, overlay);
   });
   $(`#${containerElement} .${blockName}-rightbar`).on('click', function () {
     let rightbar = this.classList[0].split('-')[1] as string;

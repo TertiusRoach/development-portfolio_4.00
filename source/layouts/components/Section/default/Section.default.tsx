@@ -4,6 +4,7 @@ import './Section.default.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
+import { getSVG } from '../../../../scripts';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
@@ -58,20 +59,23 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
       label: 'leftbar',
       align: 'left',
       block: 'main',
+      view: 'downplay',
       icon: icons.viewLeftbar,
     },
     {
       text: 'View Overlay',
       label: 'overlay',
-      align: 'center',
+      align: '',
       block: 'main',
       icon: undefined,
+      view: 'highlight',
     },
     {
       text: 'View Rightbar',
       label: 'rightbar',
-      align: 'right',
+      align: '',
       block: 'main',
+      view: 'highlight',
       icon: icons.viewRightbar,
     },
   ];
@@ -85,7 +89,30 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <MenuButton style="fade" info={buttons} />
+          <ButtonFade
+            block={'main'}
+            align={'center'}
+            label={'overlay'}
+            text={'My Career'}
+            style={'highlight'}
+            icon={getSVG('career') as { dark: string; medium: string; light: string }}
+          />
+          <ButtonFade
+            text="View Leftbar"
+            label="leftbar"
+            block="main"
+            style="highlight"
+            align="left"
+            icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
+          />
+          <ButtonFade
+            text="My Projects"
+            label="rightbar"
+            block="main"
+            style="highlight"
+            align="right"
+            icon={getSVG('projects') as { dark: string; medium: string; light: string }}
+          />
         </>
       )}
 
