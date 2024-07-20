@@ -5,9 +5,9 @@ import { getSVG } from '../../../../scripts'; // Import functions (assuming they
 import { useMediaQuery } from 'react-responsive';
 
 interface FadeProps {
-  icon: string;
   text?: string;
   index?: number;
+  icon: string | undefined;
   view: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
@@ -32,7 +32,7 @@ const ButtonFade: React.FC<FadeProps> = ({ index, block, align, text, icon, labe
 export default ButtonFade;
 
 const renderButton = (
-  icon: string,
+  icon: string | undefined,
   text: string | undefined,
   label: string | undefined,
   align: 'left' | 'center' | 'right' | string,
@@ -42,32 +42,54 @@ const renderButton = (
   const mobile = useMediaQuery({ query: '(orientation: portrait)' });
   const icons = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
-  // console.log(`Icon:${icon}`)
-  // console.log(icons.dark); // Correctly logs the dark SVG URL
-  // console.log(icons.medium); // Correctly logs the medium SVG URL
-  // console.log(icons.light); // Correctly logs the light SVG URL
+  // console.log(icon);
+  // // console.log(icons.dark); // Correctly logs the dark SVG URL
+  // // console.log(icons.medium); // Correctly logs the medium SVG URL
+  // // console.log(icons.light); // Correctly logs the light SVG URL
 
-  return (
-    <>
-      {desktop && (
-        <>
-          <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
-            {text}
-          </h3>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icons.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icons.medium}`} alt={text} />
-        </>
-      )}
-      {mobile && (
-        <>
-          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
-            {text}
-          </h6>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icons.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icons.medium}`} alt={text} />
-        </>
-      )}
-      <span className="button-background" style={{ zIndex: 0 }}></span>
-    </>
-  );
+  if (icon !== undefined) {
+    return (
+      <>
+        {desktop && (
+          <>
+            <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
+              {text}
+            </h3>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icons.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icons.medium}`} alt={text} />
+          </>
+        )}
+        {mobile && (
+          <>
+            <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
+              {text}
+            </h6>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icons.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icons.medium}`} alt={text} />
+          </>
+        )}
+        <span className="button-background" style={{ zIndex: 0 }}></span>
+      </>
+    );
+  } else {
+    return (
+      <>
+        {desktop && (
+          <>
+            <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
+              {text}
+            </h3>
+          </>
+        )}
+        {mobile && (
+          <>
+            <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
+              {text}
+            </h6>
+          </>
+        )}
+        <span className="button-background" style={{ zIndex: 0 }}></span>
+      </>
+    );
+  }
 };

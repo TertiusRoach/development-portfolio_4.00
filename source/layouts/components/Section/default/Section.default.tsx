@@ -65,7 +65,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
       label: 'overlay',
       align: 'center',
       block: 'main',
-      icon: icons.viewOverlay,
+      icon: undefined,
     },
     {
       text: 'View Rightbar',

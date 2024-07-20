@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 interface FrameProps {
   text?: string;
   index?: number;
-  icon: string | SVGElement;
+  icon: string | undefined;
   view: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;

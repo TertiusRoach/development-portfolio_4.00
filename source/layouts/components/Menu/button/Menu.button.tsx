@@ -11,7 +11,7 @@ import ButtonSlide from '../../Button/slide/Button.slide';
 interface MenuProps {
   style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   info: {
-    icon: string;
+    icon: string | undefined;
     text: string;
     label: 'rightbar' | string;
     align: 'left' | 'center' | 'right' | string;
@@ -24,26 +24,41 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
   for (let i = 0; i < info.length; i++) {
     switch (style) {
       case 'fade':
-        if (i === 0) {
-          buttonStyle.push(
-            <ButtonFade
-              index={i}
-              view={'downplay'}
-              text={info[i].text}
-              icon={info[i].icon}
-              label={info[i].label}
-              block={info[i].block}
-              align={info[i].align}
-              key={`${info[i].text}`}
-            />
-          );
+        if (info[i].icon !== undefined) {
+          if (i === 0) {
+            buttonStyle.push(
+              <ButtonFade
+                index={i}
+                view={'downplay'}
+                text={info[i].text}
+                icon={info[i].icon}
+                label={info[i].label}
+                block={info[i].block}
+                align={info[i].align}
+                key={`${info[i].text}`}
+              />
+            );
+          } else {
+            buttonStyle.push(
+              <ButtonFade
+                index={i}
+                view={'downplay'}
+                text={info[i].text}
+                icon={info[i].icon}
+                label={info[i].label}
+                block={info[i].block}
+                align={info[i].align}
+                key={`${info[i].text}`}
+              />
+            );
+          }
         } else {
           buttonStyle.push(
             <ButtonFade
               index={i}
               view={'downplay'}
               text={info[i].text}
-              icon={info[i].icon}
+              icon={undefined}
               label={info[i].label}
               block={info[i].block}
               align={info[i].align}
@@ -54,29 +69,29 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
         break;
       case 'frame':
         if (i === 0) {
-          buttonStyle.push(
-            <ButtonFrame
-              view="highlight"
-              text={info[i].text}
-              icon={info[i].icon}
-              label={info[i].label}
-              block={info[i].block}
-              align={info[i].align}
-              key={`${info[i].text}`}
-            />
-          );
+          // buttonStyle.push(
+          //   <ButtonFrame
+          //     view="highlight"
+          //     text={info[i].text}
+          //     icon={info[i].icon}
+          //     label={info[i].label}
+          //     block={info[i].block}
+          //     align={info[i].align}
+          //     key={`${info[i].text}`}
+          //   />
+          // );
         } else {
-          buttonStyle.push(
-            <ButtonFrame
-              view="downplay"
-              text={info[i].text}
-              icon={info[i].icon}
-              label={info[i].label}
-              block={info[i].block}
-              align={info[i].align}
-              key={`${info[i].text}`}
-            />
-          );
+          // buttonStyle.push(
+          //   <ButtonFrame
+          //     view="downplay"
+          //     text={info[i].text}
+          //     icon={info[i].icon}
+          //     label={info[i].label}
+          //     block={info[i].block}
+          //     align={info[i].align}
+          //     key={`${info[i].text}`}
+          //   />
+          // );
         }
         break;
     }
