@@ -1,4 +1,3 @@
-// IndexMain.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -53,16 +52,20 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
-      },
-      false
-    );
+    const handleResize = () => {
+      setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
+    };
+
+    window.addEventListener('resize', handleResize);
     setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       <SectionDefault block="main" state="active" info={info} icons={icons} />
@@ -83,32 +86,35 @@ export default IndexMain;
 
 function jQueryMain(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} section`)
-    .on('click', function () {
-      let labelName = this.className.split('-')[1];
-      let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
-      let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
-      $(mainBlock).animate({ scrollTop: `${getScroll(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
-      setTimeout(() => setMenu(blockName, labelName), 1000);
-    })
-    .on('mouseenter', function () {
-      let labelName = this.className.split('-')[1];
-      setMenu(blockName, labelName);
-    });
+  const $container = $(`#${containerElement}`);
 
-  $(`#${containerElement} .${blockName}-leftbar`).on('click', function () {
-    let leftbar = this.classList[0].split('-')[1] as string;
-    // alert(leftbar);
-    showAside(leftbar as string);
+  $container.find('section').on('click', function () {
+    const $this = $(this);
+    const $main = $this.closest(`#${containerElement}`);
+
+    if ($main.length) {
+      const labelName = this.className.split('-')[1];
+      const buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
+      if (buttonTag && $main.length) {
+        $main.animate({ scrollTop: `${getScroll(buttonTag, $main[0], blockName)?.scrollTop}px` }, 500);
+        setTimeout(() => setMenu(blockName, labelName), 1000);
+      }
+    }
   });
-  $(`#${containerElement} .${blockName}-overlay`).on('click', function () {
-    // console.log(overlay);
-    let overlay = this.classList[0].split('-')[1] as string;
+
+  $container.find(`.${blockName}-leftbar`).on('click', function () {
+    const leftbar = this.classList[0].split('-')[1];
+    showAside(leftbar);
+  });
+
+  $container.find(`.${blockName}-overlay`).on('click', function () {
+    const overlay = this.classList[0].split('-')[1];
     showSection(`${getIdentification()}`, overlay);
   });
-  $(`#${containerElement} .${blockName}-rightbar`).on('click', function () {
-    let rightbar = this.classList[0].split('-')[1] as string;
-    showAside(rightbar as string);
+
+  $container.find(`.${blockName}-rightbar`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[1];
+    showAside(rightbar);
   });
 
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

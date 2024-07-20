@@ -33,9 +33,9 @@ const MenuButton: React.FC<MenuProps> = ({ selectDesign, info }) => {
             buttonStyle.push(
               <ButtonFade
                 index={i}
+                icon={icon}
                 style={'highlight'}
                 text={info[i].text}
-                icon={icon}
                 label={info[i].label}
                 block={info[i].block}
                 align={info[i].align}

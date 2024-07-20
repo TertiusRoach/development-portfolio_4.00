@@ -93,7 +93,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
             text="My Career"
             block="main"
             align="center"
-            label="career"
+            label="overlay"
             style="highlight"
             icon={getSVG('career') as { dark: string; medium: string; light: string }}
           />
@@ -124,7 +124,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
               text="My Career"
               block="main"
               align="center"
-              label="career"
+              label="overlay"
               style="highlight"
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
             />
