@@ -29,7 +29,7 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
             buttonStyle.push(
               <ButtonFade
                 index={i}
-                view={'downplay'}
+                view={'highlight'}
                 text={info[i].text}
                 icon={info[i].icon}
                 label={info[i].label}
@@ -43,8 +43,8 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
               <ButtonFade
                 index={i}
                 view={'downplay'}
-                text={info[i].text}
                 icon={info[i].icon}
+                text={info[i].text}
                 label={info[i].label}
                 block={info[i].block}
                 align={info[i].align}
@@ -56,9 +56,9 @@ const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
           buttonStyle.push(
             <ButtonFade
               index={i}
+              icon={undefined}
               view={'downplay'}
               text={info[i].text}
-              icon={undefined}
               label={info[i].label}
               block={info[i].block}
               align={info[i].align}
