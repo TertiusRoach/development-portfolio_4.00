@@ -95,18 +95,10 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
             <ButtonFade
               text="My Career"
               block="main"
-              align="center"
+              align="left"
               label="overlay"
               style="highlight"
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
-            />
-            <ButtonFade
-              text="View Leftbar"
-              label="leftbar"
-              block="main"
-              style="highlight"
-              align="left"
-              icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
             />
             <ButtonFade
               text="My Projects"
