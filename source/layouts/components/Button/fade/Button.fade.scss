@@ -94,7 +94,6 @@
     }
   }
 }
-
 @mixin button-effects {
   $primary-dark: #1f3131;
   $primary-medium: #3d6262;
@@ -192,7 +191,6 @@
           animation: downplay 1s backwards;
         }
       }
-
       &.highlight {
         h1,
         h2,
@@ -273,6 +271,12 @@
   }
 
   button {
+    @media screen and (max-width: 1000px) {
+      h6 {
+        opacity: 0;
+        display: none;
+      }
+    }
     &[id*='active'] {
       h1,
       h2,
@@ -313,6 +317,8 @@
 }
 
 body {
+  @include button-effects();
+  @include button-placement();
   @mixin desktop-landscape {
     main,
     aside,
@@ -379,9 +385,6 @@ body {
       }
     }
   }
-
-  @include button-effects();
-  @include button-placement();
 
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
