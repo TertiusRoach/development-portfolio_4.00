@@ -55,10 +55,10 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
   let height = info.resolution.split('x')[1];
   let buttons = [
     {
+      text: 'My Career',
       block: 'main',
       align: 'center',
-      label: 'overlay',
-      text: 'My Career',
+      label: 'career',
       style: 'highlight',
       icon: getSVG('career') as { dark: string; medium: string; light: string },
     },
@@ -72,7 +72,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
     },
     {
       text: 'My Projects',
-      label: 'rightbar',
+      label: 'projects',
       block: 'main',
       style: 'highlight',
       align: 'right',
@@ -90,11 +90,11 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
           <ButtonFade
-            block={'main'}
-            align={'center'}
-            label={'overlay'}
-            text={'My Career'}
-            style={'highlight'}
+            text="My Career"
+            block="main"
+            align="center"
+            label="career"
+            style="highlight"
             icon={getSVG('career') as { dark: string; medium: string; light: string }}
           />
           <ButtonFade
@@ -119,7 +119,34 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <MenuButton selectDesign="fade" info={buttons} />
+          <>
+            <ButtonFade
+              text="My Career"
+              block="main"
+              align="center"
+              label="career"
+              style="highlight"
+              icon={getSVG('career') as { dark: string; medium: string; light: string }}
+            />
+            <ButtonFade
+              text="View Leftbar"
+              label="leftbar"
+              block="main"
+              style="highlight"
+              align="left"
+              icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
+            />
+            <ButtonFade
+              text="My Projects"
+              label="rightbar"
+              block="main"
+              style="highlight"
+              align="right"
+              icon={getSVG('projects') as { dark: string; medium: string; light: string }}
+            />
+          </>
+
+          {/* <MenuButton selectDesign="fade" info={buttons} /> */}
         </>
       )}
     </section>
