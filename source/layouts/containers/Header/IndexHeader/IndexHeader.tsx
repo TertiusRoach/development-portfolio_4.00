@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, scrollInfo } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getScroll } from '../../../../scripts/index';
 
 const buttons = [
   {
@@ -83,7 +83,7 @@ function jQueryHeader(pageName: String, blockName: String) {
       const buttonElement = this as HTMLButtonElement;
       const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
       // const scrollPixels =  as Number;
-      $(mainContainer).animate({ scrollTop: `${scrollInfo(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

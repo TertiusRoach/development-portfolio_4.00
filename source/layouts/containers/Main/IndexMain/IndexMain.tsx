@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import {
   showAside,
   setActive,
-  scrollInfo,
+  getScroll,
   showSection,
   getResolution,
   getOrientation,
@@ -88,7 +88,7 @@ function jQueryMain(pageName: String, blockName: String) {
       let labelName = this.className.split('-')[1];
       let mainBlock = document.querySelector('main[id*="main"]') as HTMLElement;
       let buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
-      $(mainBlock).animate({ scrollTop: `${scrollInfo(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
+      $(mainBlock).animate({ scrollTop: `${getScroll(buttonTag, mainBlock, blockName)?.scrollTop}px` }, 500);
       setTimeout(() => setMenu(blockName, labelName), 1000);
     })
     .on('mouseenter', function () {

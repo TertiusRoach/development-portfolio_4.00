@@ -1,83 +1,4 @@
 //--|🠋 index.ts 🠋|--//
-export function getIdentification(): String {
-  const hyperlink: String = window.location.href;
-  const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];
-  if (identification === '' || undefined || null) {
-    return 'index';
-  } else {
-    return hyperlink.split('/').pop()?.split('.')[0] as String;
-  }
-}
-export function getOrientation(): String {
-  const orientation = window.screen.orientation.type;
-
-  if (!orientation.includes('landscape')) {
-    return 'desktop-landscape' as String;
-  } else if (!orientation.includes('portrait')) {
-    return 'mobile-portrait' as String;
-  } else {
-    return 'unknown-orientation' as String;
-  }
-}
-export function getResolution(): String {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const resolution = `${width}x${height}`;
-
-  return resolution as String;
-}
-
-export function setActive(button: HTMLButtonElement, blockName: String): void {
-  const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
-  if (button.parentElement?.tagName === 'MENU') {
-    if (activeButton) {
-      activeButton.removeAttribute('id');
-    } else {
-      console.log(`//--|🠊 No Element: #${blockName}-active 🠈|--//`);
-    }
-
-    button.id = `${blockName}-active`;
-  }
-}
-export function setMenu(blockName: String, labelName: String) {
-  // Get currently active section and the selected section elements
-  const disableElement = document.getElementById('main-active') as HTMLElement | null;
-  const activateElement = document.querySelector(`.${blockName}-${labelName}`) as HTMLElement | null;
-
-  // Helper function to update active elements
-  const toggleElement = function (
-    disableElement: HTMLElement | HTMLButtonElement | null,
-    activateElement: HTMLElement | HTMLButtonElement | null,
-    id: string
-  ) {
-    if (disableElement) {
-      disableElement.removeAttribute('id');
-    }
-    if (activateElement) {
-      activateElement.setAttribute('id', id);
-    }
-  };
-
-  // Determine orientation and update the active button accordingly
-  let block: 'header' | 'footer' | '';
-  switch (getOrientation()) {
-    case 'desktop-landscape':
-      block = 'header';
-      break;
-    case 'mobile-portrait':
-      block = 'footer';
-      break;
-    default:
-      block = '';
-  }
-
-  if (block) {
-    let activeButton = document.querySelector(`#${block}-active`) as HTMLButtonElement;
-    let selectButton = document.querySelector(`.${block}-${labelName}`) as HTMLButtonElement;
-    toggleElement(activeButton, selectButton, `${block}-active`); // Update the <header> or <footer> element based on device orientation
-    toggleElement(disableElement, activateElement, 'main-active'); // Activate the <section> inside the <main> container
-  }
-}
 
 export function showSection(pageName: string, blockName: 'overlay' | String) {
   const element = document.getElementById('index-overlay') as HTMLElement;
@@ -122,6 +43,18 @@ export function showSection(pageName: string, blockName: 'overlay' | String) {
     }
   }
 }
+export function setActive(button: HTMLButtonElement, blockName: String): void {
+  const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
+  if (button.parentElement?.tagName === 'MENU') {
+    if (activeButton) {
+      activeButton.removeAttribute('id');
+    } else {
+      console.log(`//--|🠊 No Element: #${blockName}-active 🠈|--//`);
+    }
+
+    button.id = `${blockName}-active`;
+  }
+}
 export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
   const pageName = getIdentification();
   const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
@@ -161,7 +94,74 @@ export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
   }
 }
 
-export function scrollInfo(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
+export function setMenu(blockName: String, labelName: String) {
+  // Get currently active section and the selected section elements
+  const disableElement = document.getElementById('main-active') as HTMLElement | null;
+  const activateElement = document.querySelector(`.${blockName}-${labelName}`) as HTMLElement | null;
+
+  // Helper function to update active elements
+  const toggleElement = function (
+    disableElement: HTMLElement | HTMLButtonElement | null,
+    activateElement: HTMLElement | HTMLButtonElement | null,
+    id: string
+  ) {
+    if (disableElement) {
+      disableElement.removeAttribute('id');
+    }
+    if (activateElement) {
+      activateElement.setAttribute('id', id);
+    }
+  };
+
+  // Determine orientation and update the active button accordingly
+  let block: 'header' | 'footer' | '';
+  switch (getOrientation()) {
+    case 'desktop-landscape':
+      block = 'header';
+      break;
+    case 'mobile-portrait':
+      block = 'footer';
+      break;
+    default:
+      block = '';
+  }
+
+  if (block) {
+    let activeButton = document.querySelector(`#${block}-active`) as HTMLButtonElement;
+    let selectButton = document.querySelector(`.${block}-${labelName}`) as HTMLButtonElement;
+    toggleElement(activeButton, selectButton, `${block}-active`); // Update the <header> or <footer> element based on device orientation
+    toggleElement(disableElement, activateElement, 'main-active'); // Activate the <section> inside the <main> container
+  }
+}
+
+export function getIdentification(): String {
+  const hyperlink: String = window.location.href;
+  const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];
+  if (identification === '' || undefined || null) {
+    return 'index';
+  } else {
+    return hyperlink.split('/').pop()?.split('.')[0] as String;
+  }
+}
+export function getOrientation(): String {
+  const orientation = window.screen.orientation.type;
+
+  if (!orientation.includes('landscape')) {
+    return 'desktop-landscape' as String;
+  } else if (!orientation.includes('portrait')) {
+    return 'mobile-portrait' as String;
+  } else {
+    return 'unknown-orientation' as String;
+  }
+}
+export function getResolution(): String {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const resolution = `${width}x${height}`;
+
+  return resolution as String;
+}
+export function getScroll(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
   const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
     let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
     let scrollAmounts: { className: string; scrollAmount: number }[] = []; //--|🠈 Initialize an array to store the class names and scroll amounts 🠈|--//

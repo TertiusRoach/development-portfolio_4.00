@@ -6,7 +6,7 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, scrollInfo, showAside } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getScroll, showAside } from '../../../../scripts/index';
 const anchors = [
   {
     name: 'GitHub',
@@ -106,7 +106,7 @@ function jQueryFooter(pageName: String, blockName: String) {
     if (!this.id) {
       const buttonElement = this as HTMLButtonElement;
       const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      $(mainContainer).animate({ scrollTop: `${scrollInfo(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
     }
   });
   $(`#${containerElement} .rightbar-button`).on('click', function () {
