@@ -11,7 +11,7 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
-import { getResolution, getOrientation, getIdentification } from './scripts/index'; // Import functions (assuming they return strings)
+import { getResolution, getOrientation, getIdentification, getSVG } from './scripts/index'; // Import functions (assuming they return strings)
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
 function Body() {
   const [infoPROP, newPROP] = useState({
@@ -19,6 +19,12 @@ function Body() {
     orientation: `${getOrientation()}`,
     identification: `${getIdentification()}`,
   });
+  /*
+  const iconShades: { dark: String; medium: String; light: String } = getSVG('home');
+  console.log(iconShades.dark); // Correctly logs the dark SVG URL
+  console.log(iconShades.medium); // Correctly logs the medium SVG URL
+  console.log(iconShades.light); // Correctly logs the light SVG URL
+  */
 
   useEffect(() => {
     function updatePROP() {

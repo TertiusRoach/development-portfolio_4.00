@@ -1,5 +1,6 @@
 //--|🠋 index.ts 🠋|--//
 
+//--|🠋 Index Page 🠋|--//
 export function showSection(pageName: string, blockName: 'overlay' | String) {
   const element = document.getElementById('index-overlay') as HTMLElement;
   if (!element) {
@@ -93,7 +94,39 @@ export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
     }
   }
 }
+export function getScroll(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
+  const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
+    let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
+    let scrollAmounts: { className: string; scrollAmount: number }[] = []; //--|🠈 Initialize an array to store the class names and scroll amounts 🠈|--//
+    let cumulativeHeight = 0; //--|🠈 Initialize cumulative height to 0 🠈|--//
+    //--|🠋 Iterate over each child element 🠈|--//
+    children.forEach((child) => {
+      //--|🠋 Check if the child element is a SECTION 🠈|--//
+      if (child.tagName === 'SECTION') {
+        //--|🠋 Add the class name and cumulative height to the scrollAmounts array 🠈|--//
+        scrollAmounts.push({
+          className: child.className.split('-')[1], //--|🠈 Assuming className format includes the section name 🠈|--//
+          scrollAmount: cumulativeHeight,
+        });
+      }
+      cumulativeHeight += child.offsetHeight; //--|🠈 Add the child's height to the cumulative height 🠈|--//
+    });
+    //--|🠋 Return the array of class names and scroll amounts 🠈|--//
+    return scrollAmounts;
+  };
+  const scrollTag = container.tagName.toLowerCase() as String; //--|🠈 Get the tag name of the container in lowercase 🠈|--//
+  const scrollLabel = button.className.split(' ')[0].split('-')[1] as String; //--|🠈 Extract the label name from the button's class name 🠈|--//
+  const scrollPixels = setPixels(container).find((item) => item.className === scrollLabel); //--|🠈 Find the scroll amount for the section corresponding to the label name 🠈|--//
 
+  //--|🠋 If scrollPixels is found, animate the scroll to the calculated amount 🠋|--//
+  if (scrollPixels) {
+    setActive(button, blockName);
+    return {
+      scrollTag: scrollTag as String,
+      scrollTop: scrollPixels.scrollAmount as Number,
+    };
+  }
+}
 export function setMenu(blockName: String, labelName: String) {
   // Get currently active section and the selected section elements
   const disableElement = document.getElementById('main-active') as HTMLElement | null;
@@ -133,7 +166,8 @@ export function setMenu(blockName: String, labelName: String) {
     toggleElement(disableElement, activateElement, 'main-active'); // Activate the <section> inside the <main> container
   }
 }
-
+//--|🠉 Index Page 🠉|--//
+//--|🠋 Established Functions 🠋|--//
 export function getIdentification(): String {
   const hyperlink: String = window.location.href;
   const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];
@@ -161,36 +195,18 @@ export function getResolution(): String {
 
   return resolution as String;
 }
-export function getScroll(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
-  const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
-    let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
-    let scrollAmounts: { className: string; scrollAmount: number }[] = []; //--|🠈 Initialize an array to store the class names and scroll amounts 🠈|--//
-    let cumulativeHeight = 0; //--|🠈 Initialize cumulative height to 0 🠈|--//
-    //--|🠋 Iterate over each child element 🠈|--//
-    children.forEach((child) => {
-      //--|🠋 Check if the child element is a SECTION 🠈|--//
-      if (child.tagName === 'SECTION') {
-        //--|🠋 Add the class name and cumulative height to the scrollAmounts array 🠈|--//
-        scrollAmounts.push({
-          className: child.className.split('-')[1], //--|🠈 Assuming className format includes the section name 🠈|--//
-          scrollAmount: cumulativeHeight,
-        });
-      }
-      cumulativeHeight += child.offsetHeight; //--|🠈 Add the child's height to the cumulative height 🠈|--//
-    });
-    //--|🠋 Return the array of class names and scroll amounts 🠈|--//
-    return scrollAmounts;
+export function getSVG(labelName: string): { dark: String; medium: String; light: String } {
+  const colorShades: Array<string> = ['dark', 'medium', 'light'];
+  const iconURI = `https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/47547119286073f7ff21945c645c3d8f1b164225`;
+  //--|🠋 Folder Structure Location 🠋|--//
+  const getIconPath = (shade: string): string => {
+    return `/source/assets/svg-files/${getIdentification()}-page/${labelName}/${labelName}-${shade}.svg`;
   };
-  const scrollTag = container.tagName.toLowerCase() as String; //--|🠈 Get the tag name of the container in lowercase 🠈|--//
-  const scrollLabel = button.className.split(' ')[0].split('-')[1] as String; //--|🠈 Extract the label name from the button's class name 🠈|--//
-  const scrollPixels = setPixels(container).find((item) => item.className === scrollLabel); //--|🠈 Find the scroll amount for the section corresponding to the label name 🠈|--//
 
-  //--|🠋 If scrollPixels is found, animate the scroll to the calculated amount 🠋|--//
-  if (scrollPixels) {
-    setActive(button, blockName);
-    return {
-      scrollTag: scrollTag as String,
-      scrollTop: scrollPixels.scrollAmount as Number,
-    };
-  }
+  return {
+    dark: `${iconURI}${getIconPath(colorShades[0])}`,
+    medium: `${iconURI}${getIconPath(colorShades[1])}`,
+    light: `${iconURI}${getIconPath(colorShades[2])}`,
+  } as { dark: String; medium: String; light: String };
 }
+//--|🠉 Established Functions 🠉|--//
