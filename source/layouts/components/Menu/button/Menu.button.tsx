@@ -10,23 +10,23 @@ import ButtonFrame from '../../Button/frame/Button.frame';
 import ButtonSlide from '../../Button/slide/Button.slide';
 
 interface MenuProps {
-  style: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
+  selectDesign: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   info: {
     text: string;
-    icon: string | undefined;
+    icon: { dark: string; medium: string; light: string };
     label: 'rightbar' | string;
-    view: 'highlight' | 'downplay' | string;
+    style: 'highlight' | 'downplay' | string;
     align: 'left' | 'center' | 'right' | string;
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
-const MenuButton: React.FC<MenuProps> = ({ style, info }) => {
+const MenuButton: React.FC<MenuProps> = ({ selectDesign, info }) => {
   let buttonStyle = [];
 
   // Only add highlight to the first ButtonFace. The rest should be downplay
   for (let i = 0; i < info.length; i++) {
     let icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string } | undefined;
-    switch (style) {
+    switch (selectDesign) {
       case 'fade':
         if (info[i].icon !== undefined) {
           if (i === 0) {

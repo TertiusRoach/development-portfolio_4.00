@@ -107,7 +107,7 @@ const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
         )}
         {mobile && (
           <>
-            <MenuButton info={buttons} style="fade" />
+            <MenuButton info={buttons} selectDesign="fade" />
             <ButtonFade text="Projects" block="rightbar" align="right" style="downplay" icon={icons.projects} />
           </>
         )}

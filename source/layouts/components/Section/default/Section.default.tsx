@@ -40,7 +40,7 @@ interface DefaultProps {
   state?: 'active';
   label?: 'default' | 'home' | 'skills' | 'contact';
 }
-const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) => {
+const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -55,28 +55,28 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
   let height = info.resolution.split('x')[1];
   let buttons = [
     {
+      block: 'main',
+      align: 'center',
+      label: 'overlay',
+      text: 'My Career',
+      style: 'highlight',
+      icon: getSVG('career') as { dark: string; medium: string; light: string },
+    },
+    {
       text: 'View Leftbar',
       label: 'leftbar',
+      block: 'main',
+      style: 'highlight',
       align: 'left',
-      block: 'main',
-      view: 'downplay',
-      icon: icons.viewLeftbar,
+      icon: getSVG('leftbar') as { dark: string; medium: string; light: string },
     },
     {
-      text: 'View Overlay',
-      label: 'overlay',
-      align: '',
-      block: 'main',
-      icon: undefined,
-      view: 'highlight',
-    },
-    {
-      text: 'View Rightbar',
+      text: 'My Projects',
       label: 'rightbar',
-      align: '',
       block: 'main',
-      view: 'highlight',
-      icon: icons.viewRightbar,
+      style: 'highlight',
+      align: 'right',
+      icon: getSVG('projects') as { dark: string; medium: string; light: string },
     },
   ];
 
@@ -119,7 +119,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, icons, block, state }) =
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <MenuButton style="fade" info={buttons} />
+          <MenuButton selectDesign="fade" info={buttons} />
         </>
       )}
     </section>

@@ -97,192 +97,6 @@
   $tertiary-medium: #714631;
   $tertiary-light: #b8a298;
 
-  header[id*='header'],
-  footer[id*='footer'],
-  aside[id*='leftbar'],
-  aside[id*='rightbar'],
-  section[id*='overlay'] {
-    button:not([id*='active']) {
-      &.highlight:hover {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          // color: $primary-light;
-          animation: highlight 1s forwards;
-        }
-        img[class*='light'] {
-          opacity: 1;
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='medium'] {
-          opacity: 1;
-        }
-      }
-      &.downplay {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: $primary-medium;
-          animation: downplay 1s backwards;
-        }
-      }
-      &.highlight {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: $primary-light;
-          animation: highlight 1s forwards;
-        }
-      }
-      img[class*='medium'] {
-        opacity: 1;
-        animation: fadeIn 1s ease-in-out;
-      }
-      img[class*='light'] {
-        opacity: 0;
-        animation: fadeOut 1s ease-in-out;
-      }
-    }
-    button {
-      &[id*='active'] {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: white;
-        }
-      }
-      img[class*='dark'],
-      img[class*='medium'],
-      img[class*='light'] {
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-      }
-    }
-  }
-
-  main[id*='main'] {
-    button:not([id*='active']) {
-      &.downplay:hover {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          // color: $primary-light;
-          animation: highlight 1s forwards;
-        }
-        img[class*='light'] {
-          opacity: 1;
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='medium'] {
-          opacity: 1;
-        }
-      }
-      &.highlight {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: $primary-medium;
-          animation: downplay 1s backwards;
-        }
-      }
-      &.downplay {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: $primary-light;
-          animation: highlight 1s forwards;
-        }
-      }
-      img[class*='medium'] {
-        opacity: 1;
-        animation: fadeIn 1s ease-in-out;
-      }
-      img[class*='light'] {
-        opacity: 0;
-        animation: fadeOut 1s ease-in-out;
-      }
-    }
-
-    // Default Styling for Fade
-    button {
-      &[id*='active'] {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: white;
-        }
-      }
-      img[class*='dark'],
-      img[class*='medium'],
-      img[class*='light'] {
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-        filter: drop-shadow(0 0 4px rgba(black, 1));
-      }
-
-      @media screen and (max-width: 1000px) {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          display: none;
-        }
-      }
-    }
-  }
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -326,6 +140,163 @@
     }
     to {
       color: $primary-medium;
+    }
+  }
+
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    button:not([id*='active']) {
+      &.highlight:hover {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          // color: $primary-light;
+          animation: highlight 1s forwards;
+        }
+        img[class*='light'] {
+          opacity: 1;
+          animation: fadeIn 1s forwards;
+        }
+        img[class*='medium'] {
+          opacity: 1;
+        }
+      }
+      &.downplay {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-medium;
+          animation: downplay 1s backwards;
+        }
+      }
+      &.highlight {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          // color: $primary-light;
+          animation: highlight 1s forwards;
+        }
+      }
+      img[class*='medium'] {
+        opacity: 1;
+        animation: fadeIn 1s ease-in-out;
+      }
+      img[class*='light'] {
+        opacity: 0;
+        animation: fadeOut 1s ease-in-out;
+      }
+    }
+  }
+
+  main[id*='main'] {
+    button:not([id*='active']) {
+      &.downplay:hover {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          animation: highlight 1s forwards;
+        }
+      }
+      &.highlight {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-medium;
+          animation: downplay 1s forwards;
+        }
+        img[class*='medium'] {
+          opacity: 0;
+          animation: fadeIn 1s forwards;
+        }
+        img[class*='light'] {
+          opacity: 1;
+          animation: fadeOut 1s forwards;
+        }
+      }
+      &.downplay {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          // color: $primary-medium;
+          animation: highlight 1s forwards;
+        }
+      }
+
+      &:hover {
+        img[class*='medium'] {
+          color: $primary-medium;
+          animation: fadeIn 1s forwards;
+        }
+        img[class*='light'] {
+          animation: fadeOut 1s forwards;
+        }
+      }
+    }
+  }
+
+  // Default Styling for Fade
+  button {
+    &[id*='active'] {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: white;
+      }
+    }
+    img[class*='dark'],
+    img[class*='medium'],
+    img[class*='light'] {
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+    }
+
+    @media screen and (max-width: 1000px) {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        display: none;
+      }
     }
   }
 }
