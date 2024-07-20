@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
+import { getSVG } from '../../../../scripts';
 import { useMediaQuery } from 'react-responsive';
 
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
@@ -25,29 +26,6 @@ const anchors = [
     href: 'https://www.linkedin.com/in/tertius-roach/',
     icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/linkedin.svg',
     target: '_blank',
-  },
-];
-const buttons = [
-  {
-    text: 'Home',
-    label: 'home',
-    align: 'center',
-    block: 'footer',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
-  },
-  {
-    text: 'Skills',
-    label: 'skills',
-    align: 'center',
-    block: 'footer',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
-  },
-  {
-    text: 'Contact',
-    label: 'contact',
-    align: 'center',
-    block: 'footer',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
   },
 ];
 
@@ -79,7 +57,7 @@ interface FooterProps {
     identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
-const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
+const IndexFooter: React.FC<FooterProps> = () => {
   const loadTimer: number = 2000;
   const blockName: String = 'footer';
   const pageName: String = getIdentification();
@@ -96,6 +74,33 @@ const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
+
+  let buttons = [
+    {
+      text: 'Home',
+      label: 'home',
+      align: 'center',
+      block: 'footer',
+      style: 'highlight',
+      icon: getSVG('career') as { dark: string; medium: string; light: string },
+    },
+    {
+      icon: getSVG('leftbar') as { dark: string; medium: string; light: string },
+      text: 'Skills',
+      label: 'skills',
+      align: 'center',
+      block: 'footer',
+      style: 'highlight',
+    },
+    {
+      text: 'Contact',
+      label: 'contact',
+      align: 'center',
+      block: 'footer',
+      style: 'highlight',
+      icon: getSVG('projects') as { dark: string; medium: string; light: string },
+    },
+  ];
   return (
     <>
       {/* How do I refresh the useEffect everytime the screen rotates? */}
@@ -108,7 +113,13 @@ const IndexFooter: React.FC<FooterProps> = ({ icons }) => {
         {mobile && (
           <>
             <MenuButton info={buttons} selectDesign="fade" />
-            <ButtonFade text="Projects" block="rightbar" align="right" style="downplay" icon={icons.projects} />
+            <ButtonFade
+              text="Projects"
+              block="rightbar"
+              align="right"
+              style="downplay"
+              icon={getSVG('projects') as { dark: string; medium: string; light: string }}
+            />
           </>
         )}
       </footer>

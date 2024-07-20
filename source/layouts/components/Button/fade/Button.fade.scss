@@ -162,6 +162,12 @@
   aside[id*='rightbar'],
   section[id*='overlay'] {
     button:not([id*='active']) {
+      @media screen and (max-width: 1000px) {
+        h3 {
+          opacity: 0;
+          display: none;
+        }
+      }
       &.highlight:hover {
         h1,
         h2,
@@ -285,6 +291,12 @@
       h5,
       h6 {
         color: white;
+      }
+      @media screen and (max-width: 1000px) {
+        h3 {
+          opacity: 0;
+          display: none;
+        }
       }
     }
 

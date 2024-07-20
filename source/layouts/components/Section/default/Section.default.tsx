@@ -45,11 +45,11 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => runJquery, 1000);
+        setTimeout(() => jQueryDefault, 1000);
       },
       false
     );
-    setTimeout(() => runJquery, 1000);
+    setTimeout(() => jQueryDefault, 1000);
   }, []);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -79,6 +79,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       icon: getSVG('projects') as { dark: string; medium: string; light: string },
     },
   ];
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
   return (
     <section
@@ -86,38 +88,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       id={state === 'active' ? `${block}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>
-          <ButtonFade
-            text="My Career"
-            block="main"
-            align="center"
-            label="overlay"
-            style="highlight"
-            icon={getSVG('career') as { dark: string; medium: string; light: string }}
-          />
-          <ButtonFade
-            text="View Leftbar"
-            label="leftbar"
-            block="main"
-            style="highlight"
-            align="left"
-            icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
-          />
-          <ButtonFade
-            text="My Projects"
-            label="rightbar"
-            block="main"
-            style="highlight"
-            align="right"
-            icon={getSVG('projects') as { dark: string; medium: string; light: string }}
-          />
-        </>
-      )}
-
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+      {desktop && (
         <>
           <>
             <ButtonFade
@@ -149,101 +121,32 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
           {/* <MenuButton selectDesign="fade" info={buttons} /> */}
         </>
       )}
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {mobile && (
+        <>
+          <ButtonFade
+            text="My Career"
+            block="main"
+            align="left"
+            label="overlay"
+            style="center"
+            icon={getSVG('career') as { dark: string; medium: string; light: string }}
+          />
+          <ButtonFade
+            text="Contact Me"
+            label="contact"
+            block="main"
+            style="highlight"
+            align="center"
+            icon={getSVG('contact') as { dark: string; medium: string; light: string }}
+          />
+        </>
+      )}
     </section>
   );
 };
 export default SectionDefault;
 
-function runJquery() {
+function jQueryDefault() {
   console.log('Yay, jQuery!');
-  // $('#index-main .leftbar-button').on('click', () => {
-  //   console.log('Leftbar Button Clicked');
-  //   var element = document.getElementById('index-leftbar') as HTMLElement;
-  //   var safety: boolean = element?.className.includes('blocked');
-  //   var status = element?.className.split(' ').pop() as string;
-  //   if (!safety) {
-  //     switch (status) {
-  //       case 'expanded':
-  //         $('#index-leftbar.expanded').addClass('blocked');
-  //         $('#index-leftbar.expanded').addClass('expanded');
-  //         setTimeout(() => {
-  //           $('#index-leftbar').removeClass('blocked');
-  //           $('#index-leftbar').css('display', 'none');
-  //           $('#index-leftbar').removeClass('expanded');
-  //         }, 1000);
-  //         break;
-  //       case 'collapsed':
-  //         $('#index-leftbar.collapsed').css('display', 'grid');
-  //         $('#index-leftbar.collapsed').addClass('blocked');
-  //         $('#index-leftbar.collapsed').addClass('expanded');
-  //         setTimeout(() => {
-  //           $('#index-leftbar').removeClass('blocked');
-  //           $('#index-leftbar').removeClass('collapsed');
-  //         }, 1000);
-  //         break;
-  //       default:
-  //         alert('ERROR!');
-  //     }
-  //   }
-  // });
-  // $('#index-main .overlay-button').on('click', () => {
-  //   // console.log('Overlay Button Clicked');
-  //   var element = document.getElementById('index-overlay') as HTMLElement;
-  //   var safety: boolean = element?.className.includes('blocked');
-  //   var status = element?.className.split(' ').pop() as string;
-  //   if (!safety) {
-  //     switch (status) {
-  //       case 'visible':
-  //         $('#index-overlay.visible').addClass('blocked');
-  //         $('#index-overlay.visible').toggleClass('hidden');
-  //         setTimeout(() => {
-  //           $('#index-overlay').removeClass('blocked');
-  //           $('#index-overlay').css('display', 'none');
-  //           $('#index-overlay').removeClass('visible');
-  //         }, 1000);
-  //         break;
-  //       case 'hidden':
-  //         $('#index-overlay.hidden').css('display', 'grid');
-  //         $('#index-overlay.hidden').addClass('blocked');
-  //         $('#index-overlay.hidden').toggleClass('visible');
-  //         setTimeout(() => {
-  //           $('#index-overlay').removeClass('blocked');
-  //           $('#index-overlay').removeClass('hidden');
-  //         }, 1000);
-  //         break;
-  //       default:
-  //         alert('ERROR!');
-  //     }
-  //   }
-  // });
-  // $('#index-main .rightbar-button').on('click', () => {
-  //   console.log('Rightbar Button Clicked');
-  //   var element = document.getElementById('index-rightbar') as HTMLElement;
-  //   var safety: boolean = element?.className.includes('blocked');
-  //   var status = element?.className.split(' ').pop() as string;
-  //   if (!safety) {
-  //     switch (status) {
-  //       case 'expanded':
-  //         $('#index-rightbar.expanded').addClass('blocked');
-  //         $('#index-rightbar.expanded').addClass('expanded');
-  //         setTimeout(() => {
-  //           $('#index-rightbar').css('display', 'none');
-  //           $('#index-rightbar').removeClass('blocked');
-  //           $('#index-rightbar').removeClass('expanded');
-  //         }, 1000);
-  //         break;
-  //       case 'collapsed':
-  //         $('#index-rightbar.collapsed').addClass('blocked');
-  //         $('#index-rightbar.collapsed').addClass('expanded');
-  //         $('#index-rightbar.collapsed').css('display', 'grid');
-  //         setTimeout(() => {
-  //           $('#index-rightbar').removeClass('blocked');
-  //           $('#index-rightbar').removeClass('collapsed');
-  //         }, 1000);
-  //         break;
-  //       default:
-  //         alert('ERROR!');
-  //     }
-  //   }
-  // });
 }
