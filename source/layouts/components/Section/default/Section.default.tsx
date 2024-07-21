@@ -4,7 +4,7 @@ import './Section.default.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import { getSVG } from '../../../../scripts';
+import { getIdentification, getSVG } from '../../../../scripts';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
@@ -41,6 +41,10 @@ interface DefaultProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
+  const loadTimer: number = 1000;
+  const blockName: String = 'main';
+  const pageName: String = getIdentification();
+
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
@@ -93,9 +97,9 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
           <>
             <ButtonFade
               text="My Career"
-              block="main"
+              block="overlay"
               align="left"
-              label="overlay"
+              label="career"
               style="highlight"
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
             />

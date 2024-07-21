@@ -1,127 +1,98 @@
 // Menu.anchor.tsx
 import React from 'react';
 import './Menu.anchor.scss';
+import { getSVG } from '../../../../scripts';
 
 import AnchorIcon from '../../Anchor/icon/Anchor.icon';
 import AnchorText from '../../Anchor/text/Anchor.text';
 
 interface MenuProps {
-  style: 'icon' | 'text';
-  align: 'left' | 'center' | 'right';
-  // items: { text: string; icon: string; href: string; }[];
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-  items: {
-    name: string;
+  selectDesign: 'icon' | 'text' | string;
+  info: {
     href: string;
-    icon: string;
+    text?: string;
+    state?: 'active' | '';
+    style: 'downplay' | 'highlight' | string;
+    align: 'left' | 'center' | 'right' | string;
+    label?: 'home' | 'skills' | 'contact' | string;
     target: '_blank' | '_parent' | '_self' | '_top' | string;
+    icon: undefined | { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
-const MenuAnchor: React.FC<MenuProps> = ({ style, items, block }) => {
+
+const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
   let anchorStyle = [];
-  for (let i = 0; i < items.length; i++) {
-    switch (style) {
+
+  // Only add highlight to the first ButtonFace. The rest should be downplay
+  for (let i = 0; i < info.length; i++) {
+    let icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string } | undefined;
+    switch (selectDesign) {
       case 'icon':
-        if (i === 0) {
-          anchorStyle.push(
-            <AnchorIcon
-              block={block}
-              align="center"
-              state="highlight"
-              icon={items[i].icon}
-              anchor={items[i]}
-              key={items[i].href}
-            />
-          );
+        if (info[i].icon !== undefined) {
+          if (i === 0) {
+            anchorStyle.push(
+              <AnchorIcon
+                index={i}
+                icon={icon}
+                href={info[i].href}
+                style={'highlight'}
+                text={info[i].text}
+                label={info[i].label}
+                block={info[i].block}
+                align={info[i].align}
+                key={`${info[i].text}`}
+              />
+            );
+          } else {
+            anchorStyle.push(
+              <AnchorIcon
+                href={info[i].href}
+                index={i}
+                icon={icon}
+                style={'downplay'}
+                text={info[i].text}
+                label={info[i].label}
+                block={info[i].block}
+                align={info[0].align}
+                key={`${info[i].text}`}
+              />
+            );
+          }
         } else {
           anchorStyle.push(
             <AnchorIcon
-              block={block}
-              align="center"
-              state="downplay"
-              icon={items[i].icon}
-              anchor={items[i]}
-              key={items[i].href}
+              href={info[i].href}
+              index={i}
+              icon={undefined}
+              style={'highlight'}
+              text={info[i].text}
+              label={info[i].label}
+              block={info[i].block}
+              align={info[i].align}
+              key={`${info[i].text}`}
             />
           );
         }
         break;
-      case 'text':
-        if (i === 0) {
-          anchorStyle.push(
-            <AnchorText
-              block={block}
-              align="center"
-              state="highlight"
-              text={items[i].icon}
-              references={items[i]}
-              key={items[i].href}
-            />
-          );
-        } else {
-          anchorStyle.push(
-            <AnchorText
-              block={block}
-              align="center"
-              state="downplay"
-              text={items[i].icon}
-              references={items[i]}
-              key={items[i].href}
-            />
-          );
-        }
+      case 'frame':
         break;
     }
   }
 
-  switch (items.length) {
+  switch (info.length) {
     case 1:
-      return (
-        <menu className="one">
-          {anchorStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-        </menu>
-      );
+      return <menu className="one">{anchorStyle}</menu>;
     case 2:
-      return (
-        <menu className="two">
-          {anchorStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="two">{anchorStyle}</menu>;
     case 3:
-      return (
-        <menu className="three">
-          {anchorStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="three">{anchorStyle}</menu>;
     case 4:
-      return (
-        <menu className="four">
-          {anchorStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="four">{anchorStyle}</menu>;
     case 5:
-      return (
-        <menu className="five">
-          {anchorStyle}
-          {/* <ButtonFade block={block} align={align} text={items[0].text} icon={items[0].icon} state="highlight" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[1].text} icon={items[1].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[2].text} icon={items[2].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[3].text} icon={items[3].icon} state="downplay" /> */}
-          {/* <ButtonFade block={block} align={align} text={items[4].text} icon={items[4].icon} state="downplay" /> */}
-        </menu>
-      );
+      return <menu className="five">{anchorStyle}</menu>;
     default:
-      alert('Menu.button.tsx');
+      alert('Maximum of 5 Buttons Allowed');
       break;
   }
 };

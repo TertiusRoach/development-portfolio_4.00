@@ -1,33 +1,11 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
-import { getSVG } from '../../../../scripts';
 import { useMediaQuery } from 'react-responsive';
-
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, getScroll, showAside } from '../../../../scripts/index';
-const anchors = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/TertiusRoach',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/github.svg',
-    target: '_blank',
-  },
-  {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/@TertiusRoach',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/youtube.svg',
-    target: '_blank',
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/tertius-roach/',
-    icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/06cff392403d55ce6dc06e713bda63625f1252f2/source/assets/svg-files/font-awesome/testing-icons/brands/linkedin.svg',
-    target: '_blank',
-  },
-];
+import { getResolution, getOrientation, getIdentification, getScroll, showAside, getSVG } from '../../../../scripts/index';
 
 interface FooterProps {
   icons: {
@@ -63,7 +41,18 @@ const IndexFooter: React.FC<FooterProps> = () => {
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
+  // type Anchor = {
+  //   href: string;
+  //   text?: string;
+  //   index?: number;
+  //   state?: 'active' | undefined;
+  //   style: 'downplay' | 'highlight' | string;
+  //   align: 'left' | 'center' | 'right' | string;
+  //   label?: 'home' | 'skills' | 'contact' | string;
+  //   target: '_blank' | '_self' | '_parent' | '_top';
+  //   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  //   icon: { dark: string; medium: string; light: string }[];
+  // };
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -74,6 +63,51 @@ const IndexFooter: React.FC<FooterProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
+  let anchors = [
+    {
+      href: 'https://github.com/TertiusRoach',
+      target: '_blank',
+      text: 'GitHub',
+      style: 'downplay',
+      align: 'center',
+      label: 'github',
+      state: '',
+      block: 'footer',
+      icon: getSVG('github') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      href: 'https://www.youtube.com/@TertiusRoach',
+      target: '_blank',
+      text: 'YouTube',
+      style: 'downplay',
+      align: 'center',
+      label: 'linkedin',
+      state: '',
+      block: 'footer',
+      icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      href: 'https://www.linkedin.com/in/tertius-roach/',
+      target: '_blank',
+      text: 'LinkedIn',
+      style: 'downplay',
+      align: 'center',
+      label: 'youtube',
+      state: '',
+      block: 'footer',
+      icon: getSVG('linkedIn') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+  ] as {
+    text: string;
+    href: string;
+    state?: 'active' | '';
+    style: 'downplay' | 'highlight' | string;
+    align: 'left' | 'center' | 'right' | string;
+    label: 'github' | 'linkedin' | 'youtube' | string;
+    target: '_blank' | '_parent' | '_self' | '_top' | string;
+    icon: undefined | { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
 
   let buttons = [
     {
@@ -85,12 +119,12 @@ const IndexFooter: React.FC<FooterProps> = () => {
       icon: getSVG('career') as { dark: string; medium: string; light: string },
     },
     {
-      icon: getSVG('leftbar') as { dark: string; medium: string; light: string },
       text: 'Skills',
       label: 'skills',
       align: 'center',
       block: 'footer',
       style: 'highlight',
+      icon: getSVG('skills') as { dark: string; medium: string; light: string },
     },
     /*
     {
@@ -109,7 +143,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
         {desktop && (
           <>
-            <MenuAnchor block="footer" items={anchors} style="icon" align="center" />
+            <MenuAnchor selectDesign="icon" info={anchors} />
           </>
         )}
         {mobile && (
@@ -117,8 +151,9 @@ const IndexFooter: React.FC<FooterProps> = () => {
             <ButtonFade
               text="Home"
               label="home"
-              block="footer"
               align="left"
+              block="footer"
+              state="active"
               style="highlight"
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
             />
@@ -132,10 +167,10 @@ const IndexFooter: React.FC<FooterProps> = () => {
             />
             {/* <MenuButton info={buttons} selectDesign="fade" /> */}
             <ButtonFade
-              text="Projects"
-              label="rightbar"
-              block="footer"
               align="right"
+              text="Projects"
+              block="rightbar"
+              label="projects"
               style="downplay"
               icon={getSVG('projects') as { dark: string; medium: string; light: string }}
             />
@@ -152,20 +187,20 @@ function jQueryFooter(pageName: String, blockName: String) {
   $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
-      const buttonElement = this as HTMLButtonElement;
-      const mainContainer = document.querySelector('#index-main') as HTMLElement;
-      const scroll = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
-      console.log(buttonElement);
+      let buttonElement = this as HTMLButtonElement;
+      let mainContainer = document.querySelector('#index-main') as HTMLElement;
+      let scroll = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
       console.log(scroll);
+      console.log(buttonElement);
       $(mainContainer).animate({ scrollTop: `${scroll}px` }, 1000);
       /*
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
       */
     }
   });
-  $(`#${containerElement} .footer-rightbar`).on('click', function () {
-    let rightbar = this.classList[0].split('-')[1] as string;
-    showAside(rightbar);
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+    let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
+    showAside(rightbar.classList[0].split('-')[1] as string);
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

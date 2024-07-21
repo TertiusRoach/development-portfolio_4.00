@@ -1,95 +1,76 @@
-import React from 'react';
+// Anchor.icon.tsx
 import './Anchor.icon.scss';
+import React, { useState } from 'react';
+import { getSVG } from '../../../../scripts';
+import { useMediaQuery } from 'react-responsive';
 
 interface IconProps {
-  icon: string;
-  state: 'downplay' | 'highlight';
-  align: 'left' | 'center' | 'right';
-  anchor: {
-    name: string;
-    href: string;
-    icon: string;
-    target: string;
-  };
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
-
+  href: string;
   text?: string;
-
-  // click?: (element: React.MouseEvent<HTMLElement>) => void;
+  index?: number;
+  icon: undefined | { dark: string; medium: string; light: string };
+  style: 'downplay' | 'highlight' | string;
+  align: 'left' | 'center' | 'right' | string;
+  label?: 'home' | 'skills' | 'contact' | string;
+  state?: 'active' | undefined;
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const AnchorIcon: React.FC<IconProps> = ({ block, state, align, icon, anchor: info }) => {
-  const className = `${block}-button ${state} ${align}` as string;
-  return (
-    <a className={className} href={info.href} target={info.target}>
-      {renderAnchor(block, `${icon}`, align, info)}
-    </a>
-  );
+
+const AnchorIcon: React.FC<IconProps> = ({ style, index, block, align, text, label }) => {
+  const [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
+  const className = `${block}-${label}`;
+  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
+  const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
+
+  const mouseEnter = () => setView('highlight');
+  const mouseLeave = () => setView('downplay');
+  switch (style) {
+    case 'highlight':
+      return (
+        <a id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${view} ${align}`}>
+          {renderButton(text, align, icon, block)}
+        </a>
+      );
+    case 'downplay':
+      return (
+        <a id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${view} ${align}`}>
+          {renderButton(text, align, icon, block)}
+        </a>
+      );
+  }
 };
+
 export default AnchorIcon;
 
-function renderAnchor(
-  _block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
-  icon: string,
-  align: 'left' | 'center' | 'right',
-  references: {
-    name: string;
-    href: string;
-    icon: string;
-    target: string;
-  }
-) {
-  if (icon !== 'undefined' || '') {
-    return (
-      <>
-        <img className={`${align}`} style={{ zIndex: 1 }} src={references.icon} alt={references.name} />
-        <span className="button-background" style={{ zIndex: 0 }}></span>
-      </>
-    );
-  } else {
-    return <>{/* <h3>{text}</h3> */}</>;
-  }
-}
-
-/*
-  const blockElement = document.getElementsByTagName('main')[0];
-  console.log(blockElement);
-  */
-
-/*
-  console.log(`Label: ${label}`);
-  console.log(`State: ${state}`);
-  console.log(`Align: ${align}`);
-  console.log(`Text: ${text}`);
-  */
-// console.log(`Icon: ${!icon}`);
-// let renderAnchor = (
-//   _block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar',
-//   icon: string,
-//   align: 'left' | 'center' | 'right',
-//   text: string
-// ) => {};
-/*
-      // switch (block) {
-      //   case 'header':
-      //     return (
-      //       <>
-      //         <h3 className={`${align}`} style={{ zIndex: 2 }}>
-      //           {text}
-      //         </h3>
-      //         <img className={`${align}`} style={{ zIndex: 1 }} src={icon} alt={text} />
-      //         <span className="button-background" style={{ zIndex: 0 }}></span>
-      //       </>
-      //     );
-      //     break;
-      //   case 'main':
-      //     break;
-      //   case 'footer':
-      //     break;
-      //   case 'overlay':
-      //     break;
-      //   case 'leftbar':
-      //     break;
-      //   case 'rightbar':
-      //     break;
-      // }
-*/
+const renderButton = (
+  text: string | undefined,
+  align: 'left' | 'center' | 'right' | string,
+  icon: { dark: string; medium: string; light: string },
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
+) => {
+  const desktop = useMediaQuery({ query: '(orientation: landscape)' });
+  const mobile = useMediaQuery({ query: '(orientation: portrait)' });
+  return (
+    <>
+      {desktop && (
+        <>
+          <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
+            {text}
+          </h3>
+          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+        </>
+      )}
+      {mobile && (
+        <>
+          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
+            {text}
+          </h6>
+          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+        </>
+      )}
+      <span className="button-background" style={{ zIndex: 0 }}></span>
+    </>
+  );
+};
