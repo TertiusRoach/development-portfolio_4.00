@@ -4,9 +4,9 @@ import './Section.default.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import { getIdentification, getSVG } from '../../../../scripts';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
+import { getIdentification, getSVG } from '../../../../scripts';
 import DivisionWorking from '../../Division/working/Division.working';
 
 interface DefaultProps {
@@ -14,27 +14,6 @@ interface DefaultProps {
     resolution: string;
     orientation: string;
     identification: string;
-  };
-  icons: {
-    home: string;
-    close: string;
-    career: string;
-    skills: string;
-    contact: string;
-    working: string;
-    projects: string;
-    download: string;
-
-    viewOverlay: string;
-    viewLeftbar: string;
-    viewRightbar: string;
-
-    signatureStacked: string;
-    signatureAdjacent: string;
-
-    gitHub: string;
-    youTube: string;
-    linkedIn: string;
   };
   state?: 'active';
   label?: 'default' | 'home' | 'skills' | 'contact';

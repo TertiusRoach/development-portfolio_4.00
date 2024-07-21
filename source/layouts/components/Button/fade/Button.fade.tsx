@@ -7,19 +7,19 @@ import { useMediaQuery } from 'react-responsive';
 interface FadeProps {
   text?: string;
   index?: number;
+  state?: 'active' | undefined;
   icon: undefined | { dark: string; medium: string; light: string };
   style: 'downplay' | 'highlight' | string;
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
-  state?: 'active' | undefined;
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 
 const ButtonFade: React.FC<FadeProps> = ({ style, index, block, align, text, label }) => {
-  const [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
-  const className = `${block}-${label}`;
-  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
-  const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
+  let className = `${block}-${label}`;
+  let [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
+  let setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
+  let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
   const mouseEnter = () => setView('highlight');
   const mouseLeave = () => setView('downplay');

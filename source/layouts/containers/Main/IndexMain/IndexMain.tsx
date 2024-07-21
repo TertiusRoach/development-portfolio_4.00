@@ -16,27 +16,12 @@ interface InfoProps {
     orientation: string;
     identification: string;
   };
-  icons: {
-    home: string;
-    close: string;
-    career: string;
-    skills: string;
-    contact: string;
-    working: string;
-    projects: string;
-    download: string;
-    viewOverlay: string;
-    viewLeftbar: string;
-    viewRightbar: string;
-    signatureStacked: string;
-    signatureAdjacent: string;
-    gitHub: string;
-    youTube: string;
-    linkedIn: string;
-  };
+  state?: 'active';
+  label?: 'default' | 'home' | 'skills' | 'contact';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 
-const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
+const IndexMain: React.FC<InfoProps> = ({ info }) => {
   const loadTimer = 1000;
   const blockName = 'main';
   const pageName = getIdentification() as String;
@@ -58,16 +43,16 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionDefault block="main" state="active" info={info} icons={icons} />
-      <SectionHome info={info} icons={icons} block="main" state="active" />
-      <div style={{ height: '256px', background: 'green' }}>
+      <SectionDefault info={info} block="main" state="active" />
+      <SectionHome info={info} block="main" state="active" />
+      <div style={{ height: '500px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
-      <SectionSkills info={info} icons={icons} block="main" />
-      <div style={{ height: '568px', background: 'darkgreen' }}>
+      <SectionSkills info={info} block="main" />
+      <div style={{ height: '768px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div>
-      <SectionContact info={info} icons={icons} block="main" />
+      <SectionContact info={info} block="main" />
     </main>
   );
   console.log('IndexMain Loaded');
@@ -85,7 +70,7 @@ function jQueryMain(pageName: String, blockName: string) {
       if (event.target.parentElement?.tagName === 'BUTTON') {
         var labelName = event.target.parentElement.classList[0].split('-')[1] as string;
         var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 1000);
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 3000);
       } else {
         var buttonElement = this as HTMLButtonElement;
         setActive(this as HTMLButtonElement, navigation[i]);
@@ -93,7 +78,6 @@ function jQueryMain(pageName: String, blockName: string) {
       }
     }
   });
-
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
