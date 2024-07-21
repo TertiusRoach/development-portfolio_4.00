@@ -1,8 +1,8 @@
 // Anchor.icon.tsx
 import './Anchor.icon.scss';
 import React, { useState } from 'react';
-import { getSVG } from '../../../../scripts';
 import { useMediaQuery } from 'react-responsive';
+import getSVG from '../../../../utilities/getSVG';
 
 interface IconProps {
   href: string;

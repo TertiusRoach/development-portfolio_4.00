@@ -22,7 +22,11 @@
         cursor: pointer;
         align-items: center;
       }
-
+      @media screen and (max-width: 1000px) {
+        h6 {
+          cursor: default;
+        }
+      }
       img {
         cursor: pointer;
       }
@@ -162,12 +166,6 @@
   aside[id*='rightbar'],
   section[id*='overlay'] {
     button:not([id*='active']) {
-      @media screen and (max-width: 1000px) {
-        h3 {
-          opacity: 0;
-          display: none;
-        }
-      }
       &.highlight:hover {
         h1,
         h2,
@@ -210,12 +208,22 @@
 
       img[class*='medium'] {
         opacity: 1;
+        z-index: 1;
         animation: fadeIn 1s ease-in-out;
       }
 
       img[class*='light'] {
         opacity: 0;
+        z-index: 1;
         animation: fadeOut 1s ease-in-out;
+      }
+      @media screen and (max-width: 1000px) {
+        h3 {
+          z-index: 0;
+          opacity: 0;
+          display: none;
+          cursor: default;
+        }
       }
     }
   }
@@ -277,12 +285,6 @@
   }
 
   button {
-    @media screen and (max-width: 1000px) {
-      h6 {
-        opacity: 0;
-        display: none;
-      }
-    }
     &[id*='active'] {
       h1,
       h2,
@@ -316,12 +318,9 @@
     }
 
     @media screen and (max-width: 1000px) {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
       h6 {
+        z-index: 0;
+        opacity: 0;
         display: none;
       }
     }

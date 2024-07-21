@@ -1,8 +1,8 @@
 // Menu.anchor.tsx
 import React from 'react';
 import './Menu.anchor.scss';
-import { getSVG } from '../../../../scripts';
 
+import getSVG from '../../../../utilities/getSVG';
 import AnchorIcon from '../../Anchor/icon/Anchor.icon';
 import AnchorText from '../../Anchor/text/Anchor.text';
 
