@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, getScroll } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getScroll, getSVG } from '../../../../scripts/index';
 
 interface InfoProps {
   icons: {
@@ -40,26 +40,33 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
       label: 'home',
       align: 'left',
       block: 'header',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/home.svg',
-      view: 'downplay',
+      style: 'downplay',
+      icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
       align: 'left',
       label: 'skills',
       text: 'Skills',
       block: 'header',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/lightbulb.svg',
-      view: 'highlight',
+      style: 'highlight',
+      icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
       text: 'Contact',
       label: 'contact',
       align: 'left',
       block: 'header',
-      icon: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/93c8ef9a857febca63debebfd68121c07755901a/source/assets/svg-files/font-awesome/testing-icons/solid/phone.svg',
-      view: 'highlight',
+      style: 'highlight',
+      icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
-  ];
+  ] as {
+    text: string;
+    icon: { dark: string; medium: string; light: string };
+    label: 'rightbar' | string;
+    style: 'highlight' | 'downplay' | string;
+    align: 'left' | 'center' | 'right' | string;
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
 
   useEffect(() => {
     window.addEventListener(
@@ -91,8 +98,8 @@ const IndexHeader: React.FC<InfoProps> = ({ icons }) => {
 export default IndexHeader;
 
 function jQueryHeader(pageName: String, blockName: String) {
-  const blockElement = `${pageName}-${blockName}`;
-  $(`#${blockElement} button[class*="${blockName}"]`).on('click', function () {
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       const buttonElement = this as HTMLButtonElement;

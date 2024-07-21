@@ -116,6 +116,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
           <>
             <ButtonFade
               text="Home"
+              label="home"
               block="footer"
               align="left"
               style="highlight"
@@ -123,15 +124,17 @@ const IndexFooter: React.FC<FooterProps> = () => {
             />
             <ButtonFade
               text="Skills"
+              label="skills"
               block="footer"
               align="center"
               style="highlight"
-              icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
+              icon={getSVG('skills') as { dark: string; medium: string; light: string }}
             />
             {/* <MenuButton info={buttons} selectDesign="fade" /> */}
             <ButtonFade
               text="Projects"
-              block="rightbar"
+              label="rightbar"
+              block="footer"
               align="right"
               style="downplay"
               icon={getSVG('projects') as { dark: string; medium: string; light: string }}
@@ -150,12 +153,18 @@ function jQueryFooter(pageName: String, blockName: String) {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       const buttonElement = this as HTMLButtonElement;
-      const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+      const mainContainer = document.querySelector('#index-main') as HTMLElement;
+      const scroll = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
+      console.log(buttonElement);
+      console.log(scroll);
+      $(mainContainer).animate({ scrollTop: `${scroll}px` }, 1000);
+      /*
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
+      */
     }
   });
-  $(`#${containerElement} .rightbar-button`).on('click', function () {
-    let rightbar = this.classList[0].split('-')[0] as string;
+  $(`#${containerElement} .footer-rightbar`).on('click', function () {
+    let rightbar = this.classList[0].split('-')[1] as string;
     showAside(rightbar);
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
