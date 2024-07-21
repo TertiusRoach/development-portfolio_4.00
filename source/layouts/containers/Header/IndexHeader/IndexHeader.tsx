@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import { getResolution, getOrientation, getIdentification, getScroll, getSVG } from '../../../../scripts/index';
+import { getResolution, getOrientation, getIdentification, getScroll, getSVG, setActive } from '../../../../scripts/index';
 
 interface InfoProps {
   icons: {
@@ -102,10 +102,12 @@ function jQueryHeader(pageName: String, blockName: String) {
   $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
-      const buttonElement = this as HTMLButtonElement;
-      const mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-      // const scrollPixels =  as Number;
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
+      let buttonElement = this as HTMLButtonElement;
+      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
+
+      setActive(this as HTMLButtonElement, blockName);
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

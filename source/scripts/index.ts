@@ -25,13 +25,13 @@ export function showSection(pageName: string, blockName: 'overlay' | String) {
 
         setTimeout(() => {
           targetElement.classList.remove('blocked');
-          targetElement.style.display = 'none';
           targetElement.classList.remove('visible');
+          targetElement.style.display = 'none';
         }, 1000);
         break;
       case 'hidden':
-        targetElement.classList.add('blocked');
         targetElement.style.display = 'grid';
+        targetElement.classList.add('blocked');
         targetElement.classList.toggle('visible');
 
         setTimeout(() => {
@@ -44,20 +44,13 @@ export function showSection(pageName: string, blockName: 'overlay' | String) {
     }
   }
 }
-export function setActive(button: HTMLButtonElement, blockName: String) {
+export function setActive(buttonElement: HTMLButtonElement, blockName: String) {
   const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
-  const buttonElement = button as HTMLButtonElement;
-  const tagName = button.parentElement?.tagName as 'MENU' | 'HEADER' | 'FOOTER' | string;
-
-  if (tagName === 'MENU' || 'FOOTER' || 'HEADER') {
-    if (activeButton) {
-      activeButton.removeAttribute('id');
-    } else {
-      button.setAttribute('id', `${blockName}-active`);
-    }
-
-    buttonElement.id = `${blockName}-active`;
+  if (activeButton) {
+    activeButton.removeAttribute('id');
   }
+  buttonElement.setAttribute('id', `${blockName}-active`);
+  // buttonElement.id = `${blockName}-active`;
 }
 
 export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
@@ -97,21 +90,18 @@ export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
     }
   }
 }
-export function getScroll(button: HTMLButtonElement, container: HTMLElement, blockName: 'header' | 'footer' | String) {
+export function getScroll(button: HTMLButtonElement, container: HTMLElement) {
   const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
     let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//
     let scrollAmounts: { className: string; scrollAmount: number }[] = []; //--|🠈 Initialize an array to store the class names and scroll amounts 🠈|--//
     let cumulativeHeight = 0; //--|🠈 Initialize cumulative height to 0 🠈|--//
     //--|🠋 Iterate over each child element 🠈|--//
     children.forEach((child) => {
-      //--|🠋 Check if the child element is a SECTION 🠈|--//
-      if (child.tagName === 'SECTION') {
-        //--|🠋 Add the class name and cumulative height to the scrollAmounts array 🠈|--//
-        scrollAmounts.push({
-          className: child.className.split('-')[1], //--|🠈 Assuming className format includes the section name 🠈|--//
-          scrollAmount: cumulativeHeight,
-        });
-      }
+      //--|🠋 Add the class name and cumulative height to the scrollAmounts array 🠈|--//
+      scrollAmounts.push({
+        className: child.className.split('-')[1], //--|🠈 Assuming className format includes the section name 🠈|--//
+        scrollAmount: cumulativeHeight,
+      });
       cumulativeHeight += child.offsetHeight; //--|🠈 Add the child's height to the cumulative height 🠈|--//
     });
     //--|🠋 Return the array of class names and scroll amounts 🠈|--//
@@ -123,7 +113,6 @@ export function getScroll(button: HTMLButtonElement, container: HTMLElement, blo
 
   //--|🠋 If scrollPixels is found, animate the scroll to the calculated amount 🠋|--//
   if (scrollPixels) {
-    setActive(button, blockName);
     return {
       scrollTag: scrollTag as String,
       scrollTop: scrollPixels.scrollAmount as Number,

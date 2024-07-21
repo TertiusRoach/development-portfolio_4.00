@@ -1,16 +1,8 @@
+// IndexMain.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import {
-  showAside,
-  setActive,
-  getScroll,
-  showSection,
-  getResolution,
-  getOrientation,
-  getIdentification,
-  setMenu,
-} from '../../../../scripts/index';
+import { showAside, setActive, getScroll, showSection, getIdentification } from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import SectionHome from '../../../components/Section/home/Section.home';
@@ -33,25 +25,23 @@ interface InfoProps {
     working: string;
     projects: string;
     download: string;
-
     viewOverlay: string;
     viewLeftbar: string;
     viewRightbar: string;
-
     signatureStacked: string;
     signatureAdjacent: string;
-
     gitHub: string;
     youTube: string;
     linkedIn: string;
   };
 }
+
 const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
-  const loadTimer: number = 1000;
-  const blockName: String = 'main';
-  const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const loadTimer = 1000;
+  const blockName = 'main';
+  const pageName = getIdentification() as String;
+  const mobile = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop = useMediaQuery({ query: '(orientation: landscape)' });
 
   useEffect(() => {
     const handleResize = () => {
@@ -82,38 +72,40 @@ const IndexMain: React.FC<InfoProps> = ({ info, icons }) => {
   );
   console.log('IndexMain Loaded');
 };
+
 export default IndexMain;
 
-function jQueryMain(pageName: String, blockName: String) {
+function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
-    let buttonElement = this as HTMLButtonElement;
-    let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-    let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
-    $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-  });
+  $(`#${containerElement} section`).on('click', function (event) {
+    let navigation = ['header', 'footer'];
+    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
 
-  $(`#${containerElement} section`).on('click', function () {
-    // console.log(this);
-    /*
-    let buttonElement = this as HTMLButtonElement;
-    let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
-    let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
-
-    $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-    */
-  });
-
-  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
-    let barElement = this.classList[0].split('-')[1];
-    if (this.classList[0].includes('main')) {
-      showAside(barElement);
+    for (let i = 0; i < navigation.length; i++) {
+      if (event.target.parentElement?.tagName === 'BUTTON') {
+        var labelName = event.target.parentElement.classList[0].split('-')[1] as string;
+        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 1000);
+      } else {
+        var buttonElement = this as HTMLButtonElement;
+        setActive(this as HTMLButtonElement, navigation[i]);
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 1000);
+      }
     }
   });
 
-  $(`#${containerElement}  button[class*="overlay"]`).on('click', function () {
-    const overlay = this.classList[0].split('-')[0];
-    showSection(`${getIdentification()}`, overlay);
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[0];
+    if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
   });
+  $(`#${containerElement} .overlay-career`).on('click', function () {
+    const overlay = this.classList[0].split('-')[0];
+    if (overlay.includes('overlay')) {
+      showSection(`${pageName}`, overlay);
+    }
+  });
+
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

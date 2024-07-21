@@ -49,18 +49,6 @@ const IndexFooter: React.FC<FooterProps> = () => {
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  // type Anchor = {
-  //   href: string;
-  //   text?: string;
-  //   index?: number;
-  //   state?: 'active' | undefined;
-  //   style: 'downplay' | 'highlight' | string;
-  //   align: 'left' | 'center' | 'right' | string;
-  //   label?: 'home' | 'skills' | 'contact' | string;
-  //   target: '_blank' | '_self' | '_parent' | '_top';
-  //   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  //   icon: { dark: string; medium: string; light: string }[];
-  // };
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -196,10 +184,11 @@ function jQueryFooter(pageName: String, blockName: String) {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector('#index-main') as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
+      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
+
+      setActive(this as HTMLButtonElement, blockName);
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-      setActive(this as HTMLButtonElement, 'footer');
     }
   });
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
