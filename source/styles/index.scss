@@ -27,6 +27,9 @@
         background: rgba($red-light, 0.25);
       }
     }
+    footer[id*='index'] {
+      background: rgba($red-neon, 0.25) !important;
+    }
     //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
     //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
   }
@@ -53,6 +56,9 @@
       main {
         background: rgba($blue-dark, 1);
       }
+    }
+    menu:first-child {
+      background: rgba($blue-neon, 0.25) !important;
     }
     //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
     //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//

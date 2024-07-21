@@ -79,7 +79,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
     {
       text: 'Home',
       label: 'home',
-      align: 'center',
+      align: 'left',
       block: 'footer',
       style: 'highlight',
       icon: getSVG('career') as { dark: string; medium: string; light: string },
@@ -92,6 +92,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
       block: 'footer',
       style: 'highlight',
     },
+    /*
     {
       text: 'Contact',
       label: 'contact',
@@ -100,10 +101,11 @@ const IndexFooter: React.FC<FooterProps> = () => {
       style: 'highlight',
       icon: getSVG('projects') as { dark: string; medium: string; light: string },
     },
+    */
   ];
   return (
     <>
-      {/* How do I refresh the useEffect everytime the screen rotates? */}
+      {/* How do I refresh the useEffect every time the screen rotates? */}
       <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
         {desktop && (
           <>
@@ -112,7 +114,21 @@ const IndexFooter: React.FC<FooterProps> = () => {
         )}
         {mobile && (
           <>
-            <MenuButton info={buttons} selectDesign="fade" />
+            <ButtonFade
+              text="Home"
+              block="footer"
+              align="left"
+              style="highlight"
+              icon={getSVG('career') as { dark: string; medium: string; light: string }}
+            />
+            <ButtonFade
+              text="Skills"
+              block="footer"
+              align="center"
+              style="highlight"
+              icon={getSVG('leftbar') as { dark: string; medium: string; light: string }}
+            />
+            {/* <MenuButton info={buttons} selectDesign="fade" /> */}
             <ButtonFade
               text="Projects"
               block="rightbar"
