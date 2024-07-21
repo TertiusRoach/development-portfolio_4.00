@@ -5,7 +5,15 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, getScroll, showAside, getSVG } from '../../../../scripts/index';
+import {
+  getResolution,
+  getOrientation,
+  getIdentification,
+  getScroll,
+  showAside,
+  getSVG,
+  setActive,
+} from '../../../../scripts/index';
 
 interface FooterProps {
   icons: {
@@ -189,13 +197,9 @@ function jQueryFooter(pageName: String, blockName: String) {
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
       let mainContainer = document.querySelector('#index-main') as HTMLElement;
-      let scroll = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
-      console.log(scroll);
-      console.log(buttonElement);
-      $(mainContainer).animate({ scrollTop: `${scroll}px` }, 1000);
-      /*
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer, blockName)?.scrollTop}px` }, 1000);
-      */
+      let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop;
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+      setActive(this as HTMLButtonElement, 'footer');
     }
   });
   $(`#${containerElement} .rightbar-projects`).on('click', function () {

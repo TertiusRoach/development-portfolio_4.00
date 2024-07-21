@@ -44,53 +44,56 @@ export function showSection(pageName: string, blockName: 'overlay' | String) {
     }
   }
 }
-export function setActive(button: HTMLButtonElement, blockName: String): void {
+export function setActive(button: HTMLButtonElement, blockName: String) {
   const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
-  if (button.parentElement?.tagName === 'MENU') {
+  const buttonElement = button as HTMLButtonElement;
+  const tagName = button.parentElement?.tagName as 'MENU' | 'HEADER' | 'FOOTER' | string;
+
+  if (tagName === 'MENU' || 'FOOTER' || 'HEADER') {
     if (activeButton) {
       activeButton.removeAttribute('id');
     } else {
-      console.log(`//--|🠊 No Element: #${blockName}-active 🠈|--//`);
+      button.setAttribute('id', `${blockName}-active`);
     }
 
-    button.id = `${blockName}-active`;
+    buttonElement.id = `${blockName}-active`;
   }
 }
+
 export function showAside(blockName: 'leftbar' | 'rightbar' | string) {
-  const pageName = getIdentification();
+  const pageName: String = getIdentification();
   const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  if (!element) {
-    console.error(`Element with ID "${pageName}-${blockName}" not found.`);
-    return;
-  }
+  //--|🠋 Safety Check 🠈|--//
+  if (!element.className.includes('blocked')) {
+    if (element) {
+      let status = element.className.split(' ').pop() as string;
+      switch (status) {
+        case 'expanded':
+          element.classList.add('blocked');
+          element.classList.add('expanded');
 
-  const safety: boolean = element.className.includes('blocked');
-  const status = element.className.split(' ').pop() as string;
+          setTimeout(() => {
+            element.classList.remove('blocked');
+            element.style.display = 'none';
+            element.classList.remove('expanded');
+          }, 1000);
+          break;
+        case 'collapsed':
+          element.style.display = 'grid';
+          element.classList.add('blocked');
+          element.classList.add('expanded');
 
-  if (!safety) {
-    switch (status) {
-      case 'expanded':
-        element.classList.add('blocked');
-        element.classList.add('expanded');
-
-        setTimeout(() => {
-          element.classList.remove('blocked');
-          element.style.display = 'none';
-          element.classList.remove('expanded');
-        }, 1000);
-        break;
-      case 'collapsed':
-        element.style.display = 'grid';
-        element.classList.add('blocked');
-        element.classList.add('expanded');
-
-        setTimeout(() => {
-          element.classList.remove('blocked');
-          element.classList.remove('collapsed');
-        }, 1000);
-        break;
-      default:
-        alert('ERROR!');
+          setTimeout(() => {
+            element.classList.remove('blocked');
+            element.classList.remove('collapsed');
+          }, 1000);
+          break;
+        default:
+          alert('ERROR!');
+      }
+    } else {
+      console.error(`Element with ID "${pageName}-${blockName}" not found.`);
+      return;
     }
   }
 }

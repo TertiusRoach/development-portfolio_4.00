@@ -86,36 +86,34 @@ export default IndexMain;
 
 function jQueryMain(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
-  const $container = $(`#${containerElement}`);
+  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
+    let buttonElement = this as HTMLButtonElement;
+    let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+    let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
+    $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+  });
 
-  $container.find('section').on('click', function () {
-    const $this = $(this);
-    const $main = $this.closest(`#${containerElement}`);
+  $(`#${containerElement} section`).on('click', function () {
+    // console.log(this);
+    /*
+    let buttonElement = this as HTMLButtonElement;
+    let mainContainer = document.querySelector('main[id*="main"]') as HTMLElement;
+    let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
 
-    if ($main.length) {
-      const labelName = this.className.split('-')[1];
-      const buttonTag = document.querySelector(`.${blockName}-${labelName}`) as HTMLButtonElement;
-      if (buttonTag && $main.length) {
-        $main.animate({ scrollTop: `${getScroll(buttonTag, $main[0], blockName)?.scrollTop}px` }, 500);
-        setTimeout(() => setMenu(blockName, labelName), 1000);
-      }
+    $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+    */
+  });
+
+  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
+    let barElement = this.classList[0].split('-')[1];
+    if (this.classList[0].includes('main')) {
+      showAside(barElement);
     }
   });
 
-  $container.find(`.${blockName}-leftbar`).on('click', function () {
-    const leftbar = this.classList[0].split('-')[1];
-    showAside(leftbar);
-  });
-
-  $container.find(`.${blockName}-overlay`).on('click', function () {
-    const overlay = this.classList[0].split('-')[1];
+  $(`#${containerElement}  button[class*="overlay"]`).on('click', function () {
+    const overlay = this.classList[0].split('-')[0];
     showSection(`${getIdentification()}`, overlay);
   });
-
-  $container.find(`.${blockName}-rightbar`).on('click', function () {
-    const rightbar = this.classList[0].split('-')[1];
-    showAside(rightbar);
-  });
-
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
