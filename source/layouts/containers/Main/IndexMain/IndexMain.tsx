@@ -2,13 +2,13 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { showAside, setActive, getScroll, showSection, getIdentification } from '../../../../scripts/index';
 
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import SectionHome from '../../../components/Section/home/Section.home';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';
 import SectionDefault from '../../../components/Section/default/Section.default';
+import { showAside, setActive, getScroll, showSection, getIdentification, getSVG } from '../../../../scripts/index';
 
 interface InfoProps {
   info: {
@@ -16,9 +16,6 @@ interface InfoProps {
     orientation: string;
     identification: string;
   };
-  state?: 'active';
-  label?: 'default' | 'home' | 'skills' | 'contact';
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 
 const IndexMain: React.FC<InfoProps> = ({ info }) => {
@@ -43,21 +40,20 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionDefault info={info} block="main" state="active" />
       <SectionHome info={info} block="main" state="active" />
-      <div style={{ height: '500px', background: 'green' }}>
+      <div style={{ height: '250px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
       <SectionSkills info={info} block="main" />
-      <div style={{ height: '768px', background: 'darkgreen' }}>
+      <div style={{ height: '500px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div>
       <SectionContact info={info} block="main" />
+      {/* <SectionDefault info={info} block="main" state="active" /> */}
     </main>
   );
   console.log('IndexMain Loaded');
 };
-
 export default IndexMain;
 
 function jQueryMain(pageName: String, blockName: string) {
@@ -65,17 +61,20 @@ function jQueryMain(pageName: String, blockName: string) {
   $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-
-    for (let i = 0; i < navigation.length; i++) {
-      if (event.target.parentElement?.tagName === 'BUTTON') {
-        var labelName = event.target.parentElement.classList[0].split('-')[1] as string;
+    let tagName = event.target.parentElement?.tagName as 'BUTTON' | string;
+    let parent = event.target.parentElement as HTMLElement;
+    if (tagName === 'BUTTON') {
+      for (let i = 0; i < navigation.length; i++) {
+        var labelName = parent.classList[0].split('-')[1] as string;
         var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 3000);
-      } else {
-        var buttonElement = this as HTMLButtonElement;
-        setActive(this as HTMLButtonElement, navigation[i]);
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 1000);
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
       }
+    } else {
+      var buttonElement = this as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        setActive(this as HTMLButtonElement, navigation[i]);
+      }
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
   $(`#${containerElement} .rightbar-projects`).on('click', function () {

@@ -28,12 +28,14 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
     window.addEventListener(
       'resize',
       () => {
-        jQueryDefault(pageName, blockName);
+        jQueryHome(pageName, blockName);
       },
       false
     );
   }, []);
-
+  let career = getSVG('career') as { dark: string; medium: string; light: string };
+  let contact = getSVG('contact') as { dark: string; medium: string; light: string };
+  let projects = getSVG('projects') as { dark: string; medium: string; light: string };
   return (
     <section
       className={`${block}-home`}
@@ -44,21 +46,14 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
       {desktop && (
         <>
           <>
+            <ButtonFade text="My Career" block="overlay" align="left" label="career" style="highlight" icon={career} />
             <ButtonFade
-              text="My Career"
-              block="overlay"
-              align="left"
-              label="career"
-              style="highlight"
-              icon={getSVG('career') as { dark: string; medium: string; light: string }}
-            />
-            <ButtonFade
-              text="My Projects"
+              align="right"
+              icon={projects}
               label="projects"
               block="rightbar"
               style="highlight"
-              align="right"
-              icon={getSVG('projects') as { dark: string; medium: string; light: string }}
+              text="My Projects"
             />
           </>
 
@@ -69,22 +64,8 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
       {mobile && (
         <>
           <menu>
-            <ButtonFade
-              text="My Career"
-              label="career"
-              block="main"
-              align="left"
-              style="downplay"
-              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
-            />
-            <ButtonFade
-              text="Contact Me"
-              label="contact"
-              block="main"
-              align="right"
-              style="downplay"
-              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
-            />
+            <ButtonFade text="My Career" label="career" block="overlay" align="left" style="downplay" icon={career} />
+            <ButtonFade text="Contact Me" label="contact" block="main" align="right" style="downplay" icon={contact} />
           </menu>
         </>
       )}
@@ -122,7 +103,7 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
 }
 export default SectionHome;
 
-function jQueryDefault(pageName: String, blockName: string) {
+function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
   console.log(`'Yay, jQuery!':${containerElement}`);
 }

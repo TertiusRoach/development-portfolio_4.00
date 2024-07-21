@@ -104,7 +104,7 @@ function jQueryHeader(pageName: String, blockName: String) {
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
       let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer, blockName)?.scrollTop as Number;
+      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
 
       setActive(this as HTMLButtonElement, blockName);
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
