@@ -36,11 +36,13 @@ interface DefaultProps {
     youTube: string;
     linkedIn: string;
   };
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   state?: 'active';
   label?: 'default' | 'home' | 'skills' | 'contact';
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
+  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -79,16 +81,13 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       icon: getSVG('projects') as { dark: string; medium: string; light: string },
     },
   ];
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
   return (
     <section
       className={`${block}-default`}
       id={state === 'active' ? `${block}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktop && (
         <>
           <>
@@ -113,17 +112,9 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
           {/* <MenuButton selectDesign="fade" info={buttons} /> */}
         </>
       )}
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobile && (
         <>
-          <ButtonFade
-            text="My Career"
-            block="main"
-            align="left"
-            label="overlay"
-            style="center"
-            icon={getSVG('career') as { dark: string; medium: string; light: string }}
-          />
           <ButtonFade
             text="Contact Me"
             label="contact"
