@@ -3,30 +3,12 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import { getResolution, getOrientation, getIdentification, getSVG } from '../../../../scripts/index';
+import getSVG from '../../../../utilities/getSVG';
+import getResolution from '../../../../utilities/getResolution';
+import getOrientation from '../../../../utilities/getOrientation';
+import getIdentification from '../../../../utilities/getIdentification';
 
 interface InfoProps {
-  icon: {
-    home: string;
-    close: string;
-    career: string;
-    skills: string;
-    contact: string;
-    working: string;
-    projects: string;
-    download: string;
-
-    viewOverlay: string;
-    viewLeftbar: string;
-    viewRightbar: string;
-
-    signatureStacked: string;
-    signatureAdjacent: string;
-
-    gitHub: string;
-    youTube: string;
-    linkedIn: string;
-  };
   info: {
     resolution: string;
     orientation: string | 'landscape' | 'portrait';

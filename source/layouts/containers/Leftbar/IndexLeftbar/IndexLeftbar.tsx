@@ -2,7 +2,11 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import { getResolution, getOrientation, getIdentification, getSVG } from '../../../../scripts/index';
+
+import getSVG from '../../../../utilities/getSVG';
+import getResolution from '../../../../utilities/getResolution';
+import getOrientation from '../../../../utilities/getOrientation';
+import getIdentification from '../../../../utilities/getIdentification';
 
 const close: string =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';

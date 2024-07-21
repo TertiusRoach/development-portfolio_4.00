@@ -1,8 +1,9 @@
 // Section.contact.tsx
 import React from 'react';
 import './Section.contact.scss';
-import { getSVG } from '../../../../scripts';
+
 import { useMediaQuery } from 'react-responsive';
+import getSVG from '../../../../utilities/getSVG';
 import { useEffect, useRef, useState } from 'react';
 
 import DivisionWorking from '../../Division/working/Division.working';

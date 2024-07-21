@@ -1,11 +1,12 @@
 // Section.skills.tsx
-import React from 'react';
 import './Section.skills.scss';
 import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
-import { getIdentification, getSVG } from '../../../../scripts';
+import React, { useEffect, useRef, useState } from 'react';
 
+import getSVG from '../../../../utilities/getSVG';
 import DivisionWorking from '../../Division/working/Division.working';
+import getIdentification from '../../../../utilities/getIdentification';
+
 interface SkillsProps {
   state?: 'active';
   info: {

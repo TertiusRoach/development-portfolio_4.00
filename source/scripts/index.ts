@@ -1,6 +1,7 @@
 //--|🠋 index.ts 🠋|--//
 
 //--|🠋 Index Page 🠋|--//
+/*
 export function showSection(pageName: string, blockName: 'overlay' | String) {
   const element = document.getElementById('index-overlay') as HTMLElement;
   if (!element) {
@@ -201,4 +202,5 @@ export function getSVG(labelName: string): { dark: String; medium: String; light
     light: `${iconURI}${getIconPath(colorShades[2])}`,
   } as { dark: String; medium: String; light: String };
 }
+*/
 //--|🠉 Established Functions 🠉|--//

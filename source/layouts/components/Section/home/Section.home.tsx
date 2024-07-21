@@ -4,9 +4,10 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import { getIdentification, getSVG } from '../../../../scripts';
+import getSVG from '../../../../utilities/getSVG';
 import ButtonFade from '../../Button/fade/Button.fade';
 import DivisionWorking from '../../Division/working/Division.working';
+import getIdentification from '../../../../utilities/getIdentification';
 
 interface HomeProps {
   state?: 'active';

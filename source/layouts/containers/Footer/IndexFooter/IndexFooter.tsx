@@ -5,15 +5,13 @@ import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import {
-  getResolution,
-  getOrientation,
-  getIdentification,
-  getScroll,
-  showAside,
-  getSVG,
-  setActive,
-} from '../../../../scripts/index';
+import getSVG from '../../../../utilities/getSVG';
+import showAside from '../../../../utilities/showAside';
+import getScroll from '../../../../utilities/getScroll';
+import setActive from '../../../../utilities/setActive';
+import getResolution from '../../../../utilities/getResolution';
+import getOrientation from '../../../../utilities/getOrientation';
+import getIdentification from '../../../../utilities/getIdentification';
 
 interface FooterProps {
   icons: {

@@ -6,8 +6,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
-import { getIdentification, getSVG } from '../../../../scripts';
+
+import getSVG from '../../../../utilities/getSVG';
 import DivisionWorking from '../../Division/working/Division.working';
+import getIdentification from '../../../../utilities/getIdentification';
 
 interface DefaultProps {
   info: {

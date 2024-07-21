@@ -11,20 +11,18 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
-import { getResolution, getOrientation, getIdentification, getSVG } from './scripts/index'; // Import functions (assuming they return strings)
+import getSVG from './utilities/getSVG';
+import getResolution from './utilities/getResolution';
+import getOrientation from './utilities/getOrientation';
+import getIdentification from './utilities/getIdentification';
+
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
 function Body() {
-  const [infoPROP, newPROP] = useState({
+  let [infoPROP, newPROP] = useState({
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
     identification: `${getIdentification()}`,
   });
-  /*
-  const iconShades: { dark: String; medium: String; light: String } = getSVG('home');
-  console.log(iconShades.dark); // Correctly logs the dark SVG URL
-  console.log(iconShades.medium); // Correctly logs the medium SVG URL
-  console.log(iconShades.light); // Correctly logs the light SVG URL
-  */
 
   useEffect(() => {
     function updatePROP() {
@@ -44,9 +42,9 @@ function Body() {
   }, []);
   return (
     <>
-      <IndexHeader icons={iconHREF} info={infoPROP} />
+      <IndexHeader info={infoPROP} />
 
-      <IndexMain icons={iconHREF} info={infoPROP} />
+      <IndexMain info={infoPROP} />
 
       <IndexFooter icons={iconHREF} info={infoPROP} />
 
@@ -54,7 +52,7 @@ function Body() {
 
       <IndexRightbar icons={iconHREF} info={infoPROP} />
 
-      <IndexOverlay icons={iconHREF} info={infoPROP} />
+      <IndexOverlay info={infoPROP} />
     </>
   );
 }

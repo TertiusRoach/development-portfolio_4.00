@@ -1,8 +1,8 @@
 // Button.fade.tsx
 import './Button.fade.scss';
 import React, { useState } from 'react';
-import { getSVG } from '../../../../scripts';
 import { useMediaQuery } from 'react-responsive';
+import getSVG from '../../../../utilities/getSVG';
 
 interface FadeProps {
   text?: string;

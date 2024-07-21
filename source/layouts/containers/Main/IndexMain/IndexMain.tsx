@@ -8,7 +8,14 @@ import SectionHome from '../../../components/Section/home/Section.home';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';
 import SectionDefault from '../../../components/Section/default/Section.default';
-import { showAside, setActive, getScroll, showSection, getIdentification, getSVG } from '../../../../scripts/index';
+
+import showAside from '../../../../utilities/showAside';
+import setActive from '../../../../utilities/setActive';
+import getScroll from '../../../../utilities/getScroll';
+import showSection from '../../../../utilities/showSection';
+import getIdentification from '../../../../utilities/getIdentification';
+
+import getSVG from '../../../../utilities/getSVG';
 
 interface InfoProps {
   info: {
