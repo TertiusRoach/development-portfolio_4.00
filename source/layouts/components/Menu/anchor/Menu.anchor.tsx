@@ -35,6 +35,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
               <AnchorIcon
                 index={i}
                 icon={icon}
+                target="_blank"
                 href={info[i].href}
                 style={'highlight'}
                 text={info[i].text}
@@ -47,10 +48,11 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
           } else {
             anchorStyle.push(
               <AnchorIcon
-                href={info[i].href}
                 index={i}
                 icon={icon}
+                target="_blank"
                 style={'downplay'}
+                href={info[i].href}
                 text={info[i].text}
                 label={info[i].label}
                 block={info[i].block}
@@ -62,9 +64,10 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
         } else {
           anchorStyle.push(
             <AnchorIcon
-              href={info[i].href}
               index={i}
+              target="_blank"
               icon={undefined}
+              href={info[i].href}
               style={'highlight'}
               text={info[i].text}
               label={info[i].label}
