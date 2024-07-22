@@ -75,7 +75,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       {desktop && (
         <>
           <>
-            <ButtonFade
+            {/* <ButtonFade
               state=""
               text="My Career"
               block="overlay"
@@ -83,8 +83,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
               label="career"
               style="highlight"
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
-            />
-            <ButtonFade
+            /> */}
+            {/* <ButtonFade
               state=""
               text="My Projects"
               label="projects"
@@ -92,7 +92,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
               style="highlight"
               align="right"
               icon={getSVG('projects') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </>
 
           {/* <MenuButton selectDesign="fade" info={buttons} /> */}
@@ -101,7 +101,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobile && (
         <>
-          <ButtonFade
+          {/* <ButtonFade
             state=""
             text="Contact Me"
             label="contact"
@@ -109,7 +109,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
             style="highlight"
             align="center"
             icon={getSVG('contact') as { dark: string; medium: string; light: string }}
-          />
+          /> */}
         </>
       )}
     </section>

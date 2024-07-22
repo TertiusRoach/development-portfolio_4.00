@@ -8,11 +8,6 @@ import getResolution from '../../../../utilities/getResolution';
 import getOrientation from '../../../../utilities/getOrientation';
 import getIdentification from '../../../../utilities/getIdentification';
 
-const close: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-const download: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
-
 interface InfoProps {
   icons: {
     projects: string;
@@ -42,17 +37,17 @@ const IndexRightbar: React.FC<InfoProps> = () => {
   return (
     <>
       <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
-        <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+        <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
+        <footer className="rightbar-midground" style={{ zIndex: 1 }}>
           <ButtonFade
-            text=""
+            state=""
             label="close"
             block="rightbar"
             style="highlight"
             align="center"
             icon={getSVG('close') as { dark: string; medium: string; light: string }}
           />
-        </header>
-        <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
+        </footer>
 
         <div className="rightbar-background" style={{ zIndex: 0 }}>
           <ul className="rightbar-listing">
@@ -63,20 +58,12 @@ const IndexRightbar: React.FC<InfoProps> = () => {
       </aside>
     </>
   );
-  // console.log(info);
-  console.log('IndexLeftbar Loaded');
 };
 export default IndexRightbar;
 
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-
-  $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      // toggleState(containerElement);
-    }
-  });
-  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {
+  $(`button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
@@ -84,21 +71,4 @@ function jQueryRightbar(pageName: String, blockName: String) {
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-
-  // const toggleState = function (containerElement: String) {
-  //   let element = document.querySelector(`#${containerElement}`)?.className as string;
-  //   if (!element.includes('blocked')) {
-  //     var status = element.split(' ').pop() as string;
-  //     switch (status) {
-  //       case 'expanded':
-  //         $(`#${containerElement}.expanded`).toggleClass('collapsed');
-  //         $(`#${containerElement}.expanded`).removeClass('expanded');
-  //         break;
-  //       case 'collapsed':
-  //         $(`#${containerElement}.collapsed`).toggleClass('expanded');
-  //         $(`#${containerElement}.collapsed`).removeClass('collapsed');
-  //         break;
-  //     }
-  //   }
-  // };
 }

@@ -53,11 +53,11 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       <div style={{ height: '250px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div>
-      <SectionSkills info={info} block="main" />
+      {/* <SectionSkills info={info} block="main" /> */}
       <div style={{ height: '500px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div>
-      <SectionContact info={info} block="main" />
+      {/* <SectionContact info={info} block="main" /> */}
       {/* <SectionDefault info={info} block="main" state="active" /> */}
     </main>
   );
