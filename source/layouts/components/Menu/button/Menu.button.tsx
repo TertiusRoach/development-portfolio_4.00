@@ -14,10 +14,11 @@ interface MenuProps {
   selectDesign: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
   info: {
     text: string;
-    icon: { dark: string; medium: string; light: string };
+    state: 'active' | '';
     label: 'rightbar' | string;
-    style: 'highlight' | 'downplay' | string;
+    style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
@@ -29,48 +30,19 @@ const MenuButton: React.FC<MenuProps> = ({ selectDesign, info }) => {
     let icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string } | undefined;
     switch (selectDesign) {
       case 'fade':
-        if (info[i].icon !== undefined) {
-          if (i === 0) {
-            buttonStyle.push(
-              <ButtonFade
-                index={i}
-                icon={icon}
-                style={'highlight'}
-                text={info[i].text}
-                label={info[i].label}
-                block={info[i].block}
-                align={info[i].align}
-                key={`${info[i].text}`}
-              />
-            );
-          } else {
-            buttonStyle.push(
-              <ButtonFade
-                index={i}
-                icon={icon}
-                style={'downplay'}
-                text={info[i].text}
-                label={info[i].label}
-                block={info[i].block}
-                align={info[0].align}
-                key={`${info[i].text}`}
-              />
-            );
-          }
-        } else {
-          buttonStyle.push(
-            <ButtonFade
-              index={i}
-              icon={undefined}
-              style={'highlight'}
-              text={info[i].text}
-              label={info[i].label}
-              block={info[i].block}
-              align={info[i].align}
-              key={`${info[i].text}`}
-            />
-          );
-        }
+        buttonStyle.push(
+          <ButtonFade
+            index={i}
+            icon={icon}
+            text={info[i].text}
+            style={info[i].style}
+            state={info[i].state}
+            label={info[i].label}
+            block={info[i].block}
+            align={info[i].align}
+            key={`${info[i].text}`}
+          />
+        );
         break;
       case 'frame':
         break;

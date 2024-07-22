@@ -30,28 +30,36 @@ const IndexHeader: React.FC<InfoProps> = () => {
       label: 'home',
       align: 'left',
       block: 'header',
+      state: 'active',
+      style: 'downplay',
       icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
+      state: '',
       align: 'left',
       label: 'skills',
       text: 'Skills',
       block: 'header',
+      style: 'downplay',
+
       icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
+      state: '',
       text: 'Contact',
       label: 'contact',
       align: 'left',
       block: 'header',
+      style: 'downplay',
       icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
   ] as {
     text: string;
-    icon: { dark: string; medium: string; light: string };
+    state: 'active' | '';
     label: 'rightbar' | string;
     style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
   const signatureAdjacent =
