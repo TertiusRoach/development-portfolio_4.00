@@ -30,7 +30,6 @@ const IndexHeader: React.FC<InfoProps> = () => {
       label: 'home',
       align: 'left',
       block: 'header',
-      style: 'downplay',
       icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
@@ -38,7 +37,6 @@ const IndexHeader: React.FC<InfoProps> = () => {
       label: 'skills',
       text: 'Skills',
       block: 'header',
-      style: 'highlight',
       icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
@@ -46,14 +44,13 @@ const IndexHeader: React.FC<InfoProps> = () => {
       label: 'contact',
       align: 'left',
       block: 'header',
-      style: 'highlight',
       icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
   ] as {
     text: string;
     icon: { dark: string; medium: string; light: string };
     label: 'rightbar' | string;
-    style: 'highlight' | 'downplay' | string;
+    style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];

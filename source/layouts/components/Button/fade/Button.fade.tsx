@@ -15,22 +15,32 @@ import './Button.fade.scss';
 interface FadeProps {
   text?: string;
   index?: number;
-  state?: 'active' | undefined;
+  state: 'active' | '';
   icon: undefined | { dark: string; medium: string; light: string };
-  style: 'downplay' | 'highlight' | string;
+  style: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 
-const ButtonFade: React.FC<FadeProps> = ({ style, index, block, align, text, label }) => {
-  let className = `${block}-${label}`;
-  let [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
-  let setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
+const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, label }) => {
+  const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
+  let className = `${block}-${label} ${viewStyle} ${align}`;
+  let setActive = state === 'active' ? `${block}-active` : '';
   let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
-  const mouseEnter = () => setView('highlight');
-  const mouseLeave = () => setView('downplay');
+  let mouseEnter: () => void;
+  let mouseLeave: () => void;
+  switch (style) {
+    case 'highlight':
+      mouseEnter = () => setStyle('downplay');
+      mouseLeave = () => setStyle('highlight');
+      break;
+    case 'downplay':
+      mouseEnter = () => setStyle('highlight');
+      mouseLeave = () => setStyle('downplay');
+      break;
+  }
   switch (style) {
     case 'highlight':
       return (
@@ -38,9 +48,9 @@ const ButtonFade: React.FC<FadeProps> = ({ style, index, block, align, text, lab
           id={setActive}
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`${className} ${view} ${align}`}
+          className={`${className} ${viewStyle} ${align}`}
         >
-          {renderButton(text, align, icon, block)}
+          {renderButton(text, style, align, icon, block)}
         </button>
       );
     case 'downplay':
@@ -49,9 +59,9 @@ const ButtonFade: React.FC<FadeProps> = ({ style, index, block, align, text, lab
           id={setActive}
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`${className} ${view} ${align}`}
+          className={`${className} ${viewStyle} ${align}`}
         >
-          {renderButton(text, align, icon, block)}
+          {renderButton(text, style, align, icon, block)}
         </button>
       );
   }
@@ -59,12 +69,13 @@ const ButtonFade: React.FC<FadeProps> = ({ style, index, block, align, text, lab
 
 export default ButtonFade;
 
-const renderButton = (
+function renderButton(
   text: string | undefined,
+  style: 'downplay' | 'highlight',
   align: 'left' | 'center' | 'right' | string,
   icon: { dark: string; medium: string; light: string },
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
-) => {
+) {
   const desktop = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile = useMediaQuery({ query: '(orientation: portrait)' });
   return (
@@ -74,8 +85,10 @@ const renderButton = (
           <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
             {text}
           </h3>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          <div className={`${style}`}>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
         </>
       )}
       {mobile && (
@@ -83,11 +96,13 @@ const renderButton = (
           <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
             {text}
           </h6>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          <div className={`${style}`}>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
         </>
       )}
       <span className="button-background" style={{ zIndex: 0 }}></span>
     </>
   );
-};
+}

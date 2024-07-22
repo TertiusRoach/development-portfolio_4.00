@@ -111,49 +111,68 @@ const IndexFooter: React.FC<FooterProps> = () => {
     icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
+  let buttons = [
+    {
+      text: 'Home',
+      label: 'home',
+      align: 'center',
+      block: 'header',
+      icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      align: 'left',
+      label: 'skills',
+      text: 'Skills',
+      block: 'header',
+      icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      text: 'Contact',
+      label: 'contact',
+      align: 'left',
+      block: 'header',
+      icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+  ] as {
+    text: string;
+    icon: { dark: string; medium: string; light: string };
+    label: 'rightbar' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
 
   return (
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
       {desktop && (
         <>
-          <MenuAnchor
-            selectDesign="icon"
-            info={
-              anchors as {
-                href: string;
-                text: string;
-                state: 'active' | '';
-                style: 'downplay' | 'highlight';
-                align: 'left' | 'center' | 'right' | string;
-                label: 'home' | 'skills' | 'contact' | string;
-                target: '_blank' | '_parent' | '_self' | '_top' | string;
-                icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
-                block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-              }[]
-            }
-          />
+          <MenuAnchor selectDesign="icon" info={anchors} />
         </>
       )}
       {mobile && (
         <>
+          {/* <MenuButton selectDesign="fade" info={buttons} /> */}
+
           <ButtonFade
+            state="active"
             text="Home"
             label="home"
             align="left"
             block="footer"
-            state="active"
-            style="highlight"
-            icon={getSVG('career') as { dark: string; medium: string; light: string }}
+            style="downplay"
+            icon={getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' }}
           />
           <ButtonFade
+            state=""
             text="Skills"
             label="skills"
             block="footer"
             align="center"
-            style="highlight"
+            style="downplay"
             icon={getSVG('skills') as { dark: string; medium: string; light: string }}
           />
           <ButtonFade
+            state=""
             align="right"
             text="Projects"
             block="rightbar"

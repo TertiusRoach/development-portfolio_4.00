@@ -47,8 +47,17 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
       {desktop && (
         <>
           <>
-            <ButtonFade text="My Career" block="overlay" align="left" label="career" style="highlight" icon={career} />
             <ButtonFade
+              state=""
+              text="My Career"
+              block="overlay"
+              align="left"
+              label="career"
+              style="highlight"
+              icon={career}
+            />
+            <ButtonFade
+              state=""
               align="right"
               icon={projects}
               label="projects"
@@ -65,8 +74,24 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
       {mobile && (
         <>
           <menu>
-            <ButtonFade text="My Career" label="career" block="overlay" align="left" style="downplay" icon={career} />
-            <ButtonFade text="Contact Me" label="contact" block="main" align="right" style="downplay" icon={contact} />
+            <ButtonFade
+              state=""
+              text="My Career"
+              label="career"
+              block="overlay"
+              align="left"
+              style="downplay"
+              icon={career}
+            />
+            <ButtonFade
+              state=""
+              text="Contact Me"
+              label="contact"
+              block="main"
+              align="right"
+              style="downplay"
+              icon={contact}
+            />
           </menu>
         </>
       )}

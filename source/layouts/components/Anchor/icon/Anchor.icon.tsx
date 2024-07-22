@@ -49,8 +49,6 @@ const AnchorIcon: React.FC<IconProps> = ({ state, target, href, style, block, al
   );
 };
 
-export default AnchorIcon;
-
 function renderAnchor(
   text: string,
   align: 'left' | 'center' | 'right' | string,
@@ -76,3 +74,5 @@ function renderAnchor(
     </>
   );
 }
+
+export default AnchorIcon;

@@ -28,7 +28,6 @@ interface InfoProps {
     identification: string;
   };
 }
-
 const IndexMain: React.FC<InfoProps> = ({ info }) => {
   const loadTimer = 1000;
   const blockName = 'main';
@@ -72,8 +71,8 @@ function jQueryMain(pageName: String, blockName: string) {
   $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let tagName = event.target.parentElement?.tagName as 'BUTTON' | string;
-    let parent = event.target.parentElement as HTMLElement;
+    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    let tagName = parent.tagName as 'BUTTON' | string;
     if (tagName === 'BUTTON') {
       for (let i = 0; i < navigation.length; i++) {
         var labelName = parent.classList[0].split('-')[1] as string;
