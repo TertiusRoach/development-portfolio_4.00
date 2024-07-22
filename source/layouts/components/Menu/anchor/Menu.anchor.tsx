@@ -52,9 +52,6 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
     case 'frame':
       break;
   }
-
-  console.log(anchorStyle);
-
   switch (info.length) {
     case 1:
       return <menu className="one">{anchorStyle}</menu>;

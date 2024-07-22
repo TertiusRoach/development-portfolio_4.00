@@ -1,6 +1,5 @@
 // IndexMain.tsx
 //--|🠋 Frameworks 🠋|--//
-import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
@@ -68,6 +67,7 @@ export default IndexMain;
 
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
+  /*
   $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
@@ -101,4 +101,5 @@ function jQueryMain(pageName: String, blockName: string) {
   });
 
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  */
 }

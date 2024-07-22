@@ -50,7 +50,6 @@ interface FooterProps {
 const loadTimer: number = 2000;
 const blockName: String = 'footer';
 const pageName: String = getIdentification();
-
 const IndexFooter: React.FC<FooterProps> = () => {
   useEffect(() => {
     window.addEventListener(
@@ -203,4 +202,5 @@ function jQueryFooter(pageName: String, blockName: String) {
     let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
     showAside(rightbar.classList[0].split('-')[1] as string);
   });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

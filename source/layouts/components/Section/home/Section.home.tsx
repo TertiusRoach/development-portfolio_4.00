@@ -1,4 +1,5 @@
 // Section.home.tsx
+import $ from 'jquery';
 import React from 'react';
 import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
@@ -6,6 +7,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import getSVG from '../../../../utilities/getSVG';
 import ButtonFade from '../../Button/fade/Button.fade';
+import setActive from '../../../../utilities/setActive';
+import getScroll from '../../../../utilities/getScroll';
+import showAside from '../../../../utilities/showAside';
+import showSection from '../../../../utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../utilities/getIdentification';
 
@@ -19,6 +24,7 @@ interface HomeProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
+  const loadTimer = 1000;
   const blockName: string = block;
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
@@ -26,13 +32,16 @@ const SectionHome: React.FC<HomeProps> = ({ state, info, block }) => {
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        jQueryHome(pageName, blockName);
-      },
-      false
-    );
+    const handleResize = () => {
+      setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
+    };
+
+    window.addEventListener('resize', handleResize);
+    setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
   let career = getSVG('career') as { dark: string; medium: string; light: string };
   let contact = getSVG('contact') as { dark: string; medium: string; light: string };
@@ -131,5 +140,37 @@ export default SectionHome;
 
 function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  console.log(`'Yay, jQuery!':${containerElement}`);
+  $(`#${containerElement} section`).on('click', function (event) {
+    let navigation = ['header', 'footer'];
+    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    let tagName = parent.tagName as 'BUTTON' | string;
+    if (tagName === 'BUTTON') {
+      for (let i = 0; i < navigation.length; i++) {
+        var labelName = parent.classList[0].split('-')[1] as string;
+        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
+      }
+    } else {
+      var buttonElement = this as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        setActive(this as HTMLButtonElement, navigation[i]);
+      }
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
+    }
+  });
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[0];
+    if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
+  });
+  $(`#${containerElement} .overlay-career`).on('click', function () {
+    const overlay = this.classList[0].split('-')[0];
+    if (overlay.includes('overlay')) {
+      showSection(`${pageName}`, overlay);
+    }
+  });
+
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

@@ -22,21 +22,20 @@ interface DefaultProps {
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
-  const loadTimer: number = 1000;
-  const blockName: String = 'main';
   const pageName: String = getIdentification();
-
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let loadTimer = 1000 as number;
+  let blockName = 'main' as string;
+  let mobile = useMediaQuery({ query: '(orientation: portrait)' }) as boolean;
+  let desktop = useMediaQuery({ query: '(orientation: landscape)' }) as boolean;
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryDefault, 1000);
+        setTimeout(() => jQueryDefault(pageName, blockName), loadTimer);
       },
       false
     );
-    setTimeout(() => jQueryDefault, 1000);
+    setTimeout(() => jQueryDefault(pageName, blockName), loadTimer);
   }, []);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -77,6 +76,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
         <>
           <>
             <ButtonFade
+              state=""
               text="My Career"
               block="overlay"
               align="left"
@@ -85,6 +85,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
               icon={getSVG('career') as { dark: string; medium: string; light: string }}
             />
             <ButtonFade
+              state=""
               text="My Projects"
               label="projects"
               block="rightbar"
@@ -101,6 +102,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
       {mobile && (
         <>
           <ButtonFade
+            state=""
             text="Contact Me"
             label="contact"
             block="main"
@@ -115,6 +117,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
 };
 export default SectionDefault;
 
-function jQueryDefault() {
+function jQueryDefault(pageName: String, blockName: string) {
+  const containerElement = `${pageName}-${blockName}`;
+
   console.log('Yay, jQuery!');
 }
