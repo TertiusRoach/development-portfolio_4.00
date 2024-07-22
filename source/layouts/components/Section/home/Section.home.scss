@@ -9,6 +9,8 @@
 @mixin mobile-portrait {
   padding: 6rem 4rem;
   menu {
+    width: 100%;
+    height: 6rem;
     grid-area: 2 / 1 / 3 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   //~~|🠊 border: 4px dashed $blue-neon; 🠈|~~//
