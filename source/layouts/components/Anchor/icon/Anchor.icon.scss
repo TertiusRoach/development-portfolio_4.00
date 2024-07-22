@@ -44,7 +44,7 @@
     }
   }
 
-  @keyframes highlight {
+  @keyframes highlightFade {
     from {
       color: $primary-medium;
     }
@@ -53,7 +53,7 @@
     }
   }
 
-  @keyframes downplay {
+  @keyframes downplayFade {
     from {
       color: $primary-light;
     }
@@ -68,24 +68,6 @@
   aside[id*='rightbar'],
   section[id*='overlay'] {
     a:not([id*='active']) {
-      &.highlight:hover {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          animation: highlight 1s forwards;
-        }
-        img[class*='light'] {
-          opacity: 1;
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='medium'] {
-          opacity: 1;
-        }
-      }
-
       &.downplay {
         h1,
         h2,
@@ -94,7 +76,10 @@
         h5,
         h6 {
           color: $primary-medium;
-          animation: downplay 1s backwards;
+          animation: downplayFade 1s backwards;
+        }
+        img[class*='light'] {
+          animation: fadeOut 1s forwards;
         }
       }
       &.highlight {
@@ -104,20 +89,11 @@
         h4,
         h5,
         h6 {
-          animation: highlight 1s forwards;
+          animation: highlightFade 1s forwards;
         }
-      }
-
-      img[class*='medium'] {
-        opacity: 1;
-        z-index: 1;
-        animation: fadeIn 1s ease-in-out;
-      }
-
-      img[class*='light'] {
-        opacity: 0;
-        z-index: 1;
-        animation: fadeOut 1s ease-in-out;
+        img[class*='light'] {
+          animation: fadeIn 1s forwards;
+        }
       }
     }
   }
@@ -131,7 +107,7 @@
         h4,
         h5,
         h6 {
-          animation: highlight 1s forwards;
+          animation: highlightFade 1s forwards;
         }
       }
 
@@ -143,7 +119,7 @@
         h5,
         h6 {
           color: $primary-medium;
-          animation: downplay 1s forwards;
+          animation: downplayFade 1s forwards;
         }
         img[class*='medium'] {
           opacity: 0;
@@ -162,7 +138,7 @@
         h4,
         h5,
         h6 {
-          animation: highlight 1s forwards;
+          animation: highlightFade 1s forwards;
         }
       }
 

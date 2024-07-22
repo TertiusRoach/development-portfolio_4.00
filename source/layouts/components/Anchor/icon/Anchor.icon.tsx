@@ -15,53 +15,47 @@ interface IconProps {
   icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const AnchorIcon: React.FC<IconProps> = ({ state, target, href, style, block, align, text, label }) => {
-  const [viewStyle, setStyle] = useState<'highlight' | 'downplay'>(style);
-  const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
-  let mouseLeave = () => setStyle('downplay');
-  let mouseEnter = () => setStyle('highlight');
+const AnchorIcon: React.FC<IconProps> = ({ state, target, href, style, block, align, text, label }) => {
+  const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
 
   let className = `${block}-${label} ${viewStyle} ${align}`;
   let setActive = state === 'active' ? `${block}-active` : '';
+  let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
+  let mouseEnter: () => void;
+  let mouseLeave: () => void;
   switch (style) {
     case 'highlight':
-      return (
-        <a
-          href={href}
-          id={setActive}
-          target={target}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-          className={`${className}`}
-        >
-          {renderAnchor(text, align, icon)}
-        </a>
-      );
+      mouseEnter = () => setStyle('downplay');
+      mouseLeave = () => setStyle('highlight');
+      break;
     case 'downplay':
-      return (
-        <a
-          href={href}
-          id={setActive}
-          target={target}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-          className={`${className} ${viewStyle} ${align}`}
-        >
-          {renderAnchor(text, align, icon)}
-        </a>
-      );
+      mouseEnter = () => setStyle('highlight');
+      mouseLeave = () => setStyle('downplay');
+      break;
   }
+  return (
+    <a
+      href={href}
+      id={setActive}
+      target={target}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+      className={`${className}`}
+    >
+      {renderAnchor(text, align, icon)}
+    </a>
+  );
 };
 
 export default AnchorIcon;
 
-const renderAnchor = (
-  text: string | undefined,
+function renderAnchor(
+  text: string,
   align: 'left' | 'center' | 'right' | string,
   icon: { dark: string; medium: string; light: string }
-) => {
+) {
   const desktop = useMediaQuery({ query: '(orientation: landscape)' });
   const mobile = useMediaQuery({ query: '(orientation: portrait)' });
   return (
@@ -81,4 +75,4 @@ const renderAnchor = (
       <span className="button-background" style={{ zIndex: 0 }}></span>
     </>
   );
-};
+}

@@ -1,3 +1,4 @@
+// IndexFooter.tsx
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
 import React, { useEffect } from 'react';
@@ -30,14 +31,11 @@ interface FooterProps {
     working: string;
     projects: string;
     download: string;
-
     viewOverlay: string;
     viewLeftbar: string;
     viewRightbar: string;
-
     signatureStacked: string;
     signatureAdjacent: string;
-
     gitHub: string;
     youTube: string;
     linkedIn: string;
@@ -52,6 +50,7 @@ interface FooterProps {
 const loadTimer: number = 2000;
 const blockName: String = 'footer';
 const pageName: String = getIdentification();
+
 const IndexFooter: React.FC<FooterProps> = () => {
   useEffect(() => {
     window.addEventListener(
@@ -63,12 +62,13 @@ const IndexFooter: React.FC<FooterProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
-  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
+  let mobile = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktop = useMediaQuery({ query: '(orientation: landscape)' });
+
   let anchors = [
     {
       state: '',
-
       text: 'GitHub',
       label: 'github',
       target: '_blank',
@@ -76,11 +76,10 @@ const IndexFooter: React.FC<FooterProps> = () => {
       block: 'footer',
       style: 'downplay',
       href: 'https://github.com/TertiusRoach',
-      icon: getSVG('github') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+      icon: getSVG('github') as { dark: string; medium: string; light: string },
     },
     {
       state: '',
-
       text: 'LinkedIn',
       target: '_blank',
       label: 'linkedin',
@@ -88,11 +87,10 @@ const IndexFooter: React.FC<FooterProps> = () => {
       block: 'footer',
       style: 'highlight',
       href: 'https://www.linkedin.com/in/tertius-roach/',
-      icon: getSVG('linkedIn') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+      icon: getSVG('linkedin') as { dark: string; medium: string; light: string },
     },
     {
       state: '',
-
       text: 'YouTube',
       label: 'youtube',
       target: '_blank',
@@ -100,7 +98,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
       block: 'footer',
       style: 'downplay',
       href: 'https://www.youtube.com/@TertiusRoach',
-      icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+      icon: getSVG('youtube') as { dark: string; medium: string; light: string },
     },
   ] as {
     href: string;
@@ -108,11 +106,12 @@ const IndexFooter: React.FC<FooterProps> = () => {
     state: 'active' | '';
     style: 'downplay' | 'highlight';
     align: 'left' | 'center' | 'right' | string;
-    label: 'github' | 'linkedin' | 'youtube' | string;
+    label: 'home' | 'skills' | 'contact' | string;
     target: '_blank' | '_parent' | '_self' | '_top' | string;
     icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
+
   return (
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
       {desktop && (
@@ -126,7 +125,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
                 state: 'active' | '';
                 style: 'downplay' | 'highlight';
                 align: 'left' | 'center' | 'right' | string;
-                label: 'github' | 'linkedin' | 'youtube' | string;
+                label: 'home' | 'skills' | 'contact' | string;
                 target: '_blank' | '_parent' | '_self' | '_top' | string;
                 icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
                 block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
@@ -154,7 +153,6 @@ const IndexFooter: React.FC<FooterProps> = () => {
             style="highlight"
             icon={getSVG('skills') as { dark: string; medium: string; light: string }}
           />
-          {/* <MenuButton info={buttons} selectDesign="fade" /> */}
           <ButtonFade
             align="right"
             text="Projects"
@@ -167,18 +165,17 @@ const IndexFooter: React.FC<FooterProps> = () => {
       )}
     </footer>
   );
-  console.log('IndexFooter Loaded');
 };
+
 export default IndexFooter;
+
 function jQueryFooter(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
-    //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
       let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
       let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-
       setActive(this as HTMLButtonElement, blockName);
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
@@ -187,5 +184,4 @@ function jQueryFooter(pageName: String, blockName: String) {
     let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
     showAside(rightbar.classList[0].split('-')[1] as string);
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
