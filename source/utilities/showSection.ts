@@ -1,5 +1,5 @@
 import getIdentification from './getIdentification';
-//--|🠋 showSection.ts 🠋|--//
+//--|🠋 utilities/showSection.ts 🠋|--//
 export default function showSection(pageName: string, blockName: 'overlay' | String) {
   const element = document.getElementById('index-overlay') as HTMLElement;
   if (!element) {

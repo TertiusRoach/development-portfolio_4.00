@@ -1,6 +1,14 @@
-import './Button.frame.scss';
+//--|🠋 Frameworks 🠋|--//
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+//--|🠉 Frameworks 🠉|--//
+//--|🠋 Utilities 🠋|--//
+//--|🠉 Utilities 🠉|--//
+//--|🠋 Components 🠋|--//
+//--|🠉 Components 🠉|--//
+//--|🠋 Design 🠋|--//
+import './Button.frame.scss';
+//--|🠉 Design 🠉|--//
 
 interface FrameProps {
   text?: string;

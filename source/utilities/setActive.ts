@@ -1,4 +1,4 @@
-//--|🠋 setActive.ts 🠋|--//
+//--|🠋 utilities/setActive.ts 🠋|--//
 export default function setActive(buttonElement: HTMLButtonElement, blockName: String) {
   const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
   if (activeButton) {

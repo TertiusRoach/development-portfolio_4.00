@@ -1,4 +1,4 @@
-//--|🠋 getScroll.ts 🠋|--//
+//--|🠋 utilities/getScroll.ts 🠋|--//
 export default function getScroll(button: HTMLButtonElement, container: HTMLElement) {
   const setPixels = function (container: HTMLElement): { className: string; scrollAmount: number }[] {
     let children = Array.from(container.children) as HTMLElement[]; //--|🠈 Convert the container's children to an array of HTMLElement 🠈|--//

@@ -1,5 +1,5 @@
 import getIdentification from './getIdentification';
-//--|🠋 getSVG.ts 🠋|--//
+//--|🠋 utilities/getSVG.ts 🠋|--//
 export default function getSVG(labelName: string): { dark: String; medium: String; light: String } {
   const colorShades: Array<string> = ['dark', 'medium', 'light'];
   const iconURI = `https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/47547119286073f7ff21945c645c3d8f1b164225`;

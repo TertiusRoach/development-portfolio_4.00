@@ -1,22 +1,26 @@
 // IndexMain.tsx
+//--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-
-import ButtonFade from '../../../components/Button/fade/Button.fade';
-import SectionHome from '../../../components/Section/home/Section.home';
-import SectionSkills from '../../../components/Section/skills/Section.skills';
-import SectionContact from '../../../components/Section/contact/Section.contact';
-import SectionDefault from '../../../components/Section/default/Section.default';
-
+//--|🠉 Frameworks 🠉|--//
+//--|🠋 Utilities 🠋|--//
+import getSVG from '../../../../utilities/getSVG';
 import showAside from '../../../../utilities/showAside';
 import setActive from '../../../../utilities/setActive';
 import getScroll from '../../../../utilities/getScroll';
 import showSection from '../../../../utilities/showSection';
 import getIdentification from '../../../../utilities/getIdentification';
-
-import getSVG from '../../../../utilities/getSVG';
-
+//--|🠉 Utilities 🠉|--//
+//--|🠋 Components 🠋|--//
+import ButtonFade from '../../../components/Button/fade/Button.fade';
+import SectionHome from '../../../components/Section/home/Section.home';
+import SectionSkills from '../../../components/Section/skills/Section.skills';
+import SectionContact from '../../../components/Section/contact/Section.contact';
+import SectionDefault from '../../../components/Section/default/Section.default';
+//--|🠉 Components 🠉|--//
+//--|🠋 Design 🠋|--//
+//--|🠉 Design 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;

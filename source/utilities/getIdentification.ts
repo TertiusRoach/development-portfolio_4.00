@@ -1,5 +1,5 @@
-import { getOrientation } from './getOrientation';
-//--|🠋 getIdentification.ts 🠋|--//
+import getOrientation from './getOrientation';
+//--|🠋 utilities/getIdentification.ts 🠋|--//
 export default function getIdentification(): String {
   const hyperlink: String = window.location.href;
   const identification: String | undefined = hyperlink?.split('/').pop()?.split('.')[0];

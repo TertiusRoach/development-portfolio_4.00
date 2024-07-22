@@ -1,5 +1,5 @@
-import { getOrientation } from './getOrientation';
-//--|🠋 setMenu.ts 🠋|--//
+import getOrientation from './getOrientation';
+//--|🠋 utilities/setMenu.ts 🠋|--//
 export default function setMenu(blockName: String, labelName: String) {
   // Get currently active section and the selected section elements
   const disableElement = document.getElementById('main-active') as HTMLElement | null;

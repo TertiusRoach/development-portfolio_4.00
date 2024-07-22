@@ -1,10 +1,9 @@
+//--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
-import MenuButton from '../../../components/Menu/button/Menu.button';
-import ButtonFade from '../../../components/Button/fade/Button.fade';
-
+//--|🠉 Frameworks 🠉|--//
+//--|🠋 Utilities 🠋|--//
 import getSVG from '../../../../utilities/getSVG';
 import showAside from '../../../../utilities/showAside';
 import getScroll from '../../../../utilities/getScroll';
@@ -12,6 +11,14 @@ import setActive from '../../../../utilities/setActive';
 import getResolution from '../../../../utilities/getResolution';
 import getOrientation from '../../../../utilities/getOrientation';
 import getIdentification from '../../../../utilities/getIdentification';
+//--|🠉 Utilities 🠉|--//
+//--|🠋 Components 🠋|--//
+import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
+import MenuButton from '../../../components/Menu/button/Menu.button';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
+//--|🠉 Components 🠉|--//
+//--|🠋 Design 🠋|--//
+//--|🠉 Design 🠉|--//
 
 interface FooterProps {
   icons: {
@@ -41,12 +48,11 @@ interface FooterProps {
     identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
+
+const loadTimer: number = 2000;
+const blockName: String = 'footer';
+const pageName: String = getIdentification();
 const IndexFooter: React.FC<FooterProps> = () => {
-  const loadTimer: number = 2000;
-  const blockName: String = 'footer';
-  const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -57,23 +63,25 @@ const IndexFooter: React.FC<FooterProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
+  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   let anchors = [
     {
       state: '',
-      text: 'GitHub',
 
-      target: '_blank',
+      text: 'GitHub',
       label: 'github',
-      block: 'footer',
+      target: '_blank',
       align: 'center',
+      block: 'footer',
       style: 'downplay',
       href: 'https://github.com/TertiusRoach',
       icon: getSVG('github') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
       state: '',
-      text: 'LinkedIn',
 
+      text: 'LinkedIn',
       target: '_blank',
       label: 'linkedin',
       align: 'center',
@@ -84,97 +92,80 @@ const IndexFooter: React.FC<FooterProps> = () => {
     },
     {
       state: '',
-      text: 'YouTube',
 
-      target: '_blank',
+      text: 'YouTube',
       label: 'youtube',
-      block: 'footer',
+      target: '_blank',
       align: 'center',
+      block: 'footer',
       style: 'downplay',
       href: 'https://www.youtube.com/@TertiusRoach',
       icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
   ] as {
-    text: string;
     href: string;
-    state?: 'active' | '';
-    style: 'downplay' | 'highlight' | string;
+    text: string;
+    state: 'active' | '';
+    style: 'downplay' | 'highlight';
     align: 'left' | 'center' | 'right' | string;
     label: 'github' | 'linkedin' | 'youtube' | string;
     target: '_blank' | '_parent' | '_self' | '_top' | string;
-    icon: undefined | { dark: string; medium: string; light: string };
+    icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
-
-  let buttons = [
-    {
-      text: 'Home',
-      label: 'home',
-      align: 'left',
-      block: 'footer',
-      style: 'highlight',
-      icon: getSVG('career') as { dark: string; medium: string; light: string },
-    },
-    {
-      text: 'Skills',
-      label: 'skills',
-      align: 'center',
-      block: 'footer',
-      style: 'highlight',
-      icon: getSVG('skills') as { dark: string; medium: string; light: string },
-    },
-    /*
-    {
-      text: 'Contact',
-      label: 'contact',
-      align: 'center',
-      block: 'footer',
-      style: 'highlight',
-      icon: getSVG('projects') as { dark: string; medium: string; light: string },
-    },
-    */
-  ];
   return (
-    <>
-      {/* How do I refresh the useEffect every time the screen rotates? */}
-      <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
-        {desktop && (
-          <>
-            <MenuAnchor selectDesign="icon" info={anchors} />
-          </>
-        )}
-        {mobile && (
-          <>
-            <ButtonFade
-              text="Home"
-              label="home"
-              align="left"
-              block="footer"
-              state="active"
-              style="highlight"
-              icon={getSVG('career') as { dark: string; medium: string; light: string }}
-            />
-            <ButtonFade
-              text="Skills"
-              label="skills"
-              block="footer"
-              align="center"
-              style="highlight"
-              icon={getSVG('skills') as { dark: string; medium: string; light: string }}
-            />
-            {/* <MenuButton info={buttons} selectDesign="fade" /> */}
-            <ButtonFade
-              align="right"
-              text="Projects"
-              block="rightbar"
-              label="projects"
-              style="downplay"
-              icon={getSVG('projects') as { dark: string; medium: string; light: string }}
-            />
-          </>
-        )}
-      </footer>
-    </>
+    <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
+      {desktop && (
+        <>
+          <MenuAnchor
+            selectDesign="icon"
+            info={
+              anchors as {
+                href: string;
+                text: string;
+                state: 'active' | '';
+                style: 'downplay' | 'highlight';
+                align: 'left' | 'center' | 'right' | string;
+                label: 'github' | 'linkedin' | 'youtube' | string;
+                target: '_blank' | '_parent' | '_self' | '_top' | string;
+                icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
+                block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+              }[]
+            }
+          />
+        </>
+      )}
+      {mobile && (
+        <>
+          <ButtonFade
+            text="Home"
+            label="home"
+            align="left"
+            block="footer"
+            state="active"
+            style="highlight"
+            icon={getSVG('career') as { dark: string; medium: string; light: string }}
+          />
+          <ButtonFade
+            text="Skills"
+            label="skills"
+            block="footer"
+            align="center"
+            style="highlight"
+            icon={getSVG('skills') as { dark: string; medium: string; light: string }}
+          />
+          {/* <MenuButton info={buttons} selectDesign="fade" /> */}
+          <ButtonFade
+            align="right"
+            text="Projects"
+            block="rightbar"
+            label="projects"
+            style="downplay"
+            icon={getSVG('projects') as { dark: string; medium: string; light: string }}
+          />
+        </>
+      )}
+    </footer>
   );
   console.log('IndexFooter Loaded');
 };

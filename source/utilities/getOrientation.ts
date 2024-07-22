@@ -1,5 +1,5 @@
 import getIdentification from './getIdentification';
-//--|🠋 getOrientation.ts 🠋|--//
+//--|🠋 utilities/getOrientation.ts 🠋|--//
 export default function getOrientation(): String {
   const orientation = window.screen.orientation.type;
 

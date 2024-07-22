@@ -1,5 +1,5 @@
 import getIdentification from './getIdentification';
-//--|🠋 showAside.ts 🠋|--//
+//--|🠋 utilities/showAside.ts 🠋|--//
 export default function showAside(blockName: 'leftbar' | 'rightbar' | string) {
   const pageName: String = getIdentification();
   const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;

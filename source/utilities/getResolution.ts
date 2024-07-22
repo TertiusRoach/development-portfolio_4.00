@@ -1,5 +1,5 @@
 import getIdentification from './getIdentification';
-//--|🠋 getResolution.ts 🠋|--//
+//--|🠋 utilities/getResolution.ts 🠋|--//
 export default function getResolution(): String {
   const width = window.innerWidth;
   const height = window.innerHeight;

@@ -6,24 +6,24 @@ import getSVG from '../../../../utilities/getSVG';
 
 interface IconProps {
   href: string;
-  text?: string;
-  index?: number;
-  icon: undefined | { dark: string; medium: string; light: string };
-  style: 'downplay' | 'highlight' | string;
-  align: 'left' | 'center' | 'right' | string;
+  text: string;
+  state: 'active' | '';
   target: '_blank' | string;
-  label?: 'home' | 'skills' | 'contact' | string;
-  state?: 'active' | undefined;
+  style: 'downplay' | 'highlight';
+  align: 'left' | 'center' | 'right' | string;
+  label: 'home' | 'skills' | 'contact' | string;
+  icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const AnchorIcon: React.FC<IconProps> = ({ target, href, style, index, block, align, text, label }) => {
-  const [view, setView] = useState<'highlight' | 'downplay'>('downplay'); // Initial state
-  const className = `${block}-${label}`;
-  const setActive = index === 0 && block !== 'main' ? `${block}-active` : undefined; // Conditionally apply the id only if index is 0 and block is not 'main'
+const AnchorIcon: React.FC<IconProps> = ({ state, target, href, style, block, align, text, label }) => {
+  const [viewStyle, setStyle] = useState<'highlight' | 'downplay'>(style);
   const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
-  const mouseLeave = () => setView('downplay');
-  const mouseEnter = () => setView('highlight');
+  let mouseLeave = () => setStyle('downplay');
+  let mouseEnter = () => setStyle('highlight');
+
+  let className = `${block}-${label} ${viewStyle} ${align}`;
+  let setActive = state === 'active' ? `${block}-active` : '';
 
   switch (style) {
     case 'highlight':
@@ -34,7 +34,7 @@ const AnchorIcon: React.FC<IconProps> = ({ target, href, style, index, block, al
           target={target}
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`${className} ${view} ${align}`}
+          className={`${className}`}
         >
           {renderAnchor(text, align, icon)}
         </a>
@@ -47,7 +47,7 @@ const AnchorIcon: React.FC<IconProps> = ({ target, href, style, index, block, al
           target={target}
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}
-          className={`${className} ${view} ${align}`}
+          className={`${className} ${viewStyle} ${align}`}
         >
           {renderAnchor(text, align, icon)}
         </a>
