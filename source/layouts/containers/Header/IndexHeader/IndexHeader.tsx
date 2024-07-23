@@ -4,12 +4,12 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 
-import getSVG from '../../../../utilities/getSVG';
-import setActive from '../../../../utilities/setActive';
-import getScroll from '../../../../utilities/getScroll';
-import getResolution from '../../../../utilities/getResolution';
-import getOrientation from '../../../../utilities/getOrientation';
-import getIdentification from '../../../../utilities/getIdentification';
+import getSVG from '../../../../modules/utilities/getSVG';
+import setActive from '../../../../modules/utilities/setActive';
+import getScroll from '../../../../modules/utilities/getScroll';
+import getResolution from '../../../../modules/utilities/getResolution';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
   info: {
@@ -81,7 +81,7 @@ const IndexHeader: React.FC<InfoProps> = () => {
       {desktop && (
         <>
           <img className="signature-adjacent" src={signatureAdjacent} alt="Tertius Roach" />
-          <MenuButton selectDesign="fade" info={buttons} />
+          <MenuButton selectDesign="fade" buttonInfo={buttons} />
         </>
       )}
       {mobile && (

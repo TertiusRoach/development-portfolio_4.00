@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getSVG from '../../../../utilities/getSVG';
+import getSVG from '../../../../modules/utilities/getSVG';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -25,7 +25,7 @@ interface FadeProps {
 
 const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
-  let className = `${block}-${label} ${viewStyle} ${align}`;
+  let className = `${block}-${label} ${align}`;
   let setActive = state === 'active' ? `${block}-active` : '';
   let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
@@ -44,23 +44,13 @@ const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, lab
   switch (style) {
     case 'highlight':
       return (
-        <button
-          id={setActive}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-          className={`${className} ${viewStyle} ${align}`}
-        >
+        <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
           {renderButton(text, style, align, icon, block)}
         </button>
       );
     case 'downplay':
       return (
-        <button
-          id={setActive}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-          className={`${className} ${viewStyle} ${align}`}
-        >
+        <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
           {renderButton(text, style, align, icon, block)}
         </button>
       );

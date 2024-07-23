@@ -261,7 +261,6 @@
   aside,
   section {
     button {
-      width: 100%;
       height: 6rem;
       div {
         img {
@@ -270,8 +269,8 @@
         }
       }
     }
-    @include button-effects();
-    @include button-placement();
+    // @include button-effects();
+    // @include button-placement();
   }
 
   header,

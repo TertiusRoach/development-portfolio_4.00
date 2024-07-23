@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from 'react';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
-import getSVG from '../../../../utilities/getSVG';
+import getSVG from '../../../../modules/utilities/getSVG';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface DefaultProps {
   info: {
@@ -22,48 +22,25 @@ interface DefaultProps {
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, stateType }) => {
+  console.log(`${info.identification}-${blockName}: ${labelName} <section>`);
+  const loadTimer = 1000 as number;
   const pageName: String = getIdentification();
-  let loadTimer = 1000 as number;
+
   let mobile = useMediaQuery({ query: '(orientation: portrait)' }) as boolean;
   let desktop = useMediaQuery({ query: '(orientation: landscape)' }) as boolean;
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryDefault(pageName, blockName), loadTimer);
+        jQueryDefault(pageName, blockName);
       },
       false
     );
     setTimeout(() => jQueryDefault(pageName, blockName), loadTimer);
   }, []);
+
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
-  let buttons = [
-    {
-      text: 'My Career',
-      block: 'main',
-      align: 'center',
-      label: 'career',
-      style: 'highlight',
-      icon: getSVG('career') as { dark: string; medium: string; light: string },
-    },
-    {
-      text: 'View Leftbar',
-      label: 'leftbar',
-      block: 'main',
-      style: 'highlight',
-      align: 'left',
-      icon: getSVG('leftbar') as { dark: string; medium: string; light: string },
-    },
-    {
-      text: 'My Projects',
-      label: 'projects',
-      block: 'main',
-      style: 'highlight',
-      align: 'right',
-      icon: getSVG('projects') as { dark: string; medium: string; light: string },
-    },
-  ];
   return (
     <section
       className={`${blockName}-default`}
@@ -113,6 +90,32 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, st
       )}
     </section>
   );
+  let buttons = [
+    {
+      text: 'My Career',
+      block: 'main',
+      align: 'center',
+      label: 'career',
+      style: 'highlight',
+      icon: getSVG('career') as { dark: string; medium: string; light: string },
+    },
+    {
+      text: 'View Leftbar',
+      label: 'leftbar',
+      block: 'main',
+      style: 'highlight',
+      align: 'left',
+      icon: getSVG('leftbar') as { dark: string; medium: string; light: string },
+    },
+    {
+      text: 'My Projects',
+      label: 'projects',
+      block: 'main',
+      style: 'highlight',
+      align: 'right',
+      icon: getSVG('projects') as { dark: string; medium: string; light: string },
+    },
+  ];
 };
 export default SectionDefault;
 

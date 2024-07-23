@@ -1,0 +1,51 @@
+// Division.carousel.scss
+@import '../../../containers/color-palette.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem;
+  div[id*='home'] {
+    display: inherit; //~~|🠈 display: grid; 🠈|~~//
+    grid-template: repeat(6, 1fr) / repeat(5, 1fr);
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem;
+  div[id*='home'] {
+    display: inherit; //~~|🠈 display: grid; 🠈|~~//
+    grid-template: repeat(12, 1fr) / 1fr 1fr;
+    //   menu {
+    //   grid-area: 12 / 2 / 14 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    // }
+  }
+}
+
+body {
+  main {
+    section[class*='home'] {
+      display: grid;
+      [id*='home'] {
+        grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+        background: rgba($yellow-light, 0.25) !important;
+      }
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        //--|🠊 display: grid; 🠈|--//
+        @include desktop-landscape();
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        //--|🠊 display: grid; 🠈|--//
+        @include mobile-portrait();
+      }
+    }
+  }
+
+  #index-body {
+    @include index-colors();
+  }
+  #resume-body {
+    @include resume-colors();
+  }
+}

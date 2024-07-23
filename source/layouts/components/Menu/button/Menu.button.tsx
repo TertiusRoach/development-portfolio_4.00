@@ -2,7 +2,7 @@
 import React from 'react';
 import './Menu.button.scss';
 
-import getSVG from '../../../../utilities/getSVG';
+import getSVG from '../../../../modules/utilities/getSVG';
 
 import ButtonFade from '../../Button/fade/Button.fade';
 // import ButtonGlow from '../../Button/glow/Button.glow';
@@ -12,7 +12,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 interface MenuProps {
   selectDesign: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
-  info: {
+  buttonInfo: {
     text: string;
     state: 'active' | '';
     label: 'rightbar' | string;
@@ -22,7 +22,7 @@ interface MenuProps {
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
-const MenuButton: React.FC<MenuProps> = ({ selectDesign, info }) => {
+const MenuButton: React.FC<MenuProps> = ({ selectDesign, buttonInfo: info }) => {
   let buttonStyle = [];
 
   // Only add highlight to the first ButtonFace. The rest should be downplay
@@ -51,15 +51,15 @@ const MenuButton: React.FC<MenuProps> = ({ selectDesign, info }) => {
 
   switch (info.length) {
     case 1:
-      return <menu className="one">{buttonStyle}</menu>;
+      return <menu className="one buttons">{buttonStyle}</menu>;
     case 2:
-      return <menu className="two">{buttonStyle}</menu>;
+      return <menu className="two buttons">{buttonStyle}</menu>;
     case 3:
-      return <menu className="three">{buttonStyle}</menu>;
+      return <menu className="three buttons">{buttonStyle}</menu>;
     case 4:
-      return <menu className="four">{buttonStyle}</menu>;
+      return <menu className="four buttons">{buttonStyle}</menu>;
     case 5:
-      return <menu className="five">{buttonStyle}</menu>;
+      return <menu className="five buttons">{buttonStyle}</menu>;
     default:
       alert('Maximum of 5 Buttons Allowed');
       break;

@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import getSVG from '../../../../utilities/getSVG';
-import getResolution from '../../../../utilities/getResolution';
-import getOrientation from '../../../../utilities/getOrientation';
-import getIdentification from '../../../../utilities/getIdentification';
+import getSVG from '../../../../modules/utilities/getSVG';
+import getResolution from '../../../../modules/utilities/getResolution';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
   info: {
@@ -21,6 +21,8 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   const pageName: String = getIdentification();
   const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
+  console.log(`${info.identification}: ${blockName}`);
   useEffect(() => {
     window.addEventListener(
       'resize',

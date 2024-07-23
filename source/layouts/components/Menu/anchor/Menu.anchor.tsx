@@ -3,7 +3,7 @@
 import React from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getSVG from '../../../../utilities/getSVG';
+import getSVG from '../../../../modules/utilities/getSVG';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import AnchorIcon from '../../Anchor/icon/Anchor.icon';
@@ -54,15 +54,15 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
   }
   switch (info.length) {
     case 1:
-      return <menu className="one">{anchorStyle}</menu>;
+      return <menu className="one anchors">{anchorStyle}</menu>;
     case 2:
-      return <menu className="two">{anchorStyle}</menu>;
+      return <menu className="two anchors">{anchorStyle}</menu>;
     case 3:
-      return <menu className="three">{anchorStyle}</menu>;
+      return <menu className="three anchors">{anchorStyle}</menu>;
     case 4:
-      return <menu className="four">{anchorStyle}</menu>;
+      return <menu className="four anchors">{anchorStyle}</menu>;
     case 5:
-      return <menu className="five">{anchorStyle}</menu>;
+      return <menu className="five anchors">{anchorStyle}</menu>;
     default:
       alert('Maximum of 5 Buttons Allowed');
       break;

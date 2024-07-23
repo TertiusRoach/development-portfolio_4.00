@@ -1,0 +1,35 @@
+@import '../../../containers/color-palette.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+}
+
+body {
+  section[class*='carousel'],
+  div[class*='carousel'] {
+    display: grid;
+    [id*='carousel'] {
+      grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      //--|🠊 display: grid; 🠈|--//
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      //--|🠊 display: grid; 🠈|--//
+      @include mobile-portrait();
+    }
+  }
+
+  #index-body {
+    @include index-colors();
+  }
+  #resume-body {
+    @include resume-colors();
+  }
+}

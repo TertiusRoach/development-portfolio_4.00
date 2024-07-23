@@ -1,15 +1,13 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem / auto 1fr; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 4rem / auto 1fr; //~~|🠈 rows / columns 🠈|~~//
   .signature-adjacent {
     height: 2rem;
     margin: 1rem 3rem;
   }
   menu {
-    height: 4rem;
-    a {
-      display: none;
-    }
+    // background: green;
+    grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
   }
 
   background: rgba($red-neon, 0.25) !important;

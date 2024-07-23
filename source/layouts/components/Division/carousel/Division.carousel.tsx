@@ -1,34 +1,41 @@
-// Section.contact.tsx
-import './Section.contact.scss';
-
+// Division.carousel.tsx
+import $ from 'jquery';
+import React from 'react';
+import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
+import { useEffect, useRef, useState } from 'react';
+
 import getSVG from '../../../../modules/utilities/getSVG';
-import React, { useEffect, useRef, useState } from 'react';
-import DivisionWorking from '../../Division/working/Division.working';
+import ButtonFade from '../../Button/fade/Button.fade';
+import setActive from '../../../../modules/utilities/setActive';
+import getScroll from '../../../../modules/utilities/getScroll';
+import showAside from '../../../../modules/utilities/showAside';
+import showSection from '../../../../modules/utilities/showSection';
+import DivisionWorking from '../working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
-interface ContactProps {
+interface CarouselProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
-  labelName: 'contact';
+  labelName: 'home';
   stateType: 'active' | '';
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, stateType }) => {
+const DivisionCarousel: React.FC<CarouselProps> = ({ info, labelName, blockName, stateType }) => {
   const loadTimer = 1000;
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
   const pageName: String = getIdentification();
   useEffect(() => {
     let handleResize = () => {
-      setTimeout(() => jQueryContact(pageName, blockName), loadTimer);
+      jQueryCarousel(pageName, blockName);
     };
 
     window.addEventListener('resize', handleResize);
-    setTimeout(() => jQueryContact(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryCarousel(pageName, blockName), loadTimer);
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -67,9 +74,44 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
     </section>
   );
 };
-export default SectionContact;
 
-function jQueryContact(pageName: String, blockName: string) {
+export default DivisionCarousel;
+
+function jQueryCarousel(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
+  /*
+  $(`#${containerElement} section`).on('click', function (event) {
+    let navigation = ['header', 'footer'];
+    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    let tagName = parent.tagName as 'BUTTON' | string;
+    if (tagName === 'BUTTON') {
+      for (let i = 0; i < navigation.length; i++) {
+        var labelName = parent.classList[0].split('-')[1] as string;
+        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
+      }
+    } else {
+      var buttonElement = this as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        setActive(this as HTMLButtonElement, navigation[i]);
+      }
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
+    }
+  });
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[0];
+    if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
+  });
+  $(`#${containerElement} .overlay-career`).on('click', function () {
+    const overlay = this.classList[0].split('-')[0];
+    if (overlay.includes('overlay')) {
+      showSection(`${pageName}`, overlay);
+    }
+  });
+  */
+
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

@@ -4,12 +4,12 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getSVG from '../../../../utilities/getSVG';
-import showAside from '../../../../utilities/showAside';
-import setActive from '../../../../utilities/setActive';
-import getScroll from '../../../../utilities/getScroll';
-import showSection from '../../../../utilities/showSection';
-import getIdentification from '../../../../utilities/getIdentification';
+import getSVG from '../../../../modules/utilities/getSVG';
+import showAside from '../../../../modules/utilities/showAside';
+import setActive from '../../../../modules/utilities/setActive';
+import getScroll from '../../../../modules/utilities/getScroll';
+import showSection from '../../../../modules/utilities/showSection';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/fade/Button.fade';

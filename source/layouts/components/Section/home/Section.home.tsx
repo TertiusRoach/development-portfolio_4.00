@@ -5,14 +5,15 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import getSVG from '../../../../utilities/getSVG';
+import getSVG from '../../../../modules/utilities/getSVG';
 import ButtonFade from '../../Button/fade/Button.fade';
-import setActive from '../../../../utilities/setActive';
-import getScroll from '../../../../utilities/getScroll';
-import showAside from '../../../../utilities/showAside';
-import showSection from '../../../../utilities/showSection';
+import setActive from '../../../../modules/utilities/setActive';
+import getScroll from '../../../../modules/utilities/getScroll';
+import showAside from '../../../../modules/utilities/showAside';
+import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
+import MenuButton from '../../Menu/button/Menu.button';
 
 interface HomeProps {
   info: {
@@ -29,6 +30,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
   const pageName: String = getIdentification();
+
   useEffect(() => {
     let handleResize = () => {
       setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
@@ -42,12 +44,68 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     };
   }, []);
 
-  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let contactIcon = getSVG('contact') as { dark: string; medium: string; light: string };
+  let projectsIcon = getSVG('projects') as { dark: string; medium: string; light: string };
 
-  let career = getSVG('career') as { dark: string; medium: string; light: string };
-  let contact = getSVG('contact') as { dark: string; medium: string; light: string };
-  let projects = getSVG('projects') as { dark: string; medium: string; light: string };
+  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let desktopButtons = [
+    {
+      state: '',
+      label: 'career',
+      align: 'center',
+      block: 'overlay',
+      style: 'downplay',
+      text: 'My Career',
+      icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      state: '',
+      align: 'right',
+      label: 'projects',
+      block: 'rightbar',
+      style: 'highlight',
+      text: 'My Projects',
+      icon: getSVG('projects') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+  ] as {
+    text: string;
+    state: 'active' | '';
+    label: 'rightbar' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
+
+  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let mobileButtons = [
+    {
+      state: '',
+      align: 'left',
+      label: 'career',
+      block: 'overlay',
+      text: 'My Career',
+      style: 'downplay',
+      icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      state: '',
+      block: 'main',
+      align: 'right',
+      label: 'contact',
+      style: 'downplay',
+      text: 'Contact Me',
+      icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+  ] as {
+    text: string;
+    state: 'active' | '';
+    label: 'rightbar' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -58,7 +116,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktop && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <MenuButton selectDesign="fade" buttonInfo={desktopButtons} />
+          </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
@@ -66,60 +126,22 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobile && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
-          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
-          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+          <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
+            <MenuButton selectDesign="fade" buttonInfo={mobileButtons} />
+          </div>
+          <div style={{ zIndex: 1 }} id={`${labelName}-midground`}>
+            <span className="home-title"></span>
+            <span className="home-subject"></span>
+            <span className="home-description"></span>
+          </div>
+          <div style={{ zIndex: 0 }} id={`${labelName}-background`}>
+            <span className="home-profile"></span>
+          </div>
         </>
       )}
     </section>
   );
 };
-
-{
-  /* <menu>
-            <ButtonFade
-              state=""
-              text="My Career"
-              block="overlay"
-              align="left"
-              label="career"
-              style="highlight"
-              icon={career}
-            />
-            <ButtonFade
-              state=""
-              align="right"
-              icon={projects}
-              label="projects"
-              block="rightbar"
-              style="highlight"
-              text="My Projects"
-            />
-          </menu> */
-}
-{
-  /* <menu>
-            <ButtonFade
-              state=""
-              text="My Career"
-              label="career"
-              block="overlay"
-              align="left"
-              style="downplay"
-              icon={career}
-            />
-            <ButtonFade
-              state=""
-              text="Contact Me"
-              label="contact"
-              block="main"
-              align="right"
-              style="downplay"
-              icon={contact}
-            />
-          </menu> */
-}
-
 export default SectionHome;
 
 function jQueryHome(pageName: String, blockName: string) {
