@@ -18,51 +18,73 @@ interface InfoProps {
 const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   const loadTimer: number = 5000;
   const blockName: String = 'rightbar';
-  const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
-  console.log(`${info.identification}: ${blockName}`);
+  const pageName: String = info.identification;
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
+        setTimeout(() => jQueryRightbar(pageName, blockName), 250);
       },
       false
     );
     setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
   }, []);
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <>
-      <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
-        <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
-        <footer className="rightbar-midground" style={{ zIndex: 1 }}>
-          <ButtonFade
-            state=""
-            label="close"
-            block="rightbar"
-            style="highlight"
-            align="center"
-            icon={getSVG('close') as { dark: string; medium: string; light: string }}
-          />
-        </footer>
-
-        <div className="rightbar-background" style={{ zIndex: 0 }}>
-          <ul className="rightbar-listing">
-            <h1 className="content-1">Rightbar Listing</h1>
-          </ul>
-          <article className="rightbar-preview"></article>
-        </div>
-      </aside>
-    </>
+    <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {desktopDevice && (
+        <>
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+            <ButtonFade
+              state=""
+              label="close"
+              block="rightbar"
+              style="highlight"
+              align="center"
+              icon={getSVG('close') as { dark: string; medium: string; light: string }}
+            />
+          </header>
+          <div className="rightbar-background" style={{ zIndex: 0 }}>
+            <ul className="rightbar-listing">
+              <h1 className="content-1">Rightbar Listing</h1>
+            </ul>
+            <article className="rightbar-preview"></article>
+          </div>
+          <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
+        </>
+      )}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {mobileDevice && (
+        <>
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
+          <div className="rightbar-background" style={{ zIndex: 0 }}>
+            <ul className="rightbar-listing">
+              <h1 className="content-1">Rightbar Listing</h1>
+            </ul>
+            <article className="rightbar-preview"></article>
+          </div>
+          <footer className="rightbar-midground" style={{ zIndex: 1 }}>
+            <ButtonFade
+              state=""
+              label="close"
+              block="rightbar"
+              style="highlight"
+              align="center"
+              icon={getSVG('close') as { dark: string; medium: string; light: string }}
+            />
+          </footer>
+        </>
+      )}
+    </aside>
   );
 };
 export default IndexRightbar;
 
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`button[class*="close"]`).on('click', () => {
+  $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');

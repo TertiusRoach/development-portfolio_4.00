@@ -15,54 +15,75 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexOverlay: React.FC<InfoProps> = () => {
+const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
   const loadTimer: number = 3000;
   const blockName: String = 'overlay';
-  const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  const pageName: String = info.identification;
+
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryOverlay(pageName, blockName), loadTimer);
+        setTimeout(() => jQueryOverlay(pageName, blockName), 250);
       },
       false
     );
     setTimeout(() => jQueryOverlay(pageName, blockName), loadTimer);
   }, []);
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <>
-      <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
-        <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
+    <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {desktopDevice && (
+        <>
+          <header className="overlay-foreground" style={{ zIndex: 2 }}>
+            <ButtonFade
+              state=""
+              label="close"
+              align="center"
+              block="overlay"
+              style="highlight"
+              icon={getSVG('close') as { dark: string; medium: string; light: string }}
+            />
+          </header>
 
-        {/* <header className="overlay-foreground" style={{ zIndex: 2 }}></header> */}
+          <div className="overlay-midground" style={{ zIndex: 1 }}>
+            <h1>Build style here.</h1>
+          </div>
 
-        <div className="overlay-midground" style={{ zIndex: 1 }}>
-          <h1>Build style here.</h1>
-        </div>
+          <footer className="overlay-background" style={{ zIndex: 0 }}></footer>
+        </>
+      )}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {mobileDevice && (
+        <>
+          <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
 
-        <footer className="overlay-background" style={{ zIndex: 0 }}>
-          <ButtonFade
-            state=""
-            label="close"
-            align="center"
-            block="overlay"
-            style="highlight"
-            icon={getSVG('close') as { dark: string; medium: string; light: string }}
-          />
-        </footer>
-      </section>
-    </>
+          <div className="overlay-midground" style={{ zIndex: 1 }}>
+            <h1>Build style here.</h1>
+          </div>
+
+          <footer className="overlay-background" style={{ zIndex: 0 }}>
+            <ButtonFade
+              state=""
+              label="close"
+              align="center"
+              block="overlay"
+              style="highlight"
+              icon={getSVG('close') as { dark: string; medium: string; light: string }}
+            />
+          </footer>
+        </>
+      )}
+    </section>
   );
   console.log('IndexOverlay Loaded');
 };
 export default IndexOverlay;
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
-  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
-  $(`button[class*="close"]`).on('click', () => {
+  $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let element = document.getElementById('index-overlay') as HTMLElement;
     let safety: boolean = element?.className.includes('blocked');
     let status = element?.className.split(' ').pop() as string;

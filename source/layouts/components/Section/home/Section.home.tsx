@@ -56,6 +56,14 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     },
     {
       state: '',
+      label: 'leftbar',
+      align: 'center',
+      block: 'leftbar',
+      style: 'downplay',
+      text: 'View Leftbar',
+    },
+    {
+      state: '',
       align: 'center',
       label: 'projects',
       block: 'rightbar',
@@ -82,6 +90,14 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       text: 'My Career',
       style: 'downplay',
       icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      state: '',
+      label: 'leftbar',
+      align: 'center',
+      block: 'leftbar',
+      style: 'downplay',
+      text: 'View Leftbar',
     },
     {
       state: '',
@@ -163,6 +179,12 @@ function jQueryHome(pageName: String, blockName: string) {
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
+  });
+  $(`#${containerElement} button[class*="leftbar"]`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[0];
+    if (rightbar.includes('leftbar')) {
       showAside(rightbar);
     }
   });

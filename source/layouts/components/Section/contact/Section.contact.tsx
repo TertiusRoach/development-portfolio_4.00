@@ -35,12 +35,9 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
     };
   }, []);
 
-  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
-  let career = getSVG('career') as { dark: string; medium: string; light: string };
-  let contact = getSVG('contact') as { dark: string; medium: string; light: string };
-  let projects = getSVG('projects') as { dark: string; medium: string; light: string };
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -49,17 +46,30 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
     >
       {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktop && (
+      {desktopDevice && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <DivisionWorking
+              info={info}
+              align="top-right"
+              text="Contact <section>"
+              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
+            />
+          </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobile && (
+      {mobileDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <DivisionWorking
+            info={info}
+            align="bottom-right"
+            text="Contact <section>"
+            icon={getSVG('contact') as { dark: string; medium: string; light: string }}
+          />
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>

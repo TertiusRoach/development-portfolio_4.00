@@ -35,12 +35,9 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
     };
   }, []);
 
-  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
-  let career = getSVG('career') as { dark: string; medium: string; light: string };
-  let contact = getSVG('contact') as { dark: string; medium: string; light: string };
-  let projects = getSVG('projects') as { dark: string; medium: string; light: string };
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -48,7 +45,7 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktop && (
+      {desktopDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <DivisionWorking
@@ -63,14 +60,14 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobile && (
+      {mobileDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <DivisionWorking
               info={info}
               align="bottom-right"
-              text="Contact <section>"
-              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
+              text="Skills <section>"
+              icon={getSVG('skills') as { dark: string; medium: string; light: string }}
             />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
