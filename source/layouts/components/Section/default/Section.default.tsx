@@ -120,6 +120,6 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, st
 export default SectionDefault;
 
 function jQueryDefault(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
+  const layoutsContainer = `${pageName}-${blockName}`;
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

@@ -80,6 +80,6 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
 export default SectionContact;
 
 function jQueryContact(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
+  const layoutsContainer = `${pageName}-${blockName}`;
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

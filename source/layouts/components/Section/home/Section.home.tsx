@@ -156,8 +156,8 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
 export default SectionHome;
 
 function jQueryHome(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} section`).on('click', function (event) {
+  const layoutsContainer = `${pageName}-${blockName}`;
+  $(`#${layoutsContainer} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
     let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
@@ -176,19 +176,19 @@ function jQueryHome(pageName: String, blockName: string) {
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
-  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+  $(`#${layoutsContainer} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
       showAside(rightbar);
     }
   });
-  $(`#${containerElement} button[class*="leftbar"]`).on('click', function () {
+  $(`#${layoutsContainer} button[class*="leftbar"]`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('leftbar')) {
       showAside(rightbar);
     }
   });
-  $(`#${containerElement} .overlay-career`).on('click', function () {
+  $(`#${layoutsContainer} .overlay-career`).on('click', function () {
     const overlay = this.classList[0].split('-')[0];
     if (overlay.includes('overlay')) {
       showSection(`${pageName}`, overlay);

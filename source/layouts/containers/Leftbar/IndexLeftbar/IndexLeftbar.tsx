@@ -1,9 +1,9 @@
+// IndexLeftbar.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ButtonFade from '../../../components/Button/fade/Button.fade';
-
 import getSVG from '../../../../modules/utilities/getSVG';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -87,11 +87,7 @@ export default IndexLeftbar;
 
 function jQueryLeftbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
-    if (getOrientation().includes('portrait')) {
-      // toggleState(containerElement);
-    }
-  });
+
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
@@ -100,4 +96,9 @@ function jQueryLeftbar(pageName: String, blockName: String) {
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
+  //   if (getOrientation().includes('portrait')) {
+  //     // toggleState(containerElement);
+  //   }
+  // });
 }

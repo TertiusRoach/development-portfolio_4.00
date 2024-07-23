@@ -80,6 +80,6 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
 export default SectionSkills;
 
 function jQuerySkills(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
+  const layoutsContainer = `${pageName}-${blockName}`;
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

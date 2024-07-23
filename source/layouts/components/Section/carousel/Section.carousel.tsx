@@ -78,7 +78,7 @@ const SectionCarousel: React.FC<CarouselProps> = ({ info, labelName, blockName, 
 export default SectionCarousel;
 
 function jQueryCarousel(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
+  const layoutsContainer = `${pageName}-${blockName}`;
   /*
   $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
