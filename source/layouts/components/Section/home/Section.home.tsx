@@ -15,16 +15,16 @@ import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../utilities/getIdentification';
 
 interface HomeProps {
-  labelName: 'home';
-  stateFlag: 'active' | '';
-  blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
+  labelName: 'home';
+  stateType: 'active' | '';
+  blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionHome: React.FC<HomeProps> = ({ labelName, stateFlag, blockName, info }) => {
+const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
   const loadTimer = 1000;
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
@@ -49,7 +49,7 @@ const SectionHome: React.FC<HomeProps> = ({ labelName, stateFlag, blockName, inf
   return (
     <section
       className={`${blockName}-home`}
-      id={stateFlag === 'active' ? `${blockName}-active` : ''}
+      id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}

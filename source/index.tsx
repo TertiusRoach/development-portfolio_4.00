@@ -48,16 +48,12 @@ function Body() {
   return (
     <>
       <IndexHeader info={infoPROP} />
-
-      <IndexMain info={infoPROP} />
-
+      <IndexMain information={infoPROP} />
       <IndexFooter info={infoPROP} />
 
-      <IndexLeftbar info={infoPROP} />
-
-      <IndexRightbar info={infoPROP} />
-
       <IndexOverlay info={infoPROP} />
+      <IndexLeftbar info={infoPROP} />
+      <IndexRightbar info={infoPROP} />
     </>
   );
 }
@@ -68,47 +64,3 @@ if (DefaultBody) {
 } else {
   console.error("Element with id 'index-body' not found.");
 }
-
-/*
-const iconURI: String =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/748d0a01b3cab00f0a4f276612e5c83ddbfda8aa/source/assets/svg-files/archive-images';
-export const iconHREF = {
-  home: `${iconURI}/font-awesome/solid/home.svg`,
-  close: `${iconURI}/font-awesome/solid/times.svg`,
-  career: `${iconURI}/font-awesome/solid/briefcase.svg`,
-  skills: `${iconURI}/font-awesome/solid/lightbulb.svg`,
-  working: `${iconURI}/font-awesome/solid/hard-hat.svg`,
-  contact: `${iconURI}/font-awesome/solid/phone.svg`,
-  download: `${iconURI}/font-awesome/solid/download.svg`,
-  projects: `${iconURI}/font-awesome/solid/code.svg`,
-  viewOverlay: `${iconURI}/font-awesome/solid/star.svg`,
-  viewLeftbar: `${iconURI}/font-awesome/solid/angle-right.svg`,
-  viewRightbar: `${iconURI}/font-awesome/solid/angle-left.svg`,
-  gitHub: `${iconURI}/font-awesome/brands/github.svg`,
-  youTube: `${iconURI}/font-awesome/brands/youtube.svg`,
-  linkedIn: `${iconURI}/font-awesome/brands/linkedin.svg`,
-
-  signatureIcon: `${iconURI}/tertius-roach/signature-icon/primary-light.svg`,
-  signatureStacked: `${iconURI}/tertius-roach/signature-stacked/primary-light.svg`,
-  signatureAdjacent: `${iconURI}/tertius-roach/signature-adjacent/primary-light.svg`,
-};
-*/
-/*
-console.log(iconHREF.home);
-console.log(iconHREF.close);
-console.log(iconHREF.career);
-console.log(iconHREF.skills);
-console.log(iconHREF.working);
-console.log(iconHREF.contact);
-console.log(iconHREF.download);
-console.log(iconHREF.projects);
-console.log(iconHREF.viewOverlay);
-console.log(iconHREF.viewLeftbar);
-console.log(iconHREF.viewRightbar);
-console.log(iconHREF.gitHub);
-console.log(iconHREF.youTube);
-console.log(iconHREF.linkedIn);
-console.log(iconHREF.signatureIcon);
-console.log(iconHREF.signatureStacked);
-console.log(iconHREF.signatureAdjacent);
-*/

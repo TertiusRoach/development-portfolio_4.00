@@ -2,17 +2,16 @@
 import './Division.working.scss';
 import { useMediaQuery } from 'react-responsive';
 import React, { useEffect, useRef, useState } from 'react';
-import { getIdentification, getSVG } from '../../../../scripts';
 
 interface HomeProps {
-  info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
-  };
   icon: string;
-  align: 'center' | 'top-left' | 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left';
   text: string;
+  align: 'center' | 'top-left' | 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left';
+  info: {
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+  };
 }
 const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align, text }) => {
   const divisionReference = useRef<HTMLDivElement>(null); //--|🠈 Create a reference to the div element 🠈|--//

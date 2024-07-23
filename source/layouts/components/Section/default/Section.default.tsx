@@ -12,19 +12,18 @@ import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../utilities/getIdentification';
 
 interface DefaultProps {
-  label: 'default';
-  state: 'active' | '';
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
+  labelName: 'default';
+  stateType: 'active' | '';
+  blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
+const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, stateType }) => {
   const pageName: String = getIdentification();
   let loadTimer = 1000 as number;
-  let blockName = 'main' as string;
   let mobile = useMediaQuery({ query: '(orientation: portrait)' }) as boolean;
   let desktop = useMediaQuery({ query: '(orientation: landscape)' }) as boolean;
   useEffect(() => {
@@ -67,8 +66,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
   ];
   return (
     <section
-      className={`${block}-default`}
-      id={state === 'active' ? `${block}-active` : ''}
+      className={`${blockName}-default`}
+      id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}

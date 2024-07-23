@@ -8,23 +8,24 @@ import { useEffect, useRef, useState } from 'react';
 
 import DivisionWorking from '../../Division/working/Division.working';
 interface ContactProps {
-  state?: 'active';
   info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  labelName: 'contact';
+  stateType: 'active' | '';
+  blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionContact: React.FC<ContactProps> = ({ info, block, state }) => {
+const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, stateType }) => {
   setTimeout(runJquery, 1000);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
   let working = getSVG('contact').dark as string;
   return (
     <section
-      id={state === 'active' ? `${block}-active` : ''}
-      className={`${block}-contact`}
+      id={stateType === 'active' ? `${blockName}-active` : ''}
+      className={`${blockName}-contact`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       <DivisionWorking align="center" text="Contact" info={info} icon={working} />

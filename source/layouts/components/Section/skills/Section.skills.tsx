@@ -8,15 +8,16 @@ import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../utilities/getIdentification';
 
 interface SkillsProps {
-  state?: 'active';
   info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
-  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  labelName: 'skills';
+  stateType: 'active' | '';
+  blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionSkills: React.FC<SkillsProps> = ({ info, block, state }) => {
+const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stateType }) => {
   setTimeout(runJquery, 1000);
   let width = info.resolution.split('x')[0];
   let height = info.resolution.split('x')[1];
@@ -24,8 +25,8 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, block, state }) => {
 
   return (
     <section
-      id={state === 'active' ? `${block}-active` : ''}
-      className={`${block}-skills`}
+      id={stateType === 'active' ? `${blockName}-active` : ''}
+      className={`${blockName}-skills`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       <DivisionWorking align="center" text="Skills" info={info} icon={skills} />

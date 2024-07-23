@@ -21,13 +21,13 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠋 Design 🠋|--//
 //--|🠉 Design 🠉|--//
 interface InfoProps {
-  info: {
+  information: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexMain: React.FC<InfoProps> = ({ info }) => {
+const IndexMain: React.FC<InfoProps> = ({ information }) => {
   const loadTimer = 1000;
   const blockName = 'main';
   const pageName = getIdentification() as String;
@@ -49,16 +49,60 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionHome blockName="main" stateFlag="active" labelName="home" info={info} />
+      <SectionHome
+        blockName="main"
+        labelName="home"
+        stateType="active"
+        info={
+          information as {
+            resolution: String;
+            orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+            identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+          }
+        }
+      />
       {/* <div style={{ height: '250px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
       </div> */}
-      {/* <SectionSkills info={info} block="main" /> */}
+      <SectionSkills
+        blockName="main"
+        labelName="skills"
+        stateType=""
+        info={
+          information as {
+            resolution: String;
+            orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+            identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+          }
+        }
+      />
       {/* <div style={{ height: '500px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
       </div> */}
-      {/* <SectionContact info={info} block="main" /> */}
-      {/* <SectionDefault info={info} block="main" state="active" /> */}
+      <SectionContact
+        blockName="main"
+        labelName="contact"
+        stateType=""
+        info={
+          information as {
+            resolution: String;
+            orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+            identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+          }
+        }
+      />
+      <SectionDefault
+        blockName="main"
+        labelName="default"
+        stateType=""
+        info={
+          information as {
+            resolution: String;
+            orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+            identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+          }
+        }
+      />
     </main>
   );
   console.log('IndexMain Loaded');
