@@ -13,9 +13,9 @@ import getIdentification from '../../../../utilities/getIdentification';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
 const IndexHeader: React.FC<InfoProps> = () => {

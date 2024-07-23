@@ -22,28 +22,10 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 //--|🠉 Design 🠉|--//
 
 interface FooterProps {
-  icons: {
-    home: string;
-    close: string;
-    career: string;
-    skills: string;
-    contact: string;
-    working: string;
-    projects: string;
-    download: string;
-    viewOverlay: string;
-    viewLeftbar: string;
-    viewRightbar: string;
-    signatureStacked: string;
-    signatureAdjacent: string;
-    gitHub: string;
-    youTube: string;
-    linkedIn: string;
-  };
   info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
 

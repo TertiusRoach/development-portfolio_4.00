@@ -22,9 +22,9 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠉 Design 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
 const IndexMain: React.FC<InfoProps> = ({ info }) => {
@@ -49,14 +49,14 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
-      <SectionHome info={info} block="main" state="active" />
-      <div style={{ height: '250px', background: 'green' }}>
+      <SectionHome blockName="main" stateFlag="active" labelName="home" info={info} />
+      {/* <div style={{ height: '250px', background: 'green' }}>
         <h1 className="display-1">ADDSPACE!!!!</h1>
-      </div>
+      </div> */}
       {/* <SectionSkills info={info} block="main" /> */}
-      <div style={{ height: '500px', background: 'darkgreen' }}>
+      {/* <div style={{ height: '500px', background: 'darkgreen' }}>
         <h1 className="display-1">MORE ADDSPACE!!!!</h1>
-      </div>
+      </div> */}
       {/* <SectionContact info={info} block="main" /> */}
       {/* <SectionDefault info={info} block="main" state="active" /> */}
     </main>

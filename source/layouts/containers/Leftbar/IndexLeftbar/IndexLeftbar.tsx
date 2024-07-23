@@ -8,22 +8,14 @@ import getResolution from '../../../../utilities/getResolution';
 import getOrientation from '../../../../utilities/getOrientation';
 import getIdentification from '../../../../utilities/getIdentification';
 
-const close: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/times.svg';
-const download: string =
-  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c90755c6fcf73d52bfd7e974d1f9946dbbddb8f4/source/assets/svg-files/font-awesome/testing-icons/solid/download.svg';
-
 interface InfoProps {
-  icons: {
-    projects: string;
-  };
   info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+    resolution: String;
+    orientation: String | 'landscape' | 'portrait';
+    identification: String | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
   };
 }
-const IndexLeftbar: React.FC<InfoProps> = () => {
+const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   const loadTimer: number = 4000;
   const blockName: String = 'leftbar';
   const pageName: String = getIdentification();
@@ -45,10 +37,11 @@ const IndexLeftbar: React.FC<InfoProps> = () => {
         <header className="leftbar-foreground" style={{ zIndex: 2 }}>
           <ButtonFade
             text=""
+            state=""
             label="close"
+            align="center"
             block="rightbar"
             style="highlight"
-            align="center"
             icon={getSVG('close') as { dark: string; medium: string; light: string }}
           />
         </header>

@@ -18,26 +18,31 @@ import getIdentification from './utilities/getIdentification';
 
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
 function Body() {
-  let [infoPROP, newPROP] = useState({
+  interface InfoProps {
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+  }
+
+  let [infoPROP, newPROP] = useState<InfoProps>({
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
     identification: `${getIdentification()}`,
   });
 
   useEffect(() => {
-    function updatePROP() {
+    function newInfo() {
       newPROP({
         resolution: `${getResolution()}`,
         orientation: `${getOrientation()}`,
         identification: `${getIdentification()}`,
       });
     }
-    updatePROP(); // Update the infoPROP on mount
-    window.addEventListener('resize', updatePROP); // Add event listener for window resize
+    newInfo();
+    window.addEventListener('resize', newInfo);
 
     return () => {
-      // Cleanup event listener on unmount
-      window.removeEventListener('resize', updatePROP);
+      window.removeEventListener('resize', newInfo);
     };
   }, []);
   return (
@@ -46,11 +51,11 @@ function Body() {
 
       <IndexMain info={infoPROP} />
 
-      <IndexFooter icons={iconHREF} info={infoPROP} />
+      <IndexFooter info={infoPROP} />
 
-      <IndexLeftbar icons={iconHREF} info={infoPROP} />
+      <IndexLeftbar info={infoPROP} />
 
-      <IndexRightbar icons={iconHREF} info={infoPROP} />
+      <IndexRightbar info={infoPROP} />
 
       <IndexOverlay info={infoPROP} />
     </>
@@ -64,6 +69,7 @@ if (DefaultBody) {
   console.error("Element with id 'index-body' not found.");
 }
 
+/*
 const iconURI: String =
   'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/748d0a01b3cab00f0a4f276612e5c83ddbfda8aa/source/assets/svg-files/archive-images';
 export const iconHREF = {
@@ -86,6 +92,7 @@ export const iconHREF = {
   signatureStacked: `${iconURI}/tertius-roach/signature-stacked/primary-light.svg`,
   signatureAdjacent: `${iconURI}/tertius-roach/signature-adjacent/primary-light.svg`,
 };
+*/
 /*
 console.log(iconHREF.home);
 console.log(iconHREF.close);

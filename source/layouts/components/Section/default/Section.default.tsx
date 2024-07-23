@@ -12,14 +12,14 @@ import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../utilities/getIdentification';
 
 interface DefaultProps {
-  info: {
-    resolution: string;
-    orientation: string;
-    identification: string;
-  };
-  state?: 'active';
-  label?: 'default' | 'home' | 'skills' | 'contact';
+  label: 'default';
+  state: 'active' | '';
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  info: {
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+  };
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, block, state }) => {
   const pageName: String = getIdentification();

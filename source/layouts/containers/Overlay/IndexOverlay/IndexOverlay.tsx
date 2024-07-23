@@ -10,9 +10,9 @@ import getIdentification from '../../../../utilities/getIdentification';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
 const IndexOverlay: React.FC<InfoProps> = () => {
@@ -34,15 +34,7 @@ const IndexOverlay: React.FC<InfoProps> = () => {
   return (
     <>
       <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
-        <header className="overlay-foreground" style={{ zIndex: 2 }}>
-          <ButtonFade
-            label="close"
-            block="overlay"
-            style="highlight"
-            align="center"
-            icon={getSVG('close') as { dark: string; medium: string; light: string }}
-          />
-        </header>
+        <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
 
         {/* <header className="overlay-foreground" style={{ zIndex: 2 }}></header> */}
 
@@ -50,7 +42,16 @@ const IndexOverlay: React.FC<InfoProps> = () => {
           <h1>Build style here.</h1>
         </div>
 
-        <footer className="overlay-background" style={{ zIndex: 0 }}></footer>
+        <footer className="overlay-background" style={{ zIndex: 0 }}>
+          <ButtonFade
+            state=""
+            label="close"
+            align="center"
+            block="overlay"
+            style="highlight"
+            icon={getSVG('close') as { dark: string; medium: string; light: string }}
+          />
+        </footer>
       </section>
     </>
   );

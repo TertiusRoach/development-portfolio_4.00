@@ -287,91 +287,89 @@
     }
   }
 }
+@mixin desktop-landscape {
+  main,
+  aside,
+  section {
+    //--|🠊 display: grid; 🠈|--//
+    a {
+      width: 100%;
+      height: 4rem;
 
-body {
-  @mixin desktop-landscape {
-    main,
-    aside,
-    section {
-      display: flex;
-      a {
-        width: 100%;
+      img {
         height: 4rem;
-
-        img {
-          height: 4rem;
-          margin: 0 1rem;
-        }
+        margin: 0 1rem;
       }
     }
+  }
 
-    header,
-    footer {
-      a {
-        height: 4rem;
-
-        img {
-          height: 2rem;
-          margin: 0.5rem;
-        }
-        @media screen and (max-width: 1000px) {
-          h3 {
-            display: none;
-            cursor: default;
-          }
+  header,
+  footer {
+    //--|🠊 display: grid; 🠈|--//
+    a {
+      height: 4rem;
+      img {
+        height: 2rem;
+        margin: 0.5rem;
+      }
+      @media screen and (max-width: 1000px) {
+        h3 {
+          display: none;
+          cursor: default;
         }
       }
     }
   }
-  @mixin mobile-portrait {
-    main,
-    aside,
-    section {
-      display: flex;
-      a {
-        width: 100%;
-        height: 6rem;
+}
+@mixin mobile-portrait {
+  main,
+  aside,
+  section {
+    display: grid;
+    a {
+      width: 100%;
+      height: 6rem;
 
-        img {
-          height: 6rem;
-          margin: 0 1rem;
-        }
+      img {
+        height: 6rem;
+        margin: 0 1rem;
       }
     }
+  }
 
-    header,
-    footer {
-      a {
-        height: 6rem;
+  header,
+  footer {
+    display: grid;
+    a {
+      height: 6rem;
 
-        img {
-          height: 3rem;
-          margin: 1.5rem 0;
-        }
+      img {
+        height: 3rem;
+        margin: 1.5rem 0;
+      }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        padding: 0 0.5rem;
+      }
+      @media screen and (max-width: 1000px) {
         h6 {
-          padding: 0 0.5rem;
-        }
-        @media screen and (max-width: 1000px) {
-          h6 {
-            display: none;
-          }
+          display: none;
         }
       }
     }
   }
-
+}
+body {
   @include anchor-effects();
   @include anchor-placement();
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

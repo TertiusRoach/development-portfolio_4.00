@@ -9,16 +9,13 @@ import getOrientation from '../../../../utilities/getOrientation';
 import getIdentification from '../../../../utilities/getIdentification';
 
 interface InfoProps {
-  icons: {
-    projects: string;
-  };
   info: {
-    resolution: string;
-    orientation: string | 'landscape' | 'portrait';
-    identification: string | 'index' | 'resume' | 'ticket' | 'university' | 'fitness';
+    resolution: String;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexRightbar: React.FC<InfoProps> = () => {
+const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   const loadTimer: number = 5000;
   const blockName: String = 'rightbar';
   const pageName: String = getIdentification();

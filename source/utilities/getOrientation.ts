@@ -8,6 +8,6 @@ export default function getOrientation(): String {
   } else if (!orientation.includes('portrait')) {
     return 'mobile-portrait' as String;
   } else {
-    return 'unknown-orientation' as String;
+    return 'tablet-square' as String;
   }
 }
