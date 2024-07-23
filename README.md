@@ -1,4 +1,12 @@
-# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+
+# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
+
+# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
+
+# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
+
+# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
 
 <details>
   <summary>Development Portfolio</summary>
