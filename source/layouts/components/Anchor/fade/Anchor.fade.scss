@@ -1,20 +1,6 @@
 // Anchor.fade.scss
 @import '../../../containers/color-palette.scss';
 
-/*
-$primary-dark: #1f3131;
-$primary-medium: #3d6262;
-$primary-light: #9eb0b0;
-
-$secondary-dark: #230510;
-$secondary-medium: #450920;
-$secondary-light: #a2848f;
-
-$tertiary-dark: #392319;
-$tertiary-medium: #714631;
-$tertiary-light: #b8a298;
-*/
-
 //--|🠋| Color Palette |🠋|--//
 $red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
 $red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
@@ -32,13 +18,13 @@ $purple-neon: #9900ff; //--🠊 rgba(153, 0, 255, 1) 🠈--//
 $purple-dark: #20124d; //--🠊 rgba(32, 18, 77, 1) 🠈--//
 $purple-light: #b4a7d6; //--🠊 rgba(180, 167, 214, 1) 🠈--//
 
-$yellow-neon: #ffff00; //--🠊 rgba(255, 255, 0, 1) 🠈--//
-$yellow-dark: #7f6000; //--🠊 rgba(127, 96, 0, 1) 🠈--//
-$yellow-light: #ffe599; //--🠊 rgba(255, 229, 153, 1) 🠈--//
-
 $pink-neon: #ff00ff; //--🠊 rgba(255, 0, 255, 1) 🠈--//
 $pink-dark: #4c1130; //--🠊 rgba(76, 17, 48, 1) 🠈--//
 $pink-light: #d5a6bd; //--🠊 rgba(213, 166, 189, 1) 🠈--//
+
+$yellow-neon: #ffff00; //--🠊 rgba(255, 255, 0, 1) 🠈--//
+$yellow-dark: #7f6000; //--🠊 rgba(127, 96, 0, 1) 🠈--//
+$yellow-light: #ffe599; //--🠊 rgba(255, 229, 153, 1) 🠈--//
 
 $orange-neon: #ff9900; //--🠊 rgba(255, 153, 0, 1) 🠈--//
 $orange-dark: #783f04; //--🠊 rgba(120, 63, 4, 1) 🠈--//
