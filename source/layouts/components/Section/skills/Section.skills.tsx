@@ -47,11 +47,17 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
       id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktop && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <DivisionWorking
+              info={info}
+              align="top-left"
+              text="Skills <section>"
+              icon={getSVG('skills') as { dark: string; medium: string; light: string }}
+            />
+          </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
@@ -59,7 +65,14 @@ const SectionSkills: React.FC<SkillsProps> = ({ info, labelName, blockName, stat
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobile && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <DivisionWorking
+              info={info}
+              align="bottom-right"
+              text="Contact <section>"
+              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
+            />
+          </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>

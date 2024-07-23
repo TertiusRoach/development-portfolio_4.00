@@ -51,35 +51,29 @@ body {
       display: grid;
       [id*='home'] {
         grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-        &[id*='fore'] {
-          // background: rgba($yellow-neon, 0.25) !important;
-        }
-        &[id*='mid'] {
-          // background: rgba($yellow-light, 0.5) !important;
-        }
+        &[id*='fore'],
+        &[id*='mid'],
         &[id*='back'] {
-          // background: rgba($yellow-dark, 1) !important;
+          background: rgba($purple-dark, 0.25) !important;
         }
       }
-    }
-  }
-  section {
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      //--|🠊 display: grid; 🠈|--//
-      grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠈 rows / columns 🠈|~~//
-      div[id*='home'] {
-        display: inherit; //~~|🠈 display: grid; 🠈|~~//
-        @include desktop-landscape(); //~~|🠊 display: grid; 🠈|~~//
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠈 rows / columns 🠈|~~//
+        div[id*='home'] {
+          display: inherit; //~~|🠈 display: grid; 🠈|~~//
+          @include desktop-landscape(); //~~|🠊 display: grid; 🠈|~~//
+        }
       }
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      //--|🠊 display: grid; 🠈|--//
-      grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠈 rows / columns 🠈|~~//
-      div[id*='home'] {
-        display: inherit; //~~|🠈 display: grid; 🠈|~~//
-        @include mobile-portrait(); //~~|🠊 display: grid; 🠈|~~//
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠈 rows / columns 🠈|~~//
+        div[id*='home'] {
+          display: inherit; //~~|🠈 display: grid; 🠈|~~//
+          @include mobile-portrait(); //~~|🠊 display: grid; 🠈|~~//
+        }
       }
     }
   }

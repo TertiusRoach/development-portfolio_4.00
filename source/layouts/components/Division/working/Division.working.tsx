@@ -4,8 +4,9 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface HomeProps {
-  icon: string;
   text: string;
+
+  icon: { dark: string; medium: string; light: string };
   align: 'center' | 'top-left' | 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left';
   info: {
     resolution: String;
@@ -40,7 +41,7 @@ const DivisionWorking: React.FC<HomeProps> = ({ info, icon, align, text }) => {
         <h1 className="highlight display-1">{text}</h1>
       </div>
       <div className={align}>
-        <img src={icon} alt="icon" />
+        <img src={icon?.dark} alt="icon" />
       </div>
       <div className={align}></div>
     </div>

@@ -60,46 +60,35 @@ const IndexOverlay: React.FC<InfoProps> = () => {
 export default IndexOverlay;
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
+  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
+  $(`button[class*="close"]`).on('click', () => {
     let element = document.getElementById('index-overlay') as HTMLElement;
     let safety: boolean = element?.className.includes('blocked');
     let status = element?.className.split(' ').pop() as string;
     if (!safety) {
       switch (status) {
         case 'visible':
-          $('#index-overlay.visible').addClass('blocked');
-          $('#index-overlay.visible').toggleClass('hidden');
-          $('#index-overlay.visible').removeClass('visible');
+          $(`#${pageName}-overlay.visible`).addClass('blocked');
+          $(`#${pageName}-overlay.visible`).toggleClass('hidden');
+          $(`#${pageName}-overlay.visible`).removeClass('visible');
           setTimeout(() => {
-            $('#index-overlay').css('display', 'none');
-            $('#index-overlay').removeClass('blocked');
+            $(`#${pageName}-overlay`).css('display', 'none');
+            $(`#${pageName}-overlay`).removeClass('blocked');
           }, 1000);
           break;
         case 'hidden':
-          $('#index-overlay.hidden').removeClass('blocked');
-          $('#index-overlay.hidden').toggleClass('visible');
-          $('#index-overlay.hidden').removeClass('hidden');
+          $(`#${pageName}-overlay.hidden`).removeClass('blocked');
+          $(`#${pageName}-overlay.hidden`).toggleClass('visible');
+          $(`#${pageName}-overlay.hidden`).removeClass('hidden');
           setTimeout(() => {
-            $('#index-overlay').css('display', '');
+            $(`#${pageName}-overlay`).css('display', '');
           }, 1000);
           break;
         default:
           alert('ERROR!');
       }
     }
-    /*
-    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
-    if (!safety.includes('blocked')) {
-      $(`#${containerElement}.expanded`).addClass('collapsed');
-      $(`#${containerElement}.collapsed`).removeClass('expanded');
-    }
-    */
   });
-  $(`#${containerElement} .${blockName}-foreground`).on('click', () => {});
-  /*
-  $(`#${containerElement}`).on('click', () => {
-
-  });
-  */
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

@@ -54,7 +54,7 @@ const IndexMain: React.FC<InfoProps> = ({ information }) => {
           <SectionHome blockName="main" labelName="home" stateType="active" info={information} />
           <SectionSkills blockName="main" labelName="skills" stateType="" info={information} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={information} />
-          <SectionDefault blockName="main" labelName="default" stateType="" info={information} />
+          {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}

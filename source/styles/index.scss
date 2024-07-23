@@ -22,13 +22,15 @@
       }
       main {
         background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
       }
       footer {
         background: rgba($red-light, 0.25);
       }
-    }
-    footer[id*='index'] {
-      background: rgba($red-neon, 0.25) !important;
     }
     //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
     //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
@@ -55,6 +57,12 @@
       }
       main {
         background: rgba($blue-dark, 1);
+        background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
       }
     }
     //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
