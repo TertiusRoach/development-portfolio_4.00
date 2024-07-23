@@ -118,6 +118,5 @@ export default SectionDefault;
 
 function jQueryDefault(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-
-  console.log('Yay, jQuery!');
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

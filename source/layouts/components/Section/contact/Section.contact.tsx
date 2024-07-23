@@ -1,12 +1,12 @@
 // Section.contact.tsx
-import React from 'react';
 import './Section.contact.scss';
 
 import { useMediaQuery } from 'react-responsive';
 import getSVG from '../../../../utilities/getSVG';
-import { useEffect, useRef, useState } from 'react';
-
+import React, { useEffect, useRef, useState } from 'react';
 import DivisionWorking from '../../Division/working/Division.working';
+import getIdentification from '../../../../utilities/getIdentification';
+
 interface ContactProps {
   info: {
     resolution: String;
@@ -18,32 +18,58 @@ interface ContactProps {
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, stateType }) => {
-  setTimeout(runJquery, 1000);
-  let width = info.resolution.split('x')[0];
-  let height = info.resolution.split('x')[1];
-  let working = getSVG('contact').dark as string;
+  const loadTimer = 1000;
+  const width = info.resolution.split('x')[0];
+  const height = info.resolution.split('x')[1];
+  const pageName: String = getIdentification();
+  useEffect(() => {
+    let handleResize = () => {
+      setTimeout(() => jQueryContact(pageName, blockName), loadTimer);
+    };
+
+    window.addEventListener('resize', handleResize);
+    setTimeout(() => jQueryContact(pageName, blockName), loadTimer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
+  let career = getSVG('career') as { dark: string; medium: string; light: string };
+  let contact = getSVG('contact') as { dark: string; medium: string; light: string };
+  let projects = getSVG('projects') as { dark: string; medium: string; light: string };
   return (
     <section
+      className={`${blockName}-${labelName}`}
       id={stateType === 'active' ? `${blockName}-active` : ''}
-      className={`${blockName}-contact`}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      <DivisionWorking align="center" text="Contact" info={info} icon={working} />
-
+      {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && (
-        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
+      {desktop && (
+        <>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+        </>
       )}
-
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && (
-        <>{/* <DivisionWorking align="center" info={info} icon={working} /> */}</>
+      {mobile && (
+        <>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+        </>
       )}
     </section>
   );
 };
 export default SectionContact;
 
-function runJquery() {
-  // console.log('Yay, jQuery!');
+function jQueryContact(pageName: String, blockName: string) {
+  const containerElement = `${pageName}-${blockName}`;
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

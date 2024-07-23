@@ -29,10 +29,8 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
   const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
-    const handleResize = () => {
+    let handleResize = () => {
       setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
     };
 
@@ -43,12 +41,16 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
   let career = getSVG('career') as { dark: string; medium: string; light: string };
   let contact = getSVG('contact') as { dark: string; medium: string; light: string };
   let projects = getSVG('projects') as { dark: string; medium: string; light: string };
   return (
     <section
-      className={`${blockName}-home`}
+      className={`${blockName}-${labelName}`}
       id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
@@ -56,7 +58,25 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktop && (
         <>
-          <>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+        </>
+      )}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {mobile && (
+        <>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+        </>
+      )}
+    </section>
+  );
+};
+
+{
+  /* <menu>
             <ButtonFade
               state=""
               text="My Career"
@@ -75,19 +95,11 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
               style="highlight"
               text="My Projects"
             />
-          </>
-
-          {/* <MenuButton selectDesign="fade" info={buttons} /> */}
-        </>
-      )}
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobile && (
-        <>
-          <div className={`${labelName}-foreground`}></div>
-          <div className={`${labelName}-midground`}></div>
-          <div className={`${labelName}-background`}></div>
-          <menu>
-            {/* <ButtonFade
+          </menu> */
+}
+{
+  /* <menu>
+            <ButtonFade
               state=""
               text="My Career"
               label="career"
@@ -95,8 +107,8 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
               align="left"
               style="downplay"
               icon={career}
-            /> */}
-            {/* <ButtonFade
+            />
+            <ButtonFade
               state=""
               text="Contact Me"
               label="contact"
@@ -104,13 +116,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
               align="right"
               style="downplay"
               icon={contact}
-            /> */}
-          </menu>
-        </>
-      )}
-    </section>
-  );
-};
+            />
+          </menu> */
+}
 
 export default SectionHome;
 
