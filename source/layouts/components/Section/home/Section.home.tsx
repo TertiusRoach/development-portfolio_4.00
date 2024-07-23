@@ -5,15 +5,16 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
+
+import getSVG from '../../../../modules/utilities/getSVG';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showAside from '../../../../modules/utilities/showAside';
 import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
-import MenuButton from '../../Menu/button/Menu.button';
 
 interface HomeProps {
   info: {
@@ -30,7 +31,6 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
   const pageName: String = getIdentification();
-
   useEffect(() => {
     let handleResize = () => {
       setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
@@ -43,11 +43,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  let contactIcon = getSVG('contact') as { dark: string; medium: string; light: string };
-  let projectsIcon = getSVG('projects') as { dark: string; medium: string; light: string };
-
-  let desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   let desktopButtons = [
     {
       state: '',
@@ -60,7 +56,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     },
     {
       state: '',
-      align: 'right',
+      align: 'center',
       label: 'projects',
       block: 'rightbar',
       style: 'highlight',
@@ -76,8 +72,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
-
-  let mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let mobileButtons = [
     {
       state: '',
@@ -114,7 +109,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     >
       {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktop && (
+      {desktopDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <MenuButton selectDesign="fade" buttonInfo={desktopButtons} />
@@ -124,7 +119,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobile && (
+      {mobileDevice && (
         <>
           <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
             <MenuButton selectDesign="fade" buttonInfo={mobileButtons} />
