@@ -11,23 +11,21 @@ import getSVG from '../../../../modules/utilities/getSVG';
 //--|🠋 Design 🠋|--//
 import './Button.fade.scss';
 //--|🠉 Design 🠉|--//
-
 interface FadeProps {
   text?: string;
   index?: number;
   state: 'active' | '';
-  icon: undefined | { dark: string; medium: string; light: string };
   style: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
+  icon: undefined | { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-
 const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
-  let className = `${block}-${label} ${align}`;
-  let setActive = state === 'active' ? `${block}-active` : '';
-  let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
+  const className = `${block}-${label} ${align}`;
+  const setActive = state === 'active' ? `${block}-active` : '';
+  const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
   let mouseEnter: () => void;
   let mouseLeave: () => void;
@@ -35,20 +33,14 @@ const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, lab
     case 'highlight':
       mouseEnter = () => setStyle('downplay');
       mouseLeave = () => setStyle('highlight');
-      break;
-    case 'downplay':
-      mouseEnter = () => setStyle('highlight');
-      mouseLeave = () => setStyle('downplay');
-      break;
-  }
-  switch (style) {
-    case 'highlight':
       return (
         <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
           {renderButton(text, style, align, icon, block)}
         </button>
       );
     case 'downplay':
+      mouseEnter = () => setStyle('highlight');
+      mouseLeave = () => setStyle('downplay');
       return (
         <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
           {renderButton(text, style, align, icon, block)}
