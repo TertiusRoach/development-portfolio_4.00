@@ -78,16 +78,16 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
           <div className="rightbar-background" style={{ zIndex: 0 }}>
             <menu>
               <a target="_blank" className="left" href="https://github.com/TertiusRoach">
-                <h3>GitHub</h3>
+                <h6 className="display-3">GitHub</h6>
                 <img src={getSVG('github').medium as string} alt="github" />
               </a>
 
               <a target="_blank" className="center" href="">
-                <h3>LinkedIn</h3>
+                <h6 className="display-3">LinkedIn</h6>
                 <img src={getSVG('linkedin').medium as string} alt="linkedin" />
               </a>
               <a target="_blank" className="right" href="">
-                <h3>YouTube</h3>
+                <h6 className="display-3">YouTube</h6>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
             </menu>
