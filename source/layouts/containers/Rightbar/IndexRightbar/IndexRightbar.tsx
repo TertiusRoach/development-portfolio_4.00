@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
+import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getResolution from '../../../../modules/utilities/getResolution';
@@ -31,54 +32,7 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  return (
-    <aside id="index-rightbar" className="default-rightbar collapsed" style={{ zIndex: 5 }}>
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
-        <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-            <ButtonFade
-              state=""
-              label="close"
-              block="rightbar"
-              style="highlight"
-              align="center"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
-          </header>
-          <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <ul className="rightbar-listing">
-              <h1 className="content-1">Rightbar Listing</h1>
-            </ul>
-            <article className="rightbar-preview"></article>
-          </div>
-          <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
-        </>
-      )}
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
-        <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
-          <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <ul className="rightbar-listing">
-              <h1 className="content-1">Rightbar Listing</h1>
-            </ul>
-            <article className="rightbar-preview"></article>
-          </div>
-          <footer className="rightbar-midground" style={{ zIndex: 1 }}>
-            <ButtonFade
-              state=""
-              label="close"
-              block="rightbar"
-              style="highlight"
-              align="center"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
-          </footer>
-        </>
-      )}
-    </aside>
-  );
+  return <AsideRightbar labelName="projects" stateType="" blockName={`${blockName}`} info={info} />;
 };
 export default IndexRightbar;
 

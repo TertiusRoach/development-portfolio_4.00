@@ -2,6 +2,8 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import AsideLeftbar from '../../../components/Aside/leftbar/Aside.leftbar';
+
 import { getSVG } from '../../../../modules/utilities/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import getResolution from '../../../../modules/utilities/getResolution';
@@ -32,56 +34,7 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
-  return (
-    <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
-        <>
-          <header className="leftbar-foreground" style={{ zIndex: 2 }}>
-            <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
-          </header>
-          <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <ul className="leftbar-listing">
-              <h1 className="content-1">Leftbar Listing</h1>
-            </ul>
-            <article className="leftbar-preview"></article>
-          </div>
-          <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
-        </>
-      )}
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
-        <>
-          <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
-          <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <ul className="leftbar-listing">
-              <h1 className="content-1">Leftbar Listing</h1>
-            </ul>
-            <article className="leftbar-preview"></article>
-          </div>
-          <footer className="leftbar-midground" style={{ zIndex: 1 }}>
-            <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
-          </footer>
-        </>
-      )}
-    </aside>
-  );
+  return <AsideLeftbar labelName="leftbar" stateType="" blockName={`${blockName}`} info={info} />;
 };
 export default IndexLeftbar;
 

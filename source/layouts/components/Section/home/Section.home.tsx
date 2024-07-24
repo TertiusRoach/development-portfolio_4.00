@@ -154,10 +154,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   );
 };
 export default SectionHome;
-
 function jQueryHome(pageName: String, blockName: string) {
-  const layoutsContainer = `${pageName}-${blockName}`;
-  $(`#${layoutsContainer} section`).on('click', function (event) {
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
     let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
@@ -176,19 +175,19 @@ function jQueryHome(pageName: String, blockName: string) {
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
-  $(`#${layoutsContainer} .rightbar-projects`).on('click', function () {
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
       showAside(rightbar);
     }
   });
-  $(`#${layoutsContainer} button[class*="leftbar"]`).on('click', function () {
+  $(`#${containerElement} button[class*="leftbar"]`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('leftbar')) {
       showAside(rightbar);
     }
   });
-  $(`#${layoutsContainer} .overlay-career`).on('click', function () {
+  $(`#${containerElement} .overlay-career`).on('click', function () {
     const overlay = this.classList[0].split('-')[0];
     if (overlay.includes('overlay')) {
       showSection(`${pageName}`, overlay);
@@ -196,4 +195,40 @@ function jQueryHome(pageName: String, blockName: string) {
   });
 
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+
+  /*
+  $(`#${containerElement} section`).on('click', function (event) {
+    let navigation = ['header', 'footer'];
+    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    let tagName = parent.tagName as 'BUTTON' | string;
+    if (tagName === 'BUTTON') {
+      for (let i = 0; i < navigation.length; i++) {
+        var labelName = parent.classList[0].split('-')[1] as string;
+        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
+      }
+    } else {
+      var buttonElement = this as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        setActive(this as HTMLButtonElement, navigation[i]);
+      }
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
+    }
+  });
+  $(`#${containerElement} .rightbar-projects`).on('click', function () {
+    const rightbar = this.classList[0].split('-')[0];
+    if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
+  });
+  $(`#${containerElement} .overlay-career`).on('click', function () {
+    const overlay = this.classList[0].split('-')[0];
+    if (overlay.includes('overlay')) {
+      showSection(`${pageName}`, overlay);
+    }
+  });
+
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  */
 }
