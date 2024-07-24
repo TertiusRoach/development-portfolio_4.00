@@ -2,5 +2,6 @@
 secret.*
 *secret.*
 node_modules
+package.json
 package-*.json
 source/server/
