@@ -56,14 +56,6 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     },
     {
       state: '',
-      label: 'leftbar',
-      align: 'center',
-      block: 'leftbar',
-      style: 'highlight',
-      text: 'View Leftbar',
-    },
-    {
-      state: '',
       align: 'center',
       label: 'projects',
       block: 'rightbar',
@@ -90,14 +82,6 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       text: 'My Career',
       style: 'downplay',
       icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-    {
-      state: '',
-      label: 'leftbar',
-      align: 'center',
-      block: 'leftbar',
-      style: 'downplay',
-      text: 'View Leftbar',
     },
     {
       state: '',

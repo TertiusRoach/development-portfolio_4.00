@@ -1,5 +1,4 @@
-// Aside.rightbar.scss
-
+// Aside.projects.scss
 //--|🠋| Color Palette |🠋|--//
 $red-neon: #ff0000;
 $red-dark: #660000;
@@ -43,14 +42,17 @@ $turquoise-light: #a2c4c9;
 
 @mixin desktop-landscape {
   display: grid;
-  // align-content: space-around; // Add this to vertically align content like space-around in Flexbox
-  grid-template: 4rem 1fr 4rem / repeat(2, 1fr);
+  grid-template: 4rem 1fr 4rem / repeat(2, 1fr); //~~|🠈 row / columns 🠈|~~//
 
   header[class*='foreground'] {
+    display: inherit; //~~|🠈 display: grid; 🠈|~~//
     grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+    grid-template: auto / 1fr auto; //~~|🠈 row / columns 🠈|~~//
     button {
       width: 100%;
       height: 100%;
+      padding: 0 3rem;
+      grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
     }
 
     background: rgba($green-neon, 0.75);
@@ -166,16 +168,16 @@ $turquoise-light: #a2c4c9;
     menu {
       display: inherit; //~~|🠈 display: grid 🠈|~~//
       grid-area: 2 / 1 / 3 / 3; //~~|🠈 row-start / column-start / row-end / column-end; 🠈|~~//
+      align-content: space-around; // Add this to align the grid items vertically
       background: rgba(darkgreen, 0.5);
       grid-template: repeat(6, 1fr) / 3rem 1fr 3rem;
-      align-content: space-around; // Add this to align the grid items vertically
 
       a {
+        height: 100%; // Ensure the <a> elements take full height of their grid row
         color: inherit; //~~|🠈 color: $primary-medium 🠈|~~//
         display: inherit; //~~|🠈 display: grid 🠈|~~//
         grid-column: 2 / 3;
         text-decoration: none;
-        height: 100%; // Ensure the <a> elements take full height of their grid row
         h3,
         h6,
         img {
