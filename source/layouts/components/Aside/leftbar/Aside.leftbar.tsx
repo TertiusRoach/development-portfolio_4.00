@@ -50,16 +50,15 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
           </header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
             <menu>
-              <a className="left" href="https://github.com/TertiusRoach">
-                <h3>GitHub</h3>
-                <img src={getSVG('github').medium as string} alt="github" />
-              </a>
-
-              <a className="center" href="">
+              <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
                 <h3>LinkedIn</h3>
                 <img src={getSVG('linkedin').medium as string} alt="linkedin" />
               </a>
-              <a className="right" href="">
+              <a target="_blank" className="center" href="https://github.com/TertiusRoach">
+                <h3>GitHub</h3>
+                <img src={getSVG('github').medium as string} alt="github" />
+              </a>
+              <a target="_blank" className="left" href="https://www.youtube.com/@TertiusRoach">
                 <h3>YouTube</h3>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
@@ -74,10 +73,21 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
         <>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <ul className="leftbar-listing">
-              <h1 className="content-1">Leftbar Listing</h1>
-            </ul>
-            <article className="leftbar-preview"></article>
+            <menu>
+              <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
+                <h3>LinkedIn</h3>
+                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
+              </a>
+              <a target="_blank" className="center" href="https://github.com/TertiusRoach">
+                <h3>GitHub</h3>
+                <img src={getSVG('github').medium as string} alt="github" />
+              </a>
+              <a target="_blank" className="left" href="https://www.youtube.com/@TertiusRoach">
+                <h3>YouTube</h3>
+                <img src={getSVG('youtube').medium as string} alt="youtube" />
+              </a>
+            </menu>
+            <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
             <ButtonFade

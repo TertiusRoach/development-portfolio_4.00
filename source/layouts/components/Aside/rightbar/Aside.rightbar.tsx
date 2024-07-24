@@ -52,16 +52,16 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
           </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
             <menu>
-              <a className="left" href="https://github.com/TertiusRoach">
+              <a target="_blank" className="left" href="https://github.com/TertiusRoach">
                 <h3>GitHub</h3>
                 <img src={getSVG('github').medium as string} alt="github" />
               </a>
 
-              <a className="center" href="">
+              <a target="_blank" className="center" href="">
                 <h3>LinkedIn</h3>
                 <img src={getSVG('linkedin').medium as string} alt="linkedin" />
               </a>
-              <a className="right" href="">
+              <a target="_blank" className="right" href="">
                 <h3>YouTube</h3>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
@@ -76,10 +76,22 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
         <>
           <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <ul className="rightbar-listing">
-              <h1 className="content-1">Leftbar Listing</h1>
-            </ul>
-            <article className="rightbar-preview"></article>
+            <menu>
+              <a target="_blank" className="left" href="https://github.com/TertiusRoach">
+                <h3>GitHub</h3>
+                <img src={getSVG('github').medium as string} alt="github" />
+              </a>
+
+              <a target="_blank" className="center" href="">
+                <h3>LinkedIn</h3>
+                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
+              </a>
+              <a target="_blank" className="right" href="">
+                <h3>YouTube</h3>
+                <img src={getSVG('youtube').medium as string} alt="youtube" />
+              </a>
+            </menu>
+            <section></section>
           </div>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}>
             <ButtonFade

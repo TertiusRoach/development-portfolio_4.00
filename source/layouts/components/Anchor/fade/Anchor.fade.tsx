@@ -58,11 +58,13 @@ function renderAnchor(
   return (
     <>
       {desktopDevice && (
-        <>
-          <h3 className={`${align}`}>{text}</h3>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
-        </>
+        <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
+          <h3>LinkedIn</h3>
+          <img src={getSVG('linkedin').medium as string} alt="linkedin" />
+          {/* <h3 className={`${align}`}>{text}</h3>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} /> */}
+        </a>
       )}
       {mobileDevice && (
         <>
