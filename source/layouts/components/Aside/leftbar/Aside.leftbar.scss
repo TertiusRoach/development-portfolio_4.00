@@ -302,3 +302,12 @@ aside[id*='leftbar'] {
     @include desktop-landscape();
   }
 }
+// header[id*='header'],
+// main[id*='main'],
+// footer[id*='footer'] {
+//   div[class='disabled'],
+//   section[class='disabled'] {
+//     $blur-radius: 5px; // Or any desired value
+//     filter: blur($blur-radius);
+//   }
+// }

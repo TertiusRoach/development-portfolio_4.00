@@ -113,6 +113,10 @@ let jQueryLeftbar = function (pageName: String, blockName: String) {
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('disabled');
+      $(`#${pageName}-main section`).removeClass('disabled');
+      $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

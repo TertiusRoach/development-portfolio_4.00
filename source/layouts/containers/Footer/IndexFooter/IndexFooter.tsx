@@ -183,6 +183,10 @@ function jQueryFooter(pageName: String, blockName: String) {
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
     let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
     showAside(rightbar.classList[0].split('-')[1] as string);
+
+    $(`#${pageName}-header`).addClass('disabled');
+    $(`#${pageName}-main`).addClass('disabled');
+    $(`#${pageName}-footer`).addClass('disabled');
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

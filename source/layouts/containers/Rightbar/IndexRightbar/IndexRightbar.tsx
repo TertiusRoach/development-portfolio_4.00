@@ -43,6 +43,10 @@ function jQueryRightbar(pageName: String, blockName: String) {
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('disabled');
+      $(`#${pageName}-main`).removeClass('disabled');
+      $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

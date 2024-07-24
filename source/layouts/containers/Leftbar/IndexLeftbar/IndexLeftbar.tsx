@@ -34,7 +34,7 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
 
-  return <AsideLeftbar labelName="leftbar" stateType="" blockName={`${blockName}`} info={info} />;
+  return <AsideLeftbar blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;
 
@@ -46,12 +46,11 @@ function jQueryLeftbar(pageName: String, blockName: String) {
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('disabled');
+      $(`#${pageName}-main`).removeClass('disabled');
+      $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-  // $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
-  //   if (getOrientation().includes('portrait')) {
-  //     // toggleState(containerElement);
-  //   }
-  // });
 }

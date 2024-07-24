@@ -40,6 +40,7 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
       {desktopDevice && (
         <>
           <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+            <h3 className="display-6">My Projects</h3>
             <ButtonFade
               text=""
               state=""
@@ -73,7 +74,9 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobileDevice && (
         <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+            <h6 className="display-3">My Projects</h6>
+          </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
             <menu>
               <a target="_blank" className="center" href="https://github.com/TertiusRoach">

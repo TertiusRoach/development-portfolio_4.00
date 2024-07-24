@@ -82,6 +82,13 @@ div[id*='index-body'] {
     grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
   }
   @include orientation-testing();
+
+  main.disabled,
+  header.disabled,
+  footer.disabled {
+    $blur-radius: 1rem; // Or any desired value
+    filter: blur($blur-radius);
+  }
 }
 
 @import '../layouts/containers/Main/IndexMain/IndexMain.scss';

@@ -93,15 +93,24 @@ function jQueryOverlay(pageName: String, blockName: String) {
           $(`#${pageName}-overlay.visible`).addClass('blocked');
           $(`#${pageName}-overlay.visible`).toggleClass('hidden');
           $(`#${pageName}-overlay.visible`).removeClass('visible');
+
           setTimeout(() => {
             $(`#${pageName}-overlay`).css('display', 'none');
             $(`#${pageName}-overlay`).removeClass('blocked');
+
+            $(`#${pageName}-header`).removeClass('disabled');
+            $(`#${pageName}-main`).removeClass('disabled');
+            $(`#${pageName}-footer`).removeClass('disabled');
           }, 1000);
           break;
         case 'hidden':
           $(`#${pageName}-overlay.hidden`).removeClass('blocked');
           $(`#${pageName}-overlay.hidden`).toggleClass('visible');
           $(`#${pageName}-overlay.hidden`).removeClass('hidden');
+
+          $(`#${pageName}-header`).removeClass('disabled');
+          $(`#${pageName}-main`).removeClass('disabled');
+          $(`#${pageName}-footer`).removeClass('disabled');
           setTimeout(() => {
             $(`#${pageName}-overlay`).css('display', '');
           }, 1000);

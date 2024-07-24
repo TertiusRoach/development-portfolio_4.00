@@ -1,5 +1,6 @@
 // IndexMain.tsx
 //--|🠋 Frameworks 🠋|--//
+import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
@@ -79,5 +80,16 @@ const IndexMain: React.FC<InfoProps> = ({ information }) => {
 export default IndexMain;
 
 function jQueryMain(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
+  const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement} button[class*="projects"]`).on('click', () => {
+    $(`#${pageName}-header`).addClass('disabled');
+    $(`#${pageName}-main`).addClass('disabled');
+    $(`#${pageName}-footer`).addClass('disabled');
+  });
+  $(`#${containerElement} button[class*="career"]`).on('click', () => {
+    $(`#${pageName}-header`).addClass('disabled');
+    $(`#${pageName}-main`).addClass('disabled');
+    $(`#${pageName}-footer`).addClass('disabled');
+  });
+  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
