@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
+import MenuAnchor from '../../Menu/anchor/Menu.anchor';
 
 interface ProjectsProps {
   stateType: 'active' | '';
@@ -34,25 +35,92 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
 
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let anchor = [
+    {
+      state: '',
+      align: 'left',
+      text: 'GitHub',
+      label: 'github',
+      target: '_blank',
+      block: 'rightbar',
+      style: 'downplay',
+      href: 'https://github.com/TertiusRoach',
+      icon: getSVG('github') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      state: '',
+      align: 'left',
+      text: 'LinkedIn',
+      target: '_blank',
+      label: 'linkedin',
+      block: 'rightbar',
+      style: 'highlight',
+      href: 'https://www.linkedin.com/in/tertius-roach/',
+      icon: getSVG('linkedin') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    {
+      state: '',
+      align: 'left',
+      text: 'YouTube',
+      label: 'youtube',
+      target: '_blank',
+      block: 'rightbar',
+      style: 'downplay',
+      href: 'https://www.youtube.com/@TertiusRoach',
+      icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    },
+    // {
+    //   href: '',
+    //   state: '',
+    //   align: 'left',
+    //   text: 'Home',
+    //   label: 'home',
+    //   target: '_blank',
+    //   block: 'rightbar',
+    //   style: 'downplay',
+    //   icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    // },
+    // {
+    //   href: '',
+    //   state: '',
+    //   align: 'left',
+    //   text: 'Skills',
+    //   label: 'skills',
+    //   target: '_blank',
+    //   block: 'rightbar',
+    //   style: 'downplay',
+    //   icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    // },
+    // {
+    //   href: '',
+    //   state: '',
+    //   align: 'left',
+    //   text: 'Contact',
+    //   label: 'contact',
+    //   target: '_blank',
+    //   block: 'rightbar',
+    //   style: 'downplay',
+    //   icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    // },
+  ] as {
+    text: string;
+    state: 'active' | '';
+    href: string | 'disabled';
+    style: 'downplay' | 'highlight';
+    align: 'left' | 'center' | 'right' | string;
+    label: 'home' | 'skills' | 'contact' | string;
+    target: '_blank' | '_parent' | '_self' | '_top' | string;
+    icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[];
   return (
     <aside id="index-rightbar" className={`${labelName}-rightbar collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-            <h3 className="display-6">My Projects</h3>
-            <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
-          </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <menu className="menu-anchor">
+            <MenuAnchor selectDesign="fade" info={anchor} />
+            {/* <menu className="menu-anchor">
               <a target="_blank" className="left" href="">
                 <h3>YouTube</h3>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
@@ -65,9 +133,22 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
                 <h3>GitHub</h3>
                 <img src={getSVG('github').medium as string} alt="github" />
               </a>
-            </menu>
+            </menu> */}
             <section className="section-rightbar"></section>
           </div>
+
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+            <h3 className="display-6">My Projects</h3>
+            <ButtonFade
+              text=""
+              state=""
+              label="close"
+              align="center"
+              block="rightbar"
+              style="highlight"
+              icon={getSVG('close') as { dark: string; medium: string; light: string }}
+            />
+          </header>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
         </>
       )}

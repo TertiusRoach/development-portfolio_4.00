@@ -34,6 +34,7 @@ const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, al
       mouseLeave = () => setStyle('downplay');
       break;
   }
+  console.log(href);
   return (
     <a
       href={href}
@@ -43,37 +44,45 @@ const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, al
       onMouseLeave={mouseLeave}
       className={`${className} ${viewStyle}`}
     >
-      {renderAnchor(text, align, icon)}
+      {renderAnchor(text, style, align, icon, block)}
     </a>
   );
 };
 
 function renderAnchor(
-  text: string,
+  text: string | undefined,
+  style: 'downplay' | 'highlight',
   align: 'left' | 'center' | 'right' | string,
-  icon: { dark: string; medium: string; light: string }
+  icon: { dark: string; medium: string; light: string },
+  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
 ) {
   let desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
   let mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
   return (
     <>
       {desktopDevice && (
-        <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
-          <h3>LinkedIn</h3>
-          <img src={getSVG('linkedin').medium as string} alt="linkedin" />
-          {/* <h3 className={`${align}`}>{text}</h3>
+        <>
+          <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
+            {text}
+          </h3>
+          <div className={`${style}`}>
             <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} /> */}
-        </a>
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
+        </>
       )}
       {mobileDevice && (
         <>
-          <h6 className={`${align}`}>{text}</h6>
-          <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-          <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
+            {text}
+          </h6>
+          <div className={`${style}`}>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
         </>
       )}
-      <span className="button-background" style={{ zIndex: 0 }}></span>
+      <span className="anchor-background" style={{ zIndex: 0 }}></span>
     </>
   );
 }
