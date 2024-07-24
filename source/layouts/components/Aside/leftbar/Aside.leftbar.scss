@@ -1,4 +1,6 @@
 // Aside.leftbar.scss
+// Look out for this note...I don't know if the syntax is correct but I want the <a> element to be the same height as the 1fr height of its grid attribute.
+
 //--|🠋| Color Palette |🠋|--//
 $red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
 $red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
@@ -53,21 +55,112 @@ $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
   }
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba($green-neon, 0.75);
+    background: rgba($green-neon, 0.25);
   }
 
   div[class*='background'] {
     display: inherit; //~~|🠈 display: grid; 🠈|~~//
     grid-template: inherit; //~~|🠈 4rem 1fr 4rem / 1fr 1fr 🠈|~~//
     grid-area: 1 / 1 / 4 / 3;
-
     menu {
-      grid-area: 1 / 1 / 4 / 2;
-      background: darkgreen;
+      display: inherit; //~~|🠈 display: grid; 🠈|~~//
+      grid-area: 2 / 1 / 3 / 2; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+      background: rgba(darkgreen, 0.5);
+      grid-template: repeat(6, 1fr) / 3rem 1fr 3rem; //~~|🠈 rows / columns 🠈|~~//
+      & {
+        // I don't know if the syntax is correct but I want the <a> element to be the same height as the 1fr height of its grid attribute.
+        a {
+          color: inherit;
+          display: inherit; //~~|🠈 display: grid; 🠈|~~//
+          grid-column: 2 / 3; //~~|🠈 column-start / column-end 🠈|~~//
+          text-decoration: none; /* to remove underline */
+          grid-template-rows: repeat(3, 1fr);
+          h3,
+          img {
+            display: flex;
+            grid-row: 2 / 3; //~~|🠈 row-start / row-end 🠈|~~//
+          }
+          h3 {
+            padding: 4px; //~~|🠈 top & bottom / left & right 🠈|~~//
+          }
+        }
+        a:nth-child(1) {
+          grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          background: rgba($red-dark, 0.25);
+        }
+        a:nth-child(2) {
+          grid-area: 2 / 2 / 3 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          // grid-row: 2 / 3; //~~|🠈 row-start / row-end 🠈|~~//
+          background: rgba($blue-dark, 0.25);
+        }
+        a:nth-child(3) {
+          grid-area: 3 / 2 / 4 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          // grid-row: 3 / 4; //~~|🠈 row-start / row-end 🠈|~~//
+          background: rgba($purple-dark, 0.25);
+        }
+        a:nth-child(4) {
+          grid-area: 4 / 2 / 5 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          // grid-row: 4 / 5; //~~|🠈 row-start / row-end 🠈|~~//
+          background: rgba($orange-dark, 0.25);
+        }
+        a:nth-child(5) {
+          grid-area: 5 / 2 / 6 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          // grid-row: 5 / 6; //~~|🠈 row-start / row-end 🠈|~~//
+          background: rgba($pink-dark, 0.25);
+        }
+        a:nth-child(6) {
+          grid-area: 6 / 2 / 7 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
+          // grid-row: 6 / 7; //~~|🠈 row-start / row-end 🠈|~~//
+          background: rgba($turquoise-dark, 0.25);
+        }
+      }
+
+      .left {
+        grid-template-columns: repeat(2, auto) 1fr; //~~|🠊 display: grid; 🠈|~~//
+        h3,
+        img {
+          //--|🠊 display: flex; 🠈|--//
+          justify-content: flex-start;
+          &h3 {
+            grid-column: 2 / 3; //~~|🠈 column-start / column-end 🠈|~~//
+            //--|🠊 display: flex; 🠈|--//
+          }
+          &img {
+            margin-left: 3rem;
+            grid-column: 1 / 2; //~~|🠈 column-start / column-end 🠈|~~//
+            //--|🠊 display: flex; 🠈|--//
+          }
+        }
+      }
+      .right {
+        grid-template-columns: 1fr repeat(2, auto); //~~|🠊 display: grid; 🠈|~~//
+        h3,
+        img {
+          justify-content: flex-end; //~~|🠊 display: flex; 🠈|~~//
+          &h3 {
+            grid-column: 2 / 3; //~~|🠈 column-start / column-end 🠈|~~//
+            //--|🠊 display: flex; 🠈|--//
+          }
+          &img {
+            margin-right: 3rem;
+            grid-column: 3 / 4; //~~|🠈 column-start / column-end 🠈|~~//
+            //--|🠊 display: flex; 🠈|--//
+          }
+        }
+      }
+      .center {
+        grid-template-columns: 1fr auto 1fr; //~~|🠊 display: grid; 🠈|~~//
+        h3,
+        img {
+          grid-column: 2 / 3; //~~|🠈 column-start / column-end 🠈|~~//
+          align-items: center;
+          justify-content: center; //~~|🠊 display: flex; 🠈|~~//
+        }
+      }
     }
     section {
       grid-area: 1 / 2 / 4 / 3;
-      background: $green-dark;
+      background: rgba($green-dark, 0.5);
     }
     /*
     menu {

@@ -7,10 +7,10 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface RightbarProps {
+  labelName: 'rightbar' | string;
   stateType: 'active' | '';
-  blockName: 'rightbar' | string;
+  blockName: 'rightbar' | 'coworkers' | 'employees' | string;
 
-  labelName: 'rightbar' | 'projects' | string;
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
@@ -40,19 +40,32 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
         <>
           <header className="rightbar-foreground" style={{ zIndex: 2 }}>
             <ButtonFade
+              text=""
               state=""
               label="close"
+              align="center"
               block="rightbar"
               style="highlight"
-              align="center"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
             />
           </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            {/* <ul className="rightbar-listing">
-              <h1 className="content-1">Rightbar Listing</h1>
-            </ul> */}
-            {/* <article className="rightbar-preview"></article> */}
+            <menu>
+              <a className="left" href="https://github.com/TertiusRoach">
+                <h3>GitHub</h3>
+                <img src={getSVG('github').medium as string} alt="github" />
+              </a>
+
+              <a className="center" href="">
+                <h3>LinkedIn</h3>
+                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
+              </a>
+              <a className="right" href="">
+                <h3>YouTube</h3>
+                <img src={getSVG('youtube').medium as string} alt="youtube" />
+              </a>
+            </menu>
+            <section></section>
           </div>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
         </>
@@ -63,17 +76,18 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
           <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
             <ul className="rightbar-listing">
-              <h1 className="content-1">Rightbar Listing</h1>
+              <h1 className="content-1">Leftbar Listing</h1>
             </ul>
             <article className="rightbar-preview"></article>
           </div>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}>
             <ButtonFade
+              text=""
               state=""
               label="close"
+              align="center"
               block="rightbar"
               style="highlight"
-              align="center"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
             />
           </footer>
@@ -83,8 +97,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
   );
 };
 export default AsideRightbar;
-
-function jQueryRightbar(pageName: String, blockName: String) {
+let jQueryRightbar = function (pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
@@ -94,4 +107,4 @@ function jQueryRightbar(pageName: String, blockName: String) {
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-}
+};

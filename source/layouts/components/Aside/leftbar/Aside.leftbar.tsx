@@ -1,10 +1,8 @@
-// Aside.leftbar.tsx
 import $ from 'jquery';
 import './Aside.leftbar.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
-import MenuAnchor from '../../Menu/anchor/Menu.anchor';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface LeftbarProps {
@@ -51,27 +49,22 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
             />
           </header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
-            {/* <MenuAnchor /> */}
             <menu>
-              {/* <a href="">
-                <img src="" alt="github" />
+              <a className="left" href="https://github.com/TertiusRoach">
                 <h3>GitHub</h3>
+                <img src={getSVG('github').medium as string} alt="github" />
               </a>
-              <a href="">
-                <img src="" alt="linkedin" />
+
+              <a className="center" href="">
                 <h3>LinkedIn</h3>
+                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
               </a>
-              <a href="">
-                <img src="" alt="youtube" />
+              <a className="right" href="">
                 <h3>YouTube</h3>
-              </a> */}
+                <img src={getSVG('youtube').medium as string} alt="youtube" />
+              </a>
             </menu>
             <section></section>
-
-            {/* <ul className="leftbar-listing">
-              <h1 className="content-1">Leftbar Listing</h1>
-            </ul> */}
-            {/* <article className="leftbar-preview"></article> */}
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
         </>
@@ -103,10 +96,8 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
   );
 };
 export default AsideLeftbar;
-
-function jQueryLeftbar(pageName: String, blockName: String) {
+let jQueryLeftbar = function (pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
@@ -115,9 +106,4 @@ function jQueryLeftbar(pageName: String, blockName: String) {
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-  // $(`#${containerElement} div[class*="background"] ul`).on('click', () => {
-  //   if (getOrientation().includes('portrait')) {
-  //     // toggleState(containerElement);
-  //   }
-  // });
-}
+};

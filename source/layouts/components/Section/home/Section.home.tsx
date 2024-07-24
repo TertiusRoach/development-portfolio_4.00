@@ -74,9 +74,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   ] as {
     text: string;
     state: 'active' | '';
-    label: 'rightbar' | string;
     style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
+    label: 'rightbar' | 'leftbar' | 'overlay' | string;
     icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
@@ -120,8 +120,8 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   return (
     <section
       className={`${blockName}-${labelName}`}
-      id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
+      id={stateType === 'active' ? `${blockName}-active` : ''}
     >
       {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
