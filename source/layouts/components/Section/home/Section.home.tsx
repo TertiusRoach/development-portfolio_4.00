@@ -59,7 +59,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       label: 'leftbar',
       align: 'center',
       block: 'leftbar',
-      style: 'downplay',
+      style: 'highlight',
       text: 'View Leftbar',
     },
     {
@@ -67,7 +67,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       align: 'center',
       label: 'projects',
       block: 'rightbar',
-      style: 'highlight',
+      style: 'downplay',
       text: 'My Projects',
       icon: getSVG('projects') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
@@ -175,6 +175,7 @@ function jQueryHome(pageName: String, blockName: string) {
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
+
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
@@ -193,42 +194,5 @@ function jQueryHome(pageName: String, blockName: string) {
       showSection(`${pageName}`, overlay);
     }
   });
-
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-
-  /*
-  $(`#${containerElement} section`).on('click', function (event) {
-    let navigation = ['header', 'footer'];
-    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    let tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      for (let i = 0; i < navigation.length; i++) {
-        var labelName = parent.classList[0].split('-')[1] as string;
-        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
-      var buttonElement = this as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        setActive(this as HTMLButtonElement, navigation[i]);
-      }
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
-    }
-  });
-  $(`#${containerElement} .rightbar-projects`).on('click', function () {
-    const rightbar = this.classList[0].split('-')[0];
-    if (rightbar.includes('rightbar')) {
-      showAside(rightbar);
-    }
-  });
-  $(`#${containerElement} .overlay-career`).on('click', function () {
-    const overlay = this.classList[0].split('-')[0];
-    if (overlay.includes('overlay')) {
-      showSection(`${pageName}`, overlay);
-    }
-  });
-
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-  */
 }

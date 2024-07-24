@@ -1,9 +1,9 @@
 // Aside.rightbar.tsx
 import $ from 'jquery';
+import './Aside.rightbar.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
-
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface RightbarProps {
@@ -49,10 +49,10 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
             />
           </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <ul className="rightbar-listing">
+            {/* <ul className="rightbar-listing">
               <h1 className="content-1">Rightbar Listing</h1>
-            </ul>
-            <article className="rightbar-preview"></article>
+            </ul> */}
+            {/* <article className="rightbar-preview"></article> */}
           </div>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}></footer>
         </>

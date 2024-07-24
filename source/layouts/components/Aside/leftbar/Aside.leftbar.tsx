@@ -1,8 +1,10 @@
 // Aside.leftbar.tsx
 import $ from 'jquery';
+import './Aside.leftbar.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
+import MenuAnchor from '../../Menu/anchor/Menu.anchor';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface LeftbarProps {
@@ -32,7 +34,6 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
   return (
     <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
@@ -50,10 +51,27 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
             />
           </header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <ul className="leftbar-listing">
+            {/* <MenuAnchor /> */}
+            <menu>
+              {/* <a href="">
+                <img src="" alt="github" />
+                <h3>GitHub</h3>
+              </a>
+              <a href="">
+                <img src="" alt="linkedin" />
+                <h3>LinkedIn</h3>
+              </a>
+              <a href="">
+                <img src="" alt="youtube" />
+                <h3>YouTube</h3>
+              </a> */}
+            </menu>
+            <section></section>
+
+            {/* <ul className="leftbar-listing">
               <h1 className="content-1">Leftbar Listing</h1>
-            </ul>
-            <article className="leftbar-preview"></article>
+            </ul> */}
+            {/* <article className="leftbar-preview"></article> */}
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
         </>

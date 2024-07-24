@@ -1,4 +1,45 @@
 // Aside.leftbar.scss
+//--|🠋| Color Palette |🠋|--//
+$red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
+$red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
+$red-light: #ea9999; //--🠊 rgba(234, 153, 153, 1) 🠈--//
+
+$green-neon: #00ff00; //--🠊 rgba(0, 255, 0, 1) 🠈--//
+$green-dark: #274e13; //--🠊 rgba(39, 78, 19, 1) 🠈--//
+$green-light: #b6d7a8; //--🠊 rgba(182, 215, 168, 1) 🠈--//
+
+$blue-neon: #3c90ff; //--🠊 rgba(0, 0, 255, 1) 🠈--//
+$blue-dark: #073763; //--🠊 rgba(127, 17, 224, 1) 🠈--//
+$blue-light: #9fc5e8; //--🠊 rgba(159, 197, 232, 1) 🠈--//
+
+$purple-neon: #9900ff; //--🠊 rgba(153, 0, 255, 1) 🠈--//
+$purple-dark: #20124d; //--🠊 rgba(32, 18, 77, 1) 🠈--//
+$purple-light: #b4a7d6; //--🠊 rgba(180, 167, 214, 1) 🠈--//
+
+$pink-neon: #ff00ff; //--🠊 rgba(255, 0, 255, 1) 🠈--//
+$pink-dark: #4c1130; //--🠊 rgba(76, 17, 48, 1) 🠈--//
+$pink-light: #d5a6bd; //--🠊 rgba(213, 166, 189, 1) 🠈--//
+
+$yellow-neon: #ffff00; //--🠊 rgba(255, 255, 0, 1) 🠈--//
+$yellow-dark: #7f6000; //--🠊 rgba(127, 96, 0, 1) 🠈--//
+$yellow-light: #ffe599; //--🠊 rgba(255, 229, 153, 1) 🠈--//
+
+$orange-neon: #ff9900; //--🠊 rgba(255, 153, 0, 1) 🠈--//
+$orange-dark: #783f04; //--🠊 rgba(120, 63, 4, 1) 🠈--//
+$orange-light: #f9cb9c; //--🠊 rgba(249, 203, 156, 1) 🠈--//
+
+$brown-neon: #a97142; //--🠊 rgba(169, 113, 66, 1) 🠈--//
+$brown-dark: #4f341d; //--🠊 rgba(79, 52, 29, 1) 🠈--//
+$brown-light: #ffd3af; //--🠊 rgba(255, 211, 175, 1) 🠈--//
+
+$grey-neon: #bec2cb; //--🠊 rgba(190, 194, 203, 1) 🠈--//
+$grey-dark: #434343; //--🠊 rgba(67, 67, 67, 1) 🠈--//
+$grey-light: #efefef; //--🠊 rgba(239, 239, 239, 1) 🠈--//
+
+$turquoise-neon: #00ffff; //--🠊 rgba(0, 255, 255, 1) 🠈--//
+$turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
+$turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
+
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
@@ -11,24 +52,38 @@
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   footer[class*='midground'] {
-    background: rgba($green-neon, 0.75);
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: rgba($green-neon, 0.75);
   }
 
   div[class*='background'] {
     display: inherit; //~~|🠈 display: grid; 🠈|~~//
+    grid-template: inherit; //~~|🠈 4rem 1fr 4rem / 1fr 1fr 🠈|~~//
     grid-area: 1 / 1 / 4 / 3;
-    grid-template: 1fr / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
-    ul {
-      margin: 4rem 0;
-      padding: 0;
-      grid-area: 1 / 1 / 2 / 2;
-      background: rgba($green-dark, 0.75);
+
+    menu {
+      grid-area: 1 / 1 / 4 / 2;
+      background: darkgreen;
     }
-    article {
+    section {
+      grid-area: 1 / 2 / 4 / 3;
+      background: $green-dark;
+    }
+    /*
+    menu {
+      display: flex;
+      justify-content: flex-start;
+
+      margin: 0;
+      padding: 4rem 0;
+      grid-area: 2 / 2 / 3 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+      background: rgba($green-dark, 0.75) !important;
+    }
+    section {
       grid-area: 1 / 2 / 2 / 3;
       background: rgba($green-light, 0.75);
     }
+    */
   }
 }
 @mixin mobile-portrait {
@@ -70,6 +125,15 @@
 aside[id*='leftbar'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  //--|🠋| Index Colors |🠋|--//
+  @mixin index-colors {
+    $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
+    $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
+    $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
+    // Noir Inspiration: Fuctionality First!
+    // https://blog.daisie.com/understanding-film-noirs-reflection-of-post-wwii-social-and-cultural-climate/
+  }
+
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
     clip-path: inset(0% 100% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//

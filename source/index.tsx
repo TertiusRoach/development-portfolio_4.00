@@ -16,6 +16,9 @@ import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 import getIdentification from './modules/utilities/getIdentification';
 
+// Download File
+//raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/pdf-files/resume-page/curriculum-vitae.pdf
+
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
 function Body() {
   interface InfoProps {
