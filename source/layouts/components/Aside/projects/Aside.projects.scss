@@ -55,7 +55,7 @@ $turquoise-light: #a2c4c9;
       grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
     }
 
-    background: rgba($green-neon, 0.75);
+    // background: rgba($green-neon, 0.75);
   }
   div[class*='background'] {
     display: inherit; //~~|🠈 display: grid 🠈|~~//
@@ -172,12 +172,12 @@ $turquoise-light: #a2c4c9;
     }
     section {
       grid-area: 1 / 1 / 4 / 2;
-      background: rgba($green-dark, 0.5);
+      // background: rgba($green-dark, 0.5);
     }
   }
   footer[class*='midground'] {
     grid-area: 3 / 2 / 4 / 3;
-    background: rgba($green-neon, 0.25);
+    // background: rgba($green-neon, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -191,7 +191,7 @@ $turquoise-light: #a2c4c9;
       display: inherit; //~~|🠈 display: grid 🠈|~~//
       grid-area: 2 / 1 / 3 / 3; //~~|🠈 row-start / column-start / row-end / column-end; 🠈|~~//
       align-content: space-around; // Add this to align the grid items vertically
-      background: rgba(darkgreen, 0.5);
+      // background: rgba(darkgreen, 0.5);
       grid-template: repeat(6, 1fr) / 3rem 1fr 3rem;
 
       a {
@@ -280,7 +280,7 @@ $turquoise-light: #a2c4c9;
     }
     section {
       grid-area: 1 / 1 / 4 / 2;
-      background: rgba($green-dark, 0.5);
+      // background: rgba($green-dark, 0.5);
     }
   }
   header[class*='foreground'] {
@@ -288,13 +288,13 @@ $turquoise-light: #a2c4c9;
       width: 100%;
       height: 100%;
     }
-    grid-area: 1 / 1 / 2 / 2;
-    background: rgba($green-neon, 0.75);
+    // grid-area: 1 / 1 / 2 / 2;
+    // background: rgba($green-neon, 0.75);
   }
 
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2;
-    background: rgba($green-neon, 0.75);
+    // background: rgba($green-neon, 0.75);
   }
 }
 
