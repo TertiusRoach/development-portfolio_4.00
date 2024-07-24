@@ -31,6 +31,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
     );
     setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
   }, []);
+
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
