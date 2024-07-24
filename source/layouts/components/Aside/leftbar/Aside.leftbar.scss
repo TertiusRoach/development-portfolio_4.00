@@ -51,8 +51,8 @@ $turquoise-light: #a2c4c9;
       width: 100%;
       height: 100%;
     }
-    background: rgba($green-neon, 0.75);
-    grid-area: 1 / 1 / 2 / 2;
+    // background: rgba($green-neon, 0.75);
+    // grid-area: 1 / 1 / 2 / 2;
   }
 
   div[class*='background'] {
@@ -154,7 +154,7 @@ $turquoise-light: #a2c4c9;
 
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2;
-    background: rgba($green-neon, 0.25);
+    // background: rgba($green-neon, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -264,12 +264,12 @@ $turquoise-light: #a2c4c9;
       width: 100%;
       height: 100%;
     }
-    grid-area: 1 / 1 / 2 / 2;
-    background: rgba($green-neon, 0.75);
+    // grid-area: 1 / 1 / 2 / 2;
+    // background: rgba($green-neon, 0.75);
   }
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2;
-    background: rgba($green-neon, 0.75);
+    // background: rgba($green-neon, 0.75);
   }
 }
 
