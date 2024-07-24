@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import showAside from '../../../../modules/utilities/showAside';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showAside from '../../../../modules/utilities/showAside';

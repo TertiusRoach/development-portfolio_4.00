@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';

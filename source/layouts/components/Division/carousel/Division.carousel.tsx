@@ -5,7 +5,7 @@ import './Section.home.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import ButtonFade from '../../Button/fade/Button.fade';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';

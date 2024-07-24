@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import getResolution from '../../../../modules/utilities/getResolution';

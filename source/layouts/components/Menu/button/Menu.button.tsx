@@ -2,7 +2,7 @@
 import React from 'react';
 import './Menu.button.scss';
 
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 
 import ButtonFade from '../../Button/fade/Button.fade';
 // import ButtonGlow from '../../Button/glow/Button.glow';

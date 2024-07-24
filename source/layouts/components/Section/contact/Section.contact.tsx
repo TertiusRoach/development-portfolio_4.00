@@ -2,7 +2,7 @@
 import './Section.contact.scss';
 
 import { useMediaQuery } from 'react-responsive';
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import React, { useEffect, useRef, useState } from 'react';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';

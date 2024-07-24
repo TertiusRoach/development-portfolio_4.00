@@ -3,7 +3,7 @@
 import React from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getSVG from '../../../../modules/utilities/getSVG';
+import { getSVG } from '../../../../modules/utilities/getFile';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import AnchorIcon from '../../Anchor/icon/Anchor.icon';

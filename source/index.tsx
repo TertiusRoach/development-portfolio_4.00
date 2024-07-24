@@ -11,7 +11,7 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
-import getSVG from './modules/utilities/getSVG';
+import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 import getIdentification from './modules/utilities/getIdentification';
