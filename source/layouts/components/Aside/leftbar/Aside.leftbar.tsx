@@ -6,7 +6,6 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface LeftbarProps {
-  labelName: 'leftbar';
   stateType: 'active' | '';
   blockName: 'leftbar' | 'coworkers' | 'employees' | string;
 
@@ -18,6 +17,7 @@ interface LeftbarProps {
 }
 const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
   const loadTimer: number = 4000;
+  const labelName: String = 'default';
   const blockName: String = 'leftbar';
   const pageName: String = info.identification;
   useEffect(() => {
@@ -33,7 +33,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <aside id="index-leftbar" className="default-leftbar collapsed" style={{ zIndex: 5 }}>
+    <aside id="index-leftbar" className={`${labelName}-${blockName} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
+import AsideProjects from '../../../components/Aside/projects/Aside.projects';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getResolution from '../../../../modules/utilities/getResolution';
@@ -32,7 +32,7 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  return <AsideRightbar labelName="projects" stateType="" blockName={`${blockName}`} info={info} />;
+  return <AsideProjects labelName="projects" stateType="" blockName={`${blockName}`} info={info} />;
 };
 export default IndexRightbar;
 

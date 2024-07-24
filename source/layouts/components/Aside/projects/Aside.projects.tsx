@@ -1,13 +1,14 @@
-// Aside.rightbar.tsx
+// Aside.projects.tsx
 import $ from 'jquery';
-import './Aside.rightbar.scss';
+import './Aside.projects.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
-interface RightbarProps {
+interface ProjectsProps {
   stateType: 'active' | '';
+  labelName: 'projects' | string;
   blockName: 'rightbar' | 'coworkers' | 'employees' | string;
 
   info: {
@@ -16,26 +17,25 @@ interface RightbarProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
+const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
   const loadTimer: number = 5000;
-  const labelName: String = 'default';
   const blockName: String = 'rightbar';
   const pageName: String = info.identification;
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryRightbar(pageName, blockName), 250);
+        setTimeout(() => jQueryProjects(pageName, blockName), 250);
       },
       false
     );
-    setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryProjects(pageName, blockName), loadTimer);
   }, []);
 
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <aside id="index-rightbar" className={`${labelName}-${blockName} collapsed`} style={{ zIndex: 5 }}>
+    <aside id="index-rightbar" className={`${labelName}-rightbar collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>
@@ -109,8 +109,8 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
     </aside>
   );
 };
-export default AsideRightbar;
-let jQueryRightbar = function (pageName: String, blockName: String) {
+export default AsideProjects;
+let jQueryProjects = function (pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
