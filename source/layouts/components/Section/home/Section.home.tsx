@@ -15,6 +15,7 @@ import showAside from '../../../../modules/utilities/showAside';
 import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
+import MenuHorizontal from '../../Menu/horizontal/Menu.horizontal';
 
 interface HomeProps {
   info: {
@@ -31,6 +32,62 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   const width = info.resolution.split('x')[0];
   const height = info.resolution.split('x')[1];
   const pageName: String = getIdentification();
+  const desktopButtons = {
+    criteria: {
+      buildDesign: '<fade>',
+      buildAxis: '<horizontal>',
+      buildElement: '<buttons>',
+    },
+    information: [
+      {
+        text: 'Home',
+        href: '',
+        state: 'active',
+        label: 'home',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('home'),
+        block: 'header',
+      },
+      {
+        text: 'Skills',
+        href: '',
+        state: 'active',
+        label: 'skills',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('skills'),
+        block: 'header',
+      },
+      {
+        text: 'Contact',
+        href: '',
+        state: 'active',
+        label: 'contact',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('contact'),
+        block: 'header',
+      },
+    ],
+  } as {
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+    information: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+  };
   useEffect(() => {
     let handleResize = () => {
       setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
@@ -44,34 +101,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     };
   }, []);
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  let desktopButtons = [
-    {
-      state: '',
-      label: 'career',
-      align: 'center',
-      block: 'overlay',
-      style: 'downplay',
-      text: 'My Career',
-      icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-    {
-      state: '',
-      align: 'center',
-      label: 'projects',
-      block: 'rightbar',
-      style: 'downplay',
-      text: 'My Projects',
-      icon: getSVG('projects') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-  ] as {
-    text: string;
-    state: 'active' | '';
-    style: 'highlight' | 'downplay';
-    align: 'left' | 'center' | 'right' | string;
-    label: 'rightbar' | 'leftbar' | 'overlay' | string;
-    icon: { dark: string; medium: string; light: string };
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  }[];
+
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let mobileButtons = [
     {
@@ -107,12 +137,32 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       style={{ height: `${height}px`, width: `${width}px` }}
       id={stateType === 'active' ? `${blockName}-active` : ''}
     >
-      {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            {/* <MenuButton selectInfo={desktopButtons} selectAxis="horizontal" selectDesign="fade" /> */}
+            <MenuHorizontal
+              criteria={
+                desktopButtons.criteria as {
+                  buildAxis: '<vertical>' | '<horizontal>';
+                  buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+                  buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+                }
+              }
+              information={
+                desktopButtons.information as {
+                  label: 'home' | string;
+                  style: 'highlight' | 'downplay';
+                  align: 'left' | 'center' | 'right' | string;
+                  icon: { dark: string; medium: string; light: string };
+                  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+                  text?: string | '';
+                  href?: string | '';
+                  state?: 'active' | '';
+                }[]
+              }
+            />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>

@@ -1,4 +1,5 @@
 // IndexHeader.tsx
+// IndexHeader.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -10,6 +11,7 @@ import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
+import MenuHorizontal from '../../../components/Menu/horizontal/Menu.horizontal';
 
 interface InfoProps {
   info: {
@@ -18,50 +20,66 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
+
 const IndexHeader: React.FC<InfoProps> = () => {
   const loadTimer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
-  let buttons = [
-    {
-      text: 'Home',
-      align: 'left',
-      label: 'home',
-      state: 'active',
-      block: 'header',
-      style: 'downplay',
-      icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+  const desktopButtons = {
+    criteria: {
+      buildAxis: '<horizontal>',
+      buildDesign: '<fade>',
+      buildElement: '<buttons>',
     },
-    {
-      state: '',
-      align: 'left',
-      text: 'Skills',
-      label: 'skills',
-      block: 'header',
-      style: 'downplay',
-
-      icon: getSVG('skills') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-    {
-      state: '',
-      align: 'left',
-      text: 'Contact',
-      block: 'header',
-      label: 'contact',
-      style: 'downplay',
-      icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-  ] as {
-    text: string;
-    state: 'active' | '';
-    label: 'rightbar' | string;
-    style: 'highlight' | 'downplay';
-    align: 'left' | 'center' | 'right' | string;
-    icon: { dark: string; medium: string; light: string };
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  }[];
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+    information: [
+      {
+        text: 'Home',
+        href: '',
+        state: 'active',
+        label: 'home',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('home'),
+        block: 'header',
+      },
+      {
+        text: 'Home',
+        href: '',
+        state: 'active',
+        label: 'home',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('home'),
+        block: 'header',
+      },
+      {
+        text: 'Home',
+        href: '',
+        state: 'active',
+        label: 'home',
+        style: 'downplay',
+        align: 'left',
+        icon: getSVG('home'),
+        block: 'header',
+      },
+    ],
+  } as {
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+    information: {
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+      label?: 'home' | string;
+      style?: 'highlight' | 'downplay';
+      align?: 'left' | 'center' | 'right' | string;
+      icon?: { dark: string; medium: string; light: string };
+      block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+    }[];
+  };
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -72,7 +90,8 @@ const IndexHeader: React.FC<InfoProps> = () => {
     );
     setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
   }, []);
-
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
       {desktopDevice && (
@@ -82,7 +101,28 @@ const IndexHeader: React.FC<InfoProps> = () => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          {/* <MenuButton selectAxis="horizontal" selectDesign="fade" selectInfo={buttons} /> */}
+          <MenuHorizontal
+            criteria={
+              desktopButtons.criteria as {
+                buildAxis: '<vertical>' | '<horizontal>';
+                buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+                buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
+              }
+            }
+            information={
+              desktopButtons.information as {
+                label: 'home' | string;
+                style: 'highlight' | 'downplay';
+                align: 'left' | 'center' | 'right' | string;
+                icon: { dark: string; medium: string; light: string };
+                block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+                text?: string | '';
+                href?: string | '';
+                state?: 'active' | '';
+              }[]
+            }
+          />
         </>
       )}
       {mobileDevice && (

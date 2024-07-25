@@ -58,12 +58,12 @@ function renderButton(
   icon: { dark: string; medium: string; light: string },
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
 ) {
-  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
+  let mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
 
   return (
     <>
-      {isLandscape && (
+      {desktopDevice && (
         <>
           <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
             {text}
@@ -74,7 +74,7 @@ function renderButton(
           </div>
         </>
       )}
-      {isPortrait && (
+      {mobileDevice && (
         <>
           <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
             {text}
