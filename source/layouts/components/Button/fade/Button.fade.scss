@@ -1,7 +1,7 @@
 // Button.fade.scss
 @import '../../../containers/color-palette.scss';
 
-@mixin button-effects {
+@mixin fade-effects {
   $primary-dark: #1f3131;
   $primary-medium: #3d6262;
   $primary-light: #9eb0b0;
@@ -109,7 +109,7 @@
         h6 {
           color: white;
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 500px) {
           h3 {
             opacity: 0;
             display: none;
@@ -125,7 +125,7 @@
     }
   }
 }
-@mixin button-placement {
+@mixin fade-placement {
   button {
     background: none;
     &.left,
@@ -145,7 +145,7 @@
         cursor: pointer;
         align-items: center;
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 500px) {
         h3,
         h6 {
           display: none;
@@ -294,6 +294,6 @@ body {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-  @include button-effects();
-  @include button-placement();
+  @include fade-effects();
+  @include fade-placement();
 }

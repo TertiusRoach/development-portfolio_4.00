@@ -30,7 +30,6 @@ body {
   section {
     menu {
       display: grid;
-
       button[id*='active'] {
         h3,
         h6 {
@@ -63,21 +62,53 @@ body {
     }
     menu[class*='vertical'] {
       //--|🠊 display: grid 🠈|--//
-      // button:nth-child(1) {
-      //   grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
-      // }
-      // button:nth-child(2) {
-      //   grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
-      // }
+      grid-template-rows: repeat();
+      //--|🠊 display: grid 🠈|--//
+      // grid-template-rows: 1fr auto 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-row: 2 / 3; //~~|🠈 row-start / row-end 🠈|~~//
+      }
       // button:nth-child(3) {
-      //   grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
+      //   // grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
       // }
-      // button:nth-child(4) {
-      //   grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
-      // }
-      // button:nth-child(5) {
-      //   grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
-      // }
+      /*
+
+      button:nth-child(1) {
+        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(2) {
+        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+
+      button:nth-child(4) {
+        // grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(5) {
+        // grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(6) {
+        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(7) {
+        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(8) {
+        // grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(9) {
+        // grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(10) {
+        // grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(11) {
+        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      button:nth-child(12) {
+        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
+      }
+      */
     }
   }
 }

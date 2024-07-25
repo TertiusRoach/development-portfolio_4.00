@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import MenuAnchor from '../../Menu/anchor/Menu.anchor';
+import MenuButton from '../../Menu/button/Menu.button';
 
 interface ProjectsProps {
   stateType: 'active' | '';
@@ -35,7 +36,7 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
 
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  let anchor = [
+  let buttons = [
     {
       state: '',
       align: 'left',
@@ -47,28 +48,28 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
       href: 'https://github.com/TertiusRoach',
       icon: getSVG('github') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
-    {
-      state: '',
-      align: 'left',
-      text: 'LinkedIn',
-      target: '_blank',
-      label: 'linkedin',
-      block: 'rightbar',
-      style: 'highlight',
-      href: 'https://www.linkedin.com/in/tertius-roach/',
-      icon: getSVG('linkedin') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-    {
-      state: '',
-      align: 'left',
-      text: 'YouTube',
-      label: 'youtube',
-      target: '_blank',
-      block: 'rightbar',
-      style: 'downplay',
-      href: 'https://www.youtube.com/@TertiusRoach',
-      icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
+    // {
+    //   state: '',
+    //   align: 'left',
+    //   text: 'LinkedIn',
+    //   target: '_blank',
+    //   label: 'linkedin',
+    //   block: 'rightbar',
+    //   style: 'highlight',
+    //   href: 'https://www.linkedin.com/in/tertius-roach/',
+    //   icon: getSVG('linkedin') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    // },
+    // {
+    //   state: '',
+    //   align: 'left',
+    //   text: 'YouTube',
+    //   label: 'youtube',
+    //   target: '_blank',
+    //   block: 'rightbar',
+    //   style: 'downplay',
+    //   href: 'https://www.youtube.com/@TertiusRoach',
+    //   icon: getSVG('youtube') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+    // },
     // {
     //   href: '',
     //   state: '',
@@ -119,7 +120,8 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
       {desktopDevice && (
         <>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <MenuAnchor selectDesign="fade" info={anchor} />
+            <MenuButton selectAxis="vertical" selectDesign="fade" selectInfo={buttons} />
+
             {/* <menu className="menu-anchor">
               <a target="_blank" className="left" href="">
                 <h3>YouTube</h3>
@@ -155,11 +157,8 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobileDevice && (
         <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-            <h6 className="display-3">My Projects</h6>
-          </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
-            <menu>
+            {/* <menu>
               <a target="_blank" className="center" href="https://github.com/TertiusRoach">
                 <h6 className="display-3">GitHub</h6>
                 <img src={getSVG('github').medium as string} alt="github" />
@@ -172,9 +171,13 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
                 <h6 className="display-3">YouTube</h6>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
-            </menu>
+            </menu> */}
             <section></section>
           </div>
+
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}>
+            <h6 className="display-3">My Projects</h6>
+          </header>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}>
             <ButtonFade
               text=""
