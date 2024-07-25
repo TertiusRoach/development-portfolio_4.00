@@ -1,114 +1,84 @@
-// Menu.button.scss
-body {
-  header,
-  footer {
-    menu.buttons {
-      display: grid;
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        grid-template-rows: 4rem;
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        grid-template-rows: 6rem;
-      }
+// // Document #2: Menu.button.scss
+// body {
+//   header,
+//   footer {
+//     menu {
+//       display: grid;
+//       //--| Desktop (Landscape) |--//
+//       @media screen and (orientation: landscape) {
+//         grid-template-rows: 4rem; // Set row height to 4rem for landscape orientation
+//       }
+//       //--| Mobile (Portrait) |--//
+//       @media screen and (orientation: portrait) {
+//         grid-template-rows: 6rem; // Set row height to 6rem for portrait orientation
+//       }
 
-      button[id*='active'] {
-        h3,
-        h6 {
-          color: white;
-          cursor: default;
-        }
-      }
-    }
-  }
+//       //--| Vertical Alignment |--//
+//       // .menu[class*='vertical'] {
+//       //   display: inherit; // Inherit display property, can be grid or flex
+//       //   grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
 
-  main,
-  aside,
-  header,
-  footer,
-  section {
-    menu {
-      display: grid;
-      button[id*='active'] {
-        h3,
-        h6 {
-          color: white;
-          cursor: default;
-        }
-      }
-    }
-    menu[class*='horizontal'] {
-      //--|🠊 display: grid 🠈|--//
-      grid-template-rows: 1fr auto 1fr;
-      button {
-        grid-row: 2 / 3; //~~|🠈 row-start / row-end 🠈|~~//
-      }
-      button:nth-child(1) {
-        grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(2) {
-        grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(3) {
-        grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(4) {
-        grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(5) {
-        grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-    }
-    menu[class*='vertical'] {
-      //--|🠊 display: grid 🠈|--//
-      grid-template-rows: repeat();
-      //--|🠊 display: grid 🠈|--//
-      // grid-template-rows: 1fr auto 1fr;
-      grid-template-rows: repeat(3, 1fr);
-      button {
-        grid-row: 2 / 3; //~~|🠈 row-start / row-end 🠈|~~//
-      }
-      // button:nth-child(3) {
-      //   // grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
-      // }
-      /*
+//       //   a,
+//       //   button {
+//       //     grid-column: 1;
+//       //   }
+//       // }
 
-      button:nth-child(1) {
-        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(2) {
-        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
-      }
+//       //--| Horizontal Alignment |--//
+//       .menu[class*='horizontal'] {
+//         display: inherit; // Inherit display property, can be grid or flex
+//         grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
 
-      button:nth-child(4) {
-        // grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(5) {
-        // grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(6) {
-        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(7) {
-        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(8) {
-        // grid-column: 3 / 4; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(9) {
-        // grid-column: 4 / 5; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(10) {
-        // grid-column: 5 / 6; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(11) {
-        // grid-column: 1 / 2; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      button:nth-child(12) {
-        // grid-column: 2 / 3; //~~|🠈 col-start / col-end 🠈|~~//
-      }
-      */
-    }
-  }
-}
+//         a,
+//         button {
+//           grid-row: 1;
+//         }
+//       }
+
+//       // button[id*='active'] {
+//       //   h3,
+//       //   h6 {
+//       //     color: white;
+//       //     cursor: default; // Disable cursor interaction for active buttons
+//       //   }
+//       // }
+//     }
+//   }
+
+//   main,
+//   aside,
+//   section {
+//     .menu {
+//       display: grid; // Display menu items in a grid layout
+//       button[id*='active'] {
+//         h3,
+//         h6 {
+//           color: white;
+//           cursor: default; // Disable cursor interaction for active buttons
+//         }
+//       }
+//     }
+
+//     //--| Vertical Alignment |--//
+//     .menu[class*='vertical'] {
+//       display: inherit; // Inherit display property, can be grid or flex
+//       grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
+
+//       a,
+//       button {
+//         grid-column: 1;
+//       }
+//     }
+
+//     //--| Horizontal Alignment |--//
+//     .menu[class*='horizontal'] {
+//       display: inherit; // Inherit display property, can be grid or flex
+//       grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
+
+//       a,
+//       button {
+//         grid-row: 1;
+//       }
+//     }
+//   }
+// }

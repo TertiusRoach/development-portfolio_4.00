@@ -1,54 +1,54 @@
-// Button.fade.tsx
+// Document #4: Button.fade.tsx
 //--|🠋 Frameworks 🠋|--//
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
+
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
 //--|🠉 Utilities 🠉|--//
-//--|🠋 Components 🠋|--//
-//--|🠉 Components 🠉|--//
+
 //--|🠋 Design 🠋|--//
 import './Button.fade.scss';
 //--|🠉 Design 🠉|--//
+
 interface FadeProps {
   text?: string;
   index?: number;
   state: 'active' | '';
+  axis: 'vertical' | 'horizontal';
   style: 'downplay' | 'highlight';
   align: 'left' | 'center' | 'right' | string;
   label?: 'home' | 'skills' | 'contact' | string;
   icon: undefined | { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
+
 const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
   const className = `${block}-${label} ${align}`;
   const setActive = state === 'active' ? `${block}-active` : '';
   const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
-  let mouseEnter: () => void;
-  let mouseLeave: () => void;
-  switch (style) {
-    case 'highlight':
-      mouseEnter = () => setStyle('downplay');
-      mouseLeave = () => setStyle('highlight');
-      return (
-        <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
-          {renderButton(text, style, align, icon, block)}
-        </button>
-      );
-    case 'downplay':
-      mouseEnter = () => setStyle('highlight');
-      mouseLeave = () => setStyle('downplay');
-      return (
-        <button id={setActive} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className={`${className} ${viewStyle}`}>
-          {renderButton(text, style, align, icon, block)}
-        </button>
-      );
-  }
-};
+  const handleMouseEnter = () => {
+    setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
+  };
 
+  const handleMouseLeave = () => {
+    setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
+  };
+
+  return (
+    <button
+      id={setActive}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`${className} ${viewStyle}`}
+    >
+      {renderButton(text, style, align, icon, block)}
+    </button>
+  );
+};
 export default ButtonFade;
 
 function renderButton(
@@ -58,11 +58,12 @@ function renderButton(
   icon: { dark: string; medium: string; light: string },
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
 ) {
-  let desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
-  let mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+
   return (
     <>
-      {desktopDevice && (
+      {isLandscape && (
         <>
           <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
             {text}
@@ -73,7 +74,7 @@ function renderButton(
           </div>
         </>
       )}
-      {mobileDevice && (
+      {isPortrait && (
         <>
           <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
             {text}

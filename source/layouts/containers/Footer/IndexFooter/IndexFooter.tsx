@@ -134,7 +134,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
         <>
           {/* <MenuButton selectDesign="fade" info={buttons} /> */}
 
-          <ButtonFade
+          {/* <ButtonFade
             state="active"
             text="Home"
             label="home"
@@ -142,8 +142,8 @@ const IndexFooter: React.FC<FooterProps> = () => {
             block="footer"
             style="downplay"
             icon={getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' }}
-          />
-          <ButtonFade
+          /> */}
+          {/* <ButtonFade
             state=""
             text="Skills"
             label="skills"
@@ -151,8 +151,8 @@ const IndexFooter: React.FC<FooterProps> = () => {
             align="center"
             style="downplay"
             icon={getSVG('skills') as { dark: string; medium: string; light: string }}
-          />
-          <ButtonFade
+          /> */}
+          {/* <ButtonFade
             state=""
             align="right"
             text="Projects"
@@ -160,7 +160,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
             label="projects"
             style="downplay"
             icon={getSVG('projects') as { dark: string; medium: string; light: string }}
-          />
+          /> */}
         </>
       )}
     </footer>

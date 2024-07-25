@@ -40,7 +40,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
       {desktopDevice && (
         <>
           <header className="rightbar-foreground" style={{ zIndex: 2 }}>
-            <ButtonFade
+            {/* <ButtonFade
               text=""
               state=""
               label="close"
@@ -48,7 +48,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
               block="rightbar"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </header>
           <div className="rightbar-background" style={{ zIndex: 0 }}>
             <menu>
@@ -94,7 +94,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
             <section></section>
           </div>
           <footer className="rightbar-midground" style={{ zIndex: 1 }}>
-            <ButtonFade
+            {/* <ButtonFade
               text=""
               state=""
               label="close"
@@ -102,7 +102,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
               block="rightbar"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </footer>
         </>
       )}

@@ -128,7 +128,7 @@ const SectionOverlay: React.FC<HomeProps> = ({ info, labelName, blockName, state
       {desktopDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton selectDesign="fade" buttonInfo={desktopButtons} />
+            {/* <MenuButton selectDesign="fade" buttonInfo={desktopButtons} /> */}
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
@@ -138,7 +138,7 @@ const SectionOverlay: React.FC<HomeProps> = ({ info, labelName, blockName, state
       {mobileDevice && (
         <>
           <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
-            <MenuButton selectDesign="fade" buttonInfo={mobileButtons} />
+            {/* <MenuButton selectDesign="fade" buttonInfo={mobileButtons} /> */}
           </div>
           <div style={{ zIndex: 1 }} id={`${labelName}-midground`}>
             <span className="home-title"></span>

@@ -38,14 +38,14 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       {desktopDevice && (
         <>
           <header className="overlay-foreground" style={{ zIndex: 2 }}>
-            <ButtonFade
+            {/* <ButtonFade
               state=""
               label="close"
               align="center"
               block="overlay"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </header>
 
           <div className="overlay-midground" style={{ zIndex: 1 }}>
@@ -65,14 +65,14 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
           </div>
 
           <footer className="overlay-background" style={{ zIndex: 0 }}>
-            <ButtonFade
+            {/* <ButtonFade
               state=""
               label="close"
               align="center"
               block="overlay"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </footer>
         </>
       )}

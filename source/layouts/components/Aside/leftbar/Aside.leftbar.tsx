@@ -38,7 +38,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
       {desktopDevice && (
         <>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}>
-            <ButtonFade
+            {/* <ButtonFade
               text=""
               state=""
               label="close"
@@ -46,7 +46,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
               block="rightbar"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
             <menu>
@@ -90,7 +90,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
             <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
-            <ButtonFade
+            {/* <ButtonFade
               text=""
               state=""
               label="close"
@@ -98,7 +98,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
               block="rightbar"
               style="highlight"
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            />
+            /> */}
           </footer>
         </>
       )}
