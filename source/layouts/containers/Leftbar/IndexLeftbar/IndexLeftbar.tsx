@@ -33,7 +33,6 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
   return <AsideLeftbar blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;

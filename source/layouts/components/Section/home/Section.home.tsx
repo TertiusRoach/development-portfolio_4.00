@@ -112,7 +112,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {desktopDevice && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton selectDesign="fade" buttonInfo={desktopButtons} />
+            <MenuButton selectInfo={desktopButtons} selectAxis="horizontal" selectDesign="fade" />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
@@ -122,7 +122,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {mobileDevice && (
         <>
           <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
-            <MenuButton selectDesign="fade" buttonInfo={mobileButtons} />
+            <MenuButton selectInfo={mobileButtons} selectAxis="horizontal" selectDesign="fade" />
           </div>
           <div style={{ zIndex: 1 }} id={`${labelName}-midground`}>
             <span className="home-title"></span>

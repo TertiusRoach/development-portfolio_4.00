@@ -2,17 +2,18 @@
 import React from 'react';
 import './Menu.button.scss';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
-
 import ButtonFade from '../../Button/fade/Button.fade';
 // import ButtonGlow from '../../Button/glow/Button.glow';
 // import ButtonIcon from '../../Button/icon/Button.icon';
 // import ButtonFrame from '../../Button/frame/Button.frame';
 // import ButtonSlide from '../../Button/slide/Button.slide';
 
+import { getSVG } from '../../../../modules/utilities/getFile';
+
 interface MenuProps {
   selectDesign: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
-  buttonInfo: {
+  selectAxis: 'horizontal' | 'vertical';
+  selectInfo: {
     text: string;
     state: 'active' | '';
     label: 'rightbar' | string;
@@ -22,48 +23,99 @@ interface MenuProps {
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
-const MenuButton: React.FC<MenuProps> = ({ selectDesign, buttonInfo: info }) => {
-  let buttonStyle = [];
+const MenuButton: React.FC<MenuProps> = ({ selectInfo, selectAxis, selectDesign }) => {
+  return renderMenu(selectInfo, selectAxis, selectDesign);
+};
+export default MenuButton;
 
-  // Only add highlight to the first ButtonFace. The rest should be downplay
-  for (let i = 0; i < info.length; i++) {
-    let icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string } | undefined;
+function renderMenu(
+  selectInfo: {
+    text: string;
+    state: 'active' | '';
+    label: 'rightbar' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+  }[],
+  selectAxis: 'horizontal' | 'vertical',
+  selectDesign: 'fade' | 'text' | 'icon' | 'slide' | 'frame' | 'glow'
+) {
+  let buttonStyle = [];
+  for (let i = 0; i < selectInfo.length; i++) {
+    let icon = getSVG(`${selectInfo[i].label}`) as { dark: string; medium: string; light: string } | undefined;
     switch (selectDesign) {
       case 'fade':
         buttonStyle.push(
           <ButtonFade
             index={i}
             icon={icon}
-            text={info[i].text}
-            style={info[i].style}
-            state={info[i].state}
-            label={info[i].label}
-            block={info[i].block}
-            align={info[i].align}
-            key={`${info[i].text}`}
+            text={selectInfo[i].text}
+            style={selectInfo[i].style}
+            state={selectInfo[i].state}
+            label={selectInfo[i].label}
+            block={selectInfo[i].block}
+            align={selectInfo[i].align}
+            key={`${selectInfo[i].text}`}
           />
         );
         break;
-      case 'frame':
+      case 'icon':
+        break;
+      case 'text':
         break;
     }
   }
 
-  switch (info.length) {
-    case 1:
-      return <menu className="one buttons">{buttonStyle}</menu>;
-    case 2:
-      return <menu className="two buttons">{buttonStyle}</menu>;
-    case 3:
-      return <menu className="three buttons">{buttonStyle}</menu>;
-    case 4:
-      return <menu className="four buttons">{buttonStyle}</menu>;
-    case 5:
-      return <menu className="five buttons">{buttonStyle}</menu>;
-    default:
-      alert('Maximum of 5 Buttons Allowed');
-      break;
-  }
-};
+  if (selectAxis === 'horizontal') {
+    switch (selectInfo.length) {
+      case 1:
+        return <menu className="horizontal-1 buttons">{buttonStyle}</menu>;
+      case 2:
+        return <menu className="horizontal-2 buttons">{buttonStyle}</menu>;
+      case 3:
+        return <menu className="horizontal-3 buttons">{buttonStyle}</menu>;
+      case 4:
+        return <menu className="horizontal-4 buttons">{buttonStyle}</menu>;
+      case 5:
+        return <menu className="horizontal-5 buttons">{buttonStyle}</menu>;
+      default:
+        alert('//--|🠊 Menu.button.tsx: Only five buttons allowed horizontally for the <menu> element 🠈|--//');
+        break;
+    }
+  } else if (selectAxis === 'vertical') {
+    console.log(selectInfo);
+    console.log(selectAxis);
+    console.log(selectDesign);
 
-export default MenuButton;
+    switch (selectInfo.length) {
+      case 1:
+        return <menu className="vertical-1 buttons">{buttonStyle}</menu>;
+      case 2:
+        return <menu className="vertical-2 buttons">{buttonStyle}</menu>;
+      case 3:
+        return <menu className="vertical-3 buttons">{buttonStyle}</menu>;
+      case 4:
+        return <menu className="vertical-4 buttons">{buttonStyle}</menu>;
+      case 5:
+        return <menu className="vertical-5 buttons">{buttonStyle}</menu>;
+      case 6:
+        return <menu className="vertical-6 buttons">{buttonStyle}</menu>;
+      case 7:
+        return <menu className="vertical-7 buttons">{buttonStyle}</menu>;
+      case 8:
+        return <menu className="vertical-8 buttons">{buttonStyle}</menu>;
+      case 9:
+        return <menu className="vertical-9 buttons">{buttonStyle}</menu>;
+      case 10:
+        return <menu className="vertical-10 buttons">{buttonStyle}</menu>;
+      case 11:
+        return <menu className="vertical-11 buttons">{buttonStyle}</menu>;
+      case 12:
+        return <menu className="vertical-12 buttons">{buttonStyle}</menu>;
+      default:
+        alert('//--|🠊 Menu.button.tsx: Only twelve buttons allowed vertically for the <menu> element 🠈|--//');
+        break;
+    }
+  }
+}

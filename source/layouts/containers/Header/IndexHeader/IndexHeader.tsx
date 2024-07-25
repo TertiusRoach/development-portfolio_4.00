@@ -2,11 +2,11 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import MenuButton from '../../../components/Menu/button/Menu.button';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import setActive from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
+import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -22,23 +22,21 @@ const IndexHeader: React.FC<InfoProps> = () => {
   const loadTimer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
-  const mobile: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  const desktop: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   let buttons = [
     {
       text: 'Home',
-      label: 'home',
       align: 'left',
-      block: 'header',
+      label: 'home',
       state: 'active',
+      block: 'header',
       style: 'downplay',
       icon: getSVG('home') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
     {
       state: '',
       align: 'left',
-      label: 'skills',
       text: 'Skills',
+      label: 'skills',
       block: 'header',
       style: 'downplay',
 
@@ -46,10 +44,10 @@ const IndexHeader: React.FC<InfoProps> = () => {
     },
     {
       state: '',
-      text: 'Contact',
-      label: 'contact',
       align: 'left',
+      text: 'Contact',
       block: 'header',
+      label: 'contact',
       style: 'downplay',
       icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
     },
@@ -62,9 +60,8 @@ const IndexHeader: React.FC<InfoProps> = () => {
     icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
-  const signatureAdjacent =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3624e61a970d65f1835a191c0d76220c13db85b4/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-medium.svg';
-
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -78,21 +75,28 @@ const IndexHeader: React.FC<InfoProps> = () => {
 
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
-      {desktop && (
+      {desktopDevice && (
         <>
-          <img className="signature-adjacent" src={signatureAdjacent} alt="Tertius Roach" />
-          <MenuButton selectDesign="fade" buttonInfo={buttons} />
+          <img
+            className="signature-adjacent"
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
+            alt="Tertius Roach"
+          />
+          <MenuButton selectAxis="horizontal" selectDesign="fade" selectInfo={buttons} />
         </>
       )}
-      {mobile && (
+      {mobileDevice && (
         <>
-          <img className="signature-adjacent" src={signatureAdjacent} alt="Tertius Roach" />
+          <img
+            className="signature-adjacent"
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
+            alt="Tertius Roach"
+          />
         </>
       )}
     </header>
   );
 };
-
 export default IndexHeader;
 
 function jQueryHeader(pageName: String, blockName: String) {

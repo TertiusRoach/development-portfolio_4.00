@@ -56,7 +56,7 @@ const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
       for (let i = 0; i < info.length; i++) {
         var icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string };
         if (info[i].href) {
-          console.log(info[i].href);
+          // console.log(info[i].href);
         }
         anchorStyle.push(
           <AnchorFade

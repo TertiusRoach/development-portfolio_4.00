@@ -34,7 +34,7 @@ const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, al
       mouseLeave = () => setStyle('downplay');
       break;
   }
-  console.log(href);
+  // console.log(href);
   return (
     <a
       href={href}
