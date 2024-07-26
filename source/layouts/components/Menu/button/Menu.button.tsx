@@ -1,7 +1,4 @@
 // Menu.button.tsx
-// Ok, so here in lies the error.
-// Please toggle between horizontal and vertical. If the optional value is left blank, revert to horizontal.
-// Use REACT where it is most effective to do so.
 import React from 'react';
 import './Menu.button.scss';
 
@@ -14,115 +11,189 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface MenuProps {
-  selectDesign: 'fade' | 'frame' | 'glow' | 'icon' | 'slide';
-  selectAxis: 'horizontal' | 'vertical';
-  selectInfo: {
-    text: string;
-    state: 'active' | '';
-    label: 'rightbar' | string;
+  criteria: {
+    buildAxis: '<vertical>' | '<horizontal>';
+    buildDesign: '<fade>' | '<icon>' | '<text>';
+    buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+  };
+  information: {
+    label: 'home' | string;
     style: 'highlight' | 'downplay';
-    axis: 'vertical' | 'horizontal';
     align: 'left' | 'center' | 'right' | string;
     icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 
-    href?: string;
+    text?: string | '';
+    href?: string | '';
+    state?: 'active' | '';
   }[];
 }
-const MenuButton: React.FC<MenuProps> = ({ selectInfo, selectAxis, selectDesign }) => {
-  return <>{renderMenu(selectInfo, selectAxis, selectDesign)}</>;
+const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
+  const buildAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
+  const buildDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
+  const buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' = criteria.buildElement;
+
+  console.log(information.length);
+
+  return (
+    <menu className={`${setClass(buildAxis, buildDesign, buildElement, information)}`}>
+      {/* Why is this only returning the <vertical> axis? */}
+      {information.map((info, i) => (
+        <ButtonFade
+          key={i}
+          axis={buildAxis}
+          text={`${info.text}`}
+          href={`${info.href}`}
+          label={`${info.label}`}
+          style={`${info.style}`}
+          align={`${info.align}`}
+          block={`${info.block}`}
+          state={`${info.state}` as ''}
+          icon={info.icon as { dark: string; medium: string; light: string }}
+        />
+      ))}
+    </menu>
+  );
+  // }
 };
+
 export default MenuButton;
 
-function renderMenu(
-  selectInfo: {
-    text: string;
-    state: 'active' | '';
-    label: 'rightbar' | string;
-    style: 'highlight' | 'downplay';
-    align: 'left' | 'center' | 'right' | string;
-    icon: { dark: string; medium: string; light: string };
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  }[],
-  selectAxis: 'horizontal' | 'vertical',
-  selectDesign: 'fade' | 'text' | 'icon' | 'slide' | 'frame' | 'glow'
-) {
-  // let buttonStyle = [];
-  for (let i = 0; i < selectInfo.length; i++) {
-    let icon = getSVG(`${selectInfo[i].label}`) as { dark: string; medium: string; light: string } | undefined;
-    switch (selectDesign) {
-      case 'fade':
-        // buttonStyle.push(
-        //   // <ButtonFade
-        //   //   index={i}
-        //   //   icon={icon}
-        //   //   axis={selectAxis}
-        //   //   text={selectInfo[i].text}
-        //   //   style={selectInfo[i].style}
-        //   //   state={selectInfo[i].state}
-        //   //   label={selectInfo[i].label}
-        //   //   block={selectInfo[i].block}
-        //   //   align={selectInfo[i].align}
-        //   //   key={`${selectInfo[i].text}`}
-        //   // />
-        // );
-        break;
-      case 'icon':
-        break;
-      case 'text':
-        break;
-    }
+function setAxis(
+  amount: Number,
+  criteria: {
+    buildAxis: '<vertical>' | '<horizontal>';
+    buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+    buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
   }
-
-  if (selectAxis === 'horizontal') {
-    switch (selectInfo.length) {
+) {
+  if (criteria.buildAxis === '<horizontal>') {
+    switch (amount) {
       case 1:
-      // return <menu className="horizontal-1 buttons">{buttonStyle}</menu>;
+        return 'horizontal-one';
       case 2:
-      // return <menu className="horizontal-2 buttons">{buttonStyle}</menu>;
+        return 'horizontal-two';
       case 3:
-      // return <menu className="horizontal-3 buttons">{buttonStyle}</menu>;
+        return 'horizontal-three';
       case 4:
-      // return <menu className="horizontal-4 buttons">{buttonStyle}</menu>;
+        return 'horizontal-four';
       case 5:
-      // return <menu className="horizontal-5 buttons">{buttonStyle}</menu>;
+        return 'horizontal-five';
+      case 6:
+        return 'horizontal-six';
+      case 7:
+        return 'horizontal-seven';
+      case 8:
+        return 'horizontal-eight';
+      case 9:
+        return 'horizontal-nine';
+      case 10:
+        return 'horizontal-ten';
+      case 11:
+        return 'horizontal-eleven';
+      case 12:
+        return 'horizontal-twelve';
       default:
-        alert('//--|🠊 Menu.button.tsx: Only five buttons allowed horizontally for the <menu> element 🠈|--//');
+        alert('//--|🠊 Menu.horizontal.tsx: Only twelve buttons allowed <horizontally> for the <menu> element 🠈|--//');
         break;
     }
-  } else if (selectAxis === 'vertical') {
-    console.log(selectInfo);
-    console.log(selectAxis);
-    console.log(selectDesign);
-
-    switch (selectInfo.length) {
+  } else if (criteria.buildAxis === '<vertical>') {
+    switch (amount) {
       case 1:
-      // return <menu className="vertical-1 buttons">{buttonStyle}</menu>;
+        return 'vertical-one';
       case 2:
-      // return <menu className="vertical-2 buttons">{buttonStyle}</menu>;
+        return 'vertical-two';
       case 3:
-      // return <menu className="vertical-3 buttons">{buttonStyle}</menu>;
+        return 'vertical-three';
       case 4:
-      // return <menu className="vertical-4 buttons">{buttonStyle}</menu>;
+        return 'vertical-four';
       case 5:
-      // return <menu className="vertical-5 buttons">{buttonStyle}</menu>;
+        return 'vertical-five';
       case 6:
-      // return <menu className="vertical-6 buttons">{buttonStyle}</menu>;
+        return 'vertical-six';
       case 7:
-      // return <menu className="vertical-7 buttons">{buttonStyle}</menu>;
+        return 'vertical-seven';
       case 8:
-      // return <menu className="vertical-8 buttons">{buttonStyle}</menu>;
+        return 'vertical-eight';
       case 9:
-      // return <menu className="vertical-9 buttons">{buttonStyle}</menu>;
+        return 'vertical-nine';
       case 10:
-      // return <menu className="vertical-10 buttons">{buttonStyle}</menu>;
+        return 'vertical-ten';
       case 11:
-      // return <menu className="vertical-11 buttons">{buttonStyle}</menu>;
+        return 'vertical-eleven';
       case 12:
-      // return <menu className="vertical-12 buttons">{buttonStyle}</menu>;
+        return 'vertical-twelve';
       default:
-        alert('//--|🠊 Menu.button.tsx: Only twelve buttons allowed vertically for the <menu> element 🠈|--//');
+        alert('//--|🠊 120. Menu.vertical.tsx: Only twelve buttons allowed <vertically> for the <menu> element 🠈|--//');
         break;
     }
   }
 }
+function setClass(
+  buildAxis: '<vertical>' | '<horizontal>',
+  buildDesign: '<fade>' | '<icon>' | '<text>',
+  buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string,
+  information: {
+    label: 'home' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+    text?: string | '';
+    href?: string | '';
+    state?: 'active' | '';
+  }[]
+) {
+  const criteria = {
+    buildAxis,
+    buildDesign,
+    buildElement,
+  };
+  const axisName = setAxis(
+    information.length as Number,
+    criteria as {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
+    }
+  );
+  if (buildElement === '<buttons>') {
+    switch (buildDesign) {
+      case '<fade>':
+        return `fade-buttons-${axisName}`;
+      case '<icon>':
+        return `icon-buttons-${axisName}`;
+      case '<text>':
+        return `text-buttons-${axisName}`;
+    }
+  } else if (buildElement === '<anchors>') {
+    switch (buildDesign) {
+      case '<fade>':
+        return `fade-anchors-${axisName}`;
+      case '<icon>':
+        return `icon-anchors-${axisName}`;
+      case '<text>':
+        return `text-anchors-${axisName}`;
+    }
+  }
+}
+/*
+    let infoText = `${information[i].text}`;
+    let infoHref = `${information[i].href}`;
+    let infoState = `${information[i].state}`;
+    let infoLabel = `${information[i].label}`;
+    let infoStyle = `${information[i].style}`;
+    let infoAlign = `${information[i].align}`;
+    let infoIcon = `${information[i].icon}`;
+    let infoBlock = `${information[i].block}`;
+
+    console.log(infoText);
+    console.log(infoHref);
+    console.log(infoState);
+    console.log(infoLabel);
+    console.log(infoStyle);
+    console.log(infoAlign);
+    console.log(infoIcon);
+    console.log(infoBlock);
+    */

@@ -1,84 +1,403 @@
-// // Document #2: Menu.button.scss
-// body {
-//   header,
-//   footer {
-//     menu {
-//       display: grid;
-//       //--| Desktop (Landscape) |--//
-//       @media screen and (orientation: landscape) {
-//         grid-template-rows: 4rem; // Set row height to 4rem for landscape orientation
-//       }
-//       //--| Mobile (Portrait) |--//
-//       @media screen and (orientation: portrait) {
-//         grid-template-rows: 6rem; // Set row height to 6rem for portrait orientation
-//       }
+// Menu.button.scss
+//--|🠋| Menu.horizontal.scss |🠋|--//
+$red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
+$red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
+$red-light: #ea9999; //--🠊 rgba(234, 153, 153, 1) 🠈--//
 
-//       //--| Vertical Alignment |--//
-//       // .menu[class*='vertical'] {
-//       //   display: inherit; // Inherit display property, can be grid or flex
-//       //   grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
+$green-neon: #00ff00; //--🠊 rgba(0, 255, 0, 1) 🠈--//
+$green-dark: #274e13; //--🠊 rgba(39, 78, 19, 1) 🠈--//
+$green-light: #b6d7a8; //--🠊 rgba(182, 215, 168, 1) 🠈--//
 
-//       //   a,
-//       //   button {
-//       //     grid-column: 1;
-//       //   }
-//       // }
+$blue-neon: #3c90ff; //--🠊 rgba(0, 0, 255, 1) 🠈--//
+$blue-dark: #073763; //--🠊 rgba(127, 17, 224, 1) 🠈--//
+$blue-light: #9fc5e8; //--🠊 rgba(159, 197, 232, 1) 🠈--//
 
-//       //--| Horizontal Alignment |--//
-//       .menu[class*='horizontal'] {
-//         display: inherit; // Inherit display property, can be grid or flex
-//         grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
+$purple-neon: #9900ff; //--🠊 rgba(153, 0, 255, 1) 🠈--//
+$purple-dark: #20124d; //--🠊 rgba(32, 18, 77, 1) 🠈--//
+$purple-light: #b4a7d6; //--🠊 rgba(180, 167, 214, 1) 🠈--//
 
-//         a,
-//         button {
-//           grid-row: 1;
-//         }
-//       }
+$pink-neon: #ff00ff; //--🠊 rgba(255, 0, 255, 1) 🠈--//
+$pink-dark: #4c1130; //--🠊 rgba(76, 17, 48, 1) 🠈--//
+$pink-light: #d5a6bd; //--🠊 rgba(213, 166, 189, 1) 🠈--//
 
-//       // button[id*='active'] {
-//       //   h3,
-//       //   h6 {
-//       //     color: white;
-//       //     cursor: default; // Disable cursor interaction for active buttons
-//       //   }
-//       // }
-//     }
-//   }
+$yellow-neon: #ffff00; //--🠊 rgba(255, 255, 0, 1) 🠈--//
+$yellow-dark: #7f6000; //--🠊 rgba(127, 96, 0, 1) 🠈--//
+$yellow-light: #ffe599; //--🠊 rgba(255, 229, 153, 1) 🠈--//
 
-//   main,
-//   aside,
-//   section {
-//     .menu {
-//       display: grid; // Display menu items in a grid layout
-//       button[id*='active'] {
-//         h3,
-//         h6 {
-//           color: white;
-//           cursor: default; // Disable cursor interaction for active buttons
-//         }
-//       }
-//     }
+$orange-neon: #ff9900; //--🠊 rgba(255, 153, 0, 1) 🠈--//
+$orange-dark: #783f04; //--🠊 rgba(120, 63, 4, 1) 🠈--//
+$orange-light: #f9cb9c; //--🠊 rgba(249, 203, 156, 1) 🠈--//
 
-//     //--| Vertical Alignment |--//
-//     .menu[class*='vertical'] {
-//       display: inherit; // Inherit display property, can be grid or flex
-//       grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
+$brown-neon: #a97142; //--🠊 rgba(169, 113, 66, 1) 🠈--//
+$brown-dark: #4f341d; //--🠊 rgba(79, 52, 29, 1) 🠈--//
+$brown-light: #ffd3af; //--🠊 rgba(255, 211, 175, 1) 🠈--//
 
-//       a,
-//       button {
-//         grid-column: 1;
-//       }
-//     }
+$grey-neon: #bec2cb; //--🠊 rgba(190, 194, 203, 1) 🠈--//
+$grey-dark: #434343; //--🠊 rgba(67, 67, 67, 1) 🠈--//
+$grey-light: #efefef; //--🠊 rgba(239, 239, 239, 1) 🠈--//
 
-//     //--| Horizontal Alignment |--//
-//     .menu[class*='horizontal'] {
-//       display: inherit; // Inherit display property, can be grid or flex
-//       grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
+$turquoise-neon: #00ffff; //--🠊 rgba(0, 255, 255, 1) 🠈--//
+$turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
+$turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
 
-//       a,
-//       button {
-//         grid-row: 1;
-//       }
-//     }
-//   }
-// }
+//--|🠋| Color Schemes |🠋|--//
+@mixin index-colors {
+  // Noir Inspiration: Fuctionality First!
+  // https://blog.daisie.com/understanding-film-noirs-reflection-of-post-wwii-social-and-cultural-climate/
+  //--|🠋| Index Colors |🠋|--//
+  $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
+  $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
+  $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
+}
+body {
+  header,
+  footer {
+    //--|🠋| Horizontal Alignment |🠋|--//
+    menu[class*='horizontal'] {
+      background: rgba($orange-neon, 1);
+
+      button:nth-child(1) {
+        grid-column: 1 / 2;
+        background: rgba($orange-light, 0.08);
+      }
+      button:nth-child(2) {
+        grid-column: 2 / 3;
+        background: rgba($orange-light, 0.17);
+      }
+
+      &[class*='one'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &[class*='two'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &[class*='three'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(3, 1fr);
+        button:nth-child(3) {
+          background: rgba($orange-light, 0.25);
+        }
+      }
+      &[class*='four'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(4, 1fr);
+        button:nth-child(4) {
+          background: rgba($orange-light, 0.33);
+        }
+      }
+      &[class*='five'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(5, 1fr);
+        button:nth-child(5) {
+          background: rgba($orange-light, 0.42);
+        }
+      }
+      &[class*='six'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(6, 1fr);
+        button:nth-child(6) {
+          background: rgba($orange-light, 0.5);
+        }
+      }
+      &[class*='seven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(7, 1fr);
+        button:nth-child(7) {
+          background: rgba($orange-light, 0.58);
+        }
+      }
+      &[class*='eight'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(8, 1fr);
+        button:nth-child(8) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='nine'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(9, 1fr);
+        button:nth-child(9) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='ten'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(10, 1fr);
+        button:nth-child(10) {
+          background: rgba($orange-light, 0.83);
+        }
+      }
+      &[class*='eleven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(11, 1fr);
+        button:nth-child(11) {
+          background: rgba($orange-light, 0.92);
+        }
+      }
+      &[class*='twelve'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(12, 1fr);
+        button:nth-child(12) {
+          background: rgba($orange-light, 1);
+        }
+      }
+
+      & {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          grid-template-rows: 4rem;
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          grid-template-rows: 6rem;
+        }
+      }
+    }
+    //--|🠋| Vertical Alignment |🠋|--//
+    menu[class*='vertical'] {
+      & {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          background: $red-neon;
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          background: $blue-neon;
+        }
+      }
+    }
+  }
+  main,
+  aside,
+  section {
+    //--|🠋| Vertical Alignment |🠋|--//
+    menu[class*='vertical'] {
+      background: rgba($pink-dark, 1);
+
+      &[class*='one'],
+      &[class*='two'],
+      &[class*='three'],
+      &[class*='four'],
+      &[class*='five'],
+      &[class*='six'] {
+        //--|🠊 display: grid; 🠈|--//
+        button:nth-child(1) {
+          grid-row: 1 / 2;
+          background: rgba($pink-light, 0.08);
+        }
+        button:nth-child(2) {
+          background: rgba($pink-light, 0.17);
+        }
+        button:nth-child(3) {
+          background: rgba($pink-light, 0.25);
+        }
+        button:nth-child(4) {
+          background: rgba($pink-light, 0.33);
+        }
+        button:nth-child(5) {
+          background: rgba($pink-light, 0.5);
+        }
+        button:nth-child(6) {
+          background: rgba($pink-light, 0.58);
+        }
+        grid-template-rows: repeat(6, 1fr);
+      }
+
+      &[class*='seven'] {
+        button {
+          background: rgba($pink-light, 0.58);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(7, 1fr);
+      }
+      &[class*='eight'] {
+        button {
+          background: rgba($pink-light, 0.67);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(8, 1fr);
+      }
+      &[class*='nine'] {
+        button {
+          background: rgba($pink-light, 0.67);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(9, 1fr);
+      }
+      &[class*='ten'] {
+        button {
+          background: rgba($pink-light, 0.83);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(10, 1fr);
+      }
+      &[class*='eleven'] {
+        button {
+          background: rgba($pink-light, 0.92);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(11, 1fr);
+      }
+      &[class*='twelve'] {
+        button {
+          background: rgba($pink-light, 1);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(12, 1fr);
+      }
+
+      & {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+    //--|🠋| Horizontal Alignment |🠋|--//
+    menu[class*='horizontal'] {
+      background: rgba($orange-neon, 1);
+
+      button:nth-child(1) {
+        grid-column: 1 / 2;
+        background: rgba($orange-light, 0.08);
+      }
+      button:nth-child(2) {
+        grid-column: 2 / 3;
+        background: rgba($orange-light, 0.17);
+      }
+
+      &[class*='one'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &[class*='two'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &[class*='three'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(3, 1fr);
+        button:nth-child(3) {
+          background: rgba($orange-light, 0.25);
+        }
+      }
+      &[class*='four'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(4, 1fr);
+        button:nth-child(4) {
+          background: rgba($orange-light, 0.33);
+        }
+      }
+      &[class*='five'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(5, 1fr);
+        button:nth-child(5) {
+          background: rgba($orange-light, 0.42);
+        }
+      }
+      &[class*='six'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(6, 1fr);
+        button:nth-child(6) {
+          background: rgba($orange-light, 0.5);
+        }
+      }
+      &[class*='seven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(7, 1fr);
+        button:nth-child(7) {
+          background: rgba($orange-light, 0.58);
+        }
+      }
+      &[class*='eight'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(8, 1fr);
+        button:nth-child(8) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='nine'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(9, 1fr);
+        button:nth-child(9) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='ten'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(10, 1fr);
+        button:nth-child(10) {
+          background: rgba($orange-light, 0.83);
+        }
+      }
+      &[class*='eleven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(11, 1fr);
+        button:nth-child(11) {
+          background: rgba($orange-light, 0.92);
+        }
+      }
+      &[class*='twelve'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(12, 1fr);
+        button:nth-child(12) {
+          background: rgba($orange-light, 1);
+        }
+      }
+
+      & {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          grid-template-rows: 4rem;
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          grid-template-rows: 6rem;
+        }
+      }
+    }
+  }
+
+  div[id*='index'] {
+    header,
+    footer {
+      //--|🠋| Vertical Alignment |🠋|--//
+      menu[class*='vertical'] {
+        background: red;
+        // display: none;
+      }
+    }
+  }
+}
+
+@mixin resume-colors {
+  //--|🠋| Résumé Colors |🠋|--//
+  $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
+  $primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
+  $primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
+}
+@mixin ticket-colors {
+  //--|🠋| Log a Ticket |🠋|--//
+  $primary-dark: #0e183b; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-medium: #1f3892; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-light: #879add; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+
+  $secondary-dark: #3f1a02; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $secondary-medium: #ac5419; //--🠊 rgba(?? , ?? , ?? ,1) 🠈--//
+  $secondary-light: #e7955e; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+
+  $tertiary-dark: #032004; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $tertiary-medium: #1c7e1f; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $tertiary-light: #84d387; //--🠊 rgba( ??, ??, ??,1) 🠈--//
+}
+@mixin university-colors {
+  $primary-dark: #230510; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-medium: #450920; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+
+  $secondary-dark: #392319; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $secondary-medium: #714631; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $secondary-light: #b8a298; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+}
+@mixin fitness-colors {
+}

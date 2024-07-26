@@ -15,7 +15,6 @@ import showAside from '../../../../modules/utilities/showAside';
 import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
-import MenuHorizontal from '../../Menu/horizontal/Menu.horizontal';
 
 interface HomeProps {
   info: {
@@ -94,7 +93,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuHorizontal criteria={desktopDevice.criteria} information={desktopDevice.information} />
+            <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.information} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>

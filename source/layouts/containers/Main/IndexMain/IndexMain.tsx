@@ -14,6 +14,7 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/fade/Button.fade';
+import MenuButton from '../../../components/Menu/button/Menu.button';
 import SectionHome from '../../../components/Section/home/Section.home';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';

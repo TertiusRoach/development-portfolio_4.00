@@ -10,7 +10,6 @@ import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
-import MenuHorizontal from '../../../components/Menu/horizontal/Menu.horizontal';
 
 interface InfoProps {
   info: {
@@ -21,18 +20,18 @@ interface InfoProps {
 }
 
 const IndexHeader: React.FC<InfoProps> = () => {
-  const loadTimer: number = 0;
+  const jQueryTimer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+        setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
       },
       false
     );
-    setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
   }, []);
 
   let desktopDevice = getElements('<desktop>') as {
@@ -63,7 +62,7 @@ const IndexHeader: React.FC<InfoProps> = () => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          <MenuHorizontal criteria={desktopDevice.criteria} information={desktopDevice.information} />
+          <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.information} />
         </>
       )}
 
