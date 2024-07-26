@@ -229,13 +229,6 @@ body {
             cursor: pointer;
           }
         }
-        &[id*='active'] {
-          div {
-            img {
-              cursor: default;
-            }
-          }
-        }
         // @include fade-effects();
         @include fade-placement();
       }
@@ -246,6 +239,14 @@ body {
   section {
     menu {
       button {
+        div {
+          cursor: default;
+          h3,
+          h6 {
+            width: 4rem;
+            cursor: pointer;
+          }
+        }
         // @include fade-effects();
         @include fade-placement();
       }
