@@ -43,7 +43,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  let desktopDevice = getElements('<desktop>') as {
+  let desktopDevice = getCriteria('<desktop>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>';
@@ -61,7 +61,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       state?: 'active' | '';
     }[];
   };
-  let mobileDevice = getElements('<mobile>') as {
+  let mobileDevice = getCriteria('<mobile>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>' | string;
@@ -160,7 +160,7 @@ function jQueryHome(pageName: String, blockName: string) {
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
-function getElements(orientation: '<desktop>' | '<mobile>') {
+function getCriteria(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
       return {
@@ -195,96 +195,96 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             icon: getSVG('contact'),
             block: 'main',
           },
-          // {
-          //   text: 'Home',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'home',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('home'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'main',
-          //   icon: getSVG('skills'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Home',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'home',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('home'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'main',
-          //   icon: getSVG('skills'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Home',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'home',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('home'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'main',
-          //   icon: getSVG('skills'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'main',
-          // },
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'right',
+            icon: getSVG('home'),
+            block: 'main',
+          },
+          {
+            text: 'Skills',
+            href: '',
+            state: 'active',
+            label: 'skills',
+            style: 'downplay',
+            align: 'right',
+            icon: getSVG('skills'),
+            block: 'main',
+          },
+          {
+            text: 'Contact',
+            href: '',
+            state: 'active',
+            label: 'contact',
+            style: 'downplay',
+            align: 'center',
+            icon: getSVG('contact'),
+            block: 'main',
+          },
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'main',
+          },
+          {
+            text: 'Skills',
+            href: '',
+            state: 'active',
+            label: 'skills',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('skills'),
+            block: 'main',
+          },
+          {
+            text: 'Contact',
+            href: '',
+            state: 'active',
+            label: 'contact',
+            style: 'downplay',
+            align: 'center',
+            icon: getSVG('contact'),
+            block: 'main',
+          },
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'main',
+          },
+          {
+            text: 'Skills',
+            href: '',
+            state: 'active',
+            label: 'skills',
+            style: 'downplay',
+            align: 'center',
+            icon: getSVG('skills'),
+            block: 'main',
+          },
+          {
+            text: 'Contact',
+            href: '',
+            state: 'active',
+            label: 'contact',
+            style: 'downplay',
+            align: 'right',
+            icon: getSVG('contact'),
+            block: 'main',
+          },
         ],
         criteria: {
           buildDesign: '<fade>',

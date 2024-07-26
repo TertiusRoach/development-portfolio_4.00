@@ -55,6 +55,12 @@ body {
     //--|🠋| Horizontal Alignment |🠋|--//
     menu[class*='horizontal'] {
       background: rgba($orange-neon, 1);
+      @media screen and (orientation: landscape) {
+        height: 4rem;
+      }
+      @media screen and (orientation: portrait) {
+        height: 6rem;
+      }
 
       button:nth-child(1) {
         grid-column: 1 / 2;
