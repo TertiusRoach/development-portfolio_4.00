@@ -37,7 +37,6 @@ const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
 
   return (
     <menu className={`${setClass(buildAxis, buildDesign, buildElement, information)}`}>
-      {/* Why is this only returning the <vertical> axis? */}
       {information.map((info, i) => (
         <ButtonFade
           key={i}

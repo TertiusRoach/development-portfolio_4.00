@@ -75,7 +75,6 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default IndexMain;
-
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[class*="projects"]`).on('click', () => {

@@ -112,27 +112,27 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             block: 'header',
           },
           // -- //
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: '',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('skills'),
-          //   block: 'header',
-          // },
+          {
+            text: 'Skills',
+            href: '',
+            state: '',
+            label: 'skills',
+            style: 'downplay',
+            align: 'center',
+            icon: getSVG('skills'),
+            block: 'header',
+          },
           // -- //
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: '',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'header',
-          // },
+          {
+            text: 'Contact',
+            href: '',
+            state: '',
+            label: 'contact',
+            style: 'downplay',
+            align: 'right',
+            icon: getSVG('contact'),
+            block: 'header',
+          },
           // -- //
           // {
           //   text: 'Home',

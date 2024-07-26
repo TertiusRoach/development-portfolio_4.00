@@ -140,7 +140,6 @@ function jQueryHome(pageName: String, blockName: string) {
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
-
   $(`#${containerElement} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
@@ -176,26 +175,26 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             icon: getSVG('home'),
             block: 'main',
           },
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'main',
-          //   icon: getSVG('skills'),
-          //   block: 'main',
-          // },
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'main',
-          // },
+          {
+            text: 'Skills',
+            href: '',
+            state: 'active',
+            label: 'skills',
+            style: 'downplay',
+            align: 'right',
+            icon: getSVG('skills'),
+            block: 'main',
+          },
+          {
+            text: 'Contact',
+            href: '',
+            state: 'active',
+            label: 'contact',
+            style: 'downplay',
+            align: 'center',
+            icon: getSVG('contact'),
+            block: 'main',
+          },
           // {
           //   text: 'Home',
           //   href: '',

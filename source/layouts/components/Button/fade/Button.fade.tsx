@@ -28,29 +28,35 @@ interface FadeProps {
 const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, text, label }) => {
   const className = `${block}-${style}-${align}`;
   const stateType = `${getIdentification()}-${label} ${state}`;
-  // let mobileDevice: boolean =;
-  // let desktopDevice: boolean = ;
   return (
     <button id={stateType} className={className}>
-      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
-            {text}
-          </h3>
-          <div className={`${style}`}>
-            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          <div style={{ zIndex: 2 }} className="button-foreground">
+            <h3>{text}</h3>
+          </div>
+          <div style={{ zIndex: 1 }} className="button-midground">
+            <img className={`${align} primary-dark`} src={`${icon.dark}`} alt={text} />
+            <img className={`${align} primary-light`} src={`${icon.light}`} alt={text} />
+          </div>
+          <div style={{ zIndex: 0 }} className="button-background">
+            <img className={`${align} primary-medium`} src={`${icon.medium}`} alt={text} />
           </div>
         </>
       )}
-      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
+
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
-            {text}
-          </h6>
-          <div className={`${style}`}>
-            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
-            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          <div style={{ zIndex: 2 }} className="button-foreground">
+            <h6>{text}</h6>
+          </div>
+          <div style={{ zIndex: 1 }} className="button-midground"></div>
+          <div style={{ zIndex: 0 }} className="button-background">
+            <img className={`${align} primary-dark`} src={`${icon.dark}`} alt={text} />
+            {/* <img className={`${align} primary-light`} src={`${icon.light}`} alt={text} /> */}
+            {/* <img className={`${align} primary-medium`} src={`${icon.medium}`} alt={text} /> */}
           </div>
         </>
       )}
