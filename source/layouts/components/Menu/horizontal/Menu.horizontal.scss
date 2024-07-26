@@ -48,6 +48,7 @@ $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
   $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
   $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 }
+
 @mixin resume-colors {
   //--|🠋| Résumé Colors |🠋|--//
   $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
@@ -83,90 +84,204 @@ $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
 body {
   header,
   footer {
-    //--| Vertical Alignment |--//
+    //--|🠋| Horizontal Alignment |🠋|--//
     menu[class*='horizontal'] {
-      background: rgba($orange-neon, 0.25);
-    }
-    //--| Horizontal Alignment |--//
-    menu[class*='vertical'] {
-      background: rgba($pink-neon, 0.25);
+      background: rgba($orange-neon, 1);
+
+      button:nth-child(1) {
+        grid-column: 1 / 2;
+        background: rgba($orange-light, 0.08);
+      }
+      button:nth-child(2) {
+        grid-column: 2 / 3;
+        background: rgba($orange-light, 0.17);
+      }
+
+      &[class*='one'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &[class*='two'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &[class*='three'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(3, 1fr);
+        button:nth-child(3) {
+          background: rgba($orange-light, 0.25);
+        }
+      }
+      &[class*='four'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(4, 1fr);
+        button:nth-child(4) {
+          background: rgba($orange-light, 0.33);
+        }
+      }
+      &[class*='five'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(5, 1fr);
+        button:nth-child(5) {
+          background: rgba($orange-light, 0.42);
+        }
+      }
+      &[class*='six'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(6, 1fr);
+        button:nth-child(6) {
+          background: rgba($orange-light, 0.5);
+        }
+      }
+      &[class*='seven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(7, 1fr);
+        button:nth-child(7) {
+          background: rgba($orange-light, 0.58);
+        }
+      }
+      &[class*='eight'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(8, 1fr);
+        button:nth-child(8) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='nine'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(9, 1fr);
+        button:nth-child(9) {
+          background: rgba($orange-light, 0.67);
+        }
+      }
+      &[class*='ten'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(10, 1fr);
+        button:nth-child(10) {
+          background: rgba($orange-light, 0.83);
+        }
+      }
+      &[class*='eleven'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(11, 1fr);
+        button:nth-child(11) {
+          background: rgba($orange-light, 0.92);
+        }
+      }
+      &[class*='twelve'] {
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-columns: repeat(12, 1fr);
+        button:nth-child(12) {
+          background: rgba($orange-light, 1);
+        }
+      }
+
+      & {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          grid-template-rows: 4rem;
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          grid-template-rows: 6rem;
+        }
+      }
     }
   }
-  // menu {
-  //   //       display: grid;
-  //   //       //--| Desktop (Landscape) |--//
-  //   //       @media screen and (orientation: landscape) {
-  //   //         grid-template-rows: 4rem; // Set row height to 4rem for landscape orientation
-  //   //       }
-  //   //       //--| Mobile (Portrait) |--//
-  //   //       @media screen and (orientation: portrait) {
-  //   //         grid-template-rows: 6rem; // Set row height to 6rem for portrait orientation
-  //   //       }
+  main,
+  aside,
+  section {
+    //--|🠋| Vertical Alignment |🠋|--//
+    menu[class*='vertical'] {
+      background: rgba($pink-dark, 1);
 
-  //   //
-  //   //       // .menu[class*='vertical'] {
-  //   //       //   display: inherit; // Inherit display property, can be grid or flex
-  //   //       //   grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
+      &[class*='one'],
+      &[class*='two'],
+      &[class*='three'],
+      &[class*='four'],
+      &[class*='five'],
+      &[class*='six'] {
+        //--|🠊 display: grid; 🠈|--//
+        button:nth-child(1) {
+          grid-row: 1 / 2;
+          background: rgba($pink-light, 0.08);
+        }
+        button:nth-child(2) {
+          background: rgba($pink-light, 0.17);
+        }
+        button:nth-child(3) {
+          background: rgba($pink-light, 0.25);
+        }
+        button:nth-child(4) {
+          background: rgba($pink-light, 0.33);
+        }
+        button:nth-child(5) {
+          background: rgba($pink-light, 0.5);
+        }
+        button:nth-child(6) {
+          background: rgba($pink-light, 0.58);
+        }
+        grid-template-rows: repeat(6, 1fr);
+      }
 
-  //   //       //   a,
-  //   //       //   button {
-  //   //       //     grid-column: 1;
-  // }
-  //
-  //       .menu[class*='horizontal'] {
-  //         display: inherit; // Inherit display property, can be grid or flex
-  //         grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
+      &[class*='seven'] {
+        button {
+          background: rgba($pink-light, 0.58);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(7, 1fr);
+      }
+      &[class*='eight'] {
+        button {
+          background: rgba($pink-light, 0.67);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(8, 1fr);
+      }
+      &[class*='nine'] {
+        button {
+          background: rgba($pink-light, 0.67);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(9, 1fr);
+      }
+      &[class*='ten'] {
+        button {
+          background: rgba($pink-light, 0.83);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(10, 1fr);
+      }
+      &[class*='eleven'] {
+        button {
+          background: rgba($pink-light, 0.92);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(11, 1fr);
+      }
+      &[class*='twelve'] {
+        button {
+          background: rgba($pink-light, 1);
+        }
+        //--|🠊 display: grid; 🠈|--//
+        grid-template-rows: repeat(12, 1fr);
+      }
 
-  //         a,
-  //         button {
-  //           grid-row: 1;
-  //         }
-  //       }
+      & {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 
-  //       // button[id*='active'] {
-  //       //   h3,
-  //       //   h6 {
-  //       //     color: white;
-  //       //     cursor: default; // Disable cursor interaction for active buttons
-  //       //   }
-  //       // }
-  //     }
-  //   }
-
-  //   main,
-  //   aside,
-  //   section {
-  //     .menu {
-  //       display: grid; // Display menu items in a grid layout
-  //       button[id*='active'] {
-  //         h3,
-  //         h6 {
-  //           color: white;
-  //           cursor: default; // Disable cursor interaction for active buttons
-  //         }
-  //       }
-  //     }
-
-  //     //--| Vertical Alignment |--//
-  //     .menu[class*='vertical'] {
-  //       display: inherit; // Inherit display property, can be grid or flex
-  //       grid-template-rows: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust row height based on content
-
-  //       a,
-  //       button {
-  //         grid-column: 1;
-  //       }
-  //     }
-
-  //     //--| Horizontal Alignment |--//
-  //     .menu[class*='horizontal'] {
-  //       display: inherit; // Inherit display property, can be grid or flex
-  //       grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); // Adjust column width based on content
-
-  //       a,
-  //       button {
-  //         grid-row: 1;
-  //       }
-  //     }
-  //   }
+  div[id*='index'] {
+    header,
+    footer {
+      //--|🠋| Vertical Alignment |🠋|--//
+      menu[class*='vertical'] {
+        background: red;
+        // display: none;
+      }
+    }
+  }
 }

@@ -28,49 +28,41 @@ interface HomeProps {
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
-  const loadTimer = 1000;
-  const width = info.resolution.split('x')[0];
-  const height = info.resolution.split('x')[1];
-  const pageName: String = getIdentification();
-  const desktopButtons = {
+  const jQueryTimer: number = 1000;
+  const block: 'main' | string = `${blockName}`;
+  const page: String = info.identification as String;
+
+  useEffect(() => {
+    let handleResize = () => {
+      jQueryHome(page, block);
+    };
+
+    window.addEventListener('resize', handleResize);
+    setTimeout(() => jQueryHome(page, block), jQueryTimer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  let desktopDevice = getElements('<desktop>') as {
     criteria: {
-      buildDesign: '<fade>',
-      buildAxis: '<horizontal>',
-      buildElement: '<buttons>',
-    },
-    information: [
-      {
-        text: 'Home',
-        href: '',
-        state: 'active',
-        label: 'home',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('home'),
-        block: 'header',
-      },
-      {
-        text: 'Skills',
-        href: '',
-        state: 'active',
-        label: 'skills',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('skills'),
-        block: 'header',
-      },
-      {
-        text: 'Contact',
-        href: '',
-        state: 'active',
-        label: 'contact',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('contact'),
-        block: 'header',
-      },
-    ],
-  } as {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+    information: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+  };
+  let mobileDevice = getElements('<mobile>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>' | string;
@@ -88,49 +80,10 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       state?: 'active' | '';
     }[];
   };
-  useEffect(() => {
-    let handleResize = () => {
-      setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
-    };
 
-    window.addEventListener('resize', handleResize);
-    setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
+  let width = Number(info.resolution.split('x')[0]) as Number;
+  let height = Number(info.resolution.split('x')[1]) as Number;
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let mobileButtons = [
-    {
-      state: '',
-      align: 'left',
-      label: 'career',
-      block: 'overlay',
-      text: 'My Career',
-      style: 'downplay',
-      icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-    {
-      state: '',
-      block: 'main',
-      align: 'right',
-      label: 'contact',
-      style: 'downplay',
-      text: 'Contact Me',
-      icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-    },
-  ] as {
-    text: string;
-    state: 'active' | '';
-    label: 'rightbar' | string;
-    style: 'highlight' | 'downplay';
-    align: 'left' | 'center' | 'right' | string;
-    icon: { dark: string; medium: string; light: string };
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  }[];
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -138,38 +91,17 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       id={stateType === 'active' ? `${blockName}-active` : ''}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuHorizontal
-              criteria={
-                desktopButtons.criteria as {
-                  buildAxis: '<vertical>' | '<horizontal>';
-                  buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-                  buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-                }
-              }
-              information={
-                desktopButtons.information as {
-                  label: 'home' | string;
-                  style: 'highlight' | 'downplay';
-                  align: 'left' | 'center' | 'right' | string;
-                  icon: { dark: string; medium: string; light: string };
-                  block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-
-                  text?: string | '';
-                  href?: string | '';
-                  state?: 'active' | '';
-                }[]
-              }
-            />
+            <MenuHorizontal criteria={desktopDevice.criteria} information={desktopDevice.information} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
             {/* <MenuButton selectInfo={mobileButtons} selectAxis="horizontal" selectDesign="fade" /> */}
@@ -229,4 +161,184 @@ function jQueryHome(pageName: String, blockName: string) {
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}
+function getElements(orientation: '<desktop>' | '<mobile>') {
+  switch (orientation) {
+    case '<desktop>':
+      return {
+        information: [
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'main',
+          },
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'main',
+          //   icon: getSVG('skills'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Home',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'home',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('home'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'main',
+          //   icon: getSVG('skills'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Home',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'home',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('home'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'main',
+          //   icon: getSVG('skills'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Home',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'home',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('home'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'main',
+          //   icon: getSVG('skills'),
+          //   block: 'main',
+          // },
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'main',
+          // },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<vertical>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        information: {
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    case '<mobile>':
+      return [
+        {
+          state: '',
+          align: 'left',
+          label: 'career',
+          block: 'overlay',
+          text: 'My Career',
+          style: 'downplay',
+          icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+        },
+        {
+          state: '',
+          block: 'main',
+          align: 'right',
+          label: 'contact',
+          style: 'downplay',
+          text: 'Contact Me',
+          icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+        },
+      ] as {
+        text: string;
+        state: 'active' | '';
+        label: 'rightbar' | string;
+        style: 'highlight' | 'downplay';
+        align: 'left' | 'center' | 'right' | string;
+        icon: { dark: string; medium: string; light: string };
+        block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+      }[];
+  }
 }

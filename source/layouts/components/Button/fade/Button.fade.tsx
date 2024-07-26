@@ -10,26 +10,59 @@ import { getSVG } from '../../../../modules/utilities/getFile';
 
 //--|🠋 Design 🠋|--//
 import './Button.fade.scss';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Design 🠉|--//
 
 interface FadeProps {
-  text?: string;
-  index?: number;
-  state: 'active' | '';
-  axis: 'vertical' | 'horizontal';
+  href: string;
+  text: string | '';
+  label: labelString;
   style: 'downplay' | 'highlight';
+  axis: '<vertical>' | '<horizontal>';
   align: 'left' | 'center' | 'right' | string;
-  label?: 'home' | 'skills' | 'contact' | string;
-  icon: undefined | { dark: string; medium: string; light: string };
+  state: 'active' | 'disabled' | 'enabled' | '';
+  icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 
-const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, label }) => {
+const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, text, label }) => {
+  const className = `${block}-${style}-${align}`;
+  const stateType = `${getIdentification()}-${label} ${state}`;
+  // let mobileDevice: boolean =;
+  // let desktopDevice: boolean = ;
+  return (
+    <button id={stateType} className={className}>
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
+        <>
+          <h3 className={`${align} ${block}`} style={{ zIndex: 3 }}>
+            {text}
+          </h3>
+          <div className={`${style}`}>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
+        </>
+      )}
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
+        <>
+          <h6 className={`${align} ${block} display-6`} style={{ zIndex: 3 }}>
+            {text}
+          </h6>
+          <div className={`${style}`}>
+            <img className={`${align} primary-light`} style={{ zIndex: 2 }} src={`${icon.light}`} alt={text} />
+            <img className={`${align} primary-medium`} style={{ zIndex: 1 }} src={`${icon.medium}`} alt={text} />
+          </div>
+        </>
+      )}
+    </button>
+  );
+
+  /*
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
   const className = `${block}-${label} ${align}`;
   const setActive = state === 'active' ? `${block}-active` : '';
-  const icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
 
+  let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
   const handleMouseEnter = () => {
     setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
   };
@@ -48,6 +81,7 @@ const ButtonFade: React.FC<FadeProps> = ({ style, state, block, align, text, lab
       {renderButton(text, style, align, icon, block)}
     </button>
   );
+  */
 };
 export default ButtonFade;
 
@@ -58,8 +92,8 @@ function renderButton(
   icon: { dark: string; medium: string; light: string },
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string
 ) {
-  let desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
-  let mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
+  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
 
   return (
     <>
@@ -89,3 +123,27 @@ function renderButton(
     </>
   );
 }
+
+// Define the namespace for label-related types
+namespace LabelName {
+  // Utility type to exclude certain strings
+  export type ExcludeStrings<T, U> = T extends U ? never : T;
+
+  // Define the strings to exclude
+  export type ExcludedLabels = 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+
+  // Define the allowed labels excluding the specific strings
+  export type AllowedLabels = ExcludeStrings<string, ExcludedLabels> | 'home' | 'skills' | 'contact';
+}
+
+// Using the AllowedLabels type from the namespace
+type labelString = LabelName.AllowedLabels;
+
+// Utility type to exclude certain strings
+// type ExcludeStrings<T, U> = T extends U ? never : T;
+
+// Define the strings to exclude
+// type ExcludedLabels = 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+
+// Define the allowed labels excluding the specific strings
+// type AllowedLabels = ExcludeStrings<string, ExcludedLabels> | 'home' | 'skills' | 'contact' | string;

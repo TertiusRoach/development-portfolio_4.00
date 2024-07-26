@@ -1,5 +1,4 @@
 // IndexHeader.tsx
-// IndexHeader.tsx
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -25,61 +24,6 @@ const IndexHeader: React.FC<InfoProps> = () => {
   const loadTimer: number = 0;
   const blockName: String = 'header';
   const pageName: String = getIdentification();
-  const desktopButtons = {
-    criteria: {
-      buildAxis: '<horizontal>',
-      buildDesign: '<fade>',
-      buildElement: '<buttons>',
-    },
-    information: [
-      {
-        text: 'Home',
-        href: '',
-        state: 'active',
-        label: 'home',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('home'),
-        block: 'header',
-      },
-      {
-        text: 'Home',
-        href: '',
-        state: 'active',
-        label: 'home',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('home'),
-        block: 'header',
-      },
-      {
-        text: 'Home',
-        href: '',
-        state: 'active',
-        label: 'home',
-        style: 'downplay',
-        align: 'left',
-        icon: getSVG('home'),
-        block: 'header',
-      },
-    ],
-  } as {
-    criteria: {
-      buildAxis: '<vertical>' | '<horizontal>';
-      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-    };
-    information: {
-      text?: string;
-      href?: string;
-      state?: 'active' | '';
-      label?: 'home' | string;
-      style?: 'highlight' | 'downplay';
-      align?: 'left' | 'center' | 'right' | string;
-      icon?: { dark: string; medium: string; light: string };
-      block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-    }[];
-  };
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -90,42 +34,41 @@ const IndexHeader: React.FC<InfoProps> = () => {
     );
     setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
   }, []);
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
+
+  let desktopDevice = getElements('<desktop>') as {
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+    information: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+  };
   return (
     <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
-      {desktopDevice && (
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <img
             className="signature-adjacent"
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          <MenuHorizontal
-            criteria={
-              desktopButtons.criteria as {
-                buildAxis: '<vertical>' | '<horizontal>';
-                buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-                buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
-              }
-            }
-            information={
-              desktopButtons.information as {
-                label: 'home' | string;
-                style: 'highlight' | 'downplay';
-                align: 'left' | 'center' | 'right' | string;
-                icon: { dark: string; medium: string; light: string };
-                block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-
-                text?: string | '';
-                href?: string | '';
-                state?: 'active' | '';
-              }[]
-            }
-          />
+          <MenuHorizontal criteria={desktopDevice.criteria} information={desktopDevice.information} />
         </>
       )}
-      {mobileDevice && (
+
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <img
             className="signature-adjacent"
@@ -153,4 +96,196 @@ function jQueryHeader(pageName: String, blockName: String) {
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}
+function getElements(orientation: '<desktop>' | '<mobile>') {
+  switch (orientation) {
+    case '<desktop>':
+      return {
+        information: [
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'header',
+          },
+          // -- //
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: '',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('skills'),
+          //   block: 'header',
+          // },
+          // -- //
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: '',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'header',
+          // },
+          // -- //
+          // {
+          //   text: 'Home',
+          //   href: '',
+          //   state: 'active',
+          //   label: 'home',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('home'),
+          //   block: 'header',
+          // },
+          // -- //
+          // {
+          //   text: 'Skills',
+          //   href: '',
+          //   state: '',
+          //   label: 'skills',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('skills'),
+          //   block: 'header',
+          // },
+          // -- //
+          // {
+          //   text: 'Contact',
+          //   href: '',
+          //   state: '',
+          //   label: 'contact',
+          //   style: 'downplay',
+          //   align: 'left',
+          //   icon: getSVG('contact'),
+          //   block: 'header',
+          // },
+          // -- //
+          /*
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'header',
+          },
+                // -- //
+          {
+            text: 'Skills',
+            href: '',
+            state: '',
+            label: 'skills',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('skills'),
+            block: 'header',
+          },
+                // -- //
+          {
+            text: 'Contact',
+            href: '',
+            state: '',
+            label: 'contact',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('contact'),
+            block: 'header',
+          },
+                // -- //
+          {
+            text: 'Home',
+            href: '',
+            state: 'active',
+            label: 'home',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('home'),
+            block: 'header',
+          },
+                // -- //
+          {
+            text: 'Skills',
+            href: '',
+            state: '',
+            label: 'skills',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('skills'),
+            block: 'header',
+          },
+                // -- //
+          {
+            text: 'Contact',
+            href: '',
+            state: '',
+            label: 'contact',
+            style: 'downplay',
+            align: 'left',
+            icon: getSVG('contact'),
+            block: 'header',
+          },
+          */
+        ],
+        criteria: {
+          buildAxis: '<horizontal>',
+          buildDesign: '<fade>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        information: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label?: 'home' | string;
+          style?: 'highlight' | 'downplay';
+          align?: 'left' | 'center' | 'right' | string;
+          icon?: { dark: string; medium: string; light: string };
+          block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>';
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    case '<mobile>':
+      return [
+        {
+          state: '',
+          align: 'left',
+          label: 'career',
+          block: 'overlay',
+          text: 'My Career',
+          style: 'downplay',
+          icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+        },
+        {
+          state: '',
+          block: 'main',
+          align: 'right',
+          label: 'contact',
+          style: 'downplay',
+          text: 'Contact Me',
+          icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+        },
+      ] as {
+        text: string;
+        state: 'active' | '';
+        label: 'rightbar' | string;
+        style: 'highlight' | 'downplay';
+        align: 'left' | 'center' | 'right' | string;
+        icon: { dark: string; medium: string; light: string };
+        block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+      }[];
+  }
 }

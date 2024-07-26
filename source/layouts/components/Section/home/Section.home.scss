@@ -47,7 +47,7 @@ body {
   main {
     section[class*='home'] {
       display: grid;
-      [id*='home'] {
+      div[id*='home'] {
         grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
         &[id*='fore'],
         &[id*='mid'],

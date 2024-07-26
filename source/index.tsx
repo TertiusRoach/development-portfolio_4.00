@@ -51,7 +51,7 @@ function Body() {
   return (
     <>
       <IndexHeader info={infoPROP} />
-      <IndexMain information={infoPROP} />
+      <IndexMain info={infoPROP} />
       <IndexFooter info={infoPROP} />
 
       <IndexOverlay info={infoPROP} />

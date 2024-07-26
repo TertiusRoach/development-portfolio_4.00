@@ -22,25 +22,22 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠋 Design 🠋|--//
 //--|🠉 Design 🠉|--//
 interface InfoProps {
-  information: {
+  info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexMain: React.FC<InfoProps> = ({ information }) => {
+const IndexMain: React.FC<InfoProps> = ({ info }) => {
   const loadTimer = 1000;
   const blockName = 'main';
-  const pageName = information.identification as String;
-
+  const pageName = info.identification as String;
   useEffect(() => {
     const handleResize = () => {
       setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
     };
-
     window.addEventListener('resize', handleResize);
     setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -52,18 +49,18 @@ const IndexMain: React.FC<InfoProps> = ({ information }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={information} />
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={information} />
-          <SectionContact blockName="main" labelName="contact" stateType="" info={information} />
+          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobileDevice && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={information} />
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={information} />
-          <SectionContact blockName="main" labelName="contact" stateType="" info={information} />
+          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
         </>
       )}
@@ -75,7 +72,6 @@ const IndexMain: React.FC<InfoProps> = ({ information }) => {
       </div> */}
     </main>
   );
-  console.log('IndexMain Loaded');
 };
 export default IndexMain;
 
