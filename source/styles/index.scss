@@ -69,6 +69,14 @@
     //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
   }
 }
+@mixin bootstrap-override {
+  button:not(:disabled),
+   [type='button']:not(:disabled),
+   [type='reset']:not(:disabled),
+   [type='submit']:not(:disabled)  {
+    cursor: default;
+  }
+}
 div[id*='index-body'] {
   height: 100vh;
   display: grid;
@@ -81,14 +89,18 @@ div[id*='index-body'] {
   @media screen and (orientation: portrait) {
     grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
   }
+
+  @include bootstrap-override();
   @include orientation-testing();
 
+  /*
   main.disabled,
   header.disabled,
   footer.disabled {
     $blur-radius: 1rem; // Or any desired value
     filter: blur($blur-radius);
   }
+  */
 }
 
 @import '../layouts/containers/Main/IndexMain/IndexMain.scss';

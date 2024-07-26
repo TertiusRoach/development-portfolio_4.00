@@ -46,8 +46,8 @@
     }
   }
 
-  button:not([id*='active']) {
-    &.downplay {
+  button.downplay {
+    & {
       h3,
       h6 {
         color: $primary-medium;
@@ -72,6 +72,23 @@
           animation: fadeIn 1s forwards;
         }
         img[class*='medium'] {
+          animation: fadeOut 1s forwards;
+        }
+      }
+    }
+  }
+  button.highlight {
+    & {
+      h3,
+      h6 {
+        color: $primary-medium;
+        animation: downplayFade 1s backwards;
+      }
+      div {
+        img[class*='medium'] {
+          animation: fadeIn 1s forwards;
+        }
+        img[class*='light'] {
           animation: fadeOut 1s forwards;
         }
       }
@@ -219,7 +236,7 @@ body {
             }
           }
         }
-        @include fade-effects();
+        // @include fade-effects();
         @include fade-placement();
       }
     }
@@ -229,7 +246,7 @@ body {
   section {
     menu {
       button {
-        @include fade-effects();
+        // @include fade-effects();
         @include fade-placement();
       }
     }
