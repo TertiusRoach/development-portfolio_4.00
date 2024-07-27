@@ -9,29 +9,23 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 // Mixins for fade effects
 @mixin fade-design {
   button[class*='-downplay-'] {
-    h3,
-    h6 {
-      color: $primary-medium;
+    div[class*='button'] {
       filter: drop-shadow(0 0 8px white);
-      animation: downplayFade 1s forwards;
-    }
-    div {
-      img {
-        filter: drop-shadow(0 0 8px white);
+      h3,
+      h6 {
+        color: $primary-medium;
+        animation: downplayFade 1s forwards;
       }
     }
   }
 
   button[class*='-highlight-'] {
-    h3,
-    h6 {
-      color: $primary-light;
+    div[class*='button'] {
       filter: drop-shadow(0 0 8px black);
-      animation: highlightFade 1s forwards;
-    }
-    div {
-      img {
-        filter: drop-shadow(0 0 8px black);
+      h3,
+      h6 {
+        color: $primary-light;
+        animation: highlightFade 1s forwards;
       }
     }
   }
