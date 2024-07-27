@@ -1,11 +1,43 @@
 // // Button.fade.scss
 @import '../../../containers/color-palette.scss';
 
+//--|🠋| Index Colors |🠋|--//
+$primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
+$primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
+$primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
+
+@mixin fade-design {
+  button[class*='-downplay-'] {
+    h3,
+    h6 {
+      color: $primary-medium;
+    }
+  }
+  button[class*='-highlight-'] {
+    h3,
+    h6 {
+      color: $primary-light;
+    }
+  }
+}
+
 // Mixins for fade effects
 @mixin fade-effects {
-  $primary-dark: #1f3131;
-  $primary-medium: #3d6262;
-  $primary-light: #9eb0b0;
+  button {
+    background: none;
+    div {
+      cursor: default;
+      h3,
+      h6 {
+        width: 4rem;
+        cursor: pointer;
+      }
+    }
+  }
+  button[class*='-downplay-'] {
+  }
+  button[class*='-highlight-'] {
+  }
 
   @keyframes fadeIn {
     from {
@@ -45,170 +77,96 @@
       color: $primary-medium;
     }
   }
-
-  button.downplay {
-    & {
-      h3,
-      h6 {
-        color: $primary-medium;
-        animation: downplayFade 1s backwards;
-      }
-      div {
-        img[class*='medium'] {
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='light'] {
-          animation: fadeOut 1s forwards;
-        }
-      }
-    }
-    &.highlight {
-      h3,
-      h6 {
-        animation: highlightFade 1s forwards;
-      }
-      div {
-        img[class*='light'] {
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='medium'] {
-          animation: fadeOut 1s forwards;
-        }
-      }
-    }
-  }
-  button.highlight {
-    & {
-      h3,
-      h6 {
-        color: $primary-medium;
-        animation: downplayFade 1s backwards;
-      }
-      div {
-        img[class*='medium'] {
-          animation: fadeIn 1s forwards;
-        }
-        img[class*='light'] {
-          animation: fadeOut 1s forwards;
-        }
-      }
-    }
-  }
-  button {
-    h3,
-    h6 {
-      filter: drop-shadow(0 0 4px rgba(black, 1));
-    }
-    &[id*='active'] {
-      h3,
-      h6 {
-        color: white;
-      }
-      @media screen and (max-width: 500px) {
-        h3 {
-          opacity: 0;
-          display: none;
-        }
-      }
-    }
-    img[class*='dark'],
-    img[class*='medium'],
-    img[class*='light'] {
-      filter: drop-shadow(0 0 4px rgba(black, 1));
-    }
-  }
 }
 
 // Mixins for fade placement
 @mixin fade-placement {
-  display: flex;
-
-  &[class*='-left'] {
-    overflow: hidden;
-    position: relative;
-    align-items: center;
-    justify-content: flex-start;
-    div[class*='foreground'],
-    div[class*='midground'],
-    div[class*='background'] {
-      display: grid;
-      position: absolute;
-      grid-template-rows: 1fr;
-      grid-template-columns: 4rem auto 1fr;
-      h3,
-      h6 {
-        width: 100%;
-        grid-row: 1 / 2;
-        grid-column: 2 / 4;
-      }
-      img[class*='dark'],
-      img[class*='light'],
-      img[class*='medium'] {
-        width: 4rem;
-        height: 4rem;
-        padding: 1rem;
-        grid-row: 1 / 2;
-        grid-column: 1 / 2;
-        background: darkred;
-      }
-    }
-  }
-  &[class*='-center'] {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-
-    div[class*='foreground'],
-    div[class*='midground'],
-    div[class*='background'] {
-      display: grid;
-      position: absolute;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr auto 1fr;
-      h3,
-      h6 {
-        width: 100%;
-        grid-row: 1 / 2;
-        grid-column: 2 / 3;
-      }
-      img[class*='dark'],
-      img[class*='light'],
-      img[class*='medium'] {
-        width: 4rem;
-        height: 4rem;
-        grid-row: 1 / 2;
-        padding: 0.25rem;
-        grid-column: 2 / 3;
-        background: darkgreen;
+  button {
+    display: flex;
+    &[class*='-left'] {
+      overflow: hidden;
+      position: relative;
+      align-items: center;
+      justify-content: flex-start;
+      div[class*='foreground'],
+      div[class*='midground'],
+      div[class*='background'] {
+        display: grid;
+        position: absolute;
+        grid-template-rows: 1fr;
+        grid-template-columns: 4rem auto 1fr;
+        h3,
+        h6 {
+          width: 100%;
+          grid-row: 1 / 2;
+          grid-column: 2 / 4;
+        }
+        img[class*='dark'],
+        img[class*='light'],
+        img[class*='medium'] {
+          width: 4rem;
+          height: 4rem;
+          padding: 1rem;
+          grid-row: 1 / 2;
+          grid-column: 1 / 2;
+        }
       }
     }
-  }
-  &[class*='-right'] {
-    position: relative;
-    align-items: center;
-    justify-content: flex-end;
-    div[class*='foreground'],
-    div[class*='midground'],
-    div[class*='background'] {
-      display: grid;
-      position: absolute;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr auto 4rem;
-      h3,
-      h6 {
-        width: 100%;
-        grid-row: 1 / 2;
-        grid-column: 2 / 3;
+    &[class*='-center'] {
+      position: relative;
+      align-items: center;
+      justify-content: center;
+
+      div[class*='foreground'],
+      div[class*='midground'],
+      div[class*='background'] {
+        display: grid;
+        position: absolute;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr auto 1fr;
+        h3,
+        h6 {
+          width: 100%;
+          grid-row: 1 / 2;
+          grid-column: 2 / 3;
+        }
+        img[class*='dark'],
+        img[class*='light'],
+        img[class*='medium'] {
+          width: 4rem;
+          height: 4rem;
+          grid-row: 1 / 2;
+          padding: 0.25rem;
+          grid-column: 2 / 3;
+        }
       }
-      img[class*='dark'],
-      img[class*='light'],
-      img[class*='medium'] {
-        width: 4rem;
-        height: 4rem;
-        padding: 1rem;
-        grid-row: 1 / 2;
-        grid-column: 3 / 4;
-        background: darkblue;
+    }
+    &[class*='-right'] {
+      position: relative;
+      align-items: center;
+      justify-content: flex-end;
+      div[class*='foreground'],
+      div[class*='midground'],
+      div[class*='background'] {
+        display: grid;
+        position: absolute;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr auto 4rem;
+        h3,
+        h6 {
+          width: 100%;
+          grid-row: 1 / 2;
+          grid-column: 2 / 3;
+        }
+        img[class*='dark'],
+        img[class*='light'],
+        img[class*='medium'] {
+          width: 4rem;
+          height: 4rem;
+          padding: 1rem;
+          grid-row: 1 / 2;
+          grid-column: 3 / 4;
+        }
       }
     }
   }
@@ -219,19 +177,9 @@ body {
   header,
   footer {
     menu {
-      button {
-        background: none;
-        div {
-          cursor: default;
-          h3,
-          h6 {
-            width: 4rem;
-            cursor: pointer;
-          }
-        }
-        // @include fade-effects();
-        @include fade-placement();
-      }
+      @include fade-design();
+      @include fade-effects();
+      @include fade-placement();
     }
   }
   main,
@@ -247,9 +195,58 @@ body {
             cursor: pointer;
           }
         }
-        // @include fade-effects();
-        @include fade-placement();
       }
+      @include fade-design();
+      @include fade-effects();
+      @include fade-placement();
     }
   }
 }
+// /*
+// & {
+//   h3,
+//   h6 {
+//     color: $primary-medium;
+//     animation: downplayFade 1s backwards;
+//   }
+//   div {
+//     img[class*='medium'] {
+//       animation: fadeIn 1s forwards;
+//     }
+//     img[class*='light'] {
+//       animation: fadeOut 1s forwards;
+//     }
+//   }
+// }
+// */
+//     /*
+// & {
+//   h3,
+//   h6 {
+//     color: $primary-medium;
+//     animation: downplayFade 1s backwards;
+//   }
+//   div {
+//     img[class*='medium'] {
+//       animation: fadeIn 1s forwards;
+//     }
+//     img[class*='light'] {
+//       animation: fadeOut 1s forwards;
+//     }
+//   }
+// }
+// &.highlight {
+//   h3,
+//   h6 {
+//     animation: highlightFade 1s forwards;
+//   }
+//   div {
+//     img[class*='light'] {
+//       animation: fadeIn 1s forwards;
+//     }
+//     img[class*='medium'] {
+//       animation: fadeOut 1s forwards;
+//     }
+//   }
+// }
+// */

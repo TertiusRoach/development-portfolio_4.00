@@ -18,7 +18,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-
 const IndexHeader: React.FC<InfoProps> = () => {
   const jQueryTimer: number = 0;
   const blockName: String = 'header';
@@ -33,7 +32,6 @@ const IndexHeader: React.FC<InfoProps> = () => {
     );
     setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
   }, []);
-
   let desktopDevice = getElements('<desktop>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
@@ -117,7 +115,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: '',
             label: 'skills',
-            style: 'downplay',
+            style: 'highlight',
             align: 'center',
             icon: getSVG('skills'),
             block: 'header',

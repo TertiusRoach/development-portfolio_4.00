@@ -24,9 +24,8 @@ interface FadeProps {
   icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-
 const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, text, label }) => {
-  const className = `${block}-${style}-${align}`;
+  const className = `${block}-${style}-${align}`; //--|🠈 header-downplay-left 🠈|--//
   const stateType = `${getIdentification()}-${label} ${state}`;
   return (
     <button id={stateType} className={className}>
@@ -133,15 +132,14 @@ function renderButton(
 // Define the namespace for label-related types
 namespace LabelName {
   // Utility type to exclude certain strings
-  export type ExcludeStrings<T, U> = T extends U ? never : T;
+  type ExcludeStrings<T, U> = T extends U ? never : T;
 
   // Define the strings to exclude
-  export type ExcludedLabels = 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+  type ExcludedLabels = 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
 
   // Define the allowed labels excluding the specific strings
   export type AllowedLabels = ExcludeStrings<string, ExcludedLabels> | 'home' | 'skills' | 'contact';
 }
-
 // Using the AllowedLabels type from the namespace
 type labelString = LabelName.AllowedLabels;
 
