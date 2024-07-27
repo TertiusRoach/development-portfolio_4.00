@@ -43,13 +43,26 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  let desktopDevice = getCriteria('<desktop>') as {
+  let desktopDevice = getElements('<desktop>') as {
+    buttons: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>';
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
-    information: {
+  };
+  let mobileDevice = getElements('<mobile>') as {
+    buttons: {
       label: 'home' | string;
       style: 'highlight' | 'downplay';
       align: 'left' | 'center' | 'right' | string;
@@ -60,29 +73,14 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       href?: string;
       state?: 'active' | '';
     }[];
-  };
-  let mobileDevice = getCriteria('<mobile>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>' | string;
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
-    information: {
-      label: 'home' | string;
-      style: 'highlight' | 'downplay';
-      align: 'left' | 'center' | 'right' | string;
-      icon: { dark: string; medium: string; light: string };
-      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-
-      text?: string;
-      href?: string;
-      state?: 'active' | '';
-    }[];
   };
-
   let width = Number(info.resolution.split('x')[0]) as Number;
   let height = Number(info.resolution.split('x')[1]) as Number;
-
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -93,7 +91,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.information} />
+            <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.buttons} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
@@ -160,11 +158,11 @@ function jQueryHome(pageName: String, blockName: string) {
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
-function getCriteria(orientation: '<desktop>' | '<mobile>') {
+function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
       return {
-        information: [
+        buttons: [
           {
             text: 'Home',
             href: '',
@@ -180,7 +178,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'skills',
-            style: 'downplay',
+            style: 'highlight',
             align: 'right',
             icon: getSVG('skills'),
             block: 'main',
@@ -200,7 +198,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'home',
-            style: 'downplay',
+            style: 'highlight',
             align: 'right',
             icon: getSVG('home'),
             block: 'main',
@@ -220,7 +218,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'contact',
-            style: 'downplay',
+            style: 'highlight',
             align: 'center',
             icon: getSVG('contact'),
             block: 'main',
@@ -240,7 +238,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'skills',
-            style: 'downplay',
+            style: 'highlight',
             align: 'left',
             icon: getSVG('skills'),
             block: 'main',
@@ -260,7 +258,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'home',
-            style: 'downplay',
+            style: 'highlight',
             align: 'left',
             icon: getSVG('home'),
             block: 'main',
@@ -280,7 +278,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: 'active',
             label: 'contact',
-            style: 'downplay',
+            style: 'highlight',
             align: 'right',
             icon: getSVG('contact'),
             block: 'main',
@@ -292,7 +290,7 @@ function getCriteria(orientation: '<desktop>' | '<mobile>') {
           buildElement: '<buttons>',
         },
       } as {
-        information: {
+        buttons: {
           label: 'home' | string;
           style: 'highlight' | 'downplay';
           align: 'left' | 'center' | 'right' | string;
