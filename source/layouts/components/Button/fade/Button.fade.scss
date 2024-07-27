@@ -13,7 +13,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     h6 {
       color: $primary-medium;
       filter: drop-shadow(0 0 8px white);
-      animation: downplayFade 1s backwards;
+      animation: downplayFade 1s forwards;
     }
     div {
       img {
@@ -105,18 +105,22 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
   @keyframes highlightFade {
     from {
+      // filter: blur(1rem);
       color: $primary-medium;
     }
     to {
+      // filter: blur(0);
       color: $primary-light;
     }
   }
 
   @keyframes downplayFade {
     from {
+      // filter: blur(1rem);
       color: $primary-light;
     }
     to {
+      // filter: blur(0);
       color: $primary-medium;
     }
   }
