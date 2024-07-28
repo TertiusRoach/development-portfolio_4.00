@@ -23,20 +23,22 @@ interface DefaultProps {
 }
 const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, stateType }) => {
   console.log(`${info.identification}-${blockName}: ${labelName} <section>`);
-  const loadTimer = 1000 as number;
-  const pageName: String = getIdentification();
+  const timer = 1000 as number;
+  const block: 'main' | string = `${blockName}`;
+  const page: String = info.identification as String;
 
-  let mobile = useMediaQuery({ query: '(orientation: portrait)' }) as boolean;
-  let desktop = useMediaQuery({ query: '(orientation: landscape)' }) as boolean;
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        jQueryDefault(pageName, blockName);
-      },
-      false
-    );
-    setTimeout(() => jQueryDefault(pageName, blockName), loadTimer);
+    let jQueryTimer = setTimeout(() => jQueryDefault(page, block), timer);
+    let jQueryLoad = function () {
+      jQueryDefault(page, block);
+    };
+
+    window.addEventListener('resize', jQueryLoad);
+
+    return () => {
+      window.removeEventListener('resize', jQueryLoad);
+      clearTimeout(jQueryTimer); // Clear timeout if necessary
+    };
   }, []);
 
   let width = info.resolution.split('x')[0];
@@ -48,7 +50,8 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, st
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktop && (
+
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <>
             {/* <ButtonFade
@@ -75,7 +78,7 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, st
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobile && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           {/* <ButtonFade
             state=""

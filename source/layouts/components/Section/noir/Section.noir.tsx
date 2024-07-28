@@ -16,7 +16,7 @@ import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
-interface HomeProps {
+interface NoirProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
@@ -26,24 +26,24 @@ interface HomeProps {
   stateType: 'active' | '';
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
-  const timer: number = 1000;
+const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateType }) => {
+  const jQueryTimer: number = 1000;
   const block: 'main' | string = `${blockName}`;
   const page: String = info.identification as String;
 
   useEffect(() => {
-    let jQueryTimer = setTimeout(() => jQueryHome(page, block), timer);
-    let jQueryLoad = function () {
-      jQueryHome(page, block);
+    let jQueryLoad = () => {
+      jQueryNoir(page, block);
     };
 
     window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryNoir(page, block), jQueryTimer);
 
     return () => {
       window.removeEventListener('resize', jQueryLoad);
-      clearTimeout(jQueryTimer); // Clear timeout if necessary
     };
   }, []);
+
   let desktopDevice = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -117,8 +117,8 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
     </section>
   );
 };
-export default SectionHome;
-function jQueryHome(pageName: String, blockName: string) {
+export default SectionNoir;
+function jQueryNoir(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
@@ -339,3 +339,32 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       }[];
   }
 }
+
+// Noir Story Idea: The City's Heart of Darkness
+// Logline:
+// A down-on-his-luck private eye is drawn into a deadly game of deception when he's hired to find a missing femme fatale, only to discover a web of corruption that reaches the city's highest levels.
+
+// Character:
+// Jack Marlowe: A world-weary private detective with a penchant for whiskey and a cynical outlook on life. He's a shadow of his former self, haunted by a past mistake that cost him his badge.
+// Setting:
+// A rain-soaked, neon-lit city with towering skyscrapers and shadowy alleyways. Think classic noir cities like Los Angeles or New York, but with a modern twist.
+// Plot:
+// Jack Marlowe, once a promising detective, now spends his days chasing deadbeats and lost pets. His life takes a drastic turn when a mysterious woman, Evelyn, approaches him. She's looking for her missing sister, a glamorous actress who vanished without a trace.
+
+// Intrigued by the case and the promise of a decent fee, Jack agrees to take it on. As he delves deeper into the glamorous world of Hollywood, he uncovers a sinister underbelly of power and corruption. Evelyn's sister, it turns out, was involved in something far more dangerous than a simple disappearance.
+
+// Jack finds himself entangled in a dangerous game of cat and mouse with a ruthless crime boss who controls the city. The line between detective and target blurs as he's forced to confront his past demons and make a choice: walk away or risk everything to bring down the empire.
+
+// Noir Elements:
+// Atmosphere: Dark, brooding, and filled with suspense. Use vivid descriptions of rain-slicked streets, smoky jazz clubs, and dimly lit offices.
+// Characters: Complex and morally ambiguous characters with hidden agendas.
+// Plot: A labyrinthine plot filled with twists and turns.
+// Dialogue: Hardboiled, cynical, and laced with double entendres.
+// Themes: Corruption, betrayal, redemption, and the corrupting influence of power.
+// Potential Story Arcs:
+// A flashback to Jack's past as a cop, revealing the mistake that led to his downfall.
+// A love interest who complicates Jack's life and puts her in danger.
+// A moral dilemma where Jack must choose between his own safety and exposing the truth.
+// Would you like to develop this idea further, or do you have a different direction in mind?
+
+// I can also provide you with examples of noir dialogue, setting descriptions, or character development to help you get started.

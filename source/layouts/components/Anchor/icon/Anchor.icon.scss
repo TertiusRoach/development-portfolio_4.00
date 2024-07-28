@@ -1,19 +1,12 @@
 // Anchor.icon.scss
 @import '../../../containers/color-palette.scss';
 
+//--|🠋| Index Colors |🠋|--//
+$primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
+$primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
+$primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
+
 @mixin anchor-effects {
-  $primary-dark: #1f3131;
-  $primary-medium: #3d6262;
-  $primary-light: #9eb0b0;
-
-  $secondary-dark: #230510;
-  $secondary-medium: #450920;
-  $secondary-light: #a2848f;
-
-  $tertiary-dark: #392319;
-  $tertiary-medium: #714631;
-  $tertiary-light: #b8a298;
-
   @keyframes fadeIn {
     from {
       opacity: 0;
