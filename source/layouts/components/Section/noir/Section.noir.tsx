@@ -95,9 +95,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.buttons} />
-          </div>
-          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
-            <span className="description">
+            <span className={`${block}-description`}>
               <p>
                 {/* Improve, 1960' mob drama */}
                 In the smoky, neon-lit underworld of the city, Jack Marlowe was a figure man, a quiet soul in a bustling
@@ -121,8 +119,9 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
               </p>
             </span>
           </div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <aside style={{ width: Number(height) - 128, height: Number(height) - 128 }} className="profile">
+            <aside className="profile">
               <img
                 src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
                 alt=""
@@ -134,11 +133,15 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2, width: Number(width) - 64, height: Number(height) - 98 }}>
             <MenuButton criteria={mobileDevice.criteria} information={mobileDevice.buttons} />
-          </div>
-          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
-            <span className="description">
+            <span className={`${block}-title`}>
+              <h6 className="display-3" data-text="Functionality">
+                Functionality
+              </h6>
+              {/* <h6 className="display-3">over Form</h6> */}
+            </span>
+            <span className={`${block}-description`}>
               <p>
                 {/* Improve, 1960' mob drama */}
                 In the smoky, neon-lit underworld of the city, Jack Marlowe was a figure man, a quiet soul in a bustling
@@ -161,21 +164,17 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
                 score, but about the careful count.
               </p>
             </span>
+          </div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1, width: Number(width) - 64, height: Number(height) - 98 }}>
             <span className="title"></span>
           </div>
-          <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <aside className="profile" style={{ width: Number(width) - 128, height: Number(height) - 192 }}>
+          <div id={`${labelName}-background`} style={{ zIndex: 0, width: Number(width) - 64, height: Number(height) - 98 }}>
+            <aside className="profile">
               <img
                 src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
                 alt=""
               />
             </aside>
-            <span className={`${block}-title`}>
-              <h6 className="display-3" data-text="Functionality">
-                Functionality
-              </h6>
-              {/* <h6 className="display-3">over Form</h6> */}
-            </span>
           </div>
         </>
       )}
