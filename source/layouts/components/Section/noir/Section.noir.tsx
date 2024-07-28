@@ -133,12 +133,6 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <span className={`${block}-title`}>
-              <h6 className="display-3" data-text="Functionality over Form">
-                Functionality over Form
-              </h6>
-            </span>
-
             <MenuButton criteria={mobileDevice.criteria} information={mobileDevice.buttons} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
@@ -174,6 +168,11 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
                 alt=""
               />
             </aside>
+            <span className={`${block}-title`}>
+              <h6 className="display-3" data-text="Functionality over Form">
+                Functionality over Form
+              </h6>
+            </span>
           </div>
         </>
       )}
