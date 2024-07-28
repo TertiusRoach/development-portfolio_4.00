@@ -8,8 +8,8 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import MenuButton from '../../Menu/button/Menu.button';
 
 interface ProjectsProps {
+  labelName: 'projects';
   stateType: 'active' | '';
-  labelName: 'projects' | string;
   blockName: 'rightbar' | 'coworkers' | 'employees' | string;
   info: {
     resolution: string;
@@ -18,23 +18,21 @@ interface ProjectsProps {
   };
 }
 
-const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
-  const loadTimer = 5000;
-  const blockName = 'rightbar';
-  const pageName = info.identification;
-
+const AsideProjects: React.FC<ProjectsProps> = ({ labelName, blockName, stateType, info }) => {
+  const jQueryTimer = 5000;
+  const block = `${blockName}` as 'rightbar';
+  const label: string = `${labelName}` as 'projects';
+  const page: String = info.identification as String;
   useEffect(() => {
-    const handleResize = () => {
-      setTimeout(() => jQueryProjects(pageName, blockName), 250);
+    let jQueryLoad = () => {
+      jQueryProjects(page, block);
     };
-
-    window.addEventListener('resize', handleResize);
-    setTimeout(() => jQueryProjects(pageName, blockName), loadTimer);
-
+    window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryProjects(page, block), jQueryTimer);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', jQueryLoad);
     };
-  }, [pageName, blockName, loadTimer]);
+  }, []);
 
   const mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
   const desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
@@ -112,7 +110,7 @@ const AsideProjects: React.FC<ProjectsProps> = ({ labelName, info }) => {
 
 export default AsideProjects;
 
-const jQueryProjects = (pageName: string, blockName: string) => {
+const jQueryProjects = (pageName: String, blockName: string) => {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     const safety = document.getElementById(`${pageName}-${blockName}`)?.className || '';

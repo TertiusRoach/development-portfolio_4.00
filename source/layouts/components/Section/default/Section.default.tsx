@@ -21,23 +21,19 @@ interface DefaultProps {
   stateType: 'active' | '';
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, stateType }) => {
-  console.log(`${info.identification}-${blockName}: ${labelName} <section>`);
-  const timer = 1000 as number;
-  const block: 'main' | string = `${blockName}`;
+const SectionDefault: React.FC<DefaultProps> = ({ labelName, blockName, stateType, info }) => {
+  const jQueryTimer = 1000 as number;
+  const block = `${blockName}` as 'main';
+  const label: string = `${labelName}` as 'default';
   const page: String = info.identification as String;
-
   useEffect(() => {
-    let jQueryTimer = setTimeout(() => jQueryDefault(page, block), timer);
-    let jQueryLoad = function () {
+    let jQueryLoad = () => {
       jQueryDefault(page, block);
     };
-
     window.addEventListener('resize', jQueryLoad);
-
+    setTimeout(() => jQueryDefault(page, block), jQueryTimer);
     return () => {
       window.removeEventListener('resize', jQueryLoad);
-      clearTimeout(jQueryTimer); // Clear timeout if necessary
     };
   }, []);
 
@@ -50,7 +46,6 @@ const SectionDefault: React.FC<DefaultProps> = ({ info, labelName, blockName, st
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <>

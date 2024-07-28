@@ -7,6 +7,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface RightbarProps {
+  labelName: 'rightbar';
   stateType: 'active' | '';
   blockName: 'rightbar' | 'coworkers' | 'employees' | string;
 
@@ -16,26 +17,26 @@ interface RightbarProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const AsideRightbar: React.FC<RightbarProps> = ({ info }) => {
-  const loadTimer: number = 5000;
-  const labelName: String = 'default';
-  const blockName: String = 'rightbar';
-  const pageName: String = info.identification;
+const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, stateType, info }) => {
+  const jQueryTimer: number = 5000;
+  const block = `${blockName}` as 'rightbar';
+  const label: string = `${labelName}` as 'rightbar';
+  const page: String = info.identification as String;
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        setTimeout(() => jQueryRightbar(pageName, blockName), 250);
-      },
-      false
-    );
-    setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
+    let jQueryLoad = () => {
+      jQueryRightbar(page, block);
+    };
+    window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryRightbar(page, block), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryLoad);
+    };
   }, []);
 
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <aside id="index-rightbar" className={`${labelName}-${blockName} collapsed`} style={{ zIndex: 5 }}>
+    <aside id="index-rightbar" className={`${label}-${blockName} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>

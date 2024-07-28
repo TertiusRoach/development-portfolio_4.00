@@ -6,6 +6,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface LeftbarProps {
+  labelName: 'leftbar';
   stateType: 'active' | '';
   blockName: 'leftbar' | 'coworkers' | 'employees' | string;
 
@@ -15,20 +16,20 @@ interface LeftbarProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const AsideLeftbar: React.FC<LeftbarProps> = ({ info }) => {
-  const loadTimer: number = 4000;
-  const labelName: String = 'default';
-  const blockName: String = 'leftbar';
-  const pageName: String = info.identification;
+const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, stateType, info }) => {
+  const jQueryTimer: number = 4000;
+  const block = `${blockName}` as 'leftbar';
+  const label: string = `${labelName}` as 'leftbar';
+  const page: String = info.identification as String;
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        setTimeout(() => jQueryLeftbar(pageName, blockName), 250);
-      },
-      false
-    );
-    setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
+    let jQueryLoad = () => {
+      jQueryLeftbar(page, block);
+    };
+    window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryLeftbar(page, block), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryLoad);
+    };
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });

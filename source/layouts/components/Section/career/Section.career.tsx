@@ -27,21 +27,20 @@ interface HomeProps {
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const SectionOverlay: React.FC<HomeProps> = ({ labelName, blockName, stateType, info }) => {
-  const loadTimer = 1000;
-  const pageName: String = getIdentification();
-  const windowDimensions = useEffect(() => {
-    let handleResize = () => {
-      setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
+  const jQueryTimer = 1000;
+  const block = `${blockName}` as 'main';
+  const label: string = `${labelName}` as 'career';
+  const page: String = info.identification as String;
+  useEffect(() => {
+    let jQueryLoad = () => {
+      jQueryCareer(page, block);
     };
-
-    window.addEventListener('resize', handleResize);
-    setTimeout(() => jQueryHome(pageName, blockName), loadTimer);
-
+    window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryCareer(page, block), jQueryTimer);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', jQueryLoad);
     };
   }, []);
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   let desktopButtons = [
     {
       state: '',
@@ -79,9 +78,8 @@ const SectionOverlay: React.FC<HomeProps> = ({ labelName, blockName, stateType, 
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 
-  let totalWidth = info.resolution.split('x')[0];
-  let totalHeight = info.resolution.split('x')[1];
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
+  let width = info.resolution.split('x')[0];
+  let height = info.resolution.split('x')[1];
   let mobileButtons = [
     {
       state: '',
@@ -121,12 +119,12 @@ const SectionOverlay: React.FC<HomeProps> = ({ labelName, blockName, stateType, 
   return (
     <section
       className={`${blockName}-${labelName}`}
-      style={{ height: `${totalHeight}px`, width: `${totalWidth}px` }}
+      style={{ height: `${height}px`, width: `${width}px` }}
       id={stateType === 'active' ? `${blockName}-active` : ''}
     >
       {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             {/* <MenuButton selectDesign="fade" buttonInfo={desktopButtons} /> */}
@@ -136,7 +134,7 @@ const SectionOverlay: React.FC<HomeProps> = ({ labelName, blockName, stateType, 
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
             {/* <MenuButton selectDesign="fade" buttonInfo={mobileButtons} /> */}
@@ -156,7 +154,7 @@ const SectionOverlay: React.FC<HomeProps> = ({ labelName, blockName, stateType, 
 };
 export default SectionOverlay;
 
-function jQueryHome(pageName: String, blockName: string) {
+function jQueryCareer(pageName: String, blockName: string) {
   const layoutsContainer = `${pageName}-${blockName}`;
   $(`#${layoutsContainer} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];

@@ -27,21 +27,19 @@ interface HomeProps {
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
-  const timer: number = 1000;
-  const block: 'main' | string = `${blockName}`;
+  let jQueryTimer: number = 1000;
+  const block = `${blockName}` as 'main';
+  const label: string = `${labelName}` as 'home';
   const page: String = info.identification as String;
 
   useEffect(() => {
-    let jQueryTimer = setTimeout(() => jQueryHome(page, block), timer);
-    let jQueryLoad = function () {
+    let jQueryLoad = () => {
       jQueryHome(page, block);
     };
-
     window.addEventListener('resize', jQueryLoad);
-
+    setTimeout(() => jQueryHome(page, block), jQueryTimer);
     return () => {
       window.removeEventListener('resize', jQueryLoad);
-      clearTimeout(jQueryTimer); // Clear timeout if necessary
     };
   }, []);
   let desktopDevice = getElements('<desktop>') as {
