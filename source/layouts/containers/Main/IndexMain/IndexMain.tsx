@@ -16,6 +16,7 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import SectionHome from '../../../components/Section/home/Section.home';
+import SectionNoir from '../../../components/Section/noir/Section.noir';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';
 import SectionDefault from '../../../components/Section/default/Section.default';
@@ -50,7 +51,8 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {desktopDevice && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
+          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
@@ -59,7 +61,8 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {mobileDevice && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
+          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
