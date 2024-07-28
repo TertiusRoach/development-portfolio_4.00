@@ -133,6 +133,12 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <span className={`${block}-title`}>
+              <h6 className="display-3" data-text="Functionality over Form">
+                Functionality over Form
+              </h6>
+            </span>
+
             <MenuButton criteria={mobileDevice.criteria} information={mobileDevice.buttons} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
@@ -159,6 +165,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
                 score, but about the careful count.
               </p>
             </span>
+            <span className="title"></span>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
             <aside className="profile">
