@@ -35,13 +35,13 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification as String;
   useEffect(() => {
-    const handleResize = () => {
-      setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
+    const jQueryStart = () => {
+      jQueryMain(pageName, blockName);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', jQueryStart);
     setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', jQueryStart);
     };
   }, []);
   return (

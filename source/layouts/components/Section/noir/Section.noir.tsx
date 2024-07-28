@@ -34,13 +34,13 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
   const page: String = info.identification as String;
 
   useEffect(() => {
-    let jQueryLoad = () => {
+    let jQueryStart = () => {
       jQueryNoir(page, block);
     };
-    window.addEventListener('resize', jQueryLoad);
+    window.addEventListener('resize', jQueryStart);
     setTimeout(() => jQueryNoir(page, block), jQueryTimer);
     return () => {
-      window.removeEventListener('resize', jQueryLoad);
+      window.removeEventListener('resize', jQueryStart);
     };
   }, []);
 
@@ -80,8 +80,10 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
-  let width = Number(info.resolution.split('x')[0]) as Number;
-  let height = Number(info.resolution.split('x')[1]) as Number;
+  let width = info.resolution.split('x')[0] as string;
+  let height = info.resolution.split('x')[1] as string;
+
+  console.log(Number(height) - 192);
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -120,7 +122,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             </span>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <aside className="profile">
+            <aside style={{ width: Number(height) - 128, height: Number(height) - 128 }} className="profile">
               <img
                 src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
                 alt=""
@@ -162,16 +164,17 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             <span className="title"></span>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <aside className="profile">
+            <aside className="profile" style={{ width: Number(width) - 128, height: Number(height) - 192 }}>
               <img
                 src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
                 alt=""
               />
             </aside>
             <span className={`${block}-title`}>
-              <h6 className="display-3" data-text="Functionality over Form">
-                Functionality over Form
+              <h6 className="display-3" data-text="Functionality">
+                Functionality
               </h6>
+              {/* <h6 className="display-3">over Form</h6> */}
             </span>
           </div>
         </>

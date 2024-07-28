@@ -20,7 +20,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     span[class*='description'] {
       color: $primary-light;
       grid-area: 5 / 1 / 13 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-      // display: none;
     }
     aside[class*='profile'] {
       display: flex;
@@ -59,7 +58,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       color: $primary-light;
       grid-area: 6 / 1 / 11 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
       filter: drop-shadow(0 0 1rem black);
-      // display: none;
     }
 
     span[class*='title'] {
