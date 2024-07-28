@@ -9,20 +9,9 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 6rem / 2rem repeat(3, 1fr) 2rem; //~~|🠊 rows / columns 🠈|~~//
-  // menu {
-  //   display: flex;
-  //   grid-area: 1 / 2 / 2 / 5;
-  //   justify-content: space-around;
-  // }
-  button[class*='home'] {
-    grid-area: 1 / 2 / 2 / 3;
-  }
-  button[class*='skills'] {
-    grid-area: 1 / 3 / 2 / 4;
-  }
-  button[class*='rightbar'] {
-    grid-area: 1 / 4 / 2 / 5;
+  grid-template: 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  menu {
+    grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
   }
 }
 

@@ -44,12 +44,10 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  let mobileDevice = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice = useMediaQuery({ query: '(orientation: landscape)' });
   return (
     <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
           {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}
@@ -59,7 +57,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
           {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}

@@ -32,7 +32,18 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   }, []);
   let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
   let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  return <AsideProjects labelName="projects" stateType="" blockName={`${blockName}`} info={info} />;
+  return (
+    <AsideProjects
+      labelName="projects"
+      stateType=""
+      blockName={`${blockName}`}
+      info={{
+        resolution: `${getResolution()}`,
+        orientation: `${getOrientation()}`,
+        identification: `${getIdentification()}`,
+      }}
+    />
+  );
 };
 export default IndexRightbar;
 

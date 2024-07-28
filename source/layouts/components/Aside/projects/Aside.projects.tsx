@@ -18,7 +18,7 @@ interface ProjectsProps {
   };
 }
 
-const AsideProjects: React.FC<ProjectsProps> = ({ labelName, blockName, stateType, info }) => {
+const AsideProjects: React.FC<ProjectsProps> = ({ labelName, blockName, info }) => {
   const jQueryTimer = 5000;
   const block = `${blockName}` as 'rightbar';
   const label: string = `${labelName}` as 'projects';

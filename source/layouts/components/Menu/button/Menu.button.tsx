@@ -55,7 +55,6 @@ const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
   );
   // }
 };
-
 export default MenuButton;
 
 function setAxis(

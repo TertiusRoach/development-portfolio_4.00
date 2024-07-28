@@ -16,35 +16,6 @@ import showSection from '../../../../modules/utilities/showSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
-// Noir Story Idea: The City's Heart of Darkness
-// Logline:
-// A down-on-his-luck private eye is drawn into a deadly game of deception when he's hired to find a missing femme fatale, only to discover a web of corruption that reaches the city's highest levels.
-
-// Character:
-// Jack Marlowe: A world-weary private detective with a penchant for whiskey and a cynical outlook on life. He's a shadow of his former self, haunted by a past mistake that cost him his badge.
-// Setting:
-// A rain-soaked, neon-lit city with towering skyscrapers and shadowy alleyways. Think classic noir cities like Los Angeles or New York, but with a modern twist.
-// Plot:
-// Jack Marlowe, once a promising detective, now spends his days chasing deadbeats and lost pets. His life takes a drastic turn when a mysterious woman, Evelyn, approaches him. She's looking for her missing sister, a glamorous actress who vanished without a trace.
-
-// Intrigued by the case and the promise of a decent fee, Jack agrees to take it on. As he delves deeper into the glamorous world of Hollywood, he uncovers a sinister underbelly of power and corruption. Evelyn's sister, it turns out, was involved in something far more dangerous than a simple disappearance.
-
-// Jack finds himself entangled in a dangerous game of cat and mouse with a ruthless crime boss who controls the city. The line between detective and target blurs as he's forced to confront his past demons and make a choice: walk away or risk everything to bring down the empire.
-
-// Noir Elements:
-// Atmosphere: Dark, brooding, and filled with suspense. Use vivid descriptions of rain-slicked streets, smoky jazz clubs, and dimly lit offices.
-// Characters: Complex and morally ambiguous characters with hidden agendas.
-// Plot: A labyrinthine plot filled with twists and turns.
-// Dialogue: Hardboiled, cynical, and laced with double entendres.
-// Themes: Corruption, betrayal, redemption, and the corrupting influence of power.
-// Potential Story Arcs:
-// A flashback to Jack's past as a cop, revealing the mistake that led to his downfall.
-// A love interest who complicates Jack's life and puts her in danger.
-// A moral dilemma where Jack must choose between his own safety and exposing the truth.
-// Would you like to develop this idea further, or do you have a different direction in mind?
-
-// I can also provide you with examples of noir dialogue, setting descriptions, or character development to help you get started.
-
 interface NoirProps {
   labelName: 'noir';
   stateType: 'active' | '';
@@ -105,7 +76,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
     }[];
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
-      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+      buildDesign: '<fade>' | '<icon>' | '<text>';
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
@@ -123,23 +94,79 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.buttons} />
           </div>
-          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
-          <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
+            <span className="description">
+              <p>
+                {/* Improve, 1960' mob drama */}
+                In the smoky, neon-lit underworld of the city, Jack Marlowe was a figure man, a quiet soul in a bustling
+                throng. While others chased the big dream, Marlowe was more interested in the cold facts. A lone wolf in a
+                pack of hustlers, he navigated the shadowy alleys of the newfangled computing world, his mind a keen blade
+                for numbers and logic.
+                <br />
+                <br />
+                {/* Humor is key */}
+                Marlowe was a minimalist, a man who believed in plain talk and straight deals. In a world of flash and
+                promises, he was the steady hand, crafting sound solutions from raw data. From Wall Street titans to
+                small-time gamblers, they sought Marlowe when the figures didn't jive. He was the fixer, the problem solver,
+                the man who could turn a losing hand into a winning play.
+                <br />
+                <br />
+                {/* End with something recruiters want to hear */}
+                With a mind like a steel trap, Marlowe could spot a bad bet from across a crowded room. His reputation as a
+                numbers wizard grew, and soon he was the go-to man for anyone wanting to stay ahead of the curve. In a world
+                of quick riches and sudden falls, Marlowe was the rock, the man who knew that it wasn't always about the big
+                score, but about the careful count.
+              </p>
+            </span>
+          </div>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
+            <aside className="profile">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
+                alt=""
+              />
+            </aside>
+          </div>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <div style={{ zIndex: 2 }} id={`${labelName}-foreground`}>
-            {/* <MenuButton selectInfo={mobileButtons} selectAxis="horizontal" selectDesign="fade" /> */}
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <MenuButton criteria={mobileDevice.criteria} information={mobileDevice.buttons} />
           </div>
-          <div style={{ zIndex: 1 }} id={`${labelName}-midground`}>
-            <span className="home-title"></span>
-            <span className="home-subject"></span>
-            <span className="home-description"></span>
+          <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
+            <span className="description">
+              <p>
+                {/* Improve, 1960' mob drama */}
+                In the smoky, neon-lit underworld of the city, Jack Marlowe was a figure man, a quiet soul in a bustling
+                throng. While others chased the big dream, Marlowe was more interested in the cold facts. A lone wolf in a
+                pack of hustlers, he navigated the shadowy alleys of the newfangled computing world, his mind a keen blade
+                for numbers and logic.
+                <br />
+                <br />
+                {/* Humor is key */}
+                Marlowe was a minimalist, a man who believed in plain talk and straight deals. In a world of flash and
+                promises, he was the steady hand, crafting sound solutions from raw data. From Wall Street titans to
+                small-time gamblers, they sought Marlowe when the figures didn't jive. He was the fixer, the problem solver,
+                the man who could turn a losing hand into a winning play.
+                <br />
+                <br />
+                {/* End with something recruiters want to hear */}
+                With a mind like a steel trap, Marlowe could spot a bad bet from across a crowded room. His reputation as a
+                numbers wizard grew, and soon he was the go-to man for anyone wanting to stay ahead of the curve. In a world
+                of quick riches and sudden falls, Marlowe was the rock, the man who knew that it wasn't always about the big
+                score, but about the careful count.
+              </p>
+            </span>
           </div>
-          <div style={{ zIndex: 0 }} id={`${labelName}-background`}>
-            <span className="home-profile"></span>
+          <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
+            <aside className="profile">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
+                alt=""
+              />
+            </aside>
           </div>
         </>
       )}
@@ -194,142 +221,51 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       return {
         buttons: [
           {
-            text: 'Home',
             href: '',
-            state: 'active',
-            label: 'home',
-            style: 'downplay',
+            state: '',
             align: 'left',
-            icon: getSVG('home'),
             block: 'main',
-          },
-          {
-            text: 'Skills',
-            href: '',
-            state: 'active',
-            label: 'skills',
-            style: 'highlight',
-            align: 'right',
-            icon: getSVG('skills'),
-            block: 'main',
-          },
-          {
-            text: 'Contact',
-            href: '',
-            state: 'active',
-            label: 'contact',
+            label: 'leftbar',
             style: 'downplay',
+            text: 'View Leftbar',
+            icon: getSVG('leftbar'),
+          },
+          {
+            href: '',
+            state: '',
+            block: 'main',
             align: 'center',
-            icon: getSVG('contact'),
-            block: 'main',
+            label: 'overlay',
+            style: 'highlight',
+            text: 'View Overlay',
+            icon: getSVG('overlay'),
           },
           {
-            text: 'Home',
             href: '',
-            state: 'active',
-            label: 'home',
-            style: 'highlight',
+            block: 'main',
             align: 'right',
-            icon: getSVG('home'),
-            block: 'main',
-          },
-          {
-            text: 'Skills',
-            href: '',
             state: 'active',
-            label: 'skills',
             style: 'downplay',
-            align: 'right',
-            icon: getSVG('skills'),
-            block: 'main',
-          },
-          {
-            text: 'Contact',
-            href: '',
-            state: 'active',
-            label: 'contact',
-            style: 'highlight',
-            align: 'center',
-            icon: getSVG('contact'),
-            block: 'main',
-          },
-          {
-            text: 'Home',
-            href: '',
-            state: 'active',
-            label: 'home',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('home'),
-            block: 'main',
-          },
-          {
-            text: 'Skills',
-            href: '',
-            state: 'active',
-            label: 'skills',
-            style: 'highlight',
-            align: 'left',
-            icon: getSVG('skills'),
-            block: 'main',
-          },
-          {
-            text: 'Contact',
-            href: '',
-            state: 'active',
-            label: 'contact',
-            style: 'downplay',
-            align: 'center',
-            icon: getSVG('contact'),
-            block: 'main',
-          },
-          {
-            text: 'Home',
-            href: '',
-            state: 'active',
-            label: 'home',
-            style: 'highlight',
-            align: 'left',
-            icon: getSVG('home'),
-            block: 'main',
-          },
-          {
-            text: 'Skills',
-            href: '',
-            state: 'active',
-            label: 'skills',
-            style: 'downplay',
-            align: 'center',
-            icon: getSVG('skills'),
-            block: 'main',
-          },
-          {
-            text: 'Contact',
-            href: '',
-            state: 'active',
-            label: 'contact',
-            style: 'highlight',
-            align: 'right',
-            icon: getSVG('contact'),
-            block: 'main',
+            label: 'rightbar',
+            text: 'View Rightbar',
+            icon: getSVG('rightbar'),
           },
         ],
         criteria: {
           buildDesign: '<fade>',
-          buildAxis: '<vertical>',
+          buildAxis: '<horizontal>',
           buildElement: '<buttons>',
         },
       } as {
         buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
           label: 'home' | string;
           style: 'highlight' | 'downplay';
           align: 'left' | 'center' | 'right' | string;
           icon: { dark: string; medium: string; light: string };
           block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-
-          text?: string;
-          href?: string;
-          state?: 'active' | '';
         }[];
         criteria: {
           buildAxis: '<vertical>' | '<horizontal>';
@@ -338,33 +274,60 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
         };
       };
     case '<mobile>':
-      return [
-        {
-          state: '',
-          align: 'left',
-          label: 'career',
-          block: 'overlay',
-          text: 'My Career',
-          style: 'downplay',
-          icon: getSVG('career') as { dark: 'dark'; medium: 'medium'; light: 'light' },
+      return {
+        buttons: [
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            block: 'main',
+            label: 'leftbar',
+            style: 'downplay',
+            text: 'View Leftbar',
+            icon: getSVG('leftbar'),
+          },
+          {
+            href: '',
+            state: '',
+            block: 'main',
+            align: 'center',
+            label: 'overlay',
+            style: 'highlight',
+            text: 'View Overlay',
+            icon: getSVG('overlay'),
+          },
+          {
+            href: '',
+            block: 'main',
+            align: 'right',
+            state: 'active',
+            style: 'downplay',
+            label: 'rightbar',
+            text: 'View Rightbar',
+            icon: getSVG('rightbar'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<horizontal>',
+          buildElement: '<buttons>',
         },
-        {
-          state: '',
-          block: 'main',
-          align: 'right',
-          label: 'contact',
-          style: 'downplay',
-          text: 'Contact Me',
-          icon: getSVG('contact') as { dark: 'dark'; medium: 'medium'; light: 'light' },
-        },
-      ] as {
-        text: string;
-        state: 'active' | '';
-        label: 'rightbar' | string;
-        style: 'highlight' | 'downplay';
-        align: 'left' | 'center' | 'right' | string;
-        icon: { dark: string; medium: string; light: string };
-        block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-      }[];
+      } as {
+        buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
   }
 }

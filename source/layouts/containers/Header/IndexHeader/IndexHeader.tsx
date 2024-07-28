@@ -18,19 +18,19 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexHeader: React.FC<InfoProps> = () => {
-  const jQueryTimer: number = 0;
-  const blockName: String = 'header';
-  const pageName: String = getIdentification();
+const IndexHeader: React.FC<InfoProps> = ({ info }) => {
+  const loadTimer: number = 0;
+  const blockName = 'header';
+  const pageName = info.identification as String;
   useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
-      },
-      false
-    );
-    setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
+    const handleResize = () => {
+      setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+    };
+    window.addEventListener('resize', handleResize);
+    setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
   let desktopDevice = getElements('<desktop>') as {
     criteria: {
