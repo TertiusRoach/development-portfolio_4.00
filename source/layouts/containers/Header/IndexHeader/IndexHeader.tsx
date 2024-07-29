@@ -100,138 +100,35 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       return {
         information: [
           {
-            text: 'Home',
             href: '',
-            state: 'active',
+            text: 'Home',
             label: 'home',
-            style: 'downplay',
             align: 'left',
-            icon: getSVG('home'),
+            state: 'active',
             block: 'header',
+            style: 'downplay',
+            icon: getSVG('home'),
           },
-          // -- //
           {
-            text: 'Skills',
             href: '',
             state: '',
+            text: 'Skills',
             label: 'skills',
-            style: 'highlight',
             align: 'center',
-            icon: getSVG('skills'),
             block: 'header',
+            style: 'downplay',
+            icon: getSVG('skills'),
           },
-          // -- //
           {
-            text: 'Contact',
             href: '',
             state: '',
-            label: 'contact',
-            style: 'downplay',
             align: 'right',
-            icon: getSVG('contact'),
-            block: 'header',
-          },
-          // -- //
-          // {
-          //   text: 'Home',
-          //   href: '',
-          //   state: 'active',
-          //   label: 'home',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('home'),
-          //   block: 'header',
-          // },
-          // -- //
-          // {
-          //   text: 'Skills',
-          //   href: '',
-          //   state: '',
-          //   label: 'skills',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('skills'),
-          //   block: 'header',
-          // },
-          // -- //
-          // {
-          //   text: 'Contact',
-          //   href: '',
-          //   state: '',
-          //   label: 'contact',
-          //   style: 'downplay',
-          //   align: 'left',
-          //   icon: getSVG('contact'),
-          //   block: 'header',
-          // },
-          // -- //
-          /*
-          {
-            text: 'Home',
-            href: '',
-            state: 'active',
-            label: 'home',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('home'),
-            block: 'header',
-          },
-                // -- //
-          {
-            text: 'Skills',
-            href: '',
-            state: '',
-            label: 'skills',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('skills'),
-            block: 'header',
-          },
-                // -- //
-          {
             text: 'Contact',
-            href: '',
-            state: '',
+            block: 'header',
             label: 'contact',
             style: 'downplay',
-            align: 'left',
             icon: getSVG('contact'),
-            block: 'header',
           },
-                // -- //
-          {
-            text: 'Home',
-            href: '',
-            state: 'active',
-            label: 'home',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('home'),
-            block: 'header',
-          },
-                // -- //
-          {
-            text: 'Skills',
-            href: '',
-            state: '',
-            label: 'skills',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('skills'),
-            block: 'header',
-          },
-                // -- //
-          {
-            text: 'Contact',
-            href: '',
-            state: '',
-            label: 'contact',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('contact'),
-            block: 'header',
-          },
-          */
         ],
         criteria: {
           buildAxis: '<horizontal>',

@@ -44,7 +44,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
     };
   }, []);
 
-  let desktopDevice = getElements('<desktop>') as {
+  let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
       style: 'highlight' | 'downplay';
@@ -62,7 +62,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
-  let mobileDevice = getElements('<mobile>') as {
+  let mobileElements = getElements('<mobile>') as {
     buttons: {
       label: 'home' | string;
       style: 'highlight' | 'downplay';
@@ -82,8 +82,6 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
   };
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
-
-  console.log(Number(height) - 192);
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -94,7 +92,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.buttons} />
+            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
             <span className={`${block}-description`}>
               <p>
                 {/* Improve, 1960' mob drama */}
@@ -134,7 +132,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2, width: Number(width) - 64, height: Number(height) - 98 }}>
-            <MenuButton criteria={mobileDevice.criteria} information={mobileDevice.buttons} />
+            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
             <span className={`${block}-title`}>
               <h6 className="display-3" data-text="Functionality">
                 Functionality
@@ -182,6 +180,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
   );
 };
 export default SectionNoir;
+
 function jQueryNoir(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} section`).on('click', function (event) {
@@ -339,3 +338,19 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
+
+// Possible Phrases
+// Functionality over form over speed: This prioritizes core features and usability over aesthetics and quick development time.
+// Functionality over form over perfection: Similar to the first option, but emphasizes getting a working product out quickly rather than striving for absolute flawlessness.
+// Functionality over form over features: This suggests focusing on essential features rather than adding unnecessary ones, even if it means sacrificing some design elements.
+// The Core Idea
+// Regardless of the exact wording, the underlying principle is clear: prioritize core functionality over visual appeal or additional features. This mindset is often adopted in agile development methodologies, where the goal is to deliver a minimum viable product (MVP) quickly and iterate based on user feedback.
+
+// Would you like to provide more context about where you heard this phrase? This could help narrow down the possibilities and provide a more accurate interpretation.
+
+// For example:
+
+// Was it in a specific industry or field?
+// What was the overall topic of the conversation?
+// Who said it?
+// Any additional details would be helpful.

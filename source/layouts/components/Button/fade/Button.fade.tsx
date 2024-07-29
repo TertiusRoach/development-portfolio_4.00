@@ -58,9 +58,12 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
           <div style={{ zIndex: 2 }} className="button-foreground">
             <h6>{text}</h6>
           </div>
-          <div style={{ zIndex: 1 }} className="button-midground"></div>
-          <div style={{ zIndex: 0 }} className="button-background">
+          <div style={{ zIndex: 1 }} className="button-midground">
             <img className={`${align} primary-dark`} src={icon.dark} alt={text} />
+            <img className={`${align} primary-light`} src={icon.light} alt={text} />
+          </div>
+          <div style={{ zIndex: 0 }} className="button-background">
+            <img className={`${align} primary-medium`} src={icon.medium} alt={text} />
           </div>
         </>
       )}

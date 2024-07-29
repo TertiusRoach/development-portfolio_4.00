@@ -8,7 +8,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
 // Mixins for fade effects
 @mixin fade-design {
-  button[class*='-downplay-'] {
+  button[class*='downplay'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px white);
       h3,
@@ -21,7 +21,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-  button[class*='-highlight-'] {
+  button[class*='highlight'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px black);
       h3,
@@ -35,7 +35,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
 }
-
 @mixin fade-effects {
   button {
     background: none;
@@ -48,7 +47,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
 
-  button[class*='-downplay-'] {
+  button[class*='downplay'] {
     div {
       img.primary-light {
         opacity: 0;
@@ -64,7 +63,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
 
-  button[class*='-highlight-'] {
+  button[class*='highlight'] {
     div {
       img.primary-medium {
         opacity: 0;
@@ -90,7 +89,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       filter: blur(0);
     }
   }
-
   @keyframes fadeOut {
     from {
       opacity: 1;
@@ -104,15 +102,14 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
   @keyframes highlightFade {
     from {
-      // filter: blur(1rem);
+      filter: blur(1rem);
       color: $primary-medium;
     }
     to {
-      // filter: blur(0);
+      filter: blur(0);
       color: $primary-light;
     }
   }
-
   @keyframes downplayFade {
     from {
       // filter: blur(1rem);
@@ -241,9 +238,6 @@ body {
           h6 {
             width: 4rem;
             cursor: pointer;
-          }
-          img {
-            // display: flex;
           }
         }
       }
