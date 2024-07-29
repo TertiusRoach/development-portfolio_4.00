@@ -73,9 +73,10 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <header className={`${label}-foreground`} style={{ zIndex: 2 }}></header>
-          <div className={`${label}-background`} style={{ zIndex: 0 }}>
+          <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
             <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+          </header>
+          <div className={`${label}-background`} style={{ zIndex: 0 }}>
             <section>
               {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
@@ -136,7 +137,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             state: '',
             label: 'close',
             align: 'center',
-            block: 'rightbar',
+            block: 'leftbar',
             style: 'downplay',
             text: 'Exit Left',
             icon: getSVG('close'),
@@ -172,7 +173,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             state: '',
             label: 'close',
             align: 'center',
-            block: 'rightbar',
+            block: 'leftbar',
             style: 'downplay',
             text: 'Exit Left',
             icon: getSVG('close'),
@@ -202,8 +203,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
-
-let jQueryLeftbar = function (pageName: String, blockName: String) {
+function jQueryLeftbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
@@ -217,4 +217,4 @@ let jQueryLeftbar = function (pageName: String, blockName: String) {
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-};
+}

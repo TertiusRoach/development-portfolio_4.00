@@ -69,7 +69,6 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
-
   return (
     <aside id={`${page}-${block}`} className={`${label}-${block} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
@@ -124,15 +123,6 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
           </div>
           <footer className={`${label}-midground`} style={{ zIndex: 1 }}>
             <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
-            {/* <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            /> */}
           </footer>
         </>
       )}
@@ -152,7 +142,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             align: 'center',
             block: 'rightbar',
             style: 'downplay',
-            text: 'Exit Rightbar',
+            text: 'Exit Right',
             icon: getSVG('close'),
           },
         ],
@@ -188,7 +178,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             align: 'center',
             block: 'rightbar',
             style: 'downplay',
-            text: 'Exit Rightbar',
+            text: 'Exit Right',
             icon: getSVG('close'),
           },
         ],
@@ -216,7 +206,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
-let jQueryRightbar = function (pageName: String, blockName: String) {
+function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
@@ -230,4 +220,4 @@ let jQueryRightbar = function (pageName: String, blockName: String) {
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-};
+}

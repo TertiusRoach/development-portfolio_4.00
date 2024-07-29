@@ -48,15 +48,12 @@ $turquoise-light: #a2c4c9;
 @mixin desktop-landscape {
   display: grid;
   grid-template: 4rem 1fr 4rem / 1fr 1fr;
-  // align-content: space-around; // Add this to vertically align content like space-around in Flexbox
 
   header[class*='foreground'] {
-    button {
-      width: 100%;
-      height: 100%;
-    }
-    // background: rgba($green-neon, 0.75);
-    // grid-area: 1 / 1 / 2 / 2;
+    // button {
+    //   width: 100%;
+    //   height: 100%;
+    // }
   }
 
   div[class*='background'] {
@@ -158,7 +155,7 @@ $turquoise-light: #a2c4c9;
 
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2;
-    // background: rgba($green-neon, 0.25);
+    background: rgba($green-neon, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -306,12 +303,3 @@ aside[id*='leftbar'] {
     @include desktop-landscape();
   }
 }
-// header[id*='header'],
-// main[id*='main'],
-// footer[id*='footer'] {
-//   div[class='disabled'],
-//   section[class='disabled'] {
-//     $blur-radius: 5px; // Or any desired value
-//     filter: blur($blur-radius);
-//   }
-// }

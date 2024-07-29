@@ -18,7 +18,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
 
-  button[class*='downplay'] {
+  button[class*='-downplay-'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px white);
       h3,
@@ -31,7 +31,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-  button[class*='highlight'] {
+  button[class*='-highlight-'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px black);
       h3,
@@ -56,7 +56,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-  button[class*='downplay'] {
+  button[class*='-downplay-'] {
     div {
       animation: downplayFade 1s forwards;
       img.primary-medium {
@@ -74,7 +74,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-  button[class*='highlight'] {
+  button[class*='-highlight-'] {
     div {
       animation: highlightFade 1s forwards;
       img.primary-medium {
@@ -138,7 +138,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 @mixin fade-placement {
   button {
     display: flex;
-    &[class*='left'] {
+    &[class*='-left'] {
       overflow: hidden;
       position: relative;
       align-items: center;
@@ -168,7 +168,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         }
       }
     }
-    &[class*='center'] {
+    &[class*='-center'] {
       position: relative;
       align-items: center;
       justify-content: center;
@@ -197,7 +197,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         }
       }
     }
-    &[class*='right'] {
+    &[class*='-right'] {
       position: relative;
       align-items: center;
       justify-content: flex-end;

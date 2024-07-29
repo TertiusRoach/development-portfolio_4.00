@@ -49,116 +49,21 @@ $turquoise-light: #a2c4c9;
   display: grid;
   // align-content: space-around; // Add this to vertically align content like space-around in Flexbox
   grid-template: 4rem 1fr 4rem / repeat(2, 1fr);
-
   header[class*='foreground'] {
-    grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
-    menu {
-      // button {
-      //   // width: 100%;
-      //   // height: 100%;
-      // }
-    }
-
-    background: rgba($green-neon, 0.75);
   }
+
   div[class*='background'] {
-    display: inherit; //~~|🠈 display: grid 🠈|~~//
-    grid-template: inherit; //~~|🠈 4rem 1fr 4rem / 1fr 1fr; 🠈|~~//
+    display: inherit;
+    grid-template: inherit;
     grid-area: 1 / 1 / 4 / 3;
-    menu {
-      display: inherit; //~~|🠈 display: grid 🠈|~~//
-      grid-area: 2 / 2 / 3 / 3; //~~|🠈 row-start / column-start / row-end / column-end; 🠈|~~//
-      background: rgba(darkgreen, 0.5);
-      grid-template: repeat(6, 1fr) / 3rem 1fr 3rem;
-      align-content: space-around; // Add this to align the grid items vertically
-
-      a {
-        color: inherit; //~~|🠈 color: $primary-medium 🠈|~~//
-        display: inherit; //~~|🠈 display: grid 🠈|~~//
-        grid-column: 2 / 3;
-        text-decoration: none;
-        height: 100%; // Ensure the <a> elements take full height of their grid row
-        h3,
-        img {
-          display: flex;
-          align-items: center; // Center align items vertically within the <a> elements
-          justify-content: center; // Center align items horizontally within the <a> elements
-        }
-        h3 {
-          padding: 4px;
-        }
-      }
-
-      a:nth-child(1) {
-        grid-area: 1 / 2 / 2 / 3;
-        background: rgba($red-dark, 0.25);
-      }
-      a:nth-child(2) {
-        grid-area: 2 / 2 / 3 / 3;
-        background: rgba($blue-dark, 0.25);
-      }
-      a:nth-child(3) {
-        grid-area: 3 / 2 / 4 / 3;
-        background: rgba($purple-dark, 0.25);
-      }
-      a:nth-child(4) {
-        grid-area: 4 / 2 / 5 / 3;
-        background: rgba($orange-dark, 0.25);
-      }
-      a:nth-child(5) {
-        grid-area: 5 / 2 / 6 / 3;
-        background: rgba($pink-dark, 0.25);
-      }
-      a:nth-child(6) {
-        grid-area: 6 / 2 / 7 / 3;
-        background: rgba($turquoise-dark, 0.25);
-      }
-
-      .left {
-        grid-template-columns: repeat(2, auto) 1fr;
-        h3,
-        img {
-          justify-content: flex-start;
-          &h3 {
-            grid-column: 2 / 3;
-          }
-          &img {
-            margin-left: 3rem;
-            grid-column: 1 / 2;
-          }
-        }
-      }
-      .right {
-        grid-template-columns: 1fr repeat(2, auto);
-        h3,
-        img {
-          justify-content: flex-end;
-          &h3 {
-            grid-column: 2 / 3;
-          }
-          &img {
-            margin-right: 3rem;
-            grid-column: 3 / 4;
-          }
-        }
-      }
-      .center {
-        grid-template-columns: 1fr auto 1fr;
-        h3,
-        img {
-          grid-column: 2 / 3;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
     section {
-      grid-area: 1 / 1 / 4 / 2;
+      grid-area: 1 / 2 / 4 / 3;
       background: rgba($green-dark, 0.5);
     }
   }
+
   footer[class*='midground'] {
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: 3 / 1 / 4 / 2;
     background: rgba($green-neon, 0.25);
   }
 }
@@ -266,14 +171,16 @@ $turquoise-light: #a2c4c9;
     }
   }
   header[class*='foreground'] {
-    button {
-      width: 100%;
-      height: 100%;
-    }
-    grid-area: 1 / 1 / 2 / 2;
-    background: rgba($green-neon, 0.75);
-  }
+    menu {
+      grid-area: 1 / 1 / 2 / 2;
 
+      button {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    // background: rgba($green-neon, 0.75);
+  }
   footer[class*='midground'] {
     grid-area: 3 / 1 / 4 / 2;
     background: rgba($green-neon, 0.75);
@@ -283,21 +190,11 @@ $turquoise-light: #a2c4c9;
 aside[id*='rightbar'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4;
-
   //--|🠋| Index Colors |🠋|--//
   @mixin index-colors {
     $primary-dark: #000000;
     $primary-medium: #737373;
     $primary-light: #ffffff;
-  }
-
-  &[class*='collapsed'] {
-    transition: clip-path 0.25s;
-    clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
-  }
-  &[class*='expanded'] {
-    transition: clip-path 0.25s;
-    clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
   }
 
   //--|🠋 Mobile (Portrait) 🠋|--//
@@ -307,5 +204,14 @@ aside[id*='rightbar'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+  }
+
+  &[class*='collapsed'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
+  }
+  &[class*='expanded'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
   }
 }
