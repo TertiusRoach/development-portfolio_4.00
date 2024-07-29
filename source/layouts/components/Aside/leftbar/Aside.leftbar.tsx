@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
+import MenuButton from '../../Menu/button/Menu.button';
 
 interface LeftbarProps {
   labelName: 'default';
@@ -31,24 +32,52 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
       window.removeEventListener('resize', jQueryLoad);
     };
   }, []);
+  let desktopElements = getElements('<desktop>') as {
+    buttons: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+  };
+  let mobileElements = getElements('<mobile>') as {
+    buttons: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+  };
   return (
     <aside id={`${page}-${block}`} className={`${label}-${block} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
-            {/* <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            /> */}
-          </header>
+          <header className={`${label}-foreground`} style={{ zIndex: 2 }}></header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
-            <menu>
+            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <section>
+              {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
                 <h3>LinkedIn</h3>
                 <img src={getSVG('linkedin').medium as string} alt="linkedin" />
@@ -61,8 +90,8 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
                 <h3>YouTube</h3>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
-            </menu>
-            <section></section>
+            </menu> */}
+            </section>
           </div>
           <footer className={`${label}-midground`} style={{ zIndex: 1 }}></footer>
         </>
@@ -89,15 +118,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
             <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
-            {/* <ButtonFade
-              text=""
-              state=""
-              label="close"
-              align="center"
-              block="rightbar"
-              style="highlight"
-              icon={getSVG('close') as { dark: string; medium: string; light: string }}
-            /> */}
+            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
           </footer>
         </>
       )}
@@ -105,18 +126,95 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
   );
 };
 export default AsideLeftbar;
+function getElements(orientation: '<desktop>' | '<mobile>') {
+  switch (orientation) {
+    case '<desktop>':
+      return {
+        buttons: [
+          {
+            href: '',
+            state: '',
+            label: 'close',
+            align: 'center',
+            block: 'rightbar',
+            style: 'downplay',
+            text: 'Exit Left',
+            icon: getSVG('close'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<horizontal>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    case '<mobile>':
+      return {
+        buttons: [
+          {
+            href: '',
+            state: '',
+            label: 'close',
+            align: 'center',
+            block: 'rightbar',
+            style: 'downplay',
+            text: 'Exit Left',
+            icon: getSVG('close'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<horizontal>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+  }
+}
+
 let jQueryLeftbar = function (pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[class*="close"]`).on('click', () => {
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
 
-      $(`#${pageName}-header`).removeClass('disabled');
-      $(`#${pageName}-main section`).removeClass('disabled');
-      $(`#${pageName}-footer`).removeClass('disabled');
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 };

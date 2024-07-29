@@ -43,7 +43,6 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       window.removeEventListener('resize', jQueryStart);
     };
   }, []);
-
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -179,7 +178,6 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
   );
 };
 export default SectionNoir;
-
 function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':

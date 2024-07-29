@@ -7,6 +7,17 @@ $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
 $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
 @mixin fade-design {
+  button {
+    div {
+      cursor: default;
+      h3,
+      h6 {
+        width: 4rem;
+        cursor: pointer;
+      }
+    }
+  }
+
   button[class*='downplay'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px white);
@@ -218,7 +229,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   }
 }
 
-// Main styles
 body {
   header,
   footer {
@@ -232,16 +242,6 @@ body {
   aside,
   section {
     menu {
-      button {
-        div {
-          cursor: default;
-          h3,
-          h6 {
-            width: 4rem;
-            cursor: pointer;
-          }
-        }
-      }
       @include fade-design();
       @include fade-effects();
       @include fade-placement();

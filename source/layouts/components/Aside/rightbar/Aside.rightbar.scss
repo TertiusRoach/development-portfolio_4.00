@@ -52,9 +52,11 @@ $turquoise-light: #a2c4c9;
 
   header[class*='foreground'] {
     grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / column-start / row-end / column-end 🠈|~~//
-    button {
-      width: 100%;
-      height: 100%;
+    menu {
+      // button {
+      //   // width: 100%;
+      //   // height: 100%;
+      // }
     }
 
     background: rgba($green-neon, 0.75);
@@ -291,13 +293,8 @@ aside[id*='rightbar'] {
 
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
-    clip-path: inset(0% 100% 0% 0%);
-  }
-  &[class*='collapsed'] {
-    transition: clip-path 0.25s;
     clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
   }
-  /* Target elements with a class containing 'expanded' */
   &[class*='expanded'] {
     transition: clip-path 0.25s;
     clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
@@ -312,12 +309,3 @@ aside[id*='rightbar'] {
     @include desktop-landscape();
   }
 }
-// header[id*='header'],
-// main[id*='main'],
-// footer[id*='footer'] {
-//   div[class='disabled'],
-//   section[class='disabled'] {
-//     $blur-radius: 5px; // Or any desired value
-//     filter: blur($blur-radius);
-//   }
-// }
