@@ -17,7 +17,6 @@ interface FadeProps {
 }
 const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
-
   let className = `${block}-${label} ${align}`;
   let setActive = state === 'active' ? `${block}-active` : '';
   let icon = getSVG(`${label}`) as { dark: string; medium: string; light: string };
@@ -34,7 +33,6 @@ const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, al
       mouseLeave = () => setStyle('downplay');
       break;
   }
-  // console.log(href);
   return (
     <a
       href={href}
@@ -48,7 +46,6 @@ const AnchorFade: React.FC<FadeProps> = ({ state, target, href, style, block, al
     </a>
   );
 };
-
 function renderAnchor(
   text: string | undefined,
   style: 'downplay' | 'highlight',

@@ -44,11 +44,10 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
           </div>
           <div style={{ zIndex: 1 }} className="button-midground">
             <img className={`${align} primary-dark`} src={icon.dark} alt={text} />
+            <img className={`${align} primary-medium`} src={icon.medium} alt={text} />
             <img className={`${align} primary-light`} src={icon.light} alt={text} />
           </div>
-          <div style={{ zIndex: 0 }} className="button-background">
-            <img className={`${align} primary-medium`} src={icon.medium} alt={text} />
-          </div>
+          <div style={{ zIndex: 0 }} className="button-background"></div>
         </>
       )}
 
@@ -60,11 +59,10 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
           </div>
           <div style={{ zIndex: 1 }} className="button-midground">
             <img className={`${align} primary-dark`} src={icon.dark} alt={text} />
+            <img className={`${align} primary-medium`} src={icon.medium} alt={text} />
             <img className={`${align} primary-light`} src={icon.light} alt={text} />
           </div>
-          <div style={{ zIndex: 0 }} className="button-background">
-            <img className={`${align} primary-medium`} src={icon.medium} alt={text} />
-          </div>
+          <div style={{ zIndex: 0 }} className="button-background"></div>
         </>
       )}
     </button>

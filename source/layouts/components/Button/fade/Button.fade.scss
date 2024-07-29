@@ -6,7 +6,6 @@ $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
 $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
 $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
-// Mixins for fade effects
 @mixin fade-design {
   button[class*='downplay'] {
     div[class*='button'] {
@@ -46,34 +45,39 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-
   button[class*='downplay'] {
     div {
-      img.primary-light {
-        opacity: 0;
-        // animation: fadeOut 1s ease-in-out forwards;
-      }
+      animation: downplayFade 1s forwards;
       img.primary-medium {
+        z-index: 0;
         opacity: 1;
-        // animation: fadeIn 1s ease-in-out forwards;
+        // animation: fadeOut 1s forwards;
+      }
+      img.primary-light {
+        z-index: 0;
+        animation: fadeOut 1s forwards;
       }
       img.primary-dark {
+        opacity: 0;
         display: none;
       }
     }
   }
-
   button[class*='highlight'] {
     div {
+      animation: highlightFade 1s forwards;
       img.primary-medium {
-        opacity: 0;
-        // animation: fadeOut 1s ease-in-out forwards;
+        z-index: 0;
+        opacity: 1;
+        // animation: fadeIn 1s forwards;
       }
       img.primary-light {
-        opacity: 1;
-        // animation: fadeIn 1s ease-in-out forwards;
+        z-index: 1;
+        animation: fadeIn 1s forwards;
       }
+
       img.primary-dark {
+        opacity: 0;
         display: none;
       }
     }
@@ -99,30 +103,27 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       filter: blur(1rem);
     }
   }
-
   @keyframes highlightFade {
     from {
-      filter: blur(1rem);
       color: $primary-medium;
+      filter: drop-shadow(0 0 8px white);
     }
     to {
-      filter: blur(0);
       color: $primary-light;
+      filter: drop-shadow(0 0 8px black);
     }
   }
   @keyframes downplayFade {
     from {
-      // filter: blur(1rem);
       color: $primary-light;
+      filter: drop-shadow(0 0 8px black);
     }
     to {
-      // filter: blur(0);
       color: $primary-medium;
+      filter: drop-shadow(0 0 8px white);
     }
   }
 }
-
-// Mixins for fade placement
 @mixin fade-placement {
   button {
     display: flex;
