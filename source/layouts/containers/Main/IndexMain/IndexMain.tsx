@@ -78,6 +78,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
+  /*
   $(`#${containerElement} button[class*="projects"]`).on('click', () => {
     $(`#${pageName}-header`).addClass('disabled');
     $(`#${pageName}-main`).addClass('disabled');
@@ -88,5 +89,6 @@ function jQueryMain(pageName: String, blockName: string) {
     $(`#${pageName}-main`).addClass('disabled');
     $(`#${pageName}-footer`).addClass('disabled');
   });
+  */
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

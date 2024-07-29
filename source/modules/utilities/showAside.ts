@@ -3,7 +3,7 @@ import getIdentification from './getIdentification';
 export default function showAside(containerElement: 'leftbar' | 'rightbar' | string) {
   const pageName: String = getIdentification();
   const element = document.querySelector(`#${containerElement}`) as HTMLElement;
-  console.log(`#${containerElement}`);
+  // console.log(element.split(' ')[0]);
   //--|🠋 Safety Check 🠈|--//
   if (!element.className.includes('blocked')) {
     if (element) {

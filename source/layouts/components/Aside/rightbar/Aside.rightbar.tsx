@@ -72,8 +72,8 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
-          <div className="rightbar-background" style={{ zIndex: 0 }}>
+          <header className={`${label}-foreground`} style={{ zIndex: 2 }}></header>
+          <div className={`${label}-background`} style={{ zIndex: 0 }}>
             <menu>
               <a target="_blank" className="left" href="https://github.com/TertiusRoach">
                 <h6 className="display-3">GitHub</h6>
@@ -91,7 +91,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
             </menu>
             <section></section>
           </div>
-          <footer className="rightbar-midground" style={{ zIndex: 1 }}>
+          <footer className={`${label}-midground`} style={{ zIndex: 1 }}>
             {/* <ButtonFade
               text=""
               state=""

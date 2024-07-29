@@ -2,12 +2,12 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
+import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
@@ -25,19 +25,18 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryLeftbar(pageName, blockName), 250);
+        setTimeout(() => jQueryRightbar(pageName, blockName), 250);
       },
       false
     );
-    setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryRightbar(pageName, blockName), loadTimer);
   }, []);
   return <AsideRightbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexRightbar;
 
-function jQueryLeftbar(pageName: String, blockName: String) {
+function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-
   $(`#${containerElement} button[class*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {

@@ -263,9 +263,9 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           },
           {
             href: '',
+            state: '',
             block: 'main',
             align: 'right',
-            state: 'active',
             style: 'downplay',
             label: 'rightbar',
             text: 'View Rightbar',
@@ -317,17 +317,16 @@ function jQueryNoir(pageName: String, blockName: string) {
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
-
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
     const leftbar = this.id;
-
+    console.log(leftbar);
     if (leftbar.includes('leftbar')) {
       showAside(leftbar);
     }
   });
   $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
     const rightbar = this.id;
-    console.log(this.id);
+    console.log(rightbar);
     if (rightbar.includes('rightbar')) {
       showAside(rightbar);
     }
