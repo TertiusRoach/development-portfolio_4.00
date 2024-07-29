@@ -179,47 +179,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
   );
 };
 export default SectionNoir;
-function jQueryNoir(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} section`).on('click', function (event) {
-    let navigation = ['header', 'footer'];
-    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    let tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      for (let i = 0; i < navigation.length; i++) {
-        var labelName = parent.classList[0].split('-')[1] as string;
-        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
-      var buttonElement = this as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        setActive(this as HTMLButtonElement, navigation[i]);
-      }
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
-    }
-  });
-  $(`#${containerElement} .rightbar-projects`).on('click', function () {
-    const rightbar = this.classList[0].split('-')[0];
-    if (rightbar.includes('rightbar')) {
-      showAside(rightbar);
-    }
-  });
-  $(`#${containerElement} button[class*="leftbar"]`).on('click', function () {
-    const rightbar = this.classList[0].split('-')[0];
-    if (rightbar.includes('leftbar')) {
-      showAside(rightbar);
-    }
-  });
-  $(`#${containerElement} .overlay-career`).on('click', function () {
-    const overlay = this.classList[0].split('-')[0];
-    if (overlay.includes('overlay')) {
-      showSection(`${pageName}`, overlay);
-    }
-  });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-}
+
 function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
@@ -247,9 +207,9 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           },
           {
             href: '',
+            state: '',
             block: 'main',
             align: 'right',
-            state: 'active',
             style: 'downplay',
             label: 'rightbar',
             text: 'View Rightbar',
@@ -336,19 +296,48 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
+function jQueryNoir(pageName: String, blockName: string) {
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} section`).on('click', function (event) {
+    let navigation = ['header', 'footer'];
+    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    let tagName = parent.tagName as 'BUTTON' | string;
+    if (tagName === 'BUTTON') {
+      for (let i = 0; i < navigation.length; i++) {
+        var labelName = parent.classList[0].split('-')[1] as string;
+        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
+        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
+      }
+    } else {
+      var buttonElement = this as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        setActive(this as HTMLButtonElement, navigation[i]);
+      }
+      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
+    }
+  });
 
-// Possible Phrases
-// Functionality over form over speed: This prioritizes core features and usability over aesthetics and quick development time.
-// Functionality over form over perfection: Similar to the first option, but emphasizes getting a working product out quickly rather than striving for absolute flawlessness.
-// Functionality over form over features: This suggests focusing on essential features rather than adding unnecessary ones, even if it means sacrificing some design elements.
-// The Core Idea
-// Regardless of the exact wording, the underlying principle is clear: prioritize core functionality over visual appeal or additional features. This mindset is often adopted in agile development methodologies, where the goal is to deliver a minimum viable product (MVP) quickly and iterate based on user feedback.
+  $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
+    const leftbar = this.id;
 
-// Would you like to provide more context about where you heard this phrase? This could help narrow down the possibilities and provide a more accurate interpretation.
-
-// For example:
-
-// Was it in a specific industry or field?
-// What was the overall topic of the conversation?
-// Who said it?
-// Any additional details would be helpful.
+    if (leftbar.includes('leftbar')) {
+      showAside(leftbar);
+    }
+  });
+  $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
+    const rightbar = this.id;
+    console.log(this.id);
+    if (rightbar.includes('rightbar')) {
+      showAside(rightbar);
+    }
+  });
+  $(`#${containerElement} button[id*='overlay']`).on('click', function () {
+    const overlay = this.id;
+    console.log(overlay);
+    if (overlay.includes('overlay')) {
+      showSection(`${pageName}`, overlay);
+    }
+  });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}

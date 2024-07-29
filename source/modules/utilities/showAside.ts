@@ -1,8 +1,9 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
-export default function showAside(blockName: 'leftbar' | 'rightbar' | string) {
+export default function showAside(containerElement: 'leftbar' | 'rightbar' | string) {
   const pageName: String = getIdentification();
-  const element = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  const element = document.querySelector(`#${containerElement}`) as HTMLElement;
+  console.log(`#${containerElement}`);
   //--|🠋 Safety Check 🠈|--//
   if (!element.className.includes('blocked')) {
     if (element) {
@@ -19,7 +20,7 @@ export default function showAside(blockName: 'leftbar' | 'rightbar' | string) {
           }, 1000);
           break;
         case 'collapsed':
-          element.style.display = 'grid';
+          // element.style.display = 'grid';
           element.classList.add('blocked');
           element.classList.add('expanded');
 
@@ -32,8 +33,11 @@ export default function showAside(blockName: 'leftbar' | 'rightbar' | string) {
           alert('ERROR!');
       }
     } else {
-      console.error(`Element with ID "${pageName}-${blockName}" not found.`);
+      console.error(`No block with an ID of '#${containerElement}' found.`);
       return;
     }
   }
+  /*
+
+  */
 }

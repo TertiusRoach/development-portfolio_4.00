@@ -1,23 +1,15 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showSection.ts 🠋|--//
-export default function showSection(pageName: string, blockName: 'overlay' | String) {
-  const element = document.getElementById('index-overlay') as HTMLElement;
+export default function showSection(pageName: string, blockName: '*-overlay' | String) {
+  const element = document.getElementById(`${blockName}`) as HTMLElement;
+  const targetElement = document.querySelector('section[class*="overlay"]') as HTMLElement;
+  let safety: boolean = element.className.includes('blocked');
   if (!element) {
     console.error('Element with ID "index-overlay" not found.');
     return;
   }
-
-  let safety: boolean = element.className.includes('blocked');
-  let status = element.className.split(' ').pop() as string;
-
   if (!safety) {
-    const targetElement = document.getElementById(`${pageName}-${blockName}`);
-    if (!targetElement) {
-      console.error(`Element with ID "${pageName}-${blockName}" not found.`);
-      return;
-    }
-
-    switch (status) {
+    switch (targetElement.classList[1]) {
       case 'visible':
         targetElement.classList.add('blocked');
         targetElement.classList.toggle('hidden');
@@ -40,6 +32,13 @@ export default function showSection(pageName: string, blockName: 'overlay' | Str
         break;
       default:
         alert('ERROR!');
+
+        // console.log(targetElement);
+        // console.error(`Element with ID "${pageName}-${blockName}" not found.`);
+        return;
     }
+    /*
+
+    */
   }
 }

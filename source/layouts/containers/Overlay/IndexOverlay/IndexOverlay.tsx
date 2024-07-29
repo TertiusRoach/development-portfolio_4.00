@@ -19,7 +19,6 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
   const loadTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = info.identification;
-
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -78,7 +77,6 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       )}
     </section>
   );
-  console.log('IndexOverlay Loaded');
 };
 export default IndexOverlay;
 function jQueryOverlay(pageName: String, blockName: String) {

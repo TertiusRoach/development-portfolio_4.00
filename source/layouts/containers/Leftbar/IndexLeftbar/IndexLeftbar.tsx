@@ -31,9 +31,7 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
     );
     setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
   }, []);
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-  return <AsideLeftbar blockName={`${blockName}`} info={info} stateType="" />;
+  return <AsideLeftbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;
 

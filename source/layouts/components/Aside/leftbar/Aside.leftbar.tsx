@@ -6,7 +6,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface LeftbarProps {
-  labelName: 'leftbar';
+  labelName: 'default';
   stateType: 'active' | '';
   blockName: 'leftbar' | 'coworkers' | 'employees' | string;
 
@@ -16,7 +16,7 @@ interface LeftbarProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, stateType, info }) => {
+const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) => {
   const jQueryTimer: number = 4000;
   const block = `${blockName}` as 'leftbar';
   const label: string = `${labelName}` as 'leftbar';
@@ -31,14 +31,12 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, stateType,
       window.removeEventListener('resize', jQueryLoad);
     };
   }, []);
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
   return (
-    <aside id="index-leftbar" className={`${labelName}-${blockName} collapsed`} style={{ zIndex: 5 }}>
+    <aside id={`${page}-${block}`} className={`${label}-${block} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <header className="leftbar-foreground" style={{ zIndex: 2 }}>
+          <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
             {/* <ButtonFade
               text=""
               state=""
@@ -49,7 +47,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, stateType,
               icon={getSVG('close') as { dark: string; medium: string; light: string }}
             /> */}
           </header>
-          <div className="leftbar-background" style={{ zIndex: 0 }}>
+          <div className={`${label}-background`} style={{ zIndex: 0 }}>
             <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
                 <h3>LinkedIn</h3>
@@ -66,11 +64,11 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, stateType,
             </menu>
             <section></section>
           </div>
-          <footer className="leftbar-midground" style={{ zIndex: 1 }}></footer>
+          <footer className={`${label}-midground`} style={{ zIndex: 1 }}></footer>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>

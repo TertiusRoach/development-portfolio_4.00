@@ -29,12 +29,9 @@ interface MenuProps {
   }[];
 }
 const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
-  const buildAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
-  const buildDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
-  const buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' = criteria.buildElement;
-
-  console.log(information.length);
-
+  let buildAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
+  let buildDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
+  let buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' = criteria.buildElement;
   return (
     <menu className={`${setClass(buildAxis, buildDesign, buildElement, information)}`}>
       {information.map((info, i) => (

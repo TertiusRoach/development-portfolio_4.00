@@ -17,7 +17,6 @@ export function getSVG(labelName: string): { dark: String; medium: String; light
       } as { dark: String; medium: String; light: String };
   }
 }
-
 export function getPNG(labelName: string): String {
   console.log(labelName);
   return '';
