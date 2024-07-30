@@ -73,7 +73,19 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <menu>
+              <ButtonFade
+                href=""
+                text="Close"
+                label="close"
+                align="center"
+                block="leftbar"
+                style="downplay"
+                state="disabled"
+                axis="<horizontal>"
+                icon={getSVG('close') as { dark: string; medium: string; light: string }}
+              />
+            </menu>
           </header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
             <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
@@ -102,7 +114,8 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
         <>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <menu>
+            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
                 <h6 className="display-3">LinkedIn</h6>
                 <img src={getSVG('linkedin').medium as string} alt="linkedin" />
@@ -111,11 +124,12 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
                 <h6 className="display-3">GitHub</h6>
                 <img src={getSVG('github').medium as string} alt="github" />
               </a>
+
               <a target="_blank" className="left" href="https://www.youtube.com/@TertiusRoach">
                 <h6 className="display-3">YouTube</h6>
                 <img src={getSVG('youtube').medium as string} alt="youtube" />
               </a>
-            </menu>
+            </menu> */}
             <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
@@ -127,7 +141,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
   );
 };
 export default AsideLeftbar;
-function getElements(orientation: '<desktop>' | '<mobile>') {
+function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
   switch (orientation) {
     case '<desktop>':
       return {
@@ -201,12 +215,78 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
+            label: 'home',
+            align: 'left',
+            block: 'leftbar',
+            style: 'downplay',
+            icon: getSVG('home'),
+            text: 'My Portfolio',
+          },
+          {
+            href: '',
+            state: '',
+            label: 'skills',
+            align: 'left',
+            block: 'leftbar',
+            style: 'highlight',
+            text: 'Log a Ticket',
+            icon: getSVG('skills'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            label: 'contact',
+            block: 'leftbar',
+            style: 'downplay',
+            text: 'Univer Track',
+            icon: getSVG('contact'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            block: 'leftbar',
+            label: 'projects',
+            style: 'highlight',
+            text: 'Journal Fits',
+            icon: getSVG('projects'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<vertical>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    case '<close>':
+      return {
+        button: [
+          {
+            href: '',
+            state: '',
             label: 'close',
             align: 'center',
             block: 'leftbar',
             style: 'downplay',
-            text: 'Exit Left',
-            icon: getSVG('close'),
+            icon: getSVG('home'),
+            text: 'Close',
           },
         ],
         criteria: {
@@ -215,7 +295,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           buildElement: '<buttons>',
         },
       } as {
-        buttons: {
+        button: {
           text?: string;
           href?: string;
           state?: 'active' | '';

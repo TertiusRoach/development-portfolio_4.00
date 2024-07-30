@@ -1,5 +1,3 @@
-// Menu.button.scss
-
 //--|🠋| Index Colors |🠋|--//
 $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
 $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
@@ -14,8 +12,8 @@ $green-neon: #00ff00; //--🠊 rgba(0, 255, 0, 1) 🠈--//
 $green-dark: #274e13; //--🠊 rgba(39, 78, 19, 1) 🠈--//
 $green-light: #b6d7a8; //--🠊 rgba(182, 215, 168, 1) 🠈--//
 
-$blue-neon: #3c90ff; //--🠊 rgba(0, 0, 255, 1) 🠈--//
-$blue-dark: #073763; //--🠊 rgba(127, 17, 224, 1) 🠈--//
+$blue-neon: #3c90ff; //--🠊 rgba(60, 144, 255, 1) 🠈--//
+$blue-dark: #073763; //--🠊 rgba(7, 55, 99, 1) 🠈--//
 $blue-light: #9fc5e8; //--🠊 rgba(159, 197, 232, 1) 🠈--//
 
 $purple-neon: #9900ff; //--🠊 rgba(153, 0, 255, 1) 🠈--//
@@ -48,13 +46,11 @@ $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
 
 //--|🠋| Color Schemes |🠋|--//
 @mixin index-colors {
-  // Noir Inspiration: Fuctionality First!
-  // https://blog.daisie.com/understanding-film-noirs-reflection-of-post-wwii-social-and-cultural-climate/
-  //--|🠋| Index Colors |🠋|--//
   $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
   $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
   $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 }
+
 body {
   header,
   footer {
@@ -67,250 +63,59 @@ body {
         height: 6rem;
       }
 
-      button:nth-child(1) {
-        grid-column: 1 / 2;
-      }
-      button:nth-child(2) {
-        grid-column: 2 / 3;
-      }
-      button:nth-child(3) {
-        grid-column: 3 / 4;
-      }
-
-      &[class*='one'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(1, 1fr);
-      }
-      &[class*='two'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(2, 1fr);
-      }
-      &[class*='three'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(3, 1fr);
-      }
-      &[class*='four'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(4, 1fr);
-        button:nth-child(4) {
-        }
-      }
-      &[class*='five'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(5, 1fr);
-        button:nth-child(5) {
-        }
-      }
-      &[class*='six'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(6, 1fr);
-        button:nth-child(6) {
-        }
-      }
-      &[class*='seven'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(7, 1fr);
-        button:nth-child(7) {
-        }
-      }
-      &[class*='eight'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(8, 1fr);
-        button:nth-child(8) {
-        }
-      }
-      &[class*='nine'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(9, 1fr);
-        button:nth-child(9) {
-        }
-      }
-      &[class*='ten'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(10, 1fr);
-        button:nth-child(10) {
-        }
-      }
-      &[class*='eleven'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(11, 1fr);
-        button:nth-child(11) {
-        }
-      }
-      &[class*='twelve'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(12, 1fr);
-        button:nth-child(12) {
+      @for $i from 1 through 12 {
+        &[class*='#{$i}'] {
+          grid-template-columns: repeat(#{$i}, 1fr);
         }
       }
     }
+
     //--|🠋| Vertical Alignment |🠋|--//
     menu[class*='vertical'] {
-      & {
-        //--|🠋 Desktop (Landscape) 🠋|--//
-        @media screen and (orientation: landscape) {
-        }
-        //--|🠋 Mobile (Portrait) 🠋|--//
-        @media screen and (orientation: portrait) {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @for $i from 1 through 12 {
+        &[class*='#{$i}'] {
+          grid-template-rows: repeat(#{$i}, 1fr);
+
+          @for $j from 1 through $i {
+            button:nth-child(#{$j}) {
+              grid-row: #{$j} / #{($j + 1)};
+            }
+          }
         }
       }
     }
+
     menu {
       display: grid;
+
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
         grid-template-rows: 4rem;
       }
+
       //--|🠋 Mobile (Portrait) 🠋|--//
       @media screen and (orientation: portrait) {
         grid-template-rows: 6rem;
       }
     }
   }
+
+  div,
   main,
   aside,
   section {
-    //--|🠋| Vertical Alignment |🠋|--//
-    menu[class*='vertical'] {
-      display: grid;
-      grid-template-columns: 1fr;
-      &[class*='one'],
-      &[class*='two'],
-      &[class*='three'],
-      &[class*='four'],
-      &[class*='five'],
-      &[class*='six'] {
-        //--|🠊 display: grid; 🠈|--//
-        button:nth-child(1) {
-          grid-row: 1 / 2;
-        }
-        button:nth-child(2) {
-        }
-        button:nth-child(3) {
-        }
-        button:nth-child(4) {
-        }
-        button:nth-child(5) {
-        }
-        button:nth-child(6) {
-        }
-        grid-template-rows: repeat(6, 1fr);
-      }
-      &[class*='seven'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(7, 1fr);
-      }
-      &[class*='eight'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(8, 1fr);
-      }
-      &[class*='nine'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(9, 1fr);
-      }
-      &[class*='ten'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(10, 1fr);
-      }
-      &[class*='eleven'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(11, 1fr);
-      }
-      &[class*='twelve'] {
-        button {
-        }
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-rows: repeat(12, 1fr);
-      }
-    }
     //--|🠋| Horizontal Alignment |🠋|--//
     menu[class*='horizontal'] {
-      button:nth-child(1) {
-        grid-column: 1 / 2;
-      }
-      button:nth-child(2) {
-        grid-column: 2 / 3;
-      }
-      button:nth-child(3) {
-        grid-column: 3 / 4;
-      }
+      @for $i from 1 through 12 {
+        button:nth-child(#{$i}) {
+          grid-column: #{$i} / #{($i + 1)};
+        }
 
-      &[class*='one'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(1, 1fr);
-      }
-      &[class*='two'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(2, 1fr);
-      }
-      &[class*='three'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(3, 1fr);
-        button:nth-child(3) {
-        }
-      }
-      &[class*='four'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(4, 1fr);
-        button:nth-child(4) {
-        }
-      }
-      &[class*='five'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(5, 1fr);
-        button:nth-child(5) {
-        }
-      }
-      &[class*='six'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(6, 1fr);
-        button:nth-child(6) {
-        }
-      }
-      &[class*='seven'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(7, 1fr);
-        button:nth-child(7) {
-        }
-      }
-      &[class*='eight'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(8, 1fr);
-        button:nth-child(8) {
-        }
-      }
-      &[class*='nine'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(9, 1fr);
-        button:nth-child(9) {
-        }
-      }
-      &[class*='ten'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(10, 1fr);
-        button:nth-child(10) {
-        }
-      }
-      &[class*='eleven'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(11, 1fr);
-        button:nth-child(11) {
-        }
-      }
-      &[class*='twelve'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-template-columns: repeat(12, 1fr);
-        button:nth-child(12) {
+        &[class*='#{$i}'] {
+          grid-template-columns: repeat(#{$i}, 1fr);
         }
       }
 
@@ -319,12 +124,14 @@ body {
         @media screen and (orientation: landscape) {
           grid-template-rows: 4rem;
         }
+
         //--|🠋 Mobile (Portrait) 🠋|--//
         @media screen and (orientation: portrait) {
           grid-template-rows: 6rem;
         }
       }
     }
+
     menu {
       display: grid;
     }
@@ -339,36 +146,4 @@ body {
       }
     }
   }
-}
-
-@mixin resume-colors {
-  //--|🠋| Résumé Colors |🠋|--//
-  $primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
-  $primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
-  $primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
-}
-@mixin ticket-colors {
-  //--|🠋| Log a Ticket |🠋|--//
-  $primary-dark: #0e183b; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #1f3892; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #879add; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-
-  $secondary-dark: #3f1a02; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $secondary-medium: #ac5419; //--🠊 rgba(?? , ?? , ?? ,1) 🠈--//
-  $secondary-light: #e7955e; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-
-  $tertiary-dark: #032004; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-medium: #1c7e1f; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-light: #84d387; //--🠊 rgba( ??, ??, ??,1) 🠈--//
-}
-@mixin university-colors {
-  $primary-dark: #230510; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #450920; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-
-  $secondary-dark: #392319; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $secondary-medium: #714631; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $secondary-light: #b8a298; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-}
-@mixin fitness-colors {
 }

@@ -50,7 +50,6 @@ const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
       ))}
     </menu>
   );
-  // }
 };
 export default MenuButton;
 
@@ -173,22 +172,3 @@ function setClass(
     }
   }
 }
-/*
-    let infoText = `${information[i].text}`;
-    let infoHref = `${information[i].href}`;
-    let infoState = `${information[i].state}`;
-    let infoLabel = `${information[i].label}`;
-    let infoStyle = `${information[i].style}`;
-    let infoAlign = `${information[i].align}`;
-    let infoIcon = `${information[i].icon}`;
-    let infoBlock = `${information[i].block}`;
-
-    console.log(infoText);
-    console.log(infoHref);
-    console.log(infoState);
-    console.log(infoLabel);
-    console.log(infoStyle);
-    console.log(infoAlign);
-    console.log(infoIcon);
-    console.log(infoBlock);
-    */
