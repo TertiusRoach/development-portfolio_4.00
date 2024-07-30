@@ -19,20 +19,20 @@ interface InfoProps {
   };
 }
 const IndexHeader: React.FC<InfoProps> = ({ info }) => {
-  const loadTimer: number = 0;
   const blockName = 'header';
+  const jQueryTimer: number = 0;
   const pageName = info.identification as String;
   useEffect(() => {
-    const handleResize = () => {
-      setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+    const jQueryLoad = () => {
+      jQueryHeader(pageName, blockName);
     };
-    window.addEventListener('resize', handleResize);
-    setTimeout(() => jQueryHeader(pageName, blockName), loadTimer);
+    window.addEventListener('resize', jQueryLoad);
+    setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', jQueryLoad);
     };
   }, []);
-  let desktopDevice = getElements('<desktop>') as {
+  let desktopElements = getElements('<desktop>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>';
@@ -60,10 +60,9 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.information} />
+          <MenuButton criteria={desktopElements.criteria} information={desktopElements.information} />
         </>
       )}
-
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
@@ -78,22 +77,6 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default IndexHeader;
-
-function jQueryHeader(pageName: String, blockName: String) {
-  const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
-    //--|🠋 Safety Check 🠋|--//
-    if (!this.id) {
-      let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-
-      setActive(this as HTMLButtonElement, blockName);
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-    }
-  });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-}
 function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
@@ -182,4 +165,19 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
         block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
       }[];
   }
+}
+function jQueryHeader(pageName: String, blockName: String) {
+  const containerElement = `${pageName}-${blockName}`;
+  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
+    //--|🠋 Safety Check 🠋|--//
+    if (!this.id) {
+      let buttonElement = this as HTMLButtonElement;
+      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
+
+      setActive(this as HTMLButtonElement, blockName);
+      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+    }
+  });
+  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

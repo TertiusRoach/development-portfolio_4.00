@@ -76,6 +76,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
             <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
           </header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
+            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
             <section>
               {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
@@ -134,17 +135,47 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
-            label: 'close',
-            align: 'center',
+            label: 'home',
+            align: 'left',
             block: 'leftbar',
             style: 'downplay',
-            text: 'Exit Left',
-            icon: getSVG('close'),
+            icon: getSVG('home'),
+            text: 'My Portfolio',
+          },
+          {
+            href: '',
+            state: '',
+            label: 'skills',
+            align: 'left',
+            block: 'leftbar',
+            style: 'highlight',
+            text: 'Log a Ticket',
+            icon: getSVG('skills'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            label: 'contact',
+            block: 'leftbar',
+            style: 'downplay',
+            text: 'Univer Track',
+            icon: getSVG('contact'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            block: 'leftbar',
+            label: 'projects',
+            style: 'highlight',
+            text: 'Journal Fits',
+            icon: getSVG('projects'),
           },
         ],
         criteria: {
           buildDesign: '<fade>',
-          buildAxis: '<horizontal>',
+          buildAxis: '<vertical>',
           buildElement: '<buttons>',
         },
       } as {
