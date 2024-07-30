@@ -316,24 +316,18 @@ function jQueryNoir(pageName: String, blockName: string) {
     }
   });
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
-    const leftbar = this.id;
-    console.log(leftbar);
-    if (leftbar.includes('leftbar')) {
-      showAside(leftbar);
+    if (this.id.includes('leftbar')) {
+      showAside(this.id);
     }
   });
   $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
-    const rightbar = this.id;
-    console.log(rightbar);
-    if (rightbar.includes('rightbar')) {
-      showAside(rightbar);
+    if (this.id.includes('rightbar')) {
+      showAside(this.id);
     }
   });
   $(`#${containerElement} button[id*='overlay']`).on('click', function () {
-    const overlay = this.id;
-    console.log(overlay);
-    if (overlay.includes('overlay')) {
-      showSection(`${pageName}`, overlay);
+    if (this.id.includes('overlay')) {
+      showSection(`${pageName}`, this.id);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

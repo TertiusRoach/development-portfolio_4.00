@@ -50,8 +50,11 @@ $turquoise-light: #a2c4c9;
   // align-content: space-around; // Add this to vertically align content like space-around in Flexbox
   grid-template: 4rem 1fr 4rem / repeat(2, 1fr);
   header[class*='foreground'] {
+    grid-area: 1 / 2 / 2 / 3;
   }
-
+  footer[class*='midground'] {
+    grid-area: 3 / 2 / 4 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  }
   div[class*='background'] {
     display: inherit;
     grid-template: inherit;
@@ -60,14 +63,22 @@ $turquoise-light: #a2c4c9;
       grid-area: 1 / 2 / 4 / 3;
     }
   }
-
-  footer[class*='midground'] {
-    grid-area: 3 / 1 / 4 / 2;
-  }
 }
 @mixin mobile-portrait {
   display: grid;
   grid-template: 6rem 1fr 6rem / 1fr;
+  header[class*='foreground'] {
+    menu {
+      grid-area: 1 / 1 / 2 / 2;
+      button {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  footer[class*='midground'] {
+    grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  }
   div[class*='background'] {
     display: inherit; //~~|🠈 display: grid 🠈|~~//
     grid-template: inherit; //~~|🠈 6rem 1fr 6rem / 1fr 1fr; 🠈|~~//
@@ -159,18 +170,6 @@ $turquoise-light: #a2c4c9;
     section {
       grid-area: 1 / 1 / 4 / 2;
     }
-  }
-  header[class*='foreground'] {
-    menu {
-      grid-area: 1 / 1 / 2 / 2;
-      button {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  footer[class*='midground'] {
-    grid-area: 3 / 1 / 4 / 2;
   }
 }
 

@@ -10,37 +10,38 @@
       aside[class*='leftbar'] {
         background: rgba($red-light, 0.25);
         header[class*='foreground'] {
-          background: $green-neon;
+          background: rgba($green-neon, 0.25);
         }
-        div[class*='midground'] {
-          background: $green-dark;
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
         }
-        footer[class*='background'] {
-          background: $green-neon;
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
         }
       }
       aside[class*='rightbar'] {
-        background: rgba($red-light, 0.25);
+        // background: rgba($red-light, 0.25);
         header[class*='foreground'] {
-          background: $green-neon;
+          background: rgba($green-neon, 0.25);
         }
-        div[class*='midground'] {
-          background: $green-dark;
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
         }
-        footer[class*='background'] {
-          background: $green-neon;
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
         }
       }
       section[class*='overlay'] {
-        background: rgba($red-dark, 0.25);
         header[class*='foreground'] {
-          background: $green-neon;
+          background: rgba($green-neon, 0.25);
         }
-        div[class*='midground'] {
-          background: $green-dark;
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
         }
-        footer[class*='background'] {
-          background: $green-neon;
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
         }
       }
 
@@ -83,7 +84,6 @@
       }
       main {
         background: rgba($blue-dark, 1);
-        background: rgba($red-dark, 1);
         div[id*='fore'],
         div[id*='mid'],
         div[id*='back'] {

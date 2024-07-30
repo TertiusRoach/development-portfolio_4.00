@@ -141,9 +141,6 @@ body {
       display: grid;
       div[id*='noir'] {
         grid-area: 1 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-        &[id*='ground'] {
-          // background: rgba($purple-dark, 0.25) !important;
-        }
       }
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {

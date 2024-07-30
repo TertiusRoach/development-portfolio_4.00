@@ -18,18 +18,18 @@ interface InfoProps {
   };
 }
 const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
-  const loadTimer: number = 4000;
+  const jQueryTimer: number = 4000;
   const blockName: String = 'leftbar';
   const pageName: String = info.identification;
   useEffect(() => {
     window.addEventListener(
       'resize',
       () => {
-        setTimeout(() => jQueryLeftbar(pageName, blockName), 250);
+        jQueryLeftbar(pageName, blockName);
       },
       false
     );
-    setTimeout(() => jQueryLeftbar(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
   }, []);
   return <AsideLeftbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
