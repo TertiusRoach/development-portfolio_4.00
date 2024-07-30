@@ -177,6 +177,21 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+    if (header) {
+      $(header).removeClass('blurred');
+    }
+    if (main) {
+      $(main).removeClass('blurred');
+    }
+    if (footer) {
+      $(footer).removeClass('blurred');
+    }
+
+    console.log(main);
+
     let element = document.getElementById('index-overlay') as HTMLElement;
     let safety: boolean = element?.className.includes('blocked');
     let status = element?.className.split(' ').pop() as string;

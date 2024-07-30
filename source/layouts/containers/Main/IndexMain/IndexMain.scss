@@ -13,25 +13,15 @@ $tertiary-dark: #392319; //--🠊 rgba(57,35,25,1) 🠈--//
 $tertiary-medium: #714631; //--🠊 rgba(113,70,49,1) 🠈--//
 $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
-@mixin desktop-landscape {
-  #main-active {
-  }
-}
-
-@mixin mobile-portrait {
-  #main-active {
-  }
-}
-
 main[id*='index'] {
   display: block;
   overflow-y: scroll;
   flex-direction: column;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-
   &::-webkit-scrollbar {
     display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
   }
+  /*
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
@@ -40,4 +30,14 @@ main[id*='index'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
+  */
 }
+
+// @mixin desktop-landscape {
+//   #main-active {
+//   }
+// }
+// @mixin mobile-portrait {
+//   #main-active {
+//   }
+// }

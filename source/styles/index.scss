@@ -115,14 +115,11 @@ div[id*='body'] {
   @media screen and (orientation: portrait) {
     grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
   }
-  /*
-  main.blurred,
   header.blurred,
+  main section.blurred,
   footer.blurred {
-    $blur-radius: 1rem; // Or any desired value
-    filter: blur($blur-radius);
+    filter: blur(1rem);
   }
-  */
   @include override-bootstrap();
   @include orientation-testing();
 }

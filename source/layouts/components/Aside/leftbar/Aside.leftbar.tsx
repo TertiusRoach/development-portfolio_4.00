@@ -5,7 +5,6 @@ import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import MenuButton from '../../Menu/button/Menu.button';
-
 interface LeftbarProps {
   labelName: 'default';
   stateType: 'active' | '';

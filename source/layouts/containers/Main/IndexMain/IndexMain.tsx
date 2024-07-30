@@ -1,7 +1,7 @@
 // IndexMain.tsx
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
@@ -31,64 +31,112 @@ interface InfoProps {
   };
 }
 const IndexMain: React.FC<InfoProps> = ({ info }) => {
-  const loadTimer = 1000;
+  const [isBlurred, setIsBlurred] = useState(false);
+  const jQueryTimer = 1000;
   const blockName = 'main';
   const pageName = info.identification as String;
+
   useEffect(() => {
     const jQueryStart = () => {
       jQueryMain(pageName, blockName);
     };
     window.addEventListener('resize', jQueryStart);
-    setTimeout(() => jQueryMain(pageName, blockName), loadTimer);
+    setTimeout(() => jQueryMain(pageName, blockName), jQueryTimer);
     return () => {
       window.removeEventListener('resize', jQueryStart);
     };
-  }, []);
+  }, [pageName, blockName]);
+
+  const toggleBlur = () => {
+    setIsBlurred(!isBlurred);
+  };
+
+  useEffect(() => {
+    const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    const main = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    const footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    if (isBlurred) {
+      header?.classList.add('blurred');
+      main?.classList.add('blurred');
+      footer?.classList.add('blurred');
+    } else {
+      header?.classList.remove('blurred');
+      main?.classList.remove('blurred');
+      footer?.classList.remove('blurred');
+    }
+  }, [isBlurred, pageName]);
+
   return (
-    <main id="index-main" className="default-main" style={{ zIndex: 0 }}>
+    <main id="index-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
+      {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
           <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
-          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
-          {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
+      {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
           <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
-          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} /> */}
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
-          {/* <SectionDefault blockName="main" labelName="default" stateType="" info={information} /> */}
         </>
       )}
-      {/* <div style={{ height: '250px', background: 'green' }}>
-        <h1 className="display-1">ADDSPACE!!!!</h1>
-      </div>
-      <div style={{ height: '500px', background: 'darkgreen' }}>
-        <h1 className="display-1">MORE ADDSPACE!!!!</h1>
-      </div> */}
+      <button id="close-button" onClick={toggleBlur}>
+        Close
+      </button>
     </main>
   );
 };
+
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  /*
-  $(`#${containerElement} button[class*="projects"]`).on('click', () => {
-    $(`#${pageName}-header`).addClass('disabled');
-    $(`#${pageName}-main`).addClass('disabled');
-    $(`#${pageName}-footer`).addClass('disabled');
+
+  $(`#${containerElement} button[id*="leftbar"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    $(header).addClass('blurred');
+    $(main).addClass('blurred');
+    $(footer).addClass('blurred');
   });
-  $(`#${containerElement} button[class*="career"]`).on('click', () => {
-    $(`#${pageName}-header`).addClass('disabled');
-    $(`#${pageName}-main`).addClass('disabled');
-    $(`#${pageName}-footer`).addClass('disabled');
+  $(`#${containerElement} button[id*="rightbar"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    $(header).addClass('blurred');
+    $(main).addClass('blurred');
+    $(footer).addClass('blurred');
   });
-  */
+  $(`#${containerElement} button[id*="overlay"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    $(header).addClass('blurred');
+    $(main).addClass('blurred');
+    $(footer).addClass('blurred');
+  });
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    if (header) {
+      $(header).removeClass('blurred');
+    }
+    if (main) {
+      $(main).removeClass('blurred');
+    }
+    if (footer) {
+      $(footer).removeClass('blurred');
+    }
+  });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
