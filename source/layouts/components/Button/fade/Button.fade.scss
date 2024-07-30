@@ -26,9 +26,9 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         color: $primary-medium;
         animation: downplayFade 1s forwards;
       }
-      // img.primary-medium {
-      //   display: flex;
-      // }
+      img.primary-medium {
+        display: flex;
+      }
     }
   }
   button[class*='-highlight-'] {
@@ -39,9 +39,9 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         color: $primary-light;
         animation: highlightFade 1s forwards;
       }
-      // img.primary-light {
-      //   display: flex;
-      // }
+      img.primary-light {
+        display: flex;
+      }
     }
   }
 }
