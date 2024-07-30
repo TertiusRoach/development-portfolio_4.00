@@ -9,12 +9,39 @@
       width: 100%;
       aside[class*='leftbar'] {
         background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: $green-neon;
+        }
+        div[class*='midground'] {
+          background: $green-dark;
+        }
+        footer[class*='background'] {
+          background: $green-neon;
+        }
       }
       aside[class*='rightbar'] {
         background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: $green-neon;
+        }
+        div[class*='midground'] {
+          background: $green-dark;
+        }
+        footer[class*='background'] {
+          background: $green-neon;
+        }
       }
       section[class*='overlay'] {
         background: rgba($red-dark, 0.25);
+        header[class*='foreground'] {
+          background: $green-neon;
+        }
+        div[class*='midground'] {
+          background: $green-dark;
+        }
+        footer[class*='background'] {
+          background: $green-neon;
+        }
       }
 
       header {
@@ -35,7 +62,6 @@
     //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
     //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
   }
-
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     & {
@@ -69,7 +95,7 @@
     //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
   }
 }
-@mixin bootstrap-override {
+@mixin override-bootstrap {
   button:not(:disabled),
    [type='button']:not(:disabled),
    [type='reset']:not(:disabled),
@@ -77,7 +103,7 @@
     cursor: default;
   }
 }
-div[id*='index-body'] {
+div[id*='body'] {
   height: 100vh;
   display: grid;
   /* background: linear-gradient(140deg, $primary-dark 0%, $primary-medium 75%, $primary-dark 100%); */
@@ -89,18 +115,16 @@ div[id*='index-body'] {
   @media screen and (orientation: portrait) {
     grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
   }
-
-  @include bootstrap-override();
-  @include orientation-testing();
-
   /*
-  main.disabled,
-  header.disabled,
-  footer.disabled {
+  main.blurred,
+  header.blurred,
+  footer.blurred {
     $blur-radius: 1rem; // Or any desired value
     filter: blur($blur-radius);
   }
   */
+  @include override-bootstrap();
+  @include orientation-testing();
 }
 
 @import '../layouts/containers/Main/IndexMain/IndexMain.scss';

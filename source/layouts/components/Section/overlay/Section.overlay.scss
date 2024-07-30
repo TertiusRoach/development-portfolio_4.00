@@ -4,7 +4,7 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: repeat(12, 1fr) / repeat(5, 1fr); //~~|🠈 rows / columns 🠈|~~//
   menu {
-    background: rgba($purple-dark, 0.5);
+    // background: rgba($purple-dark, 0.5);
     grid-area: 4 / 1 / 6 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
   }
   span[class*='title'] {

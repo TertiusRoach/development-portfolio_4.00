@@ -88,11 +88,9 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   //--|🠋| Highlight & Downplay |🠋|--//
   button.highlight {
     color: black;
-    // background: $primary-light;
   }
   button.downplay {
     color: white;
-    // background: $primary-dark;
   }
 
   h1.highlight,
@@ -121,10 +119,8 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
   #resume-body {
     button.highlight {
-      background: $primary-light;
     }
     button.downplay {
-      background: $primary-dark;
     }
   }
 }
@@ -200,7 +196,6 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      // background: rgba($green-dark, 0.5) !important;
     }
     @include align-element();
   }

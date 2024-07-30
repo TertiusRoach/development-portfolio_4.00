@@ -32,7 +32,6 @@ body {
       display: grid;
       [id*='home'] {
         grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-        background: rgba($yellow-light, 0.25) !important;
       }
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {

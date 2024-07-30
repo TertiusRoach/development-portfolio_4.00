@@ -14,16 +14,12 @@ $tertiary-medium: #714631; //--🠊 rgba(113,70,49,1) 🠈--//
 $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
 @mixin desktop-landscape {
-  // background: $primary-dark;
   #main-active {
-    background: rgba($red-neon, 0.125);
   }
 }
 
 @mixin mobile-portrait {
-  // background: $primary-dark;
   #main-active {
-    background: rgba($blue-neon, 0.125);
   }
 }
 
