@@ -24,20 +24,18 @@ interface FadeProps {
   icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
-
 const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
   const className = `${block}-${viewStyle}-${align}`; // Updated to use viewStyle state
   const stateType = `${getIdentification()}-${label} ${state}`;
 
   // Toggle styles on mouse enter and leave
-  const handleMouseEnter = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
-  const handleMouseLeave = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
-
+  const mouseEnter = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
+  const mouseLeave = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
   return (
-    <button className={className} id={stateType} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <button className={className} id={stateType} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
       {/* Desktop (Landscape) */}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} className="button-foreground">
             <h3>{text}</h3>
@@ -50,12 +48,12 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
           <div style={{ zIndex: 0 }} className="button-background"></div>
         </>
       )}
-
       {/* Mobile (Portrait) */}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} className="button-foreground">
-            <h6>{text}</h6>
+            {/* If width is equal to or less than, then don't return a header element. */}
+            <h6 className="display-6">{text}</h6>
           </div>
           <div style={{ zIndex: 1 }} className="button-midground">
             <img className={`${align} primary-dark`} src={icon.dark} alt={text} />
@@ -68,7 +66,6 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
     </button>
   );
 };
-
 export default ButtonFade;
 
 // Define the namespace for label-related types

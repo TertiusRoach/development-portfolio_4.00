@@ -132,11 +132,44 @@ body {
       }
     }
 
+    //--|🠋| Vertical Alignment |🠋|--//
+    menu[class*='vertical'] {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @for $i from 1 through 12 {
+        &[class*='#{$i}'] {
+          grid-template-rows: repeat(#{$i}, 1fr);
+
+          @for $j from 1 through $i {
+            button:nth-child(#{$j}) {
+              grid-row: #{$j} / #{($j + 1)};
+            }
+          }
+        }
+      }
+    }
+
+    menu {
+      display: grid;
+
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        grid-template-rows: 4rem;
+      }
+
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        grid-template-rows: 6rem;
+      }
+    }
+
     menu {
       display: grid;
     }
   }
 
+  /*
   div[id*='index'] {
     header,
     footer {
@@ -146,4 +179,5 @@ body {
       }
     }
   }
+  */
 }

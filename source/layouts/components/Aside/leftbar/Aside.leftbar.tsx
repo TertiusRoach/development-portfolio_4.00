@@ -133,7 +133,19 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
             <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
-            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            <menu>
+              <ButtonFade
+                href=""
+                text="Close"
+                label="close"
+                align="center"
+                block="leftbar"
+                style="downplay"
+                state="disabled"
+                axis="<horizontal>"
+                icon={getSVG('close') as { dark: string; medium: string; light: string }}
+              />
+            </menu>
           </footer>
         </>
       )}
@@ -216,7 +228,7 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
             href: '',
             state: '',
             label: 'home',
-            align: 'left',
+            align: 'center',
             block: 'leftbar',
             style: 'downplay',
             icon: getSVG('home'),
@@ -225,8 +237,8 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           {
             href: '',
             state: '',
+            align: 'center',
             label: 'skills',
-            align: 'left',
             block: 'leftbar',
             style: 'highlight',
             text: 'Log a Ticket',
@@ -235,7 +247,7 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           {
             href: '',
             state: '',
-            align: 'left',
+            align: 'center',
             label: 'contact',
             block: 'leftbar',
             style: 'downplay',
@@ -245,7 +257,7 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           {
             href: '',
             state: '',
-            align: 'left',
+            align: 'center',
             block: 'leftbar',
             label: 'projects',
             style: 'highlight',
@@ -275,18 +287,18 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
         };
       };
-    case '<close>':
+    default:
       return {
         button: [
           {
             href: '',
             state: '',
+            text: 'Close',
             label: 'close',
             align: 'center',
             block: 'leftbar',
             style: 'downplay',
             icon: getSVG('home'),
-            text: 'Close',
           },
         ],
         criteria: {
