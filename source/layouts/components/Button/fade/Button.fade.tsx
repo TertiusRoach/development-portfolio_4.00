@@ -1,4 +1,4 @@
-// Document #4: Button.fade.tsx
+//--|🠊| Button.fade.tsx |🠈|--//
 //--|🠋 Frameworks 🠋|--//
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';

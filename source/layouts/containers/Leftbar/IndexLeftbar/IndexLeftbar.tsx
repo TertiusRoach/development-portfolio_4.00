@@ -22,27 +22,21 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName: String = 'leftbar';
   const pageName: String = info.identification;
   useEffect(() => {
-    const handleResize = () => {
-      console.log('Screen resized or orientation changed');
+    let jQueryLoad = () => {
       jQueryLeftbar(pageName, blockName);
     };
-
-    window.addEventListener('resize', handleResize, false);
-
-    // Initial call and timer
+    window.addEventListener('resize', jQueryLoad);
     setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
-
-    // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener('resize', handleResize, false);
+      window.removeEventListener('resize', jQueryLoad);
     };
-  }, [pageName, blockName]);
+  }, []);
   return <AsideLeftbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;
 function jQueryLeftbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  // Here's the function that doesn't activate when I rotate the screen...
+  /*
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
@@ -54,5 +48,6 @@ function jQueryLeftbar(pageName: String, blockName: String) {
       $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
+  */
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

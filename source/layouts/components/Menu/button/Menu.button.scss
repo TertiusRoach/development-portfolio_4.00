@@ -1,9 +1,10 @@
+//--|🠊| Menu.button.scss |🠈|--//
 //--|🠋| Index Colors |🠋|--//
 $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
 $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
 $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
-//--|🠋| Menu.horizontal.scss |🠋|--//
+//--|🠋| Color Schemes |🠋|--//
 $red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
 $red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
 $red-light: #ea9999; //--🠊 rgba(234, 153, 153, 1) 🠈--//
@@ -44,24 +45,17 @@ $turquoise-neon: #00ffff; //--🠊 rgba(0, 255, 255, 1) 🠈--//
 $turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
 $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
 
-//--|🠋| Color Schemes |🠋|--//
-@mixin index-colors {
-  $primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
-  $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
-  $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
-}
-
 body {
   header,
   footer {
     //--|🠋| Horizontal Alignment |🠋|--//
-    menu[class*='horizontal'] {
-      @media screen and (orientation: landscape) {
-        height: 4rem;
-      }
-      @media screen and (orientation: portrait) {
-        height: 6rem;
-      }
+    menu[class*='-horizontal-'] {
+      // @media screen and (orientation: landscape) {
+      //   height: 4rem;
+      // }
+      // @media screen and (orientation: portrait) {
+      //   height: 6rem;
+      // }
 
       @for $i from 1 through 12 {
         &[class*='#{$i}'] {
@@ -69,9 +63,8 @@ body {
         }
       }
     }
-
     //--|🠋| Vertical Alignment |🠋|--//
-    menu[class*='vertical'] {
+    menu[class*='-vertical-'] {
       display: grid;
       grid-template-columns: 1fr;
 
@@ -87,28 +80,40 @@ body {
         }
       }
     }
-
     menu {
-      display: grid;
-
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
         grid-template-rows: 4rem;
       }
-
       //--|🠋 Mobile (Portrait) 🠋|--//
       @media screen and (orientation: portrait) {
         grid-template-rows: 6rem;
       }
     }
   }
-
   div,
   main,
   aside,
   section {
+    //--|🠋| Vertical Alignment |🠋|--//
+    menu[class*='-vertical-'] {
+      display: grid; // Use CSS Grid for layout
+      grid-template-columns: 1fr; // Create a single column layout for vertical menus
+      @for $i from 1 through 12 {
+        // Target menus with class names that include numbers 1 through 12
+        &[class*='#{$i}'] {
+          grid-template-rows: repeat(#{$i}, 1fr); // Set grid rows to repeat according to the number in the class name
+          @for $j from 1 through $i {
+            // Target each button inside the menu
+            button:nth-child(#{$j}) {
+              grid-row: #{$j} / #{($j + 1)}; // Place each button in its respective grid row
+            }
+          }
+        }
+      }
+    }
     //--|🠋| Horizontal Alignment |🠋|--//
-    menu[class*='horizontal'] {
+    menu[class*='-horizontal-'] {
       @for $i from 1 through 12 {
         button:nth-child(#{$i}) {
           grid-column: #{$i} / #{($i + 1)};
@@ -118,66 +123,11 @@ body {
           grid-template-columns: repeat(#{$i}, 1fr);
         }
       }
-
-      & {
-        //--|🠋 Desktop (Landscape) 🠋|--//
-        @media screen and (orientation: landscape) {
-          grid-template-rows: 4rem;
-        }
-
-        //--|🠋 Mobile (Portrait) 🠋|--//
-        @media screen and (orientation: portrait) {
-          grid-template-rows: 6rem;
-        }
-      }
     }
-
-    //--|🠋| Vertical Alignment |🠋|--//
-    menu[class*='vertical'] {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      @for $i from 1 through 12 {
-        &[class*='#{$i}'] {
-          grid-template-rows: repeat(#{$i}, 1fr);
-
-          @for $j from 1 through $i {
-            button:nth-child(#{$j}) {
-              grid-row: #{$j} / #{($j + 1)};
-            }
-          }
-        }
-      }
-    }
-
-    menu {
-      display: grid;
-
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        grid-template-rows: 4rem;
-      }
-
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        grid-template-rows: 6rem;
-      }
-    }
-
+  }
+  * {
     menu {
       display: grid;
     }
   }
-
-  /*
-  div[id*='index'] {
-    header,
-    footer {
-      //--|🠋| Vertical Alignment |🠋|--//
-      menu[class*='vertical'] {
-        // display: none;
-      }
-    }
-  }
-  */
 }

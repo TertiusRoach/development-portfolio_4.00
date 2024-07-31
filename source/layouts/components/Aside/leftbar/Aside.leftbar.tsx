@@ -153,6 +153,22 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
   );
 };
 export default AsideLeftbar;
+function jQueryLeftbar(pageName: String, blockName: String) {
+  const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
+    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
+    if (!safety.includes('blocked')) {
+      $(`#${containerElement}.expanded`).addClass('collapsed');
+      $(`#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
+    }
+  });
+
+  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}
 function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
   switch (orientation) {
     case '<desktop>':
@@ -324,19 +340,4 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
         };
       };
   }
-}
-function jQueryLeftbar(pageName: String, blockName: String) {
-  const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
-    if (!safety.includes('blocked')) {
-      $(`#${containerElement}.expanded`).addClass('collapsed');
-      $(`#${containerElement}.collapsed`).removeClass('expanded');
-
-      $(`#${pageName}-header`).removeClass('blurred');
-      $(`#${pageName}-main section`).removeClass('blurred');
-      $(`#${pageName}-footer`).removeClass('blurred');
-    }
-  });
-  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
