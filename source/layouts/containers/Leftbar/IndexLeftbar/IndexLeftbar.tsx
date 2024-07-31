@@ -36,7 +36,6 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
 export default IndexLeftbar;
 function jQueryLeftbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  /*
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
@@ -48,6 +47,5 @@ function jQueryLeftbar(pageName: String, blockName: String) {
       $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
-  */
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

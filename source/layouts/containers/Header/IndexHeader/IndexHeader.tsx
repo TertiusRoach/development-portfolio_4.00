@@ -179,5 +179,5 @@ function jQueryHeader(pageName: String, blockName: String) {
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

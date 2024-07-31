@@ -46,17 +46,15 @@ $turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
 $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
 
 body {
+  * {
+    menu {
+      display: grid;
+    }
+  }
   header,
   footer {
     //--|🠋| Horizontal Alignment |🠋|--//
     menu[class*='-horizontal-'] {
-      // @media screen and (orientation: landscape) {
-      //   height: 4rem;
-      // }
-      // @media screen and (orientation: portrait) {
-      //   height: 6rem;
-      // }
-
       @for $i from 1 through 12 {
         &[class*='#{$i}'] {
           grid-template-columns: repeat(#{$i}, 1fr);
@@ -65,9 +63,7 @@ body {
     }
     //--|🠋| Vertical Alignment |🠋|--//
     menu[class*='-vertical-'] {
-      display: grid;
       grid-template-columns: 1fr;
-
       @for $i from 1 through 12 {
         &[class*='#{$i}'] {
           grid-template-rows: repeat(#{$i}, 1fr);
@@ -97,7 +93,6 @@ body {
   section {
     //--|🠋| Vertical Alignment |🠋|--//
     menu[class*='-vertical-'] {
-      display: grid; // Use CSS Grid for layout
       grid-template-columns: 1fr; // Create a single column layout for vertical menus
       @for $i from 1 through 12 {
         // Target menus with class names that include numbers 1 through 12
@@ -123,11 +118,6 @@ body {
           grid-template-columns: repeat(#{$i}, 1fr);
         }
       }
-    }
-  }
-  * {
-    menu {
-      display: grid;
     }
   }
 }

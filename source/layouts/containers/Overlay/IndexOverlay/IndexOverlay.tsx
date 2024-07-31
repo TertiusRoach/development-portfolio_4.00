@@ -228,5 +228,5 @@ function jQueryOverlay(pageName: String, blockName: String) {
       }
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

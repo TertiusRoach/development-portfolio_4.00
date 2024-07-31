@@ -48,5 +48,5 @@ function jQueryRightbar(pageName: String, blockName: String) {
       $(`#${pageName}-footer`).removeClass('disabled');
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

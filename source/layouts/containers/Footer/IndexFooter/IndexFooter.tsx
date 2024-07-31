@@ -203,9 +203,8 @@ function jQueryFooter(pageName: String, blockName: String) {
     $(`#${pageName}-main`).addClass('disabled');
     $(`#${pageName}-footer`).addClass('disabled');
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
-
 function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':

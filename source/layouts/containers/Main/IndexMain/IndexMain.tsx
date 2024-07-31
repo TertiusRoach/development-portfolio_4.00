@@ -96,6 +96,25 @@ export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
 
+  /*
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+    if (header) {
+      $(header).removeClass('blurred');
+    }
+    if (main) {
+      $(main).removeClass('blurred');
+    }
+    if (footer) {
+      $(footer).removeClass('blurred');
+    }
+    alert('<Main> jQuery Activated');
+  });
+  */
+
   $(`#${containerElement} button[id*="leftbar"]`).on('click', () => {
     let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
     let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
@@ -123,20 +142,6 @@ function jQueryMain(pageName: String, blockName: string) {
     $(main).addClass('blurred');
     $(footer).addClass('blurred');
   });
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
 
-    if (header) {
-      $(header).removeClass('blurred');
-    }
-    if (main) {
-      $(main).removeClass('blurred');
-    }
-    if (footer) {
-      $(footer).removeClass('blurred');
-    }
-  });
-  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
