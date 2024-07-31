@@ -17,19 +17,9 @@ interface InfoProps {
   };
 }
 const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
-  const loadTimer: number = 3000;
+  const jQueryTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = info.identification;
-  useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        setTimeout(() => jQueryOverlay(pageName, blockName), 250);
-      },
-      false
-    );
-    setTimeout(() => jQueryOverlay(pageName, blockName), loadTimer);
-  }, []);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -66,6 +56,8 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
+
+  setTimeout(() => jQueryOverlay(pageName, blockName), jQueryTimer);
   return (
     <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
@@ -177,38 +169,27 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-    if (header) {
-      $(header).removeClass('blurred');
-    }
-    if (main) {
-      $(main).removeClass('blurred');
-    }
-    if (footer) {
-      $(footer).removeClass('blurred');
-    }
-
-    console.log(main);
-
     let element = document.getElementById('index-overlay') as HTMLElement;
     let safety: boolean = element?.className.includes('blocked');
-    let status = element?.className.split(' ').pop() as string;
     if (!safety) {
+      let status = element?.className.split(' ').pop() as string;
+      var header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      var footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+      var main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
       switch (status) {
         case 'visible':
           $(`#${pageName}-overlay.visible`).addClass('blocked');
           $(`#${pageName}-overlay.visible`).toggleClass('hidden');
           $(`#${pageName}-overlay.visible`).removeClass('visible');
 
+          if (header && main && footer) {
+            $(header).removeClass('blurred');
+            $(main).removeClass('blurred');
+            $(footer).removeClass('blurred');
+          }
           setTimeout(() => {
             $(`#${pageName}-overlay`).css('display', 'none');
             $(`#${pageName}-overlay`).removeClass('blocked');
-
-            $(`#${pageName}-header`).removeClass('disabled');
-            $(`#${pageName}-main`).removeClass('disabled');
-            $(`#${pageName}-footer`).removeClass('disabled');
           }, 1000);
           break;
         case 'hidden':
@@ -216,9 +197,6 @@ function jQueryOverlay(pageName: String, blockName: String) {
           $(`#${pageName}-overlay.hidden`).toggleClass('visible');
           $(`#${pageName}-overlay.hidden`).removeClass('hidden');
 
-          $(`#${pageName}-header`).removeClass('disabled');
-          $(`#${pageName}-main`).removeClass('disabled');
-          $(`#${pageName}-footer`).removeClass('disabled');
           setTimeout(() => {
             $(`#${pageName}-overlay`).css('display', '');
           }, 1000);

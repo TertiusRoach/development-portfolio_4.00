@@ -65,9 +65,22 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
+            <menu>
+              <ButtonFade
+                href=""
+                text="Close"
+                label="close"
+                align="center"
+                block="leftbar"
+                style="downplay"
+                state="disabled"
+                axis="<horizontal>"
+                icon={getSVG('close') as { dark: string; medium: string; light: string }}
+              />
+            </menu>
           </header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
+            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
             <section>
               {/* <menu>
               <a target="_blank" className="left" href="https://github.com/TertiusRoach">
@@ -94,6 +107,8 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
         <>
           <header className={`${label}-foreground`} style={{ zIndex: 2 }}></header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
+            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
+
             {/* <menu>
               <a target="_blank" className="left" href="https://github.com/TertiusRoach">
                 <h6 className="display-3">GitHub</h6>
@@ -120,7 +135,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
   );
 };
 export default AsideRightbar;
-function getElements(orientation: '<desktop>' | '<mobile>') {
+function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
   switch (orientation) {
     case '<desktop>':
       return {
@@ -128,17 +143,47 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
-            label: 'close',
-            align: 'center',
-            block: 'rightbar',
+            label: 'home',
+            align: 'left',
+            block: 'leftbar',
             style: 'downplay',
-            text: 'Exit Right',
-            icon: getSVG('close'),
+            icon: getSVG('home'),
+            text: 'My Portfolio',
+          },
+          {
+            href: '',
+            state: '',
+            label: 'skills',
+            align: 'left',
+            block: 'leftbar',
+            style: 'highlight',
+            text: 'Log a Ticket',
+            icon: getSVG('skills'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            label: 'contact',
+            block: 'leftbar',
+            style: 'downplay',
+            text: 'Univer Track',
+            icon: getSVG('contact'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'left',
+            block: 'leftbar',
+            label: 'projects',
+            style: 'highlight',
+            text: 'Journal Fits',
+            icon: getSVG('projects'),
           },
         ],
         criteria: {
           buildDesign: '<fade>',
-          buildAxis: '<horizontal>',
+          buildAxis: '<vertical>',
           buildElement: '<buttons>',
         },
       } as {
@@ -164,12 +209,78 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
+            label: 'home',
+            align: 'center',
+            block: 'leftbar',
+            style: 'downplay',
+            icon: getSVG('home'),
+            text: 'My Portfolio',
+          },
+          {
+            href: '',
+            state: '',
+            align: 'center',
+            label: 'skills',
+            block: 'leftbar',
+            style: 'highlight',
+            text: 'Log a Ticket',
+            icon: getSVG('skills'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'center',
+            label: 'contact',
+            block: 'leftbar',
+            style: 'downplay',
+            text: 'Univer Track',
+            icon: getSVG('contact'),
+          },
+          {
+            href: '',
+            state: '',
+            align: 'center',
+            block: 'leftbar',
+            label: 'projects',
+            style: 'highlight',
+            text: 'Journal Fits',
+            icon: getSVG('projects'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<vertical>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        buttons: {
+          text?: string;
+          href?: string;
+          state?: 'active' | '';
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    default:
+      return {
+        button: [
+          {
+            href: '',
+            state: '',
+            text: 'Close',
             label: 'close',
             align: 'center',
-            block: 'rightbar',
+            block: 'leftbar',
             style: 'downplay',
-            text: 'Exit Right',
-            icon: getSVG('close'),
+            icon: getSVG('home'),
           },
         ],
         criteria: {
@@ -178,7 +289,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           buildElement: '<buttons>',
         },
       } as {
-        buttons: {
+        button: {
           text?: string;
           href?: string;
           state?: 'active' | '';

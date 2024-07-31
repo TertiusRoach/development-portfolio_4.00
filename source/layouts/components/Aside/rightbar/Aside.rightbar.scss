@@ -47,7 +47,6 @@ $turquoise-light: #a2c4c9;
 
 @mixin desktop-landscape {
   display: grid;
-  // align-content: space-around; // Add this to vertically align content like space-around in Flexbox
   grid-template: 4rem 1fr 4rem / repeat(2, 1fr);
   header[class*='foreground'] {
     grid-area: 1 / 2 / 2 / 3;
@@ -59,6 +58,9 @@ $turquoise-light: #a2c4c9;
     display: inherit;
     grid-template: inherit;
     grid-area: 1 / 1 / 4 / 3;
+    menu {
+      grid-area: 2 / 2 / 3 / 3;
+    }
     section {
       grid-area: 1 / 2 / 4 / 3;
     }
