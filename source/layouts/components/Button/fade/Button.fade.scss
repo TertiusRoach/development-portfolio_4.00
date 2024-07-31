@@ -16,6 +16,15 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         cursor: pointer;
       }
     }
+    &[id*='active'] {
+      div {
+        h3,
+        h6 {
+          cursor: default;
+          color: white !important;
+        }
+      }
+    }
   }
   button[class*='-downplay-'] {
     div[class*='button'] {
@@ -25,7 +34,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
         animation: downplayFade 1s forwards;
       }
       img.primary-medium {
-        display: flex;
+        opacity: 1;
       }
     }
   }
@@ -34,11 +43,10 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       filter: drop-shadow(0 0 8px white);
       h3,
       h6 {
-        color: $primary-light;
         animation: highlightFade 1s forwards;
       }
       img.primary-light {
-        display: flex;
+        opacity: 1;
       }
     }
   }
@@ -55,30 +63,18 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
   button[class*='-downplay-'] {
-    &[id*='active'] {
-      div {
-        h3,
-        h6 {
-          cursor: default;
-          color: $primary-light !important;
-        }
-        /*
-        img[class*='light'] {
-          opacity: 1;
-        }
-        img[class*='medium'] {
-          opacity: 0;
-        }
-        */
-      }
-    }
     div {
-      animation: downplayFade 1s forwards;
+      h3,
+      h6 {
+        filter: drop-shadow(0 0 2px black);
+        animation: downplayFade 1s forwards;
+      }
       img.primary-light {
-        z-index: 0;
+        opacity: 0;
         animation: fadeIn 1s forwards;
       }
       img.primary-medium {
+        opacity: 1;
         z-index: 1;
       }
       img.primary-dark {
@@ -87,30 +83,18 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
   button[class*='-highlight-'] {
-    &[id*='active'] {
-      div {
-        h3,
-        h6 {
-          cursor: default;
-          color: $primary-dark !important;
-        }
-        /*
-        img[class*='medium'] {
-          opacity: 1;
-        }
-        img[class*='light'] {
-          opacity: 0;
-        }
-        */
-      }
-    }
     div {
-      animation: highlightFade 1s forwards;
+      h3,
+      h6 {
+        filter: drop-shadow(0 0 2px white);
+        animation: highlightFade 1s forwards;
+      }
       img.primary-medium {
-        z-index: 0;
+        opacity: 0;
         animation: fadeIn 1s forwards;
       }
       img.primary-light {
+        opacity: 1;
         z-index: 1;
       }
       img.primary-dark {
@@ -141,7 +125,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   }
   @keyframes highlightFade {
     from {
-      color: $primary-medium;
+      color: $primary-dark;
       filter: drop-shadow(0 0 8px white);
     }
     to {
@@ -155,7 +139,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       filter: drop-shadow(0 0 8px black);
     }
     to {
-      color: $primary-medium;
+      color: $primary-dark;
       filter: drop-shadow(0 0 8px white);
     }
   }
