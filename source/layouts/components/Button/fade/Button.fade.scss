@@ -17,13 +17,11 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
     }
   }
-
   button[class*='-downplay-'] {
     div[class*='button'] {
       filter: drop-shadow(0 0 8px black);
       h3,
       h6 {
-        color: $primary-medium;
         animation: downplayFade 1s forwards;
       }
       img.primary-medium {
@@ -57,38 +55,59 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
   button[class*='-downplay-'] {
+    &[id*='active'] {
+      div {
+        h3,
+        h6 {
+          color: $primary-light !important;
+        }
+        img[class*='light'] {
+          opacity: 1;
+        }
+        img[class*='medium'] {
+          opacity: 0;
+        }
+      }
+    }
     div {
       animation: downplayFade 1s forwards;
-      img.primary-medium {
-        z-index: 0;
-        opacity: 1;
-        // animation: fadeOut 1s forwards;
-      }
       img.primary-light {
         z-index: 0;
-        animation: fadeOut 1s forwards;
+        animation: fadeIn 1s forwards;
+      }
+      img.primary-medium {
+        z-index: 1;
       }
       img.primary-dark {
-        opacity: 0;
         display: none;
       }
     }
   }
   button[class*='-highlight-'] {
+    &[id*='active'] {
+      div {
+        h3,
+        h6 {
+          color: $primary-medium !important;
+        }
+        img[class*='medium'] {
+          opacity: 1;
+        }
+        img[class*='light'] {
+          opacity: 0;
+        }
+      }
+    }
     div {
       animation: highlightFade 1s forwards;
       img.primary-medium {
         z-index: 0;
-        opacity: 1;
-        // animation: fadeIn 1s forwards;
+        animation: fadeIn 1s forwards;
       }
       img.primary-light {
         z-index: 1;
-        animation: fadeIn 1s forwards;
       }
-
       img.primary-dark {
-        opacity: 0;
         display: none;
       }
     }
@@ -246,6 +265,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
 }
+
 body {
   header,
   footer {

@@ -29,7 +29,6 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
         window.removeEventListener('resize', jQueryLoad);
       };
     };
-
     jQueryLoad();
   }, []);
   let desktopElements = getElements('<desktop>') as {
@@ -168,15 +167,12 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
-
-  $(`#${containerElement} menu button[class*="${blockName}"]`).on('click', function () {
+  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
-    let disable = document.querySelector(`#${containerElement} menu button[class*="${blockName}"]`) as HTMLButtonElement;
+    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
     setButton(enable, disable);
-    // setActive(enable, disable);
-  });
 
-  $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
+    /*
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
@@ -185,7 +181,7 @@ function jQueryHeader(pageName: String, blockName: String) {
 
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
+    */
   });
-
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

@@ -1,24 +1,23 @@
+import getIdentification from './getIdentification';
 //--|🠋 utilities/setActive.ts 🠋|--//
 export function setButton(enable: HTMLButtonElement, disable: HTMLButtonElement) {
+  let buttonElements = document.querySelectorAll(`button[id*="${getIdentification()}"]`);
   if (enable !== disable) {
-    let safetyCheck: boolean = enable !== disable && enable.classList[1] === undefined;
-    if (safetyCheck) {
-      console.log(enable.classList[1]);
-      console.log(disable.classList[1]);
-      // disable.className = '';
-      // enable.className = 'active';
+    enable.id = `${enable.id}-active`;
+    for (let i = 0; i < buttonElements.length; i++) {
+      if (buttonElements[i].id.split('-')[2] as 'active') {
+        disable.id = `${disable.id.split('-')[0]}-${disable.id.split('-')[1]}`;
+        break;
+      }
     }
-    /*
-    console.log(enable, disable);
-    console.log('jfdiasljk;dfaljkdljkfasdkl;fasdljk;');
-    */
   }
-  /*
-  const activeButton = document.querySelector(`#${blockName}-active`) as HTMLElement;
-  if (activeButton) {
-    disable.removeAttribute('id');
+
+  if (enable !== disable) {
+    let sectionElement = document.querySelector(`.main-${enable.id.split('-')[1]}`);
+    let activeSection = document.getElementById('main-active');
+    if (sectionElement) {
+      sectionElement.id = 'main-active';
+      activeSection?.removeAttribute('id');
+    }
   }
-  buttonElement.setAttribute('id', `${blockName}-active`);
-  // buttonElement.id = `${blockName}-active`;
-  */
 }
