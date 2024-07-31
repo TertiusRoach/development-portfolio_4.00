@@ -19,10 +19,11 @@ interface RightbarProps {
   };
 }
 const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) => {
-  const jQueryTimer: number = 5000;
+  const jQueryTimer: number = 6000;
   const block = `${blockName}` as 'rightbar';
   const label: string = `${labelName}` as 'rightbar';
   const page: String = info.identification as String;
+  setTimeout(() => jQueryRightbar(page, block), jQueryTimer);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -105,29 +106,25 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <header className={`${label}-foreground`} style={{ zIndex: 2 }}></header>
-          <div className={`${label}-background`} style={{ zIndex: 0 }}>
+          <header className="rightbar-foreground" style={{ zIndex: 2 }}></header>
+          <div className="rightbar-background" style={{ zIndex: 0 }}>
             <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
-
-            {/* <menu>
-              <a target="_blank" className="left" href="https://github.com/TertiusRoach">
-                <h6 className="display-3">GitHub</h6>
-                <img src={getSVG('github').medium as string} alt="github" />
-              </a>
-
-              <a target="_blank" className="center" href="">
-                <h6 className="display-3">LinkedIn</h6>
-                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
-              </a>
-              <a target="_blank" className="right" href="">
-                <h6 className="display-3">YouTube</h6>
-                <img src={getSVG('youtube').medium as string} alt="youtube" />
-              </a>
-            </menu> */}
             <section></section>
           </div>
-          <footer className={`${label}-midground`} style={{ zIndex: 1 }}>
-            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
+          <footer className="rightbar-midground" style={{ zIndex: 1 }}>
+            <menu>
+              <ButtonFade
+                href=""
+                text="Close"
+                label="close"
+                align="center"
+                state="enabled"
+                block="rightbar"
+                style="downplay"
+                axis="<horizontal>"
+                icon={getSVG('close') as { dark: string; medium: string; light: string }}
+              />
+            </menu>
           </footer>
         </>
       )}
@@ -309,5 +306,31 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
 }
 function jQueryRightbar(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement} button[id*='close']`).on('click', function () {
+    let container = document.querySelector(`aside#${containerElement}`);
+    let safety = container?.className as string;
+    if (!safety.includes('blocked') && safety.includes('rightbar')) {
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+      if (header) {
+        $(header).removeClass('blurred');
+      }
+      if (main) {
+        $(main).removeClass('blurred');
+      }
+      if (footer) {
+        $(footer).removeClass('blurred');
+      }
+
+      $(`aside#${containerElement}.expanded`).addClass('collapsed');
+      $(`aside#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
+    }
+  });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

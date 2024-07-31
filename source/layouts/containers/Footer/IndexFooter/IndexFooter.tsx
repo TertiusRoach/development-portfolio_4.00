@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
-import showAside from '../../../../modules/utilities/showAside';
+import { showAside } from '../../../../modules/utilities/showAside';
 import getScroll from '../../../../modules/utilities/getScroll';
 import { setButton } from '../../../../modules/utilities/setActive';
 import getResolution from '../../../../modules/utilities/getResolution';
@@ -43,7 +43,7 @@ const IndexFooter: React.FC<InfoProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
-  let anchors = [
+  let desktopElements = [
     {
       state: '',
       text: 'GitHub',
@@ -88,8 +88,7 @@ const IndexFooter: React.FC<InfoProps> = () => {
     icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
-
-  let mobileDevice = getElements('<mobile>') as {
+  let mobileElements = getElements('<mobile>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
       buildDesign: '<fade>' | '<icon>' | '<text>';
@@ -110,14 +109,16 @@ const IndexFooter: React.FC<InfoProps> = () => {
 
   return (
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <MenuAnchor selectDesign="icon" info={anchors} />
+          <MenuAnchor selectDesign="icon" info={desktopElements} />
         </>
       )}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <MenuButton criteria={mobileDevice.criteria} input={mobileDevice.buttons} />
+          <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
         </>
       )}
     </footer>
@@ -190,8 +191,8 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             text: 'Home',
             label: 'home',
             align: 'left',
+            block: 'footer',
             state: 'active',
-            block: 'header',
             style: 'downplay',
             icon: getSVG('home'),
           },
@@ -201,7 +202,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             text: 'Skills',
             label: 'skills',
             align: 'center',
-            block: 'header',
+            block: 'footer',
             style: 'downplay',
             icon: getSVG('skills'),
           },
@@ -210,15 +211,15 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             state: '',
             align: 'right',
             text: 'Contact',
-            block: 'header',
+            block: 'footer',
             label: 'contact',
             style: 'downplay',
             icon: getSVG('contact'),
           },
         ],
         criteria: {
-          buildAxis: '<horizontal>',
           buildDesign: '<fade>',
+          buildAxis: '<horizontal>',
           buildElement: '<buttons>',
         },
       } as {

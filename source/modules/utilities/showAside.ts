@@ -1,43 +1,116 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
-export default function showAside(containerElement: 'leftbar' | 'rightbar' | string) {
-  const pageName: String = getIdentification();
-  const element = document.querySelector(`#${containerElement}`) as HTMLElement;
-  // console.log(element.split(' ')[0]);
+export function showAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
+  // const pageName: String = getIdentification();
+  const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
+  if (container) {
+    switch (container.classList[1]) {
+      case 'collapsed':
+        break;
+      case 'expanded':
+        container.classList[1] = 'collapsed';
+        break;
+    }
+  }
+
   //--|🠋 Safety Check 🠈|--//
-  if (!element.className.includes('blocked')) {
-    if (element) {
-      let status = element.className.split(' ').pop() as string;
+  if (!container.className.includes('blocked')) {
+    if (container) {
+      let status = container.className.split(' ').pop() as string;
       switch (status) {
         case 'expanded':
-          element.classList.add('blocked');
-          element.classList.add('expanded');
-
+          container.classList.add('blocked');
+          container.classList.add('expanded');
           setTimeout(() => {
-            element.classList.remove('blocked');
-            element.style.display = 'none';
-            element.classList.remove('expanded');
+            container.classList.remove('blocked');
+            container.style.display = 'none';
+            container.classList.remove('expanded');
           }, 1000);
           break;
         case 'collapsed':
-          // element.style.display = 'grid';
-          element.classList.add('blocked');
-          element.classList.add('expanded');
-
+          container.classList.add('blocked');
+          container.classList.add('expanded');
           setTimeout(() => {
-            element.classList.remove('blocked');
-            element.classList.remove('collapsed');
+            container.classList.remove('blocked');
+            container.classList.remove('collapsed');
           }, 1000);
           break;
         default:
-          alert('ERROR!');
+          console.log();
+          alert(container.id);
       }
     } else {
       console.error(`No block with an ID of '#${containerElement}' found.`);
       return;
     }
   }
+
+  // if (container.className.includes('leftbar') || container.className.includes('rightbar')) {
+  // }
+  if (container.className.includes('overlay')) {
+  }
+  // if(container)
   /*
 
   */
+  /*
+
+  */
+  /*
+
+  */
+}
+export function hideAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
+  // const pageName: String = getIdentification();
+  const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
+  if (container) {
+    switch (container.classList[1]) {
+      case 'collapsed':
+        break;
+      case 'expanded':
+        container.classList[1] = 'collapsed';
+        break;
+    }
+  }
+
+  //--|🠋 Safety Check 🠈|--//
+  if (!container.className.includes('blocked')) {
+    if (container) {
+      let status = container.className.split(' ').pop() as string;
+      switch (status) {
+        case 'expanded':
+          container.classList.add('blocked');
+          container.classList.add('expanded');
+          setTimeout(() => {
+            container.classList.remove('blocked');
+            container.style.display = 'none';
+            container.classList.remove('expanded');
+          }, 1000);
+          break;
+        case 'collapsed':
+          container.classList.add('blocked');
+          container.classList.add('expanded');
+          setTimeout(() => {
+            container.classList.remove('blocked');
+            container.classList.remove('collapsed');
+          }, 1000);
+          break;
+        default:
+          console.log();
+          alert(container.id);
+      }
+    } else {
+      console.error(`No block with an ID of '#${containerElement}' found.`);
+      return;
+    }
+  }
+
+  // if (container.className.includes('leftbar') || container.className.includes('rightbar')) {
+  // }
+  if (container.className.includes('overlay')) {
+  }
+  // if(container)
+  // export default function showAside(enable: HTMLButtonElement, disable: HTMLButtonElement) {
+  //   // enable: HTMLButtonElement, disable: HTMLButtonElement
+  // }
 }

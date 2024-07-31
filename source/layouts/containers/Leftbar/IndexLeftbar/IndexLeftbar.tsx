@@ -28,16 +28,5 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
 export default IndexLeftbar;
 function jQueryLeftbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
-    if (!safety.includes('blocked')) {
-      $(`#${containerElement}.expanded`).addClass('collapsed');
-      $(`#${containerElement}.collapsed`).removeClass('expanded');
-
-      $(`#${pageName}-header`).removeClass('blurred');
-      $(`#${pageName}-main section`).removeClass('blurred');
-      $(`#${pageName}-footer`).removeClass('blurred');
-    }
-  });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

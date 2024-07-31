@@ -18,7 +18,7 @@ interface InfoProps {
   };
 }
 const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
-  const jQueryTimer: number = 4000;
+  const jQueryTimer: number = 6000;
   const blockName: String = 'rightbar';
   const pageName: String = info.identification;
 
@@ -29,6 +29,21 @@ export default IndexRightbar;
 
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
+  /*
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
+    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
+    console.log(safety);
+    if (!safety.includes('blocked')) {
+      $(`#${containerElement}.expanded`).addClass('collapsed');
+      $(`#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
+    }
+  });
+  */
+  /*
   $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
@@ -40,5 +55,9 @@ function jQueryRightbar(pageName: String, blockName: String) {
       $(`#${pageName}-footer`).removeClass('blurred');
     }
   });
+  */
+  /*
+
+  */
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

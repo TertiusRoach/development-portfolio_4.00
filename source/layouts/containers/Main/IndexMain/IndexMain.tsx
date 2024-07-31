@@ -6,8 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
-import showAside from '../../../../modules/utilities/showAside';
-import setButton from '../../../../modules/utilities/setActive';
+import { showAside } from '../../../../modules/utilities/showAside';
+import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showSection from '../../../../modules/utilities/showSection';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -95,43 +95,26 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement} button[id*="leftbar"]`).on('click', function () {
+    if (this.id.includes('leftbar')) {
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
 
-  /*
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-    if (header) {
-      $(header).removeClass('blurred');
+      $(header).addClass('blurred');
+      $(main).addClass('blurred');
+      $(footer).addClass('blurred');
     }
-    if (main) {
-      $(main).removeClass('blurred');
-    }
-    if (footer) {
-      $(footer).removeClass('blurred');
-    }
-    alert('<Main> jQuery Activated');
   });
-  */
-
-  $(`#${containerElement} button[id*="leftbar"]`).on('click', () => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-    $(header).addClass('blurred');
-    $(main).addClass('blurred');
-    $(footer).addClass('blurred');
-  });
-  $(`#${containerElement} button[id*="rightbar"]`).on('click', () => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-    $(header).addClass('blurred');
-    $(main).addClass('blurred');
-    $(footer).addClass('blurred');
+  $(`#${containerElement} button[id*="rightbar"]`).on('click', function () {
+    if (this.id.includes('rightbar')) {
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+      $(header).addClass('blurred');
+      $(main).addClass('blurred');
+      $(footer).addClass('blurred');
+    }
   });
   $(`#${containerElement} button[id*="overlay"]`).on('click', () => {
     let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
@@ -142,6 +125,5 @@ function jQueryMain(pageName: String, blockName: string) {
     $(main).addClass('blurred');
     $(footer).addClass('blurred');
   });
-
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

@@ -21,6 +21,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
   const block = `${blockName}` as 'leftbar';
   const label: string = `${labelName}` as 'leftbar';
   const page: String = info.identification as String;
+  setTimeout(() => jQueryLeftbar(page, block), jQueryTimer);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -71,7 +72,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
                 align="center"
                 block="leftbar"
                 style="downplay"
-                state="disabled"
+                state="enabled"
                 axis="<horizontal>"
                 icon={getSVG('close') as { dark: string; medium: string; light: string }}
               />
@@ -105,21 +106,6 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
             <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
-            {/* <menu>
-              <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
-                <h6 className="display-3">LinkedIn</h6>
-                <img src={getSVG('linkedin').medium as string} alt="linkedin" />
-              </a>
-              <a target="_blank" className="center" href="https://github.com/TertiusRoach">
-                <h6 className="display-3">GitHub</h6>
-                <img src={getSVG('github').medium as string} alt="github" />
-              </a>
-
-              <a target="_blank" className="left" href="https://www.youtube.com/@TertiusRoach">
-                <h6 className="display-3">YouTube</h6>
-                <img src={getSVG('youtube').medium as string} alt="youtube" />
-              </a>
-            </menu> */}
             <section></section>
           </div>
           <footer className="leftbar-midground" style={{ zIndex: 1 }}>
@@ -131,7 +117,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
                 align="center"
                 block="leftbar"
                 style="downplay"
-                state="disabled"
+                state="enabled"
                 axis="<horizontal>"
                 icon={getSVG('close') as { dark: string; medium: string; light: string }}
               />
@@ -150,19 +136,19 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
         buttons: [
           {
             href: '',
-            state: '',
             label: 'home',
             align: 'right',
             block: 'leftbar',
+            state: 'enabled',
             style: 'downplay',
             icon: getSVG('home'),
             text: 'My Portfolio',
           },
           {
             href: '',
-            state: '',
             label: 'skills',
             align: 'right',
+            state: 'enabled',
             block: 'leftbar',
             style: 'highlight',
             text: 'Log a Ticket',
@@ -170,9 +156,9 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           },
           {
             href: '',
-            state: '',
             align: 'right',
             label: 'contact',
+            state: 'enabled',
             block: 'leftbar',
             style: 'downplay',
             text: 'Univer Track',
@@ -180,9 +166,9 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
           },
           {
             href: '',
-            state: '',
             align: 'right',
             block: 'leftbar',
+            state: 'enabled',
             label: 'projects',
             style: 'highlight',
             text: 'Journal Fits',
@@ -198,9 +184,9 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
         buttons: {
           text?: string;
           href?: string;
-          state?: 'active' | '';
           label: 'home' | string;
           style: 'highlight' | 'downplay';
+          state?: 'active' | 'enabled' | 'disabled';
           align: 'left' | 'center' | 'right' | string;
           icon: { dark: string; medium: string; light: string };
           block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
@@ -317,5 +303,31 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
 }
 function jQueryLeftbar(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
+  $(`#${containerElement} button[id*='close']`).on('click', function () {
+    let container = document.querySelector(`aside#${containerElement}`);
+    let safety = container?.className as string;
+    if (!safety.includes('blocked') && safety.includes('leftbar')) {
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+      if (header) {
+        $(header).removeClass('blurred');
+      }
+      if (main) {
+        $(main).removeClass('blurred');
+      }
+      if (footer) {
+        $(footer).removeClass('blurred');
+      }
+
+      $(`aside#${containerElement}.expanded`).addClass('collapsed');
+      $(`aside#${containerElement}.collapsed`).removeClass('expanded');
+
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
+    }
+  });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

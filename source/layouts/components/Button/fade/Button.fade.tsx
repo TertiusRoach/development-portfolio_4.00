@@ -17,9 +17,9 @@ interface FadeProps {
   href: string;
   text: string | '';
   label: labelString;
-  state: 'active' | 'disabled';
   style: 'downplay' | 'highlight';
   axis: '<vertical>' | '<horizontal>';
+  state: 'active' | 'enabled' | 'disabled';
   align: 'left' | 'center' | 'right' | string;
   icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
@@ -66,7 +66,7 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
 };
 export default ButtonFade;
 
-function toggleState(label: labelString, state: 'active' | 'disabled') {
+function toggleState(label: labelString, state: 'active' | 'enabled' | 'disabled') {
   // let id: string;
   if (state) {
     return `${getIdentification()}-${label}-${state}`;

@@ -1,6 +1,13 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/setActive.ts 🠋|--//
 export function setButton(enable: HTMLButtonElement, disable: HTMLButtonElement) {
+  switch (enable.parentElement?.parentElement?.tagName) {
+    case 'HEADER':
+    case 'FOOTER':
+      console.log('ljkdfaljkadfsljk;afsdljk;adfls;jk');
+      break;
+  }
+
   let buttonElements = document.querySelectorAll(`button[id*="${getIdentification()}"]`);
   if (enable !== disable) {
     enable.id = `${enable.id}-active`;
