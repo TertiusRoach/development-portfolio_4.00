@@ -146,7 +146,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
       )}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.information} />
+          <MenuButton criteria={desktopDevice.criteria} input={desktopDevice.information} />
 
           {/* <MenuButton selectDesign="fade" info={buttons} /> */}
 

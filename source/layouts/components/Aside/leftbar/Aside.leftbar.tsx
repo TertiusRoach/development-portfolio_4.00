@@ -88,7 +88,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
             </menu>
           </header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
-            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
             <section>
               {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
@@ -114,7 +114,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
         <>
           <header className="leftbar-foreground" style={{ zIndex: 2 }}></header>
           <div className="leftbar-background" style={{ zIndex: 0 }}>
-            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
             {/* <menu>
               <a target="_blank" className="right" href="https://www.linkedin.com/in/tertius-roach/">
                 <h6 className="display-3">LinkedIn</h6>

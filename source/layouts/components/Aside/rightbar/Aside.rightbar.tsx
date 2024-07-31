@@ -75,7 +75,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className={`${label}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className={`${label}-background`} style={{ zIndex: 0 }}>
             <section>
@@ -122,7 +122,7 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
             <section></section>
           </div>
           <footer className={`${label}-midground`} style={{ zIndex: 1 }}>
-            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
           </footer>
         </>
       )}

@@ -72,7 +72,7 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className="overlay-foreground" style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
             <h1>Build style here.</h1>
@@ -90,7 +90,7 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
           </div>
 
           <footer className="overlay-background" style={{ zIndex: 0 }}>
-            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
           </footer>
         </>
       )}

@@ -91,7 +91,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} information={desktopElements.buttons} />
+            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
             <span className={`${block}-description`}>
               <p>
                 {/* Improve, 1960' mob drama */}
@@ -131,7 +131,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2, width: Number(width) - 64, height: Number(height) - 98 }}>
-            <MenuButton criteria={mobileElements.criteria} information={mobileElements.buttons} />
+            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
             <span className={`${block}-description`}>
               <p>
                 {/* Improve, 1960' mob drama */}

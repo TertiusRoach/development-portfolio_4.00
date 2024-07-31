@@ -90,7 +90,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopDevice.criteria} information={desktopDevice.buttons} />
+            <MenuButton criteria={desktopDevice.criteria} input={desktopDevice.buttons} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>

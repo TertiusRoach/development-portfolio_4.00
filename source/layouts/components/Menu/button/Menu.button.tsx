@@ -14,30 +14,28 @@ interface MenuProps {
   criteria: {
     buildAxis: '<vertical>' | '<horizontal>';
     buildDesign: '<fade>' | '<icon>' | '<text>';
-    buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
   };
-  information: {
+  input: {
+    text?: string | '';
+    href?: string | '';
+    state?: 'active' | '';
+
     label: 'home' | string;
     style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
     icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-
-    text?: string | '';
-    href?: string | '';
-    state?: 'active' | '';
   }[];
 }
-const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
-  let buildAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
-  let buildDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
-  let buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' = criteria.buildElement;
+const MenuButton: React.FC<MenuProps> = ({ criteria, input }) => {
+  let selectAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
+  let selectDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
   return (
-    <menu className={`${setClass(buildAxis, buildDesign, buildElement, information)}`}>
-      {information.map((info, i) => (
+    <menu className={`${setClass(selectAxis, selectDesign, input)}`}>
+      {input.map((info, i) => (
         <ButtonFade
           key={i}
-          axis={buildAxis}
+          axis={selectAxis}
           text={`${info.text}`}
           href={`${info.href}`}
           label={`${info.label}`}
@@ -52,16 +50,14 @@ const MenuButton: React.FC<MenuProps> = ({ criteria, information }) => {
   );
 };
 export default MenuButton;
-
 function setAxis(
   amount: Number,
   criteria: {
-    buildAxis: '<vertical>' | '<horizontal>';
-    buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-    buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
+    selectAxis: '<vertical>' | '<horizontal>';
+    selectDesign: '<fade>' | '<icon>' | '<text>' | string;
   }
 ) {
-  if (criteria.buildAxis === '<horizontal>') {
+  if (criteria.selectAxis === '<horizontal>') {
     switch (amount) {
       case 1:
         return 'horizontal-one';
@@ -91,7 +87,7 @@ function setAxis(
         alert('//--|🠊 Menu.horizontal.tsx: Only twelve buttons allowed <horizontally> for the <menu> element 🠈|--//');
         break;
     }
-  } else if (criteria.buildAxis === '<vertical>') {
+  } else if (criteria.selectAxis === '<vertical>') {
     switch (amount) {
       case 1:
         return 'vertical-one';
@@ -124,10 +120,9 @@ function setAxis(
   }
 }
 function setClass(
-  buildAxis: '<vertical>' | '<horizontal>',
-  buildDesign: '<fade>' | '<icon>' | '<text>',
-  buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string,
-  information: {
+  selectAxis: '<vertical>' | '<horizontal>',
+  selectDesign: '<fade>' | '<icon>' | '<text>',
+  input: {
     label: 'home' | string;
     style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
@@ -140,35 +135,22 @@ function setClass(
   }[]
 ) {
   const criteria = {
-    buildAxis,
-    buildDesign,
-    buildElement,
+    selectAxis,
+    selectDesign,
   };
   const axisName = setAxis(
-    information.length as Number,
+    input.length as Number,
     criteria as {
-      buildAxis: '<vertical>' | '<horizontal>';
-      buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>' | string;
+      selectAxis: '<vertical>' | '<horizontal>';
+      selectDesign: '<fade>' | '<icon>' | '<text>' | string;
     }
   );
-  if (buildElement === '<buttons>') {
-    switch (buildDesign) {
-      case '<fade>':
-        return `fade-buttons-${axisName}`;
-      case '<icon>':
-        return `icon-buttons-${axisName}`;
-      case '<text>':
-        return `text-buttons-${axisName}`;
-    }
-  } else if (buildElement === '<anchors>') {
-    switch (buildDesign) {
-      case '<fade>':
-        return `fade-anchors-${axisName}`;
-      case '<icon>':
-        return `icon-anchors-${axisName}`;
-      case '<text>':
-        return `text-anchors-${axisName}`;
-    }
+  switch (selectDesign) {
+    case '<fade>':
+      return `fade-buttons-${axisName}`;
+    case '<icon>':
+      return `icon-buttons-${axisName}`;
+    case '<text>':
+      return `text-buttons-${axisName}`;
   }
 }

@@ -60,7 +60,7 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          <MenuButton criteria={desktopElements.criteria} information={desktopElements.information} />
+          <MenuButton criteria={desktopElements.criteria} input={desktopElements.information} />
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
