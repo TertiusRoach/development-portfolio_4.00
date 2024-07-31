@@ -1,40 +1,3 @@
-# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
-
-# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
-
-# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
-
-# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
-
-# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
-
-<!-- // https://tertiusroach.github.io/log-a-ticket_6.00/dist/index.html
-// https://tertiusroach.github.io/university-tracker_2.00/dist/index.html -->
-<details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#Installation">Installation</a></li>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
 # Installation
 
 Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green <> Code.
@@ -118,6 +81,43 @@ Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on th
     .expanded / .collapsed
 
     .highlight / .downplay
+
+# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+
+# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
+
+# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
+
+# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
+
+# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
+
+<!-- // https://tertiusroach.github.io/log-a-ticket_6.00/dist/index.html
+// https://tertiusroach.github.io/university-tracker_2.00/dist/index.html -->
+<details>
+  <summary>Development Portfolio</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#Installation">Installation</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 # Folder Structure
 
