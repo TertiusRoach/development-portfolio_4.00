@@ -9,7 +9,7 @@ import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import setActive from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showAside from '../../../../modules/utilities/showAside';
 import showSection from '../../../../modules/utilities/showSection';
@@ -310,7 +310,7 @@ function jQueryNoir(pageName: String, blockName: string) {
     } else {
       var buttonElement = this as HTMLButtonElement;
       for (let i = 0; i < navigation.length; i++) {
-        setActive(this as HTMLButtonElement, navigation[i]);
+        // setButton(this as HTMLButtonElement, navigation[i]);
       }
       $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }

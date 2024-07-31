@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import showAside from '../../../../modules/utilities/showAside';
 import getScroll from '../../../../modules/utilities/getScroll';
-import setActive from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setActive';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -191,7 +191,6 @@ function jQueryFooter(pageName: String, blockName: String) {
       let buttonElement = this as HTMLButtonElement;
       let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
       let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-      setActive(this as HTMLButtonElement, blockName);
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
   });

@@ -4,13 +4,12 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import setActive from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
-
 interface InfoProps {
   info: {
     resolution: String;
@@ -23,14 +22,15 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 0;
   const pageName = info.identification as String;
   useEffect(() => {
-    const jQueryLoad = () => {
-      jQueryHeader(pageName, blockName);
+    let jQueryLoad = () => {
+      window.addEventListener('resize', jQueryLoad);
+      setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
+      return () => {
+        window.removeEventListener('resize', jQueryLoad);
+      };
     };
-    window.addEventListener('resize', jQueryLoad);
-    setTimeout(() => jQueryHeader(pageName, blockName), jQueryTimer);
-    return () => {
-      window.removeEventListener('resize', jQueryLoad);
-    };
+
+    jQueryLoad();
   }, []);
   let desktopElements = getElements('<desktop>') as {
     criteria: {
@@ -38,7 +38,7 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
       buildDesign: '<fade>' | '<icon>' | '<text>';
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
-    information: {
+    buttons: {
       label: 'home' | string;
       style: 'highlight' | 'downplay';
       align: 'left' | 'center' | 'right' | string;
@@ -60,7 +60,7 @@ const IndexHeader: React.FC<InfoProps> = ({ info }) => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/45afd7cf137b42f3c936f230fdd8c58371f10d20/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
             alt="Tertius Roach"
           />
-          <MenuButton criteria={desktopElements.criteria} input={desktopElements.information} />
+          <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -81,7 +81,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
       return {
-        information: [
+        buttons: [
           {
             href: '',
             text: 'Home',
@@ -119,7 +119,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           buildElement: '<buttons>',
         },
       } as {
-        information: {
+        buttons: {
           text?: string;
           href?: string;
           state?: 'active' | '';
@@ -168,6 +168,14 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
+
+  $(`#${containerElement} menu button[class*="${blockName}"]`).on('click', function () {
+    let enable = this as HTMLButtonElement;
+    let disable = document.querySelector(`#${containerElement} menu button[class*="${blockName}"]`) as HTMLButtonElement;
+    setButton(enable, disable);
+    // setActive(enable, disable);
+  });
+
   $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     //--|🠋 Safety Check 🠋|--//
     if (!this.id) {
@@ -175,9 +183,9 @@ function jQueryHeader(pageName: String, blockName: String) {
       let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
       let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
 
-      setActive(this as HTMLButtonElement, blockName);
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
   });
+
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

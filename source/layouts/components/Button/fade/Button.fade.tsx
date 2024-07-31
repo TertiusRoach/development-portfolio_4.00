@@ -17,24 +17,22 @@ interface FadeProps {
   href: string;
   text: string | '';
   label: labelString;
+  state: 'active' | 'disabled';
   style: 'downplay' | 'highlight';
   axis: '<vertical>' | '<horizontal>';
   align: 'left' | 'center' | 'right' | string;
-  state: 'active' | 'disabled' | 'enabled' | '';
   icon: { dark: string; medium: string; light: string };
   block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 }
 const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, text, label }) => {
   const [viewStyle, setStyle] = useState<'downplay' | 'highlight'>(style);
-  const className = `${block}-${viewStyle}-${align}`; // Updated to use viewStyle state
-  const stateType = `${getIdentification()}-${label} ${state}`;
-
-  // Toggle styles on mouse enter and leave
   const mouseEnter = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
   const mouseLeave = () => setStyle(viewStyle === 'highlight' ? 'downplay' : 'highlight');
+  const className = `${block}-${viewStyle}-${align}`;
+
   return (
-    <button className={className} id={stateType} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-      {/* Desktop (Landscape) */}
+    <button className={className} id={toggleState(label, state)} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} className="button-foreground">
@@ -48,7 +46,7 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
           <div style={{ zIndex: 0 }} className="button-background"></div>
         </>
       )}
-      {/* Mobile (Portrait) */}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div style={{ zIndex: 2 }} className="button-foreground">
@@ -67,6 +65,15 @@ const ButtonFade: React.FC<FadeProps> = ({ icon, style, state, block, align, tex
   );
 };
 export default ButtonFade;
+
+function toggleState(label: labelString, state: 'active' | 'disabled') {
+  // let id: string;
+  if (state) {
+    return `${getIdentification()}-${label}-${state}`;
+  } else {
+    return `${getIdentification()}-${label}`;
+  }
+}
 
 // Define the namespace for label-related types
 namespace LabelName {

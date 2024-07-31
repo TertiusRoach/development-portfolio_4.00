@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
 import showAside from '../../../../modules/utilities/showAside';
-import setActive from '../../../../modules/utilities/setActive';
+import setButton from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showSection from '../../../../modules/utilities/showSection';
 import getIdentification from '../../../../modules/utilities/getIdentification';
