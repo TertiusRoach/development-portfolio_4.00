@@ -37,9 +37,7 @@
 
 # Installation
 
-Clone this Repository with [Visual Studio](https://visualstudio.microsoft.com/) and launch with [Visual Studio Code](https://code.visualstudio.com/download) for testing.
-
-GitGuardian?
+Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green <> Code.
 
 > Check [Node.js]() version
 
