@@ -59,14 +59,17 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       div {
         h3,
         h6 {
+          cursor: default;
           color: $primary-light !important;
         }
+        /*
         img[class*='light'] {
           opacity: 1;
         }
         img[class*='medium'] {
           opacity: 0;
         }
+        */
       }
     }
     div {
@@ -88,14 +91,17 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       div {
         h3,
         h6 {
-          color: $primary-medium !important;
+          cursor: default;
+          color: $primary-dark !important;
         }
+        /*
         img[class*='medium'] {
           opacity: 1;
         }
         img[class*='light'] {
           opacity: 0;
         }
+        */
       }
     }
     div {
