@@ -140,9 +140,12 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             </aside>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
+            <span className={`${block}-subject`}>
+              <h3>Function over Form over Speed,</h3>
+            </span>
             <span className={`${block}-title`}>
               <h3 className="display-3" data-text="The Colorless Pursuit of Function">
-                The Colorless Pursuit of Function
+                The Colorless Pursuit of Functions
               </h3>
             </span>
           </div>
@@ -190,7 +193,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             </aside>
             <span className={`${block}-title`}>
               <h6 className="display-6" data-text="The Colorless Pursuit of Function">
-                Function over Form
+                Func over Form
               </h6>
             </span>
           </div>
