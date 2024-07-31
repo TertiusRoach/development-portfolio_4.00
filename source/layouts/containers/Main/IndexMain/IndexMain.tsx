@@ -101,8 +101,8 @@ function jQueryMain(pageName: String, blockName: string) {
       let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
       let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
 
-      $(header).addClass('blurred');
       $(main).addClass('blurred');
+      $(header).addClass('blurred');
       $(footer).addClass('blurred');
     }
   });
@@ -111,8 +111,9 @@ function jQueryMain(pageName: String, blockName: string) {
       let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
       let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
       let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-      $(header).addClass('blurred');
+
       $(main).addClass('blurred');
+      $(header).addClass('blurred');
       $(footer).addClass('blurred');
     }
   });
@@ -121,8 +122,8 @@ function jQueryMain(pageName: String, blockName: string) {
     let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
     let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
 
-    $(header).addClass('blurred');
     $(main).addClass('blurred');
+    $(header).addClass('blurred');
     $(footer).addClass('blurred');
   });
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

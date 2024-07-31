@@ -350,10 +350,5 @@ function jQueryNoir(pageName: String, blockName: string) {
       showAside(this.id);
     }
   });
-  $(`#${containerElement} button[id*='overlay']`).on('click', function () {
-    if (this.id.includes('overlay')) {
-      // showSection(`${pageName}`, this.id);
-    }
-  });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
