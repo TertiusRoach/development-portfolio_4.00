@@ -21,31 +21,23 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 4000;
   const blockName: String = 'rightbar';
   const pageName: String = info.identification;
-  useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => {
-        jQueryRightbar(pageName, blockName);
-      },
-      false
-    );
-    setTimeout(() => jQueryRightbar(pageName, blockName), jQueryTimer);
-  }, []);
+
+  setTimeout(() => jQueryRightbar(pageName, blockName), jQueryTimer);
   return <AsideRightbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexRightbar;
 
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[class*="close"]`).on('click', () => {
+  $(`#${containerElement} button[id*="close"]`).on('click', () => {
     let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
     if (!safety.includes('blocked')) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
 
-      $(`#${pageName}-header`).removeClass('disabled');
-      $(`#${pageName}-main`).removeClass('disabled');
-      $(`#${pageName}-footer`).removeClass('disabled');
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

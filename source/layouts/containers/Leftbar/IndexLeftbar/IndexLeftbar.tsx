@@ -21,16 +21,8 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 4000;
   const blockName: String = 'leftbar';
   const pageName: String = info.identification;
-  useEffect(() => {
-    let jQueryLoad = () => {
-      jQueryLeftbar(pageName, blockName);
-    };
-    window.addEventListener('resize', jQueryLoad);
-    setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
-    return () => {
-      window.removeEventListener('resize', jQueryLoad);
-    };
-  }, []);
+
+  setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
   return <AsideLeftbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;
@@ -42,9 +34,9 @@ function jQueryLeftbar(pageName: String, blockName: String) {
       $(`#${containerElement}.expanded`).addClass('collapsed');
       $(`#${containerElement}.collapsed`).removeClass('expanded');
 
-      $(`#${pageName}-header`).removeClass('disabled');
-      $(`#${pageName}-main`).removeClass('disabled');
-      $(`#${pageName}-footer`).removeClass('disabled');
+      $(`#${pageName}-header`).removeClass('blurred');
+      $(`#${pageName}-main section`).removeClass('blurred');
+      $(`#${pageName}-footer`).removeClass('blurred');
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

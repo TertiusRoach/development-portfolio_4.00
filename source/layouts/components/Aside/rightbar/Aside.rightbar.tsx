@@ -23,16 +23,6 @@ const AsideRightbar: React.FC<RightbarProps> = ({ labelName, blockName, info }) 
   const block = `${blockName}` as 'rightbar';
   const label: string = `${labelName}` as 'rightbar';
   const page: String = info.identification as String;
-  useEffect(() => {
-    let jQueryLoad = () => {
-      jQueryRightbar(page, block);
-    };
-    window.addEventListener('resize', jQueryLoad);
-    setTimeout(() => jQueryRightbar(page, block), jQueryTimer);
-    return () => {
-      window.removeEventListener('resize', jQueryLoad);
-    };
-  }, []);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -206,18 +196,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
-function jQueryRightbar(pageName: String, blockName: String) {
+function jQueryRightbar(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let safety = document.getElementById(`${pageName}-${blockName}`)?.className as string;
-    if (!safety.includes('blocked')) {
-      $(`#${containerElement}.expanded`).addClass('collapsed');
-      $(`#${containerElement}.collapsed`).removeClass('expanded');
-
-      $(`#${pageName}-header`).removeClass('blurred');
-      $(`#${pageName}-main section`).removeClass('blurred');
-      $(`#${pageName}-footer`).removeClass('blurred');
-    }
-  });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
