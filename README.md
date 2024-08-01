@@ -1,16 +1,54 @@
 # Installation
 
-Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green <> Code.
+Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
+Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
 
-> Check [Node.js](https://nodejs.org/en) version
+> Full Terminal Setup
+
+    npm install -g react
+    npm install -g typescript
+    npm install -g webpack-cli
+    npm install -g webpack-dev-server
+    npm install --save-dev sass
+    npm install --save-dev jquery
+    npm install --save-dev webpack
+    npm install --save-dev react-dom
+    npm install --save-dev bootstrap
+    npm install --save-dev node-sass
+    npm install --save-dev webpack-cli
+    npm install --save-dev @types/react
+    npm install --save-dev @types/jquery
+    npm install --save-dev @types/react-dom
+    npm install --save-dev react-responsive
+    npm install --save-dev webpack-dev-server
+    npm install --save-dev copy-webpack-plugin
+    npm install --save-dev html-webpack-plugin
+    npm install --save-dev terser-webpack-plugin
+    npm install --save-dev mini-css-extract-plugin
+    npm install --save-dev css-minimizer-webpack-plugin
+    npm install --save-dev ts-loader
+    npm install --save-dev css-loader
+    npm install --save-dev sass-loader
+    npm install --save-dev file-loader
+    npm install --save-dev style-loader
+    npm install --save-dev babel-loader
+    npm install --save-dev babel-preset-es2015
+    npm install --save-dev @babel/preset-react
+    npm install --save-dev @babel/preset-typescript
+    npm install --save-dev extract-text-webpack-plugin
+    npm install --save-dev @babel/core @babel/preset-env
+
+---
+
+> Verify [Node.js](https://nodejs.org/en) inside the terminal
 
     node --version
 
-> Initialize TypeScript and Package
+> Initialize Package
 
     npm init -y
 
-> Install Webpack globally (Onto Operating System)
+> Install Webpack Globally (Onto Operating System)
 
     npm install -g react
     npm install -g typescript
@@ -37,7 +75,7 @@ Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on th
     npm install --save-dev mini-css-extract-plugin
     npm install --save-dev css-minimizer-webpack-plugin
 
-> Install loaders
+> Install Loaders
 
     npm install --save-dev ts-loader
     npm install --save-dev css-loader
@@ -45,7 +83,7 @@ Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on th
     npm install --save-dev file-loader
     npm install --save-dev style-loader
 
-> Test Before Installing these Packages (I don't know what Babel does)
+> Install Babel
 
     npm install --save-dev babel-loader
     npm install --save-dev babel-preset-es2015
@@ -54,13 +92,15 @@ Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on th
     npm install --save-dev extract-text-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
 
-## My VSC Shortcuts
+---
+
+# Keyboard Shortcuts
 
     Open Run and Debug: Ctrl + Shift + D & F5
     Collapse Sections: Ctrl + K + 0
     Select Dropdown: Ctrl + Spacebar
 
-### Design Decoumentation
+# Design Decoumentation
 
 //--| [🠉](https://www.compart.com/en/unicode/U+1F809) |--//
 //--| [🠊](https://www.compart.com/en/unicode/U+1F80A) |--//
@@ -72,7 +112,7 @@ Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on th
 //--|🠋 _ 🠋|--//
 //--|🠈 _ 🠈|--//
 
-### Terminology classNames
+# Terminology classNames
 
     .active
 
