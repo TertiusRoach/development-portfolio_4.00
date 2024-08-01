@@ -11,8 +11,8 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
-import showAside from '../../../../modules/utilities/showAside';
-import showSection from '../../../../modules/utilities/showSection';
+import showAside from '../../../../modules/utilities/toggleAside';
+import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
@@ -188,7 +188,7 @@ function jQueryHome(pageName: String, blockName: string) {
   $(`#${layoutsContainer} .overlay-career`).on('click', function () {
     const overlay = this.classList[0].split('-')[0];
     if (overlay.includes('overlay')) {
-      showSection(`${pageName}`, overlay);
+      toggleSection(`${pageName}`, overlay);
     }
   });
 

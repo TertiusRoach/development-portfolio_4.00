@@ -1,6 +1,6 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
-export function showAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
+export function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
   // const pageName: String = getIdentification();
   const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
   if (container) {
@@ -18,6 +18,14 @@ export function showAside(containerElement: 'index-leftbar' | 'index-rightbar' |
     if (container) {
       let status = container.className.split(' ').pop() as string;
       switch (status) {
+        case 'collapsed':
+          container.classList.add('blocked');
+          container.classList.add('expanded');
+          setTimeout(() => {
+            container.classList.remove('blocked');
+            container.classList.remove('collapsed');
+          }, 1000);
+          break;
         case 'expanded':
           container.classList.add('blocked');
           container.classList.add('expanded');
@@ -27,14 +35,7 @@ export function showAside(containerElement: 'index-leftbar' | 'index-rightbar' |
             container.classList.remove('expanded');
           }, 1000);
           break;
-        case 'collapsed':
-          container.classList.add('blocked');
-          container.classList.add('expanded');
-          setTimeout(() => {
-            container.classList.remove('blocked');
-            container.classList.remove('collapsed');
-          }, 1000);
-          break;
+
         default:
           console.log();
           alert(container.id);
@@ -60,6 +61,7 @@ export function showAside(containerElement: 'index-leftbar' | 'index-rightbar' |
 
   */
 }
+/*
 export function hideAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
   // const pageName: String = getIdentification();
   const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
@@ -114,3 +116,4 @@ export function hideAside(containerElement: 'index-leftbar' | 'index-rightbar' |
   //   // enable: HTMLButtonElement, disable: HTMLButtonElement
   // }
 }
+*/

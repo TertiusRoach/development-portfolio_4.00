@@ -11,8 +11,8 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
-import { showAside } from '../../../../modules/utilities/showAside';
-import showSection from '../../../../modules/utilities/showSection';
+import { toggleAside } from '../../../../modules/utilities/toggleAside';
+import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
@@ -334,34 +334,53 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryNoir(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} section`).on('click', function (event) {
-    let navigation = ['header', 'footer'];
-    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    let tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      for (let i = 0; i < navigation.length; i++) {
-        var labelName = parent.classList[0].split('-')[1] as string;
-        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
-      var buttonElement = this as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        // setButton(this as HTMLButtonElement, navigation[i]);
-      }
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
-    }
-  });
+
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
-    if (!this.id.includes('close')) {
-      showAside(this.id);
+    if (this.id.includes('leftbar')) {
+      /*
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+      */
+
+      toggleAside(this.id);
+      /*
+      $(main).addClass('blurred');
+      $(header).addClass('blurred');
+      $(footer).addClass('blurred');
+      */
     }
   });
   $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
-    if (!this.id.includes('close')) {
-      showAside(this.id);
+    if (this.id.includes('rightbar')) {
+      /*
+      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+      */
+
+      toggleAside(this.id);
+      /*
+      $(main).addClass('blurred');
+      $(header).addClass('blurred');
+      $(footer).addClass('blurred');
+      */
     }
+  });
+  $(`#${containerElement} button[id*="overlay"]`).on('click', function () {
+    /*
+    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+    */
+
+    toggleSection(this.id);
+
+    /*
+    $(main).addClass('blurred');
+    $(header).addClass('blurred');
+    $(footer).addClass('blurred');
+    */
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

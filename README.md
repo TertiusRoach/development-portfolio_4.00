@@ -102,15 +102,15 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 
 # Design Decoumentation
 
-//--| [🠉](https://www.compart.com/en/unicode/U+1F809) |--//
-//--| [🠊](https://www.compart.com/en/unicode/U+1F80A) |--//
-//--| [🠋](https://www.compart.com/en/unicode/U+1F80B) |--//
-//--| [🠈](https://www.compart.com/en/unicode/U+1F808) |--//
-
 //--|🠉 _ 🠉|--//
 //--|🠊 _ 🠈|--//
 //--|🠋 _ 🠋|--//
 //--|🠈 _ 🠈|--//
+
+//--| [🠉](https://www.compart.com/en/unicode/U+1F809) |--//
+//--| [🠊](https://www.compart.com/en/unicode/U+1F80A) |--//
+//--| [🠋](https://www.compart.com/en/unicode/U+1F80B) |--//
+//--| [🠈](https://www.compart.com/en/unicode/U+1F808) |--//
 
 # Terminology classNames
 

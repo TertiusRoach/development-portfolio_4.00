@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
+import toggleSection from '../../../../modules/utilities/toggleSection';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -168,43 +169,30 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[id*="close"]`).on('click', () => {
-    let element = document.getElementById('index-overlay') as HTMLElement;
-    let safety: boolean = element?.className.includes('blocked');
-    if (!safety) {
-      let status = element?.className.split(' ').pop() as string;
-      var header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-      var footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-      var main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-      switch (status) {
-        case 'visible':
-          $(`#${pageName}-overlay.visible`).addClass('blocked');
-          $(`#${pageName}-overlay.visible`).toggleClass('hidden');
-          $(`#${pageName}-overlay.visible`).removeClass('visible');
-
-          if (header && main && footer) {
-            $(header).removeClass('blurred');
-            $(main).removeClass('blurred');
-            $(footer).removeClass('blurred');
-          }
-          setTimeout(() => {
-            $(`#${pageName}-overlay`).css('display', 'none');
-            $(`#${pageName}-overlay`).removeClass('blocked');
-          }, 1000);
-          break;
-        case 'hidden':
-          $(`#${pageName}-overlay.hidden`).removeClass('blocked');
-          $(`#${pageName}-overlay.hidden`).toggleClass('visible');
-          $(`#${pageName}-overlay.hidden`).removeClass('hidden');
-
-          setTimeout(() => {
-            $(`#${pageName}-overlay`).css('display', '');
-          }, 1000);
-          break;
-        default:
-          alert('ERROR!');
-      }
+  $(`#${containerElement} button[id*='close']`).on('click', function () {
+    let element = document.querySelector(`section#${containerElement}`) as HTMLElement;
+    //--|🠋 Safety Check 🠋|--//
+    if (!element?.className.includes('blocked') as boolean) {
+      toggleSection(element.id);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
+
+// let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+// let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
+// let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+
+// if (header) {
+//   $(header).removeClass('blurred');
+// }
+// if (main) {
+//   $(main).removeClass('blurred');
+// }
+// if (footer) {
+//   $(footer).removeClass('blurred');
+// }
+
+// $(`#${pageName}-header`).removeClass('blurred');
+// $(`#${pageName}-main section`).removeClass('blurred');
+// $(`#${pageName}-footer`).removeClass('blurred');
