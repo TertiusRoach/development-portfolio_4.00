@@ -1,119 +1,53 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
 export function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
-  // const pageName: String = getIdentification();
-  const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
-  if (container) {
-    switch (container.classList[1]) {
+  const aside = document.querySelector(`aside#${containerElement}`) as HTMLElement;
+  const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
+  const main = document.querySelector(`#${getIdentification()}-main section`) as HTMLElement;
+  const footer = document.querySelector(`#${getIdentification()}-footer`) as HTMLElement;
+  if (aside) {
+    switch (aside.classList[1]) {
       case 'collapsed':
+        aside.style.display = 'grid';
+        aside.classList.add('blocked');
+        aside.classList.add('expanded');
+        setTimeout(() => {
+          aside.classList.remove('blocked');
+          aside.classList.remove('collapsed');
+        }, 1000);
+
+        if (main) {
+          main.classList.add('blurred');
+        }
+        if (header) {
+          header.classList.add('blurred');
+        }
+        if (footer) {
+          footer.classList.add('blurred');
+        }
         break;
       case 'expanded':
-        container.classList[1] = 'collapsed';
+        aside.classList.add('blocked');
+        aside.classList.add('collapsed');
+        aside.classList.remove('expanded');
+        setTimeout(() => {
+          aside.style.display = 'none';
+          aside.classList.remove('blocked');
+        }, 1000);
+
+        if (main) {
+          main.classList.remove('blurred');
+        }
+        if (header) {
+          header.classList.remove('blurred');
+        }
+        if (footer) {
+          footer.classList.remove('blurred');
+        }
         break;
+      default:
+        alert(`//--|🠊 showAside(): Cannot Find .${aside.classList[1]} 🠈|--//`);
+        return;
     }
   }
-
-  //--|🠋 Safety Check 🠈|--//
-  if (!container.className.includes('blocked')) {
-    if (container) {
-      let status = container.className.split(' ').pop() as string;
-      switch (status) {
-        case 'collapsed':
-          container.classList.add('blocked');
-          container.classList.add('expanded');
-          setTimeout(() => {
-            container.classList.remove('blocked');
-            container.classList.remove('collapsed');
-          }, 1000);
-          break;
-        case 'expanded':
-          container.classList.add('blocked');
-          container.classList.add('expanded');
-          setTimeout(() => {
-            container.classList.remove('blocked');
-            container.style.display = 'none';
-            container.classList.remove('expanded');
-          }, 1000);
-          break;
-
-        default:
-          console.log();
-          alert(container.id);
-      }
-    } else {
-      console.error(`No block with an ID of '#${containerElement}' found.`);
-      return;
-    }
-  }
-
-  // if (container.className.includes('leftbar') || container.className.includes('rightbar')) {
-  // }
-  if (container.className.includes('overlay')) {
-  }
-  // if(container)
-  /*
-
-  */
-  /*
-
-  */
-  /*
-
-  */
 }
-/*
-export function hideAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
-  // const pageName: String = getIdentification();
-  const container = document.querySelector(`aside#${containerElement}`) as HTMLElement;
-  if (container) {
-    switch (container.classList[1]) {
-      case 'collapsed':
-        break;
-      case 'expanded':
-        container.classList[1] = 'collapsed';
-        break;
-    }
-  }
-
-  //--|🠋 Safety Check 🠈|--//
-  if (!container.className.includes('blocked')) {
-    if (container) {
-      let status = container.className.split(' ').pop() as string;
-      switch (status) {
-        case 'expanded':
-          container.classList.add('blocked');
-          container.classList.add('expanded');
-          setTimeout(() => {
-            container.classList.remove('blocked');
-            container.style.display = 'none';
-            container.classList.remove('expanded');
-          }, 1000);
-          break;
-        case 'collapsed':
-          container.classList.add('blocked');
-          container.classList.add('expanded');
-          setTimeout(() => {
-            container.classList.remove('blocked');
-            container.classList.remove('collapsed');
-          }, 1000);
-          break;
-        default:
-          console.log();
-          alert(container.id);
-      }
-    } else {
-      console.error(`No block with an ID of '#${containerElement}' found.`);
-      return;
-    }
-  }
-
-  // if (container.className.includes('leftbar') || container.className.includes('rightbar')) {
-  // }
-  if (container.className.includes('overlay')) {
-  }
-  // if(container)
-  // export default function showAside(enable: HTMLButtonElement, disable: HTMLButtonElement) {
-  //   // enable: HTMLButtonElement, disable: HTMLButtonElement
-  // }
-}
-*/

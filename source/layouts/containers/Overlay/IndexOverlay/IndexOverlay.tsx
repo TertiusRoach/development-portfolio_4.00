@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import toggleSection from '../../../../modules/utilities/toggleSection';
+import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -178,21 +178,3 @@ function jQueryOverlay(pageName: String, blockName: String) {
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
-
-// let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-// let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-// let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-// if (header) {
-//   $(header).removeClass('blurred');
-// }
-// if (main) {
-//   $(main).removeClass('blurred');
-// }
-// if (footer) {
-//   $(footer).removeClass('blurred');
-// }
-
-// $(`#${pageName}-header`).removeClass('blurred');
-// $(`#${pageName}-main section`).removeClass('blurred');
-// $(`#${pageName}-footer`).removeClass('blurred');

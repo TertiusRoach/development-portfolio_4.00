@@ -2,9 +2,11 @@ import $ from 'jquery';
 import './Aside.leftbar.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
-import MenuButton from '../../Menu/button/Menu.button';
+import { toggleAside } from '../../../../modules/utilities/toggleAside';
+
 interface LeftbarProps {
   labelName: 'default';
   stateType: 'active' | '';
@@ -304,29 +306,11 @@ function getElements(orientation: '<desktop>' | '<mobile>' | '<close>') {
 function jQueryLeftbar(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*='close']`).on('click', function () {
-    let container = document.querySelector(`aside#${containerElement}`);
-    let safety = container?.className as string;
-    if (!safety.includes('blocked') && safety.includes('leftbar')) {
-      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-      let main = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-      if (header) {
-        $(header).removeClass('blurred');
-      }
-      if (main) {
-        $(main).removeClass('blurred');
-      }
-      if (footer) {
-        $(footer).removeClass('blurred');
-      }
-
-      $(`aside#${containerElement}.expanded`).addClass('collapsed');
-      $(`aside#${containerElement}.collapsed`).removeClass('expanded');
-
-      $(`#${pageName}-header`).removeClass('blurred');
-      $(`#${pageName}-main section`).removeClass('blurred');
-      $(`#${pageName}-footer`).removeClass('blurred');
+    let element = document.querySelector(`aside#${containerElement}`) as HTMLElement;
+    let safety = element?.className as string;
+    //--|🠋 Safety Check 🠋|--//
+    if (!safety.includes('blocked') && safety.includes(blockName)) {
+      toggleAside(element.id);
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

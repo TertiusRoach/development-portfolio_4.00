@@ -12,7 +12,7 @@ import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setActive';
 import getScroll from '../../../../modules/utilities/getScroll';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
+import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
@@ -337,50 +337,18 @@ function jQueryNoir(pageName: String, blockName: string) {
 
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
     if (this.id.includes('leftbar')) {
-      /*
-      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-      */
-
       toggleAside(this.id);
-      /*
-      $(main).addClass('blurred');
-      $(header).addClass('blurred');
-      $(footer).addClass('blurred');
-      */
     }
   });
   $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
     if (this.id.includes('rightbar')) {
-      /*
-      let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-      let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-      let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-      */
-
       toggleAside(this.id);
-      /*
-      $(main).addClass('blurred');
-      $(header).addClass('blurred');
-      $(footer).addClass('blurred');
-      */
     }
   });
   $(`#${containerElement} button[id*="overlay"]`).on('click', function () {
-    /*
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    let main = document.querySelector(`#${pageName}-main section`) as HTMLElement;
-    let footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-    */
-
-    toggleSection(this.id);
-
-    /*
-    $(main).addClass('blurred');
-    $(header).addClass('blurred');
-    $(footer).addClass('blurred');
-    */
+    if (this.id.includes('overlay')) {
+      toggleSection(this.id);
+    }
   });
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

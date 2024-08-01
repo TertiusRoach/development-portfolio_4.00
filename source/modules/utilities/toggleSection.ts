@@ -1,6 +1,6 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showSection.ts 🠋|--//
-export default function toggleSection(containerElement: 'index-overlay' | string) {
+export function toggleSection(containerElement: 'index-overlay' | string) {
   const overlay = document.querySelector(`section#${containerElement}`) as HTMLElement;
   const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
   const main = document.querySelector(`#${getIdentification()}-main section`) as HTMLElement;
