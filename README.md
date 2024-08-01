@@ -2,7 +2,7 @@
 
 Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green <> Code.
 
-> Check [Node.js]() version
+> Check [Node.js](https://nodejs.org/en) version
 
     node --version
 
