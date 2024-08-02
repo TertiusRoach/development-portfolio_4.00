@@ -115,6 +115,17 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 <br />
                 <br />
                 {article.description[1]}
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                Apologies, I can make up for the wasted seconds by presenting you with...🌟animations✨ and 🎆effects🎉.
+                <br />
+                <br />
+                <br />
               </p>
               <h3>{article.description[2]}</h3>
             </span>
@@ -130,9 +141,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
             <span className={`${block}-title`}>
-              <h3 className="display-3" data-text="The Colorless Pursuit of Function">
-                Multimedia Programmer
-              </h3>
+              <h1 className="display-3" data-text="Software Developer">
+                Software Developer
+              </h1>
             </span>
             <span className={`${block}-subject`}>
               <h3>Welcome to my Portfolio,</h3>
@@ -151,8 +162,43 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 <br />
                 <br />
                 {article.description[1]}
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                Apologies, I can make up for the wasted seconds by presenting you with...🌟animations✨ and 🎆effects🎉.
+                <br />
+                <br />
+                <br />
               </p>
-              <h3>{article.description[2]}</h3>
+              <h6>{article.description[2]}</h6>
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1, width: Number(width) - 64, height: Number(height) - 98 }}>
