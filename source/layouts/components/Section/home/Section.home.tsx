@@ -193,7 +193,9 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 <br />
                 <br />
                 <br />
-                Apologies, I can make up for the wasted seconds by presenting you with...🌟animations✨ and 🎆effects🎉.
+                Apologies, I can make up for the wasted seconds by presenting you with...
+                <br />
+                🌟animations✨ & 🎆effects🎉.
                 <br />
                 <br />
                 <br />
