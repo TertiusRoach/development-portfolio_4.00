@@ -58,7 +58,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
        prove myself and bring value to your team. So if you're willing to take a chance on me then we can create
        something extraordinary together. While I may not have a traditional "Computer Science De 😬 gree". Uhm, I
        shouldn't have used those air quotes...take a chance on me?`,
-      `Well this pitch took an unexpected turn.`,
+      `Apologies, I can make up for the wasted seconds by presenting you with...`,
     ],
   };
 
@@ -122,12 +122,28 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 <br />
                 <br />
                 <br />
-                Apologies, I can make up for the wasted seconds by presenting you with...🌟animations✨ and 🎆effects🎉.
                 <br />
                 <br />
                 <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                {article.description[2]}
+                <br />
+                🌟animations✨ and 🎆effects🎉.
               </p>
-              <h3>{article.description[2]}</h3>
+              <h3></h3>
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
@@ -193,14 +209,31 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 <br />
                 <br />
                 <br />
-                Apologies, I can make up for the wasted seconds by presenting you with...
-                <br />
-                🌟animations✨ & 🎆effects🎉.
                 <br />
                 <br />
                 <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                {article.description[2]}
+                <br />
+                🌟animations✨ and 🎆effects🎉.
               </p>
-              <h6>{article.description[2]}</h6>
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1, width: Number(width) - 64, height: Number(height) - 98 }}>

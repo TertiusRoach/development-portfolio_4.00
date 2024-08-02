@@ -87,13 +87,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
               display: none; // Hide scrollbar
             }
           }
-
-          h3 {
-            height: 100%;
-            display: flex;
-            align-items: flex-end;
-            // justify-content: flex-end;
-          }
         }
         aside[class*='profile'] {
           width: 100%;
@@ -196,13 +189,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
             &::-webkit-scrollbar {
               display: none; // Hide scrollbar
             }
-          }
-
-          h6 {
-            height: 100%;
-            display: flex;
-            align-items: flex-end;
-            // justify-content: flex-end;
           }
         }
         aside[class*='profile'] {

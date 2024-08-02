@@ -45,7 +45,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
-
+  /*
   const toggleBlur = () => {
     setIsBlurred(!isBlurred);
   };
@@ -65,7 +65,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       footer?.classList.remove('blurred');
     }
   }, [isBlurred, pageName]);
-
+*/
   return (
     <main id="index-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
