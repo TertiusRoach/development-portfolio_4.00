@@ -34,7 +34,8 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer = 1000;
   const blockName = 'main';
   const pageName = info.identification as String;
-
+  let width = info.resolution.split('x')[0] as string;
+  let height = info.resolution.split('x')[1] as string;
   useEffect(() => {
     const jQueryStart = () => {
       jQueryMain(pageName, blockName);
@@ -45,35 +46,20 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
-  /*
-  const toggleBlur = () => {
-    setIsBlurred(!isBlurred);
-  };
-
-  useEffect(() => {
-    const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    const main = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    const footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
-
-    if (isBlurred) {
-      main?.classList.add('blurred');
-      header?.classList.add('blurred');
-      footer?.classList.add('blurred');
-    } else {
-      main?.classList.remove('blurred');
-      header?.classList.remove('blurred');
-      footer?.classList.remove('blurred');
-    }
-  }, [isBlurred, pageName]);
-*/
   return (
     <main id="index-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          <div style={{ height: '500px', width: width, background: 'green' }}>
+            <h1 className="display-1">ADDSPACE</h1>
+          </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
+          <div style={{ height: '250px', width: width, background: 'green' }}>
+            <h1 className="display-1">MORE ADDSPACE!!!</h1>
+          </div>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -81,7 +67,13 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <div style={{ height: '500px', width: width }}>
+            <h1 className="display-1">ADDSPACE</h1>
+          </div>
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
+          <div style={{ height: '250px', width: width }}>
+            <h1 className="display-1">ADDSPACE</h1>
+          </div>
         </>
       )}
     </main>
