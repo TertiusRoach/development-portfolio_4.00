@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import getScroll from '../../../../modules/utilities/getScroll';
+import scrollMain from '../../../../modules/utilities/scrollMain';
 import { setButton } from '../../../../modules/utilities/setActive';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';

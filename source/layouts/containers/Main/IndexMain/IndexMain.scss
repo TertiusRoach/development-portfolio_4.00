@@ -21,23 +21,4 @@ main[id*='index'] {
   &::-webkit-scrollbar {
     display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
   }
-  /*
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  */
 }
-
-// @mixin desktop-landscape {
-//   #main-active {
-//   }
-// }
-// @mixin mobile-portrait {
-//   #main-active {
-//   }
-// }

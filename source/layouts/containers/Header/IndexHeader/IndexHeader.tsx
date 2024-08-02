@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setActive';
-import getScroll from '../../../../modules/utilities/getScroll';
+import scrollMain from '../../../../modules/utilities/scrollMain';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -170,7 +170,19 @@ function jQueryHeader(pageName: String, blockName: String) {
   $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
-    setButton(enable, disable);
+
+    setButton(enable, disable as HTMLButtonElement);
+  });
+
+  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function (event) {
+    let label = this.className;
+    // let main = document.querySelector(`#${getIdentification()}-main`) as HTMLElement;
+    let button = this as HTMLButtonElement;
+    // console.log(main);
+    console.log(button);
+    console.log(label);
+
+    // setTimeout(() => scrollMain(this as HTMLButtonElement, scroll), 1);
 
     /*
     //--|🠋 Safety Check 🠋|--//
@@ -182,6 +194,21 @@ function jQueryHeader(pageName: String, blockName: String) {
       $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
     }
     */
+
+    const navigation = ['header', 'footer'];
+    const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    const parent = event.target.parentElement?.parentElement as HTMLButtonElement;
+    const tagName = parent.tagName as 'BUTTON' | string;
+    if (tagName === 'BUTTON') {
+      let label = parent.classList[0].split('-')[1] as string;
+      let button = document.querySelector(`button[class*="${label}"]`) as HTMLButtonElement;
+      for (let i = 0; i < navigation.length; i++) {
+        $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 750);
+      }
+    } else {
+      let button = this as HTMLButtonElement;
+      $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 250);
+    }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

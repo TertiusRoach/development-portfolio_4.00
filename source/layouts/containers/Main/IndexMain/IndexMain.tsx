@@ -8,8 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
 import { setButton } from '../../../../modules/utilities/setActive';
-import getScroll from '../../../../modules/utilities/getScroll';
-import toggleSection from '../../../../modules/utilities/toggleSection';
+import scrollMain from '../../../../modules/utilities/scrollMain';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
@@ -57,12 +56,12 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
     const footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
 
     if (isBlurred) {
-      header?.classList.add('blurred');
       main?.classList.add('blurred');
+      header?.classList.add('blurred');
       footer?.classList.add('blurred');
     } else {
-      header?.classList.remove('blurred');
       main?.classList.remove('blurred');
+      header?.classList.remove('blurred');
       footer?.classList.remove('blurred');
     }
   }, [isBlurred, pageName]);
@@ -72,7 +71,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
+          <SectionHome labelName="home" blockName="main" stateType="active" info={info} />
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
@@ -91,7 +90,6 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
     </main>
   );
 };
-
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
@@ -104,11 +102,11 @@ function jQueryMain(pageName: String, blockName: string) {
       let label = parent.classList[0].split('-')[1] as string;
       let button = document.querySelector(`button[class*="${label}"]`) as HTMLButtonElement;
       for (let i = 0; i < navigation.length; i++) {
-        $(container).animate({ scrollTop: `${getScroll(button, container)?.scrollTop as Number}px` }, 750);
+        $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 750);
       }
     } else {
       let button = this as HTMLButtonElement;
-      $(container).animate({ scrollTop: `${getScroll(button, container)?.scrollTop as Number}px` }, 250);
+      $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 250);
     }
   });
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

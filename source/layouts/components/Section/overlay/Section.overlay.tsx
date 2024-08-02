@@ -10,7 +10,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setActive';
-import getScroll from '../../../../modules/utilities/getScroll';
+import scrollMain from '../../../../modules/utilities/scrollMain';
 import showAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
@@ -166,11 +166,11 @@ function jQueryHome(pageName: String, blockName: string) {
       for (let i = 0; i < navigation.length; i++) {
         var labelName = parent.classList[0].split('-')[1] as string;
         var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
+        $(mainContainer).animate({ scrollTop: `${scrollMain(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
       }
     } else {
       var buttonElement = this as HTMLButtonElement;
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
+      $(mainContainer).animate({ scrollTop: `${scrollMain(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
     }
   });
   $(`#${layoutsContainer} .rightbar-projects`).on('click', function () {
