@@ -16,7 +16,7 @@ import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
-interface NoirProps {
+interface HomeProps {
   labelName: 'home';
   stateType: 'active' | 'enabled' | 'disabled';
   blockName: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
@@ -27,22 +27,41 @@ interface NoirProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateType }) => {
+const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
   const jQueryTimer: number = 1000;
   const block = `${blockName}` as 'main';
-  const label: string = `${labelName}` as 'noir';
+  const label: string = `${labelName}` as 'home';
   const page: String = info.identification as String;
-
   useEffect(() => {
     let jQueryStart = () => {
-      jQueryNoir(page, block);
+      jQueryHome(page, block);
     };
     window.addEventListener('resize', jQueryStart);
-    setTimeout(() => jQueryNoir(page, block), jQueryTimer);
+    setTimeout(() => jQueryHome(page, block), jQueryTimer);
     return () => {
       window.removeEventListener('resize', jQueryStart);
     };
   }, []);
+  let width = info.resolution.split('x')[0] as string;
+  let height = info.resolution.split('x')[1] as string;
+
+  let article = {
+    title: 'Multimedia Programmer',
+    subject: 'Welcome to my portfolio,',
+    description: [
+      `As a Multimedia Programmer, I create immersive websites, captivating animations, and interactive
+       applications, blending cutting-edge technologies with an artistic vision for engaging experiences. My
+       curiosity drives me to experiment with upcoming tools to stay ahead in this fast-paced world of computer
+       technologies. I thrive in collaborative environments, and love to transform abstract ideas into impactful,
+       long-lasting applications.`,
+      `My strong work ethic and demonstrable skills equip me to excel in this field. I'm a quick learner, eager to
+       prove myself and bring value to your team. So if you're willing to take a chance on me then we can create
+       something extraordinary together. While I may not have a traditional "Computer Science De 😬 gree". Uhm, I
+       shouldn't have used those air quotes...take a chance on me?`,
+      `Well this pitch took an unexpected turn.`,
+    ],
+  };
+
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -79,8 +98,6 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
-  let width = info.resolution.split('x')[0] as string;
-  let height = info.resolution.split('x')[1] as string;
   return (
     <section
       className={`${blockName}-${labelName}`}
@@ -94,41 +111,12 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
             <span className={`${block}-description`}>
               <p>
-                The world is awash in color. From the vibrant hues of nature to the artificial spectrum of human creation,
-                color is ubiquitous. It is a powerful tool, capable of evoking emotions, influencing perception, and shaping
-                culture. Yet, in the realm of problem-solving and innovation, a curious paradox emerges: the absence of color
-                often correlates with a singular focus on function.
+                {article.description[0]}
                 <br />
                 <br />
-                Color, in many ways, is synonymous with aesthetics. It is the decorative layer, the icing on the cake. While
-                it can enhance appeal and desirability, it can also be a distraction. By stripping away the chromatic
-                elements, we are forced to concentrate on the essential elements of a design or system. It is in this
-                stripped-down state that true functionality can be revealed.
-                <br />
-                <br />
-                Consider minimalist design. Characterized by its simplicity and lack of ornamentation, it prioritizes utility
-                and clarity. By eliminating superfluous elements, the focus is drawn to the core purpose of the object or
-                interface. In a world saturated with visual stimuli, this absence of color can be refreshing, allowing users
-                to concentrate on the task at hand without being overwhelmed.
-                <br />
-                <br />
-                Moreover, the pursuit of function often requires a degree of detachment. Color, with its emotional
-                connotations, can cloud judgment. By removing this variable, we can approach problems with a more objective
-                and analytical mindset. It is in this state of neutrality that innovative solutions are more likely to
-                emerge.
-                <br />
-                <br />
-                Of course, function should not be pursued at the expense of all other considerations. User experience, for
-                example, is crucial. However, by establishing a strong functional foundation, we create a platform upon which
-                to build additional layers of complexity and aesthetic appeal. It is akin to constructing a sturdy house
-                before decorating it.
-                <br />
-                <br />
-                In conclusion, while color can be a valuable tool in design and communication, it should not be prioritized
-                over function. By embracing a minimalist approach and focusing on the core purpose of a product or service,
-                we can create solutions that are not only effective but also enduring. In a world that often values speed and
-                appearance over substance, the colorless pursuit of function is a refreshing and necessary counterbalance.
+                {article.description[1]}
               </p>
+              <h3>{article.description[2]}</h3>
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
@@ -141,13 +129,13 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             </aside> */}
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <span className={`${block}-subject`}>
-              <h3>Function over Form over Speed,</h3>
-            </span>
             <span className={`${block}-title`}>
               <h3 className="display-3" data-text="The Colorless Pursuit of Function">
-                The Colorless Pursuit of Functions
+                Multimedia Programmer
               </h3>
+            </span>
+            <span className={`${block}-subject`}>
+              <h3>Welcome to my Portfolio,</h3>
             </span>
           </div>
         </>
@@ -159,41 +147,12 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
             <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
             <span className={`${block}-description`}>
               <p>
-                The world is awash in color. From the vibrant hues of nature to the artificial spectrum of human creation,
-                color is ubiquitous. It is a powerful tool, capable of evoking emotions, influencing perception, and shaping
-                culture. Yet, in the realm of problem-solving and innovation, a curious paradox emerges: the absence of color
-                often correlates with a singular focus on function.
+                {article.description[0]}
                 <br />
                 <br />
-                Color, in many ways, is synonymous with aesthetics. It is the decorative layer, the icing on the cake. While
-                it can enhance appeal and desirability, it can also be a distraction. By stripping away the chromatic
-                elements, we are forced to concentrate on the essential elements of a design or system. It is in this
-                stripped-down state that true functionality can be revealed.
-                <br />
-                <br />
-                Consider minimalist design. Characterized by its simplicity and lack of ornamentation, it prioritizes utility
-                and clarity. By eliminating superfluous elements, the focus is drawn to the core purpose of the object or
-                interface. In a world saturated with visual stimuli, this absence of color can be refreshing, allowing users
-                to concentrate on the task at hand without being overwhelmed.
-                <br />
-                <br />
-                Moreover, the pursuit of function often requires a degree of detachment. Color, with its emotional
-                connotations, can cloud judgment. By removing this variable, we can approach problems with a more objective
-                and analytical mindset. It is in this state of neutrality that innovative solutions are more likely to
-                emerge.
-                <br />
-                <br />
-                Of course, function should not be pursued at the expense of all other considerations. User experience, for
-                example, is crucial. However, by establishing a strong functional foundation, we create a platform upon which
-                to build additional layers of complexity and aesthetic appeal. It is akin to constructing a sturdy house
-                before decorating it.
-                <br />
-                <br />
-                In conclusion, while color can be a valuable tool in design and communication, it should not be prioritized
-                over function. By embracing a minimalist approach and focusing on the core purpose of a product or service,
-                we can create solutions that are not only effective but also enduring. In a world that often values speed and
-                appearance over substance, the colorless pursuit of function is a refreshing and necessary counterbalance.
+                {article.description[1]}
               </p>
+              <h3>{article.description[2]}</h3>
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1, width: Number(width) - 64, height: Number(height) - 98 }}>
@@ -208,7 +167,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
           <div id={`${labelName}-background`} style={{ zIndex: 0, width: Number(width) - 64, height: Number(height) - 98 }}>
             <span className={`${block}-title`}>
               <h6 className="display-6" data-text="The Colorless Pursuit of Function">
-                Func over Form
+                Multimedia Programmer
               </h6>
             </span>
           </div>
@@ -217,7 +176,7 @@ const SectionNoir: React.FC<NoirProps> = ({ info, labelName, blockName, stateTyp
     </section>
   );
 };
-export default SectionNoir;
+export default SectionHome;
 function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
@@ -334,7 +293,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
       };
   }
 }
-function jQueryNoir(pageName: String, blockName: string) {
+function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
 
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {

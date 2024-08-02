@@ -72,21 +72,27 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
           grid-area: 6 / 1 / 13 / 4; // row-start / col-start / row-end / col-end
           filter: drop-shadow(0 0 4px black);
           p {
-            position: absolute;
+            height: 100%;
             display: block;
+            padding: 0 4px; //~~|🠊 top + bot / left + right 🠈|~~//
             max-height: 100%; // Ensures the paragraph doesn't exceed the container's height
+            line-height: 1.5;
+            word-spacing: 2px;
             overflow-y: scroll;
+            position: absolute;
+            text-align: justify;
+            filter: drop-shadow(0 0 8px black);
+
             &::-webkit-scrollbar {
               display: none; // Hide scrollbar
             }
           }
-          p {
+
+          h3 {
             height: 100%;
-            padding: 0 4px; //~~|🠊 top + bot / left + right 🠈|~~//
-            line-height: 1.5;
-            word-spacing: 2px;
-            text-align: justify;
-            filter: drop-shadow(0 0 8px black);
+            display: flex;
+            align-items: flex-end;
+            // justify-content: flex-end;
           }
         }
         aside[class*='profile'] {

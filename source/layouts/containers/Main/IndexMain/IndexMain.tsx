@@ -71,7 +71,7 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: landscape)' }) && (
         <>
-          <SectionHome labelName="home" blockName="main" stateType="active" info={info} />
+          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
@@ -79,14 +79,11 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
-          <SectionNoir labelName="noir" blockName="main" stateType="active" info={info} />
+          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
       )}
-      <button id="close-button" onClick={toggleBlur}>
-        Close
-      </button>
     </main>
   );
 };
