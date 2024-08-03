@@ -1,4 +1,30 @@
+# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+
+# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
+
+# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
+
+# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
+
+# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
+
+<details>
+  <summary>Development Portfolio</summary>
+  <ol>
+    <li>
+      <ul>
+        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
+
 # Installation
+
+## Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/Section.**default**.tsx | \*.scss
+
+---
 
 Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
@@ -39,6 +65,11 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev @babel/core @babel/preset-env
 
 ---
+
+# Breakdown
+
+Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
+Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
 
 > Verify [Node.js](https://nodejs.org/en) inside the terminal
 
@@ -96,23 +127,23 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 
 # Keyboard Shortcuts
 
-    Open Run and Debug: Ctrl + Shift + D & F5
-    Collapse Sections: Ctrl + K + 0
-    Select Dropdown: Ctrl + Spacebar
+//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
+Collapse Sections: Ctrl + K + 0
+
+//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
+Select Dropdown: Ctrl + Spacebar
+
+//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
+Open Run and Debug: Ctrl + Shift + D & F5
 
 # Design Decoumentation
 
-//--|🠉 _ 🠉|--//
-//--|🠊 _ 🠈|--//
-//--|🠋 _ 🠋|--//
-//--|🠈 _ 🠈|--//
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
 
-//--| [🠉](https://www.compart.com/en/unicode/U+1F809) |--//
-//--| [🠊](https://www.compart.com/en/unicode/U+1F80A) |--//
-//--| [🠋](https://www.compart.com/en/unicode/U+1F80B) |--//
-//--| [🠈](https://www.compart.com/en/unicode/U+1F808) |--//
-
-# Terminology classNames
+# jQuery REACT & SASS className Toggles
 
     .active
 
@@ -122,42 +153,8 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 
     .highlight / .downplay
 
-# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
-
-# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
-
-# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
-
-# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
-
-# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
-
 <!-- // https://tertiusroach.github.io/log-a-ticket_6.00/dist/index.html
 // https://tertiusroach.github.io/university-tracker_2.00/dist/index.html -->
-<details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#Installation">Installation</a></li>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 # Folder Structure
 
