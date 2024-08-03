@@ -4,20 +4,20 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { setButton } from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setButton';
 import scrollMain from '../../../../modules/utilities/scrollMain';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
-interface InfoProps {
+interface HeaderProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexHeader: React.FC<InfoProps> = ({ info }) => {
+const IndexHeader: React.FC<HeaderProps> = ({ info }) => {
   const blockName = 'header';
   const jQueryTimer: number = 0;
   const pageName = info.identification as String;
@@ -167,48 +167,25 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
+
+  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+    //--|🠋 State Check 🠋|--//
+    if (this.id.split('-')[2] !== 'active') {
+      let button = this as HTMLButtonElement;
+      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollResult = scrollMain(container, button, `<${blockName}>`);
+      console.log(scrollResult);
+      if (scrollResult && scrollResult.scrollTop !== undefined) {
+        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+      }
+    }
+  });
+
   $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
 
     setButton(enable, disable as HTMLButtonElement);
-  });
-
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function (event) {
-    let label = this.className;
-    // let main = document.querySelector(`#${getIdentification()}-main`) as HTMLElement;
-    let button = this as HTMLButtonElement;
-    // console.log(main);
-    console.log(button);
-    console.log(label);
-
-    // setTimeout(() => scrollMain(this as HTMLButtonElement, scroll), 1);
-
-    /*
-    //--|🠋 Safety Check 🠋|--//
-    if (!this.id) {
-      let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-    }
-    */
-
-    const navigation = ['header', 'footer'];
-    const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    const parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    const tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      let label = parent.classList[0].split('-')[1] as string;
-      let button = document.querySelector(`button[class*="${label}"]`) as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
-      let button = this as HTMLButtonElement;
-      $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 250);
-    }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

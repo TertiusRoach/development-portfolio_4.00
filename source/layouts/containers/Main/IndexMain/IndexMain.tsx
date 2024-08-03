@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import { setButton } from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setButton';
 import scrollMain from '../../../../modules/utilities/scrollMain';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
@@ -22,14 +22,14 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠉 Components 🠉|--//
 //--|🠋 Design 🠋|--//
 //--|🠉 Design 🠉|--//
-interface InfoProps {
+interface MainProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-const IndexMain: React.FC<InfoProps> = ({ info }) => {
+const IndexMain: React.FC<MainProps> = ({ info }) => {
   const [isBlurred, setIsBlurred] = useState(false);
   const jQueryTimer = 1000;
   const blockName = 'main';
@@ -82,21 +82,15 @@ const IndexMain: React.FC<InfoProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} section`).on('click', function (event) {
-    const navigation = ['header', 'footer'];
-    const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    const parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    const tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      let label = parent.classList[0].split('-')[1] as string;
-      let button = document.querySelector(`button[class*="${label}"]`) as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
+  $(`#${containerElement} section`)
+    .on('click', function () {
       let button = this as HTMLButtonElement;
-      $(container).animate({ scrollTop: `${scrollMain(button, container)?.scrollTop as Number}px` }, 250);
-    }
-  });
+      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollResult = scrollMain(container, button, `<${blockName}>`);
+      if (scrollResult && scrollResult.scrollTop !== undefined) {
+        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+      }
+    })
+    .on('mouseenter', function () {});
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

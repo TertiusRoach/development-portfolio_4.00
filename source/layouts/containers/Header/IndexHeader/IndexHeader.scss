@@ -1,3 +1,34 @@
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: 4rem / auto 1fr; //~~|🠈 rows / columns 🠈|~~//
+    .signature-adjacent {
+      height: 2rem;
+      margin: 1rem 3rem;
+    }
+    menu {
+      grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
+    .signature-adjacent {
+      height: 75%;
+      grid-area: 2 / 2 / 3 / 3;
+    }
+  }
+}
+header[id*='index'] {
+  display: grid;
+  grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  @include mobile-portrait();
+  @include desktop-landscape();
+}
+
 //--|🠋| Color Palette |🠋|--//
 $red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
 $red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
@@ -38,37 +69,6 @@ $grey-light: #efefef; //--🠊 rgba(239, 239, 239, 1) 🠈--//
 $turquoise-neon: #00ffff; //--🠊 rgba(0, 255, 255, 1) 🠈--//
 $turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
 $turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//
-
-@mixin desktop-landscape {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    //--|🠊 display: grid; 🠈|--//
-    grid-template: 4rem / auto 1fr; //~~|🠈 rows / columns 🠈|~~//
-    .signature-adjacent {
-      height: 2rem;
-      margin: 1rem 3rem;
-    }
-    menu {
-      grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    }
-  }
-}
-@mixin mobile-portrait {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
-    .signature-adjacent {
-      height: 75%;
-      grid-area: 2 / 2 / 3 / 3;
-    }
-  }
-}
-header[id*='index'] {
-  display: grid;
-  grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  @include mobile-portrait();
-  @include desktop-landscape();
-}
 
 //--|🠋| Color Schemes |🠋|--//
 @mixin index-colors {

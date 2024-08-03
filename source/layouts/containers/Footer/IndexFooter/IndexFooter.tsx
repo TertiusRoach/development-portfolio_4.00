@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
 import scrollMain from '../../../../modules/utilities/scrollMain';
-import { setButton } from '../../../../modules/utilities/setActive';
+import { setButton } from '../../../../modules/utilities/setButton';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -21,7 +21,7 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 //--|🠉 Components 🠉|--//
 //--|🠋 Design 🠋|--//
 //--|🠉 Design 🠉|--//
-interface InfoProps {
+interface FooterProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
@@ -29,7 +29,7 @@ interface InfoProps {
   };
 }
 
-const IndexFooter: React.FC<InfoProps> = () => {
+const IndexFooter: React.FC<FooterProps> = () => {
   const loadTimer: number = 2000;
   const blockName: string = 'footer';
   const pageName: String = getIdentification();
@@ -244,22 +244,26 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
   $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+    //--|🠋 State Check 🠋|--//
+    if (this.id.split('-')[2] !== 'active') {
+      let button = this as HTMLButtonElement;
+      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      let scrollResult = scrollMain(container, button, `<${blockName}>`);
+      if (scrollResult && scrollResult.scrollTop !== undefined) {
+        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+      }
+    }
+  });
+  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
     setButton(enable, disable);
-
-    /*
-    //--|🠋 Safety Check 🠋|--//
-    if (!this.id) {
-      let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
-    }
-    */
   });
-  /*
+
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
+}
+
+/*
     $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
     if (!this.id) {
       let buttonElement = this as HTMLButtonElement;
@@ -277,6 +281,3 @@ function jQueryFooter(pageName: String, blockName: string) {
     $(`#${pageName}-footer`).addClass('disabled');
   });
   */
-
-  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
-}
