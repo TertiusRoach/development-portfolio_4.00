@@ -31,17 +31,17 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   const jQueryTimer: number = 1000;
   const block = `${blockName}` as 'main';
   const label: string = `${labelName}` as 'home';
-  const page: String = info.identification as String;
+  const pageName: String = info.identification as String;
   useEffect(() => {
-    let jQueryStart = () => {
-      jQueryHome(page, block);
+    const jQueryStart = () => {
+      jQueryHome(pageName, blockName);
     };
     window.addEventListener('resize', jQueryStart);
-    setTimeout(() => jQueryHome(page, block), jQueryTimer);
+    setTimeout(() => jQueryHome(pageName, blockName), jQueryTimer);
     return () => {
       window.removeEventListener('resize', jQueryStart);
     };
-  }, []);
+  }, [pageName, blockName]);
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
 
@@ -109,7 +109,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
-            <span className={`${block}-description`}>
+            <span className={`${blockName}-description`}>
               <p>
                 {article.description[0]}
                 <br />
@@ -156,12 +156,12 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
             </aside> */}
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
-            <span className={`${block}-title`}>
+            <span className={`${blockName}-title`}>
               <h1 className="display-3" data-text="Software Developer">
                 Software Developer
               </h1>
             </span>
-            <span className={`${block}-subject`}>
+            <span className={`${blockName}-subject`}>
               <h3>Welcome to my Portfolio,</h3>
             </span>
           </div>
@@ -172,7 +172,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2, width: Number(width) - 64, height: Number(height) - 98 }}>
             <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
-            <span className={`${block}-description`}>
+            <span className={`${blockName}-description`}>
               <p>
                 {article.description[0]}
                 <br />
@@ -245,7 +245,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
             </aside>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0, width: Number(width) - 64, height: Number(height) - 98 }}>
-            <span className={`${block}-title`}>
+            <span className={`${blockName}-title`}>
               <h6 className="display-6" data-text="The Colorless Pursuit of Function">
                 Multimedia Programmer
               </h6>
@@ -374,7 +374,12 @@ function jQueryHome(pageName: String, blockName: string) {
   $(`#${containerElement}  #${pageName}-contact`).on('click', function () {
     //--|🠋 State Check 🠋|--//
     if (this.id.split('-')[2] !== 'active') {
-      console.log('Scroll Main');
+      var button = this as HTMLButtonElement;
+      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      var scrollResult = scrollMain(container, button, `<${blockName}>`);
+      if (scrollResult && scrollResult.scrollTop !== undefined) {
+        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+      }
     }
   });
   // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

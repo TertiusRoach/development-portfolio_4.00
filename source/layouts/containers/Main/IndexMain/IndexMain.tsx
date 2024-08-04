@@ -53,12 +53,12 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '500px', width: width, background: 'green' }}>
-            <h1 className="display-1">ADDSPACE</h1>
+            <h1 className="display-1">add Space</h1>
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           <div style={{ height: '250px', width: width, background: 'green' }}>
-            <h1 className="display-1">MORE ADDSPACE!!!</h1>
+            <h1 className="display-1">MORE ADD SPACE!!!</h1>
           </div>
         </>
       )}
@@ -67,7 +67,7 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '250px', width: width }}>
-            <h1 className="display-1">ADDSPACE</h1>
+            <h1 className="display-1">ADD SPACE</h1>
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
@@ -79,6 +79,7 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
+  /*
   $(`#${containerElement} section`).on('click', function () {
     let button = this as HTMLButtonElement;
     let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
@@ -87,6 +88,6 @@ function jQueryMain(pageName: String, blockName: string) {
       $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
     }
   });
-
+  */
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

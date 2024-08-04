@@ -242,7 +242,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`footer#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
     //--|🠋 State Check 🠋|--//
@@ -256,7 +256,7 @@ function jQueryFooter(pageName: String, blockName: string) {
       }
     }
   });
-  $(`footer#${containerElement} #${pageName}-projects`).on('click', function () {
+  $(`#${containerElement} #${pageName}-projects`).on('click', function () {
     // process.stdout.write(`Clicked element: ${this}\n`);
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

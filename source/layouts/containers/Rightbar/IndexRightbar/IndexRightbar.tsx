@@ -18,7 +18,7 @@ interface InfoProps {
   };
 }
 const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
-  const jQueryTimer: number = 6000;
+  const jQueryTimer: number = 5000;
   const blockName: String = 'rightbar';
   const pageName: String = info.identification;
 
@@ -35,7 +35,6 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   return <AsideRightbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexRightbar;
-
 function jQueryRightbar(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   /*

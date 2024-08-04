@@ -21,16 +21,15 @@ export default function scrollMain(
       }
       break;
     case '<main>':
-    case '<section>':
-      /*
       scrollLabel = button.id.split('-')[1];
       scrollTag = container.tagName.toLowerCase();
       scrollPixels = pixelAmount(container).find((item) => item.className === scrollLabel);
-      */
-      console.log(`scrollLabel: ${button.className.split('-')[1]}`);
-      console.log(`scrollTag: ${container.tagName.toLowerCase()}`);
-      // scrollTag = container.tagName.toLowerCase();
-      // scrollLabel = button.className.split(' ')[0].split('-')[1];
+      if (scrollPixels) {
+        return {
+          scrollTag: scrollTag,
+          scrollTop: scrollPixels.scrollAmount,
+        };
+      }
       break;
     default:
       console.warn('//--|🠊 Unsupported blockName 🠈|--//');
