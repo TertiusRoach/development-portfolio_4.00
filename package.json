@@ -2,7 +2,7 @@
   "name": "development-portfolio_4.00",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": ".vscode/launch.json",
   "engines": {
     "node": ">=20.13.1"
   },

@@ -27,8 +27,6 @@
 Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
 
-## Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/Section.**default**.tsx | \*.scss
-
 > Full Terminal Setup
 
     npm install -g react
@@ -66,10 +64,9 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 
 ---
 
-# Breakdown
+## Breakdown
 
-Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
-Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
+Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/[Section.**default**.tsx](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/layouts/containers/Main/IndexMain/IndexMain.tsx) | \*.scss
 
 > Verify [Node.js](https://nodejs.org/en) inside the terminal
 
@@ -128,13 +125,26 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 # Keyboard Shortcuts
 
 //--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
-Collapse Sections: Ctrl + K + 0
+
+> Collapse Sections: Ctrl + K + 0
 
 //--|🠋 Use this to see the props / callbacks it needs 🠈|--//
-Select Dropdown: Ctrl + Spacebar
+
+> Select Dropdown: Ctrl + Spacebar
 
 //--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
-Open Run and Debug: Ctrl + Shift + D & F5
+
+> Open Run and Debug: Ctrl + Shift + D & F5
+
+# Terminal Commands
+
+//--|🠋 Starts the testing environment. 🠈|--//
+
+> npm: launch
+
+//--|🠋 Compiles project into public. 🠈|--//
+
+> npm: deploy
 
 # Design Decoumentation
 
