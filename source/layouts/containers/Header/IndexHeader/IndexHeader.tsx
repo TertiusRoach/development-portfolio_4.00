@@ -182,13 +182,12 @@ function scrollMain(button: HTMLButtonElement, pageName: String, blockName: Stri
   const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
   const scrollResult = getScroll(container, button);
   if (scrollResult && scrollResult.scrollTop !== undefined) {
-    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-
     let enable = button as HTMLButtonElement;
     let disable = document.querySelector(`#${pageName}-${blockName} menu button[id*="active"]`) as HTMLButtonElement;
     if (enable !== disable) {
       enable.id = `${enable.id}-active`;
       disable.id = `${getIdentification()}-${disable.id.split('-')[1]}`;
     }
+    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
   }
 }

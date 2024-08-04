@@ -277,6 +277,14 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `main#${pageName}-${blockName} section.${blockName}-home`;
+  $(`${containerElement} button#${pageName}-projects`).on('click', function () {
+    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
+    if (this.className.split('-')[0] === 'rightbar') {
+      var rightbar = this.className.split('-')[0] as 'rightbar';
+      scrollMain(button, pageName);
+      toggleAside(`${pageName}-${rightbar}`);
+    }
+  });
   $(`${containerElement} button#${pageName}-career`).on('click', function () {
     let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
     //--|🠋 Block Check 🠋|--//
@@ -285,29 +293,20 @@ function jQueryHome(pageName: String, blockName: string) {
       scrollMain(button, pageName);
     }
   });
-  $(`${containerElement} button#${pageName}-projects`).on('click', function () {
-    let rightbar = this.className.split('-')[0] as 'rightbar';
-    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
-    if (rightbar === 'rightbar') {
-      scrollMain(button, pageName);
-      toggleAside(`${pageName}-${rightbar}`);
-    }
-  });
   $(`${containerElement} button#${pageName}-contact`).on('click', function () {
     let button = this as HTMLButtonElement;
-    console.log(button);
     scrollMain(button, pageName);
   });
   $(`${containerElement} span.${blockName}-description`).on('click', function () {
     let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
     scrollMain(button, pageName);
   });
-  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-}
-function scrollMain(button: HTMLButtonElement, pageName: String) {
-  let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-  let scrollResult = getScroll(container, button);
-  if (scrollResult && scrollResult.scrollTop !== undefined) {
-    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+  function scrollMain(button: HTMLButtonElement, pageName: String) {
+    let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let scrollResult = getScroll(container, button);
+    if (scrollResult && scrollResult.scrollTop !== undefined) {
+      $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+    }
   }
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

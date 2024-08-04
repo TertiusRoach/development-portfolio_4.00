@@ -251,20 +251,24 @@ function jQueryFooter(pageName: String, blockName: string) {
     scrollMain(this as HTMLButtonElement, pageName, blockName);
   });
 
-  $(`#${containerElement} #${pageName}-projects`).on('click', function () {});
+  $(`#${containerElement} #${pageName}-projects`).on('click', function () {
+    if (this.className.split('-')[0] === 'rightbar') {
+      $(`#${pageName}-main`).animate({ scrollTop: `0px` }, 500);
+      toggleAside(`${pageName}-${this.className.split('-')[0] as 'rightbar'}`);
+    }
+  });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
 function scrollMain(button: HTMLButtonElement, pageName: String, blockName: String) {
   const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
   const scrollResult = getScroll(container, button);
   if (scrollResult && scrollResult.scrollTop !== undefined) {
-    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-
     let enable = button as HTMLButtonElement;
     let disable = document.querySelector(`#${pageName}-${blockName} menu button[id*="active"]`) as HTMLButtonElement;
     if (enable !== disable) {
       enable.id = `${enable.id}-active`;
       disable.id = `${getIdentification()}-${disable.id.split('-')[1]}`;
     }
+    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
   }
 }

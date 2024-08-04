@@ -179,8 +179,9 @@ function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*='close']`).on('click', function () {
     let element = document.querySelector(`section#${containerElement}`) as HTMLElement;
+    let safety = element?.className as string;
     //--|🠋 Safety Check 🠋|--//
-    if (!element?.className.includes('blocked') as boolean) {
+    if (!safety.includes('blocked')) {
       toggleSection(element);
     }
   });
