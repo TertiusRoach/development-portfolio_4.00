@@ -30,10 +30,10 @@ interface MainProps {
   };
 }
 const IndexMain: React.FC<MainProps> = ({ info }) => {
-  const [isBlurred, setIsBlurred] = useState(false);
   const jQueryTimer = 1000;
   const blockName = 'main';
   const pageName = info.identification as String;
+  const [isBlurred, setIsBlurred] = useState(false);
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
   useEffect(() => {
