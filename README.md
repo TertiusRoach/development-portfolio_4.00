@@ -20,28 +20,34 @@
   </ol>
 </details>
 
-# Installation
-
-## Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/Section.**default**.tsx | \*.scss
-
 ---
+
+# Installation
 
 Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
+
+## Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/Section.**default**.tsx | \*.scss
 
 > Full Terminal Setup
 
     npm install -g react
     npm install -g typescript
     npm install -g webpack-cli
-    npm install -g webpack-dev-server
     npm install --save-dev sass
     npm install --save-dev jquery
     npm install --save-dev webpack
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
     npm install --save-dev node-sass
+    npm install --save-dev ts-loader
+    npm install -g webpack-dev-server
+    npm install --save-dev css-loader
+    npm install --save-dev sass-loader
+    npm install --save-dev file-loader
     npm install --save-dev webpack-cli
+    npm install --save-dev style-loader
+    npm install --save-dev babel-loader
     npm install --save-dev @types/react
     npm install --save-dev @types/jquery
     npm install --save-dev @types/react-dom
@@ -49,19 +55,13 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev webpack-dev-server
     npm install --save-dev copy-webpack-plugin
     npm install --save-dev html-webpack-plugin
-    npm install --save-dev terser-webpack-plugin
-    npm install --save-dev mini-css-extract-plugin
-    npm install --save-dev css-minimizer-webpack-plugin
-    npm install --save-dev ts-loader
-    npm install --save-dev css-loader
-    npm install --save-dev sass-loader
-    npm install --save-dev file-loader
-    npm install --save-dev style-loader
-    npm install --save-dev babel-loader
     npm install --save-dev babel-preset-es2015
     npm install --save-dev @babel/preset-react
+    npm install --save-dev terser-webpack-plugin
+    npm install --save-dev mini-css-extract-plugin
     npm install --save-dev @babel/preset-typescript
     npm install --save-dev extract-text-webpack-plugin
+    npm install --save-dev css-minimizer-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
 
 ---

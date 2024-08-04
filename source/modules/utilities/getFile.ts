@@ -5,7 +5,7 @@ export function getSVG(labelName: string): { dark: String; medium: String; light
   //--|🠋 Folder Structure Location 🠋|--//
   let getIcon = (shade: string): String => {
     let getURI =
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/593eceb137ad42de919868b04c7d1c192c56f68e';
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bb2691467be6aa1ff10733f1da01470f5db8adcd/';
     return `${getURI}/source/assets/svg-files/${getIdentification()}-page/${labelName}/${labelName}-${shade}.svg`;
   };
   switch (true) {
