@@ -242,7 +242,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+  $(`footer#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
     //--|🠋 State Check 🠋|--//

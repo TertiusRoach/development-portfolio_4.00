@@ -168,7 +168,7 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
 
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+  $(`header#${containerElement} button[id*="${pageName}"]`).on('click', function () {
     let enable = this as HTMLButtonElement;
     let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
 

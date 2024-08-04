@@ -36,7 +36,6 @@ export default function scrollMain(
       break;
   }
 }
-
 function pixelAmount(container: HTMLElement): { className: string; scrollAmount: number }[] {
   let cumulativeHeight = 0;
   const children = Array.from(container.children) as HTMLElement[];
