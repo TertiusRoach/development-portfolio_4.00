@@ -81,7 +81,7 @@ export default SectionSkills;
 
 function jQuerySkills(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 
   /*
   $(`#${containerElement} section`).on('click', function (event) {

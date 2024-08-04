@@ -315,5 +315,5 @@ function jQueryRightbar(pageName: String, blockName: string) {
       toggleAside(element.id);
     }
   });
-  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

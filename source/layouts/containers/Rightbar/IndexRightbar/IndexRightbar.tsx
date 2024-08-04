@@ -22,7 +22,16 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
   const blockName: String = 'rightbar';
   const pageName: String = info.identification;
 
-  setTimeout(() => jQueryRightbar(pageName, blockName), jQueryTimer);
+  useEffect(() => {
+    const jQueryStart = () => {
+      jQueryRightbar(pageName, blockName);
+    };
+    window.addEventListener('resize', jQueryStart);
+    setTimeout(() => jQueryRightbar(pageName, blockName), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryStart);
+    };
+  }, [pageName, blockName]);
   return <AsideRightbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexRightbar;

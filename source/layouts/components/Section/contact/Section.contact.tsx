@@ -81,7 +81,7 @@ export default SectionContact;
 
 function jQueryContact(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 
   /*
   $(`#${containerElement} section`).on('click', function (event) {

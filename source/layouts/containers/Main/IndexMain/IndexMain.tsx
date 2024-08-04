@@ -66,14 +66,11 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
       {useMediaQuery({ query: '(orientation: portrait)' }) && (
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
-          <div style={{ height: '500px', width: width }}>
-            <h1 className="display-1">ADDSPACE</h1>
-          </div>
-          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
           <div style={{ height: '250px', width: width }}>
             <h1 className="display-1">ADDSPACE</h1>
           </div>
+          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
       )}
     </main>
@@ -82,15 +79,14 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} section`)
-    .on('click', function () {
-      let button = this as HTMLButtonElement;
-      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollResult = scrollMain(container, button, `<${blockName}>`);
-      if (scrollResult && scrollResult.scrollTop !== undefined) {
-        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-      }
-    })
-    .on('mouseenter', function () {});
+  $(`#${containerElement} section`).on('click', function () {
+    let button = this as HTMLButtonElement;
+    let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+    let scrollResult = scrollMain(container, button, `<${blockName}>`);
+    if (scrollResult && scrollResult.scrollTop !== undefined) {
+      $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+    }
+  });
+
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

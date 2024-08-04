@@ -22,7 +22,16 @@ const IndexLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName: String = 'leftbar';
   const pageName: String = info.identification;
 
-  setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
+  useEffect(() => {
+    const jQueryStart = () => {
+      jQueryLeftbar(pageName, blockName);
+    };
+    window.addEventListener('resize', jQueryStart);
+    setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryStart);
+    };
+  }, [pageName, blockName]);
   return <AsideLeftbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexLeftbar;

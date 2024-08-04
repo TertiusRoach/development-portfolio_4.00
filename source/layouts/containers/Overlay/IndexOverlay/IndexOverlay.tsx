@@ -21,6 +21,16 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = info.identification;
+  useEffect(() => {
+    const jQueryStart = () => {
+      jQueryOverlay(pageName, blockName);
+    };
+    window.addEventListener('resize', jQueryStart);
+    setTimeout(() => jQueryOverlay(pageName, blockName), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryStart);
+    };
+  }, [pageName, blockName]);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -57,8 +67,6 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
     };
   };
-
-  setTimeout(() => jQueryOverlay(pageName, blockName), jQueryTimer);
   return (
     <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
@@ -135,11 +143,11 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
+            text: 'Close',
             label: 'close',
             align: 'center',
-            block: 'rightbar',
+            block: 'overlay',
             style: 'downplay',
-            text: 'Exit Rightbar',
             icon: getSVG('close'),
           },
         ],
@@ -173,7 +181,7 @@ function jQueryOverlay(pageName: String, blockName: String) {
     let element = document.querySelector(`section#${containerElement}`) as HTMLElement;
     //--|🠋 Safety Check 🠋|--//
     if (!element?.className.includes('blocked') as boolean) {
-      toggleSection(element.id);
+      toggleSection(element);
     }
   });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

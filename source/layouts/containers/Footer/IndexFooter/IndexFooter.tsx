@@ -106,7 +106,6 @@ const IndexFooter: React.FC<FooterProps> = () => {
       state?: 'active' | '';
     }[];
   };
-
   return (
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
@@ -210,11 +209,11 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: '',
             align: 'right',
-            text: 'Contact',
-            block: 'footer',
-            label: 'contact',
+            text: 'Profile',
+            block: 'rightbar',
+            label: 'projects',
             style: 'downplay',
-            icon: getSVG('contact'),
+            icon: getSVG('profile'),
           },
         ],
         criteria: {
@@ -243,23 +242,23 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+  $(`footer#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+    let enable = this as HTMLButtonElement;
+    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
     //--|🠋 State Check 🠋|--//
-    if (this.id.split('-')[2] !== 'active') {
-      let button = this as HTMLButtonElement;
-      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollResult = scrollMain(container, button, `<${blockName}>`);
+    if (enable.id.split('-')[2] !== 'active') {
+      setButton(enable, disable);
+      var button = this as HTMLButtonElement;
+      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      var scrollResult = scrollMain(container, button, `<${blockName}>`);
       if (scrollResult && scrollResult.scrollTop !== undefined) {
         $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
       }
     }
   });
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
-    let enable = this as HTMLButtonElement;
-    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
-    setButton(enable, disable);
+  $(`footer#${containerElement} #${pageName}-projects`).on('click', function () {
+    // process.stdout.write(`Clicked element: ${this}\n`);
   });
-
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
 

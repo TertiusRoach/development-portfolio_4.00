@@ -237,13 +237,12 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1, width: Number(width) - 64, height: Number(height) - 98 }}>
-            {/* <aside className="profile">
+            <aside className="profile">
               <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
-                alt=""
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/archive-images/tertius-roach/500x500%2C%20profile/profile-picture.png"
+                alt="Tertius Roach"
               />
-            </aside> */}
-            {/* It was a phase. */}
+            </aside>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0, width: Number(width) - 64, height: Number(height) - 98 }}>
             <span className={`${block}-title`}>
@@ -323,8 +322,8 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
             href: '',
             state: '',
             align: 'left',
-            block: 'main',
-            label: 'overlay',
+            label: 'career',
+            block: 'overlay',
             style: 'downplay',
             text: 'My Career',
             icon: getSVG('career'),
@@ -367,6 +366,21 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
 
+  $(`#${containerElement} #${pageName}-career`).on('click', function () {
+    if (this.className.includes('overlay')) {
+      toggleSection(this);
+    }
+  });
+  $(`#${containerElement}  #${pageName}-contact`).on('click', function () {
+    //--|🠋 State Check 🠋|--//
+    if (this.id.split('-')[2] !== 'active') {
+      console.log('Scroll Main');
+    }
+  });
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+}
+
+/*
   $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
     if (this.id.includes('leftbar')) {
       toggleAside(this.id);
@@ -377,10 +391,4 @@ function jQueryHome(pageName: String, blockName: string) {
       toggleAside(this.id);
     }
   });
-  $(`#${containerElement} button[id*="overlay"]`).on('click', function () {
-    if (this.id.includes('overlay')) {
-      toggleSection(this.id);
-    }
-  });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-}
+  */

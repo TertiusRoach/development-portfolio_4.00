@@ -119,5 +119,5 @@ const jQueryProjects = (pageName: String, blockName: string) => {
       $(`#${containerElement}.collapsed`).removeClass('expanded');
     }
   });
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 };

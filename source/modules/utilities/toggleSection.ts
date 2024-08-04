@@ -1,12 +1,12 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showSection.ts 🠋|--//
-export function toggleSection(containerElement: 'index-overlay' | string) {
-  const overlay = document.querySelector(`section#${containerElement}`) as HTMLElement;
-  const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
+export function toggleSection(button: HTMLElement) {
+  const section = document.querySelector(`section[class*='${button.className.split('-')[0]}']`) as HTMLElement;
   const main = document.querySelector(`#${getIdentification()}-main section`) as HTMLElement;
+  const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
   const footer = document.querySelector(`#${getIdentification()}-footer`) as HTMLElement;
-  if (overlay) {
-    switch (overlay.classList[1]) {
+  if (section) {
+    switch (section.classList[1]) {
       case 'hidden':
         setTimeout(() => {
           if (main) {
@@ -20,12 +20,12 @@ export function toggleSection(containerElement: 'index-overlay' | string) {
           }
         }, 250);
 
-        overlay.style.display = 'grid';
-        overlay.classList.add('blocked');
-        overlay.classList.add('visible');
+        section.style.display = 'grid';
+        section.classList.add('blocked');
+        section.classList.add('visible');
         setTimeout(() => {
-          overlay.classList.remove('hidden');
-          overlay.classList.remove('blocked');
+          section.classList.remove('hidden');
+          section.classList.remove('blocked');
         }, 1000);
 
         break;
@@ -42,16 +42,16 @@ export function toggleSection(containerElement: 'index-overlay' | string) {
           }
         }, 750);
 
-        overlay.classList.add('hidden');
-        overlay.classList.add('blocked');
-        overlay.classList.remove('visible');
+        section.classList.add('hidden');
+        section.classList.add('blocked');
+        section.classList.remove('visible');
         setTimeout(() => {
-          overlay.style.display = 'none';
-          overlay.classList.remove('blocked');
+          section.style.display = 'none';
+          section.classList.remove('blocked');
         }, 1000);
         break;
       default:
-        alert(`//--|🠊 showSection(): Cannot Find .${overlay.classList[1]} 🠈|--//`);
+        alert(`//--|🠊 showSection(): Cannot Find .${section.classList[1]} 🠈|--//`);
         return;
     }
   }

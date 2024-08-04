@@ -168,24 +168,21 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
 
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+  $(`header#${containerElement} button[id*="${pageName}"]`).on('click', function () {
+    let enable = this as HTMLButtonElement;
+    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
+
     //--|🠋 State Check 🠋|--//
-    if (this.id.split('-')[2] !== 'active') {
-      let button = this as HTMLButtonElement;
-      let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollResult = scrollMain(container, button, `<${blockName}>`);
-      console.log(scrollResult);
+    if (enable.id.split('-')[2] !== 'active') {
+      setButton(enable, disable);
+      var button = this as HTMLButtonElement;
+      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+      var scrollResult = scrollMain(container, button, `<${blockName}>`);
       if (scrollResult && scrollResult.scrollTop !== undefined) {
         $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
       }
     }
   });
 
-  $(`#${containerElement} button[id*="${pageName}"]`).on('click', function () {
-    let enable = this as HTMLButtonElement;
-    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
-
-    setButton(enable, disable as HTMLButtonElement);
-  });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

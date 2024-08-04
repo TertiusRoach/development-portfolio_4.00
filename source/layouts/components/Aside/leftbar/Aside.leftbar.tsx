@@ -22,8 +22,17 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
   const jQueryTimer: number = 4000;
   const block = `${blockName}` as 'leftbar';
   const label: string = `${labelName}` as 'leftbar';
-  const page: String = info.identification as String;
-  setTimeout(() => jQueryLeftbar(page, block), jQueryTimer);
+  const pageName: String = info.identification as String;
+  useEffect(() => {
+    const jQueryStart = () => {
+      jQueryLeftbar(pageName, blockName);
+    };
+    window.addEventListener('resize', jQueryStart);
+    setTimeout(() => jQueryLeftbar(pageName, blockName), jQueryTimer);
+    return () => {
+      window.removeEventListener('resize', jQueryStart);
+    };
+  }, [pageName, blockName]);
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -61,7 +70,7 @@ const AsideLeftbar: React.FC<LeftbarProps> = ({ labelName, blockName, info }) =>
     };
   };
   return (
-    <aside id={`${page}-${block}`} className={`${label}-${block} collapsed`} style={{ zIndex: 5 }}>
+    <aside id={`${pageName}-${block}`} className={`${label}-${block} collapsed`} style={{ zIndex: 5 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
@@ -313,5 +322,5 @@ function jQueryLeftbar(pageName: String, blockName: string) {
       toggleAside(element.id);
     }
   });
-  return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+  // return console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }

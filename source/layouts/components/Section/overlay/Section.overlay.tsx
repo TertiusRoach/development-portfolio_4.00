@@ -11,8 +11,8 @@ import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setButton';
 import scrollMain from '../../../../modules/utilities/scrollMain';
-import showAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
+import { toggleAside } from '../../../../modules/utilities/toggleAside';
+import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
@@ -156,7 +156,8 @@ const SectionOverlay: React.FC<HomeProps> = ({ info, labelName, blockName, state
 export default SectionOverlay;
 
 function jQueryHome(pageName: String, blockName: string) {
-  const layoutsContainer = `${pageName}-${blockName}`;
+  const containerElement = `${pageName}-${blockName}`;
+  /*
   $(`#${layoutsContainer} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
@@ -176,13 +177,13 @@ function jQueryHome(pageName: String, blockName: string) {
   $(`#${layoutsContainer} .rightbar-projects`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('rightbar')) {
-      showAside(rightbar);
+      toggleAside(rightbar);
     }
   });
   $(`#${layoutsContainer} button[class*="leftbar"]`).on('click', function () {
     const rightbar = this.classList[0].split('-')[0];
     if (rightbar.includes('leftbar')) {
-      showAside(rightbar);
+      toggleAside(rightbar);
     }
   });
   $(`#${layoutsContainer} .overlay-career`).on('click', function () {
@@ -191,6 +192,6 @@ function jQueryHome(pageName: String, blockName: string) {
       toggleSection(`${pageName}`, overlay);
     }
   });
-
-  console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
+*/
+  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
