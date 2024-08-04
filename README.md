@@ -130,7 +130,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 //--|🠋 Use this to see the props / callbacks it needs 🠈|--//
 
-> Select Dropdown: Ctrl + Spacebar
+> Select Dropdown: Ctrl + SpaceBar
 
 //--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
 
@@ -140,13 +140,13 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 //--|🠋 Starts the testing environment. 🠈|--//
 
-> npm: launch
+> npm run launch
 
 //--|🠋 Compiles project into public. 🠈|--//
 
-> npm: deploy
+> npm run deploy
 
-# Design Decoumentation
+# Design Documentation
 
 //--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
 //--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
@@ -244,7 +244,7 @@ This is the structure I will use going forward.
 
     │ | ├── Footer/ # <footer style="z-index: 3;">
 
-    │ | │ └── IndextFooter/ # Contains the default files for the selected page
+    │ | │ └── IndexFooter/ # Contains the default files for the selected page
 
     │ | │ ├──DefaultFooter.scss
 
