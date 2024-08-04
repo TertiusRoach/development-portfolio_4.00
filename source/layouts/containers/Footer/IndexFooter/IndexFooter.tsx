@@ -6,9 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
+import getScroll from '../../../../modules/utilities/getScroll';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import scrollMain from '../../../../modules/utilities/scrollMain';
-import { setButton } from '../../../../modules/utilities/setButton';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -242,39 +241,30 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  $(`footer#${containerElement} button[id*="${pageName}"]`).on('click', function () {
-    let enable = this as HTMLButtonElement;
-    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
-    //--|🠋 State Check 🠋|--//
-    if (enable.id.split('-')[2] !== 'active') {
-      setButton(enable, disable);
-      var button = this as HTMLButtonElement;
-      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      var scrollResult = scrollMain(container, button, `<${blockName}>`);
-      if (scrollResult && scrollResult.scrollTop !== undefined) {
-        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-      }
-    }
+  $(`footer#${containerElement} menu button[id*='home']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
   });
+  $(`footer#${containerElement} menu button[id*='skills']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
+  });
+  $(`footer#${containerElement} menu button[id*='contact']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
+  });
+
   $(`#${containerElement} #${pageName}-projects`).on('click', function () {});
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
+function scrollMain(button: HTMLButtonElement, pageName: String, blockName: String) {
+  const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+  const scrollResult = getScroll(container, button);
+  if (scrollResult && scrollResult.scrollTop !== undefined) {
+    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
 
-/*
-    $(`#${containerElement} button[class*="${blockName}"]`).on('click', function () {
-    if (!this.id) {
-      let buttonElement = this as HTMLButtonElement;
-      let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      let scrollPixels = getScroll(buttonElement, mainContainer)?.scrollTop as Number;
-      $(mainContainer).animate({ scrollTop: `${scrollPixels}px` }, 1000);
+    let enable = button as HTMLButtonElement;
+    let disable = document.querySelector(`#${pageName}-${blockName} menu button[id*="active"]`) as HTMLButtonElement;
+    if (enable !== disable) {
+      enable.id = `${enable.id}-active`;
+      disable.id = `${getIdentification()}-${disable.id.split('-')[1]}`;
     }
-  });
-  $(`#${containerElement} .rightbar-projects`).on('click', function () {
-    let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
-    showAside(rightbar.classList[0].split('-')[1] as string);
-
-    $(`#${pageName}-header`).addClass('disabled');
-    $(`#${pageName}-main`).addClass('disabled');
-    $(`#${pageName}-footer`).addClass('disabled');
-  });
-  */
+  }
+}

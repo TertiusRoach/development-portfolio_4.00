@@ -5,6 +5,8 @@ export function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar'
   const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
   const main = document.querySelector(`#${getIdentification()}-main section`) as HTMLElement;
   const footer = document.querySelector(`#${getIdentification()}-footer`) as HTMLElement;
+
+  console.log(containerElement);
   if (aside) {
     switch (aside.classList[1]) {
       case 'collapsed':

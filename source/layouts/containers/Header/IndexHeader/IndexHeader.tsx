@@ -4,8 +4,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { setButton } from '../../../../modules/utilities/setButton';
-import scrollMain from '../../../../modules/utilities/scrollMain';
+import getScroll from '../../../../modules/utilities/getScroll';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -167,22 +166,29 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHeader(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}`;
-
-  $(`header#${containerElement} button[id*="${pageName}"]`).on('click', function () {
-    let enable = this as HTMLButtonElement;
-    let disable = document.querySelector(`#${containerElement} menu button[id*="active"]`) as HTMLButtonElement;
-
-    //--|🠋 State Check 🠋|--//
-    if (enable.id.split('-')[2] !== 'active') {
-      setButton(enable, disable);
-      var button = this as HTMLButtonElement;
-      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      var scrollResult = scrollMain(container, button, `<${blockName}>`);
-      if (scrollResult && scrollResult.scrollTop !== undefined) {
-        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-      }
-    }
+  $(`header#${containerElement} menu button[id*='home']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
   });
-
+  $(`header#${containerElement} menu button[id*='skills']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
+  });
+  $(`header#${containerElement} menu button[id*='contact']`).on('click', function () {
+    scrollMain(this as HTMLButtonElement, pageName, blockName);
+  });
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
+}
+
+function scrollMain(button: HTMLButtonElement, pageName: String, blockName: String) {
+  const container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+  const scrollResult = getScroll(container, button);
+  if (scrollResult && scrollResult.scrollTop !== undefined) {
+    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+
+    let enable = button as HTMLButtonElement;
+    let disable = document.querySelector(`#${pageName}-${blockName} menu button[id*="active"]`) as HTMLButtonElement;
+    if (enable !== disable) {
+      enable.id = `${enable.id}-active`;
+      disable.id = `${getIdentification()}-${disable.id.split('-')[1]}`;
+    }
+  }
 }

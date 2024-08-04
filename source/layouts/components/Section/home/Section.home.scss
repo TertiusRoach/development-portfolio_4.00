@@ -175,10 +175,10 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
           display: none;
         }
         span[class*='description'] {
+          overflow: hidden;
           position: relative;
           color: $primary-light;
-          overflow: hidden;
-          grid-area: 6 / 1 / 13 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+          grid-area: 4 / 1 / 11 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
           filter: drop-shadow(0 0 4px black);
           p {
             height: 100%;

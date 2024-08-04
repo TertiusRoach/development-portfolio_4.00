@@ -8,6 +8,7 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
+import AsideProjects from '../../../components/Aside/projects/Aside.projects';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
@@ -32,7 +33,7 @@ const IndexRightbar: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
-  return <AsideRightbar labelName="default" blockName={`${blockName}`} info={info} stateType="" />;
+  return <AsideProjects labelName="projects" blockName={`${blockName}`} info={info} stateType="" />;
 };
 export default IndexRightbar;
 function jQueryRightbar(pageName: String, blockName: String) {

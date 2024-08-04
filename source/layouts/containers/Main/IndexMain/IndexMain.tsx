@@ -6,9 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
+import getScroll from '../../../../modules/utilities/getScroll';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import { setButton } from '../../../../modules/utilities/setButton';
-import scrollMain from '../../../../modules/utilities/scrollMain';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
@@ -76,50 +75,17 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} section`)
-    .on('click', function () {
-      /*
+  /*
+  $(`#${containerElement} section.main-home #${pageName}-contact`).on('click', function () {
     let button = this as HTMLButtonElement;
     let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
 
-    console.log(button.className.split('-')[1]);
-    console.log(container);
+    let scrollResult = getScroll(container, button);
 
-    let scrollResult = scrollMain(container, button, `<${blockName}>`);
-    
     if (scrollResult && scrollResult.scrollTop !== undefined) {
       $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
     }
-    */
-    })
-    .on('mouseenter', function () {
-      // Check if 'this' has a className property before splitting
-      if (this.className) {
-        let enable = this.className.split('-')[1] as string;
-
-        // Use optional chaining (?.) to safely access properties
-        let active = document.querySelector(`#${pageName}-main section[id*='active']`);
-        if (!active) return; // Exit if active is null
-
-        let disable = active.className?.split('-')[1]; // Use optional chaining
-
-        if (enable !== disable) {
-          // Use optional chaining and nullish coalescing (??) for safer element selection
-          let disableSection = document.querySelector(`.${blockName}-${disable}`) ?? null;
-          let disableButton = document.querySelector(`[class*='default'] button[id*='active']`) ?? null;
-
-          let enableSection = document.querySelector(`.${blockName}-${enable}`) as HTMLElement;
-          let enableButton = document.querySelector(`[class*='default'] button[id*='${enable}']`) as HTMLElement;
-
-          if (disableSection && disableButton) {
-            disableSection.id = '';
-            disableButton.id = `${pageName}-${disable}`;
-
-            enableSection.id = `${blockName}-active`;
-            enableButton.id = `${pageName}-${enable}-active`;
-          }
-        }
-      }
-    });
-  return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
+  });
+  */
+  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

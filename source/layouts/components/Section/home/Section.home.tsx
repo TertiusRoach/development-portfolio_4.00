@@ -9,8 +9,7 @@ import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { setButton } from '../../../../modules/utilities/setButton';
-import scrollMain from '../../../../modules/utilities/scrollMain';
+import getScroll from '../../../../modules/utilities/getScroll';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
 import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
@@ -42,7 +41,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
        prove myself and bring value to your team. So if you're willing to take a chance on me then we can create
        something extraordinary together. While I may not have a traditional "Computer Science De 😬 gree". Uhm, I
        shouldn't have used those air quotes...take a chance on me?`,
-      `Apologies, I can make up for the wasted seconds by presenting you with...`,
+      `Apologies, I can make up for the wasted seconds by presenting you with 🎆effects🎉 and 🌟animations✨.`,
     ],
   };
   const jQueryTimer: number = 1000;
@@ -116,31 +115,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 {article.description[1]}
                 <br />
                 <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
                 {article.description[2]}
-                <br />
-                🌟animations✨ and 🎆effects🎉.
               </p>
               <h3></h3>
             </span>
@@ -179,59 +154,7 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
                 {article.description[1]}
                 <br />
                 <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
                 {article.description[2]}
-                <br />
-                🌟animations✨ and 🎆effects🎉.
               </p>
             </span>
           </div>
@@ -353,37 +276,38 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
   }
 }
 function jQueryHome(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}`;
-  $(`#${containerElement} #${pageName}-career`).on('click', function () {
+  const containerElement = `main#${pageName}-${blockName} section.${blockName}-home`;
+  $(`${containerElement} button#${pageName}-career`).on('click', function () {
+    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
     //--|🠋 Block Check 🠋|--//
     if (this.className.includes('overlay')) {
       toggleSection(this);
+      scrollMain(button, pageName);
     }
   });
-  $(`#${containerElement}  #${pageName}-contact`).on('click', function () {
-    //--|🠋 Block Check 🠋|--//
-    if (this.className.includes('rightbar')) {
-      toggleAside(`${pageName}-rightbar`);
+  $(`${containerElement} button#${pageName}-projects`).on('click', function () {
+    let rightbar = this.className.split('-')[0] as 'rightbar';
+    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
+    if (rightbar === 'rightbar') {
+      scrollMain(button, pageName);
+      toggleAside(`${pageName}-${rightbar}`);
     }
   });
-  $(`#${containerElement}  #${pageName}-projects`).on('click', function () {
-    console.log(this.className.split('-')[0]);
-    if (this.className.split('-')[0] === 'rightbar') {
-      console.log('rightbar');
-    }
+  $(`${containerElement} button#${pageName}-contact`).on('click', function () {
+    let button = this as HTMLButtonElement;
+    console.log(button);
+    scrollMain(button, pageName);
+  });
+  $(`${containerElement} span.${blockName}-description`).on('click', function () {
+    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
+    scrollMain(button, pageName);
   });
   // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
-
-/*
-  $(`#${containerElement} button[id*='leftbar']`).on('click', function () {
-    if (this.id.includes('leftbar')) {
-      toggleAside(this.id);
-    }
-  });
-  $(`#${containerElement} button[id*='rightbar']`).on('click', function () {
-    if (this.id.includes('rightbar')) {
-      toggleAside(this.id);
-    }
-  });
-  */
+function scrollMain(button: HTMLButtonElement, pageName: String) {
+  let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+  let scrollResult = getScroll(container, button);
+  if (scrollResult && scrollResult.scrollTop !== undefined) {
+    $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
+  }
+}

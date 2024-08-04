@@ -10,7 +10,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import { setButton } from '../../../../modules/utilities/setButton';
-import scrollMain from '../../../../modules/utilities/scrollMain';
+import getScroll from '../../../../modules/utilities/getScroll';
 import { toggleAside } from '../../../../modules/utilities/toggleAside';
 import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';

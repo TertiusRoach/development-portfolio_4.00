@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getSVG } from '../../../../modules/utilities/getFile';
 import ButtonFade from '../../Button/fade/Button.fade';
 // import setButton from '../../../../modules/utilities/setActive';
-import scrollMain from '../../../../modules/utilities/scrollMain';
+import getScroll from '../../../../modules/utilities/getScroll';
 import showAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../working/Division.working';
