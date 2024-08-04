@@ -61,10 +61,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
             display: none;
           }
         }
-        menu[class*='buttons'] {
-          grid-area: 3 / 1 / 5 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-          grid-template: 1fr / 1fr auto 1fr; //~~|🠈 rows / columns 🠈|~~//
-        }
         span[class*='subject'] {
           display: flex;
           color: $primary-light;
@@ -106,6 +102,10 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
           &::-webkit-scrollbar {
             display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
           }
+        }
+
+        menu[class*='buttons'] {
+          grid-area: 3 / 1 / 5 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
         }
       }
     }

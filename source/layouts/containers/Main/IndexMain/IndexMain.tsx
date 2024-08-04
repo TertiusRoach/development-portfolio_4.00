@@ -57,9 +57,6 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
-          <div style={{ height: '250px', width: width, background: 'green' }}>
-            <h1 className="display-1">MORE ADD SPACE!!!</h1>
-          </div>
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -67,7 +64,7 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '250px', width: width }}>
-            <h1 className="display-1">ADD SPACE</h1>
+            <h1 className="display-1">ADD SPACE!</h1>
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
           <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
@@ -96,20 +93,32 @@ function jQueryMain(pageName: String, blockName: string) {
     */
     })
     .on('mouseenter', function () {
-      let enable = this.className.split('-')[1] as string;
-      let active = document.querySelector(`#${pageName}-main section[id*='active']`) as HTMLButtonElement;
-      let disable = active.className.split('-')[1];
-      if (enable !== disable) {
-        var disableSection = document.querySelector(`.${blockName}-${disable}`) as HTMLElement;
-        var disableButton = document.querySelector(`[class*='default'] button[id*='active']`) as HTMLElement;
-        disableSection.id = '';
-        disableButton.id = `${pageName}-${disable}`;
+      // Check if 'this' has a className property before splitting
+      if (this.className) {
+        let enable = this.className.split('-')[1] as string;
 
-        var enableSection = document.querySelector(`.${blockName}-${enable}`) as HTMLElement;
-        var enableButton = document.querySelector(`[class*='default'] button[id*='${enable}']`) as HTMLElement;
-        enableSection.id = `${blockName}-active`;
-        enableButton.id = `${pageName}-${enable}-active`;
-        console.log(enableButton);
+        // Use optional chaining (?.) to safely access properties
+        let active = document.querySelector(`#${pageName}-main section[id*='active']`);
+        if (!active) return; // Exit if active is null
+
+        let disable = active.className?.split('-')[1]; // Use optional chaining
+
+        if (enable !== disable) {
+          // Use optional chaining and nullish coalescing (??) for safer element selection
+          let disableSection = document.querySelector(`.${blockName}-${disable}`) ?? null;
+          let disableButton = document.querySelector(`[class*='default'] button[id*='active']`) ?? null;
+
+          let enableSection = document.querySelector(`.${blockName}-${enable}`) as HTMLElement;
+          let enableButton = document.querySelector(`[class*='default'] button[id*='${enable}']`) as HTMLElement;
+
+          if (disableSection && disableButton) {
+            disableSection.id = '';
+            disableButton.id = `${pageName}-${disable}`;
+
+            enableSection.id = `${blockName}-active`;
+            enableButton.id = `${pageName}-${enable}-active`;
+          }
+        }
       }
     });
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);

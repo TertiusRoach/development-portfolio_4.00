@@ -27,7 +27,24 @@ interface HomeProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
+
 const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
+  const article = {
+    title: 'Multimedia Programmer',
+    subject: 'Welcome to my portfolio,',
+    description: [
+      `As a Multimedia Programmer, I create immersive websites, captivating animations, and interactive
+       applications, blending cutting-edge technologies with an artistic vision for engaging experiences. My
+       curiosity drives me to experiment with upcoming tools to stay ahead in this fast-paced world of computer
+       technologies. I thrive in collaborative environments, and love to transform abstract ideas into impactful,
+       long-lasting applications.`,
+      `My strong work ethic and demonstrable skills equip me to excel in this field. I'm a quick learner, eager to
+       prove myself and bring value to your team. So if you're willing to take a chance on me then we can create
+       something extraordinary together. While I may not have a traditional "Computer Science De 😬 gree". Uhm, I
+       shouldn't have used those air quotes...take a chance on me?`,
+      `Apologies, I can make up for the wasted seconds by presenting you with...`,
+    ],
+  };
   const jQueryTimer: number = 1000;
   const block = `${blockName}` as 'main';
   const label: string = `${labelName}` as 'home';
@@ -44,24 +61,6 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
   }, [pageName, blockName]);
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
-
-  let article = {
-    title: 'Multimedia Programmer',
-    subject: 'Welcome to my portfolio,',
-    description: [
-      `As a Multimedia Programmer, I create immersive websites, captivating animations, and interactive
-       applications, blending cutting-edge technologies with an artistic vision for engaging experiences. My
-       curiosity drives me to experiment with upcoming tools to stay ahead in this fast-paced world of computer
-       technologies. I thrive in collaborative environments, and love to transform abstract ideas into impactful,
-       long-lasting applications.`,
-      `My strong work ethic and demonstrable skills equip me to excel in this field. I'm a quick learner, eager to
-       prove myself and bring value to your team. So if you're willing to take a chance on me then we can create
-       something extraordinary together. While I may not have a traditional "Computer Science De 😬 gree". Uhm, I
-       shouldn't have used those air quotes...take a chance on me?`,
-      `Apologies, I can make up for the wasted seconds by presenting you with...`,
-    ],
-  };
-
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -265,32 +264,22 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           {
             href: '',
             state: '',
-            align: 'left',
-            block: 'main',
-            label: 'leftbar',
-            style: 'downplay',
-            text: 'View Leftbar',
-            icon: getSVG('leftbar'),
-          },
-          {
-            href: '',
-            state: '',
-            block: 'main',
+            text: 'Career',
             align: 'center',
-            label: 'overlay',
-            style: 'highlight',
-            text: 'View Overlay',
-            icon: getSVG('overlay'),
+            label: 'career',
+            block: 'overlay',
+            style: 'downplay',
+            icon: getSVG('career'),
           },
           {
             href: '',
             state: '',
-            block: 'main',
-            align: 'right',
+            align: 'center',
+            text: 'Projects',
+            label: 'projects',
             style: 'downplay',
-            label: 'rightbar',
-            text: 'View Rightbar',
-            icon: getSVG('rightbar'),
+            block: 'rightbar',
+            icon: getSVG('projects'),
           },
         ],
         criteria: {
@@ -365,21 +354,22 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-
   $(`#${containerElement} #${pageName}-career`).on('click', function () {
+    //--|🠋 Block Check 🠋|--//
     if (this.className.includes('overlay')) {
       toggleSection(this);
     }
   });
   $(`#${containerElement}  #${pageName}-contact`).on('click', function () {
-    //--|🠋 State Check 🠋|--//
-    if (this.id.split('-')[2] !== 'active') {
-      var button = this as HTMLButtonElement;
-      var container = document.querySelector(`#${pageName}-main`) as HTMLElement;
-      var scrollResult = scrollMain(container, button, `<${blockName}>`);
-      if (scrollResult && scrollResult.scrollTop !== undefined) {
-        $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-      }
+    //--|🠋 Block Check 🠋|--//
+    if (this.className.includes('rightbar')) {
+      toggleAside(`${pageName}-rightbar`);
+    }
+  });
+  $(`#${containerElement}  #${pageName}-projects`).on('click', function () {
+    console.log(this.className.split('-')[0]);
+    if (this.className.split('-')[0] === 'rightbar') {
+      console.log('rightbar');
     }
   });
   // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
