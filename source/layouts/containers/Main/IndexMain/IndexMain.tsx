@@ -79,15 +79,38 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
 export default IndexMain;
 function jQueryMain(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}` as String;
-  /*
-  $(`#${containerElement} section`).on('click', function () {
+  $(`#${containerElement} section`)
+    .on('click', function () {
+      /*
     let button = this as HTMLButtonElement;
     let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
+
+    console.log(button.className.split('-')[1]);
+    console.log(container);
+
     let scrollResult = scrollMain(container, button, `<${blockName}>`);
+    
     if (scrollResult && scrollResult.scrollTop !== undefined) {
       $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
     }
-  });
-  */
+    */
+    })
+    .on('mouseenter', function () {
+      let enable = this.className.split('-')[1] as string;
+      let active = document.querySelector(`#${pageName}-main section[id*='active']`) as HTMLButtonElement;
+      let disable = active.className.split('-')[1];
+      if (enable !== disable) {
+        var disableSection = document.querySelector(`.${blockName}-${disable}`) as HTMLElement;
+        var disableButton = document.querySelector(`[class*='default'] button[id*='active']`) as HTMLElement;
+        disableSection.id = '';
+        disableButton.id = `${pageName}-${disable}`;
+
+        var enableSection = document.querySelector(`.${blockName}-${enable}`) as HTMLElement;
+        var enableButton = document.querySelector(`[class*='default'] button[id*='${enable}']`) as HTMLElement;
+        enableSection.id = `${blockName}-active`;
+        enableButton.id = `${pageName}-${enable}-active`;
+        console.log(enableButton);
+      }
+    });
   return console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

@@ -256,9 +256,7 @@ function jQueryFooter(pageName: String, blockName: string) {
       }
     }
   });
-  $(`#${containerElement} #${pageName}-projects`).on('click', function () {
-    // process.stdout.write(`Clicked element: ${this}\n`);
-  });
+  $(`#${containerElement} #${pageName}-projects`).on('click', function () {});
   console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }
 
