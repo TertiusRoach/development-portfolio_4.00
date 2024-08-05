@@ -59,10 +59,9 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
 
           <input className="company-name" type="text" name="company" placeholder="Company (Optional)" />
 
-          <input
+          <textarea
             required
-            type="text"
-            name="company"
+            name="sender-message"
             className="sender-message"
             placeholder="Tell me what you're looking for. :^)"
           />
@@ -83,10 +82,9 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
 
           <input className="company-name" type="text" name="company" placeholder="Company (Optional)" />
 
-          <input
+          <textarea
             required
-            type="text"
-            name="company"
+            name="sender-message"
             className="sender-message"
             placeholder="Tell me what you're looking for. :^)"
           />
