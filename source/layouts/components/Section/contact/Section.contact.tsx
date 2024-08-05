@@ -2,8 +2,9 @@
 import './Section.contact.scss';
 
 import { useMediaQuery } from 'react-responsive';
-import { getSVG } from '../../../../modules/utilities/getFile';
+import FormContact from '../../Form/contact/Form.contact';
 import React, { useEffect, useRef, useState } from 'react';
+import { getSVG } from '../../../../modules/utilities/getFile';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
@@ -34,42 +35,26 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  let mobileDevice: boolean = useMediaQuery({ query: '(orientation: portrait)' });
-  let desktopDevice: boolean = useMediaQuery({ query: '(orientation: landscape)' });
-
   return (
     <section
       className={`${blockName}-${labelName}`}
       id={stateType === 'active' ? `${blockName}-active` : ''}
       style={{ height: `${height}px`, width: `${width}px` }}
     >
-      {/* <DivisionWorking align="center" text="Home" info={info} icon={icons.home} /> */}
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {desktopDevice && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
-            <DivisionWorking
-              info={info}
-              align="top-right"
-              text="Contact <section>"
-              icon={getSVG('contact') as { dark: string; medium: string; light: string }}
-            />
+            <FormContact labelName="contact" blockName="main" stateType="enabled" info={info} />
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
       )}
+
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {mobileDevice && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
-          <DivisionWorking
-            info={info}
-            align="bottom-right"
-            text="Contact <section>"
-            icon={getSVG('contact') as { dark: string; medium: string; light: string }}
-          />
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>
@@ -81,41 +66,6 @@ export default SectionContact;
 
 function jQueryContact(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
-  // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-
-  /*
-  $(`#${containerElement} section`).on('click', function (event) {
-    let navigation = ['header', 'footer'];
-    let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
-    let parent = event.target.parentElement?.parentElement as HTMLButtonElement;
-    let tagName = parent.tagName as 'BUTTON' | string;
-    if (tagName === 'BUTTON') {
-      for (let i = 0; i < navigation.length; i++) {
-        var labelName = parent.classList[0].split('-')[1] as string;
-        var buttonElement = document.querySelector(`button[class*="${labelName}"]`) as HTMLButtonElement;
-        $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 750);
-      }
-    } else {
-      var buttonElement = this as HTMLButtonElement;
-      for (let i = 0; i < navigation.length; i++) {
-        setActive(this as HTMLButtonElement, navigation[i]);
-      }
-      $(mainContainer).animate({ scrollTop: `${getScroll(buttonElement, mainContainer)?.scrollTop as Number}px` }, 250);
-    }
-  });
-  $(`#${containerElement} .rightbar-projects`).on('click', function () {
-    const rightbar = this.classList[0].split('-')[0];
-    if (rightbar.includes('rightbar')) {
-      showAside(rightbar);
-    }
-  });
-  $(`#${containerElement} .overlay-career`).on('click', function () {
-    const overlay = this.classList[0].split('-')[0];
-    if (overlay.includes('overlay')) {
-      showSection(`${pageName}`, overlay);
-    }
-  });
-
+  console.log('Contact section loaded');
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
-  */
 }

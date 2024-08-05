@@ -6,21 +6,34 @@ $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
 $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
 @mixin desktop-landscape {
+  div[id*='contact'] {
+    height: 100%;
+    display: grid;
+    grid-template: 4rem repeat(6, 1fr) 4rem / 6rem 1fr 6rem; //~~|🠈 rows / columns 🠈|~~//
+    form[class*='main'] {
+      grid-area: 3 / 2 / 8 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+    }
+  }
 }
 @mixin mobile-portrait {
-}
+  div[id*='contact'] {
+    height: 100%;
+    display: grid;
+    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem; //~~|🠈 rows / columns 🠈|~~//
 
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+    }
+  }
+}
 body {
   main {
     section[class*='contact'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        @include desktop-landscape();
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        @include mobile-portrait();
-      }
+      @include mobile-portrait();
+      @include desktop-landscape();
     }
   }
 
