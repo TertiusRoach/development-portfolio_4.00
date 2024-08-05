@@ -75,9 +75,25 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <input className="" type="text" name="name" required />
-          <input className="" type="email" name="email" required />
-          <button type="submit">Send</button>
+          <input className="first-name" type="text" name="firstName" placeholder="First Name" required />
+
+          <input className="last-name" type="text" name="lastName" placeholder="Last Name" required />
+
+          <input className="email-address" type="email" name="email" placeholder="email@address.com" required />
+
+          <input className="company-name" type="text" name="company" placeholder="Company (Optional)" />
+
+          <input
+            required
+            type="text"
+            name="company"
+            className="sender-message"
+            placeholder="Tell me what you're looking for. :^)"
+          />
+
+          <button type="submit" className="send-button">
+            Send
+          </button>
         </>
       )}
     </form>

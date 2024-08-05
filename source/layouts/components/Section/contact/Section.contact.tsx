@@ -54,7 +54,9 @@ const SectionContact: React.FC<ContactProps> = ({ info, labelName, blockName, st
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}></div>
+          <div id={`${labelName}-foreground`} style={{ zIndex: 2 }}>
+            <FormContact labelName="contact" blockName="main" stateType="enabled" info={info} />
+          </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}></div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}></div>
         </>

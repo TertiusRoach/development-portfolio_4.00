@@ -121,13 +121,12 @@ const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateTyp
             </span>
           </div>
           <div id={`${labelName}-midground`} style={{ zIndex: 1 }}>
-            {/* I'm done with the noir! It was a phase! */}
-            {/* <aside className="profile">
+            <aside className="profile">
               <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/index-page/1280x1280%2C%20noir.png"
-                alt=""
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/archive-images/tertius-roach/500x500%2C%20profile/profile-picture.png"
+                alt="Tertius Roach"
               />
-            </aside> */}
+            </aside>
           </div>
           <div id={`${labelName}-background`} style={{ zIndex: 0 }}>
             <span className={`${blockName}-title`}>
