@@ -24,13 +24,17 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 }
 @mixin mobile-portrait {
   div[id*='contact'] {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    position: absolute;
     //--|🠋 Mobile (Portrait) 🠋|--//
     @media screen and (orientation: portrait) {
       grid-template: 3rem repeat(10, 1fr) 3rem / 2rem 1fr 2rem; //~~|🠈 rows / columns 🠈|~~//
-
       form[class*='main'] {
+        padding-top: 2.5rem;
         padding-bottom: 3rem;
-        grid-area: 4 / 2 / 12 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+        grid-area: 2 / 2 / 12 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
   }
@@ -38,9 +42,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 body {
   main {
     section[class*='contact'] {
-      // display: grid;
       position: relative;
-      // grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠈 rows / columns 🠈|~~//
       @include mobile-portrait();
       @include desktop-landscape();
     }

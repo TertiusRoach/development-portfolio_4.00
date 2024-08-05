@@ -34,6 +34,7 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
   const block = `${blockName}` as 'main';
   const label: string = `${labelName}` as 'home';
   const pageName: String = info.identification as String;
+
   useEffect(() => {
     const jQueryStart = () => {
       jQueryContact(pageName, blockName);
@@ -46,6 +47,8 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
   }, [pageName, blockName]);
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
+
+  console.log(width);
   return (
     <form className={`${blockName}-form`} action={`${emailAddress}`}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}

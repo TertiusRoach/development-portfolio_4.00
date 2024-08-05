@@ -10,7 +10,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   @media screen and (orientation: landscape) {
     input {
       height: 4rem;
-
       &[class='first-name'],
       &[class='last-name'] {
         margin: 1rem 3rem;
@@ -21,63 +20,34 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       }
 
       &[class='first-name']::placeholder,
-      &[class='last-name']::placeholder {
-        text-align: start;
-        padding-left: 2rem;
-      }
+      &[class='last-name']::placeholder,
       &[class='email-address']::placeholder,
       &[class='company-name']::placeholder {
         text-align: center;
-      }
-    }
-    textarea {
-      &::placeholder {
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        position: absolute; /* Position the placeholder text absolutely within the input */
-        pointer-events: none; /* Prevent accidental clicks on the placeholder */
-        transform: translate(-50%, -50%); /* Center the text */
       }
     }
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     input {
-      height: 4rem;
-
+      height: 2rem;
+      margin: 0.5rem 0;
+      text-align: center;
       &[class='first-name'] {
-        margin: 1rem 4rem;
+        margin: 0.5 4rem;
       }
       &[class='last-name'] {
-        margin: 1rem 3rem;
+        margin: 0.5 3rem;
       }
       &[class='email-address'] {
-        margin: 1rem 2rem;
+        margin: 0.5 2rem;
       }
       &[class='company-name'] {
-        margin: 1rem 1rem;
-      }
-
-      &[class='first-name']::placeholder,
-      &[class='last-name']::placeholder,
-      &[class='email-address']::placeholder,
-      &[class='company-name']::placeholder {
-        text-align: start;
-        padding-left: 2rem;
+        margin: 0.5 1rem;
       }
     }
     textarea {
-      &::placeholder {
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        position: absolute; /* Position the placeholder text absolutely within the input */
-        pointer-events: none; /* Prevent accidental clicks on the placeholder */
-        transform: translate(-50%, -50%); /* Center the text */
-      }
+      margin: 0.5rem 0 1rem 0;
     }
   }
 }
@@ -86,10 +56,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   @media screen and (orientation: landscape) {
     display: grid;
     grid-template: repeat(2, auto) 1fr auto / repeat(2, 1fr); //~~|🠈 rows / columns 🠈|~~//
-
-    textarea[class='sender-message'] {
-      grid-area: 3 / 1 / 4 / 3;
-    }
 
     input[class='first-name'] {
       grid-area: 1 / 1 / 2 / 2; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
@@ -102,6 +68,9 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
     input[class='company-name'] {
       grid-area: 2 / 2 / 3 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+    textarea[class='sender-message'] {
+      grid-area: 3 / 1 / 4 / 3;
     }
     button[class='send-button'] {
       grid-area: 4 / 1 / 5 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
@@ -132,18 +101,14 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   }
 }
 
-@mixin adjust-placeholder {
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform: translate(-50%, -50%); /* Center the text */
-}
-
 body {
   section {
     form {
+      overflow: hidden;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
+      }
       @include input-design();
       @include input-placement();
     }

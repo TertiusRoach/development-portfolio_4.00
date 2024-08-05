@@ -15,7 +15,6 @@ $tertiary-light: #b8a298; //--🠊 rgba(184,162,152,1) 🠈--//
 
 main[id*='index'] {
   display: block;
-  // overflow: hidden;
   overflow-y: scroll;
   flex-direction: column;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
