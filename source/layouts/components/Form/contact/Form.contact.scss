@@ -6,6 +6,20 @@ $primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
 $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
 
 @mixin input-design {
+  input,
+  textarea {
+    resize: none;
+    outline: none;
+    border-radius: 8px;
+    color: $primary-light;
+    border: 2px solid $primary-light;
+    filter: drop-shadow(0 0 1rem black);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 100%);
+    &::placeholder {
+      color: $primary-medium;
+    }
+  }
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     input {
@@ -17,13 +31,6 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
       &[class='email-address'],
       &[class='company-name'] {
         margin: 1rem 1.5rem;
-      }
-
-      &[class='first-name']::placeholder,
-      &[class='last-name']::placeholder,
-      &[class='email-address']::placeholder,
-      &[class='company-name']::placeholder {
-        text-align: center;
       }
     }
   }
@@ -55,7 +62,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     display: grid;
-    grid-template: repeat(2, auto) 1fr auto / repeat(2, 1fr); //~~|🠈 rows / columns 🠈|~~//
+    grid-template: repeat(2, auto) 1fr 4rem / repeat(2, 1fr); //~~|🠈 rows / columns 🠈|~~//
 
     input[class='first-name'] {
       grid-area: 1 / 1 / 2 / 2; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
@@ -72,8 +79,30 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     textarea[class='sender-message'] {
       grid-area: 3 / 1 / 4 / 3;
     }
-    button[class='send-button'] {
+    menu {
       grid-area: 4 / 1 / 5 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+
+    input {
+      &[class='first-name'],
+      &[class='last-name'],
+      &[class='email-address'],
+      &[class='company-name'] {
+        padding-left: 1rem;
+      }
+      &[class='first-name']::placeholder,
+      &[class='last-name']::placeholder,
+      &[class='email-address']::placeholder,
+      &[class='company-name']::placeholder {
+        text-align: left;
+        padding: 0 0 0 1rem;
+      }
+    }
+    textarea {
+      padding: 1rem 0 0 1rem;
+      margin: 0.5rem 0 1rem 0;
+    }
+    button[class='send-button'] {
     }
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
@@ -97,6 +126,15 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
     button[class='send-button'] {
       grid-area: 6 / 1 / 7 / 2; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
+    }
+
+    input {
+      &[class='first-name']::placeholder,
+      &[class='last-name']::placeholder,
+      &[class='email-address']::placeholder,
+      &[class='company-name']::placeholder {
+        text-align: center;
+      }
     }
   }
 }

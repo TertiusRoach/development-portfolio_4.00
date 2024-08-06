@@ -26,15 +26,15 @@ interface ContactProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-
 const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => {
   const emailAddress = 'https://formsubmit.co/nouprajyvermaak@gmail.com';
-
   const jQueryTimer: number = 1000;
   const block = `${blockName}` as 'main';
-  const label: string = `${labelName}` as 'home';
+  const label: string = `${labelName}` as 'contact';
   const pageName: String = info.identification as String;
 
+  let width = info.resolution.split('x')[0] as string;
+  let height = info.resolution.split('x')[1] as string;
   useEffect(() => {
     const jQueryStart = () => {
       jQueryContact(pageName, blockName);
@@ -45,12 +45,43 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
-  let width = info.resolution.split('x')[0] as string;
-  let height = info.resolution.split('x')[1] as string;
+  let desktopElement = getElements('<desktop>') as {
+    button: {
+      text?: string;
+      href?: string;
+      label: 'send' | string;
+      state: 'submit' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+    }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+  };
+  let mobileElement = getElements('<mobile>') as {
+    button: {
+      label: 'send' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
 
-  console.log(width);
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+  };
   return (
-    <form className={`${blockName}-form`} action={`${emailAddress}`}>
+    <form className={`${blockName}-form`} action={`${emailAddress}`} method="POST">
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
@@ -69,9 +100,11 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
             placeholder="Tell me what you're looking for. :^)"
           />
 
-          <button className="send-button" type="submit">
+          <MenuButton criteria={desktopElement.criteria} input={desktopElement.button} />
+
+          {/* <button className="send-button" type="submit">
             Send
-          </button>
+          </button> */}
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -101,6 +134,83 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
   );
 };
 export default FormContact;
+
+function getElements(orientation: '<desktop>' | '<mobile>') {
+  switch (orientation) {
+    case '<desktop>':
+      return {
+        button: [
+          {
+            href: '',
+            text: 'Send',
+            label: 'send',
+            block: 'main',
+            state: 'submit',
+            align: 'left',
+            style: 'downplay',
+            icon: getSVG('home'),
+          },
+        ],
+        criteria: {
+          buildAxis: '<horizontal>',
+          buildDesign: '<fade>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        button: {
+          text: string;
+          href?: string;
+          state: 'submit' | string;
+          label: 'home' | string;
+          style: 'highlight' | 'downplay';
+          align: 'left' | 'center' | 'right' | string;
+          icon: { dark: string; medium: string; light: string };
+          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>';
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+    case '<mobile>':
+      return {
+        button: [
+          {
+            href: '',
+            text: 'Send',
+            label: 'send',
+            block: 'main',
+            state: 'submit',
+            align: 'center',
+            style: 'downplay',
+            icon: getSVG('home'),
+          },
+        ],
+        criteria: {
+          buildDesign: '<fade>',
+          buildAxis: '<horizontal>',
+          buildElement: '<buttons>',
+        },
+      } as {
+        button: {
+          text?: string;
+          href?: string;
+          state?: 'submit';
+          label?: 'home' | string;
+          style?: 'highlight' | 'downplay';
+          align?: 'left' | 'center' | 'right' | string;
+          icon?: { dark: string; medium: string; light: string };
+          block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+        }[];
+        criteria: {
+          buildAxis: '<vertical>' | '<horizontal>';
+          buildDesign: '<fade>' | '<icon>' | '<text>';
+          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+        };
+      };
+  }
+}
 function jQueryContact(pageName: String, blockName: string) {
   const containerElement = `main#${pageName}-${blockName} section.${blockName}-home`;
   // console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);

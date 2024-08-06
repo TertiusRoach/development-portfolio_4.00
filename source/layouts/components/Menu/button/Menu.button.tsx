@@ -18,7 +18,7 @@ interface MenuProps {
   input: {
     text?: string | '';
     href?: string | '';
-    state?: 'active' | '';
+    state?: 'submit' | string;
 
     label: 'home' | string;
     style: 'highlight' | 'downplay';
@@ -131,7 +131,7 @@ function setClass(
 
     text?: string | '';
     href?: string | '';
-    state?: 'active' | '';
+    state?: 'submit' | 'active' | string;
   }[]
 ) {
   const criteria = {

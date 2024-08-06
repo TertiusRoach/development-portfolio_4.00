@@ -42,51 +42,24 @@ const IndexFooter: React.FC<FooterProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
-  let desktopElements = [
-    {
-      state: '',
-      text: 'GitHub',
-      label: 'github',
-      target: '_blank',
-      align: 'center',
-      block: 'footer',
-      style: 'downplay',
-      href: 'https://github.com/TertiusRoach',
-      icon: getSVG('github') as { dark: string; medium: string; light: string },
-    },
-    {
-      state: '',
-      text: 'LinkedIn',
-      target: '_blank',
-      label: 'linkedin',
-      align: 'center',
-      block: 'footer',
-      style: 'highlight',
-      href: 'https://www.linkedin.com/in/tertius-roach/',
-      icon: getSVG('linkedin') as { dark: string; medium: string; light: string },
-    },
-    {
-      state: '',
-      text: 'YouTube',
-      label: 'youtube',
-      target: '_blank',
-      align: 'center',
-      block: 'footer',
-      style: 'downplay',
-      href: 'https://www.youtube.com/@TertiusRoach',
-      icon: getSVG('youtube') as { dark: string; medium: string; light: string },
-    },
-  ] as {
-    href: string;
-    text: string;
-    state: 'active' | '';
-    style: 'downplay' | 'highlight';
-    align: 'left' | 'center' | 'right' | string;
-    label: 'home' | 'skills' | 'contact' | string;
-    target: '_blank' | '_parent' | '_self' | '_top' | string;
-    icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
-    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-  }[];
+  let desktopElements = getElements('<desktop>') as {
+    anchors: {
+      label: 'home' | string;
+      style: 'highlight' | 'downplay';
+      align: 'left' | 'center' | 'right' | string;
+      icon: { dark: string; medium: string; light: string };
+      block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+      text?: string;
+      href?: string;
+      state?: 'active' | '';
+    }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
+  };
   let mobileElements = getElements('<mobile>') as {
     criteria: {
       buildAxis: '<vertical>' | '<horizontal>';
@@ -110,7 +83,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <MenuAnchor selectDesign="icon" info={desktopElements} />
+          <MenuButton criteria={desktopElements.criteria} input={desktopElements.anchors} />
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -127,36 +100,39 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
   switch (orientation) {
     case '<desktop>':
       return {
-        information: [
+        anchors: [
           {
-            text: 'Home',
-            href: '',
-            state: 'active',
-            label: 'home',
-            style: 'downplay',
-            align: 'left',
-            icon: getSVG('home'),
-            block: 'header',
-          },
-          {
-            text: 'Skills',
-            href: '',
             state: '',
-            label: 'skills',
-            style: 'highlight',
+            text: 'GitHub',
+            label: 'github',
+            target: '_blank',
             align: 'center',
-            icon: getSVG('skills'),
-            block: 'header',
+            block: 'footer',
+            style: 'downplay',
+            href: 'https://github.com/TertiusRoach',
+            icon: getSVG('github') as { dark: string; medium: string; light: string },
           },
           {
-            text: 'Contact',
-            href: '',
             state: '',
-            label: 'contact',
+            text: 'LinkedIn',
+            target: '_blank',
+            label: 'linkedin',
+            align: 'center',
+            block: 'footer',
+            style: 'highlight',
+            href: 'https://www.linkedin.com/in/tertius-roach/',
+            icon: getSVG('linkedin') as { dark: string; medium: string; light: string },
+          },
+          {
+            state: '',
+            text: 'YouTube',
+            label: 'youtube',
+            target: '_blank',
+            align: 'center',
+            block: 'footer',
             style: 'downplay',
-            align: 'right',
-            icon: getSVG('contact'),
-            block: 'header',
+            href: 'https://www.youtube.com/@TertiusRoach',
+            icon: getSVG('youtube') as { dark: string; medium: string; light: string },
           },
         ],
         criteria: {
@@ -164,22 +140,6 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
           buildDesign: '<fade>',
           buildElement: '<buttons>',
         },
-      } as {
-        information: {
-          text?: string;
-          href?: string;
-          state?: 'active' | '';
-          label?: 'home' | string;
-          style?: 'highlight' | 'downplay';
-          align?: 'left' | 'center' | 'right' | string;
-          icon?: { dark: string; medium: string; light: string };
-          block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-        }[];
-        criteria: {
-          buildAxis: '<vertical>' | '<horizontal>';
-          buildDesign: '<fade>' | '<icon>' | '<text>';
-          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-        };
       };
     case '<mobile>':
       return {

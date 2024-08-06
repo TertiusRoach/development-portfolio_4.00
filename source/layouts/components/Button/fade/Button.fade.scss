@@ -125,22 +125,18 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
   }
   @keyframes highlightFade {
     from {
-      color: $primary-dark;
-      filter: drop-shadow(0 0 8px white);
+      color: $primary-medium;
     }
     to {
       color: $primary-light;
-      filter: drop-shadow(0 0 8px black);
     }
   }
   @keyframes downplayFade {
     from {
       color: $primary-light;
-      filter: drop-shadow(0 0 8px black);
     }
     to {
-      color: $primary-dark;
-      filter: drop-shadow(0 0 8px white);
+      color: $primary-medium;
     }
   }
 }
