@@ -86,19 +86,11 @@ const FormContact: React.FC<ContactProps> = ({ labelName, blockName, info }) => 
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <input className="first-name" type="text" name="firstName" placeholder="First Name" required />
-
-          <input className="last-name" type="text" name="lastName" placeholder="Last Name" required />
-
+          <input className="last-name" type="text" name="lastName" placeholder="Last Name" />
           <input className="email-address" type="email" name="email" placeholder="email@address.com" required />
-
           <input className="company-name" type="text" name="company" placeholder="Company (Optional)" />
 
-          <textarea
-            required
-            name="sender-message"
-            className="sender-message"
-            placeholder="Tell me what you're looking for. :^)"
-          />
+          <textarea required name="sender-message" className="sender-message" placeholder="Sender Message" />
 
           <MenuButton criteria={desktopElement.criteria} input={desktopElement.button} />
 
