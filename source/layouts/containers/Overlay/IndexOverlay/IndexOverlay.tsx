@@ -27,6 +27,10 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
     };
     window.addEventListener('resize', jQueryStart);
     setTimeout(() => jQueryOverlay(pageName, blockName), jQueryTimer);
+
+    document.getElementById('index-download')?.addEventListener('click', function () {
+      window.open('https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/view', '_blank');
+    });
     return () => {
       window.removeEventListener('resize', jQueryStart);
     };
@@ -159,9 +163,6 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className="overlay-foreground" style={{ zIndex: 2 }}>
-            <a href="https://example.com/path/to/your/example.pdf" download className="download-btn">
-              Download PDF
-            </a>
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
