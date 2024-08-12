@@ -48,25 +48,23 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
   return (
     <main id="index-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: landscape)' }) && (
+      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '500px', width: width, background: 'green' }}>
-            <h1 className="display-1">add Space</h1>
+            <h1 className="display-1">Add space</h1>
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
-          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {useMediaQuery({ query: '(orientation: portrait)' }) && (
+      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '250px', width: width }}>
-            <h1 className="display-1">ADD SPACE!</h1>
+            <h1 className="display-1">Add space</h1>
           </div>
           <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
-          <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
         </>
       )}
     </main>

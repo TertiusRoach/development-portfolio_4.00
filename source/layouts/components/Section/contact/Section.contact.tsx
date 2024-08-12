@@ -1,4 +1,5 @@
 // Section.contact.tsx
+// Call: <SectionContact blockName="main" labelName="contact" stateType="" info={info} />
 import './Section.contact.scss';
 
 import { useMediaQuery } from 'react-responsive';

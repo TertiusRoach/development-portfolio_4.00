@@ -1,13 +1,12 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ButtonFade from '../../../components/Button/fade/Button.fade';
-
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { toggleSection } from '../../../../modules/utilities/toggleSection';
+import ButtonFade from '../../../components/Button/fade/Button.fade';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
+import { toggleSection } from '../../../../modules/utilities/toggleSection';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
@@ -17,6 +16,7 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
+
 const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 3000;
   const blockName: String = 'overlay';
@@ -31,6 +31,92 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
+  function getElements(orientation: '<desktop>' | '<mobile>') {
+    switch (orientation) {
+      case '<desktop>':
+        return {
+          buttons: [
+            {
+              href: '',
+              state: '',
+              text: 'Close',
+              label: 'close',
+              align: 'center',
+              block: 'rightbar',
+              style: 'downplay',
+              icon: getSVG('close'),
+            },
+            {
+              href: '',
+              state: '',
+              align: 'center',
+              text: 'Download',
+              label: 'download',
+              block: 'rightbar',
+              style: 'downplay',
+              icon: getSVG('download'),
+            },
+          ],
+          criteria: {
+            buildDesign: '<fade>',
+            buildAxis: '<horizontal>',
+            buildElement: '<buttons>',
+          },
+        } as {
+          buttons: {
+            text?: string;
+            href?: string;
+            state?: 'active' | '';
+            label: 'home' | string;
+            style: 'highlight' | 'downplay';
+            align: 'left' | 'center' | 'right' | string;
+            icon: { dark: string; medium: string; light: string };
+            block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+          }[];
+          criteria: {
+            buildAxis: '<vertical>' | '<horizontal>';
+            buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+            buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+          };
+        };
+      case '<mobile>':
+        return {
+          buttons: [
+            {
+              href: '',
+              state: '',
+              text: 'Close',
+              label: 'close',
+              align: 'center',
+              block: 'overlay',
+              style: 'downplay',
+              icon: getSVG('close'),
+            },
+          ],
+          criteria: {
+            buildDesign: '<fade>',
+            buildAxis: '<horizontal>',
+            buildElement: '<buttons>',
+          },
+        } as {
+          buttons: {
+            text?: string;
+            href?: string;
+            state?: 'active' | '';
+            label: 'home' | string;
+            style: 'highlight' | 'downplay';
+            align: 'left' | 'center' | 'right' | string;
+            icon: { dark: string; medium: string; light: string };
+            block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+          }[];
+          criteria: {
+            buildAxis: '<vertical>' | '<horizontal>';
+            buildDesign: '<fade>' | '<icon>' | '<text>' | string;
+            buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+          };
+        };
+    }
+  }
   let desktopElements = getElements('<desktop>') as {
     buttons: {
       label: 'home' | string;
@@ -73,6 +159,9 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className="overlay-foreground" style={{ zIndex: 2 }}>
+            <a href="https://example.com/path/to/your/example.pdf" download className="download-btn">
+              Download PDF
+            </a>
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
@@ -99,82 +188,7 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default IndexOverlay;
-function getElements(orientation: '<desktop>' | '<mobile>') {
-  switch (orientation) {
-    case '<desktop>':
-      return {
-        buttons: [
-          {
-            href: '',
-            state: '',
-            label: 'close',
-            align: 'center',
-            block: 'rightbar',
-            style: 'downplay',
-            text: 'Exit Rightbar',
-            icon: getSVG('close'),
-          },
-        ],
-        criteria: {
-          buildDesign: '<fade>',
-          buildAxis: '<horizontal>',
-          buildElement: '<buttons>',
-        },
-      } as {
-        buttons: {
-          text?: string;
-          href?: string;
-          state?: 'active' | '';
-          label: 'home' | string;
-          style: 'highlight' | 'downplay';
-          align: 'left' | 'center' | 'right' | string;
-          icon: { dark: string; medium: string; light: string };
-          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-        }[];
-        criteria: {
-          buildAxis: '<vertical>' | '<horizontal>';
-          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-        };
-      };
-    case '<mobile>':
-      return {
-        buttons: [
-          {
-            href: '',
-            state: '',
-            text: 'Close',
-            label: 'close',
-            align: 'center',
-            block: 'overlay',
-            style: 'downplay',
-            icon: getSVG('close'),
-          },
-        ],
-        criteria: {
-          buildDesign: '<fade>',
-          buildAxis: '<horizontal>',
-          buildElement: '<buttons>',
-        },
-      } as {
-        buttons: {
-          text?: string;
-          href?: string;
-          state?: 'active' | '';
-          label: 'home' | string;
-          style: 'highlight' | 'downplay';
-          align: 'left' | 'center' | 'right' | string;
-          icon: { dark: string; medium: string; light: string };
-          block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-        }[];
-        criteria: {
-          buildAxis: '<vertical>' | '<horizontal>';
-          buildDesign: '<fade>' | '<icon>' | '<text>' | string;
-          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-        };
-      };
-  }
-}
+
 function jQueryOverlay(pageName: String, blockName: String) {
   const containerElement = `${pageName}-${blockName}` as String;
   $(`#${containerElement} button[id*='close']`).on('click', function () {
