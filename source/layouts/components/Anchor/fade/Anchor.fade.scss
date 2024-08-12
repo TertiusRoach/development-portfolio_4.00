@@ -27,7 +27,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
   a[class*='-downplay-'] {
-    div[class*='a'] {
+    div[class*='anchor'] {
       filter: drop-shadow(0 0 8px black);
       h3,
       h6 {
@@ -39,7 +39,7 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     }
   }
   a[class*='-highlight-'] {
-    div[class*='a'] {
+    div[class*='anchor'] {
       filter: drop-shadow(0 0 8px white);
       h3,
       h6 {
@@ -66,8 +66,8 @@ $primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
     div {
       h3,
       h6 {
-        filter: drop-shadow(0 0 2px black);
         animation: downplayFade 1s forwards;
+        filter: drop-shadow(0 0 2px black);
       }
       img.primary-light {
         opacity: 0;

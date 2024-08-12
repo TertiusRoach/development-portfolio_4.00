@@ -32,6 +32,7 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       window.open('https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/view', '_blank');
     });
     return () => {
+      () => useEffect;
       window.removeEventListener('resize', jQueryStart);
     };
   }, [pageName, blockName]);
@@ -166,7 +167,11 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
-            <h1>Build style here.</h1>
+            <img
+              alt="Page One"
+              className="page-one"
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/resume-page/curriculum-vitae/page-1.png"
+            />
           </div>
           <footer className="overlay-background" style={{ zIndex: 0 }}></footer>
         </>
