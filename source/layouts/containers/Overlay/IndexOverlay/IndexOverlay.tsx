@@ -167,11 +167,12 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
             <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
-            <img
+            <iframe src="https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/preview"></iframe>
+            {/* <img
               alt="Page One"
               className="page-one"
               src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/main/source/assets/png-files/resume-page/curriculum-vitae/page-1.png"
-            />
+            /> */}
           </div>
           <footer className="overlay-background" style={{ zIndex: 0 }}></footer>
         </>

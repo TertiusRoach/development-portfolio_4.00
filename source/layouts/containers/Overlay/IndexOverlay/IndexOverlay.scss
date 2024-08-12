@@ -5,16 +5,22 @@
     grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
   div[class*='midground'] {
-    overflow-y: scroll;
     grid-area: 1 / 1 / 4 / 4;
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+    /*
+    overflow-y: scroll;
     img[class*='page'] {
       width: 100%;
       flex-direction: column;
       background: rgba(white, 0.75);
     }
-    &::-webkit-scrollbar {
+          &::-webkit-scrollbar {
       display: none; //~~|🠊 Hide Scrollbar 🠈|~~//
     }
+    */
   }
   footer[class*='background'] {
     // display: none;
