@@ -29,7 +29,111 @@ interface FooterProps {
 }
 
 const IndexFooter: React.FC<FooterProps> = () => {
-  const loadTimer: number = 2000;
+  function getElements(orientation: '<desktop>' | '<mobile>') {
+    switch (orientation) {
+      case '<desktop>':
+        return {
+          anchors: [
+            {
+              state: '',
+              text: 'GitHub',
+              label: 'github',
+              target: '_blank',
+              align: 'center',
+              block: 'footer',
+              style: 'downplay',
+              href: 'https://github.com/TertiusRoach',
+              icon: getSVG('github') as { dark: string; medium: string; light: string },
+            },
+            {
+              state: '',
+              text: 'LinkedIn',
+              target: '_blank',
+              label: 'linkedin',
+              align: 'center',
+              block: 'footer',
+              style: 'highlight',
+              href: 'https://www.linkedin.com/in/tertius-roach/',
+              icon: getSVG('linkedin') as { dark: string; medium: string; light: string },
+            },
+            {
+              state: '',
+              text: 'YouTube',
+              label: 'youtube',
+              target: '_blank',
+              align: 'center',
+              block: 'footer',
+              style: 'downplay',
+              href: 'https://www.youtube.com/@TertiusRoach',
+              icon: getSVG('youtube') as { dark: string; medium: string; light: string },
+            },
+          ],
+          criteria: {
+            buildAxis: '<horizontal>',
+            buildDesign: '<fade>',
+            buildElement: '<buttons>',
+          },
+        };
+      case '<mobile>':
+        return {
+          buttons: [
+            {
+              href: '',
+              text: 'Home',
+              label: 'home',
+              align: 'left',
+              block: 'footer',
+              state: 'active',
+              style: 'downplay',
+              icon: getSVG('home'),
+            },
+            {
+              href: '',
+              state: '',
+              text: 'Skills',
+              label: 'skills',
+              align: 'center',
+              block: 'footer',
+              style: 'downplay',
+              icon: getSVG('skills'),
+            },
+            {
+              href: '',
+              state: '',
+              align: 'right',
+              text: 'Profile',
+              block: 'rightbar',
+              label: 'projects',
+              style: 'downplay',
+              icon: getSVG('profile'),
+            },
+          ],
+          criteria: {
+            buildDesign: '<fade>',
+            buildAxis: '<horizontal>',
+            buildElement: '<buttons>',
+          },
+        } as {
+          buttons: {
+            text?: string;
+            href?: string;
+            state?: 'active' | '';
+            label?: 'home' | string;
+            style?: 'highlight' | 'downplay';
+            align?: 'left' | 'center' | 'right' | string;
+            icon?: { dark: string; medium: string; light: string };
+            block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+          }[];
+          criteria: {
+            buildAxis: '<vertical>' | '<horizontal>';
+            buildDesign: '<fade>' | '<icon>' | '<text>';
+            buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+          };
+        };
+    }
+  }
+
+  let loadTimer: number = 2000;
   const blockName: string = 'footer';
   const pageName: String = getIdentification();
   useEffect(() => {
@@ -42,6 +146,7 @@ const IndexFooter: React.FC<FooterProps> = () => {
     );
     setTimeout(() => jQueryFooter(pageName, blockName), loadTimer);
   }, []);
+
   let desktopElements = getElements('<desktop>') as {
     anchors: {
       label: 'home' | string;
@@ -61,11 +166,6 @@ const IndexFooter: React.FC<FooterProps> = () => {
     };
   };
   let mobileElements = getElements('<mobile>') as {
-    criteria: {
-      buildAxis: '<vertical>' | '<horizontal>';
-      buildDesign: '<fade>' | '<icon>' | '<text>';
-      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-    };
     buttons: {
       label: 'home' | string;
       style: 'highlight' | 'downplay';
@@ -77,13 +177,18 @@ const IndexFooter: React.FC<FooterProps> = () => {
       href?: string;
       state?: 'active' | '';
     }[];
+    criteria: {
+      buildAxis: '<vertical>' | '<horizontal>';
+      buildDesign: '<fade>' | '<icon>' | '<text>';
+      buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
+    };
   };
   return (
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <MenuButton criteria={desktopElements.criteria} input={desktopElements.anchors} />
+          <MenuAnchor criteria={desktopElements.criteria} input={desktopElements.anchors} />
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
@@ -96,109 +201,6 @@ const IndexFooter: React.FC<FooterProps> = () => {
   );
 };
 export default IndexFooter;
-function getElements(orientation: '<desktop>' | '<mobile>') {
-  switch (orientation) {
-    case '<desktop>':
-      return {
-        anchors: [
-          {
-            state: '',
-            text: 'GitHub',
-            label: 'github',
-            target: '_blank',
-            align: 'center',
-            block: 'footer',
-            style: 'downplay',
-            href: 'https://github.com/TertiusRoach',
-            icon: getSVG('github') as { dark: string; medium: string; light: string },
-          },
-          {
-            state: '',
-            text: 'LinkedIn',
-            target: '_blank',
-            label: 'linkedin',
-            align: 'center',
-            block: 'footer',
-            style: 'highlight',
-            href: 'https://www.linkedin.com/in/tertius-roach/',
-            icon: getSVG('linkedin') as { dark: string; medium: string; light: string },
-          },
-          {
-            state: '',
-            text: 'YouTube',
-            label: 'youtube',
-            target: '_blank',
-            align: 'center',
-            block: 'footer',
-            style: 'downplay',
-            href: 'https://www.youtube.com/@TertiusRoach',
-            icon: getSVG('youtube') as { dark: string; medium: string; light: string },
-          },
-        ],
-        criteria: {
-          buildAxis: '<horizontal>',
-          buildDesign: '<fade>',
-          buildElement: '<buttons>',
-        },
-      };
-    case '<mobile>':
-      return {
-        buttons: [
-          {
-            href: '',
-            text: 'Home',
-            label: 'home',
-            align: 'left',
-            block: 'footer',
-            state: 'active',
-            style: 'downplay',
-            icon: getSVG('home'),
-          },
-          {
-            href: '',
-            state: '',
-            text: 'Skills',
-            label: 'skills',
-            align: 'center',
-            block: 'footer',
-            style: 'downplay',
-            icon: getSVG('skills'),
-          },
-          {
-            href: '',
-            state: '',
-            align: 'right',
-            text: 'Profile',
-            block: 'rightbar',
-            label: 'projects',
-            style: 'downplay',
-            icon: getSVG('profile'),
-          },
-        ],
-        criteria: {
-          buildDesign: '<fade>',
-          buildAxis: '<horizontal>',
-          buildElement: '<buttons>',
-        },
-      } as {
-        buttons: {
-          text?: string;
-          href?: string;
-          state?: 'active' | '';
-          label?: 'home' | string;
-          style?: 'highlight' | 'downplay';
-          align?: 'left' | 'center' | 'right' | string;
-          icon?: { dark: string; medium: string; light: string };
-          block?: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
-        }[];
-        criteria: {
-          buildAxis: '<vertical>' | '<horizontal>';
-          buildDesign: '<fade>' | '<icon>' | '<text>';
-          buildElement: '<buttons>' | '<anchors>' | '<ordered>' | '<unordered>';
-        };
-      };
-  }
-}
 function jQueryFooter(pageName: String, blockName: string) {
   const containerElement = `${pageName}-${blockName}`;
   $(`footer#${containerElement} menu button[id*='home']`).on('click', function () {

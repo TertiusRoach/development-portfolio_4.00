@@ -1,109 +1,156 @@
-// Menu.anchor.tsx
-//--|🠋 Frameworks 🠋|--//
+//--|🠊| Menu.Anchor.tsx |🠈|--//
 import React from 'react';
-//--|🠉 Frameworks 🠉|--//
-//--|🠋 Utilities 🠋|--//
-import { getSVG } from '../../../../modules/utilities/getFile';
-//--|🠉 Utilities 🠉|--//
-//--|🠋 Components 🠋|--//
-import AnchorIcon from '../../Anchor/icon/Anchor.icon';
-import AnchorText from '../../Anchor/text/Anchor.text';
-import AnchorFade from '../../Anchor/fade/Anchor.fade';
-//--|🠉 Components 🠉|--//
-//--|🠋 Design 🠋|--//
 import './Menu.anchor.scss';
-//--|🠉 Design 🠉|--//
+
+import AnchorFade from '../../Anchor/fade/Anchor.fade';
+// import AnchorGlow from '../../Anchor/glow/Anchor.glow';
+// import AnchorIcon from '../../Anchor/icon/Anchor.icon';
+// import AnchorFrame from '../../Anchor/frame/Anchor.frame';
+// import anchorSlide from '../../Anchor/slide/Anchor.slide';
+
+import { getSVG } from '../../../../modules/utilities/getFile';
 
 interface MenuProps {
-  selectDesign: 'icon' | 'text' | 'fade' | string;
-  info: {
-    href: string;
-    text: string;
-    state: 'active' | '';
-    style: 'downplay' | 'highlight';
+  criteria: {
+    buildAxis: '<vertical>' | '<horizontal>';
+    buildDesign: '<fade>' | '<icon>' | '<text>';
+  };
+  input: {
+    text?: string | '';
+    href?: string | '';
+    state?: 'submit' | string;
+
+    label: 'home' | string;
+    style: 'highlight' | 'downplay';
     align: 'left' | 'center' | 'right' | string;
-    label: 'home' | 'skills' | 'contact' | string;
-    target: '_blank' | '_parent' | '_self' | '_top' | string;
-    icon: { dark: 'dark'; medium: 'medium'; light: 'light' };
+    icon: { dark: string; medium: string; light: string };
     block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
   }[];
 }
-const MenuAnchor: React.FC<MenuProps> = ({ selectDesign, info }) => {
-  let anchorStyle = [];
-  switch (selectDesign) {
-    case 'icon':
-      for (let i = 0; i < info.length; i++) {
-        var icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string };
-        anchorStyle.push(
-          <AnchorIcon
-            href={info[i].href}
-            text={info[i].text}
-            state={info[i].state}
-            style={info[i].style}
-            label={info[i].label}
-            block={info[i].block}
-            align={info[i].align}
-            target={info[i].target}
-            key={`${info[i].text}`}
-            icon={icon as { dark: 'dark'; medium: 'medium'; light: 'light' }}
-          />
-        );
-      }
-      break;
-    case 'text':
-      break;
-    case 'fade':
-      for (let i = 0; i < info.length; i++) {
-        var icon = getSVG(`${info[i].label}`) as { dark: string; medium: string; light: string };
-        if (info[i].href) {
-          // console.log(info[i].href);
-        }
-        anchorStyle.push(
-          <AnchorFade
-            href={info[i].href}
-            text={info[i].text}
-            state={info[i].state}
-            style={info[i].style}
-            label={info[i].label}
-            block={info[i].block}
-            align={info[i].align}
-            target={info[i].target}
-            key={`${info[i].text}`}
-            icon={getSVG(`${info[i].label}`) as { dark: 'dark'; medium: 'medium'; light: 'light' }}
-          />
-        );
-      }
-      break;
-  }
-  switch (info.length) {
-    case 1:
-      return <menu className="one anchors">{anchorStyle}</menu>;
-    case 2:
-      return <menu className="two anchors">{anchorStyle}</menu>;
-    case 3:
-      return <menu className="three anchors">{anchorStyle}</menu>;
-    case 4:
-      return <menu className="four anchors">{anchorStyle}</menu>;
-    case 5:
-      return <menu className="five anchors">{anchorStyle}</menu>;
-    case 6:
-      return <menu className="six anchors">{anchorStyle}</menu>;
-    case 7:
-      return <menu className="seven anchors">{anchorStyle}</menu>;
-    case 8:
-      return <menu className="eight anchors">{anchorStyle}</menu>;
-    case 9:
-      return <menu className="nine anchors">{anchorStyle}</menu>;
-    case 10:
-      return <menu className="ten anchors">{anchorStyle}</menu>;
-    case 11:
-      return <menu className="eleven anchors">{anchorStyle}</menu>;
-    case 12:
-      return <menu className="twelve anchors">{anchorStyle}</menu>;
-    default:
-      alert('Maximum of 5 Buttons Allowed');
-      break;
-  }
+const MenuAnchor: React.FC<MenuProps> = ({ criteria, input }) => {
+  let selectAxis: '<vertical>' | '<horizontal>' = criteria.buildAxis;
+  let selectDesign: '<fade>' | '<icon>' | '<text>' = criteria.buildDesign;
+  return (
+    <menu className={`${setClass(selectAxis, selectDesign, input)}`}>
+      {input.map((info, i) => (
+        <AnchorFade
+          key={i}
+          axis={selectAxis}
+          text={`${info.text}`}
+          href={`${info.href}`}
+          label={`${info.label}`}
+          style={`${info.style}`}
+          align={`${info.align}`}
+          block={`${info.block}`}
+          state={`${info.state}` as ''}
+          icon={info.icon as { dark: string; medium: string; light: string }}
+        />
+      ))}
+    </menu>
+  );
 };
-
 export default MenuAnchor;
+function setAxis(
+  amount: Number,
+  criteria: {
+    selectAxis: '<vertical>' | '<horizontal>';
+    selectDesign: '<fade>' | '<icon>' | '<text>' | string;
+  }
+) {
+  if (criteria.selectAxis === '<horizontal>') {
+    switch (amount) {
+      case 1:
+        return 'horizontal-one';
+      case 2:
+        return 'horizontal-two';
+      case 3:
+        return 'horizontal-three';
+      case 4:
+        return 'horizontal-four';
+      case 5:
+        return 'horizontal-five';
+      case 6:
+        return 'horizontal-six';
+      case 7:
+        return 'horizontal-seven';
+      case 8:
+        return 'horizontal-eight';
+      case 9:
+        return 'horizontal-nine';
+      case 10:
+        return 'horizontal-ten';
+      case 11:
+        return 'horizontal-eleven';
+      case 12:
+        return 'horizontal-twelve';
+      default:
+        alert('//--|🠊 Menu.horizontal.tsx: Only twelve anchors allowed <horizontally> for the <menu> element 🠈|--//');
+        break;
+    }
+  } else if (criteria.selectAxis === '<vertical>') {
+    switch (amount) {
+      case 1:
+        return 'vertical-one';
+      case 2:
+        return 'vertical-two';
+      case 3:
+        return 'vertical-three';
+      case 4:
+        return 'vertical-four';
+      case 5:
+        return 'vertical-five';
+      case 6:
+        return 'vertical-six';
+      case 7:
+        return 'vertical-seven';
+      case 8:
+        return 'vertical-eight';
+      case 9:
+        return 'vertical-nine';
+      case 10:
+        return 'vertical-ten';
+      case 11:
+        return 'vertical-eleven';
+      case 12:
+        return 'vertical-twelve';
+      default:
+        alert('//--|🠊 120. Menu.vertical.tsx: Only twelve anchors allowed <vertically> for the <menu> element 🠈|--//');
+        break;
+    }
+  }
+}
+function setClass(
+  selectAxis: '<vertical>' | '<horizontal>',
+  selectDesign: '<fade>' | '<icon>' | '<text>',
+  input: {
+    label: 'home' | string;
+    style: 'highlight' | 'downplay';
+    align: 'left' | 'center' | 'right' | string;
+    icon: { dark: string; medium: string; light: string };
+    block: 'header' | 'main' | 'footer' | 'overlay' | 'leftbar' | 'rightbar' | string;
+
+    text?: string | '';
+    href?: string | '';
+    state?: 'submit' | 'active' | string;
+  }[]
+) {
+  const criteria = {
+    selectAxis,
+    selectDesign,
+  };
+  const axisName = setAxis(
+    input.length as Number,
+    criteria as {
+      selectAxis: '<vertical>' | '<horizontal>';
+      selectDesign: '<fade>' | '<icon>' | '<text>' | string;
+    }
+  );
+  switch (selectDesign) {
+    case '<fade>':
+      return `fade-anchors-${axisName}`;
+    case '<icon>':
+      return `icon-anchors-${axisName}`;
+    case '<text>':
+      return `text-anchors-${axisName}`;
+  }
+}
