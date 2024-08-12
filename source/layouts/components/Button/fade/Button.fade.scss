@@ -1,10 +1,10 @@
 //--|🠊| Button.fade.scss |🠈|--//
 @import '../../../containers/color-palette.scss';
 
-//--|🠋| Index Colors |🠋|--//
-$primary-dark: #000000; //--🠊 rgba(0,0,0,1) 🠈--//
-$primary-medium: #737373; //--🠊 rgba(115,115,115,1) 🠈--//
-$primary-light: #ffffff; //--🠊 rgba(255,255,255,1) 🠈--//
+//--|🠋| Résumé Colors |🠋|--//
+$primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
+$primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
+$primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
 
 @mixin fade-design {
   button {

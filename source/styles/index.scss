@@ -119,6 +119,13 @@
   }
 }
 
+//--|🠋| Résumé Colors |🠋|--//
+$primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
+$primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
+$primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
+body {
+  background: $primary-dark;
+}
 div[id*='body'] {
   height: 100vh;
   display: grid;
@@ -128,7 +135,7 @@ div[id*='body'] {
   //--|🠋 Device Layouts 🠋|--//
   @include mobile-portrait();
   @include desktop-landscape();
-  @include orientation-testing();
+  // @include orientation-testing();
 
   //--|🠋 Override Bootstrap 🠋|--//
   button:not(:disabled),
