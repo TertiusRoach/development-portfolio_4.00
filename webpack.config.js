@@ -1,4 +1,5 @@
-let pageName = 'index';
+// let pageName = 'index';
+let pageName = 'resume';
 
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
