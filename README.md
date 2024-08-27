@@ -1,12 +1,12 @@
-# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
 
-# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume.html)
+# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
 
-# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket.html)
+# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
 
-# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university.html)
+# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
 
-# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness.html)
+# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
 
 <details>
   <summary>Development Portfolio</summary>
