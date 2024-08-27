@@ -1,16 +1,16 @@
+let pageName = 'index';
+
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const pageName = 'index';
-
 module.exports = {
-  entry: './source/index.tsx',
+  entry: `./source/${pageName}.tsx`,
   output: {
     filename: `${pageName}.js`,
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, `public/${pageName}`),
     clean: true, // Clean the output directory before emit
   },
   resolve: {
@@ -55,7 +55,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Index Page',
+      // title: `${pageName} Page`,
       template: `./source/pages/${pageName}.html`,
     }),
     new MiniCssExtractPlugin({
@@ -63,9 +63,9 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: path.join(__dirname, 'public'),
-    compress: true,
+    open: true,
     port: 8080,
-    open: true, // Automatically open the browser
+    compress: true,
+    static: path.join(__dirname, 'public'),
   },
 };
