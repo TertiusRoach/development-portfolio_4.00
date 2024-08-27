@@ -3,6 +3,11 @@ import './styles/index.scss';
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
+import { getSVG } from './modules/utilities/getFile';
+import getResolution from './modules/utilities/getResolution';
+import getOrientation from './modules/utilities/getOrientation';
+import getIdentification from './modules/utilities/getIdentification';
+
 // Import container components
 import IndexMain from './layouts/containers/Main/IndexMain/IndexMain';
 import IndexHeader from './layouts/containers/Header/IndexHeader/IndexHeader';
@@ -11,14 +16,6 @@ import IndexOverlay from './layouts/containers/Overlay/IndexOverlay/IndexOverlay
 import IndexLeftbar from './layouts/containers/Leftbar/IndexLeftbar/IndexLeftbar';
 import IndexRightbar from './layouts/containers/Rightbar/IndexRightbar/IndexRightbar';
 
-import { getSVG } from './modules/utilities/getFile';
-import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/getOrientation';
-import getIdentification from './modules/utilities/getIdentification';
-
-// Download File
-//raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/pdf-files/resume-page/curriculum-vitae.pdf
-
 const DefaultBody = document.getElementById('index-body') as HTMLElement;
 function Body() {
   interface InfoProps {
@@ -26,7 +23,6 @@ function Body() {
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   }
-
   let [infoPROP, newPROP] = useState<InfoProps>({
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,

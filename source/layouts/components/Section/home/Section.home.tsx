@@ -276,6 +276,18 @@ function getElements(orientation: '<desktop>' | '<mobile>') {
 }
 function jQueryHome(pageName: String, blockName: string) {
   const containerElement = `main#${pageName}-${blockName} section.${blockName}-home`;
+
+  $(`${containerElement} button#${pageName}-career`).on('click', function () {
+    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
+
+    //--|🠋 Block Check 🠋|--//
+    if (this.className.includes('overlay')) {
+      console.log('TEST!!!!!');
+      toggleSection(this);
+      scrollMain(button, pageName);
+    }
+  });
+
   $(`${containerElement} button#${pageName}-projects`).on('click', function () {
     let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
     if (this.className.split('-')[0] === 'rightbar') {
@@ -284,14 +296,7 @@ function jQueryHome(pageName: String, blockName: string) {
       toggleAside(`${pageName}-${rightbar}`);
     }
   });
-  $(`${containerElement} button#${pageName}-career`).on('click', function () {
-    let button = document.querySelector(`button#${pageName}-home`) as HTMLButtonElement;
-    //--|🠋 Block Check 🠋|--//
-    if (this.className.includes('overlay')) {
-      toggleSection(this);
-      scrollMain(button, pageName);
-    }
-  });
+
   $(`${containerElement} button#${pageName}-contact`).on('click', function () {
     let button = this as HTMLButtonElement;
     scrollMain(button, pageName);

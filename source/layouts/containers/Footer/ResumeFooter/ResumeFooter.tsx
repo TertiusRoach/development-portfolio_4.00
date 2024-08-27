@@ -132,7 +132,6 @@ const ResumeFooter: React.FC<FooterProps> = () => {
         };
     }
   }
-
   let loadTimer: number = 2000;
   const blockName: string = 'footer';
   const pageName: String = getIdentification();
@@ -184,7 +183,7 @@ const ResumeFooter: React.FC<FooterProps> = () => {
     };
   };
   return (
-    <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
+    <footer id="resume-footer" className="default-footer" style={{ zIndex: 1 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>

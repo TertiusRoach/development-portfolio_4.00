@@ -30,15 +30,17 @@ function Body() {
   let [infoPROP, newPROP] = useState<InfoProps>({
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
-    identification: `${getIdentification()}`,
-  });
+    identification: 'resume',
 
+    // identification: `${getIdentification()}`,
+  });
   useEffect(() => {
     function newInfo() {
       newPROP({
         resolution: `${getResolution()}`,
         orientation: `${getOrientation()}`,
-        identification: `${getIdentification()}`,
+        identification: 'resume',
+        // identification: `${getIdentification()}`,
       });
     }
     newInfo();

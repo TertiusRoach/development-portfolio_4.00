@@ -187,15 +187,11 @@ const IndexFooter: React.FC<FooterProps> = () => {
     <footer id="index-footer" className="default-footer" style={{ zIndex: 1 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
-        <>
-          <MenuAnchor criteria={desktopElements.criteria} input={desktopElements.anchors} />
-        </>
+        <>{/* <MenuAnchor criteria={desktopElements.criteria} input={desktopElements.anchors} /> */}</>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
-        <>
-          <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
-        </>
+        <>{/* <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} /> */}</>
       )}
     </footer>
   );

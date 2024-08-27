@@ -32,6 +32,7 @@ const ResumeMain: React.FC<MainProps> = ({ info }) => {
   const jQueryTimer = 1000;
   const blockName = 'main';
   const pageName = info.identification as String;
+
   const [isBlurred, setIsBlurred] = useState(false);
   let width = info.resolution.split('x')[0] as string;
   let height = info.resolution.split('x')[1] as string;
@@ -46,7 +47,7 @@ const ResumeMain: React.FC<MainProps> = ({ info }) => {
     };
   }, [pageName, blockName]);
   return (
-    <main id="index-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
+    <main id="resume-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>

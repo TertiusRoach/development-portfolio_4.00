@@ -21,6 +21,7 @@ const ResumeOverlay: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = info.identification;
+
   useEffect(() => {
     const jQueryStart = () => {
       jQueryOverlay(pageName, blockName);
@@ -159,7 +160,7 @@ const ResumeOverlay: React.FC<InfoProps> = ({ info }) => {
     };
   };
   return (
-    <section id="index-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
+    <section id="resume-overlay" className="default-overlay hidden" style={{ zIndex: 3, display: 'none' }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>

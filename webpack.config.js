@@ -1,4 +1,3 @@
-// let pageName = 'index';
 let pageName = 'resume';
 
 const path = require('path');

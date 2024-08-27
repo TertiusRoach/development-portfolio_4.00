@@ -49,7 +49,7 @@ const ResumeHeader: React.FC<HeaderProps> = ({ info }) => {
     }[];
   };
   return (
-    <header id="index-header" className="default-header" style={{ zIndex: 2 }}>
+    <header id="resume-header" className="default-header" style={{ zIndex: 2 }}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>

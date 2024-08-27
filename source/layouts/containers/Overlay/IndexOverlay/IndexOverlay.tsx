@@ -164,10 +164,10 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <header className="overlay-foreground" style={{ zIndex: 2 }}>
-            <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
+            {/* <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} /> */}
           </header>
           <div className="overlay-midground" style={{ zIndex: 1 }}>
-            <iframe src="https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/preview"></iframe>
+            {/* <iframe src="https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/preview"></iframe> */}
             {/* <img
               alt="Page One"
               className="page-one"
@@ -183,11 +183,11 @@ const IndexOverlay: React.FC<InfoProps> = ({ info }) => {
           <header className="overlay-foreground" style={{ zIndex: 2 }}></header>
 
           <div className="overlay-midground" style={{ zIndex: 1 }}>
-            <h1>Build style here.</h1>
+            {/* <h1>Build style here.</h1> */}
           </div>
 
           <footer className="overlay-background" style={{ zIndex: 0 }}>
-            <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
+            {/* <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} /> */}
           </footer>
         </>
       )}

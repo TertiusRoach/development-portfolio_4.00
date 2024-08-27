@@ -50,21 +50,21 @@ const IndexMain: React.FC<MainProps> = ({ info }) => {
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '500px', width: width, background: 'green' }}>
             <h1 className="display-1">Add space</h1>
           </div>
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} /> */}
         </>
       )}
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
+          {/* <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
           <div style={{ height: '250px', width: width }}>
             <h1 className="display-1">Add space</h1>
           </div>
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
+          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} /> */}
         </>
       )}
     </main>
