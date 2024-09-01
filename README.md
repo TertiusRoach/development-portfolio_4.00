@@ -294,7 +294,7 @@ This is the structure I will use going forward.
 
     │ ├── modules/ # Reusable logic and utilities
 
-    │ │ ├── api/ # API service modules
+    │ │ ├── routes/ # API service modules
 
     │ │ └── utilities/ # Utility functions
 
