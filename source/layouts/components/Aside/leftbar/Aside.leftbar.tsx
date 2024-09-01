@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { toggleAside } from '../../../../modules/utilities/toggleAside';
+import toggleAside from '../../../../modules/utilities/toggleAside';
 
 interface LeftbarProps {
   labelName: 'default';

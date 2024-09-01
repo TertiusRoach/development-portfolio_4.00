@@ -1,0 +1,36 @@
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  // grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
+  /*
+
+  */
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  // grid-template: 6rem 1fr 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
+  /*
+  */
+}
+
+aside[id*='rightbar'] {
+  display: grid;
+  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  &[class*='collapsed'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
+  }
+  /* Target elements with a class containing 'expanded' */
+  &[class*='expanded'] {
+    transition: clip-path 0.25s;
+    clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+  }
+
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+}

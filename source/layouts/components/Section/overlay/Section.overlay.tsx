@@ -9,10 +9,9 @@ import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { setButton } from '../../../../modules/utilities/setButton';
 import getScroll from '../../../../modules/utilities/getScroll';
-import { toggleAside } from '../../../../modules/utilities/toggleAside';
-import { toggleSection } from '../../../../modules/utilities/toggleSection';
+import toggleAside from '../../../../modules/utilities/toggleAside';
+import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 

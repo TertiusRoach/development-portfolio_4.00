@@ -6,7 +6,7 @@ import ButtonFade from '../../../components/Button/fade/Button.fade';
 import MenuButton from '../../../components/Menu/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
-import { toggleSection } from '../../../../modules/utilities/toggleSection';
+import toggleSection from '../../../../modules/utilities/toggleSection';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {

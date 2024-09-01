@@ -1,6 +1,6 @@
 import getIdentification from './getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
-export function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
+export default function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
   const aside = document.querySelector(`aside#${containerElement}`) as HTMLElement;
   const header = document.querySelector(`#${getIdentification()}-header`) as HTMLElement;
   const main = document.querySelector(`#${getIdentification()}-main section`) as HTMLElement;

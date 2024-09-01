@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import ButtonFade from '../../Button/fade/Button.fade';
 import MenuButton from '../../Menu/button/Menu.button';
 import { getSVG } from '../../../../modules/utilities/getFile';
-import { toggleAside } from '../../../../modules/utilities/toggleAside';
+import toggleAside from '../../../../modules/utilities/toggleAside';
 
 interface ProjectsProps {
   labelName: 'projects';

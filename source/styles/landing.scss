@@ -1,0 +1,154 @@
+@import '../layouts/containers/color-palette.scss';
+@import '../layouts/containers/global-styling.scss';
+@import '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
+
+@mixin orientation-testing {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    & {
+      width: 100%;
+      aside[class*='leftbar'] {
+        background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      aside[class*='rightbar'] {
+        // background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      section[class*='overlay'] {
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+      }
+
+      header {
+        background: rgba($red-light, 0.25);
+      }
+      main {
+        background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+      footer {
+        background: rgba($red-light, 0.25);
+      }
+    }
+    //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
+    //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    & {
+      aside[class*='leftbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      aside[class*='rightbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      section[class*='overlay'] {
+        background: rgba($blue-dark, 0.25);
+      }
+
+      header {
+        background: rgba($blue-light, 0.25);
+      }
+      footer {
+        background: rgba($blue-light, 0.25);
+      }
+      main {
+        background: rgba($blue-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+    }
+    //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
+    //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
+  }
+}
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  }
+}
+@mixin blurred-effect {
+  header,
+  footer,
+  main section {
+    filter: blur(0);
+    transition: filter 1s ease-in-out;
+    &.blurred {
+      filter: blur(2rem);
+    }
+  }
+}
+
+//--|🠋| Résumé Colors |🠋|--//
+$primary-dark: #1f3131; //--🠊 rgba(31,49,49,1) 🠈--//
+$primary-medium: #3d6262; //--🠊 rgba(61,98,98,1) 🠈--//
+$primary-light: #9eb0b0; //--🠊 rgba(158,176,176,1) 🠈--//
+body {
+  background: $primary-dark;
+}
+div[id*='landing'] {
+  height: 100vh;
+  display: grid;
+  //--|🠋 Global Effects 🠋|--//
+  @include blurred-effect();
+
+  //--|🠋 Device Layouts 🠋|--//
+  @include mobile-portrait();
+  @include desktop-landscape();
+  // @include orientation-testing();
+
+  //--|🠋 Override Bootstrap 🠋|--//
+  button:not(:disabled),
+   [type='button']:not(:disabled),
+   [type='reset']:not(:disabled),
+   [type='submit']:not(:disabled)  {
+    cursor: default;
+  }
+}
+
+@import '../layouts/containers/Main/ResumeMain/ResumeMain.scss';
+@import '../layouts/containers/Overlay/ResumeOverlay/ResumeOverlay.scss';
+@import '../layouts/containers/Header/ResumeHeader/ResumeHeader.scss';
+@import '../layouts/containers/Footer/ResumeFooter/ResumeFooter.scss';
+@import '../layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar.scss';
+@import '../layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar.scss';

@@ -9,7 +9,6 @@ import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
-import setButton from '../../../../modules/utilities/setButton';
 import getScroll from '../../../../modules/utilities/getScroll';
 import showAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
@@ -20,7 +19,7 @@ interface HomeProps {
   info: {
     resolution: String;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+    identification: String;
   };
   labelName: 'home';
   stateType: 'active' | '';
@@ -156,6 +155,7 @@ export default SectionOverlay;
 
 function jQueryCareer(pageName: String, blockName: string) {
   const layoutsContainer = `${pageName}-${blockName}`;
+  /*
   $(`#${layoutsContainer} section`).on('click', function (event) {
     let navigation = ['header', 'footer'];
     let mainContainer = document.querySelector(`#${pageName}-main`) as HTMLElement;
@@ -193,6 +193,7 @@ function jQueryCareer(pageName: String, blockName: string) {
       toggleSection(`${pageName}`, overlay);
     }
   });
+  */
 
   console.log(`//--|🠊 Refreshed: jQuery ${blockName} 🠈|--//`);
 }
