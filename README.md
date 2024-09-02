@@ -1,31 +1,7 @@
-# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
-
-# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
-
-# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
-
-# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
-
-# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
-
-<details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <ul>
-        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
-
----
-
 # Installation
 
-Open with [Visual Studio](https://visualstudio.microsoft.com/) by clicking on the green button with "<> Code" on it.
-Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en)
+Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
+Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en).
 
 > Full Terminal Setup
 
@@ -122,21 +98,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 ---
 
-# Keyboard Shortcuts
-
-//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
-
-> Collapse Sections: Ctrl + K + 0
-
-//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
-
-> Select Dropdown: Ctrl + SpaceBar
-
-//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
-
-> Open Run and Debug: Ctrl + Shift + D & F5
-
-# Terminal Commands
+# Terminal
 
 //--|🠋 Starts the testing environment. 🠈|--//
 
@@ -146,27 +108,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 > npm run deploy
 
-# Design Documentation
-
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
-
-# jQuery REACT & SASS className Toggles
-
-    .active
-
-    .enabled / .disabled
-
-    .expanded / .collapsed
-
-    .highlight / .downplay
-
-<!-- // https://tertiusroach.github.io/log-a-ticket_6.00/dist/index.html
-// https://tertiusroach.github.io/university-tracker_2.00/dist/index.html -->
-
-# Folder Structure
+# Folders
 
 This is the structure I will use going forward.
 
@@ -343,5 +285,62 @@ This is the structure I will use going forward.
     ├── package-lock.json
 
     └── webpack.config.js
+
+---
+
+## Reviewed Notes
+
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
+
+## Class Toggles
+
+    .active
+
+    .enabled / .disabled
+
+    .expanded / .collapsed
+
+    .highlight / .downplay
+
+## Keyboard Shortcuts
+
+//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
+
+> Collapse Sections: Ctrl + K + 0
+
+//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
+
+> Select Dropdown: Ctrl + SpaceBar
+
+//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
+
+> Open Run and Debug: Ctrl + Shift + D & F5
+
+## Interactive Navigation
+
+<details>
+  <summary>Development Portfolio</summary>
+  <ol>
+    <li>
+      <ul>
+        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
+
+# [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
+
+# [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
+
+# [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
+
+# [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
+
+# [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
 
 ---
