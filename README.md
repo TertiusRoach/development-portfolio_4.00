@@ -1,11 +1,14 @@
-# Database
+# Database (Still Testing)
 
 I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
 
+    npm install -g heroku
     npm install --save-dev dotenv
     npm install --save-dev bcrypt
     npm install --save-dev express
+    npm install --save-dev nodemon
     npm install --save-dev mongoose
+    npm install --save-dev heroku-cli
     npm install --save-dev jsonwebtoken
 
 ---

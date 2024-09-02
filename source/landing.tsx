@@ -47,3 +47,24 @@ if (DefaultBody) {
 } else {
   console.error("Element with id 'resume-body' not found.");
 }
+
+/*
+import dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+
+dotenv.config();
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+mongoose
+  .connect(process.env.MONGODB_URL as string)
+  .then(() => console.log('DB Connected!'))
+  .catch((err) => console.error('DB Connection Error:', err));
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+*/
