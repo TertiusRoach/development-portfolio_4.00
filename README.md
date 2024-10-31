@@ -1,18 +1,3 @@
-# Database (Still Testing)
-
-I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
-
-    npm install -g heroku
-    npm install --save-dev dotenv
-    npm install --save-dev bcrypt
-    npm install --save-dev express
-    npm install --save-dev nodemon
-    npm install --save-dev mongoose
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
-
----
-
 # Installation
 
 Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
@@ -64,6 +49,24 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 //--|🠋 Compiles project into public. 🠈|--//
 
 > npm run deploy
+
+---
+
+# Database (Still Testing)
+
+Testing Work Laptop Commit
+I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
+
+    npm install -g heroku
+    npm install --save-dev dotenv
+    npm install --save-dev bcrypt
+    npm install --save-dev express
+    npm install --save-dev nodemon
+    npm install --save-dev mongoose
+    npm install --save-dev heroku-cli
+    npm install --save-dev jsonwebtoken
+
+---
 
 ## Installation Breakdown
 
