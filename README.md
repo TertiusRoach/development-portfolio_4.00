@@ -1,6 +1,16 @@
-Testing
+# Run the Application
 
-# Installation
+//--|🠋 Starts the testing environment. 🠈|--//
+
+> npm run launch
+
+//--|🠋 Compiles project into public. 🠈|--//
+
+> npm run deploy
+
+---
+
+# Install for Development
 
 Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en).
@@ -39,34 +49,6 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev extract-text-webpack-plugin
     npm install --save-dev css-minimizer-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
-
----
-
-# Terminal
-
-//--|🠋 Starts the testing environment. 🠈|--//
-
-> npm run launch
-
-//--|🠋 Compiles project into public. 🠈|--//
-
-> npm run deploy
-
----
-
-# Database (Still Testing)
-
-Testing Work Laptop Commit
-I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
-
-    npm install -g heroku
-    npm install --save-dev dotenv
-    npm install --save-dev bcrypt
-    npm install --save-dev express
-    npm install --save-dev nodemon
-    npm install --save-dev mongoose
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
 
 ---
 
@@ -125,6 +107,22 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev @babel/preset-typescript
     npm install --save-dev extract-text-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
+
+---
+
+# Database (Still Testing)
+
+Testing Work Laptop Commit
+I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
+
+    npm install -g heroku
+    npm install --save-dev dotenv
+    npm install --save-dev bcrypt
+    npm install --save-dev express
+    npm install --save-dev nodemon
+    npm install --save-dev mongoose
+    npm install --save-dev heroku-cli
+    npm install --save-dev jsonwebtoken
 
 ---
 
