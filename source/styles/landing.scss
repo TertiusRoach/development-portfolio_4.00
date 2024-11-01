@@ -1,6 +1,13 @@
-@import '../layouts/containers/color-palette.scss';
-@import '../layouts/containers/global-styling.scss';
-@import '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
+@use '../layouts/containers/color-palette.scss';
+@use '../layouts/containers/global-styling.scss';
+@use '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
+
+@use '../layouts/containers/Main/LandingMain/LandingMain.scss';
+@use '../layouts/containers/Overlay/LandingOverlay/LandingOverlay.scss';
+@use '../layouts/containers/Header/LandingHeader/LandingHeader.scss';
+@use '../layouts/containers/Footer/LandingFooter/LandingFooter.scss';
+@use '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
+@use '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar.scss';
 
 @mixin orientation-testing {
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -145,10 +152,3 @@ div[id*='landing'] {
     cursor: default;
   }
 }
-
-@import '../layouts/containers/Main/ResumeMain/ResumeMain.scss';
-@import '../layouts/containers/Overlay/ResumeOverlay/ResumeOverlay.scss';
-@import '../layouts/containers/Header/ResumeHeader/ResumeHeader.scss';
-@import '../layouts/containers/Footer/ResumeFooter/ResumeFooter.scss';
-@import '../layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar.scss';
-@import '../layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar.scss';

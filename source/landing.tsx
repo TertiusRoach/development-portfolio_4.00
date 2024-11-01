@@ -23,6 +23,7 @@ function Body() {
     orientation: `${getOrientation()}`,
     identification: pageName,
   };
+
   return (
     <>
       {/* <ResumeHeader info={infoPROP} /> */}
@@ -40,12 +41,6 @@ if (DefaultBody) {
   ReactDOM.createRoot(DefaultBody).render(<Body />);
 } else {
   console.error(`Can't find with #${pageName}-body`);
-}
-
-interface InfoProps {
-  resolution: String;
-  orientation: String;
-  identification: String;
 }
 
 /*
