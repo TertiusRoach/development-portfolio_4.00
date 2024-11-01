@@ -4,22 +4,17 @@ import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
 // Import container components
-import ResumeMain from './layouts/containers/Main/LandingMain/LandingMain';
-import ResumeHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
-import ResumeFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
-import ResumeOverlay from './layouts/containers/Overlay/LandingOverlay/LandingOverlay';
-import ResumeLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
-import ResumeRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
+// import ResumeMain from './layouts/containers/Main/LandingMain/LandingMain';
+// import ResumeHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
+// import ResumeFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
+import LandingOverlay from './layouts/containers/Overlay/LandingOverlay/LandingOverlay';
+// import ResumeLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
+// import ResumeRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
 import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 
-interface InfoProps {
-  resolution: String;
-  orientation: String;
-  identification: String;
-}
 const pageName = 'landing';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Body() {
@@ -31,10 +26,10 @@ function Body() {
   return (
     <>
       {/* <ResumeHeader info={infoPROP} /> */}
-      <ResumeMain info={information} />
+      {/* <ResumeMain info={information} /> */}
       {/* <ResumeFooter info={infoPROP} /> */}
 
-      {/* <ResumeOverlay info={infoPROP} /> */}
+      <LandingOverlay info={information} />
       {/* <ResumeLeftbar info={infoPROP} /> */}
       {/* <ResumeRightbar info={infoPROP} /> */}
     </>
@@ -42,10 +37,15 @@ function Body() {
 }
 
 if (DefaultBody) {
-  const root = ReactDOM.createRoot(DefaultBody);
-  root.render(<Body />);
+  ReactDOM.createRoot(DefaultBody).render(<Body />);
 } else {
-  console.error("Element with id 'resume-body' not found.");
+  console.error(`Can't find with #${pageName}-body`);
+}
+
+interface InfoProps {
+  resolution: String;
+  orientation: String;
+  identification: String;
 }
 
 /*

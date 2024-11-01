@@ -17,26 +17,12 @@ interface InfoProps {
   };
 }
 
-const ResumeOverlay: React.FC<InfoProps> = ({ info }) => {
+const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   const jQueryTimer: number = 3000;
   const blockName: String = 'overlay';
   const pageName: String = info.identification;
 
-  useEffect(() => {
-    const jQueryStart = () => {
-      jQueryOverlay(pageName, blockName);
-    };
-    window.addEventListener('resize', jQueryStart);
-    setTimeout(() => jQueryOverlay(pageName, blockName), jQueryTimer);
-
-    document.getElementById('index-download')?.addEventListener('click', function () {
-      window.open('https://drive.google.com/file/d/1VWkjmzFQ-LgJP5-PAEh5PV1-uMaFKB3e/view', '_blank');
-    });
-    return () => {
-      () => useEffect;
-      window.removeEventListener('resize', jQueryStart);
-    };
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
   function getElements(orientation: '<desktop>' | '<mobile>') {
     switch (orientation) {
       case '<desktop>':
@@ -195,17 +181,4 @@ const ResumeOverlay: React.FC<InfoProps> = ({ info }) => {
     </section>
   );
 };
-export default ResumeOverlay;
-
-function jQueryOverlay(pageName: String, blockName: String) {
-  const containerElement = `${pageName}-${blockName}` as String;
-  $(`#${containerElement} button[id*='close']`).on('click', function () {
-    let element = document.querySelector(`section#${containerElement}`) as HTMLElement;
-    let safety = element?.className as string;
-    //--|🠋 Safety Check 🠋|--//
-    if (!safety.includes('blocked')) {
-      toggleSection(element);
-    }
-  });
-  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
-}
+export default LandingOverlay;
