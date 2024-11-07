@@ -50,8 +50,6 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev css-minimizer-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
 
----
-
 ## Installation Breakdown
 
 Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/IndexMain.tsx |🠊 layouts/components/Section/**default**/[Section.**default**.tsx](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/layouts/containers/Main/IndexMain/IndexMain.tsx) | \*.scss
@@ -110,80 +108,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 ---
 
-# Database (Still Testing)
-
-Testing Work Laptop Commit
-I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
-
-    npm install -g heroku
-    npm install --save-dev dotenv
-    npm install --save-dev bcrypt
-    npm install --save-dev express
-    npm install --save-dev nodemon
-    npm install --save-dev mongoose
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
-
----
-
-## Reviewed Notes
-
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
-
-## Class Toggles
-
-    .active
-
-    .enabled / .disabled
-
-    .expanded / .collapsed
-
-    .highlight / .downplay
-
-## Keyboard Shortcuts
-
-//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
-
-> Collapse Sections: Ctrl + K + 0
-
-//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
-
-> Select Dropdown: Ctrl + SpaceBar
-
-//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
-
-> Open Run and Debug: Ctrl + Shift + D & F5
-
-## Interactive Navigation
-
-<details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <ul>
-        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
-
-### [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
-
-### [My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
-
-### [Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
-
-### [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
-
-### [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
-
----
-
-# Folders
+# Folder Structure to Reference Storage
 
 This is the structure I will use going forward.
 
@@ -360,5 +285,84 @@ This is the structure I will use going forward.
     ├── package-lock.json
 
     └── webpack.config.js
+
+---
+
+# Database Development for MongoDB
+
+[Tutorial Playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA)
+
+Testing Work Laptop Commit
+I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
+
+    npm install -g heroku
+    npm install --save-dev dotenv
+    npm install --save-dev bcrypt
+    npm install --save-dev express
+    npm install --save-dev nodemon
+    npm install --save-dev mongoose
+    npm install --save-dev heroku-cli
+    npm install --save-dev jsonwebtoken
+
+---
+
+## Reviewed Notes
+
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
+
+## Class Toggles
+
+    .active
+
+    .enabled / .disabled
+
+    .expanded / .collapsed
+
+    .highlight / .downplay
+
+## Keyboard Shortcuts
+
+//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
+
+> Collapse Sections: Ctrl + K + 0
+
+//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
+
+> Select Dropdown: Ctrl + SpaceBar
+
+//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
+
+> Open Run and Debug: Ctrl + Shift + D & F5
+
+## Integrated HTML Navigation
+
+<details>
+  <summary>Development Portfolio</summary>
+  <ol>
+    <li>
+      <ul>
+        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
+
+## Page Links
+
+[Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
+
+[My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
+
+[Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
+
+[Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
+
+[Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
+
+---
 
 ---
