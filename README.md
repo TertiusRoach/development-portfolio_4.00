@@ -108,6 +108,12 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 ---
 
+# Database Development for MongoDB
+
+You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/layouts/containers/Main/LandingMain) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+
+---
+
 # Folder Structure to Reference Storage
 
 This is the structure I will use going forward.
@@ -287,22 +293,6 @@ This is the structure I will use going forward.
     └── webpack.config.js
 
 ---
-
-# Database Development for MongoDB
-
-[Tutorial Playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA)
-
-Testing Work Laptop Commit
-I used the following [article](https://medium.com/@anandam00/build-a-secure-authentication-system-with-nodejs-and-mongodb-58accdeb5144) to build my database. Be gentle [GitGuardian](https://www.gitguardian.com/).
-
-    npm install -g heroku
-    npm install --save-dev dotenv
-    npm install --save-dev bcrypt
-    npm install --save-dev express
-    npm install --save-dev nodemon
-    npm install --save-dev mongoose
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
 
 ---
 
