@@ -5,6 +5,7 @@ secret.*
 *secret.*
 node_modules
 package.json
+settings.json
 package-*.json
 source/server/
 build/desktop.ini
