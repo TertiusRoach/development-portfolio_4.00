@@ -294,15 +294,6 @@ This is the structure I will use going forward.
 
 ---
 
----
-
-## Reviewed Notes
-
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
-
 ## Class Toggles
 
     .active
@@ -326,6 +317,15 @@ This is the structure I will use going forward.
 //--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
 
 > Open Run and Debug: Ctrl + Shift + D & F5
+
+---
+
+## Reviewed Notes
+
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
 
 ## Integrated HTML Navigation
 
@@ -354,5 +354,16 @@ This is the structure I will use going forward.
 [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
 
 ---
+
+> Terminal Command Installation
+
+    npm install -g heroku
+    npm install --save-dev dotenv
+    npm install --save-dev bcrypt
+    npm install --save-dev express
+    npm install --save-dev nodemon
+    npm install --save-dev mongoose
+    npm install --save-dev heroku-cli
+    npm install --save-dev jsonwebtoken
 
 ---
