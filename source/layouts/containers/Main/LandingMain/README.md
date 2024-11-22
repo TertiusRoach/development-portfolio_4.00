@@ -35,6 +35,15 @@ You will need to download and install certain applications by manually downloadi
     db.books.find().sort({ title: 1 }).limit(3)
     db.books.find({ author: "Douglas Adams"}).count()
 
+> [Operators & Complex Queries](https://www.youtube.com/watch?v=NRKGZdJTf48)
+
+    db.books.find({ rating: {$gt: 5}})
+    db.books.find({ rating: {$lt: 5}})
+    db.books.find({ rating: {$gte: 5}})
+    db.books.find({ rating: {$lte: 5}})
+    db.books.find({ rating: {$in: [7,8,9]}})
+    db.books.find({$or: [{rating: 8.5}, {rating: 10}]})
+
 > Extra Commands for Referencing
 
     db
