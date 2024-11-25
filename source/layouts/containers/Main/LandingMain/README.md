@@ -43,6 +43,14 @@ You will need to download and install certain applications by manually downloadi
     db.books.find({ rating: {$lte: 5}})
     db.books.find({ rating: {$in: [7,8,9]}})
     db.books.find({$or: [{rating: 8.5}, {rating: 10}]})
+    db.books.find({genres: {$all: ["fantasy", "sci-fi"]}})
+
+> [Updating Documents](https://www.youtube.com/watch?v=s8YG0GvQInY)
+
+    db.books.updateMany({author: "Terry Pratchett"}, {$set: {author: Unknown Author"}})
+    db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$pull: {genres: "fantasy"}})
+    db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$push: {genres: "fantasy"}})
+    db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$set: {rating: 7, pages: 361}})
 
 > Extra Commands for Referencing
 
