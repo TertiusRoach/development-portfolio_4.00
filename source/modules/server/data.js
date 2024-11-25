@@ -1,11 +1,11 @@
 const { MongoClient } = require('mongodb');
-let dbConnection;
+let databaseConnection;
 
 module.exports = {
-  connectToDb: (callback) => {
+  connectToDatabase: (callback) => {
     MongoClient.connect('mongodb://localhost:27017/bookstore')
       .then((client) => {
-        dbConnection = client.db();
+        databaseConnection = client.db();
         return callback();
       })
       .catch((err) => {
@@ -13,5 +13,5 @@ module.exports = {
         return callback(err);
       });
   },
-  getDb: () => dbConnection,
+  getDatabase: () => databaseConnection,
 };
