@@ -3,13 +3,12 @@ import './styles/landing.scss';
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
-// Import container components
-// import ResumeMain from './layouts/containers/Main/LandingMain/LandingMain';
-// import ResumeHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
-// import ResumeFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
+import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
+// import LandingHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
+// import LandingFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
 import LandingOverlay from './layouts/containers/Overlay/LandingOverlay/LandingOverlay';
-// import ResumeLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
-// import ResumeRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
+// import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
+// import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
 import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
@@ -27,10 +26,10 @@ function Body() {
   return (
     <>
       {/* <ResumeHeader info={infoPROP} /> */}
-      {/* <ResumeMain info={information} /> */}
+      <LandingMain info={information} />
       {/* <ResumeFooter info={infoPROP} /> */}
 
-      <LandingOverlay info={information} />
+      {/* <LandingOverlay info={information} /> */}
       {/* <ResumeLeftbar info={infoPROP} /> */}
       {/* <ResumeRightbar info={infoPROP} /> */}
     </>

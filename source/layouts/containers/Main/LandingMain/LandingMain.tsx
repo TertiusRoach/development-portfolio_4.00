@@ -1,8 +1,9 @@
 // IndexMain.tsx
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
-import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import React, { useState, useEffect } from 'react';
+
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
@@ -19,72 +20,53 @@ import SectionSkills from '../../../components/Section/skills/Section.skills';
 import SectionContact from '../../../components/Section/contact/Section.contact';
 import SectionDefault from '../../../components/Section/default/Section.default';
 //--|🠉 Components 🠉|--//
-//--|🠋 Design 🠋|--//
-//--|🠉 Design 🠉|--//
-interface MainProps {
+
+// import { Express } from 'express';
+
+// const express = require('express');
+
+function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
+  console.log(`Refreshed: Desktop Orientation <${blockName}>`);
+  return (
+    <div>
+      <h1>Desktop View for {pageName}</h1>
+    </div>
+  );
+}
+function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
+  console.log(`Refreshed: Desktop Orientation <${blockName}>`);
+  return (
+    <div>
+      <h1>Mobile View for {pageName}</h1>
+    </div>
+  );
+}
+
+interface InfoProps {
   info: {
-    resolution: String;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
+    resolution: string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-const ResumeMain: React.FC<MainProps> = ({ info }) => {
-  const jQueryTimer = 1000;
-  const blockName = 'main';
-  const pageName = info.identification as String;
 
-  const [isBlurred, setIsBlurred] = useState(false);
-  let width = info.resolution.split('x')[0] as string;
-  let height = info.resolution.split('x')[1] as string;
+const LandingMain: React.FC<InfoProps> = ({ info }) => {
+  const blockName = 'main';
+  const pageName = info.identification;
+
   useEffect(() => {
-    const jQueryStart = () => {
-      jQueryMain(pageName, blockName);
-    };
-    window.addEventListener('resize', jQueryStart);
-    setTimeout(() => jQueryMain(pageName, blockName), jQueryTimer);
-    return () => {
-      window.removeEventListener('resize', jQueryStart);
-    };
+    console.log(`Initialized ${pageName}-${blockName}`);
   }, [pageName, blockName]);
+
   return (
-    <main id="resume-main" className={`default-main ${isBlurred ? 'blurred' : ''}`} style={{ zIndex: 0 }}>
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
       {/*--|🠋 Desktop (Landscape) 🠋|--*/}
-      {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
-        <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
-          <div style={{ height: '500px', width: width, background: 'green' }}>
-            <h1 className="display-1">Add space</h1>
-          </div>
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
-        </>
-      )}
+      {useMediaQuery({ query: '(orientation: landscape)' }) && <Desktop pageName={pageName} blockName={blockName} />}
+
       {/*--|🠋 Mobile (Portrait) 🠋|--*/}
-      {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
-        <>
-          <SectionHome blockName="main" labelName="home" stateType="active" info={info} />
-          <div style={{ height: '250px', width: width }}>
-            <h1 className="display-1">Add space</h1>
-          </div>
-          <SectionSkills blockName="main" labelName="skills" stateType="" info={info} />
-        </>
-      )}
+      {useMediaQuery({ query: '(orientation: portrait)' }) && <Mobile pageName={pageName} blockName={blockName} />}
     </main>
   );
 };
-export default ResumeMain;
-function jQueryMain(pageName: String, blockName: string) {
-  const containerElement = `${pageName}-${blockName}` as String;
-  /*
-  $(`#${containerElement} section.main-home #${pageName}-contact`).on('click', function () {
-    let button = this as HTMLButtonElement;
-    let container = document.querySelector(`#${pageName}-main`) as HTMLElement;
 
-    let scrollResult = getScroll(container, button);
-
-    if (scrollResult && scrollResult.scrollTop !== undefined) {
-      $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
-    }
-  });
-  */
-  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
-}
+export default LandingMain;

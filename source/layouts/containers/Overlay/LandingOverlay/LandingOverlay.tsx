@@ -40,7 +40,6 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
   return <div>Desktop View for {pageName}</div>;
 }
-
 function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
   return <div>Mobile View for {pageName}</div>;
