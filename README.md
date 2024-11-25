@@ -110,7 +110,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 # Database Development for MongoDB
 
-You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/layouts/containers/Main/LandingMain) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
 
 ---
 
@@ -352,18 +352,3 @@ This is the structure I will use going forward.
 [Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
 
 [Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
-
----
-
-> Terminal Command Installation
-
-    npm install -g heroku
-    npm install --save-dev dotenv
-    npm install --save-dev bcrypt
-    npm install --save-dev express
-    npm install --save-dev nodemon
-    npm install --save-dev mongoose
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
-
----
