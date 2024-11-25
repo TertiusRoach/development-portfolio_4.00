@@ -25,13 +25,13 @@ function Body() {
 
   return (
     <>
-      {/* <ResumeHeader info={infoPROP} /> */}
+      {/* <LandingHeader info={infoPROP} /> */}
       <LandingMain info={information} />
-      {/* <ResumeFooter info={infoPROP} /> */}
+      {/* <LandingFooter info={infoPROP} /> */}
 
       {/* <LandingOverlay info={information} /> */}
-      {/* <ResumeLeftbar info={infoPROP} /> */}
-      {/* <ResumeRightbar info={infoPROP} /> */}
+      {/* <LandingLeftbar info={infoPROP} /> */}
+      {/* <LandingRightbar info={infoPROP} /> */}
     </>
   );
 }
