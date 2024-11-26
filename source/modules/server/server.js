@@ -5,8 +5,9 @@ const { connectToDatabase, getDatabase } = require('./data');
 
 // init app & middleware
 const port = 3000;
-const route = '/books';
+const route = 'books';
 const server = express();
+server.use(express.json());
 
 // Database Connection
 let database;
@@ -14,6 +15,7 @@ connectToDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
       console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
+      console.log(`//--|🠊 Go to http://localhost:${port}/${route} 🠈|--//`);
     });
     database = getDatabase();
   }
@@ -21,7 +23,7 @@ connectToDatabase((err) => {
 
 // Routes
 
-server.get(route, (request, response) => {
+server.get(`/${route}`, (request, response) => {
   let books = [];
   database
     .collection('books')
@@ -34,11 +36,9 @@ server.get(route, (request, response) => {
     .catch(() => {
       response.status(500).json({ error: 'Could not fetch the documents' });
     });
-  // response.json({ msg: 'Welcome to the API' });
-  console.log(`//--|🠊 Go to http://localhost:${port}/${route} 🠈|--//`);
 });
 
-server.get(`${route}/:id`, (req, res) => {
+server.get(`/${route}/:id`, (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ error: 'Invalid ID format' });
   }
@@ -55,5 +55,18 @@ server.get(`${route}/:id`, (req, res) => {
     .catch((err) => {
       console.error('Error fetching document:', err);
       res.status(500).json({ error: 'Could not fetch document' });
+    });
+});
+
+server.post(`/${route}`, (req, res) => {
+  const book = req.body;
+  database
+    .collection('books')
+    .insertOne(book)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: 'Could not create a new document.' });
     });
 });
