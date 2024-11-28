@@ -1,9 +1,14 @@
+const dotenv = require('dotenv');
 const { MongoClient } = require('mongodb');
+
 let databaseConnection;
 
 module.exports = {
   connectToDatabase: (callback) => {
-    MongoClient.connect('mongodb://localhost:27017/bookstore')
+    const uri = process.env.MONGODB_URI; // Access the URI from environment variables
+    // const uri = 'mongodb://localhost:27017/bookstore';
+
+    MongoClient.connect(uri)
       .then((client) => {
         databaseConnection = client.db();
         return callback();

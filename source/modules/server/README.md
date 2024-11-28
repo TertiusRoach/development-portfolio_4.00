@@ -7,18 +7,10 @@ You will need to download and install certain applications by manually downloadi
 > Terminal Command Installation
 
     npm install -g nodemon
-    npm install --save-dev express
-    npm install --save-dev mongodb
-
----
-
     npm install --save-dev bcrypt
     npm install --save-dev dotenv
-    npm install --save-dev mongoose
-
-    npm install -g heroku
-    npm install --save-dev heroku-cli
-    npm install --save-dev jsonwebtoken
+    npm install --save-dev express
+    npm install --save-dev mongodb
 
 ---
 
@@ -74,5 +66,17 @@ You will need to download and install certain applications by manually downloadi
 
     db
     cls
+
+---
+
+[Build Node.js User Authentication - Password Login](https://www.youtube.com/watch?v=Ud5xKCYQTjM)
+
+---
+
+    npm install --save-dev mongoose
+
+    npm install -g heroku
+    npm install --save-dev heroku-cli
+    npm install --save-dev jsonwebtoken
 
 ---
