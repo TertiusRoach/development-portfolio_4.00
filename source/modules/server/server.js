@@ -4,13 +4,12 @@ const { ObjectId } = require('mongodb');
 const { connectToDatabase, getDatabase } = require('./data');
 
 // init app & middleware
+let database;
 const port = 3000;
 const route = 'books';
 const server = express();
 server.use(express.json());
 
-// Database Connection
-let database;
 connectToDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
@@ -21,14 +20,18 @@ connectToDatabase((err) => {
   }
 });
 
-// Routes
-
 server.get(`/${route}`, (request, response) => {
+  // Current Page
+  const page = request.query.p || 0;
+  const booksPerPage = 3;
+
   let books = [];
   database
     .collection('books')
     .find()
     .sort({ author: 1 })
+    .skip(page * booksPerPage)
+    .limit(booksPerPage)
     .forEach((book) => books.push(book))
     .then(() => {
       response.status(200).json(books);
