@@ -93,3 +93,35 @@ server.delete(`/${route}/:id`, (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
+
+server.patch(`/${route}/:id`, (req, res) => {
+  const updates = req.body;
+  const { id } = req.params;
+
+  // Validate ObjectId format
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).json({ error: 'Invalid ID format' });
+  }
+
+  // Check for empty update object
+  if (!updates || Object.keys(updates).length === 0) {
+    return res.status(400).json({ error: 'Update data is required' });
+  }
+
+  database
+    .collection('books')
+    .updateOne({ _id: new ObjectId(id) }, { $set: updates })
+    .then((result) => {
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ error: 'Document not found' });
+      }
+      if (result.modifiedCount === 0) {
+        return res.status(200).json({ message: 'No changes were made to the document' });
+      }
+      res.status(200).json({ message: 'Document updated successfully' });
+    })
+    .catch((err) => {
+      console.error('Error updating document:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
