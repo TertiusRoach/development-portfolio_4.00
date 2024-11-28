@@ -70,3 +70,26 @@ server.post(`/${route}`, (req, res) => {
       res.status(500).json({ err: 'Could not create a new document.' });
     });
 });
+
+server.delete(`/${route}/:id`, (req, res) => {
+  const { id } = req.params;
+
+  // Validate ObjectId format
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).json({ error: 'Invalid ID format' });
+  }
+
+  database
+    .collection('books')
+    .deleteOne({ _id: new ObjectId(id) })
+    .then((result) => {
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: 'Document not found' });
+      }
+      res.status(200).json({ message: 'Document deleted successfully' });
+    })
+    .catch((err) => {
+      console.error('Error deleting document:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
