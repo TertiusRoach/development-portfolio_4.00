@@ -1,25 +1,23 @@
 //--|🠊 Open folder Location in Integrated Terminal to run: nodemon server 🠈|--//
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const { connectToDatabase, getDatabase } = require('./data');
+const { connectDatabase, getDatabase } = require('./data');
 
-// init app & middleware
 let database;
 const port = 3000;
 const route = 'books';
 const server = express();
 server.use(express.json());
 
-// Connect to the database and start the server
-connectToDatabase((err) => {
+//--|🠊 Connect to the database and start the server 🠈|--//
+connectDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
-      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
-      console.log(`//--|🠊 Go to http://localhost:${port}/${route} 🠈|--//`);
+      console.log(`//--|🠊 Listening on http://localhost:${port}/${route} 🠈|--//`);
     });
     database = getDatabase();
   }
-});
+}, 'bookstore');
 // GET endpoint: Fetch paginated list of books
 server.get(`/${route}`, (request, response) => {
   // Current Page

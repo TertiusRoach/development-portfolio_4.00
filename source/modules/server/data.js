@@ -1,15 +1,22 @@
 const dotenv = require('dotenv');
 const { MongoClient } = require('mongodb');
 
+// require('dotenv').config();
+
 dotenv.config(); // Load variables from .env
 let databaseConnection;
 
 module.exports = {
-  connectToDatabase: (callback) => {
-    const uri = process.env.LOGIN_URI; // Access the URI from environment variables
-
-    // const uri = process.env.BOOKSTORE_URI; // Access the URI from environment variables
-    // const uri = 'mongodb://localhost:27017/bookstore';
+  connectDatabase: (callback, database) => {
+    let uri;
+    switch (database) {
+      case 'bookstore':
+        uri = process.env.BOOKSTORE_URI;
+        break;
+      case 'login':
+        uri = process.env.LOGIN_URI;
+        break;
+    }
 
     MongoClient.connect(uri)
       .then((client) => {
