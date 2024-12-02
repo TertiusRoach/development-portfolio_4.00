@@ -6,7 +6,7 @@ let databaseConnection;
 
 module.exports = {
   connectToDatabase: (callback) => {
-    const uri = process.env.USERS_URI; // Access the URI from environment variables
+    const uri = process.env.LOGIN_URI; // Access the URI from environment variables
 
     // const uri = process.env.BOOKSTORE_URI; // Access the URI from environment variables
     // const uri = 'mongodb://localhost:27017/bookstore';
