@@ -27,6 +27,11 @@ You will need to download and install certain applications by manually downloadi
     use admin
     show collections
 
+> Commands for [Adding New Documents](https://www.youtube.com/watch?v=g3Z0Av9yRSs)
+
+    db.books.insertOne({ title: "Testing Book", author: "Name Surname", pages: 1233, rating: 6, genres: ["romance", "drama"]})
+    db.books.insertMany([ { title: "Book One"}, {title: "Book Two"} ])
+
 > Commands for [Finding Documents](https://www.youtube.com/watch?v=FLl9m4XwbqQ)
 
     db.books.find()

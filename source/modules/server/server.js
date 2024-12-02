@@ -18,19 +18,20 @@ connectDatabase((err) => {
     database = getDatabase();
   }
 }, 'bookstore');
-// GET endpoint: Fetch paginated list of books
+//--|🠊 GET endpoint: Fetch paginated list of books 🠈|--//
 server.get(`/${route}`, (request, response) => {
+  /*
   // Current Page
   const page = request.query.p || 0;
   const booksPerPage = 3;
-
+  */
   let books = [];
   database
     .collection('books')
     .find()
     .sort({ author: 1 })
-    .skip(page * booksPerPage)
-    .limit(booksPerPage)
+    // .skip(page * booksPerPage)
+    // .limit(booksPerPage)
     .forEach((book) => books.push(book))
     .then(() => {
       response.status(200).json(books);
@@ -39,7 +40,7 @@ server.get(`/${route}`, (request, response) => {
       response.status(500).json({ error: 'Could not fetch the documents' });
     });
 });
-// GET endpoint: Fetch a single book by ID
+//--|🠊 GET endpoint: Fetch a single book by ID 🠈|--//
 server.get(`/${route}/:id`, (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ error: 'Invalid ID format' });
@@ -59,7 +60,7 @@ server.get(`/${route}/:id`, (req, res) => {
       res.status(500).json({ error: 'Could not fetch document' });
     });
 });
-// POST endpoint: Add a new book
+//--|🠊 POST endpoint: Add a new book 🠈|--//
 server.post(`/${route}`, (req, res) => {
   const book = req.body;
   database
@@ -72,7 +73,7 @@ server.post(`/${route}`, (req, res) => {
       res.status(500).json({ err: 'Could not create a new document.' });
     });
 });
-// DELETE endpoint: Delete a book by ID
+//--|🠊 DELETE endpoint: Delete a book by ID 🠈|--//
 server.delete(`/${route}/:id`, (req, res) => {
   const { id } = req.params;
 
@@ -95,7 +96,7 @@ server.delete(`/${route}/:id`, (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
-// PATCH endpoint: Update a book by ID
+//--|🠊 PATCH endpoint: Update a book by ID 🠈|--//
 server.patch(`/${route}/:id`, (req, res) => {
   const updates = req.body;
   const { id } = req.params;

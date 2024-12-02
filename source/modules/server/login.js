@@ -19,27 +19,20 @@ connectDatabase((err) => {
   }
 }, 'login');
 
+//--|🠊 GET: Fetch List of Users 🠈|--//
 server.get(`/${route}`, (req, res) => {
-  /*
-  // Current Page
-  const page = req.query.p || 0;
-  const booksPerPage = 3;
-
-  let books = [];
+  let users = [];
   database
-    .collection('books')
+    .collection(route)
     .find()
-    .sort({ author: 1 })
-    .skip(page * booksPerPage)
-    .limit(booksPerPage)
-    .forEach((book) => books.push(book))
+    .sort({ email: 1 })
+    .forEach((user) => users.push(user))
     .then(() => {
-      res.status(200).json(books);
+      res.status(200).json(users);
     })
     .catch(() => {
       res.status(500).json({ error: 'Could not fetch the documents' });
     });
-    */
 });
 
 /*
@@ -58,6 +51,6 @@ server.get(`/${route}`, (req, res) => {
   "updatedAt": "2024-12-02T09:28:16Z",
 
   "role": "user",
-  "status": "pending",
+  "status": "pending"
 }
 */
