@@ -1,4 +1,5 @@
 //--|🠊 Open folder Location in Integrated Terminal to run: nodemon login 🠈|--//
+const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const { connectDatabase, getDatabase } = require('./data');
@@ -15,6 +16,7 @@ connectDatabase((err) => {
     server.listen(port, () => {
       console.log(`//--|🠊 Listening on http://localhost:${port}/${route} 🠈|--//`);
     });
+
     database = getDatabase();
   }
 }, 'login');
@@ -31,10 +33,54 @@ server.get(`/${route}`, (req, res) => {
       res.status(200).json(users);
     })
     .catch(() => {
-      res.status(500).json({ error: 'Could not fetch the documents' });
+      res.status(500).json({ error: 'Could not fetch the user documents' });
     });
 });
+//--|🠊 POST: Add a New User 🠈|--//
+server.post(`/${route}`, async (req, res) => {
+  const now = new Date(); // Current date
+  const todayISO = now.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
 
+  // Create a new Date object for tomorrow
+  const tomorrow = new Date(now); // Clone the 'now' date to avoid modifying it
+  tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
+  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
+
+  // You have to test this online, locally it will return ::1
+  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+  const randomCode = generateRandomCode(10);
+
+  // hash(salt + 'password')
+  const user = {
+    email: req.body.email,
+    verifiedEmail: false,
+    activationCode: randomCode,
+    activationCodeExpiresAt: tomorrowISO,
+
+    passwordHash: req.body.password,
+    passwordResetToken: null,
+    passwordResetExpiresAt: null,
+
+    userIP: userIP,
+    lastLogin: null,
+    createdAt: todayISO,
+    updatedAt: null,
+
+    role: 'user',
+    status: 'pending',
+  };
+
+  database
+    .collection(route)
+    .insertOne(user)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: 'Could not create a new user.' });
+    });
+});
 /*
 {
   "email": "fullname@email.com",
@@ -52,5 +98,55 @@ server.get(`/${route}`, (req, res) => {
 
   "role": "user",
   "status": "pending"
+  "ip": "102.33.16.58"
 }
 */
+
+function generateRandomCode(length) {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const numbers = '0123456789';
+
+  let code = '';
+
+  // Add 5 random letters
+  for (let i = 0; i < length / 2; i++) {
+    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+    code += randomLetter;
+  }
+
+  // Add 5 random numbers
+  for (let i = 0; i < length / 2; i++) {
+    const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+    code += randomNumber;
+  }
+
+  // Shuffle the characters randomly
+  code = code
+    .split('')
+    .sort(() => Math.random() - 0.5)
+    .join('');
+  return code;
+}
+
+/*
+      server.get(`/${route}`, (req, res) => {
+        const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        console.log('User IP:', userIP); // Logs IP when a request is made to /login
+
+        res.send(`Logged IP: ${userIP}`);
+      });
+      */
+/*
+      const now = new Date(); // Current date
+      const todayISO = now.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
+
+      // Create a new Date object for tomorrow
+      const tomorrow = new Date(now); // Clone the 'now' date to avoid modifying it
+      tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
+      const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
+
+      console.log('Today:', todayISO);
+      console.log('Tomorrow:', tomorrowISO);
+      */
+
+// console.log('Random Code:', randomCode);
