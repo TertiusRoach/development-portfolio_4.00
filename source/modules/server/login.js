@@ -22,8 +22,9 @@ connectDatabase((err) => {
 }, 'login');
 
 //--|🠊 GET: Fetch List of Users 🠈|--//
+let users = [];
+
 server.get(`/${route}`, (req, res) => {
-  let users = [];
   database
     .collection(route)
     .find()
@@ -36,50 +37,26 @@ server.get(`/${route}`, (req, res) => {
       res.status(500).json({ error: 'Could not fetch the user documents' });
     });
 });
+
 //--|🠊 POST: Add a New User 🠈|--//
 server.post(`/${route}`, async (req, res) => {
-  // Create a new Date object for today
   const today = new Date(); // Current date
   const todayISO = today.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
 
-  // Create a new Date object for tomorrow
-  const tomorrow = new Date(today); // Clone the 'now' date to avoid modifying it
+  const tomorrow = new Date(today); // Clone the 'now' date
   tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
   const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
 
-  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // You have to test this online, locally it will return ::1
-
+  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   const randomCode = generateRandomCode(10);
 
-  // Create a secure password to protect it from yourself
-  const salt = await bcrypt.genSalt();
-  const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
+  try {
+    // Generate salt and hash the password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
 
-  /*
-  const user = {
-    email: req.body.email,
-    passwordHash: hashedPassword,
-
-    verifiedEmail: false,
-    activationCode: randomCode,
-    activationCodeExpiresAt: tomorrowISO,
-
-    userIP: userIP,
-    lastLogin: null,
-    createdAt: todayISO,
-    updatedAt: null,
-
-    role: 'user',
-    status: 'pending',
-
-    passwordResetToken: null,
-    passwordResetExpiresAt: null,
-  };
-  */
-
-  database
-    .collection(route)
-    .insertOne({
+    // Insert into database
+    const result = await database.collection(route).insertOne({
       email: req.body.email,
       passwordHash: hashedPassword,
 
@@ -97,34 +74,31 @@ server.post(`/${route}`, async (req, res) => {
 
       passwordResetToken: null,
       passwordResetExpiresAt: null,
-    })
-    .then((result) => {
-      res.status(201).json(result);
-    })
-    .catch(() => {
-      res.status(500).json({ err: 'Could not create a new user.' });
     });
+
+    res.status(201).json(result);
+  } catch (error) {
+    console.error(error); // Log the error
+    res.status(500).json({ err: 'Could not create a new user.' });
+  }
 });
-/*
-{
-  "email": "fullname@email.com",
-  "verifiedEmail": false,
-  "activationCode": "1A2B3C4D5E",
-  "activationCodeExpiresAt": "2024-12-03T09:28:16Z",
-  
-  "passwordHash": "hashed_password_here",
-  "passwordResetToken": null,
-  "passwordResetExpiresAt": null,
 
-  "lastLogin": null,
-  "createdAt": "2024-12-02T09:28:16Z",
-  "updatedAt": "2024-12-02T09:28:16Z",
-
-  "role": "user",
-  "status": "pending"
-  "ip": "102.33.16.58"
-}
-*/
+//--|🠊 POST: Check User Password 🠈|--//
+server.post(`/${route}/login`, async (req, res) => {
+  const user = users.find((user) => user.email === req.body.email);
+  if (user == null) {
+    return res.status(400).send('Cannot Find User');
+  }
+  try {
+    if (await bcrypt.compare(req.body.passwordHash, user.passwordHash)) {
+      res.send('Success!');
+    } else {
+      res.send('Failed!');
+    }
+  } catch {
+    res.status(500).send();
+  }
+});
 
 function generateRandomCode(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -151,26 +125,3 @@ function generateRandomCode(length) {
     .join('');
   return code;
 }
-
-/*
-      server.get(`/${route}`, (req, res) => {
-        const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        console.log('User IP:', userIP); // Logs IP when a request is made to /login
-
-        res.send(`Logged IP: ${userIP}`);
-      });
-      */
-/*
-      const now = new Date(); // Current date
-      const todayISO = now.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
-
-      // Create a new Date object for tomorrow
-      const tomorrow = new Date(now); // Clone the 'now' date to avoid modifying it
-      tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
-      const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
-
-      console.log('Today:', todayISO);
-      console.log('Tomorrow:', tomorrowISO);
-      */
-
-// console.log('Random Code:', randomCode);
