@@ -1,22 +1,11 @@
 GET http://localhost:3000/users
 
+###
+
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "fullname2@email.com",
-  "verifiedEmail": false,
-  "activationCode": "2A2B3C4D5E",
-  "activationCodeExpiresAt": "2024-13-03T09:28:16Z",
-  
-  "passwordHash": "hashed_password_here",
-  "passwordResetToken": null,
-  "passwordResetExpiresAt": null,
-
-  "lastLogin": null,
-  "createdAt": "2024-12-02T09:28:16Z",
-  "updatedAt": "2024-12-02T09:28:16Z",
-
-  "role": "user",
-  "status": "pending"
+  "email": "test@email.com",
+  "passwordHash": "password"
 }

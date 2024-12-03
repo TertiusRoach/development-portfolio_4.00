@@ -51,33 +51,57 @@ server.post(`/${route}`, async (req, res) => {
 
   const randomCode = generateRandomCode(10);
 
+  // Create a secure password to protect it from yourself
+  const salt = await bcrypt.genSalt();
+  const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
+
+  /*
+  const user = {
+    email: req.body.email,
+    passwordHash: hashedPassword,
+
+    verifiedEmail: false,
+    activationCode: randomCode,
+    activationCodeExpiresAt: tomorrowISO,
+
+    userIP: userIP,
+    lastLogin: null,
+    createdAt: todayISO,
+    updatedAt: null,
+
+    role: 'user',
+    status: 'pending',
+
+    passwordResetToken: null,
+    passwordResetExpiresAt: null,
+  };
+  */
+
   database
     .collection(route)
-    .insertOne(user)
+    .insertOne({
+      email: req.body.email,
+      passwordHash: hashedPassword,
+
+      verifiedEmail: false,
+      activationCode: randomCode,
+      activationCodeExpiresAt: tomorrowISO,
+
+      userIP: userIP,
+      lastLogin: null,
+      createdAt: todayISO,
+      updatedAt: null,
+
+      role: 'user',
+      status: 'pending',
+
+      passwordResetToken: null,
+      passwordResetExpiresAt: null,
+    })
     .then((result) => {
-      // hash(salt + 'password')
-      const user = {
-        email: req.body.email,
-        verifiedEmail: false,
-        activationCode: randomCode,
-        activationCodeExpiresAt: tomorrowISO,
-
-        passwordHash: req.body.password,
-        passwordResetToken: null,
-        passwordResetExpiresAt: null,
-
-        userIP: userIP,
-        lastLogin: null,
-        createdAt: todayISO,
-        updatedAt: null,
-
-        role: 'user',
-        status: 'pending',
-      };
-
       res.status(201).json(result);
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).json({ err: 'Could not create a new user.' });
     });
 });
