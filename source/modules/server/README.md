@@ -67,6 +67,10 @@ You will need to download and install certain applications by manually downloadi
     db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$push: {genres: "fantasy"}})
     db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$set: {rating: 7, pages: 361}})
 
+> [Deleting Documents](https://www.youtube.com/watch?v=hq7gGo-1CgM)
+
+    db.users.deleteOne({_id: ObjectId("674d8a53e29f96ec8c9d6852")})
+
 > Extra Commands for Referencing
 
     db

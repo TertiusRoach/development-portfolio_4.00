@@ -38,43 +38,43 @@ server.get(`/${route}`, (req, res) => {
 });
 //--|🠊 POST: Add a New User 🠈|--//
 server.post(`/${route}`, async (req, res) => {
-  const now = new Date(); // Current date
-  const todayISO = now.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
+  // Create a new Date object for today
+  const today = new Date(); // Current date
+  const todayISO = today.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
 
   // Create a new Date object for tomorrow
-  const tomorrow = new Date(now); // Clone the 'now' date to avoid modifying it
+  const tomorrow = new Date(today); // Clone the 'now' date to avoid modifying it
   tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
   const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
 
-  // You have to test this online, locally it will return ::1
-  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // You have to test this online, locally it will return ::1
 
   const randomCode = generateRandomCode(10);
-
-  // hash(salt + 'password')
-  const user = {
-    email: req.body.email,
-    verifiedEmail: false,
-    activationCode: randomCode,
-    activationCodeExpiresAt: tomorrowISO,
-
-    passwordHash: req.body.password,
-    passwordResetToken: null,
-    passwordResetExpiresAt: null,
-
-    userIP: userIP,
-    lastLogin: null,
-    createdAt: todayISO,
-    updatedAt: null,
-
-    role: 'user',
-    status: 'pending',
-  };
 
   database
     .collection(route)
     .insertOne(user)
     .then((result) => {
+      // hash(salt + 'password')
+      const user = {
+        email: req.body.email,
+        verifiedEmail: false,
+        activationCode: randomCode,
+        activationCodeExpiresAt: tomorrowISO,
+
+        passwordHash: req.body.password,
+        passwordResetToken: null,
+        passwordResetExpiresAt: null,
+
+        userIP: userIP,
+        lastLogin: null,
+        createdAt: todayISO,
+        updatedAt: null,
+
+        role: 'user',
+        status: 'pending',
+      };
+
       res.status(201).json(result);
     })
     .catch((err) => {
