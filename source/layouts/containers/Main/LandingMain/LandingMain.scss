@@ -1,8 +1,22 @@
 @mixin desktop-landscape {
-  //a--|🠊 display: grid; 🠈|--//
-  h1 {
-    color: white;
+  //--|🠊 display: grid; 🠈|--//
+  div {
+    // display: flex;
+    // div {
+    //   width: 100%;
+    //   height: 100%;
+    // }
+    // div[class*='login'] {
+    //   background: rgba(darkred, 0.25);
+    // }
+    // div[class*='register'] {
+    //   background: rgba(darkgreen, 0.25);
+    // }
+    // div[class*='password'] {
+    //   background: rgba(darkblue, 0.25);
+    // }
   }
+
   /*
   grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
@@ -22,9 +36,6 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  h1 {
-    color: white;
-  }
   /*
   grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
@@ -42,18 +53,25 @@
 main[id*='main'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  background: rgba(darkred, 0.25);
+  background: rgba(purple, 0.25);
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    h1 {
+      color: white;
+    }
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    h1 {
+      color: white;
+    }
   }
+}
 
-  /*
+/*
   &[class*='hidden'] {
     animation: fadeOut 1s forwards;
     @keyframes fadeOut {
@@ -81,4 +99,3 @@ main[id*='main'] {
     }
   }
   */
-}
