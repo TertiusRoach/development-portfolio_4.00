@@ -25,14 +25,33 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   return (
     <div>
       <section className="login">
-        <h1 className="display-1">Login</h1>
+        <header>
+          <img
+            className="logo"
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+            alt="Login Logo"
+          />
+          <button>
+            <img
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
+              alt=""
+            />
+          </button>
+          <h1 className="display-6">Login</h1>
+        </header>
+        <form className="login">
+          <input placeholder="Email" type="text" id="email" name="Email" />
+          <input placeholder="Password" type="password" id="password" name="password" />
+        </form>
+        <footer>
+          <button>
+            <h6>Register</h6>
+          </button>
+          <button>
+            <h6>Forgot Password</h6>
+          </button>
+        </footer>
       </section>
-      {/* <div className="register">
-        <h1 className="display-1">Register</h1>
-      </div>
-      <div className="password">
-        <h1 className="display-1">Password</h1>
-      </div> */}
     </div>
   );
 }
