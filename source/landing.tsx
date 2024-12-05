@@ -1,8 +1,8 @@
 // resume.tsx
-import './styles/landing.scss';
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
+import './styles/LandingBody.scss';
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 // import LandingHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
 // import LandingFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';

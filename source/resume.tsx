@@ -1,9 +1,9 @@
 // resume.tsx
-import './styles/resume.scss';
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
 // Import container components
+import './styles/ResumeBody.scss';
 import ResumeMain from './layouts/containers/Main/ResumeMain/ResumeMain';
 import ResumeHeader from './layouts/containers/Header/ResumeHeader/ResumeHeader';
 import ResumeFooter from './layouts/containers/Footer/ResumeFooter/ResumeFooter';

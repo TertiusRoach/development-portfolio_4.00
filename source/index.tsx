@@ -1,8 +1,8 @@
 // index.tsx
-import './styles/index.scss';
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
+import './styles/IndexBody.scss';
 import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';

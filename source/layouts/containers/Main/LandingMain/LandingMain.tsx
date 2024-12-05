@@ -4,14 +4,12 @@ import $ from 'jquery';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
-
 //--|🠋 Utilities 🠋|--//
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getScroll from '../../../../modules/utilities/getScroll';
 import toggleAside from '../../../../modules/utilities/toggleAside';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
-
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import MenuButton from '../../../components/Menu/button/Menu.button';
@@ -26,15 +24,15 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
   return (
     <div>
-      <div className="login">
+      <section className="login">
         <h1 className="display-1">Login</h1>
-      </div>
-      <div className="register">
+      </section>
+      {/* <div className="register">
         <h1 className="display-1">Register</h1>
       </div>
       <div className="password">
         <h1 className="display-1">Password</h1>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,22 +1,5 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  div {
-    // display: flex;
-    // div {
-    //   width: 100%;
-    //   height: 100%;
-    // }
-    // div[class*='login'] {
-    //   background: rgba(darkred, 0.25);
-    // }
-    // div[class*='register'] {
-    //   background: rgba(darkgreen, 0.25);
-    // }
-    // div[class*='password'] {
-    //   background: rgba(darkblue, 0.25);
-    // }
-  }
-
   /*
   grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem; //~~|🠊 rows / columns 🠈|~~//
   header[class*='foreground'] {
@@ -52,22 +35,38 @@
 
 main[id*='main'] {
   display: grid;
+  grid-template: inherit; //~~|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|~~//
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   background: rgba(purple, 0.25);
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    h1 {
-      color: white;
+    div {
+      // display: flex;
+
+      section[class*='login'] {
+        background: rgba(darkred, 0.25);
+      }
+      // div[class*='register'] {
+      //   background: rgba(darkgreen, 0.25);
+      // }
+      // div[class*='password'] {
+      //   background: rgba(darkblue, 0.25);
+      // }
+
+      // div {
+      //   width: 100%;
+      //   height: 100%;
+      // }
+      h1 {
+        color: white;
+      }
     }
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    h1 {
-      color: white;
-    }
   }
 }
 
