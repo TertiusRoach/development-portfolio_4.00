@@ -54,7 +54,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
           </div>
           <menu className="login-buttons">
             <button className="login-register">
-              <h6>Register</h6>
+              <h6>Register Account</h6>
             </button>
             <button className="login-password">
               <h6>Forgot Password?</h6>
