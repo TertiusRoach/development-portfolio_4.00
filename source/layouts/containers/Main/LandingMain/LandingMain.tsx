@@ -23,33 +23,43 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
   return (
-    <div>
-      <section className="login">
-        <header>
-          <img
-            className="logo"
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-          <button>
+    <div className="landing-carousel">
+      <section className="login-section">
+        <header className="login-header">
+          <div className="login-label">
+            <h6 className="display-6">Login</h6>
+          </div>
+          <button className="login-demo">
             <img
               src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
               alt=""
             />
           </button>
-          <h1 className="display-6">Login</h1>
+          <div className="login-logo">
+            <img
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+              alt="Login Logo"
+            />
+          </div>
         </header>
-        <form className="login">
+        {/* ----------- */}
+        <form className="login-form">
           <input placeholder="Email" type="text" id="email" name="Email" />
           <input placeholder="Password" type="password" id="password" name="password" />
         </form>
-        <footer>
-          <button>
-            <h6>Register</h6>
-          </button>
-          <button>
-            <h6>Forgot Password</h6>
-          </button>
+        {/* ----------- */}
+        <footer className="login-footer">
+          <div className="login-message">
+            <h6 className="display-6">.</h6>
+          </div>
+          <menu className="login-buttons">
+            <button className="login-register">
+              <h6>Register</h6>
+            </button>
+            <button className="login-password">
+              <h6>Forgot Password?</h6>
+            </button>
+          </menu>
         </footer>
       </section>
     </div>
