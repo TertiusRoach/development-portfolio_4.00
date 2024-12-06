@@ -30,6 +30,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       <section className="login-section">
         <div className="login-container">
           <form className="login-form">
+            {/* ----- */}
             <div className="login-header">
               <div className="login-label">
                 <h6 className="display-6">Login</h6>
@@ -47,10 +48,12 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 />
               </div>
             </div>
+            {/* ----- */}
             <div className="login-inputs">
               <input placeholder="Email" type="text" id="email" name="Email" />
               <input placeholder="Password" type="password" id="password" name="password" />
             </div>
+            {/* ----- */}
             <div className="login-footer">
               <mark className="login-action">
                 <button className="login-button">
@@ -69,6 +72,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 </button>
               </menu>
             </div>
+            {/* ----- */}
           </form>
         </div>
       </section>

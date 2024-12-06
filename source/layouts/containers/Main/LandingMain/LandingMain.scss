@@ -6,10 +6,11 @@
     grid-area: 1 / 2 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
     form[class*='login'] {
+      display: inherit; //~~|🠊 display: grid; 🠈|~~//
       border-radius: 1rem;
       grid-area: 2 / 3 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       background: rgba(black, 0.75);
-      display: inherit; //~~|🠊 display: grid; 🠈|~~//
+      grid-template: 1fr auto 1fr / 1fr; //~~|🠊 rows / columns 🠈|~~//
       div[class*='header'] {
         display: inherit; //~~|🠊 display: grid; 🠈|~~//
         grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
@@ -152,10 +153,10 @@ main[id*='main'] {
 
       background: lightpink;
       @include desktop-landscape();
-      /*  */
       section {
         min-width: 100vw; /* Each section takes up the full screen width */
       }
+
       section[class*='login'] {
         background: rgba(red, 0.25);
       }
