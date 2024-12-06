@@ -49,9 +49,14 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
         </form>
         {/* ----------- */}
         <footer className="login-footer">
-          <div className="login-message">
-            <h6 className="display-6">.</h6>
-          </div>
+          <mark className="login-action">
+            <button className="login-button">
+              <h6>Login</h6>
+            </button>
+            <div className="login-message">
+              <h6>Incorrect Password</h6>
+            </div>
+          </mark>
           <menu className="login-buttons">
             <button className="login-register">
               <h6>Register Account</h6>
