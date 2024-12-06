@@ -22,6 +22,7 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
+  console.log(pageName);
   return (
     <div className="landing-carousel">
       <section className="register-section">
