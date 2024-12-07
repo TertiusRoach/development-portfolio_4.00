@@ -1,4 +1,4 @@
-// IndexMain.tsx
+// LandingMain.tsx
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
 import { useMediaQuery } from 'react-responsive';
@@ -23,6 +23,23 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
   console.log(`Refreshed: Desktop Orientation <${blockName}>`);
   console.log(pageName);
+
+  let viewRegister = () => {
+    // From .login-section - Slide to left
+    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+    carouselContainer.style.transform = 'translateX(0vw)';
+    console.log('View .register-section');
+  };
+  let viewPassword = () => {
+    // From .login-section - Slide to right
+    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+    carouselContainer.style.transform = 'translateX(-200vw)';
+    console.log('View .password-section');
+  };
+
+  let viewLogin = () => {
+    console.log('View .login-section');
+  };
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -65,10 +82,10 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 </div>
               </mark>
               <menu className="login-buttons">
-                <button className="login-register">
+                <button className="login-register" type="button" onClick={viewRegister}>
                   <h6>Register Account</h6>
                 </button>
-                <button className="login-password">
+                <button className="login-password" type="button" onClick={viewPassword}>
                   <h6>Forgot Password?</h6>
                 </button>
               </menu>
@@ -80,50 +97,6 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       <section className="password-section">
         <h1>Password Section</h1>
       </section>
-
-      {/* 
-      <section className="login-section">
-        <header className="login-header">
-          <div className="login-label">
-            <h6 className="display-6">Login</h6>
-          </div>
-          <button className="login-demo">
-            <img
-              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
-              alt=""
-            />
-          </button>
-          <div className="login-logo">
-            <img
-              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-              alt="Login Logo"
-            />
-          </div>
-        </header>
-        <form className="login-form">
-          <input placeholder="Email" type="text" id="email" name="Email" />
-          <input placeholder="Password" type="password" id="password" name="password" />
-        </form>
-        <footer className="login-footer">
-          <mark className="login-action">
-            <button className="login-button">
-              <h6>Login</h6>
-            </button>
-            <div className="login-message">
-              <h6>Incorrect Password</h6>
-            </div>
-          </mark>
-          <menu className="login-buttons">
-            <button className="login-register">
-              <h6>Register Account</h6>
-            </button>
-            <button className="login-password">
-              <h6>Forgot Password?</h6>
-            </button>
-          </menu>
-        </footer>
-      </section> 
-      */}
     </div>
   );
 }

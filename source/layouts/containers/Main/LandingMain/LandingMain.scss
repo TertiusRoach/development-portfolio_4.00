@@ -148,7 +148,7 @@ main[id*='main'] {
     @media screen and (orientation: landscape) {
       display: flex;
       grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-      transform: translateX(-100vw);
+      transform: translateX(-100vw); //~~|🠊 Default view is .login-section 🠈|~~//
       transition: transform 0.25s ease;
 
       background: lightpink;
