@@ -8,6 +8,10 @@
 
 > npm run deploy
 
+//--|🠋 Stops the server to relaunch. 🠈|--//
+
+> npm run close
+
 ---
 
 # Install for Local Development Testing
@@ -23,6 +27,7 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev sass
     npm install --save-dev jquery
     npm install --save-dev webpack
+    npm install --save-dev kill-port
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
     npm install --save-dev node-sass
@@ -69,7 +74,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install -g webpack-cli
     npm install -g webpack-dev-server
 
-> Install Webpack, REACT, SASS and jQuery Tools
+> Install Webpack, REACT, SASS, jQuery and Server Tools
 
     npm install --save-dev sass
     npm install --save-dev jquery
@@ -77,6 +82,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
     npm install --save-dev node-sass
+    npm install --save-dev kill-port
     npm install --save-dev webpack-cli
     npm install --save-dev @types/react
     npm install --save-dev @types/jquery
