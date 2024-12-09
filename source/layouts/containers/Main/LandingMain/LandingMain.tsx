@@ -50,8 +50,10 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       console.error('Error during login:', error);
     }
   };
+  /*
   const handleRegister = async (event: React.FormEvent) => {};
   const handlePassword = async (event: React.FormEvent) => {};
+  */
   return (
     <div className="landing-carousel">
       <section className="register-section">
