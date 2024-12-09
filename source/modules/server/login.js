@@ -22,20 +22,13 @@ connectDatabase((err) => {
 }, 'login');
 
 //--|🠊 GET: Fetch List of Users 🠈|--//
-let users = [];
-
-server.get(`/${route}`, (req, res) => {
-  database
-    .collection(route)
-    .find()
-    .sort({ email: 1 })
-    .forEach((user) => users.push(user))
-    .then(() => {
-      res.status(200).json(users);
-    })
-    .catch(() => {
-      res.status(500).json({ error: 'Could not fetch the user documents' });
-    });
+server.get(`/${route}`, async (req, res) => {
+  try {
+    const users = await database.collection(route).find().sort({ email: 1 }).toArray();
+    res.status(200).json(users);
+  } catch {
+    res.status(500).json({ error: 'Could not fetch the user documents' });
+  }
 });
 
 //--|🠊 POST: Add a New User 🠈|--//
@@ -85,22 +78,23 @@ server.post(`/${route}`, async (req, res) => {
 
 //--|🠊 POST: Check User Password 🠈|--//
 server.post(`/${route}/login`, async (req, res) => {
-  const user = users.find((user) => user.email === req.body.email);
-  if (user == null) {
-    return res.status(400).send('Cannot Find User');
-  }
   try {
+    const user = await database.collection(route).findOne({ email: req.body.email });
+    if (!user) {
+      return res.status(400).send('Cannot Find User');
+    }
     if (await bcrypt.compare(req.body.passwordHash, user.passwordHash)) {
       res.send('Success!');
     } else {
       res.send('Failed!');
     }
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.status(500).send();
   }
 });
 
-function generateRandomCode(length) {
+const generateRandomCode = (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
 
@@ -124,4 +118,4 @@ function generateRandomCode(length) {
     .sort(() => Math.random() - 0.5)
     .join('');
   return code;
-}
+};

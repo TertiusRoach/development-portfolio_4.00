@@ -6,7 +6,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "test@email.com",
+  "email": "email@gmail.com",
   "passwordHash": "password"
 }
 
@@ -15,6 +15,6 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-  "email": "test@email.com",
+  "email": "tertius.roach@gmail.com",
   "passwordHash": "password"
 }
