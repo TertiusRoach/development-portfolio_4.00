@@ -21,27 +21,7 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠉 Components 🠉|--//
 
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
-  console.log(`Refreshed: Desktop Orientation <${blockName}>`);
-  console.log(pageName);
-
-  let viewLogin = () => {
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(-100vw)';
-    console.log('View .login-section');
-  };
-  let viewRegister = () => {
-    // From .login-section - Slide to left
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(0vw)';
-    console.log('View .register-section');
-  };
-  let viewPassword = () => {
-    // From .login-section - Slide to right
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(-200vw)';
-    console.log('View .password-section');
-  };
-
+  console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -86,10 +66,11 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 </div>
               </mark>
               <menu className="register-buttons">
-                <button className="register-login" type="button" onClick={viewLogin}>
+                {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
+                <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Access Account</h6>
                 </button>
-                <button className="register-password" type="button" onClick={viewPassword}>
+                <button className="register-password" type="button" onClick={() => viewCarousel('password')}>
                   <h6>Renew Password</h6>
                 </button>
               </menu>
@@ -135,10 +116,10 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 </div>
               </mark>
               <menu className="login-buttons">
-                <button className="login-register" type="button" onClick={viewRegister}>
+                <button className="login-register" type="button" onClick={() => viewCarousel('register')}>
                   <h6>Register Account</h6>
                 </button>
-                <button className="login-password" type="button" onClick={viewPassword}>
+                <button className="login-password" type="button" onClick={() => viewCarousel('password')}>
                   <h6>Forgot Password</h6>
                 </button>
               </menu>
@@ -184,10 +165,10 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
                 </div>
               </mark>
               <menu className="password-buttons">
-                <button className="password-login" type="button" onClick={viewLogin}>
+                <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Enter Account</h6>
                 </button>
-                <button className="password-register" type="button" onClick={viewRegister}>
+                <button className="password-register" type="button" onClick={() => viewCarousel('register')}>
                   <h6>Register Account</h6>
                 </button>
               </menu>
@@ -200,26 +181,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   );
 }
 function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
-  console.log(`Refreshed: Desktop Orientation <${blockName}>`);
-  console.log(pageName);
-
-  let viewLogin = () => {
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(-100vw)';
-    console.log('View .login-section');
-  };
-  let viewRegister = () => {
-    // From .login-section - Slide to left
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(0vw)';
-    console.log('View .register-section');
-  };
-  let viewPassword = () => {
-    // From .login-section - Slide to right
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = 'translateX(-200vw)';
-    console.log('View .password-section');
-  };
+  console.log(`Refreshed: Mobile Orientation <main id="${pageName}-${blockName}">`);
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -264,10 +226,10 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </div>
               </mark>
               <menu className="register-buttons">
-                <button className="register-login" type="button" onClick={viewLogin}>
+                <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Access Account</h6>
                 </button>
-                <button className="register-password" type="button" onClick={viewPassword}>
+                <button className="register-password" type="button" onClick={() => viewCarousel('password')}>
                   <h6>Renew Password</h6>
                 </button>
               </menu>
@@ -313,10 +275,10 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </div>
               </mark>
               <menu className="login-buttons">
-                <button className="login-register" type="button" onClick={viewRegister}>
+                <button className="login-register" type="button" onClick={() => viewCarousel('register')}>
                   <h6>Register Account</h6>
                 </button>
-                <button className="login-password" type="button" onClick={viewPassword}>
+                <button className="login-password" type="button" onClick={() => viewCarousel('password')}>
                   <h6>Forgot Password</h6>
                 </button>
               </menu>
@@ -362,10 +324,10 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </div>
               </mark>
               <menu className="password-buttons">
-                <button className="password-login" type="button" onClick={viewLogin}>
+                <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Enter Account</h6>
                 </button>
-                <button className="password-register" type="button" onClick={viewRegister}>
+                <button className="password-register" type="button" onClick={() => viewCarousel('register')}>
                   <h6>Register Account</h6>
                 </button>
               </menu>
@@ -385,7 +347,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
@@ -404,5 +365,16 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
     </main>
   );
 };
-
 export default LandingMain;
+
+const viewCarousel = (slide: 'register' | 'login' | 'password') => {
+  let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+  switch (slide) {
+    case 'register':
+      return (carouselContainer.style.transform = 'translateX(0vw)');
+    case 'login':
+      return (carouselContainer.style.transform = 'translateX(-100vw)');
+    case 'password':
+      return (carouselContainer.style.transform = 'translateX(-200vw)');
+  }
+};

@@ -795,32 +795,3 @@ main[id*='main'] {
     }
   }
 }
-
-/*
-  &[class*='hidden'] {
-    animation: fadeOut 1s forwards;
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        filter: blur(1rem);
-      }
-      from {
-        opacity: 1;
-        filter: blur(0);
-      }
-    }
-  }
-  &[class*='visible'] {
-    animation: fadeIn 1s forwards;
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        filter: blur(1rem);
-      }
-      to {
-        opacity: 1;
-        filter: blur(0);
-      }
-    }
-  }
-  */
