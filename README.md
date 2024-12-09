@@ -22,10 +22,15 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 > Full Terminal Setup
 
     npm install -g react
+    npm install -g nodemon
     npm install -g typescript
     npm install -g webpack-cli
     npm install --save-dev sass
     npm install --save-dev jquery
+    npm install --save-dev bcrypt
+    npm install --save-dev dotenv
+    npm install --save-dev express
+    npm install --save-dev mongodb
     npm install --save-dev webpack
     npm install --save-dev kill-port
     npm install --save-dev react-dom
@@ -94,6 +99,14 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev terser-webpack-plugin
     npm install --save-dev mini-css-extract-plugin
     npm install --save-dev css-minimizer-webpack-plugin
+
+> Install Server Side Dependencies
+
+    npm install -g nodemon
+    npm install --save-dev bcrypt
+    npm install --save-dev dotenv
+    npm install --save-dev express
+    npm install --save-dev mongodb
 
 > Install Loaders
 
