@@ -1,15 +1,24 @@
+// login.js
 //--|🠊 Open folder Location in Integrated Terminal to run: nodemon login 🠈|--//
+const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const { connectDatabase, getDatabase } = require('./data');
 
+// Add this line before your routes
+
+// const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;
+// const salt = await bcrypt.genSalt(saltRounds);
+
 let database;
 const port = 3000;
 const route = 'users';
+
 const server = express();
 server.use(express.json());
 
+server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 // Connect to the database and start the server
 connectDatabase((err) => {
   if (!err) {
@@ -78,8 +87,12 @@ server.post(`/${route}`, async (req, res) => {
 
 //--|🠊 POST: Check User Password 🠈|--//
 server.post(`/${route}/login`, async (req, res) => {
+  console.log('Login Request Body:', req.body);
   try {
     const user = await database.collection(route).findOne({ email: req.body.email });
+    if (!req.body.email || !req.body.passwordHash) {
+      return res.status(400).json({ error: 'Email and password are required.' });
+    }
     if (!user) {
       return res.status(400).send('Cannot Find User');
     }
@@ -89,8 +102,8 @@ server.post(`/${route}/login`, async (req, res) => {
       res.send('Failed!');
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).send();
+    console.error('Error in Login:', error); // Log the error
+    res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 });
 

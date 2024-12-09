@@ -1,6 +1,7 @@
 // LandingMain.tsx
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
+import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
@@ -22,6 +23,35 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
   console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault(); // Prevents refresh
+
+    setIsSubmitting(true);
+    try {
+      // Logic here
+    } finally {
+      setIsSubmitting(false);
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/users/login', {
+        email,
+        passwordHash: password,
+      });
+      setLoginMessage(response.data); // Success message
+    } catch (error) {
+      setLoginMessage('Invalid credentials.'); // User feedback
+      console.error('Error during login:', error);
+    }
+  };
+  const handleRegister = async (event: React.FormEvent) => {};
+  const handlePassword = async (event: React.FormEvent) => {};
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -81,7 +111,8 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       </section>
       <section className="login-section">
         <div className="login-container">
-          <form className="login-form">
+          {/* For now I just want to focus on this bit */}
+          <form className="login-form" onSubmit={handleLogin}>
             {/* ----- */}
             <div className="login-header">
               <div className="login-label">
@@ -102,17 +133,33 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             </div>
             {/* ----- */}
             <div className="login-inputs">
-              <input placeholder="Email" type="text" id="email" name="Email" />
-              <input placeholder="Password" type="password" id="password" name="password" />
+              <input
+                placeholder="Email"
+                type="text"
+                id="email"
+                name="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update state
+              />
+              <input
+                placeholder="Password"
+                type="text"
+                id="password"
+                name="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Update state
+              />
+              {/* <input placeholder="Email" type="text" id="email" name="Email" /> */}
+              {/* <input placeholder="Password" type="password" id="password" name="password" /> */}
             </div>
             {/* ----- */}
             <div className="login-footer">
               <mark className="login-action">
-                <button className="login-button">
+                <button className="login-button" disabled={isSubmitting}>
                   <h6>Login</h6>
                 </button>
-                <div className="login-message">
-                  <h6>Password is incorrect.</h6>
+                <div className={`login-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+                  <h6>{loginMessage}</h6>
                 </div>
               </mark>
               <menu className="login-buttons">

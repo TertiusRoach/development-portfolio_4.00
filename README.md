@@ -26,6 +26,8 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install -g typescript
     npm install -g webpack-cli
     npm install --save-dev sass
+    npm install --save-dev cors
+    npm install --save-dev axios
     npm install --save-dev jquery
     npm install --save-dev bcrypt
     npm install --save-dev dotenv
@@ -100,9 +102,11 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev mini-css-extract-plugin
     npm install --save-dev css-minimizer-webpack-plugin
 
-> Install Server Side Dependencies
+> Install Server Dependencies
 
     npm install -g nodemon
+    npm install --save-dev cors
+    npm install --save-dev axios
     npm install --save-dev bcrypt
     npm install --save-dev dotenv
     npm install --save-dev express
