@@ -89,21 +89,37 @@ server.post(`/${route}`, async (req, res) => {
 server.post(`/${route}/login`, async (req, res) => {
   console.log('Login Request Body:', req.body);
   try {
-    const user = await database.collection(route).findOne({ email: req.body.email });
-    if (!req.body.email || !req.body.passwordHash) {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+
+    // Validate input: Check if both email and passwordHash are provided
+    if (!email || !passwordHash) {
       return res.status(400).json({ error: 'Email and password are required.' });
     }
+
+    // Attempt to find a user with the provided email in the database
+    const user = await database.collection(route).findOne({ email });
+
+    // If no user is found, return an error response
     if (!user) {
-      return res.status(400).send('Cannot Find User');
+      return res.status(404).json({ error: 'User not found.' }); // Changed to 404 for better semantics
     }
-    if (await bcrypt.compare(req.body.passwordHash, user.passwordHash)) {
-      res.send('Success!');
+
+    // Compare the provided passwordHash with the stored passwordHash
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+
+    // Respond based on password validity
+    if (isPasswordValid) {
+      return res.status(200).send('Success!'); // Send success message
     } else {
-      res.send('Failed!');
+      // console.log('BLAH!');
+      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
     }
   } catch (error) {
-    console.error('Error in Login:', error); // Log the error
-    res.status(500).json({ error: error.message || 'Internal Server Error' });
+    // Log the error for debugging purposes
+    console.error('Error in Login:', error);
+
+    // Return a generic error response to the client
+    return res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 });
 

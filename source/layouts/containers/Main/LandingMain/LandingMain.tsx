@@ -29,31 +29,40 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   const [loginMessage, setLoginMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleLogin = async (event: React.FormEvent) => {
+  const handleDatabase = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
+    switch (slide) {
+      case 'login':
+        let loginForm = event.currentTarget as HTMLFormElement;
+        let loginEmail = loginForm.childNodes[1].childNodes[0] as HTMLInputElement;
+        let loginPassword = loginForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        if (loginEmail.value !== '' || loginPassword.value !== '') {
+          setIsSubmitting(true);
+          try {
+            const response = await axios.post('http://localhost:3000/users/login', {
+              email,
+              passwordHash: password,
+            });
+            setLoginMessage(response.data); // Success message
 
-    setIsSubmitting(true);
-    try {
-      // Logic here
-    } finally {
-      setIsSubmitting(false);
-    }
-
-    try {
-      const response = await axios.post('http://localhost:3000/users/login', {
-        email,
-        passwordHash: password,
-      });
-      setLoginMessage(response.data); // Success message
-    } catch (error) {
-      setLoginMessage('Invalid credentials.'); // User feedback
-      console.error('Error during login:', error);
+            //--|🠊 Security Cleared: Load Application 🠈|--//
+          } catch (error) {
+            setLoginMessage('Invalid credentials.'); // User feedback
+            console.error('Error during login:', error);
+          } finally {
+            setIsSubmitting(false);
+          }
+        }
+        break;
+      case 'register':
+        //--|🠊 Test Register 🠈|--//
+        break;
+      case 'password':
+        //--|🠊 Test Password 🠈|--//
+        break;
     }
   };
-  /*
-  const handleRegister = async (event: React.FormEvent) => {};
-  const handlePassword = async (event: React.FormEvent) => {};
-  */
+
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -114,7 +123,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       <section className="login-section">
         <div className="login-container">
           {/* For now I just want to focus on this bit */}
-          <form className="login-form" onSubmit={handleLogin}>
+          <form className="login-form" onSubmit={(event) => handleDatabase(event, 'login')}>
             {/* ----- */}
             <div className="login-header">
               <div className="login-label">
@@ -136,23 +145,21 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             {/* ----- */}
             <div className="login-inputs">
               <input
-                placeholder="Email"
-                type="text"
                 id="email"
                 name="Email"
+                type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update state
+                placeholder="Email"
+                onChange={(event) => setEmail(event.target.value)} // Update state
               />
               <input
-                placeholder="Password"
-                type="text"
                 id="password"
                 name="Password"
+                type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} // Update state
+                placeholder="Password"
+                onChange={(event) => setPassword(event.target.value)} // Update state
               />
-              {/* <input placeholder="Email" type="text" id="email" name="Email" /> */}
-              {/* <input placeholder="Password" type="password" id="password" name="password" /> */}
             </div>
             {/* ----- */}
             <div className="login-footer">
