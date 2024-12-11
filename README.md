@@ -112,7 +112,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev express
     npm install --save-dev mongodb
 
-> Install Loaders
+> Install Loaders for Compiling
 
     npm install --save-dev ts-loader
     npm install --save-dev css-loader
@@ -120,7 +120,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev file-loader
     npm install --save-dev style-loader
 
-> Install Babel
+> Install Babel & Security
 
     npm install --save-dev babel-loader
     npm install --save-dev babel-preset-es2015
