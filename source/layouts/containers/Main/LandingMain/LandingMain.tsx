@@ -297,7 +297,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             {/* ----- */}
             <div className="password-inputs">
               <input placeholder="Email" type="text" id="email" name="Email" />
-              <input placeholder="New Password" type="password" id="password" name="password" />
+              {/* <input placeholder="New Password" type="password" id="password" name="password" /> */}
             </div>
             {/* ----- */}
             <div className="password-footer">
