@@ -14,18 +14,18 @@ import React, { useState, useEffect } from 'react';
 import VerifyMain from '../VerifyMain/VerifyMain';
 //--|🠉 Containers 🠉|--//
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
 
-  const [loginMessage, setLoginMessage] = useState('');
-  const [registerMessage, setRegisterMessage] = useState('');
-  const [passwordMessage, setPasswordMessage] = useState('');
+  let [loginMessage, setLoginMessage] = useState('');
+  let [registerMessage, setRegisterMessage] = useState('');
+  let [passwordMessage, setPasswordMessage] = useState('');
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  let [isSubmitting, setIsSubmitting] = useState(false);
+  let [loggedIn, setLoggedIn] = useState(false);
 
   const handleDatabase = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
@@ -112,19 +112,10 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
         break;
     }
   };
-
-  if (loggedIn) {
-    return (
-      <>
-        <VerifyMain />
-      </>
-    );
-  }
-
-  return (
-    <div className="landing-carousel">
-      <section className="register-section">
-        <div className="register-container">
+  const renderForm = (type: 'register' | 'login' | 'password') => {
+    switch (type) {
+      case 'register':
+        return (
           <form className="register-form" onSubmit={(event) => handleDatabase(event, 'register')}>
             {/* ----- */}
             <div className="register-header">
@@ -215,10 +206,9 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             </div>
             {/* ----- */}
           </form>
-        </div>
-      </section>
-      <section className="login-section">
-        <div className="login-container">
+        );
+      case 'login':
+        return (
           <form className="login-form" onSubmit={(event) => handleDatabase(event, 'login')}>
             {/* ----- */}
             <div className="login-header">
@@ -282,10 +272,9 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             </div>
             {/* ----- */}
           </form>
-        </div>
-      </section>
-      <section className="password-section">
-        <div className="password-container">
+        );
+      case 'password':
+        return (
           <form className="password-form">
             {/* ----- */}
             <div className="password-header">
@@ -331,18 +320,136 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             </div>
             {/* ----- */}
           </form>
-        </div>
+        );
+    }
+  };
+
+  if (loggedIn) {
+    return (
+      <>
+        <VerifyMain />
+      </>
+    );
+  }
+  return (
+    <div className="landing-carousel">
+      <section className="register-section">
+        <div className="register-container">{renderForm('register')}</div>
+      </section>
+      <section className="login-section">
+        <div className="login-container">{renderForm('login')}</div>
+      </section>
+      <section className="password-section">
+        <div className="password-container">{renderForm('password')}</div>
       </section>
     </div>
   );
   console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
 }
 function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
-  return (
-    <div className="landing-carousel">
-      <section className="register-section">
-        <div className="register-container">
-          <form className="register-form">
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
+
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
+
+  let [loginMessage, setLoginMessage] = useState('');
+  let [registerMessage, setRegisterMessage] = useState('');
+  let [passwordMessage, setPasswordMessage] = useState('');
+
+  let [isSubmitting, setIsSubmitting] = useState(false);
+  let [loggedIn, setLoggedIn] = useState(false);
+
+  const handleDatabase = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
+    event.preventDefault(); // Prevents refresh
+    const eventForm = event.currentTarget as HTMLFormElement;
+    switch (slide) {
+      case 'login':
+        let loginEmail = eventForm.childNodes[1].childNodes[0] as HTMLInputElement;
+        let loginPassword = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        if (loginEmail.value !== '' && loginPassword.value !== '') {
+          setIsSubmitting(true);
+          try {
+            const response = await axios.post('http://localhost:3000/users/login', {
+              email,
+              passwordHash: password,
+            });
+            setLoggedIn(true);
+            setLoginMessage(response.data); // Success message
+            console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
+          } catch (error) {
+            setLoginMessage('Invalid credentials.'); // User feedback
+            console.error('Error during login:', error);
+
+            console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
+          } finally {
+            setIsSubmitting(false);
+          }
+        }
+        break;
+      case 'register':
+        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
+        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
+        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
+
+        // Basic input validation
+        if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
+          setRegisterMessage('All fields are required.');
+          return;
+        }
+
+        if (
+          registerFirstName.value !== '' &&
+          registerLastName.value !== '' &&
+          registerEmail.value !== '' &&
+          registerPassword.value !== ''
+        ) {
+          // Email format validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            setRegisterMessage('Please enter a valid email address.');
+            return;
+          }
+
+          setIsSubmitting(true); // Disable button during submission
+          try {
+            // Send POST request to the server
+            const response = await axios.post('http://localhost:3000/users', {
+              firstName,
+              lastName,
+              email,
+              passwordHash: password,
+            });
+
+            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
+            // Display success message
+            setRegisterMessage('User registered successfully! Please check your email.');
+          } catch (error) {
+            // Improved error handling
+            if (axios.isAxiosError(error)) {
+              console.error('Registration Error:', error.message);
+              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+            } else {
+              console.error('Unexpected Error:', error);
+              setRegisterMessage('An unexpected error occurred.');
+            }
+          } finally {
+            setIsSubmitting(false); // Re-enable the button
+          }
+        }
+        //--|🠊 Test Register 🠈|--//
+        break;
+      case 'password':
+        //--|🠊 Test Password 🠈|--//
+        break;
+    }
+  };
+  const renderForm = (type: 'register' | 'login' | 'password') => {
+    switch (type) {
+      case 'register':
+        return (
+          <form className="register-form" onSubmit={(event) => handleDatabase(event, 'register')}>
             {/* ----- */}
             <div className="register-header">
               <div className="register-label">
@@ -364,24 +471,64 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
             {/* ----- */}
             <div className="register-inputs">
               <div className="fullname-inputs">
-                <input placeholder="First Name" type="text" id="first-name" name="First Name" />
-                <input placeholder="Last Name" type="text" id="last-name" name="Last Name" />
+                <input
+                  required
+                  type="text"
+                  id="first-name"
+                  name="First Name"
+                  placeholder="First Name"
+                  pattern="[A-Z][a-zA-Z\s]+"
+                  title="Name must start with a capital letter and contain only letters and spaces"
+                  // --- //
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                />
+                <input
+                  required
+                  type="text"
+                  id="last-name"
+                  name="Last Name"
+                  pattern="[a-zA-Z\s]+"
+                  placeholder="Last Name"
+                  title="Surname can't contain any numerical values or special characters"
+                  // --- //
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
+                />
               </div>
-
-              <input placeholder="Email" type="text" id="email" name="Email" />
-              <input placeholder="Password" type="password" id="password" name="password" />
+              <input
+                required
+                id="email"
+                name="Email"
+                type="email"
+                placeholder="Email"
+                // --- //
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <input
+                required
+                id="password"
+                type="password"
+                name="Password"
+                placeholder="Password"
+                // --- //
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </div>
             {/* ----- */}
             <div className="register-footer">
               <mark className="register-action">
-                <button className="register-button">
-                  <h6>Register</h6>
+                <button className="register-button" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Registering...' : 'Register'}
                 </button>
                 <div className="register-message">
-                  <h6>Email already exists.</h6>
+                  <h6>{registerMessage}</h6>
                 </div>
               </mark>
               <menu className="register-buttons">
+                {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
                 <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Access Account</h6>
                 </button>
@@ -392,11 +539,10 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
             </div>
             {/* ----- */}
           </form>
-        </div>
-      </section>
-      <section className="login-section">
-        <div className="login-container">
-          <form className="login-form">
+        );
+      case 'login':
+        return (
+          <form className="login-form" onSubmit={(event) => handleDatabase(event, 'login')}>
             {/* ----- */}
             <div className="login-header">
               <div className="login-label">
@@ -417,17 +563,35 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
             </div>
             {/* ----- */}
             <div className="login-inputs">
-              <input placeholder="Email" type="text" id="email" name="Email" />
-              <input placeholder="Password" type="password" id="password" name="password" />
+              <input
+                required
+                id="email"
+                name="Email"
+                type="email"
+                placeholder="Email"
+                // --- //
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <input
+                required
+                id="password"
+                name="Password"
+                type="password"
+                placeholder="Password"
+                // --- //
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </div>
             {/* ----- */}
             <div className="login-footer">
               <mark className="login-action">
-                <button className="login-button">
+                <button className="login-button" disabled={isSubmitting}>
                   <h6>Login</h6>
                 </button>
-                <div className="login-message">
-                  <h6>Password is incorrect.</h6>
+                <div className={`login-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+                  <h6>{loginMessage}</h6>
                 </div>
               </mark>
               <menu className="login-buttons">
@@ -441,10 +605,9 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
             </div>
             {/* ----- */}
           </form>
-        </div>
-      </section>
-      <section className="password-section">
-        <div className="password-container">
+        );
+      case 'password':
+        return (
           <form className="password-form">
             {/* ----- */}
             <div className="password-header">
@@ -490,7 +653,27 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
             </div>
             {/* ----- */}
           </form>
-        </div>
+        );
+    }
+  };
+
+  if (loggedIn) {
+    return (
+      <>
+        <VerifyMain />
+      </>
+    );
+  }
+  return (
+    <div className="landing-carousel">
+      <section className="register-section">
+        <div className="register-container">{renderForm('register')}</div>
+      </section>
+      <section className="login-section">
+        <div className="login-container">{renderForm('login')}</div>
+      </section>
+      <section className="password-section">
+        <div className="password-container">{renderForm('password')}</div>
       </section>
     </div>
   );

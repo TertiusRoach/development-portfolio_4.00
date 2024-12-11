@@ -27,11 +27,12 @@ const VerifyMain: React.FC = () => {
   useEffect(() => {
     console.log(`Initialized ${pageName}-${blockName}`);
   }, [pageName, blockName]);
-  console.log('jlkdasflkjadsfjlkasdf');
   return (
-    <div className="test">
-      <h1 className="display-1">Check your email for the verification code.</h1>
-    </div>
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
+      <div className="test">
+        <h1 className="display-1">Check your email for the verification code.</h1>
+      </div>
+    </main>
     // <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
 
     // </main>
