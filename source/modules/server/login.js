@@ -51,7 +51,7 @@ server.post(`/${route}`, async (req, res) => {
   const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format for tomorrow
 
   const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // Get user's IP address
-  const randomCode = generateRandomCode(10); // Generate a random 10-character activation code
+  const randomCode = generateRandomCode(5);
 
   try {
     // Hash the user's password
@@ -76,7 +76,7 @@ server.post(`/${route}`, async (req, res) => {
       updatedAt: null, // To be updated on edits
 
       role: 'user', // Default role for new users
-      status: 'pending', // Account status before verification
+      status: 'pending', // pending | verified
 
       passwordResetToken: null, // For password recovery feature
       passwordResetExpiresAt: null, // Expiry for reset token
@@ -89,54 +89,6 @@ server.post(`/${route}`, async (req, res) => {
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
   }
 });
-/*
-server.post(`/${route}`, async (req, res) => {
-  const today = new Date(); // Current date
-  const todayISO = today.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
-
-  const tomorrow = new Date(today); // Clone the 'now' date
-  tomorrow.setDate(tomorrow.getDate() + 1); // Add 1 day
-  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // Tomorrow's date in ISO
-
-  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  const randomCode = generateRandomCode(10);
-
-  try {
-    // Generate salt and hash the password
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
-
-    // Insert into database
-    const result = await database.collection(route).insertOne({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-
-      email: req.body.email,
-      passwordHash: hashedPassword,
-
-      verifiedEmail: false,
-      activationCode: randomCode,
-      activationCodeExpiresAt: tomorrowISO,
-
-      userIP: userIP,
-      lastLogin: null,
-      createdAt: todayISO,
-      updatedAt: null,
-
-      role: 'user',
-      status: 'pending',
-
-      passwordResetToken: null,
-      passwordResetExpiresAt: null,
-    });
-
-    res.status(201).json(result);
-  } catch (error) {
-    console.error(error); // Log the error
-    res.status(500).json({ err: 'Could not create a new user.' });
-  }
-});
-*/
 
 //--|🠊 POST: Check User Password 🠈|--//
 server.post(`/${route}/login`, async (req, res) => {

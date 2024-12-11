@@ -3,11 +3,15 @@
 @use '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
 @use '../layouts/containers/Main/LandingMain/LandingMain.scss';
+@use '../layouts/containers/Main/VerifyMain/VerifyMain.scss';
+
+/*
 @use '../layouts/containers/Overlay/LandingOverlay/LandingOverlay.scss';
 @use '../layouts/containers/Header/LandingHeader/LandingHeader.scss';
 @use '../layouts/containers/Footer/LandingFooter/LandingFooter.scss';
 @use '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
 @use '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar.scss';
+*/
 
 @mixin orientation-testing {
   //--|🠋 Desktop (Landscape) 🠋|--//

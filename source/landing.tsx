@@ -1,18 +1,17 @@
-// resume.tsx
+// landing.tsx
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
 import './styles/LandingBody.scss';
-import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
-// import LandingHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
-// import LandingFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
-import LandingOverlay from './layouts/containers/Overlay/LandingOverlay/LandingOverlay';
-// import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
-// import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
 import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
+
+//--|🠋 Containers 🠋|--//
+import VerifyMain from './layouts/containers/Main/VerifyMain/VerifyMain';
+import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
+//--|🠉 Containers 🠉|--//
 
 const pageName = 'landing';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
@@ -25,13 +24,7 @@ function Body() {
 
   return (
     <>
-      {/* <LandingHeader info={infoPROP} /> */}
       <LandingMain info={information} />
-      {/* <LandingFooter info={infoPROP} /> */}
-
-      {/* <LandingOverlay info={information} /> */}
-      {/* <LandingLeftbar info={infoPROP} /> */}
-      {/* <LandingRightbar info={infoPROP} /> */}
     </>
   );
 }

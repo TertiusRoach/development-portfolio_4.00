@@ -1,26 +1,18 @@
 // LandingMain.tsx
 //--|🠋 Frameworks 🠋|--//
-import $ from 'jquery';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonFade from '../../../components/Button/fade/Button.fade';
-import MenuButton from '../../../components/Menu/button/Menu.button';
-import SectionHome from '../../../components/Section/home/Section.home';
-import SectionNoir from '../../../components/Section/noir/Section.noir';
-import SectionSkills from '../../../components/Section/skills/Section.skills';
-import SectionContact from '../../../components/Section/contact/Section.contact';
-import SectionDefault from '../../../components/Section/default/Section.default';
-//--|🠉 Components 🠉|--//
 
+//--|🠉 Components 🠉|--//
+//--|🠋 Containers 🠋|--//
+import VerifyMain from '../VerifyMain/VerifyMain';
+//--|🠉 Containers 🠉|--//
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +25,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
   const [passwordMessage, setPasswordMessage] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleDatabase = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
@@ -48,6 +41,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
               email,
               passwordHash: password,
             });
+            setLoggedIn(true);
             setLoginMessage(response.data); // Success message
             console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
           } catch (error) {
@@ -118,6 +112,14 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
         break;
     }
   };
+
+  if (loggedIn) {
+    return (
+      <>
+        <VerifyMain />
+      </>
+    );
+  }
 
   return (
     <div className="landing-carousel">
