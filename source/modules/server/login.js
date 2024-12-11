@@ -13,6 +13,7 @@ const { connectDatabase, getDatabase } = require('./data');
 
 let database;
 const port = 3000;
+// const port = 27017;
 const route = 'users';
 
 const server = express();
@@ -42,6 +43,54 @@ server.get(`/${route}`, async (req, res) => {
 
 //--|🠊 POST: Add a New User 🠈|--//
 server.post(`/${route}`, async (req, res) => {
+  const today = new Date(); // Get current date
+  const todayISO = today.toISOString().split('.')[0] + 'Z'; // Convert to ISO format (e.g., YYYY-MM-DDTHH:mm:ssZ)
+
+  const tomorrow = new Date(today); // Clone today's date
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment by 1 day
+  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format for tomorrow
+
+  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // Get user's IP address
+  const randomCode = generateRandomCode(10); // Generate a random 10-character activation code
+
+  try {
+    // Hash the user's password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
+
+    // Insert the user data into the database
+    const result = await database.collection(route).insertOne({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+
+      email: req.body.email,
+      passwordHash: hashedPassword,
+
+      verifiedEmail: false, // Initial email verification state
+      activationCode: randomCode,
+      activationCodeExpiresAt: tomorrowISO, // Activation code expiry
+
+      userIP: userIP, // Store user's IP address
+      lastLogin: null, // No login yet
+      createdAt: todayISO, // Timestamp of user creation
+      updatedAt: null, // To be updated on edits
+
+      role: 'user', // Default role for new users
+      status: 'pending', // Account status before verification
+
+      passwordResetToken: null, // For password recovery feature
+      passwordResetExpiresAt: null, // Expiry for reset token
+    });
+
+    // Respond with a 201 (Created) and return the inserted result
+    res.status(201).json(result);
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
+  }
+});
+/*
+server.post(`/${route}`, async (req, res) => {
   const today = new Date(); // Current date
   const todayISO = today.toISOString().split('.')[0] + 'Z'; // Today's date in ISO
 
@@ -59,6 +108,9 @@ server.post(`/${route}`, async (req, res) => {
 
     // Insert into database
     const result = await database.collection(route).insertOne({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+
       email: req.body.email,
       passwordHash: hashedPassword,
 
@@ -84,6 +136,7 @@ server.post(`/${route}`, async (req, res) => {
     res.status(500).json({ err: 'Could not create a new user.' });
   }
 });
+*/
 
 //--|🠊 POST: Check User Password 🠈|--//
 server.post(`/${route}/login`, async (req, res) => {

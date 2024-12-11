@@ -22,21 +22,26 @@ import SectionDefault from '../../../components/Section/default/Section.default'
 //--|🠉 Components 🠉|--//
 
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
-  console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
   const [loginMessage, setLoginMessage] = useState('');
+  const [registerMessage, setRegisterMessage] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleDatabase = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
+    const eventForm = event.currentTarget as HTMLFormElement;
     switch (slide) {
       case 'login':
-        let loginForm = event.currentTarget as HTMLFormElement;
-        let loginEmail = loginForm.childNodes[1].childNodes[0] as HTMLInputElement;
-        let loginPassword = loginForm.childNodes[1].childNodes[1] as HTMLInputElement;
-        if (loginEmail.value !== '' || loginPassword.value !== '') {
+        let loginEmail = eventForm.childNodes[1].childNodes[0] as HTMLInputElement;
+        let loginPassword = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        if (loginEmail.value !== '' && loginPassword.value !== '') {
           setIsSubmitting(true);
           try {
             const response = await axios.post('http://localhost:3000/users/login', {
@@ -44,17 +49,68 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
               passwordHash: password,
             });
             setLoginMessage(response.data); // Success message
-
-            //--|🠊 Security Cleared: Load Application 🠈|--//
+            console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
           } catch (error) {
             setLoginMessage('Invalid credentials.'); // User feedback
             console.error('Error during login:', error);
+
+            console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
           } finally {
             setIsSubmitting(false);
           }
         }
         break;
       case 'register':
+        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
+        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
+        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
+
+        // Basic input validation
+        if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
+          setRegisterMessage('All fields are required.');
+          return;
+        }
+
+        if (
+          registerFirstName.value !== '' &&
+          registerLastName.value !== '' &&
+          registerEmail.value !== '' &&
+          registerPassword.value !== ''
+        ) {
+          // Email format validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            setRegisterMessage('Please enter a valid email address.');
+            return;
+          }
+
+          setIsSubmitting(true); // Disable button during submission
+          try {
+            // Send POST request to the server
+            const response = await axios.post('http://localhost:3000/users', {
+              firstName,
+              lastName,
+              email,
+              passwordHash: password,
+            });
+
+            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
+            // Display success message
+            setRegisterMessage('User registered successfully! Please check your email.');
+          } catch (error) {
+            // Improved error handling
+            if (axios.isAxiosError(error)) {
+              console.error('Registration Error:', error.message);
+              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+            } else {
+              console.error('Unexpected Error:', error);
+              setRegisterMessage('An unexpected error occurred.');
+            }
+          } finally {
+            setIsSubmitting(false); // Re-enable the button
+          }
+        }
         //--|🠊 Test Register 🠈|--//
         break;
       case 'password':
@@ -67,7 +123,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
     <div className="landing-carousel">
       <section className="register-section">
         <div className="register-container">
-          <form className="register-form">
+          <form className="register-form" onSubmit={(event) => handleDatabase(event, 'register')}>
             {/* ----- */}
             <div className="register-header">
               <div className="register-label">
@@ -89,21 +145,60 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             {/* ----- */}
             <div className="register-inputs">
               <div className="fullname-inputs">
-                <input placeholder="First Name" type="text" id="first-name" name="First Name" />
-                <input placeholder="Last Name" type="text" id="last-name" name="Last Name" />
+                <input
+                  required
+                  type="text"
+                  id="first-name"
+                  name="First Name"
+                  placeholder="First Name"
+                  pattern="[A-Z][a-zA-Z\s]+"
+                  title="Name must start with a capital letter and contain only letters and spaces"
+                  // --- //
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                />
+                <input
+                  required
+                  type="text"
+                  id="last-name"
+                  name="Last Name"
+                  pattern="[a-zA-Z\s]+"
+                  placeholder="Last Name"
+                  title="Surname can't contain any numerical values or special characters"
+                  // --- //
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
+                />
               </div>
-
-              <input placeholder="Email" type="text" id="email" name="Email" />
-              <input placeholder="Password" type="password" id="password" name="password" />
+              <input
+                required
+                id="email"
+                name="Email"
+                type="email"
+                placeholder="Email"
+                // --- //
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <input
+                required
+                id="password"
+                type="password"
+                name="Password"
+                placeholder="Password"
+                // --- //
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </div>
             {/* ----- */}
             <div className="register-footer">
               <mark className="register-action">
-                <button className="register-button">
-                  <h6>Register</h6>
+                <button className="register-button" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Registering...' : 'Register'}
                 </button>
                 <div className="register-message">
-                  <h6>Email already exists.</h6>
+                  <h6>{registerMessage}</h6>
                 </div>
               </mark>
               <menu className="register-buttons">
@@ -122,7 +217,6 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       </section>
       <section className="login-section">
         <div className="login-container">
-          {/* For now I just want to focus on this bit */}
           <form className="login-form" onSubmit={(event) => handleDatabase(event, 'login')}>
             {/* ----- */}
             <div className="login-header">
@@ -145,20 +239,24 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             {/* ----- */}
             <div className="login-inputs">
               <input
+                required
                 id="email"
                 name="Email"
                 type="email"
-                value={email}
                 placeholder="Email"
-                onChange={(event) => setEmail(event.target.value)} // Update state
+                // --- //
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
               />
               <input
+                required
                 id="password"
                 name="Password"
                 type="password"
-                value={password}
                 placeholder="Password"
-                onChange={(event) => setPassword(event.target.value)} // Update state
+                // --- //
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </div>
             {/* ----- */}
@@ -235,9 +333,9 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
       </section>
     </div>
   );
+  console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
 }
 function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
-  console.log(`Refreshed: Mobile Orientation <main id="${pageName}-${blockName}">`);
   return (
     <div className="landing-carousel">
       <section className="register-section">
@@ -394,6 +492,7 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
       </section>
     </div>
   );
+  console.log(`Refreshed: Mobile Orientation <main id="${pageName}-${blockName}">`);
 }
 
 interface InfoProps {
