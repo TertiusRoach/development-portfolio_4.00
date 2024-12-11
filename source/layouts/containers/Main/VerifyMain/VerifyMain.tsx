@@ -28,11 +28,11 @@ const VerifyMain: React.FC = () => {
     console.log(`Initialized ${pageName}-${blockName}`);
   }, [pageName, blockName]);
   return (
-    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
+    <div id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
       <div className="test">
         <h1 className="display-1">Check your email for the verification code.</h1>
       </div>
-    </main>
+    </div>
     // <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
 
     // </main>
