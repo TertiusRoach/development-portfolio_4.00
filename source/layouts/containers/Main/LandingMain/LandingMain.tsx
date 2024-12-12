@@ -32,6 +32,24 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
     const eventForm = event.currentTarget as HTMLFormElement;
     switch (slide) {
       case 'login':
+        setIsSubmitting(true);
+        try {
+          const response = await axios.post('http://localhost:3000/users/login', {
+            email,
+            passwordHash: password,
+          });
+          setLoggedIn(true);
+          setLoginMessage(response.data); // Success message
+          console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
+        } catch (error) {
+          setLoginMessage('Invalid credentials.'); // User feedback
+          console.error('Error during login:', error);
+
+          console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
+        } finally {
+          setIsSubmitting(false);
+        }
+        /*
         let loginEmail = eventForm.childNodes[1].childNodes[0] as HTMLInputElement;
         let loginPassword = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
         if (loginEmail.value !== '' && loginPassword.value !== '') {
@@ -53,6 +71,7 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             setIsSubmitting(false);
           }
         }
+        */
         break;
       case 'register':
         let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
