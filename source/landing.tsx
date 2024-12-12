@@ -9,19 +9,17 @@ import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 
 //--|🠋 Containers 🠋|--//
-import VerifyMain from './layouts/containers/Main/VerifyMain/VerifyMain';
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 //--|🠉 Containers 🠉|--//
 
 const pageName = 'landing';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
-function Body() {
+function LandingBody({ view }: { view: 'landing' | 'resume' }) {
   let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
     identification: pageName,
   };
-
   return (
     <>
       <LandingMain info={information} />
@@ -29,8 +27,10 @@ function Body() {
   );
 }
 
+export default LandingBody;
+
 if (DefaultBody) {
-  ReactDOM.createRoot(DefaultBody).render(<Body />);
+  ReactDOM.createRoot(DefaultBody).render(<LandingBody view={'landing'} />);
 } else {
   console.error(`Can't find with #${pageName}-body`);
 }

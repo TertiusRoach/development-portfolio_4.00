@@ -65,6 +65,7 @@ You will need to download and install certain applications by manually downloadi
 > [Updating Documents](https://www.youtube.com/watch?v=s8YG0GvQInY)
 
     db.books.updateMany({author: "Terry Pratchett"}, {$set: {author: Unknown Author"}})
+    db.users.updateOne({_id: ObjectId('67598cabaf2a0d1d6d6f47b7')}, {$set: {status: "enabled"}})
     db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$pull: {genres: "fantasy"}})
     db.books.updateOne({_id: ObjectId('673b3032e96c392133fc9465')}, {$push: {genres: "fantasy"}})
     db.users.updateOne({_id: ObjectId('67598cabaf2a0d1d6d6f47b7')}, {$set: {verifiedEmail: true}})

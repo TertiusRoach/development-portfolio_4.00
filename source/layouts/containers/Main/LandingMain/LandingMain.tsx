@@ -1,19 +1,40 @@
 // LandingMain.tsx
 //--|🠋 Frameworks 🠋|--//
 import axios from 'axios';
+import ReactDOM from 'react-dom/client';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-
+import getResolution from '../../../../modules/utilities/getResolution';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 
 //--|🠉 Components 🠉|--//
 //--|🠋 Containers 🠋|--//
+import ResumeMain from '../ResumeMain/ResumeMain';
 import VerifyMain from '../VerifyMain/VerifyMain';
 //--|🠉 Containers 🠉|--//
+//--|🠋 Root 🠋|--//
+import ResumeBody from '../../../../resume';
+//--|🠉 Root 🠉|--//
+
+const DefaultBody = document.getElementById('landing-body') as HTMLElement;
+
 function Desktop({ pageName, blockName }: { pageName: string; blockName: string }) {
+  let information = {
+    resolution: `${getResolution()}`,
+    orientation: `${getOrientation()}`,
+    identification: pageName,
+  };
+
+  const [currentView, setCurrentView] = useState<'register' | 'login' | 'password' | 'verify' | 'application' | 'reset'>(
+    'login'
+  );
+
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
 
@@ -38,40 +59,28 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
             email,
             passwordHash: password,
           });
-          setLoggedIn(true);
-          setLoginMessage(response.data); // Success message
-          console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
+          switch (response.data) {
+            case 'pending':
+              setLoggedIn(false);
+              setCurrentView('verify'); // Switch to the verification view
+              alert('//--|🠊 Verification Pending: Confirm Email 🠈|--//');
+              break;
+            case 'enabled':
+              setLoggedIn(true);
+              setLoginMessage('Success!'); // Success message
+              setCurrentView('application'); // Switch to the verification view
+              // loadApplication();
+              // alert('//--|🠊 Security Cleared: Load Application 🠈|--//');
+              break;
+          }
         } catch (error) {
-          setLoginMessage('Invalid credentials.'); // User feedback
+          setLoginMessage('Invalid Credentials'); // User feedback
           console.error('Error during login:', error);
 
           console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
         } finally {
           setIsSubmitting(false);
         }
-        /*
-        let loginEmail = eventForm.childNodes[1].childNodes[0] as HTMLInputElement;
-        let loginPassword = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
-        if (loginEmail.value !== '' && loginPassword.value !== '') {
-          setIsSubmitting(true);
-          try {
-            const response = await axios.post('http://localhost:3000/users/login', {
-              email,
-              passwordHash: password,
-            });
-            setLoggedIn(true);
-            setLoginMessage(response.data); // Success message
-            console.log('//--|🠊 Security Cleared: Load Application 🠈|--//');
-          } catch (error) {
-            setLoginMessage('Invalid credentials.'); // User feedback
-            console.error('Error during login:', error);
-
-            console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
-          } finally {
-            setIsSubmitting(false);
-          }
-        }
-        */
         break;
       case 'register':
         let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
@@ -342,30 +351,31 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
         );
     }
   };
-
-  if (loggedIn) {
-    return (
-      <>
-        <VerifyMain />
-      </>
-    );
-  }
-  return (
-    <div className="landing-carousel">
-      <section className="register-section">
-        <div className="register-container">{renderForm('register')}</div>
-      </section>
-      <section className="login-section">
-        <div className="login-container">{renderForm('login')}</div>
-      </section>
-      <section className="password-section">
-        <div className="password-container">{renderForm('password')}</div>
-      </section>
-    </div>
-  );
   console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
+  switch (currentView) {
+    case 'application':
+      Load(pageName);
+      break;
+    case 'verify':
+    default:
+      return (
+        <div className="landing-carousel">
+          <section className="register-section">
+            <div className="register-container">{renderForm('register')}</div>
+          </section>
+          <section className="login-section">
+            <div className="login-container">{renderForm('login')}</div>
+          </section>
+          <section className="password-section">
+            <div className="password-container">{renderForm('password')}</div>
+          </section>
+        </div>
+      );
+  }
 }
 function Mobile({ pageName, blockName }: { pageName: string; blockName: string }) {
+  console.log(`Refreshed: Mobile Orientation <main id="${pageName}-${blockName}">`);
+  /*
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
 
@@ -469,7 +479,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
       case 'register':
         return (
           <form className="register-form" onSubmit={(event) => handleDatabase(event, 'register')}>
-            {/* ----- */}
             <div className="register-header">
               <div className="register-label">
                 <h6 className="display-6">Register</h6>
@@ -487,7 +496,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="register-inputs">
               <div className="fullname-inputs">
                 <input
@@ -536,7 +544,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            {/* ----- */}
             <div className="register-footer">
               <mark className="register-action">
                 <button className="register-button" type="submit" disabled={isSubmitting}>
@@ -547,7 +554,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </div>
               </mark>
               <menu className="register-buttons">
-                {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
                 <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Access Account</h6>
                 </button>
@@ -556,13 +562,11 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
       case 'login':
         return (
           <form className="login-form" onSubmit={(event) => handleDatabase(event, 'login')}>
-            {/* ----- */}
             <div className="login-header">
               <div className="login-label">
                 <h6 className="display-6">Login</h6>
@@ -580,7 +584,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="login-inputs">
               <input
                 required
@@ -603,7 +606,6 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            {/* ----- */}
             <div className="login-footer">
               <mark className="login-action">
                 <button className="login-button" disabled={isSubmitting}>
@@ -622,13 +624,11 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
       case 'password':
         return (
           <form className="password-form">
-            {/* ----- */}
             <div className="password-header">
               <div className="password-label">
                 <h6 className="display-6">Password</h6>
@@ -646,12 +646,10 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="password-inputs">
               <input placeholder="Email" type="text" id="email" name="Email" />
               <input placeholder="New Password" type="password" id="password" name="password" />
             </div>
-            {/* ----- */}
             <div className="password-footer">
               <mark className="password-action">
                 <button className="password-button">
@@ -670,33 +668,33 @@ function Mobile({ pageName, blockName }: { pageName: string; blockName: string }
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
     }
   };
 
-  if (loggedIn) {
-    return (
-      <>
-        <VerifyMain />
-      </>
-    );
-  }
+  // if (loggedIn) {
+  //   return (
+  //     <>
+  //       <VerifyMain />
+  //     </>
+  //   );
+  // }
+  */
   return (
-    <div className="landing-carousel">
-      <section className="register-section">
-        <div className="register-container">{renderForm('register')}</div>
-      </section>
-      <section className="login-section">
-        <div className="login-container">{renderForm('login')}</div>
-      </section>
-      <section className="password-section">
-        <div className="password-container">{renderForm('password')}</div>
-      </section>
-    </div>
+    <></>
+    // <div className="landing-carousel">
+    //   <section className="register-section">
+    //     <div className="register-container">{renderForm('register')}</div>
+    //   </section>
+    //   <section className="login-section">
+    //     <div className="login-container">{renderForm('login')}</div>
+    //   </section>
+    //   <section className="password-section">
+    //     <div className="password-container">{renderForm('password')}</div>
+    //   </section>
+    // </div>
   );
-  console.log(`Refreshed: Mobile Orientation <main id="${pageName}-${blockName}">`);
 }
 
 interface InfoProps {
@@ -737,3 +735,19 @@ const viewCarousel = (slide: 'register' | 'login' | 'password') => {
       return (carouselContainer.style.transform = 'translateX(-200vw)');
   }
 };
+
+function Load(pageName: string) {
+  const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+
+  /*
+  LandingBody.id = 'resume-body';
+  let ResumeBody = document.querySelector(`#resume-body`) as HTMLElement;
+  */
+  if (ResumeBody) {
+    const root = ReactDOM.createRoot(DefaultBody); // Store the root
+    root.render(<ResumeBody />);
+    // ReactDOM.createRoot(DefaultBody).render(<Load />);
+  } else {
+    console.error("Element with id 'resume-body' not found.");
+  }
+}

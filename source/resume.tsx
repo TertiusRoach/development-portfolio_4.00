@@ -16,56 +16,31 @@ import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 import getIdentification from './modules/utilities/getIdentification';
 
-// Download File
-//raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/pdf-files/resume-page/curriculum-vitae.pdf
-
-const DefaultBody = document.getElementById('resume-body') as HTMLElement;
-function Body() {
-  interface InfoProps {
-    resolution: String;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | String;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
-  }
-
-  let [infoPROP, newPROP] = useState<InfoProps>({
+const pageName = 'resume';
+const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+function ResumeBody() {
+  let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
-    identification: 'resume',
-
-    // identification: `${getIdentification()}`,
-  });
-  useEffect(() => {
-    function newInfo() {
-      newPROP({
-        resolution: `${getResolution()}`,
-        orientation: `${getOrientation()}`,
-        identification: 'resume',
-        // identification: `${getIdentification()}`,
-      });
-    }
-    newInfo();
-    window.addEventListener('resize', newInfo);
-
-    return () => {
-      window.removeEventListener('resize', newInfo);
-    };
-  }, []);
+    identification: pageName,
+  };
   return (
     <>
-      <ResumeHeader info={infoPROP} />
-      <ResumeMain info={infoPROP} />
-      <ResumeFooter info={infoPROP} />
+      <ResumeHeader info={information} />
+      <ResumeMain info={information} />
+      <ResumeFooter info={information} />
 
-      <ResumeOverlay info={infoPROP} />
-      <ResumeLeftbar info={infoPROP} />
-      <ResumeRightbar info={infoPROP} />
+      <ResumeOverlay info={information} />
+      <ResumeLeftbar info={information} />
+      <ResumeRightbar info={information} />
     </>
   );
 }
+export default ResumeBody;
 
 if (DefaultBody) {
   const root = ReactDOM.createRoot(DefaultBody);
-  root.render(<Body />);
+  root.render(<ResumeBody />);
 } else {
   console.error("Element with id 'resume-body' not found.");
 }
