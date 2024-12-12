@@ -1,15 +1,12 @@
 const dotenv = require('dotenv');
 const { MongoClient } = require('mongodb');
-
-// require('dotenv').config();
-
 dotenv.config(); // Load variables from .env
-let databaseConnection;
 
+let connection;
 module.exports = {
-  connectDatabase: (callback, database) => {
+  connectDatabase: (callback, databaseName) => {
     let uri;
-    switch (database) {
+    switch (databaseName) {
       case 'bookstore':
         uri = process.env.BOOKSTORE_URI;
         break;
@@ -20,7 +17,7 @@ module.exports = {
 
     MongoClient.connect(uri)
       .then((client) => {
-        databaseConnection = client.db();
+        connection = client.db();
         return callback();
       })
       .catch((err) => {
@@ -28,5 +25,5 @@ module.exports = {
         return callback(err);
       });
   },
-  getDatabase: () => databaseConnection,
+  getDatabase: () => connection,
 };

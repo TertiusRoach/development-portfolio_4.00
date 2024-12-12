@@ -6,30 +6,61 @@ const express = require('express');
 const { ObjectId } = require('mongodb');
 const { connectDatabase, getDatabase } = require('./data');
 
-// Add this line before your routes
-
-// const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;
-// const salt = await bcrypt.genSalt(saltRounds);
-
 let database;
 const port = 3000;
-// const port = 27017;
+const name = 'login';
 const route = 'users';
-
 const server = express();
 server.use(express.json());
-
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
-// Connect to the database and start the server
+
+//--|🠊 Start the Server 🠈|--//
 connectDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
       console.log(`//--|🠊 Listening on http://localhost:${port}/${route} 🠈|--//`);
     });
-
     database = getDatabase();
   }
-}, 'login');
+}, name);
+
+//--|🠊 POST: Check User Password 🠈|--//
+server.post(`/${route}/login`, async (req, res) => {
+  console.log('Login Request Body:', req.body);
+  try {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+
+    // Validate input: Check if both email and passwordHash are provided
+    if (!email || !passwordHash) {
+      return res.status(400).json({ error: 'Email and password are required.' });
+    }
+
+    // Attempt to find a user with the provided email in the database
+    const user = await database.collection(route).findOne({ email });
+
+    // If no user is found, return an error response
+    if (!user) {
+      return res.status(404).json({ error: 'User not found.' }); // Changed to 404 for better semantics
+    }
+
+    // Compare the provided passwordHash with the stored passwordHash
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+
+    // Respond based on password validity
+    if (isPasswordValid) {
+      return res.status(200).send('Success!'); // Send success message
+    } else {
+      // console.log('BLAH!');
+      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
+    }
+  } catch (error) {
+    // Log the error for debugging purposes
+    console.error('Error in Login:', error);
+
+    // Return a generic error response to the client
+    return res.status(500).json({ error: error.message || 'Internal Server Error' });
+  }
+});
 
 //--|🠊 GET: Fetch List of Users 🠈|--//
 server.get(`/${route}`, async (req, res) => {
@@ -87,44 +118,6 @@ server.post(`/${route}`, async (req, res) => {
   } catch (error) {
     console.error(error); // Log the error for debugging
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
-  }
-});
-
-//--|🠊 POST: Check User Password 🠈|--//
-server.post(`/${route}/login`, async (req, res) => {
-  console.log('Login Request Body:', req.body);
-  try {
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
-
-    // Validate input: Check if both email and passwordHash are provided
-    if (!email || !passwordHash) {
-      return res.status(400).json({ error: 'Email and password are required.' });
-    }
-
-    // Attempt to find a user with the provided email in the database
-    const user = await database.collection(route).findOne({ email });
-
-    // If no user is found, return an error response
-    if (!user) {
-      return res.status(404).json({ error: 'User not found.' }); // Changed to 404 for better semantics
-    }
-
-    // Compare the provided passwordHash with the stored passwordHash
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-
-    // Respond based on password validity
-    if (isPasswordValid) {
-      return res.status(200).send('Success!'); // Send success message
-    } else {
-      // console.log('BLAH!');
-      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
-    }
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error('Error in Login:', error);
-
-    // Return a generic error response to the client
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 });
 
