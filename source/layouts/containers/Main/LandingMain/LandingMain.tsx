@@ -12,14 +12,12 @@ import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
-
 //--|🠉 Components 🠉|--//
 //--|🠋 Containers 🠋|--//
-import ResumeMain from '../ResumeMain/ResumeMain';
-import VerifyMain from '../VerifyMain/VerifyMain';
+
 //--|🠉 Containers 🠉|--//
 //--|🠋 Root 🠋|--//
-import ResumeBody from '../../../../resume';
+import Resume from '../../../../landing';
 //--|🠉 Root 🠉|--//
 
 const DefaultBody = document.getElementById('landing-body') as HTMLElement;
@@ -351,11 +349,20 @@ function Desktop({ pageName, blockName }: { pageName: string; blockName: string 
         );
     }
   };
+  useEffect(() => {
+    const ResumeBody = document.getElementById('resume-body') as HTMLElement;
+    const LandingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+    if (currentView === 'application') {
+      LandingBody.remove();
+      if (ResumeBody) {
+        ReactDOM.createRoot(ResumeBody).render(<Resume />);
+      } else {
+        console.error("Element with id 'resume-body' not found.");
+      }
+    }
+  }, [currentView]);
   console.log(`Refreshed: Desktop Orientation <main id="${pageName}-${blockName}">`);
   switch (currentView) {
-    case 'application':
-      Load(pageName);
-      break;
     case 'verify':
     default:
       return (
@@ -735,19 +742,3 @@ const viewCarousel = (slide: 'register' | 'login' | 'password') => {
       return (carouselContainer.style.transform = 'translateX(-200vw)');
   }
 };
-
-function Load(pageName: string) {
-  const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
-
-  /*
-  LandingBody.id = 'resume-body';
-  let ResumeBody = document.querySelector(`#resume-body`) as HTMLElement;
-  */
-  if (ResumeBody) {
-    const root = ReactDOM.createRoot(DefaultBody); // Store the root
-    root.render(<ResumeBody />);
-    // ReactDOM.createRoot(DefaultBody).render(<Load />);
-  } else {
-    console.error("Element with id 'resume-body' not found.");
-  }
-}

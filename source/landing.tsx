@@ -8,13 +8,27 @@ import { getSVG } from './modules/utilities/getFile';
 import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/getOrientation';
 
+// Import container components
+//--|🠋 Styles 🠋|--//
+import './styles/ResumeBody.scss';
+import './styles/LandingBody.scss';
+//--|🠉 Styles 🠉|--//
+
 //--|🠋 Containers 🠋|--//
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
+
+import ResumeMain from './layouts/containers/Main/ResumeMain/ResumeMain';
+import ResumeHeader from './layouts/containers/Header/ResumeHeader/ResumeHeader';
+import ResumeFooter from './layouts/containers/Footer/ResumeFooter/ResumeFooter';
+import ResumeOverlay from './layouts/containers/Overlay/ResumeOverlay/ResumeOverlay';
+import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar';
+import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 //--|🠉 Containers 🠉|--//
 
 const pageName = 'landing';
-const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
-function LandingBody({ view }: { view: 'landing' | 'resume' }) {
+const ResumeBody = document.getElementById('resume-body') as HTMLElement;
+const LandingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+function Landing() {
   let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
@@ -26,32 +40,28 @@ function LandingBody({ view }: { view: 'landing' | 'resume' }) {
     </>
   );
 }
+function Resume() {
+  let information = {
+    resolution: `${getResolution()}`,
+    orientation: `${getOrientation()}`,
+    identification: 'resume',
+  };
+  return (
+    <>
+      {/* <ResumeHeader info={information} /> */}
+      <ResumeMain info={information} />
+      {/* <ResumeFooter info={information} /> */}
 
-export default LandingBody;
+      {/* <ResumeOverlay info={information} /> */}
+      {/* <ResumeLeftbar info={information} /> */}
+      {/* <ResumeRightbar info={information} /> */}
+    </>
+  );
+}
+export default Resume;
 
-if (DefaultBody) {
-  ReactDOM.createRoot(DefaultBody).render(<LandingBody view={'landing'} />);
+if (LandingBody) {
+  ReactDOM.createRoot(LandingBody).render(<Landing />);
 } else {
   console.error(`Can't find with #${pageName}-body`);
 }
-
-/*
-import dotenv from 'dotenv';
-import express from 'express';
-import mongoose from 'mongoose';
-
-dotenv.config();
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-mongoose
-  .connect(process.env.MONGODB_URL as string)
-  .then(() => console.log('DB Connected!'))
-  .catch((err) => console.error('DB Connection Error:', err));
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-*/
