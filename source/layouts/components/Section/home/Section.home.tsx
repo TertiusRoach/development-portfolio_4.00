@@ -26,7 +26,6 @@ interface HomeProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | String;
   };
 }
-
 const SectionHome: React.FC<HomeProps> = ({ info, labelName, blockName, stateType }) => {
   const article = {
     title: 'Multimedia Programmer',
