@@ -18,7 +18,7 @@ import getIdentification from './modules/utilities/getIdentification';
 
 const pageName = 'resume';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
-function ResumeBody() {
+function Resume() {
   let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
@@ -26,21 +26,25 @@ function ResumeBody() {
   };
   return (
     <>
-      <ResumeHeader info={information} />
+      {/* <ResumeHeader info={information} /> */}
       <ResumeMain info={information} />
-      <ResumeFooter info={information} />
+      {/* <ResumeFooter info={information} /> */}
+      {/* <ResumeOverlay info={information} /> */}
+      {/* <ResumeLeftbar info={information} /> */}
+      {/* <ResumeRightbar info={information} /> */}
 
-      <ResumeOverlay info={information} />
-      <ResumeLeftbar info={information} />
-      <ResumeRightbar info={information} />
+      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {/* {useMediaQuery({ query: '(orientation: landscape)' }) && <Desktop pageName={pageName} blockName={blockName} />} */}
+      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {/* {useMediaQuery({ query: '(orientation: portrait)' }) && <Mobile pageName={pageName} blockName={blockName} />} */}
     </>
   );
 }
-export default ResumeBody;
+export default Resume;
 
 if (DefaultBody) {
   const root = ReactDOM.createRoot(DefaultBody);
-  root.render(<ResumeBody />);
+  root.render(<Resume />);
 } else {
   console.error("Element with id 'resume-body' not found.");
 }

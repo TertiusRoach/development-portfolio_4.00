@@ -17,17 +17,11 @@ import './styles/LandingBody.scss';
 //--|🠋 Containers 🠋|--//
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 
-import ResumeMain from './layouts/containers/Main/ResumeMain/ResumeMain';
-import ResumeHeader from './layouts/containers/Header/ResumeHeader/ResumeHeader';
-import ResumeFooter from './layouts/containers/Footer/ResumeFooter/ResumeFooter';
-import ResumeOverlay from './layouts/containers/Overlay/ResumeOverlay/ResumeOverlay';
-import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar';
-import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 //--|🠉 Containers 🠉|--//
 
 const pageName = 'landing';
-const ResumeBody = document.getElementById('resume-body') as HTMLElement;
-const LandingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+const resumeBody = document.getElementById('resume-body') as HTMLElement;
+const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -40,28 +34,9 @@ function Landing() {
     </>
   );
 }
-function Resume() {
-  let information = {
-    resolution: `${getResolution()}`,
-    orientation: `${getOrientation()}`,
-    identification: 'resume',
-  };
-  return (
-    <>
-      {/* <ResumeHeader info={information} /> */}
-      <ResumeMain info={information} />
-      {/* <ResumeFooter info={information} /> */}
 
-      {/* <ResumeOverlay info={information} /> */}
-      {/* <ResumeLeftbar info={information} /> */}
-      {/* <ResumeRightbar info={information} /> */}
-    </>
-  );
-}
-export default Resume;
-
-if (LandingBody) {
-  ReactDOM.createRoot(LandingBody).render(<Landing />);
+if (landingBody) {
+  ReactDOM.createRoot(landingBody).render(<Landing />);
 } else {
   console.error(`Can't find with #${pageName}-body`);
 }
