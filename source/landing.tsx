@@ -16,11 +16,11 @@ import './styles/LandingBody.scss';
 
 //--|🠋 Containers 🠋|--//
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
-
+import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
+import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 //--|🠉 Containers 🠉|--//
 
 const pageName = 'landing';
-const resumeBody = document.getElementById('resume-body') as HTMLElement;
 const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Landing() {
   let information = {
@@ -31,6 +31,8 @@ function Landing() {
   return (
     <>
       <LandingMain info={information} />
+      <LandingLeftbar info={information} />
+      <LandingRightbar info={information} />
     </>
   );
 }
