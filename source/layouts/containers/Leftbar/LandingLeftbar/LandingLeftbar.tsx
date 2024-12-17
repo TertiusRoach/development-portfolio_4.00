@@ -365,7 +365,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName, currentView]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} expanded`}>
+    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
       {/* <div className="landing-carousel">
         <section className="register-section">
           <div className="register-container">{renderForm('register')}</div>

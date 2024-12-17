@@ -1,4 +1,4 @@
-@import '../../../containers/color-palette.scss';
+@use '../../../containers/color-palette.scss';
 
 @mixin desktop-landscape {
 }
@@ -20,9 +20,9 @@ body {
   }
 
   #index-body {
-    @include index-colors();
+    // @include index-colors();
   }
   #resume-body {
-    @include resume-colors();
+    // @include resume-colors();
   }
 }
