@@ -1,31 +1,33 @@
-// login.js
-//--|🠊 Open folder Location in Integrated Terminal to run: nodemon login 🠈|--//
+// users.js
+//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const { connectDatabase, getDatabase } = require('./data');
+const { connectToDatabase, getDatabase } = require('./data'); // Custom modules to connect to the database
 
 let database;
 const port = 3000;
-const name = 'login';
-const route = 'users';
+const root = 'users';
+const name = 'pending';
 const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
 //--|🠊 Start the Server 🠈|--//
-connectDatabase((err) => {
+connectToDatabase((err) => {
   if (!err) {
+    // If no error during connection
     server.listen(port, () => {
-      console.log(`//--|🠊 Listening on http://localhost:${port}/${route} 🠈|--//`);
+      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
+      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
     });
-    database = getDatabase();
+    database = getDatabase(); // Assign the connected database to the `database` variable
   }
-}, name);
+});
 
 //--|🠊 POST: Registration Page 🠈|--//
-server.post(`/${route}`, async (req, res) => {
+server.post(`/${root}`, async (req, res) => {
   //--|🠋 Add a New User 🠋|--//
   const today = new Date(); // Get current date
   const todayISO = today.toISOString().split('.')[0] + 'Z'; // Convert to ISO format (e.g., YYYY-MM-DDTHH:mm:ssZ)
@@ -43,7 +45,7 @@ server.post(`/${route}`, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
 
     // Insert the user data into the database
-    const result = await database.collection(route).insertOne({
+    const result = await database.collection(root).insertOne({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
 
@@ -75,13 +77,13 @@ server.post(`/${route}`, async (req, res) => {
 });
 
 //--|🠊 POST: Login Page 🠈|--//
-server.post(`/${route}/login`, async (req, res) => {
+server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Check User Password 🠋|--//
   console.log('Login Request Body:', req.body);
 
   try {
     const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
-    const user = await database.collection(route).findOne({ email }); // Attempt to find a user with the provided email in the database
+    const user = await database.collection(root).findOne({ email }); // Attempt to find a user with the provided email in the database
     const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
     //--|🠊 Respond based on password validity 🠈|--//
     if (isPasswordValid) {
@@ -96,15 +98,13 @@ server.post(`/${route}/login`, async (req, res) => {
 });
 
 //--|🠊 GET: Fetch List of Users 🠈|--//
-server.get(`/${route}`, async (req, res) => {
-  /*
+server.get(`/${root}`, async (req, res) => {
   try {
     const users = await database.collection(route).find().sort({ email: 1 }).toArray();
     res.status(200).json(users);
   } catch {
     res.status(500).json({ error: 'Could not fetch the user documents' });
   }
-  */
 });
 
 const generateRandomCode = (length) => {

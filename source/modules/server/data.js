@@ -4,14 +4,14 @@ dotenv.config(); // Load variables from .env
 
 let connection;
 module.exports = {
-  connectDatabase: (callback, databaseName) => {
+  connectToDatabase: (callback, databaseName) => {
     let uri;
     switch (databaseName) {
       case 'bookstore':
         uri = process.env.BOOKSTORE_URI;
         break;
-      case 'login':
-        uri = process.env.LOGIN_URI;
+      case 'users':
+        uri = process.env.USERS_URI;
         break;
     }
 
