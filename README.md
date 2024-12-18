@@ -139,6 +139,24 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
+## Keyboard Shortcuts
+
+//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
+
+> Collapse Sections: Ctrl + K + 0
+
+//--|🠋 Open Settings 🠈|--//
+
+> Collapse Sections: Ctrl + ,
+
+//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
+
+> Select Dropdown: Ctrl + SpaceBar
+
+//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
+
+> Open Run and Debug: Ctrl + Shift + D & F5
+
 # Folder Structure to Reference Storage
 
 This is the structure I will use going forward.
@@ -328,20 +346,6 @@ This is the structure I will use going forward.
     .expanded / .collapsed
 
     .highlight / .downplay
-
-## Keyboard Shortcuts
-
-//--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
-
-> Collapse Sections: Ctrl + K + 0
-
-//--|🠋 Use this to see the props / callbacks it needs 🠈|--//
-
-> Select Dropdown: Ctrl + SpaceBar
-
-//--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
-
-> Open Run and Debug: Ctrl + Shift + D & F5
 
 ---
 
