@@ -1,13 +1,13 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
+  // grid-template: 4rem 1fr 4rem / 1fr 1fr; //~~|🠊 rows / columns 🠈|~~//
   /*
 
   */
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 6rem 1fr 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
+  // grid-template: 6rem 1fr 6rem / 1fr; //~~|🠊 rows / columns 🠈|~~//
   /*
   header[class*='foreground'] {
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
@@ -40,8 +40,8 @@
 }
 
 aside[id*='leftbar'] {
-  display: grid;
-  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  // display: grid;
+  // grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   &[class*='collapsed'] {
     transition: clip-path 0.25s;
     clip-path: inset(0% 100% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//

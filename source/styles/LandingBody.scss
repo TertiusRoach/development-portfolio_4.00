@@ -142,12 +142,12 @@ div[id*='landing'] {
   // @include orientation-testing();
 
   //--|🠋 Override Bootstrap 🠋|--//
-  button:not(:disabled),
-   [type='button']:not(:disabled),
-   [type='reset']:not(:disabled),
-   [type='submit']:not(:disabled)  {
-    cursor: default;
-  }
+  // button:not(:disabled),
+  //  [type='button']:not(:disabled),
+  //  [type='reset']:not(:disabled),
+  //  [type='submit']:not(:disabled)  {
+  //   cursor: default;
+  // }
 }
 /*
 @use '../layouts/containers/Overlay/LandingOverlay/LandingOverlay.scss';

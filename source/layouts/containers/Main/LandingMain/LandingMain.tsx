@@ -324,9 +324,16 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         break;
         alert('//--|🠊 Login Successful: Load Page 🠈|--//');
       case 'unverified':
-        // console.log(loadRightbar);
-        // alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
+        let test = document.querySelector('#landing-leftbar') as HTMLElement;
+        if (test) {
+          // Check if the element exists before accessing its properties
+          if (test.classList.contains('collapsed')) {
+            test.classList.remove('collapsed');
+          }
+          test.classList.add('expanded');
+        }
         break;
+        alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
       case 'recovery':
         alert('//--|🠊 Password Request: Confirm Email 🠈|--//');
         break;

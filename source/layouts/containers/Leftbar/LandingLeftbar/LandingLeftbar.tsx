@@ -71,68 +71,56 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName, currentView]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} expanded`}>
-      <section className="unverified-section">
-        <form className="unverified-form">
-          <div className="unverified-header">
-            <div className="unverified-label">
-              <h6 className="display-6">Login</h6>
-            </div>
-            <button className="unverified-demo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
-                alt=""
-              />
+    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
+      <form className="unverified-form">
+        <div className="unverified-header">
+          <div className="unverified-label">
+            <h6 className="display-6">Verify</h6>
+          </div>
+          <button className="close-leftbar">
+            <img
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
+              alt=""
+            />
+          </button>
+          <div className="unverified-logo">
+            <img
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+              alt="Login Logo"
+            />
+          </div>
+        </div>
+        <div className="unverified-inputs">
+          <input
+            required
+            id="code"
+            name="Verification Code"
+            type="email"
+            placeholder="//--|🠊 Verification Code 🠈|--//"
+            // --- //
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className="unverified-footer">
+          <mark className="unverified-action">
+            <button className="unverified-button" disabled={isSubmitting}>
+              <h6>Authorize</h6>
             </button>
-            <div className="unverified-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
+            <div className={`unverified-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+              <h6>{loginMessage}</h6>
             </div>
-          </div>
-          <div className="unverified-inputs">
-            <input
-              required
-              id="email"
-              name="Email"
-              type="email"
-              placeholder="Email"
-              // --- //
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <input
-              required
-              id="password"
-              name="Password"
-              type="password"
-              placeholder="Password"
-              // --- //
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
-          <div className="unverified-footer">
-            <mark className="unverified-action">
-              <button className="unverified-button" disabled={isSubmitting}>
-                <h6>Login</h6>
-              </button>
-              <div className={`unverified-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
-                <h6>{loginMessage}</h6>
-              </div>
-            </mark>
-            <menu className="unverified-buttons">
-              <button className="unverified-register" type="button">
-                <h6>Register Account</h6>
-              </button>
-              <button className="unverified-password" type="button">
-                <h6>Forgot Password</h6>
-              </button>
-            </menu>
-          </div>
-        </form>
-      </section>
+          </mark>
+          {/* <menu className="unverified-buttons">
+            <button className="unverified-register" type="button">
+              <h6>Register Account</h6>
+            </button>
+            <button className="unverified-password" type="button">
+              <h6>Forgot Password</h6>
+            </button>
+          </menu> */}
+        </div>
+      </form>
     </aside>
   );
 };
