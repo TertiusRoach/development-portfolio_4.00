@@ -1,7 +1,7 @@
 {
   "name": "development-portfolio_4.00",
   "version": "4.0.0",
-  "description": "Testing",
+  "description": "This project aims to modernize front-end development by dynamically styling key HTML elements like <header>, <main>, <footer>, <section>, and <aside>. Each element receives a distinct style, providing a cleaner and more structured approach to building responsive, visually engaging layouts.",
   "main": "webpack.config.js",
   "scripts": {
     "launch": "webpack-dev-server --mode development",
@@ -31,6 +31,7 @@
     "bootstrap": "^5.3.3",
     "copy-webpack-plugin": "^12.0.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "dotenv": "^16.4.7",
