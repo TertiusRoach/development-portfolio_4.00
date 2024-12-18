@@ -86,5 +86,5 @@ function jQueryMain(pageName: String, blockName: string) {
     }
   });
   */
-  console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
+  // console.log(`//--|🠊 Refreshed: jQuery <${blockName}> 🠈|--//`);
 }

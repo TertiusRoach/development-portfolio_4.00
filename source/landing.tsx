@@ -1,3 +1,6 @@
+const pageName = 'landing';
+const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
@@ -15,8 +18,6 @@ import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
 import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
-const pageName = 'landing';
-const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -25,8 +26,8 @@ function Landing() {
   };
   return (
     <>
-      {/* <LandingLeftbar info={information} /> */}
-      <LandingMain info={information} />
+      <LandingLeftbar info={information} />
+      {/* <LandingMain info={information} /> */}
       {/* <LandingRightbar info={information} /> */}
     </>
   );
