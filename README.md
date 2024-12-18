@@ -137,9 +137,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
 
----
-
-## Keyboard Shortcuts
+# Keyboard Shortcuts
 
 //--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
 
@@ -162,7 +160,9 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 > Open Command Pallette: Ctrl + Shift + P
 > Type "Collapse Folders in Explorer" + Enter
 
-# Folder Structure to Reference Storage
+---
+
+## Folder Structure to Reference Storage
 
 This is the structure I will use going forward.
 
