@@ -377,7 +377,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         alert('//--|🠊 Password Request: Confirm Email 🠈|--//');
         break;
     }
-    console.log(`Initialized ${pageName}-${blockName}`);
+    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
 
   return (

@@ -24,66 +24,9 @@ connectDatabase((err) => {
   }
 }, name);
 
-//--|🠊 POST: Check User Password 🠈|--//
-server.post(`/${route}/login`, async (req, res) => {
-  console.log('Login Request Body:', req.body);
-
-  try {
-    /*
-    // Validate input: Check if both email and passwordHash are provided
-    if (!email || !passwordHash) {
-      return res.status(400).json({ error: 'Email and password are required.' });
-    }
-
-
-
-    // If no user is found, return an error response
-    if (!user) {
-      return res.status(404).json({ error: 'User not found.' }); // Changed to 404 for better semantics
-    }
-    */
-    /*
-    // Log a list of all users in the database (for debugging purposes)
-    const users = await database
-      .collection(route)
-      .find({}, { projection: { email: 1, verifiedEmail: 1, status: 1 } })
-      .toArray();
-    console.log('Database Users:', users);
-    */
-
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
-    const user = await database.collection(route).findOne({ email }); // Attempt to find a user with the provided email in the database
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
-
-    // console.log(user);
-    //--|🠊 Respond based on password validity 🠈|--//
-    if (isPasswordValid) {
-      return res.status(200).send(user.status); // Send success message
-      // return res.status(200).send('Successful login.'); // Send success message
-    } else {
-      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
-    }
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error('Error in Login:', error);
-
-    // Return a generic error response to the client
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
-  }
-});
-
-//--|🠊 GET: Fetch List of Users 🠈|--//
-server.get(`/${route}`, async (req, res) => {
-  try {
-    const users = await database.collection(route).find().sort({ email: 1 }).toArray();
-    res.status(200).json(users);
-  } catch {
-    res.status(500).json({ error: 'Could not fetch the user documents' });
-  }
-});
-
-//--|🠊 POST: Add a New User 🠈|--//
+//--|🠊 POST: Registration Page 🠈|--//
 server.post(`/${route}`, async (req, res) => {
+  //--|🠋 Add a New User 🠋|--//
   const today = new Date(); // Get current date
   const todayISO = today.toISOString().split('.')[0] + 'Z'; // Convert to ISO format (e.g., YYYY-MM-DDTHH:mm:ssZ)
 
@@ -129,6 +72,39 @@ server.post(`/${route}`, async (req, res) => {
     console.error(error); // Log the error for debugging
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
   }
+});
+
+//--|🠊 POST: Login Page 🠈|--//
+server.post(`/${route}/login`, async (req, res) => {
+  //--|🠋 Check User Password 🠋|--//
+  console.log('Login Request Body:', req.body);
+
+  try {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+    const user = await database.collection(route).findOne({ email }); // Attempt to find a user with the provided email in the database
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
+    //--|🠊 Respond based on password validity 🠈|--//
+    if (isPasswordValid) {
+      return res.status(200).send(user.status); // Send success message
+    } else {
+      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
+    }
+  } catch (error) {
+    console.error('Error in Login:', error); // Log the error for debugging purposes
+    return res.status(500).json({ error: error.message || 'Internal Server Error' }); // Return a generic error response to the client
+  }
+});
+
+//--|🠊 GET: Fetch List of Users 🠈|--//
+server.get(`/${route}`, async (req, res) => {
+  /*
+  try {
+    const users = await database.collection(route).find().sort({ email: 1 }).toArray();
+    res.status(200).json(users);
+  } catch {
+    res.status(500).json({ error: 'Could not fetch the user documents' });
+  }
+  */
 });
 
 const generateRandomCode = (length) => {
