@@ -31,7 +31,7 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'rightbar';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'unverified' | 'authorized' | 'recovery'>();
+  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
   // Shared input states
   const [email, setEmail] = useState('');
@@ -51,7 +51,7 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   const [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
   useEffect(() => {
-    console.log(`Initialized ${pageName}-${blockName}`);
+    console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
 
   return (

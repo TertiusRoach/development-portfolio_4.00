@@ -18,6 +18,7 @@ import getIdentification from './modules/utilities/getIdentification';
 
 const pageName = 'resume';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+
 function Resume() {
   let information = {
     resolution: `${getResolution()}`,
