@@ -157,6 +157,11 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 > Open Run and Debug: Ctrl + Shift + D & F5
 
+//--|🠋 Collapse all folders in Primary Side Bar 🠈|--//
+
+> Open Command Pallette: Ctrl + Shift + P
+> Type "Collapse Folders in Explorer" + Enter
+
 # Folder Structure to Reference Storage
 
 This is the structure I will use going forward.
