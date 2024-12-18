@@ -27,6 +27,7 @@ connectToDatabase((err) => {
 });
 
 //--|🠊 POST: Registration Page 🠈|--//
+/*
 server.post(`/${root}`, async (req, res) => {
   //--|🠋 Add a New User 🠋|--//
   const today = new Date(); // Get current date
@@ -75,8 +76,10 @@ server.post(`/${root}`, async (req, res) => {
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
   }
 });
+*/
 
 //--|🠊 POST: Login Page 🠈|--//
+/*
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Check User Password 🠋|--//
   console.log('Login Request Body:', req.body);
@@ -96,8 +99,10 @@ server.post(`/${root}/login`, async (req, res) => {
     return res.status(500).json({ error: error.message || 'Internal Server Error' }); // Return a generic error response to the client
   }
 });
+*/
 
 //--|🠊 GET: Fetch List of Users 🠈|--//
+/*
 server.get(`/${root}`, async (req, res) => {
   try {
     const users = await database.collection(route).find().sort({ email: 1 }).toArray();
@@ -106,6 +111,7 @@ server.get(`/${root}`, async (req, res) => {
     res.status(500).json({ error: 'Could not fetch the user documents' });
   }
 });
+*/
 
 const generateRandomCode = (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
