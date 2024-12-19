@@ -180,7 +180,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               </div>
               <button className="register-demo">
                 <img
-                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
+                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
                 />
               </button>
@@ -273,7 +273,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               </div>
               <button className="login-demo">
                 <img
-                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
+                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
                 />
               </button>
@@ -339,7 +339,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               </div>
               <button className="password-demo">
                 <img
-                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-dark.svg"
+                  src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
                 />
               </button>
