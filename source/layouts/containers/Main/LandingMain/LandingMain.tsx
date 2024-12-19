@@ -1,7 +1,7 @@
 // LandingMain.tsx
 //--|🠋 Frameworks 🠋|--//
-import axios from 'axios';
 import ReactDOM from 'react-dom/client';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
@@ -57,35 +57,110 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
-    let eventForm = event.currentTarget as HTMLFormElement;
     switch (slide) {
       case 'login':
-        setIsSubmitting(true);
+        setIsSubmitting(true); // Indicate submission in progress
         try {
           const response = await axios.post('http://localhost:3000/users/login', {
-            email,
-            passwordHash: password,
+            email, // Email entered by the user
+            passwordHash: password, // Password entered by the user
           });
-          switch (response.data) {
+
+          const userStatus = response.data; // Extract the status from server response
+
+          //--|🠊 Validate User Status 🠈|--//
+          if (!userStatus) {
+            alert('Email not found. Redirecting to registration page.');
+            viewCarousel('register'); // Redirect to the registration page
+            return;
+          }
+
+          switch (userStatus) {
             case 'pending':
-              setLoggedIn(false);
-              setCurrentView('unverified');
+              alert('Account not verified. Expanding left sidebar for further steps.');
+              document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
+              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); // Expand left sidebar
+              setLoggedIn(false); // User is not fully authorized
+              setCurrentView('unverified'); // Show unverified page
               break;
+
             case 'enabled':
-              setLoggedIn(true);
-              setCurrentView('authorized');
+              alert('Login successful. Loading application...');
+              setLoggedIn(true); // User is fully authorized
+              setCurrentView('authorized'); // Show the authorized page
+              loadResume(); // Load the main application
               break;
+
+            default:
+              alert('Unknown status returned from the server.');
           }
         } catch (error) {
-          setLoginMessage('Invalid Credentials'); // User feedback
-          console.error('Error during login:', error);
-
-          console.log('//--|🠊 Invalid Credentials: Block Login 🠈|--//');
+          //--|🠊 Handle Login Errors 🠈|--//
+          if ((error as AxiosError).response?.status === 401) {
+            // Invalid password
+            alert('Invalid password. Redirecting to password reset section.');
+            viewCarousel('password'); // Redirect to password reset section
+          } else {
+            alert('An error occurred during login. Please try again later.');
+            console.error('Error during login:', error); // Log unexpected errors for debugging
+          }
         } finally {
-          setIsSubmitting(false);
+          setIsSubmitting(false); // Reset submission state
         }
         break;
       case 'register':
+        /*
+        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
+        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
+        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
+
+        // Basic input validation
+        if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
+          setRegisterMessage('All fields are required.');
+          return;
+        }
+
+        if (
+          registerFirstName.value !== '' &&
+          registerLastName.value !== '' &&
+          registerEmail.value !== '' &&
+          registerPassword.value !== ''
+        ) {
+          // Email format validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            setRegisterMessage('Please enter a valid email address.');
+            return;
+          }
+
+          setIsSubmitting(true); // Disable button during submission
+          try {
+            // Send POST request to the server
+            const response = await axios.post('http://localhost:3000/users', {
+              firstName,
+              lastName,
+              email,
+              passwordHash: password,
+            });
+
+            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
+            // Display success message
+            setRegisterMessage('User registered successfully! Please check your email.');
+          } catch (error) {
+            // Improved error handling
+            if (axios.isAxiosError(error)) {
+              console.error('Registration Error:', error.message);
+              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+            } else {
+              console.error('Unexpected Error:', error);
+              setRegisterMessage('An unexpected error occurred.');
+            }
+          } finally {
+            setIsSubmitting(false); // Re-enable the button
+          }
+        }
+        */
         console.log('//--|🠊 Test Register 🠈|--//');
         break;
       case 'password':
@@ -304,12 +379,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
     }
   };
-  const loadResume = () => {
-    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-    landingBody.remove();
-    return ReactDOM.createRoot(resumeBody).render(<Resume />);
-  };
   const viewCarousel = (slide: 'register' | 'login' | 'password') => {
     let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
     carouselContainer.style.transform = {
@@ -317,6 +386,12 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       login: 'translateX(-100vw)',
       password: 'translateX(-200vw)',
     }[slide];
+  };
+  const loadResume = () => {
+    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
+    landingBody.remove();
+    return ReactDOM.createRoot(resumeBody).render(<Resume />);
   };
   let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
 
@@ -367,56 +442,3 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
-
-/*
-        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
-        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
-        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
-        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
-
-        // Basic input validation
-        if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
-          setRegisterMessage('All fields are required.');
-          return;
-        }
-
-        if (
-          registerFirstName.value !== '' &&
-          registerLastName.value !== '' &&
-          registerEmail.value !== '' &&
-          registerPassword.value !== ''
-        ) {
-          // Email format validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            setRegisterMessage('Please enter a valid email address.');
-            return;
-          }
-
-          setIsSubmitting(true); // Disable button during submission
-          try {
-            // Send POST request to the server
-            const response = await axios.post('http://localhost:3000/users', {
-              firstName,
-              lastName,
-              email,
-              passwordHash: password,
-            });
-
-            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
-            // Display success message
-            setRegisterMessage('User registered successfully! Please check your email.');
-          } catch (error) {
-            // Improved error handling
-            if (axios.isAxiosError(error)) {
-              console.error('Registration Error:', error.message);
-              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
-            } else {
-              console.error('Unexpected Error:', error);
-              setRegisterMessage('An unexpected error occurred.');
-            }
-          } finally {
-            setIsSubmitting(false); // Re-enable the button
-          }
-        }
-        */

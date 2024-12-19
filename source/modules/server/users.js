@@ -13,7 +13,7 @@ const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
-// Start the Server
+//--|🠊 Start the Server 🠈|--//
 connectDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
@@ -49,6 +49,34 @@ server.get(`/${root}`, async (req, res) => {
 });
 
 //--|🠊 POST: Login Page 🠈|--//
+server.post(`/${root}/login`, async (req, res) => {
+  console.log('Login Request Body:', req.body); // Debugging log
+
+  try {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from request
+
+    // Check for user in both 'enabled' and 'pending' collections
+    let user =
+      (await database.collection('enabled').findOne({ email })) || (await database.collection('pending').findOne({ email }));
+
+    if (!user) {
+      return res.status(404).send('Email not found.'); // User does not exist in either collection
+    }
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+
+    if (!isPasswordValid) {
+      return res.status(401).send('Invalid password.'); // Invalid password
+    }
+
+    // Send back user status ('enabled' or 'pending') if login is successful
+    return res.status(200).send(user.status);
+  } catch (error) {
+    console.error('Error in Login:', error); // Log error for debugging
+    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error message
+  }
+});
 /*
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Check User Password 🠋|--//

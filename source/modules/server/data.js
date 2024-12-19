@@ -22,18 +22,6 @@ module.exports = {
         console.log(err);
         return callback(err);
       });
-    /*
-    MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }) // Added options for compatibility
-      .then((client) => {
-        connection = client.db();
-        console.log('//--|🠊 Connected to MongoDB 🠈|--//');
-        callback();
-      })
-      .catch((err) => {
-        console.error('//--|🠊 MongoDB connection error 🠈|--//', err);
-        callback(err);
-      });
-      */
   },
   getDatabase: () => {
     if (!connection) {
@@ -69,4 +57,17 @@ module.exports = {
   },
   getDatabase: () => connection,
 };
+*/
+/*
+// Code is deprecated
+MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }) // Added options for compatibility
+  .then((client) => {
+    connection = client.db();
+    console.log('//--|🠊 Connected to MongoDB 🠈|--//');
+    callback();
+  })
+  .catch((err) => {
+    console.error('//--|🠊 MongoDB connection error 🠈|--//', err);
+    callback(err);
+  });
 */
