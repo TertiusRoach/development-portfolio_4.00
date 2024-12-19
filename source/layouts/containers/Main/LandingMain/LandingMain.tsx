@@ -39,21 +39,21 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
   // Shared input states
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
 
   // Registration-specific input states
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
 
   // Feedback messages for user interactions
-  const [loginMessage, setLoginMessage] = useState('');
-  const [registerMessage, setRegisterMessage] = useState('');
-  const [passwordMessage, setPasswordMessage] = useState('');
+  let [loginMessage, setLoginMessage] = useState('');
+  let [registerMessage, setRegisterMessage] = useState('');
+  let [passwordMessage, setPasswordMessage] = useState('');
 
   // Other UI states
-  const [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
-  const [loggedIn, setLoggedIn] = useState(false); // Tracks login state
+  let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
+  let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); // Prevents refresh
@@ -304,14 +304,20 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
     }
   };
-
-  const loadPage = () => {
+  const loadResume = () => {
     let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
     let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
     landingBody.remove();
     return ReactDOM.createRoot(resumeBody).render(<Resume />);
   };
-
+  const viewCarousel = (slide: 'register' | 'login' | 'password') => {
+    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+    carouselContainer.style.transform = {
+      register: 'translateX(0vw)',
+      login: 'translateX(-100vw)',
+      password: 'translateX(-200vw)',
+    }[slide];
+  };
   let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
 
   useEffect(() => {
@@ -320,7 +326,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       case 'default':
         return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
       case 'authorized':
-        loadPage();
+        loadResume();
         break;
         alert('//--|🠊 Login Successful: Load Page 🠈|--//');
       case 'unverified':
@@ -343,14 +349,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
     }
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
-  const viewCarousel = (slide: 'register' | 'login' | 'password') => {
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = {
-      register: 'translateX(0vw)',
-      login: 'translateX(-100vw)',
-      password: 'translateX(-200vw)',
-    }[slide];
-  };
+
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
       <div className="landing-carousel">

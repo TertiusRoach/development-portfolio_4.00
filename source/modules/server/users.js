@@ -28,18 +28,48 @@ connectDatabase((err) => {
 
 module.exports = server; // Ensure module export for testing or further use
 
-//--|🠊 GET: Fetch List of Users 🠈|--//
+//--|🠊 GET: Fetch List of Users Inside 'pending' & 'enabled' 🠈|--//
 server.get(`/${root}`, async (req, res) => {
-  let usersPending = 'pending';
-  let usersEnabled = 'enabled';
   try {
-    const users = await database.collection('pending').find().sort({ email: 1 }).toArray();
-    res.status(200).json(users); // Send the documents as a JSON response
+    // Fetch data from both collections
+    const usersEnabled = await database.collection('enabled').find().sort({ email: 1 }).toArray();
+    const usersPending = await database.collection('pending').find().sort({ email: 1 }).toArray();
+
+    // Combine the data into a single response
+    const allUsers = {
+      enabled: usersEnabled,
+      pending: usersPending,
+    };
+
+    res.status(200).json(allUsers); // Send the combined data as JSON
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Could not fetch the user documents' });
   }
 });
+
+//--|🠊 POST: Login Page 🠈|--//
+/*
+server.post(`/${root}/login`, async (req, res) => {
+  //--|🠋 Check User Password 🠋|--//
+  console.log('Login Request Body:', req.body);
+
+  try {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+    const user = await database.collection(root).findOne({ email }); // Attempt to find a user with the provided email in the database
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
+    //--|🠊 Respond based on password validity 🠈|--//
+    if (isPasswordValid) {
+      return res.status(200).send(user.status); // Send success message
+    } else {
+      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
+    }
+  } catch (error) {
+    console.error('Error in Login:', error); // Log the error for debugging purposes
+    return res.status(500).json({ error: error.message || 'Internal Server Error' }); // Return a generic error response to the client
+  }
+});
+*/
 
 //--|🠊 POST: Registration Page 🠈|--//
 /*
@@ -89,29 +119,6 @@ server.post(`/${root}`, async (req, res) => {
   } catch (error) {
     console.error(error); // Log the error for debugging
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
-  }
-});
-*/
-
-//--|🠊 POST: Login Page 🠈|--//
-/*
-server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Check User Password 🠋|--//
-  console.log('Login Request Body:', req.body);
-
-  try {
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
-    const user = await database.collection(root).findOne({ email }); // Attempt to find a user with the provided email in the database
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
-    //--|🠊 Respond based on password validity 🠈|--//
-    if (isPasswordValid) {
-      return res.status(200).send(user.status); // Send success message
-    } else {
-      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
-    }
-  } catch (error) {
-    console.error('Error in Login:', error); // Log the error for debugging purposes
-    return res.status(500).json({ error: error.message || 'Internal Server Error' }); // Return a generic error response to the client
   }
 });
 */
