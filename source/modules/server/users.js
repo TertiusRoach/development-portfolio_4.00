@@ -1,28 +1,43 @@
 // users.js
-//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//
+//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//a
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const { connectToDatabase, getDatabase } = require('./data'); // Custom modules to connect to the database
+const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
 const port = 3000;
 const root = 'users';
-const name = 'pending';
 const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
-//--|🠊 Start the Server 🠈|--//
-connectToDatabase((err) => {
+// Start the Server
+connectDatabase((err) => {
   if (!err) {
-    // If no error during connection
     server.listen(port, () => {
       console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
       console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
     });
     database = getDatabase(); // Assign the connected database to the `database` variable
+  } else {
+    console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
+  }
+});
+
+module.exports = server; // Ensure module export for testing or further use
+
+//--|🠊 GET: Fetch List of Users 🠈|--//
+server.get(`/${root}`, async (req, res) => {
+  let usersPending = 'pending';
+  let usersEnabled = 'enabled';
+  try {
+    const users = await database.collection('pending').find().sort({ email: 1 }).toArray();
+    res.status(200).json(users); // Send the documents as a JSON response
+  } catch (error) {
+    console.error('Error fetching documents:', error);
+    res.status(500).json({ error: 'Could not fetch the user documents' });
   }
 });
 
@@ -101,14 +116,25 @@ server.post(`/${root}/login`, async (req, res) => {
 });
 */
 
-//--|🠊 GET: Fetch List of Users 🠈|--//
 /*
-server.get(`/${root}`, async (req, res) => {
-  try {
-    const users = await database.collection(route).find().sort({ email: 1 }).toArray();
-    res.status(200).json(users);
-  } catch {
-    res.status(500).json({ error: 'Could not fetch the user documents' });
+// Broken Code
+let database;
+const port = 3000;
+const root = 'users';
+const name = 'pending';
+const server = express();
+server.use(express.json());
+server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+
+//--|🠊 Start the Server 🠈|--//
+connectToDatabase((err) => {
+  if (!err) {
+    // If no error during connection
+    server.listen(port, () => {
+      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
+      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
+    });
+    database = getDatabase(); // Assign the connected database to the `database` variable
   }
 });
 */
