@@ -177,7 +177,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               <div className="register-label">
                 <h6 className="display-6">Register</h6>
               </div>
-              <button className="register-demo">
+              <button className="register-demo" type="button">
                 <img
                   src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
@@ -266,7 +266,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               <div className="login-label">
                 <h6 className="display-6">Login</h6>
               </div>
-              <button className="login-demo">
+              <button className="login-demo" type="button">
                 <img
                   src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
@@ -328,7 +328,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               <div className="password-label">
                 <h6 className="display-6">Password</h6>
               </div>
-              <button className="password-demo">
+              <button className="password-demo" type="button">
                 <img
                   src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
                   alt=""
