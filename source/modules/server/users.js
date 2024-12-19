@@ -13,7 +13,7 @@ const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
-//--|🠊 Start the Server 🠈|--//
+//--|🠋 Start the Server 🠋|--//
 connectDatabase((err) => {
   if (!err) {
     server.listen(port, () => {
@@ -28,112 +28,60 @@ connectDatabase((err) => {
 
 module.exports = server; // Ensure module export for testing or further use
 
-//--|🠊 GET: Fetch List of Users Inside 'pending', 'enabled' & 'blocked' 🠈|--//
+//--|🠋 GET: Fetch Users 🠋|--//
 server.get(`/${root}`, async (req, res) => {
   try {
-    // Fetch data from both collections
+    //--|🠊 Fetch data from both collections 🠈|--//
     const usersEnabled = await database.collection('enabled').find().sort({ email: 1 }).toArray();
     const usersPending = await database.collection('pending').find().sort({ email: 1 }).toArray();
     const usersBlocked = await database.collection('blocked').find().sort({ email: 1 }).toArray();
-    // Combine the data into a single response
+    //--|🠊 Combine the data into a single response 🠈|--//
     const allUsers = {
       enabled: usersEnabled,
       pending: usersPending,
       blocked: usersBlocked,
     };
 
-    res.status(200).json(allUsers); // Send the combined data as JSON
+    res.status(200).json(allUsers); //--|🠊 Send the combined data as JSON 🠈|--//
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Could not fetch the user documents' });
   }
 });
 
-//--|🠊 POST: Login Page 🠈|--//
+//--|🠋 POST: Login Page 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
-  console.log('Login Request Body:', req.body); // Debugging log for incoming requests
+  console.log('Login Request Body:', req.body); //--|🠈 Debugging log for incoming requests 🠈|--//
 
   try {
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+    const { email, passwordHash } = req.body; //--|🠈 Extract email and passwordHash from the request body 🠈|--//
 
-    // Check for user in 'enabled', 'pending', or 'blocked' collections
+    //--|🠊 Check for user in 'enabled', 'pending', or 'blocked' collections 🠈|--//
     const collections = ['enabled', 'pending', 'blocked'];
     let user = null;
 
     for (const collection of collections) {
       user = await database.collection(collection).findOne({ email });
-      if (user) break; // Stop searching once a user is found
+      if (user) break; //--|🠈 Stop searching once a user is found 🠈|--//
     }
 
     if (!user) {
-      return res.status(404).send('Email not found.'); // User does not exist in any collection
+      return res.status(404).send('Email not found.'); //--|🠈 User does not exist in any collection 🠈|--//
     }
 
-    // Verify password
+    //--|🠊 Verify password 🠈|--//
     const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
     if (!isPasswordValid) {
-      return res.status(401).send('Invalid password.'); // Respond with unauthorized for invalid password
+      return res.status(401).send('Invalid password.'); //--|🠈 Respond with unauthorized for invalid password 🠈|--//
     }
 
-    // If the login is successful, respond with the user status
-    return res.status(200).json({ status: user.status, role: user.role }); // Extend response for scalability (e.g., role)
+    //--|🠊 If the login is successful, respond with the user status 🠈|--//
+    return res.status(200).json({ status: user.status, role: user.role }); //--|🠈 Extend response for scalability (e.g., role) 🠈|--//
   } catch (error) {
-    console.error('Error in Login:', error); // Log the error for debugging
-    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
+    console.error('Error in Login:', error); //--|🠈 Log the error for debugging 🠈|--//
+    return res.status(500).json({ error: 'Internal Server Error' }); //--|🠈 Generic error response 🠈|--//
   }
 });
-/*
-server.post(`/${root}/login`, async (req, res) => {
-  console.log('Login Request Body:', req.body); // Debugging log
-
-  try {
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from request
-
-    // Check for user in both 'enabled' and 'pending' collections
-    let user =
-      (await database.collection('enabled').findOne({ email })) ||
-      (await database.collection('pending').findOne({ email })) ||
-      (await database.collection('blocked').findOne({ email }));
-
-    if (!user) {
-      return res.status(404).send('Email not found.'); // User does not exist in either collection
-    }
-
-    // Verify password
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(401).send('Invalid password.'); // Invalid password
-    }
-
-    // Send back user status ('enabled' or 'pending') if login is successful
-    return res.status(200).send(user.status);
-  } catch (error) {
-    console.error('Error in Login:', error); // Log error for debugging
-    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error message
-  }
-});
-*/
-/*
-server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Check User Password 🠋|--//
-  console.log('Login Request Body:', req.body);
-
-  try {
-    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
-    const user = await database.collection(root).findOne({ email }); // Attempt to find a user with the provided email in the database
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Compare the provided passwordHash with the stored passwordHash
-    //--|🠊 Respond based on password validity 🠈|--//
-    if (isPasswordValid) {
-      return res.status(200).send(user.status); // Send success message
-    } else {
-      return res.status(401).send('Invalid password.'); // Unauthorized for invalid password
-    }
-  } catch (error) {
-    console.error('Error in Login:', error); // Log the error for debugging purposes
-    return res.status(500).json({ error: error.message || 'Internal Server Error' }); // Return a generic error response to the client
-  }
-});
-*/
 
 //--|🠊 POST: Registration Page 🠈|--//
 /*
@@ -183,29 +131,6 @@ server.post(`/${root}`, async (req, res) => {
   } catch (error) {
     console.error(error); // Log the error for debugging
     res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
-  }
-});
-*/
-
-/*
-// Broken Code
-let database;
-const port = 3000;
-const root = 'users';
-const name = 'pending';
-const server = express();
-server.use(express.json());
-server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
-
-//--|🠊 Start the Server 🠈|--//
-connectToDatabase((err) => {
-  if (!err) {
-    // If no error during connection
-    server.listen(port, () => {
-      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
-      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
-    });
-    database = getDatabase(); // Assign the connected database to the `database` variable
   }
 });
 */
