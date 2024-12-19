@@ -28,17 +28,18 @@ connectDatabase((err) => {
 
 module.exports = server; // Ensure module export for testing or further use
 
-//--|🠊 GET: Fetch List of Users Inside 'pending' & 'enabled' 🠈|--//
+//--|🠊 GET: Fetch List of Users Inside 'pending', 'enabled' & 'blocked' 🠈|--//
 server.get(`/${root}`, async (req, res) => {
   try {
     // Fetch data from both collections
     const usersEnabled = await database.collection('enabled').find().sort({ email: 1 }).toArray();
     const usersPending = await database.collection('pending').find().sort({ email: 1 }).toArray();
-
+    const usersBlocked = await database.collection('blocked').find().sort({ email: 1 }).toArray();
     // Combine the data into a single response
     const allUsers = {
       enabled: usersEnabled,
       pending: usersPending,
+      blocked: usersBlocked,
     };
 
     res.status(200).json(allUsers); // Send the combined data as JSON
