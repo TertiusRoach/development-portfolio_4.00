@@ -56,56 +56,58 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
-    event.preventDefault(); // Prevents refresh
+    event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
     switch (slide) {
       case 'login':
-        setIsSubmitting(true); // Indicate submission in progress
+        setIsSubmitting(true); //--|🠈 Indicate submission in progress 🠈|--//
         try {
           const response = await axios.post('http://localhost:3000/users/login', {
-            email, // Email entered by the user
-            passwordHash: password, // Password entered by the user
+            email, //--|🠈 Email entered by the user 🠈|--//
+            passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
           });
 
-          const userStatus = response.data; // Extract the status from server response
+          const { status } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
           //--|🠊 Validate User Status 🠈|--//
-          if (!userStatus) {
-            alert('Email not found. Redirecting to registration page.');
-            viewCarousel('register'); // Redirect to the registration page
-            return;
-          }
-
-          switch (userStatus) {
+          switch (status) {
             case 'pending':
               alert('Account not verified. Expanding left sidebar for further steps.');
-              document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
-              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); // Expand left sidebar
-              setLoggedIn(false); // User is not fully authorized
-              setCurrentView('unverified'); // Show unverified page
-              break;
 
+              setLoggedIn(false); //--|🠈 User is not fully authorized 🠈|--//
+              setCurrentView('unverified'); //--|🠈 Show unverified page 🠈|--//
+
+              document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
+              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand left sidebar 🠈|--//
+              break;
             case 'enabled':
               alert('Login successful. Loading application...');
-              setLoggedIn(true); // User is fully authorized
-              setCurrentView('authorized'); // Show the authorized page
-              loadResume(); // Load the main application
-              break;
 
+              setLoggedIn(true); //--|🠈 User is fully authorized 🠈|--//
+              setCurrentView('authorized'); //--|🠈 Show the authorized page 🠈|--//
+
+              loadResume(); //--|🠈 Load the main application 🠈|--//
+              break;
             default:
               alert('Unknown status returned from the server.');
           }
         } catch (error) {
           //--|🠊 Handle Login Errors 🠈|--//
-          if ((error as AxiosError).response?.status === 401) {
-            // Invalid password
+          const axiosError = error as AxiosError;
+
+          if (axiosError.response?.status === 404) {
+            //--|🠊 User not found 🠈|--//
+            alert('Email not found. Redirecting to registration page.');
+            viewCarousel('register'); //--|🠈 Redirect to the registration page 🠈|--//
+          } else if (axiosError.response?.status === 401) {
+            //--|🠊 Invalid password 🠈|--//
             alert('Invalid password. Redirecting to password reset section.');
-            viewCarousel('password'); // Redirect to password reset section
+            viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
           } else {
             alert('An error occurred during login. Please try again later.');
-            console.error('Error during login:', error); // Log unexpected errors for debugging
+            console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
           }
         } finally {
-          setIsSubmitting(false); // Reset submission state
+          setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
         }
         break;
       case 'register':
@@ -173,7 +175,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       case 'register':
         return (
           <form className="register-form" onSubmit={(event) => handleData(event, 'register')}>
-            {/* ----- */}
             <div className="register-header">
               <div className="register-label">
                 <h6 className="display-6">Register</h6>
@@ -191,7 +192,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="register-inputs">
               <div className="fullname-inputs">
                 <input
@@ -240,7 +240,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            {/* ----- */}
             <div className="register-footer">
               <mark className="register-action">
                 <button className="register-button" type="submit" disabled={isSubmitting}>
@@ -260,13 +259,11 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
       case 'login':
         return (
           <form className="login-form" onSubmit={(event) => handleData(event, 'login')}>
-            {/* ----- */}
             <div className="login-header">
               <div className="login-label">
                 <h6 className="display-6">Login</h6>
@@ -284,7 +281,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="login-inputs">
               <input
                 required
@@ -307,7 +303,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            {/* ----- */}
             <div className="login-footer">
               <mark className="login-action">
                 <button className="login-button" disabled={isSubmitting}>
@@ -326,13 +321,11 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
       case 'password':
         return (
           <form className="password-form">
-            {/* ----- */}
             <div className="password-header">
               <div className="password-label">
                 <h6 className="display-6">Password</h6>
@@ -350,12 +343,10 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 />
               </div>
             </div>
-            {/* ----- */}
             <div className="password-inputs">
               <input placeholder="Email" type="text" id="email" name="Email" />
               {/* <input placeholder="New Password" type="password" id="password" name="password" /> */}
             </div>
-            {/* ----- */}
             <div className="password-footer">
               <mark className="password-action">
                 <button className="password-button">
@@ -374,10 +365,15 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 </button>
               </menu>
             </div>
-            {/* ----- */}
           </form>
         );
     }
+  };
+  const loadResume = () => {
+    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
+    landingBody.remove();
+    return ReactDOM.createRoot(resumeBody).render(<Resume />);
   };
   const viewCarousel = (slide: 'register' | 'login' | 'password') => {
     let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
@@ -387,18 +383,12 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       password: 'translateX(-200vw)',
     }[slide];
   };
-  const loadResume = () => {
-    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-    landingBody.remove();
-    return ReactDOM.createRoot(resumeBody).render(<Resume />);
-  };
-  let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
 
   useEffect(() => {
     console.log(currentView);
     switch (currentView) {
       case 'default':
+        let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
         return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
       case 'authorized':
         loadResume();

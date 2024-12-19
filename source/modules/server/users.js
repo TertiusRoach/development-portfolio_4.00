@@ -51,6 +51,39 @@ server.get(`/${root}`, async (req, res) => {
 
 //--|🠊 POST: Login Page 🠈|--//
 server.post(`/${root}/login`, async (req, res) => {
+  console.log('Login Request Body:', req.body); // Debugging log for incoming requests
+
+  try {
+    const { email, passwordHash } = req.body; // Extract email and passwordHash from the request body
+
+    // Check for user in 'enabled', 'pending', or 'blocked' collections
+    const collections = ['enabled', 'pending', 'blocked'];
+    let user = null;
+
+    for (const collection of collections) {
+      user = await database.collection(collection).findOne({ email });
+      if (user) break; // Stop searching once a user is found
+    }
+
+    if (!user) {
+      return res.status(404).send('Email not found.'); // User does not exist in any collection
+    }
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+    if (!isPasswordValid) {
+      return res.status(401).send('Invalid password.'); // Respond with unauthorized for invalid password
+    }
+
+    // If the login is successful, respond with the user status
+    return res.status(200).json({ status: user.status, role: user.role }); // Extend response for scalability (e.g., role)
+  } catch (error) {
+    console.error('Error in Login:', error); // Log the error for debugging
+    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
+  }
+});
+/*
+server.post(`/${root}/login`, async (req, res) => {
   console.log('Login Request Body:', req.body); // Debugging log
 
   try {
@@ -58,7 +91,9 @@ server.post(`/${root}/login`, async (req, res) => {
 
     // Check for user in both 'enabled' and 'pending' collections
     let user =
-      (await database.collection('enabled').findOne({ email })) || (await database.collection('pending').findOne({ email }));
+      (await database.collection('enabled').findOne({ email })) ||
+      (await database.collection('pending').findOne({ email })) ||
+      (await database.collection('blocked').findOne({ email }));
 
     if (!user) {
       return res.status(404).send('Email not found.'); // User does not exist in either collection
@@ -66,7 +101,6 @@ server.post(`/${root}/login`, async (req, res) => {
 
     // Verify password
     const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-
     if (!isPasswordValid) {
       return res.status(401).send('Invalid password.'); // Invalid password
     }
@@ -78,6 +112,7 @@ server.post(`/${root}/login`, async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' }); // Generic error message
   }
 });
+*/
 /*
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Check User Password 🠋|--//
