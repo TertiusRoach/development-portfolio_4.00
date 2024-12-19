@@ -111,59 +111,57 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         }
         break;
       case 'register':
-        /*
-        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
-        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
-        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
-        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
-
-        // Basic input validation
+        // Input Validation: Ensure all fields are filled
         if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
           setRegisterMessage('All fields are required.');
           return;
         }
 
-        if (
-          registerFirstName.value !== '' &&
-          registerLastName.value !== '' &&
-          registerEmail.value !== '' &&
-          registerPassword.value !== ''
-        ) {
-          // Email format validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            setRegisterMessage('Please enter a valid email address.');
-            return;
-          }
-
-          setIsSubmitting(true); // Disable button during submission
-          try {
-            // Send POST request to the server
-            const response = await axios.post('http://localhost:3000/users', {
-              firstName,
-              lastName,
-              email,
-              passwordHash: password,
-            });
-
-            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
-            // Display success message
-            setRegisterMessage('User registered successfully! Please check your email.');
-          } catch (error) {
-            // Improved error handling
-            if (axios.isAxiosError(error)) {
-              console.error('Registration Error:', error.message);
-              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
-            } else {
-              console.error('Unexpected Error:', error);
-              setRegisterMessage('An unexpected error occurred.');
-            }
-          } finally {
-            setIsSubmitting(false); // Re-enable the button
-          }
+        // Email Validation: Check format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          setRegisterMessage('Please enter a valid email address.');
+          return;
         }
-        */
-        console.log('//--|🠊 Test Register 🠈|--//');
+
+        setIsSubmitting(true); // Disable button during submission
+        try {
+          const response = await axios.post('http://localhost:3000/users/register', {
+            firstName,
+            lastName,
+            email,
+            passwordHash: password, // Password sent to back-end for hashing
+          });
+
+          const { message, status } = response.data; // Back-end response
+          alert(message);
+
+          switch (status) {
+            case 'pending':
+            case 'created': // Pending user
+              viewCarousel('login'); // Scroll to login
+              document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
+              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); // Expand sidebar
+              break;
+            case 'enabled': // Enabled user
+              viewCarousel('login'); // Scroll to login
+              break;
+            case 'password': // Incorrect password
+              viewCarousel('password'); // Redirect to password reset
+              break;
+            default:
+              setRegisterMessage('Unexpected response from the server. Please try again.');
+          }
+        } catch (error) {
+          // Handle Axios errors
+          if (axios.isAxiosError(error)) {
+            setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+          } else {
+            setRegisterMessage('An unexpected error occurred.');
+          }
+        } finally {
+          setIsSubmitting(false); // Re-enable the button
+        }
         break;
       case 'password':
         console.log('//--|🠊 Test Password 🠈|--//');
@@ -432,3 +430,58 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
+
+/*
+        let registerFirstName = eventForm.childNodes[1].childNodes[0].childNodes[0] as HTMLInputElement;
+        let registerLastName = eventForm.childNodes[1].childNodes[0].childNodes[1] as HTMLInputElement;
+        let registerEmail = eventForm.childNodes[1].childNodes[1] as HTMLInputElement;
+        let registerPassword = eventForm.childNodes[1].childNodes[2] as HTMLInputElement;
+
+        // Basic input validation
+        if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
+          setRegisterMessage('All fields are required.');
+          return;
+        }
+
+        if (
+          registerFirstName.value !== '' &&
+          registerLastName.value !== '' &&
+          registerEmail.value !== '' &&
+          registerPassword.value !== ''
+        ) {
+          // Email format validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            setRegisterMessage('Please enter a valid email address.');
+            return;
+          }
+
+          setIsSubmitting(true); // Disable button during submission
+          try {
+            // Send POST request to the server
+            const response = await axios.post('http://localhost:3000/users', {
+              firstName,
+              lastName,
+              email,
+              passwordHash: password,
+            });
+
+            console.log('//--|🠊 Registration Cleared: Load Activation 🠈|--//');
+            // Display success message
+            setRegisterMessage('User registered successfully! Please check your email.');
+          } catch (error) {
+            // Improved error handling
+            if (axios.isAxiosError(error)) {
+              console.error('Registration Error:', error.message);
+              setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+            } else {
+              console.error('Unexpected Error:', error);
+              setRegisterMessage('An unexpected error occurred.');
+            }
+          } finally {
+            setIsSubmitting(false); // Re-enable the button
+          }
+        }
+        
+        break;
+        */

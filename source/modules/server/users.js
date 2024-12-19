@@ -84,56 +84,83 @@ server.post(`/${root}/login`, async (req, res) => {
 });
 
 //--|🠊 POST: Registration Page 🠈|--//
-/*
-server.post(`/${root}`, async (req, res) => {
-  //--|🠋 Add a New User 🠋|--//
-  const today = new Date(); // Get current date
-  const todayISO = today.toISOString().split('.')[0] + 'Z'; // Convert to ISO format (e.g., YYYY-MM-DDTHH:mm:ssZ)
+server.post(`/${root}/register`, async (req, res) => {
+  const today = new Date(); // Current date
+  const todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
+  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
 
-  const tomorrow = new Date(today); // Clone today's date
-  tomorrow.setDate(tomorrow.getDate() + 1); // Increment by 1 day
-  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format for tomorrow
+  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
+  const randomCode = generateRandomCode(5); // Generate 5-digit activation code
+  const { email, passwordHash, firstName, lastName } = req.body;
 
-  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // Get user's IP address
-  const randomCode = generateRandomCode(5);
+  // Check if email exists in 'enabled', 'pending', or 'blocked'
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
 
-  try {
-    // Hash the user's password
+  if (user) {
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Validate password
+
+    if (user.status === 'pending' && isPasswordValid) {
+      // Pending user with valid password
+      return res.status(200).json({
+        status: 'pending',
+        message: 'Account already exists but is not verified. Please log in to verify your account.',
+      });
+    } else if (user.status === 'enabled' && isPasswordValid) {
+      // Enabled user with valid password
+      return res.status(200).json({
+        status: 'enabled',
+        message: 'Welcome back! Redirecting to login.',
+      });
+    } else if (!isPasswordValid) {
+      // Incorrect password
+      return res.status(200).json({
+        status: 'password',
+        message: 'Email exists but the password is incorrect. Redirecting to password reset.',
+      });
+    } else {
+      // Fallback for unexpected cases
+      return res.status(400).json({
+        status: 'error',
+        message: 'Unexpected condition encountered. Please contact support.',
+      });
+    }
+  } else {
+    // User doesn't exist; create a new entry in the 'pending' collection
     const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(req.body.passwordHash, salt);
+    const hashedPassword = await bcrypt.hash(passwordHash, salt);
 
-    // Insert the user data into the database
-    const result = await database.collection(root).insertOne({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-
-      email: req.body.email,
+    await database.collection('pending').insertOne({
+      firstName,
+      lastName,
+      email,
       passwordHash: hashedPassword,
-
-      verifiedEmail: false, // Initial email verification state
+      verifiedEmail: false,
       activationCode: randomCode,
-      activationCodeExpiresAt: tomorrowISO, // Activation code expiry
-
-      userIP: userIP, // Store user's IP address
-      lastLogin: null, // No login yet
-      createdAt: todayISO, // Timestamp of user creation
-      updatedAt: null, // To be updated on edits
-
-      role: 'user', // Default role for new users
-      status: 'pending', // pending | verified
-
-      passwordResetToken: null, // For password recovery feature
-      passwordResetExpiresAt: null, // Expiry for reset token
+      activationCodeExpiresAt: tomorrowISO,
+      userIP,
+      createdAt: todayISO,
+      updatedAt: null,
+      lastLogin: null,
+      role: 'user',
+      status: 'pending',
+      passwordResetToken: null,
+      passwordResetExpiresAt: null,
     });
 
-    // Respond with a 201 (Created) and return the inserted result
-    res.status(201).json(result);
-  } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).json({ err: 'Could not create a new user.' }); // User feedback for server issues
+    // Optionally send activation email (skip for now)
+    // await sendActivationEmail(email, randomCode);
+
+    return res.status(201).json({
+      status: 'created',
+      message: 'Registration successful! Please check your email for the activation code.',
+    });
   }
 });
-*/
 
 const generateRandomCode = (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
