@@ -38,22 +38,22 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
-  // Shared input states
+  //--|🠋 Shared input states 🠋|--//
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
 
-  // Registration-specific input states
+  //--|🠋 Registration-specific input states 🠋|--//
   let [firstName, setFirstName] = useState('');
   let [lastName, setLastName] = useState('');
 
-  // Feedback messages for user interactions
+  //--|🠋 Feedback messages for user interactions 🠋|--//
   let [loginMessage, setLoginMessage] = useState('');
   let [registerMessage, setRegisterMessage] = useState('');
   let [passwordMessage, setPasswordMessage] = useState('');
 
-  // Other UI states
-  let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
-  let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
+  //--|🠋 Other UI states 🠋|--//
+  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
+  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
@@ -111,20 +111,20 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         }
         break;
       case 'register':
-        // Input Validation: Ensure all fields are filled
+        //--|🠋 Input Validation: Ensure all fields are filled 🠋|--//
         if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
           setRegisterMessage('All fields are required.');
           return;
         }
 
-        // Email Validation: Check format
+        //--|🠋 Email Validation: Check format 🠋|--//
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
           setRegisterMessage('Please enter a valid email address.');
           return;
         }
 
-        setIsSubmitting(true); // Disable button during submission
+        setIsSubmitting(true); //--|🠈 Disable button during submission 🠈|--//
         try {
           const response = await axios.post('http://localhost:3000/users/register', {
             firstName,
@@ -133,34 +133,34 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             passwordHash: password, // Password sent to back-end for hashing
           });
 
-          const { message, status } = response.data; // Back-end response
+          const { message, status } = response.data; //--|🠈 Back-end response 🠈|--//
           alert(message);
 
           switch (status) {
-            case 'pending':
-            case 'created': // Pending user
-              viewCarousel('login'); // Scroll to login
+            case 'pending': //--|🠈 Pending user 🠈|--//
+            case 'created': //--|🠈 Created user 🠈|--//
+              viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
               document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
-              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); // Expand sidebar
+              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand sidebar 🠈|--//
               break;
-            case 'enabled': // Enabled user
-              viewCarousel('login'); // Scroll to login
+            case 'enabled': //--|🠈 Enabled user 🠈|--//
+              viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
               break;
-            case 'password': // Incorrect password
-              viewCarousel('password'); // Redirect to password reset
+            case 'password': //--|🠈 Incorrect password 🠈|--//
+              viewCarousel('password'); //--|🠈 Redirect to password reset 🠈|--//
               break;
             default:
               setRegisterMessage('Unexpected response from the server. Please try again.');
           }
         } catch (error) {
-          // Handle Axios errors
+          //--|🠋 Handle Axios errors 🠋|--//
           if (axios.isAxiosError(error)) {
             setRegisterMessage(error.response?.data?.err || 'Registration failed.');
           } else {
             setRegisterMessage('An unexpected error occurred.');
           }
         } finally {
-          setIsSubmitting(false); // Re-enable the button
+          setIsSubmitting(false); //--|🠈 Re-enable the button 🠈|--//
         }
         break;
       case 'password':
