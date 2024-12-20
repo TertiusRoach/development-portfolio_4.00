@@ -32,7 +32,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'default' | 'verified' | 'authorized' | 'recovery'>('default');
+  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('unverified');
 
   // Shared input states
   let [email, setEmail] = useState('');
@@ -72,9 +72,9 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
-      <form className="verified-form">
-        <div className="verified-header">
-          <div className="verified-label">
+      <form className="verify-form">
+        <div className="verify-header">
+          <div className="verify-label">
             <h6 className="display-6">Verify</h6>
           </div>
           <button className="close-leftbar" type="button">
@@ -83,14 +83,14 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
               alt=""
             />
           </button>
-          <div className="verified-logo">
+          <div className="verify-logo">
             <img
               src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
               alt="Login Logo"
             />
           </div>
         </div>
-        <div className="verified-inputs">
+        <div className="verify-inputs">
           <input
             required
             id="code"
@@ -102,20 +102,20 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
-        <div className="verified-footer">
-          <mark className="verified-action">
-            <button className="verified-button" disabled={isSubmitting}>
+        <div className="verify-footer">
+          <mark className="verify-action">
+            <button className="verify-button" disabled={isSubmitting}>
               <h6>Authorize</h6>
             </button>
-            <div className={`verified-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+            <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
               <h6>{loginMessage}</h6>
             </div>
           </mark>
-          {/* <menu className="verified-buttons">
-            <button className="verified-register" type="button">
+          {/* <menu className="verify-buttons">
+            <button className="verify-register" type="button">
               <h6>Register Account</h6>
             </button>
-            <button className="verified-password" type="button">
+            <button className="verify-password" type="button">
               <h6>Forgot Password</h6>
             </button>
           </menu> */}

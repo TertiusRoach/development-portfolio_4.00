@@ -197,8 +197,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                   type="text"
                   id="first-name"
                   name="First Name"
-                  placeholder="First Name"
                   pattern="[A-Z][a-zA-Z\s]+"
+                  placeholder="//--|🠊 First Name 🠈|--//"
                   title="Name must start with a capital letter and contain only letters and spaces"
                   // --- //
                   value={firstName}
@@ -210,7 +210,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                   id="last-name"
                   name="Last Name"
                   pattern="[a-zA-Z\s]+"
-                  placeholder="Last Name"
+                  placeholder="//--|🠊 Last Name 🠈|--//"
                   title="Surname can't contain any numerical values or special characters"
                   // --- //
                   value={lastName}
@@ -222,7 +222,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 id="email"
                 name="Email"
                 type="email"
-                placeholder="Email"
+                placeholder="//--|🠊 Email Address 🠈|--//"
                 // --- //
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -232,7 +232,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 id="password"
                 type="password"
                 name="Password"
-                placeholder="Password"
+                placeholder="//--|🠊 Insert Password 🠈|--//"
                 // --- //
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -285,7 +285,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 id="email"
                 name="Email"
                 type="email"
-                placeholder="Email"
+                placeholder="//--|🠊 Email Address 🠈|--//"
                 // --- //
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -295,7 +295,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 id="password"
                 name="Password"
                 type="password"
-                placeholder="Password"
+                placeholder="//--|🠊 Your Password 🠈|--//"
                 // --- //
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -342,8 +342,16 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               </div>
             </div>
             <div className="password-inputs">
-              <input placeholder="Email" type="text" id="email" name="Email" />
-              {/* <input placeholder="New Password" type="password" id="password" name="password" /> */}
+              <input
+                required
+                id="email"
+                name="Email"
+                type="email"
+                placeholder="//--|🠊 Registered Email 🠈|--//"
+                // --- //
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
             <div className="password-footer">
               <mark className="password-action">

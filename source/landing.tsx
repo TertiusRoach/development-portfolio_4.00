@@ -28,7 +28,7 @@ function Landing() {
     <>
       <LandingLeftbar info={information} />
       <LandingMain info={information} />
-      {/* <LandingRightbar info={information} /> */}
+      <LandingRightbar info={information} />
     </>
   );
 }
