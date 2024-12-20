@@ -162,6 +162,35 @@ server.post(`/${root}/register`, async (req, res) => {
   }
 });
 
+//--|🠊 POST: Password Page 🠈|--//
+server.post(`/${root}/password`, async (req, res) => {
+  console.log('//--|🠊 Password Reset Request Body 🠈|--//', req.body);
+
+  try {
+    const { email } = req.body; // Extract email from the request body
+
+    //--|🠊 Check if email exists in any collection 🠈|--//
+    const collections = ['enabled', 'pending', 'blocked'];
+    let user = null;
+
+    for (const collection of collections) {
+      user = await database.collection(collection).findOne({ email });
+      if (user) break; // Stop searching once the user is found
+    }
+
+    if (user) {
+      //--|🠊 Respond with 'exists: true' if the email is found 🠈|--//
+      return res.status(200).json({ exists: true });
+    } else {
+      //--|🠊 Respond with 'exists: false' if the email is not found 🠈|--//
+      return res.status(200).json({ exists: false });
+    }
+  } catch (error) {
+    console.error('Error in Password Reset:', error); // Log the error for debugging
+    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
+  }
+});
+
 const generateRandomCode = (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';

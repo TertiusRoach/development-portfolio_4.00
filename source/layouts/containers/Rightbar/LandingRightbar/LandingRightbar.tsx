@@ -51,7 +51,7 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
   useEffect(() => {
-    console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
+    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
 
   return (

@@ -57,6 +57,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+
     switch (slide) {
       case 'login':
         setIsSubmitting(true); //--|🠈 Indicate submission in progress 🠈|--//
@@ -85,7 +87,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               setLoggedIn(true); //--|🠈 User is fully authorized 🠈|--//
               setCurrentView('authorized'); //--|🠈 Show the authorized page 🠈|--//
 
-              loadResume(); //--|🠈 Load the main application 🠈|--//
+              // loadResume(); //--|🠈 Load the main application 🠈|--//
               break;
             default:
               alert('Unknown status returned from the server.');
@@ -118,7 +120,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         }
 
         //--|🠋 Email Validation: Check format 🠋|--//
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
           setRegisterMessage('Please enter a valid email address.');
           return;
@@ -164,7 +166,53 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         }
         break;
       case 'password':
-        console.log('//--|🠊 Test Password 🠈|--//');
+        event.preventDefault(); //--|🠈 Prevents page refresh 🠈|--//
+
+        //--|🠋 Input Validation: Ensure email is provided 🠋|--//
+        if (!email.trim()) {
+          alert('Please enter an email address to proceed.'); //--|🠈 Alert user if the input is empty 🠈|--//
+          return;
+        }
+
+        //--|🠋 Email Validation: Check format 🠋|--//
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address.'); //--|🠈 Notify user of invalid email format 🠈|--//
+          return;
+        }
+
+        setIsSubmitting(true); //--|🠈 Indicates submission is in progress 🠈|--//
+
+        try {
+          //--|🠋 Send email to back-end for validation 🠋|--//
+          const response = await axios.post('http://localhost:3000/users/password', { email });
+
+          //--|🠋 Handle response from server 🠋|--//
+          if (response.status === 200) {
+            const { exists } = response.data; //--|🠈 Check if email exists in database 🠈|--//
+
+            if (exists) {
+              alert('Email found! Please check your email for the verification code to reset your password.');
+
+              //--|🠋 Expand #landing-rightbar 🠋|--//
+              const rightbar = document.querySelector('#landing-rightbar') as HTMLElement;
+              rightbar.classList.toggle('collapsed', false);
+              rightbar.classList.toggle('expanded', true); //--|🠈 Toggle sidebar to "expanded" state 🠈|--//
+            } else {
+              alert('Email not found! Redirecting to registration section.');
+              viewCarousel('register'); //--|🠈 Move carousel to registration section 🠈|--//
+            }
+          } else {
+            alert('Unexpected response from the server. Please try again later.');
+          }
+        } catch (error) {
+          //--|🠋 Handle errors during the process 🠋|--//
+          alert('An error occurred while processing your request. Please try again later.');
+          console.error('Error during password reset:', error); //--|🠈 Log error for debugging 🠈|--//
+        } finally {
+          setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
+        }
+
+        console.log('//--|🠊 Password Reset Flow Triggered 🠈|--//');
         break;
     }
   };
@@ -323,7 +371,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
       case 'password':
         return (
-          <form className="password-form">
+          <form className="password-form" onSubmit={(event) => handleData(event, 'password')}>
             <div className="password-header">
               <div className="password-label">
                 <h6 className="display-6">Password</h6>
@@ -375,12 +423,14 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
     }
   };
+  /*
   const loadResume = () => {
     let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
     let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
     landingBody.remove();
     return ReactDOM.createRoot(resumeBody).render(<Resume />);
   };
+  */
   const viewCarousel = (slide: 'register' | 'login' | 'password') => {
     let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
     carouselContainer.style.transform = {
@@ -395,11 +445,13 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
     switch (currentView) {
       case 'default':
         let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-        return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
-      case 'authorized':
-        loadResume();
+        resumeBody.innerHTML = '<main class="default-main" />';
+        // return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
         break;
+      case 'authorized':
+        // loadResume();
         alert('//--|🠊 Login Successful: Load Page 🠈|--//');
+        break;
       case 'unverified':
         let test = document.querySelector('#landing-leftbar') as HTMLElement;
         if (test) {
