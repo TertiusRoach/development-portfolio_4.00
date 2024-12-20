@@ -160,6 +160,10 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 > Open Command Pallette: Ctrl + Shift + P
 > Type "Collapse Folders in Explorer" + Enter
 
+//--|🠋 Stop Server Inside Terminal 🠈|--//
+
+> Open Appropriate Terminal: Ctrl + C
+
 ---
 
 ## Folder Structure to Reference Storage
