@@ -148,8 +148,8 @@ server.post(`/${root}/register`, async (req, res) => {
       lastLogin: null,
       role: 'user',
       status: 'pending',
-      passwordResetToken: null,
-      passwordResetExpiresAt: null,
+      passwordCode: null,
+      passwordCodeExpiresAt: null,
     });
 
     // Optionally send activation email (skip for now)
@@ -167,27 +167,62 @@ server.post(`/${root}/password`, async (req, res) => {
   console.log('//--|🠊 Password Reset Request Body 🠈|--//', req.body);
 
   try {
-    const { email } = req.body; // Extract email from the request body
+    //--|🠋 Extract email from request body 🠋|--//
+    const { email } = req.body;
 
-    //--|🠊 Check if email exists in any collection 🠈|--//
-    const collections = ['enabled', 'pending', 'blocked'];
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required.' }); //--|🠈 Validate input 🠈|--//
+    }
+
+    //--|🠋 Initialize variables for collections and user search 🠋|--//
+    const collections = ['enabled', 'pending', 'blocked']; //--|🠈 List of user collections 🠈|--//
     let user = null;
+    let userCollection = null;
 
+    //--|🠋 Search for user in collections 🠋|--//
     for (const collection of collections) {
       user = await database.collection(collection).findOne({ email });
-      if (user) break; // Stop searching once the user is found
+      if (user) {
+        userCollection = collection; //--|🠈 Track the collection where the user is found 🠈|--//
+        break;
+      }
     }
 
     if (user) {
-      //--|🠊 Respond with 'exists: true' if the email is found 🠈|--//
-      return res.status(200).json({ exists: true });
+      //--|🠋 If email is found, update passwordCode and passwordCodeExpiresAt 🠋|--//
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1); //--|🠈 Set expiration to 1 day from now 🠈|--//
+      const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; //--|🠈 Format to ISO 🠈|--//
+
+      const randomCode = generateRandomCode(5); //--|🠈 Generate a 5-digit activation code 🠈|--//
+
+      //--|🠋 Update user's document in the appropriate collection 🠋|--//
+      const updateResult = await database.collection(userCollection).updateOne(
+        { email }, //--|🠈 Match user by email 🠈|--//
+        {
+          $set: {
+            passwordCode: randomCode, //--|🠈 Set new password reset code 🠈|--//
+            passwordCodeExpiresAt: tomorrowISO, //--|🠈 Set expiration time 🠈|--//
+          },
+        }
+      );
+
+      //--|🠋 Respond to the client with success 🠋|--//
+      if (updateResult.modifiedCount > 0) {
+        console.log(`//--|🠊 Password reset fields updated for ${email} 🠈|--//`);
+        return res.status(200).json({ exists: true, updated: true });
+      } else {
+        console.warn(`//--|🠊 Password reset update failed for ${email} 🠈|--//`);
+        return res.status(500).json({ error: 'Failed to update password reset fields.' });
+      }
     } else {
-      //--|🠊 Respond with 'exists: false' if the email is not found 🠈|--//
+      //--|🠋 Respond with 'exists: false' if the email is not found 🠋|--//
       return res.status(200).json({ exists: false });
     }
   } catch (error) {
-    console.error('Error in Password Reset:', error); // Log the error for debugging
-    return res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
+    //--|🠋 Handle errors during the process 🠋|--//
+    console.error('Error in Password Reset:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

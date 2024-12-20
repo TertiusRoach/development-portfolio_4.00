@@ -67,7 +67,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
+    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
 
   return (

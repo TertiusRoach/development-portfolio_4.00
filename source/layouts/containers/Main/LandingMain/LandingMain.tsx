@@ -211,8 +211,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         } finally {
           setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
         }
-
-        console.log('//--|🠊 Password Reset Flow Triggered 🠈|--//');
         break;
     }
   };
@@ -441,7 +439,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    console.log(currentView);
+    // console.log(currentView);
     switch (currentView) {
       case 'default':
         let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
