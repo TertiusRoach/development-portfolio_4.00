@@ -4,6 +4,8 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
+const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
+// const { sendActivationEmail } = require('./send'); // Import the sendActivationEmail function
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
@@ -152,9 +154,17 @@ server.post(`/${root}/register`, async (req, res) => {
       passwordCodeExpiresAt: null,
     });
 
-    // Optionally send activation email (skip for now)
-    // await sendActivationEmail(email, randomCode);
-
+    // Send activation email
+    try {
+      await sendActivationEmail(email, randomCode);
+      console.log(`Activation email sent to ${email}`);
+    } catch (error) {
+      console.error(`Failed to send activation email to ${email}:`, error);
+      return res.status(500).json({
+        status: 'email_error',
+        message: 'Registration successful, but failed to send activation email. Please contact support.',
+      });
+    }
     return res.status(201).json({
       status: 'created',
       message: 'Registration successful! Please check your email for the activation code.',
@@ -226,7 +236,34 @@ server.post(`/${root}/password`, async (req, res) => {
   }
 });
 
-const generateRandomCode = (length) => {
+async function sendActivationEmail(email, activationCode) {
+  const transporter = nodemailer.createTransport({
+    host: 'sandbox.smtp.mailtrap.io', // Mailtrap's SMTP server
+    port: 2525, // Mailtrap's default port
+    auth: {
+      user: process.env.MAILTRAP_USER, // Mailtrap username (from .env file)
+      pass: process.env.MAILTRAP_PASS, // Mailtrap password (from .env file)
+    },
+  });
+
+  const mailOptions = {
+    from: '"Log a Ticket" <tertius.roach@outlook.com>', // Replace with a desired sender name and email
+    to: email, // Recipient's email
+    subject: 'Activate Your Account',
+    text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
+    html: `<p>Your activation code is: <strong>${activationCode}</strong>.</p><p>It will expire in 24 hours.</p>`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Activation email sent to ${email}`);
+  } catch (error) {
+    console.error('Error sending activation email:', error);
+    throw error;
+  }
+}
+
+function generateRandomCode(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
 
@@ -250,4 +287,4 @@ const generateRandomCode = (length) => {
     .sort(() => Math.random() - 0.5)
     .join('');
   return code;
-};
+}

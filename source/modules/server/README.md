@@ -14,6 +14,9 @@ You will need to download and install certain applications by manually downloadi
     npm install --save-dev express
     npm install --save-dev mongodb
 
+    npm install nodemailer
+    npm install mongoose
+
 ---
 
 # Powershell Commands for MongoDB
