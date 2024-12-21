@@ -276,7 +276,7 @@ async function sendActivationEmail(email, activationCode) {
   });
 
   const mailOptions = {
-    from: '"Log a Ticket" <info@arthomes.co.za>', // Replace with a desired sender name and email
+    from: `'"Log a Ticket" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
     to: email, // Recipient's email
     subject: 'Activate Your Account',
     text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
