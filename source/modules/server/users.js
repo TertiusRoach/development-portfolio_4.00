@@ -4,8 +4,6 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
-// const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
-// const { sendActivationEmail } = require('./send'); // Import the sendActivationEmail function
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
