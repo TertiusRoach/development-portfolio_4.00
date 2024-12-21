@@ -4,7 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
+// const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
 // const { sendActivationEmail } = require('./send'); // Import the sendActivationEmail function
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
@@ -261,18 +261,22 @@ function generateRandomCode(length) {
     .join('');
   return code;
 }
+
+const nodemailer = require('nodemailer');
+const { MailtrapTransport } = require('mailtrap');
+
 async function sendActivationEmail(email, activationCode) {
   const transporter = nodemailer.createTransport({
-    host: 'sandbox.smtp.mailtrap.io', // Mailtrap's SMTP server
-    port: 2525, // Mailtrap's default port
+    host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server
+    port: 587, // Mailtrap's default port
     auth: {
-      user: process.env.MAILTRAP_USER_ONE, // Mailtrap username (from .env file)
-      pass: process.env.MAILTRAP_PASS_ONE, // Mailtrap password (from .env file)
+      user: process.env.MAILTRAP_USER_THREE, // Mailtrap username (from .env file)
+      pass: process.env.MAILTRAP_PASS_THREE, // Mailtrap password (from .env file)
     },
   });
 
   const mailOptions = {
-    from: '"Log a Ticket" <tertius.roach@outlook.com>', // Replace with a desired sender name and email
+    from: '"Log a Ticket" <info@arthomes.co.za>', // Replace with a desired sender name and email
     to: email, // Recipient's email
     subject: 'Activate Your Account',
     text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
