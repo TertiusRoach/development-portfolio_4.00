@@ -27,7 +27,6 @@ connectDatabase((err) => {
     console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
   }
 });
-
 module.exports = server; // Ensure module export for testing or further use
 
 //--|🠋 GET: Fetch Users 🠋|--//
