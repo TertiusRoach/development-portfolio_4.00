@@ -6,6 +6,7 @@ You will need to download and install certain applications by manually downloadi
 
 > Terminal Command Installation
 
+    npm install mailtrap
     npm install mongoose
     npm install nodemailer
     npm install -g nodemon
@@ -22,7 +23,7 @@ You will need to download and install certain applications by manually downloadi
 
     npm install bull
     npm install ioredis
-    npm install mailtrap
+
     npm install node-cron
     npm install validator
 
