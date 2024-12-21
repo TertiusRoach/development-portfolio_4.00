@@ -23,11 +23,13 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 
 > Full Terminal Setup
 
+    npm install sass
+    npm install mongoose
     npm install -g react
     npm install -g nodemon
+    npm install nodemailer
     npm install -g typescript
     npm install -g webpack-cli
-    npm install --save-dev sass
     npm install --save-dev cors
     npm install --save-dev axios
     npm install --save-dev jquery
@@ -39,7 +41,6 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev kill-port
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
-    npm install --save-dev node-sass
     npm install --save-dev ts-loader
     npm install -g webpack-dev-server
     npm install --save-dev css-loader
@@ -85,12 +86,13 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 > Install Webpack, REACT, SASS, jQuery and Server Tools
 
-    npm install --save-dev sass
+    npm install sass
+    npm install mongoose
+    npm install nodemailer
     npm install --save-dev jquery
     npm install --save-dev webpack
     npm install --save-dev react-dom
     npm install --save-dev bootstrap
-    npm install --save-dev node-sass
     npm install --save-dev kill-port
     npm install --save-dev webpack-cli
     npm install --save-dev @types/react
