@@ -16,6 +16,11 @@ You will need to download and install certain applications by manually downloadi
     npm install --save-dev express
     npm install --save-dev mongodb
 
+    npm install bull
+    npm install ioredis
+    npm install node-cron
+    npm install validator
+
 ---
 
 # Powershell Commands for MongoDB

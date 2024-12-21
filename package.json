@@ -57,6 +57,10 @@
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
-    "react-router-dom": "^7.0.2"
+    "bull": "^4.16.5",
+    "ioredis": "^5.4.2",
+    "node-cron": "^3.0.3",
+    "react-router-dom": "^7.0.2",
+    "validator": "^13.12.0"
   }
 }
