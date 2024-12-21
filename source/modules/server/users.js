@@ -276,6 +276,7 @@ async function sendActivationEmail(email, activationCode) {
   });
 
   const mailOptions = {
+    // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
     from: `'"Log a Ticket" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
     to: email, // Recipient's email
     subject: 'Activate Your Account',
