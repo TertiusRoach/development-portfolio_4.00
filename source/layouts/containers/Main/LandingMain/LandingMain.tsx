@@ -167,74 +167,24 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         break;
       case 'password':
         event.preventDefault(); //--|🠈 Prevents page refresh 🠈|--//
-
-        // alert(event.currentTarget); //--|🠈 Debugging: Check the event target 🠈|--//
-
-        const userEmail = document.querySelector('#email') as HTMLInputElement;
-        // const userCode = document.querySelector('#verify-code') as HTMLInputElement;
-        // const userPassword = document.querySelector('#password') as HTMLInputElement;
-
-        //--|🠋 Send email to back-end for validation 🠋|--//
-        const response = await axios.post('http://localhost:3000/users/password', {
-          email: userEmail.value,
-          // verificationCode: userCode.value,
-          // passwordHash: userPassword.value,
-        });
-        alert(response.data.message);
-        console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
+        let userEmail = document.querySelector('#email') as HTMLInputElement;
         try {
-          /*
-          //--|🠋 Handle response from server 🠋|--//
-          if (response.status === 200) {
-            const { exists } = response.data; //--|🠈 Check if email exists in database 🠈|--//
-
-            if (exists) {
-              alert('Email found! Please check your email for the verification code to reset your password.');
-
-              //--|🠋 Expand #landing-rightbar 🠋|--//
-              const rightbar = document.querySelector('#landing-rightbar') as HTMLElement;
-              rightbar.classList.toggle('collapsed', false);
-              rightbar.classList.toggle('expanded', true); //--|🠈 Toggle sidebar to "expanded" state 🠈|--//
-            } else {
-              alert('Email not found! Redirecting to registration section.');
-              viewCarousel('register'); //--|🠈 Move carousel to registration section 🠈|--//
-            }            
-          } else {
-            alert('Unexpected response from the server. Please try again later.');
-          }
-          */
+          //--|🠋 Send email to back-end for validation 🠋|--//
+          let response = await axios.post('http://localhost:3000/users/password', {
+            email: userEmail.value,
+          });
+          alert(response.data.message);
+          console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
+          document.querySelector('#landing-rightbar')?.classList.toggle('collapsed', false);
+          document.querySelector('#landing-rightbar')?.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
         } catch (error) {
           //--|🠋 Handle errors during the process 🠋|--//
           alert('An error occurred while processing your request. Please try again later.');
           console.error('Error during password reset:', error); //--|🠈 Log error for debugging 🠈|--//
+          viewCarousel('login'); //--|🠈 Redirect to login 🠈|--//
         } finally {
           setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
         }
-
-        /*
-        //--|🠋 Email Validation: Check format 🠋|--//
-        if (!emailRegex.test(email)) {
-          setRegisterMessage('Please enter a valid email address.');
-          return;
-        }
-        
-
-        //--|🠋 Input Validation: Ensure email is provided 🠋|--//
-        if (!email.trim()) {
-          alert('Please enter an email address to proceed.'); //--|🠈 Alert user if the input is empty 🠈|--//
-          return;
-        }
-
-        //--|🠋 Email Validation: Check format 🠋|--//
-        if (!emailRegex.test(email)) {
-          alert('Please enter a valid email address.'); //--|🠈 Notify user of invalid email format 🠈|--//
-          return;
-        }
-
-        setIsSubmitting(true); //--|🠈 Indicates submission is in progress 🠈|--//
-
-
-        */
         break;
     }
   };

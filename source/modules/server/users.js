@@ -262,13 +262,13 @@ server.post(`/${root}/password`, async (req, res) => {
       console.log(`Password reset email sent to ${email}`);
       return res.status(200).json({
         status: 'email_sent',
-        message: 'A password reset code has been sent to your email. Please check your inbox.',
+        message: `A password reset code has been sent to ${email}. Please check your inbox.`,
       });
     } catch (error) {
       console.error(`Failed to send password reset email to ${email}:`, error);
       return res.status(500).json({
         status: 'email_error',
-        message: 'Password reset initiated, but failed to send email. Please contact support.',
+        message: 'Password reset initiated, but failed to send email. Please contact support: tertius.roach@outlook.com',
       });
     }
   } catch (error) {
