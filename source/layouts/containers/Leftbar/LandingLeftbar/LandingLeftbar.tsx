@@ -32,7 +32,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('unverified');
+  const [currentView, setCurrentView] = useState<'default' | 'verify' | 'authorized' | 'recover'>('verify');
 
   // Shared input states
   let [email, setEmail] = useState('');
@@ -46,33 +46,30 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   let [loginMessage, setLoginMessage] = useState('');
   let [registerMessage, setRegisterMessage] = useState('');
   let [passwordMessage, setPasswordMessage] = useState('');
+  let [verificationCode, setVerificationCode] = useState('');
 
   // Other UI states
   let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
   let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
-  let handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
-    event.preventDefault(); // Prevents refresh
-    let eventForm = event.currentTarget as HTMLFormElement;
-    switch (slide) {
-      case 'login':
-        console.log('//--|🠊 Test Login 🠈|--//');
-        break;
-      case 'register':
-        console.log('//--|🠊 Test Register 🠈|--//');
-        break;
-      case 'password':
-        console.log('//--|🠊 Test Password 🠈|--//');
-        break;
-    }
-  };
 
+  const handleData = async (event: React.FormEvent) => {
+    event.preventDefault();
+    let response = await axios.post('http://localhost:3000/users/verify', {
+      // firstName,
+      // lastName,
+      email,
+      // passwordHash: password, // Password sent to back-end for hashing
+      verificationCode,
+    });
+    console.log(response.data);
+  };
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
-      <form className="verify-form">
+      <form className="verify-form" onSubmit={(event) => handleData(event)}>
         <div className="verify-header">
           <div className="verify-label">
             <h6 className="display-6">Verify</h6>
@@ -93,13 +90,13 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
         <div className="verify-inputs">
           <input
             required
-            id="code"
+            type="text"
+            id="verify-code"
             name="Verification Code"
-            type="email"
-            placeholder="//--|🠊 Verification Code 🠈|--//"
+            placeholder="🠊 Verification Code 🠈"
             // --- //
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            // value={verificationCode}
+            // onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="verify-footer">
@@ -107,21 +104,14 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
             <button className="verify-button" disabled={isSubmitting}>
               <h6>Authorize</h6>
             </button>
-            <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+            {/* <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
               <h6>{loginMessage}</h6>
-            </div>
+            </div> */}
           </mark>
-          {/* <menu className="verify-buttons">
-            <button className="verify-register" type="button">
-              <h6>Register Account</h6>
-            </button>
-            <button className="verify-password" type="button">
-              <h6>Forgot Password</h6>
-            </button>
-          </menu> */}
         </div>
       </form>
     </aside>
   );
 };
+
 export default LandingLeftbar;

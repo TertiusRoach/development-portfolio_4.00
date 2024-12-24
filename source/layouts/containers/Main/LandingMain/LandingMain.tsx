@@ -73,7 +73,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 Validate User Status 🠈|--//
           switch (status) {
             case 'pending':
-              alert('Account not verified. Expanding left sidebar for further steps.');
+              // alert('Account not verified. Expanding left sidebar for further steps.');
+              console.log('//--|🠊 Account not verified. Expanding landingLeftbar (Verify Page) for further steps. 🠈|--//');
 
               setLoggedIn(false); //--|🠈 User is not fully authorized 🠈|--//
               setCurrentView('unverified'); //--|🠈 Show unverified page 🠈|--//
@@ -120,7 +121,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         }
 
         //--|🠋 Email Validation: Check format 🠋|--//
-        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
           setRegisterMessage('Please enter a valid email address.');
           return;

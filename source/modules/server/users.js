@@ -4,6 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
+const nodemailer = require('nodemailer');
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
@@ -12,7 +13,6 @@ const root = 'users';
 const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
-
 //--|🠋 Start the Server 🠋|--//
 connectDatabase((err) => {
   if (!err) {
@@ -84,24 +84,25 @@ server.post(`/${root}/login`, async (req, res) => {
 
 //--|🠊 POST: Registration Page 🠈|--//
 server.post(`/${root}/register`, async (req, res) => {
-  const today = new Date(); // Current date
-  const todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-  const tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
-  const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
+  let { firstName, lastName, email, passwordHash } = req.body;
 
-  const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
-  const randomCode = generateRandomCode(5); // Generate 5-digit activation code
-  const { email, passwordHash, firstName, lastName } = req.body;
+  let today = new Date(); // Current date
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+  let tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
+  let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
+
+  let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
+  let randomCode = generateRandomCode(5); // Generate 5-digit activation code
 
   // Check if email exists in 'enabled', 'pending', or 'blocked'
-  const user =
+  let user =
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
   if (user) {
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Validate password
+    let isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Validate password
 
     if (user.status === 'pending' && isPasswordValid) {
       // Pending user with valid password
@@ -233,6 +234,41 @@ server.post(`/${root}/password`, async (req, res) => {
   }
 });
 
+//--|🠊 POST: Verify Page 🠈|--//
+server.post(`/${root}/verify`, async (req, res) => {
+  let {
+    firstName,
+    lastName,
+    email,
+    passwordHash,
+    verifiedEmail,
+    activationCode,
+    activationCodeExpiresAt,
+    userIP,
+    createdAt,
+    updatedAt,
+    lastLogin,
+    role,
+    status,
+    passwordCode,
+    passwordCodeExpiresAt,
+  } = req.body;
+
+  // Check if email exists in 'pending' collection
+  let user = await database.collection('pending').findOne({ email });
+
+  // console.log(user.status);
+  // Pending user with valid password
+  return res.status(200).json({
+    status: user.status,
+    message: 'Account already exists but is not verified. Please log in to verify your account.',
+  });
+  // console.log(user.lastName);
+});
+
+//--|🠊 POST: Reset Page 🠈|--//
+server.post(`/${root}/reset`, async (req, res) => {});
+
 function generateRandomCode(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
@@ -259,9 +295,6 @@ function generateRandomCode(length) {
   return code;
 }
 
-const nodemailer = require('nodemailer');
-const { MailtrapTransport } = require('mailtrap');
-
 async function sendActivationEmail(email, activationCode) {
   const transporter = nodemailer.createTransport({
     host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server
@@ -278,7 +311,68 @@ async function sendActivationEmail(email, activationCode) {
     to: email, // Recipient's email
     subject: 'Activate Your Account',
     text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
-    html: `<p>Your activation code is: <strong>${activationCode}</strong>.</p><p>It will expire in 24 hours.</p>`,
+    // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
+    html: `<!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+          }
+          .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .header {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 24px;
+          }
+          .content {
+            padding: 20px;
+            text-align: center;
+          }
+          .activation-code {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            font-size: 24px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+          }
+          .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #777;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">Activate Your Account</div>
+          <div class="content">
+            <p>Your activation code is:</p>
+            <div class="activation-code">${activationCode}</div>
+            <p>This code will expire in 24 hours.</p>
+          </div>
+          <div class="footer">
+            &copy; ${new Date().getFullYear()} Your Company. All rights reserved.
+          </div>
+        </div>
+      </body>
+    </html>
+    `,
   };
 
   try {
