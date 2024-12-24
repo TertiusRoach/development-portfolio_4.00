@@ -168,24 +168,22 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       case 'password':
         event.preventDefault(); //--|🠈 Prevents page refresh 🠈|--//
 
-        //--|🠋 Input Validation: Ensure email is provided 🠋|--//
-        if (!email.trim()) {
-          alert('Please enter an email address to proceed.'); //--|🠈 Alert user if the input is empty 🠈|--//
-          return;
-        }
+        // alert(event.currentTarget); //--|🠈 Debugging: Check the event target 🠈|--//
 
-        //--|🠋 Email Validation: Check format 🠋|--//
-        if (!emailRegex.test(email)) {
-          alert('Please enter a valid email address.'); //--|🠈 Notify user of invalid email format 🠈|--//
-          return;
-        }
+        const userEmail = document.querySelector('#email') as HTMLInputElement;
+        // const userCode = document.querySelector('#verify-code') as HTMLInputElement;
+        // const userPassword = document.querySelector('#password') as HTMLInputElement;
 
-        setIsSubmitting(true); //--|🠈 Indicates submission is in progress 🠈|--//
-
+        //--|🠋 Send email to back-end for validation 🠋|--//
+        const response = await axios.post('http://localhost:3000/users/password', {
+          email: userEmail.value,
+          // verificationCode: userCode.value,
+          // passwordHash: userPassword.value,
+        });
+        alert(response.data.message);
+        console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
         try {
-          //--|🠋 Send email to back-end for validation 🠋|--//
-          const response = await axios.post('http://localhost:3000/users/password', { email });
-
+          /*
           //--|🠋 Handle response from server 🠋|--//
           if (response.status === 200) {
             const { exists } = response.data; //--|🠈 Check if email exists in database 🠈|--//
@@ -200,10 +198,11 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             } else {
               alert('Email not found! Redirecting to registration section.');
               viewCarousel('register'); //--|🠈 Move carousel to registration section 🠈|--//
-            }
+            }            
           } else {
             alert('Unexpected response from the server. Please try again later.');
           }
+          */
         } catch (error) {
           //--|🠋 Handle errors during the process 🠋|--//
           alert('An error occurred while processing your request. Please try again later.');
@@ -211,6 +210,31 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         } finally {
           setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
         }
+
+        /*
+        //--|🠋 Email Validation: Check format 🠋|--//
+        if (!emailRegex.test(email)) {
+          setRegisterMessage('Please enter a valid email address.');
+          return;
+        }
+        
+
+        //--|🠋 Input Validation: Ensure email is provided 🠋|--//
+        if (!email.trim()) {
+          alert('Please enter an email address to proceed.'); //--|🠈 Alert user if the input is empty 🠈|--//
+          return;
+        }
+
+        //--|🠋 Email Validation: Check format 🠋|--//
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address.'); //--|🠈 Notify user of invalid email format 🠈|--//
+          return;
+        }
+
+        setIsSubmitting(true); //--|🠈 Indicates submission is in progress 🠈|--//
+
+
+        */
         break;
     }
   };
@@ -401,7 +425,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             </div>
             <div className="password-footer">
               <mark className="password-action">
-                <button className="password-button">
+                <button className="password-button" disabled={isSubmitting}>
                   <h6>Change</h6>
                 </button>
                 <div className="password-message">
@@ -451,18 +475,26 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         alert('//--|🠊 Login Successful: Load Page 🠈|--//');
         break;
       case 'unverified':
-        let test = document.querySelector('#landing-leftbar') as HTMLElement;
-        if (test) {
+        let landingLeftbar = document.querySelector('#landing-leftbar') as HTMLElement;
+        if (landingLeftbar) {
           // Check if the element exists before accessing its properties
-          if (test.classList.contains('collapsed')) {
-            test.classList.remove('collapsed');
+          if (landingLeftbar.classList.contains('collapsed')) {
+            landingLeftbar.classList.remove('collapsed');
           }
-          test.classList.add('expanded');
+          landingLeftbar.classList.add('expanded');
         }
         break;
         alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
       case 'recovery':
-        alert('//--|🠊 Password Request: Confirm Email 🠈|--//');
+        let landingRightbar = document.querySelector('#landing-leftbar') as HTMLElement;
+        if (landingRightbar) {
+          // Check if the element exists before accessing its properties
+          if (landingRightbar.classList.contains('collapsed')) {
+            landingRightbar.classList.remove('collapsed');
+          }
+          landingRightbar.classList.add('expanded');
+        }
+        alert('//--|🠊 Password Request: Confirm Code 🠈|--//');
         break;
       default:
         // ReactDOM.createRoot(resumeBody).render(<div />);

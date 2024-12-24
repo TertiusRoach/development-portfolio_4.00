@@ -207,7 +207,7 @@ server.post(`/${root}/register`, async (req, res) => {
 
     // Send activation email
     try {
-      await sendActivationEmail(email, randomCode);
+      await sendActivationEmail(email, randomCode, 'register');
       console.log(`Activation email sent to ${email}`);
     } catch (error) {
       console.error(`Failed to send activation email to ${email}:`, error);
@@ -225,67 +225,97 @@ server.post(`/${root}/register`, async (req, res) => {
 
 //--|🠊 POST: Password Page 🠈|--//
 server.post(`/${root}/password`, async (req, res) => {
-  console.log('//--|🠊 Password Reset Request Body 🠈|--//', req.body);
+  let today = new Date(); // Current date
+  let tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
+  let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
+  let randomCode = generateRandomCode(4); // Generate 4-digit activation code
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
+
+  //--|🠋 Extract email from request body 🠋|--//
+  const { email } = req.body;
+
+  //--|🠋 Validate email format 🠋|--//
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Invalid email format. Please provide a valid email address.' });
+  }
 
   try {
-    //--|🠋 Extract email from request body 🠋|--//
-    const { email } = req.body;
+    //--| Check for user in 'enabled' collection |--//
+    let user = await database.collection('enabled').findOne({ email });
 
-    if (!email) {
-      return res.status(400).json({ error: 'Email is required.' }); //--|🠈 Validate input 🠈|--//
+    if (!user) {
+      return res.status(404).json({
+        status: 'not_found',
+        message: 'Email address not found. Please check and try again or register a new account.',
+      });
     }
 
-    //--|🠋 Initialize variables for collections and user search 🠋|--//
-    const collections = ['enabled', 'pending', 'blocked']; //--|🠈 List of user collections 🠈|--//
-    let user = null;
-    let userCollection = null;
+    //--| Update the user's passwordCode and passwordCodeExpiresAt fields |--//
+    await database
+      .collection('enabled')
+      .updateOne({ _id: user._id }, { $set: { passwordCode: randomCode, passwordCodeExpiresAt: tomorrowISO } });
 
-    //--|🠋 Search for user in collections 🠋|--//
-    for (const collection of collections) {
-      user = await database.collection(collection).findOne({ email });
-      if (user) {
-        userCollection = collection; //--|🠈 Track the collection where the user is found 🠈|--//
-        break;
-      }
-    }
-
-    if (user) {
-      //--|🠋 If email is found, update passwordCode and passwordCodeExpiresAt 🠋|--//
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1); //--|🠈 Set expiration to 1 day from now 🠈|--//
-      const tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; //--|🠈 Format to ISO 🠈|--//
-
-      const randomCode = generateRandomCode(5); //--|🠈 Generate a 5-digit activation code 🠈|--//
-
-      //--|🠋 Update user's document in the appropriate collection 🠋|--//
-      const updateResult = await database.collection(userCollection).updateOne(
-        { email }, //--|🠈 Match user by email 🠈|--//
-        {
-          $set: {
-            passwordCode: randomCode, //--|🠈 Set new password reset code 🠈|--//
-            passwordCodeExpiresAt: tomorrowISO, //--|🠈 Set expiration time 🠈|--//
-          },
-        }
-      );
-
-      //--|🠋 Respond to the client with success 🠋|--//
-      if (updateResult.modifiedCount > 0) {
-        console.log(`//--|🠊 Password reset fields updated for ${email} 🠈|--//`);
-        return res.status(200).json({ exists: true, updated: true });
-      } else {
-        console.warn(`//--|🠊 Password reset update failed for ${email} 🠈|--//`);
-        return res.status(500).json({ error: 'Failed to update password reset fields.' });
-      }
-    } else {
-      //--|🠋 Respond with 'exists: false' if the email is not found 🠋|--//
-      return res.status(200).json({ exists: false });
+    //--| Send the reset email |--//
+    try {
+      await sendActivationEmail(email, randomCode, 'password');
+      console.log(`Password reset email sent to ${email}`);
+      return res.status(200).json({
+        status: 'email_sent',
+        message: 'A password reset code has been sent to your email. Please check your inbox.',
+      });
+    } catch (error) {
+      console.error(`Failed to send password reset email to ${email}:`, error);
+      return res.status(500).json({
+        status: 'email_error',
+        message: 'Password reset initiated, but failed to send email. Please contact support.',
+      });
     }
   } catch (error) {
-    //--|🠋 Handle errors during the process 🠋|--//
+    //--| Handle errors during the process |--//
     console.error('Error in Password Reset:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+/*
+server.post(`/${root}/password`, async (req, res) => {
+  let today = new Date(); // Current date
+  let tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
+  let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
+  let randomCode = generateRandomCode(4); // Generate 5-digit activation code
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+  //--|🠋 Extract email from request body 🠋|--//
+  const { email } = req.body;
+  let user = await database.collection('enabled').find(email).sort({ email: 1 }).toArray();
+
+  //--|🠋 Email Validation: Check format 🠋|--//
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  } else {
+    try {
+      // //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
+      // const collections = ['pending', 'blocked'];
+      // let user = null;
+
+      // for (const collection of collections) {
+      //   user = await database.collection(collection).findOne({ email });
+      //   if (user) break; //--| Stop searching once a user is found |--//
+      // }
+
+      //--| If user exists in the 'enabled' collection, update the passwordCode and passwordCodeExpiresAt fields |--//
+      await database
+        .collection('enabled')
+        .updateOne({ _id: user._id }, { $set: { passwordCode: randomCode, passwordCodeExpiresAt: tomorrowISO } });
+      return res.status(200).json({ status: 'restore' });
+    } catch (error) {
+      //--|🠋 Handle errors during the process 🠋|--//
+      console.error('Error in Password Reset:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+});
+*/
 
 //--|🠊 POST: Verify Page 🠈|--//
 server.post(`/${root}/verify`, async (req, res) => {
@@ -294,13 +324,12 @@ server.post(`/${root}/verify`, async (req, res) => {
   try {
     // Retrieve and sanitize data from the request
     const { email, verificationCode, passwordHash } = req.body;
+    // Check if the user exists in the 'pending' collection
+    const user = await database.collection('pending').findOne({ email });
 
     if (!email || !verificationCode || !passwordHash) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
-
-    // Check if the user exists in the 'pending' collection
-    const user = await database.collection('pending').findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -329,9 +358,11 @@ server.post(`/${root}/verify`, async (req, res) => {
       ...rest,
       status: 'enabled',
       updatedAt: todayISO,
-      activationCode: null,
+      // activationCode: null,
       passwordHash: hashedPassword,
-      activationCodeExpiresAt: null,
+      // activationCodeExpiresAt: null,
+      passwordCode: null,
+      passwordCodeExpiresAt: null,
     });
 
     // Remove user from 'pending' collection
@@ -373,7 +404,7 @@ function generateRandomCode(length) {
   return code;
 }
 
-async function sendActivationEmail(email, activationCode) {
+async function sendActivationEmail(email, activationCode, page) {
   const transporter = nodemailer.createTransport({
     host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server
     port: 587, // Mailtrap's default port
@@ -382,76 +413,151 @@ async function sendActivationEmail(email, activationCode) {
       pass: process.env.MAILTRAP_PASS_THREE, // Mailtrap password (from .env file)
     },
   });
-
-  const mailOptions = {
-    // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-    from: `'"Log a Ticket" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
-    to: email, // Recipient's email
-    subject: 'Activate Your Account',
-    text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
-    // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
-    html: `<!DOCTYPE html>
-    <html>
-      <head>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-          }
-          .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-          }
-          .header {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 24px;
-          }
-          .content {
-            padding: 20px;
-            text-align: center;
-          }
-          .activation-code {
-            display: inline-block;
-            background: #2c3e50;
-            color: white;
-            font-size: 24px;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border-radius: 8px;
-          }
-          .footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            color: #777;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">Activate Your Account</div>
-          <div class="content">
-            <p>Your activation code is:</p>
-            <div class="activation-code">${activationCode}</div>
-            <p>This code will expire in 24 hours.</p>
-          </div>
-          <div class="footer">
-            &copy; ${new Date().getFullYear()} Your Company. All rights reserved.
-          </div>
-        </div>
-      </body>
-    </html>
-    `,
-  };
+  let mailOptions;
+  switch (page) {
+    case 'register':
+      mailOptions = {
+        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
+        from: `'"Log a Ticket - Registration" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
+        to: email, // Recipient's email
+        subject: 'Activate Your Account',
+        text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
+        // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
+        html: `<!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f9;
+              }
+              .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+              }
+              .header {
+                background: #2c3e50;
+                color: white;
+                text-align: center;
+                padding: 20px 10px;
+                font-size: 24px;
+              }
+              .content {
+                padding: 20px;
+                text-align: center;
+              }
+              .activation-code {
+                display: inline-block;
+                background: #2c3e50;
+                color: white;
+                font-size: 24px;
+                padding: 10px 20px;
+                margin-top: 10px;
+                border-radius: 8px;
+              }
+              .footer {
+                text-align: center;
+                padding: 10px;
+                font-size: 12px;
+                color: #777;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">Activate Your Account</div>
+              <div class="content">
+                <p>Your activation code is:</p>
+                <div class="activation-code">${activationCode}</div>
+                <p>This code will expire in 24 hours.</p>
+              </div>
+              <div class="footer">
+                &copy; ${new Date().getFullYear()} Geitjie Techno. All rights reserved.
+              </div>
+            </div>
+          </body>
+        </html>
+        `,
+      };
+      break;
+    case 'password':
+      mailOptions = {
+        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
+        from: `'"Log a Ticket - Password" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
+        to: email, // Recipient's email
+        subject: 'Activate Your Account',
+        text: `Reset your Password with: ${activationCode}. It will expire in 24 hours.`,
+        // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
+        html: `<!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f9;
+              }
+              .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+              }
+              .header {
+                background: #2c3e50;
+                color: white;
+                text-align: center;
+                padding: 20px 10px;
+                font-size: 24px;
+              }
+              .content {
+                padding: 20px;
+                text-align: center;
+              }
+              .activation-code {
+                display: inline-block;
+                background: #2c3e50;
+                color: white;
+                font-size: 24px;
+                padding: 10px 20px;
+                margin-top: 10px;
+                border-radius: 8px;
+              }
+              .footer {
+                text-align: center;
+                padding: 10px;
+                font-size: 12px;
+                color: #777;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">Recover your Password</div>
+              <div class="content">
+                <p>Your Reset Code is:</p>
+                <div class="activation-code">${activationCode}</div>
+                <p>This code will expire in 24 hours.</p>
+              </div>
+              <div class="footer">
+                &copy; ${new Date().getFullYear()} Your Company. All rights reserved.
+              </div>
+            </div>
+          </body>
+        </html>
+        `,
+      };
+      break;
+  }
 
   try {
     await transporter.sendMail(mailOptions);
