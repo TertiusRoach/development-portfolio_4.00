@@ -277,45 +277,6 @@ server.post(`/${root}/password`, async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-/*
-server.post(`/${root}/password`, async (req, res) => {
-  let today = new Date(); // Current date
-  let tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
-  let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
-  let randomCode = generateRandomCode(4); // Generate 5-digit activation code
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
-  //--|🠋 Extract email from request body 🠋|--//
-  const { email } = req.body;
-  let user = await database.collection('enabled').find(email).sort({ email: 1 }).toArray();
-
-  //--|🠋 Email Validation: Check format 🠋|--//
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ message: 'Missing required fields' });
-  } else {
-    try {
-      // //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
-      // const collections = ['pending', 'blocked'];
-      // let user = null;
-
-      // for (const collection of collections) {
-      //   user = await database.collection(collection).findOne({ email });
-      //   if (user) break; //--| Stop searching once a user is found |--//
-      // }
-
-      //--| If user exists in the 'enabled' collection, update the passwordCode and passwordCodeExpiresAt fields |--//
-      await database
-        .collection('enabled')
-        .updateOne({ _id: user._id }, { $set: { passwordCode: randomCode, passwordCodeExpiresAt: tomorrowISO } });
-      return res.status(200).json({ status: 'restore' });
-    } catch (error) {
-      //--|🠋 Handle errors during the process 🠋|--//
-      console.error('Error in Password Reset:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-});
-*/
 
 //--|🠊 POST: Verify Page 🠈|--//
 server.post(`/${root}/verify`, async (req, res) => {
