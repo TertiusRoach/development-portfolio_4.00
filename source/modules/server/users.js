@@ -1,5 +1,5 @@
 // users.js
-//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//a
+//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const express = require('express');
@@ -50,8 +50,46 @@ server.get(`/${root}`, async (req, res) => {
 
 //--|🠋 POST: Login Page 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
-  console.log('Login Request Body:', req.body); //--|🠈 Debugging log for incoming requests 🠈|--//
+  // console.log('Login Request Body:', req.body); //--|🠈 Debugging log for incoming requests 🠈|--//
+  const { email, passwordHash } = req.body; //--| Extract email and passwordHash from the request body |--//
 
+  try {
+    //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
+    const collections = ['enabled', 'pending', 'blocked'];
+    let user = null;
+
+    for (const collection of collections) {
+      user = await database.collection(collection).findOne({ email });
+      if (user) break; //--| Stop searching once a user is found |--//
+    }
+
+    //--| User does not exist in any collection |--//
+    if (!user) {
+      return res.status(404).send('Email not found.');
+    }
+
+    //--| Verify password |--//
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+    if (!isPasswordValid) {
+      return res.status(401).send('Invalid password.');
+    }
+
+    //--| If user exists in the 'enabled' collection, update the lastLogin field |--//
+    if (user.status === 'enabled') {
+      let today = new Date();
+      let todayISO = today.toISOString().split('.')[0] + 'Z';
+      await database.collection('enabled').updateOne({ _id: user._id }, { $set: { lastLogin: todayISO } });
+    }
+
+    //--| Respond with the user status and role |--//
+    return res.status(200).json({ status: user.status, role: user.role });
+  } catch (error) {
+    //--| Handle errors gracefully |--//
+    console.error('Error during login process:', error);
+    return res.status(500).send('An internal server error occurred.');
+  }
+
+  /*
   try {
     const { email, passwordHash } = req.body; //--|🠈 Extract email and passwordHash from the request body 🠈|--//
 
@@ -74,17 +112,32 @@ server.post(`/${root}/login`, async (req, res) => {
       return res.status(401).send('Invalid password.'); //--|🠈 Respond with unauthorized for invalid password 🠈|--//
     }
 
+    let today = new Date();
+    let todayISO = today.toISOString().split('.')[0] + 'Z';
+
+    await database
+      .collection('enabled')
+      .updateOne({ _id: ObjectId(user._id.toString()) }, { $set: { lastLogin: todayISO } });
+    
+    let today = new Date(); // Current date
+    let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+
+    await database
+      .collection('enabled')
+      .updateOne({ _id: ObjectId(user._id.toString()) }, { $set: { lastLogin: todayISO } });
+      
     //--|🠊 If the login is successful, respond with the user status 🠈|--//
     return res.status(200).json({ status: user.status, role: user.role }); //--|🠈 Extend response for scalability (e.g., role) 🠈|--//
   } catch (error) {
     console.error('Error in Login:', error); //--|🠈 Log the error for debugging 🠈|--//
     return res.status(500).json({ error: 'Internal Server Error' }); //--|🠈 Generic error response 🠈|--//
   }
+  */
 });
 
 //--|🠊 POST: Registration Page 🠈|--//
 server.post(`/${root}/register`, async (req, res) => {
-  let { firstName, lastName, email, passwordHash } = req.body;
+  const { firstName, lastName, email, passwordHash } = req.body;
 
   let today = new Date(); // Current date
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
@@ -93,7 +146,7 @@ server.post(`/${root}/register`, async (req, res) => {
   let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
 
   let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
-  let randomCode = generateRandomCode(5); // Generate 5-digit activation code
+  let randomCode = generateRandomCode(4); // Generate 5-digit activation code
 
   // Check if email exists in 'enabled', 'pending', or 'blocked'
   let user =
@@ -236,34 +289,59 @@ server.post(`/${root}/password`, async (req, res) => {
 
 //--|🠊 POST: Verify Page 🠈|--//
 server.post(`/${root}/verify`, async (req, res) => {
-  let {
-    firstName,
-    lastName,
-    email,
-    passwordHash,
-    verifiedEmail,
-    activationCode,
-    activationCodeExpiresAt,
-    userIP,
-    createdAt,
-    updatedAt,
-    lastLogin,
-    role,
-    status,
-    passwordCode,
-    passwordCodeExpiresAt,
-  } = req.body;
+  let today = new Date(); // Current date
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+  try {
+    // Retrieve and sanitize data from the request
+    const { email, verificationCode, passwordHash } = req.body;
 
-  // Check if email exists in 'pending' collection
-  let user = await database.collection('pending').findOne({ email });
+    if (!email || !verificationCode || !passwordHash) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
 
-  // console.log(user.status);
-  // Pending user with valid password
-  return res.status(200).json({
-    status: user.status,
-    message: 'Account already exists but is not verified. Please log in to verify your account.',
-  });
-  // console.log(user.lastName);
+    // Check if the user exists in the 'pending' collection
+    const user = await database.collection('pending').findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Validate the password using bcrypt
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: 'Invalid password' });
+    }
+
+    // Check the verification code and expiration
+    if (verificationCode !== user.activationCode) {
+      return res.status(400).json({ message: 'Invalid verification code' });
+    }
+
+    if (new Date() > new Date(user.activationCodeExpiresAt)) {
+      return res.status(400).json({ message: 'Verification code expired' });
+    }
+
+    // Move user to 'enabled' collection and clean up sensitive data
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(passwordHash, salt);
+    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
+    await database.collection('enabled').insertOne({
+      ...rest,
+      status: 'enabled',
+      updatedAt: todayISO,
+      activationCode: null,
+      passwordHash: hashedPassword,
+      activationCodeExpiresAt: null,
+    });
+
+    // Remove user from 'pending' collection
+    await database.collection('pending').deleteOne({ _id });
+
+    res.status(200).json({ status: 'authorized', message: 'Account verified successfully' });
+  } catch (error) {
+    console.error('Verification Error:', error);
+    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification' });
+  }
 });
 
 //--|🠊 POST: Reset Page 🠈|--//

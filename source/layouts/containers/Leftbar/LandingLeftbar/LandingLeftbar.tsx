@@ -1,6 +1,6 @@
 // LandingLeftbar.tsx
 //--|🠋 Frameworks 🠋|--//
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
@@ -27,7 +27,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-
 const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
@@ -54,14 +53,47 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault();
-    let response = await axios.post('http://localhost:3000/users/verify', {
-      // firstName,
-      // lastName,
-      email,
-      // passwordHash: password, // Password sent to back-end for hashing
-      verificationCode,
-    });
-    console.log(response.data);
+    setIsSubmitting(true); // Prevent multiple submissions
+
+    try {
+      const userEmail = document.querySelector('#email') as HTMLInputElement;
+      const userCode = document.querySelector('#verify-code') as HTMLInputElement;
+      const userPassword = document.querySelector('#password') as HTMLInputElement;
+
+      const response = await axios.post('http://localhost:3000/users/verify', {
+        email: userEmail.value,
+        verificationCode: userCode.value,
+        passwordHash: userPassword.value,
+      });
+
+      const { status, message } = response.data;
+      alert(status);
+      switch (status) {
+        case 'authorized':
+          setLoginMessage(message);
+
+          alert('Verification successful!');
+          document.querySelector('#landing-leftbar')?.classList.toggle('expanded', false);
+          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
+          break;
+        case 'unverified':
+          setLoginMessage(message);
+          alert('Verification failed!');
+          break;
+      }
+
+      // Additional logic for handling successful responses (if needed)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        // Handle Axios-specific errors
+        setLoginMessage(error.response?.data?.message || 'An error occurred');
+      } else {
+        // Handle non-Axios errors (fallback)
+        setLoginMessage('An unexpected error occurred');
+      }
+    } finally {
+      setIsSubmitting(false); // Re-enable the submit button
+    }
   };
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
@@ -69,7 +101,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
-      <form className="verify-form" onSubmit={(event) => handleData(event)}>
+      <form className="verify-form" onSubmit={handleData}>
         <div className="verify-header">
           <div className="verify-label">
             <h6 className="display-6">Verify</h6>
@@ -102,9 +134,17 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
         <div className="verify-footer">
           <mark className="verify-action">
             <button className="verify-button" disabled={isSubmitting}>
+              {isSubmitting ? 'Processing...' : 'Verify'}
+            </button>
+            {loginMessage && (
+              <div className={`verify-message ${loginMessage.includes('successfully') ? 'success' : 'error'}`}>
+                {loginMessage}
+              </div>
+            )}
+            {/* <button className="verify-button" disabled={isSubmitting}>
               <h6>Authorize</h6>
             </button>
-            {/* <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+            <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
               <h6>{loginMessage}</h6>
             </div> */}
           </mark>

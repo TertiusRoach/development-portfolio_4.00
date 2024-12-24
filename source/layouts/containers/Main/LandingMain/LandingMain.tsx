@@ -143,7 +143,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             case 'created': //--|🠈 Created user 🠈|--//
               viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
               document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
-              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand sidebar 🠈|--//
+              document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
               break;
             case 'enabled': //--|🠈 Enabled user 🠈|--//
               viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
