@@ -226,6 +226,7 @@ server.post(`/${root}/register`, async (req, res) => {
 //--|🠊 POST: Password Page 🠈|--//
 server.post(`/${root}/password`, async (req, res) => {
   let today = new Date(); // Current date
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
   let tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
   let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
@@ -251,19 +252,25 @@ server.post(`/${root}/password`, async (req, res) => {
       });
     }
 
-    //--| Update the user's passwordCode and passwordCodeExpiresAt fields |--//
-    await database
-      .collection('enabled')
-      .updateOne({ _id: user._id }, { $set: { passwordCode: randomCode, passwordCodeExpiresAt: tomorrowISO } });
-
     //--| Send the reset email |--//
     try {
-      await sendActivationEmail(email, randomCode, 'password');
-      console.log(`Password reset email sent to ${email}`);
-      return res.status(200).json({
-        status: 'email_sent',
-        message: `A password reset code has been sent to ${email}. Please check your inbox.`,
-      });
+      if (user.passwordCodeExpiresAt === null || todayISO > user.passwordCodeExpiresAt) {
+        //--| Update the user's passwordCode and passwordCodeExpiresAt fields |--//
+        await database
+          .collection('enabled')
+          .updateOne({ _id: user._id }, { $set: { passwordCode: randomCode, passwordCodeExpiresAt: tomorrowISO } });
+
+        await sendActivationEmail(email, randomCode, 'password');
+        return res.status(200).json({
+          status: 'email_sent',
+          message: `A password reset code has been sent to ${email}. Please check your inbox.`,
+        });
+      } else {
+        return res.status(200).json({
+          status: 'email_sent',
+          message: `A password reset code has already been sent. Please check your inbox for ${user.email}.`,
+        });
+      }
     } catch (error) {
       console.error(`Failed to send password reset email to ${email}:`, error);
       return res.status(500).json({
@@ -283,6 +290,11 @@ server.post(`/${root}/verify`, async (req, res) => {
   let today = new Date(); // Current date
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
   try {
+    // Move user to 'enabled' collection and clean up sensitive data
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(passwordHash, salt);
+    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
+
     // Retrieve and sanitize data from the request
     const { email, verificationCode, passwordHash } = req.body;
     // Check if the user exists in the 'pending' collection
@@ -311,17 +323,14 @@ server.post(`/${root}/verify`, async (req, res) => {
       return res.status(400).json({ message: 'Verification code expired' });
     }
 
-    // Move user to 'enabled' collection and clean up sensitive data
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(passwordHash, salt);
-    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
     await database.collection('enabled').insertOne({
       ...rest,
+      verifiedEmail: true,
+      passwordHash: hashedPassword,
+
       status: 'enabled',
       updatedAt: todayISO,
-      // activationCode: null,
-      passwordHash: hashedPassword,
-      // activationCodeExpiresAt: null,
+
       passwordCode: null,
       passwordCodeExpiresAt: null,
     });
@@ -329,7 +338,7 @@ server.post(`/${root}/verify`, async (req, res) => {
     // Remove user from 'pending' collection
     await database.collection('pending').deleteOne({ _id });
 
-    res.status(200).json({ status: 'authorized', message: 'Account verified successfully' });
+    res.status(200).json({ status: 'authorized', message: 'Account Verified Successfully' });
   } catch (error) {
     console.error('Verification Error:', error);
     res.status(500).json({ status: 'unverified', message: 'An error occurred during verification' });

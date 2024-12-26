@@ -62,27 +62,24 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
 
       const response = await axios.post('http://localhost:3000/users/verify', {
         email: userEmail.value,
-        verificationCode: userCode.value,
         passwordHash: userPassword.value,
+        verificationCode: userCode.value,
       });
 
       const { status, message } = response.data;
-      alert(status);
+
+      alert(message);
       switch (status) {
         case 'authorized':
           setLoginMessage(message);
 
-          alert('Verification successful!');
           document.querySelector('#landing-leftbar')?.classList.toggle('expanded', false);
           document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
           break;
         case 'unverified':
           setLoginMessage(message);
-          alert('Verification failed!');
           break;
       }
-
-      // Additional logic for handling successful responses (if needed)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         // Handle Axios-specific errors
@@ -95,6 +92,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
       setIsSubmitting(false); // Re-enable the submit button
     }
   };
+
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
@@ -153,5 +151,4 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
     </aside>
   );
 };
-
 export default LandingLeftbar;
