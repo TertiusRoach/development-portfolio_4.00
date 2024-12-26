@@ -173,6 +173,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           let response = await axios.post('http://localhost:3000/users/password', {
             email: userEmail.value,
           });
+
           alert(response.data.message);
           console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
           document.querySelector('#landing-rightbar')?.classList.toggle('collapsed', false);

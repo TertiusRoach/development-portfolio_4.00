@@ -48,93 +48,6 @@ server.get(`/${root}`, async (req, res) => {
   }
 });
 
-//--|🠋 POST: Login Page 🠋|--//
-server.post(`/${root}/login`, async (req, res) => {
-  // console.log('Login Request Body:', req.body); //--|🠈 Debugging log for incoming requests 🠈|--//
-  const { email, passwordHash } = req.body; //--| Extract email and passwordHash from the request body |--//
-
-  try {
-    //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
-    const collections = ['enabled', 'pending', 'blocked'];
-    let user = null;
-
-    for (const collection of collections) {
-      user = await database.collection(collection).findOne({ email });
-      if (user) break; //--| Stop searching once a user is found |--//
-    }
-
-    //--| User does not exist in any collection |--//
-    if (!user) {
-      return res.status(404).send('Email not found.');
-    }
-
-    //--| Verify password |--//
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(401).send('Invalid password.');
-    }
-
-    //--| If user exists in the 'enabled' collection, update the lastLogin field |--//
-    if (user.status === 'enabled') {
-      let today = new Date();
-      let todayISO = today.toISOString().split('.')[0] + 'Z';
-      await database.collection('enabled').updateOne({ _id: user._id }, { $set: { lastLogin: todayISO } });
-    }
-
-    //--| Respond with the user status and role |--//
-    return res.status(200).json({ status: user.status, role: user.role });
-  } catch (error) {
-    //--| Handle errors gracefully |--//
-    console.error('Error during login process:', error);
-    return res.status(500).send('An internal server error occurred.');
-  }
-
-  /*
-  try {
-    const { email, passwordHash } = req.body; //--|🠈 Extract email and passwordHash from the request body 🠈|--//
-
-    //--|🠊 Check for user in 'enabled', 'pending', or 'blocked' collections 🠈|--//
-    const collections = ['enabled', 'pending', 'blocked'];
-    let user = null;
-
-    for (const collection of collections) {
-      user = await database.collection(collection).findOne({ email });
-      if (user) break; //--|🠈 Stop searching once a user is found 🠈|--//
-    }
-
-    if (!user) {
-      return res.status(404).send('Email not found.'); //--|🠈 User does not exist in any collection 🠈|--//
-    }
-
-    //--|🠊 Verify password 🠈|--//
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(401).send('Invalid password.'); //--|🠈 Respond with unauthorized for invalid password 🠈|--//
-    }
-
-    let today = new Date();
-    let todayISO = today.toISOString().split('.')[0] + 'Z';
-
-    await database
-      .collection('enabled')
-      .updateOne({ _id: ObjectId(user._id.toString()) }, { $set: { lastLogin: todayISO } });
-    
-    let today = new Date(); // Current date
-    let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-
-    await database
-      .collection('enabled')
-      .updateOne({ _id: ObjectId(user._id.toString()) }, { $set: { lastLogin: todayISO } });
-      
-    //--|🠊 If the login is successful, respond with the user status 🠈|--//
-    return res.status(200).json({ status: user.status, role: user.role }); //--|🠈 Extend response for scalability (e.g., role) 🠈|--//
-  } catch (error) {
-    console.error('Error in Login:', error); //--|🠈 Log the error for debugging 🠈|--//
-    return res.status(500).json({ error: 'Internal Server Error' }); //--|🠈 Generic error response 🠈|--//
-  }
-  */
-});
-
 //--|🠊 POST: Registration Page 🠈|--//
 server.post(`/${root}/register`, async (req, res) => {
   const { firstName, lastName, email, passwordHash } = req.body;
@@ -220,6 +133,47 @@ server.post(`/${root}/register`, async (req, res) => {
       status: 'created',
       message: 'Registration successful! Please check your email for the activation code.',
     });
+  }
+});
+
+//--|🠋 POST: Login Page 🠋|--//
+server.post(`/${root}/login`, async (req, res) => {
+  const { email, passwordHash } = req.body; //--| Extract email and passwordHash from the request body |--//
+
+  try {
+    //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
+    const collections = ['enabled', 'pending', 'blocked'];
+    let user = null;
+
+    for (const collection of collections) {
+      user = await database.collection(collection).findOne({ email });
+      if (user) break; //--| Stop searching once a user is found |--//
+    }
+
+    //--| User does not exist in any collection |--//
+    if (!user) {
+      return res.status(404).send('Email not found.');
+    }
+
+    //--| Verify password |--//
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+    if (!isPasswordValid) {
+      return res.status(401).send('Invalid password.');
+    }
+
+    //--| If user exists in the 'enabled' collection, update the lastLogin field |--//
+    if (user.status === 'enabled') {
+      let today = new Date();
+      let todayISO = today.toISOString().split('.')[0] + 'Z';
+      await database.collection('enabled').updateOne({ _id: user._id }, { $set: { lastLogin: todayISO } });
+    }
+
+    //--| Respond with the user status and role |--//
+    return res.status(200).json({ status: user.status, role: user.role });
+  } catch (error) {
+    //--| Handle errors gracefully |--//
+    console.error('Error during login process:', error);
+    return res.status(500).send('An internal server error occurred.');
   }
 });
 
@@ -346,7 +300,102 @@ server.post(`/${root}/verify`, async (req, res) => {
 });
 
 //--|🠊 POST: Reset Page 🠈|--//
-server.post(`/${root}/reset`, async (req, res) => {});
+//--|🠊 POST: Reset Page 🠈|--//
+server.post(`/${root}/reset`, async (req, res) => {
+  console.log('//--|🠊 Reset page loaded from landingRightbar! 🠈|--//');
+  const { email, newHash, passwordCode } = req.body;
+
+  try {
+    // Check if the user exists in the 'enabled' collection
+    const user = await database.collection('enabled').findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    // Validate the provided passwordCode
+    if (passwordCode !== user.passwordCode) {
+      return res.status(400).json({ status: 'incorrect', message: 'Invalid reset code' });
+    }
+
+    // Rehash the new password securely
+    const bcrypt = require('bcrypt');
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(newHash, saltRounds);
+
+    // Update the user document in the database
+    await database.collection('enabled').updateOne(
+      { email },
+      {
+        $set: {
+          passwordHash: hashedPassword,
+          passwordCode: null, // Clear the password reset code
+          updatedAt: new Date().toISOString(), // Set the updated timestamp
+        },
+      }
+    );
+
+    // Respond with success
+    return res.status(200).json({
+      status: 'recovered',
+      message: 'Welcome back! Redirecting to login.',
+    });
+  } catch (error) {
+    //--| Handle errors during the process |--//
+    console.error('Error in Password Reset:', error);
+    return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
+  }
+});
+/*
+server.post(`/${root}/reset`, async (req, res) => {
+  console.log('//--|🠊 Reset page loaded from landingRightbar! 🠈|--//');
+  const { email, newHash, passwordCode } = req.body;
+
+  // Check if the user exists in the 'pending' collection
+  const user = await database.collection('enabled').findOne({ email });
+  // Retrieve and sanitize data from the request
+
+  try {
+    // const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
+
+    if (passwordCode === user.passwordCode) {
+      console.log(passwordCode);
+      console.log(user.passwordCode);
+
+
+
+      user.updateOne({
+        passwordHash: hashedPassword,
+
+        // status: 'enabled',
+        updatedAt: todayISO,
+
+        passwordCode: null,
+        // passwordCodeExpiresAt: null,
+      });
+
+      // db.users.updateOne({ _id: ObjectId('67598cabaf2a0d1d6d6f47b7') }, { $set: { status: 'enabled' } });
+
+      // Enabled user with valid password
+      return res.status(200).json({
+        status: 'recovered',
+        message: 'Welcome back! Redirecting to login.',
+      });
+    } else {
+      return res.status(400).json({ status: 'incorrect', message: 'Invalid reset code' });
+    }
+  } catch (error) {
+    //--| Handle errors during the process |--//
+    console.error('Error in Password Reset:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+  //
+  // console.log(email);
+  // console.log(newHash);
+  // console.log(passwordCode);
+  //
+});
+*/
 
 function generateRandomCode(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';

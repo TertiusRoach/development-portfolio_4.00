@@ -31,7 +31,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'default' | 'verify' | 'authorized' | 'recover'>('verify');
+  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('unverified');
 
   // Shared input states
   let [email, setEmail] = useState('');
