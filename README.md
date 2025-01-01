@@ -1,6 +1,10 @@
-[I have no idea what I'm doing - development-portfolio_4.00](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
+# [Index](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 # Run the Application after Installation
+
+//--|🠋 Run the entire application. 🠈|--//
+
+> npm run app
 
 //--|🠋 Starts the testing environment. 🠈|--//
 
