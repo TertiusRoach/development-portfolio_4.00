@@ -6,7 +6,8 @@
   "scripts": {
     "launch": "webpack-dev-server --mode development",
     "deploy": "webpack --mode production",
-    "close": "npx kill-port 8080"
+    "close": "npx kill-port 8080",
+    "app": "start powershell -NoExit npm run launch && start powershell -NoExit nodemon ./source/modules/server/users.js"
   },
   "author": "Tertius Roach",
   "license": "ISC",
