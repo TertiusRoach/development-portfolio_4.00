@@ -1,7 +1,5 @@
 # [Index](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
-Testing
-
 # Run the Application after Installation
 
 //--|🠋 Run the entire application. 🠈|--//
