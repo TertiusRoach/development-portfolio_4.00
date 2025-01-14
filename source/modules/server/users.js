@@ -346,56 +346,6 @@ server.post(`/${root}/reset`, async (req, res) => {
     return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
   }
 });
-/*
-server.post(`/${root}/reset`, async (req, res) => {
-  console.log('//--|🠊 Reset page loaded from landingRightbar! 🠈|--//');
-  const { email, newHash, passwordCode } = req.body;
-
-  // Check if the user exists in the 'pending' collection
-  const user = await database.collection('enabled').findOne({ email });
-  // Retrieve and sanitize data from the request
-
-  try {
-    // const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
-
-    if (passwordCode === user.passwordCode) {
-      console.log(passwordCode);
-      console.log(user.passwordCode);
-
-
-
-      user.updateOne({
-        passwordHash: hashedPassword,
-
-        // status: 'enabled',
-        updatedAt: todayISO,
-
-        passwordCode: null,
-        // passwordCodeExpiresAt: null,
-      });
-
-      // db.users.updateOne({ _id: ObjectId('67598cabaf2a0d1d6d6f47b7') }, { $set: { status: 'enabled' } });
-
-      // Enabled user with valid password
-      return res.status(200).json({
-        status: 'recovered',
-        message: 'Welcome back! Redirecting to login.',
-      });
-    } else {
-      return res.status(400).json({ status: 'incorrect', message: 'Invalid reset code' });
-    }
-  } catch (error) {
-    //--| Handle errors during the process |--//
-    console.error('Error in Password Reset:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
-  }
-  //
-  // console.log(email);
-  // console.log(newHash);
-  // console.log(passwordCode);
-  //
-});
-*/
 
 function generateRandomCode(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -428,8 +378,8 @@ async function sendActivationEmail(email, activationCode, page) {
     host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server
     port: 587, // Mailtrap's default port
     auth: {
-      user: process.env.MAILTRAP_USER_THREE, // Mailtrap username (from .env file)
-      pass: process.env.MAILTRAP_PASS_THREE, // Mailtrap password (from .env file)
+      user: process.env.MAILTRAP_USER, // Mailtrap username (from .env file)
+      pass: process.env.MAILTRAP_PASS, // Mailtrap password (from .env file)
     },
   });
   let mailOptions;
@@ -437,7 +387,7 @@ async function sendActivationEmail(email, activationCode, page) {
     case 'register':
       mailOptions = {
         // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `'"Log a Ticket - Registration" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
+        from: `'"Log a Ticket - Registration" <${process.env.DOMAIN_PASS}>'`, // Replace with a desired sender name and email
         to: email, // Recipient's email
         subject: 'Activate Your Account',
         text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
@@ -508,7 +458,7 @@ async function sendActivationEmail(email, activationCode, page) {
     case 'password':
       mailOptions = {
         // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `'"Log a Ticket - Password" <${process.env.DOMAIN_PASS_ONE}>'`, // Replace with a desired sender name and email
+        from: `'"Log a Ticket - Password" <${process.env.DOMAIN_PASS}>'`, // Replace with a desired sender name and email
         to: email, // Recipient's email
         subject: 'Activate Your Account',
         text: `Reset your Password with: ${activationCode}. It will expire in 24 hours.`,
