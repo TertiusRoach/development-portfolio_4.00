@@ -2,25 +2,25 @@
 
 # Run the Application after Installation
 
-//--|🠋 Launch back-end. 🠈|--//
+//--|🠋 Launch back-end 🠈|--//
+Go to 'root\source\modules\server'
 
-> Go to 'root\source\modules\server'
 > nodemon users
 
-//--|🠋 Launch front-end. 🠈|--//
+//--|🠋 Launch front-end 🠈|--//
+Go to 'root' folder
 
-> Go to 'root' folder
 > npm run app
 
-//--|🠋 Starts the testing environment. 🠈|--//
+//--|🠋 Starts the testing environment 🠈|--//
 
 > npm run launch
 
-//--|🠋 Compiles project into public. 🠈|--//
+//--|🠋 Compiles project into public 🠈|--//
 
 > npm run deploy
 
-//--|🠋 Stops the server to relaunch. 🠈|--//
+//--|🠋 Stops the server to relaunch 🠈|--//
 
 > npm run close
 
