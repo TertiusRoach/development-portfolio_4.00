@@ -2,8 +2,14 @@
 
 # Run the Application after Installation
 
-//--|🠋 Run the entire application. 🠈|--//
+//--|🠋 Launch back-end. 🠈|--//
 
+> Go to 'root\source\modules\server'
+> nodemon users
+
+//--|🠋 Launch front-end. 🠈|--//
+
+> Go to 'root' folder
 > npm run app
 
 //--|🠋 Starts the testing environment. 🠈|--//
