@@ -458,12 +458,15 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
       <div className="landing-carousel">
         <section className="register-section">
+          {/* <div className="register-container"></div> */}
           <div className="register-container">{renderForm('register')}</div>
         </section>
         <section className="login-section">
+          {/* <div className="login-container"></div> */}
           <div className="login-container">{renderForm('login')}</div>
         </section>
         <section className="password-section">
+          {/* <div className="password-container"></div> */}
           <div className="password-container">{renderForm('password')}</div>
         </section>
       </div>
