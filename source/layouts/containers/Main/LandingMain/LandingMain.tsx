@@ -397,14 +397,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
     }
   };
-  const viewCarousel = (slide: 'register' | 'login' | 'password') => {
-    let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-    carouselContainer.style.transform = {
-      register: 'translateX(0vw)',
-      login: 'translateX(-100vw)',
-      password: 'translateX(-200vw)',
-    }[slide];
-  };
 
   useEffect(() => {
     // console.log(currentView);
@@ -469,6 +461,15 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
+
+export const viewCarousel = (slide: 'register' | 'login' | 'password') => {
+  let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+  carouselContainer.style.transform = {
+    register: 'translateX(0vw)',
+    login: 'translateX(-100vw)',
+    password: 'translateX(-200vw)',
+  }[slide];
+};
 
 /*
   const loadResume = () => {
