@@ -25,6 +25,7 @@ interface InfoProps {
   };
 }
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
+  let information = info;
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
   //--|🠋 Shared input states 🠋|--//
