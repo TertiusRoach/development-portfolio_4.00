@@ -12,6 +12,7 @@ import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
+import FormLogin from '../../../components/Form/login/Form.login';
 //--|🠉 Components 🠉|--//
 //--|🠋 Containers 🠋|--//
 import ResumeMain from '../ResumeMain/ResumeMain';
@@ -396,14 +397,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         );
     }
   };
-  /*
-  const loadResume = () => {
-    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-    landingBody.remove();
-    return ReactDOM.createRoot(resumeBody).render(<Resume />);
-  };
-  */
   const viewCarousel = (slide: 'register' | 'login' | 'password') => {
     let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
     carouselContainer.style.transform = {
@@ -462,8 +455,10 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           <div className="register-container">{renderForm('register')}</div>
         </section>
         <section className="login-section">
-          {/* <div className="login-container"></div> */}
-          <div className="login-container">{renderForm('login')}</div>
+          <div className="login-container">
+            <FormLogin info={info} />
+          </div>
+          {/* <div className="login-container">{renderForm('login')}</div> */}
         </section>
         <section className="password-section">
           {/* <div className="password-container"></div> */}
@@ -474,3 +469,12 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
+
+/*
+  const loadResume = () => {
+    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
+    landingBody.remove();
+    return ReactDOM.createRoot(resumeBody).render(<Resume />);
+  };
+  */
