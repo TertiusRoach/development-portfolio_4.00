@@ -13,6 +13,8 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
+import FormRegister from '../../../components/Form/register/Form.register';
+import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
 //--|🠋 Containers 🠋|--//
 import ResumeMain from '../ResumeMain/ResumeMain';
@@ -36,26 +38,95 @@ interface InfoProps {
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
-
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
-  //--|🠋 Shared input states 🠋|--//
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
+  useEffect(() => {
+    // console.log(currentView);
+    switch (currentView) {
+      case 'default':
+        let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
+        resumeBody.innerHTML = '<main class="default-main" />';
+        // return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
+        break;
+      case 'authorized':
+        // loadResume();
+        alert('//--|🠊 Login Successful: Load Page 🠈|--//');
+        break;
+      case 'unverified':
+        let landingLeftbar = document.querySelector('#landing-leftbar') as HTMLElement;
+        if (landingLeftbar) {
+          // Check if the element exists before accessing its properties
+          if (landingLeftbar.classList.contains('collapsed')) {
+            landingLeftbar.classList.remove('collapsed');
+          }
+          landingLeftbar.classList.add('expanded');
+        }
+        break;
+        alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
+      case 'recovery':
+        let landingRightbar = document.querySelector('#landing-leftbar') as HTMLElement;
+        if (landingRightbar) {
+          // Check if the element exists before accessing its properties
+          if (landingRightbar.classList.contains('collapsed')) {
+            landingRightbar.classList.remove('collapsed');
+          }
+          landingRightbar.classList.add('expanded');
+        }
+        alert('//--|🠊 Password Request: Confirm Code 🠈|--//');
+        break;
+      default:
+        // ReactDOM.createRoot(resumeBody).render(<div />);
+        break;
+    }
+    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
+  }, [pageName, blockName, currentView]);
 
-  //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
+  return (
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
+      <div className="landing-carousel">
+        <section className="register-section">
+          <div className="register-container">
+            <FormRegister info={info} />
+          </div>
+          {/* <div className="register-container">{renderForm('register')}</div> */}
+        </section>
+        <section className="login-section">
+          <div className="login-container">
+            <FormLogin info={info} />
+          </div>
+          {/* <div className="login-container">{renderForm('login')}</div> */}
+        </section>
+        <section className="password-section">
+          <div className="password-container">
+            <FormPassword info={info} />
+          </div>
+          {/* <div className="password-container">{renderForm('password')}</div> */}
+        </section>
+      </div>
+    </main>
+  );
+};
+export default LandingMain;
 
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
+export const viewCarousel = (slide: 'register' | 'login' | 'password') => {
+  let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+  carouselContainer.style.transform = {
+    register: 'translateX(0vw)',
+    login: 'translateX(-100vw)',
+    password: 'translateX(-200vw)',
+  }[slide];
+};
 
-  //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
+/*
+  const loadResume = () => {
+    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
+    landingBody.remove();
+    return ReactDOM.createRoot(resumeBody).render(<Resume />);
+  };
+  */
 
+/*
   const handleData = async (event: React.FormEvent, slide: 'register' | 'login' | 'password') => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
@@ -190,6 +261,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         break;
     }
   };
+  */
+/*
   const renderForm = (type: 'register' | 'login' | 'password') => {
     switch (type) {
       case 'register':
@@ -270,7 +343,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
                 </div>
               </mark>
               <menu className="register-buttons">
-                {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
+                {// Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. //}
                 <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
                   <h6>Access Account</h6>
                 </button>
@@ -396,86 +469,5 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           </form>
         );
     }
-  };
-
-  useEffect(() => {
-    // console.log(currentView);
-    switch (currentView) {
-      case 'default':
-        let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-        resumeBody.innerHTML = '<main class="default-main" />';
-        // return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
-        break;
-      case 'authorized':
-        // loadResume();
-        alert('//--|🠊 Login Successful: Load Page 🠈|--//');
-        break;
-      case 'unverified':
-        let landingLeftbar = document.querySelector('#landing-leftbar') as HTMLElement;
-        if (landingLeftbar) {
-          // Check if the element exists before accessing its properties
-          if (landingLeftbar.classList.contains('collapsed')) {
-            landingLeftbar.classList.remove('collapsed');
-          }
-          landingLeftbar.classList.add('expanded');
-        }
-        break;
-        alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
-      case 'recovery':
-        let landingRightbar = document.querySelector('#landing-leftbar') as HTMLElement;
-        if (landingRightbar) {
-          // Check if the element exists before accessing its properties
-          if (landingRightbar.classList.contains('collapsed')) {
-            landingRightbar.classList.remove('collapsed');
-          }
-          landingRightbar.classList.add('expanded');
-        }
-        alert('//--|🠊 Password Request: Confirm Code 🠈|--//');
-        break;
-      default:
-        // ReactDOM.createRoot(resumeBody).render(<div />);
-        break;
-    }
-    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
-  }, [pageName, blockName, currentView]);
-
-  return (
-    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
-      <div className="landing-carousel">
-        <section className="register-section">
-          {/* <div className="register-container"></div> */}
-          <div className="register-container">{renderForm('register')}</div>
-        </section>
-        <section className="login-section">
-          <div className="login-container">
-            <FormLogin info={info} />
-          </div>
-          {/* <div className="login-container">{renderForm('login')}</div> */}
-        </section>
-        <section className="password-section">
-          {/* <div className="password-container"></div> */}
-          <div className="password-container">{renderForm('password')}</div>
-        </section>
-      </div>
-    </main>
-  );
-};
-export default LandingMain;
-
-export const viewCarousel = (slide: 'register' | 'login' | 'password') => {
-  let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-  carouselContainer.style.transform = {
-    register: 'translateX(0vw)',
-    login: 'translateX(-100vw)',
-    password: 'translateX(-200vw)',
-  }[slide];
-};
-
-/*
-  const loadResume = () => {
-    let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-    let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-    landingBody.remove();
-    return ReactDOM.createRoot(resumeBody).render(<Resume />);
   };
   */
