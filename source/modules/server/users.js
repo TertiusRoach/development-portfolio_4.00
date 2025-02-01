@@ -241,50 +241,63 @@ server.post(`/${root}/password`, async (req, res) => {
 
 //--|🠊 POST: Verify Page 🠈|--//
 server.post(`/${root}/verify`, async (req, res) => {
-  let today = new Date(); // Current date
+  let today = new Date();
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-  try {
-    // Move user to 'enabled' collection and clean up sensitive data
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(passwordHash, salt);
-    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
 
-    // Retrieve and sanitize data from the request
+  try {
     const { email, verificationCode, passwordHash } = req.body;
-    // Check if the user exists in the 'pending' collection
-    const user = await database.collection('pending').findOne({ email });
 
     if (!email || !verificationCode || !passwordHash) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
+    const user = await database.collection('pending').findOne({ email });
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Validate the password using bcrypt
+    // Validate password using bcrypt
     const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
     if (!isPasswordValid) {
       return res.status(400).json({ message: 'Invalid password' });
     }
 
-    // Check the verification code and expiration
+    // Validate verification code
     if (verificationCode !== user.activationCode) {
       return res.status(400).json({ message: 'Invalid verification code' });
     }
 
+    // Check if the verification code has expired
     if (new Date() > new Date(user.activationCodeExpiresAt)) {
-      return res.status(400).json({ message: 'Verification code expired' });
+      const newActivationCode = generateRandomCode(10);
+      const newExpirationTime = new Date();
+      newExpirationTime.setHours(newExpirationTime.getHours() + 24);
+
+      await database
+        .collection('pending')
+        .updateOne(
+          { _id: user._id },
+          { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
+        );
+
+      await sendActivationEmail(user.email, newActivationCode, 'register');
+      return res
+        .status(400)
+        .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
     }
+
+    // Move user to 'enabled' collection
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(passwordHash, salt);
+    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
 
     await database.collection('enabled').insertOne({
       ...rest,
       verifiedEmail: true,
       passwordHash: hashedPassword,
-
       status: 'enabled',
       updatedAt: todayISO,
-
       passwordCode: null,
       passwordCodeExpiresAt: null,
     });
@@ -295,7 +308,7 @@ server.post(`/${root}/verify`, async (req, res) => {
     res.status(200).json({ status: 'authorized', message: 'Account Verified Successfully' });
   } catch (error) {
     console.error('Verification Error:', error);
-    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification' });
+    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification', error: error.message });
   }
 });
 

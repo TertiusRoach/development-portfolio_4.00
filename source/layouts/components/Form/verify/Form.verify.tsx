@@ -1,4 +1,4 @@
-// Section.home.tsx
+// Form.verify.tsx
 import $ from 'jquery';
 import React from 'react';
 import './Form.verify.scss';
@@ -47,31 +47,52 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refreshing 🠈|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+    event.preventDefault(); // Prevents page refresh
 
-    setIsSubmitting(true); //--|🠈 Lock to Prevent Multiple Submissions 🠈|--//
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
+
+    let emailInput = '';
+    let passwordInput = '';
+    let verificationCode = '';
+
+    let landingInputs = document.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+
+    // Iterate through all inputs and assign values based on ID
+    landingInputs.forEach((input) => {
+      if (input.id === 'email' && emailRegex.test(input.value)) {
+        emailInput = input.value;
+      }
+      if (input.id === 'password' && input.value.trim() !== '') {
+        passwordInput = input.value;
+      }
+      if (input.id === 'verify-code' && input.value.trim() !== '') {
+        verificationCode = input.value;
+      }
+    });
+
+    // Ensure required fields are present before proceeding
+    if (!emailInput || !passwordInput || !verificationCode) {
+      setLoginMessage('All fields are required');
+      return;
+    }
+
+    setIsSubmitting(true); // Lock to prevent multiple submissions
 
     try {
-      const userEmail = document.querySelector('#email') as HTMLInputElement;
-      const userCode = document.querySelector('#verify-code') as HTMLInputElement;
-      const userPassword = document.querySelector('#password') as HTMLInputElement;
-
       const response = await axios.post('http://localhost:3000/users/verify', {
-        email: userEmail.value,
-        passwordHash: userPassword.value,
-        verificationCode: userCode.value,
+        email: emailInput,
+        passwordHash: passwordInput, // Backend will handle hashing
+        verificationCode: verificationCode,
       });
 
       const { status, message } = response.data;
-
       alert(message);
+
       switch (status) {
         case 'authorized':
           setLoginMessage(message);
-
           document.querySelector('#landing-leftbar')?.classList.toggle('expanded', false);
-          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
+          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); // Collapse Sidebar
           break;
         case 'unverified':
           setLoginMessage(message);
@@ -79,10 +100,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // Handle Axios-specific errors
         setLoginMessage(error.response?.data?.message || 'An error occurred');
       } else {
-        // Handle non-Axios errors (fallback)
         setLoginMessage('An unexpected error occurred');
       }
     } finally {
