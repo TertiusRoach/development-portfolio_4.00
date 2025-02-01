@@ -1,7 +1,7 @@
 // Section.home.tsx
 import $ from 'jquery';
 import React from 'react';
-import './Form.password.scss';
+import './Form.verify.scss';
 import axios, { AxiosError } from 'axios';
 import { viewCarousel } from '../../../containers/Main/LandingMain/LandingMain';
 
@@ -25,7 +25,7 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-const FormPassword: React.FC<InfoProps> = ({ info }) => {
+const FormVerify: React.FC<InfoProps> = ({ info }) => {
   let information = info;
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
@@ -50,77 +50,96 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault(); //--|🠈 Prevents Refreshing 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
 
-    let userEmail = document.querySelector('#email') as HTMLInputElement;
+    setIsSubmitting(true); //--|🠈 Lock to Prevent Multiple Submissions 🠈|--//
+
     try {
-      //--|🠋 Send email to back-end for validation 🠋|--//
-      let response = await axios.post('http://localhost:3000/users/password', {
+      const userEmail = document.querySelector('#email') as HTMLInputElement;
+      const userCode = document.querySelector('#verify-code') as HTMLInputElement;
+      const userPassword = document.querySelector('#password') as HTMLInputElement;
+
+      const response = await axios.post('http://localhost:3000/users/verify', {
         email: userEmail.value,
+        passwordHash: userPassword.value,
+        verificationCode: userCode.value,
       });
 
-      alert(response.data.message);
-      console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
-      document.querySelector('#landing-rightbar')?.classList.toggle('collapsed', false);
-      document.querySelector('#landing-rightbar')?.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
+      const { status, message } = response.data;
+
+      alert(message);
+      switch (status) {
+        case 'authorized':
+          setLoginMessage(message);
+
+          document.querySelector('#landing-leftbar')?.classList.toggle('expanded', false);
+          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
+          break;
+        case 'unverified':
+          setLoginMessage(message);
+          break;
+      }
     } catch (error) {
-      //--|🠋 Handle errors during the process 🠋|--//
-      alert('An error occurred while processing your request. Please try again later.');
-      console.error('Error during password reset:', error); //--|🠈 Log error for debugging 🠈|--//
-      viewCarousel('login'); //--|🠈 Redirect to login 🠈|--//
+      if (axios.isAxiosError(error)) {
+        // Handle Axios-specific errors
+        setLoginMessage(error.response?.data?.message || 'An error occurred');
+      } else {
+        // Handle non-Axios errors (fallback)
+        setLoginMessage('An unexpected error occurred');
+      }
     } finally {
-      setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
+      setIsSubmitting(false); // Re-enable the submit button
     }
   };
 
   return (
-    <form className="password-form" onSubmit={(event) => handleData(event)}>
-      <div className="password-header">
-        <div className="password-label">
-          <h6 className="display-6">Password</h6>
+    <form className="verify-form" onSubmit={handleData}>
+      <div className="verify-header">
+        <div className="verify-label">
+          <h6 className="display-6">Verify</h6>
         </div>
-        <button className="password-demo" type="button">
+        <button className="close-leftbar" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
             alt=""
           />
         </button>
-        <div className="password-logo">
+        <div className="verify-logo">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
             alt="Login Logo"
           />
         </div>
       </div>
-      <div className="password-inputs">
+      <div className="verify-inputs">
         <input
           required
-          id="email"
-          name="Email"
-          type="email"
-          placeholder="//--|🠊 Registered Email 🠈|--//"
+          type="text"
+          id="verify-code"
+          name="Verification Code"
+          placeholder="🠊 Verification Code 🠈"
           // --- //
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          // value={verificationCode}
+          // onChange={(event) => setEmail(event.target.value)}
         />
       </div>
-      <div className="password-footer">
-        <mark className="password-action">
-          <button className="password-button" disabled={isSubmitting}>
-            <h6>Change</h6>
+      <div className="verify-footer">
+        <mark className="verify-action">
+          <button className="verify-button" disabled={isSubmitting}>
+            {isSubmitting ? 'Processing...' : 'Verify'}
           </button>
-          <div className="password-message">
-            <h6>Can't find Email.</h6>
-          </div>
+          {loginMessage && (
+            <div className={`verify-message ${loginMessage.includes('successfully') ? 'success' : 'error'}`}>
+              {loginMessage}
+            </div>
+          )}
+          {/* <button className="verify-button" disabled={isSubmitting}>
+          <h6>Authorize</h6>
+        </button>
+        <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
+          <h6>{loginMessage}</h6>
+        </div> */}
         </mark>
-        <menu className="password-buttons">
-          <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
-            <h6>Enter Account</h6>
-          </button>
-          <button className="password-register" type="button" onClick={() => viewCarousel('register')}>
-            <h6>Register Account</h6>
-          </button>
-        </menu>
       </div>
     </form>
   );
 };
-export default FormPassword;
+export default FormVerify;
