@@ -51,8 +51,6 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
   let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
-  const handleData = async (event: React.FormEvent) => {};
-
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);

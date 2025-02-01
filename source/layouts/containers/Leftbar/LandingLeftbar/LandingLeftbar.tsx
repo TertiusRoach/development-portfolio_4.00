@@ -52,11 +52,9 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
   let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
 
-  /*
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
   }, [pageName, blockName, currentView]);
-  */
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
