@@ -128,8 +128,8 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
   /*
+  //--|🠊 display: flex; 🠈|--//
   display: inherit; //~~|🠊 display: grid; 🠈|~~//
   border-radius: 1rem;
   grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//

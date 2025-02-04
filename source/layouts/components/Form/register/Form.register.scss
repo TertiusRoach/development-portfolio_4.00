@@ -8,8 +8,65 @@
   div[class*='header'] {
     display: inherit; //~~|🠊 display: grid; 🠈|~~//
     grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-template: 4rem 1fr / 4rem 1fr 4rem; //~~|🠊 rows / columns 🠈|~~//
+    // background: rgba(red, 0.25);
+    div[class*='logo'] {
+      display: flex;
+      justify-content: center;
+      grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      img {
+        width: 100%;
+        margin: 0.5rem;
+      }
+    }
+    div[class*='label'] {
+      grid-area: 1 / 2 / 2 / 3;
+      h6 {
+        margin: 0;
+        width: 100%;
+        color: white;
+        padding: 0.5rem;
+        text-align: center; //~~|🠊 Ensures Text is Centered 🠈|~~//
+      }
+    }
+    button[class*='close'] {
+      background: none;
+      grid-area: 1 / 3 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      img {
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem;
+      }
+    }
+    div[class*='text'] {
+      display: flex;
+      align-items: center;
+      grid-area: 2 / 2 / 3 / 3;
+      h4 {
+        padding: 4px;
+        line-clamp: 3; //~~|🠊 Standard property 🠈|~~//
+        color: white;
+        text-wrap: balance;
+        text-align: center; //~~|🠊 Justifies text alignment 🠈|~~//
+        display: -webkit-box; //~~|🠊 Enables multi-line truncation 🠈|~~//
+        -webkit-line-clamp: 4; //~~|🠊 Limits the number of lines  🠈|~~//
+        text-overflow: ellipsis; //~~|🠊 Adds ellipsis for overflow 🠈|~~//
+        -webkit-box-orient: vertical; //~~|🠊 Vertical Text 🠈|~~//
+      }
+    }
+    /*
+    display: inherit; //~~|🠊 display: grid; 🠈|~~//
+    grid-area: 1 / 1 / 2 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     grid-template: auto 1fr / repeat(3, 1fr); //~~|🠊 rows / columns 🠈|~~//
     // background: rgba(red, 0.25);
+    div[class*='logo'] {
+      display: flex;
+      justify-content: center;
+      grid-area: 2 / 1 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      img {
+        width: 25%;
+      }
+    }
     div[class*='label'] {
       display: flex;
       grid-area: 1 / 1 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
@@ -21,7 +78,7 @@
         // background: red;
       }
     }
-    button[class*='demo'] {
+    button[class*='close'] {
       display: flex;
       background: none;
       justify-content: flex-end;
@@ -32,14 +89,7 @@
         padding: 0.5rem;
       }
     }
-    div[class*='logo'] {
-      display: flex;
-      justify-content: center;
-      grid-area: 2 / 1 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-      img {
-        width: 25%;
-      }
-    }
+    */
   }
   div[class*='inputs'] {
     display: flex;
@@ -128,6 +178,7 @@
   }
 }
 @mixin mobile-portrait {
+  /*
   //--|🠊 display: flex; 🠈|--//
   display: inherit; //~~|🠊 display: grid; 🠈|~~//
   border-radius: 1rem;
@@ -254,6 +305,7 @@
       }
     }
   }
+  */
 }
 
 form[class*='register'] {

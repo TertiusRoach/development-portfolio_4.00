@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
-import { viewCarousel } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
@@ -89,12 +89,15 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
       if (axiosError.response?.status === 404) {
         //--|🠊 User not found 🠈|--//
-        alert('Email not found. Redirecting to registration page.');
+        let tutorial: string = "It looks like you're new here. Please sign up to get started.";
         viewCarousel('register'); //--|🠈 Redirect to the registration page 🠈|--//
+        toggleText('.register-text', tutorial); //--|🠈 Provide guidance for new users 🠈|--//
       } else if (axiosError.response?.status === 401) {
         //--|🠊 Invalid password 🠈|--//
-        alert('Invalid password. Redirecting to password reset section.');
+        let tutorial: string = "Forgot your password? Don't worry, you can reset it here.";
+        // alert('Invalid password. Redirecting to password reset section.');
         viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
+        // toggleText('.password-text', tutorial); //--|🠈 Provide guidance for registered users 🠈|--//
       } else {
         alert('An error occurred during login. Please try again later.');
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//

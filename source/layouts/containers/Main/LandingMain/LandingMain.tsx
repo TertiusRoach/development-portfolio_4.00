@@ -116,7 +116,10 @@ export const viewCarousel = (slide: 'register' | 'login' | 'password') => {
     password: 'translateX(-200vw)',
   }[slide];
 };
-
+export const toggleText = (element: string, dialogue: string) => {
+  let tagText = document.querySelector(`${element}`)?.firstChild as HTMLElement;
+  tagText.innerText = dialogue;
+};
 /*
   const loadResume = () => {
     let landingBody = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
