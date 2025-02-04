@@ -94,10 +94,10 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         toggleText('.register-text', tutorial); //--|🠈 Provide guidance for new users 🠈|--//
       } else if (axiosError.response?.status === 401) {
         //--|🠊 Invalid password 🠈|--//
-        let tutorial: string = "Forgot your password? Don't worry, you can reset it here.";
+        let tutorial: string = 'Forgot your password? You can reset it here.';
         // alert('Invalid password. Redirecting to password reset section.');
         viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
-        // toggleText('.password-text', tutorial); //--|🠈 Provide guidance for registered users 🠈|--//
+        toggleText('.password-text', tutorial); //--|🠈 Provide guidance for registered users 🠈|--//
       } else {
         alert('An error occurred during login. Please try again later.');
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
@@ -165,7 +165,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             <h6>Register Account</h6>
           </button>
           <button className="login-password" type="button" onClick={() => viewCarousel('password')}>
-            <h6>Forgot Password</h6>
+            <h6>Reset Password</h6>
           </button>
         </menu>
       </div>
