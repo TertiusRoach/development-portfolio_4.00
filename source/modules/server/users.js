@@ -114,8 +114,8 @@ server.post(`/${root}/register`, async (req, res) => {
       lastLogin: null,
       role: 'user',
       status: 'pending',
-      passwordCode: null,
-      passwordCodeExpiresAt: null,
+      // passwordCode: null,
+      // passwordCodeExpiresAt: null,
     });
 
     // Send activation email
@@ -179,6 +179,62 @@ server.post(`/${root}/login`, async (req, res) => {
 
 //--|🠊 POST: Password Page 🠈|--//
 server.post(`/${root}/password`, async (req, res) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const { email } = req.body;
+
+  if (!email || !emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Invalid email. Please provide a valid email address.' });
+  }
+
+  try {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const randomCode = generateRandomCode(8); // 8-character alphanumeric code
+    const user = await database.collection('enabled').findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Email not found. Please check or register.' });
+    }
+
+    if (!user.passwordCodeExpiresAt || new Date() > new Date(user.passwordCodeExpiresAt)) {
+      await database.collection('enabled').updateOne(
+        { _id: user._id },
+        {
+          $set: {
+            passwordCode: randomCode,
+            passwordCodeExpiresAt: tomorrow.toISOString(),
+          },
+        }
+      );
+
+      try {
+        await sendActivationEmail(email, randomCode, 'password');
+        return res
+          .status(200)
+          .json({ message: `A password reset code has been sent to ${email}. Please check your inbox.` });
+      } catch (emailError) {
+        console.error(`Failed to send password reset email to ${email}:`, emailError);
+        return res
+          .status(500)
+          .json({ message: 'Password reset initiated, but failed to send email. Please contact support.' });
+      }
+    } else {
+      return res.status(200).json({
+        message: `A password reset code has already been sent. Please check your inbox for ${email}.`,
+      });
+    }
+  } catch (dbError) {
+    console.error('Database error during password reset:', dbError);
+    return res.status(500).json({ message: 'Internal Server Error. Please try again later.' });
+  }
+
+  // If the email exists in the 'enabled' collection and the value for passwordCode is null then generate a passwordCode
+  // Send the code to the provided email if the passwordCodeExpiresAt is null or the current date is greater than the passwordCodeExpiresAt
+  // Update passwordCodeExpiresAt to the current date + 1 day if the email was sent successfully.
+  // If the email doesn't exist in the 'enabled' collection, return a 404 status
+  /*
   let today = new Date(); // Current date
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
   let tomorrow = new Date(today);
@@ -237,6 +293,7 @@ server.post(`/${root}/password`, async (req, res) => {
     console.error('Error in Password Reset:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
+  */
 });
 
 //--|🠊 POST: Verify Page 🠈|--//

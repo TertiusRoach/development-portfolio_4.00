@@ -1,4 +1,4 @@
-// Section.home.tsx
+// Form.password.tsx
 import $ from 'jquery';
 import React from 'react';
 import './Form.password.scss';
@@ -50,7 +50,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault(); //--|🠈 Prevents Refreshing 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
 
-    let userEmail = document.querySelector('#email') as HTMLInputElement;
+    let userEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
     try {
       //--|🠋 Send email to back-end for validation 🠋|--//
       let response = await axios.post('http://localhost:3000/users/password', {
