@@ -306,92 +306,78 @@ server.post(`/${root}/verify`, async (req, res) => {
 
 //--|🠊 POST: Reset Page 🠈|--//
 server.post(`/${root}/reset`, async (req, res) => {
-  const { email, passwordCode, newHash } = req.body; // newHash is the new password
-
-  if (!email || !passwordCode || !newHash) {
-    return res.status(400).json({ message: 'All fields are required.' });
-  }
+  let today = new Date();
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
 
   try {
+    const { email, passwordCode, newHash } = req.body;
+
+    if (!email || !passwordCode || !newHash) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
     const user = await database.collection('enabled').findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: 'Account not found.' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    // Check if passwordCode matches
-    const isCodeValid = user.passwordCode === passwordCode;
-    const isPasswordSame = await comparePasswords(newHash, user.passwordHash); // Function to compare hashed passwords
+    // Validate the reset code
+    if (passwordCode !== user.passwordCode) {
+      return res.status(400).json({ message: 'Invalid reset code' });
+    }
 
-    if (isCodeValid && !isPasswordSame) {
-      // Password reset authorized
+    // Check if the reset code has expired
+    if (new Date() > new Date(user.passwordCodeExpiresAt)) {
+      const newResetCode = generateRandomCode(10);
+      const newExpirationTime = new Date();
+      newExpirationTime.setHours(newExpirationTime.getHours() + 1); // Reset code valid for 1 hour
+
       await database.collection('enabled').updateOne(
         { _id: user._id },
         {
-          $set: { passwordHash: await hashPassword(newHash), passwordCode: null, passwordCodeExpiresAt: null },
+          $set: {
+            passwordCode: newResetCode,
+            passwordCodeExpiresAt: newExpirationTime.toISOString(),
+          },
         }
       );
-      return res.status(200).json({ status: 'authorized', message: 'Password reset successful.' });
+
+      await sendActivationEmail(user.email, newResetCode, 'reset');
+      return res.status(400).json({ message: 'Reset code expired. A new code has been sent to your email.' });
     }
 
-    if (!isCodeValid && isPasswordSame) {
-      // User remembered their password
+    // Check if the new password is the same as the old one
+    const isPasswordSame = await bcrypt.compare(newHash, user.passwordHash);
+    if (isPasswordSame) {
       await database
         .collection('enabled')
         .updateOne({ _id: user._id }, { $set: { passwordCode: null, passwordCodeExpiresAt: null } });
       return res.status(200).json({ status: 'remembered', message: 'You remembered your password!' });
     }
 
-    return res.status(400).json({ status: 'unverified', message: 'Invalid reset code or password mismatch.' });
-  } catch (error) {
-    console.error('Error during password reset:', error);
-    return res.status(500).json({ message: 'Internal Server Error. Please try again later.' });
-  }
-  /*
-  console.log('//--|🠊 Reset page loaded from landingRightbar! 🠈|--//');
-  const { email, newHash, passwordCode } = req.body;
+    // Hash the new password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(newHash, salt);
 
-  try {
-    // Check if the user exists in the 'enabled' collection
-    const user = await database.collection('enabled').findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ status: 'error', message: 'User not found' });
-    }
-
-    // Validate the provided passwordCode
-    if (passwordCode !== user.passwordCode) {
-      return res.status(400).json({ status: 'incorrect', message: 'Invalid reset code' });
-    }
-
-    // Rehash the new password securely
-    const bcrypt = require('bcrypt');
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(newHash, saltRounds);
-
-    // Update the user document in the database
+    // Update user with new password and remove reset code
     await database.collection('enabled').updateOne(
-      { email },
+      { _id: user._id },
       {
         $set: {
           passwordHash: hashedPassword,
-          passwordCode: null, // Clear the password reset code
-          updatedAt: new Date().toISOString(), // Set the updated timestamp
+          passwordCode: null,
+          passwordCodeExpiresAt: null,
+          updatedAt: todayISO,
         },
       }
     );
 
-    // Respond with success
-    return res.status(200).json({
-      status: 'recovered',
-      message: 'Welcome back! Redirecting to login.',
-    });
+    res.status(200).json({ status: 'authorized', message: 'Password reset successful' });
   } catch (error) {
-    //--| Handle errors during the process |--//
-    console.error('Error in Password Reset:', error);
-    return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
+    console.error('Password Reset Error:', error);
+    res.status(500).json({ status: 'error', message: 'An error occurred during password reset', error: error.message });
   }
-  */
 });
 
 function generateRandomCode(length) {

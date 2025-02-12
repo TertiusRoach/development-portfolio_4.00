@@ -38,9 +38,12 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   let [lastName, setLastName] = useState('');
 
   //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
+  let [resetMessage, setResetMessage] = useState('');
+
+  /*
   let [registerMessage, setRegisterMessage] = useState('');
   let [passwordMessage, setPasswordMessage] = useState('');
+  */
 
   //--|🠋 Other UI states 🠋|--//
   let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
@@ -48,23 +51,185 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
 
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--| Validate email format |--//
     let emailInput = document.querySelector('.password-inputs #email') as HTMLInputElement;
     let passwordInput = document.querySelector('.reset-inputs #password') as HTMLInputElement;
     let recoveryInput = document.querySelector('.reset-inputs #reset-code') as HTMLInputElement;
 
+    if (!emailRegex.test(emailInput.value)) {
+      setResetMessage('Invalid email format.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/users/reset',
+        {
+          email: emailInput.value,
+          newHash: passwordInput.value,
+          passwordCode: recoveryInput.value,
+        }
+        /*
+        {
+          headers: { 'Content-Type': 'application/json' }, //--| Ensure JSON content type |--//
+        }
+        */
+      );
+
+      const { status, message } = response.data;
+      let dialogue: string;
+
+      switch (status) {
+        case 'authorized': //--| Reset successful |--//
+          dialogue = 'Your password has been successfully reset.';
+          viewCarousel('login');
+          toggleText('.login-text', dialogue);
+          toggleAside('#landing-rightbar', 'hide'); //--|🠈 Hide Reset 🠈|--//
+          break;
+        case 'remembered': //--| Password unchanged |--//
+          dialogue = `You're all set! No password change was necessary.`;
+          viewCarousel('login');
+          toggleText('.login-text', dialogue);
+          toggleAside('#landing-rightbar', 'hide'); //--|🠈 Hide Reset 🠈|--//
+          break;
+        case 'unverified': //--| Incorrect details |--//
+          dialogue = `The details you've entered are incorrect. Please try again.`;
+
+          toggleText('.reset-text', dialogue);
+          break;
+        default:
+          dialogue = 'An unexpected error occurred. Please try again.';
+
+          toggleText('.reset-text', dialogue);
+          break;
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setResetMessage(error.response?.data?.message || 'An error occurred.');
+      } else {
+        setResetMessage('An unexpected error occurred.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
     /*
-    switch (status) {
-      case 'authorized':
-        break;
-      case 'remembered':
-        break;
-      case 'unverified':
-        break;
+    event.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+    let emailInput = document.querySelector('.password-inputs #email') as HTMLInputElement;
+    let passwordInput = document.querySelector('.reset-inputs #password') as HTMLInputElement;
+    let recoveryInput = document.querySelector('.reset-inputs #reset-code') as HTMLInputElement;
+
+    if (!emailRegex.test(emailInput.value)) {
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/users/reset', {
+        email: emailInput.value,
+        newHash: passwordInput.value,
+        passwordCode: recoveryInput.value,
+      });
+
+      const { status, message } = response.data;
+      let dialogue: string;
+      //--|🠊 Validate User Status 🠈|--//
+
+      switch (status) {
+        case 'authorized': //--|🠈 Reset code matches database. Password reset confirmed. 🠈|--//
+          dialogue = 'Your password has been successfully reset.';
+
+          viewCarousel('login'); //--|🠈 Scroll to Register 🠈|--//
+          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+        case 'remembered': //--|🠈 Password reset cancelled. User remembered their password. 🠈|--//
+          dialogue = `You're all set! No password change was necessary.`;
+
+          viewCarousel('login'); //--|🠈 Scroll to Register 🠈|--//
+          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+        case 'unverified': //--|🠈 Incorrect details were inserted into inputs. 🠈|--//
+          dialogue = `The details you've entered are incorrect. Please try again.`;
+
+          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+      }
+    } catch (error: AxiosError | unknown) {
+      if (axios.isAxiosError(error)) {
+        setResetMessage(error.response?.data?.message || 'An error occurred');
+      } else {
+        setResetMessage('An unexpected error occurred');
+      }
+    } finally {
+      setIsSubmitting(false);
     }
     */
+  };
 
-    /*
+  return (
+    <form className="reset-form" onSubmit={handleData}>
+      <div className="reset-header">
+        <div className="reset-label">
+          <h6 className="display-6">Reset</h6>
+        </div>
+        <button className="close-rightbar" type="button">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
+            alt=""
+          />
+        </button>
+        <div className="reset-logo">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+            alt="Login Logo"
+          />
+        </div>
+        <div className="reset-text">
+          <h4>Reset your password.</h4>
+        </div>
+      </div>
+      <div className="reset-inputs">
+        <input
+          required
+          type="text"
+          id="reset-code"
+          name="Recovery Code"
+          placeholder="//--|🠊 Recovery Code 🠈|--//"
+          // --- //
+          // value={verificationCode}
+          // onChange={(event) => setEmail(event.target.value)}
+        />
+        <input
+          required
+          id="password"
+          name="Password"
+          type="password"
+          placeholder="//--|🠊 New Password 🠈|--//"
+          // --- //
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </div>
+      <div className="reset-footer">
+        <mark className="reset-action">
+          <button className="reset-button" disabled={isSubmitting}>
+            {isSubmitting ? 'Processing...' : 'Reset'}
+          </button>
+        </mark>
+      </div>
+    </form>
+  );
+};
+export default FormReset;
+
+/*
+
+    */
+
+/*
     if (!emailInput || !passwordInput || !recoveryInput) {
       setLoginMessage('All fields are required.');
       return;
@@ -72,26 +237,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
 
     setIsSubmitting(true);
 
-    try {
-      const response = await axios.post('http://localhost:3000/users/reset', {
-        email: emailInput,
-        newHash: passwordInput,
-        passwordCode: recoveryCode,
-      });
 
-      const { status, message } = response.data;
-      setLoginMessage(message);
-
-
-    } catch (error: AxiosError | unknown) {
-      if (axios.isAxiosError(error)) {
-        setLoginMessage(error.response?.data?.message || 'An error occurred');
-      } else {
-        setLoginMessage('An unexpected error occurred');
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
     ---
     event.preventDefault(); // Prevents page refresh
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
@@ -165,71 +311,3 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
       setIsSubmitting(false); // Re-enable the submit button
     }
     */
-  };
-
-  return (
-    <form className="reset-form" onSubmit={handleData}>
-      <div className="reset-header">
-        <div className="reset-label">
-          <h6 className="display-6">Reset</h6>
-        </div>
-        <button className="close-rightbar" type="button">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
-            alt=""
-          />
-        </button>
-        <div className="reset-logo">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
-        <div className="reset-text">
-          <h4>Reset your password.</h4>
-        </div>
-      </div>
-      <div className="reset-inputs">
-        <input
-          required
-          type="text"
-          id="reset-code"
-          name="Recovery Code"
-          placeholder="//--|🠊 Recovery Code 🠈|--//"
-          // --- //
-          // value={verificationCode}
-          // onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          required
-          id="password"
-          name="Password"
-          type="password"
-          placeholder="//--|🠊 New Password 🠈|--//"
-          // --- //
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      <div className="reset-footer">
-        <mark className="reset-action">
-          <button className="reset-button" disabled={isSubmitting}>
-            {isSubmitting ? 'Processing...' : 'Reset'}
-          </button>
-          <div className={`reset-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
-            <h6>{loginMessage}</h6>
-          </div>
-        </mark>
-        {/* <menu className="reset-buttons">
-        <button className="reset-register" type="button">
-          <h6>Register Account</h6>
-        </button>
-        <button className="reset-password" type="button">
-          <h6>Forgot Password</h6>
-        </button>
-      </menu> */}
-      </div>
-    </form>
-  );
-};
-export default FormReset;

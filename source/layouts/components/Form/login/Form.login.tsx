@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
-import { viewCarousel, toggleText } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
@@ -13,7 +13,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
+// import toggleAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -50,6 +50,10 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+    if (!emailRegex.test(email)) {
+      setIsSubmitting(false); //--|🠈 Indicate submission is blocked 🠈|--//
+      return;
+    }
 
     setIsSubmitting(true); //--|🠈 Indicate submission in progress 🠈|--//
     try {
@@ -62,23 +66,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
       //--|🠊 Validate User Status 🠈|--//
       switch (status) {
-        case 'pending':
-          // alert('Account not verified. Expanding left sidebar for further steps.');
-          console.log('//--|🠊 Account not verified. Expanding landingLeftbar (Verify Page) for further steps. 🠈|--//');
-
-          setLoggedIn(false); //--|🠈 User is not fully authorized 🠈|--//
-          setCurrentView('unverified'); //--|🠈 Show unverified page 🠈|--//
-
-          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
-          document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand left sidebar 🠈|--//
+        case 'pending': //--|🠈 Account not verified. Expanding landingLeftbar (Verify Page) for further steps. 🠈|--//
+          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
           break;
-        case 'enabled':
+        case 'enabled': //--|🠈 Load the main application 🠈|--//
           alert('Login successful. Loading application...');
-
-          setLoggedIn(true); //--|🠈 User is fully authorized 🠈|--//
-          setCurrentView('authorized'); //--|🠈 Show the authorized page 🠈|--//
-
-          // loadResume(); //--|🠈 Load the main application 🠈|--//
           break;
         default:
           alert('Unknown status returned from the server.');

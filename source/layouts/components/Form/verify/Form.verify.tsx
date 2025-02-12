@@ -91,7 +91,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         case 'authorized':
           dialogue = 'Account successfully verified. Please login.';
 
-          setLoginMessage(message);
+          // setLoginMessage(message);
+
           viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
           toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//

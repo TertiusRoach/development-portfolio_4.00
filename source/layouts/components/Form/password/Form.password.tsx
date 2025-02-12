@@ -51,16 +51,16 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     setIsSubmitting(true);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const userEmail = (document.querySelector('.password-inputs #email') as HTMLInputElement).value;
+    const userEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
 
-    if (!emailRegex.test(userEmail)) {
-      setRegisterMessage('Please enter a valid email address.');
-      setIsSubmitting(false);
+    if (!emailRegex.test(userEmail.value)) {
+      // setPasswordMessage('Please enter a valid email address.');
+      setIsSubmitting(false); //--|🠈 Indicate submission is blocked 🠈|--//
       return;
     }
 
     try {
-      let response = await axios.post('http://localhost:3000/users/password', { email: userEmail });
+      let response = await axios.post('http://localhost:3000/users/password', { email: userEmail.value });
       const { message, status } = response.data;
 
       let dialogue: string;
@@ -76,11 +76,11 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         case 'created': //--|🠈 Password change requested and sent to designated email 🠈|--//
           dialogue = `Please check your email for the verification code.`;
 
-          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
           toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
           break;
         case 'waiting': //--|🠈 User already requested a password change 🠈|--//
-          dialogue = 'You already requested a password change. Please check your email for the verification code.';
+          dialogue = 'Please check your email for the verification code.';
 
           toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
@@ -142,9 +142,6 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           <button className="password-button" disabled={isSubmitting}>
             <h6>Change</h6>
           </button>
-          <div className="password-message">
-            <h6>Can't find Email.</h6>
-          </div>
         </mark>
         <menu className="password-buttons">
           <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
