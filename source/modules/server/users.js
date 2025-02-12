@@ -120,7 +120,7 @@ server.post(`/${root}/register`, async (req, res) => {
 
     // Send activation email
     try {
-      await sendActivationEmail(email, randomCode, 'register');
+      /* await sendActivationEmail(email, randomCode, 'register'); */
       console.log(`Activation email sent to ${email}`);
     } catch (error) {
       console.error(`Failed to send activation email to ${email}:`, error);
@@ -219,7 +219,7 @@ server.post(`/${root}/password`, async (req, res) => {
       );
 
       try {
-        await sendActivationEmail(email, randomCode, 'password');
+        /* await sendActivationEmail(email, randomCode, 'password'); */
         return res.status(200).json({ status: 'created', message: 'Password reset code sent to your email.' });
       } catch (emailError) {
         console.error(`Failed to send password reset email:`, emailError);
@@ -276,7 +276,7 @@ server.post(`/${root}/verify`, async (req, res) => {
           { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
         );
 
-      await sendActivationEmail(user.email, newActivationCode, 'register');
+      /* await sendActivationEmail(user.email, newActivationCode, 'register'); */
       return res
         .status(400)
         .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
@@ -346,7 +346,7 @@ server.post(`/${root}/reset`, async (req, res) => {
         }
       );
 
-      await sendActivationEmail(user.email, newResetCode, 'reset');
+      /* await sendActivationEmail(user.email, newResetCode, 'reset'); */
       return res.status(400).json({ message: 'Reset code expired. A new code has been sent to your email.' });
     }
 
