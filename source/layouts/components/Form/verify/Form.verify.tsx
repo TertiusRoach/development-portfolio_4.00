@@ -143,7 +143,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           type="text"
           id="verify-code"
           name="Verification Code"
-          placeholder="🠊 Verification Code 🠈"
+          placeholder="//--|🠊 Verification Code 🠈|--//"
           // --- //
           // value={verificationCode}
           // onChange={(event) => setEmail(event.target.value)}
@@ -152,19 +152,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       <div className="verify-footer">
         <mark className="verify-action">
           <button className="verify-button" disabled={isSubmitting}>
-            {isSubmitting ? 'Processing...' : 'Verify'}
+            {isSubmitting ? 'Verifying...' : 'Verify'}
           </button>
-          {loginMessage && (
-            <div className={`verify-message ${loginMessage.includes('successfully') ? 'success' : 'error'}`}>
-              {loginMessage}
-            </div>
-          )}
-          {/* <button className="verify-button" disabled={isSubmitting}>
-          <h6>Authorize</h6>
-        </button>
-        <div className={`verify-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
-          <h6>{loginMessage}</h6>
-        </div> */}
         </mark>
       </div>
     </form>

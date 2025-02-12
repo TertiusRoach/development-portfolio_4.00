@@ -69,9 +69,14 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         case 'pending': //--|🠈 Account still needs to be verified before a password reset can take place. 🠈|--//
           dialogue = `Your account hasn't been verified yet.`;
 
-          viewCarousel('login'); //--|🠈 Scroll to Login 🠈|--//
+          viewCarousel('register'); //--|🠈 Scroll to Login 🠈|--//
           toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
+
+          let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
+          let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
+          registerEmail.value = passwordEmail.value;
+
           break;
         case 'created': //--|🠈 Password change requested and sent to designated email 🠈|--//
           dialogue = `Please check your email for the verification code.`;
