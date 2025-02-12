@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const particles = [];
-const PARTICLE_DIAMETER = 2;
+const PARTICLE_DIAMETER = 6;
 
 const img = new Image();
 img.src = '../profile-picture.png';
