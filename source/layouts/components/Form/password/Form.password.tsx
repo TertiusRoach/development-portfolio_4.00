@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import './Form.password.scss';
 import axios, { AxiosError } from 'axios';
-import { viewCarousel } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
@@ -13,7 +13,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
+// import toggleAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -47,27 +47,59 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refreshing 🠈|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+    event.preventDefault();
+    setIsSubmitting(true);
 
-    let userEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const userEmail = (document.querySelector('.password-inputs #email') as HTMLInputElement).value;
+
+    if (!emailRegex.test(userEmail)) {
+      setRegisterMessage('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      //--|🠋 Send email to back-end for validation 🠋|--//
-      let response = await axios.post('http://localhost:3000/users/password', {
-        email: userEmail.value,
-      });
+      let response = await axios.post('http://localhost:3000/users/password', { email: userEmail });
+      const { message, status } = response.data;
 
-      alert(response.data.message);
-      console.log(response.data.message); //--|🠈 Log response for debugging 🠈|--//
-      document.querySelector('#landing-rightbar')?.classList.toggle('collapsed', false);
-      document.querySelector('#landing-rightbar')?.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
+      let dialogue: string;
+      //--|🠊 Validate User Status 🠈|--//
+      switch (status) {
+        case 'pending': //--|🠈 Account still needs to be verified before a password reset can take place. 🠈|--//
+          dialogue = `Your account hasn't been verified yet.`;
+
+          viewCarousel('login'); //--|🠈 Scroll to Login 🠈|--//
+          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
+          break;
+        case 'created': //--|🠈 Password change requested and sent to designated email 🠈|--//
+          dialogue = `Please check your email for the verification code.`;
+
+          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
+          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+        case 'waiting': //--|🠈 User already requested a password change 🠈|--//
+          dialogue = 'You already requested a password change. Please check your email for the verification code.';
+
+          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
+          break;
+        case 'missing': //--|🠈 Account doesn't exist 🠈|--//
+          dialogue = 'Account not found. Please register.';
+
+          viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
+          toggleText('.register-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+        default:
+          setRegisterMessage('Unexpected response from the server. Please try again.');
+      }
     } catch (error) {
-      //--|🠋 Handle errors during the process 🠋|--//
-      alert('An error occurred while processing your request. Please try again later.');
-      console.error('Error during password reset:', error); //--|🠈 Log error for debugging 🠈|--//
-      viewCarousel('login'); //--|🠈 Redirect to login 🠈|--//
+      console.error('Error during password reset:', error);
+      alert('An error occurred. Please try again later.');
+      viewCarousel('login');
     } finally {
-      setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
+      setIsSubmitting(false);
     }
   };
 

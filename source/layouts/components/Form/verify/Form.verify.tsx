@@ -48,7 +48,6 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevents page refresh
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
 
     let emailInput = '';
@@ -86,18 +85,22 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       });
 
       const { status, message } = response.data;
-      // alert(message);
 
-      let dialogue: string = message;
+      let dialogue: string;
       switch (status) {
         case 'authorized':
-          // setLoginMessage(message);
+          dialogue = 'Account successfully verified. Please login.';
+
+          setLoginMessage(message);
+          viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
           toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//
           break;
         case 'unverified':
-          toggleText('.verify-text', message); //--|🠈 Provide Guidance 🠈|--//
-          // setLoginMessage(message);
+          dialogue = 'Verification code is incorrect. Please try again.';
+
+          setLoginMessage(message);
+          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           break;
       }
     } catch (error) {

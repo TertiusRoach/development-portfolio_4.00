@@ -72,8 +72,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       });
 
       const { message, status } = response.data; //--|🠈 Back-end response 🠈|--//
-      // alert(message);
-      // alert(status);
 
       let dialogue: string;
       //--|🠊 Validate User Status 🠈|--//
