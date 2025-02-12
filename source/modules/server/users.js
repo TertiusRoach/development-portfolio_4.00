@@ -180,18 +180,19 @@ server.post(`/${root}/login`, async (req, res) => {
 //--|🠊 POST: Password Page 🠈|--//
 server.post(`/${root}/password`, async (req, res) => {
   const { email } = req.body;
+  let today = new Date();
+  let tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  let randomCode = generateRandomCode(4);
+  /*
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailRegex.test(email)) {
     return res.status(400).json({ status: 'invalid', message: 'Invalid email format.' });
   }
+  */
 
   try {
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    const randomCode = generateRandomCode(4);
-
     // Check collections in priority order
     const pendingUser = await database.collection('pending').findOne({ email });
     if (pendingUser) {
@@ -199,9 +200,11 @@ server.post(`/${root}/password`, async (req, res) => {
     }
 
     const enabledUser = await database.collection('enabled').findOne({ email });
+    /*
     if (!enabledUser) {
       return res.status(404).json({ status: 'missing', message: 'Account not found. Please register.' });
     }
+    */
 
     // If passwordCode has never been set or has expired
     if (!enabledUser.passwordCodeExpiresAt || Date.now() > new Date(enabledUser.passwordCodeExpiresAt).getTime()) {

@@ -56,14 +56,14 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     if (!emailRegex.test(userEmail.value)) {
       // setPasswordMessage('Please enter a valid email address.');
       setIsSubmitting(false); //--|🠈 Indicate submission is blocked 🠈|--//
-      return;
+      /* return; */
     }
 
+    let dialogue: string;
     try {
-      let response = await axios.post('http://localhost:3000/users/password', { email: userEmail.value });
+      const response = await axios.post('http://localhost:3000/users/password', { email: userEmail.value });
       const { message, status } = response.data;
 
-      let dialogue: string;
       //--|🠊 Validate User Status 🠈|--//
       switch (status) {
         case 'pending': //--|🠈 Account still needs to be verified before a password reset can take place. 🠈|--//
@@ -85,19 +85,15 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
           break;
-        case 'missing': //--|🠈 Account doesn't exist 🠈|--//
-          dialogue = 'Account not found. Please register.';
-
-          viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
-          toggleText('.register-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
         default:
           setRegisterMessage('Unexpected response from the server. Please try again.');
       }
     } catch (error) {
-      console.error('Error during password reset:', error);
-      alert('An error occurred. Please try again later.');
-      viewCarousel('login');
+      //--|🠋 Account doesn't exist 🠋|--//
+      let dialogue: string = 'Account not found. Please register.';
+
+      viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
+      toggleText('.register-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
     } finally {
       setIsSubmitting(false);
     }
