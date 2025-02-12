@@ -108,13 +108,13 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 };
 export default LandingMain;
 
-export const viewCarousel = (slide: 'register' | 'login' | 'password') => {
+export const viewCarousel = (page: 'register' | 'login' | 'password') => {
   let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
   carouselContainer.style.transform = {
     register: 'translateX(0vw)',
     login: 'translateX(-100vw)',
     password: 'translateX(-200vw)',
-  }[slide];
+  }[page];
 };
 export const toggleText = (element: string, dialogue: string) => {
   let tagText = document.querySelector(`${element}`)?.firstChild as HTMLElement;
@@ -130,6 +130,16 @@ export const toggleAside = (element: string, toggle: 'show' | 'hide') => {
     case 'hide':
       sidebar.classList.toggle('expanded', false);
       sidebar.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
+      break;
+  }
+};
+export const refreshInputs = (page: 'register' | 'login' | 'password') => {
+  switch (page) {
+    case 'register':
+      break;
+    case 'login':
+      break;
+    case 'password':
       break;
   }
 };
