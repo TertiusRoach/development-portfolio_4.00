@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import './Form.register.scss';
 import axios, { AxiosError } from 'axios';
-import { viewCarousel } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
@@ -13,7 +13,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
+// import toggleAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -72,20 +72,30 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       });
 
       const { message, status } = response.data; //--|🠈 Back-end response 🠈|--//
-      alert(message);
+      // alert(message);
+      // alert(status);
 
+      let dialogue: string;
+      //--|🠊 Validate User Status 🠈|--//
       switch (status) {
         case 'pending': //--|🠈 Pending user 🠈|--//
         case 'created': //--|🠈 Created user 🠈|--//
-          viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
-          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', false);
-          document.querySelector('#landing-leftbar')?.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
+          dialogue = 'Registration successful, please check your email for the activation code.';
+
+          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Leftbar 🠈|--//
           break;
         case 'enabled': //--|🠈 Enabled user 🠈|--//
+          dialogue = 'Account already exists. Please log in.';
+
           viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
+          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           break;
         case 'password': //--|🠈 Incorrect password 🠈|--//
+          dialogue = 'Forgotten your password? You can reset it here.';
+
           viewCarousel('password'); //--|🠈 Redirect to password reset 🠈|--//
+          toggleText('.password-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           break;
         default:
           setRegisterMessage('Unexpected response from the server. Please try again.');

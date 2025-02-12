@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import './Form.verify.scss';
 import axios, { AxiosError } from 'axios';
-import { viewCarousel } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
@@ -13,7 +13,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/getFile';
 import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
+// import toggleAside from '../../../../modules/utilities/toggleAside';
 import toggleSection from '../../../../modules/utilities/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
@@ -86,16 +86,18 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       });
 
       const { status, message } = response.data;
-      alert(message);
+      // alert(message);
 
+      let dialogue: string = message;
       switch (status) {
         case 'authorized':
-          setLoginMessage(message);
-          document.querySelector('#landing-leftbar')?.classList.toggle('expanded', false);
-          document.querySelector('#landing-leftbar')?.classList.toggle('collapsed', true); // Collapse Sidebar
+          // setLoginMessage(message);
+          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//
           break;
         case 'unverified':
-          setLoginMessage(message);
+          toggleText('.verify-text', message); //--|🠈 Provide Guidance 🠈|--//
+          // setLoginMessage(message);
           break;
       }
     } catch (error) {
@@ -126,6 +128,9 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
             alt="Login Logo"
           />
+        </div>
+        <div className="verify-text">
+          <h4>Check your email for verification code.</h4>
         </div>
       </div>
       <div className="verify-inputs">
