@@ -84,17 +84,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  /* useEffect(() => {}, [pageName, blockName]); */
-
-  //--|🠋 Synchronize Email Across Forms 🠋|--//
-  useEffect(() => {
-    const savedEmail = localStorage.getItem('sharedEmail');
-    if (savedEmail) setEmail(savedEmail);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('sharedEmail', email);
-  }, [email]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
