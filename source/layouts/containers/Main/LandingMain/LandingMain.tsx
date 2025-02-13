@@ -38,10 +38,11 @@ interface InfoProps {
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
+
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
   useEffect(() => {
-    // console.log(currentView);
+    /*
     switch (currentView) {
       case 'default':
         let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
@@ -78,7 +79,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         // ReactDOM.createRoot(resumeBody).render(<div />);
         break;
     }
-    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
+    console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
+    */
   }, [pageName, blockName, currentView]);
 
   return (
