@@ -25,7 +25,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   let information = info;
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
@@ -102,7 +101,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
       }
     } finally {
-      setIsSubmitting(false); //--|🠈 Reset submission state 🠈|--//
+      setIsSubmitting(false); //--|🠈 Reset Submission State 🠈|--//
     }
   };
 
@@ -151,22 +150,19 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         />
       </div>
       <div className="login-footer">
-        <mark className="login-action">
+        <menu className="login-action">
           <button className="login-button" disabled={isSubmitting}>
             <h6>Login</h6>
           </button>
-          <div className={`login-message ${loginMessage.includes('Success') ? 'success' : 'error'}`}>
-            <h6>{loginMessage}</h6>
-          </div>
-        </mark>
-        <menu className="login-buttons">
+        </menu>
+        <nav className="login-buttons">
           <button className="login-register" type="button" onClick={() => viewCarousel('register')}>
             <h6>Register Account</h6>
           </button>
           <button className="login-password" type="button" onClick={() => viewCarousel('password')}>
             <h6>Reset Password</h6>
           </button>
-        </menu>
+        </nav>
       </div>
     </form>
   );

@@ -181,15 +181,15 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         />
       </div>
       <div className="register-footer">
-        <mark className="register-action">
+        <menu className="register-action">
           <button className="register-button" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Registering...' : 'Register'}
           </button>
           {/* <div className="register-message">
             <h6>{registerMessage}</h6>
           </div> */}
-        </mark>
-        <menu className="register-buttons">
+        </menu>
+        <nav className="register-buttons">
           {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
           <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
             <h6>Access Account</h6>
@@ -197,7 +197,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           <button className="register-password" type="button" onClick={() => viewCarousel('password')}>
             <h6>Renew Password</h6>
           </button>
-        </menu>
+        </nav>
       </div>
     </form>
   );

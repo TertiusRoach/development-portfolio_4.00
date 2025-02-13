@@ -139,19 +139,19 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         />
       </div>
       <div className="password-footer">
-        <mark className="password-action">
+        <menu className="password-action">
           <button className="password-button" disabled={isSubmitting}>
             <h6>Change</h6>
           </button>
-        </mark>
-        <menu className="password-buttons">
+        </menu>
+        <nav className="password-buttons">
           <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
             <h6>Enter Account</h6>
           </button>
           <button className="password-register" type="button" onClick={() => viewCarousel('register')}>
             <h6>Register Account</h6>
           </button>
-        </menu>
+        </nav>
       </div>
     </form>
   );
