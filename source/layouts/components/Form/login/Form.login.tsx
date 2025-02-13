@@ -1,22 +1,10 @@
 // Form.login.tsx
-import $ from 'jquery';
-import React from 'react';
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
-import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
-
-import MenuButton from '../../Menu/button/Menu.button';
-import ButtonFade from '../../Button/fade/Button.fade';
-
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-// import toggleAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
-import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import { useEmail } from '../../../../modules/context/EmailContext';
 
 interface InfoProps {
   info: {
@@ -30,11 +18,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
 
   //--|🠋 Shared Inputs 🠋|--//
-  let [email, setEmail] = useState('');
+  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
+  // let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
 
-  //--|🠋 Action Element 🠋|--//
-  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
+  //--|🠋 Action Element(s) 🠋|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
@@ -94,7 +83,18 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
   };
-  useEffect(() => {}, [pageName, blockName]);
+
+  /* useEffect(() => {}, [pageName, blockName]); */
+
+  //--|🠋 Synchronize Email Across Forms 🠋|--//
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('sharedEmail');
+    if (savedEmail) setEmail(savedEmail);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('sharedEmail', email);
+  }, [email]);
 
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>

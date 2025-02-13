@@ -1,22 +1,10 @@
-// Section.home.tsx
-import $ from 'jquery';
-import React from 'react';
+// Form.register.tsx
 import './Form.register.scss';
 import axios, { AxiosError } from 'axios';
+import React, { useEffect, useState } from 'react';
 import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
-import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
-
-import MenuButton from '../../Menu/button/Menu.button';
-import ButtonFade from '../../Button/fade/Button.fade';
-
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-// import toggleAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
-import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import { useEmail } from '../../../../modules/context/EmailContext';
 
 interface InfoProps {
   info: {
@@ -26,43 +14,37 @@ interface InfoProps {
   };
 }
 const FormRegister: React.FC<InfoProps> = ({ info }) => {
-  let information = info;
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
+  const blockName = 'main';
+  const pageName = info.identification;
 
   //--|🠋 Shared input states 🠋|--//
-  let [email, setEmail] = useState('');
+  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let [password, setPassword] = useState('');
 
   //--|🠋 Registration-specific input states 🠋|--//
   let [firstName, setFirstName] = useState('');
   let [lastName, setLastName] = useState('');
 
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
+  //--|🠋 Action Element(s) 🠋|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
-  //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
-
-  const handleData = async (event: React.FormEvent) => {
+  const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
 
     //--|🠋 Input Validation: Ensure all fields are filled 🠋|--//
     if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
-      setRegisterMessage('All fields are required.');
+      // setRegisterMessage('All fields are required.');
       return;
     }
 
     //--|🠋 Email Validation: Check format 🠋|--//
     if (!emailRegex.test(email)) {
-      setRegisterMessage('Please enter a valid email address.');
+      // setRegisterMessage('Please enter a valid email address.');
       return;
     }
 
-    setIsSubmitting(true); //--|🠈 Disable button during submission 🠈|--//
+    setSubmit(true); //--|🠈 Disable button during submission 🠈|--//
     try {
       const response = await axios.post('http://localhost:3000/users/register', {
         firstName,
@@ -96,22 +78,24 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           toggleText('.password-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           break;
         default:
-          setRegisterMessage('Unexpected response from the server. Please try again.');
+        // setRegisterMessage('Unexpected response from the server. Please try again.');
       }
     } catch (error) {
       //--|🠋 Handle Axios errors 🠋|--//
       if (axios.isAxiosError(error)) {
-        setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+        // setRegisterMessage(error.response?.data?.err || 'Registration failed.');
       } else {
-        setRegisterMessage('An unexpected error occurred.');
+        // setRegisterMessage('An unexpected error occurred.');
       }
     } finally {
-      setIsSubmitting(false); //--|🠈 Re-enable the button 🠈|--//
+      setSubmit(false); //--|🠈 Re-enable the button 🠈|--//
     }
   };
 
+  useEffect(() => {}, [pageName, blockName]);
+
   return (
-    <form className="register-form" onSubmit={(event) => handleData(event)}>
+    <form className="register-form" onSubmit={(event) => handleRegister(event)}>
       <div className="register-header">
         <div className="register-label">
           <h6 className="display-6">Register</h6>
@@ -182,8 +166,8 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="register-footer">
         <menu className="register-action">
-          <button className="register-button" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Registering...' : 'Register'}
+          <button className="register-button" type="submit" disabled={submit}>
+            {submit ? 'Registering...' : 'Register'}
           </button>
         </menu>
         <nav className="register-buttons">

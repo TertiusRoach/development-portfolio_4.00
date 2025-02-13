@@ -1,22 +1,10 @@
 // Form.password.tsx
-import $ from 'jquery';
-import React from 'react';
 import './Form.password.scss';
 import axios, { AxiosError } from 'axios';
+import React, { useEffect, useState } from 'react';
 import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
-import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
-
-import MenuButton from '../../Menu/button/Menu.button';
-import ButtonFade from '../../Button/fade/Button.fade';
-
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-// import toggleAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
-import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import { useEmail } from '../../../../modules/context/EmailContext';
 
 interface InfoProps {
   info: {
@@ -26,11 +14,11 @@ interface InfoProps {
   };
 }
 const FormPassword: React.FC<InfoProps> = ({ info }) => {
-  let information = info;
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
+  const blockName = 'main';
+  const pageName = info.identification;
 
   //--|🠋 Shared input states 🠋|--//
-  let [email, setEmail] = useState('');
+  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let [password, setPassword] = useState('');
 
   //--|🠋 Registration-specific input states 🠋|--//
@@ -42,20 +30,19 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   let [registerMessage, setRegisterMessage] = useState('');
   let [passwordMessage, setPasswordMessage] = useState('');
 
-  //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
+  //--|🠋 Action Element(s) 🠋|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
-  const handleData = async (event: React.FormEvent) => {
+  const handlePassword = async (event: React.FormEvent) => {
     event.preventDefault();
-    setIsSubmitting(true);
+    setSubmit(true);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const userEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
 
     if (!emailRegex.test(userEmail.value)) {
       // setPasswordMessage('Please enter a valid email address.');
-      setIsSubmitting(false); //--|🠈 Indicate submission is blocked 🠈|--//
+      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
       /* return; */
     }
 
@@ -100,12 +87,14 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
       toggleText('.register-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
     } finally {
-      setIsSubmitting(false);
+      setSubmit(false);
     }
   };
 
+  useEffect(() => {}, [pageName, blockName]);
+
   return (
-    <form className="password-form" onSubmit={(event) => handleData(event)}>
+    <form className="password-form" onSubmit={(event) => handlePassword(event)}>
       <div className="password-header">
         <div className="password-label">
           <h6 className="display-6">Password</h6>
@@ -140,7 +129,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="password-footer">
         <menu className="password-action">
-          <button className="password-button" disabled={isSubmitting}>
+          <button className="password-button" disabled={submit}>
             <h6>Change</h6>
           </button>
         </menu>

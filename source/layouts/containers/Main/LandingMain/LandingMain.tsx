@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
+//--|🠋 Modules 🠋|--//
+import { EmailProvider } from '../../../../modules/context/EmailContext';
+//--|🠉 Modules 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -39,75 +42,35 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
-
-  useEffect(() => {
-    /*
-    switch (currentView) {
-      case 'default':
-        let resumeBody = document.querySelector('#resume-body') as HTMLDivElement;
-        resumeBody.innerHTML = '<main class="default-main" />';
-        // return ReactDOM.createRoot(resumeBody).render(<main className="default-main" />);
-        break;
-      case 'authorized':
-        // loadResume();
-        alert('//--|🠊 Login Successful: Load Page 🠈|--//');
-        break;
-      case 'unverified':
-        let landingLeftbar = document.querySelector('#landing-leftbar') as HTMLElement;
-        if (landingLeftbar) {
-          // Check if the element exists before accessing its properties
-          if (landingLeftbar.classList.contains('collapsed')) {
-            landingLeftbar.classList.remove('collapsed');
-          }
-          landingLeftbar.classList.add('expanded');
-        }
-        break;
-        alert('//--|🠊 Registration Pending: Confirm Email 🠈|--//');
-      case 'recovery':
-        let landingRightbar = document.querySelector('#landing-leftbar') as HTMLElement;
-        if (landingRightbar) {
-          // Check if the element exists before accessing its properties
-          if (landingRightbar.classList.contains('collapsed')) {
-            landingRightbar.classList.remove('collapsed');
-          }
-          landingRightbar.classList.add('expanded');
-        }
-        alert('//--|🠊 Password Request: Confirm Code 🠈|--//');
-        break;
-      default:
-        // ReactDOM.createRoot(resumeBody).render(<div />);
-        break;
-    }
-    console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
-    */
-  }, [pageName, blockName, currentView]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
-      <div className="landing-branding" style={{ zIndex: 1 }}>
-        <img
-          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-          alt="Login Logo"
-        />
-      </div>
-      <div className="landing-carousel" style={{ zIndex: 0 }}>
-        <section className="register-section">
-          <div className="register-container">
-            <FormRegister info={info} />
-          </div>
-        </section>
-        <section className="login-section">
-          <div className="login-container">
-            <FormLogin info={info} />
-          </div>
-        </section>
-        <section className="password-section">
-          <div className="password-container">
-            <FormPassword info={info} />
-          </div>
-        </section>
-      </div>
+      <EmailProvider>
+        <div className="landing-branding" style={{ zIndex: 1 }}>
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+            alt="Login Logo"
+          />
+        </div>
+        <div className="landing-carousel" style={{ zIndex: 0 }}>
+          <section className="register-section">
+            <div className="register-container">
+              <FormRegister info={info} />
+            </div>
+          </section>
+          <section className="login-section">
+            <div className="login-container">
+              <FormLogin info={info} />
+            </div>
+          </section>
+          <section className="password-section">
+            <div className="password-container">
+              <FormPassword info={info} />
+            </div>
+          </section>
+        </div>
+      </EmailProvider>
     </main>
   );
 };
