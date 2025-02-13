@@ -109,12 +109,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="login-form" onSubmit={(event) => handleData(event)}>
       <div className="login-header">
-        <div className="login-logo">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
         <div className="login-label">
           <h6 className="display-6">Login</h6>
         </div>
@@ -127,6 +121,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         <div className="login-text">
           <h4>Sign in to access your account.</h4>
         </div>
+        {/* <div className="login-logo">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+                alt="Login Logo"
+              />
+            </div> */}
       </div>
       <div className="login-inputs">
         <input

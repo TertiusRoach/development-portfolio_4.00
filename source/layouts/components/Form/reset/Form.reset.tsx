@@ -181,15 +181,15 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
             alt=""
           />
         </button>
-        <div className="reset-logo">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
         <div className="reset-text">
           <h4>Reset your password.</h4>
         </div>
+        {/* <div className="reset-logo">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+                alt="Login Logo"
+              />
+            </div> */}
       </div>
       <div className="reset-inputs">
         <input
@@ -224,90 +224,3 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormReset;
-
-/*
-
-    */
-
-/*
-    if (!emailInput || !passwordInput || !recoveryInput) {
-      setLoginMessage('All fields are required.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-
-    ---
-    event.preventDefault(); // Prevents page refresh
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
-
-    let emailInput = '';
-    let passwordInput = '';
-    let recoveryCode = '';
-
-    let landingInputs = document.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
-
-    // Iterate through all inputs and assign values based on ID
-    landingInputs.forEach((input) => {
-      if (input.id === 'email' && emailRegex.test(input.value)) {
-        emailInput = input.value;
-      }
-      if (input.id === 'password' && input.value.trim() !== '') {
-        passwordInput = input.value;
-      }
-      if (input.id === 'reset-code' && input.value.trim() !== '') {
-        recoveryCode = input.value;
-      }
-    });
-
-    setIsSubmitting(true); // Prevent multiple submissions
-
-    try {
-      const userEmail = document.querySelector('#email') as HTMLInputElement;
-      const userCode = document.querySelector('#reset-code') as HTMLInputElement;
-      const userRecovery = document.querySelector('#recovery') as HTMLInputElement;
-
-      if (!userEmail.value || !userCode.value || !userRecovery.value) {
-        setLoginMessage('All fields are required.');
-        setIsSubmitting(false);
-        return;
-      }
-
-      const response = await axios.post('http://localhost:3000/users/reset', {
-        email: userEmail.value.trim(),
-        newHash: userRecovery.value.trim(),
-        passwordCode: userCode.value.trim(),
-      });
-
-      const { status, message } = response.data;
-
-      alert(message);
-      setLoginMessage(message);
-
-      let dialogue: string = message;
-      switch (status) {
-        case 'authorized':
-        case 'remembered':
-          // setLoginMessage(message);
-          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//
-          break;
-        case 'unverified':
-          toggleText('.verify-text', message); //--|🠈 Provide Guidance 🠈|--//
-          // setLoginMessage(message);
-          break;
-      }
-      // if (status === 'recovered') {
-      //   // Add logic to redirect or update UI for login
-      // }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setLoginMessage(error.response?.data?.message || 'An error occurred'); // Handle Axios-specific errors
-      } else {
-        setLoginMessage('An unexpected error occurred'); // Handle non-Axios errors (fallback)
-      }
-    } finally {
-      setIsSubmitting(false); // Re-enable the submit button
-    }
-    */

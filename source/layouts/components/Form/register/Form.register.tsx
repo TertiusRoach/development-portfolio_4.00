@@ -113,12 +113,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="register-form" onSubmit={(event) => handleData(event)}>
       <div className="register-header">
-        <div className="register-logo">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
         <div className="register-label">
           <h6 className="display-6">Register</h6>
         </div>
@@ -128,10 +122,15 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             alt=""
           />
         </button>
-
         <div className="register-text">
           <h4>Sign up to use application.</h4>
         </div>
+        {/* <div className="register-logo">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+                alt="Login Logo"
+              />
+            </div> */}
       </div>
       <div className="register-inputs">
         <div className="fullname-inputs">

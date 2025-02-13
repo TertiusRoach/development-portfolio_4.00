@@ -85,24 +85,27 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
-      <div className="landing-carousel">
+      <div className="landing-branding" style={{ zIndex: 1 }}>
+        <img
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+          alt="Login Logo"
+        />
+      </div>
+      <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section">
           <div className="register-container">
             <FormRegister info={info} />
           </div>
-          {/* <div className="register-container">{renderForm('register')}</div> */}
         </section>
         <section className="login-section">
           <div className="login-container">
             <FormLogin info={info} />
           </div>
-          {/* <div className="login-container">{renderForm('login')}</div> */}
         </section>
         <section className="password-section">
           <div className="password-container">
             <FormPassword info={info} />
           </div>
-          {/* <div className="password-container">{renderForm('password')}</div> */}
         </section>
       </div>
     </main>

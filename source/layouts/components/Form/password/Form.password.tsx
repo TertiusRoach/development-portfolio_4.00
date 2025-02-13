@@ -107,12 +107,6 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="password-form" onSubmit={(event) => handleData(event)}>
       <div className="password-header">
-        <div className="password-logo">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
         <div className="password-label">
           <h6 className="display-6">Password</h6>
         </div>
@@ -125,6 +119,12 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         <div className="password-text">
           <h4>You can update your password here.</h4>
         </div>
+        {/* <div className="password-logo">
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+                alt="Login Logo"
+              />
+            </div> */}
       </div>
       <div className="password-inputs">
         <input
