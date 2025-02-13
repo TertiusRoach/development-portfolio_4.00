@@ -185,9 +185,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           <button className="register-button" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Registering...' : 'Register'}
           </button>
-          {/* <div className="register-message">
-            <h6>{registerMessage}</h6>
-          </div> */}
         </menu>
         <nav className="register-buttons">
           {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}

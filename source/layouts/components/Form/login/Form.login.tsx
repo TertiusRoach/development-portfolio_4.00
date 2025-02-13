@@ -1,4 +1,4 @@
-// Section.home.tsx
+// Form.login.tsx
 import $ from 'jquery';
 import React from 'react';
 import './Form.login.scss';
@@ -26,35 +26,25 @@ interface InfoProps {
   };
 }
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
-  let information = info;
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
+  const blockName = 'main';
+  const pageName = info.identification;
 
-  //--|🠋 Shared input states 🠋|--//
+  //--|🠋 Shared Inputs 🠋|--//
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
 
-  //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
+  //--|🠋 Action Element 🠋|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
 
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
-
-  //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
-
-  const handleData = async (event: React.FormEvent) => {
+  const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
     if (!emailRegex.test(email)) {
-      setIsSubmitting(false); //--|🠈 Indicate submission is blocked 🠈|--//
+      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
       return;
     }
 
-    setIsSubmitting(true); //--|🠈 Indicate submission in progress 🠈|--//
+    setSubmit(true); //--|🠈 Indicate submission in progress 🠈|--//
     try {
       const response = await axios.post('http://localhost:3000/users/login', {
         email, //--|🠈 Email entered by the user 🠈|--//
@@ -101,12 +91,13 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
       }
     } finally {
-      setIsSubmitting(false); //--|🠈 Reset Submission State 🠈|--//
+      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
   };
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <form className="login-form" onSubmit={(event) => handleData(event)}>
+    <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">
         <div className="login-label">
           <h6 className="display-6">Login</h6>
@@ -120,12 +111,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         <div className="login-text">
           <h4>Sign in to access your account.</h4>
         </div>
-        {/* <div className="login-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
-            </div> */}
       </div>
       <div className="login-inputs">
         <input
@@ -151,7 +136,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="login-footer">
         <menu className="login-action">
-          <button className="login-button" disabled={isSubmitting}>
+          <button className="login-button" disabled={submit}>
             <h6>Login</h6>
           </button>
         </menu>
