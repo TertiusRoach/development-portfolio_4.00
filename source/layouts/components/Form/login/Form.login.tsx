@@ -2,7 +2,7 @@
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
-import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/context/EmailContext';
 
@@ -26,6 +26,39 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+
+    //--|🠋 Step 1: Validate Entered Email 🠋|--//
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmit(false); //--|🠈 Block Submission 🠈|--//
+      return;
+    }
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 2: Connect to Database 🠋|--//
+    const route = 'login'; //--|🠈 API Endpoint 🠈|--//
+    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      email, //--|🠈 Email entered by the user 🠈|--//
+      passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
+    });
+    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
+    handleData(setSubmit, status, action);
+
+    /*
+    switch (route) {
+      case 'register':
+        break;
+      case 'login':
+        break;
+      case 'password':
+        break;
+      case 'verify':
+        break;
+      case 'reset':
+        break;
+    }
+    */
     /*
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
     if (!emailRegex.test(email)) {
@@ -83,114 +116,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
     */
-  };
-
-  const handleData = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-
-    //--|🠋 Step 1: Validate Entered Email 🠋|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Block Submission 🠈|--//
-      return;
-    }
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
-    let dialogue: string; //--|🠈 Message for the user 🠈|--//
-    try {
-      //--|🠋 Step 2: Connect to Database 🠋|--//
-      const route = 'login'; //--|🠈 API Endpoint 🠈|--//
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email, //--|🠈 Email entered by the user 🠈|--//
-        passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
-      });
-      const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-      //--|🠋 Step 3: Validate User Status 🠋|--//
-      if (status === 'pending') {
-        //--|🠉 If the user email exists inside the 'pending' collection 🠈|--//
-        //--|🠋 Step 4.1: Perform Desired Action 🠋|--//
-        switch (action) {
-          case 'created': //--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//
-            //--|🠊 created: Form.register 🠈|--//
-            dialogue = 'Your account has been created. Please verify your email to activate it.';
-            break;
-          case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
-            //--|🠊 mismatch: Form.verify 🠈|--//
-            dialogue = 'The verification code does not match our records. Please try again.';
-            break;
-          case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
-            //--|🠊 unverified: Form.register + Form.login + Form.password 🠈|--//
-            dialogue = 'Your account is not verified. Please check your email for the activation link.';
-            break;
-          case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
-            //--|🠊 halted: Form.verify 🠈|--//
-            dialogue = 'Too many incorrect activation attempts. Your account has been temporarily blocked.';
-            break;
-        }
-      } else if (status === 'enabled') {
-        //--|🠉 If the user email exists inside the 'enabled' collection 🠈|--//
-        //--|🠋 Step 4.2: Perform Desired Action 🠋|--//
-        switch (action) {
-          case 'authorized': //--|🠈 If the "passwordHash" matches the "email" entered by the user. 🠈|--//
-            //--|🠊 authorized: Form.login 🠈|--//
-            dialogue = 'Login successful. Redirecting to your dashboard...';
-            break;
-          case 'incorrect': //--|🠈 If the "passwordHash" doesn't match the "email" entered by the user. 🠈|--//
-            //--|🠊 incorrect: Form.login 🠈|--//
-            dialogue = 'Incorrect password. Please try again or reset your password.';
-            break;
-          case 'remembered': //--|🠈 If the newly entered password matches the current "passwordHash". 🠈|--//
-            //--|🠊 remembered: Form.password 🠈|--//
-            dialogue = 'New password matches the old one. Please choose a different password.';
-            break;
-          case 'renewed': //--|🠈 If the "passwordCode" matches the input of the user and a new password has been entered. 🠈|--//
-            //--|🠊 renewed: Form.password 🠈|--//
-            dialogue = 'Your password has been successfully reset.';
-            break;
-          case 'suspended': //--|🠈 If the user requested a new "passwordCode" six times without using it, move the user to 'blocked'. 🠈|--//
-            //--|🠊 suspended: Form.login + Form.password 🠈|--//
-            dialogue = 'Too many password reset requests. Your account has been temporarily blocked.';
-            break;
-        }
-      } else if (status === 'blocked') {
-        //--|🠉 If the user email exists inside the 'blocked' collection 🠈|--//
-        //--|🠋 Step 4.3: Perform Desired Action 🠋|--//
-        switch (action) {
-          case 'recovered': //--|🠈 Move the user to 'pending' if "updatedAt" is older than seven days. 🠈|--//
-            //--|🠊 recovered: Form.register + Form.login + Form.password 🠈|--//
-            dialogue = 'Your account has been reinstated. Please verify your email to continue.';
-            break;
-          case 'declined': //--|🠈 Return this if the user is in the 'blocked' collection and "updatedAt" is less than seven days. 🠈|--//
-            //--|🠊 declined: Form.register + Form.login + Form.password 🠈|--//
-            dialogue = 'Your account is blocked. Please wait before attempting to access it again.';
-            break;
-        }
-      } else if (status === 'missing') {
-        //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
-        //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
-        switch (action) {
-          case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
-            //--|🠊 register: Form.register + Form.login + Form.password 🠈|--//
-            dialogue = 'No account found with this email. Would you like to register?';
-            break;
-        }
-      } else {
-        dialogue = 'An unexpected error occurred. Please try again later.';
-      }
-    } catch (error) {
-      //--|🠊 Handle Login Errors 🠈|--//
-      const axiosError = error as AxiosError;
-      if (axiosError.response?.status === 404) {
-        dialogue = 'Server not found. Please try again later.';
-      } else if (axiosError.response?.status === 401) {
-        dialogue = 'Unauthorized access. Please check your credentials and try again.';
-      } else {
-        dialogue = 'A network error occurred. Please check your connection.';
-      }
-    } finally {
-      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
-    }
   };
 
   useEffect(() => {}, [pageName, blockName]);
