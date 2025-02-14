@@ -117,7 +117,7 @@ export async function handleData(
   response: { status: string; action: string } // Adjusted to match the response format
 ) {
   const { status, action } = response; //--|🠈 Extract the status and action from the server response 🠈|--//
-
+  alert(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
   //--|🠋 Step 3: Error Handling 🠋|--//
   let dialogue: string; //--|🠈 Message for the user 🠈|--//
   try {

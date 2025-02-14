@@ -50,7 +50,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
       });
 
-      const { status } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+      const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
       //--|🠊 Validate User Status 🠈|--//
       handleData(setSubmit, response.data); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
@@ -86,9 +86,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
         toggleText('.password-text', dialogue); //--|🠈 Provide guidance for registered users 🠈|--//
 
+        /*
         let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
         let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
         let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
+        */
       } else {
         alert('An error occurred during login. Please try again later.');
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
