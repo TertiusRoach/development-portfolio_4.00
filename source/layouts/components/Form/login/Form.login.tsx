@@ -36,7 +36,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
     //--|🠋 Step 2: Connect to Database 🠋|--//
-    const route = 'login'; //--|🠈 API Endpoint 🠈|--//
+    const route: string = 'login'; //--|🠈 API Endpoint 🠈|--//
     const response = await axios.post(`http://localhost:3000/users/${route}`, {
       email, //--|🠈 Email entered by the user 🠈|--//
       passwordHash: password, //--|🠈 Password entered by the user 🠈|--//

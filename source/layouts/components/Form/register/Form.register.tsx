@@ -2,7 +2,7 @@
 import './Form.register.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/context/EmailContext';
 
@@ -30,6 +30,26 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+
+    //--|🠋 Step 1: Validate Entered Email 🠋|--//
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmit(false); //--|🠈 Block Submission 🠈|--//
+      return;
+    }
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 2: Connect to Database 🠋|--//
+    const route: string = 'register'; //--|🠈 API Endpoint 🠈|--//
+    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      firstName,
+      lastName,
+      email, //--|🠈 Email entered by the user 🠈|--//
+      passwordHash: password, //--|🠈 Password Entered by the User 🠈|--//
+    });
+    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
+    handleData(setSubmit, status, action);
 
     /*
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
