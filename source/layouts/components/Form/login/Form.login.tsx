@@ -36,37 +36,14 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
     //--|🠋 Step 2: Connect to Database 🠋|--//
+    /*
     const route: string = 'login'; //--|🠈 API Endpoint 🠈|--//
-    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+    const response = await axios.post('http://localhost:3000/users/login', {
       email, //--|🠈 Email entered by the user 🠈|--//
       passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
     });
-    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-    handleData(setSubmit, status, action);
-
-    /*
-    switch (route) {
-      case 'register':
-        break;
-      case 'login':
-        break;
-      case 'password':
-        break;
-      case 'verify':
-        break;
-      case 'reset':
-        break;
-    }
     */
-    /*
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
-      return;
-    }
 
-    setSubmit(true); //--|🠈 Indicate submission in progress 🠈|--//
     try {
       const response = await axios.post('http://localhost:3000/users/login', {
         email, //--|🠈 Email entered by the user 🠈|--//
@@ -76,6 +53,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       const { status } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
       //--|🠊 Validate User Status 🠈|--//
+      handleData(setSubmit, response.data); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
+
+      /*
       switch (status) {
         case 'pending': //--|🠈 Account not verified. Expanding landingLeftbar (Verify Page) for further steps. 🠈|--//
           toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
@@ -86,6 +66,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         default:
           alert('Unknown status returned from the server.');
       }
+      */
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
       const axiosError = error as AxiosError;
@@ -115,6 +96,39 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     } finally {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
+
+    /*
+    
+    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      email, //--|🠈 Email entered by the user 🠈|--//
+      passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
+    });
+    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+    */
+
+    /*
+    switch (route) {
+      case 'register':
+        break;
+      case 'login':
+        break;
+      case 'password':
+        break;
+      case 'verify':
+        break;
+      case 'reset':
+        break;
+    }
+    */
+    /*
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
+    if (!emailRegex.test(email)) {
+      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
+      return;
+    }
+
+    setSubmit(true); //--|🠈 Indicate submission in progress 🠈|--//
+
     */
   };
 
