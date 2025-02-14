@@ -29,7 +29,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleRegister = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents refresh 🠈|--//
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+
+    /*
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
 
     //--|🠋 Input Validation: Ensure all fields are filled 🠋|--//
@@ -90,6 +92,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     } finally {
       setSubmit(false); //--|🠈 Re-enable the button 🠈|--//
     }
+    */
   };
 
   useEffect(() => {}, [pageName, blockName]);

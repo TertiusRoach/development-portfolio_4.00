@@ -59,7 +59,7 @@ server.post(`/${root}/register`, async (req, res) => {
   let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
 
   let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
-  let randomCode = generateRandomCode(4); // Generate 5-digit activation code
+  let randomCode = generateRandomCode(4); // Generate 4-digit activation code
 
   // Check if email exists in 'enabled', 'pending', or 'blocked'
   let user =
@@ -408,6 +408,39 @@ function generateRandomCode(length) {
     .join('');
   return code;
 }
+function manipulateDocumentFields() {
+  // MongoDB: database => collection => document => field
+  const document = {
+    email: '',
+    passwordHash: '',
+    verifiedEmail: '',
+
+    role: '',
+    status: '',
+    firstName: '',
+    lastName: '',
+
+    activationCode: '',
+    activationAttempts: '', // Maximum of 6 attempts before the user is blocked for 24 hours
+    activationCodeExpiresAt: '',
+
+    userIP: '',
+    createdAt: '',
+    updatedAt: '',
+    lastLogin: '',
+
+    passwordCode: '',
+    passwordCodeExpiresAt: '',
+    passwordChangeRequests: '', // Maximum of 6 before the user is blocked for 7 days
+  };
+
+  // CRUD Method
+  // Create
+  // Read
+  // Update
+  // Delete
+}
+
 async function sendActivationEmail(email, activationCode, page) {
   const transporter = nodemailer.createTransport({
     host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server

@@ -34,7 +34,8 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handlePassword = async (event: React.FormEvent) => {
-    event.preventDefault();
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+    /*
     setSubmit(true);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,7 +44,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     if (!emailRegex.test(userEmail.value)) {
       // setPasswordMessage('Please enter a valid email address.');
       setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
-      /* return; */
+      // return; //
     }
 
     let dialogue: string;
@@ -89,6 +90,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     } finally {
       setSubmit(false);
     }
+    */
   };
 
   useEffect(() => {}, [pageName, blockName]);
