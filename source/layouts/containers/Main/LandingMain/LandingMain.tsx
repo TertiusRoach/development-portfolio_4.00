@@ -112,12 +112,12 @@ export const refreshInputs = (page: 'register' | 'login' | 'password') => {
   }
 };
 
-export const handleData = async (
+export async function handleData(
   setSubmit: React.Dispatch<React.SetStateAction<boolean>>,
   status: string,
   action: string
   /* route: 'register' | 'login' | 'password' | 'verify' | 'reset' */
-) => {
+) {
   //--|🠋 Step 3: Error Handling 🠋|--//
   let dialogue: string; //--|🠈 Message for the user 🠈|--//
   try {
@@ -206,4 +206,12 @@ export const handleData = async (
   } finally {
     setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
   }
+}
+
+/*
+export const handleData = async (
+
+) => {
+
 };
+*/
