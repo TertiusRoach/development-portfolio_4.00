@@ -17,7 +17,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Shared input states 🠋|--//
+  //--|🠋 Login & Password input states 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let [password, setPassword] = useState('');
 
