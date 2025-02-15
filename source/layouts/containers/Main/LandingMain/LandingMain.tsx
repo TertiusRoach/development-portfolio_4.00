@@ -131,21 +131,23 @@ export async function handleData(
     //--|🠋 Step 4.1: Perform Desired Action 🠋|--//
     switch (action) {
       case 'created': //--|🠈 If a new user is added/registered to the 'pending' collection the show the verify page. 🠈|--//
-        // alert(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
-        console.log(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
         //--|🠊 01. created: Form.register 🠈|--//
+        //--|🠊 status(201): Accepted 🠈|--//
         dialogue = 'Your account has been created. Please verify your email to activate it.';
         break;
       case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
         //--|🠊 02. mismatch: Form.verify 🠈|--//
+        //--|🠊 status(400): Bad Request 🠈|--//
         dialogue = 'The verification code does not match our records. Please try again.';
         break;
       case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
         //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = 'Your account is not verified. Please check your email for the activation link.';
         break;
       case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
         //--|🠊 04. halted: Form.verify 🠈|--//
+        //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = 'Too many incorrect activation attempts. Your account has been temporarily blocked.';
         break;
     }
@@ -155,22 +157,27 @@ export async function handleData(
     switch (action) {
       case 'authorized': //--|🠈 If the "passwordHash" matches the "email" entered by the user. 🠈|--//
         //--|🠊 05. authorized: Form.login 🠈|--//
+        //--|🠊 status(200): OK 🠈|--//
         dialogue = 'Login successful. Redirecting to your dashboard...';
         break;
       case 'incorrect': //--|🠈 If the "passwordHash" doesn't match the "email" entered by the user. 🠈|--//
         //--|🠊 06. incorrect: Form.login 🠈|--//
+        //--|🠊 status(401): Unauthorized 🠈|--//
         dialogue = 'Incorrect password. Please try again or reset your password.';
         break;
       case 'remembered': //--|🠈 If the newly entered password matches the current "passwordHash". 🠈|--//
         //--|🠊 07. remembered: Form.password 🠈|--//
+        //--|🠊 status(400): Bad Request 🠈|--//
         dialogue = 'New password matches the old one. Please choose a different password.';
         break;
       case 'renewed': //--|🠈 If the "passwordCode" matches the input of the user and a new password has been entered. 🠈|--//
-        //--|🠊 08. renewed: Form.password 🠈|--//
+        //--|🠊 08. renewed: Form.reset 🠈|--//
+        //--|🠊 status(200): OK 🠈|--//
         dialogue = 'Your password has been successfully reset.';
         break;
       case 'suspended': //--|🠈 If the user requested a new "passwordCode" six times without using it, move the user to 'blocked'. 🠈|--//
         //--|🠊 09. suspended: Form.login + Form.password 🠈|--//
+        //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = 'Too many password reset requests. Your account has been temporarily blocked.';
         break;
     }
@@ -180,10 +187,12 @@ export async function handleData(
     switch (action) {
       case 'recovered': //--|🠈 Move the user to 'pending' if "updatedAt" is older than seven days. 🠈|--//
         //--|🠊 10. recovered: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 status(202): Accepted 🠈|--//
         dialogue = 'Your account has been reinstated. Please verify your email to continue.';
         break;
       case 'declined': //--|🠈 Return this if the user is in the 'blocked' collection and "updatedAt" is less than seven days. 🠈|--//
         //--|🠊 11. declined: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = 'Your account is blocked. Please wait before attempting to access it again.';
         break;
     }
@@ -193,10 +202,12 @@ export async function handleData(
     switch (action) {
       case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
         //--|🠊 12. register: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 status(404): Not Found 🠈|--//
         dialogue = 'No account found with this email. Would you like to register?';
         break;
     }
   } else {
+    //--|🠊 status(500): Internal Server Error 🠈|--//
     dialogue = 'An unexpected error occurred. Please try again later.';
   }
 
@@ -214,6 +225,13 @@ export async function handleData(
     } else {
       dialogue = 'A network error occurred. Please check your connection.';
     }
+            
+      if (axios.isAxiosError(error)) {
+        // setError(error.response?.data?.message || 'Registration failed');
+      } else {
+        // setError('An unexpected error occurred');
+      }
+      
   } finally {
     setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
   }
