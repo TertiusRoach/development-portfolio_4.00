@@ -88,17 +88,34 @@ server.post(`/${root}/register`, async (req, res) => {
   }
 
   //--|🠋 Step 4: Modularize Responses 🠋|--//
+  if (user === null) {
+    //--|🠊 01. created: Form.register 🠈|--//
+    //--|🠊 status(201): Accepted 🠈|--//
+    await created(firstName, lastName, email, passwordHash);
+    return res.status(201).json({
+      status: 'missing',
+      action: 'register',
+    });
+  }
+  /*
   switch (user) {
     case null:
       //--|🠊 01. created: Form.register 🠈|--//
       //--|🠊 status(201): Accepted 🠈|--//
+
       await created(firstName, lastName, email, passwordHash);
       return res.status(201).json({
         status: 'pending',
         action: 'created',
       });
-    default:
-    /*
+
+      return res.status(403).json({
+        status: 'pending',
+        action: 'unverified',
+      });
+  }
+  */
+  /*
       if (user.verifiedEmail === false) {
         //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//
@@ -108,7 +125,6 @@ server.post(`/${root}/register`, async (req, res) => {
         });
       }
       */
-  }
 });
 
 //--|🠋 Generate Database Fields 🠋|--//
@@ -165,6 +181,72 @@ let trackPlace = async (request) => {
 
 //--|🠋 POST: Login Page 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
+  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  const { email, passwordHash } = req.body;
+  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+
+  //--| User does not exist or is not in pending status |--//
+  if (user === null) {
+    return res.status(404).json({
+      status: 'missing',
+      action: 'register',
+    });
+  }
+
+  /*
+  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  const { email, passwordHash } = req.body;
+
+  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+
+  if (user === null) {
+    //--|🠊 12. register: Form.login + Form.password 🠈|--//
+    //--|🠊 status(404): Not Found 🠈|--//
+    return res.status(404).json({
+      status: 'missing',
+      action: 'register',
+    });
+  }
+
+  */
+
+  /*
+  try {
+    //--| Check if activation code matches |--//
+    if (user.activationCode !== activationCode) {
+      return res.status(400).json({
+        status: 'pending',
+        action: 'mismatch',
+        message: 'The verification code does not match our records. Please try again.',
+      });
+    }
+
+    //--| Proceed with login activation steps (if necessary) |--//
+    // Example: Move user from 'pending' to 'enabled'
+
+    return res.status(200).json({ status: 'success', message: 'Verification successful.' });
+  } catch (error) {
+    console.error('Error during login verification:', error);
+    return res.status(500).json({ error: 'An internal server error occurred.' });
+  }
+  */
+  /*
+  // LandingMain.tsx
+  case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
+  //--|🠊 02. mismatch: Form.verify 🠈|--//
+  //--|🠊 status(400): Bad Request 🠈|--//
+  dialogue = 'The verification code does not match our records. Please try again.';
+  break;
+  */
+  /*
   const { email, passwordHash } = req.body; //--| Extract email and passwordHash from the request body |--//
 
   try {
@@ -202,23 +284,46 @@ server.post(`/${root}/login`, async (req, res) => {
     console.error('Error during login process:', error);
     return res.status(500).send('An internal server error occurred.');
   }
+  */
 });
 
 //--|🠋 POST: Password Page 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
+  /*
+  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  const { email } = req.body;
+
+  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+  */
+  /*
+  if (user === null) {
+    //--|🠊 12. register: Form.login + Form.password 🠈|--//
+    //--|🠊 status(404): Not Found 🠈|--//
+    return res.status(404).json({
+      status: 'missing',
+      action: 'register',
+    });
+  }
+  */
+  /*
   const { email } = req.body;
   let today = new Date();
   let tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   let randomCode = randomizeCodeActivation(4);
+  */
   /*
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailRegex.test(email)) {
     return res.status(400).json({ status: 'invalid', message: 'Invalid email format.' });
   }
   */
-
+  /*
   try {
     // Check collections in priority order
     const pendingUser = await database.collection('pending').findOne({ email });
@@ -227,11 +332,11 @@ server.post(`/${root}/password`, async (req, res) => {
     }
 
     const enabledUser = await database.collection('enabled').findOne({ email });
-    /*
-    if (!enabledUser) {
-      return res.status(404).json({ status: 'missing', message: 'Account not found. Please register.' });
-    }
-    */
+
+    // if (!enabledUser) {
+    //   return res.status(404).json({ status: 'missing', message: 'Account not found. Please register.' });
+    // }
+
 
     // If passwordCode has never been set or has expired
     if (!enabledUser.passwordCodeExpiresAt || Date.now() > new Date(enabledUser.passwordCodeExpiresAt).getTime()) {
@@ -246,7 +351,7 @@ server.post(`/${root}/password`, async (req, res) => {
       );
 
       try {
-        /* await sendActivationEmail(email, randomCode, 'password'); */
+        // await sendActivationEmail(email, randomCode, 'password');
         return res.status(200).json({ status: 'created', message: 'Password reset code sent to your email.' });
       } catch (emailError) {
         console.error(`Failed to send password reset email:`, emailError);
@@ -259,6 +364,7 @@ server.post(`/${root}/password`, async (req, res) => {
     console.error('Database error:', error);
     return res.status(500).json({ status: 'error', message: 'Internal server error.' });
   }
+  */
 });
 
 //--|🠋 POST: Verify Page 🠋|--//

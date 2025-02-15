@@ -63,40 +63,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     } finally {
       setSubmit(false);
     }
-
-    /*
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-
-    //--|🠋 Step 1: Validate Entered Email 🠋|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Block Submission 🠈|--//
-      return;
-    }
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
-    //--|🠋 Step 2: Error Handling 🠋|--//
-    try {
-      //--|🠋 Step 3: Connect to Database 🠋|--//
-      const route: string = 'register'; //--|🠈 API Endpoint 🠈|--//
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        firstName,
-        lastName,
-        email, //--|🠈 Email entered by the user 🠈|--//
-        passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
-      });
-
-      const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-      //--|🠊 Step 4: Validate User Status 🠈|--//
-      handleData(setSubmit, status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
-    } catch (error) {
-      //--|🠊 Handle Login Errors 🠈|--//
-      alert('Axios ERROR!');
-    } finally {
-      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
-    }
-    */
   };
 
   useEffect(() => {}, [pageName, blockName]);

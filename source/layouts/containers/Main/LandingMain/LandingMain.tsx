@@ -54,17 +54,17 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           />
         </div>
         <div className="landing-carousel" style={{ zIndex: 0 }}>
-          <section className="register-section">
+          <section className="register-section hidden">
             <div className="register-container">
               <FormRegister info={info} />
             </div>
           </section>
-          <section className="login-section">
+          <section className="login-section visible">
             <div className="login-container">
               <FormLogin info={info} />
             </div>
           </section>
-          <section className="password-section">
+          <section className="password-section hidden">
             <div className="password-container">
               <FormPassword info={info} />
             </div>
@@ -77,18 +77,39 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 export default LandingMain;
 
 export const viewCarousel = (page: 'register' | 'login' | 'password') => {
-  let carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
+  const carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
   carouselContainer.style.transform = {
     register: 'translateX(0vw)',
     login: 'translateX(-100vw)',
     password: 'translateX(-200vw)',
   }[page];
+
+  let register = carouselContainer.childNodes[0] as HTMLElement;
+  let login = carouselContainer.childNodes[1] as HTMLElement;
+  let password = carouselContainer.childNodes[2] as HTMLElement;
+  switch (page) {
+    case 'register':
+      register.className = `${page}-section visible`;
+      login.className = `${page}-section hidden`;
+      password.className = `${page}-section hidden`;
+      break;
+    case 'login':
+      register.className = `${page}-section hidden`;
+      login.className = `${page}-section visible`;
+      password.className = `${page}-section hidden`;
+      break;
+    case 'password':
+      register.className = `${page}-section hidden`;
+      login.className = `${page}-section hidden`;
+      password.className = `${page}-section visible`;
+      break;
+  }
 };
-export const toggleText = (element: string, dialogue: string) => {
+export const toggleText = (element: '.verify-text' | string, dialogue: string) => {
   let tagText = document.querySelector(`${element}`)?.firstChild as HTMLElement;
   tagText.innerText = dialogue;
 };
-export const toggleAside = (element: string, toggle: 'show' | 'hide') => {
+export const toggleAside = (element: '#landing-leftbar' | string, toggle: 'show' | 'hide') => {
   let sidebar = document.querySelector(element) as HTMLElement;
   switch (toggle) {
     case 'show':
@@ -113,14 +134,21 @@ export const refreshInputs = (page: 'register' | 'login' | 'password') => {
 };
 
 export async function handleData(
-  /* setSubmit: React.Dispatch<React.SetStateAction<boolean>>, */
   status: string,
-  action: string
+  action:
+    | 'created'
+    | 'mismatch'
+    | 'unverified'
+    | 'halted'
+    | 'authorized'
+    | 'incorrect'
+    | 'remembered'
+    | 'renewed'
+    | 'suspended'
+    | 'recovered'
+    | 'declined'
+    | 'register'
 ) {
-  /*
-    console.log(`Status: ${status}`);
-    console.log(`Action: ${action}`);
-  */
   let dialogue: string; //--|🠈 Message for the User 🠈|--//
   //--|🠋 Step 4: Validate User Status 🠋|--//
   if (status === 'pending') {
@@ -130,20 +158,22 @@ export async function handleData(
       case 'created': //--|🠈 If a new user is added/registered to the 'pending' collection the show the verify page. 🠈|--//
         //--|🠊 01. created: Form.register 🠈|--//
         //--|🠊 status(201): Accepted 🠈|--//
-        dialogue = 'Your account has been created. Please verify your email to activate it.';
-        alert(dialogue);
-        break;
-      case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
-        //--|🠊 02. mismatch: Form.verify 🠈|--//
-        //--|🠊 status(400): Bad Request 🠈|--//
-        dialogue = 'The verification code does not match our records. Please try again.';
+        dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
+        toggleText('.verify-text', dialogue);
+        toggleAside('#landing-leftbar', 'show');
         break;
       //--|🠋 Checklist 🠋|--//
       case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
-        //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 02. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//
-        dialogue = 'Your account is not verified. Please check your email for the activation link.';
-        alert(dialogue);
+        dialogue = '//--|🠊 Your account is not verified. Please check your email for the activation link. 🠈|--//';
+        toggleText('.verify-text', dialogue);
+        toggleAside('#landing-leftbar', 'show');
+        break;
+      case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
+        //--|🠊 03. mismatch: Form.verify 🠈|--//
+        //--|🠊 status(400): Bad Request 🠈|--//
+        dialogue = 'The verification code does not match our records. Please try again.';
         break;
       case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
         //--|🠊 04. halted: Form.verify 🠈|--//
@@ -203,8 +233,7 @@ export async function handleData(
       case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
         //--|🠊 12. register: Form.login + Form.password 🠈|--//
         //--|🠊 status(404): Not Found 🠈|--//
-        dialogue = 'No account found with this email. Would you like to register?';
-
+        dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
         viewCarousel('register');
         toggleText('.register-text', dialogue);
         break;
@@ -213,34 +242,4 @@ export async function handleData(
     //--|🠊 status(500): Internal Server Error 🠈|--//
     dialogue = 'An unexpected error occurred. Please try again later.';
   }
-
-  /*
-  try {
-  } catch (error) {
-    //--|🠊 Handle Login Errors 🠈|--//
-    alert('Axios ERROR!');
-    
-    const axiosError = error as AxiosError;
-    if (axiosError.response?.status === 404) {
-      dialogue = 'Server not found. Please try again later.';
-    } else if (axiosError.response?.status === 401) {
-      dialogue = 'Unauthorized access. Please check your credentials and try again.';
-    } else {
-      dialogue = 'A network error occurred. Please check your connection.';
-    }
-            
-      if (axios.isAxiosError(error)) {
-        // setError(error.response?.data?.message || 'Registration failed');
-      } else {
-        // setError('An unexpected error occurred');
-      }
-      
-  } finally {
-    setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
-  }
-  
-  } finally {
-    setSubmit(false); //--|🠈 Disable button during submission 🠈|--//
-  }
-  */
 }

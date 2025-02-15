@@ -35,94 +35,52 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     }
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
+    let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
+    let page = visible.className.split('-')[0];
+
     //--|🠋 Step 2: Error Handling 🠋|--//
     try {
       //--|🠋 Step 3: Connect to Database 🠋|--//
-      const route: string = 'login'; //--|🠈 API Endpoint 🠈|--//
-      const response = await axios.post('http://localhost:3000/users/login', {
+      const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'login'; //--|🠈 API Endpoint 🠈|--//
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
         email, //--|🠈 Email entered by the user 🠈|--//
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
       });
 
+      //--|🠊 Validate User Status 🠈|--//
       const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
-      //--|🠊 Validate User Status 🠈|--//
-      handleData(setSubmit, status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
-
       /*
-      switch (status) {
-        case 'pending': //--|🠈 Account not verified. Expanding landingLeftbar (Verify Page) for further steps. 🠈|--//
-          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
-          break;
-        case 'enabled': //--|🠈 Load the main application 🠈|--//
-          alert('Login successful. Loading application...');
-          break;
-        default:
-          alert('Unknown status returned from the server.');
+      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      if (status === 'missing') {
+        //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
+        //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
+        switch (action) {
+          case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
+            //--|🠊 12. register: Form.login + Form.password 🠈|--//
+            //--|🠊 status(404): Not Found 🠈|--//
+            dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
+            alert(dialogue);
+            viewCarousel('register');
+            toggleText('.register-text', dialogue);
+            break;
+        }
       }
       */
+      handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
-      alert('Axios ERROR!');
-      /*
       const axiosError = error as AxiosError;
-      let dialogue: string;
       if (axiosError.response?.status === 404) {
-        //--|🠊 User not found 🠈|--//
-        dialogue = "It looks like you're new here. Please sign up to get started.";
-
-        viewCarousel('register'); //--|🠈 Redirect to the registration page 🠈|--//
-        toggleText('.register-text', dialogue); //--|🠈 Provide guidance for new users 🠈|--//
+        alert('Axios Error: Server not found. Please try again later.');
       } else if (axiosError.response?.status === 401) {
-        //--|🠊 Invalid password 🠈|--//
-        dialogue = 'Forgot your password? You can reset it here.';
-
-        // alert('Invalid password. Redirecting to password reset section.'); //
-
-        viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
-        toggleText('.password-text', dialogue); //--|🠈 Provide guidance for registered users 🠈|--//
+        alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
       } else {
-        alert('An error occurred during login. Please try again later.');
-        console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
+        alert('Axios Error: A network error occurred. Please check your connection.');
       }
-      */
     } finally {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
-
-    /*
-    
-    const response = await axios.post(`http://localhost:3000/users/${route}`, {
-      email, //--|🠈 Email entered by the user 🠈|--//
-      passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
-    });
-    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-    */
-
-    /*
-    switch (route) {
-      case 'register':
-        break;
-      case 'login':
-        break;
-      case 'password':
-        break;
-      case 'verify':
-        break;
-      case 'reset':
-        break;
-    }
-    */
-    /*
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
-      return;
-    }
-
-    setSubmit(true); //--|🠈 Indicate submission in progress 🠈|--//
-
-    */
   };
 
   useEffect(() => {}, [pageName, blockName]);
@@ -167,8 +125,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="login-footer">
         <menu className="login-action">
-          <button className="login-button" disabled={submit}>
-            <h6>Login</h6>
+          <button className="login-button" type="submit" disabled={submit}>
+            {/* <h6>Login</h6> */}
+            {submit ? 'Logging in...' : 'Login'}
           </button>
         </menu>
         <nav className="login-buttons">
@@ -184,9 +143,3 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
-
-/*
-        let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
-        let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
-        let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
-        */
