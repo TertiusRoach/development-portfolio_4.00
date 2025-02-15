@@ -42,22 +42,14 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     //--|🠋 Step 2: Error Handling 🠋|--//
     try {
       const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'register';
-      const response = await axios.post(
-        `http://localhost:3000/users/${route}`,
-        {
-          firstName,
-          lastName,
-          email,
-          passwordHash: password,
-        }
-        /*
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-        */
-      );
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+        firstName,
+        lastName,
+        email,
+        passwordHash: password,
+      });
       const { status, action } = response.data;
-      handleData(/* setSubmit, */ status, action);
+      handleData(status, action);
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
       const axiosError = error as AxiosError;
