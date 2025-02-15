@@ -19,11 +19,11 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Shared input states 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let [password, setPassword] = useState('');
+  let [password, setPassword] = useState('password');
 
   //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
+  let [firstName, setFirstName] = useState('Tertius');
+  let [lastName, setLastName] = useState('Embassy');
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
@@ -39,78 +39,64 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     }
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
-    //--|🠋 Step 2: Connect to Database 🠋|--//
-    const route: string = 'register'; //--|🠈 API Endpoint 🠈|--//
-    const response = await axios.post(`http://localhost:3000/users/${route}`, {
-      firstName,
-      lastName,
-      email, //--|🠈 Email entered by the user 🠈|--//
-      passwordHash: password, //--|🠈 Password Entered by the User 🠈|--//
-    });
-    const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-    handleData(setSubmit, status, action);
-
-    /*
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
-
-    //--|🠋 Input Validation: Ensure all fields are filled 🠋|--//
-    if (!firstName.trim() || !lastName.trim() || !email.trim() || !password.trim()) {
-      // setRegisterMessage('All fields are required.');
-      return;
-    }
-
-    //--|🠋 Email Validation: Check format 🠋|--//
-    if (!emailRegex.test(email)) {
-      // setRegisterMessage('Please enter a valid email address.');
-      return;
-    }
-
-    setSubmit(true); //--|🠈 Disable button during submission 🠈|--//
+    //--|🠋 Step 2: Error Handling 🠋|--//
     try {
-      const response = await axios.post('http://localhost:3000/users/register', {
-        firstName,
-        lastName,
-        email,
-        passwordHash: password, // Password sent to back-end for hashing
-      });
-
-      const { message, status } = response.data; //--|🠈 Back-end response 🠈|--//
-
-      let dialogue: string;
-      //--|🠊 Validate User Status 🠈|--//
-      switch (status) {
-        case 'pending': //--|🠈 Pending user 🠈|--//
-        case 'created': //--|🠈 Created user 🠈|--//
-          dialogue = 'Registration successful, please check your email for the activation code.';
-
-          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Leftbar 🠈|--//
-          break;
-        case 'enabled': //--|🠈 Enabled user 🠈|--//
-          dialogue = 'Account already exists. Please log in.';
-
-          viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
-          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-        case 'password': //--|🠈 Incorrect password 🠈|--//
-          dialogue = 'Forgotten your password? You can reset it here.';
-
-          viewCarousel('password'); //--|🠈 Redirect to password reset 🠈|--//
-          toggleText('.password-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-        default:
-        // setRegisterMessage('Unexpected response from the server. Please try again.');
-      }
+      const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'register';
+      const response = await axios.post(
+        `http://localhost:3000/users/${route}`,
+        {
+          firstName,
+          lastName,
+          email,
+          passwordHash: password,
+        },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      const { status, action } = response.data;
+      handleData(/* setSubmit, */ status, action);
     } catch (error) {
-      //--|🠋 Handle Axios errors 🠋|--//
       if (axios.isAxiosError(error)) {
-        // setRegisterMessage(error.response?.data?.err || 'Registration failed.');
+        // setError(error.response?.data?.message || 'Registration failed');
       } else {
-        // setRegisterMessage('An unexpected error occurred.');
+        // setError('An unexpected error occurred');
       }
     } finally {
-      setSubmit(false); //--|🠈 Re-enable the button 🠈|--//
+      setSubmit(false);
+    }
+
+    /*
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+
+    //--|🠋 Step 1: Validate Entered Email 🠋|--//
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmit(false); //--|🠈 Block Submission 🠈|--//
+      return;
+    }
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 2: Error Handling 🠋|--//
+    try {
+      //--|🠋 Step 3: Connect to Database 🠋|--//
+      const route: string = 'register'; //--|🠈 API Endpoint 🠈|--//
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+        firstName,
+        lastName,
+        email, //--|🠈 Email entered by the user 🠈|--//
+        passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
+      });
+
+      const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
+      //--|🠊 Step 4: Validate User Status 🠈|--//
+      handleData(setSubmit, status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
+    } catch (error) {
+      //--|🠊 Handle Login Errors 🠈|--//
+      alert('Axios ERROR!');
+    } finally {
+      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
     */
   };
@@ -151,6 +137,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             title="Name must start with a capital letter and contain only letters and spaces"
             // --- //
             value={firstName}
+            // value={'Tertius'}
             onChange={(event) => setFirstName(event.target.value)}
           />
           <input
@@ -163,6 +150,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             title="Surname can't contain any numerical values or special characters"
             // --- //
             value={lastName}
+            // value={'Embassy'}
             onChange={(event) => setLastName(event.target.value)}
           />
         </div>
@@ -174,6 +162,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           placeholder="//--|🠊 Email Address 🠈|--//"
           // --- //
           value={email}
+          // value={'tertius.embassy@gmail.com'}
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
@@ -184,6 +173,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           placeholder="//--|🠊 Insert Password 🠈|--//"
           // --- //
           value={password}
+          // value={'password'}
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>

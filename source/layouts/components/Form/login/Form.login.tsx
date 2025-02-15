@@ -35,16 +35,10 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     }
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
-    //--|🠋 Step 2: Connect to Database 🠋|--//
-    /*
-    const route: string = 'login'; //--|🠈 API Endpoint 🠈|--//
-    const response = await axios.post('http://localhost:3000/users/login', {
-      email, //--|🠈 Email entered by the user 🠈|--//
-      passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
-    });
-    */
-
+    //--|🠋 Step 2: Error Handling 🠋|--//
     try {
+      //--|🠋 Step 3: Connect to Database 🠋|--//
+      const route: string = 'login'; //--|🠈 API Endpoint 🠈|--//
       const response = await axios.post('http://localhost:3000/users/login', {
         email, //--|🠈 Email entered by the user 🠈|--//
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
@@ -53,7 +47,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
       //--|🠊 Validate User Status 🠈|--//
-      handleData(setSubmit, response.data); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
+      handleData(setSubmit, status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
 
       /*
       switch (status) {
@@ -69,6 +63,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       */
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
+      alert('Axios ERROR!');
+      /*
       const axiosError = error as AxiosError;
       let dialogue: string;
       if (axiosError.response?.status === 404) {
@@ -85,16 +81,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
         viewCarousel('password'); //--|🠈 Redirect to password reset section 🠈|--//
         toggleText('.password-text', dialogue); //--|🠈 Provide guidance for registered users 🠈|--//
-
-        /*
-        let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
-        let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
-        let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
-        */
       } else {
         alert('An error occurred during login. Please try again later.');
         console.error('Error during login:', error); //--|🠈 Log unexpected errors for debugging 🠈|--//
       }
+      */
     } finally {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
@@ -193,3 +184,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
+
+/*
+        let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
+        let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
+        let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
+        */

@@ -27,7 +27,7 @@ connectDatabase((err) => {
 });
 module.exports = server; // Ensure module export for testing or further use
 
-//--|🠋 GET: Fetch Users 🠋|--//
+//--|🠊 GET: Fetch Users 🠈|--//
 server.get(`/${root}`, async (req, res) => {
   try {
     //--|🠊 Fetch data from both collections 🠈|--//
@@ -48,10 +48,17 @@ server.get(`/${root}`, async (req, res) => {
   }
 });
 
-//--|🠊 POST: Registration Page 🠈|--//
+//--|🠋 POST: Registration Page 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
   const { firstName, lastName, email, passwordHash } = req.body;
 
+  // console.log(firstName, lastName, email, passwordHash);
+  // return { firstName, lastName, email, passwordHash };
+  return res.status(201).json({
+    status: 'pending',
+    action: 'created',
+  });
+  /*
   let today = new Date(); // Current date
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
   let tomorrow = new Date(today);
@@ -120,7 +127,7 @@ server.post(`/${root}/register`, async (req, res) => {
 
     // Send activation email
     try {
-      /* await sendActivationEmail(email, randomCode, 'register'); */
+      // await sendActivationEmail(email, randomCode, 'register'); //
       console.log(`Activation email sent to ${email}`);
     } catch (error) {
       console.error(`Failed to send activation email to ${email}:`, error);
@@ -134,6 +141,7 @@ server.post(`/${root}/register`, async (req, res) => {
       message: 'Registration successful! Please check your email for the activation code.',
     });
   }
+  */
 });
 
 //--|🠋 POST: Login Page 🠋|--//
@@ -177,7 +185,7 @@ server.post(`/${root}/login`, async (req, res) => {
   }
 });
 
-//--|🠊 POST: Password Page 🠈|--//
+//--|🠋 POST: Password Page 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
   const { email } = req.body;
   let today = new Date();
@@ -234,7 +242,7 @@ server.post(`/${root}/password`, async (req, res) => {
   }
 });
 
-//--|🠊 POST: Verify Page 🠈|--//
+//--|🠋 POST: Verify Page 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
   let today = new Date();
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
@@ -307,7 +315,7 @@ server.post(`/${root}/verify`, async (req, res) => {
   }
 });
 
-//--|🠊 POST: Reset Page 🠈|--//
+//--|🠋 POST: Reset Page 🠋|--//
 server.post(`/${root}/reset`, async (req, res) => {
   let today = new Date();
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format

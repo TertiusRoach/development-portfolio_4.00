@@ -113,88 +113,99 @@ export const refreshInputs = (page: 'register' | 'login' | 'password') => {
 };
 
 export async function handleData(
-  setSubmit: React.Dispatch<React.SetStateAction<boolean>>,
-  response: { status: string; action: string } // Adjusted to match the response format
+  // setSubmit: React.Dispatch<React.SetStateAction<boolean>>,
+  status: string,
+  action: string // Adjusted to match the response format
 ) {
-  const { status, action } = response; //--|🠈 Extract the status and action from the server response 🠈|--//
-  alert(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
-  //--|🠋 Step 3: Error Handling 🠋|--//
+  // const { status, action } = response; //--|🠈 Extract the status and action from the server response 🠈|--//
+
+  // console.log(status, action);
+
+  console.log(`Status: ${status}`);
+  console.log(`Action: ${action}`);
+
   let dialogue: string; //--|🠈 Message for the user 🠈|--//
-  try {
-    //--|🠋 Step 4: Validate User Status 🠋|--//
-    if (status === 'pending') {
-      //--|🠉 If the user email exists inside the 'pending' collection 🠈|--//
-      //--|🠋 Step 4.1: Perform Desired Action 🠋|--//
-      switch (action) {
-        case 'created': //--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//
-          //--|🠊 created: Form.register 🠈|--//
-          dialogue = 'Your account has been created. Please verify your email to activate it.';
-          break;
-        case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
-          //--|🠊 mismatch: Form.verify 🠈|--//
-          dialogue = 'The verification code does not match our records. Please try again.';
-          break;
-        case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
-          //--|🠊 unverified: Form.register + Form.login + Form.password 🠈|--//
-          dialogue = 'Your account is not verified. Please check your email for the activation link.';
-          break;
-        case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
-          //--|🠊 halted: Form.verify 🠈|--//
-          dialogue = 'Too many incorrect activation attempts. Your account has been temporarily blocked.';
-          break;
-      }
-    } else if (status === 'enabled') {
-      //--|🠉 If the user email exists inside the 'enabled' collection 🠈|--//
-      //--|🠋 Step 4.2: Perform Desired Action 🠋|--//
-      switch (action) {
-        case 'authorized': //--|🠈 If the "passwordHash" matches the "email" entered by the user. 🠈|--//
-          //--|🠊 authorized: Form.login 🠈|--//
-          dialogue = 'Login successful. Redirecting to your dashboard...';
-          break;
-        case 'incorrect': //--|🠈 If the "passwordHash" doesn't match the "email" entered by the user. 🠈|--//
-          //--|🠊 incorrect: Form.login 🠈|--//
-          dialogue = 'Incorrect password. Please try again or reset your password.';
-          break;
-        case 'remembered': //--|🠈 If the newly entered password matches the current "passwordHash". 🠈|--//
-          //--|🠊 remembered: Form.password 🠈|--//
-          dialogue = 'New password matches the old one. Please choose a different password.';
-          break;
-        case 'renewed': //--|🠈 If the "passwordCode" matches the input of the user and a new password has been entered. 🠈|--//
-          //--|🠊 renewed: Form.password 🠈|--//
-          dialogue = 'Your password has been successfully reset.';
-          break;
-        case 'suspended': //--|🠈 If the user requested a new "passwordCode" six times without using it, move the user to 'blocked'. 🠈|--//
-          //--|🠊 suspended: Form.login + Form.password 🠈|--//
-          dialogue = 'Too many password reset requests. Your account has been temporarily blocked.';
-          break;
-      }
-    } else if (status === 'blocked') {
-      //--|🠉 If the user email exists inside the 'blocked' collection 🠈|--//
-      //--|🠋 Step 4.3: Perform Desired Action 🠋|--//
-      switch (action) {
-        case 'recovered': //--|🠈 Move the user to 'pending' if "updatedAt" is older than seven days. 🠈|--//
-          //--|🠊 recovered: Form.register + Form.login + Form.password 🠈|--//
-          dialogue = 'Your account has been reinstated. Please verify your email to continue.';
-          break;
-        case 'declined': //--|🠈 Return this if the user is in the 'blocked' collection and "updatedAt" is less than seven days. 🠈|--//
-          //--|🠊 declined: Form.register + Form.login + Form.password 🠈|--//
-          dialogue = 'Your account is blocked. Please wait before attempting to access it again.';
-          break;
-      }
-    } else if (status === 'missing') {
-      //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
-      //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
-      switch (action) {
-        case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
-          //--|🠊 register: Form.register + Form.login + Form.password 🠈|--//
-          dialogue = 'No account found with this email. Would you like to register?';
-          break;
-      }
-    } else {
-      dialogue = 'An unexpected error occurred. Please try again later.';
+  //--|🠋 Step 4: Validate User Status 🠋|--//
+  if (status === 'pending') {
+    //--|🠉 If the user email exists inside the 'pending' collection 🠈|--//
+    //--|🠋 Step 4.1: Perform Desired Action 🠋|--//
+    switch (action) {
+      case 'created': //--|🠈 If a new user is added/registered to the 'pending' collection the show the verify page. 🠈|--//
+        // alert(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
+        console.log(`//--|🠈 If a new user is added/registered to the 'pending' collection. 🠈|--//`);
+        //--|🠊 01. created: Form.register 🠈|--//
+        dialogue = 'Your account has been created. Please verify your email to activate it.';
+        break;
+      case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
+        //--|🠊 02. mismatch: Form.verify 🠈|--//
+        dialogue = 'The verification code does not match our records. Please try again.';
+        break;
+      case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
+        //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
+        dialogue = 'Your account is not verified. Please check your email for the activation link.';
+        break;
+      case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
+        //--|🠊 04. halted: Form.verify 🠈|--//
+        dialogue = 'Too many incorrect activation attempts. Your account has been temporarily blocked.';
+        break;
     }
+  } else if (status === 'enabled') {
+    //--|🠉 If the user email exists inside the 'enabled' collection 🠈|--//
+    //--|🠋 Step 4.2: Perform Desired Action 🠋|--//
+    switch (action) {
+      case 'authorized': //--|🠈 If the "passwordHash" matches the "email" entered by the user. 🠈|--//
+        //--|🠊 05. authorized: Form.login 🠈|--//
+        dialogue = 'Login successful. Redirecting to your dashboard...';
+        break;
+      case 'incorrect': //--|🠈 If the "passwordHash" doesn't match the "email" entered by the user. 🠈|--//
+        //--|🠊 06. incorrect: Form.login 🠈|--//
+        dialogue = 'Incorrect password. Please try again or reset your password.';
+        break;
+      case 'remembered': //--|🠈 If the newly entered password matches the current "passwordHash". 🠈|--//
+        //--|🠊 07. remembered: Form.password 🠈|--//
+        dialogue = 'New password matches the old one. Please choose a different password.';
+        break;
+      case 'renewed': //--|🠈 If the "passwordCode" matches the input of the user and a new password has been entered. 🠈|--//
+        //--|🠊 08. renewed: Form.password 🠈|--//
+        dialogue = 'Your password has been successfully reset.';
+        break;
+      case 'suspended': //--|🠈 If the user requested a new "passwordCode" six times without using it, move the user to 'blocked'. 🠈|--//
+        //--|🠊 09. suspended: Form.login + Form.password 🠈|--//
+        dialogue = 'Too many password reset requests. Your account has been temporarily blocked.';
+        break;
+    }
+  } else if (status === 'blocked') {
+    //--|🠉 If the user email exists inside the 'blocked' collection 🠈|--//
+    //--|🠋 Step 4.3: Perform Desired Action 🠋|--//
+    switch (action) {
+      case 'recovered': //--|🠈 Move the user to 'pending' if "updatedAt" is older than seven days. 🠈|--//
+        //--|🠊 10. recovered: Form.register + Form.login + Form.password 🠈|--//
+        dialogue = 'Your account has been reinstated. Please verify your email to continue.';
+        break;
+      case 'declined': //--|🠈 Return this if the user is in the 'blocked' collection and "updatedAt" is less than seven days. 🠈|--//
+        //--|🠊 11. declined: Form.register + Form.login + Form.password 🠈|--//
+        dialogue = 'Your account is blocked. Please wait before attempting to access it again.';
+        break;
+    }
+  } else if (status === 'missing') {
+    //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
+    //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
+    switch (action) {
+      case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
+        //--|🠊 12. register: Form.register + Form.login + Form.password 🠈|--//
+        dialogue = 'No account found with this email. Would you like to register?';
+        break;
+    }
+  } else {
+    dialogue = 'An unexpected error occurred. Please try again later.';
+  }
+
+  /*
+  try {
   } catch (error) {
     //--|🠊 Handle Login Errors 🠈|--//
+    alert('Axios ERROR!');
+    
     const axiosError = error as AxiosError;
     if (axiosError.response?.status === 404) {
       dialogue = 'Server not found. Please try again later.';
@@ -206,12 +217,9 @@ export async function handleData(
   } finally {
     setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
   }
+  
+  } finally {
+    setSubmit(false); //--|🠈 Disable button during submission 🠈|--//
+  }
+  */
 }
-
-/*
-export const handleData = async (
-
-) => {
-
-};
-*/
