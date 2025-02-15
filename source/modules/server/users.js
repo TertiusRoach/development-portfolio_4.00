@@ -61,8 +61,7 @@ server.post(`/${root}/register`, async (req, res) => {
 
   //--|🠋 Step 3: Action Functions 🠋|--//
   async function created(firstName, lastName, email, passwordHash) {
-    // User doesn't exist; create a new entry in the 'pending' collection
-
+    //--|🠊 Create a new entry in the 'pending' collection 🠈|--//
     await database.collection('pending').insertOne({
       email: email,
       passwordHash: await encryptValue(passwordHash),
@@ -93,14 +92,22 @@ server.post(`/${root}/register`, async (req, res) => {
     case null:
       //--|🠊 01. created: Form.register 🠈|--//
       //--|🠊 status(201): Accepted 🠈|--//
-
-      created(firstName, lastName, email, passwordHash);
+      await created(firstName, lastName, email, passwordHash);
       return res.status(201).json({
         status: 'pending',
         action: 'created',
       });
     default:
-    // console.log('doSomething');
+    /*
+      if (user.verifiedEmail === false) {
+        //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 status(403): Forbidden 🠈|--//
+        return res.status(403).json({
+          status: 'pending',
+          action: 'unverified',
+        });
+      }
+      */
   }
 });
 
@@ -632,22 +639,11 @@ function manipulateDocumentFields(method) {
 }
 
 /*
-
-const read = () => {
-  
-}
-const update = () => {
-  
-}
-const delete = () => {
-  
-}
-*/
-/*
-  return res.status(201).json({
-    status: '',
-    action: 'created',
-  });
+  async function unverified(email) {
+    //--|🠊 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
+    await database.collection('pending').find({ verifiedEmail });
+    // await database.collection('pending').insertOne({});
+  }
   */
 /*
   let today = new Date(); // Current date

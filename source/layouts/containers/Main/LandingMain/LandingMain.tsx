@@ -143,6 +143,7 @@ export async function handleData(
         //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = 'Your account is not verified. Please check your email for the activation link.';
+        alert(dialogue);
         break;
       case 'halted': //--|🠈 If the user failed to enter the "activationCode" twelve times, move the user to the 'blocked' collection. 🠈|--//
         //--|🠊 04. halted: Form.verify 🠈|--//
