@@ -113,18 +113,15 @@ export const refreshInputs = (page: 'register' | 'login' | 'password') => {
 };
 
 export async function handleData(
-  // setSubmit: React.Dispatch<React.SetStateAction<boolean>>,
+  /* setSubmit: React.Dispatch<React.SetStateAction<boolean>>, */
   status: string,
-  action: string // Adjusted to match the response format
+  action: string
 ) {
-  // const { status, action } = response; //--|🠈 Extract the status and action from the server response 🠈|--//
-
-  // console.log(status, action);
-
-  console.log(`Status: ${status}`);
-  console.log(`Action: ${action}`);
-
-  let dialogue: string; //--|🠈 Message for the user 🠈|--//
+  /*
+    console.log(`Status: ${status}`);
+    console.log(`Action: ${action}`);
+  */
+  let dialogue: string; //--|🠈 Message for the User 🠈|--//
   //--|🠋 Step 4: Validate User Status 🠋|--//
   if (status === 'pending') {
     //--|🠉 If the user email exists inside the 'pending' collection 🠈|--//
@@ -134,12 +131,14 @@ export async function handleData(
         //--|🠊 01. created: Form.register 🠈|--//
         //--|🠊 status(201): Accepted 🠈|--//
         dialogue = 'Your account has been created. Please verify your email to activate it.';
+        alert(dialogue);
         break;
       case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
         //--|🠊 02. mismatch: Form.verify 🠈|--//
         //--|🠊 status(400): Bad Request 🠈|--//
         dialogue = 'The verification code does not match our records. Please try again.';
         break;
+      //--|🠋 Checklist 🠋|--//
       case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
         //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//
