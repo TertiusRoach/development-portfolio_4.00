@@ -50,14 +50,66 @@ server.get(`/${root}`, async (req, res) => {
 
 //--|🠋 POST: Registration Page 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
+  //--|🠋 Step 1: Declare User Inputs 🠋|--//
   const { firstName, lastName, email, passwordHash } = req.body;
 
-  // console.log(firstName, lastName, email, passwordHash);
-  // return { firstName, lastName, email, passwordHash };
+  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+
+  //--|🠋 Step 3: Action Functions 🠋|--//
+  async function created(firstName, lastName, email, passwordHash) {
+    // User doesn't exist; create a new entry in the 'pending' collection
+    const hashedPassword = encryptValue(passwordHash);
+
+    await database.collection('pending').insertOne({
+      email: email,
+      passwordHash: await encryptValue(passwordHash),
+      verifiedEmail: false,
+
+      role: 'user',
+      status: 'pending',
+      firstName: firstName,
+      lastName: lastName,
+
+      activationCode: await createCode(4), // Generate 4-digit activation code
+      activationAttempts: 0, // Maximum of 6 attempts before the user is blocked for 24 hours
+      activationCodeExpiresAt: await createDate('tomorrow'),
+
+      userIP: await trackPlace(req),
+      createdAt: await createDate('today'),
+      updatedAt: null,
+      lastLogin: null,
+
+      passwordCode: null,
+      passwordCodeExpiresAt: null,
+      passwordChangeRequests: 0, // Maximum of 6 before the user is blocked for 7 days
+    });
+  }
+
+  //--|🠋 Step 4: Modularize Responses 🠋|--//
+  switch (user) {
+    case null:
+      //--|🠊 01. created: Form.register 🠈|--//
+      //--|🠊 status(201): Accepted 🠈|--//
+
+      created(firstName, lastName, email, passwordHash);
+      return res.status(201).json({
+        status: 'pending',
+        action: 'created',
+      });
+    default:
+    // console.log('doSomething');
+  }
+
+  /*
   return res.status(201).json({
-    status: 'pending',
+    status: '',
     action: 'created',
   });
+  */
   /*
   let today = new Date(); // Current date
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
@@ -142,7 +194,98 @@ server.post(`/${root}/register`, async (req, res) => {
     });
   }
   */
+  /*
+  return res.status(201).json({
+    status: 'pending',
+    action: 'created',
+  });
+  */
+  /*
+      firstName,
+      lastName,
+      email,
+      passwordHash: hashedPassword,
+      verifiedEmail: false,
+      activationCode: randomCode,
+      activationCodeExpiresAt: tomorrowISO,
+      userIP,
+      createdAt: todayISO,
+      updatedAt: null,
+      lastLogin: null,
+      role: 'user',
+      status: 'pending',
+      // passwordCode: null,
+      // passwordCodeExpiresAt: null,
+      */
+  /*
+    let today = new Date(); // Current date
+    let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
+    let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format
+
+    let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
+    let randomCode = createCode(4);
+    */
+  /*
+    console.log(`First Name: ${firstName}`);
+    console.log(`Last Name: ${lastName}`);
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${passwordHash}`);
+    */
 });
+
+//--|🠋 Generate Database Fields 🠋|--//
+let encryptValue = async (value) => {
+  //--|🠊 Encrypt String 🠈|--//
+  const salt = await bcrypt.genSalt();
+  return await bcrypt.hash(value, salt);
+};
+let createCode = async (length) => {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const numbers = '0123456789';
+
+  let code = '';
+
+  // Add 5 random letters
+  for (let i = 0; i < length / 2; i++) {
+    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+    code += randomLetter;
+  }
+
+  // Add 5 random numbers
+  for (let i = 0; i < length / 2; i++) {
+    const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+    code += randomNumber;
+  }
+
+  // Shuffle the characters randomly
+  code = code
+    .split('')
+    .sort(() => Math.random() - 0.5)
+    .join('');
+  return code;
+};
+let createDate = async (schedule) => {
+  // let today = present.toISOString().split('.')[0] + 'Z'; // ISO format
+  // let tomorrow = setDate(today.getDate() + 1);
+  let present = new Date(); // Current date
+  switch (schedule) {
+    case 'yesterday':
+      return '';
+    case 'today':
+      return present.toISOString().split('.')[0] + 'Z'; // ISO format
+    case 'tomorrow':
+      let tomorrow = new Date(present);
+      tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day;
+      return tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format
+  }
+};
+let trackPlace = async (request) => {
+  return request.headers['x-forwarded-for'] || request.socket.remoteAddress;
+};
+
+//--------------------------------------------------------------------------------//
 
 //--|🠋 POST: Login Page 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
@@ -192,7 +335,7 @@ server.post(`/${root}/password`, async (req, res) => {
   let tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  let randomCode = generateRandomCode(4);
+  let randomCode = randomizeCodeActivation(4);
   /*
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailRegex.test(email)) {
@@ -273,7 +416,7 @@ server.post(`/${root}/verify`, async (req, res) => {
 
     // Check if the verification code has expired
     if (new Date() > new Date(user.activationCodeExpiresAt)) {
-      const newActivationCode = generateRandomCode(10);
+      const newActivationCode = randomizeCodeActivation(10);
       const newExpirationTime = new Date();
       newExpirationTime.setHours(newExpirationTime.getHours() + 24);
 
@@ -340,7 +483,7 @@ server.post(`/${root}/reset`, async (req, res) => {
 
     // Check if the reset code has expired
     if (new Date() > new Date(user.passwordCodeExpiresAt)) {
-      const newResetCode = generateRandomCode(10);
+      const newResetCode = randomizeCodeActivation(10);
       const newExpirationTime = new Date();
       newExpirationTime.setHours(newExpirationTime.getHours() + 1); // Reset code valid for 1 hour
 
@@ -391,7 +534,7 @@ server.post(`/${root}/reset`, async (req, res) => {
   }
 });
 
-function generateRandomCode(length) {
+function randomizeCodeActivation(length) {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
 
@@ -415,38 +558,6 @@ function generateRandomCode(length) {
     .sort(() => Math.random() - 0.5)
     .join('');
   return code;
-}
-function manipulateDocumentFields() {
-  // MongoDB: database => collection => document => field
-  const document = {
-    email: '',
-    passwordHash: '',
-    verifiedEmail: '',
-
-    role: '',
-    status: '',
-    firstName: '',
-    lastName: '',
-
-    activationCode: '',
-    activationAttempts: '', // Maximum of 6 attempts before the user is blocked for 24 hours
-    activationCodeExpiresAt: '',
-
-    userIP: '',
-    createdAt: '',
-    updatedAt: '',
-    lastLogin: '',
-
-    passwordCode: '',
-    passwordCodeExpiresAt: '',
-    passwordChangeRequests: '', // Maximum of 6 before the user is blocked for 7 days
-  };
-
-  // CRUD Method
-  // Create
-  // Read
-  // Update
-  // Delete
 }
 
 async function sendActivationEmail(email, activationCode, page) {
@@ -612,3 +723,54 @@ async function sendActivationEmail(email, activationCode, page) {
     throw error;
   }
 }
+
+function manipulateDocumentFields(method) {
+  // MongoDB: database => collection => document => field
+  const document = {
+    email: '',
+    passwordHash: '',
+    verifiedEmail: '',
+
+    role: '',
+    status: '',
+    firstName: '',
+    lastName: '',
+
+    activationCode: '',
+    activationAttempts: '', // Maximum of 6 attempts before the user is blocked for 24 hours
+    activationCodeExpiresAt: '',
+
+    userIP: '',
+    createdAt: '',
+    updatedAt: '',
+    lastLogin: '',
+
+    passwordCode: '',
+    passwordCodeExpiresAt: '',
+    passwordChangeRequests: '', // Maximum of 6 before the user is blocked for 7 days
+  };
+  // CRUD Method
+  switch (method) {
+    case 'create':
+      break;
+    case 'read':
+      break;
+    case 'update':
+      break;
+    case 'delete':
+      break;
+  }
+}
+
+/*
+
+const read = () => {
+  
+}
+const update = () => {
+  
+}
+const delete = () => {
+  
+}
+*/

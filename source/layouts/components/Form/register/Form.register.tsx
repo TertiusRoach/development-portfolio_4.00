@@ -19,11 +19,11 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Shared input states 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let [password, setPassword] = useState('password');
+  let [password, setPassword] = useState('');
 
   //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('Tertius');
-  let [lastName, setLastName] = useState('Embassy');
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
@@ -49,18 +49,24 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           lastName,
           email,
           passwordHash: password,
-        },
+        }
+        /*
         {
           headers: { 'Content-Type': 'application/json' },
         }
+        */
       );
       const { status, action } = response.data;
       handleData(/* setSubmit, */ status, action);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        // setError(error.response?.data?.message || 'Registration failed');
+      //--|🠊 Handle Login Errors 🠈|--//
+      const axiosError = error as AxiosError;
+      if (axiosError.response?.status === 404) {
+        alert('Axios Error: Server not found. Please try again later.');
+      } else if (axiosError.response?.status === 401) {
+        alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
       } else {
-        // setError('An unexpected error occurred');
+        alert('Axios Error: A network error occurred. Please check your connection.');
       }
     } finally {
       setSubmit(false);

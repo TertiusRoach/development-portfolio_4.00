@@ -201,9 +201,12 @@ export async function handleData(
     //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
     switch (action) {
       case 'register': //--|🠈 If the user interacts with any page and "email" isn't in any database then return this. 🠈|--//
-        //--|🠊 12. register: Form.register + Form.login + Form.password 🠈|--//
+        //--|🠊 12. register: Form.login + Form.password 🠈|--//
         //--|🠊 status(404): Not Found 🠈|--//
         dialogue = 'No account found with this email. Would you like to register?';
+
+        viewCarousel('register');
+        toggleText('.register-text', dialogue);
         break;
     }
   } else {
