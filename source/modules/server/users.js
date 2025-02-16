@@ -125,11 +125,11 @@ server.post(`/${root}/login`, async (req, res) => {
   try {
     //--|🠋 Step 5: Modularize Responses 🠋|--//
     if (user === null) {
-      //--|🠊 status(404): Not Found 🠈|--//
-      return res.status(404).json({
+      return res.status(201).json({
+        page: 'register',
         status: 'missing',
         action: 'register',
-        message: '//--|🠊 res.status(404): Not Found 🠈|--//',
+        message: '//--|🠊 status(201): Not Found 🠈|--//',
       });
     }
   } catch (error) {

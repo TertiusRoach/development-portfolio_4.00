@@ -36,11 +36,19 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         email, //--|🠈 Email entered by the user 🠈|--//
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
       });
-      const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+      const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
-      console.log(status, action);
+      console.log(page, status, action, message);
 
-      //--|🠊 Validate User Status 🠈|--//
+      //--|🠋 Step 3: Validate User Status 🠋|--//
+      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      switch (page) {
+        case 'register':
+          dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
+          viewCarousel('register');
+          toggleText('.register-text', dialogue);
+          break;
+      }
       /*
       let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
       let page = visible.className.split('-')[0];

@@ -42,8 +42,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         email,
         passwordHash: password,
       });
-      const { page, status, action, message } = response.data;
+      const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
+      //--|🠋 Step 3: Validate User Status 🠋|--//
       let dialogue: string; //--|🠈 Message for the User 🠈|--//
       switch (page) {
         case 'verify':
