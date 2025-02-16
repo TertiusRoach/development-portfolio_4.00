@@ -42,9 +42,16 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         email,
         passwordHash: password,
       });
-      const { status, action } = response.data;
-      console.log(status, action);
+      const { page, status, action, message } = response.data;
 
+      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      switch (page) {
+        case 'verify':
+          dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
+          toggleText('.verify-text', dialogue);
+          toggleAside('#landing-leftbar', 'show');
+          break;
+      }
       /*
       let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
       let page = visible.className.split('-')[0];
