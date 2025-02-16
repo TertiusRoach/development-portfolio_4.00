@@ -51,10 +51,10 @@ server.get(`/${root}`, async (req, res) => {
 
 //--|🠋 POST: Registration Page 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
-  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  //--|🠋 Step 1: Request Inputs 🠋|--//
   const { firstName, lastName, email, passwordHash } = req.body;
 
-  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  //--|🠋 Step 2: Find User 🠋|--//
   const user =
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||
@@ -88,32 +88,39 @@ server.post(`/${root}/register`, async (req, res) => {
     });
   }
 
-  //--|🠋 Step 4: Modularize Responses 🠋|--//
-  if (user === null) {
-    //--|🠊 01. created: Form.register 🠈|--//
-    //--|🠊 status(201): Accepted 🠈|--//
-    await register(firstName, lastName, email, passwordHash);
-    return res.status(201).json({
-      status: 'missing',
-      action: 'register',
-    });
+  //--|🠋 Step 4: Error Handling 🠋|--//
+  try {
+    //--|🠋 Step 5: Modularize Responses 🠋|--//
+    if (user === null) {
+      //--|🠊 01. created: Form.register 🠈|--//
+      //--|🠊 status(201): Accepted 🠈|--//
+      await register(firstName, lastName, email, passwordHash);
+      return res.status(201).json({
+        status: 'missing',
+        action: 'register',
+      });
+    }
+  } catch (error) {
+    axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
+  } finally {
   }
 });
 server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  //--|🠋 Step 1: Request Inputs 🠋|--//
   const { email, passwordHash } = req.body;
-  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+
+  //--|🠋 Step 2: Find User 🠋|--//
   const user =
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  //--|🠋 Step 2: Action Functions 🠋|--//
+  //--|🠋 Step 3: Action Functions 🠋|--//
   async function login(email, passwordHash) {}
 
-  //--|🠋 Step 3: Error Handling 🠋|--//
+  //--|🠋 Step 4: Error Handling 🠋|--//
   try {
-    //--|🠋 Step 4: Modularize Responses 🠋|--//
+    //--|🠋 Step 5: Modularize Responses 🠋|--//
     if (user === null) {
       //--|🠊 12. register: Form.login + Form.password 🠈|--//
       //--|🠊 status(404): Not Found 🠈|--//
@@ -124,31 +131,7 @@ server.post(`/${root}/login`, async (req, res) => {
       });
     }
   } catch (error) {
-    //--|🠊 Handle Login Errors 🠈|--//
-
-    //--|🠉 🛑 STOP! Something bad happened when we tried to fetch data. 🠉|--//
-    //--|🠋 😲 First, we check: Was this a problem with Axios (our fetch tool)? 🠋|--//
-    if (axios.isAxiosError(error)) {
-      //--|🠋🚦 Let's see what kind of error we got from the server.🠋|--//
-      const status = error.response?.status || 500; //--|🠈 If no status, assume 500 (big problem) 🠈|--//
-      const message = error.response?.data?.message || 'Axios Request Failed'; //--|🠈 If no message, give a generic one 🠈|--//
-
-      //--|🠋 📝 Write down (log) what went wrong so we can fix it later. 🠋|--//
-      console.error('Axios Error:', {
-        status, //--|🠈 The error number (like 404, 500) 🠈|--//
-        message, //--|🠈 The server’s message (if it sent one) 🠈|--//
-        url: error.config?.url, //--|🠈 The website/page we tried to fetch from 🠈|--//
-      });
-
-      //--|🠋 🚀 Send a message back to whoever called this API. 🠋|--//
-      return res.status(status).json({ error: message });
-    }
-
-    //--|🠋 😵 Uh-oh! This error wasn’t Axios... Something unexpected broke! 🠋|--//
-    console.error('Unexpected Server Error:', error);
-
-    //--|🠋 🚨 Send back a 500 error to say "something went wrong on our end" 🠋|--//
-    res.status(500).json({ error: 'Internal Server Error' });
+    axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   } finally {
   }
 });
@@ -201,6 +184,31 @@ let createDate = async (schedule) => {
 };
 let trackPlace = async (request) => {
   return request.headers['x-forwarded-for'] || request.socket.remoteAddress;
+};
+const axiosError = (error) => {
+  //--|🠉 🛑 STOP! Something bad happened when we tried to fetch data. 🠉|--//
+  //--|🠋 😲 First, we check: Was this a problem with Axios (our fetch tool)? 🠋|--//
+  if (axios.isAxiosError(error)) {
+    //--|🠋🚦 Let's see what kind of error we got from the server.🠋|--//
+    const status = error.response?.status || 500; //--|🠈 If no status, assume 500 (big problem) 🠈|--//
+    const message = error.response?.data?.message || 'Axios Request Failed'; //--|🠈 If no message, give a generic one 🠈|--//
+
+    //--|🠋 📝 Write down (log) what went wrong so we can fix it later. 🠋|--//
+    console.error('Axios Error:', {
+      status, //--|🠈 The error number (like 404, 500) 🠈|--//
+      message, //--|🠈 The server’s message (if it sent one) 🠈|--//
+      url: error.config?.url, //--|🠈 The website/page we tried to fetch from 🠈|--//
+    });
+
+    //--|🠋 🚀 Send a message back to whoever called this API. 🠋|--//
+    return res.status(status).json({ error: message });
+  }
+
+  //--|🠋 😵 Uh-oh! This error wasn’t Axios... Something unexpected broke! 🠋|--//
+  console.error('Unexpected Server Error:', error);
+
+  //--|🠋 🚨 Send back a 500 error to say "something went wrong on our end" 🠋|--//
+  res.status(500).json({ error: 'Internal Server Error' });
 };
 
 //--------------------------------------------------------------------------------//

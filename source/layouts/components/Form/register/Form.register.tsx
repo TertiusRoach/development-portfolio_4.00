@@ -50,8 +50,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
       // handleData(status, action);
     } catch (error) {
-      //--|🠊 Handle Login Errors 🠈|--//
-      axiosError(error);
+      axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
     } finally {
       setSubmit(false);
     }

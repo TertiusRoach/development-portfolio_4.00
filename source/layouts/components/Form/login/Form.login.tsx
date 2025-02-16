@@ -26,9 +26,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
 
     //--|🠋 Step 1: Error Handling 🠋|--//
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
     try {
       //--|🠋 Step 3: Connect to Database 🠋|--//
       const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'login'; //--|🠈 API Endpoint 🠈|--//
@@ -38,12 +38,14 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       });
       const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
+      console.log(status, action);
+
+      //--|🠊 Validate User Status 🠈|--//
       /*
       let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
       let page = visible.className.split('-')[0];
       */
-
-      //--|🠊 Validate User Status 🠈|--//
+      /*
       let dialogue: string;
       if (status === 'missing') {
         //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
@@ -58,10 +60,10 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             break;
         }
       }
+      */
       // handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
     } catch (error) {
-      //--|🠊 Handle Login Errors 🠈|--//
-      axiosError(error);
+      axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
     } finally {
       setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
     }
