@@ -49,7 +49,7 @@ server.get(`/${root}`, async (req, res) => {
   }
 });
 
-//--|🠋 POST: Registration Page 🠋|--//
+//--|🠋 POST: Form.registration.tsx 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
   //--|🠋 Step 1: Request Inputs 🠋|--//
   const { firstName, lastName, email, passwordHash } = req.body;
@@ -105,6 +105,8 @@ server.post(`/${root}/register`, async (req, res) => {
   } finally {
   }
 });
+
+//--|🠋 POST: Form.login.tsx 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Step 1: Request Inputs 🠋|--//
   const { email, passwordHash } = req.body;
@@ -213,9 +215,7 @@ const axiosError = (error) => {
 
 //--------------------------------------------------------------------------------//
 
-//--|🠋 POST: Login Page 🠋|--//
-
-//--|🠋 POST: Password Page 🠋|--//
+//--|🠋 POST: Form.password.tsx 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
   /*
   //--|🠋 Step 1: Declare User Inputs 🠋|--//
@@ -295,7 +295,7 @@ server.post(`/${root}/password`, async (req, res) => {
   */
 });
 
-//--|🠋 POST: Verify Page 🠋|--//
+//--|🠋 POST: Form.verify.tsx 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
   /*
   let today = new Date();
@@ -370,7 +370,7 @@ server.post(`/${root}/verify`, async (req, res) => {
   */
 });
 
-//--|🠋 POST: Reset Page 🠋|--//
+//--|🠋 POST: Form.reset.tsx 🠋|--//
 server.post(`/${root}/reset`, async (req, res) => {
   /*
   let today = new Date();

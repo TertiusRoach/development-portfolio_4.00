@@ -30,8 +30,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
     //--|🠋 Step 1: Error Handling 🠋|--//
     try {
-      //--|🠋 Step 3: Connect to Database 🠋|--//
-      const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'login'; //--|🠈 API Endpoint 🠈|--//
+      //--|🠋 Step 2: Connect to Database 🠋|--//
+      const route = 'login'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         email, //--|🠈 Email entered by the user 🠈|--//
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//

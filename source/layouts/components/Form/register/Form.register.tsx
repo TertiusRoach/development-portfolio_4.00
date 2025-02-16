@@ -30,11 +30,12 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-
-    //--|🠋 Step 2: Error Handling 🠋|--//
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 1: Error Handling 🠋|--//
     try {
-      const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'register';
+      //--|🠋 Step 2: Connect to Database 🠋|--//
+      const route = 'register' as string; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         firstName,
         lastName,
@@ -42,6 +43,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         passwordHash: password,
       });
       const { status, action } = response.data;
+      console.log(status, action);
 
       /*
       let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
