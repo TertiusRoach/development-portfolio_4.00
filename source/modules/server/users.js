@@ -60,7 +60,7 @@ server.post(`/${root}/register`, async (req, res) => {
     (await database.collection('blocked').findOne({ email }));
 
   //--|🠋 Step 3: Action Functions 🠋|--//
-  async function created(firstName, lastName, email, passwordHash) {
+  async function register(firstName, lastName, email, passwordHash) {
     //--|🠊 Create a new entry in the 'pending' collection 🠈|--//
     await database.collection('pending').insertOne({
       email: email,
@@ -91,43 +91,37 @@ server.post(`/${root}/register`, async (req, res) => {
   if (user === null) {
     //--|🠊 01. created: Form.register 🠈|--//
     //--|🠊 status(201): Accepted 🠈|--//
-    await created(firstName, lastName, email, passwordHash);
+    await register(firstName, lastName, email, passwordHash);
     return res.status(201).json({
       status: 'missing',
       action: 'register',
     });
   }
-  /*
-  switch (user) {
-    case null:
-      //--|🠊 01. created: Form.register 🠈|--//
-      //--|🠊 status(201): Accepted 🠈|--//
+});
+server.post(`/${root}/login`, async (req, res) => {
+  //--|🠋 Step 1: Declare User Inputs 🠋|--//
+  const { email, passwordHash } = req.body;
+  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
 
-      await created(firstName, lastName, email, passwordHash);
-      return res.status(201).json({
-        status: 'pending',
-        action: 'created',
-      });
+  //--|🠋 Step 3: Action Functions 🠋|--//
+  async function login(email, passwordHash) {}
 
-      return res.status(403).json({
-        status: 'pending',
-        action: 'unverified',
-      });
+  //--|🠋 Step 4: Modularize Responses 🠋|--//
+  if (user === null) {
+    //--|🠊 12. register: Form.login + Form.password 🠈|--//
+    //--|🠊 status(404): Not Found 🠈|--//
+    return res.status(404).json({
+      status: 'missing',
+      action: 'register',
+    });
   }
-  */
-  /*
-      if (user.verifiedEmail === false) {
-        //--|🠊 03. unverified: Form.register + Form.login + Form.password 🠈|--//
-        //--|🠊 status(403): Forbidden 🠈|--//
-        return res.status(403).json({
-          status: 'pending',
-          action: 'unverified',
-        });
-      }
-      */
 });
 
-//--|🠋 Generate Database Fields 🠋|--//
+//--|🠋 Generate Data Fields 🠋|--//
 let encryptValue = async (value) => {
   //--|🠊 Encrypt String 🠈|--//
   const salt = await bcrypt.genSalt();
@@ -180,112 +174,6 @@ let trackPlace = async (request) => {
 //--------------------------------------------------------------------------------//
 
 //--|🠋 POST: Login Page 🠋|--//
-server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Step 1: Declare User Inputs 🠋|--//
-  const { email, passwordHash } = req.body;
-  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
-  const user =
-    (await database.collection('enabled').findOne({ email })) ||
-    (await database.collection('pending').findOne({ email })) ||
-    (await database.collection('blocked').findOne({ email }));
-
-  //--| User does not exist or is not in pending status |--//
-  if (user === null) {
-    return res.status(404).json({
-      status: 'missing',
-      action: 'register',
-    });
-  }
-
-  /*
-  //--|🠋 Step 1: Declare User Inputs 🠋|--//
-  const { email, passwordHash } = req.body;
-
-  //--|🠋 Step 2: Find Email Inside Database 🠋|--//
-  const user =
-    (await database.collection('enabled').findOne({ email })) ||
-    (await database.collection('pending').findOne({ email })) ||
-    (await database.collection('blocked').findOne({ email }));
-
-  if (user === null) {
-    //--|🠊 12. register: Form.login + Form.password 🠈|--//
-    //--|🠊 status(404): Not Found 🠈|--//
-    return res.status(404).json({
-      status: 'missing',
-      action: 'register',
-    });
-  }
-
-  */
-
-  /*
-  try {
-    //--| Check if activation code matches |--//
-    if (user.activationCode !== activationCode) {
-      return res.status(400).json({
-        status: 'pending',
-        action: 'mismatch',
-        message: 'The verification code does not match our records. Please try again.',
-      });
-    }
-
-    //--| Proceed with login activation steps (if necessary) |--//
-    // Example: Move user from 'pending' to 'enabled'
-
-    return res.status(200).json({ status: 'success', message: 'Verification successful.' });
-  } catch (error) {
-    console.error('Error during login verification:', error);
-    return res.status(500).json({ error: 'An internal server error occurred.' });
-  }
-  */
-  /*
-  // LandingMain.tsx
-  case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
-  //--|🠊 02. mismatch: Form.verify 🠈|--//
-  //--|🠊 status(400): Bad Request 🠈|--//
-  dialogue = 'The verification code does not match our records. Please try again.';
-  break;
-  */
-  /*
-  const { email, passwordHash } = req.body; //--| Extract email and passwordHash from the request body |--//
-
-  try {
-    //--| Check for user in 'enabled', 'pending', or 'blocked' collections |--//
-    const collections = ['enabled', 'pending', 'blocked'];
-    let user = null;
-
-    for (const collection of collections) {
-      user = await database.collection(collection).findOne({ email });
-      if (user) break; //--| Stop searching once a user is found |--//
-    }
-
-    //--| User does not exist in any collection |--//
-    if (!user) {
-      return res.status(404).send('Email not found.');
-    }
-
-    //--| Verify password |--//
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(401).send('Invalid password.');
-    }
-
-    //--| If user exists in the 'enabled' collection, update the lastLogin field |--//
-    if (user.status === 'enabled') {
-      let today = new Date();
-      let todayISO = today.toISOString().split('.')[0] + 'Z';
-      await database.collection('enabled').updateOne({ _id: user._id }, { $set: { lastLogin: todayISO } });
-    }
-
-    //--| Respond with the user status and role |--//
-    return res.status(200).json({ status: user.status, role: user.role });
-  } catch (error) {
-    //--| Handle errors gracefully |--//
-    console.error('Error during login process:', error);
-    return res.status(500).send('An internal server error occurred.');
-  }
-  */
-});
 
 //--|🠋 POST: Password Page 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
@@ -743,134 +631,3 @@ function manipulateDocumentFields(method) {
       break;
   }
 }
-
-/*
-  async function unverified(email) {
-    //--|🠊 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
-    await database.collection('pending').find({ verifiedEmail });
-    // await database.collection('pending').insertOne({});
-  }
-  */
-/*
-  let today = new Date(); // Current date
-  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-  let tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
-  let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z';
-
-  let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
-  let randomCode = generateRandomCode(4); // Generate 4-digit activation code
-
-  // Check if email exists in 'enabled', 'pending', or 'blocked'
-  let user =
-    (await database.collection('enabled').findOne({ email })) ||
-    (await database.collection('pending').findOne({ email })) ||
-    (await database.collection('blocked').findOne({ email }));
-
-  if (user) {
-    let isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash); // Validate password
-
-    if (user.status === 'pending' && isPasswordValid) {
-      // Pending user with valid password
-      return res.status(200).json({
-        status: 'pending',
-        message: 'Account already exists but is not verified. Please log in to verify your account.',
-      });
-    } else if (user.status === 'enabled' && isPasswordValid) {
-      // Enabled user with valid password
-      return res.status(200).json({
-        status: 'enabled',
-        message: 'Welcome back! Redirecting to login.',
-      });
-    } else if (!isPasswordValid) {
-      // Incorrect password
-      return res.status(200).json({
-        status: 'password',
-        message: 'Email exists but the password is incorrect. Redirecting to password reset.',
-      });
-    } else {
-      // Fallback for unexpected cases
-      return res.status(400).json({
-        status: 'error',
-        message: 'Unexpected condition encountered. Please contact support.',
-      });
-    }
-  } else {
-    // User doesn't exist; create a new entry in the 'pending' collection
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(passwordHash, salt);
-
-    await database.collection('pending').insertOne({
-      firstName,
-      lastName,
-      email,
-      passwordHash: hashedPassword,
-      verifiedEmail: false,
-      activationCode: randomCode,
-      activationCodeExpiresAt: tomorrowISO,
-      userIP,
-      createdAt: todayISO,
-      updatedAt: null,
-      lastLogin: null,
-      role: 'user',
-      status: 'pending',
-      // passwordCode: null,
-      // passwordCodeExpiresAt: null,
-    });
-
-    // Send activation email
-    try {
-      // await sendActivationEmail(email, randomCode, 'register'); //
-      console.log(`Activation email sent to ${email}`);
-    } catch (error) {
-      console.error(`Failed to send activation email to ${email}:`, error);
-      return res.status(500).json({
-        status: 'email_error',
-        message: 'Registration successful, but failed to send activation email. Please contact support.',
-      });
-    }
-    return res.status(201).json({
-      status: 'created',
-      message: 'Registration successful! Please check your email for the activation code.',
-    });
-  }
-  */
-/*
-  return res.status(201).json({
-    status: 'pending',
-    action: 'created',
-  });
-  */
-/*
-      firstName,
-      lastName,
-      email,
-      passwordHash: hashedPassword,
-      verifiedEmail: false,
-      activationCode: randomCode,
-      activationCodeExpiresAt: tomorrowISO,
-      userIP,
-      createdAt: todayISO,
-      updatedAt: null,
-      lastLogin: null,
-      role: 'user',
-      status: 'pending',
-      // passwordCode: null,
-      // passwordCodeExpiresAt: null,
-      */
-/*
-    let today = new Date(); // Current date
-    let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-    let tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1); // Increment 1 day
-    let tomorrowISO = tomorrow.toISOString().split('.')[0] + 'Z'; // ISO format
-
-    let userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // User's IP
-    let randomCode = createCode(4);
-    */
-/*
-    console.log(`First Name: ${firstName}`);
-    console.log(`Last Name: ${lastName}`);
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${passwordHash}`);
-    */

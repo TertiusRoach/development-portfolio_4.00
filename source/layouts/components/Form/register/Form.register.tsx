@@ -31,15 +31,8 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
 
-    //--|🠋 Step 1: Validate Entered Email 🠋|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Block Submission 🠈|--//
-      return;
-    }
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
     //--|🠋 Step 2: Error Handling 🠋|--//
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
     try {
       const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'register';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
@@ -49,7 +42,13 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         passwordHash: password,
       });
       const { status, action } = response.data;
-      handleData(status, action);
+
+      /*
+      let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
+      let page = visible.className.split('-')[0];
+      */
+
+      // handleData(status, action);
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
       const axiosError = error as AxiosError;

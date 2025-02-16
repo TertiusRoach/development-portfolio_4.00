@@ -27,18 +27,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
 
-    //--|🠋 Step 1: Validate Entered Email 🠋|--//
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setSubmit(false); //--|🠈 Block Submission 🠈|--//
-      return;
-    }
+    //--|🠋 Step 1: Error Handling 🠋|--//
     setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
-    let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
-    let page = visible.className.split('-')[0];
-
-    //--|🠋 Step 2: Error Handling 🠋|--//
     try {
       //--|🠋 Step 3: Connect to Database 🠋|--//
       const route: 'register' | 'login' | 'password' | 'verify' | 'reset' = 'login'; //--|🠈 API Endpoint 🠈|--//
@@ -46,12 +36,15 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         email, //--|🠈 Email entered by the user 🠈|--//
         passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
       });
-
-      //--|🠊 Validate User Status 🠈|--//
       const { status, action } = response.data; //--|🠈 Extract the status from server response 🠈|--//
 
       /*
-      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
+      let page = visible.className.split('-')[0];
+      */
+
+      //--|🠊 Validate User Status 🠈|--//
+      let dialogue: string;
       if (status === 'missing') {
         //--|🠉 If the user email doesn't exist inside 'pending', 'enabled', or 'blocked' collections 🠈|--//
         //--|🠋 Step 4.4: Perform Desired Action 🠋|--//
@@ -60,14 +53,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             //--|🠊 12. register: Form.login + Form.password 🠈|--//
             //--|🠊 status(404): Not Found 🠈|--//
             dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
-            alert(dialogue);
             viewCarousel('register');
             toggleText('.register-text', dialogue);
             break;
         }
       }
-      */
-      handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
+      // handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
       const axiosError = error as AxiosError;
