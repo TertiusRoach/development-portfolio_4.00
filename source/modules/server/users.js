@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const nodemailer = require('nodemailer');
+import axios, { AxiosError } from 'axios';
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
@@ -107,17 +108,48 @@ server.post(`/${root}/login`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  //--|🠋 Step 3: Action Functions 🠋|--//
+  //--|🠋 Step 2: Action Functions 🠋|--//
   async function login(email, passwordHash) {}
 
-  //--|🠋 Step 4: Modularize Responses 🠋|--//
-  if (user === null) {
-    //--|🠊 12. register: Form.login + Form.password 🠈|--//
-    //--|🠊 status(404): Not Found 🠈|--//
-    return res.status(404).json({
-      status: 'missing',
-      action: 'register',
-    });
+  //--|🠋 Step 3: Error Handling 🠋|--//
+  try {
+    //--|🠋 Step 4: Modularize Responses 🠋|--//
+    if (user === null) {
+      //--|🠊 12. register: Form.login + Form.password 🠈|--//
+      //--|🠊 status(404): Not Found 🠈|--//
+      return res.status(404).json({
+        status: 'missing',
+        action: 'register',
+        message: '//--|🠊 res.status(404): Not Found 🠈|--//',
+      });
+    }
+  } catch (error) {
+    //--|🠊 Handle Login Errors 🠈|--//
+
+    //--|🠉 🛑 STOP! Something bad happened when we tried to fetch data. 🠉|--//
+    //--|🠋 😲 First, we check: Was this a problem with Axios (our fetch tool)? 🠋|--//
+    if (axios.isAxiosError(error)) {
+      //--|🠋🚦 Let's see what kind of error we got from the server.🠋|--//
+      const status = error.response?.status || 500; //--|🠈 If no status, assume 500 (big problem) 🠈|--//
+      const message = error.response?.data?.message || 'Axios Request Failed'; //--|🠈 If no message, give a generic one 🠈|--//
+
+      //--|🠋 📝 Write down (log) what went wrong so we can fix it later. 🠋|--//
+      console.error('Axios Error:', {
+        status, //--|🠈 The error number (like 404, 500) 🠈|--//
+        message, //--|🠈 The server’s message (if it sent one) 🠈|--//
+        url: error.config?.url, //--|🠈 The website/page we tried to fetch from 🠈|--//
+      });
+
+      //--|🠋 🚀 Send a message back to whoever called this API. 🠋|--//
+      return res.status(status).json({ error: message });
+    }
+
+    //--|🠋 😵 Uh-oh! This error wasn’t Axios... Something unexpected broke! 🠋|--//
+    console.error('Unexpected Server Error:', error);
+
+    //--|🠋 🚨 Send back a 500 error to say "something went wrong on our end" 🠋|--//
+    res.status(500).json({ error: 'Internal Server Error' });
+  } finally {
   }
 });
 
@@ -257,6 +289,7 @@ server.post(`/${root}/password`, async (req, res) => {
 
 //--|🠋 POST: Verify Page 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
+  /*
   let today = new Date();
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
 
@@ -297,7 +330,7 @@ server.post(`/${root}/verify`, async (req, res) => {
           { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
         );
 
-      /* await sendActivationEmail(user.email, newActivationCode, 'register'); */
+      // await sendActivationEmail(user.email, newActivationCode, 'register'); //
       return res
         .status(400)
         .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
@@ -326,10 +359,12 @@ server.post(`/${root}/verify`, async (req, res) => {
     console.error('Verification Error:', error);
     res.status(500).json({ status: 'unverified', message: 'An error occurred during verification', error: error.message });
   }
+  */
 });
 
 //--|🠋 POST: Reset Page 🠋|--//
 server.post(`/${root}/reset`, async (req, res) => {
+  /*
   let today = new Date();
   let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
 
@@ -367,7 +402,7 @@ server.post(`/${root}/reset`, async (req, res) => {
         }
       );
 
-      /* await sendActivationEmail(user.email, newResetCode, 'reset'); */
+      // await sendActivationEmail(user.email, newResetCode, 'reset'); //
       return res.status(400).json({ message: 'Reset code expired. A new code has been sent to your email.' });
     }
 
@@ -402,6 +437,7 @@ server.post(`/${root}/reset`, async (req, res) => {
     console.error('Password Reset Error:', error);
     res.status(500).json({ status: 'error', message: 'An error occurred during password reset', error: error.message });
   }
+  */
 });
 
 function randomizeCodeActivation(length) {

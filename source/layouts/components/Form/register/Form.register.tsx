@@ -51,13 +51,41 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       // handleData(status, action);
     } catch (error) {
       //--|🠊 Handle Login Errors 🠈|--//
-      const axiosError = error as AxiosError;
-      if (axiosError.response?.status === 404) {
-        alert('Axios Error: Server not found. Please try again later.');
-      } else if (axiosError.response?.status === 401) {
-        alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
+      //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
+      //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
+      if (axios.isAxiosError(error)) {
+        //--|🠋 We try to get the HTTP status code from the server's response. 🠋|--//
+        const status = error.response?.status;
+        //--|🠉 We also try to extract a meaningful error message from the response. 🠉|--//
+        //--|🠋 If there's no specific message, we fall back to Axios's built-in error message. 🠋|--//
+        const message = error.response?.data?.message || error.message;
+
+        //--|🠋 Now we check the status code to decide what message to show the user. 🠋|--//
+        switch (status) {
+          case 404: //--|🠈 If the server is not found (wrong URL or down) 🠈|--//
+            alert('Axios Error: Server not found. Please try again later.');
+            break;
+          case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
+            alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
+            break;
+          case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
+            alert('Axios Error: Internal Server Error. Please try again later.');
+            break;
+          default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
+            alert(`Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
+        }
+
+        //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
+        console.error('Axios Error Details:', {
+          status, //--|🠈 The HTTP status code (like 404, 500) 🠈|--//
+          message, //--|🠈 The error message from the server 🠈|--//
+          url: error.config?.url, //--|🠈 The URL that was requested 🠈|--//
+          method: error.config?.method, //--|🠈 The HTTP method (GET, POST, etc.) 🠈|--//
+        });
       } else {
-        alert('Axios Error: A network error occurred. Please check your connection.');
+        //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--//
+        console.error('Unexpected Error:', error);
+        alert('An unexpected error occurred. Please try again.');
       }
     } finally {
       setSubmit(false);
