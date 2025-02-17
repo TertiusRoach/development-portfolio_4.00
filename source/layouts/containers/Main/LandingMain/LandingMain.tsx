@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
-//--|🠋 Modules 🠋|--//
+//--|🠋 Context 🠋|--//
 import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
-//--|🠉 Modules 🠉|--//
+//--|🠉 Context 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';

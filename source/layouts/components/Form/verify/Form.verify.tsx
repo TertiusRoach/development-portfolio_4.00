@@ -31,23 +31,15 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Shared input states 🠋|--//
   let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
-
-  //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
-
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
+  let [activation, setActivation] = useState('');
 
   //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
+  // let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevents page refresh
+    /*
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
 
     let emailInput = '';
@@ -71,11 +63,11 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 
     // Ensure required fields are present before proceeding
     if (!emailInput || !passwordInput || !verificationCode) {
-      setLoginMessage('All fields are required');
+      // setLoginMessage('All fields are required');
       return;
     }
 
-    setIsSubmitting(true); // Lock to prevent multiple submissions
+    setSubmit(true); // Lock to prevent multiple submissions
 
     try {
       const response = await axios.post('http://localhost:3000/users/verify', {
@@ -100,19 +92,20 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         case 'unverified':
           dialogue = 'Verification code is incorrect. Please try again.';
 
-          setLoginMessage(message);
+          // setLoginMessage(message);
           toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
           break;
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setLoginMessage(error.response?.data?.message || 'An error occurred');
+        // setLoginMessage(error.response?.data?.message || 'An error occurred');
       } else {
-        setLoginMessage('An unexpected error occurred');
+        // setLoginMessage('An unexpected error occurred');
       }
     } finally {
-      setIsSubmitting(false); // Re-enable the submit button
+      setSubmit(false); // Re-enable the submit button
     }
+    */
   };
 
   return (
@@ -145,11 +138,11 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         />
       </div>
       <div className="verify-footer">
-        <mark className="verify-action">
-          <button className="verify-button" disabled={isSubmitting}>
-            {isSubmitting ? 'Verifying...' : 'Verify'}
+        <menu className="verify-action">
+          <button className="verify-button" disabled={submit}>
+            {submit ? 'Verifying...' : 'Verify'}
           </button>
-        </mark>
+        </menu>
       </div>
     </form>
   );

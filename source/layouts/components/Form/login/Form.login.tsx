@@ -170,16 +170,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        {/* <input
-          required
-          id="password"
-          name="Password"
-          type="password"
-          placeholder="//--|🠊 Your Password 🠈|--//"
-          // --- //
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        /> */}
       </div>
       <div className="login-footer">
         <menu className="login-action">

@@ -5,13 +5,14 @@
   //--|🠊 display: grid; 🠈|--//
 }
 
-aside[id*='landing'] {
+aside[id*='rightbar'] {
   display: grid;
   overflow: hidden; /* Hide elements outside the visible area */
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 1fr 40rem 1fr / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
 
   background: rgba(darkblue, 0.25);
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

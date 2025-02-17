@@ -5,6 +5,9 @@ import './Form.reset.scss';
 import axios, { AxiosError } from 'axios';
 import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
+// import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
+
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
@@ -30,28 +33,25 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
 
   //--|🠋 Shared input states 🠋|--//
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
+  // let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
+  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
   //--|🠋 Registration-specific input states 🠋|--//
   let [firstName, setFirstName] = useState('');
   let [lastName, setLastName] = useState('');
 
   //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [resetMessage, setResetMessage] = useState('');
-
-  /*
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
-  */
+  // let [resetMessage, setResetMessage] = useState('');
 
   //--|🠋 Other UI states 🠋|--//
-  let [isSubmitting, setIsSubmitting] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
-  let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
+  // let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent) => {
     event.preventDefault();
-    setIsSubmitting(true);
+
+    /*
+    setSubmit(true);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--| Validate email format |--//
     let emailInput = document.querySelector('.password-inputs #email') as HTMLInputElement;
@@ -59,8 +59,8 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
     let recoveryInput = document.querySelector('.reset-inputs #reset-code') as HTMLInputElement;
 
     if (!emailRegex.test(emailInput.value)) {
-      setResetMessage('Invalid email format.');
-      setIsSubmitting(false);
+      // setResetMessage('Invalid email format.');
+      setSubmit(false);
       return;
     }
 
@@ -72,11 +72,6 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           newHash: passwordInput.value,
           passwordCode: recoveryInput.value,
         }
-        /*
-        {
-          headers: { 'Content-Type': 'application/json' }, //--| Ensure JSON content type |--//
-        }
-        */
       );
 
       const { status, message } = response.data;
@@ -108,13 +103,14 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setResetMessage(error.response?.data?.message || 'An error occurred.');
+        // setResetMessage(error.response?.data?.message || 'An error occurred.');
       } else {
-        setResetMessage('An unexpected error occurred.');
+        // setResetMessage('An unexpected error occurred.');
       }
     } finally {
-      setIsSubmitting(false);
+      setSubmit(false);
     }
+    */
     /*
     event.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
@@ -184,12 +180,6 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         <div className="reset-text">
           <h4>Reset your password.</h4>
         </div>
-        {/* <div className="reset-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
-            </div> */}
       </div>
       <div className="reset-inputs">
         <input
@@ -199,8 +189,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           name="Recovery Code"
           placeholder="//--|🠊 Recovery Code 🠈|--//"
           // --- //
-          // value={verificationCode}
-          // onChange={(event) => setEmail(event.target.value)}
+          // value={code}
         />
         <input
           required
@@ -214,11 +203,11 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         />
       </div>
       <div className="reset-footer">
-        <mark className="reset-action">
-          <button className="reset-button" disabled={isSubmitting}>
-            {isSubmitting ? 'Processing...' : 'Reset'}
+        <menu className="reset-action">
+          <button className="reset-button" disabled={submit}>
+            {submit ? 'Processing...' : 'Reset'}
           </button>
-        </mark>
+        </menu>
       </div>
     </form>
   );
