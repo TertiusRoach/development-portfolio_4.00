@@ -38,7 +38,17 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   // let [loggedIn, setLoggedIn] = useState(false); //--|🠈 Tracks login state 🠈|--//
 
   const handleData = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevents page refresh
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 2: Connect to Database 🠋|--//
+    const route = 'verify'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
+    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      email, //--|🠈 Email entered by the user 🠈|--//
+      codeHash: activation, //--|🠈 Code entered by the user 🠈|--//
+    });
+    const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
     /*
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
 

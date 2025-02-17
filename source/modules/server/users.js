@@ -355,6 +355,90 @@ server.post(`/${root}/register`, async (req, res) => {
   }
 });
 
+//--|🠋 POST: Form.verify.tsx 🠋|--//
+server.post(`/${root}/verify`, async (req, res) => {
+  //--|🠋 Step 1: Request Inputs 🠋|--//
+  const { email, codeHash } = req.body;
+  return res.status(201).json({
+    page: 'login',
+    status: 'verified',
+    action: 'authorized',
+    message: `${(email, codeHash)} ${'//--|🠊 status(201): Accepted 🠈|--//'}`,
+  });
+
+  /*
+  let today = new Date();
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+
+  try {
+    const { email, verificationCode, passwordHash } = req.body;
+
+    if (!email || !verificationCode || !passwordHash) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    const user = await database.collection('pending').findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Validate password using bcrypt
+    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: 'Invalid password' });
+    }
+
+    // Validate verification code
+    if (verificationCode !== user.activationCode) {
+      return res.status(400).json({ message: 'Invalid verification code' });
+    }
+
+    // Check if the verification code has expired
+    if (new Date() > new Date(user.activationCodeExpiresAt)) {
+      const newActivationCode = randomizeCodeActivation(10);
+      const newExpirationTime = new Date();
+      newExpirationTime.setHours(newExpirationTime.getHours() + 24);
+
+      await database
+        .collection('pending')
+        .updateOne(
+          { _id: user._id },
+          { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
+        );
+
+      // await sendActivationEmail(user.email, newActivationCode, 'register'); //
+      return res
+        .status(400)
+        .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
+    }
+
+    // Move user to 'enabled' collection
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(passwordHash, salt);
+    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
+
+    await database.collection('enabled').insertOne({
+      ...rest,
+      verifiedEmail: true,
+      passwordHash: hashedPassword,
+      status: 'enabled',
+      updatedAt: todayISO,
+      passwordCode: null,
+      passwordCodeExpiresAt: null,
+    });
+
+    // Remove user from 'pending' collection
+    await database.collection('pending').deleteOne({ _id });
+
+    res.status(200).json({ status: 'authorized', message: 'Account Verified Successfully' });
+  } catch (error) {
+    console.error('Verification Error:', error);
+    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification', error: error.message });
+  }
+  */
+});
+
 //--|🠋 POST: Form.login.tsx 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Step 1: Declare Request Inputs 🠋|--//
@@ -574,81 +658,6 @@ server.post(`/${root}/password`, async (req, res) => {
   } catch (error) {
     console.error('Database error:', error);
     return res.status(500).json({ status: 'error', message: 'Internal server error.' });
-  }
-  */
-});
-
-//--|🠋 POST: Form.verify.tsx 🠋|--//
-server.post(`/${root}/verify`, async (req, res) => {
-  /*
-  let today = new Date();
-  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-
-  try {
-    const { email, verificationCode, passwordHash } = req.body;
-
-    if (!email || !verificationCode || !passwordHash) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    const user = await database.collection('pending').findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    // Validate password using bcrypt
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(400).json({ message: 'Invalid password' });
-    }
-
-    // Validate verification code
-    if (verificationCode !== user.activationCode) {
-      return res.status(400).json({ message: 'Invalid verification code' });
-    }
-
-    // Check if the verification code has expired
-    if (new Date() > new Date(user.activationCodeExpiresAt)) {
-      const newActivationCode = randomizeCodeActivation(10);
-      const newExpirationTime = new Date();
-      newExpirationTime.setHours(newExpirationTime.getHours() + 24);
-
-      await database
-        .collection('pending')
-        .updateOne(
-          { _id: user._id },
-          { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
-        );
-
-      // await sendActivationEmail(user.email, newActivationCode, 'register'); //
-      return res
-        .status(400)
-        .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
-    }
-
-    // Move user to 'enabled' collection
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(passwordHash, salt);
-    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
-
-    await database.collection('enabled').insertOne({
-      ...rest,
-      verifiedEmail: true,
-      passwordHash: hashedPassword,
-      status: 'enabled',
-      updatedAt: todayISO,
-      passwordCode: null,
-      passwordCodeExpiresAt: null,
-    });
-
-    // Remove user from 'pending' collection
-    await database.collection('pending').deleteOne({ _id });
-
-    res.status(200).json({ status: 'authorized', message: 'Account Verified Successfully' });
-  } catch (error) {
-    console.error('Verification Error:', error);
-    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification', error: error.message });
   }
   */
 });
