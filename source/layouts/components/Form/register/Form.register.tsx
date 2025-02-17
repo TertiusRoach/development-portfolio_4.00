@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
 
 interface InfoProps {
   info: {
@@ -19,7 +20,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Login & Password input states 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let [password, setPassword] = useState('');
+  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
   //--|🠋 Registration-specific input states 🠋|--//
   let [firstName, setFirstName] = useState('');
@@ -29,38 +30,50 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleRegister = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+    event.preventDefault();
+    setSubmit(true);
 
     //--|🠋 Step 1: Error Handling 🠋|--//
     try {
       //--|🠋 Step 2: Connect to Database 🠋|--//
-      const route = 'register' as string; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      const response = await axios.post('http://localhost:3000/users/register', {
         firstName,
         lastName,
         email,
         passwordHash: password,
       });
-      const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+      const { page, status, action, message } = response.data;
 
       //--|🠋 Step 3: Validate User Status 🠋|--//
       let dialogue: string; //--|🠈 Message for the User 🠈|--//
-      switch (page) {
-        case 'verify':
-          dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
-          toggleText('.verify-text', dialogue);
-          toggleAside('#landing-leftbar', 'show');
-          break;
+      if (status === 'pending') {
+        switch (page) {
+          case 'verify':
+            viewCarousel('verify');
+            toggleText('.verify-text', message);
+            toggleAside('#landing-leftbar', 'show');
+            break;
+        }
+      } else if (status === 'incorrect') {
+        switch (page) {
+          case 'password':
+            dialogue = `//--|🠊 Incorrect password, please try again. 🠈|--//`; // Use attemptsNum here as well
+            runCounter(dialogue);
+            break;
+          case 'login':
+            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
+            viewCarousel('password');
+            break;
+        }
+      } else if (status === 'enabled') {
+        switch (page) {
+          case 'login':
+            viewCarousel('login');
+            break;
+        }
       }
-      /*
-      let visible = document.querySelectorAll("section[class*='visible']")[0] as HTMLElement;
-      let page = visible.className.split('-')[0];
-      */
-
-      // handleData(status, action);
     } catch (error) {
-      axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
+      axiosError(error);
     } finally {
       setSubmit(false);
     }
@@ -127,7 +140,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           placeholder="//--|🠊 Email Address 🠈|--//"
           // --- //
           value={email}
-          // value={'tertius.embassy@gmail.com'}
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
@@ -138,7 +150,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           placeholder="//--|🠊 Insert Password 🠈|--//"
           // --- //
           value={password}
-          // value={'password'}
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
@@ -176,16 +187,16 @@ const axiosError = (error: unknown) => {
     //--|🠋 Now we check the status code to decide what message to show the user. 🠋|--//
     switch (status) {
       case 404: //--|🠈 If the server is not found (wrong URL or down) 🠈|--//
-        alert('Axios Error: Server not found. Please try again later.');
+        alert('status(404): Axios Error: Server not found. Please try again later.');
         break;
       case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
-        alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
+        alert('status(401):Axios Error: Unauthorized access. Please check your credentials and try again.');
         break;
       case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
-        alert('Axios Error: Internal Server Error. Please try again later.');
+        alert('status(500)): Axios Error: Internal Server Error. Please try again later.');
         break;
       default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
-        alert(`Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
+        alert(`status(default):Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
     }
 
     //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
@@ -199,5 +210,25 @@ const axiosError = (error: unknown) => {
     //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--//
     console.error('Unexpected Error:', error);
     alert('An unexpected error occurred. Please try again.');
+  }
+};
+const runCounter = (dialogue: string) => {
+  let counter: string | number = sessionStorage.getItem('loginAttempts') || 0;
+  counter = typeof counter === 'number' ? counter.toString() : counter; // Ternary operator
+  const attempts = parseInt(counter, 10); // The 10 is crucial for base-10 parsing
+  sessionStorage.setItem('loginAttempts', counter.toString()); // Now safe to pass
+  switch (attempts) {
+    case 0:
+      viewCarousel('login');
+      toggleText('.login-text', dialogue);
+      break;
+    case 1:
+      toggleText('.login-text', '//--|🠊 One Attempt Left 🠈|--//');
+      break;
+    case 2:
+      viewCarousel('password');
+      toggleText('.password-text', dialogue);
+      sessionStorage.removeItem('loginAttempts'); // Reset after locking out
+      break;
   }
 };

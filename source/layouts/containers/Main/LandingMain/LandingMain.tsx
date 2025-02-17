@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Modules 🠋|--//
 import { EmailProvider } from '../../../../modules/context/EmailContext';
+import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Modules 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/utilities/getResolution';
@@ -47,69 +48,96 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
       <EmailProvider>
-        <div className="landing-branding" style={{ zIndex: 1 }}>
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-            alt="Login Logo"
-          />
-        </div>
-        <div className="landing-carousel" style={{ zIndex: 0 }}>
-          <section className="register-section hidden">
-            <div className="register-container">
-              <FormRegister info={info} />
-            </div>
-          </section>
-          <section className="login-section visible">
-            <div className="login-container">
-              <FormLogin info={info} />
-            </div>
-          </section>
-          <section className="password-section hidden">
-            <div className="password-container">
-              <FormPassword info={info} />
-            </div>
-          </section>
-        </div>
+        <PasswordProvider>
+          <div className="landing-branding" style={{ zIndex: 1 }}>
+            <img
+              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+              alt="Login Logo"
+            />
+          </div>
+          <div className="landing-carousel" style={{ zIndex: 0 }}>
+            <section className="register-section hidden">
+              <div className="register-container">
+                <FormRegister info={info} />
+              </div>
+            </section>
+            <section className="login-section visible">
+              <div className="login-container">
+                <FormLogin info={info} />
+              </div>
+            </section>
+            <section className="password-section hidden">
+              <div className="password-container">
+                <FormPassword info={info} />
+              </div>
+            </section>
+          </div>
+        </PasswordProvider>
       </EmailProvider>
     </main>
   );
 };
 export default LandingMain;
 
-export const viewCarousel = (page: 'register' | 'login' | 'password') => {
+export const viewCarousel = (page: 'register' | 'login' | 'password' | 'verify' | 'reset') => {
   const carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-  carouselContainer.style.transform = {
-    register: 'translateX(0vw)',
-    login: 'translateX(-100vw)',
-    password: 'translateX(-200vw)',
-  }[page];
+  let register: HTMLElement;
+  let login: HTMLElement;
+  let password: HTMLElement;
+  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
+  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
+  if (page === 'register' || page === 'login' || page === 'password') {
+    register = carouselContainer.childNodes[0] as HTMLElement;
+    login = carouselContainer.childNodes[1] as HTMLElement;
+    password = carouselContainer.childNodes[2] as HTMLElement;
+    carouselContainer.style.transform = {
+      register: 'translateX(0vw)',
+      login: 'translateX(-100vw)',
+      password: 'translateX(-200vw)',
+    }[page];
+    switch (page) {
+      case 'register':
+        register.className = `${page}-section visible`;
+        login.className = `${page}-section hidden`;
+        password.className = `${page}-section hidden`;
+        break;
+      case 'login':
+        register.className = `${page}-section hidden`;
+        login.className = `${page}-section visible`;
+        password.className = `${page}-section hidden`;
+        break;
+      case 'password':
+        register.className = `${page}-section hidden`;
+        login.className = `${page}-section hidden`;
+        password.className = `${page}-section visible`;
+        break;
+      default:
 
-  let register = carouselContainer.childNodes[0] as HTMLElement;
-  let login = carouselContainer.childNodes[1] as HTMLElement;
-  let password = carouselContainer.childNodes[2] as HTMLElement;
-  switch (page) {
-    case 'register':
-      register.className = `${page}-section visible`;
-      login.className = `${page}-section hidden`;
-      password.className = `${page}-section hidden`;
-      break;
-    case 'login':
-      register.className = `${page}-section hidden`;
-      login.className = `${page}-section visible`;
-      password.className = `${page}-section hidden`;
-      break;
-    case 'password':
-      register.className = `${page}-section hidden`;
-      login.className = `${page}-section hidden`;
-      password.className = `${page}-section visible`;
-      break;
+      // if(verify.className)
+    }
+  } else if (page === 'verify' || 'reset') {
+    switch (page) {
+      case 'verify':
+        toggleAside('#landing-leftbar', 'show'); //--|🠈 Expand Verify 🠈|--//
+        // toggleAside('#landing-rightbar', 'hide'); //--|🠈 Collapse Reset 🠈|--//
+        break;
+      case 'reset':
+        toggleAside('#landing-rightbar', 'show'); //--|🠈 Expand Reset 🠈|--//
+        // toggleAside('#landing-leftbar', 'hide'); //--|🠈 Collapse Verify 🠈|--//
+        break;
+    }
   }
+
+  // console.log(verify);
 };
-export const toggleText = (element: '.verify-text' | string, dialogue: string) => {
+export const toggleText = (
+  element: '.login-text' | '.register-text' | '.password-text' | '.verify-text' | '.reset-text',
+  dialogue: string
+) => {
   let tagText = document.querySelector(`${element}`)?.firstChild as HTMLElement;
   tagText.innerText = dialogue;
 };
-export const toggleAside = (element: '#landing-leftbar' | string, toggle: 'show' | 'hide') => {
+export const toggleAside = (element: '#landing-leftbar' | '#landing-rightbar' | string, toggle: 'show' | 'hide') => {
   let sidebar = document.querySelector(element) as HTMLElement;
   switch (toggle) {
     case 'show':
@@ -162,7 +190,6 @@ export async function handleData(
         toggleText('.verify-text', dialogue);
         toggleAside('#landing-leftbar', 'show');
         break;
-      //--|🠋 Checklist 🠋|--//
       case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
         //--|🠊 02. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//

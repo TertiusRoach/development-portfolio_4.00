@@ -1,3 +1,5 @@
+// EmailContext.tsx
+//--|🠋 This file works. 🠋|--//
 import React, { createContext, useContext, useState } from 'react';
 
 //--|🠋 Define the context type 🠋|--//

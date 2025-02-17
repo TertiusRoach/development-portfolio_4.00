@@ -7,14 +7,15 @@ const express = require('express');
 const { ObjectId } = require('mongodb');
 const nodemailer = require('nodemailer');
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
+require('dotenv').config(); // Ensure you load environment variables
 
 let database;
 const port = 3000;
 const root = 'users';
 const server = express();
 server.use(express.json());
-// server.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+
 //--|🠋 Start the Server 🠋|--//
 connectDatabase((err) => {
   if (!err) {
@@ -61,9 +62,30 @@ server.post(`/${root}/register`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  //--|🠋 Step 3: Action Functions 🠋|--//
+  //--|🠋 Step 3.1: Encrypt Data Fields 🠋|--//
+  const encryptValue = async (value) => {
+    //--|🠊 Encrypt String 🠈|--//
+    const salt = await bcrypt.genSalt();
+    return await bcrypt.hash(value, salt);
+  };
+  //--|🠋 Step 3.2: Decrypt Data Fields 🠋|--//
+  const decryptValue = async (authPass, authEmail) => {
+    const passHash = user.passwordHash;
+    const passDecr = await bcrypt.compare(authPass, passHash);
+
+    if (!passDecr) {
+      return false;
+    } else {
+      if (passDecr === passHash && authEmail === user.email) {
+        return true;
+      }
+    }
+  };
+
+  //--|🠋 Step 4: Action Functions 🠋|--//
   async function created(firstName, lastName, email, passwordHash) {
-    //--|🠊 Create a new entry in the 'pending' collection 🠈|--//
+    const activationCode = await createCode(4); // Ensure activationCode is defined
+
     await database.collection('pending').insertOne({
       email: email,
       passwordHash: await encryptValue(passwordHash),
@@ -74,7 +96,7 @@ server.post(`/${root}/register`, async (req, res) => {
       firstName: firstName,
       lastName: lastName,
 
-      activationCode: await createCode(4), // Generate 4-digit activation code
+      activationCode: activationCode, // Use the defined activationCode
       activationAttempts: 0, // Maximum of 6 attempts before the user is blocked for 24 hours
       activationCodeExpiresAt: await createDate('tomorrow'),
 
@@ -87,12 +109,235 @@ server.post(`/${root}/register`, async (req, res) => {
       passwordCodeExpiresAt: null,
       passwordChangeRequests: 0, // Maximum of 6 before the user is blocked for 7 days
     });
+
+    await sendEmail(email, activationCode, 'register'); // Pass the activationCode
+    return activationCode;
+  }
+  async function sendEmail(email, activationCode, page) {
+    let mailOptions;
+    switch (page) {
+      case 'register':
+        mailOptions = {
+          // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
+          from: `"Verify Email - Trinity Apps" <${process.env.DOMAIN_PASS}>`, // Replace with a desired sender name and email
+          to: email, // Recipient's email
+          subject: 'Activate your Account',
+          text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
+          // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
+          html: `<!DOCTYPE html>
+          <html>
+            <head>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f4f4f9;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 20px auto;
+                  background: #ffffff;
+                  border: 1px solid #ddd;
+                  border-radius: 8px;
+                  overflow: hidden;
+                }
+                .header {
+                  background: #2c3e50;
+                  color: white;
+                  text-align: center;
+                  padding: 20px 10px;
+                  font-size: 24px;
+                }
+                .content {
+                  padding: 20px;
+                  text-align: center;
+                }
+                .activation-code {
+                  display: inline-block;
+                  background: #2c3e50;
+                  color: white;
+                  font-size: 24px;
+                  padding: 10px 20px;
+                  margin-top: 10px;
+                  border-radius: 8px;
+                }
+                .footer {
+                  text-align: center;
+                  padding: 10px;
+                  font-size: 12px;
+                  color: #777;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">Activate Your Account</div>
+                <div class="content">
+                  <p>Your activation code is:</p>
+                  <div class="activation-code">${activationCode}</div>
+                  <p>This code will expire in 24 hours.</p>
+                </div>
+                <div class="footer">
+                  &copy; ${new Date().getFullYear()} Geitjie Techno. All rights reserved.
+                </div>
+              </div>
+            </body>
+          </html>
+          `,
+        };
+        break;
+      case 'password':
+        mailOptions = {
+          // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
+          from: `"Reset Password - Trinity Apps" <${process.env.DOMAIN_PASS}>`, // Replace with a desired sender name and email
+          to: email, // Recipient's email
+          subject: '',
+          text: `Reset your Password with: ${activationCode}. It will expire in 24 hours.`,
+          // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
+          html: `<!DOCTYPE html>
+          <html>
+            <head>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f4f4f9;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 20px auto;
+                  background: #ffffff;
+                  border: 1px solid #ddd;
+                  border-radius: 8px;
+                  overflow: hidden;
+                }
+                .header {
+                  background: #2c3e50;
+                  color: white;
+                  text-align: center;
+                  padding: 20px 10px;
+                  font-size: 24px;
+                }
+                .content {
+                  padding: 20px;
+                  text-align: center;
+                }
+                .activation-code {
+                  display: inline-block;
+                  background: #2c3e50;
+                  color: white;
+                  font-size: 24px;
+                  padding: 10px 20px;
+                  margin-top: 10px;
+                  border-radius: 8px;
+                }
+                .footer {
+                  text-align: center;
+                  padding: 10px;
+                  font-size: 12px;
+                  color: #777;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">Recover your Password</div>
+                <div class="content">
+                  <p>Your Reset Code is:</p>
+                  <div class="activation-code">${activationCode}</div>
+                  <p>This code will expire in 24 hours.</p>
+                </div>
+                <div class="footer">
+                  &copy; ${new Date().getFullYear()} Your Company. All rights reserved.
+                </div>
+              </div>
+            </body>
+          </html>
+          `,
+        };
+        break;
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.MAILTRAP_USER,
+        pass: process.env.MAILTRAP_PASS,
+      },
+    });
+
+    transporter.verify((error, success) => {
+      if (error) {
+        console.error('SMTP Connection Error:', error);
+      } else {
+        console.log('SMTP Server is ready to send emails.');
+      }
+    });
+
+    try {
+      transporter.sendMail(mailOptions);
+      console.log(`Activation email sent to ${email}`);
+    } catch (error) {
+      console.error('Error sending activation email:', error);
+      throw error;
+    }
   }
 
-  //--|🠋 Step 4: Error Handling 🠋|--//
+  //--|🠋 Step 5: Error Handling 🠋|--//
   try {
-    //--|🠋 Step 5: Modularize Responses 🠋|--//
+    //--|🠋 Step 6: Modularize Responses 🠋|--//
+    try {
+      if (!user) {
+        await created(firstName, lastName, email, passwordHash);
+        return res.status(201).json({
+          page: 'verify',
+          status: 'pending',
+          action: 'created',
+          message: '//--|🠊 status(201): Accepted 🠈|--//',
+        });
+      } else {
+        switch (user.status) {
+          case 'pending':
+            return res.status(201).json({
+              page: 'verify',
+              status: 'pending',
+              action: 'created',
+              message: '//--|🠊 status(201): Accepted 🠈|--//',
+            });
+          case 'enabled':
+            //--|🠋 Step 7: Check Password 🠋|--//
+            let authorization = await decryptValue(passwordHash, user.password, user.email);
+            if (authorization === false) {
+              return res.status(201).json({
+                page: 'password',
+                status: 'incorrect',
+                action: 'counter',
+                message: '//--|🠊 status(201): Password 🠈|--//',
+              });
+            } else if (authorization === true) {
+              return res.status(201).json({
+                page: 'login',
+                status: 'incorrect',
+                action: 'login',
+                message: '//--|🠊 status(201): Remembered 🠈|--//',
+              });
+            }
+            break;
+          case 'blocked':
+            break;
+        }
+      }
+    } catch (error) {
+      axiosError(error);
+    }
+
+    /*
     if (user === null) {
+      //--|🠋 Step 5: Send Email to User 🠋|--//
+      await sendEmail(user.email, user.activationCode, 'register');
       await created(firstName, lastName, email, passwordHash);
       return res.status(201).json({
         page: 'verify',
@@ -100,7 +345,10 @@ server.post(`/${root}/register`, async (req, res) => {
         action: 'created',
         message: '//--|🠊 status(201): Accepted 🠈|--//',
       });
+    } else {
+
     }
+    */
   } catch (error) {
     axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
   } finally {
@@ -109,7 +357,7 @@ server.post(`/${root}/register`, async (req, res) => {
 
 //--|🠋 POST: Form.login.tsx 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Step 1: Request Inputs 🠋|--//
+  //--|🠋 Step 1: Declare Request Inputs 🠋|--//
   const { email, passwordHash } = req.body;
 
   //--|🠋 Step 2: Find User 🠋|--//
@@ -118,12 +366,28 @@ server.post(`/${root}/login`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  //--|🠋 Step 3: Action Functions 🠋|--//
-  async function login(email, passwordHash) {}
+  //--|🠋 Step 3: Decrypt Data Fields 🠋|--//
+  const decryptValue = async (passwordHash, authPass, authEmail) => {
+    const password = await bcrypt.compare(passwordHash, authPass);
+    /*
+    const passHash = user.passwordHash;
+    const passDecr = await bcrypt.compare(password, passHash);
+    */
 
-  //--|🠋 Step 4: Error Handling 🠋|--//
+    if (!passDecr) {
+      return false;
+    } else {
+      if (password === true && authEmail === authEmail) {
+        return true;
+      }
+    }
+  };
+
+  //--|🠋 Step 4: Action Functions 🠋|--//
+
+  //--|🠋 Step 5: Error Handling 🠋|--//
   try {
-    //--|🠋 Step 5: Modularize Responses 🠋|--//
+    //--|🠋 Step 6: Modularize Responses 🠋|--//
     if (user === null) {
       return res.status(201).json({
         page: 'register',
@@ -131,6 +395,37 @@ server.post(`/${root}/login`, async (req, res) => {
         action: 'register',
         message: '//--|🠊 status(201): Not Found 🠈|--//',
       });
+    } else {
+      switch (user.status) {
+        case 'pending':
+          return res.status(201).json({
+            page: 'verify',
+            status: 'incorrect',
+            action: 'verify',
+            message: 'status(400): Bad Request',
+          });
+        case 'enabled':
+          //--|🠋 Step 7: Check Password 🠋|--//
+          let authorization = await decryptValue(passwordHash, user.password, user.email);
+          if (authorization === false) {
+            return res.status(201).json({
+              page: 'verify', //--|🠈 Or login? 🠈|--//
+              status: 'incorrect',
+              action: 'counter', //--|🠈 Or login? 🠈|--//
+              message: '//--|🠊 status(400): Password 🠈|--//',
+            });
+          } else if (authorization === true) {
+            return res.status(201).json({
+              page: 'application', //--|🠈 Or login? 🠈|--//
+              status: 'authorized',
+              action: 'application', //--|🠈 Or login? 🠈|--//
+              message: '//--|🠊 status(200): OK 🠈|--//',
+            });
+          }
+          break;
+        case 'blocked':
+          break;
+      }
     }
   } catch (error) {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
@@ -138,38 +433,6 @@ server.post(`/${root}/login`, async (req, res) => {
   }
 });
 
-const axiosError = (error) => {
-  //--|🠉 🛑 STOP! Something bad happened when we tried to fetch data. 🠉|--//
-  //--|🠋 😲 First, we check: Was this a problem with Axios (our fetch tool)? 🠋|--//
-  if (axios.isAxiosError(error)) {
-    //--|🠋🚦 Let's see what kind of error we got from the server.🠋|--//
-    const status = error.response?.status || 500; //--|🠈 If no status, assume 500 (big problem) 🠈|--//
-    const message = error.response?.data?.message || 'Axios Request Failed'; //--|🠈 If no message, give a generic one 🠈|--//
-
-    //--|🠋 📝 Write down (log) what went wrong so we can fix it later. 🠋|--//
-    console.error('Axios Error:', {
-      status, //--|🠈 The error number (like 404, 500) 🠈|--//
-      message, //--|🠈 The server’s message (if it sent one) 🠈|--//
-      url: error.config?.url, //--|🠈 The website/page we tried to fetch from 🠈|--//
-    });
-
-    //--|🠋 🚀 Send a message back to whoever called this API. 🠋|--//
-    return res.status(status).json({ error: message });
-  }
-
-  //--|🠋 😵 Uh-oh! This error wasn’t Axios... Something unexpected broke! 🠋|--//
-  console.error('Unexpected Server Error:', error);
-
-  //--|🠋 🚨 Send back a 500 error to say "something went wrong on our end" 🠋|--//
-  res.status(500).json({ error: 'Internal Server Error' });
-};
-
-//--|🠋 Generate Data Fields 🠋|--//
-let encryptValue = async (value) => {
-  //--|🠊 Encrypt String 🠈|--//
-  const salt = await bcrypt.genSalt();
-  return await bcrypt.hash(value, salt);
-};
 let createCode = async (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
@@ -213,6 +476,31 @@ let createDate = async (schedule) => {
 let trackPlace = async (request) => {
   return request.headers['x-forwarded-for'] || request.socket.remoteAddress;
 };
+let axiosError = (error) => {
+  //--|🠉 🛑 STOP! Something bad happened when we tried to fetch data. 🠉|--//
+  //--|🠋 😲 First, we check: Was this a problem with Axios (our fetch tool)? 🠋|--//
+  if (axios.isAxiosError(error)) {
+    //--|🠋🚦 Let's see what kind of error we got from the server.🠋|--//
+    const status = error.response?.status || 500; //--|🠈 If no status, assume 500 (big problem) 🠈|--//
+    const message = error.response?.data?.message || 'Axios Request Failed'; //--|🠈 If no message, give a generic one 🠈|--//
+
+    //--|🠋 📝 Write down (log) what went wrong so we can fix it later. 🠋|--//
+    console.error('Axios Error:', {
+      status, //--|🠈 The error number (like 404, 500) 🠈|--//
+      message, //--|🠈 The server’s message (if it sent one) 🠈|--//
+      url: error.config?.url, //--|🠈 The website/page we tried to fetch from 🠈|--//
+    });
+
+    //--|🠋 🚀 Send a message back to whoever called this API. 🠋|--//
+    return res.status(status).json({ error: message });
+  }
+
+  //--|🠋 😵 Uh-oh! This error wasn’t Axios... Something unexpected broke! 🠋|--//
+  console.error('Unexpected Server Error:', error);
+
+  //--|🠋 🚨 Send back a 500 error to say "something went wrong on our end" 🠋|--//
+  res.status(500).json({ error: 'Internal Server Error' });
+};
 
 //--------------------------------------------------------------------------------//
 
@@ -245,12 +533,6 @@ server.post(`/${root}/password`, async (req, res) => {
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   let randomCode = randomizeCodeActivation(4);
-  */
-  /*
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    return res.status(400).json({ status: 'invalid', message: 'Invalid email format.' });
-  }
   */
   /*
   try {
@@ -473,170 +755,6 @@ function randomizeCodeActivation(length) {
     .sort(() => Math.random() - 0.5)
     .join('');
   return code;
-}
-
-async function sendActivationEmail(email, activationCode, page) {
-  const transporter = nodemailer.createTransport({
-    host: 'live.smtp.mailtrap.io', // Mailtrap's SMTP server
-    port: 587, // Mailtrap's default port
-    auth: {
-      user: process.env.MAILTRAP_USER, // Mailtrap username (from .env file)
-      pass: process.env.MAILTRAP_PASS, // Mailtrap password (from .env file)
-    },
-  });
-  let mailOptions;
-  switch (page) {
-    case 'register':
-      mailOptions = {
-        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `'"Log a Ticket - Registration" <${process.env.DOMAIN_PASS}>'`, // Replace with a desired sender name and email
-        to: email, // Recipient's email
-        subject: 'Activate Your Account',
-        text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
-        // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
-        html: `<!DOCTYPE html>
-        <html>
-          <head>
-            <style>
-              body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f9;
-              }
-              .container {
-                max-width: 600px;
-                margin: 20px auto;
-                background: #ffffff;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-              }
-              .header {
-                background: #2c3e50;
-                color: white;
-                text-align: center;
-                padding: 20px 10px;
-                font-size: 24px;
-              }
-              .content {
-                padding: 20px;
-                text-align: center;
-              }
-              .activation-code {
-                display: inline-block;
-                background: #2c3e50;
-                color: white;
-                font-size: 24px;
-                padding: 10px 20px;
-                margin-top: 10px;
-                border-radius: 8px;
-              }
-              .footer {
-                text-align: center;
-                padding: 10px;
-                font-size: 12px;
-                color: #777;
-              }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">Activate Your Account</div>
-              <div class="content">
-                <p>Your activation code is:</p>
-                <div class="activation-code">${activationCode}</div>
-                <p>This code will expire in 24 hours.</p>
-              </div>
-              <div class="footer">
-                &copy; ${new Date().getFullYear()} Geitjie Techno. All rights reserved.
-              </div>
-            </div>
-          </body>
-        </html>
-        `,
-      };
-      break;
-    case 'password':
-      mailOptions = {
-        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `'"Log a Ticket - Password" <${process.env.DOMAIN_PASS}>'`, // Replace with a desired sender name and email
-        to: email, // Recipient's email
-        subject: 'Activate Your Account',
-        text: `Reset your Password with: ${activationCode}. It will expire in 24 hours.`,
-        // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
-        html: `<!DOCTYPE html>
-        <html>
-          <head>
-            <style>
-              body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f9;
-              }
-              .container {
-                max-width: 600px;
-                margin: 20px auto;
-                background: #ffffff;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-              }
-              .header {
-                background: #2c3e50;
-                color: white;
-                text-align: center;
-                padding: 20px 10px;
-                font-size: 24px;
-              }
-              .content {
-                padding: 20px;
-                text-align: center;
-              }
-              .activation-code {
-                display: inline-block;
-                background: #2c3e50;
-                color: white;
-                font-size: 24px;
-                padding: 10px 20px;
-                margin-top: 10px;
-                border-radius: 8px;
-              }
-              .footer {
-                text-align: center;
-                padding: 10px;
-                font-size: 12px;
-                color: #777;
-              }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">Recover your Password</div>
-              <div class="content">
-                <p>Your Reset Code is:</p>
-                <div class="activation-code">${activationCode}</div>
-                <p>This code will expire in 24 hours.</p>
-              </div>
-              <div class="footer">
-                &copy; ${new Date().getFullYear()} Your Company. All rights reserved.
-              </div>
-            </div>
-          </body>
-        </html>
-        `,
-      };
-      break;
-  }
-
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log(`Activation email sent to ${email}`);
-  } catch (error) {
-    console.error('Error sending activation email:', error);
-    throw error;
-  }
 }
 
 function manipulateDocumentFields(method) {

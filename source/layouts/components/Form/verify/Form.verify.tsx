@@ -131,12 +131,6 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         <div className="verify-text">
           <h4>Check your email for verification code.</h4>
         </div>
-        {/* <div className="verify-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
-            </div> */}
       </div>
       <div className="verify-inputs">
         <input
