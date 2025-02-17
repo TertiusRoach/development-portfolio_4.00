@@ -496,7 +496,13 @@ server.post(`/${root}/login`, async (req, res) => {
           action: 'confirmation',
           message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
         });
-
+      case 'enabled':
+        return res.status(201).json({
+          page: 'password',
+          status: 'incorrect',
+          action: 'reset',
+          message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
+        });
       case 'blocked':
         return res.status(403).json({
           page: 'blocked',

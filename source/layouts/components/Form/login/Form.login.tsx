@@ -62,6 +62,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             toggleText('.verify-text', dialogue);
             toggleAside('#landing-leftbar', 'show');
             break;
+        }
+      } else if (status === 'incorrect') {
+        switch (page) {
           case 'password':
             dialogue = 'Too many attempts! Reset your password.';
             viewCarousel('password');
