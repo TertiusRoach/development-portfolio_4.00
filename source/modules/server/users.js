@@ -467,7 +467,7 @@ server.post(`/${root}/verify`, async (req, res) => {
 //--|🠋 POST: Form.login.tsx 🠋|--//
 server.post(`/${root}/login`, async (req, res) => {
   //--|🠋 Step 1: Declare Request Inputs 🠋|--//
-  const { email, passwordHash } = req.body;
+  const { email, password } = req.body;
 
   //--|🠋 Step 2: Find User 🠋|--//
   const user =
@@ -475,70 +475,58 @@ server.post(`/${root}/login`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  //--|🠋 Step 3: Decrypt Data Fields 🠋|--//
-  const decryptValue = async (passwordHash, authPass, authEmail) => {
-    const password = await bcrypt.compare(passwordHash, authPass);
-    /*
-    const passHash = user.passwordHash;
-    const passDecr = await bcrypt.compare(password, passHash);
-    */
-
-    if (!passDecr) {
-      return false;
-    } else {
-      if (password === true && authEmail === authEmail) {
-        return true;
-      }
-    }
-  };
-
-  //--|🠋 Step 4: Action Functions 🠋|--//
-
   //--|🠋 Step 5: Error Handling 🠋|--//
   try {
-    //--|🠋 Step 6: Modularize Responses 🠋|--//
-    if (user === null) {
+    //--|🠋 Step 3: Check if User Exists 🠋|--//
+    if (!user) {
       return res.status(201).json({
         page: 'register',
         status: 'missing',
         action: 'register',
-        message: '//--|🠊 status(201): Not Found 🠈|--//',
+        message: '//--|🠊 status(404): Not Found 🠈|--//',
       });
-    } else {
-      switch (user.status) {
-        case 'pending':
+    }
+
+    //--|🠋 Step 4: Handle User Status 🠋|--//
+    switch (user.status) {
+      case 'pending':
+        return res.status(201).json({
+          page: 'verify',
+          status: 'unverified',
+          action: 'confirmation',
+          message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
+        });
+
+      case 'blocked':
+        return res.status(403).json({
+          page: 'blocked',
+          status: 'denied',
+          action: 'contact-support',
+          message: '//--|🠊 status(403): Forbidden 🠈|--//',
+        });
+
+      case 'enabled':
+        //--|🠋 Step 5: Validate Password 🠋|--//
+        const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+
+        if (!isPasswordValid) {
           return res.status(201).json({
-            page: 'verify',
+            page: 'password',
             status: 'incorrect',
-            action: 'verify',
-            message: 'status(400): Bad Request',
+            action: 'retry',
+            message: '//--|🠊 status(401): Unauthorized 🠈|--//',
           });
-        case 'enabled':
-          //--|🠋 Step 7: Check Password 🠋|--//
-          let authorization = await decryptValue(passwordHash, user.password, user.email);
-          if (authorization === false) {
-            return res.status(201).json({
-              page: 'verify', //--|🠈 Or login? 🠈|--//
-              status: 'incorrect',
-              action: 'counter', //--|🠈 Or login? 🠈|--//
-              message: '//--|🠊 status(400): Password 🠈|--//',
-            });
-          } else if (authorization === true) {
-            return res.status(201).json({
-              page: 'application', //--|🠈 Or login? 🠈|--//
-              status: 'authorized',
-              action: 'application', //--|🠈 Or login? 🠈|--//
-              message: '//--|🠊 status(200): OK 🠈|--//',
-            });
-          }
-          break;
-        case 'blocked':
-          break;
-      }
+        }
+
+        return res.status(200).json({
+          page: 'application',
+          status: 'authorized',
+          action: 'dashboard',
+          message: '//--|🠊 status(200): OK 🠈|--//',
+        });
     }
   } catch (error) {
-    axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
-  } finally {
+    axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
   }
 });
 

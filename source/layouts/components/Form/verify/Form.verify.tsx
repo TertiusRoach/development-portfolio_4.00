@@ -46,9 +46,10 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
     setSubmit(true); // Disable button to prevent multiple submissions
 
     try {
-      const route = 'verify';
       let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
       let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
+
+      const route = 'verify';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         email: loginEmail.value,
         password: loginPassword.value,
