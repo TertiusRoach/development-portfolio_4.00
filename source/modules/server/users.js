@@ -83,7 +83,7 @@ server.post(`/${root}/register`, async (req, res) => {
   };
 
   //--|🠋 Step 4: Action Functions 🠋|--//
-  async function created(firstName, lastName, email, passwordHash) {
+  async function createField(firstName, lastName, email, passwordHash) {
     const activationCode = await createCode(4); // Ensure activationCode is defined
 
     await database.collection('pending').insertOne({
@@ -289,56 +289,8 @@ server.post(`/${root}/register`, async (req, res) => {
   //--|🠋 Step 5: Error Handling 🠋|--//
   try {
     //--|🠋 Step 6: Modularize Responses 🠋|--//
-    try {
-      if (!user) {
-        await created(firstName, lastName, email, passwordHash);
-        return res.status(201).json({
-          page: 'verify',
-          status: 'pending',
-          action: 'created',
-          message: '//--|🠊 status(201): Accepted 🠈|--//',
-        });
-      } else {
-        switch (user.status) {
-          case 'pending':
-            return res.status(201).json({
-              page: 'verify',
-              status: 'pending',
-              action: 'created',
-              message: '//--|🠊 status(201): Accepted 🠈|--//',
-            });
-          case 'enabled':
-            //--|🠋 Step 7: Check Password 🠋|--//
-            let authorization = await decryptValue(passwordHash, user.password, user.email);
-            if (authorization === false) {
-              return res.status(201).json({
-                page: 'password',
-                status: 'incorrect',
-                action: 'counter',
-                message: '//--|🠊 status(201): Password 🠈|--//',
-              });
-            } else if (authorization === true) {
-              return res.status(201).json({
-                page: 'login',
-                status: 'incorrect',
-                action: 'login',
-                message: '//--|🠊 status(201): Remembered 🠈|--//',
-              });
-            }
-            break;
-          case 'blocked':
-            break;
-        }
-      }
-    } catch (error) {
-      axiosError(error);
-    }
-
-    /*
-    if (user === null) {
-      //--|🠋 Step 5: Send Email to User 🠋|--//
-      await sendEmail(user.email, user.activationCode, 'register');
-      await created(firstName, lastName, email, passwordHash);
+    if (!user) {
+      await createField(firstName, lastName, email, passwordHash);
       return res.status(201).json({
         page: 'verify',
         status: 'pending',
@@ -346,97 +298,170 @@ server.post(`/${root}/register`, async (req, res) => {
         message: '//--|🠊 status(201): Accepted 🠈|--//',
       });
     } else {
-
+      switch (user.status) {
+        case 'pending':
+          return res.status(201).json({
+            page: 'verify',
+            status: 'pending',
+            action: 'created',
+            message: '//--|🠊 status(201): Accepted 🠈|--//',
+          });
+        case 'enabled':
+          //--|🠋 Step 7: Check Password 🠋|--//
+          let authorization = await decryptValue(passwordHash, user.password, user.email);
+          if (authorization === false) {
+            return res.status(201).json({
+              page: 'password',
+              status: 'incorrect',
+              action: 'counter',
+              message: '//--|🠊 status(201): Password 🠈|--//',
+            });
+          } else if (authorization === true) {
+            return res.status(201).json({
+              page: 'login',
+              status: 'incorrect',
+              action: 'login',
+              message: '//--|🠊 status(201): Remembered 🠈|--//',
+            });
+          }
+          break;
+        case 'blocked':
+          break;
+      }
     }
-    */
   } catch (error) {
     axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
-  } finally {
   }
 });
 
 //--|🠋 POST: Form.verify.tsx 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
   //--|🠋 Step 1: Request Inputs 🠋|--//
-  const { email, codeHash } = req.body;
-  return res.status(201).json({
-    page: 'login',
-    status: 'verified',
-    action: 'authorized',
-    message: `${(email, codeHash)} ${'//--|🠊 status(201): Accepted 🠈|--//'}`,
-  });
+  /* const { email, activation } = req.body; */
+  const { email, password, code } = req.body;
+  //--|🠋 Step 2: Find User 🠋|--//
+  //--|🠋 Step 2: Find User 🠋|--//
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
 
-  /*
-  let today = new Date();
-  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-
-  try {
-    const { email, verificationCode, passwordHash } = req.body;
-
-    if (!email || !verificationCode || !passwordHash) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-
+  //--|🠋 Step 4: Action Functions 🠋|--//
+  async function updateField(email) {
+    //--|🠋 Move User from 'pending' to 'enabled' 🠋|--//
     const user = await database.collection('pending').findOne({ email });
 
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+    if (user) {
+      await database.collection('enabled').insertOne({
+        email: user.email,
+        passwordHash: user.passwordHash,
+        verifiedEmail: true,
+
+        role: user.role,
+        status: 'enabled',
+        firstName: user.firstName,
+        lastName: user.lastName,
+
+        userIP: user.userIP,
+        createdAt: user.createdAt,
+        updatedAt: new Date(),
+        lastLogin: null,
+
+        passwordCode: null,
+        passwordCodeExpiresAt: null,
+        passwordChangeRequests: 0,
+      });
+
+      await database.collection('pending').deleteOne({ email });
+
+      console.log(`User ${email} has been verified and moved to 'enabled'.`);
+      return true;
     }
-
-    // Validate password using bcrypt
-    const isPasswordValid = await bcrypt.compare(passwordHash, user.passwordHash);
-    if (!isPasswordValid) {
-      return res.status(400).json({ message: 'Invalid password' });
-    }
-
-    // Validate verification code
-    if (verificationCode !== user.activationCode) {
-      return res.status(400).json({ message: 'Invalid verification code' });
-    }
-
-    // Check if the verification code has expired
-    if (new Date() > new Date(user.activationCodeExpiresAt)) {
-      const newActivationCode = randomizeCodeActivation(10);
-      const newExpirationTime = new Date();
-      newExpirationTime.setHours(newExpirationTime.getHours() + 24);
-
-      await database
-        .collection('pending')
-        .updateOne(
-          { _id: user._id },
-          { $set: { activationCode: newActivationCode, activationCodeExpiresAt: newExpirationTime.toISOString() } }
-        );
-
-      // await sendActivationEmail(user.email, newActivationCode, 'register'); //
-      return res
-        .status(400)
-        .json({ message: 'Verification code expired. A new activation code has been sent to your email.' });
-    }
-
-    // Move user to 'enabled' collection
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(passwordHash, salt);
-    const { _id, passwordHash: _, activationCode, activationCodeExpiresAt, ...rest } = user;
-
+    return false;
+    /*
     await database.collection('enabled').insertOne({
-      ...rest,
+      email: email,
+      passwordHash: await userPending.passwordHash,
       verifiedEmail: true,
-      passwordHash: hashedPassword,
+
+      role: 'user',
       status: 'enabled',
-      updatedAt: todayISO,
+      firstName: await userPending.firstName,
+      lastName: await userPending.lastName,
+
+      userIP: await trackPlace(req),
+      createdAt: await userPending.createdAt,
+      updatedAt: await createDate('today'),
+      lastLogin: null,
+
       passwordCode: null,
       passwordCodeExpiresAt: null,
+      passwordChangeRequests: 0,
     });
 
-    // Remove user from 'pending' collection
-    await database.collection('pending').deleteOne({ _id });
-
-    res.status(200).json({ status: 'authorized', message: 'Account Verified Successfully' });
-  } catch (error) {
-    console.error('Verification Error:', error);
-    res.status(500).json({ status: 'unverified', message: 'An error occurred during verification', error: error.message });
+    return 'enabled';
+    */
   }
-  */
+  async function deleteField(email, state) {
+    await database.collection(state).deleteOne({ email });
+  }
+
+  //--|🠋 Step 5: Error Handling 🠋|--//
+  try {
+    if (user.activationCode === code) {
+      await updateField(email);
+      await deleteField(email, 'pending');
+      switch (user.status) {
+        case 'pending':
+          return res.status(201).json({
+            page: 'login',
+            status: 'verified',
+            action: 'subscribed',
+            message: '//--|🠊 status(200): OK 🠈|--//',
+          });
+        case 'enabled':
+          break;
+        case 'blocked':
+          break;
+      }
+    } else {
+      return res.status(201).json({
+        page: 'verify',
+        status: 'incorrect',
+        action: 'counter',
+        message: '//--|🠊 status(401): Mismatch 🠈|--//',
+      });
+    }
+
+    /*
+    if (user.activationCode === activation) {      
+      const verified = await updateField(user.email);
+      switch (verified) {
+        case true:
+          // Delete the field matching the email inside 'pending' if the User activation matches the Data activationCode inside 'pending' collection.
+          await updateField(email);
+          await deleteField(email, 'pending');
+          return res.status(200).json({
+            page: 'login',
+            status: 'verified',
+            action: 'success',
+            message: '//--|🠊 status(200): Activated 🠈|--//',
+          });
+          break;
+        case false:
+          return res.status(404).json({
+            page: 'verify',
+            status: 'incorrect',
+            action: 'mismatch',
+            message: '//--|🠊 status(404): User Not Found 🠈|--//',
+          });
+          break;
+      }
+    }
+    */
+  } catch (error) {
+    axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
+  }
 });
 
 //--|🠋 POST: Form.login.tsx 🠋|--//

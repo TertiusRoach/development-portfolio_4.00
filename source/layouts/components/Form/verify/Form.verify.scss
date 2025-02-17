@@ -57,20 +57,27 @@
     div {
       display: inherit; //~~|🠊 display: flex; 🠈|~~//
       flex-direction: row;
-      input {
-        width: 100%;
-        padding: 0.25rem 0.75rem;
-      }
-      input:nth-child(1) {
-        margin: 1rem 0.5rem 1rem 2rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
-      }
-      input:nth-child(2) {
-        margin: 1rem 2rem 1rem 0.5rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
-      }
+
+      // input {
+      //
+      //   padding: 0.25rem 0.75rem;
+      // }
+      // input:nth-child(1) {
+      //   margin: 1rem 0.5rem 1rem 2rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
+      // }
+      // input:nth-child(2) {
+      //   margin: 1rem 2rem 1rem 0.5rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
+      // }
     }
     input {
       margin: 1rem 2rem;
       padding: 0.25rem 0.75rem;
+      // &#password {
+      //   display: none;
+      // }
+      // &#email {
+      //   display: none;
+      // }
     }
   }
   div[class*='footer'] {

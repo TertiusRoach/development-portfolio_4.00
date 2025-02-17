@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
+//--|🠋 Context 🠋|--//
+import { EmailProvider } from '../../../../modules/context/EmailContext';
+import { PasswordProvider } from '../../../../modules/context/PasswordContext';
+//--|🠉 Context 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
@@ -58,7 +62,11 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
-      <FormVerify info={info} />
+      <EmailProvider>
+        <PasswordProvider>
+          <FormVerify info={info} />
+        </PasswordProvider>
+      </EmailProvider>
     </aside>
   );
 };

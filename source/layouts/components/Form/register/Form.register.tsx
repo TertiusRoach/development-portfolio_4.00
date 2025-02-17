@@ -36,7 +36,8 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     //--|🠋 Step 1: Error Handling 🠋|--//
     try {
       //--|🠋 Step 2: Connect to Database 🠋|--//
-      const response = await axios.post('http://localhost:3000/users/register', {
+      const route = 'register';
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
         firstName,
         lastName,
         email,
@@ -49,9 +50,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       if (status === 'pending') {
         switch (page) {
           case 'verify':
+            dialogue = `//--|🠊 Please verify your email. 🠈|--//`;
             viewCarousel('verify');
-            toggleText('.verify-text', message);
-            toggleAside('#landing-leftbar', 'show');
+            toggleText('.verify-text', dialogue);
             break;
         }
       } else if (status === 'incorrect') {
@@ -96,12 +97,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         <div className="register-text">
           <h4>Sign up to use application.</h4>
         </div>
-        {/* <div className="register-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
-            </div> */}
       </div>
       <div className="register-inputs">
         <div className="fullname-inputs">
@@ -115,7 +110,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             title="Name must start with a capital letter and contain only letters and spaces"
             // --- //
             value={firstName}
-            // value={'Tertius'}
             onChange={(event) => setFirstName(event.target.value)}
           />
           <input
@@ -128,7 +122,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             title="Surname can't contain any numerical values or special characters"
             // --- //
             value={lastName}
-            // value={'Embassy'}
             onChange={(event) => setLastName(event.target.value)}
           />
         </div>
@@ -160,7 +153,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           </button>
         </menu>
         <nav className="register-buttons">
-          {/* Type 'void' is not assignable to type 'MouseEventHandler<HTMLButtonElement> | undefined'. */}
           <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
             <h6>Access Account</h6>
           </button>
