@@ -55,7 +55,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               alt="Login Logo"
             />
           </div>
-          <div className="landing-carousel" style={{ zIndex: 0 }}>
+          <div className="landing-carousel" style={{ zIndex: 0, transform: `translateX(0vw)` }}>
             <section className="register-section hidden">
               <div className="register-container">
                 <FormRegister info={info} />
@@ -111,19 +111,20 @@ export const viewCarousel = (page: 'register' | 'login' | 'password' | 'verify' 
         login.className = `${page}-section hidden`;
         password.className = `${page}-section visible`;
         break;
-      default:
-
-      // if(verify.className)
+    }
+    if (verify.className.includes('expanded')) {
+      toggleAside('#landing-leftbar', 'hide'); //--|🠈 Collapse Verify 🠈|--//
+    }
+    if (reset.className.includes('expanded')) {
+      toggleAside('#landing-rightbar', 'hide'); //--|🠈 Collapse Reset 🠈|--//
     }
   } else if (page === 'verify' || 'reset') {
     switch (page) {
       case 'verify':
         toggleAside('#landing-leftbar', 'show'); //--|🠈 Expand Verify 🠈|--//
-        // toggleAside('#landing-rightbar', 'hide'); //--|🠈 Collapse Reset 🠈|--//
         break;
       case 'reset':
         toggleAside('#landing-rightbar', 'show'); //--|🠈 Expand Reset 🠈|--//
-        // toggleAside('#landing-leftbar', 'hide'); //--|🠈 Collapse Verify 🠈|--//
         break;
     }
   }

@@ -36,15 +36,14 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   // let [email, setEmail] = useState('');
   // let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   // let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
-  let [activation, setActivation] = useState('');
+  let [activate, setActivate] = useState('');
 
   //--|🠋 Other UI states 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleVerify = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent page refresh
-    setSubmit(true); // Disable button to prevent multiple submissions
-
+    event.preventDefault();
+    setSubmit(true);
     try {
       let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
       let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
@@ -52,114 +51,42 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       const route = 'verify';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         email: loginEmail.value,
-        password: loginPassword.value,
-        code: activation,
+        passwordHash: loginPassword.value,
+        activation: activate,
       });
-      const { page, status, action, message } = response.data;
+      const { view, data } = response.data;
 
-      let dialogue = '';
-      if (status === 'verified') {
-        switch (page) {
-          case 'login':
-            dialogue = `//--|🠊 Verification successful! Welcome to Trinity {A]pps 🠈|--//`;
-            viewCarousel('login'); // Navigate to correct page
-            toggleText(`.login-text`, dialogue);
-            toggleAside('#landing-leftbar', 'hide');
-            break;
-        }
-      } else if (status === 'incorrect') {
-        switch (page) {
-          case 'verify':
-            dialogue = `Incorrect verification code. Please try again.`;
-            toggleText('.verify-text', dialogue);
-            toggleAside('#landing-leftbar', 'show');
-            break;
-        }
+      let dialogue: string;
+      switch (view) {
+        case 'register':
+          console.log();
+          break;
+        case 'login':
+          viewCarousel('login');
+          console.log();
+          /*
+          console.log(`Email: ${resEmail}`);
+          console.log(`Password: ${resPassword}`);
+          console.log(`Activation: ${resActivate}`);
+          */
+          break;
+        case 'password':
+          console.log();
+          break;
+        case 'verify':
+          console.log(data.activationAttempts);
+          break;
+        case 'reset':
+          console.log();
+          break;
+        default:
+          alert(view);
       }
     } catch (error) {
       axiosError(error);
     } finally {
-      setSubmit(false); // Re-enable button
+      setSubmit(false);
     }
-    /*
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
-    //--|🠋 Step 2: Connect to Database 🠋|--//
-    const route = 'verify'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
-    const response = await axios.post(`http://localhost:3000/users/${route}`, {
-      email, //--|🠈 Email entered by the user 🠈|--//
-      activation, //--|🠈 activationCode entered by the user 🠈|--//
-    });
-    const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-    console.log(page, status, action, message);
-    let dialogue: string;
-    if (status === 'verified') {
-      switch (page) {
-        case 'login':
-          dialogue = `//--|🠈 Thank you for registering to The Trinity {A]pp 🠈|--//`;
-          viewCarousel('login');
-          toggleText('.login-text', dialogue);
-          toggleAside('#landing-leftbar', 'hide');
-          break;
-      }
-    } else if (status === 'incorrect') {
-      switch (page) {
-        case 'verify':
-          dialogue = `//--|🠈 Thank you for registering to The Trinity {A]pp 🠈|--//`;
-          toggleText('.verify-text', dialogue);
-          toggleAside('#landing-leftbar', 'show');
-          break;
-      }
-    }
-    */
-    /*
-    alert(page);
-    alert(status);
-    alert(action);
-    alert(message);
-    */
-    /*
-    setSubmit(true); // Lock to prevent multiple submissions
-
-    try {
-      const response = await axios.post('http://localhost:3000/users/verify', {
-        email: emailInput,
-        passwordHash: passwordInput, // Backend will handle hashing
-        verificationCode: verificationCode,
-      });
-
-      const { status, message } = response.data;
-
-      let dialogue: string;
-      switch (status) {
-        case 'authorized':
-          dialogue = 'Account successfully verified. Please login.';
-
-          // setLoginMessage(message);
-
-          viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
-          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//
-          break;
-        case 'unverified':
-          dialogue = 'Verification code is incorrect. Please try again.';
-
-          // setLoginMessage(message);
-          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        // setLoginMessage(error.response?.data?.message || 'An error occurred');
-      } else {
-        // setLoginMessage('An unexpected error occurred');
-      }
-    } finally {
-      setSubmit(false); // Re-enable the submit button
-    }
-    */
   };
 
   return (
@@ -209,8 +136,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           name="Verification Code"
           placeholder="//--|🠊 Verification Code 🠈|--//"
           // --- //
-          value={activation}
-          onChange={(event) => setActivation(event.target.value)}
+          value={activate}
+          onChange={(event) => setActivate(event.target.value)}
         />
       </div>
       <div className="verify-footer">
@@ -263,3 +190,104 @@ const axiosError = (error: unknown) => {
     alert('An unexpected error occurred. Please try again.');
   }
 };
+/*
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 2: Connect to Database 🠋|--//
+    const route = 'verify'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
+    const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      email, //--|🠈 Email entered by the user 🠈|--//
+      activation, //--|🠈 activationCode entered by the user 🠈|--//
+    });
+    const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
+    console.log(page, status, action, message);
+    let dialogue: string;
+    if (status === 'verified') {
+      switch (page) {
+        case 'login':
+          dialogue = `//--|🠈 Thank you for registering to The Trinity {A]pp 🠈|--//`;
+          viewCarousel('login');
+          toggleText('.login-text', dialogue);
+          toggleAside('#landing-leftbar', 'hide');
+          break;
+      }
+    } else if (status === 'incorrect') {
+      switch (page) {
+        case 'verify':
+          dialogue = `//--|🠈 Thank you for registering to The Trinity {A]pp 🠈|--//`;
+          toggleText('.verify-text', dialogue);
+          toggleAside('#landing-leftbar', 'show');
+          break;
+      }
+    }
+    */
+/*
+    alert(page);
+    alert(status);
+    alert(action);
+    alert(message);
+    */
+/*
+    setSubmit(true); // Lock to prevent multiple submissions
+
+    try {
+      const response = await axios.post('http://localhost:3000/users/verify', {
+        email: emailInput,
+        passwordHash: passwordInput, // Backend will handle hashing
+        verificationCode: verificationCode,
+      });
+
+      const { status, message } = response.data;
+
+      let dialogue: string;
+      switch (status) {
+        case 'authorized':
+          dialogue = 'Account successfully verified. Please login.';
+
+          // setLoginMessage(message);
+
+          viewCarousel('login'); //--|🠈 Scroll to login 🠈|--//
+          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          toggleAside('#landing-leftbar', 'hide'); //--|🠈 Hide Leftbar 🠈|--//
+          break;
+        case 'unverified':
+          dialogue = 'Verification code is incorrect. Please try again.';
+
+          // setLoginMessage(message);
+          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
+          break;
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        // setLoginMessage(error.response?.data?.message || 'An error occurred');
+      } else {
+        // setLoginMessage('An unexpected error occurred');
+      }
+    } finally {
+      setSubmit(false); // Re-enable the submit button
+    }
+    */
+/*
+      const { page, status, action, message } = response.data;
+      let dialogue = '';
+      if (status === 'verified') {
+        switch (page) {
+          case 'login':
+            dialogue = `//--|🠊 Verification successful! Welcome to Trinity {A]pps 🠈|--//`;
+            viewCarousel('login'); // Navigate to correct page
+            toggleText(`.login-text`, dialogue);
+            toggleAside('#landing-leftbar', 'hide');
+            break;
+        }
+      } else if (status === 'incorrect') {
+        switch (page) {
+          case 'verify':
+            dialogue = `Incorrect verification code. Please try again.`;
+            toggleText('.verify-text', dialogue);
+            toggleAside('#landing-leftbar', 'show');
+            break;
+        }
+      }
+      */

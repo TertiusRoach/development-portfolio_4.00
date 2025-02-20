@@ -32,10 +32,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
-
-    //--|🠋 Step 1: Error Handling 🠋|--//
     try {
-      //--|🠋 Step 2: Connect to Database 🠋|--//
       const route = 'register';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         firstName,
@@ -43,35 +40,35 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         email,
         passwordHash: password,
       });
-      const { page, status, action, message } = response.data;
+      const { view, data } = response.data;
 
-      //--|🠋 Step 3: Validate User Status 🠋|--//
-      let dialogue: string; //--|🠈 Message for the User 🠈|--//
-      if (status === 'pending') {
-        switch (page) {
-          case 'verify':
-            dialogue = `//--|🠊 Please verify your email. 🠈|--//`;
-            viewCarousel('verify');
-            toggleText('.verify-text', dialogue);
-            break;
-        }
-      } else if (status === 'incorrect') {
-        switch (page) {
-          case 'password':
-            dialogue = `//--|🠊 Incorrect password, please try again. 🠈|--//`; // Use attemptsNum here as well
-            runCounter(dialogue);
-            break;
-          case 'login':
-            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
-            viewCarousel('password');
-            break;
-        }
-      } else if (status === 'enabled') {
-        switch (page) {
-          case 'login':
-            viewCarousel('login');
-            break;
-        }
+      let dialogue: string;
+      switch (view) {
+        /*
+        case 'register':
+          console.log();
+          break;
+          */
+        case 'login':
+          console.log();
+          viewCarousel('login');
+          break;
+        case 'password':
+          console.log();
+          viewCarousel('password');
+          break;
+        case 'verify':
+          console.log(data);
+          viewCarousel('verify');
+          break;
+        /*
+        case 'reset':
+          console.log();
+          break;
+          */
+        default:
+          viewCarousel('register');
+          alert(view);
       }
     } catch (error) {
       axiosError(error);
@@ -224,3 +221,33 @@ const runCounter = (dialogue: string) => {
       break;
   }
 };
+/*
+      //--|🠋 Step 3: Validate User Status 🠋|--//
+      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      if (status === 'pending') {
+        switch (page) {
+          case 'verify':
+            dialogue = `//--|🠊 Please verify your email. 🠈|--//`;
+            viewCarousel('verify');
+            toggleText('.verify-text', dialogue);
+            break;
+        }
+      } else if (status === 'incorrect') {
+        switch (page) {
+          case 'password':
+            dialogue = `//--|🠊 Incorrect password, please try again. 🠈|--//`; // Use attemptsNum here as well
+            runCounter(dialogue);
+            break;
+          case 'login':
+            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
+            viewCarousel('password');
+            break;
+        }
+      } else if (status === 'enabled') {
+        switch (page) {
+          case 'login':
+            viewCarousel('login');
+            break;
+        }
+      }
+*/
