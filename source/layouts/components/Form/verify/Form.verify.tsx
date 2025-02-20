@@ -58,29 +58,15 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 
       let dialogue: string;
       switch (view) {
-        case 'register':
-          console.log();
-          break;
         case 'login':
           viewCarousel('login');
-          console.log();
-          /*
-          console.log(`Email: ${resEmail}`);
-          console.log(`Password: ${resPassword}`);
-          console.log(`Activation: ${resActivate}`);
-          */
-          break;
-        case 'password':
-          console.log();
           break;
         case 'verify':
-          console.log(data.activationAttempts);
-          break;
-        case 'reset':
-          console.log();
+          alert(`You have ${data.activationAttempts} attempts left.`);
           break;
         default:
           alert(view);
+          viewCarousel('verify');
       }
     } catch (error) {
       axiosError(error);

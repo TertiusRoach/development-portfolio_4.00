@@ -24,130 +24,50 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
-  let [loading, setLoading] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevents page refresh
-    setSubmit(true); // Allow submission
-    setLoading(true); // Show loading state
-
+    event.preventDefault();
+    setSubmit(true);
     try {
-      //--| Step 1: Connect to Database |--//
-      const route = 'login'; // API Endpoint
+      const route = 'login';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email, // User input email
-        password, // User input password (plain text)
+        email,
+        passwordHash: password,
       });
+      const { view, data } = response.data;
 
-      //--| Step 2: Extract response |--//
-      const { page, status, action, message, token } = response.data;
-
-      //--| Step 3: Validate User Status |--//
-      let dialogue = ''; // Message for the User
-
-      if (status === 'missing') {
-        dialogue = 'No account found with this email. Would you like to register?';
-        viewCarousel('register');
-        toggleText('.register-text', dialogue);
-      } else if (status === 'authorized') {
-        //--| Successful Login |--//
-        alert('✅ Login Successful!');
-        localStorage.setItem('token', token); // Store token for authentication
-        window.location.href = '/dashboard'; // Redirect to main app
-      } else if (status === 'unverified') {
-        //--| Handle Incorrect Credentials |--//
-        switch (page) {
-          case 'verify':
-            dialogue = 'Your account has been created. Please verify your email to activate it.';
-            toggleText('.verify-text', dialogue);
-            toggleAside('#landing-leftbar', 'show');
-            break;
-        }
-      } else if (status === 'incorrect') {
-        switch (page) {
-          case 'password':
-            dialogue = 'Too many attempts! Reset your password.';
+      let dialogue: string;
+      let counter: number = 0; // Declare outside the function so it persists
+      switch (view) {
+        case 'register':
+          viewCarousel('register');
+          break;
+        case 'login':
+          window.location.href = '/dashboard';
+          break;
+        case 'password':
+          /*
+          if (counter < 3) {
+            alert(`You have ${3 - counter} attempts left.`);
+            counter++;
+          } else {
             viewCarousel('password');
-            toggleText('.password-text', dialogue);
-            break;
-        }
-      } else if (status === 'blocked') {
-        //--| Handle Blocked Accounts |--//
-        /*
-        dialogue = 'Your account has been blocked. Please contact support.';
-        viewCarousel('blocked');
-        toggleText('.blocked-text', dialogue);
-        */
+            counter = 0; // Reset counter after lockout
+          }
+          */
+          break;
+        case 'verify':
+          viewCarousel('verify');
+          break;
+        default:
+          break;
       }
     } catch (error) {
-      //--| Handle Errors |--//
       axiosError(error);
     } finally {
-      //--| Reset Submission State |--//
       setSubmit(false);
-      setLoading(false);
     }
   };
-
-  /*
-  const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
-
-    //--|🠋 Step 1: Error Handling 🠋|--//
-    try {
-      //--|🠋 Step 2: Connect to Database 🠋|--//
-      const route = 'login'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email, //--|🠈 Email entered by the user 🠈|--//
-        passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
-      });
-      const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
-
-      //--|🠋 Step 3: Validate User Status 🠋|--//
-      let dialogue: string; //--|🠈 Message for the User 🠈|--//
-      if (status === 'missing') {
-        dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
-        viewCarousel('register');
-        toggleText('.register-text', dialogue);
-      } else if (status === 'authorized') {
-        //--|🠉 Step 3.1: Handle Authorized Status 🠉|--//
-        alert('//--|🠊 If the "passwordHash" matches the "email" entered by the user. 🠈|--//');
-        alert('//--|🠊 status(200): OK 🠈|--//');
-        alert('//--|🠊 Trinity Apps Login SUCCESSFUL 🠈|--//');
-        window.location.href = '/dashboard'; // Redirect to main app
-      } else if (status === 'registered') {
-        //--|🠉 Step 3.2: Handle Registered Status 🠉|--//
-        switch (page) {
-          case 'login':
-            dialogue = '//--|🠊 Conflict because User already exists 🠈|--//';
-            viewCarousel('login');
-            toggleText('.login-text', dialogue);
-            break;
-        }
-      } else if (status === 'incorrect') {
-        //--|🠉 Step 3.2: Handle Incorrect Status 🠉|--//
-        switch (page) {
-          case 'verify':
-            dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
-            toggleText('.verify-text', dialogue);
-            toggleAside('#landing-leftbar', 'show');
-            break;
-          case 'password':
-            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
-            viewCarousel('password');
-            toggleText('.password-text', dialogue);
-            break;
-        }
-      }
-      // handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
-    } catch (error) {
-      axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
-    } finally {
-      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
-    }
-  };
-  */
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -246,3 +166,99 @@ const axiosError = (error: unknown) => {
     alert('An unexpected error occurred. Please try again.');
   }
 };
+
+/*
+      //--| Step 2: Extract response |--//
+      // const { page, status, action, message, token } = response.data;
+      //--| Step 3: Validate User Status |--//
+      let dialogue = ''; // Message for the User
+
+      if (status === 'missing') {
+        dialogue = 'No account found with this email. Would you like to register?';
+        viewCarousel('register');
+        toggleText('.register-text', dialogue);
+      } else if (status === 'authorized') {
+        //--| Successful Login |--//
+        alert('✅ Login Successful!');
+        localStorage.setItem('token', token); // Store token for authentication
+        window.location.href = '/dashboard'; // Redirect to main app
+      } else if (status === 'unverified') {
+        //--| Handle Incorrect Credentials |--//
+        switch (page) {
+          case 'verify':
+            dialogue = 'Your account has been created. Please verify your email to activate it.';
+            toggleText('.verify-text', dialogue);
+            toggleAside('#landing-leftbar', 'show');
+            break;
+        }
+      } else if (status === 'incorrect') {
+        switch (page) {
+          case 'password':
+            dialogue = 'Too many attempts! Reset your password.';
+            viewCarousel('password');
+            toggleText('.password-text', dialogue);
+            break;
+        }
+      } else if (status === 'blocked') {
+
+      }
+      */
+/*
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
+    setSubmit(true); //--|🠈 Allow Submission 🠈|--//
+
+    //--|🠋 Step 1: Error Handling 🠋|--//
+    try {
+      //--|🠋 Step 2: Connect to Database 🠋|--//
+      const route = 'login'; //--|🠈 API Endpoint, ('register' | 'login' | 'password' | 'verify' | 'reset') 🠈|--//
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+        email, //--|🠈 Email entered by the user 🠈|--//
+        passwordHash: password, //--|🠈 Password entered by the user 🠈|--//
+      });
+      const { page, status, action, message } = response.data; //--|🠈 Extract the status from server response 🠈|--//
+
+      //--|🠋 Step 3: Validate User Status 🠋|--//
+      let dialogue: string; //--|🠈 Message for the User 🠈|--//
+      if (status === 'missing') {
+        dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
+        viewCarousel('register');
+        toggleText('.register-text', dialogue);
+      } else if (status === 'authorized') {
+        //--|🠉 Step 3.1: Handle Authorized Status 🠉|--//
+        alert('//--|🠊 If the "passwordHash" matches the "email" entered by the user. 🠈|--//');
+        alert('//--|🠊 status(200): OK 🠈|--//');
+        alert('//--|🠊 Trinity Apps Login SUCCESSFUL 🠈|--//');
+        window.location.href = '/dashboard'; // Redirect to main app
+      } else if (status === 'registered') {
+        //--|🠉 Step 3.2: Handle Registered Status 🠉|--//
+        switch (page) {
+          case 'login':
+            dialogue = '//--|🠊 Conflict because User already exists 🠈|--//';
+            viewCarousel('login');
+            toggleText('.login-text', dialogue);
+            break;
+        }
+      } else if (status === 'incorrect') {
+        //--|🠉 Step 3.2: Handle Incorrect Status 🠉|--//
+        switch (page) {
+          case 'verify':
+            dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
+            toggleText('.verify-text', dialogue);
+            toggleAside('#landing-leftbar', 'show');
+            break;
+          case 'password':
+            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
+            viewCarousel('password');
+            toggleText('.password-text', dialogue);
+            break;
+        }
+      }
+      // handleData(status, action); //--|🠈 Handle the response (could be redirection or updating the UI) 🠈|--//
+    } catch (error) {
+      axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
+    } finally {
+      setSubmit(false); //--|🠈 Reset Submission State 🠈|--//
+    }
+  };
+  */

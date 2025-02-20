@@ -225,6 +225,84 @@ async function sendEmail(email, activationCode, page) {
   }
 }
 
+//--|🠋 POST: Form.login.tsx 🠋|--//
+server.post(`/${root}/login`, async (req, res) => {
+  const { email, passwordHash } = req.body;
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+
+  async function pendingUser(email) {
+    //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
+    const blocked = await database.collection('blocked').findOne({ email });
+    if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
+
+    const pending = await database.collection('pending').findOne({ email }); // Check the correct collection
+    if (!pending) {
+      const activationCode = await createCode(4); // Generate activation code once
+
+      //--|🠋 Insert the document into 'pending' collection 🠋|--//
+      await database.collection('pending').insertOne({
+        email: blocked.email,
+        passwordHash: blocked.passwordHash,
+
+        role: blocked.role,
+        status: 'pending',
+        firstName: blocked.firstName,
+        lastName: blocked.lastName,
+
+        activationCode,
+        activationAttempts: 0,
+        activationCodeExpiresAt: await createDate('tomorrow'),
+
+        userIP: blocked.userIP,
+        createdAt: blocked.createdAt,
+        updatedAt: await createDate('today'),
+        lastLogin: null,
+      });
+
+      //--|🠋 Delete the user from the 'blocked' collection 🠋|--//
+      await database.collection('blocked').deleteOne({ email });
+
+      /* await sendEmail(email, activationCode, 'register'); */
+    }
+  }
+
+  try {
+    if (!user) {
+      return res.status(200).json({ view: 'register', data: null });
+    } else {
+      let flagPassword = await decryptValue(passwordHash, user.passwordHash);
+      switch (user.status) {
+        case 'pending':
+          return res.status(200).json({ view: 'verify', data: user });
+        case 'enabled':
+          if (flagPassword) {
+            return res.status(200).json({ view: 'login', data: user });
+          } else {
+            return res.status(200).json({ view: 'password', data: user });
+          }
+        case 'blocked':
+          let flagDate = verifyDate(user.restrictionExpiresAt);
+          if (flagDate === 'blocked') {
+            return res.status(200).json({
+              view: 'blocked',
+              data: user,
+            });
+          } else {
+            await pendingUser(email);
+            return res.status(200).json({
+              view: 'verify',
+              data: user,
+            });
+          }
+      }
+    }
+  } catch (error) {
+    axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
+  }
+});
 //--|🠋 POST: Form.register.tsx 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
   const { firstName, lastName, email, passwordHash } = req.body;
@@ -324,6 +402,7 @@ server.post(`/${root}/register`, async (req, res) => {
       /* await sendEmail(email, activationCode, 'register'); */
     }
   }
+
   try {
     if (!user) {
       await createEntry(firstName, lastName, email, passwordHash);
@@ -371,7 +450,6 @@ server.post(`/${root}/register`, async (req, res) => {
     axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
   }
 });
-
 //--|🠋 POST: Form.verify.tsx 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
   const { email, passwordHash, activation } = req.body;
@@ -497,79 +575,6 @@ server.post(`/${root}/verify`, async (req, res) => {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   }
 });
-
-//--|🠋 POST: Form.login.tsx 🠋|--//
-server.post(`/${root}/login`, async (req, res) => {
-  //--|🠋 Step 1: Declare Request Inputs 🠋|--//
-  const { email, password } = req.body;
-
-  //--|🠋 Step 2: Find User 🠋|--//
-  const user =
-    (await database.collection('enabled').findOne({ email })) ||
-    (await database.collection('pending').findOne({ email })) ||
-    (await database.collection('blocked').findOne({ email }));
-
-  //--|🠋 Step 5: Error Handling 🠋|--//
-  try {
-    //--|🠋 Step 3: Check if User Exists 🠋|--//
-    if (!user) {
-      return res.status(201).json({
-        page: 'register',
-        status: 'missing',
-        action: 'register',
-        message: '//--|🠊 status(404): Not Found 🠈|--//',
-      });
-    }
-
-    //--|🠋 Step 4: Handle User Status 🠋|--//
-    switch (user.status) {
-      case 'pending':
-        return res.status(201).json({
-          page: 'verify',
-          status: 'unverified',
-          action: 'confirmation',
-          message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
-        });
-      case 'enabled':
-        return res.status(201).json({
-          page: 'password',
-          status: 'incorrect',
-          action: 'reset',
-          message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
-        });
-      case 'blocked':
-        return res.status(403).json({
-          page: 'blocked',
-          status: 'denied',
-          action: 'contact-support',
-          message: '//--|🠊 status(403): Forbidden 🠈|--//',
-        });
-
-      case 'enabled':
-        //--|🠋 Step 5: Validate Password 🠋|--//
-        const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
-
-        if (!isPasswordValid) {
-          return res.status(201).json({
-            page: 'password',
-            status: 'incorrect',
-            action: 'retry',
-            message: '//--|🠊 status(401): Unauthorized 🠈|--//',
-          });
-        }
-
-        return res.status(200).json({
-          page: 'application',
-          status: 'authorized',
-          action: 'dashboard',
-          message: '//--|🠊 status(200): OK 🠈|--//',
-        });
-    }
-  } catch (error) {
-    axiosError(error); //--|🠈 Handle Register Errors 🠈|--//
-  }
-});
-
 //--|🠋 POST: Form.password.tsx 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
   /*
@@ -744,7 +749,6 @@ let verifyDate = async (date) => {
 
   return present > inputDate ? 'expired' : 'blocked';
 };
-
 let createCode = async (length) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
@@ -1055,3 +1059,43 @@ function manipulateDocumentFields(method) {
     };
   }
   */
+/*
+      switch (user.status) {
+        case 'pending':
+
+        case 'enabled':
+          return res.status(201).json({
+            page: 'password',
+            status: 'incorrect',
+            action: 'reset',
+            message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
+          });
+        case 'blocked':
+          return res.status(403).json({
+            page: 'blocked',
+            status: 'denied',
+            action: 'contact-support',
+            message: '//--|🠊 status(403): Forbidden 🠈|--//',
+          });
+
+        case 'enabled':
+          //--|🠋 Step 5: Validate Password 🠋|--//
+          const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+
+          if (!isPasswordValid) {
+            return res.status(201).json({
+              page: 'password',
+              status: 'incorrect',
+              action: 'retry',
+              message: '//--|🠊 status(401): Unauthorized 🠈|--//',
+            });
+          }
+
+          return res.status(200).json({
+            page: 'application',
+            status: 'authorized',
+            action: 'dashboard',
+            message: '//--|🠊 status(200): OK 🠈|--//',
+          });
+      }
+      */

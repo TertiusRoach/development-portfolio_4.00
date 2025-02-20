@@ -44,31 +44,18 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 
       let dialogue: string;
       switch (view) {
-        /*
-        case 'register':
-          console.log();
-          break;
-          */
         case 'login':
-          console.log();
           viewCarousel('login');
           break;
         case 'password':
-          console.log();
           viewCarousel('password');
           break;
         case 'verify':
-          console.log(data);
           viewCarousel('verify');
           break;
-        /*
-        case 'reset':
-          console.log();
-          break;
-          */
         default:
-          viewCarousel('register');
           alert(view);
+          viewCarousel('register');
       }
     } catch (error) {
       axiosError(error);

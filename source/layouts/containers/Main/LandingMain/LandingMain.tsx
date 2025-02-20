@@ -55,7 +55,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
               alt="Login Logo"
             />
           </div>
-          <div className="landing-carousel" style={{ zIndex: 0, transform: `translateX(0vw)` }}>
+          <div className="landing-carousel" style={{ zIndex: 0 }}>
             <section className="register-section hidden">
               <div className="register-container">
                 <FormRegister info={info} />
