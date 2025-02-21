@@ -36,7 +36,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         email,
         passwordHash: loginPassword.value,
       });
-      const { view, data } = response.data;
+      const { view, data, test } = response.data;
 
       let dialogue: string;
       switch (view) {
@@ -50,10 +50,11 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           viewCarousel('verify');
           break;
         case 'reset':
+          console.log(test);
           viewCarousel('reset');
           break;
         case 'blocked':
-          alert(`Account has been ${view}.`);
+          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
           break;
         default:
           console.log(data);

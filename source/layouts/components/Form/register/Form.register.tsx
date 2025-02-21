@@ -54,7 +54,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           viewCarousel('verify');
           break;
         case 'blocked':
-          alert(`Your account has been ${view}. ${data}`);
+          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
           break;
         default:
           alert(view);

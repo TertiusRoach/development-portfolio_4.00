@@ -48,18 +48,18 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         case 'password':
           if (attempts > 0) {
             dialogue = `You have ${attempts} attempts left.`;
-            setAttempts(attempts - 1); // Decrease the counter
+            setAttempts(attempts - 1);
             toggleText('login', dialogue);
           } else {
-            setAttempts(3); // Reset counter after lockout
-            viewCarousel('password'); // Switch page when attempts reach 0
+            setAttempts(3);
+            viewCarousel('password');
           }
           break;
         case 'verify':
           viewCarousel('verify');
           break;
         case 'blocked':
-          alert(`Account has been ${view}.`);
+          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
           break;
         default:
           console.log(data);

@@ -51,7 +51,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           }
           break;
         case 'blocked':
-          alert(`Your account has been ${view}.`);
+          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
           break;
         default:
           console.log(data);
