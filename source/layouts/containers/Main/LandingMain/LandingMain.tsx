@@ -131,12 +131,9 @@ export const viewCarousel = (page: 'register' | 'login' | 'password' | 'verify' 
 
   // console.log(verify);
 };
-export const toggleText = (
-  element: '.login-text' | '.register-text' | '.password-text' | '.verify-text' | '.reset-text',
-  dialogue: string
-) => {
-  let tagText = document.querySelector(`${element}`)?.firstChild as HTMLElement;
-  tagText.innerText = dialogue;
+export const toggleText = (page: 'login' | 'register' | 'password' | 'verify' | 'reset', text: string) => {
+  let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
+  element.innerText = text;
 };
 export const toggleAside = (element: '#landing-leftbar' | '#landing-rightbar' | string, toggle: 'show' | 'hide') => {
   let sidebar = document.querySelector(element) as HTMLElement;
@@ -188,14 +185,14 @@ export async function handleData(
         //--|🠊 01. created: Form.register 🠈|--//
         //--|🠊 status(201): Accepted 🠈|--//
         dialogue = '//--|🠊 Your account has been created. Please verify your email to activate it. 🠈|--//';
-        toggleText('.verify-text', dialogue);
+        toggleText('verify', dialogue);
         toggleAside('#landing-leftbar', 'show');
         break;
       case 'unverified': //--|🠈 If the user requests a password, registers or logs in without having validated the account first. 🠈|--//
         //--|🠊 02. unverified: Form.register + Form.login + Form.password 🠈|--//
         //--|🠊 status(403): Forbidden 🠈|--//
         dialogue = '//--|🠊 Your account is not verified. Please check your email for the activation link. 🠈|--//';
-        toggleText('.verify-text', dialogue);
+        toggleText('verify', dialogue);
         toggleAside('#landing-leftbar', 'show');
         break;
       case 'mismatch': //--|🠈 If the "activationCode" entered by the user doesn't match the "email" associated with the document. 🠈|--//
@@ -263,7 +260,7 @@ export async function handleData(
         //--|🠊 status(404): Not Found 🠈|--//
         dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
         viewCarousel('register');
-        toggleText('.register-text', dialogue);
+        toggleText('register', dialogue);
         break;
     }
   } else {

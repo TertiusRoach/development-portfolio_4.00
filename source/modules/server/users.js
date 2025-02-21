@@ -273,14 +273,16 @@ server.post(`/${root}/login`, async (req, res) => {
     if (!user) {
       return res.status(200).json({ view: 'register', data: null });
     } else {
-      let flagPassword = await decryptValue(passwordHash, user.passwordHash);
       switch (user.status) {
         case 'pending':
           return res.status(200).json({ view: 'verify', data: user });
         case 'enabled':
+          let flagPassword = await decryptValue(passwordHash, user.passwordHash);
           if (flagPassword) {
             return res.status(200).json({ view: 'login', data: user });
           } else {
+            // Why isn't this bit being detected?
+            // When the email is correct but the password is wrong then the server/database should return this.
             return res.status(200).json({ view: 'password', data: user });
           }
         case 'blocked':
@@ -648,7 +650,6 @@ server.post(`/${root}/password`, async (req, res) => {
   }
   */
 });
-
 //--|🠋 POST: Form.reset.tsx 🠋|--//
 server.post(`/${root}/reset`, async (req, res) => {
   /*

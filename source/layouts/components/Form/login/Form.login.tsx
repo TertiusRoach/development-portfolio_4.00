@@ -24,6 +24,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
+  let [attempts, setAttempts] = useState(3);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -37,7 +38,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       const { view, data } = response.data;
 
       let dialogue: string;
-      let counter: number = 0; // Declare outside the function so it persists
       switch (view) {
         case 'register':
           viewCarousel('register');
@@ -46,6 +46,14 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           window.location.href = '/dashboard';
           break;
         case 'password':
+          if (attempts > 0) {
+            dialogue = `You have ${attempts} attempts left.`;
+            setAttempts(attempts - 1); // Decrease the counter
+            toggleText('login', dialogue);
+          } else {
+            setAttempts(3); // Reset counter after lockout
+            viewCarousel('password'); // Switch page when attempts reach 0
+          }
           /*
           if (counter < 3) {
             alert(`You have ${3 - counter} attempts left.`);

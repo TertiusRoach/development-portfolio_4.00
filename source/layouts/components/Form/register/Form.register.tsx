@@ -196,14 +196,14 @@ const runCounter = (dialogue: string) => {
   switch (attempts) {
     case 0:
       viewCarousel('login');
-      toggleText('.login-text', dialogue);
+      toggleText('login', dialogue);
       break;
     case 1:
-      toggleText('.login-text', '//--|🠊 One Attempt Left 🠈|--//');
+      toggleText('login', '//--|🠊 One Attempt Left 🠈|--//');
       break;
     case 2:
       viewCarousel('password');
-      toggleText('.password-text', dialogue);
+      toggleText('password', dialogue);
       sessionStorage.removeItem('loginAttempts'); // Reset after locking out
       break;
   }
