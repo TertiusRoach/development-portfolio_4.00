@@ -25,13 +25,12 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
-      let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
-
+      let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
+      let registerPassword = document.querySelector('.register-inputs #password') as HTMLInputElement;
       const route = 'verify';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email: loginEmail.value,
-        passwordHash: loginPassword.value,
+        email: registerEmail.value,
+        passwordHash: registerPassword.value,
         activation: activate,
       });
       const { view, data } = response.data;
@@ -100,28 +99,6 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="verify-inputs">
-        {/* <input
-          // required
-          id="email"
-          name="Email"
-          type="email"
-          placeholder="//--|🠊 Email Address 🠈|--//"
-          // --- //
-          value={email}
-          // style={{ display: 'none' }}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          // required
-          id="password"
-          name="Password"
-          type="password"
-          placeholder="//--|🠊 Your Password 🠈|--//"
-          // --- //
-          value={password}
-          // style={{ display: 'none' }}
-          onChange={(event) => setPassword(event.target.value)}
-        /> */}
         <input
           required
           type="text"

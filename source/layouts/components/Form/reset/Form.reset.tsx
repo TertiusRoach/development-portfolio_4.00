@@ -22,8 +22,8 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  // let [resetMessage, setResetMessage] = useState('');
+  //--|🠋 Local Input States 🠋|--//
+  let [renew, setRenew] = useState('');
 
   //--|🠋 Other UI states 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
@@ -32,132 +32,28 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      /*
+      let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
+
       const route = 'reset';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email,
-        passwordHash: loginPassword.value,
-        activation: activate,
+        email: passwordEmail.value,
+        renewal: renew,
+        passwordNew: password,
       });
       const { view, data } = response.data;
-      */
+      switch (view) {
+        case 'login':
+          viewCarousel('login');
+          break;
+        default:
+          viewCarousel('reset');
+          break;
+      }
     } catch (error) {
       axiosError(error);
     } finally {
       setSubmit(false);
     }
-    /*
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--| Validate email format |--//
-    let emailInput = document.querySelector('.password-inputs #email') as HTMLInputElement;
-    let passwordInput = document.querySelector('.reset-inputs #password') as HTMLInputElement;
-    let recoveryInput = document.querySelector('.reset-inputs #reset-code') as HTMLInputElement;
-
-    if (!emailRegex.test(emailInput.value)) {
-      // setResetMessage('Invalid email format.');
-      setSubmit(false);
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        'http://localhost:3000/users/reset',
-        {
-          email: emailInput.value,
-          newHash: passwordInput.value,
-          passwordCode: recoveryInput.value,
-        }
-      );
-
-      const { status, message } = response.data;
-      let dialogue: string;
-
-      switch (status) {
-        case 'authorized': //--| Reset successful |--//
-          dialogue = 'Your password has been successfully reset.';
-          viewCarousel('login');
-          toggleText('.login-text', dialogue);
-          toggleAside('#landing-rightbar', 'hide'); //--|🠈 Hide Reset 🠈|--//
-          break;
-        case 'remembered': //--| Password unchanged |--//
-          dialogue = `You're all set! No password change was necessary.`;
-          viewCarousel('login');
-          toggleText('.login-text', dialogue);
-          toggleAside('#landing-rightbar', 'hide'); //--|🠈 Hide Reset 🠈|--//
-          break;
-        case 'unverified': //--| Incorrect details |--//
-          dialogue = `The details you've entered are incorrect. Please try again.`;
-
-          toggleText('.reset-text', dialogue);
-          break;
-        default:
-          dialogue = 'An unexpected error occurred. Please try again.';
-
-          toggleText('.reset-text', dialogue);
-          break;
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        // setResetMessage(error.response?.data?.message || 'An error occurred.');
-      } else {
-        // setResetMessage('An unexpected error occurred.');
-      }
-    } finally {
-      setSubmit(false);
-    }
-    */
-    /*
-    event.preventDefault();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //--|🠈 Regular expression to validate email format 🠈|--//
-    let emailInput = document.querySelector('.password-inputs #email') as HTMLInputElement;
-    let passwordInput = document.querySelector('.reset-inputs #password') as HTMLInputElement;
-    let recoveryInput = document.querySelector('.reset-inputs #reset-code') as HTMLInputElement;
-
-    if (!emailRegex.test(emailInput.value)) {
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      const response = await axios.post('http://localhost:3000/users/reset', {
-        email: emailInput.value,
-        newHash: passwordInput.value,
-        passwordCode: recoveryInput.value,
-      });
-
-      const { status, message } = response.data;
-      let dialogue: string;
-      //--|🠊 Validate User Status 🠈|--//
-
-      switch (status) {
-        case 'authorized': //--|🠈 Reset code matches database. Password reset confirmed. 🠈|--//
-          dialogue = 'Your password has been successfully reset.';
-
-          viewCarousel('login'); //--|🠈 Scroll to Register 🠈|--//
-          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-        case 'remembered': //--|🠈 Password reset cancelled. User remembered their password. 🠈|--//
-          dialogue = `You're all set! No password change was necessary.`;
-
-          viewCarousel('login'); //--|🠈 Scroll to Register 🠈|--//
-          toggleText('.login-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-        case 'unverified': //--|🠈 Incorrect details were inserted into inputs. 🠈|--//
-          dialogue = `The details you've entered are incorrect. Please try again.`;
-
-          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          break;
-      }
-    } catch (error: AxiosError | unknown) {
-      if (axios.isAxiosError(error)) {
-        setResetMessage(error.response?.data?.message || 'An error occurred');
-      } else {
-        setResetMessage('An unexpected error occurred');
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-    */
   };
 
   useEffect(() => {
@@ -201,7 +97,8 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           name="Recovery Code"
           placeholder="//--|🠊 Recovery Code 🠈|--//"
           // --- //
-          // value={code}
+          value={renew}
+          onChange={(event) => setRenew(event.target.value)}
         />
         <input
           required
