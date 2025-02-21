@@ -29,8 +29,8 @@ interface InfoProps {
   };
 }
 const FormReset: React.FC<InfoProps> = ({ info }) => {
-  let information = info;
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('default');
+  const blockName = 'main';
+  const pageName = info.identification;
 
   //--|🠋 Shared input states 🠋|--//
   // let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -165,13 +165,30 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
     */
   };
 
+  useEffect(() => {
+    let closeButton = document.querySelector('.reset-close');
+    let handleClose = () => {
+      toggleAside('#landing-rightbar', 'hide');
+    };
+
+    if (closeButton) {
+      closeButton.addEventListener('click', handleClose);
+    }
+
+    return () => {
+      if (closeButton) {
+        closeButton.removeEventListener('click', handleClose);
+      }
+    };
+  }, [pageName, blockName]);
+
   return (
     <form className="reset-form" onSubmit={handleData}>
       <div className="reset-header">
         <div className="reset-label">
           <h6 className="display-6">Reset</h6>
         </div>
-        <button className="close-rightbar" type="button">
+        <button className="reset-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
             alt=""
