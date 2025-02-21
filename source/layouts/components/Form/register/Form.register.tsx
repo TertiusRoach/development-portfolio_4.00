@@ -191,33 +191,3 @@ const axiosError = (error: unknown) => {
     alert('An unexpected error occurred. Please try again.');
   }
 };
-/*
-      //--|🠋 Step 3: Validate User Status 🠋|--//
-      let dialogue: string; //--|🠈 Message for the User 🠈|--//
-      if (status === 'pending') {
-        switch (page) {
-          case 'verify':
-            dialogue = `//--|🠊 Please verify your email. 🠈|--//`;
-            viewCarousel('verify');
-            toggleText('.verify-text', dialogue);
-            break;
-        }
-      } else if (status === 'incorrect') {
-        switch (page) {
-          case 'password':
-            dialogue = `//--|🠊 Incorrect password, please try again. 🠈|--//`; // Use attemptsNum here as well
-            runCounter(dialogue);
-            break;
-          case 'login':
-            dialogue = `//--|🠊 Too many attempts! Reset your password. 🠈|--//`;
-            viewCarousel('password');
-            break;
-        }
-      } else if (status === 'enabled') {
-        switch (page) {
-          case 'login':
-            viewCarousel('login');
-            break;
-        }
-      }
-*/

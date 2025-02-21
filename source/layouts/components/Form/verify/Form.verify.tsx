@@ -1,25 +1,8 @@
 // Form.verify.tsx
-import $ from 'jquery';
-import React from 'react';
 import './Form.verify.scss';
 import axios, { AxiosError } from 'axios';
+import React, { useEffect, useState } from 'react';
 import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
-
-// import { useEmail } from '../../../../modules/context/EmailContext';
-// import { usePassword } from '../../../../modules/context/PasswordContext';
-
-import { useMediaQuery } from 'react-responsive';
-import { useEffect, useRef, useState } from 'react';
-
-import MenuButton from '../../Menu/button/Menu.button';
-import ButtonFade from '../../Button/fade/Button.fade';
-
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-// import toggleAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
-import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
   info: {
@@ -32,10 +15,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Shared input states 🠋|--//
-  // let [email, setEmail] = useState('');
-  // let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  // let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
+  //--|🠋 Local Input States 🠋|--//
   let [activate, setActivate] = useState('');
 
   //--|🠋 Other UI states 🠋|--//

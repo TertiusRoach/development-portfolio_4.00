@@ -225,6 +225,84 @@ async function sendEmail(email, activationCode, page) {
   }
 }
 
+//--|🠋 POST: Form.reset.tsx 🠋|--//
+server.post(`/${root}/reset`, async (req, res) => {
+  /*
+  let today = new Date();
+  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
+
+  try {
+    const { email, passwordCode, newHash } = req.body;
+
+    if (!email || !passwordCode || !newHash) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    const user = await database.collection('enabled').findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Validate the reset code
+    if (passwordCode !== user.passwordCode) {
+      return res.status(400).json({ message: 'Invalid reset code' });
+    }
+
+    // Check if the reset code has expired
+    if (new Date() > new Date(user.passwordCodeExpiresAt)) {
+      const newResetCode = randomizeCodeActivation(10);
+      const newExpirationTime = new Date();
+      newExpirationTime.setHours(newExpirationTime.getHours() + 1); // Reset code valid for 1 hour
+
+      await database.collection('enabled').updateOne(
+        { _id: user._id },
+        {
+          $set: {
+            passwordCode: newResetCode,
+            passwordCodeExpiresAt: newExpirationTime.toISOString(),
+          },
+        }
+      );
+
+      // await sendActivationEmail(user.email, newResetCode, 'reset'); //
+      return res.status(400).json({ message: 'Reset code expired. A new code has been sent to your email.' });
+    }
+
+    // Check if the new password is the same as the old one
+    const isPasswordSame = await bcrypt.compare(newHash, user.passwordHash);
+    if (isPasswordSame) {
+      await database
+        .collection('enabled')
+        .updateOne({ _id: user._id }, { $set: { passwordCode: null, passwordCodeExpiresAt: null } });
+      return res.status(200).json({ status: 'remembered', message: 'You remembered your password!' });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(newHash, salt);
+
+    // Update user with new password and remove reset code
+    await database.collection('enabled').updateOne(
+      { _id: user._id },
+      {
+        $set: {
+          passwordHash: hashedPassword,
+          passwordCode: null,
+          passwordCodeExpiresAt: null,
+          updatedAt: todayISO,
+        },
+      }
+    );
+
+    res.status(200).json({ status: 'authorized', message: 'Password reset successful' });
+  } catch (error) {
+    console.error('Password Reset Error:', error);
+    res.status(500).json({ status: 'error', message: 'An error occurred during password reset', error: error.message });
+  }
+  */
+});
+
 //--|🠋 POST: Form.register.tsx 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
   const { firstName, lastName, email, passwordHash } = req.body;
@@ -289,6 +367,21 @@ server.post(`/${root}/register`, async (req, res) => {
       passwordChangeRequests: document.passwordChangeRequests,
     };
   }
+  async function updateActivation(email) {
+    let activationCode = await createCode(4); // Ensure activationCode is defined
+    await database.collection('pending').updateOne(
+      { email: email }, // Find the document by email
+      {
+        $set: {
+          updatedAt: await createDate('today'),
+
+          activationCode: activationCode,
+          activationCodeExpiresAt: await createDate('tomorrow'),
+        },
+      }
+    );
+    /* await sendEmail(email, activationCode, 'register'); */
+  }
   async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
@@ -335,6 +428,10 @@ server.post(`/${root}/register`, async (req, res) => {
     } else {
       switch (user.status) {
         case 'pending':
+          let flagActivation = await verifyDate(user.activationCodeExpiresAt);
+          if (flagActivation === 'expired') {
+            await updateActivation(email);
+          }
           return res.status(200).json({
             view: 'verify',
             data: user,
@@ -353,8 +450,8 @@ server.post(`/${root}/register`, async (req, res) => {
             });
           }
         case 'blocked':
-          let flagDate = await verifyDate(user.restrictionExpiresAt);
-          if (flagDate === 'blocked') {
+          let flagRestriction = await verifyDate(user.restrictionExpiresAt);
+          if (flagRestriction === 'blocked') {
             return res.status(200).json({
               view: 'blocked',
               data: user,
@@ -379,9 +476,23 @@ server.post(`/${root}/login`, async (req, res) => {
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
+  async function updateActivation(email) {
+    let activationCode = await createCode(4); // Ensure activationCode is defined
+    await database.collection('pending').updateOne(
+      { email: email }, // Find the document by email
+      {
+        $set: {
+          updatedAt: await createDate('today'),
 
-  //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
+          activationCode: activationCode,
+          activationCodeExpiresAt: await createDate('tomorrow'),
+        },
+      }
+    );
+    /* await sendEmail(email, activationCode, 'register'); */
+  }
   async function blocked_pending(email) {
+    //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
     if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
 
@@ -423,14 +534,23 @@ server.post(`/${root}/login`, async (req, res) => {
       let flagPassword = await decryptValue(passwordHash, user.passwordHash);
       switch (user.status) {
         case 'pending':
-          if (flagPassword) {
+          if (flagPassword === true) {
+            let flagActivation = await verifyDate(user.activationCodeExpiresAt);
+            switch (flagActivation) {
+              case 'expired':
+                await updateActivation(email);
+                break;
+            }
             return res.status(200).json({ view: 'verify', data: user });
           }
         case 'enabled':
-          if (!flagPassword) {
-            return res.status(200).json({ view: 'password', data: user });
-          } else {
+          if (flagPassword) {
+            await database
+              .collection('enabled')
+              .updateOne({ email: email }, { $set: { lastLogin: await createDate('today') } });
             return res.status(200).json({ view: 'login', data: user });
+          } else {
+            return res.status(200).json({ view: 'password', data: user });
           }
         case 'blocked':
           let flagDate = await verifyDate(user.restrictionExpiresAt);
@@ -468,7 +588,7 @@ server.post(`/${root}/password`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  async function updateEntry(email) {
+  async function createEntry(email) {
     const passwordCode = await createCode(4);
     await database.collection('enabled').updateOne(
       { email: email },
@@ -486,6 +606,22 @@ server.post(`/${root}/password`, async (req, res) => {
 
     /* await sendEmail(email, passwordCode, 'password'); */
   }
+  async function updateEntry(email) {
+    let activationCode = await createCode(4); // Ensure activationCode is defined
+    await database.collection('pending').updateOne(
+      { email: email }, // Find the document by email
+      {
+        $set: {
+          updatedAt: await createDate('today'),
+
+          activationCode: activationCode,
+          activationCodeExpiresAt: await createDate('tomorrow'),
+        },
+      }
+    );
+    /* await sendEmail(email, activationCode, 'register'); */
+  }
+
   async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
@@ -556,10 +692,17 @@ server.post(`/${root}/password`, async (req, res) => {
     } else {
       switch (user.status) {
         case 'pending':
-          return res.status(200).json({ view: 'verify', data: user });
+          let flagActivation = await verifyDate(user.activationCodeExpiresAt);
+          if (flagActivation === 'expired') {
+            await updateEntry(email);
+          }
+          return res.status(200).json({
+            view: 'verify',
+            data: user,
+          });
         case 'enabled':
           if (user.passwordChangeRequests < 3) {
-            await updateEntry(email);
+            await createEntry(email);
             return res.status(200).json({ view: 'reset', data: user });
           } else {
             await enabled_blocked(email);
@@ -686,83 +829,6 @@ server.post(`/${root}/verify`, async (req, res) => {
   } catch (error) {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   }
-});
-//--|🠋 POST: Form.reset.tsx 🠋|--//
-server.post(`/${root}/reset`, async (req, res) => {
-  /*
-  let today = new Date();
-  let todayISO = today.toISOString().split('.')[0] + 'Z'; // ISO format
-
-  try {
-    const { email, passwordCode, newHash } = req.body;
-
-    if (!email || !passwordCode || !newHash) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    const user = await database.collection('enabled').findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    // Validate the reset code
-    if (passwordCode !== user.passwordCode) {
-      return res.status(400).json({ message: 'Invalid reset code' });
-    }
-
-    // Check if the reset code has expired
-    if (new Date() > new Date(user.passwordCodeExpiresAt)) {
-      const newResetCode = randomizeCodeActivation(10);
-      const newExpirationTime = new Date();
-      newExpirationTime.setHours(newExpirationTime.getHours() + 1); // Reset code valid for 1 hour
-
-      await database.collection('enabled').updateOne(
-        { _id: user._id },
-        {
-          $set: {
-            passwordCode: newResetCode,
-            passwordCodeExpiresAt: newExpirationTime.toISOString(),
-          },
-        }
-      );
-
-      // await sendActivationEmail(user.email, newResetCode, 'reset'); //
-      return res.status(400).json({ message: 'Reset code expired. A new code has been sent to your email.' });
-    }
-
-    // Check if the new password is the same as the old one
-    const isPasswordSame = await bcrypt.compare(newHash, user.passwordHash);
-    if (isPasswordSame) {
-      await database
-        .collection('enabled')
-        .updateOne({ _id: user._id }, { $set: { passwordCode: null, passwordCodeExpiresAt: null } });
-      return res.status(200).json({ status: 'remembered', message: 'You remembered your password!' });
-    }
-
-    // Hash the new password
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(newHash, salt);
-
-    // Update user with new password and remove reset code
-    await database.collection('enabled').updateOne(
-      { _id: user._id },
-      {
-        $set: {
-          passwordHash: hashedPassword,
-          passwordCode: null,
-          passwordCodeExpiresAt: null,
-          updatedAt: todayISO,
-        },
-      }
-    );
-
-    res.status(200).json({ status: 'authorized', message: 'Password reset successful' });
-  } catch (error) {
-    console.error('Password Reset Error:', error);
-    res.status(500).json({ status: 'error', message: 'An error occurred during password reset', error: error.message });
-  }
-  */
 });
 
 let encryptValue = async (value) => {
@@ -922,218 +988,3 @@ function manipulateDocumentFields(method) {
   }
 }
 //--------------------------------------------------------------------------------//
-
-/*
-    if (user.activationCode === code) {
-      await updateField(email);
-      await deleteField(email, 'pending');
-      switch (user.status) {
-        case 'pending':
-          return res.status(201).json({
-            page: 'login',
-            status: 'verified',
-            action: 'subscribed',
-            message: '//--|🠊 status(200): OK 🠈|--//',
-          });
-        case 'enabled':
-          break;
-        case 'blocked':
-          break;
-      }
-    } else {
-      return res.status(201).json({
-        page: 'verify',
-        status: 'incorrect',
-        action: 'counter',
-        message: '//--|🠊 status(401): Mismatch 🠈|--//',
-      });
-    }
-    */
-/*
-    if (user.activationCode === activation) {      
-      const verified = await updateField(user.email);
-      switch (verified) {
-        case true:
-          // Delete the field matching the email inside 'pending' if the User activation matches the Data activationCode inside 'pending' collection.
-          await updateField(email);
-          await deleteField(email, 'pending');
-          return res.status(200).json({
-            page: 'login',
-            status: 'verified',
-            action: 'success',
-            message: '//--|🠊 status(200): Activated 🠈|--//',
-          });
-          break;
-        case false:
-          return res.status(404).json({
-            page: 'verify',
-            status: 'incorrect',
-            action: 'mismatch',
-            message: '//--|🠊 status(404): User Not Found 🠈|--//',
-          });
-          break;
-      }
-    }
-    */
-/*
-    switch (user.status) {
-      case 'pending':
-        break;
-      case 'enabled':
-        return res.status(200).json({
-          guide: 'Show Login Page',
-
-          view: 'login',
-          route: 'register',
-          // page: 'password',
-          // status: 'incorrect',
-          // action: 'counter',
-          // message: '//--|🠊 status(201): Password 🠈|--//',
-        });        
-        //--|🠋 Step 7: Check Password 🠋|--//
-        let authorization = await decryptValue(passwordHash, user.password, user.email);
-        if (authorization === false) {
-          return res.status(201).json({
-            page: 'password',
-            status: 'incorrect',
-            action: 'counter',
-            message: '//--|🠊 status(201): Password 🠈|--//',
-          });
-        } else if (authorization === true) {
-          return res.status(201).json({
-            page: 'login',
-            status: 'incorrect',
-            action: 'login',
-            message: '//--|🠊 status(201): Remembered 🠈|--//',
-          });
-        }
-        
-        break;
-      case 'blocked':
-        return res.status(200).json({
-          
-          page: 'login',
-          status: 'incorrect',
-          action: 'login',
-          message: '//--|🠊 status(201): Remembered 🠈|--//',
-          
-        });
-        break;
-    }
-    */
-/*
-    await database.collection('enabled').insertOne({
-      email: email,
-      passwordHash: await userPending.passwordHash,
-      verifiedEmail: true,
-
-      role: 'user',
-      status: 'enabled',
-      firstName: await userPending.firstName,
-      lastName: await userPending.lastName,
-
-      userIP: await trackPlace(req),
-      createdAt: await userPending.createdAt,
-      updatedAt: await createDate('today'),
-      lastLogin: null,
-
-      passwordCode: null,
-      passwordCodeExpiresAt: null,
-      passwordChangeRequests: 0,
-    });
-
-    return 'enabled';
-    */
-/*
-          //--|🠋 Step 7: Check Password 🠋|--//
-          let authorization = await decryptValue(passwordHash, user.password, user.email);
-          if (authorization === false) {
-            return res.status(201).json({
-              page: 'password',
-              status: 'incorrect',
-              action: 'counter',
-              message: '//--|🠊 status(201): Password 🠈|--//',
-            });
-          } else if (authorization === true) {
-            return res.status(201).json({
-              page: 'login',
-              status: 'incorrect',
-              action: 'login',
-              message: '//--|🠊 status(201): Remembered 🠈|--//',
-            });
-          }
-          */
-/*
-  async function deleteField(email, state) {
-    await database.collection(state).deleteOne({ email });
-  }
-  async function readField(email) {
-    const document =
-      (await database.collection('enabled').findOne({ email })) ||
-      (await database.collection('pending').findOne({ email })) ||
-      (await database.collection('blocked').findOne({ email }));
-    // return document;
-    return {
-      email: document.email,
-      verifiedEmail: document.verifiedEmail,
-
-      role: document.role,
-      status: document.status,
-      firstName: document.firstName,
-      lastName: document.lastName,
-
-      activationCode: document.activationCode,
-      activationAttempts: document.activationAttempts,
-      activationCodeExpiresAt: document.activationCodeExpiresAt,
-
-      userIP: document.userIP,
-      createdAt: document.createdAt,
-      updatedAt: document.updatedAt,
-      lastLogin: document.lastLogin,
-
-      passwordCode: document.passwordCode,
-      passwordCodeExpiresAt: document.passwordCodeExpiresAt,
-      passwordChangeRequests: document.passwordChangeRequests,
-    };
-  }
-  */
-/*
-      switch (user.status) {
-        case 'pending':
-
-        case 'enabled':
-          return res.status(201).json({
-            page: 'password',
-            status: 'incorrect',
-            action: 'reset',
-            message: '//--|🠊 status(400): Account Not Verified 🠈|--//',
-          });
-        case 'blocked':
-          return res.status(403).json({
-            page: 'blocked',
-            status: 'denied',
-            action: 'contact-support',
-            message: '//--|🠊 status(403): Forbidden 🠈|--//',
-          });
-
-        case 'enabled':
-          //--|🠋 Step 5: Validate Password 🠋|--//
-          const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
-
-          if (!isPasswordValid) {
-            return res.status(201).json({
-              page: 'password',
-              status: 'incorrect',
-              action: 'retry',
-              message: '//--|🠊 status(401): Unauthorized 🠈|--//',
-            });
-          }
-
-          return res.status(200).json({
-            page: 'application',
-            status: 'authorized',
-            action: 'dashboard',
-            message: '//--|🠊 status(200): OK 🠈|--//',
-          });
-      }
-      */
