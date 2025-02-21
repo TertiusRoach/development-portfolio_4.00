@@ -54,15 +54,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             setAttempts(3); // Reset counter after lockout
             viewCarousel('password'); // Switch page when attempts reach 0
           }
-          /*
-          if (counter < 3) {
-            alert(`You have ${3 - counter} attempts left.`);
-            counter++;
-          } else {
-            viewCarousel('password');
-            counter = 0; // Reset counter after lockout
-          }
-          */
           break;
         case 'verify':
           viewCarousel('verify');
