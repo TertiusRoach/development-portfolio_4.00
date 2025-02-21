@@ -19,78 +19,59 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Shared input states 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let [password, setPassword] = useState('');
-
-  //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
-
-  //--|🠋 Feedback messages for user interactions 🠋|--//
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handlePassword = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-    /*
     setSubmit(true);
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const userEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
-
-    if (!emailRegex.test(userEmail.value)) {
-      // setPasswordMessage('Please enter a valid email address.');
-      setSubmit(false); //--|🠈 Indicate submission is blocked 🠈|--//
-      // return; //
-    }
-
     let dialogue: string;
     try {
-      const response = await axios.post('http://localhost:3000/users/password', { email: userEmail.value });
-      const { message, status } = response.data;
+      let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
+      let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
 
-      //--|🠊 Validate User Status 🠈|--//
-      switch (status) {
-        case 'pending': //--|🠈 Account still needs to be verified before a password reset can take place. 🠈|--//
-          dialogue = `Your account hasn't been verified yet.`;
+      const route = 'password';
+      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+        email,
+        passwordHash: loginPassword.value,
+      });
+      const { view, data } = response.data;
 
-          viewCarousel('register'); //--|🠈 Scroll to Login 🠈|--//
-          toggleText('.verify-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-leftbar', 'show'); //--|🠈 Show Verify 🠈|--//
-
-          let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
-          let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
-          registerEmail.value = passwordEmail.value;
-
+      let dialogue: string;
+      switch (view) {
+        case 'register':
+          viewCarousel('register');
           break;
-        case 'created': //--|🠈 Password change requested and sent to designated email 🠈|--//
-          dialogue = `Please check your email for the verification code.`;
-
-          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
+        case 'login':
+          window.location.href = '/dashboard';
           break;
-        case 'waiting': //--|🠈 User already requested a password change 🠈|--//
-          dialogue = 'Please check your email for the verification code.';
-
-          toggleText('.reset-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
-          toggleAside('#landing-rightbar', 'show'); //--|🠈 Show Reset 🠈|--//
+        /*
+        case 'password':
+          if (attempts > 0) {
+            dialogue = `You have ${attempts} attempts left.`;
+            setAttempts(attempts - 1); // Decrease the counter
+            toggleText('login', dialogue);
+          } else {
+            setAttempts(3); // Reset counter after lockout
+            viewCarousel('password'); // Switch page when attempts reach 0
+          }
+          break;
+          */
+        case 'verify':
+          viewCarousel('verify');
           break;
         default:
-          setRegisterMessage('Unexpected response from the server. Please try again.');
+          break;
       }
     } catch (error) {
       //--|🠋 Account doesn't exist 🠋|--//
       let dialogue: string = 'Account not found. Please register.';
 
       viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
-      toggleText('.register-text', dialogue); //--|🠈 Provide Guidance 🠈|--//
     } finally {
       setSubmit(false);
     }
-    */
   };
 
   useEffect(() => {}, [pageName, blockName]);

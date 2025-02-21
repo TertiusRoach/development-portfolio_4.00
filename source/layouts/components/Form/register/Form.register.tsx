@@ -188,26 +188,6 @@ const axiosError = (error: unknown) => {
     alert('An unexpected error occurred. Please try again.');
   }
 };
-const runCounter = (dialogue: string) => {
-  let counter: string | number = sessionStorage.getItem('loginAttempts') || 0;
-  counter = typeof counter === 'number' ? counter.toString() : counter; // Ternary operator
-  const attempts = parseInt(counter, 10); // The 10 is crucial for base-10 parsing
-  sessionStorage.setItem('loginAttempts', counter.toString()); // Now safe to pass
-  switch (attempts) {
-    case 0:
-      viewCarousel('login');
-      toggleText('login', dialogue);
-      break;
-    case 1:
-      toggleText('login', '//--|🠊 One Attempt Left 🠈|--//');
-      break;
-    case 2:
-      viewCarousel('password');
-      toggleText('password', dialogue);
-      sessionStorage.removeItem('loginAttempts'); // Reset after locking out
-      break;
-  }
-};
 /*
       //--|🠋 Step 3: Validate User Status 🠋|--//
       let dialogue: string; //--|🠈 Message for the User 🠈|--//
