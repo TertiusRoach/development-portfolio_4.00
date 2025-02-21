@@ -53,6 +53,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         case 'verify':
           viewCarousel('verify');
           break;
+        case 'blocked':
+          alert(`Your account has been ${view}. ${data}`);
+          break;
         default:
           alert(view);
           viewCarousel('register');

@@ -44,24 +44,20 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           viewCarousel('register');
           break;
         case 'login':
-          window.location.href = '/dashboard';
+          viewCarousel('login');
           break;
-        /*
-        case 'password':
-          if (attempts > 0) {
-            dialogue = `You have ${attempts} attempts left.`;
-            setAttempts(attempts - 1); // Decrease the counter
-            toggleText('login', dialogue);
-          } else {
-            setAttempts(3); // Reset counter after lockout
-            viewCarousel('password'); // Switch page when attempts reach 0
-          }
-          break;
-          */
         case 'verify':
           viewCarousel('verify');
           break;
+        case 'reset':
+          viewCarousel('reset');
+          break;
+        case 'blocked':
+          alert(`Account has been ${view}.`);
+          break;
         default:
+          console.log(data);
+          viewCarousel('password');
           break;
       }
     } catch (error) {
@@ -112,8 +108,8 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="password-footer">
         <menu className="password-action">
-          <button className="password-button" disabled={submit}>
-            <h6>Change</h6>
+          <button className="password-button" type="submit" disabled={submit}>
+            {submit ? 'Changing...' : 'Change'}
           </button>
         </menu>
         <nav className="password-buttons">

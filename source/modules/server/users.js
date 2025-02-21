@@ -289,7 +289,7 @@ server.post(`/${root}/register`, async (req, res) => {
       passwordChangeRequests: document.passwordChangeRequests,
     };
   }
-  async function pendingUser(email) {
+  async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
     if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
@@ -353,14 +353,14 @@ server.post(`/${root}/register`, async (req, res) => {
             });
           }
         case 'blocked':
-          let flagDate = verifyDate(user.restrictionExpiresAt);
+          let flagDate = await verifyDate(user.restrictionExpiresAt);
           if (flagDate === 'blocked') {
             return res.status(200).json({
               view: 'blocked',
               data: user,
             });
           } else {
-            await pendingUser(email);
+            await blocked_pending(email);
             return res.status(200).json({
               view: 'verify',
               data: user,
@@ -380,8 +380,8 @@ server.post(`/${root}/login`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  async function pendingUser(email) {
-    //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
+  //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
+  async function blocked_pending(email) {
     const blocked = await database.collection('blocked').findOne({ email });
     if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
 
@@ -420,29 +420,39 @@ server.post(`/${root}/login`, async (req, res) => {
     if (!user) {
       return res.status(200).json({ view: 'register', data: null });
     } else {
+      let flagPassword = await decryptValue(passwordHash, user.passwordHash);
       switch (user.status) {
         case 'pending':
-          return res.status(200).json({ view: 'verify', data: user });
-        case 'enabled':
-          let flagPassword = await decryptValue(passwordHash, user.passwordHash);
           if (flagPassword) {
-            return res.status(200).json({ view: 'login', data: user });
-          } else {
+            return res.status(200).json({ view: 'verify', data: user });
+          }
+        case 'enabled':
+          if (!flagPassword) {
             return res.status(200).json({ view: 'password', data: user });
+          } else {
+            return res.status(200).json({ view: 'login', data: user });
           }
         case 'blocked':
-          let flagDate = verifyDate(user.restrictionExpiresAt);
+          let flagDate = await verifyDate(user.restrictionExpiresAt);
           if (flagDate === 'blocked') {
             return res.status(200).json({
               view: 'blocked',
               data: user,
             });
           } else {
-            await pendingUser(email);
-            return res.status(200).json({
-              view: 'verify',
-              data: user,
-            });
+            await blocked_pending(email);
+            switch (flagPassword) {
+              case true:
+                return res.status(200).json({
+                  view: 'login',
+                  data: user,
+                });
+              case false:
+                return res.status(200).json({
+                  view: 'password',
+                  data: user,
+                });
+            }
           }
       }
     }
@@ -458,28 +468,25 @@ server.post(`/${root}/password`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  async function updateEntry(firstName, lastName, email, passwordHash) {
-    const passwordCode = await createCode(4); // Ensure passwordCode is defined
-
+  async function updateEntry(email) {
+    const passwordCode = await createCode(4);
     await database.collection('enabled').updateOne(
       { email: email },
       {
         $set: {
-          userIP: await trackPlace(req), // Pass req correctly
+          userIP: await trackPlace(req),
           updatedAt: await createDate('today'),
 
           passwordCode: passwordCode,
           passwordCodeExpiresAt: await createDate('tomorrow'),
-          passwordChangeRequests: 0,
         },
+        $inc: { passwordChangeRequests: 1 },
       }
     );
 
-    /* await sendEmail(email, activationCode, 'register'); */
-    // return result; // Return the result for debugging
+    /* await sendEmail(email, passwordCode, 'password'); */
   }
-
-  async function pendingUser(email) {
+  async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
     if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
@@ -507,11 +514,39 @@ server.post(`/${root}/password`, async (req, res) => {
         updatedAt: await createDate('today'),
         lastLogin: null,
       });
-
       //--|🠋 Delete the user from the 'blocked' collection 🠋|--//
       await database.collection('blocked').deleteOne({ email });
 
       /* await sendEmail(email, activationCode, 'register'); */
+    }
+  }
+  async function enabled_blocked(email) {
+    //--|🠋 Move User from 'enabled' to 'blocked' 🠋|--//
+    const enabled = await database.collection('enabled').findOne({ email });
+    if (!enabled) return; // Exit if the user doesn't exist in 'enabled'
+
+    const blocked = await database.collection('blocked').findOne({ email }); // Check if the user already exists in 'blocked'
+    if (!blocked) {
+      // Insert the document into 'blocked' collection
+      await database.collection('blocked').insertOne({
+        email: enabled.email,
+        passwordHash: enabled.passwordHash,
+
+        role: enabled.role,
+        status: 'blocked',
+        firstName: enabled.firstName,
+        lastName: enabled.lastName,
+
+        userIP: enabled.userIP,
+        createdAt: enabled.createdAt,
+        updatedAt: await createDate('today'),
+        lastLogin: null,
+
+        restrictionExpiresAt: await createDate('tomorrow'),
+      });
+
+      //--|🠋 Delete the user from the 'enabled' collection 🠋|--//
+      await database.collection('enabled').deleteOne({ email });
     }
   }
 
@@ -523,18 +558,27 @@ server.post(`/${root}/password`, async (req, res) => {
         case 'pending':
           return res.status(200).json({ view: 'verify', data: user });
         case 'enabled':
-          return res.status(200).json({ view: 'reset', data: user });
+          if (user.passwordChangeRequests < 3) {
+            await updateEntry(email);
+            return res.status(200).json({ view: 'reset', data: user });
+          } else {
+            await enabled_blocked(email);
+            return res.status(200).json({
+              view: 'blocked',
+              data: user,
+            });
+          }
         case 'blocked':
-          let flagDate = verifyDate(user.restrictionExpiresAt);
+          let flagDate = await verifyDate(user.restrictionExpiresAt);
           if (flagDate === 'blocked') {
             return res.status(200).json({
               view: 'blocked',
               data: user,
             });
           } else {
-            await pendingUser(email);
+            await blocked_pending(email);
             return res.status(200).json({
-              view: 'verify',
+              view: 'login',
               data: user,
             });
           }
@@ -552,7 +596,7 @@ server.post(`/${root}/verify`, async (req, res) => {
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
 
-  async function enabledUser(email) {
+  async function pending_enabled(email) {
     //--|🠋 Move User from 'pending' to 'enabled' 🠋|--//
     const pending = await database.collection('pending').findOne({ email });
     if (!pending) return; // Exit if the user doesn't exist in 'pending'
@@ -571,7 +615,7 @@ server.post(`/${root}/verify`, async (req, res) => {
 
         userIP: pending.userIP,
         createdAt: pending.createdAt,
-        updatedAt: await createDate('today'), // Already generated above
+        updatedAt: await createDate('today'),
         lastLogin: null,
 
         passwordCode: null,
@@ -584,32 +628,8 @@ server.post(`/${root}/verify`, async (req, res) => {
 
       /* await sendEmail(email, 'Your account is now enabled!', 'account-activated'); */
     }
-    /*
-    const document = await database.collection('pending').findOne({ email });
-    if (document) {
-      await database.collection('enabled').insertOne({
-        email: document.email,
-        passwordHash: document.passwordHash,
-
-        status: 'enabled',
-        role: document.role,
-        firstName: document.firstName,
-        lastName: document.lastName,
-
-        userIP: document.userIP,
-        createdAt: document.createdAt,
-        updatedAt: await createDate('today'),
-        lastLogin: null,
-
-        passwordCode: null,
-        passwordChangeRequests: 0,
-        passwordCodeExpiresAt: null,
-      });
-      return await document.deleteOne({ email });
-    }
-    */
   }
-  async function blockedUser(email) {
+  async function pending_blocked(email) {
     //--|🠋 Move User from 'pending' to 'blocked' 🠋|--//
     const pending = await database.collection('pending').findOne({ email });
     if (!pending) return; // Exit if the user doesn't exist in 'pending'
@@ -640,11 +660,9 @@ server.post(`/${root}/verify`, async (req, res) => {
   }
 
   try {
-    let flagEmail = await matchValue(email, user.email);
-    let flagPassword = await decryptValue(passwordHash, user.passwordHash);
     let flagActivation = await matchValue(activation, user.activationCode);
     if (flagActivation) {
-      await enabledUser(email);
+      await pending_enabled(email);
       return res.status(200).json({
         view: 'login',
         data: user,
@@ -659,7 +677,7 @@ server.post(`/${root}/verify`, async (req, res) => {
         data: user,
       });
     } else {
-      blockedUser(email);
+      await pending_blocked(email);
       return res.status(200).json({
         view: 'blocked',
         data: user,
