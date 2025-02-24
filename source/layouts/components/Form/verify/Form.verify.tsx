@@ -38,23 +38,28 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       let dialogue: string;
       switch (view) {
         case 'login':
+          dialogue = 'Account authorization complete.';
+
           viewCarousel('login');
+          toggleText('login', dialogue);
           break;
         case 'verify':
-          let attempts = data.activationAttempts;
-          if (data.activationAttempts > 0) {
-            dialogue = `You have ${3 - attempts} attempts left.`;
-            toggleText('verify', dialogue);
-          } else {
-            viewCarousel('login');
-          }
+          let messages: string[] = [
+            '',
+            'You have three attempts left.',
+            'You have two attempts left.',
+            'You have one attempt left.',
+          ];
+          let attempts: number = data.activationAttempts;
+          dialogue = messages[attempts] || '';
+
+          toggleText('verify', dialogue);
           break;
         case 'blocked':
-          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
-          break;
-        default:
-          console.log(data);
-          viewCarousel('verify');
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+          viewCarousel('login');
+          toggleText('login', dialogue);
           break;
       }
     } catch (error) {

@@ -41,12 +41,20 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         passwordNew: password,
       });
       const { view, data } = response.data;
+
+      let dialogue: string;
       switch (view) {
         case 'login':
+          dialogue = 'Your password has been successfully reset.';
+
           viewCarousel('login');
+          toggleText('login', dialogue);
           break;
-        default:
+        case 'reset':
+          dialogue = 'Invalid recovery code. Check your email.';
+
           viewCarousel('reset');
+          toggleText('reset', dialogue);
           break;
       }
     } catch (error) {
@@ -103,8 +111,8 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         <input
           required
           id="password"
-          name="Password"
           type="password"
+          name="Password"
           placeholder="//--|🠊 New Password 🠈|--//"
           // --- //
           value={password}

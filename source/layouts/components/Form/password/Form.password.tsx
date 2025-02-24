@@ -41,23 +41,34 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       let dialogue: string;
       switch (view) {
         case 'register':
+          dialogue = 'You cannot change the password for an account that has not been created.';
+
           viewCarousel('register');
+          toggleText('register', dialogue);
           break;
         case 'login':
+          dialogue = 'Account recovered. Please log in and check your email to authorize.';
+
           viewCarousel('login');
+          toggleText('login', dialogue);
           break;
         case 'verify':
+          dialogue = 'Please verify your account before requesting a password change.';
+
           viewCarousel('verify');
+          toggleText('verify', dialogue);
           break;
         case 'reset':
+          dialogue = 'Please enter the recovery code sent to your email, followed by the new password.';
+
           viewCarousel('reset');
+          toggleText('reset', dialogue);
           break;
         case 'blocked':
-          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
-          break;
-        default:
-          console.log(data);
-          viewCarousel('password');
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+          viewCarousel('login');
+          toggleText('login', dialogue);
           break;
       }
     } catch (error) {

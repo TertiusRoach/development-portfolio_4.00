@@ -24,7 +24,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Action Element(s) 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
-  let [attempts, setAttempts] = useState(2);
+  let [attempts, setAttempts] = useState(0);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -39,31 +39,48 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
       let dialogue: string;
       switch (view) {
-        case 'register':
-          viewCarousel('register');
-          break;
         case 'login':
+          alert('//--|🠊 Login Successful 🠈|--//');
           window.location.href = '/dashboard';
           break;
+        case 'register':
+          dialogue = 'No account found with this email. Would you like to register?';
+          viewCarousel('register');
+          break;
         case 'password':
-          if (attempts > 0) {
-            dialogue = `You have ${attempts} attempts left.`;
-            setAttempts(attempts - 1);
+          let messages: string[] = [
+            'You have three attempts left.',
+            'You have two attempts left.',
+            'You have one attempt left.',
+          ];
+          if (attempts < 3) {
+            dialogue = messages[attempts];
+
+            setAttempts(attempts + 1);
             toggleText('login', dialogue);
           } else {
-            setAttempts(3);
+            dialogue = 'Would you like to change your password?';
+            setAttempts(0);
             viewCarousel('password');
+            toggleText('password', dialogue);
+
+            setTimeout(() => {
+              dialogue = 'Sign in to access your account.';
+              toggleText('login', dialogue);
+            }, 250);
           }
           break;
         case 'verify':
+          dialogue = 'Please verify your account before signing in.';
+
           viewCarousel('verify');
+          toggleText('verify', dialogue);
           break;
         case 'blocked':
-          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
-          break;
-        default:
-          console.log(data);
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
           viewCarousel('login');
+          toggleText('login', dialogue);
           break;
       }
     } catch (error) {

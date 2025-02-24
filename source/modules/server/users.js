@@ -486,7 +486,7 @@ server.post(`/${root}/login`, async (req, res) => {
             switch (flagPassword) {
               case true:
                 return res.status(200).json({
-                  view: 'login',
+                  view: 'verify',
                   data: user,
                 });
               case false:
@@ -741,15 +741,17 @@ server.post(`/${root}/verify`, async (req, res) => {
         { email: email }, // Find the document by email
         { $inc: { activationAttempts: 1 } } // Increment activationAttempts by 1
       );
+      let pendingDocument = await database.collection('pending').findOne({ email });
       return res.status(200).json({
         view: 'verify',
-        data: user,
+        data: pendingDocument,
       });
     } else {
       await pending_blocked(email);
+      let blockedDocument = await database.collection('blocked').findOne({ email });
       return res.status(200).json({
         view: 'blocked',
-        data: user,
+        data: blockedDocument,
       });
     }
   } catch (error) {
@@ -785,13 +787,18 @@ server.post(`/${root}/reset`, async (req, res) => {
   try {
     let flagRenewal = await matchValue(renewal, user.passwordCode);
     let flagPassword = await decryptValue(passwordNew, user.passwordHash);
-    if (flagRenewal === true && flagPassword === false) {
+    if (flagRenewal) {
       await updatePassword(email, passwordNew);
+      return res.status(200).json({
+        view: 'login',
+        data: user,
+      });
+    } else {
+      return res.status(200).json({
+        view: 'reset',
+        data: user,
+      });
     }
-    return res.status(200).json({
-      view: 'login',
-      data: user,
-    });
   } catch (error) {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   }

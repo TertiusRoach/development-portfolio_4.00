@@ -45,20 +45,29 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
       let dialogue: string;
       switch (view) {
         case 'login':
+          dialogue = 'You already have an account.';
+
           viewCarousel('login');
+          toggleText('login', dialogue);
           break;
         case 'password':
+          dialogue = 'You already have an account. Reset your password here.';
+
           viewCarousel('password');
+          toggleText('password', dialogue);
           break;
         case 'verify':
+          dialogue = 'Please check your email for the activation code.';
+
           viewCarousel('verify');
+          toggleText('verify', dialogue);
           break;
         case 'blocked':
-          alert(`Your account has been ${view} until ${data.restrictionExpiresAt}.`);
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+          viewCarousel('login');
+          toggleText('login', dialogue);
           break;
-        default:
-          alert(view);
-          viewCarousel('register');
       }
     } catch (error) {
       axiosError(error);
