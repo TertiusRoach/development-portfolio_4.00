@@ -4,8 +4,8 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
+import { useEmail } from '../../../../modules/utilities/context/EmailContext';
+import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
 
 interface InfoProps {
   info: {
