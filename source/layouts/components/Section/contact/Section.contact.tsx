@@ -7,7 +7,7 @@ import FormContact from '../../Form/contact/Form.contact';
 import React, { useEffect, useRef, useState } from 'react';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface ContactProps {
   info: {

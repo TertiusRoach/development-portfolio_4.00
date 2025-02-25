@@ -13,8 +13,8 @@ import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeR
 
 import { getSVG } from './modules/utilities/bin/getFile';
 import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/bin/getOrientation';
-import getIdentification from './modules/utilities/bin/getIdentification';
+import getOrientation from './modules/utilities/getOrientation';
+import getIdentification from './modules/utilities/getIdentification';
 
 const pageName = 'resume';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;

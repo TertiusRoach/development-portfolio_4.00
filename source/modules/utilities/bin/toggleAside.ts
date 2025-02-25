@@ -1,4 +1,4 @@
-import getIdentification from './getIdentification';
+import getIdentification from '../getIdentification';
 //--|🠋 utilities/showAside.ts 🠋|--//
 export default function toggleAside(containerElement: 'index-leftbar' | 'index-rightbar' | string) {
   const aside = document.querySelector(`aside#${containerElement}`) as HTMLElement;

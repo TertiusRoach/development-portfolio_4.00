@@ -1,4 +1,4 @@
-import getIdentification from './getIdentification';
+import getIdentification from '../getIdentification';
 //--|🠋 utilities/getSVG.ts 🠋|--//
 export function getSVG(labelName: string): { dark: String; medium: String; light: String } {
   const colorShades: Array<string> = ['dark', 'medium', 'light'];

@@ -1,4 +1,4 @@
-import getIdentification from './getIdentification';
+import getIdentification from '../getIdentification';
 //--|🠋 utilities/showSection.ts 🠋|--//
 export default function toggleSection(button: HTMLElement) {
   const section = document.querySelector(`section[class*='${button.className.split('-')[0]}']`) as HTMLElement;

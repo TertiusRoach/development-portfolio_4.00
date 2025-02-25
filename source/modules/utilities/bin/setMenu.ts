@@ -1,4 +1,4 @@
-import getOrientation from './getOrientation';
+import getOrientation from '../getOrientation';
 //--|🠋 utilities/setMenu.ts 🠋|--//
 export default function setMenu(blockName: String, labelName: String) {
   // Get currently active section and the selected section elements

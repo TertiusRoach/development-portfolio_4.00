@@ -9,8 +9,8 @@ import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import getScroll from '../../../../modules/utilities/bin/getScroll';
 import toggleAside from '../../../../modules/utilities/bin/toggleAside';
 import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/bin/getOrientation';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//

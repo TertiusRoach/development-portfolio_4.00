@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import getScroll from '../../../../modules/utilities/bin/getScroll';
 import toggleAside from '../../../../modules/utilities/bin/toggleAside';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/fade/Button.fade';

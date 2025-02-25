@@ -7,8 +7,8 @@ import AsideLeftbar from '../../../components/Aside/leftbar/Aside.leftbar';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/bin/getOrientation';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
   info: {

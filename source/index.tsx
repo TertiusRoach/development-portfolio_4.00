@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 import './styles/IndexBody.scss';
 import { getSVG } from './modules/utilities/bin/getFile';
 import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/bin/getOrientation';
-import getIdentification from './modules/utilities/bin/getIdentification';
+import getOrientation from './modules/utilities/getOrientation';
+import getIdentification from './modules/utilities/getIdentification';
 
 // Import container components
 import IndexMain from './layouts/containers/Main/IndexMain/IndexMain';

@@ -9,7 +9,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface DefaultProps {
   info: {

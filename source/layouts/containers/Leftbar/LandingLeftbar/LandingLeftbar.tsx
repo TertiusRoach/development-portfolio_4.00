@@ -12,8 +12,8 @@ import { PasswordProvider } from '../../../../modules/utilities/context/Password
 //--|🠉 Context 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/bin/getOrientation';
-import getIdentification from '../../../../modules/utilities/bin/getIdentification';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormVerify from '../../../components/Form/verify/Form.verify';

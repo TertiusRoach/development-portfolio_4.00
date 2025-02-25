@@ -1,4 +1,4 @@
-import getIdentification from './bin/getIdentification';
+import getIdentification from './getIdentification';
 //--|🠋 utilities/getResolution.ts 🠋|--//
 export default function getResolution(): String {
   const width = window.innerWidth;
