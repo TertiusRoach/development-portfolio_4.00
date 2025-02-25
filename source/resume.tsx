@@ -12,7 +12,7 @@ import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeft
 import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 
 import { getSVG } from './modules/utilities/bin/getFile';
-import getResolution from './modules/utilities/bin/getResolution';
+import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/bin/getOrientation';
 import getIdentification from './modules/utilities/bin/getIdentification';
 

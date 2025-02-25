@@ -11,7 +11,7 @@ import { EmailProvider } from '../../../../modules/utilities/context/EmailContex
 import { PasswordProvider } from '../../../../modules/utilities/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../../../../modules/utilities/bin/getResolution';
+import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/bin/getOrientation';
 import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 //--|🠉 Utilities 🠉|--//

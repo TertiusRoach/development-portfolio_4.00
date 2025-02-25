@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 import './styles/IndexBody.scss';
 import { getSVG } from './modules/utilities/bin/getFile';
-import getResolution from './modules/utilities/bin/getResolution';
+import getResolution from './modules/utilities/getResolution';
 import getOrientation from './modules/utilities/bin/getOrientation';
 import getIdentification from './modules/utilities/bin/getIdentification';
 

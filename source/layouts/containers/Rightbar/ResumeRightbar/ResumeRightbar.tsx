@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import getResolution from '../../../../modules/utilities/bin/getResolution';
+import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/bin/getOrientation';
 import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
 import AsideProjects from '../../../components/Aside/projects/Aside.projects';
