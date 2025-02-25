@@ -1,5 +1,7 @@
-@use '../layouts/containers/color-palette.scss';
-@use '../layouts/containers/global-styling.scss';
+@use '../layouts/design/Global.scss';
+@use '../layouts/design/Mixins.scss';
+@use '../layouts/design/Palette.scss';
+
 @use '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
 @use '../layouts/containers/Main/ResumeMain/ResumeMain.scss';
