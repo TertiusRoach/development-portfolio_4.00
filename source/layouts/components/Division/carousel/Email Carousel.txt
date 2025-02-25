@@ -1,35 +1,23 @@
 01 - Gmail (Google)
 Link: https://accounts.google.com/login?service=mail
 
-02 - Outlook (Microsoft)
+02 - Apple Mail (iCloud)
+Link: https://www.icloud.com/mail
+
+03 - Outlook (Microsoft)
 Link: https://go.microsoft.com/fwlink/p/?linkid=2125442
 
-03 - Yahoo Mail (Yahoo)
+04 - Yahoo Mail (Yahoo)
 Link: https://mail.yahoo.com/
 
-04 - Apple Mail (iCloud)
-Link:
-
 05 - ProtonMail (Proton Technologies)
-Link:
+Link: https://mail.proton.me/
 
-06 - AOL Mail (AOL)
-Link:
+06 - Zoho Mail (Zoho)
+Link: https://www.zoho.com/mail/login.html
 
-07 - Zoho Mail (Zoho)
-Link:
+07 - AOL Mail (AOL)
+Link: https://mail.aol.com/
 
 08 - Mail.com (1&1)
-Link:
-
-09 - GMX Mail (1&1)
-Link:
-
-10 - Yandex Mail (Yandex)
-Link:
-
-11 - Tutanota (Tutanota GmbH)
-Link:
-
-12 - FastMail (FastMail)
-Link:
+Link: https://www.mail.com/
