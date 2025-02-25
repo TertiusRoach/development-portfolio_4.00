@@ -1,23 +1,31 @@
 01 - Gmail (Google)
 Link: https://accounts.google.com/login?service=mail
+Image: https://logos-world.net/wp-content/uploads/2020/09/Google-Symbol.png
 
 02 - Apple Mail (iCloud)
 Link: https://www.icloud.com/mail
+Image: https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg
 
 03 - Outlook (Microsoft)
 Link: https://go.microsoft.com/fwlink/p/?linkid=2125442
+Image: 
 
 04 - Yahoo Mail (Yahoo)
 Link: https://mail.yahoo.com/
+Image:
 
 05 - ProtonMail (Proton Technologies)
 Link: https://mail.proton.me/
+Image:
 
 06 - Zoho Mail (Zoho)
 Link: https://www.zoho.com/mail/login.html
+Image:
 
 07 - AOL Mail (AOL)
 Link: https://mail.aol.com/
+Image:
 
 08 - Mail.com (1&1)
 Link: https://www.mail.com/
+Image:
