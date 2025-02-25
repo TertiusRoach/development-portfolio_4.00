@@ -39,9 +39,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
       let dialogue: string;
       switch (view) {
-        case 'login':
-          alert('//--|🠊 Login Successful 🠈|--//');
-          window.location.href = '/dashboard';
+        case 'launch':
+          alert('//--|🠊 Expand Header.launch 🠈|--//');
+
+          /* window.location.href = '/dashboard'; */
+
           break;
         case 'register':
           dialogue = 'No account found with this email. Would you like to register?';
@@ -77,10 +79,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           toggleText('verify', dialogue);
           break;
         case 'blocked':
+          alert('//--|🠊 Expand Footer.blocked 🠈|--//');
+          /*
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
           viewCarousel('login');
           toggleText('login', dialogue);
+          */
           break;
       }
     } catch (error) {

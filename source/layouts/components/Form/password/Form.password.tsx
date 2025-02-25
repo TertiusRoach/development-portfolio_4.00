@@ -65,6 +65,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           toggleText('reset', dialogue);
           break;
         case 'blocked':
+          alert('//--|🠊 Expand Footer.blocked 🠈|--//');
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
           viewCarousel('login');

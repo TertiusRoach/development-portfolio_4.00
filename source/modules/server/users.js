@@ -3,13 +3,14 @@
 const cors = require('cors');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const nodemailer = require('nodemailer');
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
-require('dotenv').config(); // Ensure you load environment variables
 
 let database;
+dotenv.config();
 const port = 3000;
 const root = 'users';
 const server = express();
@@ -53,12 +54,20 @@ server.get(`/${root}`, async (req, res) => {
 
 //--|🠋 Action Functions 🠋|--//
 async function sendEmail(email, activationCode, page) {
+  let transporter = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: Number(process.env.MAIL_PORT),
+    auth: {
+      user: 'api' || process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  });
+
   let mailOptions;
   switch (page) {
     case 'register':
       mailOptions = {
-        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `"Verify Email - Trinity Apps" <${process.env.DOMAIN_PASS}>`, // Replace with a desired sender name and email
+        from: `"Verify Account - Trinity {A]pps" <${process.env.MAIL_FROM}>`, // Replace with a desired sender name and email
         to: email, // Recipient's email
         subject: 'Activate your Account',
         text: `Your activation code is: ${activationCode}. It will expire in 24 hours.`,
@@ -128,10 +137,9 @@ async function sendEmail(email, activationCode, page) {
       break;
     case 'password':
       mailOptions = {
-        // Error sending activation email: Error: Mail command failed: 501 5.1.7 Bad sender address syntax
-        from: `"Reset Password - Trinity Apps" <${process.env.DOMAIN_PASS}>`, // Replace with a desired sender name and email
+        from: `"Reset Password - Trinity {A]pps" <${process.env.MAIL_FROM}>`, // Replace with a desired sender name and email
         to: email, // Recipient's email
-        subject: '',
+        subject: 'You or someone else requested to reset the password linked to this email.',
         text: `Reset your Password with: ${activationCode}. It will expire in 24 hours.`,
         // Write a nice HTML email outline with inline CSS styling with a similar layout for the email as shown in die example screenshot.
         html: `<!DOCTYPE html>
@@ -199,15 +207,6 @@ async function sendEmail(email, activationCode, page) {
       break;
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    auth: {
-      user: process.env.MAILTRAP_USER,
-      pass: process.env.MAILTRAP_PASS,
-    },
-  });
-
   transporter.verify((error, success) => {
     if (error) {
       console.error('SMTP Connection Error:', error);
@@ -232,7 +231,7 @@ server.post(`/${root}/register`, async (req, res) => {
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||
     (await database.collection('blocked').findOne({ email }));
-
+  //--|🠋 CRUD 🠋|--//
   async function createEntry(firstName, lastName, email, passwordHash) {
     const activationCode = await createCode(4); // Ensure activationCode is defined
     await database.collection('pending').insertOne({
@@ -248,10 +247,10 @@ server.post(`/${root}/register`, async (req, res) => {
       activationAttempts: 0,
       activationCodeExpiresAt: await createDate('tomorrow'),
 
-      userIP: await trackPlace(req),
-      createdAt: await createDate('today'),
-      updatedAt: null,
       lastLogin: null,
+      userIP: await trackPlace(req),
+      updatedAt: null,
+      createdAt: await createDate('today'),
 
       /*
         passwordCode: null,
@@ -260,7 +259,7 @@ server.post(`/${root}/register`, async (req, res) => {
       */
     });
 
-    /* await sendEmail(email, activationCode, 'register'); */
+    await sendEmail(email, activationCode, 'register');
   }
   async function readEntry(email) {
     const document =
@@ -302,19 +301,22 @@ server.post(`/${root}/register`, async (req, res) => {
         },
       }
     );
-    /* await sendEmail(email, activationCode, 'register'); */
+    await sendEmail(email, activationCode, 'register');
   }
+
+  //--|🠋 Move Document between Collections 🠋|--//
   async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
-    if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
+    if (!blocked) return; //--|🠈 Exit if the user doesn't exist in 'blocked' 🠈|--//
 
-    const pending = await database.collection('pending').findOne({ email }); // Check the correct collection
+    const pending = await database.collection('pending').findOne({ email }); //--|🠈 Check the correct collection 🠈|--//
     if (!pending) {
-      const activationCode = await createCode(4); // Generate activation code once
+      const activationCode = await createCode(4); //--|🠈 Generate activation code once 🠈|--//
 
       //--|🠋 Insert the document into 'pending' collection 🠋|--//
       await database.collection('pending').insertOne({
+        _id: blocked._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: blocked.email,
         passwordHash: blocked.passwordHash,
 
@@ -336,7 +338,7 @@ server.post(`/${root}/register`, async (req, res) => {
       //--|🠋 Delete the user from the 'blocked' collection 🠋|--//
       await database.collection('blocked').deleteOne({ email });
 
-      /* await sendEmail(email, activationCode, 'register'); */
+      await sendEmail(email, activationCode, 'register');
     }
   }
 
@@ -411,19 +413,19 @@ server.post(`/${root}/login`, async (req, res) => {
         },
       }
     );
-    /* await sendEmail(email, activationCode, 'register'); */
+    await sendEmail(email, activationCode, 'register');
   }
   async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
-    if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
+    if (!blocked) return; //--|🠈 Exit if the user doesn't exist in 'blocked' 🠈|--//
 
-    const pending = await database.collection('pending').findOne({ email }); // Check the correct collection
+    const pending = await database.collection('pending').findOne({ email }); //--|🠈 Check the correct collection 🠈|--//
+    const activationCode = await createCode(4); //--|🠈 Generate activation code once 🠈|--//
     if (!pending) {
-      const activationCode = await createCode(4); // Generate activation code once
-
       //--|🠋 Insert the document into 'pending' collection 🠋|--//
       await database.collection('pending').insertOne({
+        _id: blocked._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: blocked.email,
         passwordHash: blocked.passwordHash,
 
@@ -445,7 +447,7 @@ server.post(`/${root}/login`, async (req, res) => {
       //--|🠋 Delete the user from the 'blocked' collection 🠋|--//
       await database.collection('blocked').deleteOne({ email });
 
-      /* await sendEmail(email, activationCode, 'register'); */
+      await sendEmail(email, activationCode, 'register');
     }
   }
 
@@ -469,8 +471,11 @@ server.post(`/${root}/login`, async (req, res) => {
           if (flagPassword) {
             await database
               .collection('enabled')
-              .updateOne({ email: email }, { $set: { lastLogin: await createDate('today') } });
-            return res.status(200).json({ view: 'login', data: user });
+              .updateOne(
+                { email: email },
+                { $set: { userIP: await trackPlace(req), lastLogin: await createDate('today') } }
+              );
+            return res.status(200).json({ view: 'launch', data: user });
           } else {
             return res.status(200).json({ view: 'password', data: user });
           }
@@ -525,7 +530,36 @@ server.post(`/${root}/password`, async (req, res) => {
         $inc: { passwordChangeRequests: 1 },
       }
     );
-    /* await sendEmail(email, passwordCode, 'password'); */
+    await sendEmail(email, passwordCode, 'password');
+  }
+  async function readEntry(email) {
+    const document =
+      (await database.collection('enabled').findOne({ email })) ||
+      (await database.collection('pending').findOne({ email })) ||
+      (await database.collection('blocked').findOne({ email }));
+    return {
+      email: document.email,
+
+      role: document.role,
+      status: document.status,
+      firstName: document.firstName,
+      lastName: document.lastName,
+
+      activationCode: document.activationCode,
+      activationAttempts: document.activationAttempts,
+      activationCodeExpiresAt: document.activationCodeExpiresAt,
+
+      userIP: document.userIP,
+      createdAt: document.createdAt,
+      updatedAt: document.updatedAt,
+      lastLogin: document.lastLogin,
+
+      passwordCode: document.passwordCode,
+      passwordCodeExpiresAt: document.passwordCodeExpiresAt,
+      passwordChangeRequests: document.passwordChangeRequests,
+
+      restrictionExpiresAt: document.restrictionExpiresAt,
+    };
   }
   async function updateActivation(email) {
     let activationCode = await createCode(4); // Ensure activationCode is defined
@@ -540,20 +574,20 @@ server.post(`/${root}/password`, async (req, res) => {
         },
       }
     );
-    /* await sendEmail(email, activationCode, 'register'); */
+    await sendEmail(email, activationCode, 'register');
   }
 
   async function blocked_pending(email) {
     //--|🠋 Move User from 'blocked' to 'pending' 🠋|--//
     const blocked = await database.collection('blocked').findOne({ email });
-    if (!blocked) return; // Exit if the user doesn't exist in 'blocked'
+    if (!blocked) return; //--|🠈 Exit if the user doesn't exist in 'blocked' 🠈|--//
 
-    const pending = await database.collection('pending').findOne({ email }); // Check the correct collection
+    const pending = await database.collection('pending').findOne({ email }); //--|🠈 Check the correct collection 🠈|--//
+    const activationCode = await createCode(4); //--|🠈 Generate activation code once 🠈|--//
     if (!pending) {
-      const activationCode = await createCode(4); // Generate activation code once
-
       //--|🠋 Insert the document into 'pending' collection 🠋|--//
       await database.collection('pending').insertOne({
+        _id: blocked._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: blocked.email,
         passwordHash: blocked.passwordHash,
 
@@ -574,18 +608,19 @@ server.post(`/${root}/password`, async (req, res) => {
       //--|🠋 Delete the user from the 'blocked' collection 🠋|--//
       await database.collection('blocked').deleteOne({ email });
 
-      /* await sendEmail(email, activationCode, 'register'); */
+      await sendEmail(email, activationCode, 'register');
     }
   }
   async function enabled_blocked(email) {
     //--|🠋 Move User from 'enabled' to 'blocked' 🠋|--//
     const enabled = await database.collection('enabled').findOne({ email });
-    if (!enabled) return; // Exit if the user doesn't exist in 'enabled'
+    if (!enabled) return; //--|🠈 Exit if the user doesn't exist in 'enabled' 🠈|--//
 
-    const blocked = await database.collection('blocked').findOne({ email }); // Check if the user already exists in 'blocked'
+    const blocked = await database.collection('blocked').findOne({ email }); //--|🠈 Check if the user already exists in 'blocked' 🠈|--//
     if (!blocked) {
-      // Insert the document into 'blocked' collection
+      //--|🠋 Insert the document into 'blocked' collection 🠋|--//
       await database.collection('blocked').insertOne({
+        _id: enabled._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: enabled.email,
         passwordHash: enabled.passwordHash,
 
@@ -627,9 +662,8 @@ server.post(`/${root}/password`, async (req, res) => {
             switch (flagRenewal) {
               case 'expired':
                 await updateRenewal(email);
-                break;
+                return res.status(200).json({ view: 'reset', data: user });
             }
-            return res.status(200).json({ view: 'reset', data: user });
           } else {
             await enabled_blocked(email);
             return res.status(200).json({
@@ -668,12 +702,13 @@ server.post(`/${root}/verify`, async (req, res) => {
   async function pending_enabled(email) {
     //--|🠋 Move User from 'pending' to 'enabled' 🠋|--//
     const pending = await database.collection('pending').findOne({ email });
-    if (!pending) return; // Exit if the user doesn't exist in 'pending'
+    if (!pending) return; //--|🠈 Exit if the user doesn't exist in 'pending' 🠈|--//
 
-    const enabled = await database.collection('enabled').findOne({ email }); // Check if the user already exists in 'enabled'
+    const enabled = await database.collection('enabled').findOne({ email }); //--|🠈 Check if the user already exists in 'enabled' 🠈|--//
     if (!enabled) {
       //--|🠋 Insert the document into 'enabled' collection 🠋|--//
       await database.collection('enabled').insertOne({
+        _id: pending._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: pending.email,
         passwordHash: pending.passwordHash,
 
@@ -695,18 +730,19 @@ server.post(`/${root}/verify`, async (req, res) => {
       //--|🠋 Delete the user from the 'pending' collection 🠋|--//
       await database.collection('pending').deleteOne({ email });
 
-      /* await sendEmail(email, 'Your account is now enabled!', 'account-activated'); */
+      await sendEmail(email, 'Your account is now enabled!', 'account-activated');
     }
   }
   async function pending_blocked(email) {
     //--|🠋 Move User from 'pending' to 'blocked' 🠋|--//
     const pending = await database.collection('pending').findOne({ email });
-    if (!pending) return; // Exit if the user doesn't exist in 'pending'
+    if (!pending) return; //--|🠈 Exit if the user doesn't exist in 'pending' 🠈|--//
 
-    const blocked = await database.collection('blocked').findOne({ email }); // Check if the user already exists in 'blocked'
+    const blocked = await database.collection('blocked').findOne({ email }); //--|🠈 Check if the user already exists in 'blocked' 🠈|--//
     if (!blocked) {
-      // Insert the document into 'blocked' collection
+      //--|🠋 Insert the document into 'blocked' collection 🠋|--//
       await database.collection('blocked').insertOne({
+        _id: pending._id, //--|🠈 Preserve the same ObjectId 🠈|--//
         email: pending.email,
         passwordHash: pending.passwordHash,
 
