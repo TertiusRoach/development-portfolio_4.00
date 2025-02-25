@@ -10,7 +10,7 @@ import { getSVG } from '../../../../modules/utilities/bin/getFile';
 
 //--|🠋 Design 🠋|--//
 import './Button.fade.scss';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getIdentification from '../../../../modules/scripts/getIdentification';
 //--|🠉 Design 🠉|--//
 
 interface FadeProps {

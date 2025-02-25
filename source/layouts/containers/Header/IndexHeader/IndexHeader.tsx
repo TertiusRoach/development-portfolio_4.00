@@ -6,9 +6,9 @@ import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import getScroll from '../../../../modules/utilities/bin/getScroll';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/getOrientation';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getResolution from '../../../../modules/scripts/getResolution';
+import getOrientation from '../../../../modules/scripts/getOrientation';
+import getIdentification from '../../../../modules/scripts/getIdentification';
 interface HeaderProps {
   info: {
     resolution: String;
