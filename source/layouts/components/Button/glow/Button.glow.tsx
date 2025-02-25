@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//

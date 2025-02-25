@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from 'react';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
-import toggleSection from '../../../../modules/utilities/toggleSection';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
+import getScroll from '../../../../modules/utilities/bin/getScroll';
+import toggleAside from '../../../../modules/utilities/bin/toggleAside';
+import toggleSection from '../../../../modules/utilities/bin/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 
 interface ContactProps {
   labelName: 'contact';

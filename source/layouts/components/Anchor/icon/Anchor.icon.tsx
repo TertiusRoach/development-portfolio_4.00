@@ -2,7 +2,7 @@
 import './Anchor.icon.scss';
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 
 interface IconProps {
   href: string;

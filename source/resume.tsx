@@ -11,10 +11,10 @@ import ResumeOverlay from './layouts/containers/Overlay/ResumeOverlay/ResumeOver
 import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar';
 import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 
-import { getSVG } from './modules/utilities/getFile';
-import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/getOrientation';
-import getIdentification from './modules/utilities/getIdentification';
+import { getSVG } from './modules/utilities/bin/getFile';
+import getResolution from './modules/utilities/bin/getResolution';
+import getOrientation from './modules/utilities/bin/getOrientation';
+import getIdentification from './modules/utilities/bin/getIdentification';
 
 const pageName = 'resume';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;

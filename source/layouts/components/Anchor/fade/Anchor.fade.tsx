@@ -5,12 +5,12 @@ import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 
 //--|🠋 Utilities 🠋|--//
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 //--|🠉 Utilities 🠉|--//
 
 //--|🠋 Design 🠋|--//
 import './Anchor.fade.scss';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 //--|🠉 Design 🠉|--//
 
 interface FadeProps {

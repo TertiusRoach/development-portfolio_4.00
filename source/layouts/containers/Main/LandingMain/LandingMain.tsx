@@ -11,9 +11,9 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/getOrientation';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getResolution from '../../../../modules/utilities/bin/getResolution';
+import getOrientation from '../../../../modules/utilities/bin/getOrientation';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';

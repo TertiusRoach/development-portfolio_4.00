@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from 'react';
 import MenuButton from '../../Menu/button/Menu.button';
 import ButtonFade from '../../Button/fade/Button.fade';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 
 interface DefaultProps {
   info: {

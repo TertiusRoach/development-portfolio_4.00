@@ -1,13 +1,13 @@
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/getOrientation';
-import toggleSection from '../../../../modules/utilities/toggleSection';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getResolution from '../../../../modules/utilities/bin/getResolution';
+import getOrientation from '../../../../modules/utilities/bin/getOrientation';
+import toggleSection from '../../../../modules/utilities/bin/toggleSection';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 
 interface InfoProps {
   info: {

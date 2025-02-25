@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
 import './styles/IndexBody.scss';
-import { getSVG } from './modules/utilities/getFile';
-import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/getOrientation';
-import getIdentification from './modules/utilities/getIdentification';
+import { getSVG } from './modules/utilities/bin/getFile';
+import getResolution from './modules/utilities/bin/getResolution';
+import getOrientation from './modules/utilities/bin/getOrientation';
+import getIdentification from './modules/utilities/bin/getIdentification';
 
 // Import container components
 import IndexMain from './layouts/containers/Main/IndexMain/IndexMain';

@@ -6,9 +6,9 @@ import React, { useState, useEffect } from 'react';
 
 import './styles/LandingBody.scss';
 
-import { getSVG } from './modules/utilities/getFile';
-import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/getOrientation';
+import { getSVG } from './modules/utilities/bin/getFile';
+import getResolution from './modules/utilities/bin/getResolution';
+import getOrientation from './modules/utilities/bin/getOrientation';
 
 // Import container components
 import './styles/ResumeBody.scss'; // You mentioned you're redoing this, so we can skip this for now.

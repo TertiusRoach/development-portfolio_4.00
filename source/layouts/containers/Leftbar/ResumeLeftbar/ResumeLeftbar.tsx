@@ -4,11 +4,11 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AsideLeftbar from '../../../components/Aside/leftbar/Aside.leftbar';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/getOrientation';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getResolution from '../../../../modules/utilities/bin/getResolution';
+import getOrientation from '../../../../modules/utilities/bin/getOrientation';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 
 interface InfoProps {
   info: {

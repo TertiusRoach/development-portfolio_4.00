@@ -3,9 +3,9 @@ import './Section.skills.scss';
 import { useMediaQuery } from 'react-responsive';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 
 interface SkillsProps {
   info: {

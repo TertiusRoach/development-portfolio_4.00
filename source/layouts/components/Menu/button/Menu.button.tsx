@@ -8,7 +8,7 @@ import ButtonFade from '../../Button/fade/Button.fade';
 // import ButtonFrame from '../../Button/frame/Button.frame';
 // import ButtonSlide from '../../Button/slide/Button.slide';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 
 interface MenuProps {
   criteria: {

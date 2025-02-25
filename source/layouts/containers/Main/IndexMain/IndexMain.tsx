@@ -5,10 +5,10 @@ import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import { getSVG } from '../../../../modules/utilities/getFile';
-import getScroll from '../../../../modules/utilities/getScroll';
-import toggleAside from '../../../../modules/utilities/toggleAside';
-import getIdentification from '../../../../modules/utilities/getIdentification';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
+import getScroll from '../../../../modules/utilities/bin/getScroll';
+import toggleAside from '../../../../modules/utilities/bin/toggleAside';
+import getIdentification from '../../../../modules/utilities/bin/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/fade/Button.fade';

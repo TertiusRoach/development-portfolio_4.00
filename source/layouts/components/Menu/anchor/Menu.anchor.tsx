@@ -8,7 +8,7 @@ import AnchorFade from '../../Anchor/fade/Anchor.fade';
 // import AnchorFrame from '../../Anchor/frame/Anchor.frame';
 // import anchorSlide from '../../Anchor/slide/Anchor.slide';
 
-import { getSVG } from '../../../../modules/utilities/getFile';
+import { getSVG } from '../../../../modules/utilities/bin/getFile';
 
 interface MenuProps {
   criteria: {
