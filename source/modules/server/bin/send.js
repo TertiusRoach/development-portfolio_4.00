@@ -1,4 +1,5 @@
 // send.js
+/*
 require('dotenv').config();
 const Queue = require('bull');
 const Redis = require('ioredis');
@@ -91,3 +92,4 @@ cron.schedule('0 0 * * *', async () => {
 });
 
 module.exports = { sendActivationEmail };
+*/
