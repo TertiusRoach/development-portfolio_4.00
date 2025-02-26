@@ -1,7 +1,7 @@
 // LandingLeftbar.tsx
 //--|🠋 Frameworks 🠋|--//
-import axios, { AxiosError } from 'axios';
 import ReactDOM from 'react-dom/client';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
@@ -10,20 +10,14 @@ import React, { useState, useEffect } from 'react';
 import { EmailProvider } from '../../../../modules/utilities/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/utilities/context/PasswordContext';
 //--|🠉 Context 🠉|--//
+//--|🠋 Components 🠋|--//
+import FormVerify from '../../../components/Form/verify/Form.verify';
+//--|🠉 Components 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../../../modules/scripts/getResolution';
 import getOrientation from '../../../../modules/scripts/getOrientation';
 import getIdentification from '../../../../modules/scripts/getIdentification';
 //--|🠉 Utilities 🠉|--//
-//--|🠋 Components 🠋|--//
-import FormVerify from '../../../components/Form/verify/Form.verify';
-//--|🠉 Components 🠉|--//
-//--|🠋 Containers 🠋|--//
-
-//--|🠉 Containers 🠉|--//
-//--|🠋 Root 🠋|--//
-import Resume from '../../../../resume';
-//--|🠉 Root 🠉|--//
 
 interface InfoProps {
   info: {
@@ -36,32 +30,12 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
 
-  const [currentView, setCurrentView] = useState<'default' | 'unverified' | 'authorized' | 'recovery'>('unverified');
-
-  // Shared input states
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
-
-  // Registration-specific input states
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
-
-  // Feedback messages for user interactions
-  let [loginMessage, setLoginMessage] = useState('');
-  let [registerMessage, setRegisterMessage] = useState('');
-  let [passwordMessage, setPasswordMessage] = useState('');
-  let [verificationCode, setVerificationCode] = useState('');
-
-  // Other UI states
-  let [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple submissions
-  let [loggedIn, setLoggedIn] = useState(false); // Tracks login state
-
   useEffect(() => {
     // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
-  }, [pageName, blockName, currentView]);
+  }, [pageName, blockName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} expanded`}>
+    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
       <EmailProvider>
         <PasswordProvider>
           <FormVerify info={info} />
