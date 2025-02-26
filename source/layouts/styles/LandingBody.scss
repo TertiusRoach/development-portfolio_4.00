@@ -1,32 +1,12 @@
-@use '../layouts/design/Global.scss';
-@use '../layouts/design/Mixins.scss';
-@use '../layouts/design/Palette.scss';
+@use '../design/Global.scss';
+@use '../design/Mixins.scss';
+@use '../design/Palette.scss';
 
-@use '../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
+@use '../../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
-@use '../layouts/containers/Main/LandingMain/LandingMain.scss';
-@use '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
-@use '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar.scss';
-
-//--|🠋| Color Schemes |🠋|--//
-@mixin find-link {
-  //--|🠋| Find a Link |🠋|--//
-  $primary-dark: #0f0207; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #881a2c; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-}
-@mixin log-ticket {
-  //--|🠋| Log a Ticket |🠋|--//
-  $primary-dark: #050a1d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #0b2583; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #a8b8f3; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-}
-@mixin track-day {
-  //--|🠋| Track a Day |🠋|--//
-  $tertiary-dark: #041604; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-medium: #137e17; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-light: #91e994; //--🠊 rgba( ??, ??, ??,1) 🠈--//
-}
+@use '../containers/Main/LandingMain/LandingMain.scss';
+@use '../containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
+@use '../containers/Rightbar/LandingRightbar/LandingRightbar.scss';
 
 body {
   @mixin orientation-testing {
@@ -122,6 +102,7 @@ body {
       //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
     }
   }
+
   @mixin desktop-landscape {
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
@@ -135,24 +116,54 @@ body {
     }
   }
 
-  // background: $primary-dark;
-  div[id*='landing'] {
+  div[id*='body'] {
     height: 100vh;
     display: grid;
+
+    //--|🠋 Header 🠋|--//
+
+    //--|🠋 Leftbar & Rightbar 🠋|--//
+    aside {
+      &[id*='leftbar'] {
+        &[class*='collapsed'] {
+          transition: clip-path 0.25s;
+          clip-path: inset(0% 100% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+        }
+      }
+      &[id*='rightbar'] {
+        &[class*='collapsed'] {
+          transition: clip-path 0.25s;
+          clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
+        }
+      }
+
+      &[class*='expanded'] {
+        transition: clip-path 0.25s;
+        clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+      }
+    }
 
     //--|🠋 Device Layouts 🠋|--//
     @include mobile-portrait();
     @include desktop-landscape();
-    /*
-    orientation-testing();
-    */
   }
 }
-
-/*
-@use '../layouts/containers/Overlay/LandingOverlay/LandingOverlay.scss';
-@use '../layouts/containers/Header/LandingHeader/LandingHeader.scss';
-@use '../layouts/containers/Footer/LandingFooter/LandingFooter.scss';
-@use '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
-@use '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar.scss';
-*/
+//--|🠋| Color Schemes |🠋|--//
+@mixin find-link {
+  //--|🠋| Find a Link |🠋|--//
+  $primary-dark: #2c090b; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-medium: #881a3d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+}
+@mixin log-ticket {
+  //--|🠋| Log a Ticket |🠋|--//
+  $primary-dark: #050a1d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-medium: #0b2583; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-light: #a8b8f3; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+}
+@mixin track-day {
+  //--|🠋| Track a Day |🠋|--//
+  $tertiary-dark: #072007; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $tertiary-medium: #228f26; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $tertiary-light: #9ff8a2; //--🠊 rgba( ??, ??, ??,1) 🠈--//
+}

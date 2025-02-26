@@ -1,23 +1,18 @@
-const pageName = 'landing';
-const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+// import './styles/LandingBody.scss';
+import './layouts/styles/LandingBody.scss';
 
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
-import './styles/LandingBody.scss';
-
-import { getSVG } from './modules/utilities/bin/getFile';
 import getResolution from './modules/scripts/getResolution';
 import getOrientation from './modules/scripts/getOrientation';
-
-// Import container components
-import './styles/ResumeBody.scss'; // You mentioned you're redoing this, so we can skip this for now.
-import './styles/LandingBody.scss';
 
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
 import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
+const pageName = 'landing';
+const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -32,7 +27,6 @@ function Landing() {
     </>
   );
 }
-
 if (landingBody) {
   ReactDOM.createRoot(landingBody).render(<Landing />);
 } else {
