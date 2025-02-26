@@ -11,7 +11,7 @@ import ResumeOverlay from './layouts/containers/Overlay/ResumeOverlay/ResumeOver
 import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeftbar';
 import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 
-import { getSVG } from './modules/utilities/bin/getFile';
+// import { getSVG } from './modules/utilities/bin/getFile';
 import getResolution from './modules/scripts/getResolution';
 import getOrientation from './modules/scripts/getOrientation';
 import getIdentification from './modules/scripts/getIdentification';

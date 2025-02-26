@@ -4,9 +4,19 @@
 
 @use '../../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
-@use '../containers/Main/LandingMain/LandingMain.scss';
+@use '../containers/Header/LandingHeader/LandingHeader.scss';
 @use '../containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
+@use '../containers/Main/LandingMain/LandingMain.scss';
 @use '../containers/Rightbar/LandingRightbar/LandingRightbar.scss';
+@use '../containers/Footer/LandingFooter/LandingFooter.scss';
+
+//--|🠋 Device Layouts 🠋|--//
+@mixin desktop-landscape {
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+}
+@mixin mobile-portrait {
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+}
 
 body {
   @mixin orientation-testing {
@@ -102,24 +112,32 @@ body {
       //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
     }
   }
-  @mixin desktop-landscape {
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
-    }
-  }
-  @mixin mobile-portrait {
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
-    }
-  }
 
   div[id*='body'] {
     height: 100vh;
     display: grid;
 
     //--|🠋 Header 🠋|--//
+    header {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s ease-in-out;
+        clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
+        menu {
+          top: 0rem;
+        }
+      }
+      &[class*='expanded'] {
+        transition: clip-path 0.25s ease-in-out;
+        clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+        menu {
+          top: -4rem;
+        }
+      }
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
+    }
 
     //--|🠋 Leftbar & Rightbar 🠋|--//
     aside {
@@ -142,11 +160,40 @@ body {
       }
     }
 
-    //--|🠋 Device Layouts 🠋|--//
-    @include mobile-portrait();
-    @include desktop-landscape();
+    //--|🠋 Footer 🠋|--//
+    footer {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s ease-in-out;
+        clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+
+        menu {
+          top: 0rem;
+        }
+      }
+      &[class*='expanded'] {
+        transition: clip-path 0.25s ease-in-out;
+        clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+        menu {
+          top: 4rem;
+        }
+      }
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
+    }
+
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+    }
   }
 }
+
 //--|🠋| Color Schemes |🠋|--//
 @mixin find-link {
   //--|🠋| Find a Link |🠋|--//

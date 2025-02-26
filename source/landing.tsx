@@ -10,13 +10,17 @@ import getOrientation from './modules/scripts/getOrientation';
 import { EmailProvider } from './modules/utilities/context/EmailContext';
 import { PasswordProvider } from './modules/utilities/context/PasswordContext';
 //--|🠉 Context 🠉|--//
+//--|🠋 Containers 🠋|--//
+import LandingHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
 
-import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
+import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 
+import LandingFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
+//--|🠉 Containers 🠉|--//
 const pageName = 'landing';
-const landingBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+const elementBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -24,19 +28,21 @@ function Landing() {
     identification: pageName,
   };
   return (
-    <>
-      <EmailProvider>
-        <PasswordProvider>
-          <LandingLeftbar info={information} />
-          <LandingMain info={information} />
-          <LandingRightbar info={information} />
-        </PasswordProvider>
-      </EmailProvider>
-    </>
+    <EmailProvider>
+      <PasswordProvider>
+        <LandingHeader info={information} />
+
+        <LandingLeftbar info={information} />
+        <LandingMain info={information} />
+        <LandingRightbar info={information} />
+
+        <LandingFooter info={information} />
+      </PasswordProvider>
+    </EmailProvider>
   );
 }
-if (landingBody) {
-  ReactDOM.createRoot(landingBody).render(<Landing />);
+if (elementBody) {
+  ReactDOM.createRoot(elementBody).render(<Landing />);
 } else {
   console.error(`Can't find with #${pageName}-body`);
 }

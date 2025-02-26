@@ -46,7 +46,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <main id={`${pageName}-${blockName}`} style={{ zIndex: 3 }} className={`default-${blockName}`}>
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <EmailProvider>
         <PasswordProvider>
           <div className="landing-branding" style={{ zIndex: 1 }}>
