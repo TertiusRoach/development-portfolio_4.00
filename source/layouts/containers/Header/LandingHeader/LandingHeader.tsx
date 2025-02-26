@@ -1,4 +1,5 @@
 // IndexHeader.tsx
+/*
 import $ from 'jquery';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -50,7 +51,7 @@ const ResumeHeader: React.FC<HeaderProps> = ({ info }) => {
   };
   return (
     <header id="resume-header" className="default-header" style={{ zIndex: 2 }}>
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {//--|🠋 Desktop (Landscape) 🠋|--//}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <img
@@ -61,7 +62,7 @@ const ResumeHeader: React.FC<HeaderProps> = ({ info }) => {
           <MenuButton criteria={desktopElements.criteria} input={desktopElements.buttons} />
         </>
       )}
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {//--|🠋 Mobile (Portrait) 🠋|--//}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <img
@@ -191,3 +192,4 @@ function scrollMain(button: HTMLButtonElement, pageName: String, blockName: Stri
     $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
   }
 }
+*/

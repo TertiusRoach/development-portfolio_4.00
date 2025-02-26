@@ -1,11 +1,15 @@
-// import './styles/LandingBody.scss';
-import './layouts/styles/LandingBody.scss';
+import './layouts/styles/landing.scss';
 
 import ReactDOM from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
 import getResolution from './modules/scripts/getResolution';
 import getOrientation from './modules/scripts/getOrientation';
+
+//--|🠋 Context 🠋|--//
+import { EmailProvider } from './modules/utilities/context/EmailContext';
+import { PasswordProvider } from './modules/utilities/context/PasswordContext';
+//--|🠉 Context 🠉|--//
 
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
 import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
@@ -21,9 +25,13 @@ function Landing() {
   };
   return (
     <>
-      <LandingLeftbar info={information} />
-      <LandingMain info={information} />
-      <LandingRightbar info={information} />
+      <EmailProvider>
+        <PasswordProvider>
+          <LandingLeftbar info={information} />
+          <LandingMain info={information} />
+          <LandingRightbar info={information} />
+        </PasswordProvider>
+      </EmailProvider>
     </>
   );
 }

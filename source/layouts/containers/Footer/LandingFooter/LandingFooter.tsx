@@ -1,4 +1,5 @@
 // IndexFooter.tsx
+/*
 //--|🠋 Frameworks 🠋|--//
 import $ from 'jquery';
 import React, { useEffect } from 'react';
@@ -184,13 +185,13 @@ const ResumeFooter: React.FC<FooterProps> = () => {
   };
   return (
     <footer id="resume-footer" className="default-footer" style={{ zIndex: 1 }}>
-      {/*--|🠋 Desktop (Landscape) 🠋|--*/}
+      {//--|🠋 Desktop (Landscape) 🠋|--//}
       {(useMediaQuery({ query: '(orientation: landscape)' }) as boolean) && (
         <>
           <MenuAnchor criteria={desktopElements.criteria} input={desktopElements.anchors} />
         </>
       )}
-      {/*--|🠋 Mobile (Portrait) 🠋|--*/}
+      {//--|🠋 Mobile (Portrait) 🠋|--//}
       {(useMediaQuery({ query: '(orientation: portrait)' }) as boolean) && (
         <>
           <MenuButton criteria={mobileElements.criteria} input={mobileElements.buttons} />
@@ -233,3 +234,4 @@ function scrollMain(button: HTMLButtonElement, pageName: String, blockName: Stri
     $(container).animate({ scrollTop: `${scrollResult.scrollTop}px` }, 1000);
   }
 }
+*/

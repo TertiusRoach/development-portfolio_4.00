@@ -6,18 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
-//--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/utilities/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/utilities/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormVerify from '../../../components/Form/verify/Form.verify';
 //--|🠉 Components 🠉|--//
-//--|🠋 Utilities 🠋|--//
-import getResolution from '../../../../modules/scripts/getResolution';
-import getOrientation from '../../../../modules/scripts/getOrientation';
-import getIdentification from '../../../../modules/scripts/getIdentification';
-//--|🠉 Utilities 🠉|--//
 
 interface InfoProps {
   info: {
@@ -30,17 +21,11 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
 
-  useEffect(() => {
-    // console.log(`//--|🠊 Initialized ${pageName}-${blockName} 🠈|--//`);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 5 }} className={`default-${blockName} collapsed`}>
-      <EmailProvider>
-        <PasswordProvider>
-          <FormVerify info={info} />
-        </PasswordProvider>
-      </EmailProvider>
+      <FormVerify info={info} />
     </aside>
   );
 };
