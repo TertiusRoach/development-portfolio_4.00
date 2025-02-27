@@ -6,11 +6,11 @@
 
   menu {
     grid-area: 3 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(white, 0.25);
+    // background: rgba(white, 0.25);
   }
   section {
     grid-area: 1 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(black, 0.25);
+    // background: rgba(black, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -28,35 +28,3 @@ footer[id*='landing'] {
     @include mobile-portrait();
   }
 }
-/*
-@mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem / repeat(2, 1fr); //~~|🠊 rows / columns 🠈|~~//
-  menu {
-    display: flex;
-    grid-area: 1 / 2 / 2 / 3;
-    justify-content: space-around;
-  }
-}
-@mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
-  menu {
-    grid-area: 1 / 2 / 2 / 3; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-  }
-}
-
-footer[id*='resume'] {
-  display: grid;
-  grid-area: 3 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-}
-*/

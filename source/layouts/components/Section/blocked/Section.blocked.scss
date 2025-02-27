@@ -1,6 +1,7 @@
-// Section.launch.scss
+// Section.blocked.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  /*
   grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
   // background: rgba(black, 0.25);
 
@@ -20,12 +21,16 @@
   div {
     height: 100%;
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-section[class*='launch'] {
+section[class*='blocked'] {
   display: grid;
+
+  // background: rgba(black, 0.5);
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
