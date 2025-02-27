@@ -15,7 +15,10 @@ const port = 3000;
 const root = 'users';
 const server = express();
 server.use(express.json());
-server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+// server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+server.use(
+  cors({ origin: 'https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html', credentials: true })
+);
 
 //--|🠋 Action Functions 🠋|--//
 async function sendEmail(email, activationCode, page) {

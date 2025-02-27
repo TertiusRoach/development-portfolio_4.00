@@ -36,6 +36,7 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
 > Full Terminal Setup
 
     npm install sass
+    npm install mongodb
     npm install mongoose
     npm install -g react
     npm install mailtrap
