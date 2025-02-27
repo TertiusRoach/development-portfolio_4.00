@@ -19,16 +19,6 @@ You will need to download and install certain applications by manually downloadi
 
 ---
 
-> Unconfirmed, needs to be tested more to make sure I don't add clutter.
-
-    npm install bull
-    npm install ioredis
-
-    npm install node-cron
-    npm install validator
-
----
-
 # Powershell Commands for MongoDB
 
 > Run MongoDB as Local Database
