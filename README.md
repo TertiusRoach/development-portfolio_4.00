@@ -1,6 +1,7 @@
 # [Trinity {Apps}](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 # [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+
 # Run the Application after Installation
 
 //--|🠋 Launch back-end 🠈|--//
@@ -37,6 +38,7 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install sass
     npm install mongoose
     npm install -g react
+    npm install mailtrap
     npm install -g nodemon
     npm install nodemailer
     npm install -g typescript
