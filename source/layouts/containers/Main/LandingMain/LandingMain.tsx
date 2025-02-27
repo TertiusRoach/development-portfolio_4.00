@@ -1,36 +1,23 @@
 // LandingMain.tsx
-//--|🠋 Frameworks 🠋|--//
+//--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
-//--|🠉 Frameworks 🠉|--//
+//--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
 import { EmailProvider } from '../../../../modules/utilities/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/utilities/context/PasswordContext';
 //--|🠉 Context 🠉|--//
-//--|🠋 Utilities 🠋|--//
-import getResolution from '../../../../modules/scripts/getResolution';
-import getOrientation from '../../../../modules/scripts/getOrientation';
-import getIdentification from '../../../../modules/scripts/getIdentification';
-//--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
-//--|🠋 Containers 🠋|--//
-import ResumeMain from '../ResumeMain/ResumeMain';
-import ResumeHeader from '../../Header/ResumeHeader/ResumeHeader';
-import ResumeFooter from '../../Footer/ResumeFooter/ResumeFooter';
-import ResumeOverlay from '../../Overlay/ResumeOverlay/ResumeOverlay';
-import ResumeLeftbar from '../../Leftbar/ResumeLeftbar/ResumeLeftbar';
-import ResumeRightbar from '../../Rightbar/ResumeRightbar/ResumeRightbar';
-//--|🠉 Containers 🠉|--//
-//--|🠋 Root 🠋|--//
-import Resume from '../../../../resume';
-//--|🠉 Root 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { viewBlock, toggleText, toggleAside } from '../../../../landing';
+//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   info: {
@@ -78,169 +65,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
-
-export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
-  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
-  const unifyLayouts = (overlays: {
-    header: HTMLElement;
-    leftbar: HTMLElement;
-    rightbar: HTMLElement;
-    footer: HTMLElement;
-  }) => {
-    for (let [key, element] of Object.entries(overlays)) {
-      if (element.classList.contains('expanded')) {
-        toggleMargins(element, 'hide');
-        /* console.log(`Collapsed ${key}`); // Optional logging for debugging */
-      }
-    }
-
-    /*
-    if (overlays.leftbar.className.includes('expanded')) {
-      toggleMargins(overlays.leftbar, 'hide'); //--|🠈 Collapse Verify 🠈|--//
-    }
-    if (overlays.rightbar.className.includes('expanded')) {
-      toggleMargins(overlays.rightbar, 'hide'); //--|🠈 Collapse Reset 🠈|--//
-    }
-    if (overlays.header.className.includes('expanded')) {
-      toggleMargins(overlays.header, 'hide'); //--|🠈 Collapse Launch 🠈|--//
-    }
-    if (overlays.footer.className.includes('expanded')) {
-      toggleMargins(overlays.footer, 'hide'); //--|🠈 Collapse Blocked 🠈|--//
-    }
-    */
-  };
-  const toggleMargins = (element: HTMLElement, view: 'show' | 'hide') => {
-    //--|🠊 The <aside>, <header>, and <footer> elements will be collectively referred to as 'margins'. 🠈|--//
-    element.classList.toggle('collapsed', view === 'hide');
-    element.classList.toggle('expanded', view === 'show');
-  };
-
-  let register = carousel.childNodes[0] as HTMLElement;
-  let login = carousel.childNodes[1] as HTMLElement;
-  let password = carousel.childNodes[2] as HTMLElement;
-
-  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
-  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
-
-  let launch = document.querySelector("header[id*='header']") as HTMLElement;
-  let blocked = document.querySelector("footer[id*='footer']") as HTMLElement;
-
-  if (page === 'register' || page === 'login' || page === 'password') {
-    unifyLayouts({ header: launch, leftbar: verify, rightbar: reset, footer: blocked });
-  }
-  switch (page) {
-    case 'register':
-      carousel.style.transform = 'translateX(0vw)';
-
-      register.className = `${page}-section visible`;
-      login.className = `${page}-section hidden`;
-      password.className = `${page}-section hidden`;
-      break;
-    case 'login':
-      carousel.style.transform = 'translateX(-100vw)';
-
-      register.className = `${page}-section hidden`;
-      login.className = `${page}-section visible`;
-      password.className = `${page}-section hidden`;
-      break;
-    case 'password':
-      carousel.style.transform = 'translateX(-200vw)';
-
-      register.className = `${page}-section hidden`;
-      login.className = `${page}-section hidden`;
-      password.className = `${page}-section visible`;
-      break;
-    case 'verify':
-      toggleMargins(verify, 'show'); //--|🠈 Expand Verify 🠈|--//
-      break;
-    case 'reset':
-      toggleMargins(reset, 'show'); //--|🠈 Expand Reset 🠈|--//
-      break;
-    case 'launch':
-      toggleMargins(launch, 'show'); //--|🠈 Expand Launch 🠈|--//
-      break;
-    case 'blocked':
-      toggleMargins(blocked, 'show'); //--|🠈 Expand Blocked 🠈|--//
-      break;
-  }
-  /*
-  const carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-  let register: HTMLElement;
-  let login: HTMLElement;
-  let password: HTMLElement;
-  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
-  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
-  if (page === 'register' || page === 'login' || page === 'password') {
-    register = carouselContainer.childNodes[0] as HTMLElement;
-    login = carouselContainer.childNodes[1] as HTMLElement;
-    password = carouselContainer.childNodes[2] as HTMLElement;
-    carouselContainer.style.transform = {
-      register: 'translateX(0vw)',
-      login: 'translateX(-100vw)',
-      password: 'translateX(-200vw)',
-    }[page];
-    switch (page) {
-      case 'register':
-        register.className = `${page}-section visible`;
-        login.className = `${page}-section hidden`;
-        password.className = `${page}-section hidden`;
-        break;
-      case 'login':
-        register.className = `${page}-section hidden`;
-        login.className = `${page}-section visible`;
-        password.className = `${page}-section hidden`;
-        break;
-      case 'password':
-        register.className = `${page}-section hidden`;
-        login.className = `${page}-section hidden`;
-        password.className = `${page}-section visible`;
-        break;
-    }
-    if (verify.className.includes('expanded')) {
-      toggleAside('#landing-leftbar', 'hide'); //--|🠈 Collapse Verify 🠈|--//
-    }
-    if (reset.className.includes('expanded')) {
-      toggleAside('#landing-rightbar', 'hide'); //--|🠈 Collapse Reset 🠈|--//
-    }
-  } else if (page === 'verify' || 'reset') {
-    switch (page) {
-      case 'verify':
-        toggleAside('#landing-leftbar', 'show'); //--|🠈 Expand Verify 🠈|--//
-        break;
-      case 'reset':
-        toggleAside('#landing-rightbar', 'show'); //--|🠈 Expand Reset 🠈|--//
-        break;
-    }
-  }
-  */
-}
-export const toggleText = (page: 'login' | 'register' | 'password' | 'verify' | 'reset', text: string) => {
-  let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
-  element.innerText = text;
-};
-export const toggleAside = (element: '#landing-leftbar' | '#landing-rightbar' | string, toggle: 'show' | 'hide') => {
-  let sidebar = document.querySelector(element) as HTMLElement;
-  switch (toggle) {
-    case 'show':
-      sidebar.classList.toggle('collapsed', false);
-      sidebar.classList.toggle('expanded', true); //--|🠈 Expand Sidebar 🠈|--//
-      break;
-    case 'hide':
-      sidebar.classList.toggle('expanded', false);
-      sidebar.classList.toggle('collapsed', true); //--|🠈 Collapse Sidebar 🠈|--//
-      break;
-  }
-};
-export const refreshInputs = (page: 'register' | 'login' | 'password') => {
-  switch (page) {
-    case 'register':
-      break;
-    case 'login':
-      break;
-    case 'password':
-      break;
-  }
-};
 
 export async function handleData(
   status: string,

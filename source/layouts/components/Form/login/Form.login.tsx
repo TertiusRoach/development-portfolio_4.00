@@ -2,7 +2,8 @@
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
-import { viewBlock, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
+
+import { viewBlock, toggleText, toggleAside } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
