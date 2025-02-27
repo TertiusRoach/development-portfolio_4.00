@@ -86,21 +86,18 @@ export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | '
     element.classList.toggle('collapsed', view === 'hide');
     element.classList.toggle('expanded', view === 'show');
   };
-  alert(`This is what getIdentification() returns: ${getIdentification()}`);
 
   let register = carousel.childNodes[0] as HTMLElement;
   let login = carousel.childNodes[1] as HTMLElement;
   let password = carousel.childNodes[2] as HTMLElement;
 
-  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
-  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
-
   let launch = document.querySelector("header[id*='header']") as HTMLElement;
   let blocked = document.querySelector("footer[id*='footer']") as HTMLElement;
 
-  if (page === 'register' || page === 'login' || page === 'password') {
-    unifyLayouts({ header: launch, leftbar: verify, rightbar: reset, footer: blocked });
-  }
+  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
+  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
+
+  unifyLayouts({ header: launch, leftbar: verify, rightbar: reset, footer: blocked });
   switch (page) {
     case 'register':
       carousel.style.transform = 'translateX(0vw)';
@@ -136,56 +133,6 @@ export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | '
       toggleMargins(blocked, 'show'); //--|🠈 Expand Blocked 🠈|--//
       break;
   }
-  /*
-  const carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
-  let register: HTMLElement;
-  let login: HTMLElement;
-  let password: HTMLElement;
-  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
-  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
-  if (page === 'register' || page === 'login' || page === 'password') {
-    register = carouselContainer.childNodes[0] as HTMLElement;
-    login = carouselContainer.childNodes[1] as HTMLElement;
-    password = carouselContainer.childNodes[2] as HTMLElement;
-    carouselContainer.style.transform = {
-      register: 'translateX(0vw)',
-      login: 'translateX(-100vw)',
-      password: 'translateX(-200vw)',
-    }[page];
-    switch (page) {
-      case 'register':
-        register.className = `${page}-section visible`;
-        login.className = `${page}-section hidden`;
-        password.className = `${page}-section hidden`;
-        break;
-      case 'login':
-        register.className = `${page}-section hidden`;
-        login.className = `${page}-section visible`;
-        password.className = `${page}-section hidden`;
-        break;
-      case 'password':
-        register.className = `${page}-section hidden`;
-        login.className = `${page}-section hidden`;
-        password.className = `${page}-section visible`;
-        break;
-    }
-    if (verify.className.includes('expanded')) {
-      toggleAside('#landing-leftbar', 'hide'); //--|🠈 Collapse Verify 🠈|--//
-    }
-    if (reset.className.includes('expanded')) {
-      toggleAside('#landing-rightbar', 'hide'); //--|🠈 Collapse Reset 🠈|--//
-    }
-  } else if (page === 'verify' || 'reset') {
-    switch (page) {
-      case 'verify':
-        toggleAside('#landing-leftbar', 'show'); //--|🠈 Expand Verify 🠈|--//
-        break;
-      case 'reset':
-        toggleAside('#landing-rightbar', 'show'); //--|🠈 Expand Reset 🠈|--//
-        break;
-    }
-  }
-  */
 }
 export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset', text: string) {
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;

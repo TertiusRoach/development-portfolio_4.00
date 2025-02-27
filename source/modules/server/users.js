@@ -657,19 +657,22 @@ server.post(`/${root}/password`, async (req, res) => {
             data: user,
           });
         case 'enabled':
-          if (user.passwordChangeRequests < 3) {
+          if (user.passwordChangeRequests === 3) {
+            await enabled_blocked(email);
+            let blockedDocument = await database.collection('blocked').findOne({ email });
+            return res.status(200).json({
+              view: 'blocked',
+              data: blockedDocument,
+            });
+          } else {
             let flagRenewal = await verifyDate(user.passwordCodeExpiresAt);
             switch (flagRenewal) {
               case 'expired':
                 await updateRenewal(email);
                 return res.status(200).json({ view: 'reset', data: user });
+              default:
+                return res.status(200).json({ view: 'reset', data: user });
             }
-          } else {
-            await enabled_blocked(email);
-            return res.status(200).json({
-              view: 'blocked',
-              data: user,
-            });
           }
         case 'blocked':
           let flagRestriction = await verifyDate(user.restrictionExpiresAt);

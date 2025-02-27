@@ -63,8 +63,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         case 'blocked':
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
-          viewBlock('login');
-          viewText('login', dialogue);
+          viewBlock('blocked');
           break;
       }
     } catch (error) {

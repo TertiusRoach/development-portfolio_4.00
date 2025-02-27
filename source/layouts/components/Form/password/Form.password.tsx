@@ -65,11 +65,12 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           viewText('reset', dialogue);
           break;
         case 'blocked':
-          alert('//--|🠊 Expand Footer.blocked 🠈|--//');
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
-          viewBlock('login');
-          viewText('login', dialogue);
+          viewBlock('blocked');
+          setTimeout(() => {
+            alert(dialogue);
+          }, 250);
           break;
       }
     } catch (error) {

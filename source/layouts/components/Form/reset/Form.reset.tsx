@@ -55,6 +55,11 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           viewBlock('reset');
           viewText('reset', dialogue);
           break;
+        case 'blocked':
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+          viewBlock('blocked');
+          break;
       }
     } catch (error) {
       axiosError(error);
