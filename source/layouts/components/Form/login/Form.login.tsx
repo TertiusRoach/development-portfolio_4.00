@@ -21,11 +21,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
 
   //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail(); //--|🠈 Global Email State 🠈|--//
-  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
+  let { email, setEmail } = useEmail();
+  let { password, setPassword } = usePassword();
 
   //--|🠋 Button Action States 🠋|--//
-  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
+  let [submit, setSubmit] = useState(false);
   let [attempts, setAttempts] = useState(0);
 
   const handleLogin = async (event: React.FormEvent) => {
@@ -42,10 +42,14 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       let dialogue: string;
       switch (view) {
         case 'launch':
-          alert('//--|🠊 Expand Header.launch 🠈|--//');
+          dialogue = 'Login successful, please select the application you want to use.';
 
+          viewBlock('launch');
           /* window.location.href = '/dashboard'; */
 
+          setTimeout(() => {
+            alert(dialogue);
+          }, 250);
           break;
         case 'register':
           dialogue = 'No account found with this email. Would you like to register?';
@@ -81,7 +85,13 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           viewText('verify', dialogue);
           break;
         case 'blocked':
+          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
           viewBlock('blocked');
+
+          setTimeout(() => {
+            alert(dialogue);
+          }, 250);
           break;
       }
     } catch (error) {

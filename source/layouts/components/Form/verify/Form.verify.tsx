@@ -59,6 +59,10 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
           viewBlock('blocked');
+
+          setTimeout(() => {
+            alert(dialogue);
+          }, 250);
           break;
       }
     } catch (error) {
