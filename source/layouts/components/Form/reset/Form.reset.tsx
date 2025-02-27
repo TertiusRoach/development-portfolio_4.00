@@ -2,7 +2,8 @@
 import './Form.reset.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewBlock, toggleText, toggleAside } from '../../../../landing';
+
+import { viewBlock, viewText, axiosError } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -18,14 +19,12 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Shared input states 🠋|--//
+  //--|🠋 Local Input States 🠋|--//
+  let [renew, setRenew] = useState('');
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Local Input States 🠋|--//
-  let [renew, setRenew] = useState('');
-
-  //--|🠋 Other UI states 🠋|--//
+  //--|🠋 Button Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
 
   const handleReset = async (event: React.FormEvent) => {
@@ -48,13 +47,13 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           dialogue = 'Your password has been successfully reset.';
 
           viewBlock('login');
-          toggleText('login', dialogue);
+          viewText('login', dialogue);
           break;
         case 'reset':
           dialogue = 'Invalid recovery code. Check your email.';
 
           viewBlock('reset');
-          toggleText('reset', dialogue);
+          viewText('reset', dialogue);
           break;
       }
     } catch (error) {
@@ -65,20 +64,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    let closeButton = document.querySelector('.reset-close');
-    let handleClose = () => {
-      toggleAside('#landing-rightbar', 'hide');
-    };
-
-    if (closeButton) {
-      closeButton.addEventListener('click', handleClose);
-    }
-
-    return () => {
-      if (closeButton) {
-        closeButton.removeEventListener('click', handleClose);
-      }
-    };
+    closeRightbar(pageName);
   }, [pageName, blockName]);
 
   return (
@@ -131,41 +117,14 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormReset;
 
-const axiosError = (error: unknown) => {
-  //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
-  //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
-  if (axios.isAxiosError(error)) {
-    //--|🠋 We try to get the HTTP status code from the server's response. 🠋|--//
-    const status = error.response?.status;
-    //--|🠉 We also try to extract a meaningful error message from the response. 🠉|--//
-    //--|🠋 If there's no specific message, we fall back to Axios's built-in error message. 🠋|--//
-    const message = error.response?.data?.message || error.message;
+const closeRightbar = (pageName: 'landing' | string) => {
+  let closeReset = document.querySelector('.reset-close') as HTMLElement;
+  let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
+  let closeClick = () => rightbar.classList.toggle('collapsed');
 
-    //--|🠋 Now we check the status code to decide what message to show the user. 🠋|--//
-    switch (status) {
-      case 404: //--|🠈 If the server is not found (wrong URL or down) 🠈|--//
-        alert('status(404): Axios Error: Server not found. Please try again later.');
-        break;
-      case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
-        alert('status(401):Axios Error: Unauthorized access. Please check your credentials and try again.');
-        break;
-      case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
-        alert('status(500)): Axios Error: Internal Server Error. Please try again later.');
-        break;
-      default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
-        alert(`status(default):Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
-    }
+  if (closeReset && rightbar) {
+    closeReset.addEventListener('click', closeClick);
 
-    //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
-    console.error('Axios Error Details:', {
-      status, //--|🠈 The HTTP status code (like 404, 500) 🠈|--//
-      message, //--|🠈 The error message from the server 🠈|--//
-      url: error.config?.url, //--|🠈 The URL that was requested 🠈|--//
-      method: error.config?.method, //--|🠈 The HTTP method (GET, POST, etc.) 🠈|--//
-    });
-  } else {
-    //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--//
-    console.error('Unexpected Error:', error);
-    alert('An unexpected error occurred. Please try again.');
+    return () => closeReset.removeEventListener('click', closeClick);
   }
 };

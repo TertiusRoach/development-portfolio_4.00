@@ -16,7 +16,7 @@ import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, toggleText } from '../../../../landing';
+import { viewBlock, viewText } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {

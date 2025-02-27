@@ -1,9 +1,10 @@
 // Form.login.tsx
 import './Form.login.scss';
+
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
-import { viewBlock, toggleText } from '../../../../landing';
+import { viewBlock, viewText, axiosError } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -60,16 +61,16 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             dialogue = messages[attempts];
 
             setAttempts(attempts + 1);
-            toggleText('login', dialogue);
+            viewText('login', dialogue);
           } else {
             dialogue = 'Would you like to change your password?';
             setAttempts(0);
             viewBlock('password');
-            toggleText('password', dialogue);
+            viewText('password', dialogue);
 
             setTimeout(() => {
               dialogue = 'Sign in to access your account.';
-              toggleText('login', dialogue);
+              viewText('login', dialogue);
             }, 250);
           }
           break;
@@ -77,7 +78,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           dialogue = 'Please verify your account before signing in.';
 
           viewBlock('verify');
-          toggleText('verify', dialogue);
+          viewText('verify', dialogue);
           break;
         case 'blocked':
           alert('//--|🠊 Expand Footer.blocked 🠈|--//');
@@ -154,41 +155,3 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
-const axiosError = (error: unknown) => {
-  //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
-  //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
-  if (axios.isAxiosError(error)) {
-    //--|🠋 We try to get the HTTP status code from the server's response. 🠋|--//
-    const status = error.response?.status;
-    //--|🠉 We also try to extract a meaningful error message from the response. 🠉|--//
-    //--|🠋 If there's no specific message, we fall back to Axios's built-in error message. 🠋|--//
-    const message = error.response?.data?.message || error.message;
-
-    //--|🠋 Now we check the status code to decide what message to show the user. 🠋|--//
-    switch (status) {
-      case 404: //--|🠈 If the server is not found (wrong URL or down) 🠈|--//
-        alert('Axios Error: Server not found. Please try again later.');
-        break;
-      case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
-        alert('Axios Error: Unauthorized access. Please check your credentials and try again.');
-        break;
-      case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
-        alert('Axios Error: Internal Server Error. Please try again later.');
-        break;
-      default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
-        alert(`Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
-    }
-
-    //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
-    console.error('Axios Error Details:', {
-      status, //--|🠈 The HTTP status code (like 404, 500) 🠈|--//
-      message, //--|🠈 The error message from the server 🠈|--//
-      url: error.config?.url, //--|🠈 The URL that was requested 🠈|--//
-      method: error.config?.method, //--|🠈 The HTTP method (GET, POST, etc.) 🠈|--//
-    });
-  } else {
-    //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--//
-    console.error('Unexpected Error:', error);
-    alert('An unexpected error occurred. Please try again.');
-  }
-};
