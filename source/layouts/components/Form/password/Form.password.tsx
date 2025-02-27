@@ -81,7 +81,9 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    showDemos(pageName);
+  }, [pageName, blockName]);
 
   return (
     <form className="password-form" onSubmit={(event) => handlePassword(event)}>
@@ -136,3 +138,18 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormPassword;
+
+const showDemos = (pageName: 'landing' | string) => {
+  let closePassword = document.querySelector('.password-close') as HTMLElement;
+  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+
+  if (closePassword && header) {
+    var closeClick = () => {
+      header.classList.toggle('expanded'); // Toggle '.expanded'
+      header.classList.remove('collapsed'); // Remove '.collapsed'
+    };
+
+    closePassword.addEventListener('click', closeClick);
+    return () => closePassword.removeEventListener('click', closeClick);
+  }
+};

@@ -120,11 +120,14 @@ export default FormVerify;
 const closeLeftbar = (pageName: 'landing' | string) => {
   let closeVerify = document.querySelector('.verify-close') as HTMLElement;
   let leftbar = document.querySelector(`#${pageName}-leftbar`) as HTMLElement;
-  let closeClick = () => leftbar.classList.toggle('collapsed');
 
   if (closeVerify && leftbar) {
-    closeVerify.addEventListener('click', closeClick);
+    var closeClick = () => {
+      leftbar.classList.remove('expanded'); // Remove '.expanded'
+      leftbar.classList.toggle('collapsed'); // Toggle '.collapsed'
+    };
 
+    closeVerify.addEventListener('click', closeClick);
     return () => closeVerify.removeEventListener('click', closeClick);
   }
 };

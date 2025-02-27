@@ -6,15 +6,15 @@
 
   div[id*='overtime'] {
     grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: green;
+    background: darkgreen;
   }
   div[id*='ticketing'] {
     grid-area: 2 / 3 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: blue;
+    background: darkblue;
   }
   div[id*='hyperlink'] {
     grid-area: 2 / 4 / 3 / 5; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: red;
+    background: darkred;
   }
 
   div {

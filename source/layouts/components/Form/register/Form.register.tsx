@@ -77,7 +77,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    showDemos(pageName);
+  }, [pageName, blockName]);
 
   return (
     <form className="register-form" onSubmit={(event) => handleRegister(event)}>
@@ -162,3 +164,18 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormRegister;
+
+const showDemos = (pageName: 'landing' | string) => {
+  let closeRegister = document.querySelector('.register-close') as HTMLElement;
+  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+
+  if (closeRegister && header) {
+    var closeClick = () => {
+      header.classList.toggle('expanded'); // Toggle '.expanded'
+      header.classList.remove('collapsed'); // Remove '.collapsed'
+    };
+
+    closeRegister.addEventListener('click', closeClick);
+    return () => closeRegister.removeEventListener('click', closeClick);
+  }
+};

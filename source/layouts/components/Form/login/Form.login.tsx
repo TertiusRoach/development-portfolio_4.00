@@ -45,11 +45,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           dialogue = 'Login successful, please select the application you want to use.';
 
           viewBlock('launch');
-          /* window.location.href = '/dashboard'; */
 
+          /*
           setTimeout(() => {
             alert(dialogue);
           }, 250);
+          */
           break;
         case 'register':
           dialogue = 'No account found with this email. Would you like to register?';
@@ -101,7 +102,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    showDemos(pageName);
+  }, [pageName, blockName]);
 
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
@@ -160,3 +163,18 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
+
+const showDemos = (pageName: 'landing' | string) => {
+  let closeLogin = document.querySelector('.login-close') as HTMLElement;
+  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+
+  if (closeLogin && header) {
+    var closeClick = () => {
+      header.classList.toggle('expanded'); // Toggle '.expanded'
+      header.classList.remove('collapsed'); // Remove '.collapsed'
+    };
+
+    closeLogin.addEventListener('click', closeClick);
+    return () => closeLogin.removeEventListener('click', closeClick);
+  }
+};

@@ -36,6 +36,7 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
 
   const handleLaunch = async (event: any) => {
     console.log(event);
+    /* window.location.href = '/dashboard'; */
     /*
     event.preventDefault();
     setSubmit(true);
