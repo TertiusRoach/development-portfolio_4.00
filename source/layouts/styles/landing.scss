@@ -11,6 +11,99 @@
 @use '../containers/Footer/LandingFooter/LandingFooter.scss';
 
 //--|🠋 Device Layouts 🠋|--//
+@mixin orientation-testing {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    & {
+      width: 100%;
+      aside[class*='leftbar'] {
+        background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      aside[class*='rightbar'] {
+        // background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      section[class*='overlay'] {
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+      }
+
+      header {
+        background: rgba($red-light, 0.25);
+      }
+      main {
+        background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+      footer {
+        background: rgba($red-light, 0.25);
+      }
+    }
+    //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
+    //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    & {
+      aside[class*='leftbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      aside[class*='rightbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      section[class*='overlay'] {
+        background: rgba($blue-dark, 0.25);
+      }
+
+      header {
+        background: rgba($blue-light, 0.25);
+      }
+      footer {
+        background: rgba($blue-light, 0.25);
+      }
+      main {
+        background: rgba($blue-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+    }
+    //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
+    //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
+  }
+}
 @mixin desktop-landscape {
   grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
 }
@@ -19,104 +112,7 @@
 }
 
 body {
-  @mixin orientation-testing {
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      & {
-        width: 100%;
-        aside[class*='leftbar'] {
-          background: rgba($red-light, 0.25);
-          header[class*='foreground'] {
-            background: rgba($green-neon, 0.25);
-          }
-
-          footer[class*='midground'] {
-            background: rgba($green-neon, 0.25);
-          }
-          div[class*='background'] {
-            background: rgba($green-dark, 0.25);
-          }
-        }
-        aside[class*='rightbar'] {
-          // background: rgba($red-light, 0.25);
-          header[class*='foreground'] {
-            background: rgba($green-neon, 0.25);
-          }
-
-          footer[class*='midground'] {
-            background: rgba($green-neon, 0.25);
-          }
-          div[class*='background'] {
-            background: rgba($green-dark, 0.25);
-          }
-        }
-        section[class*='overlay'] {
-          header[class*='foreground'] {
-            background: rgba($green-neon, 0.25);
-          }
-          div[class*='background'] {
-            background: rgba($green-dark, 0.25);
-          }
-          footer[class*='midground'] {
-            background: rgba($green-neon, 0.25);
-          }
-        }
-
-        header {
-          background: rgba($red-light, 0.25);
-        }
-        main {
-          background: rgba($red-dark, 1);
-          div[id*='fore'],
-          div[id*='mid'],
-          div[id*='back'] {
-            background: rgba($purple-dark, 0.25) !important;
-          }
-        }
-        footer {
-          background: rgba($red-light, 0.25);
-        }
-      }
-      //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
-      //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      & {
-        aside[class*='leftbar'] {
-          background: rgba($blue-light, 0.25);
-        }
-        aside[class*='rightbar'] {
-          background: rgba($blue-light, 0.25);
-        }
-        section[class*='overlay'] {
-          background: rgba($blue-dark, 0.25);
-        }
-
-        header {
-          background: rgba($blue-light, 0.25);
-        }
-        footer {
-          background: rgba($blue-light, 0.25);
-        }
-        main {
-          background: rgba($blue-dark, 1);
-          div[id*='fore'],
-          div[id*='mid'],
-          div[id*='back'] {
-            background: rgba($purple-dark, 0.25) !important;
-          }
-        }
-      }
-      //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
-      //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
-    }
-  }
-
-  div[id*='body'] {
-    height: 100vh;
-    display: grid;
-
+  @mixin header-transition {
     //--|🠋 Header 🠋|--//
     header {
       &[class*='collapsed'] {
@@ -138,9 +134,11 @@ body {
         transition: top 0.25s ease-in-out;
       }
     }
-
+  }
+  @mixin sidebar-transition {
     //--|🠋 Leftbar & Rightbar 🠋|--//
     aside {
+      backdrop-filter: blur(1rem);
       &[id*='leftbar'] {
         &[class*='collapsed'] {
           transition: clip-path 0.25s;
@@ -159,7 +157,8 @@ body {
         clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
       }
     }
-
+  }
+  @mixin footer-transition {
     //--|🠋 Footer 🠋|--//
     footer {
       &[class*='collapsed'] {
@@ -182,6 +181,15 @@ body {
         transition: top 0.25s ease-in-out;
       }
     }
+  }
+
+  div[id*='body'] {
+    height: 100vh;
+    display: grid;
+
+    @include header-transition();
+    @include sidebar-transition();
+    @include footer-transition();
 
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {

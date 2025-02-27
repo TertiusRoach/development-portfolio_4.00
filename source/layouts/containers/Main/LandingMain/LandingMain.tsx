@@ -34,33 +34,29 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
-      <EmailProvider>
-        <PasswordProvider>
-          <div className="landing-branding" style={{ zIndex: 1 }}>
-            <img
-              src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-              alt="Login Logo"
-            />
+      <div className="landing-branding" style={{ zIndex: 1 }}>
+        <img
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+          alt="Login Logo"
+        />
+      </div>
+      <div className="landing-carousel" style={{ zIndex: 0 }}>
+        <section className="register-section hidden">
+          <div className="register-container">
+            <FormRegister info={info} />
           </div>
-          <div className="landing-carousel" style={{ zIndex: 0 /* transform: 'translateX(-200vw)' */ }}>
-            <section className="register-section hidden">
-              <div className="register-container">
-                <FormRegister info={info} />
-              </div>
-            </section>
-            <section className="login-section visible">
-              <div className="login-container">
-                <FormLogin info={info} />
-              </div>
-            </section>
-            <section className="password-section hidden">
-              <div className="password-container">
-                <FormPassword info={info} />
-              </div>
-            </section>
+        </section>
+        <section className="login-section visible">
+          <div className="login-container">
+            <FormLogin info={info} />
           </div>
-        </PasswordProvider>
-      </EmailProvider>
+        </section>
+        <section className="password-section hidden">
+          <div className="password-container">
+            <FormPassword info={info} />
+          </div>
+        </section>
+      </div>
     </main>
   );
 };

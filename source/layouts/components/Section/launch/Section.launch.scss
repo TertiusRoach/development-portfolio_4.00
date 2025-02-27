@@ -1,0 +1,17 @@
+@mixin desktop-landscape {
+  background: rgba(black, 0.25);
+}
+@mixin mobile-portrait {
+}
+
+section[class*='launch'] {
+  display: grid;
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

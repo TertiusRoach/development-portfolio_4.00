@@ -10,7 +10,6 @@ aside[id*='leftbar'] {
   display: grid;
   overflow: hidden; /* Hide elements outside the visible area */
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  backdrop-filter: blur(1rem);
   grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
 
   background: rgba(darkred, 0.25);

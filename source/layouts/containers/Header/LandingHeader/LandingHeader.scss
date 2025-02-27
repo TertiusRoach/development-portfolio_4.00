@@ -6,11 +6,11 @@
 
   menu {
     grid-area: 1 / 1 / 2 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(white, 0.25);
+    // background: rgba(white, 0.25);
   }
   section {
     grid-area: 1 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(black, 0.25);
+    // background: rgba(black, 0.25);
   }
 }
 @mixin mobile-portrait {
