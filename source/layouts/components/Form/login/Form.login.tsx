@@ -2,7 +2,7 @@
 import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
-import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewBlock, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -47,7 +47,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           break;
         case 'register':
           dialogue = 'No account found with this email. Would you like to register?';
-          viewCarousel('register');
+          viewBlock('register');
           break;
         case 'password':
           let messages: string[] = [
@@ -63,7 +63,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           } else {
             dialogue = 'Would you like to change your password?';
             setAttempts(0);
-            viewCarousel('password');
+            viewBlock('password');
             toggleText('password', dialogue);
 
             setTimeout(() => {
@@ -75,7 +75,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         case 'verify':
           dialogue = 'Please verify your account before signing in.';
 
-          viewCarousel('verify');
+          viewBlock('verify');
           toggleText('verify', dialogue);
           break;
         case 'blocked':
@@ -141,10 +141,10 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           </button>
         </menu>
         <nav className="login-buttons">
-          <button className="login-register" type="button" onClick={() => viewCarousel('register')}>
+          <button className="login-register" type="button" onClick={() => viewBlock('register')}>
             <h6>Register Account</h6>
           </button>
-          <button className="login-password" type="button" onClick={() => viewCarousel('password')}>
+          <button className="login-password" type="button" onClick={() => viewBlock('password')}>
             <h6>Reset Password</h6>
           </button>
         </nav>

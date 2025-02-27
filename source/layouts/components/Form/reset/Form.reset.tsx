@@ -2,7 +2,7 @@
 import './Form.reset.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewBlock, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -47,13 +47,13 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         case 'login':
           dialogue = 'Your password has been successfully reset.';
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
         case 'reset':
           dialogue = 'Invalid recovery code. Check your email.';
 
-          viewCarousel('reset');
+          viewBlock('reset');
           toggleText('reset', dialogue);
           break;
       }

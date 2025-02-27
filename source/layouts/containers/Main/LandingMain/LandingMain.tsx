@@ -79,7 +79,91 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 };
 export default LandingMain;
 
-export const viewCarousel = (page: 'register' | 'login' | 'password' | 'verify' | 'reset') => {
+export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
+  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
+  const unifyLayouts = (overlays: {
+    header: HTMLElement;
+    leftbar: HTMLElement;
+    rightbar: HTMLElement;
+    footer: HTMLElement;
+  }) => {
+    for (let [key, element] of Object.entries(overlays)) {
+      if (element.classList.contains('expanded')) {
+        toggleMargins(element, 'hide');
+        /* console.log(`Collapsed ${key}`); // Optional logging for debugging */
+      }
+    }
+
+    /*
+    if (overlays.leftbar.className.includes('expanded')) {
+      toggleMargins(overlays.leftbar, 'hide'); //--|🠈 Collapse Verify 🠈|--//
+    }
+    if (overlays.rightbar.className.includes('expanded')) {
+      toggleMargins(overlays.rightbar, 'hide'); //--|🠈 Collapse Reset 🠈|--//
+    }
+    if (overlays.header.className.includes('expanded')) {
+      toggleMargins(overlays.header, 'hide'); //--|🠈 Collapse Launch 🠈|--//
+    }
+    if (overlays.footer.className.includes('expanded')) {
+      toggleMargins(overlays.footer, 'hide'); //--|🠈 Collapse Blocked 🠈|--//
+    }
+    */
+  };
+  const toggleMargins = (element: HTMLElement, view: 'show' | 'hide') => {
+    //--|🠊 The <aside>, <header>, and <footer> elements will be collectively referred to as 'margins'. 🠈|--//
+    element.classList.toggle('collapsed', view === 'hide');
+    element.classList.toggle('expanded', view === 'show');
+  };
+
+  let register = carousel.childNodes[0] as HTMLElement;
+  let login = carousel.childNodes[1] as HTMLElement;
+  let password = carousel.childNodes[2] as HTMLElement;
+
+  let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
+  let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
+
+  let launch = document.querySelector("header[id*='header']") as HTMLElement;
+  let blocked = document.querySelector("footer[id*='footer']") as HTMLElement;
+
+  if (page === 'register' || page === 'login' || page === 'password') {
+    unifyLayouts({ header: launch, leftbar: verify, rightbar: reset, footer: blocked });
+  }
+  switch (page) {
+    case 'register':
+      carousel.style.transform = 'translateX(0vw)';
+
+      register.className = `${page}-section visible`;
+      login.className = `${page}-section hidden`;
+      password.className = `${page}-section hidden`;
+      break;
+    case 'login':
+      carousel.style.transform = 'translateX(-100vw)';
+
+      register.className = `${page}-section hidden`;
+      login.className = `${page}-section visible`;
+      password.className = `${page}-section hidden`;
+      break;
+    case 'password':
+      carousel.style.transform = 'translateX(-200vw)';
+
+      register.className = `${page}-section hidden`;
+      login.className = `${page}-section hidden`;
+      password.className = `${page}-section visible`;
+      break;
+    case 'verify':
+      toggleMargins(verify, 'show'); //--|🠈 Expand Verify 🠈|--//
+      break;
+    case 'reset':
+      toggleMargins(reset, 'show'); //--|🠈 Expand Reset 🠈|--//
+      break;
+    case 'launch':
+      toggleMargins(launch, 'show'); //--|🠈 Expand Launch 🠈|--//
+      break;
+    case 'blocked':
+      toggleMargins(blocked, 'show'); //--|🠈 Expand Blocked 🠈|--//
+      break;
+  }
+  /*
   const carouselContainer = document.querySelector('.landing-carousel') as HTMLElement;
   let register: HTMLElement;
   let login: HTMLElement;
@@ -128,9 +212,8 @@ export const viewCarousel = (page: 'register' | 'login' | 'password' | 'verify' 
         break;
     }
   }
-
-  // console.log(verify);
-};
+  */
+}
 export const toggleText = (page: 'login' | 'register' | 'password' | 'verify' | 'reset', text: string) => {
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
@@ -259,7 +342,7 @@ export async function handleData(
         //--|🠊 12. register: Form.login + Form.password 🠈|--//
         //--|🠊 status(404): Not Found 🠈|--//
         dialogue = '//--|🠊 No account found with this email. Would you like to register? 🠈|--//';
-        viewCarousel('register');
+        viewBlock('register');
         toggleText('register', dialogue);
         break;
     }

@@ -2,7 +2,7 @@
 import './Form.register.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewCarousel, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewBlock, toggleText, toggleAside, handleData } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -47,25 +47,25 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         case 'login':
           dialogue = 'You already have an account.';
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
         case 'password':
           dialogue = 'You already have an account. Reset your password here.';
 
-          viewCarousel('password');
+          viewBlock('password');
           toggleText('password', dialogue);
           break;
         case 'verify':
           dialogue = 'Please check your email for the activation code.';
 
-          viewCarousel('verify');
+          viewBlock('verify');
           toggleText('verify', dialogue);
           break;
         case 'blocked':
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
       }
@@ -149,10 +149,10 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           </button>
         </menu>
         <nav className="register-buttons">
-          <button className="register-login" type="button" onClick={() => viewCarousel('login')}>
+          <button className="register-login" type="button" onClick={() => viewBlock('login')}>
             <h6>Access Account</h6>
           </button>
-          <button className="register-password" type="button" onClick={() => viewCarousel('password')}>
+          <button className="register-password" type="button" onClick={() => viewBlock('password')}>
             <h6>Renew Password</h6>
           </button>
         </nav>

@@ -2,7 +2,7 @@
 import './Form.password.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewBlock, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 
@@ -43,32 +43,32 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         case 'register':
           dialogue = 'You cannot change the password for an account that has not been created.';
 
-          viewCarousel('register');
+          viewBlock('register');
           toggleText('register', dialogue);
           break;
         case 'login':
           dialogue = 'Account recovered. Please log in and check your email to authorize.';
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
         case 'verify':
           dialogue = 'Please verify your account before requesting a password change.';
 
-          viewCarousel('verify');
+          viewBlock('verify');
           toggleText('verify', dialogue);
           break;
         case 'reset':
           dialogue = 'Please enter the recovery code sent to your email, followed by the new password.';
 
-          viewCarousel('reset');
+          viewBlock('reset');
           toggleText('reset', dialogue);
           break;
         case 'blocked':
           alert('//--|🠊 Expand Footer.blocked 🠈|--//');
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
       }
@@ -76,7 +76,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       //--|🠋 Account doesn't exist 🠋|--//
       let dialogue: string = 'Account not found. Please register.';
 
-      viewCarousel('register'); //--|🠈 Scroll to Register 🠈|--//
+      viewBlock('register'); //--|🠈 Scroll to Register 🠈|--//
     } finally {
       setSubmit(false);
     }
@@ -125,10 +125,10 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
           </button>
         </menu>
         <nav className="password-buttons">
-          <button className="password-login" type="button" onClick={() => viewCarousel('login')}>
+          <button className="password-login" type="button" onClick={() => viewBlock('login')}>
             <h6>Enter Account</h6>
           </button>
-          <button className="password-register" type="button" onClick={() => viewCarousel('register')}>
+          <button className="password-register" type="button" onClick={() => viewBlock('register')}>
             <h6>Register Account</h6>
           </button>
         </nav>

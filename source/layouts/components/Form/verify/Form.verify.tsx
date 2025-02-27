@@ -2,7 +2,7 @@
 import './Form.verify.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewCarousel, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
+import { viewBlock, toggleText, toggleAside } from '../../../containers/Main/LandingMain/LandingMain';
 
 interface InfoProps {
   info: {
@@ -40,7 +40,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         case 'login':
           dialogue = 'Account authorization complete.';
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
         case 'verify':
@@ -58,7 +58,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         case 'blocked':
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
-          viewCarousel('login');
+          viewBlock('login');
           toggleText('login', dialogue);
           break;
       }

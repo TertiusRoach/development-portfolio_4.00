@@ -17,41 +17,6 @@ const server = express();
 server.use(express.json());
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
-//--|🠋 Start the Server 🠋|--//
-connectDatabase((err) => {
-  if (!err) {
-    server.listen(port, () => {
-      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
-      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
-    });
-    database = getDatabase(); // Assign the connected database to the `database` variable
-  } else {
-    console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
-  }
-});
-module.exports = server; //--|🠈 Ensure module export for testing or further use 🠈|--//
-
-//--|🠊 GET: Fetch Users 🠈|--//
-server.get(`/${root}`, async (req, res) => {
-  try {
-    //--|🠊 Fetch data from both collections 🠈|--//
-    const usersEnabled = await database.collection('enabled').find().sort({ email: 1 }).toArray();
-    const usersPending = await database.collection('pending').find().sort({ email: 1 }).toArray();
-    const usersBlocked = await database.collection('blocked').find().sort({ email: 1 }).toArray();
-    //--|🠊 Combine the data into a single response 🠈|--//
-    const allUsers = {
-      enabled: usersEnabled,
-      pending: usersPending,
-      blocked: usersBlocked,
-    };
-
-    res.status(200).json(allUsers); //--|🠊 Send the combined data as JSON 🠈|--//
-  } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Could not fetch the user documents' });
-  }
-});
-
 //--|🠋 Action Functions 🠋|--//
 async function sendEmail(email, activationCode, page) {
   let transporter = nodemailer.createTransport({
@@ -223,6 +188,41 @@ async function sendEmail(email, activationCode, page) {
     throw error;
   }
 }
+
+//--|🠋 Start the Server 🠋|--//
+connectDatabase((err) => {
+  if (!err) {
+    server.listen(port, () => {
+      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
+      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
+    });
+    database = getDatabase(); // Assign the connected database to the `database` variable
+  } else {
+    console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
+  }
+});
+module.exports = server; //--|🠈 Ensure module export for testing or further use 🠈|--//
+
+//--|🠊 GET: Fetch Users 🠈|--//
+server.get(`/${root}`, async (req, res) => {
+  try {
+    //--|🠊 Fetch data from both collections 🠈|--//
+    const usersEnabled = await database.collection('enabled').find().sort({ email: 1 }).toArray();
+    const usersPending = await database.collection('pending').find().sort({ email: 1 }).toArray();
+    const usersBlocked = await database.collection('blocked').find().sort({ email: 1 }).toArray();
+    //--|🠊 Combine the data into a single response 🠈|--//
+    const allUsers = {
+      enabled: usersEnabled,
+      pending: usersPending,
+      blocked: usersBlocked,
+    };
+
+    res.status(200).json(allUsers); //--|🠊 Send the combined data as JSON 🠈|--//
+  } catch (error) {
+    console.error('Error fetching documents:', error);
+    res.status(500).json({ error: 'Could not fetch the user documents' });
+  }
+});
 
 //--|🠋 POST: Form.register.tsx 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
@@ -729,8 +729,6 @@ server.post(`/${root}/verify`, async (req, res) => {
 
       //--|🠋 Delete the user from the 'pending' collection 🠋|--//
       await database.collection('pending').deleteOne({ email });
-
-      await sendEmail(email, 'Your account is now enabled!', 'account-activated');
     }
   }
   async function pending_blocked(email) {
