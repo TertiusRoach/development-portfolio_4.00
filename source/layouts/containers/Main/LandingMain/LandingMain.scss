@@ -2,7 +2,7 @@
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
   div[class*='container'] {
-    grid-template: 1fr 40rem 1fr / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
+    grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
 
     /* grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; */ //~~|🠊 rows / columns 🠈|~~//
   }
@@ -34,6 +34,11 @@ main[id*='main'] {
     }
   }
   .landing-carousel {
+    display: flex;
+    grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    transform: translateX(-100vw); //~~|🠊 Default view is .login-section 🠈|~~//
+    transition: transform 0.25s ease;
+
     section {
       div[class*='container'] {
         height: 100%;
@@ -51,39 +56,6 @@ main[id*='main'] {
         background: rgba(blue, 0.25);
       }
     }
-    &[class*='carousel'] {
-      display: flex;
-      grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-      transform: translateX(-100vw); //~~|🠊 Default view is .login-section 🠈|~~//
-      transition: transform 0.25s ease;
-
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        @include desktop-landscape();
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        @include mobile-portrait();
-      }
-    }
-    /*
-    section[class*='login'] {
-      background: rgba(red, 0.25);
-    }
-    section[class*='register'] {
-      background: rgba(green, 0.25);
-    }
-    section[class*='password'] {
-      background: rgba(blue, 0.25);
-    }
-    */
-  }
-  /*
-  div[class*='carousel'] {
-    display: flex;
-    grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    transform: translateX(-100vw); //~~|🠊 Default view is .login-section 🠈|~~//
-    transition: transform 0.25s ease;
 
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
@@ -94,5 +66,4 @@ main[id*='main'] {
       @include mobile-portrait();
     }
   }
-  */
 }
