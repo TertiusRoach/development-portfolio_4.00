@@ -24,7 +24,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 2 }} className={`default-${blockName} expanded`}>
+    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 2 }} className={`default-${blockName} collapsed`}>
       <FormVerify info={info} />
     </aside>
   );

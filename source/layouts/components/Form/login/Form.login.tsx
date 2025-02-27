@@ -81,7 +81,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           viewText('verify', dialogue);
           break;
         case 'blocked':
-          alert('//--|🠊 Expand Footer.blocked 🠈|--//');
+          viewBlock('blocked');
+          // alert('//--|🠊 Expand Footer.blocked 🠈|--//');
           /*
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
           viewCarousel('login');
