@@ -24,7 +24,7 @@ interface InfoProps {
   };
 }
 const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
+  const blockName = 'header';
   const pageName = info.identification;
 
   //--|🠋 Local Input States 🠋|--//
@@ -115,9 +115,9 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="launch-section" onSubmit={(event) => handleLaunch(event)}>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div className="track-a-day"></div>
+      <div className="log-a-ticket"></div>
+      <div className="find-a-link"></div>
     </section>
   );
 };

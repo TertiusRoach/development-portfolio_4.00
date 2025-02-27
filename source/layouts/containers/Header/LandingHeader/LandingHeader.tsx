@@ -23,7 +23,7 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} collapsed`}>
+    <header id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} expanded`}>
       <menu>Menu HTML Element</menu>
       <SectionLaunch info={info} />
       {/* <section>Section HTML Element</section> */}
