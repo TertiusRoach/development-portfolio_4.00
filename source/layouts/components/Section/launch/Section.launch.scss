@@ -1,7 +1,25 @@
+// Section.launch.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
-  background: rgba(black, 0.25);
+  // background: rgba(black, 0.25);
+
+  div[id*='overtime'] {
+    grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: green;
+  }
+  div[id*='ticketing'] {
+    grid-area: 2 / 3 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: blue;
+  }
+  div[id*='hyperlink'] {
+    grid-area: 2 / 4 / 3 / 5; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    background: red;
+  }
+
+  div {
+    height: 100%;
+  }
 }
 @mixin mobile-portrait {
 }

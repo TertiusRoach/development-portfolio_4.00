@@ -1,8 +1,7 @@
-// Form.login.tsx
+// Section.launch.tsx
 //--|🠋 Styles 🠋|--//
 import './Section.launch.scss';
 //--|🠉 Styles 🠉|--//
-
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
@@ -115,9 +114,9 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="launch-section" onSubmit={(event) => handleLaunch(event)}>
-      <div className="track-a-day"></div>
-      <div className="log-a-ticket"></div>
-      <div className="find-a-link"></div>
+      <div id="landing-overtime">Track a Day</div>
+      <div id="landing-ticketing">Log a Ticket</div>
+      <div id="landing-hyperlink">Find a Link</div>
     </section>
   );
 };
