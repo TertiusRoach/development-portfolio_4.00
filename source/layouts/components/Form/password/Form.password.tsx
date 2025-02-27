@@ -2,7 +2,7 @@
 import './Form.password.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewBlock, toggleText, toggleAside } from '../../../../landing';
+import { viewBlock, toggleText } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 
@@ -17,10 +17,10 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Shared input states 🠋|--//
+  //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
 
-  //--|🠋 Action Element(s) 🠋|--//
+  //--|🠋 Button Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handlePassword = async (event: React.FormEvent) => {

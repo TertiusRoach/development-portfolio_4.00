@@ -3,7 +3,7 @@ import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
-import { viewBlock, toggleText, toggleAside } from '../../../../landing';
+import { viewBlock, toggleText } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -19,11 +19,11 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Shared Inputs 🠋|--//
+  //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Global Email State 🠈|--//
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Action Element(s) 🠋|--//
+  //--|🠋 Button Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
   let [attempts, setAttempts] = useState(0);
 

@@ -2,7 +2,7 @@
 import './Form.register.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { viewBlock, toggleText, toggleAside } from '../../../../landing';
+import { viewBlock, toggleText } from '../../../../landing';
 
 import { useEmail } from '../../../../modules/utilities/context/EmailContext';
 import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
@@ -18,15 +18,13 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  //--|🠋 Login & Password input states 🠋|--//
+  //--|🠋 Local Input States 🠋|--//
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Registration-specific input states 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
-
-  //--|🠋 Action Element(s) 🠋|--//
+  //--|🠋 Button Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleRegister = async (event: React.FormEvent) => {
