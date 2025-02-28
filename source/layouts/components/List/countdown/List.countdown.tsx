@@ -26,82 +26,115 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'footer';
   const pageName = info.identification;
 
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const handleCountdown = async (event: any) => {
     console.log(event);
   };
 
   useEffect(() => {
+    // Select the footer element with an ID containing "footer"
     const footer = document.querySelector('footer[id*="footer"]');
-    if (!footer) return;
+    if (!footer) return; // Exit early if the footer is not found
 
-    let targetDate: Date;
+    let interval: NodeJS.Timeout | null = null; // Store reference to setInterval, so we can clear it later
+
+    /**
+     * Function to calculate the remaining time and update state
+     * @param targetDate - The future date when restriction expires
+     */
+    const updateCountdown = (targetDate: Date) => {
+      const now = new Date(); // Get the current time
+      const diff = targetDate.getTime() - now.getTime(); // Difference between target and current time in milliseconds
+
+      if (diff <= 0) {
+        // If the countdown has expired, set everything to 0
+        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      // Calculate time left in days, hours, minutes, and seconds
+      setTime({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)), // Convert milliseconds to days
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24), // Convert to hours, keeping remainder within 24h
+        minutes: Math.floor((diff / (1000 * 60)) % 60), // Convert to minutes, keeping remainder within 60min
+        seconds: Math.floor((diff / 1000) % 60), // Convert to seconds, keeping remainder within 60sec
+      });
+    };
+
+    /**
+     * MutationObserver listens for attribute changes on the footer (e.g., class changes)
+     */
     const observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
         if (mutation.attributeName === 'class') {
-          const currentClass = (mutation.target as HTMLElement).className;
-          if (currentClass.includes('expanded')) {
-            let emailInput = document.querySelectorAll('div[class*="inputs"] #email')[0] as HTMLInputElement;
+          const currentClass = (mutation.target as HTMLElement).className; // Get the new class name
 
-            console.log(emailInput.value);
+          if (currentClass.includes('expanded')) {
+            // Footer has been expanded, so fetch the countdown from the server
+
+            // Select the email input field inside a div that contains "inputs" in its class
+            const emailInput = document.querySelector<HTMLInputElement>('div[class*="inputs"] #email');
+
+            if (!emailInput) {
+              console.error('Email input not found.');
+              return; // Stop execution if the email input field is missing
+            }
+
+            // Make an API request to fetch the countdown expiration date
             axios
               .post('http://localhost:3000/users/countdown', { email: emailInput.value })
               .then((response) => {
-                const { view, data } = response.data;
-                targetDate = new Date(data.restrictionExpiresAt);
+                const { data } = response.data; // Extract the relevant data
+                const targetDate = new Date(data.restrictionExpiresAt); // Convert to a Date object
 
-                const updateCountdown = () => {
-                  const now = new Date();
-                  // console.log('Current Time (ISO):', now.toISOString());
-                  const diff = targetDate.getTime() - now.getTime();
+                // Immediately update countdown when data is received
+                updateCountdown(targetDate);
 
-                  if (diff <= 0) {
-                    setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-                    return;
-                  }
+                // Clear any existing interval before setting a new one
+                if (interval) clearInterval(interval);
 
-                  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                  const seconds = Math.floor((diff / 1000) % 60);
-
-                  setTimeLeft({ days, hours, minutes, seconds });
-                };
-                updateCountdown();
-
-                const interval = setInterval(updateCountdown, 1000);
-                return () => clearInterval(interval);
+                // Start a new interval to update countdown every second
+                interval = setInterval(() => updateCountdown(targetDate), 1000);
               })
               .catch((error) => console.error('Error fetching countdown:', error));
           }
         }
       }
     });
-    console.log(footer);
+
+    // Start observing the footer for attribute changes (such as class changes)
     observer.observe(footer, { attributes: true });
+
+    /**
+     * Cleanup function - Runs when component unmounts or dependencies change
+     */
+    return () => {
+      observer.disconnect(); // Stop observing the footer
+      if (interval) clearInterval(interval); // Clear the countdown interval if it exists
+    };
   }, [pageName, blockName]);
 
   return (
     <ol className="list-countdown">
       <li className="calendar-days">
         {/* <span>7</span> */}
-        <span>{timeLeft.days}</span>
+        <span>{time.days}</span>
         <span>Days</span>
       </li>
       <li className="clock-hours">
         {/* <span>23</span> */}
-        <span>{String(timeLeft.hours).padStart(2, '0')}</span>
+        <span>{String(time.hours).padStart(2, '0')}</span>
         <span>:</span>
       </li>
       <li className="clock-minutes">
         {/* <span>59</span> */}
-        <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
+        <span>{String(time.minutes).padStart(2, '0')}</span>
         <span>:</span>
       </li>
       <li className="clock-seconds">
         {/* <span>59</span> */}
-        <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
+        <span>{String(time.seconds).padStart(2, '0')}</span>
       </li>
     </ol>
   );
