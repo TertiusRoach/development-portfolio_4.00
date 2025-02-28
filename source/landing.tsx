@@ -7,8 +7,8 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from './modules/utilities/context/EmailContext';
-import { PasswordProvider } from './modules/utilities/context/PasswordContext';
+import { EmailProvider } from './modules/scripts/context/EmailContext';
+import { PasswordProvider } from './modules/scripts/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
 import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
@@ -19,9 +19,9 @@ import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingL
 import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from './modules/scripts/getResolution';
-import getOrientation from './modules/scripts/getOrientation';
-import getIdentification from './modules/scripts/getIdentification';
+import getResolution from './modules/utilities/getResolution';
+import getOrientation from './modules/utilities/getOrientation';
+import getIdentification from './modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 const pageName = 'landing';
 const elementBody = document.getElementById(`${pageName}-body`) as HTMLElement;

@@ -15,10 +15,31 @@ const port = 3000;
 const root = 'users';
 const server = express();
 server.use(express.json());
-// server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+
+/*
 server.use(
   cors({ origin: 'https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html', credentials: true })
 );
+*/
+
+//--|🠋 Start the Server 🠋|--//
+async function startServer() {
+  try {
+    await connectDatabase(); //--|🠈 Ensure connection before proceeding 🠈|--//
+    database = getDatabase(); //--|🠈 Assign database after successful connection 🠈|--//
+
+    server.listen(port, () => {
+      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
+      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
+    });
+  } catch (error) {
+    console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
+    process.exit(1); //--|🠈 Exit process if database connection fails 🠈|--//
+  }
+}
+startServer(); //--|🠈 Run async function to start the server 🠈|--//
+module.exports = server; //--|🠈 Ensure module export for testing or further use 🠈|--//
 
 //--|🠋 Action Functions 🠋|--//
 async function sendEmail(email, activationCode, page) {
@@ -191,20 +212,6 @@ async function sendEmail(email, activationCode, page) {
     throw error;
   }
 }
-
-//--|🠋 Start the Server 🠋|--//
-connectDatabase((err) => {
-  if (!err) {
-    server.listen(port, () => {
-      console.log(`//--|🠊 Listening on Port: ${port} 🠈|--//`);
-      console.log(`//--|🠊 Go to http://localhost:${port}/${root} 🠈|--//`);
-    });
-    database = getDatabase(); // Assign the connected database to the `database` variable
-  } else {
-    console.error('//--|🠊 Failed to connect to MongoDB 🠈|--//', err);
-  }
-});
-module.exports = server; //--|🠈 Ensure module export for testing or further use 🠈|--//
 
 //--|🠊 GET: Fetch Users 🠈|--//
 server.get(`/${root}`, async (req, res) => {
@@ -937,67 +944,4 @@ let axiosError = (error) => {
 
 //--------------------------------------------------------------------------------//
 
-function randomizeCodeActivation(length) {
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const numbers = '0123456789';
-
-  let code = '';
-
-  // Add 5 random letters
-  for (let i = 0; i < length / 2; i++) {
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    code += randomLetter;
-  }
-
-  // Add 5 random numbers
-  for (let i = 0; i < length / 2; i++) {
-    const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-    code += randomNumber;
-  }
-
-  // Shuffle the characters randomly
-  code = code
-    .split('')
-    .sort(() => Math.random() - 0.5)
-    .join('');
-  return code;
-}
-
-function manipulateDocumentFields(method) {
-  // MongoDB: database => collection => document => field
-  const document = {
-    email: '',
-    passwordHash: '',
-    verifiedEmail: '',
-
-    role: '',
-    status: '',
-    firstName: '',
-    lastName: '',
-
-    activationCode: '',
-    activationAttempts: '', // Maximum of 6 attempts before the user is blocked for 24 hours
-    activationCodeExpiresAt: '',
-
-    userIP: '',
-    createdAt: '',
-    updatedAt: '',
-    lastLogin: '',
-
-    passwordCode: '',
-    passwordCodeExpiresAt: '',
-    passwordChangeRequests: '', // Maximum of 6 before the user is blocked for 7 days
-  };
-  // CRUD Method
-  switch (method) {
-    case 'create':
-      break;
-    case 'read':
-      break;
-    case 'update':
-      break;
-    case 'delete':
-      break;
-  }
-}
 //--------------------------------------------------------------------------------//

@@ -5,11 +5,11 @@ import { useMediaQuery } from 'react-responsive';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/fade/Button.fade';
-import getResolution from '../../../../modules/scripts/getResolution';
-import getOrientation from '../../../../modules/scripts/getOrientation';
+import getResolution from '../../../../modules/utilities/getResolution';
+import getOrientation from '../../../../modules/utilities/getOrientation';
 import AsideRightbar from '../../../components/Aside/rightbar/Aside.rightbar';
 import AsideProjects from '../../../components/Aside/projects/Aside.projects';
-import getIdentification from '../../../../modules/scripts/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface InfoProps {
   info: {

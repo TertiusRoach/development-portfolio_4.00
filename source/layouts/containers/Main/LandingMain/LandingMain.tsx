@@ -7,8 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/utilities/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/utilities/context/PasswordContext';
+import { EmailProvider } from '../../../../modules/scripts/context/EmailContext';
+import { PasswordProvider } from '../../../../modules/scripts/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';

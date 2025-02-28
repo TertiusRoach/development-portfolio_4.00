@@ -7,9 +7,9 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../../../../modules/scripts/getResolution';
-import getOrientation from '../../../../modules/scripts/getOrientation';
-import getIdentification from '../../../../modules/scripts/getIdentification';
+import getResolution from '../../../../modules/utilities/getResolution';
+import getOrientation from '../../../../modules/utilities/getOrientation';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormReset from '../../../components/Form/reset/Form.reset';

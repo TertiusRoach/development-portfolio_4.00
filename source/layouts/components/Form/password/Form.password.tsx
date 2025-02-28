@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 import { viewBlock, viewText, axiosError } from '../../../../landing';
 
-import { useEmail } from '../../../../modules/utilities/context/EmailContext';
+import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 
 interface InfoProps {
   info: {

@@ -6,8 +6,8 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 
 import { viewBlock, viewText, axiosError } from '../../../../landing';
 
-import { useEmail } from '../../../../modules/utilities/context/EmailContext';
-import { usePassword } from '../../../../modules/utilities/context/PasswordContext';
+import { useEmail } from '../../../../modules/scripts/context/EmailContext';
+import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
 
 interface InfoProps {
   info: {

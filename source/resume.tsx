@@ -12,9 +12,9 @@ import ResumeLeftbar from './layouts/containers/Leftbar/ResumeLeftbar/ResumeLeft
 import ResumeRightbar from './layouts/containers/Rightbar/ResumeRightbar/ResumeRightbar';
 
 // import { getSVG } from './modules/utilities/bin/getFile';
-import getResolution from './modules/scripts/getResolution';
-import getOrientation from './modules/scripts/getOrientation';
-import getIdentification from './modules/scripts/getIdentification';
+import getResolution from './modules/utilities/getResolution';
+import getOrientation from './modules/utilities/getOrientation';
+import getIdentification from './modules/utilities/getIdentification';
 
 const pageName = 'resume';
 const DefaultBody = document.getElementById(`${pageName}-body`) as HTMLElement;

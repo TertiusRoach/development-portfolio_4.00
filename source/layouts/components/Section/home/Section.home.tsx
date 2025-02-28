@@ -13,7 +13,7 @@ import getScroll from '../../../../modules/utilities/bin/getScroll';
 import toggleAside from '../../../../modules/utilities/bin/toggleAside';
 import toggleSection from '../../../../modules/utilities/bin/toggleSection';
 import DivisionWorking from '../../Division/working/Division.working';
-import getIdentification from '../../../../modules/scripts/getIdentification';
+import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface HomeProps {
   labelName: 'home';
