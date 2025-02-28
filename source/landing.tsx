@@ -138,7 +138,6 @@ export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'r
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
-export function viewTimer() {}
 
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//

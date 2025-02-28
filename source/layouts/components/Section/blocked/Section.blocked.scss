@@ -37,7 +37,7 @@
 
 section[class*='blocked'] {
   display: grid;
-  grid-template: 4rem 1fr 20rem 1fr 4rem / 6rem repeat(6, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 4rem 1fr auto 1fr 4rem / 6rem repeat(6, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
 
   // background: rgba(black, 0.5);
 
