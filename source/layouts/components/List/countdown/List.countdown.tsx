@@ -33,29 +33,53 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    const targetDate = new Date('2025-03-06T06:21:19Z'); // Fixed future date
+    const footer = document.querySelector('footer[id*="footer"]');
+    if (!footer) return;
 
-    const updateCountdown = () => {
-      const now = new Date();
-      console.log('Current Time (ISO):', now.toISOString());
-      const diff = targetDate.getTime() - now.getTime();
+    let targetDate: Date;
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.attributeName === 'class') {
+          const currentClass = (mutation.target as HTMLElement).className;
+          if (currentClass.includes('expanded')) {
+            let emailInput = document.querySelectorAll('div[class*="inputs"] #email')[0] as HTMLInputElement;
 
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+            console.log(emailInput.value);
+            axios
+              .post('http://localhost:3000/users/countdown', { email: emailInput.value })
+              .then((response) => {
+                const { view, data } = response.data;
+                targetDate = new Date(data.restrictionExpiresAt);
+
+                const updateCountdown = () => {
+                  const now = new Date();
+                  // console.log('Current Time (ISO):', now.toISOString());
+                  const diff = targetDate.getTime() - now.getTime();
+
+                  if (diff <= 0) {
+                    setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+                    return;
+                  }
+
+                  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                  const seconds = Math.floor((diff / 1000) % 60);
+
+                  setTimeLeft({ days, hours, minutes, seconds });
+                };
+                updateCountdown();
+
+                const interval = setInterval(updateCountdown, 1000);
+                return () => clearInterval(interval);
+              })
+              .catch((error) => console.error('Error fetching countdown:', error));
+          }
+        }
       }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
+    });
+    console.log(footer);
+    observer.observe(footer, { attributes: true });
   }, [pageName, blockName]);
 
   return (
@@ -83,3 +107,66 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ListCountdown;
+
+const loadTimer = () => {
+  let footer = document.querySelector('footer[id*="footer"]');
+  if (!footer) return;
+
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.attributeName === 'class') {
+        const currentClass = (mutation.target as HTMLElement).className;
+        if (currentClass.includes('expanded')) {
+          let emailInput = document.querySelectorAll('div[class*="inputs"] #email')[0] as HTMLInputElement;
+
+          console.log(emailInput.value);
+          axios
+            .post('http://localhost:3000/users/countdown', { email: emailInput.value })
+            .then((response) => {
+              const { view, data } = response.data;
+              // const targetDate = response.data.restrictionExpiresAt;
+              // startCountdown(targetDate);
+              // return response.data;
+              console.log(currentClass);
+              console.log(data.restrictionExpiresAt);
+            })
+            .catch((error) => console.error('Error fetching countdown:', error));
+        }
+      }
+    }
+  });
+  console.log(footer);
+  observer.observe(footer, { attributes: true });
+  /*
+  useEffect(() => {
+    // Function to observe footer changes
+    const observeFooter = () => {
+      const footer = document.querySelector('footer[id*="footer"]');
+
+      if (!footer) return;
+
+      const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.attributeName === 'class') {
+            const currentClass = (mutation.target as HTMLElement).className;
+            if (currentClass.includes('expanded')) {
+              // Fetch restrictionExpiresAt from the server
+              axios
+                .post(http://localhost:3000/users/countdown, { email: localStorage.getItem("email") })
+                .then((response) => {
+                  const targetDate = response.data.data.restrictionExpiresAt;
+                  startCountdown(targetDate);
+                })
+                .catch((error) => console.error('Error fetching countdown:', error));
+            }
+          }
+        }
+      });
+
+      observer.observe(footer, { attributes: true });
+    };
+
+    observeFooter();
+  }, []);
+  */
+};

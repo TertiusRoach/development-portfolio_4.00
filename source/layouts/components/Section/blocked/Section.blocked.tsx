@@ -46,7 +46,7 @@ const SectionBlocked: React.FC<InfoProps> = ({ info }) => {
       <div className="blocked-text">
         <h1>Your account has been blocked.</h1>
       </div>
-      <div className="company-branding" style={{ zIndex: 1 }}>
+      <div className="blocked-branding" style={{ zIndex: 1 }}>
         <img
           src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
           alt="Login Logo"

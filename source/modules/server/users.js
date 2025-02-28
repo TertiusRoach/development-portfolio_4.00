@@ -851,6 +851,42 @@ server.post(`/${root}/reset`, async (req, res) => {
   }
 });
 
+//--|🠋 POST: List.countdown.tsx 🠋|--//
+server.post(`/${root}/countdown`, async (req, res) => {
+  const { email } = req.body;
+
+  const user = await database.collection('blocked').findOne({ email });
+  try {
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    return res.status(200).json({
+      view: 'blocked',
+      data: user,
+    });
+  } catch (error) {
+    axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
+    /*
+    console.error('Server Error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+    */
+  }
+});
+/*
+server.post(`/${root}/countdown`, async (req, res) => {
+  const { email } = req.body;
+
+  const user = await database.collection('blocked').findOne({ email });
+  try {
+    return res.status(200).json({
+      view: 'blocked',
+      data: user,
+    });
+  } catch (error) {}
+});
+*/
+
 let encryptValue = async (value) => {
   //--|🠊 Encrypt String 🠈|--//
   const salt = await bcrypt.genSalt();
