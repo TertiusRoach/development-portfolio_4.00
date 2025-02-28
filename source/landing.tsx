@@ -134,10 +134,11 @@ export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | '
       break;
   }
 }
-export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset', text: string) {
+export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked', text: string) {
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
+
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
   //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
@@ -176,7 +177,7 @@ export function axiosError(error: unknown) {
     alert('An unexpected error occurred. Please try again.');
   }
 }
-export async function handleData(
+function dialogueMessages(
   status: string,
   action:
     | 'created'

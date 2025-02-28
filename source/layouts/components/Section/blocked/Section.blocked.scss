@@ -1,33 +1,43 @@
 // Section.blocked.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  /*
-  grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
-  // background: rgba(black, 0.25);
-
-  div[id*='overtime'] {
-    grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(darkgreen, 0.75);
+  ol[class*='countdown'] {
+    grid-area: 3 / 4 / 4 / 8; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   }
-  div[id*='ticketing'] {
-    grid-area: 2 / 3 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(darkblue, 0.75);
+  div[class*='text'] {
+    display: flex;
+    align-items: center;
+    grid-area: 2 / 3 / 3 / 7;
+    h1 {
+      width: 100%;
+      padding: 4px;
+      line-clamp: 3; //~~|🠊 Standard property 🠈|~~//
+      color: white;
+      text-wrap: balance;
+      text-align: center; //~~|🠊 Justifies text alignment 🠈|~~//
+      display: -webkit-box; //~~|🠊 Enables multi-line truncation 🠈|~~//
+      -webkit-line-clamp: 4; //~~|🠊 Limits the number of lines  🠈|~~//
+      text-overflow: ellipsis; //~~|🠊 Adds ellipsis for overflow 🠈|~~//
+      -webkit-box-orient: vertical; //~~|🠊 Vertical Text 🠈|~~//
+    }
   }
-  div[id*='hyperlink'] {
-    grid-area: 2 / 4 / 3 / 5; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: rgba(darkred, 0.75);
+  div[class*='branding'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: 2 / 2 / 5 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    img {
+      width: 75%;
+      height: auto;
+    }
   }
-
-  div {
-    height: 100%;
-  }
-  */
 }
 @mixin mobile-portrait {
 }
 
 section[class*='blocked'] {
   display: grid;
+  grid-template: 4rem 1fr 20rem 1fr 4rem / 6rem repeat(6, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
 
   // background: rgba(black, 0.5);
 

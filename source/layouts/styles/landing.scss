@@ -116,22 +116,25 @@
   //--|🠋 Header 🠋|--//
   header {
     &[class*='collapsed'] {
-      transition: clip-path 0.25s ease-in-out;
+      backdrop-filter: blur(0px);
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
       menu {
         top: 0rem;
       }
     }
     &[class*='expanded'] {
-      transition: clip-path 0.25s ease-in-out;
+      backdrop-filter: blur(32px);
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
       menu {
         top: -4rem;
       }
     }
-    menu {
-      position: relative;
-      transition: top 0.25s ease-in-out;
+    & {
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out;
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
     }
   }
 }
@@ -162,23 +165,25 @@
   //--|🠋 Footer 🠋|--//
   footer {
     &[class*='collapsed'] {
-      transition: clip-path 0.25s ease-in-out;
+      backdrop-filter: blur(0px);
       clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
-
       menu {
         top: 0rem;
       }
     }
     &[class*='expanded'] {
-      transition: clip-path 0.25s ease-in-out;
+      backdrop-filter: blur(32px);
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
       menu {
         top: 4rem;
       }
     }
-    menu {
-      position: relative;
-      transition: top 0.25s ease-in-out;
+    & {
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out;
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
     }
   }
 }

@@ -89,10 +89,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
 
           viewBlock('blocked');
-
+          viewText('blocked', dialogue);
+          /*
           setTimeout(() => {
             alert(dialogue);
           }, 250);
+          */
           break;
       }
     } catch (error) {

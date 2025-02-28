@@ -11,6 +11,7 @@ import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
+import ListCountdown from '../../List/countdown/List.countdown';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
@@ -36,88 +37,22 @@ const SectionBlocked: React.FC<InfoProps> = ({ info }) => {
 
   const handleBlocked = async (event: any) => {
     console.log(event);
-    /* window.location.href = '/dashboard'; */
-    /*
-    event.preventDefault();
-    setSubmit(true);
-    try {
-      const route = 'login';
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
-        email,
-        passwordHash: password,
-      });
-      const { view, data } = response.data;
-
-      let dialogue: string;
-      switch (view) {
-        case 'launch':
-          dialogue = 'Login successful, please select the application you want to use.';
-
-          viewBlock('launch');
-          // window.location.href = '/dashboard';
-
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          break;
-        case 'register':
-          dialogue = 'No account found with this email. Would you like to register?';
-          viewBlock('register');
-          break;
-        case 'password':
-          let messages: string[] = [
-            'You have three attempts left.',
-            'You have two attempts left.',
-            'You have one attempt left.',
-          ];
-          if (attempts < 3) {
-            dialogue = messages[attempts];
-
-            setAttempts(attempts + 1);
-            viewText('login', dialogue);
-          } else {
-            dialogue = 'Would you like to change your password?';
-            setAttempts(0);
-            viewBlock('password');
-            viewText('password', dialogue);
-
-            setTimeout(() => {
-              dialogue = 'Sign in to access your account.';
-              viewText('login', dialogue);
-            }, 250);
-          }
-          break;
-        case 'verify':
-          dialogue = 'Please verify your account before signing in.';
-
-          viewBlock('verify');
-          viewText('verify', dialogue);
-          break;
-        case 'blocked':
-          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
-          viewBlock('blocked');
-
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          break;
-      }
-    } catch (error) {
-      axiosError(error);
-    } finally {
-      setSubmit(false);
-    }
-    */
   };
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <section className="blocked-section" onSubmit={(event) => handleBlocked(event)}>
-      {/* <div id="landing-overtime">Track a Day</div>
-      <div id="landing-ticketing">Log a Ticket</div>
-      <div id="landing-hyperlink">Find a Link</div> */}
+    <section className="blocked-section">
+      <div className="blocked-text">
+        <h1>Your account has been blocked.</h1>
+      </div>
+      <div className="company-branding" style={{ zIndex: 1 }}>
+        <img
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
+          alt="Login Logo"
+        />
+      </div>
+      <ListCountdown info={info} />
     </section>
   );
 };
