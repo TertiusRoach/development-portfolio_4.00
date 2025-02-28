@@ -26,11 +26,7 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'footer';
   const pageName = info.identification;
 
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  const handleCountdown = async (event: any) => {
-    console.log(event);
-  };
+  let [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     // Select the footer element with an ID containing "footer"
@@ -45,9 +41,9 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
      */
     const updateCountdown = (targetDate: Date) => {
       const now = new Date(); // Get the current time
-      const diff = targetDate.getTime() - now.getTime(); // Difference between target and current time in milliseconds
+      const difference = targetDate.getTime() - now.getTime(); // Difference between target and current time in milliseconds
 
-      if (diff <= 0) {
+      if (difference <= 0) {
         // If the countdown has expired, set everything to 0
         setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
@@ -55,10 +51,10 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
 
       // Calculate time left in days, hours, minutes, and seconds
       setTime({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)), // Convert milliseconds to days
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24), // Convert to hours, keeping remainder within 24h
-        minutes: Math.floor((diff / (1000 * 60)) % 60), // Convert to minutes, keeping remainder within 60min
-        seconds: Math.floor((diff / 1000) % 60), // Convert to seconds, keeping remainder within 60sec
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)), // Convert milliseconds to days
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24), // Convert to hours, keeping remainder within 24h
+        minutes: Math.floor((difference / (1000 * 60)) % 60), // Convert to minutes, keeping remainder within 60min
+        seconds: Math.floor((difference / 1000) % 60), // Convert to seconds, keeping remainder within 60sec
       });
     };
 
@@ -120,7 +116,7 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
       <li className="calendar-days">
         {/* <span>7</span> */}
         <span>{time.days}</span>
-        <span>Days</span>
+        {/* <span>Days</span> */}
       </li>
       <li className="clock-hours">
         {/* <span>23</span> */}
