@@ -26,36 +26,58 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'footer';
   const pageName = info.identification;
 
-  //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail();
-  let { password, setPassword } = usePassword();
-
-  //--|🠋 Button Action States 🠋|--//
-  let [submit, setSubmit] = useState(false);
-  let [attempts, setAttempts] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const handleCountdown = async (event: any) => {
     console.log(event);
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    const targetDate = new Date('2025-03-06T06:21:19Z'); // Fixed future date
+
+    const updateCountdown = () => {
+      const now = new Date();
+      console.log('Current Time (ISO):', now.toISOString());
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, [pageName, blockName]);
 
   return (
     <ol className="list-countdown">
-      <li className="days-large">
-        <span>7</span>
+      <li className="calendar-days">
+        {/* <span>7</span> */}
+        <span>{timeLeft.days}</span>
         <span>Days</span>
       </li>
-      <li className="hours-small">
-        <span>23</span>
+      <li className="clock-hours">
+        {/* <span>23</span> */}
+        <span>{String(timeLeft.hours).padStart(2, '0')}</span>
         <span>:</span>
       </li>
-      <li className="minutes-small">
-        <span>59</span>
+      <li className="clock-minutes">
+        {/* <span>59</span> */}
+        <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
         <span>:</span>
       </li>
-      <li className="seconds-small">
-        <span>59</span>
+      <li className="clock-seconds">
+        {/* <span>59</span> */}
+        <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
       </li>
     </ol>
   );
