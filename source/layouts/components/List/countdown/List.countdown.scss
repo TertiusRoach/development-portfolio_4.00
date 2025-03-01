@@ -1,21 +1,6 @@
 // List.countdown.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  li::after {
-    content: '';
-
-    top: 2rem;
-    right: 0rem;
-    bottom: 2rem;
-    border-width: 1px;
-    position: absolute;
-    border-color: white;
-    transition: top 0.25s ease-in-out, bottom 0.25s ease-in-out; // Add transitions
-  }
-  li:hover::after {
-    top: 0; // Extend to the top
-    bottom: 0; // Extend to the bottom
-  }
   li[class*='clock'] {
     display: flex;
     grid-row: 1 / 2; //~~|🠊 row-start / row-end 🠈|~~//
@@ -56,16 +41,18 @@ ol[class*='countdown'] {
   margin: 0;
   padding: 0;
   display: inherit; //--|🠈 display: grid; 🠈|--//
-  list-style-type: none;
-  grid-template: 1fr / repeat(4, 1fr); //~~|🠊 rows / columns 🠈|~~//
-
-  // border-style: solid;
-
   border-width: 2px;
   border-style: solid;
-  border-color: white;
-
   border-radius: 1rem;
+  list-style-type: none;
+  border-color: white;
+  background: rgba(white, 0);
+  grid-template: 1fr / repeat(4, 1fr); //~~|🠊 rows / columns 🠈|~~//
+
+  transition: background 2s ease-in-out; // Add transitions
+  &:hover {
+    background: rgba(black, 0.5);
+  }
 
   li {
     position: relative;
@@ -74,6 +61,21 @@ ol[class*='countdown'] {
       cursor: default;
       user-select: none;
       position: relative; //--|🠈 Moves the element relative to its normal position. 🠈|--//
+    }
+    &::after {
+      content: '';
+
+      top: 2rem;
+      right: 0rem;
+      bottom: 2rem;
+      border-width: 1px;
+      position: absolute;
+      border-color: white;
+      transition: top 0.25s ease-in-out, bottom 0.25s ease-in-out; // Add transitions
+    }
+    &:hover::after {
+      top: 0; // Extend to the top
+      bottom: 0; // Extend to the bottom
     }
   }
   //--|🠋 Desktop (Landscape) 🠋|--//
