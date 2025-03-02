@@ -1,5 +1,5 @@
 // users.js
-//--|🠊 Open folder Location in Integrated Terminal to run: nodemon users 🠈|--//
+//--|🠊 Open folder Location in Integrated Terminal to run: nodemon landing 🠈|--//
 const cors = require('cors');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
