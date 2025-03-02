@@ -8,7 +8,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, axiosError } from '../../../../landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';

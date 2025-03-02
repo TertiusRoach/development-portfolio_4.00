@@ -139,6 +139,17 @@ export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'r
   element.innerText = text;
 }
 
+export function retrieveEndpoint(
+  route: 'register' | 'login' | 'password' | 'verify' | 'reset',
+  address: 'http://localhost:3000' | string
+) {
+  //--|🠊 URL: Uniform Resource Locator 🠈|--//
+
+  //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
+  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
+  return `${BASE_URL}/users/${route}`;
+}
+
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
   //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
@@ -177,7 +188,7 @@ export function axiosError(error: unknown) {
     alert('An unexpected error occurred. Please try again.');
   }
 }
-function dialogueMessages(
+const dialogueMessages = (
   status: string,
   action:
     | 'created'
@@ -192,7 +203,7 @@ function dialogueMessages(
     | 'recovered'
     | 'declined'
     | 'register'
-) {
+) => {
   let dialogue: string; //--|🠈 Message for the User 🠈|--//
   //--|🠋 Step 4: Validate User Status 🠋|--//
   if (status === 'pending') {
@@ -285,4 +296,4 @@ function dialogueMessages(
     //--|🠊 status(500): Internal Server Error 🠈|--//
     dialogue = 'An unexpected error occurred. Please try again later.';
   }
-}
+};

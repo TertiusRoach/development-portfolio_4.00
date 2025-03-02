@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, axiosError } from '../../../../landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
@@ -38,7 +38,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      const endpoint = getEndpoint('register', 'http://localhost:3000');
+      const endpoint = retrieveEndpoint('register', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
         firstName,
         lastName,
@@ -188,10 +188,15 @@ const showDemos = (pageName: 'landing' | string) => {
     return () => closeRegister.removeEventListener('click', closeClick);
   }
 };
-const getEndpoint = (route: 'register', address: 'http://localhost:3000') => {
+/*
+const getEndpoint = (
+  route: 'register' | 'login' | 'password' | 'verify' | 'reset',
+  address: 'http://localhost:3000' | string
+) => {
   //--|🠊 URL: Uniform Resource Locator 🠈|--//
 
   //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 };
+*/
