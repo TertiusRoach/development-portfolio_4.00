@@ -148,7 +148,6 @@ export function retrieveEndpoint(
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 }
-
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
   //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
@@ -187,6 +186,7 @@ export function axiosError(error: unknown) {
     alert('An unexpected error occurred. Please try again.');
   }
 }
+
 const dialogueMessages = (
   status: string,
   action:
