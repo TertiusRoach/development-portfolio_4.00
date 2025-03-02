@@ -152,6 +152,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        <button className="login-observe">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg"
+            alt=""
+          />
+        </button>
       </div>
       <div className="login-footer">
         <menu className="login-action">
