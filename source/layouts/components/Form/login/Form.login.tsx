@@ -148,6 +148,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           name="Password"
           type="password"
           placeholder="//--|🠊 Your Password 🠈|--//"
+          // --- //
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
@@ -155,7 +156,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       <div className="login-footer">
         <menu className="login-action">
           <button className="login-button" type="submit" disabled={submit}>
-            {/* <h6>Login</h6> */}
             {submit ? 'Logging in...' : 'Login'}
           </button>
         </menu>
