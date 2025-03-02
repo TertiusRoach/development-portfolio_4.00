@@ -30,8 +30,9 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
     try {
       let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
       let registerPassword = document.querySelector('.register-inputs #password') as HTMLInputElement;
-      const route = 'verify';
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      // const route = 'verify';
+      const endpoint = retrieveEndpoint('verify', 'http://localhost:3000');
+      const response = await axios.post(endpoint, {
         email: registerEmail.value,
         passwordHash: registerPassword.value,
         activation: active,

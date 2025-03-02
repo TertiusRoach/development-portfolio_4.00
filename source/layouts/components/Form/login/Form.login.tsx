@@ -38,8 +38,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      const route = 'login';
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      // const route = 'login';
+      const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
+      const response = await axios.post(endpoint, {
         email,
         passwordHash: password,
       });

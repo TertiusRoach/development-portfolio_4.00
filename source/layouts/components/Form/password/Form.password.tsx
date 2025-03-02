@@ -38,8 +38,9 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
       let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
 
-      const route = 'password';
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
+      // const route = 'password';
+      const endpoint = retrieveEndpoint('password', 'http://localhost:3000');
+      const response = await axios.post(endpoint, {
         email,
         passwordHash: loginPassword.value,
       });
