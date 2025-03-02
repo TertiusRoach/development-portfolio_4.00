@@ -1,13 +1,18 @@
-// Form.reset.tsx
+//--|🠊 Form.reset.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
 import './Form.reset.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
-
+//--|🠉 Functions 🠉|--//
+//--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
-
+//--|🠉 Context 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
@@ -20,11 +25,11 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
 
   //--|🠋 Local Input States 🠋|--//
-  let [renew, setRenew] = useState('');
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Button Action States 🠋|--//
+  //--|🠋 Action States 🠋|--//
+  let [renew, setRenew] = useState('');
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
 
   const handleReset = async (event: React.FormEvent) => {

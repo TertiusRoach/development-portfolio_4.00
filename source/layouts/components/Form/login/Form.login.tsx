@@ -1,13 +1,19 @@
-// Form.login.tsx
-import './Form.login.scss';
+//--|🠊 Form.login.tsx 🠈|--//
 
+//--|🠋 Styles 🠋|--//
+import './Form.login.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
-
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
-
+//--|🠉 Functions 🠉|--//
+//--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
+//--|🠉 Context 🠉|--//
 
 interface InfoProps {
   info: {
@@ -24,7 +30,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   let { email, setEmail } = useEmail();
   let { password, setPassword } = usePassword();
 
-  //--|🠋 Button Action States 🠋|--//
+  //--|🠋 Action States 🠋|--//
   let [submit, setSubmit] = useState(false);
   let [attempts, setAttempts] = useState(0);
 

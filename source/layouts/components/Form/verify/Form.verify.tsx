@@ -1,8 +1,14 @@
-// Form.verify.tsx
+//--|🠊 Form.verify.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
 import './Form.verify.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
+//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   info: {
@@ -14,11 +20,8 @@ interface InfoProps {
 const FormVerify: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
-
-  //--|🠋 Local Input States 🠋|--//
-  let [activate, setActivate] = useState('');
-
-  //--|🠋 Button Action States 🠋|--//
+  //--|🠋 Action States 🠋|--//
+  let [active, setActive] = useState('');
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleVerify = async (event: React.FormEvent) => {
@@ -31,7 +34,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         email: registerEmail.value,
         passwordHash: registerPassword.value,
-        activation: activate,
+        activation: active,
       });
       const { view, data } = response.data;
 
@@ -103,8 +106,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           name="Verification Code"
           placeholder="//--|🠊 Verification Code 🠈|--//"
           // --- //
-          value={activate}
-          onChange={(event) => setActivate(event.target.value)}
+          value={active}
+          onChange={(event) => setActive(event.target.value)}
         />
       </div>
       <div className="verify-footer">

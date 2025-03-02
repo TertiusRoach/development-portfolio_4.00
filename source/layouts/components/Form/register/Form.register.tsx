@@ -3,17 +3,9 @@
 import './Form.register.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-/*
-import dotenv from 'dotenv';
-dotenv.config({ path: '../../../../../build/.env' });
-*/
-
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Settings 🠋|--//
-
-//--|🠉 Settings 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
@@ -34,29 +26,20 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
 
   //--|🠋 Local Input States 🠋|--//
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
+  let [lastName, setLastName] = useState('');
+  let [firstName, setFirstName] = useState('');
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
-  //--|🠋 Button Action States 🠋|--//
+  //--|🠋 Button States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      /*
-      let route = 'register';
-      let address = process.env.BASE_URL || 'http://localhost:3000'; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
-
-      // let address = process.env.BASE_URL || 'http://localhost:3000'; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
-      let endpoint = `${address}/users/${route}`;
-
+      const endpoint = getEndpoint('register', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
-        */
-      const route = 'register';
-      const response = await axios.post(`http://localhost:3000/users/${route}`, {
         firstName,
         lastName,
         email,
@@ -204,4 +187,11 @@ const showDemos = (pageName: 'landing' | string) => {
     closeRegister.addEventListener('click', closeClick);
     return () => closeRegister.removeEventListener('click', closeClick);
   }
+};
+const getEndpoint = (route: 'register', address: 'http://localhost:3000') => {
+  //--|🠊 URL: Uniform Resource Locator 🠈|--//
+
+  //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
+  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
+  return `${BASE_URL}/users/${route}`;
 };

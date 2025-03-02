@@ -1,11 +1,18 @@
-// Form.password.tsx
+//--|🠊 Form.password.tsx 🠈|--//
+
+//--|🠋 Styles 🠋|--//
 import './Form.password.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
-
+//--|🠉 Functions 🠉|--//
+//--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
-
+//--|🠉 Context 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
@@ -20,7 +27,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
 
-  //--|🠋 Button Action States 🠋|--//
+  //--|🠋 Button States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
 
   const handlePassword = async (event: React.FormEvent) => {
