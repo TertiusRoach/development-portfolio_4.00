@@ -3,13 +3,16 @@
 import './Form.register.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-// import dotenv from 'dotenv';
+/*
+import dotenv from 'dotenv';
+dotenv.config({ path: '../../../../../build/.env' });
+*/
 
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Settings 🠋|--//
-// dotenv.config({ path: '../../../../../build/.env' });
+
 //--|🠉 Settings 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
