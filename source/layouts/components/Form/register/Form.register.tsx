@@ -1,11 +1,23 @@
-// Form.register.tsx
+//--|🠊 Form.register.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
 import './Form.register.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Dependencies 🠋|--//
+// import dotenv from 'dotenv';
+
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Settings 🠋|--//
+// dotenv.config({ path: '../../../../../build/.env' });
+//--|🠉 Settings 🠉|--//
+//--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, axiosError } from '../../../../landing';
-
+//--|🠉 Functions 🠉|--//
+//--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
+//--|🠉 Context 🠉|--//
 
 interface InfoProps {
   info: {
@@ -31,6 +43,15 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
+      /*
+      let route = 'register';
+      let address = process.env.BASE_URL || 'http://localhost:3000'; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
+
+      // let address = process.env.BASE_URL || 'http://localhost:3000'; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
+      let endpoint = `${address}/users/${route}`;
+
+      const response = await axios.post(endpoint, {
+        */
       const route = 'register';
       const response = await axios.post(`http://localhost:3000/users/${route}`, {
         firstName,

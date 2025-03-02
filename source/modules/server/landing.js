@@ -1,4 +1,4 @@
-// users.js
+// landing.js
 //--|🠊 Open folder Location in Integrated Terminal to run: nodemon landing 🠈|--//
 const cors = require('cors');
 const axios = require('axios');
@@ -10,11 +10,13 @@ const nodemailer = require('nodemailer');
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
-dotenv.config();
 const port = 3000;
 const root = 'users';
 const server = express();
 server.use(express.json());
+dotenv.config({ path: '../../../build/.env' });
+
+let link = 'http://localhost:8080';
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
 /*
@@ -852,7 +854,7 @@ server.post(`/${root}/reset`, async (req, res) => {
 });
 
 //--|🠋 POST: List.countdown.tsx 🠋|--//
-server.post(`/${root}/countdown`, async (req, res) => {
+server.post(`/${root}/blocked`, async (req, res) => {
   const { email } = req.body;
 
   const user = await database.collection('blocked').findOne({ email });
