@@ -107,32 +107,30 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="register-inputs">
-        <div className="fullname-inputs">
-          <input
-            required
-            type="text"
-            id="first-name"
-            name="First Name"
-            pattern="[A-Z][a-zA-Z\s]+"
-            placeholder="//--|🠊 First Name 🠈|--//"
-            title="Name must start with a capital letter and contain only letters and spaces"
-            // --- //
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-          <input
-            required
-            type="text"
-            id="last-name"
-            name="Last Name"
-            pattern="[a-zA-Z\s]+"
-            placeholder="//--|🠊 Last Name 🠈|--//"
-            title="Surname can't contain any numerical values or special characters"
-            // --- //
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-          />
-        </div>
+        <input
+          required
+          type="text"
+          id="first-name"
+          name="First Name"
+          pattern="[A-Z][a-zA-Z\s]+"
+          placeholder="//--|🠊 First Name 🠈|--//"
+          title="Name must start with a capital letter and contain only letters and spaces"
+          // --- //
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
+        />
+        <input
+          required
+          type="text"
+          id="last-name"
+          name="Last Name"
+          pattern="[a-zA-Z\s]+"
+          placeholder="//--|🠊 Last Name 🠈|--//"
+          title="Surname can't contain any numerical values or special characters"
+          // --- //
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
+        />
         <input
           required
           id="email"
@@ -153,6 +151,18 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        <button className="register-generate">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/sync-alt.svg"
+            alt=""
+          />
+        </button>
+        <button className="register-observe">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg"
+            alt=""
+          />
+        </button>
       </div>
       <div className="register-footer">
         <menu className="register-action">
@@ -188,15 +198,3 @@ const showDemos = (pageName: 'landing' | string) => {
     return () => closeRegister.removeEventListener('click', closeClick);
   }
 };
-/*
-const getEndpoint = (
-  route: 'register' | 'login' | 'password' | 'verify' | 'reset',
-  address: 'http://localhost:3000' | string
-) => {
-  //--|🠊 URL: Uniform Resource Locator 🠈|--//
-
-  //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
-  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
-  return `${BASE_URL}/users/${route}`;
-};
-*/

@@ -1,6 +1,5 @@
 @mixin desktop-landscape {
-  //--|🠊 display: flex; 🠈|--//
-  display: inherit; //~~|🠊 display: grid; 🠈|~~//
+  //--|🠊 display: grid; 🠈|--//
   border-radius: 1rem;
   grid-area: 2 / 3 / 3 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
   background: rgba(black, 0.75);
@@ -60,28 +59,32 @@
     */
   }
   div[class*='inputs'] {
-    display: flex;
-    flex-direction: column;
-    grid-area: 2 / 1 / 3 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    row-gap: 1rem;
+    display: inherit; //--|🠈 display: grid; 🠈|--//
+    grid-template: repeat(3, 2rem) / 2rem repeat(2, 2rem) 1fr 1rem 1fr repeat(2, 2rem) 2rem; //~~|🠊 rows / columns 🠈|~~//
 
-    // background: rgba(green, 0.25);
-    div {
-      display: inherit; //~~|🠊 display: flex; 🠈|~~//
-      flex-direction: row;
-      input {
-        width: 100%;
-        padding: 0.25rem 0.75rem;
+    input {
+      padding-left: 0.75rem;
+      &[id*='first'] {
+        grid-area: 1 / 2 / 2 / 5; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
-      input:nth-child(1) {
-        margin: 1rem 0.5rem 1rem 2rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
+      &[id*='last'] {
+        grid-area: 1 / 6 / 2 / 9; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
-      input:nth-child(2) {
-        margin: 1rem 2rem 1rem 0.5rem; //~~|🠊 Top / Right / Bot / Left 🠈|~~//
+      &[id*='email'] {
+        grid-area: 2 / 2 / 3 / 9; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      }
+      &[id*='password'] {
+        grid-area: 3 / 2 / 4 / 9; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
-    input {
-      margin: 1rem 2rem;
-      padding: 0.25rem 0.75rem;
+    button {
+      &[class*='observe'] {
+        grid-area: 3 / 8 / 4 / 9; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      }
+      &[class*='generate'] {
+        grid-area: 3 / 7 / 4 / 8; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+      }
     }
   }
   div[class*='footer'] {
@@ -137,6 +140,7 @@
 }
 
 form[class*='register'] {
+  display: grid;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
