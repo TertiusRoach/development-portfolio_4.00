@@ -16,6 +16,8 @@ You will need to download and install certain applications by manually downloadi
     npm install --save-dev dotenv
     npm install --save-dev express
     npm install --save-dev mongodb
+    npm install --save-dev dotenv-webpack
+
 ---
 
 # Powershell Commands for MongoDB

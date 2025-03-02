@@ -64,6 +64,7 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev babel-loader
     npm install --save-dev @types/react
     npm install --save-dev @types/jquery
+    npm install --save-dev dotenv-webpack
     npm install --save-dev @types/react-dom
     npm install --save-dev react-responsive
     npm install --save-dev webpack-dev-server

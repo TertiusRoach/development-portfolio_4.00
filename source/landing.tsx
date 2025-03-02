@@ -144,7 +144,6 @@ export function retrieveEndpoint(
   address: 'http://localhost:3000' | string
 ) {
   //--|🠊 URL: Uniform Resource Locator 🠈|--//
-
   //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;

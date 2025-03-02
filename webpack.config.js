@@ -1,6 +1,8 @@
 let pageName = 'landing';
 
 const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -60,6 +62,13 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: `${pageName}.css`,
+    }),
+    new Dotenv({
+      path: path.resolve(__dirname, 'build/.env'), // Specify the correct path to .env
+      systemvars: true, // Load system environment variables as well
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_BASE_URL': JSON.stringify(process.env.REACT_APP_BASE_URL || 'http://localhost:3000'),
     }),
   ],
   devServer: {
