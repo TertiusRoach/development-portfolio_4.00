@@ -1,3 +1,4 @@
+//--|🠊 Form.login.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
   display: inherit; //~~|🠊 display: grid; 🠈|~~//
@@ -76,6 +77,15 @@
     button {
       &[class*='observe'] {
         grid-area: 2 / 6 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+
+        width: auto;
+        height: 100%;
+        margin: 0 4px;
+        background: black;
+
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
       }
     }
   }

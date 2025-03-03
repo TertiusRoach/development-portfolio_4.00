@@ -5,7 +5,7 @@ import './Section.carousel.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import ButtonFade from '../../Button/fade/Button.fade';
+import ButtonFade from '../../Button/bin/fade/Button.fade';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import getScroll from '../../../../modules/utilities/bin/getScroll';
 import showAside from '../../../../modules/utilities/bin/toggleAside';

@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
 import MenuButton from '../../Menu/button/Menu.button';
-import ButtonFade from '../../Button/fade/Button.fade';
+import ButtonFade from '../../Button/bin/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import getScroll from '../../../../modules/utilities/bin/getScroll';

@@ -2,7 +2,7 @@
 import React from 'react';
 import './Menu.button.scss';
 
-import ButtonFade from '../../Button/fade/Button.fade';
+import ButtonFade from '../../Button/bin/fade/Button.fade';
 // import ButtonGlow from '../../Button/glow/Button.glow';
 // import ButtonIcon from '../../Button/icon/Button.icon';
 // import ButtonFrame from '../../Button/frame/Button.frame';

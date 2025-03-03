@@ -16,7 +16,7 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠋 Components 🠋|--//
 import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
 import MenuButton from '../../../components/Menu/button/Menu.button';
-import ButtonFade from '../../../components/Button/fade/Button.fade';
+import ButtonFade from '../../../components/Button/bin/fade/Button.fade';
 //--|🠉 Components 🠉|--//
 //--|🠋 Design 🠋|--//
 //--|🠉 Design 🠉|--//

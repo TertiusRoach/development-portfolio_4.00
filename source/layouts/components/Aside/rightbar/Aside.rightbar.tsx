@@ -3,7 +3,7 @@ import $ from 'jquery';
 import './Aside.rightbar.scss';
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ButtonFade from '../../Button/fade/Button.fade';
+import ButtonFade from '../../Button/bin/fade/Button.fade';
 import MenuButton from '../../Menu/button/Menu.button';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import toggleAside from '../../../../modules/utilities/bin/toggleAside';
