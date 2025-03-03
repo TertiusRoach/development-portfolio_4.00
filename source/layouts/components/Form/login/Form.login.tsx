@@ -116,17 +116,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     showDemos(pageName);
   }, [pageName, blockName]);
 
-  const observe = defineButton('observe', pageName, blockName);
-  /* || {
-    pageName: '',
-    blockName: '',
-    className: '',
-    imageLink: '',
-    layoutView: 'icon' as 'left' | 'right' | 'center' | 'text' | 'icon',
-    shadingView: 'dark' as 'dark' | 'medium' | 'light',
-    captionView: '',
-  }; */
-
+  const observe = defineButton({ pageName, blockName }, 'observe');
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">
@@ -168,6 +158,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="login-footer">
         <menu className="login-action">
+          {/* <ButtonDefault style={observe} /> */}
           <button className="login-button" type="submit" disabled={submit}>
             {submit ? 'Logging in...' : 'Login'}
           </button>
@@ -201,102 +192,61 @@ const showDemos = (pageName: 'landing' | string) => {
   }
 };
 
-/*
-const defineButton = (style: 'observe' | 'register' | 'login' | 'password', blockName: string, pageName: string) => {
-  // Ensure `defineButton` always returns an object
-  const buttonStyles = {
-    observe: {
-      pageName,
-      blockName,
-      className: 'observe',
-      imageLink:
-        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-      layoutView: 'icon' as const,
-      shadingView: 'dark' as const,
-      captionView: '---',
-    },
-    register: {
-      pageName,
-      blockName,
-      className: 'register',
-      imageLink: '',
-      layoutView: 'text' as const,
-      shadingView: 'medium' as const,
-      captionView: 'Register',
-    },
-    login: {
-      pageName,
-      blockName,
-      className: 'login',
-      imageLink: '',
-      layoutView: 'text' as const,
-      shadingView: 'light' as const,
-      captionView: 'Login',
-    },
-    password: {
-      pageName,
-      blockName,
-      className: 'password',
-      imageLink: '',
-      layoutView: 'text' as const,
-      shadingView: 'dark' as const,
-      captionView: 'Reset Password',
-    },
-  };
-
-  return buttonStyles[style] || buttonStyles['observe']; // Always return a valid button
-};
-*/
-const defineButton = (style: 'observe' | 'register' | 'login' | 'password', blockName: string, pageName: string) => {
+const defineButton = (
+  info: { blockName: string; pageName: string },
+  style: 'observe' | 'register' | 'login' | 'password'
+) => {
+  const { blockName, pageName } = info;
+  //--|🠋 Ensure `defineButton` always returns an object 🠋|--//
   switch (style) {
     case 'observe':
       return {
-        pageName: pageName,
-        blockName: blockName,
+        pageName: pageName as 'landing',
+        blockName: blockName as 'main',
         className: 'observe',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'text' | 'icon',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'medium' as 'dark' | 'medium' | 'light',
         captionView: '---',
       };
     case 'register':
       return {
-        pageName: pageName,
-        blockName: blockName,
+        pageName: pageName as 'landing',
+        blockName: blockName as 'main',
         className: 'register',
         imageLink: '',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'medium' as 'dark' | 'medium' | 'light',
         captionView: 'Register',
       };
     case 'login':
       return {
-        pageName: pageName,
-        blockName: blockName,
+        pageName: pageName as 'landing',
+        blockName: blockName as 'main',
         className: 'login',
         imageLink: '',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
         captionView: 'Login',
       };
     case 'password':
       return {
-        pageName: pageName,
-        blockName: blockName,
+        pageName: pageName as 'landing',
+        blockName: blockName as 'main',
         className: 'password',
         imageLink: '',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
         captionView: 'Reset Password',
       };
     default:
       return {
-        pageName: '' as string,
-        blockName: '' as string,
+        pageName: pageName as 'landing',
+        blockName: blockName as 'main',
         className: 'button' as string,
         imageLink: '' as string,
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'medium' as 'dark' | 'medium' | 'light',
         captionView: 'Default Button' as string,
       };

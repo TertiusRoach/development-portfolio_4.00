@@ -8,11 +8,11 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 
 interface InfoProps {
   style: {
-    pageName: string;
+    pageName: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
     blockName: string;
     className: string;
     imageLink: string;
-    layoutView: 'left' | 'right' | 'center' | 'text' | 'icon';
+    layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
     shadingView: 'dark' | 'medium' | 'light';
     captionView: string;
   };
@@ -27,14 +27,15 @@ const ButtonDefault: React.FC<InfoProps> = ({ style }) => {
   const captionView = style.captionView;
 
   const handleButton = async () => {
-    console.log(pageName);
-    console.log(blockName);
-    console.log(className);
-    console.log(imageLink);
-    console.log(layoutView);
-    console.log(shadingView);
-    console.log(captionView);
+    console.log(`pageName: ${pageName}`);
+    console.log(`blockName: ${blockName}`);
+    console.log(`className: ${className}`);
+    console.log(`imageLink: ${imageLink}`);
+    console.log(`layoutView: ${layoutView}`);
+    console.log(`shadingView: ${shadingView}`);
+    console.log(`captionView: ${captionView}`);
   };
+  handleButton();
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -45,19 +46,29 @@ const ButtonDefault: React.FC<InfoProps> = ({ style }) => {
       break;
     case 'center':
       break;
-    case 'text':
-      break;
     case 'icon':
       return (
         <button
-          className={`default-${className} icon`}
+          className={`default-${pageName} icon-${shadingView}`}
           style={{
             maskImage: `url(${imageLink})`,
             WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
           }}
+          id={`${blockName}-${className}`}
         ></button>
       );
-      break;
+    default:
+      return (
+        <button
+          className={`default-${className} text`}
+          style={{
+            maskImage: `url(${imageLink})`,
+            WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+          }}
+        >
+          {captionView}
+        </button>
+      );
   }
 };
 export default ButtonDefault;

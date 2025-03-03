@@ -1,4 +1,6 @@
-// LandingMain.scss
+//--|🠊 LandingMain.scss 🠈|--//
+@use '../../../design/Palettes.scss';
+
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
   div[class*='container'] {
@@ -26,8 +28,6 @@ main[id*='main'] {
     align-items: flex-start;
     grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     justify-content: flex-start;
-
-    // background: black;
     img {
       height: 4rem;
       margin: 2rem;
@@ -40,20 +40,23 @@ main[id*='main'] {
     transition: transform 0.25s ease;
 
     section {
+      &[class*='register'] {
+        background: Palettes.$trackDay-dark;
+        /* background: rgba(green, 0.25); */
+      }
+      &[class*='login'] {
+        background: Palettes.$logTicket-dark;
+        /* background: rgba(blue, 0.25); */
+      }
+      &[class*='password'] {
+        background: Palettes.$findLink-dark;
+        /* background: rgba(red, 0.25); */
+      }
       div[class*='container'] {
         height: 100%;
         display: grid;
         min-width: 100vw; /* Each section takes up the full screen width */
         grid-area: 1 / 2 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-      }
-      &[class*='login'] {
-        background: rgba(red, 0.25);
-      }
-      &[class*='register'] {
-        background: rgba(green, 0.25);
-      }
-      &[class*='password'] {
-        background: rgba(blue, 0.25);
       }
     }
 

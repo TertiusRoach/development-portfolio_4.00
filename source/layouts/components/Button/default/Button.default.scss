@@ -1,19 +1,43 @@
 //--|🠊 Button.default.scss 🠈|--//
+@use '../../../design/Palettes.scss';
+@use '../../../design/Mixins.scss';
+
+@forward '../../../design/Mixins.scss';
+
 @mixin desktop-landscape {
+  /*
+  &[class*='left'] {
+  }
+  */
+  /*
+  &[class*='right'] {
+  }
+  */
+  /*
+  &[class*='center'] {
+  }
+  */
   &[class*='icon'] {
     width: auto;
     height: 100%;
     margin: 0 4px;
-    background: black;
 
     mask-size: contain;
     mask-position: center;
     mask-repeat: no-repeat;
   }
+  /*
+  &[class*='text'] {
+  }
+  */
 }
 @mixin mobile-portrait {
 }
+
 button[class*='default'] {
+  @include Mixins.layout-view();
+  @include Mixins.shading-view();
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

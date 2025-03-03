@@ -74,7 +74,8 @@
         grid-area: 2 / 2 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
-    button[class*='observe'] {
+    //--|🠊 Use id to place  🠈|--//
+    button[id*='observe'] {
       grid-area: 2 / 6 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     }
   }

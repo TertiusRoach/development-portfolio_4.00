@@ -1,6 +1,6 @@
 @use '../design/Global.scss';
 @use '../design/Mixins.scss';
-@use '../design/Palette.scss';
+@use '../design/Palettes.scss';
 
 @use '../../tools/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
@@ -211,19 +211,19 @@ body {
 //--|🠋| Color Schemes |🠋|--//
 @mixin find-link {
   //--|🠋| Find a Link |🠋|--//
-  $primary-dark: #2c090b; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $primary-dark: #230709; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
   $primary-medium: #881a3d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
   $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
 }
 @mixin log-ticket {
   //--|🠋| Log a Ticket |🠋|--//
-  $primary-dark: #050a1d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #0b2583; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #a8b8f3; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $secondary-dark: #070e27; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $secondary-medium: #0b2583; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
+  $secondary-light: #a8b8f3; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
 }
 @mixin track-day {
   //--|🠋| Track a Day |🠋|--//
   $tertiary-dark: #072007; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-medium: #228f26; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-light: #9ff8a2; //--🠊 rgba( ??, ??, ??,1) 🠈--//
+  $tertiary-medium: #39853b; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
+  $tertiary-light: #9ee6a1; //--🠊 rgba( ??, ??, ??,1) 🠈--//
 }
