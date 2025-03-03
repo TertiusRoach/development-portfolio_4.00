@@ -5,13 +5,19 @@
   //--|🠋| Index or Landing (Grayscale) |🠋|--//
   &[class*='landing'] {
     &[class*='dark'] {
+      color: Palettes.$indexLand-light;
       background: Palettes.$indexLand-dark;
+      filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.125));
     }
     &[class*='medium'] {
+      color: Palettes.$indexLand-medium;
       background: Palettes.$indexLand-medium;
+      filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 0.125));
     }
     &[class*='light'] {
+      color: Palettes.$indexLand-dark;
       background: Palettes.$indexLand-light;
+      filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.125));
     }
   }
 
@@ -53,14 +59,6 @@
   }
 }
 @mixin layout-view {
-  /*
-    &[class*='left'] {
-    }
-    &[class*='right'] {
-    }
-    &[class*='center'] {
-    }
-    */
 }
 
 //--|🠋| Global Orientations |🠋|--//

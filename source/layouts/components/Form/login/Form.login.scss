@@ -74,8 +74,9 @@
         grid-area: 2 / 2 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
-    //--|🠊 Use id to place  🠈|--//
-    button[id*='observe'] {
+
+    button[class*='observe'] {
+      // height: 2rem;
       grid-area: 2 / 6 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     }
   }
@@ -84,24 +85,14 @@
     grid-area: 3 / 1 / 4 / 2; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     grid-template: 1fr 6rem / repeat(2, 1fr); //~~|🠊 rows / columns 🠈|~~//
 
-    // background: rgba(blue, 0.25);
     menu[class*='action'] {
       display: inherit; //~~|🠊 display: grid; 🠈|~~//
       grid-area: 1 / 1 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       grid-template: 1rem auto 1fr / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
 
-      .login-button {
+      button[class*='login'] {
+        // height: 3rem;
         grid-area: 2 / 2 / 3 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-        & {
-          h6 {
-            color: black;
-            cursor: pointer;
-            margin-top: 0.5rem;
-          }
-          height: 3rem;
-          padding: 0 1rem;
-          justify-content: center;
-        }
       }
     }
     nav[class*='buttons'] {
