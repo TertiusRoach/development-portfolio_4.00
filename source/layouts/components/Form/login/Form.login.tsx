@@ -13,7 +13,9 @@ import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../l
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
 //--|🠉 Context 🠉|--//
-
+//--|🠋 Components 🠋|--//
+import ButtonDefault from '../../Button/default/Button.default';
+//--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
@@ -114,9 +116,16 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     showDemos(pageName);
   }, [pageName, blockName]);
 
-  // let svgUrl: string = '../../../../assets/svg-files/landing-page/eye.svg';
-  let svgUrl: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg';
+  const observe = defineButton('observe', pageName, blockName);
+  /* || {
+    pageName: '',
+    blockName: '',
+    className: '',
+    imageLink: '',
+    layoutView: 'icon' as 'left' | 'right' | 'center' | 'text' | 'icon',
+    shadingView: 'dark' as 'dark' | 'medium' | 'light',
+    captionView: '',
+  }; */
 
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
@@ -155,13 +164,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button
-          className="login-observe"
-          style={{
-            maskImage: `url(${svgUrl})`,
-            WebkitMaskImage: `url(${svgUrl})`, // Ensures cross-browser support
-          }}
-        ></button>
+        <ButtonDefault style={observe} />
       </div>
       <div className="login-footer">
         <menu className="login-action">
@@ -195,5 +198,107 @@ const showDemos = (pageName: 'landing' | string) => {
 
     closeLogin.addEventListener('click', closeClick);
     return () => closeLogin.removeEventListener('click', closeClick);
+  }
+};
+
+/*
+const defineButton = (style: 'observe' | 'register' | 'login' | 'password', blockName: string, pageName: string) => {
+  // Ensure `defineButton` always returns an object
+  const buttonStyles = {
+    observe: {
+      pageName,
+      blockName,
+      className: 'observe',
+      imageLink:
+        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
+      layoutView: 'icon' as const,
+      shadingView: 'dark' as const,
+      captionView: '---',
+    },
+    register: {
+      pageName,
+      blockName,
+      className: 'register',
+      imageLink: '',
+      layoutView: 'text' as const,
+      shadingView: 'medium' as const,
+      captionView: 'Register',
+    },
+    login: {
+      pageName,
+      blockName,
+      className: 'login',
+      imageLink: '',
+      layoutView: 'text' as const,
+      shadingView: 'light' as const,
+      captionView: 'Login',
+    },
+    password: {
+      pageName,
+      blockName,
+      className: 'password',
+      imageLink: '',
+      layoutView: 'text' as const,
+      shadingView: 'dark' as const,
+      captionView: 'Reset Password',
+    },
+  };
+
+  return buttonStyles[style] || buttonStyles['observe']; // Always return a valid button
+};
+*/
+const defineButton = (style: 'observe' | 'register' | 'login' | 'password', blockName: string, pageName: string) => {
+  switch (style) {
+    case 'observe':
+      return {
+        pageName: pageName,
+        blockName: blockName,
+        className: 'observe',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+        captionView: '---',
+      };
+    case 'register':
+      return {
+        pageName: pageName,
+        blockName: blockName,
+        className: 'register',
+        imageLink: '',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        shadingView: 'medium' as 'dark' | 'medium' | 'light',
+        captionView: 'Register',
+      };
+    case 'login':
+      return {
+        pageName: pageName,
+        blockName: blockName,
+        className: 'login',
+        imageLink: '',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        shadingView: 'light' as 'dark' | 'medium' | 'light',
+        captionView: 'Login',
+      };
+    case 'password':
+      return {
+        pageName: pageName,
+        blockName: blockName,
+        className: 'password',
+        imageLink: '',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+        captionView: 'Reset Password',
+      };
+    default:
+      return {
+        pageName: '' as string,
+        blockName: '' as string,
+        className: 'button' as string,
+        imageLink: '' as string,
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'text' | 'icon',
+        shadingView: 'medium' as 'dark' | 'medium' | 'light',
+        captionView: 'Default Button' as string,
+      };
   }
 };

@@ -74,19 +74,8 @@
         grid-area: 2 / 2 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
       }
     }
-    button {
-      &[class*='observe'] {
-        grid-area: 2 / 6 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-
-        width: auto;
-        height: 100%;
-        margin: 0 4px;
-        background: black;
-
-        mask-size: contain;
-        mask-position: center;
-        mask-repeat: no-repeat;
-      }
+    button[class*='observe'] {
+      grid-area: 2 / 6 / 3 / 7; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
     }
   }
   div[class*='footer'] {
