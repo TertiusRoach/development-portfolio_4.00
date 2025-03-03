@@ -1,6 +1,6 @@
 .env
 .wsuo
-.build
+build
 secret.*
 *secret.*
 node_modules
