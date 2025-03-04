@@ -83,8 +83,6 @@ const fontSize = (
   text: [string, string] | string
 ) => {
   switch (fontView) {
-    case '<p>':
-      return <p>{text}</p>;
     case '<h1>':
       return <h1>{text}</h1>;
     case '<h2>':
@@ -97,6 +95,8 @@ const fontSize = (
       return <h5>{text}</h5>;
     case '<h6>':
       return <h6>{text}</h6>;
+    case '<p>':
+      return <p>{text}</p>;
   }
 };
 const iconSize = (fontView: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') => {
