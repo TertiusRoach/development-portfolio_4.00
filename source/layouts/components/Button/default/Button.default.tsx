@@ -9,24 +9,25 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 interface InfoProps {
   type: 'button' | 'submit' | 'reset';
   text: [string, string] | string;
+  onClick?: () => void;
   style: {
     pageName: string;
     blockName: string;
     className: string;
     imageLink: string;
 
-    fontView: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
+    // iconSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
+    fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
     layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
     shadingView: 'dark' | 'medium' | 'light';
   };
 }
-const ButtonDefault: React.FC<InfoProps> = ({ type, text, style }) => {
+const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
   const blockName = style.blockName;
   const className = style.className;
   const imageLink = style.imageLink;
-
-  const fontView = style.fontView;
+  const fontSize = style.fontSize;
   const layoutView = style.layoutView;
   const shadingView = style.shadingView;
 
@@ -40,49 +41,105 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style }) => {
   };
   handleButton();
 
-  useEffect(() => {
-    /*
-    let test = document.querySelector(`.default-${className}`) as HTMLButtonElement;
-    console.log(test.offsetWidth);
-    console.log(test.offsetHeight);
-    console.log(`.default-${className}`);
-    */
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   switch (layoutView) {
     case 'left':
-      break;
+      return (
+        <button
+          type={type}
+          onClick={onClick}
+          className={`left-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+        >
+          <div>
+            <img
+              style={{
+                width: `${scaleImage(fontSize)}rem`,
+                maskImage: `url(${imageLink})`,
+                WebkitMaskImage: `url(${imageLink})`,
+              }}
+            ></img>
+            {scaleWords(fontSize, text)}
+          </div>
+        </button>
+      );
     case 'right':
-      break;
+      return (
+        <button
+          type={type}
+          onClick={onClick}
+          className={`right-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+        >
+          <div>
+            {scaleWords(fontSize, text)}
+            <img
+              style={{
+                width: `${scaleImage(fontSize)}rem`,
+                maskImage: `url(${imageLink})`,
+                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+              }}
+            ></img>
+          </div>
+        </button>
+      );
     case 'center':
-      break;
+      return (
+        <button
+          type={type}
+          onClick={onClick}
+          className={`center-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+        >
+          <div>
+            <img
+              style={{
+                width: `${scaleImage(fontSize)}rem`,
+                maskImage: `url(${imageLink})`,
+                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+              }}
+            ></img>
+            {scaleWords(fontSize, text)}
+          </div>
+        </button>
+      );
     case 'icon':
       return (
         <button
-          className={`default-${className} icon-${shadingView} ${blockName}-${pageName}`}
-          style={{
-            height: iconSize(fontView),
-            maskImage: `url(${imageLink})`,
-            WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
-          }}
           type={type}
-        ></button>
+          onClick={onClick}
+          className={`icon-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+        >
+          <div>
+            <img
+              style={{
+                height: `${scaleImage(fontSize)}rem`,
+                maskImage: `url(${imageLink})`,
+                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+              }}
+            ></img>
+          </div>
+        </button>
       );
     case 'text':
       return (
-        <button className={`default-${className} text-${shadingView} ${blockName}-${pageName} btn`} type={type}>
-          {fontSize(fontView, text)}
+        <button
+          type={type}
+          onClick={onClick}
+          className={`text-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+        >
+          <div>{scaleWords(fontSize, text)}</div>
         </button>
       );
   }
 };
 export default ButtonDefault;
 
-const fontSize = (
-  fontView: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+const scaleWords = (
+  fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   text: [string, string] | string
 ) => {
-  switch (fontView) {
+  switch (fontSize) {
+    case '<p>':
+      return <p>{text}</p>;
     case '<h1>':
       return <h1>{text}</h1>;
     case '<h2>':
@@ -95,25 +152,18 @@ const fontSize = (
       return <h5>{text}</h5>;
     case '<h6>':
       return <h6>{text}</h6>;
-    case '<p>':
-      return <p>{text}</p>;
   }
 };
-const iconSize = (fontView: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') => {
-  switch (fontView) {
-    case '<h1>':
-      return '8rem';
-    case '<h2>':
-      return '7rem';
-    case '<h3>':
-      return '6rem';
-    case '<h4>':
-      return '5rem';
-    case '<h5>':
-      return '4rem';
-    case '<h6>':
-      return '3rem';
-    case '<p>':
-      return '2rem';
-  }
+const scaleImage = (fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') => {
+  const sizeMap: Record<typeof fontSize, number> = {
+    '<p>': 2,
+    '<h6>': 3,
+    '<h5>': 4,
+    '<h4>': 5,
+    '<h3>': 6,
+    '<h2>': 7,
+    '<h1>': 8,
+  };
+
+  return sizeMap[fontSize];
 };

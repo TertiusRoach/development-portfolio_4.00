@@ -23,9 +23,47 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
+const buttonConfig = {
+  login: {
+    fontSize: '<h3>',
+    layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+    shadingView: 'light',
+    imageLink:
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
+  },
+  register: {
+    fontSize: '<h6>',
+    layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+    shadingView: 'light',
+    imageLink:
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
+  },
+  password: {
+    fontSize: '<h6>',
+    layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+    shadingView: 'light',
+    imageLink:
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
+  },
+
+  observe: {
+    fontSize: '<p>',
+    layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+    shadingView: 'light',
+    imageLink:
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
+  },
+} as const;
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+
+  /*
+  const defineLogin = defineButton({ pageName, blockName }, 'login');
+  const defineObserve = defineButton({ pageName, blockName }, 'observe');
+  const defineRegister = defineButton({ pageName, blockName }, 'register');
+  const definePassword = defineButton({ pageName, blockName }, 'password');
+  */
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail();
@@ -122,8 +160,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     showDemos(pageName);
   }, [pageName, blockName]);
 
-  const observe = defineButton({ pageName, blockName }, 'observe');
-  const login = defineButton({ pageName, blockName }, 'login');
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">
@@ -161,24 +197,35 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <ButtonDefault style={observe} type="button" text={''} />
+        <ButtonDefault
+          //---//
+          type="button"
+          text={''}
+          style={defineButton('observe', { pageName, blockName })}
+        />
       </div>
       <div className="login-footer">
         <menu className="login-action">
           <ButtonDefault
-            style={login}
-            //---//
             type="submit"
             text={submit ? 'Logging in...' : 'Login'}
+            style={defineButton('login', { pageName, blockName })}
           />
         </menu>
         <nav className="login-buttons">
-          <button className="login-register" type="button" onClick={() => viewBlock('register')}>
-            <h6>Register Account</h6>
-          </button>
-          <button className="login-password" type="button" onClick={() => viewBlock('password')}>
-            <h6>Reset Password</h6>
-          </button>
+          <ButtonDefault
+            type="button"
+            text={'Register Account'}
+            onClick={() => viewBlock('register')}
+            style={defineButton('register', { pageName, blockName })}
+          />
+
+          <ButtonDefault
+            type="button"
+            text={'Reset Password'}
+            onClick={() => viewBlock('password')}
+            style={defineButton('password', { pageName, blockName })}
+          />
         </nav>
       </div>
     </form>
@@ -186,7 +233,20 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormLogin;
 
-const showDemos = (pageName: 'landing' | string) => {
+function defineButton(
+  //---//
+  button: keyof typeof buttonConfig,
+  info: { blockName: string; pageName: string }
+) {
+  return {
+    pageName: info.pageName as 'landing',
+    blockName: info.blockName as 'main',
+    className: button,
+    ...buttonConfig[button],
+  };
+}
+
+function showDemos(pageName: 'landing' | string) {
   let closeLogin = document.querySelector('.login-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
 
@@ -199,14 +259,14 @@ const showDemos = (pageName: 'landing' | string) => {
     closeLogin.addEventListener('click', closeClick);
     return () => closeLogin.removeEventListener('click', closeClick);
   }
-};
-
+}
+/*
 const defineButton = (
   info: { blockName: string; pageName: string },
   button: 'observe' | 'register' | 'login' | 'password'
 ) => {
   const { blockName, pageName } = info;
-  //--|🠋 Ensure `defineButton` always returns an object 🠋|--//
+  //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
     case 'observe':
       return {
@@ -216,7 +276,7 @@ const defineButton = (
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
 
-        fontView: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
       };
@@ -225,21 +285,23 @@ const defineButton = (
         pageName: pageName as 'landing',
         blockName: blockName as 'main',
         className: button,
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
 
-        fontView: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'light' as 'dark' | 'medium' | 'light',
       };
     case 'register':
       return {
         pageName: pageName as 'landing',
         blockName: blockName as 'main',
         className: button,
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
 
-        fontView: '<h2>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
       };
     case 'password':
@@ -247,11 +309,13 @@ const defineButton = (
         pageName: pageName as 'landing',
         blockName: blockName as 'main',
         className: button,
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
 
-        fontView: '<h2>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
       };
   }
 };
+*/
