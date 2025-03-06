@@ -19,8 +19,8 @@ import ButtonDefault from '../../Button/default/Button.default';
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const FormPassword: React.FC<InfoProps> = ({ info }) => {
@@ -189,7 +189,7 @@ function defineButton(button: 'register' | 'login' | 'password', info: { blockNa
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
       };
@@ -201,7 +201,7 @@ function defineButton(button: 'register' | 'login' | 'password', info: { blockNa
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
       };
@@ -213,7 +213,7 @@ function defineButton(button: 'register' | 'login' | 'password', info: { blockNa
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
       };

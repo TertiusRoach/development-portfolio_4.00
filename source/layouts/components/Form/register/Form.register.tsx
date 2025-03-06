@@ -20,8 +20,8 @@ import ButtonDefault from '../../Button/default/Button.default';
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const FormRegister: React.FC<InfoProps> = ({ info }) => {
@@ -214,7 +214,7 @@ function defineButton(
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'overtime' as 'landing',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
       };
@@ -226,7 +226,7 @@ function defineButton(
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
       };
@@ -238,7 +238,7 @@ function defineButton(
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
       };
@@ -250,7 +250,7 @@ function defineButton(
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
       };
@@ -262,7 +262,7 @@ function defineButton(
 
         className: button,
         blockName: blockName as 'main',
-        pageName: pageName as 'landing',
+        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/sync-alt.svg',
       };
