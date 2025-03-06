@@ -1,5 +1,4 @@
 //--|🠊 Form.password.tsx 🠈|--//
-
 //--|🠋 Styles 🠋|--//
 import './Form.password.scss';
 //--|🠉 Styles 🠉|--//
@@ -13,6 +12,10 @@ import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../l
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/scripts/context/EmailContext';
 //--|🠉 Context 🠉|--//
+//--|🠋 Components 🠋|--//
+import ButtonDefault from '../../Button/default/Button.default';
+//--|🠉 Components 🠉|--//
+
 interface InfoProps {
   info: {
     resolution: string;
@@ -131,17 +134,28 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="password-footer">
         <menu className="password-action">
-          <button className="password-button" type="submit" disabled={submit}>
-            {submit ? 'Changing...' : 'Change'}
-          </button>
+          <ButtonDefault
+            type="submit"
+            text={submit ? 'Changing...' : 'Change'}
+            style={defineButton('password', { pageName, blockName })}
+          />
+          {/* <button className="password-button" type="submit" disabled={submit}>
+            
+          </button> */}
         </menu>
         <nav className="password-buttons">
-          <button className="password-login" type="button" onClick={() => viewBlock('login')}>
-            <h6>Enter Account</h6>
-          </button>
-          <button className="password-register" type="button" onClick={() => viewBlock('register')}>
-            <h6>Register Account</h6>
-          </button>
+          <ButtonDefault
+            type="button"
+            text={'Enter Account'}
+            onClick={() => viewBlock('login')}
+            style={defineButton('login', { pageName, blockName })}
+          />
+          <ButtonDefault
+            type="button"
+            text={'Create Account'}
+            onClick={() => viewBlock('register')}
+            style={defineButton('register', { pageName, blockName })}
+          />
         </nav>
       </div>
     </form>
@@ -149,7 +163,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormPassword;
 
-const showDemos = (pageName: 'landing' | string) => {
+function showDemos(pageName: 'landing' | string) {
   let closePassword = document.querySelector('.password-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
 
@@ -162,4 +176,46 @@ const showDemos = (pageName: 'landing' | string) => {
     closePassword.addEventListener('click', closeClick);
     return () => closePassword.removeEventListener('click', closeClick);
   }
-};
+}
+function defineButton(button: 'register' | 'login' | 'password', info: { blockName: string; pageName: string }) {
+  const { blockName, pageName } = info;
+  //--|🠋 Always Return an Object 🠋|--//
+  switch (button) {
+    case 'password':
+      return {
+        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'light' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
+      };
+    case 'login':
+      return {
+        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
+      };
+    case 'register':
+      return {
+        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
+      };
+  }
+}

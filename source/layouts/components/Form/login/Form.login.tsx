@@ -23,37 +23,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-const buttons = {
-  login: {
-    fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-    layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
-    shadingView: 'dark' as 'dark' | 'medium' | 'light',
-    imageLink:
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
-  },
-  register: {
-    fontSize: '<h6>',
-    layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
-    shadingView: 'light',
-    imageLink:
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
-  },
-  password: {
-    fontSize: '<h6>',
-    layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
-    shadingView: 'medium',
-    imageLink:
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
-  },
-
-  observe: {
-    fontSize: '<p>',
-    layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
-    shadingView: 'light',
-    imageLink:
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-  },
-} as const;
 
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
@@ -193,8 +162,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         />
         <ButtonDefault
           //---//
-          type="button"
           text={''}
+          type="button"
           style={defineButton('observe', { pageName, blockName })}
         />
       </div>
@@ -213,7 +182,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             onClick={() => viewBlock('register')}
             style={defineButton('register', { pageName, blockName })}
           />
-
           <ButtonDefault
             type="button"
             text={'Reset Password'}
@@ -226,15 +194,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
-
-function defineButton(config: keyof typeof buttons, info: { blockName: string; pageName: string }) {
-  return {
-    ...buttons[config],
-    className: config,
-    pageName: info.pageName as 'landing',
-    blockName: info.blockName as 'main',
-  };
-}
 
 function showDemos(pageName: 'landing' | string) {
   let closeLogin = document.querySelector('.login-close') as HTMLElement;
@@ -250,69 +209,57 @@ function showDemos(pageName: 'landing' | string) {
     return () => closeLogin.removeEventListener('click', closeClick);
   }
 }
-
-/*
-const defineButton = (
-  button: 'observe' | 'register' | 'login' | 'password',
-  info: { blockName: string; pageName: string }
-) => {
+function defineButton(button: 'observe' | 'register' | 'login' | 'password', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'observe':
-      return {
-        pageName: pageName as 'landing',
-        blockName: blockName as 'main',
-        className: button,
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
-      };
     case 'login':
       return {
-        pageName: pageName as 'landing',
-        blockName: blockName as 'main',
-        className: button,
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg',
       };
     case 'register':
       return {
-        pageName: pageName as 'landing',
-        blockName: blockName as 'main',
-        className: button,
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg',
       };
     case 'password':
       return {
-        pageName: pageName as 'landing',
-        blockName: blockName as 'main',
-        className: button,
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg',
+      };
+    case 'observe':
+      return {
+        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'light' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: pageName as 'landing',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
       };
   }
-};
-*/
-/*
-  const defineLogin = defineButton({ pageName, blockName }, 'login');
-  const defineObserve = defineButton({ pageName, blockName }, 'observe');
-  const defineRegister = defineButton({ pageName, blockName }, 'register');
-  const definePassword = defineButton({ pageName, blockName }, 'password');
-  */
+}

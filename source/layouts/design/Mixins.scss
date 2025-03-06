@@ -216,9 +216,6 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
-
     &[class*='dark']:hover {
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125));
@@ -258,6 +255,9 @@
         }
       }
     }
+
+    @extend %override-shading;
+    @extend %transition-shading;
   }
   &[class*='overtime'] {
     &[class*='dark'] {
@@ -300,9 +300,6 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
-
     &[class*='dark']:hover {
       background: Palettes.$trackDay-light;
       filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125));
@@ -342,6 +339,9 @@
         }
       }
     }
+
+    @extend %override-shading;
+    @extend %transition-shading;
   }
   &[class*='ticketing'] {
     &[class*='dark'] {
@@ -384,9 +384,6 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
-
     &[class*='dark']:hover {
       background: Palettes.$logTicket-light;
       filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125));
@@ -426,6 +423,9 @@
         }
       }
     }
+
+    @extend %override-shading;
+    @extend %transition-shading;
   }
   &[class*='hyperlink'] {
     &[class*='dark'] {
@@ -507,10 +507,10 @@
         }
       }
     }
-  }
 
-  @extend %override-shading;
-  @extend %transition-shading;
+    @extend %override-shading;
+    @extend %transition-shading;
+  }
 }
 @mixin button-presets {
   cursor: default;
@@ -531,6 +531,12 @@
       cursor: pointer;
     }
   }
+  &[class*='icon'] {
+    padding: 0;
+    div img {
+      width: 75%;
+    }
+  }
   &[class*='left'] {
     display: grid;
     grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
@@ -547,6 +553,7 @@
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
   }
+  &[class*='text'],
   &[class*='center'] {
     display: grid;
     grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
@@ -556,12 +563,6 @@
       * {
         grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
-    }
-  }
-  &[class*='icon'] {
-    padding: 0;
-    div img {
-      width: 75%;
     }
   }
 }
@@ -602,6 +603,10 @@
 %override-shading {
   &[class*='icon'] {
     filter: none;
+    background: none !important;
+  }
+  &[class*='icon']:hover {
+    background: none !important;
   }
 }
 %transition-shading {
