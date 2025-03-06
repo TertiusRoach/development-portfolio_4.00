@@ -11,15 +11,14 @@ interface InfoProps {
   text: [string, string] | string;
   onClick?: () => void;
   style: {
+    fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
+    layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
+    shadingView: 'dark' | 'medium' | 'light';
+
     pageName: string;
     blockName: string;
     className: string;
     imageLink: string;
-
-    // iconSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
-    shadingView: 'dark' | 'medium' | 'light';
   };
 }
 const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {

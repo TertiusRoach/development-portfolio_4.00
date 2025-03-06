@@ -13,7 +13,6 @@ button[class*='default'] {
   @include Mixins.button-presets();
   @include Mixins.button-shading();
   @include Mixins.button-spacing();
-  @include Mixins.button-effects();
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

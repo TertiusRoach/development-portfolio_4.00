@@ -174,179 +174,343 @@
 }
 
 //--|🠋| Button Design |🠋|--//
-@mixin button-effects {
-  &[class*='center'],
-  &[class*='right'],
-  &[class*='left'],
-  &[class*='text'] {
-    @keyframes glowing {
-      0% {
-        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5));
-      }
-      50% {
-        filter: drop-shadow(0 0 12px rgba(Palettes.$indexLand-dark, 0.8));
-      }
-      100% {
-        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5));
-      }
-    }
-
-    @keyframes fadeShadowEffect {
-      0% {
-        opacity: 0.6;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0.6;
-      }
-    }
-    &[class*='dark']:hover,
-    &[class*='light']:hover,
-    &[class*='medium']:hover {
-      animation: glowing 5s infinite alternate ease-in-out, fadeShadowEffect 2.5s infinite alternate ease-in-out;
-      div:hover {
-        animation: glowing 5s infinite alternate ease-in-out, fadeShadowEffect 2.5s infinite alternate ease-in-out;
-        img {
-          transition: background 0.25s ease-in-out, transform 1s ease-in-out;
-        }
-      }
-    }
-    &[class*='dark']:hover {
-      color: Palettes.$indexLand-light;
-      background: Palettes.$indexLand-dark;
-      filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 1));
-      div:hover {
-        filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-light, 1));
-        img {
-          transform: scale(1.25);
-          background: Palettes.$indexLand-light;
-        }
-      }
-    }
-    &[class*='light']:hover {
-      color: Palettes.$indexLand-medium;
-      background: Palettes.$indexLand-medium;
-      filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 1));
-
-      div:hover {
-        color: Palettes.$indexLand-light;
-        filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-dark, 1));
-
-        img {
-          transform: scale(1.25);
-          background: Palettes.$indexLand-light;
-        }
-      }
-    }
-    &[class*='medium']:hover {
-      color: Palettes.$indexLand-light;
-      background: Palettes.$indexLand-medium;
-      filter: drop-shadow(0 0 8px rgba(black, 1));
-
-      div:hover {
-        filter: drop-shadow(0 0 16px rgba(black, 1));
-
-        img {
-          transform: scale(1.25);
-          background: Palettes.$indexLand-dark;
-        }
-      }
-    }
-  }
-  &[class*='icon'] {
-    &[class*='dark']:hover,
-    &[class*='light']:hover,
-    &[class*='medium']:hover {
-      div:hover {
-        img {
-          background: Palettes.$indexLand-medium;
-          transition: background 0.25s ease-in-out;
-        }
-      }
-    }
-  }
-}
 @mixin button-shading {
-  //--|🠋| Index or Landing (Grayscale) |🠋|--//
   &[class*='landing'] {
     &[class*='dark'] {
-      color: Palettes.$indexLand-light;
       background: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125));
       div {
         filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5));
-
+        * {
+          color: Palettes.$indexLand-light;
+        }
         img {
           background: Palettes.$indexLand-light;
         }
       }
     }
-    &[class*='medium'] {
-      color: Palettes.$indexLand-light;
-      background: Palettes.$indexLand-medium;
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        img {
-          background: Palettes.$indexLand-dark;
-        }
-      }
-    }
     &[class*='light'] {
-      color: Palettes.$indexLand-dark;
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125));
       div {
         filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5));
+        * {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$indexLand-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$indexLand-dark;
+        }
         img {
           background: Palettes.$indexLand-dark;
         }
       }
     }
 
-    &[class*='icon'] {
-      filter: none;
-    }
-  }
+    @extend %override-shading;
+    @extend %transition-shading;
 
-  //--|🠋| Find a Link (Red) |🠋|--//
-  &[class*='hyperlink'] {
-    &[class*='dark'] {
-      background: Palettes.$findLink-dark;
+    &[class*='dark']:hover {
+      background: Palettes.$indexLand-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5));
+        *:hover {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
     }
-    &[class*='medium'] {
-      background: Palettes.$findLink-medium;
+    &[class*='light']:hover {
+      background: Palettes.$indexLand-dark;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5));
+        *:hover {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+        }
+      }
     }
-    &[class*='light'] {
-      background: Palettes.$findLink-light;
+    &[class*='medium']:hover {
+      background: Palettes.$indexLand-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+        }
+      }
     }
   }
-  //--|🠋| Track a Day (Green) |🠋|--//
   &[class*='overtime'] {
     &[class*='dark'] {
       background: Palettes.$trackDay-dark;
-    }
-    &[class*='medium'] {
-      background: Palettes.$trackDay-medium;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5));
+        * {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
     }
     &[class*='light'] {
       background: Palettes.$trackDay-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5));
+        * {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$trackDay-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+
+    @extend %override-shading;
+    @extend %transition-shading;
+
+    &[class*='dark']:hover {
+      background: Palettes.$trackDay-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5));
+        *:hover {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$trackDay-dark;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5));
+        *:hover {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$trackDay-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
     }
   }
-  //--|🠋| Log a Ticket (Blue) |🠋|--//
   &[class*='ticketing'] {
     &[class*='dark'] {
       background: Palettes.$logTicket-dark;
-    }
-    &[class*='medium'] {
-      background: Palettes.$logTicket-medium;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5));
+        * {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
     }
     &[class*='light'] {
       background: Palettes.$logTicket-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5));
+        * {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$logTicket-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+
+    @extend %override-shading;
+    @extend %transition-shading;
+
+    &[class*='dark']:hover {
+      background: Palettes.$logTicket-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5));
+        *:hover {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$logTicket-dark;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5));
+        *:hover {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$logTicket-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
     }
   }
+  &[class*='hyperlink'] {
+    &[class*='dark'] {
+      background: Palettes.$findLink-dark;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5));
+        * {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='light'] {
+      background: Palettes.$findLink-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5));
+        * {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$findLink-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$findLink-light;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5));
+        *:hover {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$findLink-dark;
+      filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5));
+        *:hover {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$findLink-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+  }
+
+  @extend %override-shading;
+  @extend %transition-shading;
 }
 @mixin button-presets {
   cursor: default;
@@ -431,6 +595,27 @@
           height: 100%;
           opacity: 0.25;
         }
+      }
+    }
+  }
+}
+%override-shading {
+  &[class*='icon'] {
+    filter: none;
+  }
+}
+%transition-shading {
+  &[class*='dark']:hover,
+  &[class*='light']:hover,
+  &[class*='medium']:hover {
+    transition: background 0.25s ease-in-out;
+    div {
+      transition: filter 0.25s ease-in-out;
+      * {
+        transition: color 0.25s ease-in-out;
+      }
+      img {
+        transition: background 0.25s ease-in-out;
       }
     }
   }
