@@ -8,7 +8,7 @@ import MenuButton from '../../Menu/bin/button/Menu.button';
 import ButtonFade from '../../Button/bin/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
-import DivisionWorking from '../../Division/working/Division.working';
+import DivisionWorking from '../../Division/bin/working/Division.working';
 import getIdentification from '../../../../modules/utilities/getIdentification';
 
 interface DefaultProps {

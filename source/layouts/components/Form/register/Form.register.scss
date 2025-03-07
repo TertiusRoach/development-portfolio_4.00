@@ -1,15 +1,13 @@
+//--|🠊 Form.register.scss 🠈|--//
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
+  display: inherit; //--|🠊 display: grid; 🠈|--//
   border-radius: 1rem;
-  grid-area: 2 / 3 / 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   background: rgba(black, 0.75);
   grid-template: 1fr auto 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
   div[class*='header'] {
     display: inherit; //--|🠊 display: grid; 🠈|--//
     grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
-    // background: rgba(red, 0.25);
-
     div[class*='label'] {
       grid-area: 1 / 1 / 2 / 3;
       h6 {
