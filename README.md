@@ -1,17 +1,14 @@
 # [Trinity {Apps}](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 <details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <ul>
-        <li><a href="#Application Installation"><h1>---</h1></a></li>
-        <li><a href="#Development Commands"><h1>---</h1></a></li>
-        <li><a href="#Back-end Development"><h1>---</h1></a></li>
-      </ul>
-    </li>
-  </ol>
+  <summary><strong>Development Portfolio</strong></summary>
+  <ul>
+    <li><a href="#Application Installation">Application Installation</a></li>
+    <li><a href="#Development Commands">Development Commands</a></li>
+    <li><a href="#Back-end Development">Back-end Development</a></li>
+  </ul>
 </details>
+
 ---
 
 # Application Installation
