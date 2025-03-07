@@ -2,14 +2,63 @@
 @use '../../../design/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠊 display: block; 🠈|--//
   div[class*='container'] {
     grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
     form[class*='login'],
     form[class*='register'],
     form[class*='password'] {
+      z-index: 1;
       grid-area: 2 / 3 / 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
+    figure[class*='rotation'] {
+      z-index: 0;
+      grid-area: 1 / 1 / 4 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    /*
+    .rotation-figure {
+      margin: 0;
+      position: relative; // Needed for z-index to work correctly
+      background: radial-gradient(circle, white, black 95%);
+
+      svg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
+        animation-duration: 15s;
+        animation-name: fadeOut;
+        animation-fill-mode: forwards;
+        &[class*='top-right'] {
+          animation-delay: 0s;
+          background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+        }
+        &[class*='bot-right'] {
+          animation-delay: 15s; // Adjusted delay
+          background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+        }
+        &[class*='bot-left'] {
+          animation-delay: 30s; // Adjusted delay
+          background: linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+        }
+        &[class*='top-left'] {
+          animation-delay: 45s; // Adjusted delay
+          background: linear-gradient(315deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+        }
+        @keyframes fadeOut {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      }
+    }
+    */
   }
 }
 @mixin mobile-portrait {
@@ -29,28 +78,14 @@ main[id*='landing'] {
     display: flex;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     transform: translateX(-100vw); //--|🠊 Default view is .login-section 🠈|--//
-    transition: transform 3s ease;
+    transition: transform 0.5s ease-in-out;
 
     section {
       div[class*='container'] {
         height: 100%;
         display: grid;
         min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-        // grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-
-      &[class*='login'] {
-        // background: rgba(blue, 0.25);
-        background: Palettes.$logTicket-dark;
-      }
-
-      &[class*='register'] {
-        // background: rgba(green, 0.25);
-        background: Palettes.$trackDay-dark;
-      }
-      &[class*='password'] {
-        // background: rgba(red, 0.25);
-        background: Palettes.$findLink-dark;
+        /* grid-area: 1 / 2 / 2 / 3; */ //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
     }
 

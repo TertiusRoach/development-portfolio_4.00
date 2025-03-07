@@ -17,6 +17,7 @@ import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText } from '../../../../landing';
+import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -38,20 +39,26 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         <section className="register-section hidden">
           <div className="register-container">
             <FormRegister info={info} />
+            <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
-          <div className="rotation-division"></div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
             <FormLogin info={info} />
+            <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
+            {/* <figure className="rotation-figure">
+              <svg className="top-right" style={{ zIndex: 3 }}></svg>
+              <svg className="bot-right" style={{ zIndex: 2 }}></svg>
+              <svg className="bot-left" style={{ zIndex: 1 }}></svg>
+              <svg className="top-left" style={{ zIndex: 0 }}></svg>
+            </figure> */}
           </div>
-          <div className="rotation-division"></div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
             <FormPassword info={info} />
+            <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>
-          <div className="rotation-division"></div>
         </section>
       </div>
     </main>
