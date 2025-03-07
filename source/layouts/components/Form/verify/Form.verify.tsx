@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { closeLeftbar } from './Form.verify.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 
@@ -123,6 +124,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormVerify;
 
+/*
 const closeLeftbar = (pageName: 'landing' | string) => {
   let closeVerify = document.querySelector('.verify-close') as HTMLElement;
   let leftbar = document.querySelector(`#${pageName}-leftbar`) as HTMLElement;
@@ -137,3 +139,4 @@ const closeLeftbar = (pageName: 'landing' | string) => {
     return () => closeVerify.removeEventListener('click', closeClick);
   }
 };
+*/

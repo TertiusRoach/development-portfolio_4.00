@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { closeRightbar } from './Form.reset.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -134,7 +135,8 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormReset;
 
-const closeRightbar = (pageName: 'landing' | string) => {
+/*
+function closeRightbar(pageName: 'landing' | string) {
   let closeReset = document.querySelector('.reset-close') as HTMLElement;
   let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
 
@@ -147,4 +149,5 @@ const closeRightbar = (pageName: 'landing' | string) => {
     closeReset.addEventListener('click', closeClick);
     return () => closeReset.removeEventListener('click', closeClick);
   }
-};
+}
+*/

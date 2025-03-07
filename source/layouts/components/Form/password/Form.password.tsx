@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { showDemos, defineButton } from './Form.password.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -163,6 +164,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormPassword;
 
+/*
 function showDemos(pageName: 'landing' | string) {
   let closePassword = document.querySelector('.password-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
@@ -219,3 +221,4 @@ function defineButton(button: 'register' | 'login' | 'password', info: { blockNa
       };
   }
 }
+*/

@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { showDemos, defineButton } from './Form.register.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -185,6 +186,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormRegister;
 
+/*
 function showDemos(pageName: 'landing' | string) {
   let closeRegister = document.querySelector('.register-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
@@ -268,3 +270,4 @@ function defineButton(
       };
   }
 }
+*/

@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { showDemos, defineButton } from './Form.login.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -23,7 +24,6 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
@@ -195,6 +195,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 };
 export default FormLogin;
 
+/*
 function showDemos(pageName: 'landing' | string) {
   let closeLogin = document.querySelector('.login-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
@@ -263,3 +264,4 @@ function defineButton(button: 'observe' | 'register' | 'login' | 'password', inf
       };
   }
 }
+*/
