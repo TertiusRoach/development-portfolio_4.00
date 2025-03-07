@@ -1,3 +1,4 @@
+//--|🠊 source/landing.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
 import './layouts/styles/landing.scss';
 //--|🠉 Styles 🠉|--//
@@ -29,7 +30,7 @@ function Landing() {
   let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
-    identification: pageName,
+    identification: 'landing' as 'landing',
   };
   return (
     <EmailProvider>

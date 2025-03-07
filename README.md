@@ -4,21 +4,21 @@
   <summary><strong>Table of Contents</strong></summary>
   <ul>
     <li>
-      <a href="#application-installation">Application Installation</a>
+      <a href="#application-installation">//--|🠋 Application Installation 🠋|--//</a>
       <ul>
-        <li><a href="#installation-breakdown">Installation Breakdown</a></li>
+        <li><a href="#installation-breakdown">//--|🠊 Installation Breakdown 🠈|--//</a></li>
       </ul>
     </li>
     <li>
-      <a href="#terminal-commands">Development Commands</a>
+      <a href="#terminal-commands">//--|🠋 Development Commands 🠋|--//</a>
       <ul>
-        <li><a href="#visual-studio-code">Visual Studio Code</a></li>
+        <li><a href="#visual-studio-code">//--|🠊 Visual Studio Code 🠈|--//</a></li>
       </ul>
     </li>
     <li>
-      <a href="#back-end-development">Back-end Development</a>
+      <a href="#back-end-development">//--|🠋 Back-end Development 🠋|--//</a>
       <ul>
-        <li><a href="#folder-structure-reference">Folder Structure Reference</a></li>
+        <li><a href="#folder-structure-reference">//--|🠊 Folder Structure Reference 🠈|--//</a></li>
       </ul>
     </li>
   </ul>
