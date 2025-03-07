@@ -1,34 +1,20 @@
 # [Trinity {Apps}](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
-# [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
-
-# Run the Application after Installation
-
-//--|🠋 Launch back-end 🠈|--//
-Go to 'root\source\modules\server'
-
-> nodemon landing
-
-//--|🠋 Launch front-end 🠈|--//
-Go to 'root' folder
-
-> npm run app
-
-//--|🠋 Starts the testing environment 🠈|--//
-
-> npm run launch
-
-//--|🠋 Compiles project into public 🠈|--//
-
-> npm run deploy
-
-//--|🠋 Stops the server to relaunch 🠈|--//
-
-> npm run close
-
+<details>
+  <summary>Development Portfolio</summary>
+  <ol>
+    <li>
+      <ul>
+        <li><a href="#Application Installation"><h1>---</h1></a></li>
+        <li><a href="#Development Commands"><h1>---</h1></a></li>
+        <li><a href="#Back-end Development"><h1>---</h1></a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
 ---
 
-# Install for Development
+# Application Installation
 
 Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en).
@@ -147,13 +133,47 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev extract-text-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
 
+> Install Server for Databases
+
+    npm install mailtrap
+    npm install mongoose
+    npm install nodemailer
+    npm install -g nodemon
+    npm install --save-dev cors
+    npm install --save-dev axios
+    npm install --save-dev bcrypt
+    npm install --save-dev dotenv
+    npm install --save-dev express
+    npm install --save-dev mongodb
+    npm install --save-dev dotenv-webpack
+
 ---
 
-# Database Development for MongoDB
+# Development Commands
 
-You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+//--|🠋 Launch back-end 🠈|--//
+Go to 'root\source\modules\server'
 
-# Keyboard Shortcuts
+> nodemon landing
+
+//--|🠋 Launch front-end 🠈|--//
+Go to 'root' folder
+
+> npm run app
+
+//--|🠋 Starts the testing environment 🠈|--//
+
+> npm run launch
+
+//--|🠋 Compiles project into public 🠈|--//
+
+> npm run deploy
+
+//--|🠋 Stops the server to relaunch 🠈|--//
+
+> npm run close
+
+## Visual Studio Code
 
 //--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
 
@@ -180,9 +200,11 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 > Open Appropriate Terminal: Ctrl + C
 
----
+# [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) Development
 
-## Folder Structure to Reference Storage
+You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+
+## Folder Structure Reference
 
 This is the structure I will use going forward.
 
@@ -362,7 +384,7 @@ This is the structure I will use going forward.
 
 ---
 
-## Class Toggles
+## Custom Class Toggles
 
     .active
 
@@ -382,18 +404,6 @@ This is the structure I will use going forward.
 //--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
 
 ## Integrated HTML Navigation
-
-<details>
-  <summary>Development Portfolio</summary>
-  <ol>
-    <li>
-      <ul>
-        <li><a href="#Installation"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-        <li><a href="#Breakdown"><h1>Built With JavaScript, TypeScript, HTML, REACT, SASS, Bootstrap and Node.js</h1></a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
 
 ## Page Links
 
