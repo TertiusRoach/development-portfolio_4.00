@@ -7,7 +7,7 @@
 //--|🠋 Launch back-end 🠈|--//
 Go to 'root\source\modules\server'
 
-> nodemon users
+> nodemon landing
 
 //--|🠋 Launch front-end 🠈|--//
 Go to 'root' folder
