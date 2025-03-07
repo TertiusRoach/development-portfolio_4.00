@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { showDemos, defineButton } from './Form.password.ts';
+import { showDemos, defineButton } from './Form_password';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//

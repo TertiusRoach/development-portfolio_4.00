@@ -4,29 +4,28 @@
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
   div[class*='container'] {
-    grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+    grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 
-    /* grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; */ //~~|🠊 rows / columns 🠈|~~//
+    /* grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; */ //--|🠊 rows / columns 🠈|--//
   }
 }
 @mixin mobile-portrait {
   //--|🠊 display: flex; 🠈|--//
   div[class*='container'] {
-    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
   }
 }
 
 main[id*='main'] {
   display: grid;
-  overflow: hidden; //~~|🠊 Hide elements outside the visible area 🠈|~~//
-  grid-template: inherit; //~~|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|~~//
-  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
+  grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
-  background: black;
   .landing-branding {
     display: flex;
     align-items: flex-start;
-    grid-area: 1 / 1 / 2 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-area: 1 / 1 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     justify-content: flex-start;
     img {
       height: 4rem;
@@ -35,8 +34,8 @@ main[id*='main'] {
   }
   .landing-carousel {
     display: flex;
-    grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    transform: translateX(-100vw); //~~|🠊 Default view is .login-section 🠈|~~//
+    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    transform: translateX(-100vw); //--|🠊 Default view is .login-section 🠈|--//
     transition: transform 0.25s ease;
 
     section {
@@ -56,7 +55,7 @@ main[id*='main'] {
         height: 100%;
         display: grid;
         min-width: 100vw; /* Each section takes up the full screen width */
-        grid-area: 1 / 2 / 2 / 3; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+        grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
     }
 

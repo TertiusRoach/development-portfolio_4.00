@@ -5,7 +5,7 @@ import './Section.overlay.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useRef, useState } from 'react';
 
-import MenuButton from '../../Menu/button/Menu.button';
+import MenuButton from '../../Menu/bin/button/Menu.button';
 import ButtonFade from '../../Button/bin/fade/Button.fade';
 
 import { getSVG } from '../../../../modules/utilities/bin/getFile';

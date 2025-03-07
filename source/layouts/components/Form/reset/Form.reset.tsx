@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { closeRightbar } from './Form.reset.ts';
+import { closeRightbar } from './Form_reset';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//

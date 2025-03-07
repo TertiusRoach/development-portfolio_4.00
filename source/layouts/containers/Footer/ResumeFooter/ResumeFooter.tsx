@@ -14,8 +14,8 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
-import MenuAnchor from '../../../components/Menu/anchor/Menu.anchor';
-import MenuButton from '../../../components/Menu/button/Menu.button';
+import MenuAnchor from '../../../components/Menu/bin/anchor/Menu.anchor';
+import MenuButton from '../../../components/Menu/bin/button/Menu.button';
 import ButtonFade from '../../../components/Button/bin/fade/Button.fade';
 //--|🠉 Components 🠉|--//
 //--|🠋 Design 🠋|--//

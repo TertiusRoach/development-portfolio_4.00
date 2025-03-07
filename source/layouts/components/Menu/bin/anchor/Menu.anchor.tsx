@@ -2,7 +2,7 @@
 import React from 'react';
 import './Menu.anchor.scss';
 
-import AnchorFade from '../../Anchor/fade/Anchor.fade';
+import AnchorFade from '../../../Anchor/fade/Anchor.fade';
 // import AnchorGlow from '../../Anchor/glow/Anchor.glow';
 // import AnchorIcon from '../../Anchor/icon/Anchor.icon';
 // import AnchorFrame from '../../Anchor/frame/Anchor.frame';

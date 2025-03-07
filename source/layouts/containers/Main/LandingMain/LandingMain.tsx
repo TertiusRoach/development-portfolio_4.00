@@ -7,8 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/scripts/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/scripts/context/PasswordContext';
+import { EmailProvider } from '../../../../modules/context/EmailContext';
+import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
@@ -23,7 +23,7 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
@@ -34,12 +34,12 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
-      <div className="landing-branding" style={{ zIndex: 1 }}>
+      {/* <div className="landing-branding" style={{ zIndex: 1 }}>
         <img
           src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
           alt="Login Logo"
         />
-      </div>
+      </div> */}
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">

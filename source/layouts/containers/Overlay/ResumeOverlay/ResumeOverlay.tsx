@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { getSVG } from '../../../../modules/utilities/bin/getFile';
 import ButtonFade from '../../../components/Button/bin/fade/Button.fade';
-import MenuButton from '../../../components/Menu/button/Menu.button';
+import MenuButton from '../../../components/Menu/bin/button/Menu.button';
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import toggleSection from '../../../../modules/utilities/bin/toggleSection';

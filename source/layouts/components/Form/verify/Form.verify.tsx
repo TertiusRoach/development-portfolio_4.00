@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { closeLeftbar } from './Form.verify.ts';
+import { closeLeftbar } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 

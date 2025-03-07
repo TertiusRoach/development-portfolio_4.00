@@ -12,7 +12,7 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonFade from '../../../components/Button/bin/fade/Button.fade';
-import MenuButton from '../../../components/Menu/button/Menu.button';
+import MenuButton from '../../../components/Menu/bin/button/Menu.button';
 import SectionHome from '../../../components/Section/home/Section.home';
 import SectionNoir from '../../../components/Section/noir/Section.noir';
 import SectionSkills from '../../../components/Section/skills/Section.skills';
