@@ -1,11 +1,11 @@
-# [Trinity {Apps}](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
+# [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 <details>
-  <summary><strong>Development Portfolio</strong></summary>
+  <summary><strong><h1>Development Portfolio</h1></strong></summary>
   <ul>
-    <li><a href="#Application Installation">Application Installation</a></li>
-    <li><a href="#Development Commands">Development Commands</a></li>
-    <li><a href="#Back-end Development">Back-end Development</a></li>
+    <li><a href="#application-installation">Application Installation</a></li>
+    <li><a href="#development-commands">Development Commands</a></li>
+    <li><a href="#back-end-development">Back-end Development</a></li>
   </ul>
 </details>
 
