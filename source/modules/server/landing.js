@@ -853,7 +853,7 @@ server.post(`/${root}/reset`, async (req, res) => {
   }
 });
 
-//--|🠋 POST: List.countdown.tsx 🠋|--//
+//--|🠋 POST: Section.blocked.tsx 🠋|--//
 server.post(`/${root}/blocked`, async (req, res) => {
   const { email } = req.body;
 
