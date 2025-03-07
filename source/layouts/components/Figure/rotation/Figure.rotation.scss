@@ -7,8 +7,8 @@
 
   figcaption[class*='fade-left'] {
     z-index: 4;
-    grid-area: 1 / 1 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    background: linear-gradient(90deg, white 0%, rgba(white, 0.5) 25%, rgba(white, 0) 100%);
+    grid-area: 1 / 1 / 4 / 3; /* row-start / col-start / row-end / col-end */
+    background: linear-gradient(90deg, white 0%, rgba(white, 0.125) 25%, rgba(white, 0) 100%);
   }
   svg {
     width: 100%;
@@ -48,8 +48,8 @@
   }
   figcaption[class*='fade-right'] {
     z-index: 4;
-    grid-area: 1 / 4 / 4 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    background: linear-gradient(270deg, white 0%, rgba(white, 0.5) 75%, rgba(white, 0) 100%);
+    grid-area: 1 / 4 / 4 / 6; /* row-start / col-start / row-end / col-end */
+    background: linear-gradient(270deg, white 0%, rgba(white, 0.125) 25%, rgba(white, 0) 100%);
   }
 }
 @mixin mobile-portrait {
