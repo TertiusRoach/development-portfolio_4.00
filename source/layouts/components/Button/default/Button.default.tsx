@@ -30,17 +30,17 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const layoutView = style.layoutView;
   const shadingView = style.shadingView;
 
-  const handleButton = async () => {
+  useEffect(() => {
+    /*
     console.log(`pageName: ${pageName}`);
     console.log(`blockName: ${blockName}`);
     console.log(`className: ${className}`);
     console.log(`imageLink: ${imageLink}`);
+    console.log(`fontSize: ${fontSize}`);
     console.log(`layoutView: ${layoutView}`);
     console.log(`shadingView: ${shadingView}`);
-  };
-  handleButton();
-
-  useEffect(() => {}, [pageName, blockName]);
+    */
+  }, [pageName, blockName]);
 
   switch (layoutView) {
     case 'left':

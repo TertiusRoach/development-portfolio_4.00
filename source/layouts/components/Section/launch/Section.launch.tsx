@@ -7,8 +7,8 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/scripts/context/EmailContext';
-import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
+import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//

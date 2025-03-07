@@ -11,8 +11,8 @@ import { showDemos, defineButton } from './Form.register.ts';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/scripts/context/EmailContext';
-import { usePassword } from '../../../../modules/scripts/context/PasswordContext';
+import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
