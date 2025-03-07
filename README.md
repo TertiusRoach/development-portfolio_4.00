@@ -1,11 +1,26 @@
-# [My Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
+# Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 <details>
-  <summary><strong>Development Portfolio</strong></summary>
+  <summary><strong>Table of Contents</strong></summary>
   <ul>
-    <li><a href="#application-installation">Application Installation</a></li>
-    <li><a href="#development-commands">Development Commands</a></li>
-    <li><a href="#back-end-development">Back-end Development</a></li>
+    <li>
+      <a href="#application-installation">Application Installation</a>
+      <ul>
+        <li><a href="#installation-breakdown">Installation Breakdown</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#terminal-commands">Development Commands</a>
+      <ul>
+        <li><a href="#visual-studio-code">Visual Studio Code</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#back-end-development">Back-end Development</a>
+      <ul>
+        <li><a href="#folder-structure-reference">Folder Structure Reference</a></li>
+      </ul>
+    </li>
   </ul>
 </details>
 
@@ -146,7 +161,7 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 ---
 
-# Development Commands
+# Terminal Commands
 
 //--|🠋 Launch back-end 🠈|--//
 Go to 'root\source\modules\server'
