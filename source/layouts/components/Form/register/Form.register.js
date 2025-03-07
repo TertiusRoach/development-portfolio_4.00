@@ -1,4 +1,4 @@
-//--|🠋 POST: Form.register.tsx 🠋|--//
+//--|🠋 POST: Form.register.js (2025-03-07) 🠋|--//
 server.post(`/${root}/register`, async (req, res) => {
   const { firstName, lastName, email, passwordHash } = req.body;
   const user =

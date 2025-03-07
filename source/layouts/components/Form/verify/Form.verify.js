@@ -1,4 +1,4 @@
-//--|🠋 POST: Form.verify.tsx 🠋|--//
+//--|🠋 POST: Form.verify.js (2025-03-07) 🠋|--//
 server.post(`/${root}/verify`, async (req, res) => {
   const { email, passwordHash, activation } = req.body;
   const user =

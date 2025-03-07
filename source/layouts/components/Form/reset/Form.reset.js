@@ -1,4 +1,4 @@
-//--|🠋 POST: Form.reset.tsx 🠋|--//
+//--|🠋 POST: Form.reset.js (2025-03-07) 🠋|--//
 server.post(`/${root}/reset`, async (req, res) => {
   const { email, passwordNew, renewal } = req.body;
   const user =

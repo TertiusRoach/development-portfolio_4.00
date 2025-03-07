@@ -1,4 +1,4 @@
-//--|🠋 POST: Form.password.tsx 🠋|--//
+//--|🠋 POST: Form.password.js (2025-03-07) 🠋|--//
 server.post(`/${root}/password`, async (req, res) => {
   const { email, passwordHash } = req.body;
   const user =
