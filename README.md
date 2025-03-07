@@ -9,12 +9,14 @@
         <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
       </ul>
     </li>
+    <br>
     <li>
       <a href="#terminal-commands">//--|🠋 Development Commands 🠋|--//</a>
       <ul>
         <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
       </ul>
     </li>
+    <br>
     <li>
       <a href="#back-end-development">//--|🠋 Back-end Development 🠋|--//</a>
       <ul>
