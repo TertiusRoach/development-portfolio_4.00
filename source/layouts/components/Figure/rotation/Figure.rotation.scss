@@ -2,33 +2,37 @@
 @use '../../../design/Palettes.scss';
 
 @mixin desktop-landscape {
-  margin: 0;
-  position: relative; // Needed for z-index to work correctly
-  // background: radial-gradient(circle, white, black 95%);
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
 
+  figcaption[class*='fade-left'] {
+    z-index: 4;
+    grid-area: 1 / 1 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    background: linear-gradient(90deg, white 0%, rgba(white, 0.5) 25%, rgba(white, 0) 100%);
+  }
   svg {
     width: 100%;
     height: 100%;
     position: absolute;
 
-    animation-duration: 15s;
+    animation-duration: 240s;
     animation-name: fadeOut;
     animation-fill-mode: forwards;
     &[class*='top-right'] {
+      z-index: 3;
       animation-delay: 0s;
-      // background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
     }
     &[class*='bot-right'] {
-      animation-delay: 15s; // Adjusted delay
-      // background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+      z-index: 2;
+      animation-delay: 240s;
     }
     &[class*='bot-left'] {
-      animation-delay: 30s; // Adjusted delay
-      // background: linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+      z-index: 1;
+      animation-delay: 480s;
     }
     &[class*='top-left'] {
-      animation-delay: 45s; // Adjusted delay
-      // background: linear-gradient(315deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
+      z-index: 0;
+      animation-delay: 720s;
     }
     @keyframes fadeOut {
       0% {
@@ -42,6 +46,21 @@
       }
     }
   }
+  figcaption[class*='fade-right'] {
+    z-index: 4;
+    grid-area: 1 / 4 / 4 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    background: linear-gradient(270deg, white 0%, rgba(white, 0.5) 75%, rgba(white, 0) 100%);
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+}
+
+figure[class*='rotation'] {
+  margin: 0;
+  display: grid;
+  position: relative; //--|🠊 Needed for z-index to work correctly 🠈|--//
   &[class*='find-a-link'] {
     background: radial-gradient(circle, white, Palettes.$findLink-light 95%);
     svg[class*='top-right'] {
@@ -87,31 +106,7 @@
       background: linear-gradient(315deg, white 0%, Palettes.$logTicket-light 100%);
     }
   }
-  /*
-        &[class*='password'] {
-        // background: rgba(red, 0.25);
-        background: Palettes.$findLink-light;
-      }
-              &[class*='register'] {
-        // background: rgba(green, 0.25);
-        background: Palettes.$trackDay-light;
-      }
-      &[class*='login'] {
-        // background: rgba(blue, 0.25);
-        background: Palettes.$logTicket-light;
-      }
 
-
-      */
-}
-@mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
-  div[class*='container'] {
-    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-  }
-}
-
-figure[class*='rotation'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

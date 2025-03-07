@@ -46,12 +46,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
           <div className="login-container">
             <FormLogin info={info} />
             <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
-            {/* <figure className="rotation-figure">
-              <svg className="top-right" style={{ zIndex: 3 }}></svg>
-              <svg className="bot-right" style={{ zIndex: 2 }}></svg>
-              <svg className="bot-left" style={{ zIndex: 1 }}></svg>
-              <svg className="top-left" style={{ zIndex: 0 }}></svg>
-            </figure> */}
           </div>
         </section>
         <section className="password-section hidden">
