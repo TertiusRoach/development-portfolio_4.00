@@ -1,6 +1,6 @@
 //--|🠊 Form.login.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Form.login.scss';
+import './Menu.branding.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
@@ -36,91 +36,19 @@ const MenuBranding: React.FC<InfoProps> = ({ info }) => {
   let [submit, setSubmit] = useState(false);
   let [attempts, setAttempts] = useState(0);
 
-  const handleBranding = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setSubmit(true);
-    try {
-      // const route = 'login';
-      const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
-      const response = await axios.post(endpoint, {
-        email,
-        passwordHash: password,
-      });
-      const { view, data } = response.data;
-
-      let dialogue: string;
-      switch (view) {
-        case 'launch':
-          dialogue = 'Login successful, please select the application you want to use.';
-
-          viewBlock('launch');
-
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
-          break;
-        case 'register':
-          dialogue = 'No account found with this email. Would you like to register?';
-          viewBlock('register');
-          break;
-        case 'password':
-          let messages: string[] = [
-            'You have three attempts left.',
-            'You have two attempts left.',
-            'You have one attempt left.',
-          ];
-          if (attempts < 3) {
-            dialogue = messages[attempts];
-
-            setAttempts(attempts + 1);
-            viewText('login', dialogue);
-          } else {
-            dialogue = 'Would you like to change your password?';
-            setAttempts(0);
-            viewBlock('password');
-            viewText('password', dialogue);
-
-            setTimeout(() => {
-              dialogue = 'Sign in to access your account.';
-              viewText('login', dialogue);
-            }, 250);
-          }
-          break;
-        case 'verify':
-          dialogue = 'Please verify your account before signing in.';
-
-          viewBlock('verify');
-          viewText('verify', dialogue);
-          break;
-        case 'blocked':
-          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
-          viewBlock('blocked');
-          viewText('blocked', dialogue);
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
-          break;
-      }
-    } catch (error) {
-      axiosError(error);
-    } finally {
-      // Simulate a delay for login (optional)
-      /*
-      setTimeout(() => {
-        setSubmit(false); // Reset button after process
-      }, 2500);
-      */
-      setSubmit(false);
-    }
-  };
+  const handleBranding = async () => {};
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return <menu className="branding-menu"></menu>;
+  return (
+    <menu className="branding-menu">
+      <li>
+        <img
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg"
+          alt="branding-logo"
+        />
+      </li>
+    </menu>
+  );
 };
 export default MenuBranding;

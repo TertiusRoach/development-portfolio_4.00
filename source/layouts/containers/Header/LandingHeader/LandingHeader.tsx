@@ -7,13 +7,14 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import MenuBranding from '../../../components/Menu/branding/Menu.branding';
 import SectionLaunch from '../../../components/Section/launch/Section.launch';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const LandingHeader: React.FC<InfoProps> = ({ info }) => {
@@ -24,9 +25,8 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} collapsed`}>
-      {/* <menu>Menu HTML Element</menu> */}
+      <MenuBranding info={info} />
       <SectionLaunch info={info} />
-      {/* <section>Section HTML Element</section> */}
     </header>
   );
 };

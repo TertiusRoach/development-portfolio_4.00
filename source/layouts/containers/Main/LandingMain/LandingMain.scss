@@ -22,6 +22,7 @@ main[id*='main'] {
   grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
+  /*
   .landing-branding {
     display: flex;
     align-items: flex-start;
@@ -32,6 +33,7 @@ main[id*='main'] {
       margin: 2rem;
     }
   }
+  */
   .landing-carousel {
     display: flex;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
