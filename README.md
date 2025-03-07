@@ -1,7 +1,8 @@
-# [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
+# [My Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
 <details>
-  <summary><strong><h1>Development Portfolio</h1></strong></summary>
+  <strong><h1>Development Portfolio</h1></strong>
+  <summary></summary>
   <ul>
     <li><a href="#application-installation">Application Installation</a></li>
     <li><a href="#development-commands">Development Commands</a></li>
