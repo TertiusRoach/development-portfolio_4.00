@@ -61,10 +61,10 @@
   div[class*='inputs'] {
     row-gap: 1rem;
     display: inherit; //--|🠈 display: grid; 🠈|--//
-    grid-template: repeat(2, 2rem) / 2rem repeat(2, 2rem) 1fr repeat(2, 2rem) 2rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: repeat(2, 2rem) / 32px repeat(2, 2rem) 1fr repeat(2, 2rem) 32px; //--|🠊 rows / columns 🠈|--//
 
     input {
-      padding-left: 0.75rem;
+      padding-left: 0.75rem; //--|🠊 padding-left: 12px 🠈|--//
       &[id*='email'] {
         grid-area: 1 / 2 / 2 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }

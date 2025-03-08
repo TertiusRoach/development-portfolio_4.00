@@ -107,7 +107,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           type="text"
           id="reset-code"
           name="Recovery Code"
-          placeholder="//--|🠊 Recovery Code 🠈|--//"
+          placeholder="|🠊 Recovery Code 🠈|"
           // --- //
           value={renew}
           onChange={(event) => setRenew(event.target.value)}
@@ -117,7 +117,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           id="password"
           type="password"
           name="Password"
-          placeholder="//--|🠊 New Password 🠈|--//"
+          placeholder="|🠊 New Password 🠈|"
           // --- //
           value={password}
           onChange={(event) => setPassword(event.target.value)}
@@ -134,20 +134,3 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormReset;
-
-/*
-function closeRightbar(pageName: 'landing' | string) {
-  let closeReset = document.querySelector('.reset-close') as HTMLElement;
-  let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
-
-  if (closeReset && rightbar) {
-    var closeClick = () => {
-      rightbar.classList.remove('expanded'); // Remove '.expanded'
-      rightbar.classList.toggle('collapsed'); // Toggle '.collapsed'
-    };
-
-    closeReset.addEventListener('click', closeClick);
-    return () => closeReset.removeEventListener('click', closeClick);
-  }
-}
-*/

@@ -106,7 +106,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           type="text"
           id="verify-code"
           name="Verification Code"
-          placeholder="//--|🠊 Verification Code 🠈|--//"
+          placeholder="|🠊 Verification Code 🠈|"
           // --- //
           value={active}
           onChange={(event) => setActive(event.target.value)}
@@ -123,20 +123,3 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormVerify;
-
-/*
-const closeLeftbar = (pageName: 'landing' | string) => {
-  let closeVerify = document.querySelector('.verify-close') as HTMLElement;
-  let leftbar = document.querySelector(`#${pageName}-leftbar`) as HTMLElement;
-
-  if (closeVerify && leftbar) {
-    var closeClick = () => {
-      leftbar.classList.remove('expanded'); // Remove '.expanded'
-      leftbar.classList.toggle('collapsed'); // Toggle '.collapsed'
-    };
-
-    closeVerify.addEventListener('click', closeClick);
-    return () => closeVerify.removeEventListener('click', closeClick);
-  }
-};
-*/
