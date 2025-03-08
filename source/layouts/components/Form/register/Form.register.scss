@@ -62,25 +62,25 @@
     grid-template: repeat(3, 2rem) / 32px repeat(2, 2rem) 1fr 1rem 1fr repeat(2, 2rem) 32px; //--|🠊 rows / columns 🠈|--//
 
     input {
-      text-align: center;
+      text-align: left;
       &[id*='first'] {
-        // padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
+        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 1 / 2 / 2 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='last'] {
-        // padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
+        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 1 / 6 / 2 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='email'] {
-        // padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
+        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 2 / 2 / 3 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='password'] {
-        // padding-left: 2.75rem; //--|🠊 padding-left: 44px 🠈|--//
+        padding-left: 2.25rem; //--|🠊 padding-left: 44px 🠈|--//
         grid-area: 3 / 2 / 4 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &::placeholder {
-        font-weight: normal;
+        font-weight: bold;
       }
     }
     button[class*='observe'] {

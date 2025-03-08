@@ -97,9 +97,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="register-form" onSubmit={(event) => handleRegister(event)}>
       <div className="register-header">
-        {/* <div className="register-label">
+        <div className="register-label">
           <h6 className="display-6">Register</h6>
-        </div> */}
+        </div>
         <button className="register-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
@@ -150,6 +150,8 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           id="password"
           type="password"
           name="Password"
+          title="Click on the 🔄︎ icon to generate a secure password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{9,}$" // with at least 9 characters which includes an uppercase letter, a lowercase letter, a number, and a special character"
           placeholder="Password"
           // --- //
           value={password}
@@ -180,7 +182,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           />
           <ButtonDefault
             type="button"
-            text={'Renew Password'}
+            text={'Reset Password'}
             onClick={() => viewBlock('password')}
             style={defineButton('password', { pageName, blockName })}
           />
