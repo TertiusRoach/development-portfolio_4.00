@@ -8,7 +8,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { showDemos, defineButton } from './Form_login';
-import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint, viewWord } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
@@ -25,8 +25,8 @@ interface InfoProps {
   };
 }
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  let blockName = 'main';
+  let pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail();
@@ -120,6 +120,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
+    console.log(pageName);
+    console.log(blockName);
+
     showDemos(pageName);
   }, [pageName, blockName]);
 
@@ -161,9 +164,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <ButtonDefault
-          //---//
           text={''}
           type="button"
+          onClick={() => viewWord('login')}
           style={defineButton('observe', { pageName, blockName })}
         />
       </div>
@@ -194,6 +197,8 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
+
+const generatePassword = () => {};
 
 /*
 function showDemos(pageName: 'landing' | string) {

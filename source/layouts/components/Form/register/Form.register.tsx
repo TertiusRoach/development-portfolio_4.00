@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { showDemos, defineButton } from './Form_register';
-import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
+import { viewBlock, viewText, viewWord, retrieveEndpoint, axiosError } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
@@ -156,7 +156,12 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <ButtonDefault text={''} type="button" style={defineButton('generate', { pageName, blockName })} />
-        <ButtonDefault text={''} type="button" style={defineButton('observe', { pageName, blockName })} />
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => viewWord('register')}
+          style={defineButton('observe', { pageName, blockName })}
+        />
       </div>
       <div className="register-footer">
         <menu className="register-action">

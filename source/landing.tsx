@@ -139,6 +139,12 @@ export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'r
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
+export function viewWord(form: 'register' | 'login' | 'reset') {
+  let input = document.querySelector(`.${form}-inputs #password`) as HTMLInputElement;
+  if (input) {
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+}
 
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
@@ -149,6 +155,7 @@ export function retrieveEndpoint(
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 }
+
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
   //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//
