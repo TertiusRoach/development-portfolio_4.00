@@ -27,6 +27,8 @@ interface InfoProps {
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  const imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail();
@@ -126,9 +128,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">
-        {/* <div className="login-label">
-          <h6 className="display-6">Login</h6>
-        </div> */}
         <button className="login-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
@@ -137,6 +136,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         </button>
         <div className="login-text">
           <h4>Sign in to access your account.</h4>
+        </div>
+        <div className="login-icon">
+          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} src="" alt="" />
         </div>
       </div>
       <div className="login-inputs">

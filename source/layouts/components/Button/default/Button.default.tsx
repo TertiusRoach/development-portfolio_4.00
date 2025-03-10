@@ -5,6 +5,9 @@ import './Button.default.scss';
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { scaleImage } from './Button_default';
+//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   type: 'button' | 'submit' | 'reset';
@@ -53,8 +56,8 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           <div>
             <img
               style={{
-                width: `${scaleImage(fontSize)}rem`,
                 maskImage: `url(${imageLink})`,
+                width: `${scaleImage(fontSize)}rem`,
                 WebkitMaskImage: `url(${imageLink})`,
               }}
             ></img>
@@ -152,17 +155,4 @@ const scaleWords = (
     case '<h6>':
       return <h6>{text}</h6>;
   }
-};
-const scaleImage = (fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') => {
-  const sizeMap: Record<typeof fontSize, number> = {
-    '<p>': 2,
-    '<h6>': 3,
-    '<h5>': 4,
-    '<h4>': 5,
-    '<h3>': 6,
-    '<h2>': 7,
-    '<h1>': 8,
-  };
-
-  return sizeMap[fontSize];
 };

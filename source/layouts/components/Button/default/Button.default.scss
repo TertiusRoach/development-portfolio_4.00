@@ -1,7 +1,6 @@
 //--|🠊 Button.default.scss 🠈|--//
-@use '../../../design/Palettes.scss';
 @use '../../../design/Mixins.scss';
-
+@use '../../../design/Palettes.scss';
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {

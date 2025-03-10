@@ -7,6 +7,7 @@
     grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
     [class*='label'] {
       z-index: 3;
+      font-weight: bold;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
     form[class*='login'],
