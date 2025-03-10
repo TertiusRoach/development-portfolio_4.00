@@ -1,6 +1,7 @@
 // LandingLeftbar.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
@@ -8,11 +9,8 @@
 
 aside[id*='leftbar'] {
   display: grid;
-  overflow: hidden; /* Hide elements outside the visible area */
-  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
-
-  background: rgba(darkred, 0.25);
+  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

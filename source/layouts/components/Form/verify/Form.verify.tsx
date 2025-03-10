@@ -4,10 +4,10 @@ import './Form.verify.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { closeLeftbar } from './Form_verify';
+import { closeLeftbar, reactChange, reactKeydown, reactPaste } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 
@@ -22,21 +22,24 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
   //--|🠋 Action States 🠋|--//
-  let [active, setActive] = useState('');
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
+  let [active, setActive] = useState(['', '', '', '']);
 
   const handleVerify = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
     try {
+      console.log();
+      let verifyCode = `${active[0]}${active[1]}${active[2]}${active[3]}`;
       let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
       let registerPassword = document.querySelector('.register-inputs #password') as HTMLInputElement;
-      // const route = 'verify';
+
       const endpoint = retrieveEndpoint('verify', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
         email: registerEmail.value,
         passwordHash: registerPassword.value,
-        activation: active,
+        // activation: active,
+        activation: verifyCode,
       });
       const { view, data } = response.data;
 
@@ -65,11 +68,9 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
 
           viewBlock('blocked');
 
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
+          // setTimeout(() => {
+          //   alert(dialogue);
+          // }, 250);
           break;
       }
     } catch (error) {
@@ -78,6 +79,8 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       setSubmit(false);
     }
   };
+
+  let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     closeLeftbar(pageName);
@@ -101,16 +104,23 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="verify-inputs">
-        <input
-          required
-          type="text"
-          id="verify-code"
-          name="Verification Code"
-          placeholder="|🠊 Verification Code 🠈|"
-          // --- //
-          value={active}
-          onChange={(event) => setActive(event.target.value)}
-        />
+        {active.map((digit, index) => (
+          <input
+            required
+            type="text"
+            key={index}
+            value={digit}
+            maxLength={1}
+            inputMode="text"
+            pattern="[A-Za-z0-9]"
+            className={`code-input digit-${index + 1}`}
+            ref={(el) => (inputsRef.current[index] = el)}
+            //---//
+            onPaste={(e) => reactPaste(e, setActive, inputsRef)}
+            onChange={(e) => reactChange(index, e.target.value, active, setActive, inputsRef)}
+            onKeyDown={(e) => reactKeydown(index, e, active, inputsRef)}
+          />
+        ))}
       </div>
       <div className="verify-footer">
         <menu className="verify-action">

@@ -165,7 +165,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           id="password"
           type="password"
           name="Password"
-          title="Click on the 🔄︎ icon to generate a secure password or enter a password that's more than eight characters"
+          title="Click on the 🔄︎ icon to generate a secure password or enter a one that's more than eight characters"
           pattern=".{8,}"
           /* pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" */
           placeholder="Password"
