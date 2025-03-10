@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { showDemos, defineButton } from './Form_register';
+import { showDemos, defineButton, generatePassword } from './Form_register';
 import { viewBlock, viewText, viewWord, retrieveEndpoint, axiosError } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -113,6 +113,19 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="register-inputs">
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => generatePassword()}
+          style={defineButton('generate', { pageName, blockName })}
+        />
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => viewWord('register')}
+          style={defineButton('observe', { pageName, blockName })}
+        />
+
         <input
           required
           type="text"
@@ -152,19 +165,13 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           id="password"
           type="password"
           name="Password"
-          title="Click on the 🔄︎ icon to generate a secure password"
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{9,}$" // with at least 9 characters which includes an uppercase letter, a lowercase letter, a number, and a special character"
+          title="Click on the 🔄︎ icon to generate a secure password or enter a password that's more than eight characters"
+          pattern=".{8,}"
+          /* pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" */
           placeholder="Password"
           // --- //
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-        />
-        <ButtonDefault text={''} type="button" style={defineButton('generate', { pageName, blockName })} />
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => viewWord('register')}
-          style={defineButton('observe', { pageName, blockName })}
         />
       </div>
       <div className="register-footer">
@@ -194,5 +201,3 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormRegister;
-
-const generatePassword = () => {};
