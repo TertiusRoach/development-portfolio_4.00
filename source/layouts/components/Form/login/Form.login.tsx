@@ -138,7 +138,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           <h4>Sign in to access your account.</h4>
         </div>
         <div className="login-icon">
-          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} src="" alt="" />
+          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
         </div>
       </div>
       <div className="login-inputs">

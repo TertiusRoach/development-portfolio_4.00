@@ -28,6 +28,8 @@ interface InfoProps {
 const FormRegister: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
+  const imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -97,9 +99,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="register-form" onSubmit={(event) => handleRegister(event)}>
       <div className="register-header">
-        {/* <div className="register-label">
-          <h6 className="display-6">Register</h6>
-        </div> */}
         <button className="register-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
@@ -108,6 +107,9 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         </button>
         <div className="register-text">
           <h4>Sign up to use application.</h4>
+        </div>
+        <div className="register-icon">
+          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
         </div>
       </div>
       <div className="register-inputs">

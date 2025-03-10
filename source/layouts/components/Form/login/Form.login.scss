@@ -38,7 +38,6 @@
         -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
       }
     }
-
     div[class*='icon'] {
       z-index: 0;
       display: flex;
@@ -46,13 +45,13 @@
       justify-content: center;
       grid-area: 2 / 2 / 3 / 3;
       img {
-        width: 75%;
-        height: 75%;
+        width: 50%;
+        height: 50%;
+        opacity: 0.25;
         mask-size: contain;
         mask-position: center;
         mask-repeat: no-repeat;
-        background: Palettes.$logTicket-dark;
-        opacity: 0.5;
+        background: Palettes.$logTicket-light;
       }
     }
   }

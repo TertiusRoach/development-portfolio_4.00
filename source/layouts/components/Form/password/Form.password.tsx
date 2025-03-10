@@ -27,6 +27,8 @@ interface InfoProps {
 const FormPassword: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
+  const imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -102,9 +104,6 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="password-form" onSubmit={(event) => handlePassword(event)}>
       <div className="password-header">
-        {/* <div className="password-label">
-          <h6 className="display-6">Password</h6>
-        </div> */}
         <button className="password-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
@@ -114,12 +113,9 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
         <div className="password-text">
           <h4>You can update your password here.</h4>
         </div>
-        {/* <div className="password-logo">
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d11394a960db3ea88c21e28aa8035c3f40bdad7c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-light.svg"
-                alt="Login Logo"
-              />
-            </div> */}
+        <div className="password-icon">
+          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
+        </div>
       </div>
       <div className="password-inputs">
         <input
