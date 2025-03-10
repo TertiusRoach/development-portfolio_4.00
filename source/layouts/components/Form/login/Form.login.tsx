@@ -196,5 +196,3 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormLogin;
-
-const generatePassword = () => {};

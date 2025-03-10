@@ -189,6 +189,11 @@ Go to 'root' folder
 
 ## Visual Studio Code
 
+//--|🠋 Collapse all folders in Primary Side Bar 🠈|--//
+
+> Open Command Pallette: Ctrl + Shift + P
+> Type "Collapse Folders in Explorer" + Enter
+
 //--|🠋 The caret should be in the root scope of the Text Interface 🠈|--//
 
 > Collapse Sections: Ctrl + K + 0
@@ -204,11 +209,6 @@ Go to 'root' folder
 //--|🠋 This opens up automatically on your browser, I think it depends on your settings. 🠈|--//
 
 > Open Run and Debug: Ctrl + Shift + D & F5
-
-//--|🠋 Collapse all folders in Primary Side Bar 🠈|--//
-
-> Open Command Pallette: Ctrl + Shift + P
-> Type "Collapse Folders in Explorer" + Enter
 
 //--|🠋 Stop Server Inside Terminal 🠈|--//
 

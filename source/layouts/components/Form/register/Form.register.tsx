@@ -194,3 +194,5 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormRegister;
+
+const generatePassword = () => {};
