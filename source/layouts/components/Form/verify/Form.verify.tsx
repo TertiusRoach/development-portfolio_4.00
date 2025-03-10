@@ -24,6 +24,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   //--|🠋 Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
   let [active, setActive] = useState(['', '', '', '']);
+  let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleVerify = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -79,8 +80,6 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       setSubmit(false);
     }
   };
-
-  let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     closeLeftbar(pageName);
