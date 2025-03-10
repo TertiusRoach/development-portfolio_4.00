@@ -18,8 +18,8 @@ interface InfoProps {
   };
 }
 const LandingHeader: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'header';
-  const pageName = info.identification;
+  const blockName: string = 'header';
+  const pageName: string = info.identification;
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -29,7 +29,7 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
         src={
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg'
         }
-        info={info}
+        style={{ brandView: 'left', blockName: blockName, pageName: pageName }}
       />
       <SectionLaunch info={info} />
     </header>

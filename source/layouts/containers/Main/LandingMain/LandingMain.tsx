@@ -16,7 +16,7 @@ import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText } from '../../../../landing';
+import { viewBlock, viewText, outputDisplay } from '../../../../landing';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 //--|🠉 Functions 🠉|--//
 
@@ -31,25 +31,33 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    /*
+    let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
+    outputDisplay(sectionElement);
+    */
+  }, [pageName, blockName]);
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
+            <h4 className="register-label display-4">Register</h4>
             <FormRegister info={info} />
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
+            <h4 className="login-label display-4">Login</h4>
             <FormLogin info={info} />
             <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
           </div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
+            <h4 className="password-label display-4">Password</h4>
             <FormPassword info={info} />
             <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>

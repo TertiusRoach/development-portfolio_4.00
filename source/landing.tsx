@@ -146,6 +146,21 @@ export function viewWord(form: 'register' | 'login' | 'reset') {
   }
 }
 
+export function outputDisplay(element: HTMLElement) {
+  console.log(element);
+
+  if (element) {
+    let computedStyle = window.getComputedStyle(element);
+    let displayValue = computedStyle.display;
+
+    console.log('Display value:', displayValue);
+  } else {
+    console.log("Element with ID 'mySection' not found.");
+  }
+}
+
+//---//
+
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
   address: 'http://localhost:3000' | string
@@ -155,7 +170,6 @@ export function retrieveEndpoint(
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 }
-
 export function axiosError(error: unknown) {
   //--|🠉 First, we check if the error came from an Axios request. 🠉|--//
   //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--//

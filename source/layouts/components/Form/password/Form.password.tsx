@@ -102,9 +102,9 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="password-form" onSubmit={(event) => handlePassword(event)}>
       <div className="password-header">
-        <div className="password-label">
+        {/* <div className="password-label">
           <h6 className="display-6">Password</h6>
-        </div>
+        </div> */}
         <button className="password-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"

@@ -5,6 +5,10 @@
   //--|🠊 display: block; 🠈|--//
   div[class*='container'] {
     grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+    [class*='label'] {
+      z-index: 3;
+      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
     form[class*='login'],
     form[class*='register'],
     form[class*='password'] {
@@ -15,50 +19,6 @@
       z-index: 0;
       grid-area: 1 / 1 / 4 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
-    /*
-    .rotation-figure {
-      margin: 0;
-      position: relative; // Needed for z-index to work correctly
-      background: radial-gradient(circle, white, black 95%);
-
-      svg {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-
-        animation-duration: 15s;
-        animation-name: fadeOut;
-        animation-fill-mode: forwards;
-        &[class*='top-right'] {
-          animation-delay: 0s;
-          background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
-        }
-        &[class*='bot-right'] {
-          animation-delay: 15s; // Adjusted delay
-          background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
-        }
-        &[class*='bot-left'] {
-          animation-delay: 30s; // Adjusted delay
-          background: linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
-        }
-        &[class*='top-left'] {
-          animation-delay: 45s; // Adjusted delay
-          background: linear-gradient(315deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%); // Corrected gradient
-        }
-        @keyframes fadeOut {
-          0% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-      }
-    }
-    */
   }
 }
 @mixin mobile-portrait {
@@ -81,21 +41,34 @@ main[id*='landing'] {
     transition: transform 0.5s ease-in-out;
 
     section {
+      //--|🠊 display: block; 🠈|--//
       div[class*='container'] {
         height: 100%;
         display: grid;
         min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-        /* grid-area: 1 / 2 / 2 / 3; */ //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
 
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      @include desktop-landscape();
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      @include mobile-portrait();
+        h6[class*='register'] {
+          color: Palettes.$trackDay-dark;
+          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
+        }
+        h6[class*='login'] {
+          color: Palettes.$logTicket-dark;
+          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
+        }
+        h6[class*='password'] {
+          color: Palettes.$findLink-dark;
+          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
+        }
+      }
+
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        @include desktop-landscape();
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        @include mobile-portrait();
+      }
     }
   }
 }

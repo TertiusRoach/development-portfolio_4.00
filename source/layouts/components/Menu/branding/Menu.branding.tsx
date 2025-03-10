@@ -15,19 +15,21 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   src: string;
-  info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+
+  style: {
+    brandView: 'left' | 'right' | 'center';
+
+    pageName: string;
+    blockName: string;
   };
 }
-const MenuBranding: React.FC<InfoProps> = ({ info, src }) => {
-  const blockName = 'header';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+const MenuBranding: React.FC<InfoProps> = ({ style, src }) => {
+  const brandView = style.brandView;
+  const blockName = style.blockName;
+  const pageName = style.pageName as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
   const handleBranding = async () => {};
 
@@ -35,7 +37,7 @@ const MenuBranding: React.FC<InfoProps> = ({ info, src }) => {
 
   return (
     <menu className="branding-menu">
-      <li>
+      <li className={`${brandView}`}>
         <img src={src} alt="branding-logo" />
       </li>
     </menu>
