@@ -7,9 +7,12 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { closeLeftbar, reactChange, reactKeydown, reactPaste } from './Form_verify';
+import { closeLeftbar, reactChange, reactKeydown, reactPaste, defineButton } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
+//--|🠋 Components 🠋|--//
+import ButtonDefault from '../../Button/default/Button.default';
+//--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
@@ -21,6 +24,9 @@ interface InfoProps {
 const FormVerify: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification;
+  const imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/91a25e4fa1bea9a24a757fad615acb2b7da41fc0/source/assets/svg-files/landing-page/key.svg';
+
   //--|🠋 Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
   let [active, setActive] = useState(['', '', '', '']);
@@ -88,18 +94,17 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="verify-form" onSubmit={(event) => handleVerify(event)}>
       <div className="verify-header">
-        <div className="verify-label">
-          <h6 className="display-6">Verify</h6>
-        </div>
         <button className="verify-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
             alt=""
           />
         </button>
-
         <div className="verify-text">
           <h4>Check your email for verification code.</h4>
+        </div>
+        <div className="verify-icon">
+          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
         </div>
       </div>
       <div className="verify-inputs">
@@ -123,9 +128,12 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="verify-footer">
         <menu className="verify-action">
-          <button className="verify-button" type="submit" disabled={submit}>
-            {submit ? 'Verifying...' : 'Verify'}
-          </button>
+          <ButtonDefault
+            type="submit"
+            text={submit ? 'Verifying...' : 'Verify'}
+            style={defineButton('verify', { pageName, blockName })}
+            disabled={submit}
+          />
         </menu>
       </div>
     </form>

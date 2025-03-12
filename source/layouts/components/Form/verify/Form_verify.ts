@@ -1,3 +1,23 @@
+//--|🠊 Form_verify.ts 🠈|--//
+export function defineButton(button: 'verify', info: { blockName: string; pageName: string }) {
+  const { blockName, pageName } = info;
+  //--|🠋 Always Return an Object 🠋|--//
+  switch (button) {
+    case 'verify':
+      return {
+        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'light' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/91a25e4fa1bea9a24a757fad615acb2b7da41fc0/source/assets/svg-files/landing-page/key.svg',
+      };
+  }
+}
+
 export function closeLeftbar(pageName: 'landing' | string) {
   let closeVerify = document.querySelector('.verify-close') as HTMLElement;
   let leftbar = document.querySelector(`#${pageName}-leftbar`) as HTMLElement;

@@ -4,7 +4,7 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   div[class*='container'] {
-    grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
     [class*='label'] {
       z-index: 3;
       font-weight: bold;
@@ -14,11 +14,11 @@
     form[class*='register'],
     form[class*='password'] {
       z-index: 1;
-      grid-area: 2 / 3 / 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
     figure[class*='rotation'] {
       z-index: 0;
-      grid-area: 1 / 1 / 4 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
   }
 }

@@ -1,7 +1,15 @@
 // LandingLeftbar.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  [class*='label'] {
+    z-index: 3;
+    font-weight: bold;
+    grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  form[class*='verify'] {
+    grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//

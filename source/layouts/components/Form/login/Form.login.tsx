@@ -42,7 +42,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      // const route = 'login';
       const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
         email,
@@ -175,6 +174,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
             type="submit"
             text={submit ? 'Logging in...' : 'Login'}
             style={defineButton('login', { pageName, blockName })}
+            disabled={submit}
           />
         </menu>
         <nav className="login-buttons">

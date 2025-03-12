@@ -12,7 +12,9 @@ import { scaleImage } from './Button_default';
 interface InfoProps {
   type: 'button' | 'submit' | 'reset';
   text: [string, string] | string;
+  disabled?: boolean;
   onClick?: () => void;
+
   style: {
     fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
     layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
