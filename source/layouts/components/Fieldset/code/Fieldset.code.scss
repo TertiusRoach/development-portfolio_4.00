@@ -1,0 +1,40 @@
+//--|🠊 Fieldset.code.scss 🠈|--//
+@use '../../../design/Palettes.scss';
+
+@mixin desktop-landscape {
+  input[class*='digit'] {
+    width: 100%;
+    grid-row: 1 / 2;
+    text-align: center;
+    & {
+      .digit-1 {
+        grid-column: 1 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      .digit-2 {
+        grid-column: 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      .digit-3 {
+        grid-column: 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      .digit-4 {
+        grid-column: 4 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+fieldset[class*='code'] {
+  display: grid;
+  column-gap: 1rem;
+  grid-template: 8rem / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

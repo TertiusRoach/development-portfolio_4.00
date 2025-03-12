@@ -852,7 +852,6 @@ server.post(`/${root}/reset`, async (req, res) => {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   }
 });
-
 //--|🠋 POST: Section.blocked.tsx 🠋|--//
 server.post(`/${root}/blocked`, async (req, res) => {
   const { email } = req.body;

@@ -1,18 +1,4 @@
 //--|🠊 Form_login.ts 🠈|--//
-export function showDemos(pageName: 'landing' | string) {
-  let closeLogin = document.querySelector('.login-close') as HTMLElement;
-  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-
-  if (closeLogin && header) {
-    var closeClick = () => {
-      header.classList.toggle('expanded'); // Toggle '.expanded'
-      header.classList.remove('collapsed'); // Remove '.collapsed'
-    };
-
-    closeLogin.addEventListener('click', closeClick);
-    return () => closeLogin.removeEventListener('click', closeClick);
-  }
-}
 export function defineButton(
   button: 'observe' | 'register' | 'login' | 'password',
   info: { blockName: string; pageName: string }
@@ -69,5 +55,20 @@ export function defineButton(
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
       };
+  }
+}
+
+export function showDemos(pageName: 'landing' | string) {
+  let closeLogin = document.querySelector('.login-close') as HTMLElement;
+  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+
+  if (closeLogin && header) {
+    var closeClick = () => {
+      header.classList.toggle('expanded'); // Toggle '.expanded'
+      header.classList.remove('collapsed'); // Remove '.collapsed'
+    };
+
+    closeLogin.addEventListener('click', closeClick);
+    return () => closeLogin.removeEventListener('click', closeClick);
   }
 }

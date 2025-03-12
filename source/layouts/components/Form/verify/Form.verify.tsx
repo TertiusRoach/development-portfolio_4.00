@@ -7,10 +7,11 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { closeLeftbar, reactChange, reactKeydown, reactPaste, defineButton } from './Form_verify';
+import { closeLeftbar, defineButton, getCode } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
+import FieldsetCode from '../../Fieldset/code/Fieldset.code';
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 
@@ -30,23 +31,21 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   //--|🠋 Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
   let [active, setActive] = useState(['', '', '', '']);
-  let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  // let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleVerify = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      console.log();
-      let verifyCode = `${active[0]}${active[1]}${active[2]}${active[3]}`;
+      let verifyCode = getCode('verify');
       let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
       let registerPassword = document.querySelector('.register-inputs #password') as HTMLInputElement;
 
       const endpoint = retrieveEndpoint('verify', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
+        activation: verifyCode,
         email: registerEmail.value,
         passwordHash: registerPassword.value,
-        // activation: active,
-        activation: verifyCode,
       });
       const { view, data } = response.data;
 
@@ -108,23 +107,7 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="verify-inputs">
-        {active.map((digit, index) => (
-          <input
-            required
-            type="text"
-            key={index}
-            value={digit}
-            maxLength={1}
-            inputMode="text"
-            pattern="[A-Za-z0-9]"
-            className={`code-input digit-${index + 1}`}
-            ref={(el) => (inputsRef.current[index] = el)}
-            //---//
-            onPaste={(e) => reactPaste(e, setActive, inputsRef)}
-            onChange={(e) => reactChange(index, e.target.value, active, setActive, inputsRef)}
-            onKeyDown={(e) => reactKeydown(index, e, active, inputsRef)}
-          />
-        ))}
+        <FieldsetCode info={info} />
       </div>
       <div className="verify-footer">
         <menu className="verify-action">

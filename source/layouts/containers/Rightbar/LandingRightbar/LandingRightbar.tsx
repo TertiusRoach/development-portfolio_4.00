@@ -14,12 +14,6 @@ import getIdentification from '../../../../modules/utilities/getIdentification';
 //--|🠋 Components 🠋|--//
 import FormReset from '../../../components/Form/reset/Form.reset';
 //--|🠉 Components 🠉|--//
-//--|🠋 Containers 🠋|--//
-
-//--|🠉 Containers 🠉|--//
-//--|🠋 Root 🠋|--//
-import Resume from '../../../../resume';
-//--|🠉 Root 🠉|--//
 
 interface InfoProps {
   info: {
@@ -36,6 +30,7 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <aside id={`${pageName}-${blockName}`} style={{ zIndex: 2 }} className={`default-${blockName} collapsed`}>
+      <h4 className="reset-label display-4">Reset</h4>
       <FormReset info={info} />
     </aside>
   );

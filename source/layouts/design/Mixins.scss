@@ -179,10 +179,10 @@
     &[class*='dark'] {
       background: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
         * {
           color: Palettes.$indexLand-light;
         }
@@ -194,10 +194,10 @@
     &[class*='light'] {
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
         * {
           color: Palettes.$indexLand-dark;
         }
@@ -223,10 +223,10 @@
     &[class*='dark']:hover {
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
         *:hover {
           color: Palettes.$indexLand-dark;
         }
@@ -238,10 +238,10 @@
     &[class*='light']:hover {
       background: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
         *:hover {
           color: Palettes.$indexLand-light;
         }
@@ -271,10 +271,10 @@
     &[class*='dark'] {
       background: Palettes.$trackDay-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
         * {
           color: Palettes.$trackDay-light;
         }
@@ -286,10 +286,10 @@
     &[class*='light'] {
       background: Palettes.$trackDay-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
         * {
           color: Palettes.$trackDay-dark;
         }
@@ -315,10 +315,10 @@
     &[class*='dark']:hover {
       background: Palettes.$trackDay-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
         *:hover {
           color: Palettes.$trackDay-dark;
         }
@@ -330,10 +330,10 @@
     &[class*='light']:hover {
       background: Palettes.$trackDay-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
         *:hover {
           color: Palettes.$trackDay-light;
         }
@@ -363,10 +363,10 @@
     &[class*='dark'] {
       background: Palettes.$logTicket-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); //
         * {
           color: Palettes.$logTicket-light;
         }
@@ -378,10 +378,10 @@
     &[class*='light'] {
       background: Palettes.$logTicket-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
         * {
           color: Palettes.$logTicket-dark;
         }
@@ -407,10 +407,10 @@
     &[class*='dark']:hover {
       background: Palettes.$logTicket-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); //
         *:hover {
           color: Palettes.$logTicket-dark;
         }
@@ -422,10 +422,10 @@
     &[class*='light']:hover {
       background: Palettes.$logTicket-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
         *:hover {
           color: Palettes.$logTicket-light;
         }
@@ -455,10 +455,10 @@
     &[class*='dark'] {
       background: Palettes.$findLink-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); //
         * {
           color: Palettes.$findLink-light;
         }
@@ -470,10 +470,10 @@
     &[class*='light'] {
       background: Palettes.$findLink-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
         * {
           color: Palettes.$findLink-dark;
         }
@@ -499,10 +499,10 @@
     &[class*='dark']:hover {
       background: Palettes.$findLink-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); //
         *:hover {
           color: Palettes.$findLink-dark;
         }
@@ -514,10 +514,10 @@
     &[class*='light']:hover {
       background: Palettes.$findLink-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      /* filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); */
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        /* filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); */
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
         *:hover {
           color: Palettes.$findLink-light;
         }
@@ -565,8 +565,10 @@
   }
   &[class*='icon'] {
     padding: 0;
-    div img {
-      width: 75%;
+    div {
+      img {
+        width: 75%;
+      }
     }
   }
   &[class*='left'] {

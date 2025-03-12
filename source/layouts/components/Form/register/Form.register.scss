@@ -2,9 +2,7 @@
 @use '../../../design/Palettes.scss';
 
 @mixin desktop-landscape {
-  display: inherit; //--|🠊 display: grid; 🠈|--//
-  border-radius: 1rem;
-  background: rgba(black, 0.75);
+  //--|🠊 display: grid; 🠈|--//
   grid-template: 1fr auto 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
   div[class*='header'] {
     display: inherit; //--|🠊 display: grid; 🠈|--//
@@ -81,11 +79,11 @@
         font-weight: bold;
       }
     }
-    button[class*='observe'] {
-      grid-area: 3 / 8 / 4 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
     button[class*='generate'] {
       grid-area: 3 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    button[class*='observe'] {
+      grid-area: 3 / 8 / 4 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
   }
   div[class*='footer'] {
@@ -118,6 +116,9 @@
 
 form[class*='register'] {
   display: grid;
+  border-radius: 1rem;
+  background: rgba(black, 0.75);
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

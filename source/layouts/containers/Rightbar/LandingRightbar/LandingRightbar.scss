@@ -1,6 +1,15 @@
 // LandingRightbar.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+  [class*='label'] {
+    z-index: 3;
+    font-weight: bold;
+    grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  form[class*='reset'] {
+    grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
@@ -10,9 +19,6 @@ aside[id*='rightbar'] {
   display: grid;
   overflow: hidden; //~~|🠊 Hide elements outside the visible area 🠈|~~//
   grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  grid-template: 1fr 40rem 1fr / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
-
-  background: rgba(darkblue, 0.25);
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

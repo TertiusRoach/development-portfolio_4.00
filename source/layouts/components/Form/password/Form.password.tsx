@@ -83,11 +83,9 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
 
           viewBlock('blocked');
 
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
+          // setTimeout(() => {
+          //   alert(dialogue);
+          // }, 250);
           break;
       }
     } catch (error) {

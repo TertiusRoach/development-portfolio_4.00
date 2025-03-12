@@ -82,14 +82,7 @@ export function defineButton(
   }
 }
 export function generatePassword() {
-  /*
-  It must be between 8 and 16 Characters
-  Have mostly lowercase letters as the password.
-  Contain 1 to 3 Uppercase letters
-  Contain at least 1 to 3 Numbers
-  And a special character
-  */
-
+  const passReset = document.querySelector('.reset-inputs #password') as HTMLInputElement;
   const passLogin = document.querySelector('.login-inputs #password') as HTMLInputElement;
   const passRegister = document.querySelector('.register-inputs #password') as HTMLInputElement;
 
@@ -102,11 +95,11 @@ export function generatePassword() {
   };
   const getRandomElements = (generator: () => string, count: number): string[] => Array.from({ length: count }, generator);
 
-  //--|🠋 Determine random character counts within constraints 🠋|--//
-  let length = Math.floor(Math.random() * 9) + 8; // 8 to 16 characters
-  let upperCount = Math.floor(Math.random() * 3) + 1; // 1 to 3 uppercase letters
-  let numberCount = Math.floor(Math.random() * 3) + 1; // 1 to 3 numbers
-  let symbolCount = 1; // At least 1 special character
+  //--|🠋 Determine random character counts within constraints with mostly lowercase letters 🠋|--//
+  let length = Math.floor(Math.random() * 9) + 8; //--|🠈 It must be between 8 and 16 Characters 🠈|--//
+  let upperCount = Math.floor(Math.random() * 3) + 1; //--|🠈 Contain at least 1 to 3 Numbers 🠈|--//
+  let numberCount = Math.floor(Math.random() * 3) + 1; //--|🠈 1 to 3 numbers 🠈|--//
+  let symbolCount = 1; //--|🠈 And One Special Character 🠈|--//
 
   //--|🠋 Fill the password parts 🠋|--//
   let upperChars = getRandomElements(getRandomUpper, upperCount);
@@ -118,10 +111,11 @@ export function generatePassword() {
   //--|🠋 Combine all characters and shuffle 🠋|--//
   let passwordArray = [...upperChars, ...numberChars, ...symbolChars, ...lowerChars];
   let shuffledPassword = passwordArray
-    .sort(() => Math.random() - 0.5) // Fisher-Yates-like shuffle
+    .sort(() => Math.random() - 0.5) //--|🠈 Fisher-Yates-like shuffle 🠈|--//
     .join('');
 
   passLogin.value = shuffledPassword;
+  passReset.value = shuffledPassword;
   passRegister.value = shuffledPassword;
   return shuffledPassword;
 }

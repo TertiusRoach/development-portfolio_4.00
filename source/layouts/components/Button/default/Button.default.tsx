@@ -28,20 +28,20 @@ interface InfoProps {
 }
 const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
+  const fontSize = style.fontSize;
   const blockName = style.blockName;
   const className = style.className;
   const imageLink = style.imageLink;
-  const fontSize = style.fontSize;
   const layoutView = style.layoutView;
   const shadingView = style.shadingView;
 
   useEffect(() => {
     /*
     console.log(`pageName: ${pageName}`);
+    console.log(`fontSize: ${fontSize}`);
     console.log(`blockName: ${blockName}`);
     console.log(`className: ${className}`);
     console.log(`imageLink: ${imageLink}`);
-    console.log(`fontSize: ${fontSize}`);
     console.log(`layoutView: ${layoutView}`);
     console.log(`shadingView: ${shadingView}`);
     */
@@ -50,12 +50,8 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   switch (layoutView) {
     case 'left':
       return (
-        <button
-          type={type}
-          onClick={onClick}
-          className={`left-${shadingView} default-${className} ${blockName}-${pageName} btn`}
-        >
-          <div>
+        <button type={type} onClick={onClick} className={`default-button left-${shadingView} ${pageName}-${className} btn`}>
+          <div className={`${blockName}`}>
             <img
               style={{
                 maskImage: `url(${imageLink})`,
@@ -69,12 +65,8 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'right':
       return (
-        <button
-          type={type}
-          onClick={onClick}
-          className={`right-${shadingView} default-${className} ${blockName}-${pageName} btn`}
-        >
-          <div>
+        <button type={type} onClick={onClick} className={`default-button right-${shadingView} ${pageName}-${className} btn`}>
+          <div className={`${blockName}`}>
             {scaleWords(fontSize, text)}
             <img
               style={{
@@ -91,9 +83,9 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
         <button
           type={type}
           onClick={onClick}
-          className={`center-${shadingView} default-${className} ${blockName}-${pageName} btn`}
+          className={`default-button center-${shadingView} ${pageName}-${className} btn`}
         >
-          <div>
+          <div className={`${blockName}`}>
             <img
               style={{
                 width: `${scaleImage(fontSize)}rem`,
@@ -107,16 +99,12 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'icon':
       return (
-        <button
-          type={type}
-          onClick={onClick}
-          className={`icon-${shadingView} default-${className} ${blockName}-${pageName} btn`}
-        >
-          <div>
+        <button type={type} onClick={onClick} className={`default-button icon-${shadingView} ${pageName}-${className} btn`}>
+          <div className={`${blockName}`}>
             <img
               style={{
-                height: `${scaleImage(fontSize)}rem`,
                 maskImage: `url(${imageLink})`,
+                height: `${scaleImage(fontSize)}rem`,
                 WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
               }}
             ></img>
@@ -125,12 +113,8 @@ const ButtonDefault: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'text':
       return (
-        <button
-          type={type}
-          onClick={onClick}
-          className={`text-${shadingView} default-${className} ${blockName}-${pageName} btn`}
-        >
-          <div>{scaleWords(fontSize, text)}</div>
+        <button type={type} onClick={onClick} className={`default-button text-${shadingView} ${pageName}-${className} btn`}>
+          <div className={`${blockName}`}>{scaleWords(fontSize, text)}</div>
         </button>
       );
   }
