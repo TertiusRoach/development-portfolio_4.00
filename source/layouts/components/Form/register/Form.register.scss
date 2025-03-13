@@ -22,6 +22,7 @@
       display: flex;
       align-items: center;
       grid-area: 2 / 2 / 3 / 3;
+      filter: drop-shadow(black 0rem 0rem 8px); //--|🠊 drop-shadow( <color> <distance> <distance> <spread> ) 🠈|--//
       h4 {
         width: 100%;
         padding: 4px;
@@ -33,6 +34,7 @@
         -webkit-line-clamp: 4; //--|🠊 Limits the number of lines  🠈|--//
         text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--//
         -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
+        filter: drop-shadow(black 0rem 0rem 1rem); //--|🠊 drop-shadow( <color> <distance> <distance> <spread> ) 🠈|--//
       }
     }
     div[class*='icon'] {
@@ -117,8 +119,8 @@
 form[class*='register'] {
   display: grid;
   border-radius: 1rem;
-  background: rgba(black, 0.75);
-
+  background: rgba(Palettes.$trackDay-dark, 0.75);
+  box-shadow: 0 0 8rem rgba(Palettes.$trackDay-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
