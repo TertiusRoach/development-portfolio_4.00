@@ -57,6 +57,11 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           dialogue = 'Account authorization complete.';
 
           /*
+          let inputs = document.querySelectorAll('.code-fieldset input');
+          inputs.forEach((input) => ((input as HTMLInputElement).value = ''));
+          console.log(inputs);
+          */
+          /*
           let fieldset = document.querySelector('.code-fieldset') as HTMLElement;
           for (let i = 0; i < fieldset.children.length; i++) {
             let digit = fieldset.children[i] as HTMLInputElement;
