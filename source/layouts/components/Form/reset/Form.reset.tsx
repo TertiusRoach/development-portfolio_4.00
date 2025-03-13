@@ -45,14 +45,14 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      let resetCode = getCode('reset');
       let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
+      let passwordReset = document.querySelector('.reset-inputs #password') as HTMLInputElement;
 
       const endpoint = retrieveEndpoint('reset', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
+        renewal: getCode('reset'),
         email: passwordEmail.value,
-        passwordNew: password,
-        renewal: resetCode,
+        passwordNew: passwordReset.value,
       });
       const { view, data } = response.data;
 
