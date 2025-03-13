@@ -1,14 +1,9 @@
 //--|🠊 Form_verify.ts 🠈|--//
 export function closeLeftbar(pageName: 'landing' | string) {
   let leftbar = document.querySelector(`#${pageName}-leftbar`) as HTMLElement;
-  let closeVerify = document.querySelector(`.verify-header .${pageName}-close`) as HTMLElement;
-  if (closeVerify && leftbar.className.includes('expanded')) {
-    var closeClick = () => {
-      leftbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-      leftbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
-    };
-    closeVerify.addEventListener('click', closeClick);
-    return () => closeVerify.removeEventListener('click', closeClick);
+  if (leftbar.classList.contains('expanded')) {
+    leftbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
+    leftbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
   }
 }
 export function defineButton(button: 'verify' | 'close', info: { blockName: string; pageName: string }) {

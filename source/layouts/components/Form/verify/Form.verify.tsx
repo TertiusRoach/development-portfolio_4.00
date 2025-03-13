@@ -85,14 +85,17 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {
-    closeLeftbar(pageName);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <form className="verify-form" onSubmit={(event) => handleVerify(event)}>
       <div className="verify-header">
-        <ButtonDefault style={defineButton('close', { pageName, blockName })} type="button" text={''} />
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => closeLeftbar(pageName)}
+          style={defineButton('close', { pageName, blockName })}
+        />
         <div className="verify-text">
           <h4>Check your email for verification code.</h4>
         </div>

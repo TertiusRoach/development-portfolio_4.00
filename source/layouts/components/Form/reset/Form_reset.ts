@@ -1,15 +1,9 @@
 //--|🠊 Form_verify.ts 🠈|--//
 export function closeRightbar(pageName: 'landing' | string) {
   let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
-  let closeReset = document.querySelector(`.reset-header .${pageName}-close`) as HTMLElement;
-  if (closeReset && rightbar.className.includes('expanded')) {
-    var closeClick = () => {
-      rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-      rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
-    };
-
-    closeReset.addEventListener('click', closeClick);
-    return () => closeReset.removeEventListener('click', closeClick);
+  if (rightbar.classList.contains('expanded')) {
+    rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
+    rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
   }
 }
 

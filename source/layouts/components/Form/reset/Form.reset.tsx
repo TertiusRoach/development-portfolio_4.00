@@ -89,14 +89,17 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {
-    closeRightbar(pageName);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <form className="reset-form" onSubmit={(event) => handleReset(event)}>
       <div className="reset-header">
-        <ButtonDefault style={defineButton('close', { pageName, blockName })} type="button" text={''} />
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => closeRightbar(pageName)}
+          style={defineButton('close', { pageName, blockName })}
+        />
         <div className="reset-text">
           <h4>Reset your password.</h4>
         </div>
@@ -133,13 +136,10 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
         <menu className="reset-action">
           <ButtonDefault
             type="submit"
+            disabled={submit}
             text={submit ? 'Resetting...' : 'Reset'}
             style={defineButton('reset', { pageName, blockName })}
-            disabled={submit}
           />
-          {/* <button className="reset-button" type="submit" disabled={submit}>
-            
-          </button> */}
         </menu>
       </div>
     </form>

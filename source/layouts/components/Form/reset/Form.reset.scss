@@ -66,6 +66,9 @@
         padding-left: 2.25rem; //--|🠊 padding-left: 44px 🠈|--//
         grid-area: 2 / 2 / 3 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
+      &::placeholder {
+        font-weight: bold;
+      }
     }
 
     button[class*='generate'] {
