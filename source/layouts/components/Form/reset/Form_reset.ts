@@ -1,12 +1,11 @@
 //--|🠊 Form_verify.ts 🠈|--//
 export function closeRightbar(pageName: 'landing' | string) {
-  let closeReset = document.querySelector('.reset-close') as HTMLElement;
   let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
-
-  if (closeReset && rightbar) {
+  let closeReset = document.querySelector(`.reset-header .${pageName}-close`) as HTMLElement;
+  if (closeReset && rightbar.className.includes('expanded')) {
     var closeClick = () => {
-      rightbar.classList.remove('expanded'); // Remove '.expanded'
-      rightbar.classList.toggle('collapsed'); // Toggle '.collapsed'
+      rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
+      rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
     };
 
     closeReset.addEventListener('click', closeClick);
@@ -14,10 +13,25 @@ export function closeRightbar(pageName: 'landing' | string) {
   }
 }
 
-export function defineButton(button: 'reset' | 'observe' | 'generate', info: { blockName: string; pageName: string }) {
+export function defineButton(
+  button: 'close' | 'reset' | 'observe' | 'generate',
+  info: { blockName: string; pageName: string }
+) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
+    case 'close':
+      return {
+        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg',
+      };
     case 'reset':
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',

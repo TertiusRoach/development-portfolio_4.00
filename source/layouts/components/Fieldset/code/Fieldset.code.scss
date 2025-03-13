@@ -5,7 +5,11 @@
   input[class*='digit'] {
     width: 100%;
     grid-row: 1 / 2;
+    font-size: 6rem;
     text-align: center;
+    &::placeholder {
+      font-weight: bold;
+    }
     & {
       .digit-1 {
         grid-column: 1 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//

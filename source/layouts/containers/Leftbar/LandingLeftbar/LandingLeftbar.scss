@@ -1,11 +1,11 @@
-// LandingLeftbar.scss
+//--|🠊 LandingLeftbar.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-  [class*='label'] {
-    z-index: 3;
+  h4[class*='label'] {
     font-weight: bold;
     grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    filter: drop-shadow(white 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
   }
   form[class*='verify'] {
     grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -19,7 +19,14 @@ aside[id*='leftbar'] {
   display: grid;
   overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
+  background: linear-gradient(
+    315deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.75) 50%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

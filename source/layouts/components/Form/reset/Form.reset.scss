@@ -21,6 +21,7 @@
       display: flex;
       align-items: center;
       grid-area: 2 / 2 / 3 / 3;
+      filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
       h4 {
         width: 100%;
         padding: 4px;
@@ -32,6 +33,7 @@
         -webkit-line-clamp: 4; //--|🠊 Limits the number of lines  🠈|--//
         text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--//
         -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
+        filter: drop-shadow(black 0 0 1rem); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
       }
     }
     div[class*='icon'] {
@@ -120,8 +122,9 @@
 form[class*='reset'] {
   display: grid;
   border-radius: 1rem;
-  background: rgba(black, 0.75);
-
+  background: rgba(Palettes.$indexLand-dark, 0.75);
+  box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

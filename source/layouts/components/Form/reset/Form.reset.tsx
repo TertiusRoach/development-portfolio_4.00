@@ -96,12 +96,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="reset-form" onSubmit={(event) => handleReset(event)}>
       <div className="reset-header">
-        <button className="reset-close" type="button">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
-            alt=""
-          />
-        </button>
+        <ButtonDefault style={defineButton('close', { pageName, blockName })} type="button" text={''} />
         <div className="reset-text">
           <h4>Reset your password.</h4>
         </div>
@@ -151,16 +146,3 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default FormReset;
-
-{
-  /* <input
-          required
-          type="text"
-          id="reset-code"
-          name="Recovery Code"
-          placeholder="|🠊 Recovery Code 🠈|"
-          // --- //
-          value={renew}
-          onChange={(event) => setRenew(event.target.value)}
-        /> */
-}
