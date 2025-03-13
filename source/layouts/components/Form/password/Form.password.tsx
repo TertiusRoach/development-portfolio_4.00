@@ -12,6 +12,7 @@ import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../l
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
@@ -32,6 +33,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
+  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
   //--|🠋 Button States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
@@ -39,16 +41,11 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   const handlePassword = async (event: React.FormEvent) => {
     event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
     setSubmit(true);
-    let dialogue: string;
     try {
-      let loginEmail = document.querySelector('.login-inputs #email') as HTMLInputElement;
-      let loginPassword = document.querySelector('.login-inputs #password') as HTMLInputElement;
-
-      // const route = 'password';
       const endpoint = retrieveEndpoint('password', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
-        email,
-        passwordHash: loginPassword.value,
+        email: email,
+        passwordHash: password,
       });
       const { view, data } = response.data;
 

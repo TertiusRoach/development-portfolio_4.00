@@ -204,8 +204,7 @@ export function axiosError(error: unknown) {
     });
   } else {
     //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--//
-    console.error('Unexpected Error:', error);
-    alert('An unexpected error occurred. Please try again.');
+    return console.error('Unexpected Error:', error);
   }
 }
 

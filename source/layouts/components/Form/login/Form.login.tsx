@@ -53,7 +53,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
       switch (view) {
         case 'launch':
           dialogue = 'Login successful, please select the application you want to use.';
-
           viewBlock('launch');
 
           /*
@@ -100,11 +99,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
 
           viewBlock('blocked');
           viewText('blocked', dialogue);
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
+          break;
+        default:
+          viewBlock('login');
           break;
       }
     } catch (error) {

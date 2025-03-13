@@ -37,22 +37,17 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
 
   //--|🠋 Action States 🠋|--//
-  let [renew, setRenew] = useState('');
-  let [active, setActive] = useState(['', '', '', '']);
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
 
   const handleReset = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      let passwordEmail = document.querySelector('.password-inputs #email') as HTMLInputElement;
-      let passwordReset = document.querySelector('.reset-inputs #password') as HTMLInputElement;
-
       const endpoint = retrieveEndpoint('reset', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
+        email: email,
+        passwordNew: password,
         renewal: getCode('reset'),
-        email: passwordEmail.value,
-        passwordNew: passwordReset.value,
       });
       const { view, data } = response.data;
 

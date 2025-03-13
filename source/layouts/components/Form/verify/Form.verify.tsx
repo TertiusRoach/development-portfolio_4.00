@@ -10,6 +10,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { closeLeftbar, defineButton, getCode } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
+//--|🠋 Context 🠋|--//
+import { useEmail } from '../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../modules/context/PasswordContext';
+//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FieldsetCode from '../../Fieldset/code/Fieldset.code';
 import ButtonDefault from '../../Button/default/Button.default';
@@ -28,23 +32,22 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   const imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/91a25e4fa1bea9a24a757fad615acb2b7da41fc0/source/assets/svg-files/landing-page/key.svg';
 
+  //--|🠋 Local Input States 🠋|--//
+  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
+  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
+
   //--|🠋 Action States 🠋|--//
   let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
-  let [active, setActive] = useState(['', '', '', '']);
 
   const handleVerify = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmit(true);
     try {
-      let verifyCode = getCode('verify');
-      let registerEmail = document.querySelector('.register-inputs #email') as HTMLInputElement;
-      let registerPassword = document.querySelector('.register-inputs #password') as HTMLInputElement;
-
       const endpoint = retrieveEndpoint('verify', 'http://localhost:3000');
       const response = await axios.post(endpoint, {
-        activation: verifyCode,
-        email: registerEmail.value,
-        passwordHash: registerPassword.value,
+        email: email,
+        passwordHash: password,
+        activation: getCode('verify'),
       });
       const { view, data } = response.data;
 
@@ -52,6 +55,16 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       switch (view) {
         case 'login':
           dialogue = 'Account authorization complete.';
+
+          /*
+          let fieldset = document.querySelector('.code-fieldset') as HTMLElement;
+          for (let i = 0; i < fieldset.children.length; i++) {
+            let digit = fieldset.children[i] as HTMLInputElement;
+            if (digit.tagName === 'INPUT') {
+              digit.value = ''; // Clear input value
+            }
+          }
+          */
 
           viewBlock('login');
           viewText('login', dialogue);
@@ -70,12 +83,10 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
           break;
         case 'blocked':
           dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
           viewBlock('blocked');
-
-          // setTimeout(() => {
-          //   alert(dialogue);
-          // }, 250);
+          break;
+        default:
+          viewBlock('login');
           break;
       }
     } catch (error) {
@@ -110,9 +121,9 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
         <menu className="verify-action">
           <ButtonDefault
             type="submit"
+            disabled={submit}
             text={submit ? 'Verifying...' : 'Verify'}
             style={defineButton('verify', { pageName, blockName })}
-            disabled={submit}
           />
         </menu>
       </div>
