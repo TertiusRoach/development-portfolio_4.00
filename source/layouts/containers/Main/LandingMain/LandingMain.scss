@@ -27,6 +27,15 @@
     form[class*='password'] {
       z-index: 1;
       grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      &[class*='password'] {
+        box-shadow: inset 0 0 8px rgba(Palettes.$findLink-light, 1);
+      }
+      &[class*='register'] {
+        box-shadow: inset 0 0 8px rgba(Palettes.$trackDay-light, 1);
+      }
+      &[class*='login'] {
+        box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
+      }
     }
     figure[class*='rotation'] {
       z-index: 0;
