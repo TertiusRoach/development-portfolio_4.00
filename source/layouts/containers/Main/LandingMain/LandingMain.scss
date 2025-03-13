@@ -59,7 +59,7 @@ main[id*='landing'] {
   .landing-carousel {
     display: flex;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    transform: translateX(-100vw); //--|🠊 Default view is .login-section 🠈|--//
+    /* transform: translateX(-100vw); */ //--|🠊 Default view is .login-section 🠈|--//
     transition: transform 0.5s ease-in-out;
 
     section {
