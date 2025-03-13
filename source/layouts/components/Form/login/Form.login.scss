@@ -110,6 +110,7 @@ form[class*='login'] {
   border-radius: 1rem;
   background: rgba(Palettes.$logTicket-dark, 0.75);
   box-shadow: 0 0 8rem rgba(Palettes.$logTicket-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+  box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
