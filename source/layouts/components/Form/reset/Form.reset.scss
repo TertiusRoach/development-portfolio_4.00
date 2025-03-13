@@ -20,7 +20,7 @@
     div[class*='text'] {
       display: flex;
       align-items: center;
-      grid-area: 2 / 2 / 3 / 3;
+      grid-area: 1 / 2 / 3 / 3;
       filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
       h4 {
         width: 100%;
@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      grid-area: 2 / 2 / 3 / 3;
+      grid-area: 1 / 2 / 3 / 3;
       img {
         width: 50%;
         height: 50%;
