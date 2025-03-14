@@ -24,7 +24,7 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} collapsed`}>
+    <header id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} expanded`}>
       <MenuBranding
         src={
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg'
