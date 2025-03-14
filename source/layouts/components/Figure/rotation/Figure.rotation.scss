@@ -62,52 +62,7 @@ figure[class*='rotation'] {
   margin: 0;
   display: grid;
   position: relative; //--|🠊 Needed for z-index to work correctly 🠈|--//
-  &[class*='find-a-link'] {
-    background: radial-gradient(circle, white, Palettes.$findLink-light 95%);
-    svg[class*='top-right'] {
-      background: linear-gradient(45deg, white 0%, Palettes.$findLink-light 100%);
-    }
-    svg[class*='bot-right'] {
-      background: linear-gradient(135deg, white 0%, Palettes.$findLink-light 100%);
-    }
-    svg[class*='bot-left'] {
-      background: linear-gradient(225deg, white 0%, Palettes.$findLink-light 100%);
-    }
-    svg[class*='top-left'] {
-      background: linear-gradient(315deg, white 0%, Palettes.$findLink-light 100%);
-    }
-  }
-  &[class*='track-a-day'] {
-    background: radial-gradient(circle, white, Palettes.$trackDay-light 95%);
-    svg[class*='top-right'] {
-      background: linear-gradient(45deg, white 0%, Palettes.$trackDay-light 100%);
-    }
-    svg[class*='bot-right'] {
-      background: linear-gradient(135deg, white 0%, Palettes.$trackDay-light 100%);
-    }
-    svg[class*='bot-left'] {
-      background: linear-gradient(225deg, white 0%, Palettes.$trackDay-light 100%);
-    }
-    svg[class*='top-left'] {
-      background: linear-gradient(315deg, white 0%, Palettes.$trackDay-light 100%);
-    }
-  }
-  &[class*='log-a-ticket'] {
-    background: radial-gradient(circle, white, Palettes.$logTicket-light 95%);
-    svg[class*='top-right'] {
-      background: linear-gradient(45deg, white 0%, Palettes.$logTicket-light 100%);
-    }
-    svg[class*='bot-right'] {
-      background: linear-gradient(135deg, white 0%, Palettes.$logTicket-light 100%);
-    }
-    svg[class*='bot-left'] {
-      background: linear-gradient(225deg, white 0%, Palettes.$logTicket-light 100%);
-    }
-    svg[class*='top-left'] {
-      background: linear-gradient(315deg, white 0%, Palettes.$logTicket-light 100%);
-    }
-  }
-
+  @extend %fade-view;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -115,5 +70,67 @@ figure[class*='rotation'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+%fade-view {
+  &[class*='track-a-day'] {
+    background: radial-gradient(circle, white, Palettes.$trackDay-light 95%);
+    svg[class*='top-right'] {
+      background: linear-gradient(45deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
+    }
+    svg[class*='bot-right'] {
+      background: linear-gradient(135deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
+    }
+    svg[class*='bot-left'] {
+      background: linear-gradient(225deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
+    }
+    svg[class*='top-left'] {
+      background: linear-gradient(315deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
+    }
+  }
+  &[class*='find-a-link'] {
+    background: radial-gradient(circle, white, Palettes.$findLink-light 95%);
+    svg[class*='top-right'] {
+      background: linear-gradient(45deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
+    }
+    svg[class*='bot-right'] {
+      background: linear-gradient(135deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
+    }
+    svg[class*='bot-left'] {
+      background: linear-gradient(225deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
+    }
+    svg[class*='top-left'] {
+      background: linear-gradient(315deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
+    }
+  }
+  &[class*='log-a-ticket'] {
+    background: radial-gradient(circle, white, Palettes.$logTicket-light 95%);
+    svg[class*='top-right'] {
+      background: linear-gradient(45deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
+    }
+    svg[class*='bot-right'] {
+      background: linear-gradient(135deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
+    }
+    svg[class*='bot-left'] {
+      background: linear-gradient(225deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
+    }
+    svg[class*='top-left'] {
+      background: linear-gradient(315deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
+    }
+  }
+  &[class*='test-a-fade'] {
+    background: black;
+    svg[class*='top-right'] {
+      background: darkred;
+    }
+    svg[class*='bot-right'] {
+      background: darkgreen;
+    }
+    svg[class*='bot-left'] {
+      background: darkblue;
+    }
+    svg[class*='top-left'] {
+      background: white;
+    }
   }
 }

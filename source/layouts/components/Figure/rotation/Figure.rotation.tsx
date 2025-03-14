@@ -13,11 +13,11 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   style: {
-    fadeView: 'find-a-link' | 'track-a-day' | 'log-a-ticket';
+    fadeView: 'find-a-link' | 'track-a-day' | 'log-a-ticket' | 'test-a-fade';
   };
 }
 const FigureRotation: React.FC<InfoProps> = ({ style }) => {
-  const fadeView = style.fadeView as 'find-a-link' | 'track-a-day' | 'log-a-ticket';
+  const fadeView = style.fadeView as 'find-a-link' | 'track-a-day' | 'log-a-ticket' | 'test-a-fade';
 
   const handleRotation = async () => {};
 
