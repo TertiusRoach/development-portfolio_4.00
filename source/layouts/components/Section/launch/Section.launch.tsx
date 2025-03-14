@@ -122,24 +122,23 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
         <picture className="track-day" onMouseEnter={() => animateGrid('highlight', 'overtime', pageName)}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
-        <p className="track-day">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p className="track-day h3">
+          Built for one purpose only—tracking overtime faster than you can complain about it. No fluff, no friction, just
+          pure efficiency. Log your hours, review them, and move on. A system so simple that even the most chaotic workdays
+          stay accountable. Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers
+          speak for themselves.
         </p>
       </div>
-
       <div id="landing-ticketing" className="downplay" onMouseLeave={() => animateGrid('downplay', 'ticketing', pageName)}>
         {/*--|🠋 Log a Ticket 🠋|--*/}
         <picture className="log-ticket" onMouseEnter={() => animateGrid('highlight', 'ticketing', pageName)}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
-        <p className="log-ticket">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p className="log-ticket h3">
+          A ticketing system so intuitive that IT won’t have to explain it (again). No convoluted forms, no endless
+          dropdowns—just a seamless path from problem to resolution. Submit, track, and resolve with zero friction. Whether
+          it’s a critical issue or a quick request, the process is effortless. No one likes filling out tickets, but this
+          makes it so easy, you won’t even think about it.
         </p>
       </div>
       <div id="landing-hyperlink" className="downplay" onMouseLeave={() => animateGrid('downplay', 'hyperlink', pageName)}>
@@ -147,24 +146,14 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
         <picture className="find-link" onMouseEnter={() => animateGrid('highlight', 'hyperlink', pageName)}>
           <img src={findLink} alt="find-a-link" />
         </picture>
-        <p className="find-link">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p className="find-link h3">
+          A hyper-organized, lightning-fast hub for every link your company needs. Paperwork, streamlined. No more searching,
+          no more outdated bookmarks—just instant access to the right document when you need it. Whether it’s policies,
+          reports, or approvals, everything is exactly where it should be. Navigate your company’s knowledge base with the
+          speed of thought.
         </p>
       </div>
     </section>
   );
 };
 export default SectionLaunch;
-
-/*
-//--|🠋 Local Input States 🠋|--//
-let { email, setEmail } = useEmail();
-let { password, setPassword } = usePassword();
-
-//--|🠋 Button Action States 🠋|--//
-let [submit, setSubmit] = useState(false);
-let [attempts, setAttempts] = useState(0);
-*/

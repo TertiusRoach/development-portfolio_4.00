@@ -11,6 +11,9 @@
       menu {
         top: 0rem;
       }
+      section {
+        opacity: 0;
+      }
     }
     &[class*='expanded'] {
       backdrop-filter: blur(32px);
@@ -18,9 +21,12 @@
       menu {
         top: -4rem;
       }
+      section {
+        opacity: 1;
+      }
     }
     & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out;
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
       menu {
         position: relative;
         transition: top 0.25s ease-in-out;
@@ -60,6 +66,9 @@
       menu {
         top: 0rem;
       }
+      section {
+        opacity: 0;
+      }
     }
     &[class*='expanded'] {
       backdrop-filter: blur(32px);
@@ -67,9 +76,12 @@
       menu {
         top: 4rem;
       }
+      section {
+        opacity: 1;
+      }
     }
     & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out;
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
       menu {
         position: relative;
         transition: top 0.25s ease-in-out;
