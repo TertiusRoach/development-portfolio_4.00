@@ -18,13 +18,14 @@ interface InfoProps {
   };
 }
 const LandingFooter: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'footer';
-  const pageName = info.identification;
+  const blockName: string = 'footer';
+  const pageName: string = info.identification;
+  const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer id={`${pageName}-${blockName}`} style={{ zIndex: 1 }} className={`default-${blockName} collapsed`}>
+    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
       {/* <menu>Menu HTML Element</menu> */}
       <SectionBlocked info={info} />
     </footer>

@@ -20,11 +20,12 @@ interface InfoProps {
 const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'leftbar';
   const pageName = info.identification;
+  const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 2 }} className={`default-${blockName} collapsed`}>
+    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
       <h4 className="verify-label display-4">Verify</h4>
       <FormVerify info={info} />
     </aside>

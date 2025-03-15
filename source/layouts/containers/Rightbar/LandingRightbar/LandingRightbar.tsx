@@ -25,11 +25,12 @@ interface InfoProps {
 const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'rightbar';
   const pageName = info.identification;
+  const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} style={{ zIndex: 2 }} className={`default-${blockName} collapsed`}>
+    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
       <h4 className="reset-label display-4">Reset</h4>
       <FormReset info={info} />
     </aside>

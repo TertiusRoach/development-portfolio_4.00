@@ -13,9 +13,12 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { animateGrid } from './Section_launch';
+import { animateGrid, defineButton } from './Section_launch';
 import { viewBlock, viewText, axiosError } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
+//--|🠋 Components 🠋|--//
+import ButtonDefault from '../../Button/default/Button.default';
+//--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
@@ -26,6 +29,7 @@ interface InfoProps {
 const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'header';
   const pageName = info.identification;
+  const stateName: 'highlight' | 'downplay' = 'downplay';
 
   //--|🠋 State Management 🠋|--//
   const [gridState, setGridState] = useState<'downplay' | 'highlight'>('downplay');
@@ -118,40 +122,92 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className="launch-section" onSubmit={(event) => handleLaunch(event)}>
       <div id="landing-overtime" className="downplay" onMouseLeave={() => animateGrid('downplay', 'overtime', pageName)}>
-        {/*--|🠋 Track a Day 🠋|--*/}
+        <header className="track-day">
+          <h3 className="display-3">Track a Day</h3>
+        </header>
+
         <picture className="track-day" onMouseEnter={() => animateGrid('highlight', 'overtime', pageName)}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
-        <p className="track-day h3">
-          Built for one purpose only—tracking overtime faster than you can complain about it. No fluff, no friction, just
-          pure efficiency. Log your hours, review them, and move on. A system so simple that even the most chaotic workdays
-          stay accountable. Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers
-          speak for themselves.
-        </p>
+
+        <footer className="track-day">
+          <p className="h5">
+            Built for one purpose only—tracking overtime faster than you can complain about it. No fluff, no friction, just
+            pure efficiency. Log your hours, review them, and move on. A system so simple that even the most chaotic workdays
+            stay accountable.
+            <br />
+            <br />
+            Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for
+            themselves.
+          </p>
+
+          <nav>
+            <ButtonDefault
+              type="button"
+              text={'Open'}
+              // onClick={() => viewBlock('register')}
+              style={defineButton('track-day', { pageName, blockName })}
+            />
+          </nav>
+        </footer>
       </div>
       <div id="landing-ticketing" className="downplay" onMouseLeave={() => animateGrid('downplay', 'ticketing', pageName)}>
-        {/*--|🠋 Log a Ticket 🠋|--*/}
+        <header className="log-ticket">
+          <h3 className="display-3">Log a Ticket</h3>
+        </header>
+
         <picture className="log-ticket" onMouseEnter={() => animateGrid('highlight', 'ticketing', pageName)}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
-        <p className="log-ticket h3">
-          A ticketing system so intuitive that IT won’t have to explain it (again). No convoluted forms, no endless
-          dropdowns—just a seamless path from problem to resolution. Submit, track, and resolve with zero friction. Whether
-          it’s a critical issue or a quick request, the process is effortless. No one likes filling out tickets, but this
-          makes it so easy, you won’t even think about it.
-        </p>
+
+        <footer className="log-ticket">
+          <p className="h5">
+            A ticketing system so intuitive that IT won’t have to explain it (again). No convoluted forms, no endless
+            dropdowns—just a seamless path from problem to resolution. Submit, track, and resolve with zero friction. Whether
+            it’s a critical issue or a quick request, the process is effortless.
+            <br />
+            <br />
+            No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+          </p>
+
+          <nav>
+            <ButtonDefault
+              type="button"
+              text={'Open'}
+              // onClick={() => viewBlock('register')}
+              style={defineButton('log-ticket', { pageName, blockName })}
+            />
+          </nav>
+        </footer>
       </div>
       <div id="landing-hyperlink" className="downplay" onMouseLeave={() => animateGrid('downplay', 'hyperlink', pageName)}>
-        {/*--|🠋 Find a Link 🠋|--*/}
+        <header className="find-link">
+          <h3 className="display-3">Find a Link</h3>
+        </header>
+
         <picture className="find-link" onMouseEnter={() => animateGrid('highlight', 'hyperlink', pageName)}>
           <img src={findLink} alt="find-a-link" />
         </picture>
-        <p className="find-link h3">
-          A hyper-organized, lightning-fast hub for every link your company needs. Paperwork, streamlined. No more searching,
-          no more outdated bookmarks—just instant access to the right document when you need it. Whether it’s policies,
-          reports, or approvals, everything is exactly where it should be. Navigate your company’s knowledge base with the
-          speed of thought.
-        </p>
+
+        <footer className="find-link">
+          <p className="h5">
+            A hyper-organized, lightning-fast hub for every link your company needs. Paperwork, streamlined. No more
+            searching, no more outdated bookmarks—just instant access to the right document when you need it. Whether it’s
+            policies, reports, or approvals, everything is exactly where it should be.
+            <br />
+            <br />
+            Instantly access knowledge bases for all your company's applications through streamlined links.
+          </p>
+
+          <nav>
+            <ButtonDefault
+              type="button"
+              text={'Open'}
+              // onClick={() => viewBlock('register')}
+              style={defineButton('find-link', { pageName, blockName })}
+            />
+          </nav>
+        </footer>
       </div>
     </section>
   );
