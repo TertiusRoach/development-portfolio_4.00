@@ -1,7 +1,5 @@
 # Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
-# Visual States: A Symphony of Emphasis within Layout Containers
-
 This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within layout containers. These containers, residing in `source/layouts/container/`, include:
 
 - `Header`
