@@ -1,5 +1,18 @@
 # Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
 
+# Visual States: A Symphony of Emphasis within Layout Containers
+
+This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within layout containers. These containers, residing in `source/layouts/container/`, include:
+
+- `Header`
+- `Main`
+- `Overlay`
+- `Leftbar`
+- `Rightbar`
+- `Footer`
+
+These containers utilize the following HTML tags: `<header>`, `<main>`, `<aside>`, `<footer>`, and `<section>`.
+
 <details>
   <summary><strong>Table of Contents</strong></summary>
   <ul>
@@ -218,6 +231,58 @@ Go to 'root' folder
 
 You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
 
+---
+
+## Orchestrating Visibility: `.expanded` & `.collapsed`
+
+These states control the visibility of our layout containers, creating a dynamic and responsive user experience. This workflow aims for a harmonious integration of these elements. React's state management will be crucial for the dynamic switching of the `main` container. jQuery will be used judiciously to enhance interactions where necessary, ensuring a smooth and responsive user experience.
+
+- **`.expanded`**: Reveals the full content of:
+  - `source/layouts/container/Header`: `<header>` elements with the `header` class, providing navigation and contextual information.
+  - `source/layouts/container/Leftbar` / `Rightbar`: `<aside>` elements with `leftbar` or `rightbar` classes, offering supplementary content. `Leftbar` features a default left-to-right swipe animation, while `rightbar` swipes right-to-left.
+  - `source/layouts/container/Footer`: `<footer>` elements with the `footer` class, displaying concluding information or actions.
+  - `source/layouts/container/Main`: `<main>` elements with the `main` class, representing the primary content area. In React, this container will dynamically switch between sibling/sister application components, requiring state management to toggle views.
+- **`.collapsed`**: Hides these elements, streamlining the interface when necessary.
+
+## The Art of Emphasis: `.highlight` & `.downplay`
+
+These states subtly modulate the visual prominence of container elements, guiding the user's focus.
+
+- **`.highlight`**: Emphasizes:
+
+  - `source/layouts/container/Header`: `<header>` elements, highlighting critical actions or navigation.
+  - `source/layouts/container/Footer`: `<footer>` elements, drawing attention to key interactive elements.
+  - `source/layouts/container/Overlay`: `<section>` elements with the `overlay` class. This container, representing the initial screen (like a Google search page), should be visually impactful and straightforward.
+
+- **`.downplay`**: Reduces the visual prominence of elements, creating a visual hierarchy and minimizing distractions.
+
+**Workflow Notes:**
+
+##
+
+---
+
+## Reviewed Notes
+
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
+
+## Integrated HTML Navigation
+
+## Page Links
+
+[Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
+
+[My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
+
+[Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
+
+[Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
+
+[Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
+
 ## Folder Structure Reference
 
 This is the structure I will use going forward.
@@ -395,38 +460,3 @@ This is the structure I will use going forward.
     ├── package-lock.json
 
     └── webpack.config.js
-
----
-
-## Custom Class Toggles
-
-    .active
-
-    .enabled / .disabled
-
-    .expanded / .collapsed
-
-    .highlight / .downplay
-
----
-
-## Reviewed Notes
-
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) _ [🠋](https://www.compart.com/en/unicode/U+1F80B)|--//
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) _ [🠈](https://www.compart.com/en/unicode/U+1F808)|--//
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) _ [🠉](https://www.compart.com/en/unicode/U+1F809)|--//
-
-## Integrated HTML Navigation
-
-## Page Links
-
-[Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
-
-[My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
-
-[Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
-
-[Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
-
-[Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
