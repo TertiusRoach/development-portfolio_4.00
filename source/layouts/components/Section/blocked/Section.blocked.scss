@@ -1,6 +1,7 @@
 // Section.blocked.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem 1fr auto 1fr 4rem / 6rem repeat(6, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
   div[class*='text'] {
     display: flex;
     align-items: center;
@@ -8,28 +9,28 @@
     h1 {
       width: 100%;
       padding: 4px;
-      line-clamp: 3; //~~|🠊 Standard property 🠈|~~//
+      line-clamp: 3; //--|🠊 Standard property 🠈|--//
       color: white;
       text-wrap: balance;
-      text-align: center; //~~|🠊 Justifies text alignment 🠈|~~//
-      display: -webkit-box; //~~|🠊 Enables multi-line truncation 🠈|~~//
-      -webkit-line-clamp: 4; //~~|🠊 Limits the number of lines  🠈|~~//
-      text-overflow: ellipsis; //~~|🠊 Adds ellipsis for overflow 🠈|~~//
-      -webkit-box-orient: vertical; //~~|🠊 Vertical Text 🠈|~~//
+      text-align: center; //--|🠊 Justifies text alignment 🠈|--//
+      display: -webkit-box; //--|🠊 Enables multi-line truncation 🠈|--//
+      -webkit-line-clamp: 4; //--|🠊 Limits the number of lines  🠈|--//
+      text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--//
+      -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
     }
   }
   div[class*='branding'] {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-area: 2 / 2 / 5 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-area: 2 / 2 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     img {
       width: 75%;
       height: auto;
     }
   }
   ol[class*='countdown'] {
-    grid-area: 3 / 4 / 4 / 8; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+    grid-area: 3 / 4 / 4 / 8; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   }
 }
 @mixin mobile-portrait {
@@ -37,9 +38,6 @@
 
 section[class*='blocked'] {
   display: grid;
-  grid-template: 4rem 1fr auto 1fr 4rem / 6rem repeat(6, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
-
-  // background: rgba(black, 0.5);
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

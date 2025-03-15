@@ -3,31 +3,31 @@
   //--|🠊 display: grid; 🠈|--//
   li[class*='clock'] {
     display: flex;
-    grid-row: 1 / 2; //~~|🠊 row-start / row-end 🠈|~~//
+    grid-row: 1 / 2; //--|🠊 row-start / row-end 🠈|--//
     align-items: center;
     justify-content: center;
 
     &[class*='days'] {
-      grid-column: 1 / 2; //~~|🠊 col-start / col-end 🠈|~~//
+      grid-column: 1 / 2; //--|🠊 col-start / col-end 🠈|--//
 
       &::after {
         border-style: dashed;
       }
     }
     &[class*='hours'] {
-      grid-column: 2 / 3; //~~|🠊 col-start / col-end 🠈|~~//
+      grid-column: 2 / 3; //--|🠊 col-start / col-end 🠈|--//
       &::after {
         border-style: dashed;
       }
     }
     &[class*='minutes'] {
-      grid-column: 3 / 4; //~~|🠊 col-start / col-end 🠈|~~//
+      grid-column: 3 / 4; //--|🠊 col-start / col-end 🠈|--//
       &::after {
         border-style: dashed;
       }
     }
     &[class*='seconds'] {
-      grid-column: 4 / 5; //~~|🠊 col-start / col-end 🠈|~~//
+      grid-column: 4 / 5; //--|🠊 col-start / col-end 🠈|--//
       &::after {
         border-style: none;
       }
@@ -47,8 +47,7 @@ ol[class*='countdown'] {
   list-style-type: none;
   border-color: white;
   background: rgba(white, 0);
-  grid-template: 1fr / repeat(4, 1fr); //~~|🠊 rows / columns 🠈|~~//
-
+  grid-template: 1fr / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
   transition: background 2s ease-in-out; // Add transitions
   &:hover {
     background: rgba(black, 0.5);
