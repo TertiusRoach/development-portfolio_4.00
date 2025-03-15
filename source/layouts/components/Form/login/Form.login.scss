@@ -87,6 +87,9 @@
 
       button[class*='login'] {
         grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        filter: drop-shadow(
+          rgba(Palettes.$logTicket-dark, 1) 0 0 8px
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
       }
     }
     nav[class*='buttons'] {
@@ -98,6 +101,11 @@
       }
       button[class*='password'] {
         grid-area: 2 / 4 / 3 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      button {
+        filter: drop-shadow(
+          rgba(Palettes.$logTicket-light, 1) 0 0 2px
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
       }
     }
   }
