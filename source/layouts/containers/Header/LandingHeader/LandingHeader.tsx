@@ -27,7 +27,7 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header className={`default-${blockName} expanded`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
+    <header className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
       <MenuBranding src={imageLink} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
       <SectionLaunch info={info} />
     </header>
