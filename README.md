@@ -12,30 +12,34 @@ This project employs a refined system of visual states to orchestrate user atten
 These containers utilize the following HTML tags: `<header>`, `<section>`, `<main>`, `<aside>` and `<footer>`.
 
 <details>
-  <summary><strong>Table of Contents</strong></summary>
-  <ul>
-    <li>
-      <a href="#application-installation">//--|🠋 Application Installation 🠋|--//</a>
-      <ul>
-        <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
-      </ul>
-    </li>
-    <br>
-    <li>
-      <a href="#terminal-commands">//--|🠋 Development Commands 🠋|--//</a>
-      <ul>
-        <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-      </ul>
-    </li>
-    <br>
-    <li>
-      <a href="#back-end-development">//--|🠋 Back-end Development 🠋|--//</a>
-      <ul>
-        <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
-      </ul>
-    </li>
-  </ul>
-</details>
+        <summary><strong>Table of Contents</strong></summary>
+        <ul>
+            <li>
+                <a href="#application-installation">//--|🠋 Application Installation 🠋|--//</a>
+                <ul>
+                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <a href="#terminal-commands">//--|🠋 Development Commands 🠋|--//</a>
+                <ul>
+                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <a href="#back-end-development">//--|🠋 Back-end Development 🠋|--//</a>
+                <ul>
+                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
+                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#page-links">|🠊 Page Links 🠈|</a>
+            </li>
+        </ul>
+  </details>
 
 ---
 
