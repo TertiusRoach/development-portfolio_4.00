@@ -59,7 +59,7 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
               Apps
             </h1>
             <menu className="application-icon">
-              <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
+              <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
             </menu>
           </aside>
           <aside className="right-overlay">
@@ -69,7 +69,7 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
               Demo
             </h1>
             <menu className="demonstration-icon">
-              <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
+              <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
             </menu>
           </aside>
           <nav className="open-apps">
