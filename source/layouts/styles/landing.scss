@@ -24,8 +24,9 @@ body {
     display: grid; //--|🠈 Hide the scrollbar completely 🠈|--//
 
     @include Mixins.header-transition();
-    @include Mixins.sidebar-transition();
     @include Mixins.footer-transition();
+    @include Mixins.overlay-transition();
+    @include Mixins.sidebar-transition();
 
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {

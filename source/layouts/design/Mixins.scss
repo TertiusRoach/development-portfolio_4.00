@@ -37,7 +37,6 @@
 @mixin sidebar-transition {
   //--|🠋 Leftbar & Rightbar 🠋|--//
   aside {
-    backdrop-filter: blur(8px);
     &[id*='leftbar'] {
       &[class*='collapsed'] {
         transition: clip-path 0.25s;
@@ -50,10 +49,14 @@
         clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
       }
     }
-
     &[class*='expanded'] {
       transition: clip-path 0.25s;
       clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+    }
+
+    &[id*='leftbar'],
+    &[id*='rightbar'] {
+      backdrop-filter: blur(8px);
     }
   }
 }
@@ -86,6 +89,21 @@
         position: relative;
         transition: top 0.25s ease-in-out;
       }
+    }
+  }
+}
+@mixin overlay-transition {
+  section[class*='overlay'] {
+    // background: pink;
+    &[class*='visible'] {
+      opacity: 1;
+      backdrop-filter: blur(2rem);
+    }
+    &[class*='hidden'] {
+      opacity: 0;
+    }
+    & {
+      transition: opacity 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
     }
   }
 }
