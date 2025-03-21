@@ -4,34 +4,33 @@
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {
-  display: inherit; //--|🠊 display: grid; 🠈|--//
-  border-radius: 1rem;
-  grid-area: 3 / 3 / 4 / 4;
-  grid-template: 1fr 2fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-  background: rgba(Palettes.$indexLand-dark, 0.75);
-  box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
+  nav {
+    &[class*='navigation'] {
+      display: inherit; //--|🠊 display: grid; 🠈|--//
+      background: purple;
+      &[class*='apps'] {
+        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+      }
+      &[class*='demos'] {
+        grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+      }
 
-  div[class*='icon'] {
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-area: 1 / 1 / 2 / 3;
-    img {
-      width: 50%;
-      height: 50%;
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-      background: Palettes.$indexLand-light;
+      ul[class*='apps'],
+      ul[class*='demo'] {
+        margin: 0;
+        padding: 0;
+        grid-area: 1 / 1 / 2 / 2;
+
+        // display: inherit; //--|🠊 display: grid; 🠈|--//
+      }
     }
   }
+
   aside[class*='overlay'] {
     opacity: 1;
     display: inherit; //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
     transition: opacity 0.25s ease-in-out;
-    grid-template: repeat(2, 1fr) / 1fr 1fr 1fr; //--|🠊 rows / columns 🠈|--//
     background: rgba(Palettes.$indexLand-dark, 0.75);
 
     h1 {
@@ -41,8 +40,7 @@
       color: white;
       align-items: flex-end;
       justify-content: center;
-      grid-area: 1 / 1 / 2 / 4;
-      // background: red;
+      grid-area: 1 / 1 / 2 / 2;
     }
     menu {
       z-index: 0;
@@ -67,49 +65,45 @@
     }
   }
 
-  & {
-    aside {
-      z-index: 1;
+  div[class*='branding'] {
+    // z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: 1 / 1 / 2 / 3;
+    img {
+      width: 50%;
+      height: 50%;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background: Palettes.$indexLand-light;
     }
-    nav {
-      z-index: 0;
-    }
+  }
 
-    nav[class*='apps'] {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-
-      background: darkblue;
-      ul[class*='open'] {
-        display: grid;
-      }
-    }
-    nav[class*='demo'] {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-
-      background: darkred;
-      .view-demo {
-        display: grid;
-      }
-    }
-
-    aside[class*='left'],
-    nav[class*='apps'] {
-      grid-area: 2 / 1 / 3 / 2;
-      border-bottom-left-radius: 1rem;
-    }
-    aside[class*='right'],
-    nav[class*='demo'] {
-      grid-area: 2 / 2 / 3 / 3;
-      border-bottom-right-radius: 1rem;
-    }
+  aside[class*='left'],
+  nav[class*='apps'] {
+    grid-area: 2 / 1 / 3 / 2;
+    border-bottom-left-radius: 1rem;
+  }
+  aside[class*='right'],
+  nav[class*='demos'] {
+    grid-area: 2 / 2 / 3 / 3;
+    border-bottom-right-radius: 1rem;
   }
 }
 @mixin mobile-portrait {
 }
 
 article[class*='selection'] {
+  display: inherit; //--|🠊 display: grid; 🠈|--//
+  border-radius: 1rem;
+  grid-area: 3 / 3 / 4 / 4;
+  grid-template: 1fr 2fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+  background: rgba(Palettes.$indexLand-dark, 0.75);
+  box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

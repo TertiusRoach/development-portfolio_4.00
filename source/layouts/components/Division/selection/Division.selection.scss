@@ -9,6 +9,7 @@
     grid-area: 1 / 1 / 2 / 6;
   }
   article[class*='selection'] {
+    /*
     display: inherit; //--|🠊 display: grid; 🠈|--//
     border-radius: 1rem;
     grid-area: 3 / 3 / 4 / 4;
@@ -110,6 +111,7 @@
         background: Palettes.$indexLand-light;
       }
     }
+    */
   }
 }
 @mixin mobile-portrait {

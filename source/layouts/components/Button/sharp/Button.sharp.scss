@@ -8,7 +8,10 @@
 @mixin mobile-portrait {
 }
 
-button[class*='default'] {
+button[class*='sharp'] {
+  width: 100%;
+  height: 100%;
+
   @include Mixins.button-presets();
   @include Mixins.button-shading();
   @include Mixins.button-spacing();
