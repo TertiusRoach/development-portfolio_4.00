@@ -41,6 +41,10 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   let brandImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
 
+  let demoImage =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
+  let appsImage =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
   return (
     <section className={`default-${blockName} ${stateName}`} style={{ zIndex: 3 }} id={`${pageName}-${blockName}`}>
       <div className="selection-division">
@@ -48,16 +52,42 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
           <MenuBranding src={headImage} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
         </header>
         <article className="article-selection">
-          <aside className="left-overlay">open-apps</aside>
-          <aside className="right-overlay">view-demos</aside>
-
+          <aside className="left-overlay">
+            <h1>
+              Open
+              <br />
+              Apps
+            </h1>
+            <menu className="application-icon">
+              <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
+            </menu>
+          </aside>
+          <aside className="right-overlay">
+            <h1>
+              View
+              <br />
+              Demo
+            </h1>
+            <menu className="demonstration-icon">
+              <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
+            </menu>
+          </aside>
           <nav className="open-apps">
-            <ul className="content"></ul>
+            <ul className="open-apps"></ul>
+            {/* <figure className={`rotation-figure`}>
+              <figcaption className="fade-left" style={{ zIndex: 4 }}></figcaption>
+
+              <svg className="top-right" style={{ zIndex: 3 }}></svg>
+              <svg className="bot-right" style={{ zIndex: 2 }}></svg>
+              <svg className="bot-left" style={{ zIndex: 1 }}></svg>
+              <svg className="top-left" style={{ zIndex: 0 }}></svg>
+
+              <figcaption className="fade-right" style={{ zIndex: 4 }}></figcaption>
+            </figure> */}
           </nav>
           <nav className="view-demo">
-            <ul className="landing"></ul>
+            <ul className="view-demo"></ul>
           </nav>
-
           <div className="selection-icon">
             <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
           </div>
