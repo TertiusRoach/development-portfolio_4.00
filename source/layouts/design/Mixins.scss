@@ -40,18 +40,18 @@
     &[id*='leftbar'] {
       &[class*='collapsed'] {
         transition: clip-path 0.25s;
-        clip-path: inset(0% 100% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     &[id*='rightbar'] {
       &[class*='collapsed'] {
         transition: clip-path 0.25s;
-        clip-path: inset(0% 0% 0% 100%); //~~|🠈 top / right / bottom / left 🠈|~~//
+        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     &[class*='expanded'] {
       transition: clip-path 0.25s;
-      clip-path: inset(0% 0% 0% 0%); //~~|🠈 top / right / bottom / left 🠈|~~//
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
     }
 
     &[id*='leftbar'],
@@ -167,8 +167,8 @@
         background: rgba($red-light, 0.25);
       }
     }
-    //~~|🠊 border: 2px dashed $red-neon; 🠈|~~//
-    //~~|🠊 background: rgba($red-dark, 0.25); 🠈|~~//
+    //--|🠊 border: 2px dashed $red-neon; 🠈|--//
+    //--|🠊 background: rgba($red-dark, 0.25); 🠈|--//
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
@@ -198,8 +198,8 @@
         }
       }
     }
-    //~~|🠊 border: 2px dashed $blue-neon; 🠈|~~//
-    //~~|🠊 background: rgba($blue-dark, 0.25); 🠈|~~//
+    //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
+    //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
   }
 }
 

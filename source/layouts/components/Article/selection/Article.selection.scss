@@ -4,26 +4,6 @@
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {
-  nav {
-    z-index: 0;
-  }
-  nav[class*='navigation'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    // background: purple;
-    &[class*='apps'] {
-      grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-    }
-    &[class*='demos'] {
-      grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-    }
-
-    ul[class*='apps'],
-    ul[class*='demos'] {
-      margin: 0;
-      padding: 0;
-      grid-area: 1 / 1 / 2 / 2;
-    }
-  }
   aside[class*='overlay'] {
     z-index: 1;
     opacity: 1;
@@ -31,22 +11,7 @@
     backdrop-filter: blur(6px);
     grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
     transition: opacity 0.25s ease-in-out;
-    background: rgba(Palettes.$indexLand-dark, 0.75);
-
-    &[class*='left'] {
-      border-right: 2px dashed white;
-    }
-    &[class*='right'] {
-      border-left: 2px dashed white;
-    }
-    h1 {
-      height: 100%; //--|🠊 width: auto; 🠈|--//
-      display: flex;
-      color: white;
-      align-items: flex-end;
-      justify-content: center;
-      grid-area: 1 / 1 / 2 / 2;
-    }
+    background: rgba(Palettes.$indexLand-dark, 0.5);
     menu {
       display: flex;
       justify-content: center;
@@ -62,13 +27,43 @@
         background: Palettes.$indexLand-light;
       }
     }
+    h1 {
+      height: 100%; //--|🠊 width: auto; 🠈|--//
+      display: flex;
+      color: white;
+      align-items: flex-end;
+      justify-content: center;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    &:hover {
+      opacity: 0;
+    }
   }
-  aside[class*='left']:hover,
-  aside[class*='right']:hover {
-    opacity: 0;
+  nav[class*='navigation'] {
+    z-index: 0;
+    display: inherit; //--|🠊 display: grid; 🠈|--//
+    &[class*='apps'] {
+      grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+    }
+    &[class*='demos'] {
+      grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+    }
+
+    ul[class*='apps'],
+    ul[class*='demos'] {
+      margin: 0;
+      padding: 0;
+      grid-area: 1 / 1 / 2 / 2;
+    }
   }
 
   & {
+    aside[class*='left'] {
+      border-right: 2px dashed white;
+    }
+    aside[class*='right'] {
+      border-left: 2px dashed white;
+    }
     aside[class*='left'],
     nav[class*='apps'] {
       grid-area: 2 / 1 / 3 / 2;
@@ -103,7 +98,7 @@
 article[class*='selection'] {
   display: inherit; //--|🠊 display: grid; 🠈|--//
   border-radius: 1rem;
-  grid-area: 3 / 3 / 4 / 4;
+
   grid-template: 1fr 2fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
   background: rgba(Palettes.$indexLand-dark, 0.75);
   box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
