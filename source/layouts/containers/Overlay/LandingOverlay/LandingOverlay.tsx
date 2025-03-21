@@ -11,7 +11,7 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import MenuBranding from '../../../components/Menu/branding/Menu.branding';
+import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, outputDisplay } from '../../../../landing';
@@ -36,50 +36,10 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
-  let headImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
-  let brandImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
-
-  let demoImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
-  let appsImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
   return (
     <section className={`default-${blockName} ${stateName}`} style={{ zIndex: 3 }} id={`${pageName}-${blockName}`}>
-      <div className="selection-division">
-        <header className="navigation-branding">
-          <MenuBranding src={headImage} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
-        </header>
-        <article className="article-selection">
-          <aside className="left-overlay">
-            <h1>
-              Open
-              <br />
-              Apps
-            </h1>
-            <menu className="application-icon">
-              <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
-            </menu>
-          </aside>
-          <aside className="right-overlay">
-            <h1>
-              View
-              <br />
-              Demo
-            </h1>
-            <menu className="demonstration-icon">
-              <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
-            </menu>
-          </aside>
-          <nav className="open-apps">{/* <ul className="open-apps"></ul> */}</nav>
-          <nav className="view-demo">{/* <ul className="view-demo"></ul> */}</nav>
-          <div className="selection-icon">
-            <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
-          </div>
-        </article>
-      </div>
-      <div className="loading-division"></div>
+      <DivisionSelection info={info} />
+      {/* <div className="loading-division"></div> */}
     </section>
   );
 };

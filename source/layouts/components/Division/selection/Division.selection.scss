@@ -4,11 +4,119 @@
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {
+  header[class*='branding'] {
+    display: inherit; //--|🠊 display: grid; 🠈|--//
+    grid-area: 1 / 1 / 2 / 6;
+  }
+  article[class*='selection'] {
+    display: inherit; //--|🠊 display: grid; 🠈|--//
+    border-radius: 1rem;
+    grid-area: 3 / 3 / 4 / 4;
+    grid-template: 1fr 2fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+    background: rgba(Palettes.$indexLand-dark, 0.75);
+    box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+    box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
+
+    aside[class*='overlay'] {
+      opacity: 1;
+      display: inherit; //--|🠊 display: grid; 🠈|--//
+      transition: opacity 0.25s ease-in-out;
+      grid-template: repeat(2, 1fr) / 1fr 1fr 1fr; //--|🠊 rows / columns 🠈|--//
+      background: rgba(Palettes.$indexLand-dark, 0.75);
+
+      h1 {
+        z-index: 1;
+        height: 100%; //--|🠊 width: auto; 🠈|--//
+        display: flex;
+        color: white;
+        align-items: flex-end;
+        justify-content: center;
+        grid-area: 1 / 1 / 2 / 4;
+        // background: red;
+      }
+      menu {
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        grid-area: 2 / 1 / 3 / 4;
+        img {
+          opacity: 1;
+          width: 50%;
+          height: 50%;
+          mask-size: contain;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          background: Palettes.$indexLand-light;
+        }
+      }
+
+      &[class*='left']:hover,
+      &[class*='right']:hover {
+        opacity: 0;
+      }
+    }
+
+    & {
+      aside {
+        z-index: 1;
+      }
+      nav {
+        z-index: 0;
+      }
+
+      nav[class*='apps'] {
+        display: inherit; //--|🠊 display: grid; 🠈|--//
+        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+
+        background: darkblue;
+        ul[class*='open'] {
+          display: grid;
+        }
+      }
+      nav[class*='demo'] {
+        display: inherit; //--|🠊 display: grid; 🠈|--//
+        grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+
+        background: darkred;
+        .view-demo {
+          display: grid;
+        }
+      }
+
+      aside[class*='left'],
+      nav[class*='apps'] {
+        grid-area: 2 / 1 / 3 / 2;
+        border-bottom-left-radius: 1rem;
+      }
+      aside[class*='right'],
+      nav[class*='demo'] {
+        grid-area: 2 / 2 / 3 / 3;
+        border-bottom-right-radius: 1rem;
+      }
+    }
+
+    div[class*='icon'] {
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: 1 / 1 / 2 / 3;
+      img {
+        width: 50%;
+        height: 50%;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        background: Palettes.$indexLand-light;
+      }
+    }
+  }
 }
 @mixin mobile-portrait {
 }
 
-button[class*='default'] {
+div[class*='selection'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
