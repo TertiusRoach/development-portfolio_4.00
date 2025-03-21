@@ -72,22 +72,8 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
               <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
             </menu>
           </aside>
-          <nav className="open-apps">
-            <ul className="open-apps"></ul>
-            {/* <figure className={`rotation-figure`}>
-              <figcaption className="fade-left" style={{ zIndex: 4 }}></figcaption>
-
-              <svg className="top-right" style={{ zIndex: 3 }}></svg>
-              <svg className="bot-right" style={{ zIndex: 2 }}></svg>
-              <svg className="bot-left" style={{ zIndex: 1 }}></svg>
-              <svg className="top-left" style={{ zIndex: 0 }}></svg>
-
-              <figcaption className="fade-right" style={{ zIndex: 4 }}></figcaption>
-            </figure> */}
-          </nav>
-          <nav className="view-demo">
-            <ul className="view-demo"></ul>
-          </nav>
+          <nav className="open-apps">{/* <ul className="open-apps"></ul> */}</nav>
+          <nav className="view-demo">{/* <ul className="view-demo"></ul> */}</nav>
           <div className="selection-icon">
             <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
           </div>
