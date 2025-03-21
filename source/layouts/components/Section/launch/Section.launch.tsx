@@ -112,6 +112,7 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {}, [pageName, blockName]);
+
   let trackDay: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/track-a-day.svg';
   let logTicket: string =

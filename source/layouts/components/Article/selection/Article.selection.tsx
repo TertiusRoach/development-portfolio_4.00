@@ -26,6 +26,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
   useEffect(() => {}, [pageName, blockName]);
+
   let brandImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
   let demoImage =
@@ -56,9 +57,30 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </menu>
       </aside>
 
-      <nav className="navigation-apps"></nav>
+      <nav className="navigation-apps">
+        <ul className="view-apps">
+          {/* <ButtonSharp
+            type="button"
+            text={'Track a Day'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('track-day', { pageName, blockName })}
+          />
+          <ButtonSharp
+            type="button"
+            text={'Log a Ticket'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('log-ticket', { pageName, blockName })}
+          />
+          <ButtonSharp
+            type="button"
+            text={'Find a Link'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('find-link', { pageName, blockName })}
+          /> */}
+        </ul>
+      </nav>
       <nav className="navigation-demos">
-        <ul className="view-demo">
+        <ul className="view-demos">
           <ButtonSharp
             type="button"
             text={'Track a Day'}
