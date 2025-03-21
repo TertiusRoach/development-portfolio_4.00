@@ -6,7 +6,7 @@ import './Article.selection.scss';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonSharp from '../../Button/sharp/Button.sharp';
+import ButtonGrade from '../../Button/grade/Button.grade';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
@@ -81,19 +81,19 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       </nav>
       <nav className="navigation-demos">
         <ul className="view-demos">
-          <ButtonSharp
+          <ButtonGrade
             type="button"
             text={'Track a Day'}
             // onClick={() => viewBlock('register')}
-            style={defineButton('track-day', { pageName, blockName })}
+            style={defineButton('index-land', { pageName, blockName })}
           />
-          <ButtonSharp
+          <ButtonGrade
             type="button"
             text={'Log a Ticket'}
             // onClick={() => viewBlock('register')}
             style={defineButton('log-ticket', { pageName, blockName })}
           />
-          <ButtonSharp
+          <ButtonGrade
             type="button"
             text={'Find a Link'}
             // onClick={() => viewBlock('register')}

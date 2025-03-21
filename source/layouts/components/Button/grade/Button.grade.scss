@@ -1,0 +1,27 @@
+//--|🠊 Button.grade.scss 🠈|--//
+@use '../../../design/Mixins.scss';
+@use '../../../design/Palettes.scss';
+@forward '../../../design/Mixins.scss';
+
+@mixin desktop-landscape {
+}
+@mixin mobile-portrait {
+}
+
+button[class*='grade'] {
+  width: 100%;
+  height: 100%;
+
+  @include Mixins.button-presets();
+  @include Mixins.button-grading();
+  @include Mixins.button-spacing();
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
