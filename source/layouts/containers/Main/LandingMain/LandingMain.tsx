@@ -1,4 +1,4 @@
-// LandingMain.tsx
+//--|🠊 LandingMain.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';

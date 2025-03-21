@@ -258,7 +258,7 @@ These states subtly modulate the visual prominence of container elements, guidin
 
 - **`.downplay`**: Reduces the visual prominence of elements, creating a visual hierarchy and minimizing distractions.
 
-**Workflow Notes:**
+## Blah Blah Blah: `.hidden` & `.visible`
 
 ##
 
