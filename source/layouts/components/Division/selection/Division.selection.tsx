@@ -35,7 +35,7 @@ const DivisionSelection: React.FC<InfoProps> = ({ info }) => {
         <MenuBranding src={imageLink} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
       </header>
       <ArticleSelection info={info} />
-      <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
+      {/* <FigureRotation style={{ fadeView: 'log-a-ticket' }} /> */}
     </div>
   );
 };

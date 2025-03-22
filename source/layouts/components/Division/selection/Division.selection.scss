@@ -5,6 +5,7 @@
 
 @mixin desktop-landscape {
   header[class*='branding'] {
+    z-index: 2;
     display: inherit; //--|🠊 display: grid; 🠈|--//
     grid-area: 1 / 1 / 2 / 6;
   }
