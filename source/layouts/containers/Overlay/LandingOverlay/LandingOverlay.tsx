@@ -11,6 +11,7 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
+import DivisionLoading from '../../../components/Division/loading/Division.loading';
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
@@ -37,8 +38,26 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <section className={`default-${blockName} ${stateName}`} style={{ zIndex: 3 }} id={`${pageName}-${blockName}`}>
-      <DivisionSelection info={info} />
+    <section className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 3 }}>
+      <div className="landing-carousel" style={{ zIndex: 0 }}>
+        <section className="loading-section visible">
+          <div className="loading-container">
+            {/*  */}
+            <DivisionLoading info={info} />
+            {/*  */}
+          </div>
+        </section>
+        <section className="selection-section hidden">
+          <div className="selection-container">
+            {/*  */}
+            <DivisionSelection info={info} />
+            {/*  */}
+          </div>
+        </section>
+      </div>
+
+      {/* <div className="landing-carousel" style={{ zIndex: 0 }}></div> */}
+
       {/* <div className="loading-division"></div> */}
     </section>
   );

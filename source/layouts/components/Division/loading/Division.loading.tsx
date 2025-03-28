@@ -1,6 +1,6 @@
-//--|🠊 Division.selection.tsx 🠈|--//
+//--|🠊 Division.loading.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Division.selection.scss';
+import './Division.loading.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import HeaderBranding from '../../Header/branding/Header.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 import ArticleSelection from '../../Article/selection/Article.selection';
-import MenuBranding from '../../../components/Menu/branding/Menu.branding';
+import MenuBranding from '../../Menu/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 // import { scaleImage } from './Division_selection';
@@ -22,18 +22,19 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const DivisionSelection: React.FC<InfoProps> = ({ info }) => {
+const DivisionLoading: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <div className="selection-division">
-      <HeaderBranding info={info} />
-      <ArticleSelection info={info} />
-      {/* <FigureRotation style={{ fadeView: 'test-a-fade' }} /> */}
+    <div className="loading-division">
+      <img
+        src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif"
+        alt="loading-logo"
+      />
     </div>
   );
 };
-export default DivisionSelection;
+export default DivisionLoading;

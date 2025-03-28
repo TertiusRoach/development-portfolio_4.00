@@ -1,15 +1,14 @@
-//--|🠊 Division.selection.tsx 🠈|--//
+//--|🠊 Header.branding.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Division.selection.scss';
+import './Header.branding.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import HeaderBranding from '../../Header/branding/Header.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 import ArticleSelection from '../../Article/selection/Article.selection';
-import MenuBranding from '../../../components/Menu/branding/Menu.branding';
+import MenuBranding from '../../Menu/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 // import { scaleImage } from './Division_selection';
@@ -22,18 +21,18 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const DivisionSelection: React.FC<InfoProps> = ({ info }) => {
+const HeaderBranding: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
   useEffect(() => {}, [pageName, blockName]);
 
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
   return (
-    <div className="selection-division">
-      <HeaderBranding info={info} />
-      <ArticleSelection info={info} />
-      {/* <FigureRotation style={{ fadeView: 'test-a-fade' }} /> */}
-    </div>
+    <header className="branding-header">
+      <MenuBranding src={imageLink} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
+    </header>
   );
 };
-export default DivisionSelection;
+export default HeaderBranding;

@@ -1,12 +1,10 @@
-//--|🠊 Division.selection.scss 🠈|--//
+//--|🠊 Header.branding.scss 🠈|--//
 @use '../../../design/Mixins.scss';
 @use '../../../design/Palettes.scss';
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-
+  /*
   header[class*='branding'] {
     z-index: 2;
     display: inherit; //--|🠊 display: grid; 🠈|--//
@@ -20,13 +18,12 @@
     z-index: 0;
     grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-div[class*='selection'] {
-  display: grid;
-
+header[class*='branding'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

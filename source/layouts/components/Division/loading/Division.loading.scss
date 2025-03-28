@@ -1,0 +1,29 @@
+//--|🠊 Division.loading.scss 🠈|--//
+@use '../../../design/Mixins.scss';
+@use '../../../design/Palettes.scss';
+@forward '../../../design/Mixins.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--//
+  align-items: center;
+  justify-content: center;
+  img {
+    width: auto;
+    height: 100%;
+  }
+}
+@mixin mobile-portrait {
+}
+
+div[class*='loading'] {
+  display: flex;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

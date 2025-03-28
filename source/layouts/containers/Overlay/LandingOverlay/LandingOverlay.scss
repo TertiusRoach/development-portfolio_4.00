@@ -2,17 +2,12 @@
 @use '../../../design/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-
-  div[class*='selection'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-  }
-
+  //--|🠊 display: block; 🠈|--//
   div[class*='loading'] {
-    display: none;
+    background: rgba(darkred, 0.25);
+  }
+  div[class*='selection'] {
+    background: rgba(darkblue, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -25,57 +20,47 @@
 }
 
 section[id*='landing'] {
-  // display: none;
   display: grid;
-  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
-  grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
-  // background: darkred;
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-  /*
-  display: grid;
-  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
-  grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
+  grid-template: inherit; //--|🠈 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
+  grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
 
   .landing-carousel {
     display: flex;
+    @extend %slide-up;
+    flex-direction: column;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    // transform: translateX(-100vw); //--|🠊 Default view is .login-section 🠈|--//
-    transition: transform 0.5s ease-in-out;
-
+    animation: slide-up 1s ease-in-out forwards;
     section {
       //--|🠊 display: block; 🠈|--//
       div[class*='container'] {
-        height: 100%;
-        display: grid;
-        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-
-        h6[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
+        div {
+          width: 100vw;
+          height: 100vh;
         }
-        h6[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          @include desktop-landscape();
         }
-        h6[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          @include mobile-portrait();
         }
       }
-
-
     }
   }
+  /*
+
   */
+}
+%slide-up {
+  animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
+  @keyframes slide-up {
+    from {
+      transform: translateY(0vh);
+    }
+    to {
+      transform: translateY(-100vh);
+    }
+  }
 }
