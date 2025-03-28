@@ -4,26 +4,15 @@
 @forward '../../../design/Mixins.scss';
 
 @mixin desktop-landscape {
-  /*
-  header[class*='branding'] {
-    z-index: 2;
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    grid-area: 1 / 1 / 2 / 6;
-  }
-  article[class*='selection'] {
-    z-index: 1;
-    grid-area: 3 / 3 / 4 / 4;
-  }
-  figure[class*='rotation'] {
-    z-index: 0;
-    grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  */
 }
 @mixin mobile-portrait {
 }
 
 header[class*='branding'] {
+  menu {
+    width: 100%;
+    height: 100%;
+  }
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

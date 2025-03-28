@@ -31,7 +31,7 @@ const HeaderBranding: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
   return (
     <header className="branding-header">
-      <MenuBranding src={imageLink} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
+      <MenuBranding src={imageLink} style={{ brandView: 'center', blockName: blockName, pageName: pageName }} />
     </header>
   );
 };

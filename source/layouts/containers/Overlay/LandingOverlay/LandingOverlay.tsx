@@ -11,11 +11,14 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
+import ButtonGrade from '../../../components/Button/grade/Button.grade';
 import DivisionLoading from '../../../components/Division/loading/Division.loading';
+import ArticleSelection from '../../../components/Article/selection/Article.selection';
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, outputDisplay } from '../../../../landing';
+import HeaderBranding from '../../../components/Header/branding/Header.branding';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -37,28 +40,27 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
+  let brandImage =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
+  let demoImage =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
+  let appsImage =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
+
   return (
     <section className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 3 }}>
       <div className="landing-carousel" style={{ zIndex: 0 }}>
-        <section className="loading-section visible">
-          <div className="loading-container">
-            {/*  */}
-            <DivisionLoading info={info} />
-            {/*  */}
-          </div>
+        <section className="loading-section">
+          <img
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif"
+            alt="loading-logo"
+          />
         </section>
-        <section className="selection-section hidden">
-          <div className="selection-container">
-            {/*  */}
-            <DivisionSelection info={info} />
-            {/*  */}
-          </div>
+        <section className="selection-section">
+          <HeaderBranding info={info} />
+          <ArticleSelection info={info} />
         </section>
       </div>
-
-      {/* <div className="landing-carousel" style={{ zIndex: 0 }}></div> */}
-
-      {/* <div className="loading-division"></div> */}
     </section>
   );
 };

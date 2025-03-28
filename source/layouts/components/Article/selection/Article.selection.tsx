@@ -42,6 +42,36 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <article className="selection-article">
+      <div className="branding-division">
+        <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
+      </div>
+      <aside className="apps-aside">
+        <figure></figure>
+        <nav></nav>
+      </aside>
+      <aside className="demo-aside">
+        <figure></figure>
+        <nav>
+          <ButtonGrade
+            type="button"
+            text={'Track a Day'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('index-land', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Log a Ticket'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('log-ticket', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Find a Link'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('find-link', { pageName, blockName })}
+          />
+        </nav>
+      </aside>
       {/* <div className="branding-division">
         <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
       </div>

@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
+    border-bottom: 4px dashed white;
     img {
       width: 50%;
       height: 50%;
@@ -18,18 +19,99 @@
       background: Palettes.$indexLand-light;
     }
   }
-
-  aside[class*='container'] {
-    z-index: 1;
-    opacity: 1;
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    backdrop-filter: blur(6px);
-    grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-    transition: opacity 0.25s ease-in-out;
-    background: rgba(Palettes.$indexLand-dark, 0.5);
+  aside[class*='apps'] {
+    grid-area: 2 / 1 / 4 / 2;
+    border-bottom-left-radius: 1rem;
+    border-right: 3px dashed white;
+    background: rgba(darkblue, 0.75);
+    figure {
+      border-bottom-left-radius: 1rem;
+    }
+    nav {
+      grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+    }
+  }
+  aside[class*='demo'] {
+    grid-area: 2 / 2 / 4 / 3;
+    border-left: 3px dashed white;
+    border-bottom-right-radius: 1rem;
+    background: rgba(darkred, 0.75);
+    figure {
+      border-bottom-right-radius: 1rem;
+    }
+    nav {
+      grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+    }
   }
 
-  /*
+  aside {
+    // position: relative;
+    figure {
+      opacity: 1;
+      height: 100%; //--|🠊 width: auto; 🠈|--//
+      transition: opacity 0.25s ease-in-out;
+      background: rgba(Palettes.$indexLand-dark, 0.75);
+
+      // position: absolute;
+    }
+    nav {
+      height: 100%;
+      display: grid;
+      // position: absolute;
+    }
+    &:hover {
+      figure {
+        opacity: 0;
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+article[class*='selection'] {
+  display: grid;
+  border-radius: 1rem;
+  grid-template: repeat(3, 1fr) / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+  background: rgba(Palettes.$indexLand-dark, 0.75);
+  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+
+// div[class*='branding'] {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   grid-area: 1 / 1 / 2 / 3;
+//   img {
+//     width: 50%;
+//     height: 50%;
+//     mask-size: contain;
+//     mask-position: center;
+//     mask-repeat: no-repeat;
+//     background: Palettes.$indexLand-light;
+//   }
+// }
+
+// aside[class*='container'] {
+//   z-index: 1;
+//   opacity: 1;
+//   display: inherit; //--|🠊 display: grid; 🠈|--//
+//   backdrop-filter: blur(6px);
+//   grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+//   transition: opacity 0.25s ease-in-out;
+//   background: rgba(Palettes.$indexLand-dark, 0.5);
+// }
+
+/*
       // border-bottom: 2px dashed white;
     menu {
       display: flex;
@@ -58,7 +140,7 @@
       opacity: 0;
     }
     */
-  /*
+/*
   nav[class*='navigation'] {
     z-index: 0;
     display: inherit; //--|🠊 display: grid; 🠈|--//
@@ -78,7 +160,7 @@
   }
   */
 
-  /*
+/*
   & {
     aside[class*='left'] {
       border-right: 2px dashed white;
@@ -95,69 +177,6 @@
     nav[class*='demos'] {
       grid-area: 2 / 2 / 3 / 3;
       border-bottom-right-radius: 1rem;
-    }
-  }
-  */
-}
-@mixin mobile-portrait {
-}
-
-article[class*='selection'] {
-  display: inherit; //--|🠊 display: grid; 🠈|--//
-  border-radius: 1rem;
-
-  grid-template: 1fr 2fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-  background: rgba(Palettes.$indexLand-dark, 0.75);
-  box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-}
-/*
-  // display: grid;
-  // background: darkred;
-  // grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
-
-  display: grid;
-  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
-  grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
-  .landing-carousel {
-    display: flex;
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    // transform: translateX(-100vw); //--|🠊 Default view is .login-section 🠈|--//
-    transition: transform 0.5s ease-in-out;
-
-    section {
-      //--|🠊 display: block; 🠈|--//
-      div[class*='container'] {
-        height: 100%;
-        display: grid;
-        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-
-        h6[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
-        }
-        h6[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
-        }
-        h6[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
-        }
-      }
-
-
     }
   }
   */

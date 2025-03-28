@@ -55,13 +55,10 @@ main[id*='landing'] {
   overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
   grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
   .landing-carousel {
     display: flex;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    /* transform: translateX(-100vw); */ //--|🠊 Default view is .login-section 🠈|--//
     transition: transform 0.5s ease-in-out;
-
     section {
       //--|🠊 display: block; 🠈|--//
       div[class*='container'] {
