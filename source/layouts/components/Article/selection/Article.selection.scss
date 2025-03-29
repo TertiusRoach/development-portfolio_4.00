@@ -19,38 +19,40 @@
       background: Palettes.$indexLand-light;
     }
   }
-  aside[class*='apps'] {
-    grid-area: 2 / 1 / 4 / 2;
-    border-bottom-left-radius: 1rem;
-    /*
-    border-right: 3px dashed white;
-    background: rgba(darkblue, 0.25);
-    */
-    figure {
+  aside[class*='aside'] {
+    &[class*='apps'] {
+      grid-area: 2 / 1 / 4 / 2;
       border-bottom-left-radius: 1rem;
-    }
-    nav {
-      grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-      button:nth-child(1) {
-        border-bottom: 2px dashed white;
+      /*
+      border-right: 3px dashed white;
+      background: rgba(darkblue, 0.25);
+      */
+      figure {
+        border-bottom-left-radius: 1rem;
+      }
+      nav {
+        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        button:nth-child(1) {
+          border-bottom: 2px dashed white;
+        }
       }
     }
-  }
-  aside[class*='demo'] {
-    grid-area: 2 / 2 / 4 / 3;
-    border-bottom-right-radius: 1rem;
-    /*
-    border-left: 3px dashed white;
-    background: rgba(darkred, 0.25);
-    */
-    figure {
+    &[class*='demo'] {
+      grid-area: 2 / 2 / 4 / 3;
       border-bottom-right-radius: 1rem;
-    }
-    nav {
-      grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-      button:nth-child(1),
-      button:nth-child(2) {
-        border-bottom: 2px dashed white;
+      /*
+      border-left: 3px dashed white;
+      background: rgba(darkred, 0.25);
+      */
+      figure {
+        border-bottom-right-radius: 1rem;
+      }
+      nav {
+        grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        button:nth-child(1),
+        button:nth-child(2) {
+          border-bottom: 2px dashed white;
+        }
       }
     }
   }
@@ -69,19 +71,6 @@
       backdrop-filter: blur(4px);
       transition: opacity 0.25s ease-in-out;
       background: rgba(Palettes.$indexLand-dark, 0.75);
-
-      /*
-      animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
-      animation: hide-cover 1s ease-in-out forwards;
-      @keyframes hide-cover {
-        from {
-          // display: grid;
-        }
-        to {
-          // display: none;
-        }
-      }
-      */
     }
     &:hover {
       figure {
@@ -94,8 +83,6 @@
       width: 100%;
       height: 100%;
     }
-  }
-  aside {
   }
 }
 @mixin mobile-portrait {
