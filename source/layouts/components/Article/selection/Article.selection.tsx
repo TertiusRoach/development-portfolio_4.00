@@ -1,4 +1,4 @@
-//--|🠊 Division.selection.tsx 🠈|--//
+//--|🠊 Article.selection.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
 import './Article.selection.scss';
 //--|🠉 Styles 🠉|--//
@@ -43,7 +43,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   return (
     <article className="selection-article">
       <aside className="apps-aside">
-        {/* <figure className="apps-figure"></figure> */}
+        <figure className="apps-figure"></figure>
         <nav className="apps-navigation">
           <ButtonGrade
             type="button"
@@ -60,7 +60,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </nav>
       </aside>
       <aside className="demo-aside">
-        {/* <figure className="demo-figure"></figure> */}
+        <figure className="demo-figure"></figure>
         <nav className="demo-navigation">
           <ButtonGrade
             type="button"

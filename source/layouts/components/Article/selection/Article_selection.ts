@@ -1,4 +1,4 @@
-//--|🠊 Division_selection.ts 🠈|--//
+//--|🠊 Article_selection.ts 🠈|--//
 
 export function defineButton(
   button: 'login' | 'register' | 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
