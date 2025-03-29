@@ -55,8 +55,8 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
             <img
               style={{
                 maskImage: `url(${imageLink})`,
-                width: `${scaleImage(fontSize)}rem`,
                 WebkitMaskImage: `url(${imageLink})`,
+                width: `${scaleImage(fontSize) / 1.5}rem`,
               }}
             ></img>
             {scaleWords(fontSize, text)}
@@ -70,9 +70,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
             {scaleWords(fontSize, text)}
             <img
               style={{
-                width: `${scaleImage(fontSize)}rem`,
                 maskImage: `url(${imageLink})`,
                 WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                width: `${scaleImage(fontSize) / 1.5}rem`,
               }}
             ></img>
           </div>
@@ -84,9 +84,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           <div className={`${blockName}`}>
             <img
               style={{
-                width: `${scaleImage(fontSize)}rem`,
                 maskImage: `url(${imageLink})`,
                 WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                width: `${scaleImage(fontSize) / 1.5}rem`,
               }}
             ></img>
             {scaleWords(fontSize, text)}
@@ -100,8 +100,8 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
             <img
               style={{
                 maskImage: `url(${imageLink})`,
-                height: `${scaleImage(fontSize)}rem`,
                 WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                height: `${scaleImage(fontSize) / 1.5}rem`,
               }}
             ></img>
           </div>

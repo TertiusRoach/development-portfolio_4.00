@@ -42,21 +42,31 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <article className="selection-article">
-      <div className="branding-division">
-        <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
-      </div>
       <aside className="apps-aside">
-        <figure></figure>
-        <nav></nav>
+        {/* <figure className="apps-figure"></figure> */}
+        <nav className="apps-navigation">
+          <ButtonGrade
+            type="button"
+            text={'Login'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('login', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Register'}
+            // onClick={() => viewBlock('register')}
+            style={defineButton('register', { pageName, blockName })}
+          />
+        </nav>
       </aside>
       <aside className="demo-aside">
-        <figure></figure>
-        <nav>
+        {/* <figure className="demo-figure"></figure> */}
+        <nav className="demo-navigation">
           <ButtonGrade
             type="button"
             text={'Track a Day'}
             // onClick={() => viewBlock('register')}
-            style={defineButton('index-land', { pageName, blockName })}
+            style={defineButton('track-day', { pageName, blockName })}
           />
           <ButtonGrade
             type="button"
@@ -147,6 +157,10 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           />
           </ul>
         </nav> */}
+
+      <div className="branding-division">
+        <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
+      </div>
     </article>
   );
 };

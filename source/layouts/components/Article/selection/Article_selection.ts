@@ -1,7 +1,7 @@
 //--|🠊 Division_selection.ts 🠈|--//
 
 export function defineButton(
-  button: 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
+  button: 'login' | 'register' | 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
@@ -14,21 +14,32 @@ export function defineButton(
 
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'index-land':
+    case 'login':
       return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<h4>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
         blockName: blockName as 'main',
-        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        imageLink: trackDay,
+      };
+    case 'register':
+      return {
+        fontSize: '<h4>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink: trackDay,
       };
     case 'track-day':
       return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<h5>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -38,8 +49,8 @@ export function defineButton(
       };
     case 'log-ticket':
       return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<h5>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -49,8 +60,8 @@ export function defineButton(
       };
     case 'find-link':
       return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: '<h5>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -58,8 +69,20 @@ export function defineButton(
         pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink: findLink,
       };
+    case 'index-land':
+      return {
+        fontSize: '<h5>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        blockName: blockName as 'main',
+        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        imageLink: trackDay,
+      };
   }
 }
-// export function hideAside() {}
+
+export function hideAside() {}
 
 export function showAside() {}
