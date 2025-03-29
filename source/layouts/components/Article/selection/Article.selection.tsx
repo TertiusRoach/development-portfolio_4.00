@@ -43,47 +43,38 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   return (
     <article className="selection-article">
       <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
-        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)}></figure>
+        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)}>
+          <h1>
+            Open
+            <br />
+            Apps
+          </h1>
+          <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
+        </figure>
         <nav className="apps-navigation">
-          <ButtonGrade
-            type="button"
-            text={'Login'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('login', { pageName, blockName })}
-          />
-          <ButtonGrade
-            type="button"
-            text={'Register'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('register', { pageName, blockName })}
-          />
+          <ButtonGrade type="button" text={'Login'} style={defineButton('login', { pageName, blockName })} />
+          <ButtonGrade type="button" text={'Register'} style={defineButton('register', { pageName, blockName })} />
         </nav>
       </aside>
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
-        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)}></figure>
+        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)}>
+          <h1>
+            View
+            <br />
+            Demo
+          </h1>
+          <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
+        </figure>
         <nav className="demo-navigation">
-          <ButtonGrade
-            type="button"
-            text={'Track a Day'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('track-day', { pageName, blockName })}
-          />
-          <ButtonGrade
-            type="button"
-            text={'Log a Ticket'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('log-ticket', { pageName, blockName })}
-          />
-          <ButtonGrade
-            type="button"
-            text={'Find a Link'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('find-link', { pageName, blockName })}
-          />
+          <ButtonGrade type="button" text={'Track a Day'} style={defineButton('track-day', { pageName, blockName })} />
+          <ButtonGrade type="button" text={'Log a Ticket'} style={defineButton('log-ticket', { pageName, blockName })} />
+          <ButtonGrade type="button" text={'Find a Link'} style={defineButton('find-link', { pageName, blockName })} />
         </nav>
       </aside>
-      {/* <div className="branding-division">
+      <div className="branding-division">
         <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
+      </div>
+      {/* <div className="branding-division">
       </div>
 
       <aside className="apps-container">
@@ -100,67 +91,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           Demo
         </h1>
         <menu className="demonstration-icon">
-          <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
         </menu> */}
-
-      {/* <nav className="navigation-demos">
-          <ul className="view-demos">
-            <ButtonGrade
-              type="button"
-              text={'Track a Day'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('index-land', { pageName, blockName })}
-            />
-            <ButtonGrade
-              type="button"
-              text={'Log a Ticket'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('log-ticket', { pageName, blockName })}
-            />
-            <ButtonGrade
-              type="button"
-              text={'Find a Link'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('find-link', { pageName, blockName })}
-            />
-          </ul>
-        </nav> */}
-
-      {/* <h1>
-          Open
-          <br />
-          Apps
-        </h1>
-        <menu className="application-icon">
-          <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
-        </menu> */}
-
-      {/* <nav className="navigation-apps">
-          <ul className="view-apps">
-            <ButtonSharp
-            type="button"
-            text={'Track a Day'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('track-day', { pageName, blockName })}
-          />
-          <ButtonSharp
-            type="button"
-            text={'Log a Ticket'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('log-ticket', { pageName, blockName })}
-          />
-          <ButtonSharp
-            type="button"
-            text={'Find a Link'}
-            // onClick={() => viewBlock('register')}
-            style={defineButton('find-link', { pageName, blockName })}
-          />
-          </ul>
-        </nav> */}
-
-      <div className="branding-division">
-        <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
-      </div>
     </article>
   );
 };
