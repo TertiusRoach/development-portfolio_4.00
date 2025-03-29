@@ -11,7 +11,7 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton } from './Article_selection';
+import { defineButton, hideFigure, showFigure } from './Article_selection';
 import { viewBlock, viewText, axiosError } from '../../../../landing';
 //--|🠉 Functions 🠉|--//
 
@@ -42,8 +42,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <article className="selection-article">
-      <aside className="apps-aside">
-        <figure className="apps-figure"></figure>
+      <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
+        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)}></figure>
         <nav className="apps-navigation">
           <ButtonGrade
             type="button"
@@ -59,8 +59,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           />
         </nav>
       </aside>
-      <aside className="demo-aside">
-        <figure className="demo-figure"></figure>
+      <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
+        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)}></figure>
         <nav className="demo-navigation">
           <ButtonGrade
             type="button"

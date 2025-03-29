@@ -83,6 +83,14 @@ export function defineButton(
   }
 }
 
-export function hideAside() {}
+export function hideFigure(event: React.MouseEvent<HTMLElement>) {
+  const element = event.target as HTMLElement;
+  setTimeout(() => {
+    element.style.zIndex = '0';
+  }, 250);
+}
 
-export function showAside() {}
+export function showFigure(overlay: 'apps' | 'demo') {
+  const element = document.querySelector(`.${overlay}-figure`) as HTMLElement;
+  element.style.removeProperty('z-index');
+}
