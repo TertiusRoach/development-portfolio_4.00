@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
-    border-bottom: 4px dashed white;
+    border-bottom: 2px dashed white;
     img {
       width: 50%;
       height: 50%;
@@ -22,8 +22,8 @@
   aside[class*='apps'] {
     grid-area: 2 / 1 / 4 / 2;
     border-bottom-left-radius: 1rem;
+    border-right: 1px dashed white;
     /*
-    border-right: 3px dashed white;
     background: rgba(darkblue, 0.25);
     */
     figure {
@@ -38,9 +38,9 @@
   }
   aside[class*='demo'] {
     grid-area: 2 / 2 / 4 / 3;
+    border-left: 1px dashed white;
     border-bottom-right-radius: 1rem;
     /*
-    border-left: 3px dashed white;
     background: rgba(darkred, 0.25);
     */
     figure {
