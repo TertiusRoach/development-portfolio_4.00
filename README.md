@@ -180,27 +180,30 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 # Terminal Commands
 
-//--|🠋 Launch back-end 🠈|--//
-Go to 'root\source\modules\server'
-
-> nodemon landing
-
 //--|🠋 Launch front-end 🠈|--//
-Go to 'root' folder
+
+    Open Terminal & type in...
 
 > npm run app
 
-//--|🠋 Starts the testing environment 🠈|--//
+//--|🠋 Launch back-end 🠈|--//
 
-> npm run launch
+    Go to 'root\source\modules\server'
+    Open Terminal & type in...
 
-//--|🠋 Compiles project into public 🠈|--//
+> nodemon landing
+
+//--|🠋 Compile project into public 🠈|--//
 
 > npm run deploy
 
-//--|🠋 Stops the server to relaunch 🠈|--//
+//--|🠋 Launch testing environment 🠈|--//
 
-> npm run close
+> npm run launch
+
+//--|🠋 Close testing environment 🠈|--//
+
+> npm run stop
 
 ## Visual Studio Code
 
