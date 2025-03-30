@@ -64,4 +64,5 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     </section>
   );
 };
+
 export default LandingOverlay;
