@@ -730,7 +730,7 @@
       */
 
       div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        filter: drop-shadow(0 0 4px rgba(white, 1));
         *:hover {
           color: Palettes.$indexLand-dark;
         }
@@ -870,7 +870,7 @@
       */
 
       div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        filter: drop-shadow(0 0 4px rgba(white, 1));
         *:hover {
           color: Palettes.$trackDay-dark;
         }
@@ -1010,7 +1010,7 @@
       */
 
       div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        filter: drop-shadow(0 0 4px rgba(white, 1));
         *:hover {
           color: Palettes.$logTicket-dark;
         }
@@ -1150,7 +1150,7 @@
       */
 
       div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        filter: drop-shadow(0 0 4px rgba(white, 1));
         *:hover {
           color: Palettes.$findLink-dark;
         }

@@ -26,6 +26,12 @@ import getIdentification from './modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 const pageName = 'landing';
 const elementBody = document.getElementById(`${pageName}-body`) as HTMLElement;
+if (elementBody) {
+  ReactDOM.createRoot(elementBody).render(<Landing />);
+} else {
+  console.error(`Can't find with #${pageName}-body`);
+}
+
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -47,11 +53,6 @@ function Landing() {
       </PasswordProvider>
     </EmailProvider>
   );
-}
-if (elementBody) {
-  ReactDOM.createRoot(elementBody).render(<Landing />);
-} else {
-  console.error(`Can't find with #${pageName}-body`);
 }
 
 export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {

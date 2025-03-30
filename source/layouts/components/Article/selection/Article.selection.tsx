@@ -74,55 +74,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       <div className="branding-division">
         <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
       </div>
-      {/* <div className="branding-division">
-      </div>
-
-      <aside className="apps-container">
-        <mark></mark>
-      </aside>
-
-      <aside className="demo-container">
-        <mark></mark>
-      </aside> */}
-
-      {/* <h1>
-          View
-          <br />
-          Demo
-        </h1>
-        <menu className="demonstration-icon">
-        </menu> */}
     </article>
   );
 };
 export default ArticleSelection;
-
-/*
-const hideAside = (aside: 'left' | 'right') => {
-  // Hides the aside panel smoothly
-  const overlayElement = document.querySelector(`.${aside}-overlay`) as HTMLElement;
-  setTimeout(() => {
-    overlayElement.style.opacity = '0';
-    overlayElement.style.zIndex = '-1';
-  }, 250);
-};
-
-const showAside = (event: React.MouseEvent) => {
-  console.log(event.currentTarget);
-
-  // const leftAside = event.currentTarget.children[0] as HTMLElement;
-  // const rightAside = event.currentTarget.children[1] as HTMLElement;
-  // [leftAside, rightAside].forEach((aside) => {
-  //   if (aside.classList.contains('hidden')) {
-  //     aside.style.transition = 'opacity 0.5s ease-in-out, visibility 0.5s';
-  //     aside.style.opacity = '1';
-  //     aside.style.visibility = 'visible';
-  //     setTimeout(() => {
-  //       aside.classList.add('visible');
-  //       aside.classList.remove('hidden');
-  //     }, 500);
-  //   }
-  // });
-  // console.log('Showing both asides');
-};
-*/

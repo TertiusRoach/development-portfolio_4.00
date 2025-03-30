@@ -7,14 +7,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     img {
-      height: 100%; //--|🠊 width: auto; 🠈|--//
+      width: 100%; //--|🠊 width: auto; 🠈|--//
     }
   }
   section[class*='selection'] {
     display: grid;
     grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-
+    background: linear-gradient(180deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     header[class*='branding'] {
       grid-area: 1 / 1 / 2 / 6;
     }
