@@ -43,8 +43,7 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/track-a-day.svg',
+        imageLink: '',
       };
     case 'log-ticket':
       return {
@@ -55,8 +54,7 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'ticketing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/log-a-ticket.svg',
+        imageLink: '',
       };
     case 'find-link':
       return {
@@ -67,8 +65,7 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/find-a-link.svg',
+        imageLink: '',
       };
     case 'index-land':
       return {
