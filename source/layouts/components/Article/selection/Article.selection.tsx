@@ -11,8 +11,8 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, hideFigure, showFigure } from './Article_selection';
 import { viewBlock, viewText, axiosError } from '../../../../landing';
+import { defineButton, hideFigure, showFigure, openApps } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -52,8 +52,18 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
         </figure>
         <nav className="apps-navigation">
-          <ButtonGrade type="button" text={'Login'} style={defineButton('login', { pageName, blockName })} />
-          <ButtonGrade type="button" text={'Register'} style={defineButton('register', { pageName, blockName })} />
+          <ButtonGrade
+            type="button"
+            text={'Login'}
+            onClick={() => openApps('login', pageName)}
+            style={defineButton('login', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Register'}
+            onClick={() => openApps('register', pageName)}
+            style={defineButton('register', { pageName, blockName })}
+          />
         </nav>
       </aside>
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>

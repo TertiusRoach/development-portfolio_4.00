@@ -119,3 +119,33 @@ export function showFigure(overlay: 'apps' | 'demo') {
     }
   }, 1500);
 }
+
+export function openApps(view: 'register' | 'login', pageName: string) {
+  const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
+  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
+
+  setTimeout(() => {
+    overlay.className = 'default-overlay hidden';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 250);
+  }, 750);
+
+  let register = carousel.childNodes[0] as HTMLElement;
+  let login = carousel.childNodes[1] as HTMLElement;
+  switch (view) {
+    case 'register':
+      carousel.style.transform = 'translateX(0vw)';
+
+      register.className = `${view}-section visible`;
+      login.className = `${view}-section hidden`;
+      break;
+    case 'login':
+      carousel.style.transform = 'translateX(-100vw)';
+
+      register.className = `${view}-section hidden`;
+      login.className = `${view}-section visible`;
+      break;
+  }
+}
+export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link', pageName: string) {}
