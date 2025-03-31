@@ -1,8 +1,4 @@
 //--|🠊 styles/landing.scss 🠈|--//
-@use '../design/Global.scss';
-@use '../design/Mixins.scss';
-@use '../design/Palettes.scss';
-
 //--|🠋 Containers 🠋|--//
 @use '../containers/Main/LandingMain/LandingMain.scss';
 @use '../containers/Header/LandingHeader/LandingHeader.scss';
@@ -10,69 +6,3 @@
 @use '../containers/Overlay/LandingOverlay/LandingOverlay.scss';
 @use '../containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
 @use '../containers/Rightbar/LandingRightbar/LandingRightbar.scss';
-
-//--|🠋 Device Layouts 🠋|--//
-@mixin desktop-landscape {
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-}
-@mixin mobile-portrait {
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-}
-
-body {
-  overflow: hidden;
-  transition: transform 1s ease-in-out;
-  div[id*='landing'],
-  div[id*='overtime'],
-  div[id*='ticketing'],
-  div[id*='hyperlink'] {
-    height: 100vh; //--|🠈 Force body's height to fit the screen 🠈|--//
-    display: grid; //--|🠈 Hide the scrollbar completely 🠈|--//
-
-    @include Mixins.header-transition();
-    @include Mixins.footer-transition();
-    @include Mixins.overlay-transition();
-    @include Mixins.sidebar-transition();
-
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      @include desktop-landscape();
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      @include mobile-portrait();
-    }
-
-    &[id*='overtime'] {
-      background: green;
-    }
-    &[id*='ticketing'] {
-      background: blue;
-    }
-    &[id*='hyperlink'] {
-      background: red;
-    }
-  }
-}
-
-//--|🠋| Color Schemes |🠋|--//
-/*
-@mixin find-link {
-  //--|🠋| Find a Link |🠋|--//
-  $primary-dark: #230709; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-medium: #881a3d; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $primary-light: #e2bcca; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-}
-@mixin log-ticket {
-  //--|🠋| Log a Ticket |🠋|--//
-  $secondary-dark: #070e27; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $secondary-medium: #0b2583; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-  $secondary-light: #a8b8f3; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
-}
-@mixin track-day {
-  //--|🠋| Track a Day |🠋|--//
-  $tertiary-dark: #072007; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-medium: #39853b; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
-  $tertiary-light: #9ee6a1; //--🠊 rgba( ??, ??, ??,1) 🠈--//
-}
-*/

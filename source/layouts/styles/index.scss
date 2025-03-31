@@ -1,1 +1,53 @@
 //--|🠊 styles/index.scss 🠈|--//
+//--|🠋 Design 🠋|--//
+@use '../design/Global.scss';
+@use '../design/Mixins.scss';
+@use '../design/Palettes.scss';
+
+//--|🠋 Applications 🠋|--//
+@use './landing.scss';
+// @use ''
+
+//--|🠋 Device Layouts 🠋|--//
+@mixin desktop-landscape {
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+}
+@mixin mobile-portrait {
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+}
+
+body {
+  overflow: hidden;
+  transition: transform 1s ease-in-out;
+  div[id*='landing'],
+  div[id*='overtime'],
+  div[id*='ticketing'],
+  div[id*='hyperlink'] {
+    height: 100vh; //--|🠈 Force body's height to fit the screen 🠈|--//
+    display: grid; //--|🠈 Hide the scrollbar completely 🠈|--//
+
+    @include Mixins.header-transition();
+    @include Mixins.footer-transition();
+    @include Mixins.overlay-transition();
+    @include Mixins.sidebar-transition();
+
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+    }
+
+    &[id*='overtime'] {
+      background: green;
+    }
+    &[id*='ticketing'] {
+      background: blue;
+    }
+    &[id*='hyperlink'] {
+      background: red;
+    }
+  }
+}
