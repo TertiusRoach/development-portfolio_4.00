@@ -16,7 +16,7 @@ import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, outputDisplay } from '../../../../landing';
+import { viewBlock, viewText, outputDisplay } from '../../../../script/landing';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 //--|🠉 Functions 🠉|--//
 

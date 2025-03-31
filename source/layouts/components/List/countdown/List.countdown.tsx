@@ -12,7 +12,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { scaleText, createSquare } from './List_countdown';
-import { viewBlock, viewText, axiosError } from '../../../../landing';
+import { viewBlock, viewText, axiosError } from '../../../../script/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
   info: {

@@ -1,6 +1,6 @@
-//--|🠊 source/landing.tsx 🠈|--//
+//--|🠊 source/script/landing.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './layouts/styles/landing.scss';
+import '../layouts/styles/landing.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
@@ -8,22 +8,23 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from './modules/context/EmailContext';
-import { PasswordProvider } from './modules/context/PasswordContext';
+import { EmailProvider } from '../modules/context/EmailContext';
+import { PasswordProvider } from '../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-import LandingMain from './layouts/containers/Main/LandingMain/LandingMain';
-import LandingHeader from './layouts/containers/Header/LandingHeader/LandingHeader';
-import LandingFooter from './layouts/containers/Footer/LandingFooter/LandingFooter';
-import LandingOverlay from './layouts/containers/Overlay/LandingOverlay/LandingOverlay';
-import LandingLeftbar from './layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
-import LandingRightbar from './layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
+import LandingMain from '../layouts/containers/Main/LandingMain/LandingMain';
+import LandingHeader from '../layouts/containers/Header/LandingHeader/LandingHeader';
+import LandingFooter from '../layouts/containers/Footer/LandingFooter/LandingFooter';
+import LandingOverlay from '../layouts/containers/Overlay/LandingOverlay/LandingOverlay';
+import LandingLeftbar from '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
+import LandingRightbar from '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from './modules/utilities/getResolution';
-import getOrientation from './modules/utilities/getOrientation';
-import getIdentification from './modules/utilities/getIdentification';
+import getResolution from '../modules/utilities/getResolution';
+import getOrientation from '../modules/utilities/getOrientation';
+import getIdentification from '../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
+/*
 const pageName = 'landing';
 const elementBody = document.getElementById(`${pageName}-body`) as HTMLElement;
 if (elementBody) {
@@ -31,6 +32,7 @@ if (elementBody) {
 } else {
   console.error(`Can't find with #${pageName}-body`);
 }
+*/
 
 function Landing() {
   let information = {
@@ -38,6 +40,7 @@ function Landing() {
     orientation: `${getOrientation()}`,
     identification: 'landing' as 'landing',
   };
+
   return (
     <EmailProvider>
       <PasswordProvider>
@@ -54,6 +57,7 @@ function Landing() {
     </EmailProvider>
   );
 }
+export default Landing;
 
 export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;

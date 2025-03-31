@@ -148,4 +148,6 @@ export function openApps(view: 'register' | 'login', pageName: string) {
       break;
   }
 }
+/*
 export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link', pageName: string) {}
+*/

@@ -1,4 +1,4 @@
-let pageName = 'landing';
+let pageName = 'index';
 
 const path = require('path');
 const webpack = require('webpack');
@@ -12,7 +12,7 @@ module.exports = {
   entry: `./source/${pageName}.tsx`,
   output: {
     filename: `${pageName}.js`,
-    path: path.resolve(__dirname, `public/${pageName}`),
+    path: path.resolve(__dirname, 'public/'),
     clean: true, // Clean the output directory before emit
   },
   resolve: {

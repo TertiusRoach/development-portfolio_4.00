@@ -8,7 +8,7 @@ import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { closeLeftbar, defineButton, getCode } from './Form_verify';
-import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../../script/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';

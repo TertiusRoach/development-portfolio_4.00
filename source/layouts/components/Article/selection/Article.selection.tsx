@@ -11,7 +11,7 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, axiosError } from '../../../../landing';
+import { viewBlock, viewText, axiosError } from '../../../../script/landing';
 import { defineButton, hideFigure, showFigure, openApps } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 
