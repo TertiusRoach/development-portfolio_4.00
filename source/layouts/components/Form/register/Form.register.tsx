@@ -116,7 +116,10 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         <ButtonDefault
           text={''}
           type="button"
-          onClick={() => generatePassword()}
+          onClick={() => {
+            let newPass = generatePassword(); //--|🠈 This generates a new password 🠈|--//
+            setPassword(newPass); //--|🠈 Sets state to new password 🠈|--//
+          }}
           style={defineButton('generate', { pageName, blockName })}
         />
         <ButtonDefault

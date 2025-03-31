@@ -1,4 +1,4 @@
-// landing.js
+//--|🠊 landing.js 🠈|--//
 //--|🠊 Open folder Location in Integrated Terminal to run: nodemon landing 🠈|--//
 const cors = require('cors');
 const axios = require('axios');
@@ -852,6 +852,7 @@ server.post(`/${root}/reset`, async (req, res) => {
     axiosError(error); //--|🠈 Handle Login Errors 🠈|--//
   }
 });
+
 //--|🠋 POST: Section.blocked.tsx 🠋|--//
 server.post(`/${root}/blocked`, async (req, res) => {
   const { email } = req.body;

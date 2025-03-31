@@ -1,12 +1,4 @@
 //--|🠊 Form_verify.ts 🠈|--//
-export function closeRightbar(pageName: 'landing' | string) {
-  let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
-  if (rightbar.classList.contains('expanded')) {
-    rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-    rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
-  }
-}
-
 export function defineButton(
   button: 'close' | 'reset' | 'observe' | 'generate',
   info: { blockName: string; pageName: string }
@@ -62,6 +54,13 @@ export function defineButton(
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/sync-alt.svg',
       };
+  }
+}
+export function closeRightbar(pageName: 'landing' | string) {
+  let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
+  if (rightbar.classList.contains('expanded')) {
+    rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
+    rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
   }
 }
 export function generatePassword() {

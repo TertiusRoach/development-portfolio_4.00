@@ -52,7 +52,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       let dialogue: string;
       switch (view) {
         case 'register':
-          dialogue = 'You cannot change the password for an account that has not been created.';
+          dialogue = "You cannot change the password for an account that doesn't exist.";
 
           viewBlock('register');
           viewText('register', dialogue);
@@ -131,9 +131,6 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
             text={submit ? 'Changing...' : 'Change'}
             style={defineButton('password', { pageName, blockName })}
           />
-          {/* <button className="password-button" type="submit" disabled={submit}>
-            
-          </button> */}
         </menu>
         <nav className="password-buttons">
           <ButtonDefault
