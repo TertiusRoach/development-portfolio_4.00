@@ -1,4 +1,4 @@
-# Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/landing/index.html)
+# Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
 These containers, residing in `source/layouts/container/`, include:
