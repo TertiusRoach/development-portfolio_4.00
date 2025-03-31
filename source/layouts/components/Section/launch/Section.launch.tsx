@@ -114,11 +114,11 @@ const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   let trackDay: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/track-a-day.svg';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-medium.svg';
   let logTicket: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/log-a-ticket.svg';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/log-ticket/log-ticket-medium.svg';
   let findLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6691771f5bc62c020bbd95c2ed67a4351f2d3546/source/assets/svg-files/trinity-apps/primary-light/find-a-link.svg';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/find-link/find-link-medium.svg';
 
   return (
     <section className="launch-section" onSubmit={(event) => handleLaunch(event)}>

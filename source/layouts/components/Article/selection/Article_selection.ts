@@ -4,9 +4,6 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
-  // let trackDay: string =
-  // let logTicket: string =
-  // let findLink: string =
 
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
@@ -43,7 +40,8 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-medium.svg',
       };
     case 'log-ticket':
       return {
@@ -54,7 +52,8 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'ticketing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/log-ticket/log-ticket-medium.svg',
       };
     case 'find-link':
       return {
@@ -65,7 +64,8 @@ export function defineButton(
         className: button,
         blockName: blockName as 'main',
         pageName: 'hyperlink' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/find-link/find-link-medium.svg',
       };
     case 'index-land':
       return {
