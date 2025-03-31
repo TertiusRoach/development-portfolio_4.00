@@ -1,16 +1,14 @@
 // LandingFooter.scss
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 
   menu {
-    grid-area: 3 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    // background: rgba(white, 0.25);
+    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
   section {
-    grid-area: 1 / 1 / 4 / 4; //~~|🠈 row-start / col-start / row-end / col-end 🠈|~~//
-    // background: rgba(black, 0.25);
+    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
 }
 @mixin mobile-portrait {
@@ -18,7 +16,6 @@
 }
 footer[id*='landing'] {
   display: grid;
-  // background: rgba(purple, 0.25);
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

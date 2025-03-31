@@ -19,7 +19,7 @@ interface InfoProps {
 }
 const LandingFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification;
+  const pageName: string = info.identification as 'landing';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
