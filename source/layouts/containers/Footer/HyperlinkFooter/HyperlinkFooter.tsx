@@ -1,4 +1,4 @@
-// LandingFooter.tsx
+//--|🠊 HyperlinkFooter.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -17,7 +17,7 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const LandingFooter: React.FC<InfoProps> = ({ info }) => {
+const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
   const pageName: string = info.identification;
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
@@ -26,9 +26,8 @@ const LandingFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      {/* <menu>Menu HTML Element</menu> */}
-      <SectionBlocked info={info} />
+      <menu>Menu HTML Element</menu>
     </footer>
   );
 };
-export default LandingFooter;
+export default HyperlinkFooter;

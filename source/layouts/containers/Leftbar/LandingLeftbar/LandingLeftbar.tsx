@@ -14,7 +14,7 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
