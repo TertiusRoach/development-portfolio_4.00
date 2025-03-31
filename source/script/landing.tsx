@@ -144,6 +144,7 @@ export function viewWord(form: 'register' | 'login' | 'reset') {
 }
 
 //---//
+
 export function outputDisplay(element: HTMLElement) {
   console.log(element);
 

@@ -11,8 +11,9 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { viewDemo, openApps } from '../../../..';
 import { viewBlock, viewText, axiosError } from '../../../../script/landing';
-import { defineButton, hideFigure, showFigure, openApps } from './Article_selection';
+import { defineButton, hideFigure, showFigure, showMain } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -55,13 +56,13 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <ButtonGrade
             type="button"
             text={'Login'}
-            onClick={() => openApps('login', pageName)}
+            onClick={() => showMain('login', pageName)}
             style={defineButton('login', { pageName, blockName })}
           />
           <ButtonGrade
             type="button"
             text={'Register'}
-            onClick={() => openApps('register', pageName)}
+            onClick={() => showMain('register', pageName)}
             style={defineButton('register', { pageName, blockName })}
           />
         </nav>
@@ -76,9 +77,24 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
         </figure>
         <nav className="demo-navigation">
-          <ButtonGrade type="button" text={'Track a Day'} style={defineButton('track-day', { pageName, blockName })} />
-          <ButtonGrade type="button" text={'Log a Ticket'} style={defineButton('log-ticket', { pageName, blockName })} />
-          <ButtonGrade type="button" text={'Find a Link'} style={defineButton('find-link', { pageName, blockName })} />
+          <ButtonGrade
+            type="button"
+            text={'Track a Day'}
+            onClick={() => viewDemo('track-day')}
+            style={defineButton('track-day', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Log a Ticket'}
+            onClick={() => viewDemo('log-ticket')}
+            style={defineButton('log-ticket', { pageName, blockName })}
+          />
+          <ButtonGrade
+            type="button"
+            text={'Find a Link'}
+            onClick={() => viewDemo('find-link')}
+            style={defineButton('find-link', { pageName, blockName })}
+          />
         </nav>
       </aside>
       <div className="branding-division">

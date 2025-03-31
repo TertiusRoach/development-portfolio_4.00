@@ -37,6 +37,37 @@ Object.entries(components).forEach(([id, Component]) => {
   }
 });
 
+export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link') {
+  const elementBody = document.body as HTMLBodyElement;
+  // console.log(elementBody);
+  //  style="transform: translateY(-300vh); transition: transform 0.5s ease-in-out"
+
+  switch (view) {
+    case 'track-day':
+      document.body.style.transform = 'translateY(-100vh)';
+      break;
+    case 'log-ticket':
+      document.body.style.transform = 'translateY(-200vh)';
+      break;
+    case 'find-link':
+      document.body.style.transform = 'translateY(-300vh)';
+      break;
+  }
+}
+export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
+  const elementBody = document.getElementsByTagName('body');
+  console.log(elementBody);
+  //  style="transform: translateY(-300vh); transition: transform 0.5s ease-in-out"
+
+  switch (view) {
+    case 'track-day':
+      break;
+    case 'log-ticket':
+      break;
+    case 'find-link':
+      break;
+  }
+}
 /*
 const landingBody = document.getElementById('landing-body') as HTMLElement;
 if (landingBody) {

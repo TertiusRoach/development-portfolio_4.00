@@ -120,7 +120,7 @@ export function showFigure(overlay: 'apps' | 'demo') {
   }, 1500);
 }
 
-export function openApps(view: 'register' | 'login', pageName: string) {
+export function showMain(view: 'register' | 'login', pageName: string) {
   const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
 

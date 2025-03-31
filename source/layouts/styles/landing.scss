@@ -1,3 +1,4 @@
+//--|🠊 styles/landing.scss 🠈|--//
 @use '../design/Global.scss';
 @use '../design/Mixins.scss';
 @use '../design/Palettes.scss';
@@ -12,14 +13,19 @@
 
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 }
 @mixin mobile-portrait {
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
 }
 
 body {
-  div[id*='landing'] {
+  overflow: hidden;
+  transition: transform 1s ease-in-out;
+  div[id*='landing'],
+  div[id*='overtime'],
+  div[id*='ticketing'],
+  div[id*='hyperlink'] {
     height: 100vh; //--|🠈 Force body's height to fit the screen 🠈|--//
     display: grid; //--|🠈 Hide the scrollbar completely 🠈|--//
 
@@ -36,10 +42,21 @@ body {
     @media screen and (orientation: portrait) {
       @include mobile-portrait();
     }
+
+    &[id*='overtime'] {
+      background: green;
+    }
+    &[id*='ticketing'] {
+      background: blue;
+    }
+    &[id*='hyperlink'] {
+      background: red;
+    }
   }
 }
 
 //--|🠋| Color Schemes |🠋|--//
+/*
 @mixin find-link {
   //--|🠋| Find a Link |🠋|--//
   $primary-dark: #230709; //--🠊 rgba( ?? , ?? , ?? , 1) 🠈--//
@@ -58,3 +75,4 @@ body {
   $tertiary-medium: #39853b; //--🠊 rgba( ?? , ?? , ?? ,1) 🠈--//
   $tertiary-light: #9ee6a1; //--🠊 rgba( ??, ??, ??,1) 🠈--//
 }
+*/
