@@ -94,7 +94,6 @@
 }
 @mixin overlay-transition {
   section[class*='overlay'] {
-    // background: pink;
     &[class*='visible'] {
       opacity: 1;
       backdrop-filter: blur(2rem);

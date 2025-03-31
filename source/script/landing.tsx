@@ -24,16 +24,6 @@ import getResolution from '../modules/utilities/getResolution';
 import getOrientation from '../modules/utilities/getOrientation';
 import getIdentification from '../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
-/*
-const pageName = 'landing';
-const elementBody = document.getElementById(`${pageName}-body`) as HTMLElement;
-if (elementBody) {
-  ReactDOM.createRoot(elementBody).render(<Landing />);
-} else {
-  console.error(`Can't find with #${pageName}-body`);
-}
-*/
-
 function Landing() {
   let information = {
     resolution: `${getResolution()}`,
@@ -153,6 +143,7 @@ export function viewWord(form: 'register' | 'login' | 'reset') {
   }
 }
 
+//---//
 export function outputDisplay(element: HTMLElement) {
   console.log(element);
 
@@ -165,9 +156,6 @@ export function outputDisplay(element: HTMLElement) {
     console.log("Element with ID 'mySection' not found.");
   }
 }
-
-//---//
-
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
   address: 'http://localhost:3000' | string

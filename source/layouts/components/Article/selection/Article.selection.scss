@@ -22,7 +22,7 @@
   aside[class*='apps'] {
     grid-area: 2 / 1 / 4 / 2;
     border-bottom-left-radius: 1rem;
-    border-right: 1px dashed white;
+    border-right: 2px dashed white;
     /*
     background: rgba(darkblue, 0.25);
     */
@@ -38,7 +38,7 @@
   }
   aside[class*='demo'] {
     grid-area: 2 / 2 / 4 / 3;
-    border-left: 1px dashed white;
+    border-left: 2px dashed white;
     border-bottom-right-radius: 1rem;
     /*
     background: rgba(darkred, 0.25);

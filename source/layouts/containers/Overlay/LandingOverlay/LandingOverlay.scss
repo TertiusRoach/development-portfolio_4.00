@@ -9,7 +9,8 @@
     justify-content: center;
     background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     img {
-      width: 100%; //--|🠊 width: auto; 🠈|--//
+      width: 75%; //--|🠊 width: auto; 🠈|--//
+      filter: drop-shadow(0 0 1rem white);
     }
   }
   section[class*='selection'] {

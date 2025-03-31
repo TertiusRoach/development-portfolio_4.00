@@ -124,15 +124,14 @@ export function openApps(view: 'register' | 'login', pageName: string) {
   const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
 
-  setTimeout(() => {
-    overlay.className = 'default-overlay hidden';
-    setTimeout(() => {
-      overlay.style.display = 'none';
-    }, 250);
-  }, 750);
-
   let register = carousel.childNodes[0] as HTMLElement;
   let login = carousel.childNodes[1] as HTMLElement;
+
+  overlay.className = 'default-overlay hidden';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 500);
+
   switch (view) {
     case 'register':
       carousel.style.transform = 'translateX(0vw)';
