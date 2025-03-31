@@ -15,7 +15,7 @@ import { PasswordProvider } from '../modules/context/PasswordContext';
 import LandingMain from '../layouts/containers/Main/LandingMain/LandingMain';
 import LandingHeader from '../layouts/containers/Header/LandingHeader/LandingHeader';
 import LandingFooter from '../layouts/containers/Footer/LandingFooter/LandingFooter';
-import LandingOverlay from '../layouts/containers/Overlay/bin/LandingOverlay/LandingOverlay';
+import LandingOverlay from '../layouts/containers/Overlay/LandingOverlay/LandingOverlay';
 import LandingLeftbar from '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
 import LandingRightbar from '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
 //--|🠉 Containers 🠉|--//
