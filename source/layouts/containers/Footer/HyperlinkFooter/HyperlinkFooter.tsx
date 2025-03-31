@@ -19,14 +19,15 @@ interface InfoProps {
 }
 const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification;
+  const pageName: string = info.identification as 'hyperlink';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <menu>Menu HTML Element</menu>
+      <menu></menu>
+      <section></section>
     </footer>
   );
 };
