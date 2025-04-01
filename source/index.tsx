@@ -28,10 +28,10 @@ const components: { [key: string]: React.ElementType } = {
   'hyperlink-body': Hyperlink,
 };
 //--|🠋 Render Components 🠋|--//
-Object.entries(components).forEach(([id, Component]) => {
+Object.entries(components).forEach(([id, Script]) => {
   const element = document.getElementById(id);
   if (element) {
-    ReactDOM.createRoot(element).render(<Component />);
+    ReactDOM.createRoot(element).render(<Script />);
   } else {
     console.error(`Can't find #${id}`);
   }

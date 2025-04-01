@@ -1,4 +1,4 @@
-//--|🠊 HyperlinkFooter.tsx 🠈|--//
+//--|🠊 OvertimeFooter.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -16,9 +16,9 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
+const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification as 'hyperlink';
+  const pageName: string = info.identification as 'overtime';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
@@ -30,4 +30,4 @@ const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
     </footer>
   );
 };
-export default HyperlinkFooter;
+export default OvertimeFooter;
