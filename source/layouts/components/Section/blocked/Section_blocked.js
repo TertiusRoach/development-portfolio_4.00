@@ -1,4 +1,4 @@
-//--|🠋 POST: Section.blocked.js (2025-03-07) 🠋|--//
+//--|🠋 POST: Section_blocked.js 🠋|--//
 server.post(`/${root}/blocked`, async (req, res) => {
   const { email } = req.body;
 
