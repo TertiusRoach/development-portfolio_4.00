@@ -40,13 +40,14 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
+  /*
   let brandImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
   let demoImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
   let appsImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
-
+  */
   return (
     <section className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 3 }}>
       <div className="landing-carousel" style={{ zIndex: 0 }}>

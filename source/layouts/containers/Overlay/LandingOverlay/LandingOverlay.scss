@@ -4,13 +4,21 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
+    /*
     display: flex;
     align-items: center;
     justify-content: center;
+    */
+    display: grid;
+    grid-template: 1fr 45rem /* 720px */ 1fr / 1fr 80rem /* 1280px */ 1fr; //--|🠊 rows / columns 🠈|--//
+
     background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     img {
-      width: 75%; //--|🠊 width: auto; 🠈|--//
+      grid-area: 2 / 2 / 3 / 4;
+      outline: 4px dashed black;
       filter: drop-shadow(0 0 1rem white);
+      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+      /* box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--// */
     }
   }
   section[class*='selection'] {
@@ -50,6 +58,11 @@ section[id*='landing'] {
     @media screen and (orientation: portrait) {
       @include mobile-portrait();
     }
+
+    /*
+    @extend %slide-up;
+    animation: slide-up 1s ease-in-out forwards;
+    */
   }
 }
 %slide-up {
