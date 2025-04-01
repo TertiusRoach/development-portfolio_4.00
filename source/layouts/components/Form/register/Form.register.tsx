@@ -93,18 +93,18 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    showDemos(pageName);
+    // showDemos(pageName);
   }, [pageName, blockName]);
 
   return (
     <form className="register-form" onSubmit={(event) => handleRegister(event)}>
       <div className="register-header">
-        <button className="register-close" type="button">
+        {/* <button className="register-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
             alt=""
           />
-        </button>
+        </button> */}
         <div className="register-text">
           <h4>Sign up to use application.</h4>
         </div>
@@ -185,7 +185,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
             style={defineButton('register', { pageName, blockName })}
           />
         </menu>
-        <nav className="register-buttons">
+        <nav id="register-buttons">
           <ButtonDefault
             type="button"
             text={'Access Account'}

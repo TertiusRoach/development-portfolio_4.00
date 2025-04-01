@@ -57,18 +57,3 @@ export function defineButton(
       };
   }
 }
-
-export function showDemos(pageName: 'landing' | string) {
-  let closeLogin = document.querySelector('.login-close') as HTMLElement;
-  let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-
-  if (closeLogin && header) {
-    var closeClick = () => {
-      header.classList.toggle('expanded'); // Toggle '.expanded'
-      header.classList.remove('collapsed'); // Remove '.collapsed'
-    };
-
-    closeLogin.addEventListener('click', closeClick);
-    return () => closeLogin.removeEventListener('click', closeClick);
-  }
-}

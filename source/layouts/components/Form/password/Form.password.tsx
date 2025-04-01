@@ -93,18 +93,18 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    showDemos(pageName);
+    // showDemos(pageName);
   }, [pageName, blockName]);
 
   return (
     <form className="password-form" onSubmit={(event) => handlePassword(event)}>
       <div className="password-header">
-        <button className="password-close" type="button">
+        {/* <button className="password-close" type="button">
           <img
             src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
             alt=""
           />
-        </button>
+        </button> */}
         <div className="password-text">
           <h4>You can update your password here.</h4>
         </div>
@@ -132,7 +132,7 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
             style={defineButton('password', { pageName, blockName })}
           />
         </menu>
-        <nav className="password-buttons">
+        <nav id="password-buttons">
           <ButtonDefault
             type="button"
             text={'Enter Account'}

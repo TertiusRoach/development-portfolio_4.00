@@ -38,6 +38,7 @@
 
 section[id*='landing'] {
   //--|🠊 display: block; 🠈|--//
+  // display: none;
   overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   .landing-carousel {

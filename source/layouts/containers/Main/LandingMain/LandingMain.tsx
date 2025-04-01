@@ -14,10 +14,13 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 import FormLogin from '../../../components/Form/login/Form.login';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
+import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
+import NavigationLogin from '../../../components/Navigation/login/Navigation.login';
+import NavigationPassword from '../../../components/Navigation/password/Navigation.password';
+import NavigationRegister from '../../../components/Navigation/register/Navigation.register';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, outputDisplay } from '../../../../script/landing';
-import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -43,21 +46,21 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
-            <h4 className="register-label display-4">Register</h4>
+            <NavigationRegister info={info} />
             <FormRegister info={info} />
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
-            <h4 className="login-label display-4">Login</h4>
+            <NavigationLogin info={info} />
             <FormLogin info={info} />
             <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
           </div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
-            <h4 className="password-label display-4">Password</h4>
+            <NavigationPassword info={info} />
             <FormPassword info={info} />
             <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>

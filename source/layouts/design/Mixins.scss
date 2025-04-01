@@ -94,15 +94,13 @@
 }
 @mixin overlay-transition {
   section[class*='overlay'] {
+    transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
     &[class*='visible'] {
       opacity: 1;
       backdrop-filter: blur(2rem);
     }
     &[class*='hidden'] {
       opacity: 0;
-    }
-    & {
-      transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
     }
   }
 }

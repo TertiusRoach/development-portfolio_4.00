@@ -5,23 +5,35 @@
   //--|🠊 display: block; 🠈|--//
   div[class*='container'] {
     grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-    h4[class*='label'] {
+
+    nav {
       z-index: 3;
-      font-weight: bold;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      &[class*='register'] {
-        color: Palettes.$trackDay-dark;
-        filter: drop-shadow(Palettes.$trackDay-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      /*
+      h4[class*='label'] {
+        font-weight: bold;
+        &[class*='register'] {
+          color: Palettes.$trackDay-dark;
+          filter: drop-shadow(
+            Palettes.$trackDay-light 0 0 8px
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+        &[class*='login'] {
+          color: Palettes.$logTicket-dark;
+          filter: drop-shadow(
+            Palettes.$logTicket-light 0 0 8px
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+        &[class*='password'] {
+          color: Palettes.$findLink-dark;
+          filter: drop-shadow(
+            Palettes.$findLink-light 0 0 8px
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
       }
-      &[class*='login'] {
-        color: Palettes.$logTicket-dark;
-        filter: drop-shadow(Palettes.$logTicket-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      }
-      &[class*='password'] {
-        color: Palettes.$findLink-dark;
-        filter: drop-shadow(Palettes.$findLink-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      }
+      */
     }
+
     form[class*='login'],
     form[class*='register'],
     form[class*='password'] {
