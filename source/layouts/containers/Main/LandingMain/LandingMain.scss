@@ -8,30 +8,7 @@
 
     nav {
       z-index: 3;
-      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      /*
-      h4[class*='label'] {
-        font-weight: bold;
-        &[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(
-            Palettes.$trackDay-light 0 0 8px
-          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-        }
-        &[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(
-            Palettes.$logTicket-light 0 0 8px
-          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-        }
-        &[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(
-            Palettes.$findLink-light 0 0 8px
-          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-        }
-      }
-      */
+      grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
 
     form[class*='login'],
