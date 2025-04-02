@@ -18,8 +18,8 @@ interface InfoProps {
 }
 const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification as 'hyperlink';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const pageName: string = info.identification as 'hyperlink';
 
   useEffect(() => {}, [pageName, blockName]);
 

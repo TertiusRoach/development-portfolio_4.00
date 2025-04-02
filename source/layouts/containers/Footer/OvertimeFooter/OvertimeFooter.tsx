@@ -18,8 +18,8 @@ interface InfoProps {
 }
 const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification as 'overtime';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const pageName: string = info.identification as 'overtime';
 
   useEffect(() => {}, [pageName, blockName]);
 

@@ -1,4 +1,4 @@
-//--|🠊 TicketingFooter.tsx 🠈|--//
+//--|🠊 HyperlinkHeader.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -16,18 +16,18 @@ interface InfoProps {
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const TicketingFooter: React.FC<InfoProps> = ({ info }) => {
-  const blockName: string = 'footer';
+const HyperlinkHeader: React.FC<InfoProps> = ({ info }) => {
+  const blockName: string = 'header';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
-  const pageName: string = info.identification as 'ticketing';
+  const pageName: string = info.identification as 'hyperlink';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
+    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
       <menu></menu>
       <section></section>
-    </footer>
+    </header>
   );
 };
-export default TicketingFooter;
+export default HyperlinkHeader;

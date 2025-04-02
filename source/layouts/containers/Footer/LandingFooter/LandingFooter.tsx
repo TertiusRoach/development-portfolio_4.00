@@ -1,4 +1,4 @@
-// LandingFooter.tsx
+//--|🠊 LandingFooter.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -19,8 +19,8 @@ interface InfoProps {
 }
 const LandingFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'footer';
-  const pageName: string = info.identification as 'landing';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const pageName: string = info.identification as 'landing';
 
   useEffect(() => {}, [pageName, blockName]);
 

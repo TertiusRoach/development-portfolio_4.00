@@ -19,8 +19,8 @@ interface InfoProps {
 }
 const LandingHeader: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'header';
-  const pageName: string = info.identification;
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const pageName: string = info.identification as 'landing';
   const imageLink: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
 

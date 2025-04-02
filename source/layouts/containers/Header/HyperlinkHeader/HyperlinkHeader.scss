@@ -1,4 +1,4 @@
-//--|🠊 LandingFooter.scss 🠈|--//
+//--|🠊 HyperlinkFooter.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -14,8 +14,9 @@
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
 }
-footer[id*='landing'] {
+header[id*='hyperlink'] {
   display: grid;
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
