@@ -7,7 +7,7 @@
   header {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
+      // clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
       menu {
         top: 0rem;
       }
@@ -31,6 +31,18 @@
         position: relative;
         transition: top 0.25s ease-in-out;
       }
+    }
+  }
+  header[id*='landing'] {
+    &[class*='collapsed'] {
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
+    }
+  }
+  header[id*='overtime'],
+  header[id*='ticketing'],
+  header[id*='hyperlink'] {
+    &[class*='collapsed'] {
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 8rem, 0% 8rem);
     }
   }
 }
