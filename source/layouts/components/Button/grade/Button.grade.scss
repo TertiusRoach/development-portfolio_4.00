@@ -1,7 +1,7 @@
 //--|🠊 Button.grade.scss 🠈|--//
-@use '../../../design/Mixins.scss';
-@use '../../../design/Palettes.scss';
-@forward '../../../design/Mixins.scss';
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+@forward '../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
 }
