@@ -8,10 +8,10 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Containers 🠋|--//
-import Landing from './script/landing';
-import Overtime from './script/overtime';
-import Ticketing from './script/ticketing';
-import Hyperlink from './script/hyperlink';
+import Landing from './pages/landing';
+import Overtime from './pages/overtime';
+import Ticketing from './pages/ticketing';
+import Hyperlink from './pages/hyperlink';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Component Mapping 🠋|--//
 const components: { [key: string]: React.ElementType } = {
@@ -21,10 +21,10 @@ const components: { [key: string]: React.ElementType } = {
   'hyperlink-body': Hyperlink,
 };
 //--|🠋 Render Components 🠋|--//
-Object.entries(components).forEach(([id, Script]) => {
+Object.entries(components).forEach(([id, Pages]) => {
   const element = document.getElementById(id);
   if (element) {
-    ReactDOM.createRoot(element).render(<Script />);
+    ReactDOM.createRoot(element).render(<Pages />);
   } else {
     console.error(`Can't find #${id}`);
   }
