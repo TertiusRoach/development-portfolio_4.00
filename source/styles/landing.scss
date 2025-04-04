@@ -1,11 +1,11 @@
 //--|🠊 styles/landing.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Main/LandingMain/LandingMain.scss';
-@use '../containers/Header/LandingHeader/LandingHeader.scss';
-@use '../containers/Footer/LandingFooter/LandingFooter.scss';
-@use '../containers/Overlay/LandingOverlay/LandingOverlay.scss';
-@use '../containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
-@use '../containers/Rightbar/LandingRightbar/LandingRightbar.scss';
+@use '../layouts/containers/Main/LandingMain/LandingMain.scss';
+@use '../layouts/containers/Header/LandingHeader/LandingHeader.scss';
+@use '../layouts/containers/Footer/LandingFooter/LandingFooter.scss';
+@use '../layouts/containers/Overlay/LandingOverlay/LandingOverlay.scss';
+@use '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
+@use '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar.scss';
 
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {

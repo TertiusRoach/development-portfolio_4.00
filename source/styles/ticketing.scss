@@ -1,11 +1,11 @@
 //--|🠊 styles/ticketing.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Header/TicketingHeader/TicketingHeader.scss';
-// @use '../containers/Main/TicketingMain/TicketingMain.scss';
-// @use '../containers/Footer/TicketingFooter/TicketingFooter.scss';
-// @use '../containers/Overlay/TicketingOverlay/TicketingOverlay.scss';
-// @use '../containers/Leftbar/TicketingLeftbar/TicketingLeftbar.scss';
-// @use '../containers/Rightbar/TicketingRightbar/TicketingRightbar.scss';
+@use '../layouts/containers/Header/TicketingHeader/TicketingHeader.scss';
+// @use '../layouts/containers/Main/TicketingMain/TicketingMain.scss';
+// @use '../layouts/containers/Footer/TicketingFooter/TicketingFooter.scss';
+// @use '../layouts/containers/Overlay/TicketingOverlay/TicketingOverlay.scss';
+// @use '../layouts/containers/Leftbar/TicketingLeftbar/TicketingLeftbar.scss';
+// @use '../layouts/containers/Rightbar/TicketingRightbar/TicketingRightbar.scss';
 
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {

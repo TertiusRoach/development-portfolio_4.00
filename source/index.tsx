@@ -1,6 +1,6 @@
 //--|🠊 source/script/index.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './layouts/styles/index.scss';
+import './styles/index.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
@@ -28,6 +28,35 @@ Object.entries(components).forEach(([id, Pages]) => {
   } else {
     console.error(`Can't find #${id}`);
   }
+  /*
+    const landingBody = document.getElementById('landing-body') as HTMLElement;
+    if (landingBody) {
+      ReactDOM.createRoot(landingBody).render(<Landing />);
+    } else {
+      console.error("Can't find #landing-body");
+    }
+
+    const overtimeBody = document.getElementById('overtime-body') as HTMLElement;
+    if (overtimeBody) {
+      ReactDOM.createRoot(overtimeBody).render(<Overtime />);
+    } else {
+      console.error("Can't find #overtime-body");
+    }
+
+    const ticketingBody = document.getElementById('ticketing-body') as HTMLElement;
+    if (ticketingBody) {
+      ReactDOM.createRoot(ticketingBody).render(<Ticketing />);
+    } else {
+      console.error("Can't find #ticketing-body");
+    }
+
+    const hyperlinkBody = document.getElementById('hyperlink-body') as HTMLElement;
+    if (hyperlinkBody) {
+      ReactDOM.createRoot(hyperlinkBody).render(<Hyperlink />);
+    } else {
+      console.error("Can't find #ticketing-body");
+    }
+  */
 });
 
 export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link') {
@@ -61,32 +90,3 @@ export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
       break;
   }
 }
-/*
-const landingBody = document.getElementById('landing-body') as HTMLElement;
-if (landingBody) {
-  ReactDOM.createRoot(landingBody).render(<Landing />);
-} else {
-  console.error("Can't find #landing-body");
-}
-
-const overtimeBody = document.getElementById('overtime-body') as HTMLElement;
-if (overtimeBody) {
-  ReactDOM.createRoot(overtimeBody).render(<Overtime />);
-} else {
-  console.error("Can't find #overtime-body");
-}
-
-const ticketingBody = document.getElementById('ticketing-body') as HTMLElement;
-if (ticketingBody) {
-  ReactDOM.createRoot(ticketingBody).render(<Ticketing />);
-} else {
-  console.error("Can't find #ticketing-body");
-}
-
-const hyperlinkBody = document.getElementById('hyperlink-body') as HTMLElement;
-if (hyperlinkBody) {
-  ReactDOM.createRoot(hyperlinkBody).render(<Hyperlink />);
-} else {
-  console.error("Can't find #ticketing-body");
-}
-*/

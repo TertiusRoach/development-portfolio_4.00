@@ -9,7 +9,8 @@ import { EmailProvider } from '../modules/context/EmailContext';
 import { PasswordProvider } from '../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-
+import OvertimeHeader from '../layouts/containers/Header/OvertimeHeader/OvertimeHeader';
+import OvertimeFooter from '../layouts/containers/Footer/OvertimeFooter/OvertimeFooter';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../modules/utilities/getResolution';
@@ -25,19 +26,8 @@ function Overtime() {
 
   return (
     <>
-      {/* <EmailProvider>
-        <PasswordProvider>
-          <LandingOverlay info={information} />
-
-          <LandingHeader info={information} />
-
-          <LandingLeftbar info={information} />
-          <LandingMain info={information} />
-          <LandingRightbar info={information} />
-
-          <LandingFooter info={information} />
-        </PasswordProvider>
-      </EmailProvider> */}
+      <OvertimeHeader info={information} />
+      {/* <OvertimeFooter info={information} /> */}
     </>
   );
 }
