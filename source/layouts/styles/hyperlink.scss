@@ -1,1 +1,31 @@
 //--|🠊 styles/hyperlink.scss 🠈|--//
+//--|🠋 Containers 🠋|--//
+@use '../containers/Header/HyperlinkHeader/HyperlinkHeader.scss';
+// @use '../containers/Main/HyperlinkMain/HyperlinkMain.scss';
+// @use '../containers/Footer/HyperlinkFooter/HyperlinkFooter.scss';
+// @use '../containers/Overlay/HyperlinkOverlay/HyperlinkOverlay.scss';
+// @use '../containers/Leftbar/HyperlinkLeftbar/HyperlinkLeftbar.scss';
+// @use '../containers/Rightbar/HyperlinkRightbar/HyperlinkRightbar.scss';
+
+//--|🠋 Device Layouts 🠋|--//
+@mixin desktop-landscape {
+  grid-template: 8rem 1fr 4rem / 3rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
+}
+@mixin mobile-portrait {
+  //   grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+}
+
+div[id*='hyperlink'] {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+
+  &[id*='hyperlink'] {
+    background: pink;
+  }
+}

@@ -6,3 +6,24 @@
 @use '../containers/Overlay/LandingOverlay/LandingOverlay.scss';
 @use '../containers/Leftbar/LandingLeftbar/LandingLeftbar.scss';
 @use '../containers/Rightbar/LandingRightbar/LandingRightbar.scss';
+
+//--|🠋 Device Layouts 🠋|--//
+@mixin desktop-landscape {
+  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+}
+@mixin mobile-portrait {
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+}
+
+body {
+  div[id*='landing'] {
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+    }
+  }
+}

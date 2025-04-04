@@ -7,19 +7,12 @@ import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
-
-//--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
 import Landing from './script/landing';
 import Overtime from './script/overtime';
 import Ticketing from './script/ticketing';
 import Hyperlink from './script/hyperlink';
-//--|🠉 Containers 🠉|--//
-//--|🠋 Utilities 🠋|--//
-
-//--|🠉 Utilities 🠉|--//
-
+//--|🠉 Styles 🠉|--//
 //--|🠋 Component Mapping 🠋|--//
 const components: { [key: string]: React.ElementType } = {
   'landing-body': Landing,
