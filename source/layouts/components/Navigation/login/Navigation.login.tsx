@@ -26,7 +26,7 @@ interface InfoProps {
 }
 const NavigationLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  const pageName = info.identification as 'landing';
 
   //--|🠋 Local Input States 🠋|--//
   // let { email, setEmail } = useEmail();

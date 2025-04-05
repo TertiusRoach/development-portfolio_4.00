@@ -26,15 +26,7 @@ interface InfoProps {
 }
 const NavigationPassword: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
-
-  //--|🠋 Local Input States 🠋|--//
-  // let { email, setEmail } = useEmail();
-  // let { password, setPassword } = usePassword();
-
-  //--|🠋 Action States 🠋|--//
-  // let [submit, setSubmit] = useState(false);
-  // let [attempts, setAttempts] = useState(0);
+  const pageName = info.identification as 'landing';
 
   const handlePassword = async () => {};
 

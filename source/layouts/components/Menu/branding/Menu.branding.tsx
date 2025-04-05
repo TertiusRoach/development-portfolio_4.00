@@ -20,10 +20,9 @@ interface InfoProps {
   src: string;
 
   style: {
-    brandView: 'left' | 'right' | 'center';
-
     pageName: string;
     blockName: string;
+    brandView: 'left' | 'right' | 'center';
   };
 }
 const MenuBranding: React.FC<InfoProps> = ({ style, src }) => {

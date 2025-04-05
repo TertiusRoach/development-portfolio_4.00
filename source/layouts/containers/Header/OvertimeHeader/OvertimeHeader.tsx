@@ -54,7 +54,7 @@ export function defineButton(button: 'features', info: { blockName: string; page
   switch (button) {
     case 'features':
       return {
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: '<h4>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 

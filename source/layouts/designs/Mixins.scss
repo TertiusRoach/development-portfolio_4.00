@@ -3,7 +3,6 @@
 
 //--|🠋 index.scss 🠋|--//
 @mixin header-transition {
-  //--|🠋 Header 🠋|--//
   header {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
@@ -18,31 +17,33 @@
     &[class*='expanded'] {
       backdrop-filter: blur(32px);
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
       menu {
         top: -4rem;
+        position: relative;
+        transition: top 0.25s ease-in-out;
       }
       section {
         opacity: 1;
       }
     }
-    & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
-      menu {
-        position: relative;
-        transition: top 0.25s ease-in-out;
-      }
-    }
+    // & {
+    //   menu {
+    //   }
+    // }
   }
-  header[id*='landing'] {
-    &[class*='collapsed'] {
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
-    }
-  }
+
   header[id*='overtime'],
   header[id*='ticketing'],
   header[id*='hyperlink'] {
     &[class*='collapsed'] {
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 8rem, 0% 8rem);
+    }
+  }
+
+  header[id*='landing'] {
+    &[class*='collapsed'] {
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
     }
   }
 }
@@ -309,7 +310,6 @@
     &[class*='dark'] {
       background: Palettes.$trackDay-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
@@ -324,10 +324,8 @@
     &[class*='light'] {
       background: Palettes.$trackDay-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
         * {
           color: Palettes.$trackDay-dark;
         }
@@ -352,10 +350,8 @@
 
     &[class*='dark']:hover {
       background: Palettes.$trackDay-light;
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); //
       div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
         *:hover {
           color: Palettes.$trackDay-dark;
@@ -367,12 +363,9 @@
     }
     &[class*='light']:hover {
       background: Palettes.$trackDay-dark;
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); //
       div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
-        *:hover {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        * {
           color: Palettes.$trackDay-light;
         }
         img {
@@ -382,7 +375,7 @@
     }
     &[class*='medium']:hover {
       background: Palettes.$trackDay-medium;
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      filter: drop-shadow(0 0 1rem rgba(black, 0.75));
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
         *:hover {
