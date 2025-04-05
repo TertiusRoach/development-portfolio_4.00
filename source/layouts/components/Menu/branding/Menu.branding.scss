@@ -27,9 +27,9 @@
 }
 @mixin mobile-portrait {
 }
+
 menu[class*='branding'] {
   display: grid;
-
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
