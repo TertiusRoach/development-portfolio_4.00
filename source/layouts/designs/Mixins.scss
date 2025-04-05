@@ -1,309 +1,6 @@
 //--|🠊 Mixins.scss 🠈|--//
 @use './Palettes.scss';
 
-//--|🠋 Element Animations 🠋|--//
-@mixin header-transition {
-  //--|🠋 Header 🠋|--//
-  header {
-    &[class*='collapsed'] {
-      backdrop-filter: blur(0px);
-      // clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
-      menu {
-        top: 0rem;
-      }
-      section {
-        opacity: 0;
-      }
-    }
-    &[class*='expanded'] {
-      backdrop-filter: blur(32px);
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
-      menu {
-        top: -4rem;
-      }
-      section {
-        opacity: 1;
-      }
-    }
-    & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
-      menu {
-        position: relative;
-        transition: top 0.25s ease-in-out;
-      }
-    }
-  }
-  header[id*='landing'] {
-    &[class*='collapsed'] {
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
-    }
-  }
-  header[id*='overtime'],
-  header[id*='ticketing'],
-  header[id*='hyperlink'] {
-    &[class*='collapsed'] {
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 8rem, 0% 8rem);
-    }
-  }
-}
-@mixin sidebar-transition {
-  //--|🠋 Leftbar & Rightbar 🠋|--//
-  aside {
-    &[id*='leftbar'] {
-      &[class*='collapsed'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    &[id*='rightbar'] {
-      &[class*='collapsed'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    &[class*='expanded'] {
-      transition: clip-path 0.25s;
-      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-    }
-
-    &[id*='leftbar'],
-    &[id*='rightbar'] {
-      backdrop-filter: blur(8px);
-    }
-  }
-}
-@mixin footer-transition {
-  //--|🠋 Footer 🠋|--//
-  footer {
-    &[class*='collapsed'] {
-      backdrop-filter: blur(0px);
-      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
-      menu {
-        top: 0rem;
-      }
-      section {
-        opacity: 0;
-      }
-    }
-    &[class*='expanded'] {
-      backdrop-filter: blur(32px);
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
-      menu {
-        top: 4rem;
-      }
-      section {
-        opacity: 1;
-      }
-    }
-    & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
-      menu {
-        position: relative;
-        transition: top 0.25s ease-in-out;
-      }
-    }
-  }
-}
-@mixin overlay-transition {
-  section[class*='overlay'] {
-    transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
-    &[class*='visible'] {
-      opacity: 1;
-      backdrop-filter: blur(2rem);
-    }
-    &[class*='hidden'] {
-      opacity: 0;
-    }
-  }
-}
-
-//--|🠋 Resolution Testing 🠋|--//
-@mixin orientation-testing {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    & {
-      width: 100%;
-      aside[class*='leftbar'] {
-        background: rgba($red-light, 0.25);
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-      }
-      aside[class*='rightbar'] {
-        // background: rgba($red-light, 0.25);
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-      }
-      section[class*='overlay'] {
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-      }
-
-      header {
-        background: rgba($red-light, 0.25);
-      }
-      main {
-        background: rgba($red-dark, 1);
-        div[id*='fore'],
-        div[id*='mid'],
-        div[id*='back'] {
-          background: rgba($purple-dark, 0.25) !important;
-        }
-      }
-      footer {
-        background: rgba($red-light, 0.25);
-      }
-    }
-    //--|🠊 border: 2px dashed $red-neon; 🠈|--//
-    //--|🠊 background: rgba($red-dark, 0.25); 🠈|--//
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    & {
-      aside[class*='leftbar'] {
-        background: rgba($blue-light, 0.25);
-      }
-      aside[class*='rightbar'] {
-        background: rgba($blue-light, 0.25);
-      }
-      section[class*='overlay'] {
-        background: rgba($blue-dark, 0.25);
-      }
-
-      header {
-        background: rgba($blue-light, 0.25);
-      }
-      footer {
-        background: rgba($blue-light, 0.25);
-      }
-      main {
-        background: rgba($blue-dark, 1);
-        div[id*='fore'],
-        div[id*='mid'],
-        div[id*='back'] {
-          background: rgba($purple-dark, 0.25) !important;
-        }
-      }
-    }
-    //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
-    //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
-  }
-}
-
-//--|🠋 Button Design 🠋|--//
-@mixin button-presets {
-  cursor: default;
-  div {
-    img {
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-    }
-    img,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-      cursor: pointer;
-    }
-  }
-  &[class*='icon'] {
-    padding: 0;
-    div {
-      img {
-        width: 75%;
-      }
-    }
-  }
-  &[class*='left'] {
-    display: grid;
-    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
-    div {
-      display: flex;
-      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-  }
-  &[class*='right'] {
-    display: grid;
-    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
-    div {
-      display: flex;
-      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-  }
-  &[class*='text'],
-  &[class*='center'] {
-    display: grid;
-    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
-    div {
-      display: inherit; //--|🠈 display: grid; 🠈|--//
-      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      * {
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-  }
-}
-@mixin button-spacing {
-  &[class*='text'],
-  &[class*='left'],
-  &[class*='right'],
-  &[class*='center'] {
-    div {
-      * {
-        white-space: wrap;
-        font-weight: bold;
-        position: relative;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        top: 4px;
-      }
-      p {
-        top: 8px;
-        padding: 0 8px;
-      }
-    }
-    &[class*='center'] {
-      div {
-        img {
-          height: 100%;
-          opacity: 0.25;
-        }
-      }
-    }
-  }
-}
-
 //--|🠊 Button.default 🠈|--//
 @mixin button-default {
   &[class*='landing'] {
@@ -397,8 +94,8 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
+    @extend %override-default;
+    @extend %transition-default;
   }
   &[class*='overtime'] {
     &[class*='dark'] {
@@ -489,8 +186,8 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
+    @extend %override-default;
+    @extend %transition-default;
   }
   &[class*='ticketing'] {
     &[class*='dark'] {
@@ -581,8 +278,8 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
+    @extend %override-default;
+    @extend %transition-default;
   }
   &[class*='hyperlink'] {
     &[class*='dark'] {
@@ -673,12 +370,34 @@
       }
     }
 
-    @extend %override-shading;
-    @extend %transition-shading;
+    @extend %override-default;
+    @extend %transition-default;
+  }
+}
+//--|🠋 button-default 🠋|--//
+%transition-default {
+  &[class*='dark']:hover,
+  &[class*='light']:hover,
+  &[class*='medium']:hover {
+    transition: background 0.25s ease-in-out;
+    div {
+      transition: filter 0.25s ease-in-out;
+      * {
+        transition: color 0.25s ease-in-out;
+      }
+      img {
+        transition: background 0.25s ease-in-out;
+      }
+    }
+  }
+}
+%override-default {
+  &[class*='icon'] {
+    background: none !important;
   }
 }
 
-//--|🠊 Button.grade 🠈|--//
+//--|🠊 Button.grading 🠈|--//
 @mixin button-grading {
   &[class*='landing'] {
     &[class*='dark'] {
@@ -1221,32 +940,10 @@
     @extend %transition-grading;
   }
 }
-
-%override-shading {
-  &[class*='icon'] {
-    background: none !important;
-  }
-}
+//--|🠋 button-grading 🠋|--//
 %override-grading {
   &[class*='icon'] {
     background: none !important;
-  }
-}
-
-%transition-shading {
-  &[class*='dark']:hover,
-  &[class*='light']:hover,
-  &[class*='medium']:hover {
-    transition: background 0.25s ease-in-out;
-    div {
-      transition: filter 0.25s ease-in-out;
-      * {
-        transition: color 0.25s ease-in-out;
-      }
-      img {
-        transition: background 0.25s ease-in-out;
-      }
-    }
   }
 }
 %transition-grading {
@@ -1258,5 +955,308 @@
     img {
       transition: background 0.25s ease-in-out;
     }
+  }
+}
+
+//--|🠋 index.scss 🠋|--//
+@mixin header-transition {
+  //--|🠋 Header 🠋|--//
+  header {
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      // clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
+      menu {
+        top: 0rem;
+      }
+      section {
+        opacity: 0;
+      }
+    }
+    &[class*='expanded'] {
+      backdrop-filter: blur(32px);
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+      menu {
+        top: -4rem;
+      }
+      section {
+        opacity: 1;
+      }
+    }
+    & {
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
+    }
+  }
+  header[id*='landing'] {
+    &[class*='collapsed'] {
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
+    }
+  }
+  header[id*='overtime'],
+  header[id*='ticketing'],
+  header[id*='hyperlink'] {
+    &[class*='collapsed'] {
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 8rem, 0% 8rem);
+    }
+  }
+}
+@mixin sidebar-transition {
+  //--|🠋 Leftbar & Rightbar 🠋|--//
+  aside {
+    &[id*='leftbar'] {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s;
+        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    &[id*='rightbar'] {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s;
+        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    &[class*='expanded'] {
+      transition: clip-path 0.25s;
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+    }
+
+    &[id*='leftbar'],
+    &[id*='rightbar'] {
+      backdrop-filter: blur(8px);
+    }
+  }
+}
+@mixin footer-transition {
+  //--|🠋 Footer 🠋|--//
+  footer {
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+      menu {
+        top: 0rem;
+      }
+      section {
+        opacity: 0;
+      }
+    }
+    &[class*='expanded'] {
+      backdrop-filter: blur(32px);
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+      menu {
+        top: 4rem;
+      }
+      section {
+        opacity: 1;
+      }
+    }
+    & {
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
+    }
+  }
+}
+@mixin overlay-transition {
+  section[class*='overlay'] {
+    transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
+    &[class*='visible'] {
+      opacity: 1;
+      backdrop-filter: blur(2rem);
+    }
+    &[class*='hidden'] {
+      opacity: 0;
+    }
+  }
+}
+
+//--|🠋 Button Design 🠋|--//
+@mixin button-presets {
+  cursor: default;
+  div {
+    img {
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+    img,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      cursor: pointer;
+    }
+  }
+  &[class*='icon'] {
+    padding: 0;
+    div {
+      img {
+        width: 75%;
+      }
+    }
+  }
+  &[class*='left'] {
+    display: grid;
+    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
+    div {
+      display: flex;
+      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
+  }
+  &[class*='right'] {
+    display: grid;
+    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
+    div {
+      display: flex;
+      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
+  }
+  &[class*='text'],
+  &[class*='center'] {
+    display: grid;
+    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--//
+    div {
+      display: inherit; //--|🠈 display: grid; 🠈|--//
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      * {
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
+    }
+  }
+}
+@mixin button-spacing {
+  &[class*='text'],
+  &[class*='left'],
+  &[class*='right'],
+  &[class*='center'] {
+    div {
+      * {
+        white-space: wrap;
+        font-weight: bold;
+        position: relative;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        top: 4px;
+      }
+      p {
+        top: 8px;
+        padding: 0 8px;
+      }
+    }
+    &[class*='center'] {
+      div {
+        img {
+          height: 100%;
+          opacity: 0.25;
+        }
+      }
+    }
+  }
+}
+
+//--|🠋 Resolution Testing 🠋|--//
+@mixin orientation-testing {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    & {
+      width: 100%;
+      aside[class*='leftbar'] {
+        background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      aside[class*='rightbar'] {
+        // background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      section[class*='overlay'] {
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+      }
+
+      header {
+        background: rgba($red-light, 0.25);
+      }
+      main {
+        background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+      footer {
+        background: rgba($red-light, 0.25);
+      }
+    }
+    //--|🠊 border: 2px dashed $red-neon; 🠈|--//
+    //--|🠊 background: rgba($red-dark, 0.25); 🠈|--//
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    & {
+      aside[class*='leftbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      aside[class*='rightbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      section[class*='overlay'] {
+        background: rgba($blue-dark, 0.25);
+      }
+
+      header {
+        background: rgba($blue-light, 0.25);
+      }
+      footer {
+        background: rgba($blue-light, 0.25);
+      }
+      main {
+        background: rgba($blue-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+    }
+    //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
+    //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
   }
 }
