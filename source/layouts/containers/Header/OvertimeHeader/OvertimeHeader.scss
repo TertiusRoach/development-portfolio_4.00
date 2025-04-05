@@ -5,19 +5,20 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: repeat(2, 4rem) 1fr 4rem / 8rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
   button[class*='features'] {
-    opacity: 0;
     z-index: 2;
+    opacity: 0;
     grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     &:hover {
       opacity: 1;
     }
   }
   div[class*='profile'] {
+    grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     border-bottom-right-radius: 4rem; //--|🠈 Curve Bottom Right Corner 🠈|--//
     border-right: 8px solid transparent;
     border-bottom: 8px solid transparent;
@@ -35,9 +36,6 @@
   menu {
     z-index: 0;
     grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-
-    background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
-    // background: green;
   }
   section {
     z-index: 0;
@@ -52,7 +50,6 @@
 
 header[id*='overtime'] {
   display: grid;
-
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
   //--|🠋 Desktop (Landscape) 🠋|--//

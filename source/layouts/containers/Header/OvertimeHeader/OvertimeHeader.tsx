@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import ButtonDefault from '../../../components/Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 
@@ -41,7 +42,10 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         // onClick={() => viewWord('login')}
         style={defineButton('features', { pageName, blockName })}
       />
-      <menu></menu>
+      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
+
+      {/* <MenuFeatures style={{ demoView: 'overtime', blockName: blockName, pageName: pageName }} /> */}
+      {/* <menu></menu> */}
       <section></section>
     </header>
   );

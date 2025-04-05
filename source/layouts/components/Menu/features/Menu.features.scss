@@ -1,18 +1,18 @@
-//--|🠊 Header.branding.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
+//--|🠊 Menu.features.scss 🠈|--//
 @use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
-  menu {
-    width: 100%;
-    height: 100%;
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 1fr / 3rem repeat(3, 1fr) 3rem; //~~|🠊 rows / columns 🠈|~~//
+  background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
+  li {
   }
 }
 @mixin mobile-portrait {
 }
 
-header[class*='branding'] {
+menu[class*='features'] {
+  display: grid;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

@@ -12,7 +12,7 @@
 @mixin mobile-portrait {
 }
 
-header[class*='branding'] {
+header[class*='features'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

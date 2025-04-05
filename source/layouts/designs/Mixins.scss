@@ -6,7 +6,6 @@
   header {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
-      // clip-path: polygon(0% 0rem, 100% 0rem, 100% 4rem, 0% 4rem);
       menu {
         top: 0rem;
       }
@@ -27,10 +26,6 @@
         opacity: 1;
       }
     }
-    // & {
-    //   menu {
-    //   }
-    // }
   }
 
   header[id*='overtime'],
@@ -38,6 +33,13 @@
   header[id*='hyperlink'] {
     &[class*='collapsed'] {
       clip-path: polygon(0% 0rem, 100% 0rem, 100% 8rem, 0% 8rem);
+    }
+    &[class*='expanded'] {
+      menu {
+        top: -4rem;
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
     }
   }
 
