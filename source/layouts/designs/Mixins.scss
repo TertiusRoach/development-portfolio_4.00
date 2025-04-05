@@ -1,33 +1,21 @@
 //--|🠊 Mixins.scss 🠈|--//
 @use './Palettes.scss';
 
-//--|🠋 index.scss 🠋|--//
+//--|🠋 Container Transitions 🠋|--//
 @mixin header-transition {
   header {
-    // transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out;
+    @extend %header-transition;
 
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
-
-      &[id*='landing'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
-      }
-
-      &[id*='overtime'],
-      &[id*='ticketing'],
-      &[id*='hyperlink'] {
-        section {
-          overflow: hidden;
-          clip-path: polygon(0% 0, 100% 0, 100% 2rem, 0% 2rem);
-          transition: clip-path 0.25s ease-in-out, max-height 0.5s ease-in-out;
-        }
-      }
-
       menu {
         top: 0rem;
       }
+      section {
+        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+        transition: clip-path 0.25s ease-in-out, max-height 0.5s ease-in-out;
+      }
     }
-
     &[class*='expanded'] {
       backdrop-filter: blur(2rem);
       menu {
@@ -37,7 +25,8 @@
         clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       }
     }
-
+  }
+  %header-transition {
     menu {
       position: relative;
       transition: top 0.25s ease-in-out;
@@ -47,6 +36,7 @@
     }
   }
 }
+
 @mixin sidebar-transition {
   //--|🠋 Leftbar & Rightbar 🠋|--//
   aside {
