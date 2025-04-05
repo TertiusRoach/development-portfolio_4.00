@@ -1,9 +1,11 @@
 //--|🠊 LandingHeader.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
+/*
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+*/
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
