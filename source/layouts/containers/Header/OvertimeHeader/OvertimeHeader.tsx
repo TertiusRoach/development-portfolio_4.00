@@ -43,9 +43,6 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         style={defineButton('features', { pageName, blockName })}
       />
       <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
-
-      {/* <MenuFeatures style={{ demoView: 'overtime', blockName: blockName, pageName: pageName }} /> */}
-      {/* <menu></menu> */}
       <section></section>
     </header>
   );
