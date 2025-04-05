@@ -9,7 +9,8 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import ButtonDefault from '../../../components/Button/default/Button.default';
-import SectionFeatures from '../../../components/Section/features/Section.features';
+import SectionPreview from '../../../components/Section/preview/Section.preview';
+// import SectionFeatures from '../../../components/Section/features/Section.features';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -41,20 +42,20 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         text={''}
         type="button"
         onClick={() => expandHeader('overtime')}
-        style={defineButton('features', { pageName, blockName })}
+        style={defineButton('preview', { pageName, blockName })}
       />
       <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
-      <SectionFeatures info={info} />
+      <SectionPreview info={info} />
     </header>
   );
 };
 export default OvertimeHeader;
 
-export function defineButton(button: 'features', info: { blockName: string; pageName: string }) {
+export function defineButton(button: 'preview', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'features':
+    case 'preview':
       return {
         fontSize: '<h4>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
