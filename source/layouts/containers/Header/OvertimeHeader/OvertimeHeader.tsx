@@ -45,7 +45,6 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       />
       <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
       <SectionFeatures info={info} />
-      {/* <section></section> */}
     </header>
   );
 };
@@ -78,6 +77,6 @@ export function expandHeader(pageName: string) {
   } else if (element.classList.contains('expanded')) {
     element.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
     element.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-    // setTimeout(() => {}, 1000);
+    // setTimeout(() => {}, 5000);
   }
 }

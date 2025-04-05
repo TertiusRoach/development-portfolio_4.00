@@ -39,11 +39,9 @@
     grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
 
-  section {
+  section[class*='features'] {
     z-index: 0;
     grid-area: 1 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-
-    background: blue;
   }
 }
 @mixin mobile-portrait {
@@ -52,7 +50,7 @@
 
 header[id*='overtime'] {
   display: grid;
-  @extend %fading-section;
+
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -61,35 +59,5 @@ header[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-  }
-}
-%fading-section {
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  &.expanded {
-    section {
-      animation: fadeIn 0.5s forwards;
-    }
-  }
-
-  &.collapsed {
-    section {
-      animation: fadeOut 0.5s forwards;
-    }
   }
 }

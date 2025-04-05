@@ -42,12 +42,10 @@ export function defineButton(
   }
 }
 
-export function animateGrid(
-  action: 'highlight' | 'downplay',
-  division: 'overtime' | 'ticketing' | 'hyperlink',
-  pageName: 'landing' | string
-) {
-  const element = document.querySelector(`#${pageName}-${division}`) as HTMLElement;
+export function animateGrid(action: 'highlight' | 'downplay', division: 'overtime' | 'ticketing' | 'hyperlink') {
+  const element = document.querySelector(`#preview-${division}`) as HTMLElement;
+  // console.log(`#${pageName}-${division}`);
+
   switch (action) {
     case 'highlight':
       if (element.classList.contains('downplay')) {

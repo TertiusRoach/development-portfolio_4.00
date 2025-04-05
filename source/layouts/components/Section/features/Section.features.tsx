@@ -47,12 +47,12 @@ const SectionFeatures: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="features-section">
-      <div id="landing-overtime" className="downplay" onMouseLeave={() => animateGrid('downplay', 'overtime', pageName)}>
+      <div id="preview-overtime" className="downplay" onMouseLeave={() => animateGrid('downplay', 'overtime')}>
         <header className="track-day">
           <h3 className="display-3">Track a Day</h3>
         </header>
 
-        <picture className="track-day" onMouseEnter={() => animateGrid('highlight', 'overtime', pageName)}>
+        <picture className="track-day" onMouseEnter={() => animateGrid('highlight', 'overtime')}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
 
@@ -77,12 +77,12 @@ const SectionFeatures: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div id="landing-ticketing" className="downplay" onMouseLeave={() => animateGrid('downplay', 'ticketing', pageName)}>
+      <div id="preview-ticketing" className="downplay" onMouseLeave={() => animateGrid('downplay', 'ticketing')}>
         <header className="log-ticket">
           <h3 className="display-3">Log a Ticket</h3>
         </header>
 
-        <picture className="log-ticket" onMouseEnter={() => animateGrid('highlight', 'ticketing', pageName)}>
+        <picture className="log-ticket" onMouseEnter={() => animateGrid('highlight', 'ticketing')}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
 
@@ -106,12 +106,12 @@ const SectionFeatures: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div id="landing-hyperlink" className="downplay" onMouseLeave={() => animateGrid('downplay', 'hyperlink', pageName)}>
+      <div id="preview-hyperlink" className="downplay" onMouseLeave={() => animateGrid('downplay', 'hyperlink')}>
         <header className="find-link">
           <h3 className="display-3">Find a Link</h3>
         </header>
 
-        <picture className="find-link" onMouseEnter={() => animateGrid('highlight', 'hyperlink', pageName)}>
+        <picture className="find-link" onMouseEnter={() => animateGrid('highlight', 'hyperlink')}>
           <img src={findLink} alt="find-a-link" />
         </picture>
 
