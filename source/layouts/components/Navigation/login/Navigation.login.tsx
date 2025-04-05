@@ -28,14 +28,6 @@ const NavigationLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const pageName = info.identification as 'landing';
 
-  //--|🠋 Local Input States 🠋|--//
-  // let { email, setEmail } = useEmail();
-  // let { password, setPassword } = usePassword();
-
-  //--|🠋 Action States 🠋|--//
-  // let [submit, setSubmit] = useState(false);
-  // let [attempts, setAttempts] = useState(0);
-
   const handleLogin = async () => {
     /*
     event.preventDefault();
