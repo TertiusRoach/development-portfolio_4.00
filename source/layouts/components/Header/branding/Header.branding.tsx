@@ -11,7 +11,6 @@ import ArticleSelection from '../../Article/selection/Article.selection';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-// import { scaleImage } from './Division_selection';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -23,7 +22,7 @@ interface InfoProps {
 }
 const HeaderBranding: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  const pageName = info.identification as 'landing';
 
   useEffect(() => {}, [pageName, blockName]);
 
