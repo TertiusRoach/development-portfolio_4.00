@@ -212,7 +212,7 @@
   }
 }
 
-//--|🠋| Button Design |🠋|--//
+//--|🠋 Button Design 🠋|--//
 @mixin button-presets {
   cursor: default;
   div {
@@ -304,8 +304,8 @@
   }
 }
 
-//--|🠋| Button.default |🠋|--//
-@mixin button-shading {
+//--|🠊 Button.default 🠈|--//
+@mixin button-default {
   &[class*='landing'] {
     &[class*='dark'] {
       background: Palettes.$indexLand-dark;
@@ -677,29 +677,8 @@
     @extend %transition-shading;
   }
 }
-%override-shading {
-  &[class*='icon'] {
-    background: none !important;
-  }
-}
-%transition-shading {
-  &[class*='dark']:hover,
-  &[class*='light']:hover,
-  &[class*='medium']:hover {
-    transition: background 0.25s ease-in-out;
-    div {
-      transition: filter 0.25s ease-in-out;
-      * {
-        transition: color 0.25s ease-in-out;
-      }
-      img {
-        transition: background 0.25s ease-in-out;
-      }
-    }
-  }
-}
 
-//--|🠋| Button.grade |🠋|--//
+//--|🠊 Button.grade 🠈|--//
 @mixin button-grading {
   &[class*='landing'] {
     &[class*='dark'] {
@@ -1242,9 +1221,32 @@
     @extend %transition-grading;
   }
 }
+
+%override-shading {
+  &[class*='icon'] {
+    background: none !important;
+  }
+}
 %override-grading {
   &[class*='icon'] {
     background: none !important;
+  }
+}
+
+%transition-shading {
+  &[class*='dark']:hover,
+  &[class*='light']:hover,
+  &[class*='medium']:hover {
+    transition: background 0.25s ease-in-out;
+    div {
+      transition: filter 0.25s ease-in-out;
+      * {
+        transition: color 0.25s ease-in-out;
+      }
+      img {
+        transition: background 0.25s ease-in-out;
+      }
+    }
   }
 }
 %transition-grading {

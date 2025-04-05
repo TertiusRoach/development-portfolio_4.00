@@ -1,12 +1,12 @@
-//--|🠊 Button.grade.tsx 🠈|--//
+//--|🠊 Button.grading.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Button.grade.scss';
+import './Button.grading.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { scaleImage } from './Button_grade';
+import { scaleImage } from './Button_grading';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {

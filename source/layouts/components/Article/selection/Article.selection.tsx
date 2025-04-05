@@ -6,7 +6,7 @@ import './Article.selection.scss';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonGrade from '../../Button/grade/Button.grade';
+import ButtonGrade from '../../Button/grading/Button.grading';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//

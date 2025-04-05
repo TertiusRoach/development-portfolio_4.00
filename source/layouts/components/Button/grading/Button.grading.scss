@@ -1,4 +1,4 @@
-//--|🠊 Button.grade.scss 🠈|--//
+//--|🠊 Button.grading.scss 🠈|--//
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 @forward '../../../designs/Mixins.scss';
@@ -13,8 +13,8 @@ button[class*='grade'] {
   height: 100%;
 
   @include Mixins.button-presets();
-  @include Mixins.button-grading();
   @include Mixins.button-spacing();
+  @include Mixins.button-grading();
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
