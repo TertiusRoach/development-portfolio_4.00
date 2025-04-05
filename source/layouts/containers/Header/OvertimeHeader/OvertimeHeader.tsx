@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import ButtonDefault from '../../../components/Button/default/Button.default';
+import SectionFeatures from '../../../components/Section/features/Section.features';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -39,11 +40,12 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       <ButtonDefault
         text={''}
         type="button"
-        // onClick={() => viewWord('login')}
+        onClick={() => expandHeader('overtime')}
         style={defineButton('features', { pageName, blockName })}
       />
       <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
-      <section></section>
+      <SectionFeatures info={info} />
+      {/* <section></section> */}
     </header>
   );
 };
@@ -65,5 +67,17 @@ export function defineButton(button: 'features', info: { blockName: string; page
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/94b9b154ef383796b740c0fda2c413bf04b018c1/source/assets/svg-files/overtime-page/cog.svg',
       };
+  }
+}
+
+export function expandHeader(pageName: string) {
+  const element = document.querySelector(`#${pageName}-header`) as HTMLElement;
+  if (element.classList.contains('collapsed')) {
+    element.classList.remove('collapsed'); //--|🠈 Remove '.collapsed' 🠈|--//
+    element.classList.toggle('expanded'); //--|🠈 Toggle '.expanded' 🠈|--//
+  } else if (element.classList.contains('expanded')) {
+    element.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
+    element.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
+    // setTimeout(() => {}, 1000);
   }
 }
