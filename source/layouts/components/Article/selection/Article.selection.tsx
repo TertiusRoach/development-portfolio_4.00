@@ -12,7 +12,7 @@ import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 // import { viewDemo, openApps } from '../../../..';
-import { viewBlock, viewText, axiosError } from '../../../../pages/landing';
+import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 import { defineButton, viewDemo, hideFigure, showFigure, showMain } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 

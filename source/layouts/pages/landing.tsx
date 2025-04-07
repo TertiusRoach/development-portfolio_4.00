@@ -8,21 +8,21 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from '../modules/context/EmailContext';
-import { PasswordProvider } from '../modules/context/PasswordContext';
+import { EmailProvider } from '../../modules/context/EmailContext';
+import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-import LandingMain from '../layouts/containers/Main/LandingMain/LandingMain';
-import LandingHeader from '../layouts/containers/Header/LandingHeader/LandingHeader';
-import LandingFooter from '../layouts/containers/Footer/LandingFooter/LandingFooter';
-import LandingOverlay from '../layouts/containers/Overlay/LandingOverlay/LandingOverlay';
-import LandingLeftbar from '../layouts/containers/Leftbar/LandingLeftbar/LandingLeftbar';
-import LandingRightbar from '../layouts/containers/Rightbar/LandingRightbar/LandingRightbar';
+import LandingMain from '../containers/Main/LandingMain/LandingMain';
+import LandingHeader from '../containers/Header/LandingHeader/LandingHeader';
+import LandingFooter from '../containers/Footer/LandingFooter/LandingFooter';
+import LandingOverlay from '../containers/Overlay/LandingOverlay/LandingOverlay';
+import LandingLeftbar from '../containers/Leftbar/LandingLeftbar/LandingLeftbar';
+import LandingRightbar from '../containers/Rightbar/LandingRightbar/LandingRightbar';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../modules/utilities/getResolution';
-import getOrientation from '../modules/utilities/getOrientation';
-import getIdentification from '../modules/utilities/getIdentification';
+import getResolution from '../../modules/utilities/getResolution';
+import getOrientation from '../../modules/utilities/getOrientation';
+import getIdentification from '../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
 function Landing() {
   let information = {

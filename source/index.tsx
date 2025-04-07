@@ -1,6 +1,6 @@
 //--|🠊 source/script/index.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './styles/index.scss';
+import './layouts/styles/index.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
@@ -8,10 +8,10 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Containers 🠋|--//
-import Landing from './pages/landing';
-import Overtime from './pages/overtime';
-import Ticketing from './pages/ticketing';
-import Hyperlink from './pages/hyperlink';
+import Landing from './layouts/pages/landing';
+import Overtime from './layouts/pages/overtime';
+import Ticketing from './layouts/pages/ticketing';
+import Hyperlink from './layouts/pages/hyperlink';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Component Mapping 🠋|--//
 const components: { [key: string]: React.ElementType } = {

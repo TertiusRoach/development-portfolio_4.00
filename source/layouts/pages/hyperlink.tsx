@@ -1,26 +1,26 @@
-//--|🠊 source/script/ticketing.tsx 🠈|--//
+//--|🠊 source/script/hyperlink.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { EmailProvider } from '../modules/context/EmailContext';
-import { PasswordProvider } from '../modules/context/PasswordContext';
+import { EmailProvider } from '../../modules/context/EmailContext';
+import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
 
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../modules/utilities/getResolution';
-import getOrientation from '../modules/utilities/getOrientation';
-import getIdentification from '../modules/utilities/getIdentification';
+import getResolution from '../../modules/utilities/getResolution';
+import getOrientation from '../../modules/utilities/getOrientation';
+import getIdentification from '../../modules/utilities/getIdentification';
 //--|🠉 Utilities 🠉|--//
-function Ticketing() {
+function Hyperlink() {
   let information = {
     resolution: `${getResolution()}`,
     orientation: `${getOrientation()}`,
-    identification: 'ticketing' as 'ticketing',
+    identification: 'hyperlink' as 'hyperlink',
   };
 
   return (
@@ -41,4 +41,4 @@ function Ticketing() {
     </>
   );
 }
-export default Ticketing;
+export default Hyperlink;

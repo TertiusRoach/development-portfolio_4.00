@@ -14,7 +14,7 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { animateGrid, defineButton } from './Section_launch';
-import { viewBlock, viewText, axiosError } from '../../../../pages/landing';
+import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';

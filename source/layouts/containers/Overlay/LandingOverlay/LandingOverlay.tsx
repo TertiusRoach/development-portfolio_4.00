@@ -17,7 +17,7 @@ import ArticleSelection from '../../../components/Article/selection/Article.sele
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, outputDisplay } from '../../../../pages/landing';
+import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
 //--|🠉 Functions 🠉|--//
 

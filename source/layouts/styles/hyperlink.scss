@@ -1,11 +1,11 @@
 //--|🠊 styles/hyperlink.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../layouts/containers/Header/HyperlinkHeader/HyperlinkHeader.scss';
-// @use '../layouts/containers/Main/HyperlinkMain/HyperlinkMain.scss';
-// @use '../layouts/containers/Footer/HyperlinkFooter/HyperlinkFooter.scss';
-// @use '../layouts/containers/Overlay/HyperlinkOverlay/HyperlinkOverlay.scss';
-// @use '../layouts/containers/Leftbar/HyperlinkLeftbar/HyperlinkLeftbar.scss';
-// @use '../layouts/containers/Rightbar/HyperlinkRightbar/HyperlinkRightbar.scss';
+@use '../containers/Header/HyperlinkHeader/HyperlinkHeader.scss';
+// @use '../containers/Main/HyperlinkMain/HyperlinkMain.scss';
+// @use '../containers/Footer/HyperlinkFooter/HyperlinkFooter.scss';
+// @use '../containers/Overlay/HyperlinkOverlay/HyperlinkOverlay.scss';
+// @use '../containers/Leftbar/HyperlinkLeftbar/HyperlinkLeftbar.scss';
+// @use '../containers/Rightbar/HyperlinkRightbar/HyperlinkRightbar.scss';
 
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {

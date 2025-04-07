@@ -1,8 +1,8 @@
 //--|🠊 index.scss 🠈|--//
 //--|🠋 Designs 🠋|--//
-@use '../layouts/designs/Global.scss';
-@use '../layouts/designs/Mixins.scss';
-@use '../layouts/designs/Palettes.scss';
+@use '../designs/Global.scss';
+@use '../designs/Mixins.scss';
+@use '../designs/Palettes.scss';
 
 //--|🠋 Applications 🠋|--//
 @use './landing.scss';

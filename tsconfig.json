@@ -13,6 +13,6 @@
     "strictNullChecks": true,
     "jsx": "react"
   },
-  "include": ["source/", "source/mods/*", "source/pages/*", "source/tools/*"],
+  "include": ["source/", "source/mods/*", "source/layouts/pages/*", "source/tools/*"],
   "exclude": ["node_modules/"]
 }

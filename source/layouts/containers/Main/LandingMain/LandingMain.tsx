@@ -20,7 +20,7 @@ import NavigationPassword from '../../../components/Navigation/password/Navigati
 import NavigationRegister from '../../../components/Navigation/register/Navigation.register';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, outputDisplay } from '../../../../pages/landing';
+import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {

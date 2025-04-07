@@ -14,7 +14,7 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 import ListCountdown from '../../List/countdown/List.countdown';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, axiosError } from '../../../../pages/landing';
+import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
   info: {
