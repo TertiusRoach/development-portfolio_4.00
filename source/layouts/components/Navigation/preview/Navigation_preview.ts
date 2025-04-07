@@ -11,7 +11,7 @@ export function defineButton(button: 'preview', info: { blockName: string; pageN
 
         className: button,
         blockName: blockName as 'header',
-        pageName: 'overtime' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
+        pageName: pageName as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bceb9b5c3c0d1fb7db1578aa69cd781471337a19/source/assets/svg-files/overtime-page/eye.svg',
       };

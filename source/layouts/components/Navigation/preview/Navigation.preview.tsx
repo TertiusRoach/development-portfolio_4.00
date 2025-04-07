@@ -37,7 +37,7 @@ const NavigationPreview: React.FC<InfoProps> = ({ info }) => {
       <ButtonDefault
         text={''}
         type="button"
-        onClick={() => expandHeader('overtime')}
+        onClick={() => expandHeader(pageName)}
         style={defineButton('preview', { pageName, blockName })}
       />
     </nav>
