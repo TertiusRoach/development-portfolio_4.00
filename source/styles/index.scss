@@ -11,15 +11,15 @@
 @use './hyperlink.scss';
 
 body {
-  overflow: hidden;
-  transition: transform 1s ease-in-out;
+  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
+  @include Mixins.body-transition();
+  // transition: transform 1s ease-in-out;
   div[id*='landing'],
   div[id*='overtime'],
   div[id*='ticketing'],
   div[id*='hyperlink'] {
-    height: 100vh; //--|🠈 Force body's height to fit the screen 🠈|--//
-    display: grid; //--|🠈 Hide the scrollbar completely 🠈|--//
-
+    display: grid;
+    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
     @include Mixins.header-transition();
     @include Mixins.footer-transition();
     @include Mixins.overlay-transition();

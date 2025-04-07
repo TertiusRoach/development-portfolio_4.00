@@ -11,9 +11,9 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewDemo, openApps } from '../../../..';
+// import { viewDemo, openApps } from '../../../..';
 import { viewBlock, viewText, axiosError } from '../../../../pages/landing';
-import { defineButton, hideFigure, showFigure, showMain } from './Article_selection';
+import { defineButton, viewDemo, hideFigure, showFigure, showMain } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -29,10 +29,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
   const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
 
-  useEffect(() => {
-    // toggleOverlay('left', 'leave');
-    // toggleOverlay('right', 'leave');
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   let brandImage =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
@@ -80,19 +77,19 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <ButtonGrade
             type="button"
             text={'Track a Day'}
-            onClick={() => viewDemo('track-day')}
+            onClick={() => viewDemo('overtime')}
             style={defineButton('track-day', { pageName, blockName })}
           />
           <ButtonGrade
             type="button"
             text={'Log a Ticket'}
-            onClick={() => viewDemo('log-ticket')}
+            onClick={() => viewDemo('ticketing')}
             style={defineButton('log-ticket', { pageName, blockName })}
           />
           <ButtonGrade
             type="button"
             text={'Find a Link'}
-            onClick={() => viewDemo('find-link')}
+            onClick={() => viewDemo('hyperlink')}
             style={defineButton('find-link', { pageName, blockName })}
           />
         </nav>

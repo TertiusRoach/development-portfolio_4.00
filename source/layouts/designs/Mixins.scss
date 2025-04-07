@@ -2,17 +2,37 @@
 @use './Palettes.scss';
 
 //--|🠋 Container Transitions 🠋|--//
+@mixin body-transition {
+  div[id*='body'] {
+    transition: height 1s ease-in-out;
+    &[class*='visible'] {
+      height: 100vh; //--|🠈 Scale tag to Screen 🠈|--//
+    }
+    &[class*='hidden'] {
+      height: 0vh; //--|🠈 Scale tag to Zero 🠈|--//
+    }
+  }
+  %body-transition {
+    /*
+    menu {
+      position: relative;
+      transition: top 0.25s ease-in-out;
+    }
+    section {
+      transition: clip-path 0.25s ease-in-out;
+    }
+    */
+  }
+}
 @mixin header-transition {
   header {
-    @extend %header-transition;
-
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
       menu {
         top: 0rem;
       }
       section {
-        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+        clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
         transition: clip-path 0.25s ease-in-out, max-height 0.5s ease-in-out;
       }
     }
@@ -25,6 +45,7 @@
         clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       }
     }
+    @extend %header-transition;
   }
   %header-transition {
     menu {
@@ -32,11 +53,10 @@
       transition: top 0.25s ease-in-out;
     }
     section {
-      transition: clip-path 0.25s ease-in-out;
+      transition: clip-path 0.5s ease-in-out;
     }
   }
 }
-
 @mixin sidebar-transition {
   //--|🠋 Leftbar & Rightbar 🠋|--//
   aside {

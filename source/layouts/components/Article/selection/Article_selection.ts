@@ -147,6 +147,30 @@ export function showMain(view: 'register' | 'login', pageName: string) {
       break;
   }
 }
-/*
-export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link', pageName: string) {}
-*/
+
+export function viewDemo(view: 'overtime' | 'ticketing' | 'hyperlink') {
+  const element = document.querySelector(`#${view}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
+  const active = document.querySelector("div[id*='body'].visible") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.visible' class 🠈|--//
+
+  if (!(element instanceof HTMLElement)) {
+    //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
+    console.warn(`Element for view "${view}" not found.`);
+    return;
+  }
+
+  if (active) {
+    //--|🠉 If there's a visible element, hide it 🠈|--//
+    active.classList.add('hidden'); //--|🠈 Hide it by adding 'hidden' 🠈|--//
+    active.classList.remove('visible'); //--|🠈 And remove 'visible' class 🠈|--//
+  }
+
+  if (element.classList.contains('hidden')) {
+    //--|🠉 Show the selected view only if it’s currently hidden 🠈|--//
+    element.classList.remove('hidden'); //--|🠈 Remove '.hidden' 🠈|--//
+    element.classList.add('visible'); //--|🠈 Toggle '.visible' 🠈|--//
+  } else if (element.classList.contains('visible')) {
+    //--|🠉 Optional toggle: allow hiding the current element again 🠈|--//
+    element.classList.add('hidden'); //--|🠈 Toggle '.hidden' 🠈|--//
+    element.classList.remove('visible'); //--|🠈 Remove '.visible' 🠈|--//
+  }
+}
