@@ -13,9 +13,9 @@ import OvertimeHeader from '../containers/Header/OvertimeHeader/OvertimeHeader';
 import OvertimeFooter from '../containers/Footer/OvertimeFooter/OvertimeFooter';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
-import getResolution from '../../modules/utilities/getResolution';
-import getOrientation from '../../modules/utilities/getOrientation';
-import getIdentification from '../../modules/utilities/getIdentification';
+import getResolution from '../../modules/tools/getResolution';
+import getOrientation from '../../modules/tools/getOrientation';
+import getIdentification from '../../modules/tools/getIdentification';
 //--|🠉 Utilities 🠉|--//
 function Overtime() {
   let information = {
