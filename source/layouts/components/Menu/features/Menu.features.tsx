@@ -23,7 +23,7 @@ interface InfoProps {
   };
 }
 const MenuFeatures: React.FC<InfoProps> = ({ style }) => {
-  const blockName = style.blockName;
+  const blockName = style.blockName as 'header';
   const pageName = style.pageName as 'overtime' | 'ticketing' | 'hyperlink';
 
   const handleFeatures = async () => {};

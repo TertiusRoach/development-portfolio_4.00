@@ -29,13 +29,10 @@ const HyperlinkHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <NavigationPreview info={info} />
-      <DivisionIdentity info={info} />
-      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
       <SectionPreview info={info} />
-
-      {/* <menu></menu> */}
-      {/* <section></section> */}
+      <DivisionIdentity info={info} />
+      <NavigationPreview info={info} />
+      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
     </header>
   );
 };

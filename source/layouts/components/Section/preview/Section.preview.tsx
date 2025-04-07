@@ -11,7 +11,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { animateGrid, defineButton } from './Section_preview';
+import { togglePreview, defineButton } from './Section_preview';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
@@ -19,8 +19,8 @@ import ButtonDefault from '../../Button/default/Button.default';
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
   };
 }
 const SectionPreview: React.FC<InfoProps> = ({ info }) => {
@@ -28,10 +28,7 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  //--|🠋 State Management 🠋|--//
-  const [gridState, setGridState] = useState<'downplay' | 'highlight'>('downplay');
-
-  const handleFeatures = async () => {};
+  const handlePreview = async () => {};
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -44,12 +41,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="preview-section">
-      <div id="preview-overtime" className="downplay" onMouseLeave={() => animateGrid('downplay', 'overtime')}>
+      <div className="preview-overtime downplay" onMouseLeave={() => togglePreview('overtime', pageName)}>
         <header className="track-day">
           <h3 className="display-3">Track a Day</h3>
         </header>
 
-        <picture className="track-day" onMouseEnter={() => animateGrid('highlight', 'overtime')}>
+        <picture className="track-day" onMouseEnter={() => togglePreview('overtime', pageName)}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
 
@@ -74,12 +71,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div id="preview-ticketing" className="downplay" onMouseLeave={() => animateGrid('downplay', 'ticketing')}>
+      <div className="preview-ticketing downplay" onMouseLeave={() => togglePreview('ticketing', pageName)}>
         <header className="log-ticket">
           <h3 className="display-3">Log a Ticket</h3>
         </header>
 
-        <picture className="log-ticket" onMouseEnter={() => animateGrid('highlight', 'ticketing')}>
+        <picture className="log-ticket" onMouseEnter={() => togglePreview('ticketing', pageName)}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
 
@@ -103,12 +100,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div id="preview-hyperlink" className="downplay" onMouseLeave={() => animateGrid('downplay', 'hyperlink')}>
+      <div className="preview-hyperlink downplay" onMouseLeave={() => togglePreview('hyperlink', pageName)}>
         <header className="find-link">
           <h3 className="display-3">Find a Link</h3>
         </header>
 
-        <picture className="find-link" onMouseEnter={() => animateGrid('highlight', 'hyperlink')}>
+        <picture className="find-link" onMouseEnter={() => togglePreview('hyperlink', pageName)}>
           <img src={findLink} alt="find-a-link" />
         </picture>
 

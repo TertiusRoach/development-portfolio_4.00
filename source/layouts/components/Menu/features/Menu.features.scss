@@ -4,15 +4,20 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-template: 1fr / 3rem repeat(3, 1fr) 3rem; //~~|🠊 rows / columns 🠈|~~//
-  background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
+  // background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
+
+  /*
   li {
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
 menu[class*='features'] {
   display: grid;
+  @extend %features-design;
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -20,5 +25,16 @@ menu[class*='features'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+%features-design {
+  &[class*='overtime'] {
+    background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
+  }
+  &[class*='ticketing'] {
+    background: linear-gradient(90deg, rgba(Palettes.$logTicket-light, 1) 0%, rgba(Palettes.$logTicket-dark, 1) 12.5%);
+  }
+  &[class*='hyperlink'] {
+    background: linear-gradient(90deg, rgba(Palettes.$findLink-light, 1) 0%, rgba(Palettes.$findLink-dark, 1) 12.5%);
   }
 }

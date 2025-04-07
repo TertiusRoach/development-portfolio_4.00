@@ -42,22 +42,22 @@ export function defineButton(
   }
 }
 
-export function animateGrid(action: 'highlight' | 'downplay', division: 'overtime' | 'ticketing' | 'hyperlink') {
-  const element = document.querySelector(`#preview-${division}`) as HTMLElement;
-  // console.log(`#${pageName}-${division}`);
+export function togglePreview(
+  // action: 'highlight' | 'downplay',
+  division: 'overtime' | 'ticketing' | 'hyperlink',
+  pageName: 'overtime' | 'ticketing' | 'hyperlink' | string
+) {
+  const element = document.querySelector(`#${pageName}-header section .preview-${division}`) as HTMLElement;
+  if (!(element instanceof HTMLElement)) return;
 
-  switch (action) {
-    case 'highlight':
-      if (element.classList.contains('downplay')) {
-        element.classList.remove('downplay'); //--|🠈 Remove '.downplay' 🠈|--//
-        element.classList.toggle('highlight'); //--|🠈 Toggle '.highlight' 🠈|--//
-      }
-      break;
-    case 'downplay':
-      if (element.classList.contains('highlight')) {
-        element.classList.remove('highlight'); //--|🠈 Remove '.highlight' 🠈|--//
-        element.classList.toggle('downplay'); //--|🠈 Toggle '.downplay' 🠈|--//
-      }
-      break;
+  switch (true) {
+    case element.classList.contains('highlight'):
+      element.classList.remove('highlight'); //--|🠈 Remove '.highlight' 🠈|--//
+      return element.classList.toggle('downplay'); //--|🠈 Toggle '.downplay' 🠈|--//
+    case element.classList.contains('downplay'):
+      element.classList.remove('downplay'); //--|🠈 Remove '.downplay' 🠈|--//
+      return element.classList.toggle('highlight'); //--|🠈 Toggle '.highlight' 🠈|--//
+    default:
+      return element.classList.toggle('highlight'); //--|🠈 Default to highlight if neither class exists 🠈|--//
   }
 }
