@@ -5,10 +5,10 @@
 @mixin body-transition {
   &[id*='body'] {
     transition: height 1s ease-in-out;
-    &[class*='visible'] {
+    &[class*='active'] {
       height: 100vh; //--|🠈 Scale tag to Screen 🠈|--//
     }
-    &[class*='hidden'] {
+    &[class*='asleep'] {
       height: 0vh; //--|🠈 Scale tag to Zero 🠈|--//
     }
   }

@@ -11,7 +11,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { togglePreview, defineButton } from './Section_preview';
+import { defineButton, togglePreview, viewDemo } from './Section_preview';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
@@ -41,12 +41,16 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="preview-section">
-      <div className="preview-overtime downplay" onMouseLeave={() => togglePreview(pageName, 'overtime')}>
+      <div
+        className="preview-overtime downplay"
+        onClick={() => viewDemo(pageName, 'overtime')}
+        onMouseLeave={() => togglePreview(pageName, 'downplay', 'overtime')}
+      >
         <header className="track-day">
           <h3 className="display-3">Track a Day</h3>
         </header>
 
-        <picture className="track-day" onMouseEnter={() => togglePreview(pageName, 'overtime')}>
+        <picture className="track-day" onMouseEnter={() => togglePreview(pageName, 'highlight', 'overtime')}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
 
@@ -62,21 +66,20 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </p>
 
           <nav>
-            <ButtonDefault
-              type="button"
-              text={'View'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('track-day', { pageName, blockName })}
-            />
+            <ButtonDefault type="button" text={'View'} style={defineButton('track-day', { pageName, blockName })} />
           </nav>
         </footer>
       </div>
-      <div className="preview-ticketing downplay" onMouseLeave={() => togglePreview(pageName, 'ticketing')}>
+      <div
+        className="preview-ticketing downplay"
+        onClick={() => viewDemo(pageName, 'ticketing')}
+        onMouseLeave={() => togglePreview(pageName, 'downplay', 'ticketing')}
+      >
         <header className="log-ticket">
           <h3 className="display-3">Log a Ticket</h3>
         </header>
 
-        <picture className="log-ticket" onMouseEnter={() => togglePreview(pageName, 'ticketing')}>
+        <picture className="log-ticket" onMouseEnter={() => togglePreview(pageName, 'highlight', 'ticketing')}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
 
@@ -91,21 +94,20 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </p>
 
           <nav>
-            <ButtonDefault
-              type="button"
-              text={'View'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('log-ticket', { pageName, blockName })}
-            />
+            <ButtonDefault type="button" text={'View'} style={defineButton('log-ticket', { pageName, blockName })} />
           </nav>
         </footer>
       </div>
-      <div className="preview-hyperlink downplay" onMouseLeave={() => togglePreview(pageName, 'hyperlink')}>
+      <div
+        className="preview-hyperlink downplay"
+        onClick={() => viewDemo(pageName, 'hyperlink')}
+        onMouseLeave={() => togglePreview(pageName, 'downplay', 'hyperlink')}
+      >
         <header className="find-link">
           <h3 className="display-3">Find a Link</h3>
         </header>
 
-        <picture className="find-link" onMouseEnter={() => togglePreview(pageName, 'hyperlink')}>
+        <picture className="find-link" onMouseEnter={() => togglePreview(pageName, 'highlight', 'hyperlink')}>
           <img src={findLink} alt="find-a-link" />
         </picture>
 
@@ -120,12 +122,7 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </p>
 
           <nav>
-            <ButtonDefault
-              type="button"
-              text={'View'}
-              // onClick={() => viewBlock('register')}
-              style={defineButton('find-link', { pageName, blockName })}
-            />
+            <ButtonDefault type="button" text={'View'} style={defineButton('find-link', { pageName, blockName })} />
           </nav>
         </footer>
       </div>

@@ -7,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { expandHeader, defineButton } from './Navigation_preview';
+import { toggleHeader, defineButton } from './Navigation_preview';
 import { viewBlock, viewText, axiosError, retrieveEndpoint, viewWord } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -37,7 +37,7 @@ const NavigationPreview: React.FC<InfoProps> = ({ info }) => {
       <ButtonDefault
         text={''}
         type="button"
-        onClick={() => expandHeader(pageName)}
+        onClick={() => toggleHeader(pageName)}
         style={defineButton('preview', { pageName, blockName })}
       />
     </nav>

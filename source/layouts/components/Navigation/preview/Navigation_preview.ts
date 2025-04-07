@@ -18,7 +18,7 @@ export function defineButton(button: 'preview', info: { blockName: string; pageN
   }
 }
 
-export function expandHeader(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
+export function toggleHeader(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
   const element = document.querySelector(`#${pageName}-header`) as HTMLElement;
   if (element.classList.contains('collapsed')) {
     element.classList.remove('collapsed'); //--|🠈 Remove '.collapsed' 🠈|--//
