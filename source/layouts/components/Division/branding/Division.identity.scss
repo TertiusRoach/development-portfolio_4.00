@@ -1,0 +1,52 @@
+//--|🠊 Division.identity.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--//
+  border-bottom-right-radius: 4rem; //--|🠈 Curve Bottom Right Corner 🠈|--//
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  box-shadow: inset 0 0 8px rgba(black, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+
+  img {
+    height: 75%; //--|🠈 width: auto; 🠈|--//
+  }
+}
+@mixin mobile-portrait {
+}
+
+div[class*='identity'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend %identity-design;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+%identity-design {
+  &[class*='overtime'] {
+    background: linear-gradient(135deg, white, Palettes.$trackDay-light) padding-box,
+      //--|🠉 Border  Background 🠉|--//
+      //--|🠋 Element Background 🠋|--//
+      linear-gradient(135deg, Palettes.$trackDay-medium, Palettes.$trackDay-dark) border-box;
+  }
+  &[class*='ticketing'] {
+    background: linear-gradient(135deg, white, Palettes.$logTicket-light) padding-box,
+      //--|🠉 Border  Background 🠉|--//
+      //--|🠋 Element Background 🠋|--//
+      linear-gradient(135deg, Palettes.$logTicket-medium, Palettes.$logTicket-dark) border-box;
+  }
+  &[class*='hyperlink'] {
+    background: linear-gradient(135deg, white, Palettes.$findLink-light) padding-box,
+      //--|🠉 Border  Background 🠉|--//
+      //--|🠋 Element Background 🠋|--//
+      linear-gradient(135deg, Palettes.$findLink-medium, Palettes.$findLink-dark) border-box;
+  }
+}

@@ -1,6 +1,6 @@
 //--|🠊 source/script/index.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './layouts/styles/index.scss';
+import './index.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
@@ -14,14 +14,14 @@ import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Component Mapping 🠋|--//
-const components: { [key: string]: React.ElementType } = {
+const layouts: { [key: string]: React.ElementType } = {
   'landing-body': Landing,
   'overtime-body': Overtime,
   'ticketing-body': Ticketing,
   'hyperlink-body': Hyperlink,
 };
 //--|🠋 Render Components 🠋|--//
-Object.entries(components).forEach(([id, Pages]) => {
+Object.entries(layouts).forEach(([id, Pages]) => {
   const element = document.getElementById(id);
   if (element) {
     ReactDOM.createRoot(element).render(<Pages />);
@@ -59,6 +59,7 @@ Object.entries(components).forEach(([id, Pages]) => {
   */
 });
 
+/*
 export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
   const elementBody = document.getElementsByTagName('body');
   console.log(elementBody);
@@ -73,3 +74,4 @@ export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
       break;
   }
 }
+*/

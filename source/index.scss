@@ -1,18 +1,18 @@
 //--|🠊 index.scss 🠈|--//
 //--|🠋 Designs 🠋|--//
-@use '../designs/Global.scss';
-@use '../designs/Mixins.scss';
-@use '../designs/Palettes.scss';
-
-//--|🠋 Applications 🠋|--//
-@use './landing.scss';
-@use './overtime.scss';
-@use './ticketing.scss';
-@use './hyperlink.scss';
+@use './layouts/designs/Global.scss';
+@use './layouts/designs/Mixins.scss';
+@use './layouts/designs/Palettes.scss';
+//--|🠉 Designs 🠉|--//
+//--|🠋 Styles 🠋|--//
+@use './layouts/styles/landing.scss';
+@use './layouts/styles/overtime.scss';
+@use './layouts/styles/ticketing.scss';
+@use './layouts/styles/hyperlink.scss';
+//--|🠉 Styles 🠉|--//
 
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
-
   /* transition: transform 1s ease-in-out; */
   div[id*='landing'],
   div[id*='overtime'],
