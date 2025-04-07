@@ -239,32 +239,12 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-## Orchestrating Visibility: `.expanded` & `.collapsed`
+## Orchestrating Visibility
 
-These states control the visibility of our layout containers, creating a dynamic and responsive user experience. This workflow aims for a harmonious integration of these elements. React's state management will be crucial for the dynamic switching of the `main` container. jQuery will be used judiciously to enhance interactions where necessary, ensuring a smooth and responsive user experience.
-
-- **`.expanded`**: Reveals the full content of:
-  - `source/layouts/container/Header`: `<header>` elements with the `header` class, providing navigation and contextual information.
-  - `source/layouts/container/Leftbar` / `Rightbar`: `<aside>` elements with `leftbar` or `rightbar` classes, offering supplementary content. `Leftbar` features a default left-to-right swipe animation, while `rightbar` swipes right-to-left.
-  - `source/layouts/container/Footer`: `<footer>` elements with the `footer` class, displaying concluding information or actions.
-  - `source/layouts/container/Main`: `<main>` elements with the `main` class, representing the primary content area. In React, this container will dynamically switch between sibling/sister application components, requiring state management to toggle views.
-- **`.collapsed`**: Hides these elements, streamlining the interface when necessary.
-
-## The Art of Emphasis: `.highlight` & `.downplay`
-
-These states subtly modulate the visual prominence of container elements, guiding the user's focus.
-
-- **`.highlight`**: Emphasizes:
-
-  - `source/layouts/container/Header`: `<header>` elements, highlighting critical actions or navigation.
-  - `source/layouts/container/Footer`: `<footer>` elements, drawing attention to key interactive elements.
-  - `source/layouts/container/Overlay`: `<section>` elements with the `overlay` class. This container, representing the initial screen (like a Google search page), should be visually impactful and straightforward.
-
-- **`.downplay`**: Reduces the visual prominence of elements, creating a visual hierarchy and minimizing distractions.
-
-## Blah Blah Blah: `.hidden` & `.visible`
-
-##
+`.active` & `.asleep`
+`.visible` & `.hidden`
+`.expanded` & `.collapsed`
+`.highlight` & `.downplay`
 
 ---
 
