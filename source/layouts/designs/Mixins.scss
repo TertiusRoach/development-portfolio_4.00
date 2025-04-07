@@ -3,7 +3,7 @@
 
 //--|🠋 Container Transitions 🠋|--//
 @mixin body-transition {
-  div[id*='body'] {
+  &[id*='body'] {
     transition: height 1s ease-in-out;
     &[class*='visible'] {
       height: 100vh; //--|🠈 Scale tag to Screen 🠈|--//
@@ -11,17 +11,6 @@
     &[class*='hidden'] {
       height: 0vh; //--|🠈 Scale tag to Zero 🠈|--//
     }
-  }
-  %body-transition {
-    /*
-    menu {
-      position: relative;
-      transition: top 0.25s ease-in-out;
-    }
-    section {
-      transition: clip-path 0.25s ease-in-out;
-    }
-    */
   }
 }
 @mixin header-transition {
@@ -33,11 +22,11 @@
       }
       section {
         clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
-        transition: clip-path 0.25s ease-in-out, max-height 0.5s ease-in-out;
       }
     }
     &[class*='expanded'] {
       backdrop-filter: blur(2rem);
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       menu {
         top: -4rem;
       }
@@ -46,14 +35,31 @@
       }
     }
     @extend %header-transition;
+    @extend %header-constituents;
   }
   %header-transition {
+    transition: clip-path 0.25s ease-in-out;
     menu {
       position: relative;
       transition: top 0.25s ease-in-out;
     }
     section {
       transition: clip-path 0.5s ease-in-out;
+    }
+  }
+  %header-constituents {
+    &[id*='landing'][class*='collapsed'] {
+      clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+    }
+
+    &[id*='overtime'][class*='collapsed'] {
+      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+    }
+    &[id*='ticketing'][class*='collapsed'] {
+      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+    }
+    &[id*='hyperlink'][class*='collapsed'] {
+      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
     }
   }
 }

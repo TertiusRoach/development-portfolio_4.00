@@ -12,7 +12,7 @@
 
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
-  @include Mixins.body-transition();
+
   // transition: transform 1s ease-in-out;
   div[id*='landing'],
   div[id*='overtime'],
@@ -20,6 +20,8 @@ body {
   div[id*='hyperlink'] {
     display: grid;
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
+
+    @include Mixins.body-transition();
     @include Mixins.header-transition();
     @include Mixins.footer-transition();
     @include Mixins.overlay-transition();
