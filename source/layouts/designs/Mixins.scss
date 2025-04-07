@@ -38,7 +38,7 @@
     @extend %header-constituents;
   }
   %header-transition {
-    transition: clip-path 0.25s ease-in-out;
+    transition: clip-path 0.75s ease-in-out;
     menu {
       position: relative;
       transition: top 0.25s ease-in-out;
