@@ -1,4 +1,4 @@
-//--|🠊 source/script/overtime.tsx 🠈|--//
+//--|🠊 overtime.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -32,14 +32,3 @@ function Overtime() {
   );
 }
 export default Overtime;
-
-export function expandHeader(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
-  const element = document.querySelector(`#${pageName}-header`) as HTMLElement;
-  if (element.classList.contains('collapsed')) {
-    element.classList.remove('collapsed'); //--|🠈 Remove '.collapsed' 🠈|--//
-    element.classList.toggle('expanded'); //--|🠈 Toggle '.expanded' 🠈|--//
-  } else if (element.classList.contains('expanded')) {
-    element.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
-    element.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-  }
-}

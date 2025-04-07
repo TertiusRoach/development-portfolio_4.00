@@ -7,6 +7,10 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import MenuFeatures from '../../../components/Menu/features/Menu.features';
+import SectionPreview from '../../../components/Section/preview/Section.preview';
+import DivisionIdentity from '../../../components/Division/branding/Division.identity';
+import NavigationPreview from '../../../components/Navigation/preview/Navigation.preview';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -25,8 +29,13 @@ const HyperlinkHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <menu></menu>
-      <section></section>
+      <NavigationPreview info={info} />
+      <DivisionIdentity info={info} />
+      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
+      <SectionPreview info={info} />
+
+      {/* <menu></menu> */}
+      {/* <section></section> */}
     </header>
   );
 };

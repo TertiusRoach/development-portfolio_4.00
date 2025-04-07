@@ -1,4 +1,4 @@
-//--|🠊 source/script/ticketing.tsx 🠈|--//
+//--|🠊 ticketing.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -9,7 +9,8 @@ import { EmailProvider } from '../../modules/context/EmailContext';
 import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-
+import TicketingHeader from '../containers/Header/TicketingHeader/TicketingHeader';
+import TicketingFooter from '../containers/Footer/TicketingFooter/TicketingFooter';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../modules/tools/getResolution';
@@ -25,19 +26,8 @@ function Ticketing() {
 
   return (
     <>
-      {/* <EmailProvider>
-        <PasswordProvider>
-          <LandingOverlay info={information} />
-
-          <LandingHeader info={information} />
-
-          <LandingLeftbar info={information} />
-          <LandingMain info={information} />
-          <LandingRightbar info={information} />
-
-          <LandingFooter info={information} />
-        </PasswordProvider>
-      </EmailProvider> */}
+      <TicketingHeader info={information} />
+      {/* <TicketingFooter info={information} /> */}
     </>
   );
 }

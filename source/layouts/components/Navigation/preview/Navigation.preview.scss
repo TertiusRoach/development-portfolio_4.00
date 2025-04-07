@@ -1,0 +1,30 @@
+//--|🠊 Navigation.preview.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  button {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.25s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+nav[class*='preview'] {
+  display: grid;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

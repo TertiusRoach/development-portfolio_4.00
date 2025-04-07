@@ -1,4 +1,4 @@
-//--|🠊 Navigation_password.ts 🠈|--//
+//--|🠊 Navigation_login.ts 🠈|--//
 export function defineButton(button: 'demo', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//

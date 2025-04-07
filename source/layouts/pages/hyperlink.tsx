@@ -1,4 +1,4 @@
-//--|🠊 source/script/hyperlink.tsx 🠈|--//
+//--|🠊 hyperlink.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -9,7 +9,8 @@ import { EmailProvider } from '../../modules/context/EmailContext';
 import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-
+import HyperlinkHeader from '../containers/Header/HyperlinkHeader/HyperlinkHeader';
+import HyperlinkFooter from '../containers/Footer/HyperlinkFooter/HyperlinkFooter';
 //--|🠉 Containers 🠉|--//
 //--|🠋 Utilities 🠋|--//
 import getResolution from '../../modules/tools/getResolution';
@@ -25,19 +26,8 @@ function Hyperlink() {
 
   return (
     <>
-      {/* <EmailProvider>
-        <PasswordProvider>
-          <LandingOverlay info={information} />
-
-          <LandingHeader info={information} />
-
-          <LandingLeftbar info={information} />
-          <LandingMain info={information} />
-          <LandingRightbar info={information} />
-
-          <LandingFooter info={information} />
-        </PasswordProvider>
-      </EmailProvider> */}
+      <HyperlinkHeader info={information} />
+      {/* <HyperlinkFooter info={information} /> */}
     </>
   );
 }
