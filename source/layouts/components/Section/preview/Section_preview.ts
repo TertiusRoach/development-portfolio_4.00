@@ -42,22 +42,16 @@ export function defineButton(
   }
 }
 
-export function togglePreview(
-  // action: 'highlight' | 'downplay',
-  division: 'overtime' | 'ticketing' | 'hyperlink',
-  pageName: 'overtime' | 'ticketing' | 'hyperlink' | string
-) {
+export function togglePreview(pageName: string, division: 'overtime' | 'ticketing' | 'hyperlink') {
   const element = document.querySelector(`#${pageName}-header section .preview-${division}`) as HTMLElement;
   if (!(element instanceof HTMLElement)) return;
 
   switch (true) {
     case element.classList.contains('highlight'):
       element.classList.remove('highlight'); //--|🠈 Remove '.highlight' 🠈|--//
-      return element.classList.toggle('downplay'); //--|🠈 Toggle '.downplay' 🠈|--//
+      return element.classList.add('downplay'); //--|🠈 Toggle '.downplay' 🠈|--//
     case element.classList.contains('downplay'):
       element.classList.remove('downplay'); //--|🠈 Remove '.downplay' 🠈|--//
-      return element.classList.toggle('highlight'); //--|🠈 Toggle '.highlight' 🠈|--//
-    default:
-      return element.classList.toggle('highlight'); //--|🠈 Default to highlight if neither class exists 🠈|--//
+      return element.classList.add('highlight'); //--|🠈 Toggle '.highlight' 🠈|--//
   }
 }

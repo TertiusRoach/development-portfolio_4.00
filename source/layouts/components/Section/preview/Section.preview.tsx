@@ -41,12 +41,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="preview-section">
-      <div className="preview-overtime downplay" onMouseLeave={() => togglePreview('overtime', pageName)}>
+      <div className="preview-overtime downplay" onMouseLeave={() => togglePreview(pageName, 'overtime')}>
         <header className="track-day">
           <h3 className="display-3">Track a Day</h3>
         </header>
 
-        <picture className="track-day" onMouseEnter={() => togglePreview('overtime', pageName)}>
+        <picture className="track-day" onMouseEnter={() => togglePreview(pageName, 'overtime')}>
           <img src={trackDay} alt="track-a-day" />
         </picture>
 
@@ -71,12 +71,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div className="preview-ticketing downplay" onMouseLeave={() => togglePreview('ticketing', pageName)}>
+      <div className="preview-ticketing downplay" onMouseLeave={() => togglePreview(pageName, 'ticketing')}>
         <header className="log-ticket">
           <h3 className="display-3">Log a Ticket</h3>
         </header>
 
-        <picture className="log-ticket" onMouseEnter={() => togglePreview('ticketing', pageName)}>
+        <picture className="log-ticket" onMouseEnter={() => togglePreview(pageName, 'ticketing')}>
           <img src={logTicket} alt="log-a-ticket" />
         </picture>
 
@@ -100,12 +100,12 @@ const SectionPreview: React.FC<InfoProps> = ({ info }) => {
           </nav>
         </footer>
       </div>
-      <div className="preview-hyperlink downplay" onMouseLeave={() => togglePreview('hyperlink', pageName)}>
+      <div className="preview-hyperlink downplay" onMouseLeave={() => togglePreview(pageName, 'hyperlink')}>
         <header className="find-link">
           <h3 className="display-3">Find a Link</h3>
         </header>
 
-        <picture className="find-link" onMouseEnter={() => togglePreview('hyperlink', pageName)}>
+        <picture className="find-link" onMouseEnter={() => togglePreview(pageName, 'hyperlink')}>
           <img src={findLink} alt="find-a-link" />
         </picture>
 
