@@ -10,7 +10,7 @@ export function defineButton(
     case 'prev-week':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -22,7 +22,7 @@ export function defineButton(
     case 'next-week':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
