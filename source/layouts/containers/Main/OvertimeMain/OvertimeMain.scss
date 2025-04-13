@@ -3,9 +3,9 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-  grid-template: repeat(2, 4rem) repeat(7, 1fr) 4rem / 3rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+  grid-template: repeat(2, 4rem) 1fr /* repeat(7, 1fr) */ 4rem / 3rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
-  background: darkred;
+  background: darkgreen;
 }
 @mixin mobile-portrait {
   //--|🠊 display: flex; 🠈|--//
