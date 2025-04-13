@@ -1,14 +1,27 @@
 //--|🠊 OvertimeFooter.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  grid-template: 8rem 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+
+  ol[class*='overtime'] {
+    z-index: 2;
+    padding-left: 8rem;
+    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    // background: darkblue;
+  }
 
   menu {
+    z-index: 2;
     grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
   section {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    z-index: 3;
+    // opacity: 1 !important;
+    grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    background: purple;
   }
 }
 @mixin mobile-portrait {
@@ -16,6 +29,7 @@
 }
 footer[id*='overtime'] {
   display: grid;
+  @extend %background-design;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -24,5 +38,17 @@ footer[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+%background-design {
+  .background {
+    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 25%);
+  }
+  .midground {
+    display: none;
+  }
+  .foreground {
+    display: none;
   }
 }

@@ -7,6 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import ListOvertime from '../../../components/List/overtime/List.overtime';
+
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -25,8 +27,14 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <menu></menu>
+      <ListOvertime block={'<footer>'} info={info} />
+
+      {/* <menu></menu> */}
       <section></section>
+
+      <div className="foreground"></div>
+      <div className="midground"></div>
+      <div className="background"></div>
     </footer>
   );
 };

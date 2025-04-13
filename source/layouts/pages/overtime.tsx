@@ -27,9 +27,9 @@ function Overtime() {
 
   return (
     <>
-      <OvertimeHeader info={information} />
       <OvertimeMain info={information} />
-      {/* <OvertimeFooter info={information} /> */}
+      <OvertimeHeader info={information} />
+      <OvertimeFooter info={information} />
     </>
   );
 }

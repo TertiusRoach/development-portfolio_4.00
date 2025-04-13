@@ -38,6 +38,10 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       <DivisionIdentity info={info} />
       <NavigationPreview info={info} />
       <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
+
+      <div className="foreground"></div>
+      <div className="midground"></div>
+      <div className="background"></div>
     </header>
   );
 };

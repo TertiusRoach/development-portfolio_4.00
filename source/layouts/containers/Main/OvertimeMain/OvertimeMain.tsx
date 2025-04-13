@@ -44,7 +44,9 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <aside className="weeks-aside"></aside>
-      <aside className="leave-aside"></aside>
+      <aside className="leave-aside">
+        <div className="background"></div>
+      </aside>
     </main>
   );
 };

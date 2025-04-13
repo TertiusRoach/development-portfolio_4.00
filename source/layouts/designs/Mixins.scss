@@ -592,6 +592,21 @@
 }
 //--|🠋 button-default 🠋|--//
 %transition-default {
+  &[class*='dark'],
+  &[class*='light'],
+  &[class*='medium'] {
+    transition: background 0.25s ease-in-out;
+    div {
+      transition: filter 0.25s ease-in-out;
+      * {
+        transition: color 0.25s ease-in-out;
+      }
+      img {
+        transition: background 0.25s ease-in-out;
+      }
+    }
+  }
+
   &[class*='dark']:hover,
   &[class*='light']:hover,
   &[class*='medium']:hover {
@@ -1272,26 +1287,27 @@
   &[class*='overtime'] {
     &[class*='dark'] {
       background: Palettes.$trackDay-dark;
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      filter: drop-shadow(0 0 2rem rgba(black, 0.75));
       div {
-        filter: drop-shadow(0 0 4px rgba(white, 0.75));
         * {
           color: Palettes.$trackDay-light;
         }
         img {
           background: Palettes.$trackDay-light;
+          filter: drop-shadow(0 0 4px rgba(black, 0.75));
         }
       }
     }
     &[class*='dark']:hover {
       background: Palettes.$trackDay-light;
       div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        filter: drop-shadow(0 0 1rem rgba(white, 0.75));
         *:hover {
-          color: Palettes.$trackDay-medium;
+          color: Palettes.$trackDay-dark;
         }
         img {
-          background: Palettes.$trackDay-medium;
+          // filter: drop-shadow(0 0 8px rgba(white, 0.5));
+          background: Palettes.$trackDay-dark;
         }
       }
     }
@@ -1545,22 +1561,18 @@
 }
 //--|🠋 button-sharped 🠋|--//
 %transition-sharped {
-  &[class*='dark']:hover,
-  &[class*='light']:hover,
-  &[class*='medium']:hover {
-    transition: background 0.25s ease-in-out;
-    div {
-      transition: filter 0.25s ease-in-out;
-      * {
-        transition: color 0.25s ease-in-out;
-      }
-      img {
-        transition: background 0.25s ease-in-out;
-      }
+  div {
+    transition: filter 0.25s ease-in-out;
+    * {
+      transition: color 0.25s ease-in-out;
+    }
+    img {
+      transition: background 0.25s ease-in-out;
     }
   }
 }
 %override-sharped {
+  overflow: hidden;
   &[class*='icon'],
   &[class*='center'] {
     background: none !important;
