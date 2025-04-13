@@ -1,0 +1,95 @@
+//--|🠊 List.overtime.scss 🠈|--//
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+}
+@mixin mobile-portrait {
+  /*
+  li[class*='clock'] {
+    display: flex;
+    grid-row: 1 / 2; //--|🠊 row-start / row-end 🠈|--//
+    align-items: center;
+    justify-content: center;
+
+    &[class*='days'] {
+      grid-column: 1 / 2; //--|🠊 col-start / col-end 🠈|--//
+
+      &::after {
+        border-style: dashed;
+      }
+    }
+    &[class*='hours'] {
+      grid-column: 2 / 3; //--|🠊 col-start / col-end 🠈|--//
+      &::after {
+        border-style: dashed;
+      }
+    }
+    &[class*='minutes'] {
+      grid-column: 3 / 4; //--|🠊 col-start / col-end 🠈|--//
+      &::after {
+        border-style: dashed;
+      }
+    }
+    &[class*='seconds'] {
+      grid-column: 4 / 5; //--|🠊 col-start / col-end 🠈|--//
+      &::after {
+        border-style: none;
+      }
+    }
+  }
+  */
+}
+
+ol[class*='overtime'] {
+  height: 100%;
+  background: red;
+
+  /*
+  margin: 0;
+  padding: 0;
+  display: inherit; //--|🠈 display: grid; 🠈|--//
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 1rem;
+  list-style-type: none;
+  border-color: white;
+  background: rgba(white, 0);
+  grid-template: 1fr / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
+  transition: background 2s ease-in-out; // Add transitions
+  &:hover {
+    background: rgba(black, 0.5);
+  }
+
+  li {
+    position: relative;
+    span {
+      color: white;
+      cursor: default;
+      user-select: none;
+      position: relative; //--|🠈 Moves the element relative to its normal position. 🠈|--//
+    }
+    &::after {
+      content: '';
+
+      top: 2rem;
+      right: 0rem;
+      bottom: 2rem;
+      border-width: 1px;
+      position: absolute;
+      border-color: white;
+      transition: top 0.25s ease-in-out, bottom 0.25s ease-in-out; // Add transitions
+    }
+    &:hover::after {
+      top: 0; // Extend to the top
+      bottom: 0; // Extend to the bottom
+    }
+  }
+  */
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
