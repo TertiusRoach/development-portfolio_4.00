@@ -1,4 +1,4 @@
-//--|🠊 source/script/index.tsx 🠈|--//
+//--|🠊 index.tsx (Entry Point) 🠈|--//
 //--|🠋 Styles 🠋|--//
 import './index.scss';
 //--|🠉 Styles 🠉|--//
@@ -59,11 +59,8 @@ Object.entries(layouts).forEach(([id, Pages]) => {
   */
 });
 
-/*
 export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
   const elementBody = document.getElementsByTagName('body');
-  console.log(elementBody);
-  //  style="transform: translateY(-300vh); transition: transform 0.5s ease-in-out"
 
   switch (view) {
     case 'track-day':
@@ -74,4 +71,15 @@ export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
       break;
   }
 }
-*/
+export function viewDemo(view: 'track-day' | 'log-ticket' | 'find-link') {
+  const elementBody = document.getElementsByTagName('body');
+
+  switch (view) {
+    case 'track-day':
+      break;
+    case 'log-ticket':
+      break;
+    case 'find-link':
+      break;
+  }
+}
