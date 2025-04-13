@@ -2,10 +2,20 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: block; 🠈|--//
+  //--|🠊 display: grid; 🠈|--//
   grid-template: repeat(2, 4rem) 1fr /* repeat(7, 1fr) */ 4rem / 3rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
-  background: darkgreen;
+  aside[class*='weeks'] {
+    grid-area: 3 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    background-color: white;
+    grid-template: repeat(7, 1fr) / 3rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+  }
+  aside[class*='leave'] {
+    grid-area: 2 / 4 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    grid-template: 4rem repeat(2, 1fr) 8rem / 1fr 3rem; //--|🠊 rows / columns 🠈|--//
+
+    background-color: Palettes.$trackDay-dark;
+  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: flex; 🠈|--//
@@ -49,6 +59,9 @@ main[id*='overtime'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
+  aside {
+    display: inherit; //--|🠈 display: grid; 🠈|--//
+  }
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

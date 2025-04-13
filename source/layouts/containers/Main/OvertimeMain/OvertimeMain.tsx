@@ -41,6 +41,11 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
-  return <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}></main>;
+  return (
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
+      <aside className="weeks-aside"></aside>
+      <aside className="leave-aside"></aside>
+    </main>
+  );
 };
 export default OvertimeMain;
