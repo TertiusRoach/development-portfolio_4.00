@@ -1,13 +1,13 @@
 //--|🠊 List_overtime.ts 🠈|--//
 
 export function defineButton(
-  button: 'next' | 'back' | 'next-month' | 'prev-month',
+  button: 'next-week' | 'prev-week' | 'next-month' | 'prev-month',
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'next':
+    case 'next-week':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
@@ -18,7 +18,7 @@ export function defineButton(
         blockName: blockName as 'header' | 'footer' | 'leftbar',
         imageLink: '',
       };
-    case 'back':
+    case 'prev-week':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
