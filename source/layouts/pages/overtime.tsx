@@ -9,6 +9,7 @@ import { EmailProvider } from '../../modules/context/EmailContext';
 import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
+import OvertimeMain from '../containers/Main/OvertimeMain/OvertimeMain';
 import OvertimeHeader from '../containers/Header/OvertimeHeader/OvertimeHeader';
 import OvertimeFooter from '../containers/Footer/OvertimeFooter/OvertimeFooter';
 //--|🠉 Containers 🠉|--//
@@ -26,7 +27,8 @@ function Overtime() {
 
   return (
     <>
-      <OvertimeHeader info={information} />
+      {/* <OvertimeHeader info={information} /> */}
+      <OvertimeMain info={information} />
       {/* <OvertimeFooter info={information} /> */}
     </>
   );

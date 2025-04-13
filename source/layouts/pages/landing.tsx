@@ -33,7 +33,7 @@ function Landing() {
 
   return (
     <>
-      <EmailProvider>
+      {/* <EmailProvider>
         <PasswordProvider>
           <LandingOverlay info={information} />
           <LandingLeftbar info={information} />
@@ -43,7 +43,7 @@ function Landing() {
           <LandingMain info={information} />
           <LandingFooter info={information} />
         </PasswordProvider>
-      </EmailProvider>
+      </EmailProvider> */}
     </>
   );
 }
