@@ -1287,7 +1287,7 @@
   &[class*='overtime'] {
     &[class*='dark'] {
       background: Palettes.$trackDay-dark;
-      filter: drop-shadow(0 0 2rem rgba(black, 0.75));
+      filter: drop-shadow(0 0 8px rgba(black, 0.75));
       div {
         * {
           color: Palettes.$trackDay-light;
@@ -1301,12 +1301,11 @@
     &[class*='dark']:hover {
       background: Palettes.$trackDay-light;
       div {
-        filter: drop-shadow(0 0 1rem rgba(white, 0.75));
+        filter: drop-shadow(0 0 8px rgba(white, 0.75));
         *:hover {
           color: Palettes.$trackDay-dark;
         }
         img {
-          // filter: drop-shadow(0 0 8px rgba(white, 0.5));
           background: Palettes.$trackDay-dark;
         }
       }

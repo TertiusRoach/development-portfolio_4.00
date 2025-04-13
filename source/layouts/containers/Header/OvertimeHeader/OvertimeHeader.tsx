@@ -31,7 +31,7 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
+    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
       <ListOvertime block={'<header>'} info={info} />
 
       <SectionPreview info={info} />
