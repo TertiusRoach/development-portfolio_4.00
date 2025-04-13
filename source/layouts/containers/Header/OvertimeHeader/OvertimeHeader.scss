@@ -4,7 +4,7 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: repeat(2, 4rem) 1fr 4rem / 8rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
+  grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
   nav[class*='preview'] {
     z-index: 4;
@@ -16,11 +16,12 @@
   }
   ol[class*='overtime'] {
     z-index: 2;
+    padding-left: 8rem;
     grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
   menu[class*='features'] {
     z-index: 1;
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
   section[class*='preview'] {
     z-index: 0;

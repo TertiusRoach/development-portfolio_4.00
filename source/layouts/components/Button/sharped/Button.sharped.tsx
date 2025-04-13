@@ -50,7 +50,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   switch (layoutView) {
     case 'left':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button left-${shadingView} ${pageName}-${className} btn`}>
+        <button type={type} onClick={onClick} className={`sharped-button left-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -65,7 +65,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'right':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button right-${shadingView} ${pageName}-${className} btn`}>
+        <button type={type} onClick={onClick} className={`sharped-button right-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             {scaleWords(fontSize, text)}
             <img
@@ -80,11 +80,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'center':
       return (
-        <button
-          type={type}
-          onClick={onClick}
-          className={`sharped-button center-${shadingView} ${pageName}-${className} btn`}
-        >
+        <button type={type} onClick={onClick} className={`sharped-button center-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -99,7 +95,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'icon':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button icon-${shadingView} ${pageName}-${className} btn`}>
+        <button type={type} onClick={onClick} className={`sharped-button icon-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -113,7 +109,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case 'text':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button text-${shadingView} ${pageName}-${className} btn`}>
+        <button type={type} onClick={onClick} className={`sharped-button text-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>{scaleWords(fontSize, text)}</div>
         </button>
       );

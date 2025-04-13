@@ -8,8 +8,372 @@
 @mixin mobile-portrait {
 }
 
+//--|🠊 Button.sharped.tsx 🠈|--//
+@mixin button-sharped {
+  &[class*='landing'] {
+    &[class*='dark'] {
+      background: Palettes.$indexLand-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(black, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
+        * {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+        }
+      }
+    }
+    &[class*='light'] {
+      background: Palettes.$indexLand-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
+        * {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$indexLand-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$indexLand-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
+        *:hover {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$indexLand-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
+        *:hover {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+          filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$indexLand-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+          filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        }
+      }
+    }
+
+    @extend %override-sharped;
+    @extend %transition-sharped;
+  }
+  &[class*='overtime'] {
+    &[class*='dark'] {
+      background: Palettes.$trackDay-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        * {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
+    }
+    &[class*='light'] {
+      background: Palettes.$trackDay-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        * {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$trackDay-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$trackDay-light;
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        *:hover {
+          color: Palettes.$trackDay-medium;
+        }
+        img {
+          background: Palettes.$trackDay-medium;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$trackDay-dark;
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        * {
+          color: Palettes.$trackDay-medium;
+        }
+        img {
+          background: Palettes.$trackDay-medium;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$trackDay-medium;
+      filter: drop-shadow(0 0 1rem rgba(black, 0.75));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$trackDay-medium;
+        }
+        img {
+          background: Palettes.$trackDay-medium;
+        }
+      }
+    }
+
+    @extend %override-sharped;
+    @extend %transition-sharped;
+  }
+  &[class*='ticketing'] {
+    &[class*='dark'] {
+      background: Palettes.$logTicket-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(black, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); //
+        * {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+    &[class*='light'] {
+      background: Palettes.$logTicket-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
+        * {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$logTicket-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$logTicket-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 0.5)); //
+        *:hover {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$logTicket-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
+        *:hover {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$logTicket-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+
+    @extend %override-sharped;
+    @extend %transition-sharped;
+  }
+  &[class*='hyperlink'] {
+    &[class*='dark'] {
+      background: Palettes.$findLink-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(black, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); //
+        * {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='light'] {
+      background: Palettes.$findLink-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
+        * {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='medium'] {
+      background: Palettes.$findLink-medium;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        * {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$findLink-light;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 0.5)); //
+        *:hover {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='light']:hover {
+      background: Palettes.$findLink-dark;
+      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
+      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); //
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.5));
+        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
+        *:hover {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='medium']:hover {
+      background: Palettes.$findLink-medium;
+      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
+      div {
+        filter: drop-shadow(0 0 8px rgba(black, 0.5));
+        *:hover {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+
+    @extend %override-sharped;
+    @extend %transition-sharped;
+  }
+}
+
 button[class*='sharped'] {
-  @include Mixins.button-sharped(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include button-sharped(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   @include Mixins.button-presets(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   @include Mixins.button-spacing(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
 
@@ -20,5 +384,29 @@ button[class*='sharped'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+
+//--|🠋 button-sharped 🠋|--//
+%transition-sharped {
+  &[class*='dark']:hover,
+  &[class*='light']:hover,
+  &[class*='medium']:hover {
+    transition: background 0.25s ease-in-out;
+    div {
+      transition: filter 0.25s ease-in-out;
+      * {
+        transition: color 0.25s ease-in-out;
+      }
+      img {
+        transition: background 0.25s ease-in-out;
+      }
+    }
+  }
+}
+%override-sharped {
+  &[class*='icon'],
+  &[class*='center'] {
+    background: none !important;
   }
 }

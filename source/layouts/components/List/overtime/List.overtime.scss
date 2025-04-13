@@ -1,60 +1,60 @@
 //--|🠊 List.overtime.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-}
-@mixin mobile-portrait {
-  /*
-  li[class*='clock'] {
-    display: flex;
-    grid-row: 1 / 2; //--|🠊 row-start / row-end 🠈|--//
+  height: 100%;
+
+  li[class*='week'] {
+    display: inherit;
     align-items: center;
     justify-content: center;
 
-    &[class*='days'] {
-      grid-column: 1 / 2; //--|🠊 col-start / col-end 🠈|--//
-
-      &::after {
-        border-style: dashed;
-      }
-    }
-    &[class*='hours'] {
-      grid-column: 2 / 3; //--|🠊 col-start / col-end 🠈|--//
-      &::after {
-        border-style: dashed;
-      }
-    }
-    &[class*='minutes'] {
-      grid-column: 3 / 4; //--|🠊 col-start / col-end 🠈|--//
-      &::after {
-        border-style: dashed;
-      }
-    }
-    &[class*='seconds'] {
-      grid-column: 4 / 5; //--|🠊 col-start / col-end 🠈|--//
-      &::after {
-        border-style: none;
-      }
-    }
+    // border-width: 2px;
+    // border-style: solid;
+    // border-radius: 1rem;
+    // border-color: white;
+    // list-style-type: none;
+    // background: rgba(white, 0);
+    // grid-template: 1fr / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
+    // transition: background 2s ease-in-out; // Add transitions
   }
-  */
 }
+@mixin mobile-portrait {
+  /*
+    &[class*='week'] {
+      &[class*='days'] {
+        grid-column: 1 / 2; //--|🠊 col-start / col-end 🠈|--//
 
-ol[class*='overtime'] {
-  height: 100%;
-  background: red;
+        &::after {
+          border-style: dashed;
+        }
+      }
+      &[class*='hours'] {
+        grid-column: 2 / 3; //--|🠊 col-start / col-end 🠈|--//
+        &::after {
+          border-style: dashed;
+        }
+      }
+      &[class*='minutes'] {
+        grid-column: 3 / 4; //--|🠊 col-start / col-end 🠈|--//
+        &::after {
+          border-style: dashed;
+        }
+      }
+      &[class*='seconds'] {
+        grid-column: 4 / 5; //--|🠊 col-start / col-end 🠈|--//
+        &::after {
+          border-style: none;
+        }
+      }
+    }
+    */
 
   /*
   margin: 0;
   padding: 0;
-  display: inherit; //--|🠈 display: grid; 🠈|--//
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 1rem;
-  list-style-type: none;
-  border-color: white;
-  background: rgba(white, 0);
-  grid-template: 1fr / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
-  transition: background 2s ease-in-out; // Add transitions
+
   &:hover {
     background: rgba(black, 0.5);
   }
@@ -84,6 +84,16 @@ ol[class*='overtime'] {
     }
   }
   */
+}
+
+ol[class*='overtime'] {
+  margin: 0;
+  padding: 0;
+  display: grid;
+
+  // background: Palettes.$trackDay-dark;
+  background: darkgreen;
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

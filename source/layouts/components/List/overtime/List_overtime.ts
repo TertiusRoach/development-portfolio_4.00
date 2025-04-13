@@ -7,17 +7,6 @@ export function defineButton(
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'next-week':
-      return {
-        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
-
-        className: button,
-        pageName: pageName as 'overtime',
-        blockName: blockName as 'header' | 'footer' | 'leftbar',
-        imageLink: '',
-      };
     case 'prev-week':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
@@ -27,7 +16,20 @@ export function defineButton(
         className: button,
         pageName: pageName as 'overtime',
         blockName: blockName as 'header' | 'footer' | 'leftbar',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/f721d1e7f19d271e1764d875c67011d671b41f0f/source/assets/svg-files/overtime-page/prev-week.svg',
+      };
+    case 'next-week':
+      return {
+        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        pageName: pageName as 'overtime',
+        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/f721d1e7f19d271e1764d875c67011d671b41f0f/source/assets/svg-files/overtime-page/next-week.svg',
       };
     case 'next-month':
       return {
@@ -38,7 +40,8 @@ export function defineButton(
         className: button,
         pageName: pageName as 'overtime',
         blockName: blockName as 'header' | 'footer' | 'leftbar',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2a637da3c1af6e9f3f1f89fb0046ce304147d383/source/assets/svg-files/overtime-page/next-month.svg',
       };
     //---//
     case 'prev-month':
@@ -50,7 +53,8 @@ export function defineButton(
         className: button,
         blockName: blockName as 'header' | 'footer' | 'leftbar',
         pageName: pageName as 'overtime',
-        imageLink: '',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2a637da3c1af6e9f3f1f89fb0046ce304147d383/source/assets/svg-files/overtime-page/prev-month.svg',
       };
   }
 }
