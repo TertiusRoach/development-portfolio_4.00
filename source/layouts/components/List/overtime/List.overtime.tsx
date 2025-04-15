@@ -12,7 +12,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import ButtonSharped from '../../Button/sharped/Button.sharped';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { assignBlock, defineButton } from './List_overtime';
+import { defineButton, assignBlock, showWeek } from './List_overtime';
 import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
@@ -23,7 +23,6 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-
 const ListOvertime: React.FC<InfoProps> = ({ block, info }) => {
   const pageName = info.identification as 'overtime';
   const blockName: string = assignBlock(block) as 'header' | 'footer' | 'aside';
@@ -38,7 +37,7 @@ const ListOvertime: React.FC<InfoProps> = ({ block, info }) => {
             <ButtonSharped
               text={'Back'}
               type="button"
-              // onClick={() => showWeek('prev')}
+              onClick={() => showWeek('prev')}
               style={defineButton('prev-week', { pageName, blockName })}
             />
           </li>
@@ -51,7 +50,7 @@ const ListOvertime: React.FC<InfoProps> = ({ block, info }) => {
             <ButtonSharped
               text={'Next'}
               type="button"
-              // onClick={() => showWeek('next')}
+              onClick={() => showWeek('next')}
               style={defineButton('next-week', { pageName, blockName })}
             />
           </li>

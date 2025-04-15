@@ -43,8 +43,28 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
-      <aside className="weeks-aside"></aside>
+      <aside className="weeks-aside">
+        <table>
+          <tbody className="hidden" id="previous-week">
+            <tr>
+              <td>Prev</td>
+            </tr>
+          </tbody>
+          <tbody className="visible default" id="current-week">
+            <tr>
+              <td>Current</td>
+            </tr>
+          </tbody>
+          <tbody className="hidden" id="next-week">
+            <tr>
+              <td>Next</td>
+            </tr>
+          </tbody>
+        </table>
+      </aside>
       <aside className="leave-aside">
+        <div className="foreground"></div>
+        <div className="midground"></div>
         <div className="background"></div>
       </aside>
     </main>

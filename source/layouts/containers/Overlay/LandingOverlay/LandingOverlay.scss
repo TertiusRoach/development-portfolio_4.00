@@ -4,11 +4,6 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
-    /*
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    */
     display: grid;
     grid-template: 1fr 45rem /* 720px */ 1fr / 1fr 80rem /* 1280px */ 1fr; //--|🠊 rows / columns 🠈|--//
 
@@ -49,6 +44,11 @@ section[id*='landing'] {
     section {
       width: 100vw;
       height: 100vh;
+      /*
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      */
     }
 
     //--|🠋 Desktop (Landscape) 🠋|--//

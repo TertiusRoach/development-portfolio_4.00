@@ -59,6 +59,21 @@ export function defineButton(
   }
 }
 
+export function showWeek(action: 'prev' | 'next') {
+  const aside = document.querySelector('#overtime-main .weeks-aside') as HTMLElement;
+  const table = document.querySelector('#overtime-main .weeks-aside table') as HTMLElement;
+  switch (action) {
+    case 'prev':
+      table.style.transform = `translateY(${table.offsetHeight}px)`;
+      break;
+    case 'next':
+      table.style.transform = `translateY(-${table.offsetHeight}px)`;
+      break;
+  }
+
+  // console.log(carousel);
+}
+
 export const assignBlock = (block: '<header>' | '<footer>' | '<aside>') => {
   if (block === '<header>') {
     return 'header';

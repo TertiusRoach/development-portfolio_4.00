@@ -6,67 +6,58 @@
   grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
   aside[class*='weeks'] {
+    // display: inherit; //--|🠈 display: grid; 🠈|--//
+    background: white;
     grid-area: 3 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    background-color: white;
-    grid-template: repeat(7, 1fr) / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+    table {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      transition: transform 0.25s ease-in-out; // animate the table itself
+
+      /*
+      background: lightgreen;
+      overflow: hidden;
+      width: 100%;
+      // transform: translateY(-100%); // apply this dynamically with JS or inline style
+      */
+
+      tbody {
+        flex: 0 0 100%; // takes full height of the table
+        /*
+        overflow: hidden;
+        width: 100%;
+        */
+      }
+
+      #previous-week {
+        background: darkred;
+      }
+      #current-week {
+        background: darkgreen;
+      }
+      #next-week {
+        background: darkblue;
+      }
+    }
   }
   aside[class*='leave'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--//
     grid-area: 2 / 4 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 4rem repeat(2, 1fr) 8rem / 1fr 3rem; //--|🠊 rows / columns 🠈|--//
-
     background: Palettes.$trackDay-dark;
-
-    // box-shadow: inset 0 0 8px rgba(Palettes.$trackDay-light, 0.25);
-    // border-top-left-radius: 4rem;
-    // border-left: inset 4px dashed white;
+    grid-template: 4rem repeat(2, 1fr) 8rem / 1fr 3rem; //--|🠊 rows / columns 🠈|--//
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
-  /*
-  div[class*='container'] {
-    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-  }
-  */
-  /*
-  div[class*='container'] {
-
-    nav {
-      z-index: 3;
-      grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-
-    form[class*='login'],
-    form[class*='register'],
-    form[class*='password'] {
-      z-index: 1;
-      grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      &[class*='password'] {
-        box-shadow: inset 0 0 8px rgba(Palettes.$findLink-light, 1);
-      }
-      &[class*='register'] {
-        box-shadow: inset 0 0 8px rgba(Palettes.$trackDay-light, 1);
-      }
-      &[class*='login'] {
-        box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
-      }
-    }
-    figure[class*='rotation'] {
-      z-index: 0;
-      grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-  }
-  */
+  //--|🠊 display: grid; 🠈|--//
 }
 
 main[id*='overtime'] {
   display: grid;
+  @extend %ground-design;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  @extend %background-design;
 
-  aside {
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-  }
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -75,78 +66,23 @@ main[id*='overtime'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-
-  /*
-  .overtime-carousel {
-    display: flex;
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    transform: translateX(-100vw);
-    transition: transform 0.5s ease-in-out;
-    section {
-      //--|🠊 display: block; 🠈|--//
-      div[class*='container'] {
-        height: 100%;
-        display: grid;
-        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-
-        h6[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
-        }
-        h6[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
-        }
-        h6[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
-        }
-      }
-    }
-  }
-  */
 }
 
-%background-design {
+%ground-design {
   aside[class*='leave'] {
     div {
       z-index: 0;
     }
-
-    .background {
-      // background: red;
-      box-shadow: inset 0 0 8px rgba(white, 0.25);
-      border-top-left-radius: 4rem;
-      border-bottom-left-radius: 4rem;
-
-      border-left: 4px dashed Palettes.$trackDay-light;
-      // border-top: 4px solid white;
-      // width: 100%;
-      // height: 100%;
-      grid-area: 1 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      // background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 25%);
-    }
-    /*
+    .foreground,
     .midground {
       display: none;
     }
-    .foreground {
-      display: none;
-      // background: Palettes.$trackDay-dark;
-      // grid-area: 1 / 4 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    .background {
+      grid-area: 1 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      border-top-left-radius: 4rem;
+      border-bottom-left-radius: 4rem;
+      border-left: 4px dashed Palettes.$trackDay-light;
+      box-shadow: inset 0 0 1rem rgba(Palettes.$trackDay-light, 0.5);
     }
-    */
   }
-
-  /*
-  &[class*='overtime'] {
-    background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
-  }
-  &[class*='ticketing'] {
-    background: linear-gradient(90deg, rgba(Palettes.$logTicket-light, 1) 0%, rgba(Palettes.$logTicket-dark, 1) 12.5%);
-  }
-  &[class*='hyperlink'] {
-    background: linear-gradient(90deg, rgba(Palettes.$findLink-light, 1) 0%, rgba(Palettes.$findLink-dark, 1) 12.5%);
-  }
-  */
 }
