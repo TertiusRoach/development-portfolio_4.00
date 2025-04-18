@@ -25,13 +25,18 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  const handleWeeks = async () => {};
+  const handleWeeks = async () => {
+    // let
+    console.log('//--|🠊 Load the entire year but split it into weeks. 🠈|--//');
+  };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    handleWeeks();
+  }, [pageName, blockName]);
 
   return (
-    <table className="weeks-table">
-      <tbody className="hidden" id="previous-week">
+    <table className="weeks-table" id="spreadsheet-table">
+      <tbody className="table-body hidden" id="previous-week">
         <tr className="monday">
           <td>#previous-week - 01. Monday</td>
         </tr>
@@ -54,7 +59,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td>#previous-week - 07. Sunday</td>
         </tr>
       </tbody>
-      <tbody className="visible" id="current-week">
+      <tbody className="table-body visible" id="current-week">
         <tr className="monday">
           <td>#current-week - 01. Monday</td>
         </tr>
@@ -77,7 +82,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td>#current-week - 07. Sunday</td>
         </tr>
       </tbody>
-      <tbody className="hidden" id="future-week">
+      <tbody className="table-body hidden" id="future-week">
         <tr className="monday">
           <td>#future-week - 01. Monday</td>
         </tr>
