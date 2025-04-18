@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { findWeek } from './Table_weeks';
+import { findWeek, styleTable } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -27,18 +27,16 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
   const handleWeeks = async () => {
-    // let
-    console.log('//--|🠊 Load the entire year but split it into weeks. 🠈|--//');
+    styleTable(pageName, blockName);
+    console.log(findWeek(new Date()));
   };
 
   useEffect(() => {
     handleWeeks();
   }, [pageName, blockName]);
 
-  console.log(findWeek(new Date())); // ??
-
   return (
-    <table className="weeks-table .carousel-track" id="spreadsheet-table">
+    <table className="weeks-table">
       <tbody className="table-body hidden" id="previous-week">
         <tr className="monday-row">
           {/* <th>#previous-week</th> */}

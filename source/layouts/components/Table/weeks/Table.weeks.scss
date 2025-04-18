@@ -2,34 +2,21 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  div[class*='overtime'] {
-    //--|🠊 display: flex; 🠈|--//
-    tbody[id*='week'] {
-      width: 100%;
-      display: flex;
-      flex-shrink: 0;
-      flex-direction: column;
-      tr {
-        width: 100%;
-        // height: 100%;
-        flex: 1 0 auto; // 👈 One seventh of tbody, automatically
-        flex-direction: row;
-
-        td:nth-child(1) {
-          width: 8rem;
-          border-right: solid black;
-        }
-        td:nth-child(2) {
-          width: 50%;
-          border-right: solid black;
-        }
-        td:nth-child(3) {
-          width: 50%;
-          border-right: solid black;
-        }
+  //--|🠊 display: flex; 🠈|--//
+  tbody[id*='week'] {
+    display: flex;
+    // flex-shrink: 0;
+    flex-direction: column;
+    tr {
+      td:nth-child(1) {
+        width: 8rem;
+        border-right: solid black;
       }
-      &[class*='hidden'] {
-        display: none;
+      td:nth-child(2) {
+        border-right: solid black;
+      }
+      td:nth-child(3) {
+        border-right: solid black;
       }
     }
   }
@@ -41,13 +28,7 @@
 table[class*='weeks'] {
   display: flex;
   font-weight: 600;
-
-  div[class*='carousel'] {
-    display: inherit; //--|🠊 display: flex; 🠈|--//
-    overflow-x: auto; // Enable horizontal scrolling for the track
-    flex-direction: row; // Arrange weeks horizontally
-    transition: transform 0.25s ease-in-out; // For smooth sliding
-  }
+  flex-direction: column;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -58,33 +39,3 @@ table[class*='weeks'] {
     @include mobile-portrait();
   }
 }
-
-/*
-    table {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-
-      transition: transform 0.25s ease-in-out; // animate the table itself
-
-      background: lightgreen;
-      overflow: hidden;
-      width: 100%;
-      // transform: translateY(-100%); // apply this dynamically with JS or inline style
-      tbody {
-        flex: 0 0 100%; // takes full height of the table
-        // overflow: hidden;
-        // width: 100%;
-      }
-
-      #previous-week {
-        background: darkred;
-      }
-      #current-week {
-        background: darkgreen;
-      }
-      #next-week {
-        background: darkblue;
-      }
-    }
-  */

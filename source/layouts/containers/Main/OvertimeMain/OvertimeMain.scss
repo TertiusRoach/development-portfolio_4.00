@@ -6,9 +6,10 @@
   grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
   table[class*='weeks'] {
-    grid-area: 3 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    background: Palettes.$trackDay-light;
+    background: white;
+    grid-area: 1 / 1 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   }
+
   aside[class*='leave'] {
     display: inherit; //--|🠈 display: grid; 🠈|--//
     grid-area: 2 / 4 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -25,6 +26,50 @@ main[id*='overtime'] {
   @extend %ground-design;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
+  .overtime-carousel {
+    display: block;
+    grid-area: 3 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    /* transform: translateY(-100vh); */
+    transition: transform 0.25s ease-in-out; // For smooth sliding
+    section {
+      height: 100%;
+      display: inherit; //--|🠊 display: block; 🠈|--//
+
+      div[class*='weekdays'] {
+        display: flex;
+        height: inherit; //--|🠊 height: 100%; 🠈|--//
+        background: red;
+
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          @include desktop-landscape();
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          @include mobile-portrait();
+        }
+      }
+    }
+  }
+
+  %ground-design {
+    aside[class*='leave'] {
+      div {
+        z-index: 0;
+      }
+      .foreground,
+      .midground {
+        display: none;
+      }
+      .background {
+        grid-area: 1 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        border-top-left-radius: 4rem;
+        border-bottom-left-radius: 4rem;
+        border-left: 4px dashed Palettes.$trackDay-light;
+        box-shadow: inset 0 0 1rem rgba(Palettes.$trackDay-light, 0.5);
+      }
+    }
+  }
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -32,24 +77,5 @@ main[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-  }
-}
-
-%ground-design {
-  aside[class*='leave'] {
-    div {
-      z-index: 0;
-    }
-    .foreground,
-    .midground {
-      display: none;
-    }
-    .background {
-      grid-area: 1 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      border-top-left-radius: 4rem;
-      border-bottom-left-radius: 4rem;
-      border-left: 4px dashed Palettes.$trackDay-light;
-      box-shadow: inset 0 0 1rem rgba(Palettes.$trackDay-light, 0.5);
-    }
   }
 }
