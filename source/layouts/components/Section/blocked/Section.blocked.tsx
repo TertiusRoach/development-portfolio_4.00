@@ -19,8 +19,8 @@ import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
   };
 }
 const SectionBlocked: React.FC<InfoProps> = ({ info }) => {

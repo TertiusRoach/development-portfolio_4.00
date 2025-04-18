@@ -11,13 +11,7 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import FormLogin from '../../../components/Form/login/Form.login';
-import FormRegister from '../../../components/Form/register/Form.register';
-import FormPassword from '../../../components/Form/password/Form.password';
-import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
-import NavigationLogin from '../../../components/Navigation/login/Navigation.login';
-import NavigationPassword from '../../../components/Navigation/password/Navigation.password';
-import NavigationRegister from '../../../components/Navigation/register/Navigation.register';
+import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
@@ -43,25 +37,8 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
-      <aside className="weeks-aside">
-        <table>
-          <tbody className="hidden" id="previous-week">
-            <tr>
-              <td>Prev</td>
-            </tr>
-          </tbody>
-          <tbody className="visible default" id="current-week">
-            <tr>
-              <td>Current</td>
-            </tr>
-          </tbody>
-          <tbody className="hidden" id="next-week">
-            <tr>
-              <td>Next</td>
-            </tr>
-          </tbody>
-        </table>
-      </aside>
+      <TableWeeks info={info} />
+
       <aside className="leave-aside">
         <div className="foreground"></div>
         <div className="midground"></div>

@@ -1,0 +1,50 @@
+//--|🠊 Table.weeks.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  /*
+    table {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      transition: transform 0.25s ease-in-out; // animate the table itself
+
+      background: lightgreen;
+      overflow: hidden;
+      width: 100%;
+      // transform: translateY(-100%); // apply this dynamically with JS or inline style
+      tbody {
+        flex: 0 0 100%; // takes full height of the table
+        // overflow: hidden;
+        // width: 100%;
+      }
+
+      #previous-week {
+        background: darkred;
+      }
+      #current-week {
+        background: darkgreen;
+      }
+      #next-week {
+        background: darkblue;
+      }
+    }
+  */
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+}
+
+table[class*='weeks'] {
+  display: grid;
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

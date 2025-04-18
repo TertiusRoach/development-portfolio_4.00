@@ -5,42 +5,9 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
-  aside[class*='weeks'] {
-    // display: inherit; //--|🠈 display: grid; 🠈|--//
-    background: white;
+  table[class*='weeks'] {
     grid-area: 3 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    table {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-
-      transition: transform 0.25s ease-in-out; // animate the table itself
-
-      /*
-      background: lightgreen;
-      overflow: hidden;
-      width: 100%;
-      // transform: translateY(-100%); // apply this dynamically with JS or inline style
-      */
-
-      tbody {
-        flex: 0 0 100%; // takes full height of the table
-        /*
-        overflow: hidden;
-        width: 100%;
-        */
-      }
-
-      #previous-week {
-        background: darkred;
-      }
-      #current-week {
-        background: darkgreen;
-      }
-      #next-week {
-        background: darkblue;
-      }
-    }
+    background: Palettes.$trackDay-light;
   }
   aside[class*='leave'] {
     display: inherit; //--|🠈 display: grid; 🠈|--//
