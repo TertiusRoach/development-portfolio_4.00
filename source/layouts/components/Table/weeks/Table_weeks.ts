@@ -1,14 +1,5 @@
 //--|🠊 Table_weeks.ts 🠈|--//
-
-export function findWeek(date: Date = new Date()): number {
-  /**
-   * Returns the ISO 8601 week number for a given date.
-   * Week 1 is the one that contains the first Thursday of the year.
-   *
-   * @param date - Optional Date object (defaults to now).
-   * @returns Week number (1–53).
-   */
-
+export function findWeek(date: Date): number {
   // Convert to UTC to neutralize local timezones
   const inputDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
@@ -30,106 +21,196 @@ export function findWeek(date: Date = new Date()): number {
 }
 
 export function loadYear() {
-  // Load the entire year but split it into weeks.
-}
+  // Load the following HTML references for the entire year but split it into weeks.
+  const presentDate = new Date();
+  const presentYear = presentDate.getFullYear();
+  const presentWeek = findWeek(presentDate);
+  const weeksInYear = has53Weeks(presentYear) ? 53 : 52;
 
-export function styleTable(pageName: string, blockName: string) {
-  const styleBody = (pageName: string, blockName: string) => {
-    let carousel = document.querySelector(`#${pageName}-${blockName} div[class*="carousel"]`) as HTMLElement;
-    if (!carousel) {
-      console.warn(`Carousel not found for #${pageName}-${blockName}`);
-      return;
-    } else {
-      var tableRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
-      var dayHeight = carousel.offsetHeight / 7;
-      var dayWidth = carousel.offsetWidth;
-      var tableColumn = carousel.querySelectorAll(`.weeks-table tbody`) as NodeListOf<HTMLElement>;
-      var weekdays = carousel.querySelector(`.weeks-table tbody`) as HTMLTableElement;
-      tableRows.forEach((row) => {
-        row.style.height = `${dayHeight}px`;
-      });
-      tableColumn.forEach((column) => {
-        column.style.width = `${dayWidth}px`;
-      });
+  // YYYY-01-01 always starts with the first week of the year.
+  // The first week of the year is the one that contains the first Thursday of the year. (ISO Trick)
+  // toggle the ID's up and down with id="previous-week", id="current-week", id="future-week" with the className of 'visible' always being in the center of the ID's.
+  // Remember Safety Checks for the weeks and use the best practices for the code.
+  // Please keep it readable and add easy to understand comments.
 
-      console.log(carousel.offsetWidth);
-      console.log(weekdays);
-      if (!carousel || !weekdays) {
-        console.warn(`Table or carousel not found for #${pageName}-${blockName}`);
-        return;
-      }
-
-      // Optional: Set table width to match carousel
-      weekdays.style.width = `${carousel.offsetWidth}px`;
-
-      // Optional: Set widths for 3 columns if you need to force sizing
-      // const tdWidth = carousel.offsetWidth / 3;
-      // const columns = weekdaysTable.querySelectorAll('td') as NodeListOf<HTMLElement>;
-      // columns.forEach((td) => (td.style.width = `${tdWidth}px`));
-    }
-  };
-  const styleData = (pageName: string, blockName: string) => {
-    let carousel = document.querySelector(`#${pageName}-${blockName} div[class*="carousel"]`) as HTMLElement;
-    if (!carousel) {
-      console.warn(`Carousel not found for #${pageName}-${blockName}`);
-      return;
-    } else {
-      var weekday = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
-      var clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
-      var clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
-
-      console.log((carousel.offsetWidth - 128) / 2);
-
-      weekday.forEach((column) => {
-        column.style.width = `8rem`;
-      });
-      clockIn.forEach((column) => {
-        column.style.width = `${(carousel.offsetWidth - 128) / 2}px`;
-      });
-      clockOut.forEach((column) => {
-        column.style.width = `${(carousel.offsetWidth - 128) / 2}px`;
-      });
-      /*
-      var dayHeight = carousel.offsetHeight / 7;
-      var dayWidth = carousel.offsetWidth;
-      var tableColumn = carousel.querySelectorAll(`.weeks-table tbody`) as NodeListOf<HTMLElement>;
-      var weekdays = carousel.querySelector(`.weeks-table tbody`) as HTMLTableElement;
-      tableRows.forEach((row) => {
-        row.style.height = `${dayHeight}px`;
-      });
-      tableColumn.forEach((column) => {
-        column.style.width = `${dayWidth}px`;
-      });
-
-      console.log(carousel.offsetWidth);
-      console.log(weekdays);
-      if (!carousel || !weekdays) {
-        console.warn(`Table or carousel not found for #${pageName}-${blockName}`);
-        return;
-      }
-
-      // Optional: Set table width to match carousel
-      weekdays.style.width = `${carousel.offsetWidth}px`;
-
-      // Optional: Set widths for 3 columns if you need to force sizing
-      // const tdWidth = carousel.offsetWidth / 3;
-      // const columns = weekdaysTable.querySelectorAll('td') as NodeListOf<HTMLElement>;
-      // columns.forEach((td) => (td.style.width = `${tdWidth}px`));
-      */
-    }
-  };
-  styleBody(pageName, blockName);
-  styleData(pageName, blockName);
   /*
-  const setRows = (pageName: string, blockName: string) => {};
+  const tableBodies = document.querySelectorAll('.weeks-table .table-body') as NodeListOf<HTMLElement>;
+  const ids = ['previous-week', 'current-week', 'future-week'];
 
-  const setColumns = (pageName: string, blockName: string) => {};
+  tableBodies.forEach((tbody) => {
+    tbody.classList.add('hidden');
+    tbody.classList.remove('visible');
+  });
 
-  setRows(pageName, blockName);
-  setColumns(pageName, blockName);
+  ids.forEach((id) => {
+    const tbody = document.getElementById(id);
+    if (!tbody) {
+      console.warn(`Element with ID "${id}" not found`);
+      return;
+    }
+
+    tbody.classList.remove('hidden');
+    tbody.classList.add('visible');
+
+    // Assign the correct week number to each tbody group
+    let weekOffset = 0;
+    if (id === 'previous-week') weekOffset = -1;
+    if (id === 'future-week') weekOffset = 1;
+
+    let weekToRender = currentWeek + weekOffset;
+    if (weekToRender < 1) {
+      weekToRender = has53Weeks(presentYear - 1) ? 53 : 52;
+    } else if (weekToRender > weeksInYear) {
+      weekToRender = 1;
+    }
+
+    // Fill rows
+    const rows = tbody.querySelectorAll('tr');
+    // rows.forEach((row, i) => {
+    //   const day = i + 1; // Monday = 1, Sunday = 7
+    //   // const dayDate = getDateOfISOWeekDay(weekToRender, year, day);
+    //   const weekdayCell = row.querySelector('td:nth-child(1)');
+    //   if (weekdayCell) {
+    //     weekdayCell.textContent = `${String(dayDate.getDate()).padStart(2, '0')}. ${
+    //       weekdayCell.textContent?.split('. ')[1]
+    //     }`;
+    //   }
+    // });
+  });
+  */
+
+  /*
+      <table className="weeks-table">
+      <tbody className="table-body hidden" id="previous-week">
+        <tr className="monday-row">
+          <td className="weekday">01. Monday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="tuesday-row">
+          <td className="weekday">02. Tuesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="wednesday-row">
+          <td className="weekday">03. Wednesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="thursday-row">
+          <td className="weekday">04. Thursday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="friday-row">
+          <td className="weekday">05. Friday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="saturday-row">
+          <td className="weekday">06. Saturday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+        <tr className="sunday-row">
+          <td className="weekday">07. Sunday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
+        </tr>
+      </tbody>
+      <tbody className="table-body visible" id="current-week">
+        <tr className="monday-row">
+          <td>01. Monday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="tuesday-row">
+          <td>02. Tuesday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="wednesday-row">
+          <td>03. Wednesday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="thursday-row">
+          <td>04. Thursday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="friday-row">
+          <td>05. Friday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="saturday-row">
+          <td>06. Saturday</td>
+          <td>#current-week</td>
+        </tr>
+        <tr className="sunday-row">
+          <td>07. Sunday</td>
+          <td>#current-week</td>
+        </tr>
+      </tbody>
+      <tbody className="table-body hidden" id="future-week">
+        <tr className="monday-row">
+          <td>01. Monday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="tuesday-row">
+          <td>02. Tuesday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="wednesday-row">
+          <td>03. Wednesday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="thursday-row">
+          <td>04. Thursday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="friday-row">
+          <td>05. Friday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="saturday-row">
+          <td>06. Saturday</td>
+          <td>#future-week</td>
+        </tr>
+        <tr className="sunday-row">
+          <td>07. Sunday</td>
+          <td>#future-week</td>
+        </tr>
+      </tbody>
+    </table>
   */
 }
+
 //---//
+export function styleTable(pageName: string, blockName: string) {
+  const carousel = document.querySelector(`#${pageName}-${blockName} div[class*="carousel"]`) as HTMLElement;
+  if (!carousel) {
+    console.warn(`Carousel not found for #${pageName}-${blockName}`);
+    return;
+  } else {
+    let heightRows = carousel.offsetHeight / 7;
+    let heightColumns = (carousel.offsetWidth - 128) / 2;
+    let dataRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
+    let weekDays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
+    let clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
+    let clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
+
+    dataRows.forEach((row) => {
+      row.style.height = `${heightRows}px`;
+    });
+
+    weekDays.forEach((column) => {
+      column.style.width = `8rem`;
+    });
+    clockIn.forEach((column) => {
+      column.style.width = `${heightColumns}px`;
+    });
+    clockOut.forEach((column) => {
+      column.style.width = `${heightColumns}px`;
+    });
+  }
+}
 
 const has53Weeks = (year: number): boolean => {
   /**
@@ -154,3 +235,22 @@ const isLeapYear = (year: number): boolean => {
    */
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 };
+
+// function getDateOfISOWeekDay(weekToRender: number, year: number, day: number): Date {
+//   /**
+//    * Calculates the date of a specific day in an ISO week.
+//    *
+//    * @param weekToRender - The ISO week number.
+//    * @param year - The year.
+//    * @param day - The day of the week (1 = Monday, ..., 7 = Sunday).
+//    * @returns The corresponding Date object.
+//    */
+//   const jan4 = new Date(Date.UTC(year, 0, 4)); // January 4th is always in the first ISO week
+//   const jan4Day = jan4.getUTCDay() || 7; // Adjust Sunday to 7
+//   const firstWeekStart = new Date(jan4);
+//   firstWeekStart.setUTCDate(jan4.getUTCDate() - (jan4Day - 1)); // Move to the Monday of the first ISO week
+
+//   const targetDate = new Date(firstWeekStart);
+//   targetDate.setUTCDate(firstWeekStart.getUTCDate() + (weekToRender - 1) * 7 + (day - 1)); // Calculate target date
+//   return targetDate;
+// }
