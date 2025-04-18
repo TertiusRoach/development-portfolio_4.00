@@ -1,4 +1,8 @@
 //--|🠊 Article_selection.ts 🠈|--//
+
+//--|🠋 Declare a variable to store the debounce timer. 🠋|--//
+let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
+
 export function defineButton(
   button: 'login' | 'register' | 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
   info: { blockName: string; pageName: string }
@@ -81,8 +85,6 @@ export function defineButton(
   }
 }
 
-//--|🠋 Declare a variable to store the debounce timer. 🠋|--//
-let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {
   //--|🠋 Get the figure element that triggered the event. 🠋|--//
   const tag = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
@@ -119,7 +121,6 @@ export function showFigure(overlay: 'apps' | 'demo') {
     }
   }, 1500);
 }
-
 export function showMain(view: 'register' | 'login', pageName: string) {
   const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
@@ -147,7 +148,6 @@ export function showMain(view: 'register' | 'login', pageName: string) {
       break;
   }
 }
-
 export function viewDemo(view: 'overtime' | 'ticketing' | 'hyperlink') {
   const element = document.querySelector(`#${view}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
   const visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
