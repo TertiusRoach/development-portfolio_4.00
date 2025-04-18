@@ -2,8 +2,64 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
+  div[class*='overtime'] {
+    //--|🠊 display: flex; 🠈|--//
+    tbody[id*='week'] {
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+      tr {
+        width: 100%;
+        // height: 100%;
+        flex: 1 0 auto; // 👈 One seventh of tbody, automatically
+        flex-direction: row;
+
+        td:nth-child(1) {
+          width: 8rem;
+          border-right: solid black;
+        }
+        td:nth-child(2) {
+          width: 50%;
+          border-right: solid black;
+        }
+        td:nth-child(3) {
+          width: 50%;
+          border-right: solid black;
+        }
+      }
+      &[class*='hidden'] {
+        display: none;
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  /*
+}
+
+table[class*='weeks'] {
+  display: flex;
+  font-weight: 600;
+
+  div[class*='carousel'] {
+    display: inherit; //--|🠊 display: flex; 🠈|--//
+    overflow-x: auto; // Enable horizontal scrolling for the track
+    flex-direction: row; // Arrange weeks horizontally
+    transition: transform 0.25s ease-in-out; // For smooth sliding
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+
+/*
     table {
       height: 100%;
       display: flex;
@@ -32,19 +88,3 @@
       }
     }
   */
-}
-@mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-}
-
-table[class*='weeks'] {
-  display: grid;
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-}

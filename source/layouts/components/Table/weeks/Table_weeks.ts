@@ -1,102 +1,58 @@
 //--|🠊 Table_weeks.ts 🠈|--//
 
-export function findWeek() {
-  // Find the corresponding number for the present week.
+export function findWeek(date: Date = new Date()): number {
+  /**
+   * Returns the ISO 8601 week number for a given date.
+   * Week 1 is the one that contains the first Thursday of the year.
+   *
+   * @param date - Optional Date object (defaults to now).
+   * @returns Week number (1–53).
+   */
+
+  const has53Weeks = (year: number): boolean => {
+    /**
+     * Checks if a given year contains 53 ISO weeks.
+     *
+     * @param year - The year to check.
+     * @returns True if the year has 53 weeks, false otherwise.
+     */
+
+    const dec31 = new Date(Date.UTC(year, 11, 31));
+    const dayOfWeek = dec31.getUTCDay();
+
+    return dayOfWeek === 4 || (dayOfWeek === 3 && isLeapYear(year));
+  };
+
+  const isLeapYear = (year: number): boolean => {
+    /**
+     * Determines if a year is a leap year.
+     *
+     * @param year - The year to test.
+     * @returns True if leap year.
+     */
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  };
+
+  // Convert to UTC to neutralize local timezones
+  const inputDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+
+  // Get weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+  const day = inputDate.getUTCDay();
+
+  // Move to Thursday of the current week (ISO trick)
+  const thursday = new Date(inputDate);
+  thursday.setUTCDate(inputDate.getUTCDate() + (4 - (day === 0 ? 7 : day)));
+
+  // Find first day of the ISO year
+  const yearStart = new Date(Date.UTC(thursday.getUTCFullYear(), 0, 1));
+
+  // Calculate the number of days between the ISO year start and the target Thursday
+  const dayDiff = (thursday.getTime() - yearStart.getTime()) / 86400000; // ms per day = 86400000
+
+  // Convert to week number
+  return Math.ceil((dayDiff + 1) / 7);
 }
 
 export function loadYear() {
   // Load the entire year but split it into weeks.
 }
-
-/*
-export function hideFigure(event: React.MouseEvent<HTMLElement>) {
-  //--|🠋 Get the figure element that triggered the event. 🠋|--//
-  const tag = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
-  if (!tag) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
-  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
-
-  setTimeout(() => {
-    //--|🠉 Delay execution slightly (125ms) to allow for smooth transitions. 🠈|--//
-    tag.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
-    tag.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
-  }, 250);
-}
-export function showFigure(overlay: 'apps' | 'demo') {
-  //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
-  // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
-  const tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement | null;
-
-  //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
-  if (!tag) return;
-
-  //--|🠋 Clear any previously set debounce timer to prevent rapid execution. 🠋|--//
-  if (debounceTimer) clearTimeout(debounceTimer);
-
-  //--|🠋 Delay execution for 1 second (1000ms) to prevent flickering effects. 🠋|--//
-  setTimeout(() => {
-    //--|🠉 Re-query the DOM to get the element again, ensuring we have the latest state. 🠈|--//
-    let tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
-
-    //--|🠋 Check if the element exists and has inline styles for `z-index` or `opacity`. 🠋|--//
-    //--|🠊 If it does, remove those properties to restore its default styles. 🠈|--//
-    if (tag && (tag.style.zIndex || tag.style.opacity)) {
-      tag.style.removeProperty('z-index'); //--|🠈 Remove the inline z-index style. 🠈|--//
-      tag.style.removeProperty('opacity'); //--|🠈 Remove the inline opacity style. 🠈|--//
-    }
-  }, 1500);
-}
-export function showMain(view: 'register' | 'login', pageName: string) {
-  const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
-  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
-
-  let register = carousel.childNodes[0] as HTMLElement;
-  let login = carousel.childNodes[1] as HTMLElement;
-
-  overlay.className = 'default-overlay hidden';
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 500);
-
-  switch (view) {
-    case 'register':
-      carousel.style.transform = 'translateX(0vw)';
-
-      register.className = `${view}-section visible`;
-      login.className = `${view}-section hidden`;
-      break;
-    case 'login':
-      carousel.style.transform = 'translateX(-100vw)';
-
-      register.className = `${view}-section hidden`;
-      login.className = `${view}-section visible`;
-      break;
-  }
-}
-export function viewDemo(view: 'overtime' | 'ticketing' | 'hyperlink') {
-  const element = document.querySelector(`#${view}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
-  const visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
-
-  if (!(element instanceof HTMLElement)) {
-    //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
-    console.warn(`Element for view "${view}" not found.`);
-    return;
-  }
-
-  if (visible) {
-    //--|🠉 If there's a visible element, hide it 🠈|--//
-    visible.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--//
-    visible.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--//
-  }
-
-  switch (true) {
-    case element.classList.contains('asleep'):
-      //--|🠉 Show the selected view only if it’s currently hidden 🠈|--//
-      element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--//
-      return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--//
-    case element.classList.contains('active'):
-      //--|🠉 Optional toggle: allow hiding the current element again 🠈|--//
-      element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--//
-      return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--//
-  }
-}
-*/

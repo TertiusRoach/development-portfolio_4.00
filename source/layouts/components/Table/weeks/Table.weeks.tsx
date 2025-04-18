@@ -10,6 +10,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { findWeek } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -34,75 +35,112 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
     handleWeeks();
   }, [pageName, blockName]);
 
+  console.log(findWeek(new Date())); // ??
+
   return (
-    <table className="weeks-table" id="spreadsheet-table">
+    <table className="weeks-table .carousel-track" id="spreadsheet-table">
       <tbody className="table-body hidden" id="previous-week">
-        <tr className="monday">
-          <td>#previous-week - 01. Monday</td>
+        <tr className="monday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">01. Monday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="tuesday">
-          <td>#previous-week - 02. Tuesday</td>
+        <tr className="tuesday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">02. Tuesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="wednesday">
-          <td>#previous-week - 03. Wednesday</td>
+        <tr className="wednesday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">03. Wednesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="thursday">
-          <td>#previous-week - 04. Thursday</td>
+        <tr className="thursday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">04. Thursday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="friday">
-          <td>#previous-week - 05. Friday</td>
+        <tr className="friday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">05. Friday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="saturday">
-          <td>#previous-week - 06. Saturday</td>
+        <tr className="saturday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">06. Saturday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
-        <tr className="sunday">
-          <td>#previous-week - 07. Sunday</td>
+        <tr className="sunday-row">
+          {/* <th>#previous-week</th> */}
+          <td className="weekday">07. Sunday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
       </tbody>
       <tbody className="table-body visible" id="current-week">
-        <tr className="monday">
-          <td>#current-week - 01. Monday</td>
+        <tr className="monday-row">
+          <td>01. Monday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="tuesday">
-          <td>#current-week - 02. Tuesday</td>
+        <tr className="tuesday-row">
+          <td>02. Tuesday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="wednesday">
-          <td>#current-week - 03. Wednesday</td>
+        <tr className="wednesday-row">
+          <td>03. Wednesday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="thursday">
-          <td>#current-week - 04. Thursday</td>
+        <tr className="thursday-row">
+          <td>04. Thursday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="friday">
-          <td>#current-week - 05. Friday</td>
+        <tr className="friday-row">
+          <td>05. Friday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="saturday">
-          <td>#current-week - 06. Saturday</td>
+        <tr className="saturday-row">
+          <td>06. Saturday</td>
+          <td>#current-week</td>
         </tr>
-        <tr className="sunday">
-          <td>#current-week - 07. Sunday</td>
+        <tr className="sunday-row">
+          <td>07. Sunday</td>
+          <td>#current-week</td>
         </tr>
       </tbody>
       <tbody className="table-body hidden" id="future-week">
-        <tr className="monday">
-          <td>#future-week - 01. Monday</td>
+        <tr className="monday-row">
+          <td>01. Monday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="tuesday">
-          <td>#future-week - 02. Tuesday</td>
+        <tr className="tuesday-row">
+          <td>02. Tuesday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="wednesday">
-          <td>#future-week - 03. Wednesday</td>
+        <tr className="wednesday-row">
+          <td>03. Wednesday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="thursday">
-          <td>#future-week - 04. Thursday</td>
+        <tr className="thursday-row">
+          <td>04. Thursday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="friday">
-          <td>#future-week - 05. Friday</td>
+        <tr className="friday-row">
+          <td>05. Friday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="saturday">
-          <td>#future-week - 06. Saturday</td>
+        <tr className="saturday-row">
+          <td>06. Saturday</td>
+          <td>#future-week</td>
         </tr>
-        <tr className="sunday">
-          <td>#future-week - 07. Sunday</td>
+        <tr className="sunday-row">
+          <td>07. Sunday</td>
+          <td>#future-week</td>
         </tr>
       </tbody>
     </table>
