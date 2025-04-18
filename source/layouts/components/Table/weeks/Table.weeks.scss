@@ -5,12 +5,13 @@
   //--|🠊 display: flex; 🠈|--//
   tbody[id*='week'] {
     display: flex;
-    // flex-shrink: 0;
+    flex-shrink: 0;
     flex-direction: column;
     tr {
       td:nth-child(1) {
         width: 8rem;
         border-right: solid black;
+        // border-bottom: solid black;
       }
       td:nth-child(2) {
         border-right: solid black;

@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { findWeek, styleTable } from './Table_weeks';
+import { styleTable } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -28,7 +28,6 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 
   const handleWeeks = async () => {
     styleTable(pageName, blockName);
-    console.log(findWeek(new Date()));
   };
 
   useEffect(() => {
