@@ -1,5 +1,4 @@
 //--|🠊 List_overtime.ts 🠈|--//
-
 export function defineButton(
   button: 'next-week' | 'prev-week' | 'next-month' | 'prev-month',
   info: { blockName: string; pageName: string }
@@ -59,19 +58,32 @@ export function defineButton(
   }
 }
 
-export function showWeek(action: 'prev' | 'next') {
-  const aside = document.querySelector('#overtime-main .weeks-aside') as HTMLElement;
-  const table = document.querySelector('#overtime-main .weeks-aside table') as HTMLElement;
-  switch (action) {
-    case 'prev':
-      table.style.transform = `translateY(${table.offsetHeight}px)`;
-      break;
-    case 'next':
-      table.style.transform = `translateY(-${table.offsetHeight}px)`;
-      break;
-  }
+export function showWeek(action: 'prev' | 'next', pageName: string, blockName: string) {
+  const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
+  const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
+  const getView = (container: HTMLElement): number => {
+    let match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
+    if (match) {
+      return parseFloat(match[1]);
+    } else {
+      return 0; // Default value if no match is found
+    }
+  };
 
-  // console.log(carousel);
+  if (pageName === 'overtime') {
+    switch (action) {
+      case 'prev':
+        container.style.transform = `translateY(${getView(container) + carousel.offsetHeight}px)`;
+        break;
+      case 'next':
+        container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
+        break;
+    }
+  } else if (pageName === 'ticketing') {
+    console.log('//--|🠊 Clicked on Log a Ticket 🠈|--//');
+  } else if (pageName === 'hyperlink') {
+    console.log('//--|🠊 Clicked on Find a Link 🠈|--//');
+  }
 }
 
 export const assignBlock = (block: '<header>' | '<footer>' | '<aside>') => {

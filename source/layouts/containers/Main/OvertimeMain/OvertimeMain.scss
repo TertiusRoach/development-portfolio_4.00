@@ -26,16 +26,17 @@ main[id*='overtime'] {
   @extend %ground-design;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
-  .overtime-carousel {
+  div[class*='carousel'] {
     display: block;
+    overflow: hidden;
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
     section {
-      display: block;
-
       div[class*='weekdays'] {
-        background: red;
-        transform: translateY(-576.963px);
+        color: white;
+        background: darkred;
+
+        // transform: translateY(-576.963px); //--|🠊 Resolution: 1366x768 🠈|--//
         transition: transform 0.25s ease-in-out;
       }
     }

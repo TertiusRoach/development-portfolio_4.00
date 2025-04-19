@@ -1,11 +1,11 @@
-//--|🠊 List.overtime.scss 🠈|--//
+//--|🠊 List.scrolling.scss 🠈|--//
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   height: 100%;
 
-  li[class*='week'] {
+  li[class*='list'] {
     display: inherit;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@
   //--|🠊 display: grid; 🠈|--//
 }
 
-ol[class*='overtime'] {
+ol[class*='scrolling'] {
   margin: 0;
   padding: 0;
   display: grid;

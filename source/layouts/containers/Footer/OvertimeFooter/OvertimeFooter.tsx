@@ -7,14 +7,14 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ListOvertime from '../../../components/List/overtime/List.overtime';
+import ListScrolling from '../../../components/List/scrolling/List.scrolling';
 
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
@@ -27,7 +27,7 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <ListOvertime block={'<footer>'} info={info} />
+      <ListScrolling block={'<footer>'} info={info} />
 
       {/* <menu></menu> */}
       <section></section>

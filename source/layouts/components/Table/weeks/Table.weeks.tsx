@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { styleTable } from './Table_weeks';
+import { styleTable, showWeek } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -27,6 +27,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
   const handleWeeks = async () => {
+    showWeek(pageName, blockName);
     styleTable(pageName, blockName);
   };
 

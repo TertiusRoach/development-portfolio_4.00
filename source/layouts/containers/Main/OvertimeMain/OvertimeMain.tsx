@@ -39,7 +39,13 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <div className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
         <section>
-          <div className="weekdays-container">
+          <div
+            className="weekdays-container"
+            style={{
+              transform: 'translateY(0px)',
+              /* transform: 'translateY(-576.963px)' */
+            }}
+          >
             <TableWeeks info={info} />
           </div>
         </section>

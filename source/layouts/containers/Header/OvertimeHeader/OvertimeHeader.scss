@@ -14,7 +14,7 @@
     z-index: 3;
     grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
-  ol[class*='overtime'] {
+  ol[class*='scrolling'] {
     z-index: 2;
     padding-left: 8rem;
     grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
