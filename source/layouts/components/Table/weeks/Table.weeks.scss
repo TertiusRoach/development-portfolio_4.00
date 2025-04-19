@@ -8,25 +8,35 @@
     flex-shrink: 0;
     flex-direction: column;
     tr {
+      color: Palettes.$trackDay-light;
       td {
         font-weight: 600; /* Thickness (100–900 or keywords like bold) */
         text-align: center; /* Horizontal alignment (left, center, right) */
+        filter: drop-shadow(0 0 12px Palettes.$trackDay-medium);
       }
-      // border: 2px solid #000;
+
+      td:nth-child(1) {
+        width: 8rem;
+        border-right: 4px dashed Palettes.$trackDay-light;
+      }
+      td:nth-child(2) {
+        border-right: 4px dashed Palettes.$trackDay-light;
+      }
+
+      /*
+            // border: 2px solid #000;
       // box-sizing: border-box;
       // box-sizing: border-box;
       // border-bottom: solid black;
-      td:nth-child(1) {
-        width: 8rem;
-        border-right: solid black;
-        // border-bottom: solid black;
-      }
-      td:nth-child(2) {
-        border-right: solid black;
-      }
+
+      // border-bottom: 2px solid Palettes.$trackDay-dark;
       td:nth-child(3) {
-        border-right: solid black;
+        // border-right: solid black;
       }
+      td:nth-child(4) {
+        // border-right: solid black;
+      }
+      */
     }
   }
 }

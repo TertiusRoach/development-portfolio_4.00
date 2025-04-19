@@ -30,8 +30,6 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log('handleResize');
-
       setTimeout(() => {
         showWeek(pageName, '<y>');
         styleTable(pageName, blockName);
@@ -117,12 +115,12 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
         <tr className="saturday-row" data-week="06">
           <td className="weekday h1">Sat</td>
           <td className="clock-in display-3">08:00</td>
-          <td className="clock-out display-3">17:00</td>
+          <td className="clock-out display-3">13:00</td>
         </tr>
         <tr className="sunday-row" data-week="07">
           <td className="weekday h1">Sun</td>
-          <td className="clock-in display-3">08:00</td>
-          <td className="clock-out display-3">17:00</td>
+          <td className="clock-in display-3">--:--</td>
+          <td className="clock-out display-3">~~:~~</td>
         </tr>
       </tbody>
       <tbody className="table-body hidden" id="future-week">

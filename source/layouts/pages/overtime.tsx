@@ -24,7 +24,6 @@ function Overtime() {
     orientation: `${getOrientation()}`,
     identification: 'overtime' as 'overtime',
   };
-
   return (
     <>
       <OvertimeMain info={information} />

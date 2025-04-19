@@ -1,4 +1,5 @@
 //--|🠊 styles/overtime.scss 🠈|--//
+@use '../designs/Palettes.scss';
 //--|🠋 Containers 🠋|--//
 @use '../containers/Main/OvertimeMain/OvertimeMain.scss';
 @use '../containers/Header/OvertimeHeader/OvertimeHeader.scss';
@@ -26,6 +27,6 @@ div[id*='overtime'] {
   }
 
   &[id*='overtime'] {
-    background: lightgreen;
+    background: Palettes.$trackDay-dark;
   }
 }

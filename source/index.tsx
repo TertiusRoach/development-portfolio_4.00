@@ -9,32 +9,37 @@ import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Containers 🠋|--//
 import Landing from './layouts/pages/landing';
-import Overtime from './layouts/pages/overtime';
-import Ticketing from './layouts/pages/ticketing';
-import Hyperlink from './layouts/pages/hyperlink';
+// import Overtime from './layouts/pages/overtime';
+// import Ticketing from './layouts/pages/ticketing';
+// import Hyperlink from './layouts/pages/hyperlink';
 //--|🠉 Styles 🠉|--//
+
 //--|🠋 Component Mapping 🠋|--//
 const layouts: { [key: string]: React.ElementType } = {
   'landing-body': Landing,
-  'overtime-body': Overtime,
-  'ticketing-body': Ticketing,
-  'hyperlink-body': Hyperlink,
+  // 'overtime-body': Overtime,
+  // 'ticketing-body': Ticketing,
+  // 'hyperlink-body': Hyperlink,
 };
 //--|🠋 Render Components 🠋|--//
-Object.entries(layouts).forEach(([id, Pages]) => {
+Object.entries(layouts).forEach(([id]) => {
   const element = document.getElementById(id);
+  const landingBody = document.getElementById('landing-body') as HTMLElement;
+  if (landingBody) {
+    ReactDOM.createRoot(landingBody).render(<Landing />);
+  } else {
+    console.error("Can't find #landing-body");
+  }
+
+  /*
   if (element) {
     ReactDOM.createRoot(element).render(<Pages />);
   } else {
     console.error(`Can't find #${id}`);
   }
+  */
   /*
-    const landingBody = document.getElementById('landing-body') as HTMLElement;
-    if (landingBody) {
-      ReactDOM.createRoot(landingBody).render(<Landing />);
-    } else {
-      console.error("Can't find #landing-body");
-    }
+
 
     const overtimeBody = document.getElementById('overtime-body') as HTMLElement;
     if (overtimeBody) {

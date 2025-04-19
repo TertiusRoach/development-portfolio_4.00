@@ -1,4 +1,14 @@
 //--|🠊 Article_selection.ts 🠈|--//
+//--|🠋 Dependencies 🠋|--//
+import ReactDOM from 'react-dom/client';
+import axios, { AxiosError } from 'axios';
+import React, { useState, useEffect } from 'react';
+//--|🠉 Dependencies 🠉|--//
+//--|🠋 Containers 🠋|--//
+import Overtime from '../../../pages/overtime'; // Ensure this is a default export of a React component
+import Ticketing from '../../../pages/ticketing';
+import Hyperlink from '../../../pages/hyperlink';
+//--|🠉 Styles 🠉|--//
 
 //--|🠋 Declare a variable to store the debounce timer. 🠋|--//
 let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
@@ -86,24 +96,40 @@ export function defineButton(
 }
 
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {
+  const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
+  const safeRender = (id: string, component: React.ReactElement) => {
+    const element = document.getElementById(id);
+    if (!element) {
+      console.error(`Can't find #${id}`);
+      return;
+    }
+    if (element.childElementCount === 0) {
+      ReactDOM.createRoot(element).render(component);
+    }
+  };
+
   //--|🠋 Get the figure element that triggered the event. 🠋|--//
-  const tag = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
-  if (!tag) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
-  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
+  if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
 
   setTimeout(() => {
     //--|🠉 Delay execution slightly (125ms) to allow for smooth transitions. 🠈|--//
-    tag.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
-    tag.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
+    activeElement.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
+    activeElement.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
   }, 250);
+
+  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
+
+  safeRender('overtime-body', React.createElement(Overtime));
+  safeRender('ticketing-body', React.createElement(Ticketing));
+  safeRender('hyperlink-body', React.createElement(Hyperlink));
 }
 export function showFigure(overlay: 'apps' | 'demo') {
   //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
   // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
-  const tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement | null;
+  const figureElement = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
 
   //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
-  if (!tag) return;
+  if (!figureElement) return;
 
   //--|🠋 Clear any previously set debounce timer to prevent rapid execution. 🠋|--//
   if (debounceTimer) clearTimeout(debounceTimer);
@@ -148,13 +174,13 @@ export function showMain(view: 'register' | 'login', pageName: string) {
       break;
   }
 }
-export function viewDemo(view: 'overtime' | 'ticketing' | 'hyperlink') {
-  const element = document.querySelector(`#${view}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
+export function viewDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
+  const element = document.querySelector(`#${pageName}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
   const visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
 
   if (!(element instanceof HTMLElement)) {
     //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
-    console.warn(`Element for view "${view}" not found.`);
+    console.warn(`Element for view "${pageName}" not found.`);
     return;
   }
 
