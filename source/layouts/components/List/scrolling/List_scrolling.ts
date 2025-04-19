@@ -58,7 +58,7 @@ export function defineButton(
   }
 }
 
-export function showWeek(action: 'prev' | 'next', pageName: string, blockName: string) {
+export function showWeek(action: 'prev' | 'next', pageName: string) {
   const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
   const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
   const getView = (container: HTMLElement): number => {

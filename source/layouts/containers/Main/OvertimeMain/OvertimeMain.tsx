@@ -43,7 +43,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             className="weekdays-container"
             style={{
               transform: 'translateY(0px)',
-              /* transform: 'translateY(-576.963px)' */
             }}
           >
             <TableWeeks info={info} />

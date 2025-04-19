@@ -26,22 +26,33 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  const handleWeeks = async () => {
-    showWeek(pageName, blockName);
-    styleTable(pageName, blockName);
-  };
+  const handleWeeks = async () => {};
 
   useEffect(() => {
-    handleWeeks();
-  }, [pageName, blockName]);
+    const handleResize = () => {
+      console.log('handleResize');
 
+      setTimeout(() => {
+        showWeek(pageName);
+        styleTable(pageName, blockName);
+      }, 2500);
+    };
+    handleResize(); // Call it once to set initial sizes
+
+    window.addEventListener('resize', handleResize); // Set up resize listener
+
+    return () => {
+      // Clean up listener on unmount
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [pageName, blockName]);
   return (
     <table className="weeks-table">
       <tbody className="table-body hidden" id="previous-week">
         <tr className="monday-row">
           {/* <th>#previous-week</th> */}
           <td className="weekday">01. Monday</td>
-          <td className="clock-in">08:00</td>
+          <td className="clock-in">08:00 Previous Week</td>
           <td className="clock-out">17:00</td>
         </tr>
         <tr className="tuesday-row">
@@ -83,62 +94,90 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
       </tbody>
       <tbody className="table-body visible" id="current-week">
         <tr className="monday-row">
-          <td>01. Monday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">01. Monday</td>
+          <td className="clock-in">08:00 Current Week</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="tuesday-row">
-          <td>02. Tuesday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">02. Tuesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="wednesday-row">
-          <td>03. Wednesday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">03. Wednesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="thursday-row">
-          <td>04. Thursday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">04. Thursday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="friday-row">
-          <td>05. Friday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">05. Friday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="saturday-row">
-          <td>06. Saturday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">06. Saturday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="sunday-row">
-          <td>07. Sunday</td>
-          <td>#current-week</td>
+          {/* <th>#current-week</th> */}
+          <td className="weekday">07. Sunday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
       </tbody>
       <tbody className="table-body hidden" id="future-week">
         <tr className="monday-row">
-          <td>01. Monday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">01. Monday</td>
+          <td className="clock-in">08:00 Future Week</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="tuesday-row">
-          <td>02. Tuesday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">02. Tuesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="wednesday-row">
-          <td>03. Wednesday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">03. Wednesday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="thursday-row">
-          <td>04. Thursday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">04. Thursday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="friday-row">
-          <td>05. Friday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">05. Friday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="saturday-row">
-          <td>06. Saturday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">06. Saturday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
         <tr className="sunday-row">
-          <td>07. Sunday</td>
-          <td>#future-week</td>
+          {/* <th>#future-week</th> */}
+          <td className="weekday">07. Sunday</td>
+          <td className="clock-in">08:00</td>
+          <td className="clock-out">17:00</td>
         </tr>
       </tbody>
     </table>
