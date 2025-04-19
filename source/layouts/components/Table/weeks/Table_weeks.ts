@@ -57,31 +57,50 @@ export function loadTime() {
   // Please keep it readable and add easy to understand comments.
   // YYYY-01-01 always starts with the first week of the year.
 }
-export function showWeek(pageName: string) {
+
+export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
   const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
   const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
+  container.style.transform = 'translateY(0px)';
+
   const getView = (container: HTMLElement): number => {
-    let match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
+    let match;
+    switch (viewAxis) {
+      case '<x>':
+        match = container.style.transform.match(/translateX\((-?\d+(\.\d+)?)px\)/);
+        break;
+      case '<y>':
+        match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
+        break;
+    }
+
     if (match) {
       return parseFloat(match[1]);
     } else {
       return 0; //--|🠈 Default value if no match is found 🠈|--//
     }
   };
-  container.style.transform = 'translateY(0px)';
+
   container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
 }
+export function returnWeek(year: number): number {
+  const date = new Date(year, 11, 31); // Dec 31 of the year
+  const week = Math.ceil(
+    ((date.getTime() - new Date(year, 0, 1).getTime()) / 86400000 + new Date(year, 0, 1).getDay() + 1) / 7
+  );
+  return week;
+}
 export function styleTable(pageName: string, blockName: string) {
-  const parent = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  const carousel = parent.querySelector('div[class*="carousel"]') as HTMLElement;
+  const container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  const carousel = container.querySelector('div[class*="carousel"]') as HTMLElement;
 
-  if (parent) {
+  if (container) {
     let weekDays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
     let clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
     let clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
     let dataRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
-    let heightRows = carousel.offsetHeight / 7;
-    let heightColumns = (carousel.offsetWidth - 128) / 2;
+    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
+    let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
 
     dataRows.forEach((row) => {
       row.style.height = `${heightRows}px`;
@@ -96,7 +115,7 @@ export function styleTable(pageName: string, blockName: string) {
       column.style.width = `8rem`;
     });
   } else {
-    console.warn(`Carousel not found for #${pageName}-${blockName}`);
+    console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
     return;
   }
 }
