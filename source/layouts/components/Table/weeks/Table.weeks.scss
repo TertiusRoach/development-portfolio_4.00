@@ -8,6 +8,9 @@
     flex-shrink: 0;
     flex-direction: column;
     tr {
+      margin: 0;
+      padding: 0;
+      // height: 50rem;
       color: Palettes.$trackDay-light;
       td {
         font-weight: 600; /* Thickness (100–900 or keywords like bold) */

@@ -8,8 +8,12 @@
   div[class*='carousel'] {
     display: block;
     overflow: hidden;
+    overflow-y: auto; // Enable vertical scrolling
+    overflow-x: hidden; // Disable horizontal scrolling
+
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
+
     section {
       div[class*='weekdays'] {
         /* transform: translateY(-576.963px); */ //--|🠊 Resolution: 1366x768 🠈|--//
@@ -23,12 +27,12 @@
     grid-area: 2 / 4 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     border-radius: 4rem 0 0 4rem; //--|🠊 top-left / top-right / bottom-right / bottom-left 🠈|--//
     background: Palettes.$trackDay-dark;
-    border-left: 4px dashed Palettes.$trackDay-light;
+    border-left: 2px solid Palettes.$trackDay-light;
     grid-template: 4rem repeat(2, 1fr) 8rem / 1fr 3rem; //--|🠊 rows / columns 🠈|--//
-
+    box-shadow: inset 0 0 1rem rgba(Palettes.$trackDay-light, 0.5);
     .foreground {
-      grid-area: 1 / 1 / 5 / 3;
       // background: blue;
+      grid-area: 1 / 1 / 5 / 3;
     }
   }
 }

@@ -1,7 +1,5 @@
 //--|🠊 Table.weeks.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Table.weeks.scss';
-//--|🠉 Styles 🠉|--//
+
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
@@ -14,6 +12,9 @@ import { styleTable, showWeek, returnWeek } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
+//--|🠋 Styles 🠋|--//
+import './Table.weeks.scss';
+//--|🠉 Styles 🠉|--//
 interface InfoProps {
   info: {
     resolution: string;
@@ -49,7 +50,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <table className="weeks-table">
-      <tbody className="table-body hidden" id="previous-week">
+      <tbody className="table-body hidden" id="previous-week_YYYY-DD-MM" data-week="01">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>
@@ -86,7 +87,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td className="clock-out display-3">17:00</td>
         </tr>
       </tbody>
-      <tbody className="table-body visible" id="current-week">
+      <tbody className="table-body visible" id="current-week_YYYY-DD-MM" data-week="02">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>
@@ -123,7 +124,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td className="clock-out display-3">~~:~~</td>
         </tr>
       </tbody>
-      <tbody className="table-body hidden" id="future-week">
+      <tbody className="table-body hidden" id="future-week_YYYY-DD-MM" data-week="03">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>
