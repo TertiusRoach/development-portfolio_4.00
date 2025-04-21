@@ -30,6 +30,12 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     /*
+    const carousel = document.querySelector("div[class*='carousel']") as HTMLElement;
+    if (carousel) {
+      carousel.scrollTop = (carousel.scrollHeight - carousel.clientHeight) / 2;
+    }
+    */
+    /*
     let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
     outputDisplay(sectionElement);
     */

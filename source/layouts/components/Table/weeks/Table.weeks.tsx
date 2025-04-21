@@ -27,15 +27,40 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  const handleWeeks = async () => {};
+  const handleWeeks = async () => {
+    const presentYear = new Date().getFullYear();
+    const weekContainers = returnWeek(presentYear);
+  };
+  const handleResize = () => {
+    handleTablets();
+    setTimeout(() => {
+      // handleWeeks();
+      showWeek(pageName, '<y>');
+      styleTable(pageName, blockName);
+    }, 3000);
+  };
+  const handleTablets = () => {
+    const tds = document.querySelectorAll('td');
+    if (window.innerWidth < 1366) {
+      tds.forEach((td) => {
+        td.classList.remove('h1', 'display-3');
+        td.style.fontSize = '0.75rem';
+        td.style.padding = '0.25rem';
+        td.style.lineHeight = '1.2';
+      });
+    } else {
+      // const tds = document.querySelectorAll('td');
+
+      tds.forEach((td) => {
+        td.classList.add('h1', 'display-3');
+        td.style.fontSize = '';
+        td.style.padding = '';
+        td.style.lineHeight = '';
+      });
+    }
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setTimeout(() => {
-        showWeek(pageName, '<y>');
-        styleTable(pageName, blockName);
-      }, 3000);
-    };
     handleResize(); //--|🠊 Call it once to set initial sizes 🠈|--//
 
     window.addEventListener('resize', handleResize); //--|🠊 Set up resize listener 🠈|--//
@@ -45,9 +70,8 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
     };
   }, [pageName, blockName]);
 
-  const presentYear = new Date().getFullYear();
-  const weekContainers = returnWeek(presentYear);
-
+  // I'm using Bootstrap inside REACT and want to incorporate useEffect by toggling the className of the table data <td> elements.
+  // Make remove the classes and add inline styles to make everything as small as possible for screen sizes below a height of 1366px.
   return (
     <table className="weeks-table">
       <tbody className="table-body hidden" id="previous-week_YYYY-DD-MM" data-week="01">

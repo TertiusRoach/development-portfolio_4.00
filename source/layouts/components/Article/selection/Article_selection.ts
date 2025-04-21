@@ -97,16 +97,6 @@ export function defineButton(
 
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {
   const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
-  const safeRender = (id: string, component: React.ReactElement) => {
-    const element = document.getElementById(id);
-    if (!element) {
-      console.error(`Can't find #${id}`);
-      return;
-    }
-    if (element.childElementCount === 0) {
-      ReactDOM.createRoot(element).render(component);
-    }
-  };
 
   //--|🠋 Get the figure element that triggered the event. 🠋|--//
   if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
@@ -118,10 +108,6 @@ export function hideFigure(event: React.MouseEvent<HTMLElement>) {
   }, 250);
 
   if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
-
-  safeRender('overtime-body', React.createElement(Overtime));
-  safeRender('ticketing-body', React.createElement(Ticketing));
-  safeRender('hyperlink-body', React.createElement(Hyperlink));
 }
 export function showFigure(overlay: 'apps' | 'demo') {
   //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
@@ -175,6 +161,21 @@ export function showMain(view: 'register' | 'login', pageName: string) {
   }
 }
 export function viewDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
+  const safeRender = (id: string, component: React.ReactElement) => {
+    const element = document.getElementById(id);
+    if (!element) {
+      console.error(`Can't find #${id}`);
+      return;
+    }
+    if (element.childElementCount === 0) {
+      ReactDOM.createRoot(element).render(component);
+    }
+  };
+
+  safeRender('overtime-body', React.createElement(Overtime));
+  safeRender('ticketing-body', React.createElement(Ticketing));
+  safeRender('hyperlink-body', React.createElement(Hyperlink));
+
   const element = document.querySelector(`#${pageName}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
   const visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
 

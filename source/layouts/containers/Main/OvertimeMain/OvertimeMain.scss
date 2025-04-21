@@ -8,8 +8,6 @@
   div[class*='carousel'] {
     display: block;
     overflow: hidden;
-    overflow-y: auto; // Enable vertical scrolling
-    overflow-x: hidden; // Disable horizontal scrolling
 
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
