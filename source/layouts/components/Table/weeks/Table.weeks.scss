@@ -55,6 +55,16 @@ table[class*='weeks'] {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    @media screen and (max-width: 1365px) {
+      tbody {
+        background: red;
+        /*
+        tr {
+          height: 25px;
+        }
+        */
+      }
+    }
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {

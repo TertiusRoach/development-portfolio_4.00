@@ -15,6 +15,12 @@
     transition: transform 0.25s ease-in-out;
 
     section {
+      figure[class*='weekdays'] {
+        height: 6rem;
+        // display: grid;
+        // grid-template: repeat(7, 1fr) / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+        background: red;
+      }
       div[class*='weekdays'] {
         /* transform: translateY(-576.963px); */ //--|🠊 Resolution: 1366x768 🠈|--//
         transition: transform 0.25s ease-in-out;
