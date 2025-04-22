@@ -24,13 +24,13 @@ import HeaderBranding from '../../../components/Header/branding/Header.branding'
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
 const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
-  const pageName = info.identification;
+  const pageName = info.identification as 'landing';
   const stateName: 'visible' | 'hidden' = 'visible';
 
   useEffect(() => {

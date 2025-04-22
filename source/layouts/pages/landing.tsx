@@ -36,12 +36,12 @@ function Landing() {
       <EmailProvider>
         <PasswordProvider>
           <LandingOverlay info={information} />
-          <LandingLeftbar info={information} />
-          <LandingRightbar info={information} />
+          {/* <LandingLeftbar info={information} /> */}
+          {/* <LandingRightbar info={information} /> */}
 
-          <LandingHeader info={information} />
-          <LandingMain info={information} />
-          <LandingFooter info={information} />
+          {/* <LandingHeader info={information} /> */}
+          {/* <LandingMain info={information} /> */}
+          {/* <LandingFooter info={information} /> */}
         </PasswordProvider>
       </EmailProvider>
     </>
