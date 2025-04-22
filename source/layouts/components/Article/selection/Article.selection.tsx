@@ -1,4 +1,9 @@
 //--|🠊 Article.selection.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+// import { viewDemo, openApps } from '../../../..';
+import { viewBlock, viewText, axiosError } from '../../../pages/landing';
+import { defineButton, viewDemo, hideFigure, showFigure, showMain } from './Article_selection';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.selection.scss';
 //--|🠉 Styles 🠉|--//
@@ -10,11 +15,6 @@ import ButtonGrade from '../../Button/grading/Button.grading';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
-//--|🠋 Functions 🠋|--//
-// import { viewDemo, openApps } from '../../../..';
-import { viewBlock, viewText, axiosError } from '../../../pages/landing';
-import { defineButton, viewDemo, hideFigure, showFigure, showMain } from './Article_selection';
-//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   onMouseLeave?: () => void;

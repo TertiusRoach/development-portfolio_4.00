@@ -1,13 +1,13 @@
 //--|🠊 Button.grading.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { scaleImage } from './Button_grading';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Button.grading.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { scaleImage } from './Button_grading';
-//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   type: 'button' | 'submit' | 'reset';
@@ -36,16 +36,18 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const shadingView = style.shadingView;
 
   useEffect(() => {
-    /*
-    console.log(`pageName: ${pageName}`);
-    console.log(`fontSize: ${fontSize}`);
-    console.log(`blockName: ${blockName}`);
-    console.log(`className: ${className}`);
-    console.log(`imageLink: ${imageLink}`);
-    console.log(`layoutView: ${layoutView}`);
-    console.log(`shadingView: ${shadingView}`);
-    */
-  }, [pageName, blockName]);
+    setTimeout(() => {
+      /*
+      console.log(`pageName: ${pageName}`);
+      console.log(`fontSize: ${fontSize}`);
+      console.log(`blockName: ${blockName}`);
+      console.log(`className: ${className}`);
+      console.log(`imageLink: ${imageLink}`);
+      console.log(`layoutView: ${layoutView}`);
+      console.log(`shadingView: ${shadingView}`);
+      */
+    }, 3000);
+  }, [pageName, blockName, className]);
 
   switch (layoutView) {
     case 'left':

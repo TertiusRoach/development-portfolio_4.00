@@ -11,6 +11,8 @@
     align-items: center;
     justify-content: center;
   }
+  @media screen and (max-height: 768px) {
+  }
 }
 @mixin mobile-portrait {
 }

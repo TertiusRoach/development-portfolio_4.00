@@ -197,6 +197,7 @@
   &[class*='center'] {
     div {
       * {
+        line-height: 1;
         white-space: wrap;
         font-weight: bold;
         position: relative;
@@ -231,7 +232,6 @@
     &[class*='dark'] {
       background: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
@@ -246,7 +246,6 @@
     &[class*='light'] {
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 4px rgba(white, 0.75));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
@@ -275,7 +274,6 @@
     &[class*='dark']:hover {
       background: Palettes.$indexLand-light;
       filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(black, 0.5));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
@@ -290,7 +288,6 @@
     &[class*='light']:hover {
       background: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
         // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
@@ -327,7 +324,6 @@
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
         * {
           color: Palettes.$trackDay-light;
         }
@@ -367,7 +363,6 @@
       background: Palettes.$trackDay-light;
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-dark, 0.5)); //
         *:hover {
           color: Palettes.$trackDay-dark;
         }
