@@ -23,6 +23,9 @@
       height: 2rem;
       filter: drop-shadow(0 0 4px rgba(white, 0.75));
     }
+    @media screen and (max-height: 768px) {
+      display: none;
+    }
   }
 }
 @mixin mobile-portrait {

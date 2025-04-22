@@ -4,7 +4,25 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   div[class*='container'] {
+    height: 100%;
+    display: grid;
+    min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
     grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+
+    & {
+      h6[class*='register'] {
+        color: Palettes.$trackDay-dark;
+        filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
+      }
+      h6[class*='login'] {
+        color: Palettes.$logTicket-dark;
+        filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
+      }
+      h6[class*='password'] {
+        color: Palettes.$findLink-dark;
+        filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
+      }
+    }
 
     nav {
       z-index: 3;
@@ -30,6 +48,33 @@
       z-index: 0;
       grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
+
+    @media screen and (max-height: 768px) {
+      grid-template: 4rem 1fr 18.5rem 1fr 4rem / 3rem 1fr 25rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
+      nav {
+        // display: none;
+        z-index: 3;
+        grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+
+        /*
+        */
+      }
+      form[class*='login'],
+      form[class*='register'],
+      form[class*='password'] {
+        grid-area: 1 / 3 / 6 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        &[class*='login'] {
+          z-index: 2;
+          box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
+        }
+      }
+      figure[class*='rotation'] {
+        z-index: 0;
+        grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        /*
+        */
+      }
+    }
   }
 }
 @mixin mobile-portrait {
@@ -51,25 +96,6 @@ main[id*='landing'] {
     transition: transform 0.5s ease-in-out;
     section {
       //--|🠊 display: block; 🠈|--//
-      div[class*='container'] {
-        height: 100%;
-        display: grid;
-        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-
-        h6[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
-        }
-        h6[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
-        }
-        h6[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
-        }
-      }
-
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
         @include desktop-landscape();
