@@ -40,7 +40,7 @@ function Landing() {
           {/* <LandingRightbar info={information} /> */}
 
           {/* <LandingHeader info={information} /> */}
-          {/* <LandingMain info={information} /> */}
+          <LandingMain info={information} />
           {/* <LandingFooter info={information} /> */}
         </PasswordProvider>
       </EmailProvider>

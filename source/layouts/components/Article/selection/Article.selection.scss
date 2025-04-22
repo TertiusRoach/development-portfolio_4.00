@@ -10,9 +10,6 @@
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
     border-bottom: 4px dashed white;
-    @media screen and (max-height: 768px) {
-      border-bottom: 2px dashed Palettes.$indexLand-medium;
-    }
     img {
       width: 50%;
       height: 50%;
@@ -20,6 +17,10 @@
       mask-position: center;
       mask-repeat: no-repeat;
       background: Palettes.$indexLand-light;
+    }
+
+    @media screen and (max-height: 768px) {
+      border-bottom: 2px dashed Palettes.$indexLand-medium;
     }
   }
   aside[class*='apps'],
@@ -78,9 +79,120 @@
         grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
         box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
 
+        h1 {
+          z-index: 1;
+          display: flex;
+          color: white;
+          font-size: 3rem;
+          font-weight: bold;
+          margin-bottom: 8px;
+          text-align: center;
+          letter-spacing: 4px;
+          align-items: flex-end;
+          justify-content: center;
+          grid-area: 1 / 1 / 2 / 2;
+          transition: opacity 1s ease-in-out;
+          text-shadow: 0 0 1rem rgba(black, 0.75);
+        }
+        img {
+          top: 0;
+          left: 50%;
+          width: 50%;
+          height: 50%;
+          opacity: 0.75;
+          margin-top: 8px;
+          position: absolute;
+          background: white;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          grid-area: 2 / 1 / 3 / 2;
+          transform: translate(-50%, 0);
+        }
+
         @media screen and (max-height: 768px) {
           box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-medium, 1);
+          h1 {
+            font-size: 1rem;
+          }
+          img {
+            opacity: 0.25;
+            height: 25%;
+          }
         }
+      }
+      &[class*='nav'] {
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  aside:hover {
+    figure {
+      opacity: 0;
+    }
+  }
+}
+@mixin mobile-portrait {
+  div[class*='branding'] {
+    display: none;
+  }
+
+  aside[class*='apps'],
+  aside[class*='demo'] {
+    position: relative;
+    &[class*='apps'] {
+      grid-area: 2 / 1 / 4 / 2;
+      border-bottom-left-radius: 1rem;
+      border-right: 2px dashed white;
+      figure {
+        border-bottom-left-radius: 1rem;
+      }
+      nav {
+        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        button:nth-child(1) {
+          border-bottom: 2px dashed white;
+        }
+      }
+
+      @media screen and (max-height: 768px) {
+        border-right: 1px dashed Palettes.$indexLand-medium;
+      }
+    }
+    &[class*='demo'] {
+      grid-area: 2 / 2 / 4 / 3;
+      border-left: 2px dashed white;
+      border-bottom-right-radius: 1rem;
+      figure {
+        border-bottom-right-radius: 1rem;
+      }
+      nav {
+        grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        button:nth-child(1),
+        button:nth-child(2) {
+          border-bottom: 2px dashed white;
+        }
+      }
+
+      @media screen and (max-height: 768px) {
+        border-left: 1px dashed Palettes.$indexLand-medium;
+      }
+    }
+    figure,
+    nav {
+      display: grid;
+      position: absolute;
+      &[class*='figure'] {
+        z-index: 1;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
+        /* backdrop-filter: blur(1rem); */
+        background: Palettes.$indexLand-dark;
+        transition: opacity 0.25s ease-in-out;
+        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
 
         h1 {
           z-index: 1;
@@ -111,7 +223,9 @@
           grid-area: 2 / 1 / 3 / 2;
           transform: translate(-50%, 0);
         }
+
         @media screen and (max-height: 768px) {
+          box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-medium, 1);
           h1 {
             font-size: 1rem;
           }
@@ -129,12 +243,7 @@
     }
   }
   aside:hover {
-    figure {
-      opacity: 0;
-    }
   }
-}
-@mixin mobile-portrait {
 }
 
 article[class*='selection'] {
