@@ -135,7 +135,12 @@
 }
 @mixin mobile-portrait {
   div[class*='branding'] {
-    display: none;
+    // display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: 1 / 1 / 2 / 3;
+    border-bottom: 4px dashed white;
   }
 
   aside[class*='apps'],
@@ -243,6 +248,9 @@
     }
   }
   aside:hover {
+    figure {
+      opacity: 0;
+    }
   }
 }
 

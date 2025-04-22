@@ -41,7 +41,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   return (
     <article className="selection-article">
       <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
-        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)}>
+        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)} onClick={(event) => hideFigure(event)}>
           <h1>
             Open
             <br />
@@ -65,7 +65,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </nav>
       </aside>
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
-        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)}>
+        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)} onClick={(event) => hideFigure(event)}>
           <h1>
             View
             <br />
