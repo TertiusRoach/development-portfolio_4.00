@@ -40,10 +40,6 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
   // console.log(orientation);
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <MenuBranding
-        src={imageLink}
-        style={{ brandView: desktop ? 'left' : 'center', blockName: blockName, pageName: pageName }}
-      />
       <SectionLaunch info={info} />
     </header>
   );

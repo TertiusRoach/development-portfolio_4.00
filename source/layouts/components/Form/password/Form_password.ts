@@ -31,8 +31,8 @@ export function defineButton(button: 'register' | 'login' | 'password', info: { 
       };
     case 'login':
       return {
-        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: (tabletSquare ? 'icon' : 'left') as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -43,8 +43,8 @@ export function defineButton(button: 'register' | 'login' | 'password', info: { 
       };
     case 'register':
       return {
-        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: (tabletSquare ? 'icon' : 'right') as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,

@@ -120,6 +120,7 @@
   grid-template: 1fr auto 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
   div[class*='header'] {
     display: inherit; //--|🠊 display: grid; 🠈|--//
+    padding-top: 4rem;
     grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
     button[class*='close'] {
@@ -231,6 +232,7 @@
 }
 
 form[class*='login'] {
+  // display: none;
   display: grid;
   border-radius: 1rem;
   background: rgba(Palettes.$logTicket-dark, 0.75);

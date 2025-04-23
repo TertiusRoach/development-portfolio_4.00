@@ -51,7 +51,6 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
-
         <section className="login-section visible">
           <div className="login-container">
             <NavigationLogin info={info} />
