@@ -16,8 +16,32 @@
     color: Palettes.$logTicket-dark;
     filter: drop-shadow(Palettes.$logTicket-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
   }
+
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 5rem / 5rem 1fr; //--|🠊 rows / columns 🠈|--//
+  button {
+    grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  h4[class*='label'] {
+    margin: 0;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    color: Palettes.$logTicket-dark;
+    filter: drop-shadow(Palettes.$logTicket-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
 nav[class*='login'] {

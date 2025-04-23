@@ -17,9 +17,9 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
-  const tabletSquare = window.innerHeight < 786;
 
   //--|🠋 Always Return an Object 🠋|--//
+  const tabletSquare = window.innerHeight < 786;
   switch (button) {
     case 'login':
       return {

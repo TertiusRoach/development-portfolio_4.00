@@ -41,6 +41,12 @@
         height: 240px;
       }
     }
+    section[class*='selection'] {
+      grid-template: 2rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+      article[class*='selection'] {
+        grid-area: 2 / 3 / 3 / 4;
+      }
+    }
   }
 }
 @mixin mobile-portrait {
@@ -69,8 +75,20 @@
   }
 
   @media screen and (max-width: 768px) {
+    section[class*='loading'] {
+      img {
+        width: 640px;
+        height: 360px;
+      }
+    }
   }
   @media screen and (max-width: 360px) {
+    section[class*='loading'] {
+      img {
+        width: 256px;
+        height: 144px;
+      }
+    }
   }
 }
 

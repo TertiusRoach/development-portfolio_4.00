@@ -28,9 +28,22 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
+  function getOrientation() {
+    if (window.matchMedia('(orientation: landscape)').matches) {
+      return 'landscape';
+    } else {
+      return 'portrait';
+    }
+  }
+
+  const desktop = window.matchMedia('(orientation: landscape)').matches;
+  // console.log(orientation);
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <MenuBranding src={imageLink} style={{ brandView: 'left', blockName: blockName, pageName: pageName }} />
+      <MenuBranding
+        src={imageLink}
+        style={{ brandView: desktop ? 'left' : 'center', blockName: blockName, pageName: pageName }}
+      />
       <SectionLaunch info={info} />
     </header>
   );

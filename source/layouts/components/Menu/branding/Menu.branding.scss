@@ -1,6 +1,7 @@
 //--|🠊 Menu.branding.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  height: 4rem;
   grid-template: 1fr auto 1fr / 3rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
   background: linear-gradient(180deg, rgba(white, 0.5) 0%, rgba(white, 0.25) 50%, rgba(white, 0) 100%);
   li {
@@ -44,6 +45,8 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  // height: 6rem;
+  // height: 100%;
   grid-template: 1fr auto 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
   background: linear-gradient(180deg, rgba(white, 0.5) 0%, rgba(white, 0.25) 50%, rgba(white, 0) 100%);
   li {
@@ -88,7 +91,6 @@
 }
 
 menu[class*='branding'] {
-  height: 100%;
   display: grid;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

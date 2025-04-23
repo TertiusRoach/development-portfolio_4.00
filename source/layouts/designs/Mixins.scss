@@ -49,16 +49,43 @@
   }
   %header-constituents {
     &[id*='landing'][class*='collapsed'] {
-      clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+      }
+
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
+      }
     }
+
     &[id*='overtime'][class*='collapsed'] {
-      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
     }
     &[id*='ticketing'][class*='collapsed'] {
-      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
     }
     &[id*='hyperlink'][class*='collapsed'] {
-      clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
     }
   }
 }

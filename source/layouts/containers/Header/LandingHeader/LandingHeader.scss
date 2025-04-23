@@ -10,9 +10,28 @@
   section[class*='launch'] {
     grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
+
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+
+  menu[class*='branding'] {
+    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  section[class*='launch'] {
+    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
 header[id*='landing'] {

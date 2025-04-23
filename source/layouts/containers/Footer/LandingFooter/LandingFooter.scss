@@ -10,9 +10,18 @@
   section {
     grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
+  display: none;
   //--|🠊 display: grid; 🠈|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 footer[id*='landing'] {
   display: grid;

@@ -96,9 +96,18 @@
       }
     }
   }
+
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
+  //--|🠊 display: grid; 🠈|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
 form[class*='reset'] {
