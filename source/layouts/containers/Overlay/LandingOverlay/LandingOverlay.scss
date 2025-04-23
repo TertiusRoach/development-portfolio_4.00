@@ -111,8 +111,6 @@ section[id*='landing'] {
           box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
         }
       }
-      &[class*='selection'] {
-      }
     }
 
     //--|🠋 Desktop (Landscape) 🠋|--//
