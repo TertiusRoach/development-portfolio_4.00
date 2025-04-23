@@ -146,7 +146,7 @@ export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'r
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
-export function viewWord(form: 'register' | 'login' | 'reset') {
+export function viewPass(form: 'register' | 'login' | 'reset') {
   let input = document.querySelector(`.${form}-inputs #password`) as HTMLInputElement;
   if (input) {
     input.type = input.type === 'password' ? 'text' : 'password';

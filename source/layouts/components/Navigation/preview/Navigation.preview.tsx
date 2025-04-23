@@ -8,7 +8,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { toggleHeader, defineButton } from './Navigation_preview';
-import { viewBlock, viewText, axiosError, retrieveEndpoint, viewWord } from '../../../pages/landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint, viewPass } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';

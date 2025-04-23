@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { showDemos, defineButton, generatePassword } from './Form_register';
-import { viewBlock, viewText, viewWord, retrieveEndpoint, axiosError } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
@@ -125,7 +125,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         <ButtonDefault
           text={''}
           type="button"
-          onClick={() => viewWord('register')}
+          onClick={() => viewPass('register')}
           style={defineButton('observe', { pageName, blockName })}
         />
 

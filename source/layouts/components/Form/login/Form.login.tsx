@@ -1,7 +1,7 @@
 //--|🠊 Form.login.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
-import { viewBlock, viewText, viewWord } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass } from '../../../pages/landing';
 import { axiosError, retrieveEndpoint } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
@@ -163,7 +163,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         <ButtonDefault
           text={''}
           type="button"
-          onClick={() => viewWord('login')}
+          onClick={() => viewPass('login')}
           style={defineButton('observe', { pageName, blockName })}
         />
       </div>
