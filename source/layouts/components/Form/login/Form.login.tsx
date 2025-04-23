@@ -123,6 +123,7 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     // showDemos(pageName);
   }, [pageName, blockName]);
 
+  const tabletSquare = window.innerWidth < 400;
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">

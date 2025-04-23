@@ -5,6 +5,7 @@ export function defineButton(
 ) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
+  const tabletSquare = window.innerWidth < 400;
   switch (button) {
     case 'login':
       return {
@@ -20,7 +21,7 @@ export function defineButton(
       };
     case 'register':
       return {
-        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -32,7 +33,7 @@ export function defineButton(
       };
     case 'password':
       return {
-        fontSize: '<h6>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
