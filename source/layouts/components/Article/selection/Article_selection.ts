@@ -136,10 +136,10 @@ export function showFigure(overlay: 'apps' | 'demo') {
 }
 export function showMain(view: 'register' | 'login', pageName: string) {
   const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
-  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
+  const carouselMain = document.querySelector('main .landing-carousel') as HTMLElement;
 
-  let register = carousel.childNodes[0] as HTMLElement;
-  let login = carousel.childNodes[1] as HTMLElement;
+  let login = carouselMain.childNodes[1] as HTMLElement;
+  let register = carouselMain.childNodes[0] as HTMLElement;
 
   overlay.className = 'default-overlay hidden';
   setTimeout(() => {
@@ -148,16 +148,14 @@ export function showMain(view: 'register' | 'login', pageName: string) {
 
   switch (view) {
     case 'register':
-      carousel.style.transform = 'translateX(0vw)';
-
+      login.className = 'login-section hidden';
+      carouselMain.style.transform = 'translateX(0vw)';
       register.className = `${view}-section visible`;
-      login.className = `${view}-section hidden`;
       break;
     case 'login':
-      carousel.style.transform = 'translateX(-100vw)';
-
-      register.className = `${view}-section hidden`;
       login.className = `${view}-section visible`;
+      register.className = 'register-section hidden';
+      carouselMain.style.transform = 'translateX(-100vw)';
       break;
   }
 }

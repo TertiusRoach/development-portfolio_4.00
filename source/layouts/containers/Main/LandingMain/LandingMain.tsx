@@ -20,7 +20,7 @@ import NavigationPassword from '../../../components/Navigation/password/Navigati
 import NavigationRegister from '../../../components/Navigation/register/Navigation.register';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
+// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -51,6 +51,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
+
         <section className="login-section visible">
           <div className="login-container">
             <NavigationLogin info={info} />

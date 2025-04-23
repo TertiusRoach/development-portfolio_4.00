@@ -36,8 +36,8 @@
     section[class*='loading'] {
       grid-template: 1fr 22.5rem 1fr / 1fr 40rem 1fr; //--|🠊 1280x720, rows / columns 🠈|--//
       img {
-        width: 40rem;
-        height: 22.5rem;
+        width: 40rem; //--|🠈 1280px 🠈|--//
+        height: 22.5rem; //--|🠈 720px 🠈|--//
       }
     }
     section[class*='selection'] {
@@ -50,6 +50,8 @@
         grid-area: 2 / 3 / 3 / 4;
       }
     }
+  }
+  @media screen and (max-height: 360px) {
   }
 }
 @mixin mobile-portrait {
@@ -79,6 +81,11 @@
       height: 100%;
       grid-area: 2 / 2 / 3 / 3;
     }
+  }
+
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
   }
 }
 

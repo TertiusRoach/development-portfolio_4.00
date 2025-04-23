@@ -1,4 +1,9 @@
 //--|🠊 Form.login.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { defineButton } from './Form_login';
+import { viewBlock, viewText, viewWord } from '../../../pages/landing';
+import { axiosError, retrieveEndpoint } from '../../../pages/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Form.login.scss';
 //--|🠉 Styles 🠉|--//
@@ -6,10 +11,7 @@ import './Form.login.scss';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { defineButton } from './Form_login';
-import { viewBlock, viewText, axiosError, retrieveEndpoint, viewWord } from '../../../pages/landing';
-//--|🠉 Functions 🠉|--//
+
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';

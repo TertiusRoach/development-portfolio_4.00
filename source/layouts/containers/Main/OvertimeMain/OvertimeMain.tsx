@@ -14,7 +14,7 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
+// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
