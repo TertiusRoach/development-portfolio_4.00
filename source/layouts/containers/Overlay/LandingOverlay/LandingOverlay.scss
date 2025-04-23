@@ -5,14 +5,12 @@
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
     display: grid;
-    grid-template: 1fr 45rem /* 720px */ 1fr / 1fr 80rem /* 1280px */ 1fr; //--|🠊 rows / columns 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 1280x720, rows / columns 🠈|--//
     background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     img {
-      grid-area: 2 / 2 / 3 / 4;
-      outline: 4px dashed rgba(Palettes.$indexLand-medium, 1);
-      filter: drop-shadow(0 0 1rem white);
-      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-      /* box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--// */
+      width: 1280px;
+      height: 720px;
+      grid-area: 2 / 2 / 3 / 3;
     }
   }
   section[class*='selection'] {
@@ -27,46 +25,34 @@
       grid-area: 3 / 3 / 4 / 4;
     }
   }
-  section {
-    width: 100vw;
-    height: 100vh;
-  }
 
   @media screen and (max-height: 768px) {
     section[class*='loading'] {
-      grid-template: 1fr 22.5rem 1fr / 1fr 40rem 1fr; //--|🠊 1280x720, rows / columns 🠈|--//
       img {
-        width: 40rem; //--|🠈 1280px 🠈|--//
-        height: 22.5rem; //--|🠈 720px 🠈|--//
-      }
-    }
-    section[class*='selection'] {
-      grid-template: 4rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 640x360, rows / columns 🠈|--//
-      header[class*='branding'] {
-        display: none;
-      }
-      article[class*='selection'] {
-        height: 100%;
-        grid-area: 2 / 3 / 3 / 4;
+        width: 854px;
+        height: 480px;
       }
     }
   }
   @media screen and (max-height: 360px) {
+    section[class*='loading'] {
+      img {
+        width: 426px;
+        height: 240px;
+      }
+    }
   }
 }
 @mixin mobile-portrait {
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
     display: grid;
-    grid-template: 1fr 12rem 1fr / 1fr 18.5rem 1fr; //--|🠊 rows / columns 🠈|--//
-
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 640x360, rows / columns 🠈|--//
+    background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
     img {
-      width: 18.5rem;
-      height: 10.40625rem;
+      width: 640px;
+      height: 360px;
       grid-area: 2 / 2 / 3 / 3;
-      outline: 4px dashed rgba(Palettes.$indexLand-medium, 1);
-      filter: drop-shadow(0 0 1rem white);
-      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
     }
   }
   section[class*='selection'] {
@@ -78,14 +64,13 @@
       grid-area: 1 / 2 / 2 / 3;
     }
     article[class*='selection'] {
-      height: 100%;
       grid-area: 2 / 2 / 3 / 3;
     }
   }
 
-  @media screen and (max-height: 768px) {
+  @media screen and (max-width: 768px) {
   }
-  @media screen and (max-height: 360px) {
+  @media screen and (max-width: 360px) {
   }
 }
 
@@ -98,6 +83,17 @@ section[id*='landing'] {
     @extend %slide-up;
     flex-direction: column;
     animation: slide-up 1s ease-in-out forwards;
+    section {
+      width: 100vw;
+      height: 100vh;
+      &[class*='loading'] {
+        img {
+          filter: drop-shadow(0 0 1rem white);
+          outline: 4px dashed rgba(Palettes.$indexLand-medium, 1);
+          box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+        }
+      }
+    }
 
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {

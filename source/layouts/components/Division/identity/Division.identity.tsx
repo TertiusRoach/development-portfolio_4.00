@@ -12,7 +12,7 @@ import ArticleSelection from '../../Article/selection/Article.selection';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-// import { scaleImage } from './Division_selection';
+
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -51,9 +51,5 @@ const DivisionIdentity: React.FC<InfoProps> = ({ info }) => {
       })()}
     </div>
   );
-
-  /*
-
-  */
 };
 export default DivisionIdentity;

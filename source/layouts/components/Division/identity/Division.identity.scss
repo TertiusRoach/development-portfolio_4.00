@@ -18,8 +18,8 @@
 div[class*='identity'] {
   display: flex;
   align-items: center;
+  @extend %color-design;
   justify-content: center;
-  @extend %identity-design;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -30,7 +30,7 @@ div[class*='identity'] {
     @include mobile-portrait();
   }
 }
-%identity-design {
+%color-design {
   &[class*='overtime'] {
     background: linear-gradient(135deg, white, Palettes.$trackDay-light) padding-box,
       //--|🠉 Border  Background 🠉|--//

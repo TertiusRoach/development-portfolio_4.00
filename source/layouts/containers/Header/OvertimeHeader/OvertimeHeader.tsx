@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 import ListScrolling from '../../../components/List/scrolling/List.scrolling';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import SectionPreview from '../../../components/Section/preview/Section.preview';
-import DivisionIdentity from '../../../components/Division/branding/Division.identity';
+import DivisionIdentity from '../../../components/Division/identity/Division.identity';
 import NavigationPreview from '../../../components/Navigation/preview/Navigation.preview';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//

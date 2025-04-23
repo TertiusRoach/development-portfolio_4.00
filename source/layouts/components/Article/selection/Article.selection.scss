@@ -132,15 +132,27 @@
       opacity: 0;
     }
   }
+
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
   div[class*='branding'] {
-    // display: none;
     display: flex;
     align-items: center;
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
     border-bottom: 4px dashed white;
+    img {
+      width: 50%;
+      height: 50%;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background: Palettes.$indexLand-light;
+    }
   }
 
   aside[class*='apps'],
