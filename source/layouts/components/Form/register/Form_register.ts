@@ -18,6 +18,7 @@ export function defineButton(
 ) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
+  const tabletSquare = window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
   switch (button) {
     case 'register':
       return {

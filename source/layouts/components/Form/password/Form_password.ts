@@ -15,6 +15,7 @@ export function showDemos(pageName: 'landing' | string) {
 export function defineButton(button: 'register' | 'login' | 'password', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
+  const tabletSquare = window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
   switch (button) {
     case 'password':
       return {

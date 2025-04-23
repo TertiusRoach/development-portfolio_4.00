@@ -4,8 +4,9 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
+
   //--|🠋 Always Return an Object 🠋|--//
-  const tabletSquare = window.innerWidth < 400;
+  const tabletSquare = window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
   switch (button) {
     case 'login':
       return {
@@ -22,7 +23,7 @@ export function defineButton(
     case 'register':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: (tabletSquare ? 'icon' : 'left') as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -34,7 +35,7 @@ export function defineButton(
     case 'password':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h6>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: (tabletSquare ? 'icon' : 'right') as 'left' | 'right' | 'center' | 'icon' | 'text',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,

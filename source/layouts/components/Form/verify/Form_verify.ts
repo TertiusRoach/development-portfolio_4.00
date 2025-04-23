@@ -9,6 +9,7 @@ export function closeLeftbar(pageName: 'landing' | string) {
 export function defineButton(button: 'verify' | 'close', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
+  const tabletSquare = window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
   switch (button) {
     case 'verify':
       return {
