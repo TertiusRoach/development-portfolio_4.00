@@ -32,19 +32,17 @@ function Landing() {
   };
 
   return (
-    <>
-      <EmailProvider>
-        <PasswordProvider>
-          <LandingOverlay info={information} />
-          <LandingLeftbar info={information} />
-          <LandingRightbar info={information} />
+    <EmailProvider>
+      <PasswordProvider>
+        <LandingOverlay info={information} />
+        <LandingLeftbar info={information} />
+        <LandingRightbar info={information} />
 
-          <LandingHeader info={information} />
-          <LandingMain info={information} />
-          <LandingFooter info={information} />
-        </PasswordProvider>
-      </EmailProvider>
-    </>
+        <LandingHeader info={information} />
+        <LandingMain info={information} />
+        <LandingFooter info={information} />
+      </PasswordProvider>
+    </EmailProvider>
   );
 }
 export default Landing;
