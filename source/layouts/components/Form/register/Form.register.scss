@@ -8,6 +8,7 @@
     display: inherit; //--|🠊 display: grid; 🠈|--//
     grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
+
     button[class*='close'] {
       background: none;
       grid-area: 1 / 3 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -121,9 +122,18 @@
     }
   }
 
-  @media screen and (max-height: 768px) {
+  //--|🠋 Tablet (Landscape) 🠋|--//
+  @media screen and (max-height: 480px) {
+    div[class*='header'] {
+      display: none;
+    }
+    div[class*='inputs'] {
+      padding-top: 3rem;
+    }
   }
   @media screen and (max-height: 360px) {
+    margin-top: -1rem;
+    margin-bottom: -1rem;
   }
 }
 @mixin mobile-portrait {
@@ -247,23 +257,28 @@
     }
   }
 
+  //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
-    #register-buttons {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-area: 2 / 1 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-      button[class*='register'] {
-        grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      button[class*='password'] {
-        grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      button {
-        filter: drop-shadow(
-          rgba(Palettes.$logTicket-light, 1) 0 0 2px
-        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+    /*
+    div[class*='footer'] {
+      #register-buttons {
+        display: inherit; //--|🠊 display: grid; 🠈|--//
+        grid-area: 2 / 1 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+        button[class*='register'] {
+          grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button[class*='password'] {
+          grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button {
+          filter: drop-shadow(
+            rgba(Palettes.$logTicket-light, 1) 0 0 2px
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
       }
     }
+    */
   }
 }
 

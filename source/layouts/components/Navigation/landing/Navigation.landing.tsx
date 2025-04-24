@@ -1,13 +1,13 @@
-//--|🠊 Navigation.password.tsx 🠈|--//
+//--|🠊 Navigation.landing.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Navigation.password.scss';
+import './Navigation.landing.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { showDemos, defineButton } from './Navigation_password';
+import { showDemos, defineButton } from './Navigation_landing';
 import { viewBlock, viewText, axiosError, retrieveEndpoint, viewPass } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -18,30 +18,33 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
+  form: 'register' | 'login' | 'password';
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | string;
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
-const NavigationPassword: React.FC<InfoProps> = ({ info }) => {
+const NavigationLanding: React.FC<InfoProps> = ({ info, form }) => {
   const blockName = 'main';
   const pageName = info.identification as 'landing';
 
-  const handlePassword = async () => {};
+  const handleLanding = async () => {};
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    // showDemos(pageName);
+  }, [pageName, blockName]);
 
   return (
-    <nav className="password-navigation">
+    <nav className={`${form}-navigation`}>
       <ButtonDefault
         text={''}
         type="button"
         onClick={() => showDemos(pageName)}
-        style={defineButton('demo', { pageName, blockName })}
+        style={defineButton('demo', form, { pageName, blockName })}
       />
-      <h4 className="password-label display-4">Password</h4>
+      <h6 className={`${form}-label display-6`}>{form.charAt(0).toUpperCase() + form.slice(1)}</h6>
     </nav>
   );
 };
-export default NavigationPassword;
+export default NavigationLanding;

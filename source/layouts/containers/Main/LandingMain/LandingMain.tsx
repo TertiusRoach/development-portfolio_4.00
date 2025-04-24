@@ -1,4 +1,7 @@
 //--|🠊 LandingMain.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -15,13 +18,8 @@ import FormLogin from '../../../components/Form/login/Form.login';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
-import NavigationLogin from '../../../components/Navigation/login/Navigation.login';
-import NavigationPassword from '../../../components/Navigation/password/Navigation.password';
-import NavigationRegister from '../../../components/Navigation/register/Navigation.register';
+import NavigationLanding from '../../../components/Navigation/landing/Navigation.landing';
 //--|🠉 Components 🠉|--//
-//--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
-//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   info: {
@@ -46,21 +44,27 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
-            <NavigationRegister info={info} />
+            <NavigationLanding info={info} form="register" />
+
+            {/* <NavigationRegister info={info} /> */}
             <FormRegister info={info} />
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
-            <NavigationLogin info={info} />
+            <NavigationLanding info={info} form="login" />
+
+            {/* <NavigationLogin info={info} /> */}
             <FormLogin info={info} />
             <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
           </div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
-            <NavigationPassword info={info} />
+            <NavigationLanding info={info} form="password" />
+
+            {/* <NavigationPassword info={info} /> */}
             <FormPassword info={info} />
             <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>
