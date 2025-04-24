@@ -31,9 +31,7 @@ const NavigationLanding: React.FC<InfoProps> = ({ info, form }) => {
 
   const handleLanding = async () => {};
 
-  useEffect(() => {
-    // showDemos(pageName);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <nav className={`${form}-navigation`}>

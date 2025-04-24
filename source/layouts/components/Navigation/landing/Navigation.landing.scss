@@ -24,6 +24,7 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  padding: 1rem 0 0 0.5rem;
   grid-template: 5rem / 5rem 1fr; //--|🠊 rows / columns 🠈|--//
   button {
     grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -37,6 +38,7 @@
   }
 
   @media screen and (max-width: 480px) {
+    padding: 0.5rem 0 0 0.25rem;
     h6[class*='label'] {
       display: none;
     }

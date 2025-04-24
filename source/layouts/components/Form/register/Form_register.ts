@@ -4,13 +4,13 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
-  //--|🠋 Always Return an Object 🠋|--//
   const portrait = window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
   const landscape = window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
 
   let layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
   let fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
 
+  //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
     case 'login':
       if (landscape === true || portrait === true) {
