@@ -526,10 +526,10 @@
           rgba(Palettes.$indexLand-dark, 1) 100%
         );
       }
+      @extend %grading-override;
+      @extend %grading-palettes;
+      @extend %grading-transition;
     }
-    @extend %grading-override;
-    @extend %grading-palettes;
-    @extend %grading-transition;
   }
   &[class*='overtime'] {
     &[class*='dark'] {
@@ -806,7 +806,13 @@
     transition: opacity 0.25s ease-in-out;
   }
   div {
-    * {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       transition: color 0.25s ease-in-out;
     }
     img {
