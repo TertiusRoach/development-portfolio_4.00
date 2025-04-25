@@ -10,8 +10,6 @@ import Ticketing from '../../../pages/ticketing';
 import Hyperlink from '../../../pages/hyperlink';
 //--|🠉 Styles 🠉|--//
 
-//--|🠋 Declare a variable to store the debounce timer. 🠋|--//
-
 export function defineButton(
   button: 'login' | 'register' | 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
   info: { blockName: string; pageName: string }
@@ -95,45 +93,6 @@ export function defineButton(
   }
 }
 
-let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
-export function hideFigure(event: React.MouseEvent<HTMLElement>) {
-  const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
-
-  //--|🠋 Get the figure element that triggered the event. 🠋|--//
-  if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
-
-  setTimeout(() => {
-    //--|🠉 Delay execution slightly (125ms) to allow for smooth transitions. 🠈|--//
-    activeElement.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
-    activeElement.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
-  }, 250);
-
-  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
-}
-export function showFigure(overlay: 'apps' | 'demo') {
-  //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
-  // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
-  const figureElement = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
-
-  //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
-  if (!figureElement) return;
-
-  //--|🠋 Clear any previously set debounce timer to prevent rapid execution. 🠋|--//
-  if (debounceTimer) clearTimeout(debounceTimer);
-
-  //--|🠋 Delay execution for 1 second (1000ms) to prevent flickering effects. 🠋|--//
-  setTimeout(() => {
-    //--|🠉 Re-query the DOM to get the element again, ensuring we have the latest state. 🠈|--//
-    let tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
-
-    //--|🠋 Check if the element exists and has inline styles for `z-index` or `opacity`. 🠋|--//
-    //--|🠊 If it does, remove those properties to restore its default styles. 🠈|--//
-    if (tag && (tag.style.zIndex || tag.style.opacity)) {
-      tag.style.removeProperty('z-index'); //--|🠈 Remove the inline z-index style. 🠈|--//
-      tag.style.removeProperty('opacity'); //--|🠈 Remove the inline opacity style. 🠈|--//
-    }
-  }, 1500);
-}
 export function showMain(view: 'register' | 'login', pageName: string) {
   const overlay = document.querySelector(`#${pageName}-overlay`) as HTMLElement;
   const carouselMain = document.querySelector('main .landing-carousel') as HTMLElement;
@@ -200,4 +159,45 @@ export function viewDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
       element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--//
       return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--//
   }
+}
+
+//--|🠋 Declare a variable to store the debounce timer. 🠋|--//
+let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
+export function hideFigure(event: React.MouseEvent<HTMLElement>) {
+  const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
+
+  //--|🠋 Get the figure element that triggered the event. 🠋|--//
+  if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
+
+  setTimeout(() => {
+    //--|🠉 Delay execution slightly (125ms) to allow for smooth transitions. 🠈|--//
+    activeElement.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
+    activeElement.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
+  }, 250);
+
+  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
+}
+export function showFigure(overlay: 'apps' | 'demo') {
+  //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
+  // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
+  const figureElement = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
+
+  //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
+  if (!figureElement) return;
+
+  //--|🠋 Clear any previously set debounce timer to prevent rapid execution. 🠋|--//
+  if (debounceTimer) clearTimeout(debounceTimer);
+
+  //--|🠋 Delay execution for 1 second (1000ms) to prevent flickering effects. 🠋|--//
+  setTimeout(() => {
+    //--|🠉 Re-query the DOM to get the element again, ensuring we have the latest state. 🠈|--//
+    let tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
+
+    //--|🠋 Check if the element exists and has inline styles for `z-index` or `opacity`. 🠋|--//
+    //--|🠊 If it does, remove those properties to restore its default styles. 🠈|--//
+    if (tag && (tag.style.zIndex || tag.style.opacity)) {
+      tag.style.removeProperty('z-index'); //--|🠈 Remove the inline z-index style. 🠈|--//
+      tag.style.removeProperty('opacity'); //--|🠈 Remove the inline opacity style. 🠈|--//
+    }
+  }, 3000);
 }
