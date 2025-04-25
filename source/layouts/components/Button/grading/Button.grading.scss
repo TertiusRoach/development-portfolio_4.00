@@ -5,25 +5,22 @@
 
 @mixin desktop-landscape {
   @media screen and (max-height: 768px) {
-    /*
-    div[class*='overlay'] {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        background: red;
-      }
-    }
-    */
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
   }
 }
 @mixin mobile-portrait {
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
-button[class*='grade'] {
+button[class*='grading'] {
   width: 100%;
   height: 100%;
 

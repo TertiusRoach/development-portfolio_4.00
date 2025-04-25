@@ -17,7 +17,7 @@ interface InfoProps {
 
   style: {
     fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
+    layoutView: '-left-' | '-right-' | '-center-' | '-icon-' | '-text-';
     shadingView: 'dark' | 'medium' | 'light';
 
     pageName: string;
@@ -48,7 +48,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   }, [pageName, blockName]);
 
   switch (layoutView) {
-    case 'left':
+    case '-left-':
       return (
         <button type={type} onClick={onClick} className={`sharped-button left-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
@@ -63,7 +63,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'right':
+    case '-right-':
       return (
         <button type={type} onClick={onClick} className={`sharped-button right-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
@@ -78,7 +78,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'center':
+    case '-center-':
       return (
         <button type={type} onClick={onClick} className={`sharped-button center-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
@@ -93,7 +93,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'icon':
+    case '-icon-':
       return (
         <button type={type} onClick={onClick} className={`sharped-button icon-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
@@ -107,7 +107,7 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'text':
+    case '-text-':
       return (
         <button type={type} onClick={onClick} className={`sharped-button text-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>{scaleWords(fontSize, text)}</div>

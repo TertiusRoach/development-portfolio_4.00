@@ -31,6 +31,7 @@
       border-bottom-left-radius: 1rem;
       border-right: 2px dashed white;
       figure {
+        display: none; //~~~//
         border-bottom-left-radius: 1rem;
       }
       nav {
@@ -38,24 +39,31 @@
         button:nth-child(1) {
           border-bottom: 2px dashed white;
         }
+        button:nth-child(2) {
+          border-bottom-left-radius: 1rem;
+        }
       }
 
       @media screen and (max-height: 768px) {
-        border-right: 1px dashed Palettes.$indexLand-medium;
+        // border-right: 1px dashed Palettes.$indexLand-medium;
       }
     }
     &[class*='demo'] {
       grid-area: 2 / 2 / 4 / 3;
       border-left: 2px dashed white;
-      border-bottom-right-radius: 1rem;
       figure {
+        display: none; //~~~//
         border-bottom-right-radius: 1rem;
       }
       nav {
         grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+        border-bottom-right-radius: 1rem;
         button:nth-child(1),
         button:nth-child(2) {
           border-bottom: 2px dashed white;
+        }
+        button:nth-child(3) {
+          border-bottom-right-radius: 1rem;
         }
       }
 
@@ -120,7 +128,7 @@
           }
         }
       }
-      &[class*='nav'] {
+      &[class*='navigation'] {
         z-index: 0;
         width: 100%;
         height: 100%;

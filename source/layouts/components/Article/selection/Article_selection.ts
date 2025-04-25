@@ -24,7 +24,7 @@ export function defineButton(
     case 'login':
       return {
         fontSize: (tabletSquare ? '<h6>' : '<h4>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -36,7 +36,7 @@ export function defineButton(
     case 'register':
       return {
         fontSize: (tabletSquare ? '<h6>' : '<h4>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'right' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -48,7 +48,7 @@ export function defineButton(
     case 'track-day':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -60,7 +60,7 @@ export function defineButton(
     case 'log-ticket':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -72,7 +72,7 @@ export function defineButton(
     case 'find-link':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'left' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -84,7 +84,7 @@ export function defineButton(
     case 'index-land':
       return {
         fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'center' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,

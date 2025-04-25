@@ -17,7 +17,7 @@ interface InfoProps {
 
   style: {
     fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
+    layoutView: '-left-' | '-right-' | '-center-' | '-icon-' | '-text-';
     shadingView: 'dark' | 'medium' | 'light';
 
     pageName: string;
@@ -26,7 +26,7 @@ interface InfoProps {
     imageLink: string;
   };
 }
-const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
+const ButtonGrading: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
   const fontSize = style.fontSize;
   const blockName = style.blockName;
@@ -50,9 +50,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   }, [pageName, blockName, className]);
 
   switch (layoutView) {
-    case 'left':
+    case '-left-':
       return (
-        <button type={type} onClick={onClick} className={`grade-button left-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`grading-button left-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -65,9 +65,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'right':
+    case '-right-':
       return (
-        <button type={type} onClick={onClick} className={`grade-button right-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`grading-button right-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             {scaleWords(fontSize, text)}
             <img
@@ -80,9 +80,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'center':
+    case '-center-':
       return (
-        <button type={type} onClick={onClick} className={`grade-button center-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`grading-button center-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -95,9 +95,9 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'icon':
+    case '-icon-':
       return (
-        <button type={type} onClick={onClick} className={`grade-button icon-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`grading-button icon-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
@@ -109,15 +109,15 @@ const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           </div>
         </button>
       );
-    case 'text':
+    case '-text-':
       return (
-        <button type={type} onClick={onClick} className={`grade-button text-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`grading-button text-${shadingView} ${pageName}-${className}`}>
           <div className={`${blockName}`}>{scaleWords(fontSize, text)}</div>
         </button>
       );
   }
 };
-export default ButtonGrade;
+export default ButtonGrading;
 
 const scaleWords = (
   fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',

@@ -1,0 +1,167 @@
+//--|🠊 Transitions.scss 🠈|--//
+
+//--|🠋 div[id*="body"] 🠋|--//
+@mixin body-transition {
+  &[id*='body'] {
+    transition: height 1s ease-in-out;
+    &[class*='active'] {
+      height: 100vh; //--|🠈 Scale tag to Screen 🠈|--//
+    }
+    &[class*='asleep'] {
+      height: 0vh; //--|🠈 Scale tag to Zero 🠈|--//
+    }
+  }
+}
+//--|🠋 header[id*="header"] 🠋|--//
+@mixin header-transition {
+  header {
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      menu {
+        top: 0rem;
+      }
+      section {
+        clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
+      }
+    }
+    &[class*='expanded'] {
+      backdrop-filter: blur(2rem);
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      menu {
+        top: -4rem;
+      }
+      section {
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+    @extend %header-transition;
+    @extend %header-constituents;
+  }
+  %header-transition {
+    transition: clip-path 0.75s ease-in-out;
+    menu {
+      position: relative;
+      transition: top 0.25s ease-in-out;
+    }
+    section {
+      transition: clip-path 0.5s ease-in-out;
+    }
+  }
+  %header-constituents {
+    &[id*='landing'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+      }
+
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+        clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
+      }
+    }
+
+    &[id*='overtime'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
+    }
+    &[id*='ticketing'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
+    }
+    &[id*='hyperlink'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
+    }
+  }
+}
+//--|🠋 aside[id*="bar"] 🠋|--//
+@mixin sidebar-transition {
+  //--|🠋 Leftbar & Rightbar 🠋|--//
+  aside {
+    &[id*='leftbar'] {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s;
+        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    &[id*='rightbar'] {
+      &[class*='collapsed'] {
+        transition: clip-path 0.25s;
+        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    &[class*='expanded'] {
+      transition: clip-path 0.25s;
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+    }
+
+    &[id*='leftbar'],
+    &[id*='rightbar'] {
+      backdrop-filter: blur(8px);
+    }
+  }
+}
+//--|🠋 footer[id*="footer"] 🠋|--//
+@mixin footer-transition {
+  //--|🠋 Footer 🠋|--//
+  footer {
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+      menu {
+        top: 0rem;
+      }
+      section {
+        opacity: 0;
+      }
+      @media screen and (max-height: 768px) {
+        display: none;
+      }
+    }
+    &[class*='expanded'] {
+      backdrop-filter: blur(32px);
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+      menu {
+        top: 4rem;
+      }
+      section {
+        opacity: 1;
+      }
+    }
+    & {
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
+      menu {
+        position: relative;
+        transition: top 0.25s ease-in-out;
+      }
+    }
+  }
+}
+//--|🠋 section[id*="overlay"] 🠋|--//
+@mixin overlay-transition {
+  section[class*='overlay'] {
+    transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
+    &[class*='visible'] {
+      opacity: 1;
+      backdrop-filter: blur(2rem);
+    }
+    &[class*='hidden'] {
+      opacity: 0;
+    }
+  }
+}

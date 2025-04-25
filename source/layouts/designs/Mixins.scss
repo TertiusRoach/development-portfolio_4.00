@@ -1,168 +1,6 @@
 //--|🠊 Mixins.scss 🠈|--//
 @use './Palettes.scss';
 
-//--|🠋 Container Transitions 🠋|--//
-@mixin body-transition {
-  &[id*='body'] {
-    transition: height 1s ease-in-out;
-    &[class*='active'] {
-      height: 100vh; //--|🠈 Scale tag to Screen 🠈|--//
-    }
-    &[class*='asleep'] {
-      height: 0vh; //--|🠈 Scale tag to Zero 🠈|--//
-    }
-  }
-}
-@mixin header-transition {
-  header {
-    &[class*='collapsed'] {
-      backdrop-filter: blur(0px);
-      menu {
-        top: 0rem;
-      }
-      section {
-        clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
-      }
-    }
-    &[class*='expanded'] {
-      backdrop-filter: blur(2rem);
-      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
-      menu {
-        top: -4rem;
-      }
-      section {
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
-      }
-    }
-    @extend %header-transition;
-    @extend %header-constituents;
-  }
-  %header-transition {
-    transition: clip-path 0.75s ease-in-out;
-    menu {
-      position: relative;
-      transition: top 0.25s ease-in-out;
-    }
-    section {
-      transition: clip-path 0.5s ease-in-out;
-    }
-  }
-  %header-constituents {
-    &[id*='landing'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
-      }
-
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
-      }
-    }
-
-    &[id*='overtime'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-      }
-    }
-    &[id*='ticketing'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-      }
-    }
-    &[id*='hyperlink'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-      }
-    }
-  }
-}
-@mixin sidebar-transition {
-  //--|🠋 Leftbar & Rightbar 🠋|--//
-  aside {
-    &[id*='leftbar'] {
-      &[class*='collapsed'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    &[id*='rightbar'] {
-      &[class*='collapsed'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    &[class*='expanded'] {
-      transition: clip-path 0.25s;
-      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-    }
-
-    &[id*='leftbar'],
-    &[id*='rightbar'] {
-      backdrop-filter: blur(8px);
-    }
-  }
-}
-@mixin footer-transition {
-  //--|🠋 Footer 🠋|--//
-  footer {
-    &[class*='collapsed'] {
-      backdrop-filter: blur(0px);
-      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
-      menu {
-        top: 0rem;
-      }
-      section {
-        opacity: 0;
-      }
-      @media screen and (max-height: 768px) {
-        display: none;
-      }
-    }
-    &[class*='expanded'] {
-      backdrop-filter: blur(32px);
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
-      menu {
-        top: 4rem;
-      }
-      section {
-        opacity: 1;
-      }
-    }
-    & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
-      menu {
-        position: relative;
-        transition: top 0.25s ease-in-out;
-      }
-    }
-  }
-}
-@mixin overlay-transition {
-  section[class*='overlay'] {
-    transition: opacity 0.25s ease-in-out, backdrop-filter 0.25s ease-in-out;
-    &[class*='visible'] {
-      opacity: 1;
-      backdrop-filter: blur(2rem);
-    }
-    &[class*='hidden'] {
-      opacity: 0;
-    }
-  }
-}
-
 //--|🠋 Button Designs 🠋|--//
 @mixin button-presets {
   cursor: default;
@@ -256,7 +94,8 @@
   }
 }
 
-//--|🠊 Button.default.tsx 🠈|--//
+//--|🠋 Button.default.tsx 🠋|--//
+//--|🠊 button-default 🠈|--//
 @mixin button-default {
   &[class*='landing'] {
     &[class*='dark'] {
@@ -264,7 +103,6 @@
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       div {
         filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.5)); //
         * {
           color: Palettes.$indexLand-light;
         }
@@ -320,7 +158,6 @@
       filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       div {
         filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
         *:hover {
           color: Palettes.$indexLand-light;
         }
@@ -615,7 +452,6 @@
     @extend %transition-default;
   }
 }
-//--|🠋 button-default 🠋|--//
 %transition-default {
   &[class*='dark'],
   &[class*='light'],
@@ -653,558 +489,323 @@
   }
 }
 
-//--|🠊 Button.grading.tsx 🠈|--//
+//--|🠋 Button.grading.tsx 🠋|--//
+//--|🠊 button-grading 🠈|--//
 @mixin button-grading {
   &[class*='landing'] {
     &[class*='dark'] {
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       &[class*='left'] {
-        background: linear-gradient(90deg, rgba(Palettes.$indexLand-dark, 1) 0%, rgba(Palettes.$indexLand-light, 0) 100%);
+        &::before {
+          background: linear-gradient(
+            90deg,
+            rgba(Palettes.$indexLand-dark, 1) 25%,
+            rgba(Palettes.$indexLand-medium, 1) 75%,
+            rgba(Palettes.$indexLand-light, 1) 100%
+          );
+        }
+        background: linear-gradient(
+          90deg,
+          rgba(Palettes.$indexLand-light, 1) 25%,
+          rgba(Palettes.$indexLand-medium, 1) 75%,
+          rgba(Palettes.$indexLand-dark, 1) 100%
+        );
       }
       &[class*='right'] {
-        background: linear-gradient(270deg, rgba(Palettes.$indexLand-dark, 1) 0%, rgba(Palettes.$indexLand-light, 0) 100%);
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        * {
-          color: Palettes.$indexLand-light;
+        &::before {
+          background: linear-gradient(
+            270deg,
+            rgba(Palettes.$indexLand-dark, 1) 25%,
+            rgba(Palettes.$indexLand-medium, 1) 75%,
+            rgba(Palettes.$indexLand-light, 1) 100%
+          );
         }
-        img {
-          background: Palettes.$indexLand-light;
-        }
-      }
-    }
-    &[class*='dark']:hover {
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      &[class*='left'] {
-        background: linear-gradient(90deg, rgba(Palettes.$indexLand-light, 1) 0%, rgba(Palettes.$indexLand-dark, 0) 100%);
-      }
-      &[class*='right'] {
-        background: linear-gradient(270deg, rgba(Palettes.$indexLand-light, 1) 0%, rgba(Palettes.$indexLand-dark, 0) 100%);
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 1));
-        *:hover {
-          color: Palettes.$indexLand-dark;
-        }
-        img {
-          background: Palettes.$indexLand-dark;
-        }
+        background: linear-gradient(
+          270deg,
+          rgba(Palettes.$indexLand-light, 1) 25%,
+          rgba(Palettes.$indexLand-medium, 1) 75%,
+          rgba(Palettes.$indexLand-dark, 1) 100%
+        );
       }
     }
-
-    /*
-    &[class*='light'] {
-      background: linear-gradient(
-        90deg,
-        rgba(Palettes.$indexLand-dark, 1) 0%,
-        rgba(Palettes.$indexLand-medium, 0.75) 12.5%,
-        rgba(Palettes.$indexLand-light, 0) 75%
-      );
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-dark, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
-        * {
-          color: Palettes.$indexLand-dark;
-        }
-        img {
-          background: Palettes.$indexLand-dark;
-        }
-      }
-    }
-    &[class*='light']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$indexLand-dark, 1) 0%, rgba(Palettes.$indexLand-medium, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$indexLand-light, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.5)); //
-        *:hover {
-          color: Palettes.$indexLand-light;
-        }
-        img {
-          background: Palettes.$indexLand-light;
-          filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        }
-      }
-    }
-    */
-
-    /*
-    &[class*='medium'] {
-      background: linear-gradient(90deg, rgba(Palettes.$indexLand-medium, 1) 0%, rgba(Palettes.$indexLand-dark, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        * {
-          color: Palettes.$indexLand-dark;
-        }
-        img {
-          background: Palettes.$indexLand-dark;
-        }
-      }
-    }
-    &[class*='medium']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$indexLand-medium, 1) 0%, rgba(Palettes.$indexLand-light, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        *:hover {
-          color: Palettes.$indexLand-light;
-        }
-        img {
-          background: Palettes.$indexLand-light;
-          filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        }
-      }
-    }
-    */
-
-    @extend %override-grading;
-    @extend %transition-grading;
+    @extend %grading-override;
+    @extend %grading-palettes;
+    @extend %grading-transition;
   }
   &[class*='overtime'] {
     &[class*='dark'] {
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       &[class*='left'] {
+        &::before {
+          background: linear-gradient(
+            90deg,
+            rgba(Palettes.$trackDay-dark, 1) 25%,
+            rgba(Palettes.$trackDay-medium, 1) 75%,
+            rgba(Palettes.$trackDay-light, 1) 100%
+          );
+        }
         background: linear-gradient(
           90deg,
-          rgba(Palettes.$trackDay-dark, 1) 0%,
-          rgba(Palettes.$trackDay-medium, 0.75) 50%,
-          rgba(Palettes.$trackDay-light, 0) 75%
+          rgba(Palettes.$trackDay-light, 1) 25%,
+          rgba(Palettes.$trackDay-medium, 1) 75%,
+          rgba(Palettes.$trackDay-dark, 1) 100%
         );
       }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$trackDay-dark, 1) 0%,
-          rgba(Palettes.$trackDay-medium, 0.75) 50%,
-          rgba(Palettes.$trackDay-light, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        * {
-          color: Palettes.$trackDay-light;
-        }
-        img {
-          background: Palettes.$trackDay-light;
-        }
-      }
     }
-    &[class*='dark']:hover {
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      &[class*='left'] {
-        background: linear-gradient(
-          90deg,
-          rgba(Palettes.$trackDay-light, 1) 0%,
-          rgba(Palettes.$trackDay-medium, 0.75) 50%,
-          rgba(Palettes.$trackDay-dark, 0) 75%
-        );
-      }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$trackDay-light, 1) 0%,
-          rgba(Palettes.$trackDay-medium, 0.75) 50%,
-          rgba(Palettes.$trackDay-dark, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 1));
-        *:hover {
-          color: Palettes.$trackDay-dark;
-        }
-        img {
-          background: Palettes.$trackDay-dark;
-        }
-      }
-    }
-
-    /*
-    &[class*='light'] {
-      background: linear-gradient(
-        90deg,
-        rgba(Palettes.$trackDay-dark, 1) 0%,
-        rgba(Palettes.$trackDay-medium, 0.75) 12.5%,
-        rgba(Palettes.$trackDay-light, 0) 75%
-      );
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-dark, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
-        * {
-          color: Palettes.$trackDay-dark;
-        }
-        img {
-          background: Palettes.$trackDay-dark;
-        }
-      }
-    }
-    &[class*='light']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$trackDay-dark, 1) 0%, rgba(Palettes.$trackDay-medium, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$trackDay-light, 0.5)); //
-        *:hover {
-          color: Palettes.$trackDay-light;
-        }
-        img {
-          background: Palettes.$trackDay-light;
-          filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        }
-      }
-    }
-    */
-
-    /*
-    &[class*='medium'] {
-      background: linear-gradient(90deg, rgba(Palettes.$trackDay-medium, 1) 0%, rgba(Palettes.$trackDay-dark, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        * {
-          color: Palettes.$trackDay-dark;
-        }
-        img {
-          background: Palettes.$trackDay-dark;
-        }
-      }
-    }
-    &[class*='medium']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$trackDay-medium, 1) 0%, rgba(Palettes.$trackDay-light, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        *:hover {
-          color: Palettes.$trackDay-light;
-        }
-        img {
-          background: Palettes.$trackDay-light;
-          filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        }
-      }
-    }
-    */
-
-    @extend %override-grading;
-    @extend %transition-grading;
+    @extend %grading-override;
+    @extend %grading-palettes;
+    @extend %grading-transition;
   }
   &[class*='ticketing'] {
     &[class*='dark'] {
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       &[class*='left'] {
+        &::before {
+          background: linear-gradient(
+            90deg,
+            rgba(Palettes.$logTicket-dark, 1) 25%,
+            rgba(Palettes.$logTicket-medium, 1) 75%,
+            rgba(Palettes.$logTicket-light, 1) 100%
+          );
+        }
         background: linear-gradient(
           90deg,
-          rgba(Palettes.$logTicket-dark, 1) 0%,
-          rgba(Palettes.$logTicket-medium, 0.75) 50%,
-          rgba(Palettes.$logTicket-light, 0) 75%
+          rgba(Palettes.$logTicket-light, 1) 25%,
+          rgba(Palettes.$logTicket-medium, 1) 75%,
+          rgba(Palettes.$logTicket-dark, 1) 100%
         );
       }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$logTicket-dark, 1) 0%,
-          rgba(Palettes.$logTicket-medium, 0.75) 50%,
-          rgba(Palettes.$logTicket-light, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        * {
-          color: Palettes.$logTicket-light;
-        }
-        img {
-          background: Palettes.$logTicket-light;
-        }
-      }
     }
-    &[class*='dark']:hover {
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      &[class*='left'] {
-        background: linear-gradient(
-          90deg,
-          rgba(Palettes.$logTicket-light, 1) 0%,
-          rgba(Palettes.$logTicket-medium, 0.75) 50%,
-          rgba(Palettes.$logTicket-dark, 0) 75%
-        );
-      }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$logTicket-light, 1) 0%,
-          rgba(Palettes.$logTicket-medium, 0.75) 50%,
-          rgba(Palettes.$logTicket-dark, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 1));
-        *:hover {
-          color: Palettes.$logTicket-dark;
-        }
-        img {
-          background: Palettes.$logTicket-dark;
-        }
-      }
-    }
-
-    /*
-    &[class*='light'] {
-      background: linear-gradient(
-        90deg,
-        rgba(Palettes.$logTicket-dark, 1) 0%,
-        rgba(Palettes.$logTicket-medium, 0.75) 12.5%,
-        rgba(Palettes.$logTicket-light, 0) 75%
-      );
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-dark, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
-        * {
-          color: Palettes.$logTicket-dark;
-        }
-        img {
-          background: Palettes.$logTicket-dark;
-        }
-      }
-    }
-    &[class*='light']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$logTicket-dark, 1) 0%, rgba(Palettes.$logTicket-medium, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-light, 0.5)); //
-        *:hover {
-          color: Palettes.$logTicket-light;
-        }
-        img {
-          background: Palettes.$logTicket-light;
-          filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        }
-      }
-    }
-    */
-
-    /*
-    &[class*='medium'] {
-      background: linear-gradient(90deg, rgba(Palettes.$logTicket-medium, 1) 0%, rgba(Palettes.$logTicket-dark, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        * {
-          color: Palettes.$logTicket-dark;
-        }
-        img {
-          background: Palettes.$logTicket-dark;
-        }
-      }
-    }
-    &[class*='medium']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$logTicket-medium, 1) 0%, rgba(Palettes.$logTicket-light, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        *:hover {
-          color: Palettes.$logTicket-light;
-        }
-        img {
-          background: Palettes.$logTicket-light;
-          filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        }
-      }
-    }
-    */
-
-    @extend %override-grading;
-    @extend %transition-grading;
+    @extend %grading-override;
+    @extend %grading-palettes;
+    @extend %grading-transition;
   }
   &[class*='hyperlink'] {
     &[class*='dark'] {
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
       &[class*='left'] {
+        &::before {
+          background: linear-gradient(
+            90deg,
+            rgba(Palettes.$findLink-dark, 1) 25%,
+            rgba(Palettes.$findLink-medium, 1) 75%,
+            rgba(Palettes.$findLink-light, 1) 100%
+          );
+        }
         background: linear-gradient(
           90deg,
-          rgba(Palettes.$findLink-dark, 1) 0%,
-          rgba(Palettes.$findLink-medium, 0.75) 50%,
-          rgba(Palettes.$findLink-light, 0) 75%
+          rgba(Palettes.$findLink-light, 1) 25%,
+          rgba(Palettes.$findLink-medium, 1) 75%,
+          rgba(Palettes.$findLink-dark, 1) 100%
         );
       }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$findLink-dark, 1) 0%,
-          rgba(Palettes.$findLink-medium, 0.75) 50%,
-          rgba(Palettes.$findLink-light, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(black, 0.75));
-        * {
-          color: Palettes.$findLink-light;
-        }
-        img {
-          background: Palettes.$findLink-light;
-        }
-      }
     }
-    &[class*='dark']:hover {
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      &[class*='left'] {
-        background: linear-gradient(
-          90deg,
-          rgba(Palettes.$findLink-light, 1) 0%,
-          rgba(Palettes.$findLink-medium, 0.75) 50%,
-          rgba(Palettes.$findLink-dark, 0) 75%
-        );
-      }
-      &[class*='right'] {
-        background: linear-gradient(
-          270deg,
-          rgba(Palettes.$findLink-light, 1) 0%,
-          rgba(Palettes.$findLink-medium, 0.75) 50%,
-          rgba(Palettes.$findLink-dark, 0) 75%
-        );
-      }
-      /*
-      &[class*='center'] {
-      }
-      */
-
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 1));
-        *:hover {
-          color: Palettes.$findLink-dark;
-        }
-        img {
-          background: Palettes.$findLink-dark;
-        }
-      }
-    }
-
-    /*
-    &[class*='light'] {
-      background: linear-gradient(
-        90deg,
-        rgba(Palettes.$findLink-dark, 1) 0%,
-        rgba(Palettes.$findLink-medium, 0.75) 12.5%,
-        rgba(Palettes.$findLink-light, 0) 75%
-      );
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-dark, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 4px rgba(white, 0.75));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
-        * {
-          color: Palettes.$findLink-dark;
-        }
-        img {
-          background: Palettes.$findLink-dark;
-        }
-      }
-    }
-    &[class*='light']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$findLink-dark, 1) 0%, rgba(Palettes.$findLink-medium, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      // filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 0.125)); //
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        // filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 0.5)); //
-        *:hover {
-          color: Palettes.$findLink-light;
-        }
-        img {
-          background: Palettes.$findLink-light;
-          filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        }
-      }
-    }
-    */
-
-    /*
-    &[class*='medium'] {
-      background: linear-gradient(90deg, rgba(Palettes.$findLink-medium, 1) 0%, rgba(Palettes.$findLink-dark, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(white, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        * {
-          color: Palettes.$findLink-dark;
-        }
-        img {
-          background: Palettes.$findLink-dark;
-        }
-      }
-    }
-    &[class*='medium']:hover {
-      background: linear-gradient(90deg, rgba(Palettes.$findLink-medium, 1) 0%, rgba(Palettes.$findLink-light, 0) 75%);
-      filter: drop-shadow(0 0 2rem rgba(black, 0.125));
-      div {
-        filter: drop-shadow(0 0 8px rgba(black, 0.5));
-        *:hover {
-          color: Palettes.$findLink-light;
-        }
-        img {
-          background: Palettes.$findLink-light;
-          filter: drop-shadow(0 0 8px rgba(white, 0.5));
-        }
-      }
-    }
-    */
-
-    @extend %override-grading;
-    @extend %transition-grading;
+    @extend %grading-override;
+    @extend %grading-palettes;
+    @extend %grading-transition;
   }
 }
-//--|🠋 button-grading 🠋|--//
-%override-grading {
+%grading-override {
+  overflow: hidden;
+  position: relative;
   &[class*='icon'] {
     background: none !important;
   }
 }
-%transition-grading {
+%grading-palettes {
+  &[class*='dark'] {
+    div {
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+    }
+    &[class*='overtime'] {
+      div {
+        * {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
+    }
+    &[class*='ticketing'] {
+      div {
+        * {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+    &[class*='hyperlink'] {
+      div {
+        * {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='landing'] {
+      div {
+        * {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+        }
+      }
+    }
+  }
+  &[class*='dark']:hover {
+    div {
+      filter: drop-shadow(0 0 4px rgba(white, 1));
+    }
+    &[class*='overtime'] {
+      div {
+        *:hover {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+    &[class*='ticketing'] {
+      div {
+        *:hover {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='hyperlink'] {
+      div {
+        *:hover {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='landing'] {
+      div {
+        *:hover {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+  }
+
+  &[class*='light'] {
+    div {
+      filter: drop-shadow(0 0 4px rgba(white, 1));
+    }
+
+    &[class*='overtime'] {
+      div {
+        * {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+    }
+    &[class*='ticketing'] {
+      div {
+        * {
+          color: Palettes.$logTicket-dark;
+        }
+        img {
+          background: Palettes.$logTicket-dark;
+        }
+      }
+    }
+    &[class*='hyperlink'] {
+      div {
+        * {
+          color: Palettes.$findLink-dark;
+        }
+        img {
+          background: Palettes.$findLink-dark;
+        }
+      }
+    }
+    &[class*='landing'] {
+      div {
+        * {
+          color: Palettes.$indexLand-dark;
+        }
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+  }
+  &[class*='light']:hover {
+    div {
+      filter: drop-shadow(0 0 4px rgba(black, 1));
+    }
+
+    &[class*='overtime'] {
+      div {
+        *:hover {
+          color: Palettes.$trackDay-light;
+        }
+        img {
+          background: Palettes.$trackDay-light;
+        }
+      }
+    }
+    &[class*='ticketing'] {
+      div {
+        *:hover {
+          color: Palettes.$logTicket-light;
+        }
+        img {
+          background: Palettes.$logTicket-light;
+        }
+      }
+    }
+    &[class*='hyperlink'] {
+      div {
+        *:hover {
+          color: Palettes.$findLink-light;
+        }
+        img {
+          background: Palettes.$findLink-light;
+        }
+      }
+    }
+    &[class*='landing'] {
+      div {
+        *:hover {
+          color: Palettes.$indexLand-light;
+        }
+        img {
+          background: Palettes.$indexLand-light;
+        }
+      }
+    }
+  }
+}
+%grading-transition {
+  &::before {
+    inset: 0;
+    opacity: 1;
+    content: '';
+    position: absolute;
+    transition: opacity 0.25s ease-in-out;
+  }
+  &:hover::before {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+  }
   div {
-    transition: filter 0.25s ease-in-out;
     * {
       transition: color 0.25s ease-in-out;
     }
@@ -1214,7 +815,8 @@
   }
 }
 
-//--|🠊 Button.sharped.tsx 🠈|--//
+//--|🠋 Button.sharped.tsx 🠋|--//
+//--|🠊 button-sharped 🠈|--//
 @mixin button-sharped {
   &[class*='landing'] {
     &[class*='dark'] {
@@ -1583,7 +1185,6 @@
     @extend %transition-sharped;
   }
 }
-//--|🠋 button-sharped 🠋|--//
 %transition-sharped {
   div {
     transition: filter 0.25s ease-in-out;
@@ -1600,100 +1201,5 @@
   &[class*='icon'],
   &[class*='center'] {
     background: none !important;
-  }
-}
-
-//--|🠋 Resolution Testing 🠋|--//
-@mixin orientation-testing {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    & {
-      width: 100%;
-      aside[class*='leftbar'] {
-        background: rgba($red-light, 0.25);
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-      }
-      aside[class*='rightbar'] {
-        // background: rgba($red-light, 0.25);
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-      }
-      section[class*='overlay'] {
-        header[class*='foreground'] {
-          background: rgba($green-neon, 0.25);
-        }
-        div[class*='background'] {
-          background: rgba($green-dark, 0.25);
-        }
-        footer[class*='midground'] {
-          background: rgba($green-neon, 0.25);
-        }
-      }
-
-      header {
-        background: rgba($red-light, 0.25);
-      }
-      main {
-        background: rgba($red-dark, 1);
-        div[id*='fore'],
-        div[id*='mid'],
-        div[id*='back'] {
-          background: rgba($purple-dark, 0.25) !important;
-        }
-      }
-      footer {
-        background: rgba($red-light, 0.25);
-      }
-    }
-    //--|🠊 border: 2px dashed $red-neon; 🠈|--//
-    //--|🠊 background: rgba($red-dark, 0.25); 🠈|--//
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    & {
-      aside[class*='leftbar'] {
-        background: rgba($blue-light, 0.25);
-      }
-      aside[class*='rightbar'] {
-        background: rgba($blue-light, 0.25);
-      }
-      section[class*='overlay'] {
-        background: rgba($blue-dark, 0.25);
-      }
-
-      header {
-        background: rgba($blue-light, 0.25);
-      }
-      footer {
-        background: rgba($blue-light, 0.25);
-      }
-      main {
-        background: rgba($blue-dark, 1);
-        div[id*='fore'],
-        div[id*='mid'],
-        div[id*='back'] {
-          background: rgba($purple-dark, 0.25) !important;
-        }
-      }
-    }
-    //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
-    //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
   }
 }

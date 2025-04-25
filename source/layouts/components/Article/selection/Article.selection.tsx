@@ -11,7 +11,7 @@ import './Article.selection.scss';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonGrade from '../../Button/grading/Button.grading';
+import ButtonGrading from '../../Button/grading/Button.grading';
 import MenuBranding from '../../Menu/branding/Menu.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
@@ -50,13 +50,13 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
         </figure>
         <nav className="apps-navigation">
-          <ButtonGrade
+          <ButtonGrading
             type="button"
             text={'Login'}
             onClick={() => showMain('login', pageName)}
             style={defineButton('login', { pageName, blockName })}
           />
-          <ButtonGrade
+          <ButtonGrading
             type="button"
             text={'Register'}
             onClick={() => showMain('register', pageName)}
@@ -74,19 +74,19 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
         </figure>
         <nav className="demo-navigation">
-          <ButtonGrade
+          <ButtonGrading
             type="button"
             text={'Track a Day'}
             onClick={() => viewDemo('overtime')}
             style={defineButton('track-day', { pageName, blockName })}
           />
-          <ButtonGrade
+          <ButtonGrading
             type="button"
             text={'Log a Ticket'}
             onClick={() => viewDemo('ticketing')}
             style={defineButton('log-ticket', { pageName, blockName })}
           />
-          <ButtonGrade
+          <ButtonGrading
             type="button"
             text={'Find a Link'}
             onClick={() => viewDemo('hyperlink')}
