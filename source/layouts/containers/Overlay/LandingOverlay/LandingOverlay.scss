@@ -3,38 +3,41 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-  section[class*='loading'] {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 1280x720, rows / columns 🠈|--//
-    background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
-    img {
-      width: 1280px;
-      height: 720px;
-      grid-area: 2 / 2 / 3 / 3;
-    }
-  }
   section[class*='selection'] {
     display: grid;
     grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
     background: linear-gradient(180deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
 
     header[class*='branding'] {
-      grid-area: 1 / 1 / 2 / 6;
+      grid-area: 1 / 1 / 3 / 6;
     }
     article[class*='selection'] {
       grid-area: 3 / 3 / 4 / 4;
     }
+    /*
+
+
+    */
   }
 
   @media screen and (max-height: 768px) {
+    section[class*='selection'] {
+      grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+    }
+  }
+  @media screen and (max-height: 360px) {
+    section[class*='selection'] {
+      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
+    }
+    /*
     section[class*='loading'] {
       img {
         width: 854px;
         height: 480px;
       }
     }
-  }
-  @media screen and (max-height: 360px) {
+    */
+    /*
     section[class*='loading'] {
       img {
         width: 426px;
@@ -46,6 +49,19 @@
       article[class*='selection'] {
         grid-area: 2 / 3 / 3 / 4;
       }
+    }
+    */
+  }
+
+  section[class*='loading'] {
+    display: grid;
+
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 1280x720, rows / columns 🠈|--//
+    background: linear-gradient(0deg, rgba(white, 1) 0%, rgba(Palettes.$indexLand-medium, 1) 100%);
+    img {
+      width: 1280px;
+      height: 720px;
+      grid-area: 2 / 2 / 3 / 3;
     }
   }
 }
@@ -98,9 +114,11 @@ section[id*='landing'] {
   grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   .landing-carousel {
     display: flex;
-    @extend %slide-up;
     flex-direction: column;
-    animation: slide-up 1s ease-in-out forwards;
+    /*
+    @extend %show-section;
+    */
+    animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
     section {
       width: 100vw;
       height: 100vh;
@@ -123,7 +141,7 @@ section[id*='landing'] {
     }
   }
 }
-%slide-up {
+%show-section {
   animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
   @keyframes slide-up {
     from {

@@ -27,7 +27,7 @@
 
   @media screen and (max-height: 768px) {
     div[class*='container'] {
-      grid-template: 2rem repeat(3, 1fr) 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+      grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
       nav {
         grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
@@ -38,7 +38,7 @@
   }
   @media screen and (max-height: 360px) {
     div[class*='container'] {
-      grid-template: 2rem 1fr 296px 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
+      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
       nav {
         grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
