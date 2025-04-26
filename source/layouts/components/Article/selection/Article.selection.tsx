@@ -31,12 +31,16 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let brandImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
-  let demoImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
-  let appsImage =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
+  const toggleImage = (image: 'brand' | 'demo' | 'apps') => {
+    switch (image) {
+      case 'brand':
+        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
+      case 'demo':
+        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
+      case 'apps':
+        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
+    }
+  };
 
   return (
     <article className="selection-article">
@@ -47,7 +51,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
             <br />
             Apps
           </h1>
-          <img style={{ maskImage: `url(${appsImage})`, WebkitMaskImage: `url(${appsImage})` }} />
+          <img style={{ maskImage: `url(${toggleImage('apps')})`, WebkitMaskImage: `url(${toggleImage('apps')})` }} />
         </figure>
         <nav className="apps-navigation">
           <ButtonGrading
@@ -71,7 +75,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
             <br />
             Demo
           </h1>
-          <img style={{ maskImage: `url(${demoImage})`, WebkitMaskImage: `url(${demoImage})` }} />
+          <img style={{ maskImage: `url(${toggleImage('demo')})`, WebkitMaskImage: `url(${toggleImage('demo')})` }} />
         </figure>
         <nav className="demo-navigation">
           <ButtonGrading
@@ -95,7 +99,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </nav>
       </aside>
       <div className="branding-division">
-        <img style={{ maskImage: `url(${brandImage})`, WebkitMaskImage: `url(${brandImage})` }} />
+        <img style={{ maskImage: `url(${toggleImage('brand')})`, WebkitMaskImage: `url(${toggleImage('brand')})` }} />
       </div>
     </article>
   );

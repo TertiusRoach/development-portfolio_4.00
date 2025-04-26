@@ -15,13 +15,38 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
+  const toggleFont = () => {
+    let portrait = window.matchMedia('(orientation: portrait)').matches;
+    let landscape = window.matchMedia('(orientation: landscape)').matches;
+    if (landscape) {
+      if (window.innerHeight < 360) {
+        return '<p>'; //--|🠈 Landscape < 360px (Less than) 🠈|--//
+      } else if (window.innerHeight < 480) {
+        return '<h6>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
+      } else if (window.innerHeight < 768) {
+        return '<h5>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
+      } else {
+        return '<h4>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
+      }
+    } else if (portrait) {
+      if (window.innerWidth < 360) {
+        return '<p>'; //--|🠈 Portrait < 360px (Less than) 🠈|--//
+      } else if (window.innerWidth < 480) {
+        return '<h6>'; //--|🠈 Portrait < 480px (Less than) 🠈|--//
+      } else if (window.innerWidth < 768) {
+        return '<h3>'; //--|🠈 Portrait < 768px (Less than) 🠈|--//
+      } else {
+        return '<h1>'; //--|🠈 Portrait > 768px (Larger than) 🠈|--//
+      }
+    }
+  };
 
   //--|🠋 Always Return an Object 🠋|--//
-  const tabletSquare = window.innerHeight < 786;
+  const tabletSquare = window.innerHeight < 480;
   switch (button) {
     case 'login':
       return {
-        fontSize: (tabletSquare ? '<h6>' : '<h4>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -33,7 +58,7 @@ export function defineButton(
       };
     case 'register':
       return {
-        fontSize: (tabletSquare ? '<h6>' : '<h4>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -45,7 +70,7 @@ export function defineButton(
       };
     case 'track-day':
       return {
-        fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -57,7 +82,7 @@ export function defineButton(
       };
     case 'log-ticket':
       return {
-        fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -69,7 +94,7 @@ export function defineButton(
       };
     case 'find-link':
       return {
-        fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -81,7 +106,7 @@ export function defineButton(
       };
     case 'index-land':
       return {
-        fontSize: (tabletSquare ? '<p>' : '<h5>') as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
