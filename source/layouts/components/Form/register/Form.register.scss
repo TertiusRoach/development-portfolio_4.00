@@ -84,7 +84,7 @@
       }
       &::placeholder {
         font-weight: bold;
-        color: rgba(Palettes.$trackDay-medium, 0.5);
+        color: rgba(Palettes.$trackDay-dark, 0.75);
       }
     }
     button[class*='generate'] {
