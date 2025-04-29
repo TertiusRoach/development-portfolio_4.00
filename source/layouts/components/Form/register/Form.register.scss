@@ -62,16 +62,20 @@
 
     input {
       text-align: left;
+      border-radius: 4px;
+      padding-left: 12px; //--|🠊 padding-left: 0.75rem 🠈|--//
+      color: Palettes.$trackDay-dark;
+      filter: drop-shadow(black 0 0 4px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      outline: 2px solid Palettes.$trackDay-light;
+      box-shadow: inset 0 0 4px rgba(Palettes.$trackDay-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+
       &[id*='first'] {
-        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 1 / 2 / 2 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='last'] {
-        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 1 / 6 / 2 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='email'] {
-        padding-left: 0.75rem; //--|🠊 padding-left: 12px; 🠈|--//
         grid-area: 2 / 2 / 3 / 9; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
       }
       &[id*='password'] {
@@ -80,6 +84,7 @@
       }
       &::placeholder {
         font-weight: bold;
+        color: rgba(Palettes.$trackDay-medium, 0.5);
       }
     }
     button[class*='generate'] {
@@ -123,6 +128,8 @@
   }
 
   //--|🠋 Tablet (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
   @media screen and (max-height: 480px) {
     div[class*='header'] {
       display: none;

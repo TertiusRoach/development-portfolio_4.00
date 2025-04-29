@@ -4,14 +4,10 @@ import { defineButton } from './Form_login';
 import { viewBlock, viewText, viewPass } from '../../../pages/landing';
 import { axiosError, retrieveEndpoint } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Styles 🠋|--//
-import './Form.login.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
-
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
@@ -19,6 +15,10 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
+//--|🠋 Styles 🠋|--//
+import './Form.login.scss';
+//--|🠉 Styles 🠉|--//
+
 interface InfoProps {
   info: {
     resolution: string;
@@ -123,7 +123,6 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     // showDemos(pageName);
   }, [pageName, blockName]);
 
-  const tabletSquare = window.innerWidth < 400;
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">

@@ -113,22 +113,6 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
         </div>
       </div>
       <div className="register-inputs">
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => {
-            let newPass = generatePassword(); //--|🠈 This generates a new password 🠈|--//
-            setPassword(newPass); //--|🠈 Sets state to new password 🠈|--//
-          }}
-          style={defineButton('generate', { pageName, blockName })}
-        />
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => viewPass('register')}
-          style={defineButton('observe', { pageName, blockName })}
-        />
-
         <input
           required
           type="text"
@@ -175,6 +159,22 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           // --- //
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+        />
+
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => {
+            let newPass = generatePassword(); //--|🠈 This generates a new password 🠈|--//
+            setPassword(newPass); //--|🠈 Sets state to new password 🠈|--//
+          }}
+          style={defineButton('generate', { pageName, blockName })}
+        />
+        <ButtonDefault
+          text={''}
+          type="button"
+          onClick={() => viewPass('register')}
+          style={defineButton('observe', { pageName, blockName })}
         />
       </div>
       <div className="register-footer">
