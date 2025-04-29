@@ -42,7 +42,6 @@ export function defineButton(
   };
 
   //--|🠋 Always Return an Object 🠋|--//
-  const tabletSquare = window.innerHeight < 480;
   switch (button) {
     case 'login':
       return {

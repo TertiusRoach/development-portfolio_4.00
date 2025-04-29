@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
-    border-bottom: 4px dashed white;
+    border-bottom: 4px groove Palettes.$indexLand-medium;
     img {
       width: 50%;
       height: 50%;
@@ -18,10 +18,6 @@
       mask-repeat: no-repeat;
       background: Palettes.$indexLand-light;
     }
-
-    @media screen and (max-height: 768px) {
-      border-bottom: 2px dashed Palettes.$indexLand-medium;
-    }
   }
   aside[class*='apps'],
   aside[class*='demo'] {
@@ -29,7 +25,7 @@
     &[class*='apps'] {
       grid-area: 2 / 1 / 4 / 2;
       border-bottom-left-radius: 1rem;
-      border-right: 2px dashed white;
+      border-right: 2px solid Palettes.$indexLand-medium;
       figure {
         // display: none; //~~~//
         border-bottom-left-radius: 1rem;
@@ -37,7 +33,7 @@
       nav {
         grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
         button:nth-child(1) {
-          border-bottom: 2px dashed white;
+          border-bottom: 4px groove Palettes.$indexLand-medium;
         }
         button:nth-child(2) {
           border-bottom-left-radius: 1rem;
@@ -46,7 +42,7 @@
     }
     &[class*='demo'] {
       grid-area: 2 / 2 / 4 / 3;
-      border-left: 2px dashed white;
+      border-left: 2px solid Palettes.$indexLand-medium;
       figure {
         // display: none; //~~~//
         border-bottom-right-radius: 1rem;
@@ -56,15 +52,11 @@
         border-bottom-right-radius: 1rem;
         button:nth-child(1),
         button:nth-child(2) {
-          border-bottom: 2px dashed white;
+          border-bottom: 4px groove Palettes.$indexLand-medium;
         }
         button:nth-child(3) {
           border-bottom-right-radius: 1rem;
         }
-      }
-
-      @media screen and (max-height: 768px) {
-        border-left: 1px dashed Palettes.$indexLand-medium;
       }
     }
     figure,
@@ -149,7 +141,7 @@
     align-items: center;
     justify-content: center;
     grid-area: 1 / 1 / 2 / 3;
-    border-bottom: 4px dashed white;
+    border-bottom: 4px groove Palettes.$indexLand-medium;
     img {
       width: 50%;
       height: 50%;
@@ -159,35 +151,30 @@
       background: Palettes.$indexLand-light;
     }
   }
-
   aside[class*='apps'],
   aside[class*='demo'] {
     position: relative;
     &[class*='apps'] {
       grid-area: 2 / 1 / 4 / 2;
       border-bottom-left-radius: 1rem;
-      border-right: 2px dashed white;
+      border-right: 2px solid Palettes.$indexLand-medium;
       figure {
         border-bottom-left-radius: 1rem;
       }
       nav {
         grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
         button:nth-child(1) {
-          border-bottom: 2px dashed white;
+          border-bottom: 4px groove Palettes.$indexLand-medium;
         }
         button:nth-child(2) {
           border-bottom-left-radius: 1rem;
         }
       }
-
-      @media screen and (max-height: 768px) {
-        border-right: 1px dashed Palettes.$indexLand-medium;
-      }
     }
     &[class*='demo'] {
       grid-area: 2 / 2 / 4 / 3;
-      border-left: 2px dashed white;
       border-bottom-right-radius: 1rem;
+      border-left: 2px solid Palettes.$indexLand-medium;
       figure {
         border-bottom-right-radius: 1rem;
       }
@@ -195,15 +182,11 @@
         grid-template: repeat(3, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
         button:nth-child(1),
         button:nth-child(2) {
-          border-bottom: 2px dashed white;
+          border-bottom: 4px groove Palettes.$indexLand-medium;
         }
         button:nth-child(3) {
           border-bottom-right-radius: 1rem;
         }
-      }
-
-      @media screen and (max-height: 768px) {
-        border-left: 1px dashed Palettes.$indexLand-medium;
       }
     }
     figure,
