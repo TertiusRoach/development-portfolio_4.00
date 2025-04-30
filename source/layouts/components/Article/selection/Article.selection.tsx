@@ -1,14 +1,13 @@
 //--|🠊 Article.selection.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-// import { viewDemo, openApps } from '../../../..';
-import { viewBlock, viewText, axiosError } from '../../../pages/landing';
-import { defineButton, viewDemo, hideFigure, showFigure, showMain } from './Article_selection';
+import { viewDemo } from '../../../../index';
+import { defineButton, hideFigure, showFigure, showMain } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.selection.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonGrading from '../../Button/grading/Button.grading';
