@@ -83,18 +83,19 @@ export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
 
   container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
 }
-export function returnWeek(year: number): number {
+export function giveWeek(year: number): number {
   const date = new Date(year, 11, 31); // Dec 31 of the year
   const week = Math.ceil(
     ((date.getTime() - new Date(year, 0, 1).getTime()) / 86400000 + new Date(year, 0, 1).getDay() + 1) / 7
   );
   return week;
 }
-export function styleTable(pageName: string, blockName: string) {
+export function scaleWeek(pageName: string, blockName: string) {
   const container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  const carousel = container.querySelector('div[class*="carousel"]') as HTMLElement;
 
   if (container) {
+    let carousel = container.querySelector('div[class*="carousel"]') as HTMLElement;
+
     let weekDays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
     let clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
     let clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
@@ -119,3 +120,29 @@ export function styleTable(pageName: string, blockName: string) {
     return;
   }
 }
+
+export function loadWeek(pageName: string, blockName: string) {
+  // handleTablets();
+  setTimeout(() => {
+    showWeek(pageName, '<y>');
+    scaleWeek(pageName, blockName);
+  }, 1500);
+}
+const handleTablets = () => {
+  const tableData = document.querySelectorAll('td');
+  if (window.innerWidth < 1366) {
+    tableData.forEach((td) => {
+      td.style.lineHeight = '1.2';
+      td.style.padding = '0.25rem';
+      td.style.fontSize = '0.75rem';
+      // td.classList.remove('h1', 'display-6');
+    });
+  } else {
+    tableData.forEach((td) => {
+      td.style.padding = '';
+      td.style.fontSize = '';
+      td.style.lineHeight = '';
+      // td.classList.add('h1', 'display-6');
+    });
+  }
+};

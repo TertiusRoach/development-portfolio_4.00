@@ -8,7 +8,6 @@
   div[class*='carousel'] {
     display: block;
     overflow: hidden;
-
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
 
@@ -17,7 +16,7 @@
         height: 6rem;
         // display: grid;
         // grid-template: repeat(7, 1fr) / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-        background: red;
+        // background: red;
       }
       div[class*='weekdays'] {
         /* transform: translateY(-576.963px); */ //--|🠊 Resolution: 1366x768 🠈|--//

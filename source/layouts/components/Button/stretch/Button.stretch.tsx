@@ -1,12 +1,12 @@
-//--|🠊 Button.sharped.tsx 🠈|--//
+//--|🠊 Button.stretch.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Button.sharped.scss';
+import './Button.stretch.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { scaleImage } from './Button_sharped';
+import { scaleImage } from './Button_stretch';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -28,12 +28,13 @@ interface InfoProps {
 }
 const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
-  const fontSize = style.fontSize;
   const blockName = style.blockName;
   const className = style.className;
-  const imageLink = style.imageLink;
-  const layoutView = style.layoutView;
-  const shadingView = style.shadingView;
+
+  const font = style.fontSize;
+  const image = style.imageLink;
+  const layout = style.layoutView;
+  const shading = style.shadingView;
 
   useEffect(() => {
     /*
@@ -47,32 +48,32 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
     */
   }, [pageName, blockName]);
 
-  switch (layoutView) {
+  switch (layout) {
     case '-left-':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button left-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`stretch-button left-${shading} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
-                maskImage: `url(${imageLink})`,
-                width: `${scaleImage(fontSize)}rem`,
-                WebkitMaskImage: `url(${imageLink})`,
+                maskImage: `url(${image})`,
+                width: `${scaleImage(font)}rem`,
+                WebkitMaskImage: `url(${image})`,
               }}
             ></img>
-            {scaleWords(fontSize, text)}
+            {scaleWords(font, text)}
           </div>
         </button>
       );
     case '-right-':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button right-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`stretch-button right-${shading} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
-            {scaleWords(fontSize, text)}
+            {scaleWords(font, text)}
             <img
               style={{
-                width: `${scaleImage(fontSize)}rem`,
-                maskImage: `url(${imageLink})`,
-                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                width: `${scaleImage(font)}rem`,
+                maskImage: `url(${image})`,
+                WebkitMaskImage: `url(${image})`, // Ensures cross-browser support
               }}
             ></img>
           </div>
@@ -80,28 +81,28 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-center-':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button center-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`stretch-button center-${shading} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
-                width: `${scaleImage(fontSize)}rem`,
-                maskImage: `url(${imageLink})`,
-                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                width: `${scaleImage(font)}rem`,
+                maskImage: `url(${image})`,
+                WebkitMaskImage: `url(${image})`, // Ensures cross-browser support
               }}
             ></img>
-            {scaleWords(fontSize, text)}
+            {scaleWords(font, text)}
           </div>
         </button>
       );
     case '-icon-':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button icon-${shadingView} ${pageName}-${className}`}>
+        <button type={type} onClick={onClick} className={`stretch-button icon-${shading} ${pageName}-${className}`}>
           <div className={`${blockName}`}>
             <img
               style={{
-                maskImage: `url(${imageLink})`,
-                height: `${scaleImage(fontSize)}rem`,
-                WebkitMaskImage: `url(${imageLink})`, // Ensures cross-browser support
+                maskImage: `url(${image})`,
+                height: `${scaleImage(font)}rem`,
+                WebkitMaskImage: `url(${image})`, // Ensures cross-browser support
               }}
             ></img>
           </div>
@@ -109,8 +110,8 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-text-':
       return (
-        <button type={type} onClick={onClick} className={`sharped-button text-${shadingView} ${pageName}-${className}`}>
-          <div className={`${blockName}`}>{scaleWords(fontSize, text)}</div>
+        <button type={type} onClick={onClick} className={`stretch-button text-${shading} ${pageName}-${className}`}>
+          <div className={`${blockName}`}>{scaleWords(font, text)}</div>
         </button>
       );
   }

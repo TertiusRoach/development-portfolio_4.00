@@ -10,8 +10,8 @@ import './Article.selection.scss';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonGrading from '../../Button/grading/Button.grading';
 import MenuBranding from '../../Menu/branding/Menu.branding';
+import ButtonGrading from '../../Button/grading/Button.grading';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 

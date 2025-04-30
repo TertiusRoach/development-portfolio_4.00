@@ -1,5 +1,4 @@
 //--|🠊 Table.weeks.tsx 🠈|--//
-
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
@@ -8,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { styleTable, showWeek, returnWeek } from './Table_weeks';
+import { scaleWeek, showWeek, giveWeek, loadWeek } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -29,52 +28,21 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 
   const handleWeeks = async () => {
     const presentYear = new Date().getFullYear();
-    const weekContainers = returnWeek(presentYear);
-  };
-  const handleResize = () => {
-    handleTablets();
-    setTimeout(() => {
-      // handleWeeks();
-      showWeek(pageName, '<y>');
-      styleTable(pageName, blockName);
-    }, 3000);
-  };
-  const handleTablets = () => {
-    const tds = document.querySelectorAll('td');
-    if (window.innerWidth < 1366) {
-      tds.forEach((td) => {
-        td.classList.remove('h1', 'display-3');
-        td.style.fontSize = '0.75rem';
-        td.style.padding = '0.25rem';
-        td.style.lineHeight = '1.2';
-      });
-    } else {
-      // const tds = document.querySelectorAll('td');
-
-      tds.forEach((td) => {
-        td.classList.add('h1', 'display-3');
-        td.style.fontSize = '';
-        td.style.padding = '';
-        td.style.lineHeight = '';
-      });
-    }
+    const weekContainers = giveWeek(presentYear);
   };
 
   useEffect(() => {
-    handleResize(); //--|🠊 Call it once to set initial sizes 🠈|--//
+    loadWeek(pageName, blockName); //--|🠊 Call it once to set initial sizes 🠈|--//
 
-    window.addEventListener('resize', handleResize); //--|🠊 Set up resize listener 🠈|--//
+    window.addEventListener('resize', () => loadWeek(pageName, blockName)); //--|🠊 Set up resize listener 🠈|--//
     return () => {
-      //--|🠊 Clean up listener on unmount 🠈|--//
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', () => loadWeek(pageName, blockName)); //--|🠊 Clean up listener on unmount 🠈|--//
     };
   }, [pageName, blockName]);
 
-  // I'm using Bootstrap inside REACT and want to incorporate useEffect by toggling the className of the table data <td> elements.
-  // Make remove the classes and add inline styles to make everything as small as possible for screen sizes below a height of 1366px.
   return (
     <table className="weeks-table">
-      <tbody className="table-body hidden" id="previous-week_YYYY-DD-MM" data-week="01">
+      <tbody className="table-body hidden" id="previous-week YYYY-DD-MM" data-week="01">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>
@@ -111,7 +79,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td className="clock-out display-3">17:00</td>
         </tr>
       </tbody>
-      <tbody className="table-body visible" id="current-week_YYYY-DD-MM" data-week="02">
+      <tbody className="table-body visible" id="current-week YYYY-DD-MM" data-week="02">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>
@@ -148,7 +116,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
           <td className="clock-out display-3">~~:~~</td>
         </tr>
       </tbody>
-      <tbody className="table-body hidden" id="future-week_YYYY-DD-MM" data-week="03">
+      <tbody className="table-body hidden" id="future-week YYYY-DD-MM" data-week="03">
         <tr className="monday-row" data-week="01">
           <td className="weekday h1">Mon</td>
           <td className="clock-in display-3">08:00</td>

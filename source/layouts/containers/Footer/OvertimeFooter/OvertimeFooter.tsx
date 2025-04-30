@@ -7,8 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ListScrolling from '../../../components/List/scrolling/List.scrolling';
-
+import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
+// import ListScrolling from '../../../components/List/scrolling/List.scrolling';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -27,10 +27,10 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <ListScrolling block={'<footer>'} info={info} />
+      <SpanScrolling block={'<footer>'} info={info} />
 
       {/* <menu></menu> */}
-      <section></section>
+      {/* <section></section> */}
 
       <div className="foreground"></div>
       <div className="midground"></div>

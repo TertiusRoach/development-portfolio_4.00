@@ -1,4 +1,4 @@
-//--|🠊 Button.sharped.scss 🠈|--//
+//--|🠊 Button.stretch.scss 🠈|--//
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 @forward '../../../designs/Mixins.scss';
@@ -31,8 +31,8 @@
   }
 }
 
-button[class*='sharped'] {
-  @include Mixins.button-sharped(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+button[class*='stretch'] {
+  @include Mixins.button-stretch(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   @include Mixins.button-presets(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   @include Mixins.button-spacing(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
 

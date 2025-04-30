@@ -1,6 +1,6 @@
-//--|🠊 List.scrolling.tsx 🠈|--//
+//--|🠊 Span.scrolling.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './List.scrolling.scss';
+import './Span.scrolling.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
@@ -12,7 +12,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import ButtonSharped from '../../Button/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, assignBlock, showWeek } from './List_scrolling';
+import { defineButton, assignBlock, showWeek } from './Span_scrolling';
 import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
@@ -23,7 +23,7 @@ interface InfoProps {
     identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
-const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
+const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
   const pageName = info.identification as 'overtime';
   const blockName: string = assignBlock(block) as 'header' | 'footer' | 'aside';
 
@@ -32,29 +32,25 @@ const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
   switch (block) {
     case '<header>':
       return (
-        <ol className="list-scrolling">
-          <li className="prev-list">
-            <ButtonSharped
-              type="button"
-              text={'Back'}
-              onClick={() => showWeek('prev', pageName, blockName)}
-              style={defineButton('prev-week', { pageName, blockName })}
-            />
-          </li>
-        </ol>
+        <span className="span-scrolling">
+          <ButtonSharped
+            type="button"
+            text={'Back'}
+            onClick={() => showWeek('prev', pageName)}
+            style={defineButton('prev-week', { pageName, blockName })}
+          />
+        </span>
       );
     case '<footer>':
       return (
-        <ol className="list-scrolling">
-          <li className="next-list">
-            <ButtonSharped
-              text={'Next'}
-              type="button"
-              onClick={() => showWeek('next', pageName, blockName)}
-              style={defineButton('next-week', { pageName, blockName })}
-            />
-          </li>
-        </ol>
+        <span className="span-scrolling">
+          <ButtonSharped
+            text={'Next'}
+            type="button"
+            onClick={() => showWeek('next', pageName)}
+            style={defineButton('next-week', { pageName, blockName })}
+          />
+        </span>
       );
     case '<aside>':
       return (
@@ -65,4 +61,4 @@ const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
       );
   }
 };
-export default ListScrolling;
+export default SpanScrolling;

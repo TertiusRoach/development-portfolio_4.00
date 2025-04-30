@@ -25,12 +25,8 @@ const pages: { [key: string]: React.ElementType } = {
 //--|🠋 Render Components 🠋|--//
 Object.entries(pages).forEach(([id]) => {
   const elementBody = document.getElementById(id) as HTMLElement;
-  const landingBody = document.getElementById('landing-body') as HTMLElement;
-  console.log(elementBody.classList.contains('active'));
-  /* console.log(elementBody.classList.contains('asleep')); */
-  console.log(elementBody.id.split('-')[0]);
+  const pageName = elementBody.id.split('-')[0] as 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   if (elementBody.classList.contains('active')) {
-    let pageName = elementBody.id.split('-')[0] as 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
     switch (pageName) {
       case 'landing':
         ReactDOM.createRoot(elementBody).render(<Landing />);
@@ -42,6 +38,12 @@ Object.entries(pages).forEach(([id]) => {
   }
 
   /*
+  // console.log(elementBody.id.split('-')[0]);
+  // console.log(elementBody.classList.contains('active'));
+  // console.log(elementBody.classList.contains('asleep'));
+  // const landingBody = document.getElementById('landing-body') as HTMLElement;
+  */
+  /*
   if (landingBody) {
     ReactDOM.createRoot(landingBody).render(<Landing />);
   } else {
@@ -52,20 +54,28 @@ Object.entries(pages).forEach(([id]) => {
 
 export function viewDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
   const safeRender = (id: string, component: React.ReactElement) => {
-    const element = document.getElementById(id);
-    if (!element) {
+    const elementBody = document.getElementById(id);
+    if (!elementBody) {
       console.error(`Can't find #${id}`);
       return;
-    }
-    if (element.childElementCount === 0) {
-      ReactDOM.createRoot(element).render(component);
+    } else if (elementBody.classList.contains('active')) {
+      ReactDOM.createRoot(elementBody).render(component);
     }
   };
 
-  safeRender('overtime-body', React.createElement(Overtime));
-  safeRender('ticketing-body', React.createElement(Ticketing));
-  safeRender('hyperlink-body', React.createElement(Hyperlink));
+  switch (pageName) {
+    case 'overtime':
+      safeRender(`${pageName}-body`, React.createElement(Overtime));
+      break;
+    case 'ticketing':
+      safeRender(`${pageName}-body`, React.createElement(Ticketing));
+      break;
+    case 'hyperlink':
+      safeRender(`${pageName}-body`, React.createElement(Hyperlink));
+      break;
+  }
 
+  /*
   const element = document.querySelector(`#${pageName}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
   const visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
 
@@ -91,6 +101,7 @@ export function viewDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
       element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--//
       return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--//
   }
+  */
 }
 
 export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
