@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { scaleWeek, showWeek, giveWeek, loadWeek } from './Table_weeks';
+import { loadWeek } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -28,7 +28,7 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 
   const handleWeeks = async () => {
     const presentYear = new Date().getFullYear();
-    const weekContainers = giveWeek(presentYear);
+    // const weekContainers = giveWeek(presentYear);
   };
 
   useEffect(() => {

@@ -2,6 +2,14 @@
 
 import { get } from 'axios';
 
+export function loadWeek(pageName: string, blockName: string) {
+  // handleTablets();
+  setTimeout(() => {
+    showWeek(pageName, '<y>');
+    scaleWeek(pageName, blockName);
+  }, 1500);
+}
+
 export function loadTime() {
   const has53Weeks = (year: number): boolean => {
     /**
@@ -59,30 +67,98 @@ export function loadTime() {
 }
 
 export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
+  /**
+   * Moves the carousel container by a certain distance on either the <x> or <y> axis.
+   * The movement is based on the existing transform value, with an added offset.
+   *
+   * @param pageName - The base name used to target the specific carousel.
+   * @param viewAxis - The axis to move along: '<x>' for horizontal, '<y>' for vertical.
+   */
+
+  const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement; //--|🠈 Select the carousel element by its class name. 🠈|--//
+  const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement; //--|🠈 Select the container inside the carousel — assumed to have a class containing "container". 🠈|--//
+  const updateValue = (element: HTMLElement): number => {
+    /**
+     * Helper function to get the current transform value on the specified axis,
+     * then return a new value with a 16px adjustment.
+     *
+     * @param element - The container element whose transform will be read.
+     * @returns The new transform value (number of pixels) after adjustment.
+     */
+
+    let transformStyle = element.style.transform; //--|🠈 Read the current transform value. 🠈|--//
+    let match = transformStyle.match(regexExtract[viewAxis]); //--|🠈 Match the current value based on the axis. 🠈|--//
+    let currentValue = match ? parseFloat(match[1]) : 0; //--|🠈 If a value exists, parse it; otherwise, start from 0. 🠈|--//
+
+    //--|🠊 Determine the new value based on the axis. 🠈|--//
+    //--|🠊 I might remove this if it doesn't clash with the styling 🠈|--//
+    switch (viewAxis) {
+      case '<x>':
+        return currentValue; //--|🠈 Keep <x> axis value the same 🠈|--//
+      case '<y>':
+        return currentValue /* - 16 */; //--|🠈 Move 16px upwards for the <y> axis 🠈|--//
+    }
+  };
+  const regexExtract = {
+    //--|🠊 Regular expressions to extract current translateX or translateY value. 🠈|--//
+    '<x>': /translateX\((-?\d+(\.\d+)?)px\)/,
+    '<y>': /translateY\((-?\d+(\.\d+)?)px\)/,
+  };
+
+  if (carousel) {
+    switch (viewAxis) {
+      case '<x>':
+        container.style.transform = `translateX(${updateValue(container)}px)`; //--|🠈 Apply the new transform value to the container. 🠈|--//
+        break;
+      case '<y>':
+        container.style.transform = `translateY(${updateValue(container)}px)`; //--|🠈 Get the updated value by subtracting 16px for the <y> axis 🠈|--//
+        break;
+    }
+  } else {
+    console.warn(`Carousel with class "${pageName}-carousel" not found.`);
+  }
+}
+
+/*
+export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
   const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
   const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
   container.style.transform = 'translateY(0px)';
 
   const getView = (container: HTMLElement): number => {
-    let match;
+    let match, currentValue;
     switch (viewAxis) {
       case '<x>':
         match = container.style.transform.match(/translateX\((-?\d+(\.\d+)?)px\)/);
+        if (match) {
+          currentValue = parseFloat(match[1]);
+          container.style.transform = `translateX(${currentValue + 16}px)`;
+        } else {
+          return 0;
+        }
         break;
       case '<y>':
         match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
+        if (match) {
+          currentValue = parseFloat(match[1]);
+          container.style.transform = `translateY(${currentValue - 16}px)`;
+        } else {
+          return 0;
+        }
         break;
     }
 
-    if (match) {
-      return parseFloat(match[1]);
-    } else {
-      return 0; //--|🠈 Default value if no match is found 🠈|--//
-    }
+    // if (match) {
+    //   return parseFloat(match[1]);
+    // } else {
+    //   return 0; //--|🠈 Default value if no match is found 🠈|--//
+    // }
   };
 
   container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
 }
+*/
+
 export function giveWeek(year: number): number {
   const date = new Date(year, 11, 31); // Dec 31 of the year
   const week = Math.ceil(
@@ -121,13 +197,6 @@ export function scaleWeek(pageName: string, blockName: string) {
   }
 }
 
-export function loadWeek(pageName: string, blockName: string) {
-  // handleTablets();
-  setTimeout(() => {
-    showWeek(pageName, '<y>');
-    scaleWeek(pageName, blockName);
-  }, 1500);
-}
 const handleTablets = () => {
   const tableData = document.querySelectorAll('td');
   if (window.innerWidth < 1366) {

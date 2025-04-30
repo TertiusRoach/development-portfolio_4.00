@@ -14,7 +14,6 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -44,11 +43,16 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <div className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
-        <figure className="foreground-figure">
-          <div className="squareOutline" style={{ transform: 'translateY(0px)' }}>
-            <figure className="foreground-figure"></figure>
-          </div>
-        </figure>
+        <nav className="weekdays-navigation">
+          <span className="mon-row"></span>
+          <span className="tue-row"></span>
+          <span className="wed-row"></span>
+          <span className="thu-row"></span>
+          <span className="fri-row"></span>
+          <span className="sat-row"></span>
+          <span className="sun-row"></span>
+        </nav>
+
         <section className="weekdays-section">
           <div
             className="weekdays-container"
@@ -62,8 +66,8 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       </div>
 
       <aside className="leave-aside">
-        <div className="foreground"></div>
-        <div className="midground"></div>
+        {/* <div className="foreground"></div> */}
+        {/* <div className="midground"></div> */}
         <div className="background"></div>
       </aside>
     </main>
