@@ -1,48 +1,99 @@
 # Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
+---
+
+<details>
+        <summary><strong>Documentation</strong></summary>
+        <ul>
+            <li>
+                <a href="#logical-breakdown">|🠋 Logical Breakdown 🠋|</a>
+                <!--
+                <ul>
+                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
+                </ul> -->
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#terminal-commands">|🠋 Development Commands 🠋|</a>
+                <ul>
+                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
+                </ul>
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#application-installation">|🠋 Application Installation 🠋|</a>
+                <ul>
+                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
+                </ul>
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#back-end-development">|🠋 Back-end Development 🠋|</a>
+                <ul>
+                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
+                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <a href="#page-links">|🠊 Page Links 🠈|</a>
+            </li>
+        </ul>
+</details>
+
+---
+
+# Logical Breakdown
+
 This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
-These containers, residing in `source/layouts/container/`, include:
+The aforementioned containers resides inside of `source/layouts/container/` and includes the following `${blockName}`.
 
 - `Overlay`
 - `Leftbar`
 - `Rightbar`
+
 - `Header`
 - `Main`
 - `Footer`
 
 These containers utilize the following HTML tags: `<header>`, `<section>`, `<main>`, `<aside>` and `<footer>`.
 
-<details>
-        <summary><strong>Table of Contents</strong></summary>
-        <ul>
-            <li>
-                <a href="#application-installation">//--|🠋 Application Installation 🠋|--//</a>
-                <ul>
-                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
-                </ul>
-            </li>
-            <br>
-            <li>
-                <a href="#terminal-commands">//--|🠋 Development Commands 🠋|--//</a>
-                <ul>
-                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-                </ul>
-            </li>
-            <br>
-            <li>
-                <a href="#back-end-development">//--|🠋 Back-end Development 🠋|--//</a>
-                <ul>
-                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
-                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#page-links">|🠊 Page Links 🠈|</a>
-            </li>
-        </ul>
-  </details>
+- `Overlay <section id="${pageName}-overlay">`
+- `Leftbar <aside id="${pageName}-leftbar">`
+- `Rightbar <aside id="${pageName}-rightbar">`
 
----
+- `Header <header id="${pageName}-rightbar">`
+- `Main <main id="${pageName}-rightbar">`
+- `Footer <footer id="${pageName}-rightbar">`
+
+These `${blockName}` keywords avoids any asynchronous overlapping when it comes to CSS styling.
+
+# Terminal Commands
+
+//--|🠋 Launch front-end 🠈|--//
+
+    Open Terminal & type in...
+
+> npm run app
+
+//--|🠋 Launch back-end 🠈|--//
+
+    Go to 'root\source\modules\server'
+    Open Terminal & type in...
+
+> nodemon landing
+
+//--|🠋 Compile project into public 🠈|--//
+
+> npm run deploy
+
+//--|🠋 Launch testing environment 🠈|--//
+
+> npm run launch
+
+//--|🠋 Close testing environment 🠈|--//
+
+> npm run stop
 
 # Application Installation
 
@@ -178,33 +229,6 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
     npm install --save-dev dotenv-webpack
 
 ---
-
-# Terminal Commands
-
-//--|🠋 Launch front-end 🠈|--//
-
-    Open Terminal & type in...
-
-> npm run app
-
-//--|🠋 Launch back-end 🠈|--//
-
-    Go to 'root\source\modules\server'
-    Open Terminal & type in...
-
-> nodemon landing
-
-//--|🠋 Compile project into public 🠈|--//
-
-> npm run deploy
-
-//--|🠋 Launch testing environment 🠈|--//
-
-> npm run launch
-
-//--|🠋 Close testing environment 🠈|--//
-
-> npm run stop
 
 ## Visual Studio Code
 
