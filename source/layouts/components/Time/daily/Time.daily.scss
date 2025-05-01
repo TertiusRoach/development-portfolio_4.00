@@ -1,0 +1,254 @@
+//--|🠊 Section.preview.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  $border-styling: 2px dashed white;
+  grid-template: 4rem 1fr 4rem / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
+
+  div {
+    height: 100%;
+    overflow: hidden;
+    display: inherit; //--|🠊 display: grid; 🠈|--//
+    transition: grid-template 0.75s ease-in-out;
+    header {
+      display: flex;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      transition: color 0.75s ease-in-out;
+      h3 {
+        font-weight: bold;
+        transition: margin 0.75s ease-in-out;
+      }
+    }
+    picture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      img {
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        transition: margin 0.75s ease-in-out;
+      }
+    }
+    footer {
+      display: inherit; //--|🠊 display: grid; 🠈|--//
+      overflow: visible; //--|🠊 Allows for the child to overflow 🠈|--//
+      position: relative; //--|🠊 Establish a positioning context 🠈|--//
+      grid-area: 4 / 1 / 6 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      transition: grid-template 0.75s ease-in-out;
+
+      p {
+        margin: 0 4rem;
+        color: white;
+        position: absolute; //--|🠊 Take it out of the normal flow 🠈|--//
+        text-align: justify;
+        transition: opacity 0.75s ease-in-out;
+      }
+      nav {
+        display: inherit; //--|🠊 display: grid; 🠈|--//
+        grid-area: 2 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-template: 1fr auto 1fr / 1fr 3fr 1fr; //--|🠊 rows / columns 🠈|--//
+        button {
+          grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+      }
+    }
+
+    &[class*='overtime'] {
+      grid-area: 1 / 1 / 4 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      border-right: $border-styling;
+      background: radial-gradient(
+        circle,
+        rgba(Palettes.$trackDay-dark, 1) 0%,
+        rgba(Palettes.$trackDay-medium, 1) 50%,
+        rgba(Palettes.$trackDay-light, 1) 100%
+      );
+      /*
+      border-width: 6px;
+      border-style: dashed;
+      border-color: white;
+      */
+
+      header h3 {
+        filter: drop-shadow(
+          rgba(Palettes.$trackDay-dark, 1) 0 0 4px
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      picture img {
+        filter: drop-shadow(
+          rgba(Palettes.$trackDay-dark, 1) 0 0 1rem
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      footer {
+        p {
+          filter: drop-shadow(Palettes.$trackDay-dark 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+        nav {
+          filter: drop-shadow(
+            Palettes.$trackDay-light 0 0 1rem
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+      }
+    }
+    &[class*='ticketing'] {
+      grid-area: 1 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      border-left: $border-styling;
+      border-right: $border-styling;
+      background: radial-gradient(
+        circle,
+        rgba(Palettes.$logTicket-dark, 1) 0%,
+        rgba(Palettes.$logTicket-medium, 1) 50%,
+        rgba(Palettes.$logTicket-light, 1) 100%
+      );
+      header h3 {
+        filter: drop-shadow(
+          rgba(Palettes.$logTicket-dark, 1) 0 0 4px
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      picture img {
+        filter: drop-shadow(
+          rgba(Palettes.$logTicket-dark, 1) 0 0 1rem
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      footer {
+        p {
+          filter: drop-shadow(
+            Palettes.$logTicket-dark 0 0 8px
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+        nav {
+          filter: drop-shadow(
+            Palettes.$logTicket-light 0 0 1rem
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+      }
+    }
+    &[class*='hyperlink'] {
+      grid-area: 1 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      border-left: $border-styling;
+      background: radial-gradient(
+        circle,
+        rgba(Palettes.$findLink-dark, 1) 0%,
+        rgba(Palettes.$findLink-medium, 1) 50%,
+        rgba(Palettes.$findLink-light, 1) 100%
+      );
+
+      header h3 {
+        filter: drop-shadow(
+          rgba(Palettes.$findLink-dark, 1) 0 0 4px
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      picture img {
+        filter: drop-shadow(
+          rgba(Palettes.$findLink-dark, 1) 0 0 1rem
+        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      }
+
+      footer {
+        p {
+          filter: drop-shadow(Palettes.$findLink-dark 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+        nav {
+          filter: drop-shadow(
+            Palettes.$findLink-light 0 0 1rem
+          ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+        }
+      }
+    }
+  }
+
+  $large-image: 50%;
+  $small-image: 25%;
+  div[class*='downplay'] {
+    grid-template: 4rem 1fr auto 1fr 4rem / 1fr;
+    header {
+      h3 {
+        margin: 0;
+      }
+    }
+    picture {
+      img {
+        margin: 0;
+        width: $large-image; //--|🠊 height: auto; 🠈|--//
+        animation: growImage 0.75s ease-in-out; // Added animation property
+      }
+    }
+    footer {
+      grid-template: 1fr 6rem 1fr 4rem / 1fr; //--|🠊 rows / columns 🠈|--//
+      p {
+        opacity: 0;
+        /* filter: blur(4px); */
+      }
+    }
+  }
+  div[class*='highlight'] {
+    grid-template: 4rem 0fr auto 1fr 4rem / 1fr;
+    header {
+      h3 {
+        margin: 3rem 0 3rem 0;
+      }
+      &[class*='track-day'] {
+        color: Palettes.$trackDay-light;
+      }
+      &[class*='log-ticket'] {
+        color: Palettes.$logTicket-light;
+      }
+      &[class*='find-link'] {
+        color: Palettes.$findLink-light;
+      }
+    }
+    picture {
+      img {
+        width: $small-image; //--|🠊 height: auto; 🠈|--//
+        margin: 0 0 3rem 0;
+        animation: shrinkImage 0.75s ease-in-out; // Added animation property
+      }
+    }
+    footer {
+      grid-template: 1fr 6rem 0fr 4rem / 1fr; //--|🠊 rows / columns 🠈|--//
+      p {
+        opacity: 1;
+        /* filter: blur(0); */
+      }
+    }
+  }
+  @keyframes shrinkImage {
+    0% {
+      width: $large-image;
+    }
+    100% {
+      width: $small-image;
+    }
+  }
+  @keyframes growImage {
+    0% {
+      width: $small-image;
+    }
+    100% {
+      width: $large-image;
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+section[class*='preview'] {
+  display: grid;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

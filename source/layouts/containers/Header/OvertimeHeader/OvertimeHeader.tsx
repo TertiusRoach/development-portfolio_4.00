@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import TimeDaily from '../../../components/Time/daily/Time.daily';
 import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
@@ -20,7 +21,11 @@ import NavigationPreview from '../../../components/Navigation/preview/Navigation
 interface InfoProps {
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
+    orientation:
+      | 'desktop-landscape'
+      | 'mobile-portrait'
+      | 'tablet-square'
+      | string;
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
@@ -32,16 +37,18 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
+    <header
+      className={`default-${blockName} ${stateName}`}
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 2 }}
+    >
+      <TimeDaily info={info} />
       <SectionPreview info={info} />
       <DivisionIdentity info={info} />
       <NavigationPreview info={info} />
       <SpanScrolling block={'<header>'} info={info} />
       {/* <MenuFeatures style={{ blockName: blockName, pageName: pageName }} /> */}
       {/* <MenuOvertime style={{ blockName: blockName, pageName: pageName }} /> */}
-      <time className="daily-time">
-        <h1 className="">Saturday, 1st January 2000</h1>
-      </time>
 
       <div className="foreground"></div>
       <div className="midground"></div>
