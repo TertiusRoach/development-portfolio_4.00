@@ -24,10 +24,21 @@
     padding-left: 8rem;
     grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
+  time[class*='daily'] {
+    z-index: 0;
+    grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    h1 {
+      margin: 8px 0 8px 0;
+      padding-left: 10rem;
+      color: Palettes.$trackDay-light;
+    }
+  }
+  /*
   menu[class*='features'] {
     z-index: 0;
     grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
+  */
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//

@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-
+import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
 import SectionPreview from '../../../components/Section/preview/Section.preview';
@@ -37,7 +37,11 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       <DivisionIdentity info={info} />
       <NavigationPreview info={info} />
       <SpanScrolling block={'<header>'} info={info} />
-      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
+      {/* <MenuFeatures style={{ blockName: blockName, pageName: pageName }} /> */}
+      {/* <MenuOvertime style={{ blockName: blockName, pageName: pageName }} /> */}
+      <time className="daily-time">
+        <h1 className="">Saturday, 1st January 2000</h1>
+      </time>
 
       <div className="foreground"></div>
       <div className="midground"></div>
