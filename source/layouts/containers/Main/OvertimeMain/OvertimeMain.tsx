@@ -41,7 +41,11 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
+    <main
+      style={{ zIndex: 0 }}
+      id={`${pageName}-${blockName}`}
+      className={`default-${blockName}`}
+    >
       <div className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
         <nav className="weekdays-navigation">
           <span className="mon-row"></span>

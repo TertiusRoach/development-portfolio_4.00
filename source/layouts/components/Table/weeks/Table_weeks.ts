@@ -2,71 +2,249 @@
 
 import { get } from 'axios';
 
-export function loadWeek(pageName: string, blockName: string) {
-  // handleTablets();
-  setTimeout(() => {
-    showWeek(pageName, '<y>');
-    scaleWeek(pageName, blockName);
-  }, 1500);
+export function loadYear(pageName: string, blockName: string) {
+  const caseName: string = `${pageName}-${blockName}`;
+
+  const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
+  const thisYear: number = thisDate.getFullYear(); //--|🠈 Get the current year 🠈|--//
+  // const thisYear: number = 2020; //--|🠈 Get the current year 🠈|--//
+
+  const main = document.querySelector(`#${caseName}`) as HTMLElement; //--|🠈 Select the parent element to avoid the chance of encountering duplicates.  🠈|--//
+  const table = main.querySelector(`table[class*="weeks"]`) as HTMLElement;
+
+  const setWeeks = (pageName: string, blockName: string) => {
+    const tableRows: NodeListOf<HTMLTableRowElement> = document.querySelectorAll(
+      `#${pageName}-${blockName} tr`
+    );
+
+    // Find the Monday of the week containing Jan 4th (ISO week 1 always includes Jan 4th)
+    const jan4 = new Date(thisYear, 0, 4); // Jan 4
+    const dayOfWeek = jan4.getDay(); // 0 (Sun) - 6 (Sat)
+    const diffToMonday = (dayOfWeek + 6) % 7; // Convert to Monday = 0
+    const startDate = new Date(jan4);
+    startDate.setDate(jan4.getDate() - diffToMonday);
+
+    let currentDate = new Date(startDate);
+
+    tableRows.forEach((row) => {
+      const yyyy = currentDate.getFullYear();
+      const mm = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(currentDate.getDate()).padStart(2, '0');
+      row.id = `${yyyy}-${mm}-${dd}`;
+
+      currentDate.setDate(currentDate.getDate() + 1);
+    });
+  };
+
+  const countWeeks = (year: number): number => {
+    /**
+     * Returns the number of ISO-8601 weeks in a given year.
+     * According to ISO-8601:
+     * - Weeks start on Monday.
+     * - Week 1 is the week containing the first Thursday of the year.
+     * - A year can have either 52 or 53 weeks.
+     *
+     * @param year - The full year (e.g., 2025)
+     * @returns The number of ISO weeks in the year (52 or 53)
+     */
+    //--|🠊 ISO week number (week starts on Monday) 🠈|--//
+    //--|🠊 ISO week 1 is the week with the first Thursday of the year. 🠈|--//
+    //--|🠊 So we check if Dec 28 is in week 53—if yes, the year has 53 weeks. 🠈|--//
+    const dec28 = new Date(Date.UTC(year, 11, 28)); //--|🠊 Dec 28 is always in the last ISO week of the year 🠈|--//
+    const day = dec28.getUTCDay(); //--|🠊 Get ISO week number of Dec 28 (which will be either 52 or 53) 🠈|--//
+    const isoWeekDay = day === 0 ? 7 : day; //--|🠊 Convert Sunday (0) to 7 🠈|--//
+    const startOfYear = new Date(Date.UTC(year, 0, 1));
+    const startDay = startOfYear.getUTCDay();
+    const startIso = startDay === 0 ? 7 : startDay;
+    const daysBetween = Math.floor((dec28.getTime() - startOfYear.getTime()) / 86400000); //--|🠊 Calculate number of days between Jan 1 and Dec 28 🠈|--//
+    const week = Math.floor((daysBetween + startIso - 1) / 7) + 1; //--|🠊 Calculate week number 🠈|--//
+
+    return week; //--|🠊 52 or 53 🠈|--//
+  };
+  const createWeeks = (pageName: string, blockName: string, year: number) => {
+    table.innerHTML = ''; //--|🠊 Clear the HTML for the weekTable element 🠈|--//
+
+    let totalWeeks: number = countWeeks(year);
+    for (let i = 1; i <= totalWeeks; i++) {
+      let tableBody = document.createElement('tbody'); //--|🠊 Create tbody element 🠈|--//
+      let weekData = i.toString().padStart(2, '0');
+
+      tableBody.className = 'table-body hidden';
+      tableBody.dataset.week = weekData; //--|🠊 Assign a dataString for each week as data-week-"01" 🠈|--//
+      table.appendChild(tableBody);
+
+      for (let i = 1; i <= 7; i++) {
+        let tableRow = document.createElement('tr');
+        let tableData = document.createElement('td');
+        tableData.className = 'weekday h1';
+
+        let clockIn = document.createElement('td');
+        clockIn.className = 'clock-in';
+        clockIn.textContent = '--:--';
+
+        let clockOut = document.createElement('td');
+        clockOut.className = 'clock-out';
+        clockOut.textContent = '~~:~~';
+
+        //--|🠊 Determine day label and row class 🠈|--//
+        switch (i) {
+          case 1:
+            tableData.textContent = 'Mon';
+            tableRow.className = 'mon-row';
+            //--| console.log('Monday'); |--//
+            break;
+          case 2:
+            tableData.textContent = 'Tue';
+            tableRow.className = 'tue-row';
+            //--| console.log('Tuesday'); |--//
+            break;
+          case 3:
+            tableData.textContent = 'Wed';
+            tableRow.className = 'wed-row';
+            //--| console.log('Wednesday'); |--//
+            break;
+          case 4:
+            tableData.textContent = 'Thu';
+            tableRow.className = 'thu-row';
+            //--| console.log('Thursday'); |--//
+            break;
+          case 5:
+            tableData.textContent = 'Fri';
+            tableRow.className = 'fri-row';
+            //--| console.log('Friday'); |--//
+            break;
+          case 6:
+            tableData.textContent = 'Sat';
+            tableRow.className = 'sat-row';
+            //--| console.log('Saturday'); |--//
+            break;
+          case 7:
+            tableData.textContent = 'Sun';
+            tableRow.className = 'sun-row';
+            //--| console.log('Sunday'); |--//
+            break;
+        }
+
+        //--|🠊 Assemble and append row 🠈|--//
+        tableRow.appendChild(tableData);
+        tableRow.appendChild(clockIn);
+        tableRow.appendChild(clockOut);
+        tableBody.appendChild(tableRow);
+      }
+    }
+
+    setWeeks(pageName, blockName);
+  };
+
+  if (table) {
+    createWeeks(pageName, blockName, thisYear);
+
+    setTimeout(() => {
+      scaleWeekdays(pageName, blockName);
+    }, 750);
+    setTimeout(() => {
+      adjustWeekdays(pageName, '<y>');
+    }, 1500);
+  }
+  /*
+    let thisMonth: string = getInfo(thisDate, '<month>', '-string-') as string; //--|🠈 Get the current month 🠈|--//
+    let thisWeek: string = getInfo(thisDate, '<week>', '-string-') as string; //--|🠈 Get the current week 🠈|--//
+
+    let monthsCount: number = 12;
+
+    let monthNumber: number = thisDate.getMonth(); //--|🠈 Get the current month 🠈|--//
+
+    let weekNumber = getInfo(thisDate, '<week>', '-number-') as number;
+
+
+
+    let yearEnd: Date = new Date(`${thisYear}-12-31`);
+    let weekEnd = yearEnd.toLocaleDateString('en-GB', { weekday: 'long' });
+    */
 }
 
-export function loadTime() {
-  const has53Weeks = (year: number): boolean => {
-    /**
-     * Checks if a given year contains 53 ISO weeks.
-     *
-     * @param year - The year to check.
-     * @returns True if the year has 53 weeks, false otherwise.
-     */
+function getInfo(
+  date: Date,
+  view: '<week>' | '<month>', // cleaned angle brackets
+  format: '-number-' | '-string-' // clearer than -number-
+) {
+  if (format === '-number-') {
+    switch (view) {
+      case '<week>':
+        let target = new Date(
+          Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+        );
+        let day = target.getUTCDay() || 7; // Sunday as 7
+        target.setUTCDate(target.getUTCDate() + 4 - day); // move to nearest Thursday
 
-    const dec31 = new Date(Date.UTC(year, 11, 31));
-    const dayOfWeek = dec31.getUTCDay();
-
-    return dayOfWeek === 4 || (dayOfWeek === 3 && isLeapYear(year));
-  };
-  const isLeapYear = (year: number): boolean => {
-    /**
-     * Determines if a year is a leap year.
-     *
-     * @param year - The year to test.
-     * @returns True if leap year.
-     */
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  };
-  const findWeek = (date: Date): number => {
-    // Convert to UTC to neutralize local timezones
-    const inputDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-
-    // Get weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-    const day = inputDate.getUTCDay();
-
-    // Move to Thursday of the current week (ISO trick)
-    const thursday = new Date(inputDate);
-    thursday.setUTCDate(inputDate.getUTCDate() + (4 - (day === 0 ? 7 : day)));
-
-    // Find first day of the ISO year
-    const yearStart = new Date(Date.UTC(thursday.getUTCFullYear(), 0, 1));
-
-    // Calculate the number of days between the ISO year start and the target Thursday
-    const dayDiff = (thursday.getTime() - yearStart.getTime()) / 86400000; // ms per day = 86400000
-
-    // Convert to week number
-    return Math.ceil((dayDiff + 1) / 7);
-  };
-  const presentDate = new Date();
-  const defaultWeek = findWeek(new Date());
-  const presentYear = new Date().getFullYear();
-  const weeksInYear = has53Weeks(presentYear) ? 53 : 52;
-
-  // Load the following HTML references for the entire year but split it into weeks.
-  // The first week of the year is the one that contains the first Thursday of the year. (ISO Trick)
-  // toggle the ID's up and down with id="previous-week", id="current-week", id="future-week" with the className of 'visible' always being in the center of the ID's.
-  // Remember Safety Checks for the weeks and use the best practices for the code.
-  // Please keep it readable and add easy to understand comments.
-  // YYYY-01-01 always starts with the first week of the year.
+        let yearStart = new Date(Date.UTC(target.getUTCFullYear(), 0, 1));
+        let weekNumber = Math.ceil(((+target - +yearStart) / 86400000 + 1) / 7);
+        return weekNumber;
+      case '<month>':
+        return date.getMonth() + 1;
+      default:
+        alert('//--|🠊 Invalid type. Use "<week>" to get the week number. 🠈|--//');
+        return 0; //--|🠈 Default value if no match is found 🠈|--//
+    }
+  } else if (format === '-string-') {
+    switch (view) {
+      case '<week>':
+        return date.toLocaleString('en-GB', {
+          weekday: 'long',
+        });
+      case '<month>':
+        return date.toLocaleString('en-GB', {
+          month: 'long',
+        });
+      default:
+        alert('//--|🠊 Invalid view. Use "<month>" to get the month text. 🠈|--//');
+        return 0; //--|🠈 Default value if no match is found 🠈|--//
+    }
+  }
 }
 
-export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
+export default loadYear;
+//---//
+
+function scaleWeekdays(pageName: string, blockName: string) {
+  const container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+
+  if (container) {
+    let carousel = container.querySelector('div[class*="carousel"]') as HTMLElement;
+
+    let weekDays = carousel.querySelectorAll(
+      `.weeks-table tbody tr td:nth-child(1)`
+    ) as NodeListOf<HTMLElement>;
+    let clockIn = carousel.querySelectorAll(
+      `.weeks-table tbody tr td:nth-child(2)`
+    ) as NodeListOf<HTMLElement>;
+    let clockOut = carousel.querySelectorAll(
+      `.weeks-table tbody tr td:nth-child(3)`
+    ) as NodeListOf<HTMLElement>;
+    let dataRows = carousel.querySelectorAll(
+      `.weeks-table tbody tr td`
+    ) as NodeListOf<HTMLElement>;
+    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
+    let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
+
+    dataRows.forEach((row) => {
+      row.style.height = `${heightRows}px`;
+    });
+    clockIn.forEach((column) => {
+      column.style.width = `${heightColumns}px`;
+    });
+    clockOut.forEach((column) => {
+      column.style.width = `${heightColumns}px`;
+    });
+    weekDays.forEach((column) => {
+      column.style.width = `8rem`;
+    });
+  } else {
+    console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
+    return;
+  }
+}
+function adjustWeekdays(pageName: string, viewAxis: '<y>' | '<x>') {
   /**
    * Moves the carousel container by a certain distance on either the <x> or <y> axis.
    * The movement is based on the existing transform value, with an added offset.
@@ -119,84 +297,66 @@ export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
   }
 }
 
-/*
-export function showWeek(pageName: string, viewAxis: '<y>' | '<x>') {
-  const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
-  const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
-  container.style.transform = 'translateY(0px)';
+//---//
 
-  const getView = (container: HTMLElement): number => {
-    let match, currentValue;
-    switch (viewAxis) {
-      case '<x>':
-        match = container.style.transform.match(/translateX\((-?\d+(\.\d+)?)px\)/);
-        if (match) {
-          currentValue = parseFloat(match[1]);
-          container.style.transform = `translateX(${currentValue + 16}px)`;
-        } else {
-          return 0;
-        }
-        break;
-      case '<y>':
-        match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
-        if (match) {
-          currentValue = parseFloat(match[1]);
-          container.style.transform = `translateY(${currentValue - 16}px)`;
-        } else {
-          return 0;
-        }
-        break;
-    }
+function loadTime() {
+  const has53Weeks = (year: number): boolean => {
+    /**
+     * Checks if a given year contains 53 ISO weeks.
+     *
+     * @param year - The year to check.
+     * @returns True if the year has 53 weeks, false otherwise.
+     */
 
-    // if (match) {
-    //   return parseFloat(match[1]);
-    // } else {
-    //   return 0; //--|🠈 Default value if no match is found 🠈|--//
-    // }
+    const dec31 = new Date(Date.UTC(year, 11, 31));
+    const dayOfWeek = dec31.getUTCDay();
+
+    return dayOfWeek === 4 || (dayOfWeek === 3 && isLeapYear(year));
   };
+  const isLeapYear = (year: number): boolean => {
+    /**
+     * Determines if a year is a leap year.
+     *
+     * @param year - The year to test.
+     * @returns True if leap year.
+     */
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  };
+  const findWeek = (date: Date): number => {
+    // Convert to UTC to neutralize local timezones
+    const inputDate = new Date(
+      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    );
 
-  container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
+    // Get weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+    const day = inputDate.getUTCDay();
+
+    // Move to Thursday of the current week (ISO trick)
+    const thursday = new Date(inputDate);
+    thursday.setUTCDate(inputDate.getUTCDate() + (4 - (day === 0 ? 7 : day)));
+
+    // Find first day of the ISO year
+    const yearStart = new Date(Date.UTC(thursday.getUTCFullYear(), 0, 1));
+
+    // Calculate the number of days between the ISO year start and the target Thursday
+    const dayDiff = (thursday.getTime() - yearStart.getTime()) / 86400000; // ms per day = 86400000
+
+    // Convert to week number
+    return Math.ceil((dayDiff + 1) / 7);
+  };
+  const presentDate = new Date();
+  const defaultWeek = findWeek(new Date());
+  const presentYear = new Date().getFullYear();
+  const weeksInYear = has53Weeks(presentYear) ? 53 : 52;
+
+  // Load the following HTML references for the entire year but split it into weeks.
+  // The first week of the year is the one that contains the first Thursday of the year. (ISO Trick)
+  // toggle the ID's up and down with id="previous-week", id="current-week", id="future-week" with the className of 'visible' always being in the center of the ID's.
+  // Remember Safety Checks for the weeks and use the best practices for the code.
+  // Please keep it readable and add easy to understand comments.
+  // YYYY-01-01 always starts with the first week of the year.
 }
-*/
-
-export function giveWeek(year: number): number {
-  const date = new Date(year, 11, 31); // Dec 31 of the year
-  const week = Math.ceil(
-    ((date.getTime() - new Date(year, 0, 1).getTime()) / 86400000 + new Date(year, 0, 1).getDay() + 1) / 7
-  );
-  return week;
-}
-export function scaleWeek(pageName: string, blockName: string) {
-  const container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-
-  if (container) {
-    let carousel = container.querySelector('div[class*="carousel"]') as HTMLElement;
-
-    let weekDays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
-    let clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
-    let clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
-    let dataRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
-    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
-    let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
-
-    dataRows.forEach((row) => {
-      row.style.height = `${heightRows}px`;
-    });
-    clockIn.forEach((column) => {
-      column.style.width = `${heightColumns}px`;
-    });
-    clockOut.forEach((column) => {
-      column.style.width = `${heightColumns}px`;
-    });
-    weekDays.forEach((column) => {
-      column.style.width = `8rem`;
-    });
-  } else {
-    console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
-    return;
-  }
-}
-
+/*
 const handleTablets = () => {
   const tableData = document.querySelectorAll('td');
   if (window.innerWidth < 1366) {
@@ -215,3 +375,4 @@ const handleTablets = () => {
     });
   }
 };
+*/
