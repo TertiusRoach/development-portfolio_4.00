@@ -57,32 +57,96 @@ export function defineButton(
       };
   }
 }
-
-export function showWeek(action: 'prev' | 'next', pageName: string) {
+export function showWeek(
+  pageName: string,
+  viewAxis: '<y>' | '<x>',
+  moveAxis: '-prev-' | '-next-'
+) {
   const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
-  const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement;
-  const getView = (container: HTMLElement): number => {
-    let match = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
-    if (match) {
-      return parseFloat(match[1]);
-    } else {
-      return 0; // Default value if no match is found
-    }
+  const container = carousel.querySelector('div[class*="container"]') as HTMLElement;
+  const firstWeek = carousel.querySelector('tbody:nth-child(1)') as HTMLTableElement;
+  const visibleTag = container.querySelector('.visible') as HTMLTableElement;
+  const hiddenPrev = visibleTag.previousElementSibling as HTMLTableElement;
+  const hiddenNext = visibleTag.nextElementSibling as HTMLTableElement;
+
+  // Header & footer buttons
+  const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+  const footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
+  const prevButton = header.querySelector(
+    ".span-scrolling button[class*='-prev-'] div img"
+  ) as HTMLElement;
+  const nextButton = footer.querySelector(
+    ".span-scrolling button[class*='-next-'] div img"
+  ) as HTMLElement;
+
+  // Toggle button visibility and interactivity
+  const viewButton = (btn: HTMLElement, visible: boolean) => {
+    btn.style.opacity = visible ? '1' : '0';
+    btn.style.cursor = visible ? 'pointer' : 'default';
   };
 
-  if (pageName === 'overtime') {
-    switch (action) {
-      case 'prev':
-        container.style.transform = `translateY(${getView(container) + carousel.offsetHeight}px)`;
+  // Toggle visibility between week elements
+  const toggleView = (show: HTMLElement, hide: HTMLElement): boolean => {
+    if (!show) return false;
+    show.classList.add('visible');
+    show.classList.remove('hidden');
+    hide.classList.remove('visible');
+    hide.classList.add('hidden');
+    return true;
+  };
+
+  if (viewAxis === '<y>') {
+    // Get current vertical scroll position from transform
+    const transformY = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
+    const positionY = transformY ? Number(transformY[1]) : 0;
+    const offsetY = firstWeek.offsetHeight;
+
+    let viewWeekY: HTMLElement;
+    let viewBodyY: HTMLElement;
+    switch (moveAxis) {
+      case '-prev-':
+        if (hiddenPrev) {
+          toggleView(hiddenPrev, visibleTag);
+          container.style.transform = `translateY(${positionY + offsetY}px)`;
+        }
+
+        // Update state after transition
+        viewWeekY = carousel.querySelector('.visible') as HTMLElement;
+        container.dataset.view = viewWeekY.dataset.week;
+
+        viewBodyY = container; // already selected earlier
+        const isFirst = viewBodyY.dataset.view === '01';
+
+        // Disable prev if we're at the first week
+        if (isFirst) {
+          viewButton(prevButton, false);
+        } else if (nextButton.style.opacity === '0') {
+          viewButton(nextButton, true); // Re-enable next if previously disabled
+        }
         break;
-      case 'next':
-        container.style.transform = `translateY(${getView(container) - carousel.offsetHeight}px)`;
+      case '-next-':
+        if (hiddenNext) {
+          toggleView(hiddenNext, visibleTag);
+          container.style.transform = `translateY(${positionY - offsetY}px)`;
+        }
+
+        // Update state after transition
+        viewWeekY = carousel.querySelector('.visible') as HTMLElement;
+        container.dataset.view = viewWeekY.dataset.week;
+
+        viewBodyY = container;
+        const weekCount = container.querySelectorAll('tbody').length.toString();
+        const isLast = viewBodyY.dataset.view === weekCount;
+
+        // Disable next if we're at the last week
+        if (isLast) {
+          viewButton(nextButton, false);
+        } else if (prevButton.style.opacity === '0') {
+          viewButton(prevButton, true); // Re-enable prev if previously disabled
+        }
         break;
     }
-  } else if (pageName === 'ticketing') {
-    console.log('//--|🠊 Clicked on Log a Ticket 🠈|--//');
-  } else if (pageName === 'hyperlink') {
-    console.log('//--|🠊 Clicked on Find a Link 🠈|--//');
+  } else if (viewAxis === '<x>') {
   }
 }
 

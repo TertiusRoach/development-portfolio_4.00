@@ -21,11 +21,7 @@ import NavigationPreview from '../../../components/Navigation/preview/Navigation
 interface InfoProps {
   info: {
     resolution: string;
-    orientation:
-      | 'desktop-landscape'
-      | 'mobile-portrait'
-      | 'tablet-square'
-      | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
     identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   };
 }
@@ -47,12 +43,12 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       <DivisionIdentity info={info} />
       <NavigationPreview info={info} />
       <SpanScrolling block={'<header>'} info={info} />
-      {/* <MenuFeatures style={{ blockName: blockName, pageName: pageName }} /> */}
-      {/* <MenuOvertime style={{ blockName: blockName, pageName: pageName }} /> */}
 
       <div className="foreground"></div>
       <div className="midground"></div>
       <div className="background"></div>
+      {/* <MenuFeatures style={{ blockName: blockName, pageName: pageName }} /> */}
+      {/* <MenuOvertime style={{ blockName: blockName, pageName: pageName }} /> */}
     </header>
   );
 };

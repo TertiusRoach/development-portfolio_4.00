@@ -12,24 +12,6 @@
       }
     }
   }
-  /*
-  height: 100%;
-
-  li[class*='list'] {
-    display: inherit;
-    align-items: center;
-    justify-content: center;
-
-    // border-width: 2px;
-    // border-style: solid;
-    // border-radius: 1rem;
-    // border-color: white;
-    // list-style-type: none;
-    // background: rgba(white, 0);
-    // grid-template: 1fr / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
-    // transition: background 2s ease-in-out; // Add transitions
-  }
-  */
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
@@ -39,9 +21,6 @@ span[class*='scrolling'] {
   margin: 0;
   padding: 0;
   display: grid;
-  /*
-  */
-
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

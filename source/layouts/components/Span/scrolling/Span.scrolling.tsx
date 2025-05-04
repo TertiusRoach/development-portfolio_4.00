@@ -20,7 +20,14 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    identification:
+      | 'index'
+      | 'resume'
+      | 'ticket'
+      | 'university'
+      | 'fitness'
+      | 'landing'
+      | string;
   };
 }
 const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
@@ -36,7 +43,7 @@ const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
           <ButtonSharped
             type="button"
             text={'Back'}
-            onClick={() => showWeek('prev', pageName)}
+            onClick={() => showWeek(pageName, '<y>', '-prev-')}
             style={defineButton('prev-week', { pageName, blockName })}
           />
         </span>
@@ -47,7 +54,7 @@ const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
           <ButtonSharped
             text={'Next'}
             type="button"
-            onClick={() => showWeek('next', pageName)}
+            onClick={() => showWeek(pageName, '<y>', '-next-')}
             style={defineButton('next-week', { pageName, blockName })}
           />
         </span>
