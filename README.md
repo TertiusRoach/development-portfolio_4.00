@@ -305,7 +305,9 @@ root/
 │   └── index.html
 ├── source/
 │   ├── assets/
-│   ├── engine/
+│   │   ├── gif-files/
+│   │   ├── svg-files/
+│   │   └── png-files/
 │   ├── layouts/
 │   │   ├── containers/
 │   │   ├── components/
@@ -313,15 +315,18 @@ root/
 │   │   ├── styles/
 │   │   └── pages/
 │   ├── modules/
+│   │   ├── context/
 │   │   ├── routes/
-│   │   └── utilities/
-│   ├── pages/
-│   ├── scripts/
-│   ├── server/
-│   │   ├── data/
-│   │   └── hooks/
-│   ├── styles/
-│   ├── tools/
+│   │   ├── server/
+│   │   └── tools/
+│   ├── utilities/
+│   │   ├── ~flex-setup/
+│   │   ├── ~grid-setup/
+│   │   ├── animations/
+│   │   ├── projects/
+│   │   └── vendors/
+│   ├── index.html
+│   ├── index.scss
 │   └── index.tsx
 ├── README.md
 ├── .gitignore
