@@ -4,28 +4,21 @@ import { get } from 'axios';
 
 export function loadWeekdays(pageName: string, blockName: string) {
   const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
-  const thisYear: number = thisDate.getFullYear(); //--|🠊 const thisYear: number = 2020; 🠈|--//
   const thisDay: string = thisDate.toISOString().split('T')[0]; //--|🠈 Get the current day in ISO format 🠈|--//
-
-  const caseName: string = `${pageName}-${blockName}`;
-  // const main = document.querySelector(`#${caseName}`) as HTMLElement; //--|🠈 Select the parent element to avoid the chance of encountering duplicates.  🠈|--//
   const table = document.querySelector(
     `#${pageName}-${blockName} table[class*="weeks"]`
   ) as HTMLElement;
+
+  // const thisYear: number = thisDate.getFullYear(); //--|🠊 const thisYear: number = 2020; 🠈|--//
+  // const caseName: string = `${pageName}-${blockName}`;
+  // const main = document.querySelector(`#${caseName}`) as HTMLElement; //--|🠈 Select the parent element to avoid the chance of encountering duplicates.  🠈|--//
 
   // 1
   const createWeeks = (pageName: string, blockName: string, thisDay: string) => {
     table.innerHTML = ''; //--|🠈 Clear the HTML for the weekTable element 🠈|--//
 
     const year: number = Number(thisDay.split('-')[0]);
-    const jan4NextYear: Date = new Date(year + 1, 0, 4);
-    const dayOfWeekNext: number = jan4NextYear.getDay();
-    const diffToMondayNext: number = (dayOfWeekNext + 6) % 7;
-    const firstWeekStartNextYear: Date = new Date(jan4NextYear);
-    firstWeekStartNextYear.setDate(jan4NextYear.getDate() - diffToMondayNext);
-
-    // 1.1
-    let countWeeks = (year: number): number => {
+    const countWeeks = (year: number): number => {
       /**
        * Returns the number of ISO-8601 weeks in a given year.
        * According to ISO-8601:
@@ -52,178 +45,196 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
       return week; //--|🠊 52 or 53 🠈|--//
     };
+
+    const findStart = (year: number): Date => {
+      let jan1 = new Date(year, 0, 1);
+      let dayOfWeek = jan1.getDay(); // 0 (Sunday) - 6 (Saturday)
+      let daysToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Calculate days to the first Monday
+      let firstMonday: Date = new Date(year, 0, 1 - daysToMonday);
+
+      return firstMonday;
+    };
+
+    const findEnd = (year: number): Date => {
+      let dec31 = new Date(year, 11, 31);
+      let dayOfWeek = dec31.getDay(); // 0 (Sunday) - 6 (Saturday)
+      let daysToEndOfWeek = dayOfWeek === 0 ? 0 : 7 - dayOfWeek; // Calculate days to the end of the week (Sunday)
+      let lastSunday: Date = new Date(year, 11, 31 + daysToEndOfWeek);
+
+      return lastSunday;
+    };
     let totalWeeks: number = countWeeks(year);
+    let startYear: Date = findStart(year);
+    let endYear: Date = findEnd(year);
 
-    //--|🠊 If last ISO week spills into the next year, add an extra week 🠈|--//
-    if (firstWeekStartNextYear.getFullYear() === year) {
-      totalWeeks += 1;
-    }
+    console.log(totalWeeks);
+    console.log(startYear);
+    console.log(endYear);
 
-    for (let i = 1; i <= totalWeeks; i++) {
-      let tableBody = document.createElement('tbody'); //--|🠈 Create tbody element 🠈|--//
-      let weekData = i.toString().padStart(2, '0');
+    // console.log(Number(endYear) - Number(startYear));
 
-      tableBody.className = 'table-body hidden';
-      tableBody.dataset.week = weekData; //--|🠈 Assign a dataString for each week as data-week-"01" 🠈|--//
-      table.appendChild(tableBody);
+    // let startYear: string = findWeekday(year);
+    // let startDay: Date = startWeeks(year);
+    // console.log(startDay);
 
-      for (let i = 1; i <= 7; i++) {
-        let tableRow = document.createElement('tr');
-        let tableData = document.createElement('td');
-        tableData.className = 'weekday h1';
+    // //--|🠊 If last ISO week spills into the next year, add an extra week 🠈|--//
+    // if (firstWeekStartNextYear.getFullYear() === year) {
+    //   totalWeeks += 1;
+    // }
 
-        let clockIn = document.createElement('td');
-        clockIn.className = 'clock-in';
-        clockIn.textContent = '--:--';
+    // for (let i = 1; i <= totalWeeks; i++) {
+    //   let tableBody = document.createElement('tbody'); //--|🠈 Create tbody element 🠈|--//
+    //   let weekData = i.toString().padStart(2, '0');
 
-        let clockOut = document.createElement('td');
-        clockOut.className = 'clock-out';
-        clockOut.textContent = '~~:~~';
+    //   tableBody.className = 'table-body hidden';
+    //   tableBody.dataset.week = weekData; //--|🠈 Assign a dataString for each week as data-week-"01" 🠈|--//
+    //   table.appendChild(tableBody);
 
-        //--|🠊 Determine day label and row class 🠈|--//
-        switch (i) {
-          case 1:
-            tableData.textContent = 'Mon';
-            tableRow.className = 'mon-row';
-            //--| console.log('Monday'); |--//
-            break;
-          case 2:
-            tableData.textContent = 'Tue';
-            tableRow.className = 'tue-row';
-            //--| console.log('Tuesday'); |--//
-            break;
-          case 3:
-            tableData.textContent = 'Wed';
-            tableRow.className = 'wed-row';
-            //--| console.log('Wednesday'); |--//
-            break;
-          case 4:
-            tableData.textContent = 'Thu';
-            tableRow.className = 'thu-row';
-            //--| console.log('Thursday'); |--//
-            break;
-          case 5:
-            tableData.textContent = 'Fri';
-            tableRow.className = 'fri-row';
-            //--| console.log('Friday'); |--//
-            break;
-          case 6:
-            tableData.textContent = 'Sat';
-            tableRow.className = 'sat-row';
-            //--| console.log('Saturday'); |--//
-            break;
-          case 7:
-            tableData.textContent = 'Sun';
-            tableRow.className = 'sun-row';
-            //--| console.log('Sunday'); |--//
-            break;
-        }
+    //   for (let i = 1; i <= 7; i++) {
+    //     let tableRow = document.createElement('tr');
+    //     let tableData = document.createElement('td');
+    //     tableData.className = 'weekday h1';
 
-        //--|🠊 Assemble and append row 🠈|--//
-        tableRow.appendChild(tableData);
-        tableRow.appendChild(clockIn);
-        tableRow.appendChild(clockOut);
-        tableBody.appendChild(tableRow);
-      }
-    }
+    //     let clockIn = document.createElement('td');
+    //     clockIn.className = 'clock-in';
+    //     clockIn.textContent = '--:--';
 
-    labelWeeks(pageName, blockName, thisDay);
+    //     let clockOut = document.createElement('td');
+    //     clockOut.className = 'clock-out';
+    //     clockOut.textContent = '~~:~~';
+
+    //     //--|🠊 Determine day label and row class 🠈|--//
+    //     switch (i) {
+    //       case 1:
+    //         tableData.textContent = 'Mon';
+    //         tableRow.className = 'mon-row';
+    //         //--| console.log('Monday'); |--//
+    //         break;
+    //       case 2:
+    //         tableData.textContent = 'Tue';
+    //         tableRow.className = 'tue-row';
+    //         //--| console.log('Tuesday'); |--//
+    //         break;
+    //       case 3:
+    //         tableData.textContent = 'Wed';
+    //         tableRow.className = 'wed-row';
+    //         //--| console.log('Wednesday'); |--//
+    //         break;
+    //       case 4:
+    //         tableData.textContent = 'Thu';
+    //         tableRow.className = 'thu-row';
+    //         //--| console.log('Thursday'); |--//
+    //         break;
+    //       case 5:
+    //         tableData.textContent = 'Fri';
+    //         tableRow.className = 'fri-row';
+    //         //--| console.log('Friday'); |--//
+    //         break;
+    //       case 6:
+    //         tableData.textContent = 'Sat';
+    //         tableRow.className = 'sat-row';
+    //         //--| console.log('Saturday'); |--//
+    //         break;
+    //       case 7:
+    //         tableData.textContent = 'Sun';
+    //         tableRow.className = 'sun-row';
+    //         //--| console.log('Sunday'); |--//
+    //         break;
+    //     }
+
+    //     //--|🠊 Assemble and append row 🠈|--//
+    //     tableRow.appendChild(tableData);
+    //     tableRow.appendChild(clockIn);
+    //     tableRow.appendChild(clockOut);
+    //     tableBody.appendChild(tableRow);
+    //   }
+    // }
+
+    // labelWeeks(pageName, blockName, thisDay);
   };
 
   // 2
   const labelWeeks = (pageName: string, blockName: string, thisDay: string) => {
-    const tableRows: NodeListOf<HTMLTableRowElement> = document.querySelectorAll(
-      `#${pageName}-${blockName} tr`
-    );
-    const container = document.querySelector(
-      `#${pageName}-${blockName} .weekdays-container`
-    ) as HTMLElement;
-
-    let jan4 = new Date(thisYear, 0, 4); //--|🠈 Find the Monday of the week containing Jan 4th (ISO week 1 always includes Jan 4th) 🠈|--//
-    let dayOfWeek = jan4.getDay(); //--|🠈 0 (Sun) - 6 (Sat) 🠈|--//
-    let diffToMonday = (dayOfWeek + 6) % 7; //--|🠈 Convert to Monday = 0 🠈|--//
-    let startDate = new Date(jan4);
-    let currentDate = new Date(startDate);
-    startDate.setDate(jan4.getDate() - diffToMonday);
-
-    tableRows.forEach((row) => {
-      const YYYY = currentDate.getFullYear();
-      const MM = String(currentDate.getMonth() + 1).padStart(2, '0');
-      const DD = String(currentDate.getDate()).padStart(2, '0');
-
-      switch (thisDay) {
-        case `${YYYY}-${MM}-${DD}`:
-          row.id = `${YYYY}-${MM}-${DD}`;
-
-          const presentDay = document.getElementById(`${thisDay}`) as HTMLTableRowElement;
-
-          if (presentDay) {
-            let currentWeek = presentDay.parentElement as HTMLElement;
-            let futureWeek = currentWeek.nextElementSibling as HTMLElement;
-            let previousWeek = currentWeek.previousElementSibling as HTMLElement;
-
-            container.dataset.view = currentWeek.dataset.week;
-            currentWeek.classList.remove('hidden');
-            currentWeek.classList.add('visible');
-            currentWeek.id = 'current-week';
-
-            futureWeek.id = 'future-week';
-            previousWeek.id = 'previousWeek';
-
-            // console.log();
-            // console.log(container);
-          }
-          break;
-        default:
-          row.id = `${YYYY}-${MM}-${DD}`;
-          break;
-      }
-      currentDate.setDate(currentDate.getDate() + 1);
-    });
-
-    scaleWeeks(pageName, blockName);
+    // const tableRows: NodeListOf<HTMLTableRowElement> = document.querySelectorAll(
+    //   `#${pageName}-${blockName} tr`
+    // );
+    // const container = document.querySelector(
+    //   `#${pageName}-${blockName} .weekdays-container`
+    // ) as HTMLElement;
+    // let jan4 = new Date(thisYear, 0, 4); //--|🠈 Find the Monday of the week containing Jan 4th (ISO week 1 always includes Jan 4th) 🠈|--//
+    // let dayOfWeek = jan4.getDay(); //--|🠈 0 (Sun) - 6 (Sat) 🠈|--//
+    // let diffToMonday = (dayOfWeek + 6) % 7; //--|🠈 Convert to Monday = 0 🠈|--//
+    // let startDate = new Date(jan4);
+    // let currentDate = new Date(startDate);
+    // startDate.setDate(jan4.getDate() - diffToMonday);
+    // tableRows.forEach((row) => {
+    //   const YYYY = currentDate.getFullYear();
+    //   const MM = String(currentDate.getMonth() + 1).padStart(2, '0');
+    //   const DD = String(currentDate.getDate()).padStart(2, '0');
+    //   switch (thisDay) {
+    //     case `${YYYY}-${MM}-${DD}`:
+    //       row.id = `${YYYY}-${MM}-${DD}`;
+    //       const presentDay = document.getElementById(`${thisDay}`) as HTMLTableRowElement;
+    //       if (presentDay) {
+    //         let currentWeek = presentDay.parentElement as HTMLElement;
+    //         let futureWeek = currentWeek.nextElementSibling as HTMLElement;
+    //         let previousWeek = currentWeek.previousElementSibling as HTMLElement;
+    //         container.dataset.view = currentWeek.dataset.week;
+    //         currentWeek.classList.remove('hidden');
+    //         currentWeek.classList.add('visible');
+    //         currentWeek.id = 'current-week';
+    //         futureWeek.id = 'future-week';
+    //         previousWeek.id = 'previousWeek';
+    //         // console.log();
+    //         // console.log(container);
+    //       }
+    //       break;
+    //     default:
+    //       row.id = `${YYYY}-${MM}-${DD}`;
+    //       break;
+    //   }
+    //   currentDate.setDate(currentDate.getDate() + 1);
+    // });
+    // scaleWeeks(pageName, blockName);
   };
 
   // 3
   const scaleWeeks = (pageName: string, blockName: string) => {
-    const carousel = document.querySelector(
-      `#${pageName}-${blockName} div[class*="carousel"]`
-    ) as HTMLElement;
-
-    if (carousel) {
-      let weekDays = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(1)`
-      ) as NodeListOf<HTMLElement>;
-      let clockIn = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(2)`
-      ) as NodeListOf<HTMLElement>;
-      let clockOut = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(3)`
-      ) as NodeListOf<HTMLElement>;
-      let dataRows = carousel.querySelectorAll(
-        `.weeks-table tbody tr td`
-      ) as NodeListOf<HTMLElement>;
-      let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
-      let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
-
-      dataRows.forEach((row) => {
-        row.style.height = `${heightRows}px`;
-      });
-      clockIn.forEach((column) => {
-        column.style.width = `${heightColumns}px`;
-      });
-      clockOut.forEach((column) => {
-        column.style.width = `${heightColumns}px`;
-      });
-      weekDays.forEach((column) => {
-        column.style.width = `8rem`;
-      });
-    } else {
-      console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
-      return;
-    }
-
-    adjustWeeks(pageName, blockName, '<y>');
+    // const carousel = document.querySelector(
+    //   `#${pageName}-${blockName} div[class*="carousel"]`
+    // ) as HTMLElement;
+    // if (carousel) {
+    //   let weekDays = carousel.querySelectorAll(
+    //     `.weeks-table tbody tr td:nth-child(1)`
+    //   ) as NodeListOf<HTMLElement>;
+    //   let clockIn = carousel.querySelectorAll(
+    //     `.weeks-table tbody tr td:nth-child(2)`
+    //   ) as NodeListOf<HTMLElement>;
+    //   let clockOut = carousel.querySelectorAll(
+    //     `.weeks-table tbody tr td:nth-child(3)`
+    //   ) as NodeListOf<HTMLElement>;
+    //   let dataRows = carousel.querySelectorAll(
+    //     `.weeks-table tbody tr td`
+    //   ) as NodeListOf<HTMLElement>;
+    //   let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
+    //   let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
+    //   dataRows.forEach((row) => {
+    //     row.style.height = `${heightRows}px`;
+    //   });
+    //   clockIn.forEach((column) => {
+    //     column.style.width = `${heightColumns}px`;
+    //   });
+    //   clockOut.forEach((column) => {
+    //     column.style.width = `${heightColumns}px`;
+    //   });
+    //   weekDays.forEach((column) => {
+    //     column.style.width = `8rem`;
+    //   });
+    // } else {
+    //   console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
+    //   return;
+    // }
+    // adjustWeeks(pageName, blockName, '<y>');
   };
 
   // 4
@@ -236,56 +247,52 @@ export function loadWeekdays(pageName: string, blockName: string) {
   };
 
   const adjustBackup = (pageName: string, viewAxis: '<y>' | '<x>') => {
-    /**
-     * Moves the carousel container by a certain distance on either the <x> or <y> axis.
-     * The movement is based on the existing transform value, with an added offset.
-     *
-     * @param pageName - The base name used to target the specific carousel.
-     * @param viewAxis - The axis to move along: '<x>' for horizontal, '<y>' for vertical.
-     */
-
-    const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement; //--|🠈 Select the carousel element by its class name. 🠈|--//
-    const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement; //--|🠈 Select the container inside the carousel — assumed to have a class containing "container". 🠈|--//
-    const updateValue = (element: HTMLElement): number => {
-      /**
-       * Helper function to get the current transform value on the specified axis,
-       * then return a new value with a 16px adjustment.
-       *
-       * @param element - The container element whose transform will be read.
-       * @returns The new transform value (number of pixels) after adjustment.
-       */
-
-      let transformStyle = element.style.transform; //--|🠈 Read the current transform value. 🠈|--//
-      let match = transformStyle.match(regexExtract[viewAxis]); //--|🠈 Match the current value based on the axis. 🠈|--//
-      let currentValue = match ? parseFloat(match[1]) : 0; //--|🠈 If a value exists, parse it; otherwise, start from 0. 🠈|--//
-
-      //--|🠊 Determine the new value based on the axis. 🠈|--//
-      //--|🠊 I might remove this if it doesn't clash with the styling 🠈|--//
-      switch (viewAxis) {
-        case '<x>':
-          return currentValue; //--|🠈 Keep <x> axis value the same 🠈|--//
-        case '<y>':
-          return currentValue /* - 16 */; //--|🠈 Move 16px upwards for the <y> axis 🠈|--//
-      }
-    };
-    const regexExtract = {
-      //--|🠊 Regular expressions to extract current translateX or translateY value. 🠈|--//
-      '<x>': /translateX\((-?\d+(\.\d+)?)px\)/,
-      '<y>': /translateY\((-?\d+(\.\d+)?)px\)/,
-    };
-
-    if (carousel) {
-      switch (viewAxis) {
-        case '<x>':
-          container.style.transform = `translateX(${updateValue(container)}px)`; //--|🠈 Apply the new transform value to the container. 🠈|--//
-          break;
-        case '<y>':
-          container.style.transform = `translateY(${updateValue(container)}px)`; //--|🠈 Get the updated value by subtracting 16px for the <y> axis 🠈|--//
-          break;
-      }
-    } else {
-      console.warn(`Carousel with class "${pageName}-carousel" not found.`);
-    }
+    // /**
+    //  * Moves the carousel container by a certain distance on either the <x> or <y> axis.
+    //  * The movement is based on the existing transform value, with an added offset.
+    //  *
+    //  * @param pageName - The base name used to target the specific carousel.
+    //  * @param viewAxis - The axis to move along: '<x>' for horizontal, '<y>' for vertical.
+    //  */
+    // const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement; //--|🠈 Select the carousel element by its class name. 🠈|--//
+    // const container = carousel.querySelector(`div[class*="container"]`) as HTMLElement; //--|🠈 Select the container inside the carousel — assumed to have a class containing "container". 🠈|--//
+    // const updateValue = (element: HTMLElement): number => {
+    //   /**
+    //    * Helper function to get the current transform value on the specified axis,
+    //    * then return a new value with a 16px adjustment.
+    //    *
+    //    * @param element - The container element whose transform will be read.
+    //    * @returns The new transform value (number of pixels) after adjustment.
+    //    */
+    //   let transformStyle = element.style.transform; //--|🠈 Read the current transform value. 🠈|--//
+    //   let match = transformStyle.match(regexExtract[viewAxis]); //--|🠈 Match the current value based on the axis. 🠈|--//
+    //   let currentValue = match ? parseFloat(match[1]) : 0; //--|🠈 If a value exists, parse it; otherwise, start from 0. 🠈|--//
+    //   //--|🠊 Determine the new value based on the axis. 🠈|--//
+    //   //--|🠊 I might remove this if it doesn't clash with the styling 🠈|--//
+    //   switch (viewAxis) {
+    //     case '<x>':
+    //       return currentValue; //--|🠈 Keep <x> axis value the same 🠈|--//
+    //     case '<y>':
+    //       return currentValue /* - 16 */; //--|🠈 Move 16px upwards for the <y> axis 🠈|--//
+    //   }
+    // };
+    // const regexExtract = {
+    //   //--|🠊 Regular expressions to extract current translateX or translateY value. 🠈|--//
+    //   '<x>': /translateX\((-?\d+(\.\d+)?)px\)/,
+    //   '<y>': /translateY\((-?\d+(\.\d+)?)px\)/,
+    // };
+    // if (carousel) {
+    //   switch (viewAxis) {
+    //     case '<x>':
+    //       container.style.transform = `translateX(${updateValue(container)}px)`; //--|🠈 Apply the new transform value to the container. 🠈|--//
+    //       break;
+    //     case '<y>':
+    //       container.style.transform = `translateY(${updateValue(container)}px)`; //--|🠈 Get the updated value by subtracting 16px for the <y> axis 🠈|--//
+    //       break;
+    //   }
+    // } else {
+    //   console.warn(`Carousel with class "${pageName}-carousel" not found.`);
+    // }
   };
 
   if (table) {
