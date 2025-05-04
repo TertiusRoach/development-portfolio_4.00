@@ -159,7 +159,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
           container.dataset.view = currentWeek.dataset.week;
           futureWeek.id = 'future-week';
           currentWeek.id = 'current-week';
-          previousWeek.id = 'previousWeek';
+          previousWeek.id = 'previous-week';
           currentWeek.classList.add('visible');
           currentWeek.classList.remove('hidden');
 
