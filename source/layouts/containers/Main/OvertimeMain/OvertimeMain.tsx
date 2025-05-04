@@ -15,7 +15,6 @@ import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 //--|🠉 Functions 🠉|--//
-
 interface InfoProps {
   info: {
     resolution: string;
