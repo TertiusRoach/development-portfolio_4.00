@@ -1,4 +1,4 @@
-# 📖 `Table_weeks.ts` — HTML to Spreadsheet-Compatible Week Table
+# Navigation Weeks
 
 A TypeScript utility designed to dynamically generate, label, and export an ISO week table for any given year, using semantic HTML class names for spreadsheet interoperability.
 
