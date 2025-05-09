@@ -9,61 +9,55 @@
     display: grid;
     height: inherit; //--|🠈 height: 100%; 🠈|--//
     grid-template-rows: repeat(7, 1fr); //--|🠊 rows / columns 🠈|--//
-    box-shadow: inset 0 0 1rem rgba(black, 0.25); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-
-    // border-top: Palettes.$trackDay-light 1px solid;
-    // border-bottom: Palettes.$trackDay-light 1px solid;
 
     li[class*='row'] {
       display: grid;
       grid-template: auto / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-
+      box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+      border-top: Palettes.$trackDay-light 1px solid;
+      border-bottom: Palettes.$trackDay-light 1px solid;
       h1 {
-        grid-column: 1 / 4;
-        padding-left: 10rem;
+        margin: 0;
+        display: flex;
+        // display: none;
+
+        grid-column: 2 / 4;
+        padding-left: 2rem;
+        align-items: center;
+        color: Palettes.$trackDay-light;
+        background: Palettes.$trackDay-dark;
       }
+
       &[class*='mon'] {
         grid-row: 1 / 2; //--|🠊 start / end 🠈|--//
-        border-top: Palettes.$trackDay-dark 2px solid;
-
         //--|🠊 background: rgba(indigo, 0.25); 🠈|--//
       }
       &[class*='tue'] {
         grid-row: 2 / 3; //--|🠊 start / end 🠈|--//
-        background: rgba(orange, 0.25);
         //--|🠊 background: rgba(orange, 0.25); 🠈|--//
       }
       &[class*='wed'] {
         grid-row: 3 / 4; //--|🠊 start / end 🠈|--//
-        background: rgba(yellow, 0.25);
         //--|🠊 background: rgba(yellow, 0.25); 🠈|--//
       }
       &[class*='thu'] {
         grid-row: 4 / 5; //--|🠊 start / end 🠈|--//
-        background: rgba(green, 0.25);
         //--|🠊 background: rgba(green, 0.25); 🠈|--//
       }
       &[class*='fri'] {
         grid-row: 5 / 6; //--|🠊 start / end 🠈|--//
-        background: rgba(red, 0.25);
         //--|🠊 background: rgba(red, 0.25); 🠈|--//
       }
       &[class*='sat'] {
         grid-row: 6 / 7; //--|🠊 start / end 🠈|--//
-        background: rgba(blue, 0.25);
         //--|🠊 background: rgba(blue, 0.25); 🠈|--//
       }
       &[class*='sun'] {
         grid-row: 7 / 8; //--|🠊 start / end 🠈|--//
-        border-bottom: Palettes.$trackDay-dark 2px solid;
-        background: rgba(violet, 0.25);
         //--|🠊 background: rgba(violet, 0.25); 🠈|--//
       }
     }
   }
-  /*
-
-  */
 }
 @mixin mobile-portrait {
 }

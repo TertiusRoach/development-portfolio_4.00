@@ -6,15 +6,13 @@ export function updateDate() {
    * to display the current date in the format: "Saturday, 1st January 2000".
    * Uses ISO 8601 standard as the internal source of truth.
    */
-
+  //--|🠋 Extract readable parts of the date 🠋|--//
   const now = new Date(); //--|🠊 Get the current date and time as an ISO 8601 string (UTC-based) 🠈|--//
-  const isoDate = now.toISOString(); //--|🠊 Not used in output but ensures ISO compliance 🠈|--//
-
-  // Extract readable parts of the date
   const day = now.getDate();
-  const weekday = now.toLocaleDateString('en-GB', { weekday: 'long' });
-  const month = now.toLocaleDateString('en-GB', { month: 'long' });
   const year = now.getFullYear();
+  const isoDate = now.toISOString(); //--|🠊 Not used in output but ensures ISO compliance 🠈|--//
+  const month = now.toLocaleDateString('en-GB', { month: 'long' });
+  const weekday = now.toLocaleDateString('en-GB', { weekday: 'long' });
 
   /**
    * Add ordinal suffix to the day (e.g., 1st, 2nd, 3rd, 4th...)
@@ -30,12 +28,11 @@ export function updateDate() {
       : 'th';
 
   const formatted = `${weekday}, ${day}${suffix} ${month} ${year}`; //--|🠊 Construct the final formatted date string 🠈|--//
-  setTimeout(() => {
-    const timeElement = document.querySelector('.daily-time h1'); //--|🠊 Select the target <h1> and update its text content 🠈|--//
-    if (timeElement) {
-      timeElement.textContent = formatted;
-    }
-  }, 1500);
+  const timeElement = document.querySelector('.daily-time h1'); //--|🠊 Select the target <h1> and update its text content 🠈|--//
+
+  if (timeElement) {
+    timeElement.textContent = formatted;
+  }
 }
 /*
 export function defineButton(

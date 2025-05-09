@@ -31,12 +31,12 @@ const TimeDaily: React.FC<InfoProps> = ({ info }) => {
   const handleDaily = async () => {};
 
   useEffect(() => {
-    updateDate();
+    setTimeout(() => updateDate(), 1500);
   }, [pageName, blockName]);
 
   return (
     <time className="daily-time">
-      <h1>Weekday, 0th Month Year</h1>
+      <h1>Weekday, 0th Month YYYY</h1>
     </time>
   );
 };

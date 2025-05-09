@@ -244,7 +244,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
 export default loadWeekdays;
 
 //---//
-
+/*
 function getInfo(
   date: Date,
   view: '<week>' | '<month>', // cleaned angle brackets
@@ -286,12 +286,6 @@ function getInfo(
 }
 function loadTime() {
   const has53Weeks = (year: number): boolean => {
-    /**
-     * Checks if a given year contains 53 ISO weeks.
-     *
-     * @param year - The year to check.
-     * @returns True if the year has 53 weeks, false otherwise.
-     */
 
     const dec31 = new Date(Date.UTC(year, 11, 31));
     const dayOfWeek = dec31.getUTCDay();
@@ -299,12 +293,6 @@ function loadTime() {
     return dayOfWeek === 4 || (dayOfWeek === 3 && isLeapYear(year));
   };
   const isLeapYear = (year: number): boolean => {
-    /**
-     * Determines if a year is a leap year.
-     *
-     * @param year - The year to test.
-     * @returns True if leap year.
-     */
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   };
   const findWeek = (date: Date): number => {
@@ -341,3 +329,4 @@ function loadTime() {
   // Please keep it readable and add easy to understand comments.
   // YYYY-01-01 always starts with the first week of the year.
 }
+*/
