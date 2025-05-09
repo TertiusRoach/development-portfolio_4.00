@@ -3,6 +3,9 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  margin: 0;
+  padding-left: 8rem;
+
   button {
     height: 4rem;
     div {
@@ -18,9 +21,8 @@
 }
 
 span[class*='scrolling'] {
-  margin: 0;
-  padding: 0;
   display: grid;
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

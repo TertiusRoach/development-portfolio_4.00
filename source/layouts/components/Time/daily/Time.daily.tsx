@@ -4,12 +4,7 @@ import './Time.daily.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
-import React, {
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-} from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
 //--|🠉 Context 🠉|--//
@@ -25,12 +20,7 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification:
-      | 'landing'
-      | 'overtime'
-      | 'ticketing'
-      | 'hyperlink'
-      | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
   };
 }
 const TimeDaily: React.FC<InfoProps> = ({ info }) => {
@@ -46,7 +36,7 @@ const TimeDaily: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <time className="daily-time">
-      <h1 className="">Saturday, 1st January 2000</h1>
+      <h1>Weekday, 0th Month Year</h1>
     </time>
   );
 };

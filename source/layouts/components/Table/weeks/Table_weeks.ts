@@ -15,16 +15,6 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
     let year: number = Number(thisDay.split('-')[0]); //--|🠈 const year: number = 2000; 🠈|--//
     let countWeeks = (year: number): number => {
-      /**
-       * Returns the number of ISO-8601 weeks in a given year.
-       * According to ISO-8601:
-       * - Weeks start on Monday.
-       * - Week 1 is the week containing the first Thursday of the year.
-       * - A year can have either 52 or 53 weeks.
-       *
-       * @param year - The full year (e.g., 2025)
-       * @returns The number of ISO weeks in the year (52 or 53)
-       */
       //--|🠊 ISO week number (week starts on Monday) 🠈|--//
       //--|🠊 ISO week 1 is the week with the first Thursday of the year. 🠈|--//
       //--|🠊 So we check if Dec 28 is in week 53—if yes, the year has 53 weeks. 🠈|--//
@@ -36,6 +26,16 @@ export function loadWeekdays(pageName: string, blockName: string) {
       var week = Math.floor((daysBetween + startISO - 1) / 7) + 2; //--|🠈 Calculate week number and add 2 for the overlapping days. 🠈|--//
 
       return week; //--|🠊 53 or 54 🠈|--//
+      /**
+       * Returns the number of ISO-8601 weeks in a given year.
+       * According to ISO-8601:
+       * - Weeks start on Monday.
+       * - Week 1 is the week containing the first Thursday of the year.
+       * - A year can have either 52 or 53 weeks.
+       *
+       * @param year - The full year (e.g., 2025)
+       * @returns The number of ISO weeks in the year (52 or 53)
+       */
     };
 
     for (let i = 1; i <= countWeeks(year); i++) {
@@ -177,7 +177,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
   //--|🠊 03. scaleWeeks 🠈|--//
   const scaleWeeks = (pageName: string, blockName: string) => {
     let carousel = document.querySelector(
-      `#${pageName}-${blockName} div[class*="carousel"]`
+      `#${pageName}-${blockName} aside[class*="carousel"]`
     ) as HTMLElement;
     if (carousel) {
       let weekDays = carousel.querySelectorAll(
@@ -194,6 +194,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
       ) as NodeListOf<HTMLElement>;
       let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
       let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
+
       dataRows.forEach((row) => {
         row.style.height = `${heightRows}px`;
       });

@@ -12,6 +12,7 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
+import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 //--|🠉 Functions 🠉|--//
@@ -45,16 +46,10 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       id={`${pageName}-${blockName}`}
       className={`default-${blockName}`}
     >
-      <div className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
-        <nav className="weekdays-navigation">
-          <span className="mon-row"></span>
-          <span className="tue-row"></span>
-          <span className="wed-row"></span>
-          <span className="thu-row"></span>
-          <span className="fri-row"></span>
-          <span className="sat-row"></span>
-          <span className="sun-row"></span>
-        </nav>
+      <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
+        <section className="workdays-section">
+          <NavigationWeeks info={info} />
+        </section>
 
         <section className="weekdays-section">
           <div
@@ -66,7 +61,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             <TableWeeks info={info} />
           </div>
         </section>
-      </div>
+      </aside>
 
       <aside className="leave-aside">
         {/* <div className="foreground"></div> */}

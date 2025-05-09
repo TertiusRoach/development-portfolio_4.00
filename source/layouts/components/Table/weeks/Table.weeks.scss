@@ -32,8 +32,8 @@
 
 table[class*='weeks'] {
   display: flex;
-  // font-weight: 600;
   flex-direction: column;
+  //--|🠊 font-weight: 600; 🠈|--//
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

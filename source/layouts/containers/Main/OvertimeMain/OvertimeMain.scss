@@ -5,97 +5,18 @@
   //--|🠊 display: grid; 🠈|--//
   grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
-  div[class*='carousel'] {
+  aside[class*='carousel'] {
     display: block;
     overflow: hidden;
     position: relative;
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
 
-    nav[class*='weekdays'] {
+    section[class*='workdays'] {
       z-index: 1;
       width: 100%;
       height: 100%;
-      display: grid;
       position: absolute;
-      grid-template: repeat(7, 1fr) / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-      span {
-        grid-column: 1 / 4; //--|🠊 start / end 🠈|--//
-        // filter: drop-shadow(0 0 8px red);
-        box-shadow: inset 0 0 1rem rgba(black, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-        border-top: Palettes.$trackDay-light 1px solid;
-        border-bottom: Palettes.$trackDay-light 1px solid;
-      }
-
-      span[class*='mon'] {
-        grid-row: 1 / 2; //--|🠊 start / end 🠈|--//
-        border-top: Palettes.$trackDay-dark 2px solid;
-        /* background: rgba(indigo, 0.25); */
-      }
-      span[class*='tue'] {
-        grid-row: 2 / 3; //--|🠊 start / end 🠈|--//
-        /* background: rgba(orange, 0.25); */
-      }
-      span[class*='wed'] {
-        grid-row: 3 / 4; //--|🠊 start / end 🠈|--//
-        /* background: rgba(yellow, 0.25); */
-      }
-      span[class*='thu'] {
-        grid-row: 4 / 5; //--|🠊 start / end 🠈|--//
-        /* background: rgba(green, 0.25); */
-      }
-      span[class*='fri'] {
-        grid-row: 5 / 6; //--|🠊 start / end 🠈|--//
-        /* background: rgba(red, 0.25); */
-      }
-      span[class*='sat'] {
-        grid-row: 6 / 7; //--|🠊 start / end 🠈|--//
-        /* background: rgba(blue, 0.25); */
-      }
-      span[class*='sun'] {
-        grid-row: 7 / 8; //--|🠊 start / end 🠈|--//
-        border-bottom: Palettes.$trackDay-dark 2px solid;
-        /* background: rgba(violet, 0.25); */
-      }
-      /*
-      */
-      /*
-      div[class*='A'] {
-      }
-      div[class*='B'] {
-      }
-      div[class*='C'] {
-      }
-      */
-      // background: rgba(darkred, 0.25);
-      /*
-      background-image:
-      // horizontal lines
-        repeating-linear-gradient(
-          to bottom,
-          transparent,
-          transparent calc(100% / 7 - 1px),
-          rgba(255, 255, 255, 0.4) calc(100% / 7 - 1px),
-          rgba(255, 255, 255, 0.4) calc(100% / 7)
-        ),
-        // vertical lines
-        repeating-linear-gradient(
-            to right,
-            transparent,
-            transparent 7.5rem,
-            // 8rem for the first column + 1fr approximations
-            rgba(255, 255, 255, 0.4) 7.5rem,
-            rgba(255, 255, 255, 0.4) 7.5rem
-          );
-
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      pointer-events: none;
-
-      & > * {
-        border: 4px solid rgba(255, 255, 255, 0.4);
-      }
-      */
     }
     section[class*='weekdays'] {
       z-index: 0;
