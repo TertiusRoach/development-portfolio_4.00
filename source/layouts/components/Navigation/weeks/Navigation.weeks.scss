@@ -3,7 +3,7 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-  ol {
+  ol[class*='week'] {
     margin: 0;
     padding: 0;
     display: grid;
@@ -17,14 +17,20 @@
       box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
       border-top: Palettes.$trackDay-light 1px solid;
       border-bottom: Palettes.$trackDay-light 1px solid;
+      div {
+        z-index: 1;
+
+        grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
       h1 {
         margin: 0;
+        z-index: 0;
         opacity: 0;
         display: flex;
         filter: blur(4px);
-        grid-column: 2 / 4;
         padding-left: 2rem;
         align-items: center;
+        grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
         //--|🠊 opacity: 1; 🠈|--//
         //--|🠊 filter: blur(0); 🠈|--//
         color: Palettes.$trackDay-light;
