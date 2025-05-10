@@ -42,8 +42,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="mon-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
             <li className="tue-row">
@@ -75,8 +83,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="tue-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
             <li className="wed-row">
@@ -108,8 +124,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="wed-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
             <li className="thu-row">
@@ -141,8 +165,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="thu-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
             <li className="fri-row">
@@ -174,8 +206,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="fri-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
             <li className="sat-row">
@@ -248,8 +288,16 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
             <li className="sun-row">
               <h1 className="date">DD Month</h1>
               <div className="clock-time">
-                <button className="clock-in">Clock-in</button>
-                <button className="clock-out">Clock-out</button>
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-in'}
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text={'Clock-out'}
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
               </div>
             </li>
           </ol>
@@ -258,8 +306,38 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    handleWeeks();
-    setTimeout(() => fillWeek(pageName, blockName), 1500);
+    const now = new Date();
+    const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+    const today = weekdays[(now.getDay() + 6) % 7]; // adjusts Sunday (0) → index 6 (sun)
+
+    const weekLayout = (
+      <ol className="view-week">
+        {weekdays.map((day) => (
+          <li key={day} className={`${day}-row`}>
+            <h1 className="date">DD Month</h1>
+            {day === today && (
+              <div className="clock-time">
+                <ButtonStretch
+                  type="button"
+                  text="Clock-in"
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text="Clock-out"
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    );
+
+    setLayout(weekLayout);
+
+    const timeout = setTimeout(() => fillWeek(pageName, blockName), 1500);
+    return () => clearTimeout(timeout);
   }, [pageName, blockName]);
 
   return <nav className="weeks-navigation">{layout}</nav>;

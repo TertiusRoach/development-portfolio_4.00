@@ -65,12 +65,13 @@ export function fillWeek(pageName: string, blockName: string) {
       // Determine AM or PM
       switch (true) {
         case hour < 12:
-          workdays.classList = `view-week ${day}-am`;
+          workdays.classList = `view-week logging ${day}-am`;
           break;
         case hour >= 12:
-          workdays.classList = `view-week ${day}-pm`;
+          workdays.classList = `view-week logging ${day}-pm`;
           break;
       }
     }
   }
+  workdays.dataset.week = weekdays.dataset.week;
 }

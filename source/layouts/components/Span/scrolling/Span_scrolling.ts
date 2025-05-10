@@ -78,6 +78,30 @@ export function showWeek(
   const nextButton = footer.querySelector(
     ".span-scrolling button[class*='-next-'] div img"
   ) as HTMLElement;
+  const workdays = document.querySelector(
+    `#${pageName}-main nav[class*="weeks"] ol`
+  ) as HTMLElement;
+
+  /*
+
+  const weekdays = document.querySelector(
+    `#${pageName}-main table[class*="weeks"] #current-week`
+  ) as HTMLElement;
+
+  const thisDay = document.querySelector(
+    `#${pageName}-main table[class*="weeks"] #current-day`
+  ) as HTMLElement;
+  const present = new Date().toISOString().split('T')[0];
+
+  console.log(workdays);
+  console.log(weekdays);
+  console.log(thisDay);
+  console.log(present);
+
+  let presentDay = document.getElementById(`${thisDay}`);
+
+  console.log(presentDay);
+  */
 
   // Toggle button visibility and interactivity
   const viewButton = (btn: HTMLElement, visible: boolean) => {
@@ -103,6 +127,7 @@ export function showWeek(
 
     let viewWeekY: HTMLElement;
     let viewBodyY: HTMLElement;
+
     switch (moveAxis) {
       case '-prev-':
         if (hiddenPrev) {
@@ -122,6 +147,14 @@ export function showWeek(
           viewButton(prevButton, false);
         } else if (nextButton.style.opacity === '0') {
           viewButton(nextButton, true); // Re-enable next if previously disabled
+        }
+
+        if (Number(visibleTag.dataset.week) - 1 !== Number(workdays.dataset.week)) {
+          workdays.classList.add('scrolling');
+          workdays.classList.remove('logging');
+        } else {
+          workdays.classList.add('logging');
+          workdays.classList.remove('scrolling');
         }
         break;
       case '-next-':
@@ -144,8 +177,23 @@ export function showWeek(
         } else if (prevButton.style.opacity === '0') {
           viewButton(prevButton, true); // Re-enable prev if previously disabled
         }
+
+        if (Number(visibleTag.dataset.week) + 1 !== Number(workdays.dataset.week)) {
+          workdays.classList.add('scrolling');
+          workdays.classList.remove('logging');
+        } else {
+          workdays.classList.add('logging');
+          workdays.classList.remove('scrolling');
+        }
         break;
     }
+
+    // setTimeout(() => {}, 1500);
+    /*
+        if (visibleTag.dataset.week !== workdays.dataset.week) {
+          console.log('afsddfasasdf');
+        }
+        */
   } else if (viewAxis === '<x>') {
   }
 }
