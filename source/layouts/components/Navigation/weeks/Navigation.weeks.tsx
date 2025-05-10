@@ -40,29 +40,29 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>
               </div>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -70,29 +70,29 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>
               </div>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -100,29 +100,29 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>
               </div>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -130,29 +130,29 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>
               </div>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -160,29 +160,29 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>
               </div>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -190,41 +190,37 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              {/* <h1 className="date">DD Month</h1> */}
               <div className="clock-time">
                 <ButtonStretch
                   type="button"
                   text={'Clock-in'}
-                  // onClick={() => showWeek(pageName, '<y>', '-prev-')}
                   style={defineButton('clock-in', { pageName, blockName })}
                 />
                 <ButtonStretch
                   type="button"
                   text={'Clock-out'}
-                  // onClick={() => showWeek(pageName, '<y>', '-prev-')}
                   style={defineButton('clock-out', { pageName, blockName })}
                 />
-                {/* <button className="clock-in">Clock-in</button> */}
-                {/* <button className="clock-out">Clock-out</button> */}
               </div>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
           </ol>
         );
@@ -232,25 +228,25 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
         return setLayout(
           <ol className="view-week">
             <li className="mon-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="tue-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="wed-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="thu-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="fri-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
             </li>
             <li className="sun-row">
-              <h1 className="date-text">DD Month</h1>
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <button className="clock-in">Clock-in</button>
                 <button className="clock-out">Clock-out</button>

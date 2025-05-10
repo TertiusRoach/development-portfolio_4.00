@@ -20,20 +20,15 @@
       div[class*='time'] {
         z-index: 1;
         display: grid;
+        grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
         grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
 
-        grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        // background: pink;
         button:first-child {
-          // height: 4rem;
           grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
         }
         button:last-child {
           grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
         }
-        // button {
-        //   display: none;
-        // }
       }
       h1[class*='date'] {
         margin: 0;

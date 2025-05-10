@@ -10,17 +10,6 @@
   }
   @media screen and (max-height: 360px) {
   }
-  /*
-  div {
-    width: 8rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  @media screen and (max-height: 768px) {
-  }
-  */
 }
 @mixin mobile-portrait {
   @media screen and (max-width: 768px) {
@@ -32,9 +21,15 @@
 }
 
 button[class*='stretch'] {
-  @include Mixins.button-stretch(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  @include Mixins.button-presets(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  @include Mixins.button-spacing(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-stretch(
+
+  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-presets(
+
+  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-spacing(
+
+  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
