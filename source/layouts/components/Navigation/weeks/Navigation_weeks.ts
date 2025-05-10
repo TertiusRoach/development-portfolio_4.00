@@ -14,7 +14,7 @@ export function defineButton(
 
         className: button,
         pageName: pageName as 'overtime',
-        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        blockName: blockName as 'main',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/68022b074712ac4438089936bec983a931cf858f/source/assets/svg-files/overtime-page/clock-time.svg',
       };
@@ -26,7 +26,7 @@ export function defineButton(
 
         className: button,
         pageName: pageName as 'overtime',
-        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        blockName: blockName as 'main',
         imageLink:
           'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/68022b074712ac4438089936bec983a931cf858f/source/assets/svg-files/overtime-page/clock-time.svg',
       };

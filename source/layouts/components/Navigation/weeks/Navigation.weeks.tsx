@@ -205,7 +205,7 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
               <h1 className="date">DD Month</h1>
             </li>
             <li className="sat-row">
-              {/* <h1 className="date">DD Month</h1> */}
+              <h1 className="date">DD Month</h1>
               <div className="clock-time">
                 <ButtonStretch
                   type="button"

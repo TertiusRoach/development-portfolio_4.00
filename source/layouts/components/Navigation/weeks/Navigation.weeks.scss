@@ -17,7 +17,7 @@
       box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
       border-top: Palettes.$trackDay-light 1px solid;
       border-bottom: Palettes.$trackDay-light 1px solid;
-      div[class*='time'] {
+      div[class*='clock'] {
         z-index: 1;
         display: grid;
         grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -83,6 +83,17 @@
           opacity: 1;
           filter: blur(0);
         }
+      }
+    }
+  }
+
+  ol[class*='sat'] {
+    li:nth-child(6) {
+      h1[class*='date'] {
+        background: red !important;
+      }
+      button {
+        // display: none;
       }
     }
   }
