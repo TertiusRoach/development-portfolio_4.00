@@ -30,7 +30,48 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
 
   const [layout, setLayout] = useState<React.ReactNode>(null);
 
-  const handleWeeks = () => {
+  const handleWeeks = () => {};
+
+  useEffect(() => {
+    const now = new Date();
+    const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+    const today = weekdays[(now.getDay() + 6) % 7]; // adjusts Sunday (0) → index 6 (sun)
+
+    const weekLayout = (
+      <ol className="view-week">
+        {weekdays.map((day) => (
+          <li key={day} className={`${day}-row`}>
+            <h1 className="date">DD Month</h1>
+            {day === today && (
+              <div className="clock-time">
+                <ButtonStretch
+                  type="button"
+                  text="Clock-in"
+                  style={defineButton('clock-in', { pageName, blockName })}
+                />
+                <ButtonStretch
+                  type="button"
+                  text="Clock-out"
+                  style={defineButton('clock-out', { pageName, blockName })}
+                />
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    );
+
+    setLayout(weekLayout);
+
+    const timeout = setTimeout(() => fillWeek(pageName, blockName), 1500);
+    return () => clearTimeout(timeout);
+  }, [pageName, blockName]);
+
+  return <nav className="weeks-navigation">{layout}</nav>;
+};
+export default NavigationWeeks;
+
+/*
     let now = new Date() as Date;
     let week = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as Array<String>; // Fix order — JS `getDay()` starts on Sunday
     let today = week[now.getDay()] as string;
@@ -303,43 +344,4 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
           </ol>
         );
     }
-  };
-
-  useEffect(() => {
-    const now = new Date();
-    const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-    const today = weekdays[(now.getDay() + 6) % 7]; // adjusts Sunday (0) → index 6 (sun)
-
-    const weekLayout = (
-      <ol className="view-week">
-        {weekdays.map((day) => (
-          <li key={day} className={`${day}-row`}>
-            <h1 className="date">DD Month</h1>
-            {day === today && (
-              <div className="clock-time">
-                <ButtonStretch
-                  type="button"
-                  text="Clock-in"
-                  style={defineButton('clock-in', { pageName, blockName })}
-                />
-                <ButtonStretch
-                  type="button"
-                  text="Clock-out"
-                  style={defineButton('clock-out', { pageName, blockName })}
-                />
-              </div>
-            )}
-          </li>
-        ))}
-      </ol>
-    );
-
-    setLayout(weekLayout);
-
-    const timeout = setTimeout(() => fillWeek(pageName, blockName), 1500);
-    return () => clearTimeout(timeout);
-  }, [pageName, blockName]);
-
-  return <nav className="weeks-navigation">{layout}</nav>;
-};
-export default NavigationWeeks;
+    */

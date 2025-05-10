@@ -12,7 +12,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import ButtonStretch from '../../Button/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, assignBlock, showWeek } from './Span_scrolling';
+import { defineButton, traceBlock, showWeek, alterWeek } from './Span_scrolling';
 import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
@@ -32,7 +32,7 @@ interface InfoProps {
 }
 const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
   const pageName = info.identification as 'overtime';
-  const blockName: string = assignBlock(block) as 'header' | 'footer' | 'aside';
+  const blockName: string = traceBlock(block) as 'header' | 'footer' | 'aside';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -54,7 +54,10 @@ const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
           <ButtonStretch
             text={'Next'}
             type="button"
-            onClick={() => showWeek(pageName, '<y>', '-next-')}
+            onClick={() => {
+              // fillWeek(pageName, blockName);
+              showWeek(pageName, '<y>', '-next-');
+            }}
             style={defineButton('next-week', { pageName, blockName })}
           />
         </span>

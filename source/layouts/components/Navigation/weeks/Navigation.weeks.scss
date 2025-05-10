@@ -10,7 +10,6 @@
       display: grid;
       height: inherit; //--|🠈 height: 100%; 🠈|--//
       grid-template-rows: repeat(7, 1fr); //--|🠊 rows 🠈|--//
-
       li[class*='row'] {
         display: grid;
         padding-left: 1px;
@@ -18,19 +17,7 @@
         box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
         border-top: Palettes.$trackDay-light 1px solid;
         border-bottom: Palettes.$trackDay-light 1px solid;
-        div[class*='clock'] {
-          z-index: 1;
-          display: grid;
-          grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
 
-          button:first-child {
-            grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          }
-          button:last-child {
-            grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          }
-        }
         h1[class*='date'] {
           margin: 0;
           z-index: 0;
@@ -47,6 +34,19 @@
           background: Palettes.$trackDay-dark;
           box-shadow: inset 0 0 1rem rgba(black, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
           transition: opacity 0.25s ease-in-out, filter 0.25s ease-in-out;
+        }
+        div[class*='clock'] {
+          z-index: 1;
+          display: grid;
+          grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+
+          button:first-child {
+            grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+          button:last-child {
+            grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
         }
 
         &[class*='row']:hover {
@@ -87,6 +87,8 @@
       }
     }
     &[class*='view'] {
+      li[class*='row'] {
+      }
       &[class*='am'] {
         li {
           div {

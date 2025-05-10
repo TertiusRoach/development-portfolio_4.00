@@ -69,7 +69,7 @@ export function showWeek(
   const hiddenPrev = visibleTag.previousElementSibling as HTMLTableElement;
   const hiddenNext = visibleTag.nextElementSibling as HTMLTableElement;
 
-  // Header & footer buttons
+  //--|🠊 Header & footer buttons 🠈|--//
   const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
   const footer = document.querySelector(`#${pageName}-footer`) as HTMLElement;
   const prevButton = header.querySelector(
@@ -82,34 +82,13 @@ export function showWeek(
     `#${pageName}-main nav[class*="weeks"] ol`
   ) as HTMLElement;
 
-  /*
-
-  const weekdays = document.querySelector(
-    `#${pageName}-main table[class*="weeks"] #current-week`
-  ) as HTMLElement;
-
-  const thisDay = document.querySelector(
-    `#${pageName}-main table[class*="weeks"] #current-day`
-  ) as HTMLElement;
-  const present = new Date().toISOString().split('T')[0];
-
-  console.log(workdays);
-  console.log(weekdays);
-  console.log(thisDay);
-  console.log(present);
-
-  let presentDay = document.getElementById(`${thisDay}`);
-
-  console.log(presentDay);
-  */
-
-  // Toggle button visibility and interactivity
+  //--|🠊 Toggle button visibility and interactivity 🠈|--//
   const viewButton = (btn: HTMLElement, visible: boolean) => {
     btn.style.opacity = visible ? '1' : '0';
     btn.style.cursor = visible ? 'pointer' : 'default';
   };
 
-  // Toggle visibility between week elements
+  //--|🠊 Toggle visibility between week elements 🠈|--//
   const toggleView = (show: HTMLElement, hide: HTMLElement): boolean => {
     if (!show) return false;
     show.classList.add('visible');
@@ -187,18 +166,63 @@ export function showWeek(
         }
         break;
     }
-
-    // setTimeout(() => {}, 1500);
-    /*
-        if (visibleTag.dataset.week !== workdays.dataset.week) {
-          console.log('afsddfasasdf');
-        }
-        */
+    alterWeek(pageName);
   } else if (viewAxis === '<x>') {
   }
 }
 
-export const assignBlock = (block: '<header>' | '<footer>' | '<aside>') => {
+export function alterWeek(pageName: string) {
+  const weekdays = document.querySelector(
+    `#${pageName}-main table[class*="weeks"] .visible`
+  ) as HTMLElement;
+  const workdays = document.querySelector(
+    `#${pageName}-main nav[class*="weeks"] ol`
+  ) as HTMLElement;
+
+  const present = new Date().toISOString().split('T')[0];
+
+  console.log(weekdays);
+  console.log(workdays);
+
+  for (let i = 0; i < 7; i++) {
+    let overlay = workdays.children[i] as HTMLElement;
+    let date = new Date(weekdays.children[i].id) as Date; //--|🠈 Generate date for each day in the loop 🠈|--//
+
+    let current = date.toISOString().split('T')[0];
+    let day = date.getDate().toString().padStart(2, '0'); //--|🠈 Add leading zero if needed 🠈|--//
+    let month = date.toLocaleDateString('en-GB', { month: 'long' });
+    let dayText = overlay.querySelector('h1[class*="date"]') as HTMLElement;
+
+    if (dayText) {
+      dayText.innerText = `${day} ${month}`; //--|🠈 Set text content to formatted date 🠈|--//
+    }
+
+    if (present === current) {
+      let now = new Date() as Date;
+      let hour = now.getHours();
+
+      let weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      let day = weekdays[now.getDay()]; // 0 (Sun) to 6 (Sat)
+
+      // Determine AM or PM
+      switch (true) {
+        case hour < 12:
+          workdays.classList = `view-week logging ${day}-am`;
+          break;
+        case hour >= 12:
+          workdays.classList = `view-week logging ${day}-pm`;
+          break;
+      }
+    }
+  }
+  /*
+
+
+
+  */
+}
+
+export const traceBlock = (block: '<header>' | '<footer>' | '<aside>') => {
   if (block === '<header>') {
     return 'header';
   } else if ((block = '<footer>')) {
