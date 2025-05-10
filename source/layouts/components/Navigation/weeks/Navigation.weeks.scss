@@ -48,14 +48,16 @@
             grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
           }
         }
-
-        &[class*='row']:hover {
-          h1 {
-            opacity: 1;
-            filter: blur(0);
-          }
+      }
+      li[class*='row']:hover {
+        h1 {
+          opacity: 1;
+          filter: blur(0);
         }
-
+      }
+    }
+    &[class*='view'] {
+      li[class*='row'] {
         &[class*='mon'] {
           grid-row: 1 / 2; //--|🠊 start / end 🠈|--//
           //--|🠊 background: rgba(indigo, 0.25); 🠈|--//
@@ -84,10 +86,6 @@
           grid-row: 7 / 8; //--|🠊 start / end 🠈|--//
           //--|🠊 background: rgba(violet, 0.25); 🠈|--//
         }
-      }
-    }
-    &[class*='view'] {
-      li[class*='row'] {
       }
       &[class*='am'] {
         li {
