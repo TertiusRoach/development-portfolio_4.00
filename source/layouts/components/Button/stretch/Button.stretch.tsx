@@ -26,7 +26,7 @@ interface InfoProps {
     imageLink: string;
   };
 }
-const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
+const ButtonStretch: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
   const blockName = style.blockName;
   const className = style.className;
@@ -51,7 +51,11 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   switch (layout) {
     case '-left-':
       return (
-        <button type={type} onClick={onClick} className={`stretch-button left-${shading} ${pageName}-${className}`}>
+        <button
+          type={type}
+          onClick={onClick}
+          className={`stretch-button left-${shading} ${pageName}-${className}`}
+        >
           <div className={`${blockName}`}>
             <img
               style={{
@@ -66,7 +70,11 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-right-':
       return (
-        <button type={type} onClick={onClick} className={`stretch-button right-${shading} ${pageName}-${className}`}>
+        <button
+          type={type}
+          onClick={onClick}
+          className={`stretch-button right-${shading} ${pageName}-${className}`}
+        >
           <div className={`${blockName}`}>
             {scaleWords(font, text)}
             <img
@@ -81,7 +89,11 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-center-':
       return (
-        <button type={type} onClick={onClick} className={`stretch-button center-${shading} ${pageName}-${className}`}>
+        <button
+          type={type}
+          onClick={onClick}
+          className={`stretch-button center-${shading} ${pageName}-${className}`}
+        >
           <div className={`${blockName}`}>
             <img
               style={{
@@ -96,7 +108,11 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-icon-':
       return (
-        <button type={type} onClick={onClick} className={`stretch-button icon-${shading} ${pageName}-${className}`}>
+        <button
+          type={type}
+          onClick={onClick}
+          className={`stretch-button icon-${shading} ${pageName}-${className}`}
+        >
           <div className={`${blockName}`}>
             <img
               style={{
@@ -110,13 +126,17 @@ const ButtonSharped: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
     case '-text-':
       return (
-        <button type={type} onClick={onClick} className={`stretch-button text-${shading} ${pageName}-${className}`}>
+        <button
+          type={type}
+          onClick={onClick}
+          className={`stretch-button text-${shading} ${pageName}-${className}`}
+        >
           <div className={`${blockName}`}>{scaleWords(font, text)}</div>
         </button>
       );
   }
 };
-export default ButtonSharped;
+export default ButtonStretch;
 
 const scaleWords = (
   fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',

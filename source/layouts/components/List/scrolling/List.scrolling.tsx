@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Context 🠋|--//
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonSharped from '../../Button/stretch/Button.stretch';
+import ButtonStretch from '../../Button/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton, assignBlock, showWeek } from './List_scrolling';
@@ -20,7 +20,14 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    identification:
+      | 'index'
+      | 'resume'
+      | 'ticket'
+      | 'university'
+      | 'fitness'
+      | 'landing'
+      | string;
   };
 }
 const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
@@ -34,7 +41,7 @@ const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
       return (
         <ol className="list-scrolling">
           <li className="prev-list">
-            <ButtonSharped
+            <ButtonStretch
               type="button"
               text={'Back'}
               onClick={() => showWeek('prev', pageName, blockName)}
@@ -47,7 +54,7 @@ const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {
       return (
         <ol className="list-scrolling">
           <li className="next-list">
-            <ButtonSharped
+            <ButtonStretch
               text={'Next'}
               type="button"
               onClick={() => showWeek('next', pageName, blockName)}

@@ -8,7 +8,7 @@
     padding: 0;
     display: grid;
     height: inherit; //--|🠈 height: 100%; 🠈|--//
-    grid-template-rows: repeat(7, 1fr); //--|🠊 rows / columns 🠈|--//
+    grid-template-rows: repeat(7, 1fr); //--|🠊 rows 🠈|--//
 
     li[class*='row'] {
       display: grid;
@@ -17,16 +17,31 @@
       box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
       border-top: Palettes.$trackDay-light 1px solid;
       border-bottom: Palettes.$trackDay-light 1px solid;
-      div {
+      div[class*='time'] {
         z-index: 1;
+        display: grid;
+        grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
 
         grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+
+        // background: pink;
+        button:first-child {
+          grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        // button:last-child {
+        //   grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        // }
+        // button {
+        //   display: none;
+        // }
       }
-      h1 {
+      h1[class*='date'] {
         margin: 0;
         z-index: 0;
         opacity: 0;
         display: flex;
+        // display: none;
+        //--|🠊 display: none; 🠈|--//
         filter: blur(4px);
         padding-left: 2rem;
         align-items: center;
@@ -37,12 +52,6 @@
         background: Palettes.$trackDay-dark;
         box-shadow: inset 0 0 1rem rgba(black, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
         transition: opacity 0.25s ease-in-out, filter 0.25s ease-in-out;
-      }
-      &[class*='row']:hover {
-        h1 {
-          opacity: 1;
-          filter: blur(0);
-        }
       }
 
       &[class*='mon'] {
@@ -72,6 +81,13 @@
       &[class*='sun'] {
         grid-row: 7 / 8; //--|🠊 start / end 🠈|--//
         //--|🠊 background: rgba(violet, 0.25); 🠈|--//
+      }
+
+      &[class*='row']:hover {
+        h1 {
+          opacity: 1;
+          filter: blur(0);
+        }
       }
     }
   }

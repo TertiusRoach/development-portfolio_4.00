@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Context 🠋|--//
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonSharped from '../../Button/stretch/Button.stretch';
+import ButtonStretch from '../../Button/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton, assignBlock, showWeek } from './Span_scrolling';
@@ -40,7 +40,7 @@ const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
     case '<header>':
       return (
         <span className="span-scrolling">
-          <ButtonSharped
+          <ButtonStretch
             type="button"
             text={'Back'}
             onClick={() => showWeek(pageName, '<y>', '-prev-')}
@@ -51,7 +51,7 @@ const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
     case '<footer>':
       return (
         <span className="span-scrolling">
-          <ButtonSharped
+          <ButtonStretch
             text={'Next'}
             type="button"
             onClick={() => showWeek(pageName, '<y>', '-next-')}

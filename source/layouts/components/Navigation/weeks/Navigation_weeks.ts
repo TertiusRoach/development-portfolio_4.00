@@ -1,4 +1,38 @@
 //--|🠊 Navigation_weeks.ts 🠈|--//
+export function defineButton(
+  button: 'clock-in' | 'clock-out',
+  info: { blockName: string; pageName: string }
+) {
+  const { blockName, pageName } = info;
+  //--|🠋 Always Return an Object 🠋|--//
+  switch (button) {
+    case 'clock-in':
+      return {
+        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        pageName: pageName as 'overtime',
+        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/68022b074712ac4438089936bec983a931cf858f/source/assets/svg-files/overtime-page/clock-time.svg',
+      };
+    case 'clock-out':
+      return {
+        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        pageName: pageName as 'overtime',
+        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/68022b074712ac4438089936bec983a931cf858f/source/assets/svg-files/overtime-page/clock-time.svg',
+      };
+  }
+}
+
 export function fillWeek(pageName: string, blockName: string) {
   const workdays = document.querySelector(
     `#${pageName}-${blockName} nav[class*="weeks"] ol`
