@@ -213,12 +213,12 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
                   // onClick={() => showWeek(pageName, '<y>', '-prev-')}
                   style={defineButton('clock-in', { pageName, blockName })}
                 />
-                {/* <ButtonStretch
+                <ButtonStretch
                   type="button"
                   text={'Clock-out'}
                   // onClick={() => showWeek(pageName, '<y>', '-prev-')}
                   style={defineButton('clock-out', { pageName, blockName })}
-                /> */}
+                />
                 {/* <button className="clock-in">Clock-in</button> */}
                 {/* <button className="clock-out">Clock-out</button> */}
               </div>
