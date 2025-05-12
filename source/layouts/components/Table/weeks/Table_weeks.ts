@@ -1,7 +1,5 @@
 //--|🠊 Table_weeks.ts 🠈|--//
 
-import { get } from 'axios';
-
 export function loadWeekdays(pageName: string, blockName: string) {
   const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
   const thisDay: string = thisDate.toISOString().split('T')[0]; //--|🠈 Get the current day in ISO format 🠈|--//
@@ -15,6 +13,16 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
     let year: number = Number(thisDay.split('-')[0]); //--|🠈 const year: number = 2000; 🠈|--//
     let countWeeks = (year: number): number => {
+      /**
+       * Returns the number of ISO-8601 weeks in a given year.
+       * According to ISO-8601:
+       * - Weeks start on Monday.
+       * - Week 1 is the week containing the first Thursday of the year.
+       * - A year can have either 52 or 53 weeks.
+       *
+       * @param year - The full year (e.g., 2025)
+       * @returns The number of ISO weeks in the year (52 or 53)
+       */
       //--|🠊 ISO week number (week starts on Monday) 🠈|--//
       //--|🠊 ISO week 1 is the week with the first Thursday of the year. 🠈|--//
       //--|🠊 So we check if Dec 28 is in week 53—if yes, the year has 53 weeks. 🠈|--//
@@ -26,16 +34,6 @@ export function loadWeekdays(pageName: string, blockName: string) {
       var week = Math.floor((daysBetween + startISO - 1) / 7) + 2; //--|🠈 Calculate week number and add 2 for the overlapping days. 🠈|--//
 
       return week; //--|🠊 53 or 54 🠈|--//
-      /**
-       * Returns the number of ISO-8601 weeks in a given year.
-       * According to ISO-8601:
-       * - Weeks start on Monday.
-       * - Week 1 is the week containing the first Thursday of the year.
-       * - A year can have either 52 or 53 weeks.
-       *
-       * @param year - The full year (e.g., 2025)
-       * @returns The number of ISO weeks in the year (52 or 53)
-       */
     };
 
     for (let i = 1; i <= countWeeks(year); i++) {
@@ -52,11 +50,11 @@ export function loadWeekdays(pageName: string, blockName: string) {
         tableData.className = 'weekday h1';
 
         let clockIn = document.createElement('td');
-        clockIn.className = 'clock-in';
+        clockIn.className = 'clock-in display-6';
         clockIn.textContent = '--:--';
 
         let clockOut = document.createElement('td');
-        clockOut.className = 'clock-out';
+        clockOut.className = 'clock-out display-6';
         clockOut.textContent = '~~:~~';
 
         //--|🠊 Determine day label and row class 🠈|--//
@@ -242,91 +240,3 @@ export function loadWeekdays(pageName: string, blockName: string) {
 }
 
 export default loadWeekdays;
-
-//---//
-/*
-function getInfo(
-  date: Date,
-  view: '<week>' | '<month>', // cleaned angle brackets
-  format: '-number-' | '-string-' // clearer than -number-
-) {
-  if (format === '-number-') {
-    switch (view) {
-      case '<week>':
-        let target = new Date(
-          Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-        );
-        let day = target.getUTCDay() || 7; // Sunday as 7
-        target.setUTCDate(target.getUTCDate() + 4 - day); // move to nearest Thursday
-
-        let yearStart = new Date(Date.UTC(target.getUTCFullYear(), 0, 1));
-        let weekNumber = Math.ceil(((+target - +yearStart) / 86400000 + 1) / 7);
-        return weekNumber;
-      case '<month>':
-        return date.getMonth() + 1;
-      default:
-        alert('//--|🠊 Invalid type. Use "<week>" to get the week number. 🠈|--//');
-        return 0; //--|🠈 Default value if no match is found 🠈|--//
-    }
-  } else if (format === '-string-') {
-    switch (view) {
-      case '<week>':
-        return date.toLocaleString('en-GB', {
-          weekday: 'long',
-        });
-      case '<month>':
-        return date.toLocaleString('en-GB', {
-          month: 'long',
-        });
-      default:
-        alert('//--|🠊 Invalid view. Use "<month>" to get the month text. 🠈|--//');
-        return 0; //--|🠈 Default value if no match is found 🠈|--//
-    }
-  }
-}
-function loadTime() {
-  const has53Weeks = (year: number): boolean => {
-
-    const dec31 = new Date(Date.UTC(year, 11, 31));
-    const dayOfWeek = dec31.getUTCDay();
-
-    return dayOfWeek === 4 || (dayOfWeek === 3 && isLeapYear(year));
-  };
-  const isLeapYear = (year: number): boolean => {
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  };
-  const findWeek = (date: Date): number => {
-    // Convert to UTC to neutralize local timezones
-    const inputDate = new Date(
-      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-    );
-
-    // Get weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-    const day = inputDate.getUTCDay();
-
-    // Move to Thursday of the current week (ISO trick)
-    const thursday = new Date(inputDate);
-    thursday.setUTCDate(inputDate.getUTCDate() + (4 - (day === 0 ? 7 : day)));
-
-    // Find first day of the ISO year
-    const yearStart = new Date(Date.UTC(thursday.getUTCFullYear(), 0, 1));
-
-    // Calculate the number of days between the ISO year start and the target Thursday
-    const dayDiff = (thursday.getTime() - yearStart.getTime()) / 86400000; // ms per day = 86400000
-
-    // Convert to week number
-    return Math.ceil((dayDiff + 1) / 7);
-  };
-  const presentDate = new Date();
-  const defaultWeek = findWeek(new Date());
-  const presentYear = new Date().getFullYear();
-  const weeksInYear = has53Weeks(presentYear) ? 53 : 52;
-
-  // Load the following HTML references for the entire year but split it into weeks.
-  // The first week of the year is the one that contains the first Thursday of the year. (ISO Trick)
-  // toggle the ID's up and down with id="previous-week", id="current-week", id="future-week" with the className of 'visible' always being in the center of the ID's.
-  // Remember Safety Checks for the weeks and use the best practices for the code.
-  // Please keep it readable and add easy to understand comments.
-  // YYYY-01-01 always starts with the first week of the year.
-}
-*/
