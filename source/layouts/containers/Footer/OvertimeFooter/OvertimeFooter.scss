@@ -6,27 +6,30 @@
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   grid-template: 8rem 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
-  menu {
+  menu[class*='overtime'] {
     z-index: 2;
-    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    display: inherit; //--|🠈 display: grid; 🠈|--//
+    grid-area: 3 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    grid-template: 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+
+    span[class*='scrolling'] {
+      padding-left: 8rem;
+      grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
   }
-  section {
+  /*
+  section[class*='overtime'] {
     z-index: 3;
     grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     background: purple;
   }
-  span[class*='scrolling'] {
-    z-index: 2;
-    padding-left: 8rem;
-    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
+  */
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
 }
 footer[id*='overtime'] {
   display: grid;
-  @extend %ground-design;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -35,17 +38,5 @@ footer[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-  }
-}
-%ground-design {
-  .background {
-    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 25%);
-  }
-  .midground {
-    display: none;
-  }
-  .foreground {
-    display: none;
   }
 }

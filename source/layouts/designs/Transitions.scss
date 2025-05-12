@@ -17,6 +17,27 @@
   header {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
+      &[id*='landing'] {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
+        }
+
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+          clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
+        }
+      }
+      &[id*='overtime'] {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
+        }
+      }
+
       menu {
         top: 0rem;
       }
@@ -26,11 +47,19 @@
     }
     &[class*='expanded'] {
       backdrop-filter: blur(2rem);
-      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
-      menu {
-        top: -4rem;
+      &[id*='landing'] {
+        menu {
+          top: -4rem;
+        }
       }
-      section {
+      &[id*='overtime'] {
+        menu {
+          top: -8rem;
+        }
+      }
+
+      section,
+      &[id*='header'] {
         clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       }
     }
@@ -48,27 +77,6 @@
     }
   }
   %header-constituents {
-    &[id*='landing'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
-      }
-
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
-      }
-    }
-
-    &[id*='overtime'][class*='collapsed'] {
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-      }
-    }
     &[id*='ticketing'][class*='collapsed'] {
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
@@ -122,7 +130,12 @@
   footer {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
-      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+      clip-path: polygon(
+        0% calc(100% - 4rem),
+        100% calc(100% - 4rem),
+        100% 100%,
+        0% 100%
+      );
       menu {
         top: 0rem;
       }
@@ -141,7 +154,8 @@
       }
     }
     & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out,
+        opacity 0.25s ease-in-out;
       menu {
         position: relative;
         transition: top 0.25s ease-in-out;

@@ -17,6 +17,11 @@
 }
 
 div[id*='overtime'] {
+  background: linear-gradient(
+    90deg,
+    rgba(Palettes.$trackDay-light, 1) 0%,
+    rgba(Palettes.$trackDay-dark, 1) 10%
+  );
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -26,7 +31,9 @@ div[id*='overtime'] {
     @include mobile-portrait();
   }
 
+  /*
   &[id*='overtime'] {
     background: Palettes.$trackDay-dark;
   }
+  */
 }

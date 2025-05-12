@@ -26,15 +26,16 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <SpanScrolling block={'<footer>'} info={info} />
+    <footer
+      className={`default-${blockName} collapsed`}
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 1 }}
+    >
+      <menu className={`${pageName}-menu`}>
+        <SpanScrolling block={'<footer>'} info={info} />
+      </menu>
 
-      {/* <menu></menu> */}
-      {/* <section></section> */}
-
-      <div className="foreground"></div>
-      <div className="midground"></div>
-      <div className="background"></div>
+      {/* <section className={`${pageName}-section`}></section> */}
     </footer>
   );
 };

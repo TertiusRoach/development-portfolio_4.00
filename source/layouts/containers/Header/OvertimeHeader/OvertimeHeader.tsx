@@ -38,17 +38,14 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
       id={`${pageName}-${blockName}`}
       style={{ zIndex: 2 }}
     >
-      <TimeDaily info={info} />
-      <SectionPreview info={info} />
-      <DivisionIdentity info={info} />
-      <NavigationPreview info={info} />
-      <SpanScrolling block={'<header>'} info={info} />
+      <menu className={`${pageName}-menu`}>
+        <TimeDaily info={info} />
+        <DivisionIdentity info={info} />
+        <NavigationPreview info={info} />
+        <SpanScrolling block={'<header>'} info={info} />
+      </menu>
 
-      <div className="foreground"></div>
-      <div className="midground"></div>
-      <div className="background"></div>
-      {/* <MenuFeatures style={{ blockName: blockName, pageName: pageName }} /> */}
-      {/* <MenuOvertime style={{ blockName: blockName, pageName: pageName }} /> */}
+      <SectionPreview info={info} />
     </header>
   );
 };
