@@ -26,17 +26,26 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  const handleWeeks = async (pageName: string, blockName: string) => {
+  const handleWeeks = (pageName: string, blockName: string) => {
     let container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement; //--|🠈 Get the parent element 🠈|--//
-    if (container) {
-      let resizeObserver = new ResizeObserver(() => {
-        alterWeekdays(pageName, blockName, '<y>'); //--|🠈 Define function when resized 🠈|--//
+    let resizeObserver = new ResizeObserver((entries) => {
+      requestAnimationFrame(() => {
+        //--|🠊 Adds a safety check when toggling 🠈|--//
+        entries.forEach(() => {
+          //--|🠊 Safe to perform layout updates here 🠈|--//
+          alterWeekdays(pageName, blockName, '<y>'); //--|🠈 Define function when resized 🠈|--//
+        });
       });
+    });
 
-      resizeObserver.observe(container); //--|🠈 Resize cells when changes are detected 🠈|--//
+    resizeObserver.observe(container); //--|🠈 Resize cells when changes are detected 🠈|--//
 
-      return () => resizeObserver.disconnect(); //--|🠈 Return cleanup callback 🠈|--//
-    }
+    return () => resizeObserver.disconnect(); //--|🠈 Return cleanup callback 🠈|--//
+    /*
+    let resizeObserver = new ResizeObserver(() => {
+      alterWeekdays(pageName, blockName, '<y>'); //--|🠈 Define function when resized 🠈|--//
+    });
+    */
   };
 
   useEffect(() => {

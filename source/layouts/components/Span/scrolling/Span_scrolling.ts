@@ -181,8 +181,10 @@ export function alterWeek(pageName: string) {
 
   const present = new Date().toISOString().split('T')[0];
 
+  /*
   console.log(weekdays);
   console.log(workdays);
+  */
 
   for (let i = 0; i < 7; i++) {
     let overlay = workdays.children[i] as HTMLElement;
@@ -215,11 +217,6 @@ export function alterWeek(pageName: string) {
       }
     }
   }
-  /*
-
-
-
-  */
 }
 
 export const traceBlock = (block: '<header>' | '<footer>' | '<aside>') => {

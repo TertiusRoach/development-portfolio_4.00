@@ -19,56 +19,70 @@ interface InfoProps {
   block: '<header>' | '<footer>' | '<aside>';
   info: {
     resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification:
-      | 'index'
-      | 'resume'
-      | 'ticket'
-      | 'university'
-      | 'fitness'
-      | 'landing'
-      | string;
+    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
+    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
   };
 }
 const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
   const pageName = info.identification as 'overtime';
-  const blockName: string = traceBlock(block) as 'header' | 'footer' | 'aside';
+  const blockName = traceBlock(block) as 'header' | 'footer' | 'aside';
 
-  useEffect(() => {}, [pageName, blockName]);
+  const [layout, setLayout] = useState<React.ReactNode>(null);
 
-  switch (block) {
-    case '<header>':
-      return (
-        <span className="span-scrolling">
-          <ButtonStretch
-            type="button"
-            text={'Back'}
-            onClick={() => showWeek(pageName, '<y>', '-prev-')}
-            style={defineButton('prev-week', { pageName, blockName })}
-          />
-        </span>
-      );
-    case '<footer>':
-      return (
-        <span className="span-scrolling">
-          <ButtonStretch
-            text={'Next'}
-            type="button"
-            onClick={() => {
-              // fillWeek(pageName, blockName);
-              showWeek(pageName, '<y>', '-next-');
-            }}
-            style={defineButton('next-week', { pageName, blockName })}
-          />
-        </span>
-      );
-    case '<aside>':
-      return (
-        <ol className="list-overtime">
-          <li className="prev-month">{/* <button></button> */}</li>
-          <li className="next-month">{/* <button></button> */}</li>
-        </ol>
-      );
-  }
+  const handleScrolling = (pageName: string, blockName: string) => {
+    let buttonLayout = (blockName: string) => {
+      switch (blockName) {
+        case 'header':
+          return (
+            <ButtonStretch
+              type="button"
+              text={'Back'}
+              onClick={() => showWeek(pageName, '<y>', '-prev-')}
+              style={defineButton('prev-week', { pageName, blockName })}
+            />
+          );
+        case 'footer':
+          return (
+            <ButtonStretch
+              text={'Next'}
+              type="button"
+              onClick={() => {
+                showWeek(pageName, '<y>', '-next-');
+              }}
+              style={defineButton('next-week', { pageName, blockName })}
+            />
+          );
+        case 'aside':
+          return (
+            <>
+              <ButtonStretch
+                type="button"
+                text={'Back'}
+                onClick={() => {
+                  showWeek(pageName, '<x>', '-prev-');
+                }}
+                style={defineButton('prev-month', { pageName, blockName })}
+              />
+              <ButtonStretch
+                type="button"
+                text={'Next'}
+                onClick={() => {
+                  showWeek(pageName, '<x>', '-next-');
+                }}
+                style={defineButton('next-month', { pageName, blockName })}
+              />
+            </>
+          );
+      }
+    };
+
+    setLayout(buttonLayout(blockName));
+  };
+
+  useEffect(() => {
+    handleScrolling(pageName, blockName);
+  }, [pageName, blockName]);
+
+  return <span className="span-scrolling">{layout}</span>;
 };
 export default SpanScrolling;

@@ -243,37 +243,31 @@ export function alterWeekdays(
   blockName: string,
   viewAxis: '<y>' | '<x>'
 ) {
-  //--|🠊 Core function to scale and adjust the weeks view 🠈|--//
-  const editView = (pageName: string, blockName: string, viewAxis: '<y>' | '<x>') => {
-    const carousel = document.querySelector(
-      `#${pageName}-${blockName} aside[class*="carousel"]`
-    ) as HTMLElement | null;
+  const carousel = document.querySelector(
+    `#${pageName}-${blockName} aside[class*="carousel"]`
+  ) as HTMLElement | null;
 
-    if (!carousel) {
-      console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
-      return;
-    }
-
+  if (carousel) {
     //--|🠊 Query elements inside the carousel 🠈|--//
-    const weekDays = carousel.querySelectorAll(
+    let weekdays = carousel.querySelectorAll(
       `.weeks-table tbody tr td:nth-child(1)`
     ) as NodeListOf<HTMLElement>;
-    const clockIn = carousel.querySelectorAll(
+    let clockIn = carousel.querySelectorAll(
       `.weeks-table tbody tr td:nth-child(2)`
     ) as NodeListOf<HTMLElement>;
-    const clockOut = carousel.querySelectorAll(
+    let clockOut = carousel.querySelectorAll(
       `.weeks-table tbody tr td:nth-child(3)`
     ) as NodeListOf<HTMLElement>;
-    const dataRows = carousel.querySelectorAll(
+    let tableData = carousel.querySelectorAll(
       `.weeks-table tbody tr td`
     ) as NodeListOf<HTMLElement>;
 
     //--|🠊 Calculate dimensions 🠈|--//
-    const heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week = 7 Days 🠈|--//
-    const heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 Remaining width split between Clock In & Out 🠈|--//
+    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week = 7 Days 🠈|--//
+    let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 Remaining width split between Clock In & Out 🠈|--//
 
     //--|🠊 Apply dimensions 🠈|--//
-    dataRows.forEach((row) => {
+    tableData.forEach((row) => {
       row.style.height = `${heightRows}px`;
     });
 
@@ -285,7 +279,7 @@ export function alterWeekdays(
       col.style.width = `${heightColumns}px`;
     });
 
-    weekDays.forEach((col) => {
+    weekdays.forEach((col) => {
       col.style.width = `8rem`;
     });
 
@@ -309,10 +303,7 @@ export function alterWeekdays(
         }
       }
     }
-  };
-
-  //--|🠊 Call immediately on load 🠈|--//
-  editView(pageName, blockName, viewAxis);
+  }
 }
 
 export default loadWeekdays;
