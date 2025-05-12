@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { loadWeekdays } from './Table_weeks';
+import { loadWeekdays, alterWeekdays } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -26,18 +26,22 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
-  const handleWeeks = async () => {
-    // const presentYear = new Date().getFullYear();
-    // const weekContainers = giveWeek(presentYear);
+  const handleWeeks = async (pageName: string, blockName: string) => {
+    let container = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement; //--|🠈 Get the parent element 🠈|--//
+    if (container) {
+      let resizeObserver = new ResizeObserver(() => {
+        alterWeekdays(pageName, blockName, '<y>'); //--|🠈 Define function when resized 🠈|--//
+      });
+
+      resizeObserver.observe(container); //--|🠈 Resize cells when changes are detected 🠈|--//
+
+      return () => resizeObserver.disconnect(); //--|🠈 Return cleanup callback 🠈|--//
+    }
   };
 
   useEffect(() => {
+    handleWeeks(pageName, blockName);
     loadWeekdays(pageName, blockName); //--|🠊 Call it once to set initial sizes 🠈|--//
-
-    window.addEventListener('resize', () => loadWeekdays(pageName, blockName)); //--|🠊 Set up resize listener 🠈|--//
-    return () => {
-      window.removeEventListener('resize', () => loadWeekdays(pageName, blockName)); //--|🠊 Clean up listener on unmount 🠈|--//
-    };
   }, [pageName, blockName]);
 
   return (
