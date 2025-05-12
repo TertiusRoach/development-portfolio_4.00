@@ -1,5 +1,4 @@
 //--|🠊 Table_weeks.ts 🠈|--//
-
 export function loadWeekdays(pageName: string, blockName: string) {
   const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
   const thisDay: string = thisDate.toISOString().split('T')[0]; //--|🠈 Get the current day in ISO format 🠈|--//
