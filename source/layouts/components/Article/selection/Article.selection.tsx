@@ -1,6 +1,6 @@
 //--|🠊 Article.selection.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { viewDemo } from '../../../../index';
+import { loadDemo } from '../../../../index';
 import { defineButton, hideFigure, showFigure, showMain } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
@@ -26,7 +26,12 @@ interface InfoProps {
 }
 const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  const pageName = info.identification as
+    | 'landing'
+    | 'overtime'
+    | 'ticketing'
+    | 'hyperlink'
+    | string;
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -44,13 +49,22 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   return (
     <article className="selection-article">
       <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
-        <figure className="apps-figure" onMouseEnter={(event) => hideFigure(event)} onClick={(event) => hideFigure(event)}>
+        <figure
+          className="apps-figure"
+          onMouseEnter={(event) => hideFigure(event)}
+          onClick={(event) => hideFigure(event)}
+        >
           <h1>
             Open
             <br />
             Apps
           </h1>
-          <img style={{ maskImage: `url(${toggleImage('apps')})`, WebkitMaskImage: `url(${toggleImage('apps')})` }} />
+          <img
+            style={{
+              maskImage: `url(${toggleImage('apps')})`,
+              WebkitMaskImage: `url(${toggleImage('apps')})`,
+            }}
+          />
         </figure>
         <nav className="apps-navigation">
           <ButtonGrading
@@ -68,37 +82,51 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </nav>
       </aside>
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
-        <figure className="demo-figure" onMouseEnter={(event) => hideFigure(event)} onClick={(event) => hideFigure(event)}>
+        <figure
+          className="demo-figure"
+          onMouseEnter={(event) => hideFigure(event)}
+          onClick={(event) => hideFigure(event)}
+        >
           <h1>
             View
             <br />
             Demo
           </h1>
-          <img style={{ maskImage: `url(${toggleImage('demo')})`, WebkitMaskImage: `url(${toggleImage('demo')})` }} />
+          <img
+            style={{
+              maskImage: `url(${toggleImage('demo')})`,
+              WebkitMaskImage: `url(${toggleImage('demo')})`,
+            }}
+          />
         </figure>
         <nav className="demo-navigation">
           <ButtonGrading
             type="button"
             text={'Track a Day'}
-            onClick={() => viewDemo('overtime')}
+            onClick={() => loadDemo('overtime')}
             style={defineButton('track-day', { pageName, blockName })}
           />
           <ButtonGrading
             type="button"
             text={'Log a Ticket'}
-            onClick={() => viewDemo('ticketing')}
+            onClick={() => loadDemo('ticketing')}
             style={defineButton('log-ticket', { pageName, blockName })}
           />
           <ButtonGrading
             type="button"
             text={'Find a Link'}
-            onClick={() => viewDemo('hyperlink')}
+            onClick={() => loadDemo('hyperlink')}
             style={defineButton('find-link', { pageName, blockName })}
           />
         </nav>
       </aside>
       <div className="branding-division">
-        <img style={{ maskImage: `url(${toggleImage('brand')})`, WebkitMaskImage: `url(${toggleImage('brand')})` }} />
+        <img
+          style={{
+            maskImage: `url(${toggleImage('brand')})`,
+            WebkitMaskImage: `url(${toggleImage('brand')})`,
+          }}
+        />
       </div>
     </article>
   );

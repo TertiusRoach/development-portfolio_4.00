@@ -47,7 +47,9 @@ export function togglePreview(
   action: 'highlight' | 'downplay',
   division: 'overtime' | 'ticketing' | 'hyperlink'
 ) {
-  const element = document.querySelector(`#${pageName}-header section .preview-${division}`) as HTMLElement;
+  const element = document.querySelector(
+    `#${pageName}-header section .preview-${division}`
+  ) as HTMLElement;
   switch (action) {
     case 'highlight':
       element.classList.remove('downplay'); //--|🠈 Remove '.downplay' 🠈|--//
@@ -58,10 +60,13 @@ export function togglePreview(
   }
 }
 
-export function viewDemo(pageName: string, viewDemo: 'overtime' | 'ticketing' | 'hyperlink') {
+export function viewDemo(
+  pageName: string,
+  viewPage: 'overtime' | 'ticketing' | 'hyperlink'
+) {
   const showDemo = (viewDemo: string) => {
     let element = document.querySelector(`#${viewDemo}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
-    let visible = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
+    let active = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
 
     if (!(element instanceof HTMLElement)) {
       //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
@@ -69,10 +74,10 @@ export function viewDemo(pageName: string, viewDemo: 'overtime' | 'ticketing' | 
       return;
     }
 
-    if (visible) {
+    if (active) {
       //--|🠉 If there's a visible element, hide it 🠈|--//
-      visible.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--//
-      visible.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--//
+      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--//
+      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--//
     }
 
     switch (true) {
@@ -99,7 +104,7 @@ export function viewDemo(pageName: string, viewDemo: 'overtime' | 'ticketing' | 
   };
 
   setTimeout(() => {
-    showDemo(viewDemo);
+    showDemo(viewPage);
   }, 250);
   collapseHeader(pageName);
 }
