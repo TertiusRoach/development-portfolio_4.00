@@ -12,6 +12,7 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
+import ButtonStretch from '../../../components/Button/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
@@ -64,6 +65,47 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       </aside>
 
       <aside className="leave-aside">
+        <header className="fullname-header">
+          <h1>Forename Surname</h1>
+        </header>
+
+        <section className="leave-section">
+          <div className="completed-division">
+            <time className="completed-time">
+              <h1>--:--</h1>
+            </time>
+            <h1 className="completed">Completed</h1>
+          </div>
+          <div className="remaining-division">
+            <time className="remaining-time">
+              <h1>--:--</h1>
+            </time>
+            <h1 className="remaining">Remaining</h1>
+          </div>
+          <div className="overtime-division">
+            <time className="overtime-time">
+              <h1>--:--</h1>
+            </time>
+            <h1 className="overtime">Overtime</h1>
+          </div>
+          {/* <p className="remaining-paragraph">
+            Remaining: <time>--:--</time>
+          </p> */}
+          {/* <p className="overtime-paragraph">
+            Overtime: <time>--:--</time>
+          </p> */}
+        </section>
+
+        <ButtonStretch
+          type="button"
+          text={'Leave'}
+          // onClick={() => showWeek(pageName, '<y>', '-prev-')}
+          style={defineButton('leave', { pageName, blockName })}
+        />
+
+        <time className="hourly-time">
+          <h1 className="display-1">--:--</h1>
+        </time>
         {/* <div className="foreground"></div> */}
         {/* <div className="midground"></div> */}
         <div className="background"></div>
@@ -72,3 +114,22 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default OvertimeMain;
+
+function defineButton(button: 'leave', info: { blockName: string; pageName: string }) {
+  const { blockName, pageName } = info;
+  //--|🠋 Always Return an Object 🠋|--//
+  switch (button) {
+    case 'leave':
+      return {
+        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
+        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+
+        className: button,
+        pageName: pageName as 'overtime',
+        blockName: blockName as 'header' | 'footer' | 'leftbar',
+        imageLink:
+          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/8a7cb8074548ad4c3610c581f3200097dcd52382/source/assets/svg-files/overtime-page/leave-request.svg',
+      };
+  }
+}
