@@ -88,12 +88,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             </time>
             <h1 className="overtime">Overtime</h1>
           </div>
-          {/* <p className="remaining-paragraph">
-            Remaining: <time>--:--</time>
-          </p> */}
-          {/* <p className="overtime-paragraph">
-            Overtime: <time>--:--</time>
-          </p> */}
         </section>
 
         <ButtonStretch
