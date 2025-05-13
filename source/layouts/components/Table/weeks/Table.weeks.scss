@@ -12,12 +12,6 @@
       margin: 0;
       padding: 0;
       color: Palettes.$trackDay-dark;
-      &:nth-child(odd) {
-        background: rgba(Palettes.$trackDay-light, 0.25);
-      }
-      &:nth-child(even) {
-        background: rgba(white, 1);
-      }
 
       td {
         font-weight: 500;
@@ -32,6 +26,13 @@
         &:nth-child(3) {
           border-left: 2px dashed Palettes.$trackDay-dark;
         }
+      }
+
+      &:nth-child(odd) {
+        background: rgba(white, 1);
+      }
+      &:nth-child(even) {
+        background: rgba(Palettes.$trackDay-light, 0.25);
       }
     }
   }

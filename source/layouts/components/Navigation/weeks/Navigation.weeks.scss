@@ -47,6 +47,13 @@
             grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
           }
         }
+
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
       }
       li[class*='row']:hover {
         h1 {
