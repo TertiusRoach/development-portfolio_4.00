@@ -6,21 +6,31 @@
   tbody[class*='table'] {
     display: flex;
     flex-shrink: 0;
+    background: white;
     flex-direction: column;
     tr {
       margin: 0;
       padding: 0;
-      color: Palettes.$trackDay-light;
+      color: Palettes.$trackDay-dark;
+      &:nth-child(odd) {
+        background: rgba(Palettes.$trackDay-light, 0.25);
+      }
+      &:nth-child(even) {
+        background: rgba(white, 1);
+      }
+
       td {
         font-weight: 500;
         text-align: center;
-        filter: drop-shadow(0 0 4px black);
-        &:nth-child(1),
-        &:nth-child(2) {
-          border-right: 2px dashed Palettes.$trackDay-light;
-          &:nth-child(1) {
-            width: 8rem;
-          }
+        filter: drop-shadow(0 0 8px white);
+
+        &:nth-child(1) {
+          width: 8rem;
+          border-right: 2px dashed Palettes.$trackDay-dark;
+        }
+
+        &:nth-child(3) {
+          border-left: 2px dashed Palettes.$trackDay-dark;
         }
       }
     }

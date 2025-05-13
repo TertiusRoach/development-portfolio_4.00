@@ -12,11 +12,10 @@
       grid-template-rows: repeat(7, 1fr); //--|🠊 rows 🠈|--//
       li[class*='row'] {
         display: grid;
-        padding-left: 1px;
         grid-template: auto / 8rem repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-        box-shadow: inset 0 0 1rem rgba(black, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-        border-top: Palettes.$trackDay-light 1px solid;
-        border-bottom: Palettes.$trackDay-light 1px solid;
+        box-shadow: inset 0 0 4px rgba(black, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+        border-top: Palettes.$trackDay-dark 1px solid;
+        border-bottom: Palettes.$trackDay-dark 1px solid;
 
         h1[class*='date'] {
           margin: 0;
@@ -32,7 +31,7 @@
           //--|🠊 filter: blur(0); 🠈|--//
           color: Palettes.$trackDay-light;
           background: Palettes.$trackDay-dark;
-          box-shadow: inset 0 0 1rem rgba(black, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+          box-shadow: inset 0 0 8px rgba(Palettes.$trackDay-light, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
           transition: opacity 0.25s ease-in-out, filter 0.25s ease-in-out;
         }
         div[class*='time'] {
@@ -61,7 +60,8 @@
         li {
           div[class*='clock'] {
             button:first-child {
-              border-right: 2px dashed Palettes.$trackDay-light;
+              margin-left: 0.5px;
+              margin-right: 1.5px;
             }
             button:last-child {
               display: none;
@@ -76,7 +76,7 @@
               display: none;
             }
             button:last-child {
-              border-left: -2px dashed Palettes.$trackDay-light;
+              margin-left: 0.5px;
             }
           }
         }
