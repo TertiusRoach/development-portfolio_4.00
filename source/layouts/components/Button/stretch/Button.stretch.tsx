@@ -97,8 +97,8 @@ const ButtonStretch: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
           <div className={`${blockName}`}>
             <img
               style={{
-                width: `${scaleImage(font)}rem`,
                 maskImage: `url(${image})`,
+                width: `${scaleImage(font)}rem`,
                 WebkitMaskImage: `url(${image})`, // Ensures cross-browser support
               }}
             ></img>

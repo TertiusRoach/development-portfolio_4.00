@@ -41,12 +41,91 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
+  let completedIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/4e95ff5602e321d168607a00f27ac19a53db5eb3/source/assets/svg-files/overtime-page/completed-leave.svg';
+  let remainingIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/4e95ff5602e321d168607a00f27ac19a53db5eb3/source/assets/svg-files/overtime-page/remaining-leave.svg';
+  let overtimeIcon: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/4e95ff5602e321d168607a00f27ac19a53db5eb3/source/assets/svg-files/overtime-page/overtime-leave.svg';
   return (
     <main
       style={{ zIndex: 0 }}
       id={`${pageName}-${blockName}`}
       className={`default-${blockName}`}
     >
+      <aside className="leave-aside">
+        <header className="fullname-header">
+          <h1>Forename</h1>
+          <br />
+          <h1>Surname</h1>
+        </header>
+
+        <section className="metrics-section">
+          <div className="completed-row">
+            <time className="h1">--:--</time>
+            <h3 className="h3">Completed</h3>
+            <span>
+              <img
+                alt="completed"
+                style={{
+                  maskImage: `url(${completedIcon})`,
+                  WebkitMaskImage: `url(${completedIcon})`,
+                }}
+              ></img>
+            </span>
+          </div>
+          <div className="remaining-row">
+            <time className="h1">--:--</time>
+            <h3 className="h3">Remaining</h3>
+            <span>
+              <img
+                alt="remaining"
+                style={{
+                  maskImage: `url(${remainingIcon})`,
+                  WebkitMaskImage: `url(${remainingIcon})`,
+                }}
+              />
+            </span>
+          </div>
+          <div className="overtime-row">
+            <time className="h1">--:--</time>
+            <h3 className="h3">Overtime</h3>
+            <span>
+              <img
+                alt="overtime"
+                style={{
+                  maskImage: `url(${overtimeIcon})`,
+                  WebkitMaskImage: `url(${overtimeIcon})`,
+                }}
+              />
+            </span>
+          </div>
+        </section>
+
+        <ButtonStretch
+          type="button"
+          text={'Leave'}
+          // onClick={() => showWeek(pageName, '<y>', '-prev-')}
+          style={defineButton('leave', { pageName, blockName })}
+        />
+
+        <time className="hourly-time">
+          <h1 className="display-1">--:--</h1>
+        </time>
+
+        {/* <div className="foreground"></div> */}
+        {/* <div className="midground"></div> */}
+        <div className="background-division">
+          <figure className="fullname"></figure>
+          <figure className="metrics">
+            <span></span>
+            <span></span>
+          </figure>
+          <figure className="leave"></figure>
+          <figure className="hourly"></figure>
+        </div>
+      </aside>
+
       <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
         <section className="workdays-section">
           <NavigationWeeks info={info} />
@@ -62,47 +141,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             <TableWeeks info={info} />
           </div>
         </section>
-      </aside>
-
-      <aside className="leave-aside">
-        <header className="fullname-header">
-          <h1>Forename Surname</h1>
-        </header>
-
-        <section className="leave-section">
-          <div className="completed-division">
-            <time className="completed-time">
-              <h1>--:--</h1>
-            </time>
-            <h1 className="completed">Completed</h1>
-          </div>
-          <div className="remaining-division">
-            <time className="remaining-time">
-              <h1>--:--</h1>
-            </time>
-            <h1 className="remaining">Remaining</h1>
-          </div>
-          <div className="overtime-division">
-            <time className="overtime-time">
-              <h1>--:--</h1>
-            </time>
-            <h1 className="overtime">Overtime</h1>
-          </div>
-        </section>
-
-        <ButtonStretch
-          type="button"
-          text={'Leave'}
-          // onClick={() => showWeek(pageName, '<y>', '-prev-')}
-          style={defineButton('leave', { pageName, blockName })}
-        />
-
-        <time className="hourly-time">
-          <h1 className="display-1">--:--</h1>
-        </time>
-        {/* <div className="foreground"></div> */}
-        {/* <div className="midground"></div> */}
-        <div className="background"></div>
       </aside>
     </main>
   );
