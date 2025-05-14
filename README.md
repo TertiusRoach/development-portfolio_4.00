@@ -270,6 +270,18 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 `.expanded` & `.collapsed`
 `.highlight` & `.downplay`
 
+## Track a Day
+
+`.freelancing` & `.established`
+
+## Log a Ticket
+
+`.manager` & `.employee`
+
+## Find a Link
+
+`.supervisor` & `.technician`
+
 ---
 
 ## Reviewed Notes
