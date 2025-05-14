@@ -2,13 +2,13 @@
 export function loadWeekdays(pageName: string, blockName: string) {
   const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
   const thisDay: string = thisDate.toISOString().split('T')[0]; //--|🠈 Get the current day in ISO format 🠈|--//
-  const table = document.querySelector(
+  const tableWeeks = document.querySelector(
     `#${pageName}-${blockName} table[class*="weeks"]`
   ) as HTMLElement;
 
   //--|🠊 01. createWeeks 🠈|--//
   const createWeeks = (pageName: string, blockName: string, thisDay: string) => {
-    table.innerHTML = ''; //--|🠈 Clear the HTML for the weekTable element 🠈|--//
+    tableWeeks.innerHTML = ''; //--|🠈 Clear the HTML for the weekTable element 🠈|--//
 
     let year: number = Number(thisDay.split('-')[0]); //--|🠈 const year: number = 2000; 🠈|--//
     let countWeeks = (year: number): number => {
@@ -41,7 +41,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
       tableBody.className = 'table-body hidden';
       tableBody.dataset.week = weekData; //--|🠈 Assign a dataString for each week as data-week-"01" 🠈|--//
-      table.appendChild(tableBody);
+      tableWeeks.appendChild(tableBody);
 
       for (let i = 1; i <= 7; i++) {
         let tableRow = document.createElement('tr');
@@ -49,11 +49,11 @@ export function loadWeekdays(pageName: string, blockName: string) {
         tableData.className = 'weekday h1';
 
         let clockIn = document.createElement('td');
-        clockIn.className = 'clock-in display-6';
+        clockIn.className = 'clock-in h4';
         clockIn.textContent = '--:--';
 
         let clockOut = document.createElement('td');
-        clockOut.className = 'clock-out display-6';
+        clockOut.className = 'clock-out h4';
         clockOut.textContent = '~~:~~';
 
         //--|🠊 Determine day label and row class 🠈|--//
@@ -233,7 +233,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
     }
   };
 
-  if (table) {
+  if (tableWeeks) {
     createWeeks(pageName, blockName, thisDay);
   }
 }
