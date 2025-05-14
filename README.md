@@ -265,7 +265,7 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ## Orchestrating Visibility
 
-The 'and' icon looks like a dog scratching its anus.
+The '&' icon looks like a dog scratching its anus.
 
 `.active` & `.asleep`
 
