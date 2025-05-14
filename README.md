@@ -266,8 +266,11 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 ## Orchestrating Visibility
 
 `.active` & `.asleep`
+
 `.visible` & `.hidden`
+
 `.expanded` & `.collapsed`
+
 `.highlight` & `.downplay`
 
 ## Track a Day
