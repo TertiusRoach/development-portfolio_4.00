@@ -7,14 +7,6 @@
   border: none;
   box-sizing: border-box;
   font-family: 'Baloo Bhai 2', arial !important;
-
-  p {
-    cursor: default;
-    white-space: wrap;
-  }
-  button {
-    outline: none;
-  }
   h1,
   h2,
   h3,
@@ -26,5 +18,15 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  p {
+    cursor: default;
+    white-space: wrap;
+  }
+  time {
+    cursor: wait;
+  }
+  button {
+    outline: none;
   }
 }
