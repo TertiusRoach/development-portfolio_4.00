@@ -7,9 +7,11 @@ import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Utilities 🠋|--//
+/*
 import getResolution from '../../../../modules/utilities/getResolution';
 import getOrientation from '../../../../modules/utilities/getOrientation';
 import getIdentification from '../../../../modules/utilities/getIdentification';
+*/
 //--|🠉 Utilities 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormReset from '../../../components/Form/reset/Form.reset';
@@ -30,7 +32,11 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
+    <aside
+      className={`default-${blockName} collapsed`}
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 2 }}
+    >
       <h4 className="reset-label display-4">Reset</h4>
       <FormReset info={info} />
     </aside>

@@ -26,16 +26,9 @@ interface InfoProps {
 }
 const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
-  const pageName = info.identification as
-    | 'landing'
-    | 'overtime'
-    | 'ticketing'
-    | 'hyperlink'
-    | string;
+  const pageName = info.identification as 'landing';
 
-  useEffect(() => {}, [pageName, blockName]);
-
-  const toggleImage = (image: 'brand' | 'demo' | 'apps') => {
+  const handleSelection = (image: 'brand' | 'demo' | 'apps') => {
     switch (image) {
       case 'brand':
         return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
@@ -45,6 +38,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
     }
   };
+
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <article className="selection-article">
@@ -61,8 +56,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           </h1>
           <img
             style={{
-              maskImage: `url(${toggleImage('apps')})`,
-              WebkitMaskImage: `url(${toggleImage('apps')})`,
+              maskImage: `url(${handleSelection('apps')})`,
+              WebkitMaskImage: `url(${handleSelection('apps')})`,
             }}
           />
         </figure>
@@ -94,8 +89,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           </h1>
           <img
             style={{
-              maskImage: `url(${toggleImage('demo')})`,
-              WebkitMaskImage: `url(${toggleImage('demo')})`,
+              maskImage: `url(${handleSelection('demo')})`,
+              WebkitMaskImage: `url(${handleSelection('demo')})`,
             }}
           />
         </figure>
@@ -123,8 +118,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       <div className="branding-division">
         <img
           style={{
-            maskImage: `url(${toggleImage('brand')})`,
-            WebkitMaskImage: `url(${toggleImage('brand')})`,
+            maskImage: `url(${handleSelection('brand')})`,
+            WebkitMaskImage: `url(${handleSelection('brand')})`,
           }}
         />
       </div>

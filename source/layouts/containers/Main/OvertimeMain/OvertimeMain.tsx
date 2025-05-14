@@ -30,16 +30,23 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification as 'overtime';
 
   useEffect(() => {
-    /*
-    const carousel = document.querySelector("div[class*='carousel']") as HTMLElement;
-    if (carousel) {
-      carousel.scrollTop = (carousel.scrollHeight - carousel.clientHeight) / 2;
-    }
-    */
-    /*
-    let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
-    outputDisplay(sectionElement);
-    */
+    let selector = `#${pageName}-${blockName} .marketing-section`;
+    let addSpace = document.querySelector(selector) as HTMLElement;
+
+    if (!addSpace) return;
+
+    let hidePromo = () => {
+      addSpace.style.opacity = '0';
+
+      setTimeout(() => {
+        addSpace.style.display = 'none';
+      }, 250);
+    };
+
+    addSpace.addEventListener('mouseenter', hidePromo);
+    return () => {
+      addSpace.removeEventListener('mouseenter', hidePromo);
+    };
   }, [pageName, blockName]);
 
   return (
@@ -65,7 +72,20 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         </section>
       </aside>
 
-      <aside className={`${pageName}-leave`}>
+      <aside className={`${pageName}-metrics`}>
+        <section className="marketing-section">
+          <div className="foreground-division">
+            <div>
+              <img
+                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/d47129c7c70ff10e3a52d0b6bc1d2036de6e5880/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-dark.svg"
+                alt="track-day"
+              />
+              <h1 className="display-3">Add Space</h1>
+            </div>
+          </div>
+          <div className="background-division"></div>
+        </section>
+
         <ArticleLeave info={info} />
       </aside>
     </main>
