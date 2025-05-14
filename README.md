@@ -278,14 +278,17 @@ The '&' icon looks like a dog scratching its anus.
 ## Track a Day
 
 `.freelancing` & `.established`
+`.google` & `.microsoft`
 
 ## Log a Ticket
 
 `.manager` & `.employee`
+`.apple` & `.android`
 
 ## Find a Link
 
 `.supervisor` & `.technician`
+`.planet-fitness` & `.anytime-fitness`
 
 ---
 
