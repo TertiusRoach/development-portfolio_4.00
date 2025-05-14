@@ -5,12 +5,6 @@
 @mixin button-presets {
   cursor: default;
   div {
-    img {
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-    }
-    img,
     h1,
     h2,
     h3,
@@ -19,6 +13,12 @@
     h6,
     p {
       cursor: pointer;
+    }
+    img {
+      cursor: pointer;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
     }
   }
   &[class*='icon'] {
