@@ -941,19 +941,6 @@
         }
       }
     }
-    &[class*='dark']:hover {
-      background: Palettes.$trackDay-light;
-      div {
-        filter: drop-shadow(0 0 8px rgba(white, 0.75));
-        *:hover {
-          color: Palettes.$trackDay-dark;
-        }
-        img {
-          background: Palettes.$trackDay-dark;
-        }
-      }
-    }
-
     &[class*='light'] {
       background: Palettes.$trackDay-light;
       div {
@@ -963,6 +950,19 @@
         img {
           background: Palettes.$trackDay-dark;
           filter: drop-shadow(0 0 4px rgba(white, 0.75));
+        }
+      }
+    }
+
+    &[class*='dark']:hover {
+      background: Palettes.$trackDay-light;
+      div {
+        filter: drop-shadow(0 0 8px rgba(white, 0.75));
+        *:hover {
+          color: Palettes.$trackDay-dark;
+        }
+        img {
+          background: Palettes.$trackDay-dark;
         }
       }
     }
