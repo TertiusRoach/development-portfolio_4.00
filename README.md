@@ -277,7 +277,7 @@ The '&' icon looks like a dog scratching its anus.
 
 ## Track a Day
 
-`.freelancing` & `.established`
+`.established` & `.freelancing`
 
 > light & dark
 
