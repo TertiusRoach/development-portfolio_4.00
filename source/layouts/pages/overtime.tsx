@@ -17,6 +17,7 @@ import OvertimeFooter from '../containers/Footer/OvertimeFooter/OvertimeFooter';
 import getResolution from '../../modules/tools/getResolution';
 import getOrientation from '../../modules/tools/getOrientation';
 import getIdentification from '../../modules/tools/getIdentification';
+import OvertimeOverlay from '../containers/Overlay/OvertimeOverlay/OvertimeOverlay';
 //--|🠉 Utilities 🠉|--//
 function Overtime() {
   let information = {
@@ -26,6 +27,8 @@ function Overtime() {
   };
   return (
     <>
+      <OvertimeOverlay info={information} />
+
       <OvertimeHeader info={information} />
       <OvertimeMain info={information} />
       <OvertimeFooter info={information} />

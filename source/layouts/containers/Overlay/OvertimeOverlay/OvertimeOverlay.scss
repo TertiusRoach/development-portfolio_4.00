@@ -95,10 +95,12 @@
 }
 
 section[id*='overtime'] {
+  display: none;
+  /*
   //--|🠊 display: block; 🠈|--//
   overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  .landing-carousel {
+  div[class*='carousel'] {
     display: flex;
     @extend %show-section;
     flex-direction: column;
@@ -118,6 +120,7 @@ section[id*='overtime'] {
       @include mobile-portrait();
     }
   }
+  */
 }
 %show-section {
   animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
