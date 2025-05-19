@@ -263,42 +263,38 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-## Orchestrating Visibility
+# Orchestrating Visibility
 
-The '&' icon looks like a dog scratching its anus.
-
+Indicates if the application is currently in use and responsive (.active) or in a background, inactive state (.asleep).
 `.active` & `.asleep`
 
+Controls the visual presence of the block: .visible indicates it is currently displayed, while .hidden means it is not rendered on the screen.
 `.visible` & `.hidden`
 
+Indicates the display state of a potentially expandable element: .expanded shows the full content, while .collapsed hides a portion of it from view.
 `.expanded` & `.collapsed`
 
+Controls the visual emphasis of the tag: .highlight applies styling to draw the user's attention, while .downplay reduces its visual prominence.
 `.highlight` & `.downplay`
-
-## Track a Day
-
-`.established` & `.freelancing`
-
-> light & dark
-
-## Log a Ticket
-
-`.manager` & `.employee`
-
-> dark & light
-
-## Find a Link
-
-`.supervisor` & `.technician`
-
-> light & dark
 
 ---
 
-# Vertical Layout
+# Determining Position
 
+For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
+
+Track a Day: Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
+`.established` & `.freelancing`
+
+Log a Ticket: No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+`.manager` & `.employee`
+
+Find a Link: Instantly access knowledge bases for all your company's applications through streamlined links.
+`.specialist` & `.technician`
+
+Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
 `.apple` & `.android`
-`.google` & `.microsoft`
+`.microsoft` & `.google`
 `.planet-fitness` & `.anytime-fitness`
 
 ---
