@@ -11,7 +11,7 @@ import { EmailProvider } from '../../../../modules/context/EmailContext';
 import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonGrading from '../../../components/Button/grading/Button.grading';
+import ButtonGrading from '../../../components/Button/grade/Button.grading';
 import DivisionLoading from '../../../components/Division/loading/Division.loading';
 import ArticleSelection from '../../../components/Article/selection/Article.selection';
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
@@ -41,7 +41,11 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <section className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 3 }}>
+    <section
+      className={`default-${blockName} ${stateName}`}
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 3 }}
+    >
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="loading-section">
           <img
