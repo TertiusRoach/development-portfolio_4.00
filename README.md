@@ -279,18 +279,30 @@ Controls the visual emphasis of the tag: .highlight applies styling to draw the 
 
 ---
 
-# Determining Position
+# Determining Responsibilities
 
 For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
 
-Track a Day: Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
-`.established` & `.freelancing`
+## Track a Day
 
-Log a Ticket: No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
-`.manager` & `.employee`
+Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
 
-Find a Link: Instantly access knowledge bases for all your company's applications through streamlined links.
-`.specialist` & `.technician`
+> What's your vocation?
+> `.established` & `.freelancing`
+
+## Log a Ticket
+
+No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+
+> What's your position?
+> `.manager` & `.employee`
+
+## Find a Link
+
+Instantly access knowledge bases for all your company's applications through streamlined links.
+
+> What's your occupation?
+> `.specialist` & `.technician`
 
 Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
 `.apple` & `.android`
