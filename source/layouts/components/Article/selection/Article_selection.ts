@@ -17,11 +17,11 @@ export function defineButton(
       if (window.innerHeight < 360) {
         return '<p>'; //--|🠈 Landscape < 360px (Less than) 🠈|--//
       } else if (window.innerHeight < 480) {
-        return '<h6>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
+        return '<p>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
       } else if (window.innerHeight < 768) {
-        return '<h5>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
+        return '<h6>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
       } else {
-        return '<h4>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
+        return '<h5>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
       }
     } else if (portrait) {
       if (window.innerWidth < 360) {
@@ -40,7 +40,14 @@ export function defineButton(
   switch (button) {
     case 'login':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -52,7 +59,14 @@ export function defineButton(
       };
     case 'register':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-right-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -64,7 +78,14 @@ export function defineButton(
       };
     case 'track-day':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -76,7 +97,14 @@ export function defineButton(
       };
     case 'log-ticket':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -88,7 +116,14 @@ export function defineButton(
       };
     case 'find-link':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-left-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -100,7 +135,14 @@ export function defineButton(
       };
     case 'index-land':
       return {
-        fontSize: toggleFont() as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
@@ -142,9 +184,15 @@ export function showMain(view: 'register' | 'login', pageName: string) {
 let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {
   const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
+  const demoNav = document.querySelector('.demo-navigation') as HTMLElement;
 
   //--|🠋 Get the figure element that triggered the event. 🠋|--//
   if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
+
+  if (demoNav.classList.contains('downplay')) {
+    demoNav.classList.add('highlight');
+    demoNav.classList.remove('downplay');
+  }
 
   setTimeout(() => {
     //--|🠉 Delay execution slightly (125ms) to allow for smooth transitions. 🠈|--//
@@ -157,7 +205,10 @@ export function hideFigure(event: React.MouseEvent<HTMLElement>) {
 export function showFigure(overlay: 'apps' | 'demo') {
   //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
   // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
-  const figureElement = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
+  const figureElement = document.querySelector(
+    `figure[class*="${overlay}"]`
+  ) as HTMLElement;
+  const demoNav = document.querySelector('.demo-navigation') as HTMLElement;
 
   //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
   if (!figureElement) return;
@@ -170,6 +221,10 @@ export function showFigure(overlay: 'apps' | 'demo') {
     //--|🠉 Re-query the DOM to get the element again, ensuring we have the latest state. 🠈|--//
     let tag = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
 
+    if (demoNav.classList.contains('highlight')) {
+      demoNav.classList.add('downplay');
+      demoNav.classList.remove('highlight');
+    }
     //--|🠋 Check if the element exists and has inline styles for `z-index` or `opacity`. 🠋|--//
     //--|🠊 If it does, remove those properties to restore its default styles. 🠈|--//
     if (tag && (tag.style.zIndex || tag.style.opacity)) {

@@ -40,6 +40,8 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     */
   }, [pageName, blockName]);
 
+  let imageLink: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif';
   return (
     <section
       className={`default-${blockName} ${stateName}`}
@@ -48,10 +50,7 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
     >
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="loading-section">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif"
-            alt="loading-logo"
-          />
+          <img src={imageLink} alt="loading-logo" />
         </section>
         <section className="selection-section">
           <HeaderBranding info={info} />

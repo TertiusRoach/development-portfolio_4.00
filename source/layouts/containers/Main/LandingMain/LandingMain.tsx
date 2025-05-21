@@ -40,7 +40,11 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
+    <main
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 0 }}
+      className={`default-${blockName}`}
+    >
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
@@ -53,10 +57,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         </section>
         <section className="login-section visible">
           <div className="login-container">
-            <NavigationLanding info={info} form="login" />
-
-            {/* <NavigationLogin info={info} /> */}
             <FormLogin info={info} />
+            <NavigationLanding info={info} form="login" />
             <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
           </div>
         </section>

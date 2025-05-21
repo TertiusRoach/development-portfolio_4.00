@@ -6,23 +6,25 @@ export function defineButton(
   const { blockName, pageName } = info;
 
   //--|🠋 Always Return an Object 🠋|--//
-  const portrait = window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
-  const landscape = window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
+  const portrait =
+    window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
+  const landscape =
+    window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
 
-  let layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
+  let layoutView: '-left-' | '-right-' | '-center-' | '-icon-' | '-text-';
   let fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   switch (button) {
     case 'register':
       if (landscape === true || portrait === true) {
         fontSize = '<p>';
-        layoutView = 'icon';
+        layoutView = '-icon-';
       } else {
         fontSize = '<h6>';
-        layoutView = 'left';
+        layoutView = '-left-';
       }
       return {
         fontSize: fontSize as '<h6>' | '<p>',
-        layoutView: layoutView as 'left' | 'icon',
+        layoutView: layoutView as '-left-' | '-icon-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -34,14 +36,14 @@ export function defineButton(
     case 'password':
       if (landscape === true || portrait === true) {
         fontSize = '<p>';
-        layoutView = 'icon';
+        layoutView = '-icon-';
       } else {
         fontSize = '<h6>';
-        layoutView = 'right';
+        layoutView = '-right-';
       }
       return {
         fontSize: fontSize as '<h6>' | '<p>',
-        layoutView: layoutView as 'right' | 'icon',
+        layoutView: layoutView as '-right-' | '-icon-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -54,7 +56,7 @@ export function defineButton(
     case 'observe':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -67,7 +69,7 @@ export function defineButton(
     default:
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,

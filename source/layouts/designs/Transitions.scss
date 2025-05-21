@@ -174,5 +174,14 @@
     &[class*='hidden'] {
       opacity: 0;
     }
+
+    *[class*='downplay'] {
+      filter: blur(4px);
+      transition: filter 1s ease-in-out;
+    }
+    *[class*='highlight'] {
+      filter: blur(0px);
+      transition: filter 1s ease-in-out;
+    }
   }
 }

@@ -12,6 +12,8 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import MenuBranding from '../../Menu/branding/Menu.branding';
 import ButtonGrading from '../../Button/grade/Button.grading';
+import ButtonStretch from '../../Button/stretch/Button.stretch';
+import ButtonDefault from '../../Button/default/Button.default';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 
@@ -46,8 +48,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
         <figure
           className="apps-figure"
-          onMouseEnter={(event) => hideFigure(event)}
           onClick={(event) => hideFigure(event)}
+          onMouseEnter={(event) => hideFigure(event)}
         >
           <h1>
             Open
@@ -62,13 +64,13 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           />
         </figure>
         <nav className="apps-navigation">
-          <ButtonGrading
+          <ButtonDefault
             type="button"
             text={'Login'}
             onClick={() => showMain('login', pageName)}
             style={defineButton('login', { pageName, blockName })}
           />
-          <ButtonGrading
+          <ButtonDefault
             type="button"
             text={'Register'}
             onClick={() => showMain('register', pageName)}
@@ -79,8 +81,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
         <figure
           className="demo-figure"
-          onMouseEnter={(event) => hideFigure(event)}
           onClick={(event) => hideFigure(event)}
+          onMouseEnter={(event) => hideFigure(event)}
         >
           <h1>
             View
@@ -94,20 +96,20 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </figure>
-        <nav className="demo-navigation">
-          <ButtonGrading
+        <nav className="demo-navigation downplay">
+          <ButtonStretch
             type="button"
             text={'Track a Day'}
             onClick={() => loadDemo('overtime')}
             style={defineButton('track-day', { pageName, blockName })}
           />
-          <ButtonGrading
+          <ButtonStretch
             type="button"
             text={'Log a Ticket'}
             onClick={() => loadDemo('ticketing')}
             style={defineButton('log-ticket', { pageName, blockName })}
           />
-          <ButtonGrading
+          <ButtonStretch
             type="button"
             text={'Find a Link'}
             onClick={() => loadDemo('hyperlink')}

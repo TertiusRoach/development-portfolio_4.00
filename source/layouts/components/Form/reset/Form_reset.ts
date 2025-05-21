@@ -5,12 +5,13 @@ export function defineButton(
 ) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
-  const tabletSquare = window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
+  const tabletSquare =
+    window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
   switch (button) {
     case 'close':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -22,7 +23,7 @@ export function defineButton(
     case 'reset':
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -34,7 +35,7 @@ export function defineButton(
     case 'observe':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -46,7 +47,7 @@ export function defineButton(
     case 'generate':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -67,16 +68,22 @@ export function closeRightbar(pageName: 'landing' | string) {
 export function generatePassword() {
   const passReset = document.querySelector('.reset-inputs #password') as HTMLInputElement;
   const passLogin = document.querySelector('.login-inputs #password') as HTMLInputElement;
-  const passRegister = document.querySelector('.register-inputs #password') as HTMLInputElement;
+  const passRegister = document.querySelector(
+    '.register-inputs #password'
+  ) as HTMLInputElement;
 
-  const getRandomLower = (): string => String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  const getRandomUpper = (): string => String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  const getRandomNumber = (): string => String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  const getRandomLower = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  const getRandomUpper = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  const getRandomNumber = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 10) + 48);
   const getRandomSymbol = (): string => {
     const symbols = '!@#$%^&*(){}[]=<>/,.';
     return symbols[Math.floor(Math.random() * symbols.length)];
   };
-  const getRandomElements = (generator: () => string, count: number): string[] => Array.from({ length: count }, generator);
+  const getRandomElements = (generator: () => string, count: number): string[] =>
+    Array.from({ length: count }, generator);
 
   //--|🠋 Determine random character counts within constraints with mostly lowercase letters 🠋|--//
   let length = Math.floor(Math.random() * 9) + 8; //--|🠈 It must be between 8 and 16 Characters 🠈|--//
@@ -103,7 +110,9 @@ export function generatePassword() {
   return shuffledPassword;
 }
 export function getCode(formName: 'verify' | 'reset'): string {
-  return Array.from(document.querySelectorAll(`.${formName}-inputs fieldset [class^="digit-"]`))
+  return Array.from(
+    document.querySelectorAll(`.${formName}-inputs fieldset [class^="digit-"]`)
+  )
     .map((input) => (input as HTMLInputElement).value)
     .join('');
 }

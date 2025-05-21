@@ -4,10 +4,12 @@ export function defineButton(
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
-  const portrait = window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
-  const landscape = window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
+  const portrait =
+    window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
+  const landscape =
+    window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
 
-  let layoutView: 'left' | 'right' | 'center' | 'icon' | 'text';
+  let layoutView: '-left-' | '-right-' | '-center-' | '-icon-' | '-text-';
   let fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
 
   //--|🠋 Always Return an Object 🠋|--//
@@ -15,14 +17,14 @@ export function defineButton(
     case 'login':
       if (landscape === true || portrait === true) {
         fontSize = '<p>';
-        layoutView = 'icon';
+        layoutView = '-icon-';
       } else {
         fontSize = '<h6>';
-        layoutView = 'right';
+        layoutView = '-right-';
       }
       return {
         fontSize: fontSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: layoutView as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: layoutView as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -34,14 +36,14 @@ export function defineButton(
     case 'password':
       if (landscape === true || portrait === true) {
         fontSize = '<p>';
-        layoutView = 'icon';
+        layoutView = '-icon-';
       } else {
         fontSize = '<h6>';
-        layoutView = 'right';
+        layoutView = '-right-';
       }
       return {
         fontSize: fontSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: layoutView as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: layoutView as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -53,7 +55,7 @@ export function defineButton(
     case 'observe':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: 'icon' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -65,7 +67,7 @@ export function defineButton(
     case 'generate':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: 'icon' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -78,7 +80,7 @@ export function defineButton(
     default:
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -107,16 +109,22 @@ export function showDemos(pageName: 'landing' | string) {
 export function generatePassword() {
   const passReset = document.querySelector('.reset-inputs #password') as HTMLInputElement;
   const passLogin = document.querySelector('.login-inputs #password') as HTMLInputElement;
-  const passRegister = document.querySelector('.register-inputs #password') as HTMLInputElement;
+  const passRegister = document.querySelector(
+    '.register-inputs #password'
+  ) as HTMLInputElement;
 
-  const getRandomLower = (): string => String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  const getRandomUpper = (): string => String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  const getRandomNumber = (): string => String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  const getRandomLower = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  const getRandomUpper = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  const getRandomNumber = (): string =>
+    String.fromCharCode(Math.floor(Math.random() * 10) + 48);
   const getRandomSymbol = (): string => {
     const symbols = '!@#$%^&*(){}[]=<>/,.';
     return symbols[Math.floor(Math.random() * symbols.length)];
   };
-  const getRandomElements = (generator: () => string, count: number): string[] => Array.from({ length: count }, generator);
+  const getRandomElements = (generator: () => string, count: number): string[] =>
+    Array.from({ length: count }, generator);
 
   //--|🠋 Determine random character counts within constraints with mostly lowercase letters 🠋|--//
   let length = Math.floor(Math.random() * 9) + 8; //--|🠈 It must be between 8 and 16 Characters 🠈|--//

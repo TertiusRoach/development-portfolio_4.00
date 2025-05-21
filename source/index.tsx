@@ -59,11 +59,15 @@ Object.entries(pages).forEach(([id]) => {
 export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
   const safeRender = (id: string, component: React.ReactElement) => {
     let elementBody = document.getElementById(id) as HTMLElement;
-    if (elementBody.classList.contains('active')) {
-      ReactDOM.createRoot(elementBody).render(component);
-    } else {
+    if (!elementBody) {
       console.error(`Can't find #${id}`);
       return;
+    }
+
+    if (elementBody.innerHTML === '') {
+      ReactDOM.createRoot(elementBody).render(component);
+    } else {
+      console.warn(`Element #${id} is not empty. Skipping render to avoid overwrite.`);
     }
   };
   const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink') => {
@@ -100,6 +104,7 @@ export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
     case 'overtime':
       setView(pageName);
       safeRender(`${pageName}-body`, React.createElement(Overtime));
+      setTimeout(() => {}, 250);
       break;
     case 'ticketing':
       safeRender(`${pageName}-body`, React.createElement(Ticketing));

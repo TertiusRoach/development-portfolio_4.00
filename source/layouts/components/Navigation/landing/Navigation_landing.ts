@@ -26,8 +26,10 @@ export function defineButton(
     }
   };
   const toggleFont = () => {
-    const portrait = window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
-    const landscape = window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
+    const portrait =
+      window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
+    const landscape =
+      window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
 
     if (landscape === true || portrait === true) {
       return '<h6>';
@@ -41,7 +43,7 @@ export function defineButton(
     case 'demo':
       return {
         fontSize: toggleFont() as '<h4>' | '<h6>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'medium' as 'dark' | 'medium' | 'light',
 
         className: button,
