@@ -1,8 +1,8 @@
 //--|🠊 Form.login.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
-import { viewBlock, viewText, viewPass } from '../../../pages/landing';
 import { axiosError, retrieveEndpoint } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass } from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
@@ -28,7 +28,12 @@ interface InfoProps {
 }
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
-  const pageName = info.identification as 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+  const pageName = info.identification as
+    | 'landing'
+    | 'overtime'
+    | 'ticketing'
+    | 'hyperlink'
+    | string;
   const imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg';
 
@@ -136,7 +141,12 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           <h4>Sign in to access your account.</h4>
         </div>
         <div className="login-icon">
-          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
+          <img
+            style={{
+              maskImage: `url(${imageLink})`,
+              WebkitMaskImage: `url(${imageLink})`,
+            }}
+          />
         </div>
       </div>
       <div className="login-inputs">

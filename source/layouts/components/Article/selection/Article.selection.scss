@@ -108,7 +108,6 @@
         }
       }
       figure {
-        // backdrop-filter: blur(1rem);
         border-bottom-right-radius: 4rem;
         border-left: 2px dashed Palettes.$indexLand-light;
         border-top: 2px dashed Palettes.$indexLand-light;
@@ -293,7 +292,7 @@ article[class*='selection'] {
   border-left: 4px solid Palettes.$indexLand-light;
   border-right: 4px solid Palettes.$indexLand-light;
   filter: drop-shadow(0 0 2rem Palettes.$indexLand-medium);
-  box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+  box-shadow: inset 0 0 1rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

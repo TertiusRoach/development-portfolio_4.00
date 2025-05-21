@@ -33,10 +33,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.identification;
 
   useEffect(() => {
-    /*
-    let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
-    outputDisplay(sectionElement);
-    */
+    randomizeCarousel(pageName, blockName);
   }, [pageName, blockName]);
 
   return (
@@ -48,10 +45,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
-            <NavigationLanding info={info} form="register" />
-
-            {/* <NavigationRegister info={info} /> */}
             <FormRegister info={info} />
+            <NavigationLanding info={info} form="register" />
             <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
@@ -64,10 +59,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
         </section>
         <section className="password-section hidden">
           <div className="password-container">
-            <NavigationLanding info={info} form="password" />
-
-            {/* <NavigationPassword info={info} /> */}
             <FormPassword info={info} />
+            <NavigationLanding info={info} form="password" />
             <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>
         </section>
@@ -76,3 +69,26 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingMain;
+
+function randomizeCarousel(pageName: 'landing' | string, blockName: 'main' | string) {
+  const carousel = document.querySelector(
+    `#${pageName}-${blockName} .landing-carousel`
+  ) as HTMLElement;
+
+  let randomizeCarousel: string;
+  let randomize = Math.floor(Math.random() * 3);
+  switch (randomize) {
+    case 0:
+      randomizeCarousel = 'register';
+      carousel.style.transform = 'translateX(0vw)';
+      break;
+    case 1:
+      randomizeCarousel = 'login';
+      carousel.style.transform = 'translateX(-100vw)';
+      break;
+    case 2:
+      randomizeCarousel = 'password';
+      carousel.style.transform = 'translateX(-200vw)';
+      break;
+  }
+}

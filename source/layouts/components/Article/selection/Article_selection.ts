@@ -186,6 +186,8 @@ export function hideFigure(event: React.MouseEvent<HTMLElement>) {
   const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
   const demoNav = document.querySelector('.demo-navigation') as HTMLElement;
 
+  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
+
   //--|🠋 Get the figure element that triggered the event. 🠋|--//
   if (!activeElement) return; //--|🠈 Safety check: If for some reason the element is null, exit the function. 🠈|--//
 
@@ -199,8 +201,6 @@ export function hideFigure(event: React.MouseEvent<HTMLElement>) {
     activeElement.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
     activeElement.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
   }, 250);
-
-  if (debounceTimer) clearTimeout(debounceTimer); //--|🠈 Clear any previously set debounce timer to prevent multiple rapid executions. 🠈|--//
 }
 export function showFigure(overlay: 'apps' | 'demo') {
   //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
@@ -210,11 +210,11 @@ export function showFigure(overlay: 'apps' | 'demo') {
   ) as HTMLElement;
   const demoNav = document.querySelector('.demo-navigation') as HTMLElement;
 
-  //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
-  if (!figureElement) return;
-
   //--|🠋 Clear any previously set debounce timer to prevent rapid execution. 🠋|--//
   if (debounceTimer) clearTimeout(debounceTimer);
+
+  //--|🠋 Safety check: If no matching element is found, exit the function. 🠋|--//
+  if (!figureElement) return;
 
   //--|🠋 Delay execution for 1 second (1000ms) to prevent flickering effects. 🠋|--//
   setTimeout(() => {
