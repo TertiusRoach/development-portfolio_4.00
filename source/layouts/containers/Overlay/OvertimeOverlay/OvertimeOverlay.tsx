@@ -20,6 +20,7 @@ import DivisionSelection from '../../../components/Division/selection/Division.s
 //--|🠋 Functions 🠋|--//
 // import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
+import ArticleVocation from '../../../components/Article/vocation/Article.vocation';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
@@ -37,17 +38,26 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'visible' | 'hidden' = 'visible';
 
   useEffect(() => {
+    let container = document.getElementById('overtime-overlay') as HTMLElement;
+    console.log();
+    if (container.classList.contains('visible')) {
+      setTimeout(() => {
+        container.classList.add('hidden');
+        container.classList.remove('visible');
+      }, 2500);
+      setTimeout(() => {
+        container.style.display = 'none';
+      }, 2750);
+    }
+
     /*
     let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
     outputDisplay(sectionElement);
     */
   }, [pageName, blockName]);
 
-  let establishedLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dccac1bf36f260bb9cf957b78c37166d51845388/source/assets/svg-files/overtime-page/role-established.svg';
-  let freelancingLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dccac1bf36f260bb9cf957b78c37166d51845388/source/assets/svg-files/overtime-page/role-freelancing.svg';
-
+  let imageLink: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/079e1e37e24da759c2cf7910c8659593bc74c8e5/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-light.svg';
   return (
     <section
       style={{ zIndex: 3 }}
@@ -56,99 +66,14 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
     >
       <div className="overtime-carousel" style={{ zIndex: 0 }}>
         <section className="loading-section">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif"
-            alt="loading-logo"
-          />
+          <img src={imageLink} alt="track-day" />
         </section>
 
         <section className="vocation-section">
-          <article className="vocation-article">
-            <header>
-              <img
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/5df756edd69f2539d713037b60064efc6165c2af/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-light.svg"
-                alt="track-day"
-              />
-              <h1>
-                What's your
-                <br />
-                vocation?
-              </h1>
-            </header>
-            <footer>
-              <div
-                className="established"
-                //--|🠊 onClick={() => viewRole(pageName, blockName, roleName)} 🠈|--//
-              >
-                <img
-                  style={{
-                    maskImage: `url(${establishedLink})`,
-                    WebkitMaskImage: `url(${establishedLink})`,
-                  }}
-                  className="established"
-                />
-                <ButtonStretch
-                  type="button"
-                  text={'Established'}
-                  style={defineButton('established', { pageName, blockName })}
-                />
-              </div>
-              <div
-                className="freelancing"
-                //--|🠊 onClick={() => viewRole(pageName, blockName, roleName)} 🠈|--//
-              >
-                <img
-                  style={{
-                    maskImage: `url(${freelancingLink})`,
-                    WebkitMaskImage: `url(${freelancingLink})`,
-                  }}
-                  className="established"
-                />
-                <ButtonStretch
-                  type="button"
-                  text={'Freelancing'}
-                  style={defineButton('freelancing', { pageName, blockName })}
-                />
-              </div>
-            </footer>
-          </article>
+          <ArticleVocation info={info} />
         </section>
       </div>
     </section>
   );
 };
 export default OvertimeOverlay;
-
-function defineButton(
-  button: 'established' | 'freelancing',
-  info: { blockName: string; pageName: string }
-) {
-  const { blockName, pageName } = info;
-  //--|🠋 Always Return an Object 🠋|--//
-  switch (button) {
-    case 'established':
-      return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
-
-        className: button,
-        pageName: pageName as 'overtime',
-        blockName: blockName as 'overlay',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dccac1bf36f260bb9cf957b78c37166d51845388/source/assets/svg-files/overtime-page/role-established.svg',
-      };
-    case 'freelancing':
-      return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
-
-        className: button,
-        pageName: pageName as 'overtime',
-        blockName: blockName as 'overlay',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dccac1bf36f260bb9cf957b78c37166d51845388/source/assets/svg-files/overtime-page/role-freelancing.svg',
-      };
-  }
-}

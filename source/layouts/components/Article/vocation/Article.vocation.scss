@@ -1,0 +1,112 @@
+//--|🠊 Article.selection.scss 🠈|--//
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+@forward '../../../designs/Mixins.scss';
+
+@mixin desktop-landscape {
+  header {
+    display: flex;
+    grid-row: 1 / 2;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      margin: 0;
+      z-index: 1;
+      text-align: center;
+      color: Palettes.$trackDay-light;
+      filter: drop-shadow(0 0 4px black);
+    }
+    img {
+      z-index: 0;
+      width: 8rem;
+      opacity: 0.25;
+      position: absolute;
+      filter: drop-shadow(0 0 8px black);
+    }
+
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--//
+  }
+  footer {
+    display: grid;
+    grid-row: 2 / 3;
+    grid-template: 1fr 1fr 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+
+    div[class*='established'] {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    div[class*='freelancing'] {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+    div[class*='container'] {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      transition: filter 1s ease-in-out;
+      filter: drop-shadow(0 0 8px black);
+
+      &:hover {
+        filter: drop-shadow(0 0 8px rgba(white, 0.25));
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        background: Palettes.$trackDay-light;
+        transition: background 0.25s ease-in-out;
+      }
+      button {
+        background: none !important;
+        padding: 1rem 1rem 2rem 1rem;
+      }
+
+      img:hover {
+        background: Palettes.$trackDay-dark;
+      }
+    }
+
+    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--//
+  }
+  //--|🠋 Tablet (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+article[class*='vocation'] {
+  display: grid;
+  border-radius: 4rem;
+  grid-template: 12rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
+  background: rgba(Palettes.$trackDay-dark, 0.5);
+  box-shadow: inset 0 0 2rem rgba(black, 0.75);
+  border-left: 4px solid Palettes.$trackDay-light;
+  border-right: 4px solid Palettes.$trackDay-light;
+  filter: drop-shadow(0 0 4px Palettes.$trackDay-dark); //--|🠋 Desktop (Landscape) 🠋|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
