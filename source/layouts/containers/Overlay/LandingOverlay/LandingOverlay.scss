@@ -4,7 +4,6 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
-    cursor: wait;
     display: grid;
     grid-template: 4rem 1fr auto 1fr 4rem / 6rem 1fr auto 1fr 6rem; //--|🠊 rows / columns 🠈|--//
     background: linear-gradient(
@@ -15,6 +14,7 @@
     img {
       width: auto;
       height: 100%;
+      cursor: wait;
       border-radius: 4rem;
       grid-area: 3 / 3 / 4 / 4;
       filter: drop-shadow(0 0 8px black);
@@ -39,6 +39,7 @@
     }
   }
 
+  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
     section[class*='selection'] {
       grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
@@ -87,6 +88,7 @@
     }
   }
 
+  //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {

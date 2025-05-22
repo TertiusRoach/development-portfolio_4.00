@@ -4,6 +4,9 @@
 @forward '../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 12rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
+
   header {
     display: flex;
     grid-row: 1 / 2;
@@ -21,24 +24,17 @@
     img {
       z-index: 0;
       width: 8rem;
+      height: auto;
       opacity: 0.25;
       position: absolute;
       filter: drop-shadow(0 0 8px black);
     }
-
-    //--|🠊 background: rgba(darkred, 0.25); 🠈|--//
   }
   footer {
     display: grid;
     grid-row: 2 / 3;
-    grid-template: 1fr 1fr 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+    grid-template: auto 1fr auto / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
 
-    div[class*='established'] {
-      grid-area: 2 / 1 / 3 / 2;
-    }
-    div[class*='freelancing'] {
-      grid-area: 2 / 2 / 3 / 3;
-    }
     div[class*='container'] {
       display: flex;
       align-items: center;
@@ -47,41 +43,56 @@
       transition: filter 1s ease-in-out;
       filter: drop-shadow(0 0 8px black);
 
-      &:hover {
-        filter: drop-shadow(0 0 8px rgba(white, 0.25));
+      &[class*='established'] {
+        grid-area: 2 / 1 / 3 / 2;
+      }
+      &[class*='freelancing'] {
+        grid-area: 2 / 2 / 3 / 3;
       }
 
       img {
         width: 100%;
-        height: 100%;
+        height: 6rem;
         cursor: pointer;
         mask-size: contain;
         mask-position: center;
         mask-repeat: no-repeat;
         background: Palettes.$trackDay-light;
         transition: background 0.25s ease-in-out;
+
+        &:hover {
+          background: Palettes.$trackDay-dark;
+        }
       }
       button {
         background: none !important;
         padding: 1rem 1rem 2rem 1rem;
       }
-
-      img:hover {
-        background: Palettes.$trackDay-dark;
+      &:hover {
+        filter: drop-shadow(0 0 8px rgba(white, 0.25));
       }
     }
-
-    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--//
   }
-  //--|🠋 Tablet (Landscape) 🠋|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
   }
   @media screen and (max-height: 480px) {
+    footer {
+      div[class*='container'] {
+        img {
+          height: 4rem;
+        }
+      }
+    }
   }
   @media screen and (max-height: 360px) {
+    grid-template: 8rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
   }
 }
 @mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+
   //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
   }
@@ -94,7 +105,6 @@
 article[class*='vocation'] {
   display: grid;
   border-radius: 4rem;
-  grid-template: 12rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
   background: rgba(Palettes.$trackDay-dark, 0.5);
   box-shadow: inset 0 0 2rem rgba(black, 0.75);
   border-left: 4px solid Palettes.$trackDay-light;

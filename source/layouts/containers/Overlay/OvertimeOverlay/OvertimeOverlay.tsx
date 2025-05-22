@@ -18,7 +18,6 @@ import ArticleSelection from '../../../components/Article/selection/Article.sele
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
 import ArticleVocation from '../../../components/Article/vocation/Article.vocation';
 //--|🠉 Functions 🠉|--//
@@ -35,25 +34,10 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'overlay';
   const roleName: string = '' as 'established' | 'freelancing';
 
-  const stateName: 'visible' | 'hidden' = 'visible';
+  const stateName: string = 'visible' as 'visible' | 'hidden';
 
   useEffect(() => {
-    let container = document.getElementById('overtime-overlay') as HTMLElement;
-    console.log();
-    if (container.classList.contains('visible')) {
-      setTimeout(() => {
-        container.classList.add('hidden');
-        container.classList.remove('visible');
-      }, 2500);
-      setTimeout(() => {
-        container.style.display = 'none';
-      }, 2750);
-    }
-
-    /*
-    let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
-    outputDisplay(sectionElement);
-    */
+    hideBlock(pageName, blockName);
   }, [pageName, blockName]);
 
   let imageLink: string =
@@ -77,3 +61,16 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default OvertimeOverlay;
+
+function hideBlock(pageName: string, blockName: string) {
+  let container = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
+  if (container.classList.contains('visible')) {
+    setTimeout(() => {
+      container.classList.add('hidden');
+      container.classList.remove('visible');
+    }, 2500);
+    setTimeout(() => {
+      container.style.display = 'none';
+    }, 2750);
+  }
+}
