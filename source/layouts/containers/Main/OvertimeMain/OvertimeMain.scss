@@ -11,8 +11,7 @@
     position: relative;
     grid-area: 3 / 1 / 4 / 4;
     transition: transform 0.25s ease-in-out;
-    border-top: Palettes.$trackDay-light 2px solid;
-    border-bottom: Palettes.$trackDay-light 2px solid;
+
     section[class*='workdays'] {
       z-index: 1;
       width: 100%;
@@ -113,6 +112,34 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
+
+  aside[class*='carousel'] {
+    display: none;
+    section[class*='workdays'] {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    section[class*='weekdays'] {
+      z-index: 0;
+      position: absolute;
+      div[class*='container'] {
+        transition: transform 0.25s ease-in-out;
+      }
+    }
+  }
+
+  aside[class*='metrics'] {
+    display: none;
+    article[class*='leave'] {
+      display: none;
+    }
+    section[class*='marketing'] {
+      display: none;
+    }
+  }
 
   //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
@@ -124,9 +151,11 @@
 }
 
 main[id*='overtime'] {
+  width: 100vw;
+  height: 100vh;
   display: grid;
+  @extend %place-design;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -134,5 +163,11 @@ main[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+%place-design {
+  aside[class*='carousel'] {
+    border-top: Palettes.$trackDay-light 2px solid;
+    border-bottom: Palettes.$trackDay-light 2px solid;
   }
 }

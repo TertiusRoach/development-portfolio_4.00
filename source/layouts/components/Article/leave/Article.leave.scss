@@ -151,6 +151,21 @@
   }
 }
 @mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  display: none;
+  time[class*='hourly'] {
+    display: none;
+  }
+  header[class*='name'] {
+    display: none;
+  }
+  button[class*='leave'] {
+    display: none;
+  }
+  section[class*='metrics'] {
+    display: none;
+  }
+
   //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
   }
