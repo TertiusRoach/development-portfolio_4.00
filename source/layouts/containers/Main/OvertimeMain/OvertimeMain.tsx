@@ -56,10 +56,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       className={`default-${blockName}`}
     >
       <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
-        <section className="workdays-section">
-          <NavigationWeeks info={info} />
-        </section>
-
         <section className="weekdays-section">
           <div
             className="weekdays-container"
@@ -69,6 +65,10 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
           >
             <TableWeeks info={info} />
           </div>
+        </section>
+
+        <section className="workdays-section">
+          <NavigationWeeks info={info} />
         </section>
       </aside>
 

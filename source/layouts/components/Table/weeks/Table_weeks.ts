@@ -195,14 +195,15 @@ export function loadWeekdays(pageName: string, blockName: string) {
       dataRows.forEach((row) => {
         row.style.height = `${heightRows}px`;
       });
+
+      weekDays.forEach((column) => {
+        column.style.width = '8rem';
+      });
       clockIn.forEach((column) => {
         column.style.width = `${heightColumns}px`;
       });
       clockOut.forEach((column) => {
         column.style.width = `${heightColumns}px`;
-      });
-      weekDays.forEach((column) => {
-        column.style.width = `8rem`;
       });
     } else {
       console.warn(`//--|🠊 #${pageName}-${blockName} doesn't contain a Carousel 🠈|--//`);
@@ -235,74 +236,6 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
   if (tableWeeks) {
     createWeeks(pageName, blockName, thisDay);
-  }
-}
-
-export function alterWeekdays(
-  pageName: string,
-  blockName: string,
-  viewAxis: '<y>' | '<x>'
-) {
-  const carousel = document.querySelector(
-    `#${pageName}-${blockName} aside[class*="carousel"]`
-  ) as HTMLElement | null;
-
-  if (carousel) {
-    //--|🠊 Query elements inside the carousel 🠈|--//
-    let weekdays = carousel.querySelectorAll(
-      `.weeks-table tbody tr td:nth-child(1)`
-    ) as NodeListOf<HTMLElement>;
-    let clockIn = carousel.querySelectorAll(
-      `.weeks-table tbody tr td:nth-child(2)`
-    ) as NodeListOf<HTMLElement>;
-    let clockOut = carousel.querySelectorAll(
-      `.weeks-table tbody tr td:nth-child(3)`
-    ) as NodeListOf<HTMLElement>;
-    let tableData = carousel.querySelectorAll(
-      `.weeks-table tbody tr td`
-    ) as NodeListOf<HTMLElement>;
-
-    //--|🠊 Calculate dimensions 🠈|--//
-    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week = 7 Days 🠈|--//
-    let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 Remaining width split between Clock In & Out 🠈|--//
-
-    //--|🠊 Apply dimensions 🠈|--//
-    tableData.forEach((row) => {
-      row.style.height = `${heightRows}px`;
-    });
-
-    clockIn.forEach((col) => {
-      col.style.width = `${heightColumns}px`;
-    });
-
-    clockOut.forEach((col) => {
-      col.style.width = `${heightColumns}px`;
-    });
-
-    weekdays.forEach((col) => {
-      col.style.width = `8rem`;
-    });
-
-    //--|🠊 Adjust the view positioning 🠈|--//
-    const container = document.querySelector(
-      `#${pageName}-${blockName} div[class*="container"]`
-    ) as HTMLElement | null;
-
-    if (container) {
-      const firstWeek = container.querySelector(`tbody:nth-child(1)`) as HTMLElement;
-      if (firstWeek) {
-        switch (viewAxis) {
-          case '<y>':
-            const adjust = Number(container.dataset.view) - 1;
-            const scroll = firstWeek.offsetHeight * adjust;
-            container.style.transform = `translateY(-${scroll}px)`;
-            break;
-          case '<x>':
-            // Future horizontal scroll logic placeholder
-            break;
-        }
-      }
-    }
   }
 }
 

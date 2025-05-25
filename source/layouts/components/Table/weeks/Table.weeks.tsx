@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { loadWeekdays, alterWeekdays } from './Table_weeks';
+import { loadWeekdays } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
@@ -180,3 +180,75 @@ const TableWeeks: React.FC<InfoProps> = ({ info }) => {
 };
 
 export default TableWeeks;
+
+function alterWeekdays(pageName: string, blockName: string, viewAxis: '<y>' | '<x>') {
+  //--|🠊 Query elements inside the carousel 🠈|--//
+  const carousel = document.querySelector(
+    `#${pageName}-${blockName} aside[class*="carousel"]`
+  ) as HTMLElement;
+  const weekdays = carousel.querySelectorAll(
+    `.weeks-table tbody tr td:nth-child(1)`
+  ) as NodeListOf<HTMLElement>;
+  const clockIn = carousel.querySelectorAll(
+    `.weeks-table tbody tr td:nth-child(2)`
+  ) as NodeListOf<HTMLElement>;
+  const clockOut = carousel.querySelectorAll(
+    `.weeks-table tbody tr td:nth-child(3)`
+  ) as NodeListOf<HTMLElement>;
+  const tableRows = carousel.querySelectorAll(
+    `.weeks-table tbody tr td`
+  ) as NodeListOf<HTMLElement>;
+
+  if (carousel) {
+    let portrait = window.matchMedia('(orientation: portrait)').matches as Boolean;
+    let landscape = window.matchMedia('(orientation: landscape)').matches as Boolean;
+    //--|🠊 Calculate dimensions 🠈|--//
+    let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week = 7 Days 🠈|--//
+    let heightColumns: number;
+
+    if (landscape === true) {
+      heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 Remaining width split between Clock In & Out 🠈|--//
+    } else if (portrait === true) {
+      heightColumns = (carousel.offsetWidth - 80) / 2; //--|🠈 Remaining width split between Clock In & Out 🠈|--//
+    }
+
+    //--|🠊 Apply dimensions 🠈|--//
+    weekdays.forEach((col) => {
+      if (landscape === true) {
+        col.style.width = '8rem';
+      } else if (portrait === true) {
+        col.style.width = '6rem';
+      }
+    });
+    clockIn.forEach((col) => {
+      col.style.width = `${heightColumns}px`;
+    });
+    clockOut.forEach((col) => {
+      col.style.width = `${heightColumns}px`;
+    });
+    tableRows.forEach((row) => {
+      row.style.height = `${heightRows}px`;
+    });
+
+    //--|🠊 Adjust the view positioning 🠈|--//
+    const container = document.querySelector(
+      `#${pageName}-${blockName} div[class*="container"]`
+    ) as HTMLElement | null;
+
+    if (container) {
+      const firstWeek = container.querySelector(`tbody:nth-child(1)`) as HTMLElement;
+      if (firstWeek) {
+        switch (viewAxis) {
+          case '<y>':
+            const adjust = Number(container.dataset.view) - 1;
+            const scroll = firstWeek.offsetHeight * adjust;
+            container.style.transform = `translateY(-${scroll}px)`;
+            break;
+          case '<x>':
+            // Future horizontal scroll logic placeholder
+            break;
+        }
+      }
+    }
+  }
+}

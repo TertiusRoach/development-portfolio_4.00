@@ -13,7 +13,7 @@
   grid-template: 8rem 1fr 4rem / 8rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
 }
 @mixin mobile-portrait {
-  //   grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
 }
 
 div[id*='overtime'] {

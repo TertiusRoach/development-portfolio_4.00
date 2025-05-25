@@ -112,10 +112,13 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
-
+  grid-template: 6rem 1fr 6rem/2rem 1fr 2rem;
   aside[class*='carousel'] {
-    display: none;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    grid-area: 2 / 1 / 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    transition: transform 0.25s ease-in-out;
     section[class*='workdays'] {
       z-index: 1;
       width: 100%;
@@ -130,7 +133,6 @@
       }
     }
   }
-
   aside[class*='metrics'] {
     display: none;
     article[class*='leave'] {
@@ -151,8 +153,6 @@
 }
 
 main[id*='overtime'] {
-  width: 100vw;
-  height: 100vh;
   display: grid;
   @extend %place-design;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//

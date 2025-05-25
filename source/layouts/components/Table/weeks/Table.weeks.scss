@@ -52,9 +52,38 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠊 display: flex; 🠈|--//
   tbody[class*='table'] {
-    display: none;
+    display: flex;
+    flex-shrink: 0;
+    background: white;
+    flex-direction: column;
+    tr {
+      margin: 0;
+      padding: 0;
+      color: Palettes.$trackDay-dark;
+
+      td {
+        font-weight: 600;
+        text-align: center;
+        filter: drop-shadow(0 0 2px rgba(black, 0.25));
+
+        &:nth-child(1) {
+          width: 4rem;
+          border-right: 2px dashed Palettes.$trackDay-dark;
+        }
+        &:nth-child(3) {
+          border-left: 2px dashed Palettes.$trackDay-dark;
+        }
+      }
+
+      &:nth-child(odd) {
+        background: rgba(white, 1);
+      }
+      &:nth-child(even) {
+        background: rgba(Palettes.$trackDay-light, 0.25);
+      }
+    }
   }
 
   //--|🠋 Tablet (Portrait) 🠋|--//
