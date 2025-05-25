@@ -180,6 +180,17 @@ export function showMain(view: 'register' | 'login', pageName: string) {
   }
 }
 
+export function getIcon(image: 'brand' | 'demo' | 'apps') {
+  switch (image) {
+    case 'brand':
+      return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
+    case 'demo':
+      return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
+    case 'apps':
+      return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
+  }
+}
+
 //--|🠋 Declare a variable to store the debounce timer. 🠋|--//
 let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {

@@ -1,7 +1,13 @@
 //--|🠊 Article.selection.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { loadDemo } from '../../../../index';
-import { defineButton, hideFigure, showFigure, showMain } from './Article_selection';
+import {
+  defineButton,
+  hideFigure,
+  showFigure,
+  showMain,
+  getIcon,
+} from './Article_selection';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.selection.scss';
@@ -30,16 +36,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
   const pageName = info.identification as 'landing';
 
-  const handleSelection = (image: 'brand' | 'demo' | 'apps') => {
-    switch (image) {
-      case 'brand':
-        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/861d6c3d25d45ec174c8d12aedc407f59dc85317/source/assets/svg-files/trinity-apps/trinity-apps.svg';
-      case 'demo':
-        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/laptop.svg';
-      case 'apps':
-        return 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7e2882f29c5a3697900192c18bec75aa5916b207/source/assets/svg-files/landing-page/door-open.svg';
-    }
-  };
+  const handleSelection = () => {};
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -51,15 +48,11 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           onClick={(event) => hideFigure(event)}
           onMouseEnter={(event) => hideFigure(event)}
         >
-          <h1>
-            Open
-            <br />
-            Apps
-          </h1>
+          {toggleFont('open-apps')}
           <img
             style={{
-              maskImage: `url(${handleSelection('apps')})`,
-              WebkitMaskImage: `url(${handleSelection('apps')})`,
+              maskImage: `url(${getIcon('apps')})`,
+              WebkitMaskImage: `url(${getIcon('apps')})`,
             }}
           />
         </figure>
@@ -84,15 +77,11 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
           onClick={(event) => hideFigure(event)}
           onMouseEnter={(event) => hideFigure(event)}
         >
-          <h1>
-            View
-            <br />
-            Demo
-          </h1>
+          {toggleFont('view-demo')}
           <img
             style={{
-              maskImage: `url(${handleSelection('demo')})`,
-              WebkitMaskImage: `url(${handleSelection('demo')})`,
+              maskImage: `url(${getIcon('demo')})`,
+              WebkitMaskImage: `url(${getIcon('demo')})`,
             }}
           />
         </figure>
@@ -120,8 +109,8 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
       <div className="branding-division">
         <img
           style={{
-            maskImage: `url(${handleSelection('brand')})`,
-            WebkitMaskImage: `url(${handleSelection('brand')})`,
+            maskImage: `url(${getIcon('brand')})`,
+            WebkitMaskImage: `url(${getIcon('brand')})`,
           }}
         />
       </div>
@@ -129,3 +118,51 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ArticleSelection;
+
+const toggleFont = (text: 'open-apps' | 'view-demo') => {
+  let portrait = window.matchMedia('(orientation: portrait)').matches;
+  let landscape = window.matchMedia('(orientation: landscape)').matches;
+
+  let innerText = (text: string) => {
+    switch (text) {
+      case 'open-apps':
+        return (
+          <>
+            View
+            <br />
+            Demo
+          </>
+        );
+      case 'view-demo':
+        return (
+          <>
+            View
+            <br />
+            Demo
+          </>
+        );
+    }
+  };
+
+  if (landscape) {
+    if (window.innerHeight < 360) {
+      return <h6>{innerText(text)}</h6>; //--|🠈 Landscape < 360px (Less than) 🠈|--//
+    } else if (window.innerHeight < 480) {
+      return <h4>{innerText(text)}</h4>; //--|🠈 Landscape < 480px (Less than) 🠈|--//
+    } else if (window.innerHeight < 768) {
+      return <h2>{innerText(text)}</h2>; //--|🠈 Landscape < 768px (Less than) 🠈|--//
+    } else {
+      return <h1>{innerText(text)}</h1>; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
+    }
+  } else if (portrait) {
+    if (window.innerWidth < 360) {
+      return <h4>{innerText(text)}</h4>; //--|🠈 Portrait < 360px (Less than) 🠈|--//
+    } else if (window.innerWidth < 480) {
+      return <h3>{innerText(text)}</h3>; //--|🠈 Portrait < 480px (Less than) 🠈|--//
+    } else if (window.innerWidth < 768) {
+      return <h2>{innerText(text)}</h2>; //--|🠈 Portrait < 768px (Less than) 🠈|--//
+    } else {
+      return <h1>{innerText(text)}</h1>; //--|🠈 Portrait > 768px (Larger than) 🠈|--//
+    }
+  }
+};
