@@ -44,15 +44,7 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
-  // height: 6rem;
-  // height: 100%;
   grid-template: 1fr auto 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
-  background: linear-gradient(
-    180deg,
-    rgba(white, 0.5) 0%,
-    rgba(white, 0.25) 50%,
-    rgba(white, 0) 100%
-  );
   li {
     display: grid;
     grid-row: 2 / 3; //--|🠈 row-start / row-end 🠈|--//
