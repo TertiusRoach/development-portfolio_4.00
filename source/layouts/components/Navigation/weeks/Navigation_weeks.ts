@@ -14,11 +14,11 @@ export function defineButton(
       if (window.innerHeight < 360) {
         return '<p>'; //--|🠈 Landscape < 360px (Less than) 🠈|--//
       } else if (window.innerHeight < 480) {
-        return '<p>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
+        return '<h6>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
       } else if (window.innerHeight < 768) {
-        return '<h6>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
+        return '<h3>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
       } else {
-        return '<h5>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
+        return '<h1>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
       }
     } else if (portrait) {
       if (window.innerWidth < 360) {
