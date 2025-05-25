@@ -6,11 +6,6 @@
   section[class*='loading'] {
     display: grid;
     grid-template: 4rem 1fr 45rem 1fr 4rem / 6rem 1fr 80rem 1fr 6rem; //--|🠊 720px / 1280px 🠈|--//
-    background: linear-gradient(
-      0deg,
-      rgba(white, 0) 0%,
-      rgba(Palettes.$trackDay-medium, 1) 100%
-    );
     img {
       width: 100%;
       height: 100%;
@@ -26,11 +21,6 @@
   section[class*='vocation'] {
     display: grid;
     grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows - 768px / columns - 1366px 🠈|--//
-    background: linear-gradient(
-      180deg,
-      rgba(white, 0) 0%,
-      rgba(Palettes.$trackDay-medium, 1) 100%
-    );
 
     article[class*='vocation'] {
       grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -63,34 +53,27 @@
   //--|🠊 display: block; 🠈|--//
   section[class*='loading'] {
     display: grid;
-    grid-template: 6rem 1fr auto 1fr 6rem / 2rem 1fr auto 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-    background: linear-gradient(
-      0deg,
-      rgba(white, 1) 0%,
-      rgba(Palettes.$indexLand-medium, 1) 100%
-    );
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 720px / 1280px 🠈|--//
     img {
       width: 100%;
-      height: auto;
-      grid-area: 3 / 3 / 4 / 4;
-      filter: drop-shadow(0 0 8px white);
-      outline: 4px groove Palettes.$indexLand-medium;
-      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-dark, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+      height: 100%;
+      cursor: wait;
+      padding: 4rem;
+      border-radius: 4rem;
+      grid-area: 2 / 2 / 3 / 3;
+      filter: drop-shadow(0 0 1rem rgba(black, 1));
+      background: rgba(Palettes.$trackDay-dark, 0.5);
+      box-shadow: inset 0 0 1rem rgba(Palettes.$trackDay-light, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
     }
   }
-  section[class*='selection'] {
+  section[class*='vocation'] {
     display: grid;
-    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-    background: linear-gradient(
-      180deg,
-      rgba(white, 1) 0%,
-      rgba(Palettes.$indexLand-medium, 1) 100%
-    );
-    header[class*='branding'] {
-      grid-area: 1 / 2 / 2 / 3;
-    }
-    article[class*='selection'] {
-      grid-area: 2 / 2 / 3 / 3;
+    grid-template: 6rem 1fr 1174px 1fr 6rem / 2rem 1fr 704px 1fr 2rem; //--|🠊 rows - 768px / columns - 1366px 🠈|--//
+
+    article[class*='vocation'] {
+      width: auto;
+      height: auto;
+      grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
   }
 
@@ -98,6 +81,14 @@
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    section[class*='vocation'] {
+      grid-template: 6rem 0px 1fr 0px 6rem / 2rem 0px 1fr 0px 2rem; //--|🠊 rows / columns 🠈|--//
+      article[class*='vocation'] {
+        width: 100%;
+        height: 100%;
+        grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+    }
   }
   @media screen and (max-width: 360px) {
   }
@@ -111,7 +102,6 @@ section[id*='overtime'] {
     display: flex;
     @extend %show-section;
     flex-direction: column;
-    animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
 
     section {
       width: 100vw;
@@ -129,6 +119,7 @@ section[id*='overtime'] {
   }
 }
 %show-section {
+  animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
   animation-delay: 0.75s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
   @keyframes slide-up {
     from {
@@ -137,5 +128,21 @@ section[id*='overtime'] {
     to {
       transform: translateY(-100vh);
     }
+  }
+}
+%place-design {
+  section[class*='loading'] {
+    background: linear-gradient(
+      0deg,
+      rgba(white, 0) 0%,
+      rgba(Palettes.$trackDay-medium, 1) 100%
+    );
+  }
+  section[class*='vocation'] {
+    background: linear-gradient(
+      180deg,
+      rgba(white, 0) 0%,
+      rgba(Palettes.$trackDay-medium, 1) 100%
+    );
   }
 }

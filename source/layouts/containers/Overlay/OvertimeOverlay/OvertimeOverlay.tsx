@@ -34,7 +34,7 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
   const blockName: string = 'overlay';
   const roleName: string = '' as 'established' | 'freelancing';
 
-  const stateName: string = 'visible' as 'visible' | 'hidden';
+  const stateType: string = 'visible' as 'visible' | 'hidden';
 
   useEffect(() => {
     hideBlock(pageName, blockName);
@@ -46,7 +46,7 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
     <section
       style={{ zIndex: 3 }}
       id={`${pageName}-${blockName}`}
-      className={`default-${blockName} ${stateName}`}
+      className={`default-${blockName} ${stateType}`}
     >
       <div className="overtime-carousel" style={{ zIndex: 0 }}>
         <section className="loading-section">

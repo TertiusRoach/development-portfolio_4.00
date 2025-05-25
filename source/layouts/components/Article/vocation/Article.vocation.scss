@@ -92,13 +92,117 @@
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+  width: 768px;
+  height: 1366px;
+  grid-template: 24rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
+
+  header {
+    display: flex;
+    grid-row: 1 / 2;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      margin: 0;
+      z-index: 1;
+      text-align: center;
+      color: Palettes.$trackDay-light;
+      filter: drop-shadow(0 0 4px black);
+    }
+    img {
+      z-index: 0;
+      width: 16rem;
+      height: auto;
+      opacity: 0.25;
+      position: absolute;
+      filter: drop-shadow(0 0 8px black);
+    }
+  }
+  footer {
+    display: grid;
+    grid-row: 2 / 3;
+    grid-template: auto 1fr auto / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+    div[class*='container'] {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      transition: filter 1s ease-in-out;
+      filter: drop-shadow(0 0 8px black);
+
+      &[class*='established'] {
+        grid-area: 2 / 1 / 3 / 2;
+      }
+      &[class*='freelancing'] {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+
+      img {
+        width: 100%;
+        height: 6rem;
+        cursor: pointer;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        background: Palettes.$trackDay-light;
+        transition: background 0.25s ease-in-out;
+
+        &:hover {
+          background: Palettes.$trackDay-dark;
+        }
+      }
+      button {
+        background: none !important;
+        padding: 1rem 1rem 2rem 1rem;
+      }
+      &:hover {
+        filter: drop-shadow(0 0 8px rgba(white, 0.25));
+      }
+    }
+  }
 
   //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
+    width: 352px;
+    height: 662px;
+    grid-template: 12rem 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
+    header {
+      img {
+        width: 8rem;
+      }
+    }
+    footer {
+      div[class*='container'] {
+        img {
+          width: 100%;
+          height: 6rem;
+          cursor: pointer;
+          mask-size: contain;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          background: Palettes.$trackDay-light;
+          transition: background 0.25s ease-in-out;
+
+          &:hover {
+            background: Palettes.$trackDay-dark;
+          }
+        }
+      }
+    }
   }
   @media screen and (max-width: 480px) {
   }
   @media screen and (max-width: 360px) {
+    width: 232px;
+    height: 448px;
+    footer {
+      div[class*='container'] {
+        img {
+          height: 4rem;
+        }
+      }
+    }
   }
 }
 
