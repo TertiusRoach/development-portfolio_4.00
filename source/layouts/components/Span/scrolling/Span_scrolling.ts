@@ -62,10 +62,12 @@ export function showWeek(
   viewAxis: '<y>' | '<x>',
   moveAxis: '-prev-' | '-next-'
 ) {
-  const carousel = document.querySelector(`.${pageName}-carousel`) as HTMLElement;
+  const carousel = document.querySelector(
+    `aside[class*="${pageName}-carousel"]`
+  ) as HTMLElement;
   const container = carousel.querySelector('div[class*="container"]') as HTMLElement;
+  const visibleTag = carousel.querySelector('table .visible') as HTMLTableElement;
   const firstWeek = carousel.querySelector('tbody:nth-child(1)') as HTMLTableElement;
-  const visibleTag = container.querySelector('.visible') as HTMLTableElement;
   const hiddenPrev = visibleTag.previousElementSibling as HTMLTableElement;
   const hiddenNext = visibleTag.nextElementSibling as HTMLTableElement;
 
@@ -98,77 +100,82 @@ export function showWeek(
     return true;
   };
 
-  if (viewAxis === '<y>') {
-    // Get current vertical scroll position from transform
-    const transformY = container.style.transform.match(/translateY\((-?\d+(\.\d+)?)px\)/);
-    const positionY = transformY ? Number(transformY[1]) : 0;
-    const offsetY = firstWeek.offsetHeight;
+  const viewTable = (viewAxis: '<y>' | '<x>') => {
+    if (viewAxis === '<y>') {
+      // Get current vertical scroll position from transform
+      const transformY = container.style.transform.match(
+        /translateY\((-?\d+(\.\d+)?)px\)/
+      );
+      const positionY = transformY ? Number(transformY[1]) : 0;
+      const offsetY = firstWeek.offsetHeight;
 
-    let viewWeekY: HTMLElement;
-    let viewBodyY: HTMLElement;
+      let viewWeekY: HTMLElement;
+      let viewBodyY: HTMLElement;
 
-    switch (moveAxis) {
-      case '-prev-':
-        if (hiddenPrev) {
-          toggleView(hiddenPrev, visibleTag);
-          container.style.transform = `translateY(${positionY + offsetY}px)`;
-        }
+      switch (moveAxis) {
+        case '-prev-':
+          if (hiddenPrev) {
+            toggleView(hiddenPrev, visibleTag);
+            container.style.transform = `translateY(${positionY + offsetY}px)`;
+          }
 
-        // Update state after transition
-        viewWeekY = carousel.querySelector('.visible') as HTMLElement;
-        container.dataset.view = viewWeekY.dataset.week;
+          // Update state after transition
+          viewWeekY = carousel.querySelector('.visible') as HTMLElement;
+          container.dataset.view = viewWeekY.dataset.week;
 
-        viewBodyY = container; // already selected earlier
-        const isFirst = viewBodyY.dataset.view === '01';
+          viewBodyY = container; // already selected earlier
+          const isFirst = viewBodyY.dataset.view === '01';
 
-        // Disable prev if we're at the first week
-        if (isFirst) {
-          viewButton(prevButton, false);
-        } else if (nextButton.style.opacity === '0') {
-          viewButton(nextButton, true); // Re-enable next if previously disabled
-        }
+          // Disable prev if we're at the first week
+          if (isFirst) {
+            viewButton(prevButton, false);
+          } else if (nextButton.style.opacity === '0') {
+            viewButton(nextButton, true); // Re-enable next if previously disabled
+          }
 
-        if (Number(visibleTag.dataset.week) - 1 !== Number(workdays.dataset.week)) {
-          workdays.classList.add('scrolling');
-          workdays.classList.remove('logging');
-        } else {
-          workdays.classList.add('logging');
-          workdays.classList.remove('scrolling');
-        }
-        break;
-      case '-next-':
-        if (hiddenNext) {
-          toggleView(hiddenNext, visibleTag);
-          container.style.transform = `translateY(${positionY - offsetY}px)`;
-        }
+          if (Number(visibleTag.dataset.week) - 1 !== Number(workdays.dataset.week)) {
+            workdays.classList.add('scrolling');
+            workdays.classList.remove('logging');
+          } else {
+            workdays.classList.add('logging');
+            workdays.classList.remove('scrolling');
+          }
+          break;
+        case '-next-':
+          if (hiddenNext) {
+            toggleView(hiddenNext, visibleTag);
+            container.style.transform = `translateY(${positionY - offsetY}px)`;
+          }
 
-        // Update state after transition
-        viewWeekY = carousel.querySelector('.visible') as HTMLElement;
-        container.dataset.view = viewWeekY.dataset.week;
+          // Update state after transition
+          viewWeekY = carousel.querySelector('.visible') as HTMLElement;
+          container.dataset.view = viewWeekY.dataset.week;
 
-        viewBodyY = container;
-        const weekCount = container.querySelectorAll('tbody').length.toString();
-        const isLast = viewBodyY.dataset.view === weekCount;
+          viewBodyY = container;
+          const weekCount = container.querySelectorAll('tbody').length.toString();
+          const isLast = viewBodyY.dataset.view === weekCount;
 
-        // Disable next if we're at the last week
-        if (isLast) {
-          viewButton(nextButton, false);
-        } else if (prevButton.style.opacity === '0') {
-          viewButton(prevButton, true); // Re-enable prev if previously disabled
-        }
+          // Disable next if we're at the last week
+          if (isLast) {
+            viewButton(nextButton, false);
+          } else if (prevButton.style.opacity === '0') {
+            viewButton(prevButton, true); // Re-enable prev if previously disabled
+          }
 
-        if (Number(visibleTag.dataset.week) + 1 !== Number(workdays.dataset.week)) {
-          workdays.classList.add('scrolling');
-          workdays.classList.remove('logging');
-        } else {
-          workdays.classList.add('logging');
-          workdays.classList.remove('scrolling');
-        }
-        break;
+          if (Number(visibleTag.dataset.week) + 1 !== Number(workdays.dataset.week)) {
+            workdays.classList.add('scrolling');
+            workdays.classList.remove('logging');
+          } else {
+            workdays.classList.add('logging');
+            workdays.classList.remove('scrolling');
+          }
+          break;
+      }
+      alterWeek(pageName);
+    } else if (viewAxis === '<x>') {
     }
-    alterWeek(pageName);
-  } else if (viewAxis === '<x>') {
-  }
+  };
+  viewTable(viewAxis);
 }
 
 export function alterWeek(pageName: string) {

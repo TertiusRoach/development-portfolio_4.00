@@ -1,14 +1,50 @@
+import { text } from 'express';
+
 //--|🠊 Navigation_weeks.ts 🠈|--//
 export function defineButton(
   button: 'clock-in' | 'clock-out',
   info: { blockName: string; pageName: string }
 ) {
   const { blockName, pageName } = info;
+
+  const toggleFont = () => {
+    let portrait = window.matchMedia('(orientation: portrait)').matches;
+    let landscape = window.matchMedia('(orientation: landscape)').matches;
+    if (landscape) {
+      if (window.innerHeight < 360) {
+        return '<p>'; //--|🠈 Landscape < 360px (Less than) 🠈|--//
+      } else if (window.innerHeight < 480) {
+        return '<p>'; //--|🠈 Landscape < 480px (Less than) 🠈|--//
+      } else if (window.innerHeight < 768) {
+        return '<h6>'; //--|🠈 Landscape < 768px (Less than) 🠈|--//
+      } else {
+        return '<h5>'; //--|🠈 Landscape > 768px (Larger than) 🠈|--//
+      }
+    } else if (portrait) {
+      if (window.innerWidth < 360) {
+        return '<p>'; //--|🠈 Portrait < 360px (Less than) 🠈|--//
+      } else if (window.innerWidth < 480) {
+        return '<h6>'; //--|🠈 Portrait < 480px (Less than) 🠈|--//
+      } else if (window.innerWidth < 768) {
+        return '<h3>'; //--|🠈 Portrait < 768px (Less than) 🠈|--//
+      } else {
+        return '<h1>'; //--|🠈 Portrait > 768px (Larger than) 🠈|--//
+      }
+    }
+  };
+
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
     case 'clock-in':
       return {
-        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
@@ -20,7 +56,14 @@ export function defineButton(
       };
     case 'clock-out':
       return {
-        fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+        fontSize: toggleFont() as
+          | '<h1>'
+          | '<h2>'
+          | '<h3>'
+          | '<h4>'
+          | '<h5>'
+          | '<h6>'
+          | '<p>',
         layoutView: '-center-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
@@ -49,8 +92,8 @@ export function fillWeek(pageName: string, blockName: string) {
     let current = date.toISOString().split('T')[0];
     let day = date.getDate().toString().padStart(2, '0'); //--|🠈 Add leading zero if needed 🠈|--//
     let month = date.toLocaleDateString('en-GB', { month: 'long' });
-    let dayText = overlay.querySelector('h1[class*="date"]') as HTMLElement;
 
+    let dayText = overlay.querySelector('[class*="date"]') as HTMLElement;
     if (dayText) {
       dayText.innerText = `${day} ${month}`; //--|🠈 Set text content to formatted date 🠈|--//
     }

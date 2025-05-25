@@ -15,8 +15,8 @@ export function defineButton(
 
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
-    case 'login':
     default:
+    case 'login':
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
         layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
