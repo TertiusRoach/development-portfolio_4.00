@@ -38,17 +38,11 @@ const ArticleLeave: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/4e95ff5602e321d168607a00f27ac19a53db5eb3/source/assets/svg-files/overtime-page/overtime-leave.svg';
   return (
     <article className="leave-article">
-      <header className="fullname-header">
-        <h1>Forename</h1>
-        <br />
-        <h1>Surname</h1>
-      </header>
-
       <section className="metrics-section">
         <div className="completed-row">
           <time className="h1">--:--</time>
           <h3 className="h3">Completed</h3>
-          <span>
+          <span className="design">
             <img
               alt="completed"
               style={{
@@ -61,7 +55,7 @@ const ArticleLeave: React.FC<InfoProps> = ({ info }) => {
         <div className="remaining-row">
           <time className="h1">--:--</time>
           <h3 className="h3">Remaining</h3>
-          <span>
+          <span className="design">
             <img
               alt="remaining"
               style={{
@@ -74,7 +68,7 @@ const ArticleLeave: React.FC<InfoProps> = ({ info }) => {
         <div className="overtime-row">
           <time className="h1">--:--</time>
           <h3 className="h3">Overtime</h3>
-          <span>
+          <span className="design">
             <img
               alt="overtime"
               style={{
@@ -85,6 +79,12 @@ const ArticleLeave: React.FC<InfoProps> = ({ info }) => {
           </span>
         </div>
       </section>
+
+      <header className="fullname-header">
+        <h1>Forename</h1>
+        <br />
+        <h1>Surname</h1>
+      </header>
 
       <ButtonStretch
         type="button"
