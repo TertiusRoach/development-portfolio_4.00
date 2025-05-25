@@ -40,16 +40,6 @@
           grid-area: 1 / 2 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
           grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
 
-          /*
-          button[class*='clock'] {
-            div[class*='main'] {
-              p {
-                margin-top: -0.5rem;
-              }
-            }
-          }
-          */
-
           button:first-child {
             grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
           }
