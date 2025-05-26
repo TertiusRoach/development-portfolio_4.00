@@ -101,6 +101,7 @@ section[id*='overtime'] {
   div[class*='carousel'] {
     display: flex;
     @extend %show-section;
+    @extend %place-design;
     flex-direction: column;
 
     section {

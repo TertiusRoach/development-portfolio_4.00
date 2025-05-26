@@ -67,14 +67,10 @@
   }
   @media screen and (max-width: 480px) {
     section[class*='loading'] {
-      grid-template: 6rem 1fr 234px 1fr 6rem / 2rem 1fr 416px 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-      // grid-template: 6rem 1fr /* ?? 234px ?? */ 1fr 6rem / 2rem 1fr /* ?? 416px ?? */ 1fr 2rem;
+      grid-template: 6rem 1fr 166.5px 1fr 6rem / 2rem 1fr 296px 1fr 2rem;
     }
   }
   @media screen and (max-width: 360px) {
-    section[class*='loading'] {
-      grid-template: 6rem 1fr 166.5px 1fr 6rem / 2rem 1fr 296px 1fr 2rem;
-    }
   }
 }
 
