@@ -42,61 +42,60 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  console.log(stripBrackets(blockName, '<>')); // returns "overlay"
+  // console.log(stripBrackets(blockName, '<>')); // returns "overlay"
 
   return (
     <menu className={`overtime-menu`}>
-      {(function renderBlock() {
-        switch (blockName) {
-          case '<overlay>':
-            return (
-              <>
-                <li>Overlay content</li>
-              </>
-            );
+      <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+        {(function loadBlock() {
+          switch (blockName) {
+            case '<overlay>':
+              return (
+                <>
+                  <li>Overlay content</li>
+                </>
+              );
 
-          case '<leftbar>':
-            return (
-              <>
-                <li>Leftbar content</li>
-              </>
-            );
+            case '<leftbar>':
+              return (
+                <>
+                  <li>Leftbar content</li>
+                </>
+              );
 
-          case '<rightbar>':
-            return (
-              <>
-                <li>Rightbar content</li>
-              </>
-            );
+            case '<rightbar>':
+              return (
+                <>
+                  <li>Rightbar content</li>
+                </>
+              );
 
-          case '<header>':
-            return (
-              <>
-                {/* <TimeDaily info={info} /> */}
-                {/* <DivisionIdentity info={info} /> */}
-                {/* <NavigationPreview info={info} /> */}
-                {/* <SpanScrolling block={'<header>'} info={info} /> */}
-
-                {/* <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            case '<header>':
+              return (
+                <>
+                  {/* <TimeDaily info={info} /> */}
+                  {/* <DivisionIdentity info={info} /> */}
+                  {/* <NavigationPreview info={info} /> */}
+                  {/* <SpanScrolling block={'<header>'} info={info} /> */}
                   <li>Header content</li>
-                </ol> */}
-              </>
-            );
-          case '<footer>':
-            return (
-              <>
-                <li>Footer content</li>
-              </>
-            );
-          case '<main>':
-          default:
-            return (
-              <>
-                <li>Main content</li>
-              </>
-            );
-        }
-      })()}
+                </>
+              );
+            case '<footer>':
+              return (
+                <>
+                  <li>Footer content</li>
+                </>
+              );
+            case '<main>':
+            default:
+              return (
+                <>
+                  <li>Main content</li>
+                </>
+              );
+          }
+        })()}
+      </ol>
     </menu>
   );
 };
