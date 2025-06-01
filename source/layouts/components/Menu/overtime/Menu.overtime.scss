@@ -2,20 +2,67 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 1fr / 3rem repeat(3, 1fr) 3rem; //~~|🠊 rows / columns 🠈|~~//
-  // background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 12.5%);
+  //--|🠊 display: flex; 🠈|--//
 
-  /*
-  li {
+  ol[class='overlay'] {
+    li {
+      display: grid;
+    }
   }
-  */
+  ol[class='leftbar'] {
+    li {
+      display: grid;
+    }
+  }
+  ol[class='rightbar'] {
+    li {
+      display: grid;
+    }
+  }
+
+  ol[class='header'] {
+    /*
+    display: grid; //--|🠈 display: grid; 🠈|--//
+    grid-template: repeat(2, 4rem) / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+    */
+
+    /*
+    nav[class*='preview'] {
+      z-index: 4;
+      grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    div[class*='identity'] {
+      z-index: 3;
+      grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
+
+    span[class*='scrolling'] {
+      z-index: 1;
+      grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    time[class*='daily'] {
+      z-index: 0;
+      grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    */
+
+    /*
+    li {
+      display: grid;
+    }
+    */
+  }
+  ol[class='footer'] {
+    li {
+      display: grid;
+    }
+  }
 }
 @mixin mobile-portrait {
 }
 
 menu[class*='overtime'] {
-  display: grid;
+  display: flex;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

@@ -17,14 +17,13 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: string;
+    blockName: string;
   };
 }
 const DivisionIdentity: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'header';
-  const pageName = info.identification as 'overtime' | 'ticketing' | 'hyperlink';
+  const pageName = info.pageName as 'overtime' | 'ticketing' | 'hyperlink';
 
   useEffect(() => {}, [pageName, blockName]);
 

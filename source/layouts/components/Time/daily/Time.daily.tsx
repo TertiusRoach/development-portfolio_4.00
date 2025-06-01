@@ -18,14 +18,13 @@ import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: string;
+    blockName: string;
   };
 }
 const TimeDaily: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'header';
-  const pageName = info.identification;
+  const pageName = info.pageName;
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
   const handleDaily = async () => {};

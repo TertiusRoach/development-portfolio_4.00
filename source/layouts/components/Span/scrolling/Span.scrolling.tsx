@@ -18,13 +18,12 @@ import { viewBlock, viewText, axiosError } from '../../../pages/landing';
 interface InfoProps {
   block: '<header>' | '<footer>' | '<aside>';
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: string;
+    blockName: string;
   };
 }
 const SpanScrolling: React.FC<InfoProps> = ({ block, info }) => {
-  const pageName = info.identification as 'overtime';
+  const pageName = info.pageName as 'overtime';
   const blockName = traceBlock(block) as 'header' | 'footer' | 'aside';
 
   const [layout, setLayout] = useState<React.ReactNode>(null);

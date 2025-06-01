@@ -8,7 +8,13 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { toggleHeader, defineButton } from './Navigation_preview';
-import { viewBlock, viewText, axiosError, retrieveEndpoint, viewPass } from '../../../pages/landing';
+import {
+  viewBlock,
+  viewText,
+  axiosError,
+  retrieveEndpoint,
+  viewPass,
+} from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
@@ -19,14 +25,13 @@ import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: string;
+    blockName: string;
   };
 }
 const NavigationPreview: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'header';
-  const pageName = info.identification as 'overtime' | 'ticketing' | 'hyperlink';
+  const pageName = info.pageName as 'overtime' | 'ticketing' | 'hyperlink';
 
   const handlePreview = async () => {};
 

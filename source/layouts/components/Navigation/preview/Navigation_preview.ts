@@ -1,12 +1,15 @@
 //--|🠊 Navigation_preview.ts 🠈|--//
-export function defineButton(button: 'preview', info: { blockName: string; pageName: string }) {
+export function defineButton(
+  button: 'preview',
+  info: { blockName: string; pageName: string }
+) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
   switch (button) {
     case 'preview':
       return {
         fontSize: '<h4>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
