@@ -73,11 +73,18 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
             case '<header>':
               return (
                 <>
-                  {/* <TimeDaily info={info} /> */}
-                  {/* <DivisionIdentity info={info} /> */}
-                  {/* <NavigationPreview info={info} /> */}
-                  {/* <SpanScrolling block={'<header>'} info={info} /> */}
-                  <li>Header content</li>
+                  <li className="identity-list">
+                    <DivisionIdentity info={info} />
+                  </li>
+                  <li className="daily-list">
+                    <TimeDaily info={info} />
+                  </li>
+                  <li className="scrolling-list">
+                    <SpanScrolling block={blockName} info={info} />
+                  </li>
+                  <li className="preview-list">
+                    <NavigationPreview info={info} />
+                  </li>
                 </>
               );
             case '<footer>':

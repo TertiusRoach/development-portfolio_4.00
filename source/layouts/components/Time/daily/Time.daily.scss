@@ -4,8 +4,8 @@
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
   h1 {
+    padding-left: 1rem;
     margin: 8px 0 8px 0;
-    padding-left: 10rem;
     color: Palettes.$trackDay-light;
   }
 }

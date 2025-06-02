@@ -3,6 +3,7 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
+  height: 100%;
   button {
     opacity: 0;
     width: 100%;

@@ -3,6 +3,7 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
+  height: 100%;
   border-bottom-right-radius: 4rem; //--|🠈 Curve Bottom Right Corner 🠈|--//
   border-right: 8px solid transparent;
   border-bottom: 8px solid transparent;
@@ -35,18 +36,21 @@ div[class*='identity'] {
     background: linear-gradient(135deg, white, Palettes.$trackDay-light) padding-box,
       //--|🠉 Border  Background 🠉|--//
       //--|🠋 Element Background 🠋|--//
-      linear-gradient(135deg, Palettes.$trackDay-medium, Palettes.$trackDay-dark) border-box;
+      linear-gradient(135deg, Palettes.$trackDay-medium, Palettes.$trackDay-dark)
+        border-box;
   }
   &[class*='ticketing'] {
     background: linear-gradient(135deg, white, Palettes.$logTicket-light) padding-box,
       //--|🠉 Border  Background 🠉|--//
       //--|🠋 Element Background 🠋|--//
-      linear-gradient(135deg, Palettes.$logTicket-medium, Palettes.$logTicket-dark) border-box;
+      linear-gradient(135deg, Palettes.$logTicket-medium, Palettes.$logTicket-dark)
+        border-box;
   }
   &[class*='hyperlink'] {
     background: linear-gradient(135deg, white, Palettes.$findLink-light) padding-box,
       //--|🠉 Border  Background 🠉|--//
       //--|🠋 Element Background 🠋|--//
-      linear-gradient(135deg, Palettes.$findLink-medium, Palettes.$findLink-dark) border-box;
+      linear-gradient(135deg, Palettes.$findLink-medium, Palettes.$findLink-dark)
+        border-box;
   }
 }
