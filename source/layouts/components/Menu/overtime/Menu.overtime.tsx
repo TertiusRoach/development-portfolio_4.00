@@ -42,8 +42,6 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  // console.log(stripBrackets(blockName, '<>')); // returns "overlay"
-
   return (
     <menu className={`overtime-menu`}>
       <ol className={`${stripBrackets(blockName, '<>')}-list`}>
