@@ -90,7 +90,9 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
             case '<footer>':
               return (
                 <>
-                  <li>Footer content</li>
+                  <li className="scrolling-list">
+                    <SpanScrolling block={blockName} info={info} />
+                  </li>
                 </>
               );
             case '<main>':

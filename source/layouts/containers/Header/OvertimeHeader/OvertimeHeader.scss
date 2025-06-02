@@ -8,10 +8,8 @@
 
   menu[class*='overtime'] {
     z-index: 1;
-
     grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
-
   section[class*='preview'] {
     z-index: 0;
     grid-area: 1 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//

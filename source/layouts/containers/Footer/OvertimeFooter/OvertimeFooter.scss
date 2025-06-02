@@ -7,14 +7,16 @@
 
   menu[class*='overtime'] {
     z-index: 2;
-    display: inherit; //--|🠈 display: grid; 🠈|--//
     grid-area: 3 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    /*
+    display: inherit; //--|🠈 display: grid; 🠈|--//
     grid-template: 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
 
     span[class*='scrolling'] {
       padding-left: 8rem;
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
+    */
   }
 
   //--|🠋 Desktop (Landscape) 🠋|--//
