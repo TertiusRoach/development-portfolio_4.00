@@ -44,7 +44,7 @@ const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/079e1e37e24da759c2cf7910c8659593bc74c8e5/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-light.svg';
   return (
     <section
-      style={{ zIndex: 3 }}
+      style={{ zIndex: 5 }}
       id={`${pageName}-${blockName}`}
       className={`default-${blockName} ${stateType}`}
     >

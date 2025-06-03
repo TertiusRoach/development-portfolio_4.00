@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { viewBlock } from '../../../pages/overtime';
 import { defineButton, fillWeek } from './Navigation_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -45,11 +46,13 @@ const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
                 <ButtonStretch
                   type="button"
                   text="Clock-in"
+                  onClick={() => viewBlock('clocking')}
                   style={defineButton('clock-in', { pageName, blockName })}
                 />
                 <ButtonStretch
                   type="button"
                   text="Clock-out"
+                  onClick={() => viewBlock('clocking')}
                   style={defineButton('clock-out', { pageName, blockName })}
                 />
               </div>

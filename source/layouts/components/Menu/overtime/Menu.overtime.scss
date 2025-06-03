@@ -64,23 +64,3 @@ menu[class*='overtime'] {
     @include mobile-portrait();
   }
 }
-
-/*
-      nav[class*='preview'] {
-        z-index: 4;
-        grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      div[class*='identity'] {
-        z-index: 3;
-        grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-
-      span[class*='scrolling'] {
-        z-index: 1;
-        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      time[class*='daily'] {
-        z-index: 0;
-        grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      */

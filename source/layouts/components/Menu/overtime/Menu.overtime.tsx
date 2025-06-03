@@ -32,78 +32,82 @@ interface InfoProps {
       | '<header>'
       | '<footer>'
       | '<main>';
+    stateName?: 'established' | 'freelancing';
   };
 }
 const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as string;
   const pageName = info.pageName as 'overtime';
 
-  const handleOvertime = async () => {};
+  const handleOvertime = (
+    blockName:
+      | '<overlay>'
+      | '<leftbar>'
+      | '<rightbar>'
+      | '<header>'
+      | '<footer>'
+      | '<main>'
+      | string
+  ) => {
+    switch (blockName) {
+      case '<overlay>':
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li>Overlay content</li>
+          </ol>
+        );
+
+      case '<leftbar>':
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li>Leftbar content</li>
+          </ol>
+        );
+
+      case '<rightbar>':
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li>Rightbar content</li>
+          </ol>
+        );
+
+      case '<header>':
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li className="identity-list">
+              <DivisionIdentity info={info} />
+            </li>
+            <li className="daily-list">
+              <TimeDaily info={info} />
+            </li>
+            <li className="scrolling-list">
+              <SpanScrolling block={blockName} info={info} />
+            </li>
+            <li className="preview-list">
+              <NavigationPreview info={info} />
+            </li>
+          </ol>
+        );
+      case '<footer>':
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li className="scrolling-list">
+              <SpanScrolling block={blockName} info={info} />
+            </li>
+          </ol>
+        );
+      case '<main>':
+      default:
+        return (
+          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+            <li>Main content</li>
+          </ol>
+        );
+    }
+  };
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return (
-    <menu className={`overtime-menu`}>
-      <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-        {(function loadBlock() {
-          switch (blockName) {
-            case '<overlay>':
-              return (
-                <>
-                  <li>Overlay content</li>
-                </>
-              );
-
-            case '<leftbar>':
-              return (
-                <>
-                  <li>Leftbar content</li>
-                </>
-              );
-
-            case '<rightbar>':
-              return (
-                <>
-                  <li>Rightbar content</li>
-                </>
-              );
-
-            case '<header>':
-              return (
-                <>
-                  <li className="identity-list">
-                    <DivisionIdentity info={info} />
-                  </li>
-                  <li className="daily-list">
-                    <TimeDaily info={info} />
-                  </li>
-                  <li className="scrolling-list">
-                    <SpanScrolling block={blockName} info={info} />
-                  </li>
-                  <li className="preview-list">
-                    <NavigationPreview info={info} />
-                  </li>
-                </>
-              );
-            case '<footer>':
-              return (
-                <>
-                  <li className="scrolling-list">
-                    <SpanScrolling block={blockName} info={info} />
-                  </li>
-                </>
-              );
-            case '<main>':
-            default:
-              return (
-                <>
-                  <li>Main content</li>
-                </>
-              );
-          }
-        })()}
-      </ol>
-    </menu>
-  );
+  return <menu className={'overtime-menu'}>{handleOvertime(blockName)}</menu>;
 };
 export default MenuOvertime;

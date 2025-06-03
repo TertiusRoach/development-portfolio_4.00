@@ -225,7 +225,6 @@ export function alterWeek(pageName: string) {
     }
   }
 }
-
 export const traceBlock = (block: '<header>' | '<footer>' | '<aside>') => {
   if (block === '<header>') {
     return 'header';

@@ -1,0 +1,35 @@
+//--|🠊 Navigation.overtime.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: block; 🠈|--//
+  div {
+    height: 100%; //--|🠊 height: 8rem; 🠈|--//
+
+    &[class*='leftbar'] {
+      button {
+        width: 100%;
+        height: inherit; //--|🠈 height: 100%; 🠈|--//
+        div img {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+nav[class*='overtime'] {
+  display: block;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

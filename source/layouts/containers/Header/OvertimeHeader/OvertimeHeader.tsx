@@ -29,17 +29,11 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header
-      className={`default-${blockName} ${stateName}`}
-      id={`${pageName}-${blockName}`}
       style={{ zIndex: 2 }}
+      id={`${pageName}-${blockName}`}
+      className={`default-${blockName} ${stateName}`}
     >
       <MenuOvertime info={{ pageName, blockName: '<header>' }} />
-      {/* <menu className={`${pageName}-menu`}>        
-        <TimeDaily info={info} />
-        <DivisionIdentity info={info} />
-        <NavigationPreview info={info} />
-        <SpanScrolling block={'<header>'} info={info} />
-      </menu> */}
 
       <SectionPreview info={info} />
     </header>
