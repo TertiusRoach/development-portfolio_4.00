@@ -1,12 +1,10 @@
 //--|🠊 LandingMain.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
+import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
@@ -23,45 +21,41 @@ import NavigationLanding from '../../../components/Navigation/landing/Navigation
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   useEffect(() => {
     randomizeCarousel(pageName, blockName);
   }, [pageName, blockName]);
 
   return (
-    <main
-      id={`${pageName}-${blockName}`}
-      style={{ zIndex: 0 }}
-      className={`default-${blockName}`}
-    >
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
-            <FormRegister info={info} />
-            <NavigationLanding info={info} form="register" />
-            <FigureRotation style={{ fadeView: 'track-a-day' }} />
+            {/* <FormRegister info={info} /> */}
+            {/* <NavigationLanding info={info} form="register" /> */}
+            {/* <FigureRotation style={{ fadeView: 'track-a-day' }} /> */}
           </div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
-            <FormLogin info={info} />
-            <NavigationLanding info={info} form="login" />
-            <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
+            {/* <FormLogin info={info} /> */}
+            {/* <NavigationLanding info={info} form="login" /> */}
+            {/* <FigureRotation style={{ fadeView: 'log-a-ticket' }} /> */}
           </div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
-            <FormPassword info={info} />
-            <NavigationLanding info={info} form="password" />
-            <FigureRotation style={{ fadeView: 'find-a-link' }} />
+            {/* <FormPassword info={info} /> */}
+            {/* <NavigationLanding info={info} form="password" /> */}
+            {/* <FigureRotation style={{ fadeView: 'find-a-link' }} /> */}
           </div>
         </section>
       </div>
@@ -71,9 +65,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 export default LandingMain;
 
 function randomizeCarousel(pageName: 'landing' | string, blockName: 'main' | string) {
-  const carousel = document.querySelector(
-    `#${pageName}-${blockName} .landing-carousel`
-  ) as HTMLElement;
+  const carousel = document.querySelector(`#${pageName}-${blockName} .landing-carousel`) as HTMLElement;
 
   let randomizeCarousel: string;
   let randomize = Math.floor(Math.random() * 3);

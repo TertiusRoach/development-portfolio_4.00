@@ -50,11 +50,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <main
-      style={{ zIndex: 0 }}
-      id={`${pageName}-${blockName}`}
-      className={`default-${blockName}`}
-    >
+    <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
         <section className="weekdays-section">
           <div

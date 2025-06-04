@@ -1,13 +1,8 @@
 //--|🠊 Article.selection.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { loadDemo } from '../../../../index';
-import {
-  defineButton,
-  hideFigure,
-  showFigure,
-  showMain,
-  getIcon,
-} from './Article_selection';
+import { stripBrackets } from '../../../scripts/landing';
+import { defineButton, hideFigure, showFigure, showMain, getIcon } from './Article_selection';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.selection.scss';
@@ -25,16 +20,15 @@ import FigureRotation from '../../Figure/rotation/Figure.rotation';
 
 interface InfoProps {
   onMouseLeave?: () => void;
-
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'overlay';
-  const pageName = info.identification as 'landing';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
 
   const handleSelection = () => {};
 
@@ -43,11 +37,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
   return (
     <article className="selection-article">
       <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
-        <figure
-          className="apps-figure"
-          onClick={(event) => hideFigure(event)}
-          onMouseEnter={(event) => hideFigure(event)}
-        >
+        <figure className="apps-figure" onClick={(event) => hideFigure(event)} onMouseEnter={(event) => hideFigure(event)}>
           {toggleFont('open-apps')}
           <img
             style={{
@@ -72,11 +62,7 @@ const ArticleSelection: React.FC<InfoProps> = ({ info }) => {
         </nav>
       </aside>
       <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
-        <figure
-          className="demo-figure"
-          onClick={(event) => hideFigure(event)}
-          onMouseEnter={(event) => hideFigure(event)}
-        >
+        <figure className="demo-figure" onClick={(event) => hideFigure(event)} onMouseEnter={(event) => hideFigure(event)}>
           {toggleFont('view-demo')}
           <img
             style={{

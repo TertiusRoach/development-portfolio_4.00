@@ -1,4 +1,4 @@
-//--|🠊 source/layouts/pages/landing.tsx 🠈|--//
+//--|🠊 landing.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -23,14 +23,16 @@ function Landing() {
   return (
     <EmailProvider>
       <PasswordProvider>
-        <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>', roleName: '()' }} />
+        <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>' }} />
+
+        <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
 
         <Suspense fallback={<div>Loading...</div>}>
           {/* <LandingLeftbar info={information} /> */}
           {/* <LandingRightbar info={information} /> */}
 
           {/* <LandingHeader info={information} /> */}
-          {/* <LandingMain info={information} /> */}
+
           {/* <LandingFooter info={information} /> */}
         </Suspense>
       </PasswordProvider>
@@ -191,16 +193,5 @@ export function retrieveEndpoint(
 }
 
 /*
-  let information = {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName:
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>'
-      | string;
-    roleName?: string;
-  };
+
   */
