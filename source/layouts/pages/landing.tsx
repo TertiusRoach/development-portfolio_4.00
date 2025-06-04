@@ -47,7 +47,9 @@ function Landing() {
 }
 export default Landing;
 
-export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
+export function viewBlock(
+  page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked'
+) {
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
   const login = carousel.childNodes[1] as HTMLElement;
   const register = carousel.childNodes[0] as HTMLElement;
@@ -88,11 +90,15 @@ export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | '
         blocked.className = 'default-footer expanded'; //--|🠈 Show Blocked 🠈|--//
         break;
       case '<leftbar>':
-        let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
+        let verify = document.querySelectorAll(
+          "aside[class*='leftbar']"
+        )[0] as HTMLElement;
         verify.className = 'default-leftbar expanded'; //--|🠈 Show Verify 🠈|--//
         break;
       case '<rightbar>':
-        let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
+        let reset = document.querySelectorAll(
+          "aside[class*='rightbar']"
+        )[0] as HTMLElement;
         reset.className = 'default-rightbar expanded'; //--|🠈 Show Reset 🠈|--//
         break;
     }
@@ -140,7 +146,10 @@ export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | '
       break;
   }
 }
-export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked', text: string) {
+export function viewText(
+  page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked',
+  text: string
+) {
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
@@ -167,13 +176,21 @@ export function axiosError(error: unknown) {
         alert('status(404): Axios Error: Server not found. Please try again later.');
         break;
       case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
-        alert('status(401):Axios Error: Unauthorized access. Please check your credentials and try again.');
+        alert(
+          'status(401):Axios Error: Unauthorized access. Please check your credentials and try again.'
+        );
         break;
       case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
-        alert('status(500)): Axios Error: Internal Server Error. Please try again later.');
+        alert(
+          'status(500)): Axios Error: Internal Server Error. Please try again later.'
+        );
         break;
       default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
-        alert(`status(default):Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
+        alert(
+          `status(default):Axios Error: ${
+            message || 'A network error occurred. Please check your connection.'
+          }`
+        );
     }
 
     //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
