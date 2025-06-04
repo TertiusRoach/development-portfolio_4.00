@@ -95,6 +95,10 @@ These `${blockName}` keywords avoids any asynchronous overlapping when it comes 
 
 > npm run stop
 
+//--|🠋 Switch GitHub branches 🠈|--//
+
+> git checkout 4.01
+
 # Application Installation
 
 Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
