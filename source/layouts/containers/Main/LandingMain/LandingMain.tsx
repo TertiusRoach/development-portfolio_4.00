@@ -39,23 +39,23 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
-            {/* <FormRegister info={info} /> */}
-            {/* <NavigationLanding info={info} form="register" /> */}
-            {/* <FigureRotation style={{ fadeView: 'track-a-day' }} /> */}
+            <FormRegister info={info} />
+            <NavigationLanding info={info} form="register" />
+            <FigureRotation style={{ fadeView: 'track-a-day' }} />
           </div>
         </section>
         <section className="login-section visible">
           <div className="login-container">
-            {/* <FormLogin info={info} /> */}
-            {/* <NavigationLanding info={info} form="login" /> */}
-            {/* <FigureRotation style={{ fadeView: 'log-a-ticket' }} /> */}
+            <FormLogin info={info} />
+            <NavigationLanding info={info} form="login" />
+            <FigureRotation style={{ fadeView: 'log-a-ticket' }} />
           </div>
         </section>
         <section className="password-section hidden">
           <div className="password-container">
-            {/* <FormPassword info={info} /> */}
-            {/* <NavigationLanding info={info} form="password" /> */}
-            {/* <FigureRotation style={{ fadeView: 'find-a-link' }} /> */}
+            <FormPassword info={info} />
+            <NavigationLanding info={info} form="password" />
+            <FigureRotation style={{ fadeView: 'find-a-link' }} />
           </div>
         </section>
       </div>

@@ -1,4 +1,7 @@
 //--|🠊 Form.password.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Form.password.scss';
 //--|🠉 Styles 🠉|--//
@@ -20,16 +23,18 @@ import ButtonDefault from '../../Button/default/Button.default';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const FormPassword: React.FC<InfoProps> = ({ info }) => {
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  /*
   const blockName = 'main';
   const pageName = info.identification;
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg';
+  */
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -92,9 +97,10 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {
-    // showDemos(pageName);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
+
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg';
 
   return (
     <form className="password-form" onSubmit={(event) => handlePassword(event)}>

@@ -24,7 +24,6 @@ function Landing() {
     <EmailProvider>
       <PasswordProvider>
         <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>' }} />
-
         <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
 
         <Suspense fallback={<div>Loading...</div>}>

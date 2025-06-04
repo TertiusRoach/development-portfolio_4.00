@@ -1,14 +1,9 @@
 //--|🠊 Form_password.ts 🠈|--//
-export function defineButton(
-  button: 'register' | 'login' | 'password',
-  info: { blockName: string; pageName: string }
-) {
+export function defineButton(button: 'register' | 'login' | 'password', info: { blockName: string; pageName: string }) {
   const { blockName, pageName } = info;
   //--|🠋 Always Return an Object 🠋|--//
-  const portrait =
-    window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
-  const landscape =
-    window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
+  const portrait = window.innerWidth < 768 && window.matchMedia('(orientation: portrait)').matches;
+  const landscape = window.innerHeight < 768 && window.matchMedia('(orientation: landscape)').matches;
 
   let layoutView: '-left-' | '-right-' | '-center-' | '-icon-' | '-text-';
   let fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
@@ -23,7 +18,7 @@ export function defineButton(
       }
       return {
         fontSize: fontSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: layoutView as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: layoutView as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -66,7 +61,6 @@ export function defineButton(
       };
   }
 }
-
 export function showDemos(pageName: 'landing' | string) {
   let closePassword = document.querySelector('.password-close') as HTMLElement;
   let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
