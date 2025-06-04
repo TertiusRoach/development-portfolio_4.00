@@ -1,55 +1,45 @@
-//--|🠊 source/script/landing.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-// import '../layouts/styles/landing.scss';
-//--|🠉 Styles 🠉|--//
+//--|🠊 source/layouts/pages/landing.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
+
+import { Suspense, lazy } from 'react';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
 import { EmailProvider } from '../../modules/context/EmailContext';
 import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
-//--|🠋 Containers 🠋|--//
-import LandingMain from '../containers/Main/LandingMain/LandingMain';
-import LandingHeader from '../containers/Header/LandingHeader/LandingHeader';
-import LandingFooter from '../containers/Footer/LandingFooter/LandingFooter';
-import LandingOverlay from '../containers/Overlay/LandingOverlay/LandingOverlay';
-import LandingLeftbar from '../containers/Leftbar/LandingLeftbar/LandingLeftbar';
-import LandingRightbar from '../containers/Rightbar/LandingRightbar/LandingRightbar';
-//--|🠉 Containers 🠉|--//
-//--|🠋 Utilities 🠋|--//
-import getResolution from '../../modules/tools/getResolution';
-import getOrientation from '../../modules/tools/getOrientation';
-import getIdentification from '../../modules/tools/getIdentification';
-//--|🠉 Utilities 🠉|--//
-function Landing() {
-  let information = {
-    resolution: `${getResolution()}`,
-    orientation: `${getOrientation()}`,
-    identification: 'landing' as 'landing',
-  };
 
+//--|🠋 Containers 🠋|--//
+const LandingMain = lazy(() => import('../containers/Main/LandingMain/LandingMain'));
+const LandingHeader = lazy(() => import('../containers/Header/LandingHeader/LandingHeader'));
+const LandingFooter = lazy(() => import('../containers/Footer/LandingFooter/LandingFooter'));
+const LandingOverlay = lazy(() => import('../containers/Overlay/LandingOverlay/LandingOverlay'));
+const LandingLeftbar = lazy(() => import('../containers/Leftbar/LandingLeftbar/LandingLeftbar'));
+const LandingRightbar = lazy(() => import('../containers/Rightbar/LandingRightbar/LandingRightbar'));
+//--|🠉 Containers 🠉|--//
+function Landing() {
   return (
     <EmailProvider>
       <PasswordProvider>
-        <LandingOverlay info={information} />
-        {/* <LandingLeftbar info={information} /> */}
-        {/* <LandingRightbar info={information} /> */}
+        <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>', roleName: '()' }} />
 
-        {/* <LandingHeader info={information} /> */}
-        {/* <LandingMain info={information} /> */}
-        {/* <LandingFooter info={information} /> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <LandingLeftbar info={information} /> */}
+          {/* <LandingRightbar info={information} /> */}
+
+          {/* <LandingHeader info={information} /> */}
+          {/* <LandingMain info={information} /> */}
+          {/* <LandingFooter info={information} /> */}
+        </Suspense>
       </PasswordProvider>
     </EmailProvider>
   );
 }
 export default Landing;
 
-export function viewBlock(
-  page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked'
-) {
+export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
   const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
   const login = carousel.childNodes[1] as HTMLElement;
   const register = carousel.childNodes[0] as HTMLElement;
@@ -90,15 +80,11 @@ export function viewBlock(
         blocked.className = 'default-footer expanded'; //--|🠈 Show Blocked 🠈|--//
         break;
       case '<leftbar>':
-        let verify = document.querySelectorAll(
-          "aside[class*='leftbar']"
-        )[0] as HTMLElement;
+        let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
         verify.className = 'default-leftbar expanded'; //--|🠈 Show Verify 🠈|--//
         break;
       case '<rightbar>':
-        let reset = document.querySelectorAll(
-          "aside[class*='rightbar']"
-        )[0] as HTMLElement;
+        let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
         reset.className = 'default-rightbar expanded'; //--|🠈 Show Reset 🠈|--//
         break;
     }
@@ -146,10 +132,7 @@ export function viewBlock(
       break;
   }
 }
-export function viewText(
-  page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked',
-  text: string
-) {
+export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked', text: string) {
   let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
   element.innerText = text;
 }
@@ -176,21 +159,13 @@ export function axiosError(error: unknown) {
         alert('status(404): Axios Error: Server not found. Please try again later.');
         break;
       case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--//
-        alert(
-          'status(401):Axios Error: Unauthorized access. Please check your credentials and try again.'
-        );
+        alert('status(401):Axios Error: Unauthorized access. Please check your credentials and try again.');
         break;
       case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--//
-        alert(
-          'status(500)): Axios Error: Internal Server Error. Please try again later.'
-        );
+        alert('status(500)): Axios Error: Internal Server Error. Please try again later.');
         break;
       default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--//
-        alert(
-          `status(default):Axios Error: ${
-            message || 'A network error occurred. Please check your connection.'
-          }`
-        );
+        alert(`status(default):Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
     }
 
     //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--//
@@ -214,3 +189,18 @@ export function retrieveEndpoint(
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 }
+
+/*
+  let information = {
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName:
+      | '<overlay>'
+      | '<leftbar>'
+      | '<rightbar>'
+      | '<header>'
+      | '<footer>'
+      | '<main>'
+      | string;
+    roleName?: string;
+  };
+  */

@@ -23,14 +23,28 @@ import HeaderBranding from '../../../components/Header/branding/Header.branding'
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName:
+      | '<overlay>'
+      | '<leftbar>'
+      | '<rightbar>'
+      | '<header>'
+      | '<footer>'
+      | '<main>'
+      | string;
+    roleName?:
+      | '(established)'
+      | '(freelancing)'
+      | '(manager)'
+      | '(employee)'
+      | '(specialist)'
+      | '(technician)'
+      | string;
   };
 }
 const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'overlay';
-  const pageName = info.identification as 'landing';
+  const pageName = info.pageName as 'landing';
   const stateName: 'visible' | 'hidden' = 'visible';
 
   useEffect(() => {
@@ -42,6 +56,7 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
 
   let imageLink: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif';
+
   return (
     <section
       className={`default-${blockName} ${stateName}`}
@@ -53,8 +68,8 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
           <img src={imageLink} alt="loading-logo" />
         </section>
         <section className="selection-section">
-          <HeaderBranding info={info} />
-          <ArticleSelection info={info} />
+          {/* <HeaderBranding info={info} /> */}
+          {/* <ArticleSelection info={info} /> */}
         </section>
       </div>
     </section>
