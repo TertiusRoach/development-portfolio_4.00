@@ -29,14 +29,14 @@ function Overtime() {
   };
   return (
     <>
-      <OvertimeOverlay info={information} />
-      <OvertimeLeftbar
+      {/* <OvertimeOverlay info={information} /> */}
+      {/* <OvertimeLeftbar
         info={{ pageName: information.identification, blockName: '<leftbar>' }}
-      />
+      /> */}
 
-      <OvertimeHeader info={information} />
-      <OvertimeMain info={information} />
-      <OvertimeFooter info={information} />
+      {/* <OvertimeHeader info={information} /> */}
+      {/* <OvertimeMain info={information} /> */}
+      {/* <OvertimeFooter info={information} /> */}
     </>
   );
 }
