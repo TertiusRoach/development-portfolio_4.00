@@ -19,16 +19,17 @@ function Landing() {
   return (
     <EmailProvider>
       <PasswordProvider>
-        <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>' }} />
-        <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
-
         <Suspense fallback={<div className="display-1">Loading...</div>}>
+          <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
+
           <LandingLeftbar info={{ pageName: '[landing]', blockName: '<leftbar>' }} />
           <LandingRightbar info={{ pageName: '[landing]', blockName: '<rightbar>' }} />
 
           <LandingHeader info={{ pageName: '[landing]', blockName: '<header>' }} />
           <LandingFooter info={{ pageName: '[landing]', blockName: '<footer>' }} />
         </Suspense>
+
+        <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>' }} />
       </PasswordProvider>
     </EmailProvider>
   );
