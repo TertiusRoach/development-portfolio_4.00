@@ -1,10 +1,10 @@
 //--|🠊 Form.register.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Form.register.scss';
 //--|🠉 Styles 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';

@@ -34,32 +34,34 @@
     z-index: 1;
     grid-area: 1 / 1 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   }
-  /*
-  menu[class*='landing'] {
-    z-index: 0;
-    grid-area: 1 / 1 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  */
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
-    div[class*='container'] {
-      grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
-      nav {
-        grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      form {
-        grid-area: 2 / 3 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    div[class*='carousel'] {
+      section {
+        div[class*='container'] {
+          grid-template: 4rem 1fr 26rem 1fr 4rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+          nav {
+            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+          form {
+            grid-area: 2 / 3 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+        }
       }
     }
   }
   @media screen and (max-height: 480px) {
   }
   @media screen and (max-height: 360px) {
-    div[class*='container'] {
-      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
-      nav {
-        grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    div[class*='carousel'] {
+      section {
+        div[class*='container'] {
+          grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
+          nav {
+            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+        }
       }
     }
   }
@@ -73,13 +75,10 @@
     grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
 
     nav {
-      // display: none;
       z-index: 1;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
-    form[class*='login'],
-    form[class*='register'],
-    form[class*='password'] {
+    form[class*='form'] {
       z-index: 2;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
