@@ -8,7 +8,7 @@ import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { closeRightbar, defineButton, generatePassword, getCode } from './Form_reset';
-import { viewBlock, viewText, viewPass, axiosError, retrieveEndpoint } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass, axiosError, retrieveEndpoint } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';

@@ -2,8 +2,8 @@
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
 import { stripBrackets } from '../../../scripts/landing';
-import { axiosError, retrieveEndpoint } from '../../../pages/landing';
-import { viewBlock, viewText, viewPass } from '../../../pages/landing';
+import { axiosError, retrieveEndpoint } from '../../../scripts/landing';
+import { viewBlock, viewText, viewPass } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';

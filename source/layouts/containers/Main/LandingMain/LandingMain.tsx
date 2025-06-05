@@ -1,16 +1,7 @@
 //--|🠊 LandingMain.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
 import FormRegister from '../../../components/Form/register/Form.register';
@@ -18,6 +9,9 @@ import FormPassword from '../../../components/Form/password/Form.password';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 import NavigationLanding from '../../../components/Navigation/landing/Navigation.landing';
 //--|🠉 Components 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   info: {

@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { showDemos, defineButton, generatePassword } from './Form_register';
-import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
