@@ -1,0 +1,66 @@
+//--|🠊 Menu.landing.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--//
+  ol[class*='list'] {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    list-style: none;
+
+    &[class*='header'] {
+      grid-template: repeat(2, 4rem) / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+      li[class*='daily'] {
+        grid-area: 1 / 2 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      li[class*='preview'],
+      li[class*='identity'] {
+        grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      }
+      li[class*='scrolling'] {
+        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
+    }
+    &[class*='footer'] {
+      grid-template: 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+      li[class*='scrolling'] {
+        grid-area: 1 / 2 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
+    }
+
+    /*
+    &[class*='overlay'] {
+      li {
+        display: grid;
+      }
+    }
+    &[class*='leftbar'] {
+      li {
+        display: grid;
+      }
+    }
+    &[class*='rightbar'] {
+      li {
+        display: grid;
+      }
+    }
+    */
+  }
+}
+@mixin mobile-portrait {
+}
+
+menu[class*='landing'] {
+  display: flex;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
