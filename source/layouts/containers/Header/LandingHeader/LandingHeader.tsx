@@ -1,11 +1,8 @@
 //--|🠊 LandingHeader.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-/*
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-*/
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
@@ -14,17 +11,16 @@ import SectionLaunch from '../../../components/Section/launch/Section.launch';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const LandingHeader: React.FC<InfoProps> = ({ info }) => {
-  const blockName: string = 'header';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
-  const pageName: string = info.identification as 'landing';
-  const imageLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -36,11 +32,14 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
     }
   }
 
+  let imageLink: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
+
   const desktop = window.matchMedia('(orientation: landscape)').matches;
   // console.log(orientation);
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <SectionLaunch info={info} />
+      {/* <SectionLaunch info={info} /> */}
     </header>
   );
 };

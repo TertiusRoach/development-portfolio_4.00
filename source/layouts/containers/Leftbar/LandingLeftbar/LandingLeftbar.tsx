@@ -1,9 +1,8 @@
 //--|🠊 LandingLeftbar.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Frameworks 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Components 🠋|--//
@@ -12,14 +11,18 @@ import FormVerify from '../../../components/Form/verify/Form.verify';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  /*
   const blockName = 'leftbar';
-  const pageName = info.identification;
+  const pageName = info.pageName;
+  */
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
@@ -27,7 +30,7 @@ const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
       <h4 className="verify-label display-4">Verify</h4>
-      <FormVerify info={info} />
+      {/* <FormVerify info={info} /> */}
     </aside>
   );
 };
