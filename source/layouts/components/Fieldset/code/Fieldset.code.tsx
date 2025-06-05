@@ -8,24 +8,25 @@ import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { reactChange, reactKeydown, reactPaste } from './Fieldset_code';
-import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../pages/landing';
+import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
+import { stripBrackets } from '../../../scripts/landing';
+
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const FieldsetCode: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'sidebar';
-  const pageName = info.identification;
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c82ef634aba52a2b13811924580637ceaec1712b/source/assets/svg-files/landing-page/trash-restore.svg';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -38,6 +39,9 @@ const FieldsetCode: React.FC<InfoProps> = ({ info }) => {
   let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {}, [pageName, blockName]);
+
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c82ef634aba52a2b13811924580637ceaec1712b/source/assets/svg-files/landing-page/trash-restore.svg';
 
   return (
     <fieldset className="code-fieldset">

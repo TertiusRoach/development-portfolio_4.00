@@ -27,7 +27,7 @@ const LandingFooter: React.FC<InfoProps> = ({ info }) => {
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
       {/* <menu>Menu HTML Element</menu> */}
-      {/* <SectionBlocked info={info} /> */}
+      <SectionBlocked info={info} />
     </footer>
   );
 };

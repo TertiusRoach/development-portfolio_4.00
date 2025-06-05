@@ -14,18 +14,21 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 import ListCountdown from '../../List/countdown/List.countdown';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { viewBlock, viewText, axiosError } from '../../../pages/landing';
+import { stripBrackets } from '../../../scripts/landing';
+import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
+
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const SectionBlocked: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'footer';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail();

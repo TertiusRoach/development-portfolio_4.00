@@ -7,6 +7,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
 import { closeLeftbar, defineButton, getCode } from './Form_verify';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
@@ -21,16 +22,15 @@ import ButtonDefault from '../../Button/default/Button.default';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const FormVerify: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification;
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/91a25e4fa1bea9a24a757fad615acb2b7da41fc0/source/assets/svg-files/landing-page/key.svg';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
@@ -102,6 +102,9 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {}, [pageName, blockName]);
+
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/91a25e4fa1bea9a24a757fad615acb2b7da41fc0/source/assets/svg-files/landing-page/key.svg';
 
   return (
     <form className="verify-form" onSubmit={(event) => handleVerify(event)}>

@@ -36,10 +36,9 @@ const LandingHeader: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bad07f5fd906593a1c3faf5b0810941d4a9acaf5/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg';
 
   const desktop = window.matchMedia('(orientation: landscape)').matches;
-  // console.log(orientation);
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      {/* <SectionLaunch info={info} /> */}
+      <SectionLaunch info={info} />
     </header>
   );
 };

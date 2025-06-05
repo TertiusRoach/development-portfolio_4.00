@@ -11,16 +11,18 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
 import { scaleText, createSquare } from './List_countdown';
-import { viewBlock, viewText, axiosError } from '../../../pages/landing';
+import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 type Counters = {
   //--|🠋 Define a type alias for the countdown state 🠋|--//
   days: number;
@@ -29,8 +31,8 @@ type Counters = {
   seconds: number;
 };
 const ListCountdown: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'footer';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
 
   //--|🠋 Local Input States 🠋|--//
   let [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
