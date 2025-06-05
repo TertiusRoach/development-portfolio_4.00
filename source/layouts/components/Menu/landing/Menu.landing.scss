@@ -3,51 +3,90 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
-  ol[class*='list'] {
+  ul[class*='list'] {
     margin: 0;
     padding: 0;
     width: 100%;
     display: grid;
     list-style: none;
 
-    &[class*='header'] {
-      grid-template: repeat(2, 4rem) / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
-      li[class*='daily'] {
-        grid-area: 1 / 2 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      li[class*='preview'],
-      li[class*='identity'] {
-        grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      li[class*='scrolling'] {
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='footer'] {
-      grid-template: 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
-      li[class*='scrolling'] {
-        grid-area: 1 / 2 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-
-    /*
     &[class*='overlay'] {
+      background: rgba(red, 0.5);
+      /*
       li {
-        display: grid;
       }
+      */
     }
     &[class*='leftbar'] {
+      background: rgba(green, 0.5);
+
+      /*
       li {
-        display: grid;
       }
+      */
     }
     &[class*='rightbar'] {
+      background: rgba(blue, 0.5);
+
+      /*
       li {
-        display: grid;
       }
+      */
     }
-    */
+
+    &[class*='header'] {
+      background: rgba(brown, 0.5);
+
+      /*
+      li {
+      }
+      */
+    }
+    &[class*='footer'] {
+      background: rgba(purple, 0.5);
+
+      /*
+      li {
+      }
+      */
+    }
+    &[class*='main'] {
+      background: rgba(cyan, 0.5);
+
+      /*
+      li {
+      }
+      */
+    }
   }
+
+  /*
+  ul[class*='overlay'] {
+    li {
+    }
+  }
+  ul[class*='leftbar'] {
+    li {
+    }
+  }
+  ul[class*='rightbar'] {
+    li {
+    }
+  }
+
+  ul[class*='header'] {
+    li {
+    }
+  }
+  ul[class*='footer'] {
+    li {
+    }
+  }
+  ul[class*='main'] {
+    li {
+    }
+  }
+  */
 }
 @mixin mobile-portrait {
 }

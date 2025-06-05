@@ -3,26 +3,11 @@
 import './Menu.landing.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from './Menu_landing';
+import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
-//--|🠋 Components 🠋|--//
-/*
-import TimeDaily from '../../Time/daily/Time.daily';
-import MenuFeatures from '../features/Menu.features';
-import SpanScrolling from '../../Span/scrolling/Span.scrolling';
-import SectionPreview from '../../Section/preview/Section.preview';
-import DivisionIdentity from '../../Division/identity/Division.identity';
-import NavigationPreview from '../../Navigation/preview/Navigation.preview';
-*/
-//--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
     pageName: string;
@@ -31,61 +16,53 @@ interface InfoProps {
   };
 }
 const MenuLanding: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as string;
-  const pageName = info.pageName as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const handleOvertime = (
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
-  ) => {
+  const handleLanding = (blockName: 'overlay' | 'leftbar' | 'rightbar' | 'header' | 'footer' | 'main' | string) => {
     switch (blockName) {
-      case '<overlay>':
+      case 'overlay':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+          <ul className={`${blockName}-list`}>
             <li>Overlay content</li>
-          </ol>
+          </ul>
         );
-
-      case '<leftbar>':
+      case 'leftbar':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+          <ul className={`${blockName}-list`}>
             <li>Leftbar content</li>
-          </ol>
+          </ul>
         );
-
-      case '<rightbar>':
+      case 'rightbar':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+          <ul className={`${blockName}-list`}>
             <li>Rightbar content</li>
-          </ol>
+          </ul>
         );
-
-      case '<header>':
+      case 'header':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="identity-list">{/* <DivisionIdentity info={info} /> */}</li>
-            <li className="daily-list">{/* <TimeDaily info={info} /> */}</li>
-            <li className="scrolling-list">{/* <SpanScrolling block={blockName} info={info} /> */}</li>
-            <li className="preview-list">{/* <NavigationPreview info={info} /> */}</li>
-          </ol>
+          <ul className={`${blockName}-list`}>
+            <li>Header Content</li>
+          </ul>
         );
-      case '<footer>':
+      case 'footer':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="scrolling-list">{/* <SpanScrolling block={blockName} info={info} /> */}</li>
-          </ol>
+          <ul className={`${blockName}-list`}>
+            <li>Footer Content</li>
+          </ul>
         );
-      case '<main>':
+      case 'main':
       default:
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
+          <ul className={`${blockName}-list`}>
             <li>Main content</li>
-          </ol>
+          </ul>
         );
     }
   };
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return <menu className={'overtime-menu'}>{handleOvertime(blockName)}</menu>;
+  return <menu className={`${pageName}-menu`}>{handleLanding(blockName)}</menu>;
 };
 export default MenuLanding;

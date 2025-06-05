@@ -7,6 +7,7 @@ import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import SectionBlocked from '../../../components/Section/blocked/Section.blocked';
+import MenuLanding from '../../../components/Menu/landing/Menu.landing';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -26,7 +27,7 @@ const LandingFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      {/* <menu>Menu HTML Element</menu> */}
+      <MenuLanding info={info} />
       <SectionBlocked info={info} />
     </footer>
   );

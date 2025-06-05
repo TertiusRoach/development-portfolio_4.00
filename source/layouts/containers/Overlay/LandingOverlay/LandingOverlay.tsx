@@ -3,26 +3,13 @@
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonGrading from '../../../components/Button/grade/Button.grading';
-import DivisionLoading from '../../../components/Division/loading/Division.loading';
-import ArticleSelection from '../../../components/Article/selection/Article.selection';
-import DivisionSelection from '../../../components/Division/selection/Division.selection';
-//--|🠉 Components 🠉|--//
-//--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
+import MenuLanding from '../../../components/Menu/landing/Menu.landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
-//--|🠉 Functions 🠉|--//
+import ArticleSelection from '../../../components/Article/selection/Article.selection';
+//--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
@@ -49,7 +36,7 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
           <img src={imageLink} alt="loading-logo" />
         </section>
         <section className="selection-section">
-          <HeaderBranding info={info} />
+          <MenuLanding info={info} />
           <ArticleSelection info={info} />
         </section>
       </div>

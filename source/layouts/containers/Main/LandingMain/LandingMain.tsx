@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
+import MenuLanding from '../../../components/Menu/landing/Menu.landing';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
@@ -30,6 +31,8 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
+      <MenuLanding info={info} />
+
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
