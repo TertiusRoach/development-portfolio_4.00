@@ -1,10 +1,10 @@
 //--|🠊 LandingFooter.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
-import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
+//--|🠋 Dependencies 🠋|--//
+import React, { useState, useEffect } from 'react';
+//--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import SectionBlocked from '../../../components/Section/blocked/Section.blocked';
 import MenuLanding from '../../../components/Menu/landing/Menu.landing';

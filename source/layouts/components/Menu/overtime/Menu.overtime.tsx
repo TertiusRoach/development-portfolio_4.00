@@ -3,16 +3,11 @@
 import './Menu.overtime.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from './Menu_overtime';
+import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import TimeDaily from '../../../components/Time/daily/Time.daily';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
@@ -23,58 +18,42 @@ import NavigationPreview from '../../../components/Navigation/preview/Navigation
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    pageName: string;
-    blockName:
-      | string
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>';
-    stateName?: 'established' | 'freelancing';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as string;
-  const pageName = info.pageName as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const handleOvertime = (
-    blockName:
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>'
-      | string
-  ) => {
+  const handleOvertime = (blockName: 'overlay' | 'leftbar' | 'rightbar' | 'header' | 'footer' | 'main' | string) => {
     switch (blockName) {
-      case '<overlay>':
+      case 'overlay':
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>
             <li>Overlay content</li>
           </ol>
         );
 
-      case '<leftbar>':
+      case 'leftbar':
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>
             <li>Leftbar content</li>
           </ol>
         );
 
-      case '<rightbar>':
+      case 'rightbar':
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>
             <li>Rightbar content</li>
           </ol>
         );
 
-      case '<header>':
+      case 'header':
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="identity-list">
+            {/* <li className="identity-list">
               <DivisionIdentity info={info} />
             </li>
             <li className="daily-list">
@@ -85,18 +64,18 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
             </li>
             <li className="preview-list">
               <NavigationPreview info={info} />
-            </li>
+            </li> */}
           </ol>
         );
-      case '<footer>':
+      case 'footer':
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="scrolling-list">
+            {/* <li className="scrolling-list">
               <SpanScrolling block={blockName} info={info} />
-            </li>
+            </li> */}
           </ol>
         );
-      case '<main>':
+      case 'main':
       default:
         return (
           <ol className={`${stripBrackets(blockName, '<>')}-list`}>

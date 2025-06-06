@@ -2,17 +2,18 @@
 //--|🠋 Styles 🠋|--//
 import './Menu.landing.scss';
 //--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import React, { useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
+//--|🠋 Dependencies 🠋|--//
+import React, { useEffect } from 'react';
+//--|🠉 Dependencies 🠉|--//
+
 interface InfoProps {
   info: {
-    pageName: string;
-    blockName: string | '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>';
-    stateName?: 'established' | 'freelancing';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const MenuLanding: React.FC<InfoProps> = ({ info }) => {

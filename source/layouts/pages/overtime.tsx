@@ -19,7 +19,7 @@ function Overtime() {
         <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>' }} />
 
         {/* <OvertimeRightbar info={{ pageName: '[overtime]', blockName: '<rightbar>' }} /> */}
-        {/* <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} /> */}
+        <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} />
       </Suspense>
 
       <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />

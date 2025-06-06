@@ -1,41 +1,33 @@
 //--|🠊 OvertimeFooter.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/overtime';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
-// import ListScrolling from '../../../components/List/scrolling/List.scrolling';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
-  const blockName: string = 'footer';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
+
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
-  const pageName: string = info.identification as 'overtime';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer
-      className={`default-${blockName} collapsed`}
-      id={`${pageName}-${blockName}`}
-      style={{ zIndex: 1 }}
-    >
+    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
       <MenuOvertime info={{ pageName, blockName: '<footer>' }} />
-      {/* <menu className={`${pageName}-menu`}>
-        <SpanScrolling block={'<footer>'} info={info} />
-      </menu> */}
 
       {/* <section className={`${pageName}-section`}></section> */}
     </footer>
