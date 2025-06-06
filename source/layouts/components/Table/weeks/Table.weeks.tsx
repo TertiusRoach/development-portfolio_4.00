@@ -1,4 +1,10 @@
 //--|🠊 Table.weeks.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
+import './Table.weeks.scss';
+//--|🠉 Styles 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/overtime';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
@@ -9,21 +15,17 @@ import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--//
 import { loadWeekdays } from './Table_weeks';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Components 🠋|--//
-//--|🠉 Components 🠉|--//
-//--|🠋 Styles 🠋|--//
-import './Table.weeks.scss';
-//--|🠉 Styles 🠉|--//
+
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const TableWeeks: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
   const handleWeeks = (pageName: string, blockName: string) => {
@@ -183,21 +185,11 @@ export default TableWeeks;
 
 function alterWeekdays(pageName: string, blockName: string, viewAxis: '<y>' | '<x>') {
   //--|🠊 Query elements inside the carousel 🠈|--//
-  const carousel = document.querySelector(
-    `#${pageName}-${blockName} aside[class*="carousel"]`
-  ) as HTMLElement;
-  const weekdays = carousel.querySelectorAll(
-    `.weeks-table tbody tr td:nth-child(1)`
-  ) as NodeListOf<HTMLElement>;
-  const clockIn = carousel.querySelectorAll(
-    `.weeks-table tbody tr td:nth-child(2)`
-  ) as NodeListOf<HTMLElement>;
-  const clockOut = carousel.querySelectorAll(
-    `.weeks-table tbody tr td:nth-child(3)`
-  ) as NodeListOf<HTMLElement>;
-  const tableRows = carousel.querySelectorAll(
-    `.weeks-table tbody tr td`
-  ) as NodeListOf<HTMLElement>;
+  const carousel = document.querySelector(`#${pageName}-${blockName} aside[class*="carousel"]`) as HTMLElement;
+  const weekdays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
+  const clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
+  const clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
+  const tableRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
 
   if (carousel) {
     let portrait = window.matchMedia('(orientation: portrait)').matches as Boolean;
@@ -231,9 +223,7 @@ function alterWeekdays(pageName: string, blockName: string, viewAxis: '<y>' | '<
     });
 
     //--|🠊 Adjust the view positioning 🠈|--//
-    const container = document.querySelector(
-      `#${pageName}-${blockName} div[class*="container"]`
-    ) as HTMLElement | null;
+    const container = document.querySelector(`#${pageName}-${blockName} div[class*="container"]`) as HTMLElement | null;
 
     if (container) {
       const firstWeek = container.querySelector(`tbody:nth-child(1)`) as HTMLElement;

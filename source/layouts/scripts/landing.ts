@@ -1,13 +1,13 @@
 //--|🠊 landing.ts 🠈|--//
 import axios from 'axios';
 
-export function stripBrackets(thisText: string, blockType: '[]' | '<>' | '()'): string {
-  switch (blockType) {
-    case '[]':
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()'): string {
+  switch (wrapType) {
+    case '[]': //--|🠊 pageName 🠈|--//
       return thisText.replace(/[\[\]]/g, '');
-    case '<>':
+    case '<>': //--|🠊 blockName 🠈|--//
       return thisText.replace(/[<>]/g, '');
-    case '()':
+    case '()': //--|🠊 roleName 🠈|--//
       return thisText.replace(/[()]/g, '');
   }
 }

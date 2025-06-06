@@ -3,31 +3,29 @@
 import './Navigation.weeks.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { viewBlock } from '../../../pages/overtime';
+import { stripBrackets } from '../../../scripts/overtime';
 import { defineButton, fillWeek } from './Navigation_weeks';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonStretch from '../../Button/stretch/Button.stretch';
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
+
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const NavigationWeeks: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   const [layout, setLayout] = useState<React.ReactNode>(null);
 

@@ -1,7 +1,7 @@
 //--|🠊 Article.vocation.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { loadDemo } from '../../../../index';
 import { defineButton } from './Article_vocation';
+import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.vocation.scss';
@@ -18,16 +18,16 @@ import FigureRotation from '../../Figure/rotation/Figure.rotation';
 
 interface InfoProps {
   onMouseLeave?: () => void;
-
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const ArticleVocation: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'overlay';
-  const pageName = info.identification as 'landing';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
 
   const handleSelection = (image: 'brand' | 'demo' | 'apps') => {
     switch (image) {
@@ -72,11 +72,7 @@ const ArticleVocation: React.FC<InfoProps> = ({ info }) => {
             }}
             className="established"
           />
-          <ButtonStretch
-            type="button"
-            text={'Established'}
-            style={defineButton('established', { pageName, blockName })}
-          />
+          <ButtonStretch type="button" text={'Established'} style={defineButton('established', { pageName, blockName })} />
         </div>
         <div
           className="freelancing-container"
@@ -89,11 +85,7 @@ const ArticleVocation: React.FC<InfoProps> = ({ info }) => {
             }}
             className="established"
           />
-          <ButtonStretch
-            type="button"
-            text={'Freelancing'}
-            style={defineButton('freelancing', { pageName, blockName })}
-          />
+          <ButtonStretch type="button" text={'Freelancing'} style={defineButton('freelancing', { pageName, blockName })} />
         </div>
       </footer>
     </article>

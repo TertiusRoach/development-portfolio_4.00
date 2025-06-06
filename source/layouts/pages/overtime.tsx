@@ -1,42 +1,29 @@
 //--|🠊 overtime.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../modules/context/EmailContext';
-import { PasswordProvider } from '../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
 import OvertimeMain from '../containers/Main/OvertimeMain/OvertimeMain';
 import OvertimeHeader from '../containers/Header/OvertimeHeader/OvertimeHeader';
 import OvertimeFooter from '../containers/Footer/OvertimeFooter/OvertimeFooter';
 
-import OvertimeLeftbar from '../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar';
 import OvertimeOverlay from '../containers/Overlay/OvertimeOverlay/OvertimeOverlay';
+import OvertimeLeftbar from '../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar';
+// import OvertimeRightbar from '../containers/Rightbar/OvertimeRightbar/OvertimeRightbar';
 //--|🠉 Containers 🠉|--//
-//--|🠋 Utilities 🠋|--//
-import getResolution from '../../modules/tools/getResolution';
-import getOrientation from '../../modules/tools/getOrientation';
-import getIdentification from '../../modules/tools/getIdentification';
-//--|🠉 Utilities 🠉|--//
 function Overtime() {
-  let information = {
-    resolution: `${getResolution()}`,
-    orientation: `${getOrientation()}`,
-    identification: 'overtime' as 'overtime',
-  };
   return (
     <>
-      {/* <OvertimeOverlay info={information} /> */}
-      {/* <OvertimeLeftbar
-        info={{ pageName: information.identification, blockName: '<leftbar>' }}
-      /> */}
+      <Suspense fallback={<div className="display-1">Loading...</div>}>
+        <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>' }} />
+        <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>' }} />
 
-      {/* <OvertimeHeader info={information} /> */}
-      {/* <OvertimeMain info={information} /> */}
-      {/* <OvertimeFooter info={information} /> */}
+        {/* <OvertimeRightbar info={{ pageName: '[overtime]', blockName: '<rightbar>' }} /> */}
+        {/* <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} /> */}
+      </Suspense>
+
+      <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />
+      <OvertimeOverlay info={{ pageName: '[overtime]', blockName: '<overlay>' }} />
     </>
   );
 }
