@@ -6,6 +6,7 @@ import { stripBrackets } from '../../../scripts/buttons';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import SectionButtons from '../../../components/Section/buttons/Section.buttons';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -22,6 +23,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}></main>;
+  return (
+    <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
+      <SectionButtons info={info} />
+    </main>
+  );
 };
 export default ButtonsMain;

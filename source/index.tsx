@@ -8,6 +8,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Containers 🠋|--//
+import Buttons from './layouts/pages/buttons';
 import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
@@ -16,6 +17,7 @@ import Hyperlink from './layouts/pages/hyperlink';
 
 //--|🠋 Component Mapping 🠋|--//
 const pages: { [key: string]: React.ElementType } = {
+  'buttons-body': Buttons,
   'landing-body': Landing,
   'overtime-body': Overtime,
   'ticketing-body': Ticketing,
@@ -25,11 +27,7 @@ const pages: { [key: string]: React.ElementType } = {
 //--|🠋 Render Components 🠋|--//
 Object.entries(pages).forEach(([id]) => {
   const elementBody = document.getElementById(id) as HTMLElement;
-  const pageName = elementBody.id.split('-')[0] as
-    | 'landing'
-    | 'overtime'
-    | 'ticketing'
-    | 'hyperlink';
+  const pageName = elementBody.id.split('-')[0] as 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
   if (elementBody.classList.contains('active')) {
     switch (pageName) {
       case 'landing':
@@ -56,7 +54,7 @@ Object.entries(pages).forEach(([id]) => {
   */
 });
 
-export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
+export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons') {
   const safeRender = (id: string, component: React.ReactElement) => {
     let elementBody = document.getElementById(id) as HTMLElement;
     if (!elementBody) {
@@ -70,7 +68,7 @@ export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
       console.warn(`Element #${id} is not empty. Skipping render to avoid overwrite.`);
     }
   };
-  const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink') => {
+  const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons') => {
     let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--//
     let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
 
@@ -101,10 +99,14 @@ export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink') {
   };
 
   switch (pageName) {
+    case 'buttons':
+      setView(pageName);
+      safeRender(`${pageName}-body`, React.createElement(Buttons));
+      setTimeout(() => {}, 250);
+      break;
     case 'overtime':
       setView(pageName);
       safeRender(`${pageName}-body`, React.createElement(Overtime));
-      setTimeout(() => {}, 250);
       break;
     case 'ticketing':
       safeRender(`${pageName}-body`, React.createElement(Ticketing));

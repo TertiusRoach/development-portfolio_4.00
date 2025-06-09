@@ -1,0 +1,88 @@
+//--|🠊 Section.buttons.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 1fr / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
+
+  div[class*='buttons'] {
+    grid-row: 1 / 2; //--|🠊 row-start / row-end 🠈|--//
+    display: inherit; //--|🠈 display: grid; 🠈|--//
+    grid-template: repeat(7, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
+
+    button {
+      &:nth-child(1) {
+        grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(darkred, 0.75); 🠈|--//
+      }
+      &:nth-child(2) {
+        grid-row: 2 / 3; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(darkgreen, 0.75); 🠈|--//
+      }
+      &:nth-child(3) {
+        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(darkblue, 0.75); 🠈|--//
+      }
+      &:nth-child(4) {
+        grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(darkorange, 0.75); 🠈|--//
+      }
+      &:nth-child(5) {
+        grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(purple, 0.75); 🠈|--//
+      }
+      &:nth-child(6) {
+        grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(darkcyan, 0.75); 🠈|--//
+      }
+      &:nth-child(7) {
+        grid-row: 7 / 8; //--|🠈 row-start / row-end 🠈|--//
+        //--|🠊 background: rgba(brown, 0.75); 🠈|--//
+      }
+    }
+
+    //--|🠋 Shading View 🠋|--//
+    &[class*='dark'] {
+      grid-column: 2 / 3; //--|🠊 col-start / col-end 🠈|--//
+      background: rgba(black, 0.5);
+    }
+    &[class*='medium'] {
+      grid-column: 3 / 4; //--|🠊 col-start / col-end 🠈|--//
+      background: rgba(gray, 0.5);
+    }
+    &[class*='light'] {
+      grid-column: 4 / 5; //--|🠊 col-start / col-end 🠈|--//
+      background: rgba(white, 0.5);
+    }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+section[class*='buttons'] {
+  display: grid;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

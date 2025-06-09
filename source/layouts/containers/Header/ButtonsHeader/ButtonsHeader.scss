@@ -43,7 +43,7 @@ header[id*='buttons'] {
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
-  background: darkred;
+  background: rgba(darkred, 0.5);
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
