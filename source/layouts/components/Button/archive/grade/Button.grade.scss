@@ -1,10 +1,9 @@
-//--|🠊 Button.default.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
+//--|🠊 Button.grade.scss 🠈|--//
+@use '../../../../designs/Mixins.scss';
+@use '../../../../designs/Palettes.scss';
+@forward '../../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
   }
   @media screen and (max-height: 480px) {
@@ -13,7 +12,6 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
@@ -22,16 +20,13 @@
   }
 }
 
-button[class*='default'] {
-  @include Mixins.button-default(
+button[class*='grade'] {
+  width: 100%;
+  height: 100%;
 
-  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  @include Mixins.button-presets(
-
-  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  @include Mixins.button-spacing(
-
-  ); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-presets();
+  @include Mixins.button-spacing();
+  @include Mixins.button-grading();
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

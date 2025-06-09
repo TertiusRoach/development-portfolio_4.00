@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/leave/Article.leave';
-import ButtonStretch from '../../../components/Button/stretch/Button.stretch';
+import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
 //--|🠉 Components 🠉|--//
 

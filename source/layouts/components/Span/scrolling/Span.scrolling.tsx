@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Context 🠋|--//
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonStretch from '../../Button/stretch/Button.stretch';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton, traceBlock, showWeek, alterWeek } from './Span_scrolling';

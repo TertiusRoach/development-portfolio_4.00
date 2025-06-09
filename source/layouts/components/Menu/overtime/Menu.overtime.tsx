@@ -10,7 +10,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonStretch from '../../Button/stretch/Button.stretch';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
 
 import TimeDaily from '../../../components/Time/daily/Time.daily';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';

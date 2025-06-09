@@ -1,7 +1,6 @@
-//--|🠊 LandingHeader.scss 🠈|--//
+//--|🠊 ButtonsHeader.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 
   menu[class*='landing'] {
@@ -40,8 +39,11 @@
   }
 }
 
-header[id*='landing'] {
+header[id*='buttons'] {
   display: grid;
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+
+  background: darkred;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

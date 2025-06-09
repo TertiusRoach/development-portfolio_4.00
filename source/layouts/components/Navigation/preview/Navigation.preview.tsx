@@ -10,7 +10,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {

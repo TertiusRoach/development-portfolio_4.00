@@ -11,8 +11,8 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import MenuBranding from '../../Menu/branding/Menu.branding';
-import ButtonGrade from '../../Button/grade/Button.grade';
-import ButtonStretch from '../../Button/stretch/Button.stretch';
+import ButtonGrade from '../../Button/archive/grade/Button.grade';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 

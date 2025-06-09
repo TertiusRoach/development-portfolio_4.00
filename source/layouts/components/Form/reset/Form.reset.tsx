@@ -16,7 +16,7 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FieldsetCode from '../../Fieldset/code/Fieldset.code';
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 //--|🠋 Functions 🠋|--//

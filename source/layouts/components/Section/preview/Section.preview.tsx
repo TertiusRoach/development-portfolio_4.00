@@ -14,7 +14,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 import { defineButton, togglePreview, viewDemo } from './Section_preview';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {

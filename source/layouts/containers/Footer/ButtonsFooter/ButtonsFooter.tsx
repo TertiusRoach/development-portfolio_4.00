@@ -1,4 +1,4 @@
-//--|🠊 LandingFooter.tsx 🠈|--//
+//--|🠊 ButtonsFooter.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
@@ -6,17 +6,13 @@ import { stripBrackets } from '../../../scripts/buttons';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-/*
-import SectionBlocked from '../../../components/Section/blocked/Section.blocked';
-import MenuLanding from '../../../components/Menu/landing/Menu.landing';
-*/
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | '[buttons]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: '[buttons]' | string;
+    blockName: '<footer>' | string;
+    roleName?: string;
   };
 }
 const ButtonsFooter: React.FC<InfoProps> = ({ info }) => {

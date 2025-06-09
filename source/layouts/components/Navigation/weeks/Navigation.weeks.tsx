@@ -11,8 +11,8 @@ import { stripBrackets } from '../../../scripts/overtime';
 import { defineButton, fillWeek } from './Navigation_weeks';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonStretch from '../../Button/stretch/Button.stretch';
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {

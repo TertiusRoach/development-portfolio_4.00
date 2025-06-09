@@ -1,7 +1,7 @@
 //--|🠊 Button.stretch.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
+@use '../../../../designs/Mixins.scss';
+@use '../../../../designs/Palettes.scss';
+@forward '../../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
   @media screen and (max-height: 768px) {

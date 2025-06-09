@@ -3,31 +3,18 @@
 import React, { Suspense, lazy } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Containers 🠋|--//
-/*
-const LandingMain = lazy(() => import('../containers/Main/LandingMain/LandingMain'));
-const LandingHeader = lazy(() => import('../containers/Header/LandingHeader/LandingHeader'));
-const LandingFooter = lazy(() => import('../containers/Footer/LandingFooter/LandingFooter'));
-const LandingOverlay = lazy(() => import('../containers/Overlay/LandingOverlay/LandingOverlay'));
-const LandingLeftbar = lazy(() => import('../containers/Leftbar/LandingLeftbar/LandingLeftbar'));
-const LandingRightbar = lazy(() => import('../containers/Rightbar/LandingRightbar/LandingRightbar'));
-*/
+const ButtonsMain = lazy(() => import('../containers/Main/ButtonsMain/ButtonsMain'));
+const ButtonsHeader = lazy(() => import('../containers/Header/ButtonsHeader/ButtonsHeader'));
+const ButtonsFooter = lazy(() => import('../containers/Footer/ButtonsFooter/ButtonsFooter'));
 //--|🠉 Containers 🠉|--//
 
 function Buttons() {
   return (
-    <>
-      {/* <Suspense fallback={<div className="display-1">Loading...</div>}>
-        <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
-
-        <LandingLeftbar info={{ pageName: '[landing]', blockName: '<leftbar>' }} />
-        <LandingRightbar info={{ pageName: '[landing]', blockName: '<rightbar>' }} />
-
-        <LandingHeader info={{ pageName: '[landing]', blockName: '<header>' }} />
-        <LandingFooter info={{ pageName: '[landing]', blockName: '<footer>' }} />
-      </Suspense>
-
-      <LandingOverlay info={{ pageName: '[landing]', blockName: '<overlay>' }} /> */}
-    </>
+    <Suspense fallback={<div className="display-1">Loading...</div>}>
+      <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />
+      <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />
+      <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />
+    </Suspense>
   );
 }
 export default Buttons;
