@@ -1,0 +1,159 @@
+//--|🠊 ButtonsMain.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+main[id*='buttons'] {
+  display: grid;
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+
+/*
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+
+  aside[class*='carousel'] {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    grid-area: 3 / 1 / 4 / 4;
+    transition: transform 0.25s ease-in-out;
+
+    section[class*='workdays'] {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    section[class*='weekdays'] {
+      z-index: 0;
+      position: absolute;
+      div[class*='container'] {
+        transition: transform 0.25s ease-in-out;
+      }
+    }
+  }
+  aside[class*='metrics'] {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    grid-area: 2 / 4 / 5 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    border-radius: 4rem 0 0 4rem; //--|🠊 top-left / top-right / bottom-right / bottom-left 🠈|--//
+
+    article[class*='leave'] {
+      z-index: 0;
+      position: absolute;
+    }
+    section[class*='marketing'] {
+      z-index: 1;
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backdrop-filter: blur(2rem);
+      transition: opacity 0.25s ease-in-out;
+
+      div {
+        width: inherit;
+        height: inherit;
+      }
+      div[class*='foreground'] {
+        display: grid;
+        grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+
+        border-top-left-radius: 4rem;
+        border-bottom-left-radius: 4rem;
+        border-left: 4px solid Palettes.$trackDay-dark;
+        box-shadow: inset 0 0 2rem rgba(Palettes.$trackDay-dark, 1);
+        background: linear-gradient(
+          90deg,
+          rgba(Palettes.$trackDay-light, 1) 0%,
+          rgba(Palettes.$trackDay-light, 0.25) 50%,
+          rgba(Palettes.$trackDay-medium, 0) 100%
+        );
+        div {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          grid-area: 2 / 2 / 3 / 3;
+
+          img {
+            width: 75%;
+            height: 75%;
+          }
+          h1 {
+            font-weight: 900;
+            color: Palettes.$trackDay-dark;
+          }
+          * {
+            filter: drop-shadow(0 0 1rem Palettes.$trackDay-light);
+          }
+        }
+      }
+      div[class*='background'] {
+        display: none;
+      }
+    }
+  }
+  */
+
+/*
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 6rem 1fr 6rem/2rem 1fr 2rem;
+  aside[class*='carousel'] {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    grid-area: 2 / 1 / 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    transition: transform 0.25s ease-in-out;
+    section[class*='workdays'] {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    section[class*='weekdays'] {
+      z-index: 0;
+      position: absolute;
+      div[class*='container'] {
+        transition: transform 0.25s ease-in-out;
+      }
+    }
+  }
+  aside[class*='metrics'] {
+    display: none;
+    article[class*='leave'] {
+      display: none;
+    }
+    section[class*='marketing'] {
+      display: none;
+    }
+  }
+  */
