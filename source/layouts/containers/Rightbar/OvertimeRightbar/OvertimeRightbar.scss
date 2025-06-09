@@ -1,7 +1,7 @@
 //--|🠊 LandingRightbar.scss 🠈|--//
 @mixin desktop-landscape {
   //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //~~|🠊 rows / columns 🠈|~~//
+  grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
   h4[class*='label'] {
     font-weight: bold;
     grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
@@ -33,8 +33,8 @@
 
 aside[id*='rightbar'] {
   display: grid;
-  overflow: hidden; //~~|🠊 Hide elements outside the visible area 🠈|~~//
-  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
+  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   background: linear-gradient(
     225deg,
     rgba(0, 0, 0, 0) 0%,

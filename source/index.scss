@@ -1,5 +1,6 @@
 //--|🠊 index.scss (Entry Point) 🠈|--//
 //--|🠋 Styles 🠋|--//
+@use './layouts/styles/buttons.scss';
 @use './layouts/styles/landing.scss';
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
@@ -14,6 +15,7 @@
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   /* transition: transform 1s ease-in-out; */
+  div[id*='buttons'],
   div[id*='landing'],
   div[id*='overtime'],
   div[id*='ticketing'],
