@@ -1,9 +1,9 @@
-//--|🠊 Button.grading.tsx 🠈|--//
+//--|🠊 Button.grade.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { scaleImage } from './Button_grading';
+import { scaleImage } from './Button_grade';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
-import './Button.grading.scss';
+import './Button.grade.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect, useState, createContext, useContext } from 'react';
@@ -26,7 +26,7 @@ interface InfoProps {
     imageLink: string;
   };
 }
-const ButtonGrading: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
+const ButtonGrade: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
   const pageName = style.pageName;
   const fontSize = style.fontSize;
   const blockName = style.blockName;
@@ -117,7 +117,7 @@ const ButtonGrading: React.FC<InfoProps> = ({ type, text, style, onClick }) => {
       );
   }
 };
-export default ButtonGrading;
+export default ButtonGrade;
 
 const scaleWords = (
   fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',

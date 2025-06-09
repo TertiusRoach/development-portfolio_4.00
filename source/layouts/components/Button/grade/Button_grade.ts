@@ -1,4 +1,4 @@
-//--|🠊 Button_grading.ts 🠈|--//
+//--|🠊 Button_grade.ts 🠈|--//
 export function scaleImage(fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') {
   const sizeMap: Record<typeof fontSize, number> = {
     '<p>': 2,

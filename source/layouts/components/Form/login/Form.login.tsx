@@ -1,4 +1,7 @@
 //--|🠊 Form.login.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
+import './Form.login.scss';
+//--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
 import { stripBrackets } from '../../../scripts/landing';
@@ -16,9 +19,6 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
-//--|🠋 Styles 🠋|--//
-import './Form.login.scss';
-//--|🠉 Styles 🠉|--//
 
 interface InfoProps {
   info: {

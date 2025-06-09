@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonStretch from '../../../components/Button/stretch/Button.stretch';
-import ButtonGrading from '../../../components/Button/grade/Button.grading';
+import ButtonGrade from '../../../components/Button/grade/Button.grade';
 import DivisionLoading from '../../../components/Division/loading/Division.loading';
 import ArticleSelection from '../../../components/Article/selection/Article.selection';
 import DivisionSelection from '../../../components/Division/selection/Division.selection';

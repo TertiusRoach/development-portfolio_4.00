@@ -1,4 +1,4 @@
-//--|🠊 Button.grading.scss 🠈|--//
+//--|🠊 Button.grade.scss 🠈|--//
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 @forward '../../../designs/Mixins.scss';
@@ -20,7 +20,7 @@
   }
 }
 
-button[class*='grading'] {
+button[class*='grade'] {
   width: 100%;
   height: 100%;
 

@@ -12,7 +12,7 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import MenuBranding from '../../Menu/branding/Menu.branding';
-import ButtonGrading from '../../Button/grade/Button.grading';
+import ButtonGrade from '../../Button/grade/Button.grade';
 import ButtonStretch from '../../Button/stretch/Button.stretch';
 import ButtonDefault from '../../Button/default/Button.default';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
