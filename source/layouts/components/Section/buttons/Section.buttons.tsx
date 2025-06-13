@@ -25,60 +25,94 @@ interface InfoProps {
   };
 }
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  const stateName: 'highlight' | 'downplay' = 'downplay';
+  const handleButtons = (select: string) => {
+    console.log(select);
+  };
 
-  const handlePreview = async () => {};
+  useEffect(() => {
+    const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
+    const selects = header?.querySelectorAll('select') || ({} as NodeListOf<HTMLSelectElement>);
 
-  useEffect(() => {}, [pageName, blockName]);
+    function logSelectValues() {
+      selects.forEach((select) => {
+        handleButtons(select.value);
+      });
+    }
 
-  let trackDay: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-medium.svg';
-  let logTicket: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/log-ticket/log-ticket-medium.svg';
-  let findLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/933b2050d063d05d5c7ca0f4122f613511cc68c9/source/assets/svg-files/trinity-apps/rebrand/find-link/find-link-medium.svg';
+    selects.forEach((select) => {
+      select.addEventListener('change', logSelectValues);
+    });
+  }, [pageName, blockName]);
 
   return (
     <section className="buttons-section">
       <div className="buttons-dark">
-        <button>Top</button>
-        <button>Bottom</button>
+        {/* <button>Top</button> */}
+        {/* <button>Bottom</button> */}
 
-        <button>Left</button>
-        <button>Right</button>
-        <button>Center</button>
+        {/* <button>Left</button> */}
+        {/* <button>Right</button> */}
+        {/* <button>Center</button> */}
 
-        <button>Text</button>
-        <button>Icon</button>
+        {/* <button>Text</button> */}
+        {/* <button>Icon</button> */}
       </div>
 
       <div className="buttons-medium">
-        <button>Top</button>
-        <button>Bottom</button>
+        {/* <button>Top</button> */}
+        {/* <button>Bottom</button> */}
 
-        <button>Left</button>
-        <button>Right</button>
-        <button>Center</button>
+        {/* <button>Left</button> */}
+        {/* <button>Right</button> */}
+        {/* <button>Center</button> */}
 
-        <button>Text</button>
-        <button>Icon</button>
+        {/* <button>Text</button> */}
+        {/* <button>Icon</button> */}
       </div>
 
       <div className="buttons-light">
-        <button>Top</button>
-        <button>Bottom</button>
+        {/* <button>Top</button> */}
+        {/* <button>Bottom</button> */}
 
-        <button>Left</button>
-        <button>Right</button>
-        <button>Center</button>
+        {/* <button>Left</button> */}
+        {/* <button>Right</button> */}
+        {/* <button>Center</button> */}
 
-        <button>Text</button>
-        <button>Icon</button>
+        {/* <button>Text</button> */}
+        {/* <button>Icon</button> */}
       </div>
     </section>
   );
 };
 export default SectionButtons;
+
+/*
+    let styleSelect = document.querySelector(`#${pageName}-header #style-select`) as HTMLSelectElement;
+    let sizeSelect = document.querySelector(`#${pageName}-header #size-select`) as HTMLSelectElement;
+    let colorSelect = document.querySelector(`#${pageName}-header #color-select`) as HTMLSelectElement;
+
+    styleSelect.addEventListener('change', function () {
+      console.log(styleSelect.value);
+      console.log(sizeSelect.value);
+      console.log(colorSelect.value);
+    });
+    sizeSelect.addEventListener('change', function () {
+      console.log(styleSelect.value);
+      console.log(sizeSelect.value);
+      console.log(colorSelect.value);
+    });
+    colorSelect.addEventListener('change', function () {
+      console.log(styleSelect.value);
+      console.log(sizeSelect.value);
+      console.log(colorSelect.value);
+    });
+    */
+/*
+    console.log(styleSelect);
+    console.log(sizeSelect);
+    console.log(colorSelect);
+    */
+// const stateName: 'highlight' | 'downplay' = 'downplay';

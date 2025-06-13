@@ -5,11 +5,33 @@
 
   menu[class*='buttons'] {
     z-index: 1;
-    display: inherit;
+    display: inherit; //--|🠈 display: grid; 🠈|--//
     grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     grid-template: 4rem / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
 
-    // background: darkgreen;
+    li[class*='logo'] {
+      grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+
+      img[class*='logo'] {
+        width: 75%;
+      }
+    }
+    li[class*='style'] {
+      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
+
+    li {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      justify-content: center;
+      select {
+        width: 75%;
+        padding: 8px;
+        text-align: center;
+        border-radius: 4px;
+      }
+    }
   }
   section[class*='buttons'] {
     z-index: 0;
