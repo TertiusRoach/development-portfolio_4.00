@@ -178,9 +178,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         <menu className="login-action">
           <ButtonDefault
             type="submit"
+            disabled={submit}
             text={submit ? 'Logging in...' : 'Login'}
             style={defineButton('login', { pageName, blockName })}
-            disabled={submit}
           />
         </menu>
         <nav id="login-buttons">

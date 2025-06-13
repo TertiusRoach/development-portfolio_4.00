@@ -49,41 +49,49 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section className="buttons-section">
-      <div className="buttons-dark">
-        {/* <button>Top</button> */}
-        {/* <button>Bottom</button> */}
+      <div className="h1-size"></div>
+      <div className="h2-size"></div>
+      <div className="h3-size"></div>
+      <div className="h4-size"></div>
+      <div className="h5-size"></div>
+      <div className="h6-size"></div>
+      <div className="p-size"></div>
 
-        {/* <button>Left</button> */}
-        {/* <button>Right</button> */}
-        {/* <button>Center</button> */}
+      {/* <div className="buttons-dark">
+        <button>Top</button>
+        <button>Bottom</button>
 
-        {/* <button>Text</button> */}
-        {/* <button>Icon</button> */}
-      </div>
+        <button>Left</button>
+        <button>Right</button>
+        <button>Center</button>
 
-      <div className="buttons-medium">
-        {/* <button>Top</button> */}
-        {/* <button>Bottom</button> */}
+        <button>Text</button>
+        <button>Icon</button>
+      </div> */}
 
-        {/* <button>Left</button> */}
-        {/* <button>Right</button> */}
-        {/* <button>Center</button> */}
+      {/* <div className="buttons-medium">
+        <button>Top</button>
+        <button>Bottom</button>
 
-        {/* <button>Text</button> */}
-        {/* <button>Icon</button> */}
-      </div>
+        <button>Left</button>
+        <button>Right</button>
+        <button>Center</button>
 
-      <div className="buttons-light">
-        {/* <button>Top</button> */}
-        {/* <button>Bottom</button> */}
+        <button>Text</button>
+        <button>Icon</button>
+      </div> */}
 
-        {/* <button>Left</button> */}
-        {/* <button>Right</button> */}
-        {/* <button>Center</button> */}
+      {/* <div className="buttons-light">
+        <button>Top</button>
+        <button>Bottom</button>
 
-        {/* <button>Text</button> */}
-        {/* <button>Icon</button> */}
-      </div>
+        <button>Left</button>
+        <button>Right</button>
+        <button>Center</button>
+
+        <button>Text</button>
+        <button>Icon</button>
+      </div> */}
     </section>
   );
 };
