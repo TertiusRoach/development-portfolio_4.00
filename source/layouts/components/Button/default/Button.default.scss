@@ -2,8 +2,24 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  span[class*='h1'] {
-    // background: red;
+  //--|🠊 display: flex; 🠈|--//
+  span {
+    width: 100%;
+    height: 100%;
+  }
+
+  span[class*='one_top'] {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    img {
+      color: white;
+      grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
+    h1 {
+      white-space: nowrap;
+      display: inline-block;
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    }
   }
 
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -25,15 +41,11 @@
 }
 
 button[class*='default'] {
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-
-  background: red;
-
   @extend %default-canvas;
+  @extend %default-presets;
 
   /*
+  
   @extend %default-shadows;
   @extend %default-filters;
   @extend %default-motions;
@@ -50,11 +62,68 @@ button[class*='default'] {
 }
 
 %default-canvas {
-  background: red;
+  span[class*='dar_mon'] {
+    background: Palettes.$indexLand-dark;
+  }
+  span[class*='med_mon'] {
+    background: Palettes.$indexLand-medium;
+  }
+  span[class*='lig_mon'] {
+    background: Palettes.$indexLand-light;
+  }
+
+  span[class*='dar_red'] {
+    background: Palettes.$findLink-dark;
+  }
+  span[class*='med_red'] {
+    background: Palettes.$findLink-medium;
+  }
+  span[class*='lig_red'] {
+    background: Palettes.$findLink-light;
+  }
+
+  span[class*='dar_gre'] {
+    background: Palettes.$trackDay-dark;
+  }
+  span[class*='med_gre'] {
+    background: Palettes.$trackDay-medium;
+  }
+  span[class*='lig_gre'] {
+    background: Palettes.$trackDay-light;
+  }
+
+  span[class*='dar_blu'] {
+    background: Palettes.$logTicket-dark;
+  }
+  span[class*='med_blu'] {
+    background: Palettes.$logTicket-medium;
+  }
+  span[class*='lig_blu'] {
+    background: Palettes.$logTicket-light;
+  }
 }
+%default-presets {
+  display: flex;
+  span {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0;
+    }
+  }
+}
+%default-placing {
+}
+
+/*
 %default-shadows {
 }
 %default-filters {
 }
 %default-motions {
 }
+*/

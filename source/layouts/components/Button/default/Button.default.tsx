@@ -46,10 +46,11 @@ interface ThisProps {
   };
 }
 const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
+  const className = style as Object;
   const pageName = stripBrackets(info.pageName, '[]') as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const handleDefault = (pageName: string, blockName: string) => {};
+  // const handleDefault = (pageName: string, blockName: string) => {};
 
   useEffect(() => {
     const className = info.className as string;
@@ -61,55 +62,60 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
   }, []);
 
   // console.log(`${createClass(style)}`);
-  const renderButtonContent = () => {
+  const handleDefault = (pageName: string, blockName: string, className: string) => {
     switch (style.size) {
       case '<h1>':
         return (
-          <span className="h1">
-            <h1>{style.text}</h1>
+          <span className={`one_${className}`}>
+            <img src="" alt="IMAGE!" />
+            <h1 className={`${className}`}>{style.text}</h1>
           </span>
         );
       case '<h2>':
         return (
-          <span className="h2">
-            <h2>{style.text}</h2>
+          <span className={`two_${className}`}>
+            <h2 className={`${className}`}>{style.text}</h2>
           </span>
         );
       case '<h3>':
         return (
-          <span className="h3">
-            <h3>{style.text}</h3>
+          <span className={`thr_${className}`}>
+            <h3 className={`${className}`}>{style.text}</h3>
           </span>
         );
       case '<h4>':
         return (
-          <span className="h4">
-            <h4>{style.text}</h4>
+          <span className={`fou_${className}`}>
+            <h4 className={`${className}`}>{style.text}</h4>
           </span>
         );
       case '<h5>':
         return (
-          <span className="h5">
-            <h5>{style.text}</h5>
+          <span className={`fiv_${className}`}>
+            <h5 className={`${className}`}>{style.text}</h5>
           </span>
         );
       case '<h6>':
         return (
-          <span className="h6">
-            <h6>{style.text}</h6>
+          <span className={`six_${className}`}>
+            <h6 className={`${className}`}>{style.text}</h6>
           </span>
         );
       case '<p>':
       default:
         return (
-          <span className="p">
-            <p>{style.text}</p>
+          <span className={`par_${className}`}>
+            <p className={`${className}`}>{style.text}</p>
           </span>
         );
     }
   };
 
-  return <button className={`default-button ${createClass(style)}`}>{renderButtonContent()}</button>;
+  return (
+    <button className={`default-button ${createClass(style)}`}>
+      {handleDefault(pageName, blockName, createClass(style))}
+    </button>
+  );
   /*
   console.log(`Size: ${sizeStyle}`);
   console.log(`View: ${viewStyle}`);
