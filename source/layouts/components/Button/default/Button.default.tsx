@@ -65,44 +65,44 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
     switch (style.size) {
       case '<h1>':
         return (
-          <span>
+          <span className="h1">
             <h1>{style.text}</h1>
           </span>
         );
       case '<h2>':
         return (
-          <span>
+          <span className="h2">
             <h2>{style.text}</h2>
           </span>
         );
       case '<h3>':
         return (
-          <span>
+          <span className="h3">
             <h3>{style.text}</h3>
           </span>
         );
       case '<h4>':
         return (
-          <span>
+          <span className="h4">
             <h4>{style.text}</h4>
           </span>
         );
       case '<h5>':
         return (
-          <span>
+          <span className="h5">
             <h5>{style.text}</h5>
           </span>
         );
       case '<h6>':
         return (
-          <span>
+          <span className="h6">
             <h6>{style.text}</h6>
           </span>
         );
       case '<p>':
       default:
         return (
-          <span>
+          <span className="p">
             <p>{style.text}</p>
           </span>
         );
