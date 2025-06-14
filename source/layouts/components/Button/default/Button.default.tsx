@@ -56,31 +56,31 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
         return (
           <div className={`one_${className}`}>
             {/* <img src="" alt="IMAGE!" /> */}
-            <span className="">
-              <h1 className={`${className}`}>{style.text}</h1>
+            <span className={`${className}_text`}>
+              <h1>{style.text}</h1>
             </span>
           </div>
         );
       case '<h2>':
         return (
           <div className={`two_${className}`}>
-            <span>
-              <h2 className={`${className}`}>{style.text}</h2>
+            <span className={`${className}_text`}>
+              <h2>{style.text}</h2>
             </span>
           </div>
         );
       case '<h3>':
         return (
           <div className={`thr_${className}`}>
-            <span>
-              <h3 className={`${className}`}>{style.text}</h3>
+            <span className={`${className}_text`}>
+              <h3>{style.text}</h3>
             </span>
           </div>
         );
       case '<h4>':
         return (
           <div className={`fou_${className}`}>
-            <span>
+            <span className={`${className}_text`}>
               <h4 className={`${className}`}>{style.text}</h4>
             </span>
           </div>
@@ -88,7 +88,7 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
       case '<h5>':
         return (
           <div className={`fiv_${className}`}>
-            <span>
+            <span className={`${className}_text`}>
               <h5 className={`${className}`}>{style.text}</h5>
             </span>
           </div>
@@ -96,7 +96,7 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
       case '<h6>':
         return (
           <div className={`six_${className}`}>
-            <span>
+            <span className={`${className}_text`}>
               <h6 className={`${className}`}>{style.text}</h6>
             </span>
           </div>
@@ -105,7 +105,7 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
       default:
         return (
           <div className={`par_${className}`}>
-            <span>
+            <span className={`${className}_text`}>
               <p className={`${className}`}>{style.text}</p>
             </span>
           </div>
