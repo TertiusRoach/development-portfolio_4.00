@@ -3,6 +3,50 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
+  div[class*='_top_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkred !important;
+  }
+  div[class*='_bot_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkgreen !important;
+  }
+  div[class*='_lef_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkblue !important;
+  }
+  div[class*='_rig_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkred !important;
+  }
+  div[class*='_cen_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkgreen !important;
+  }
+  div[class*='_tex_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: darkblue !important;
+  }
+  div[class*='_ico_'] {
+    //--|🠊 display: grid; 🠈|--//
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
+    // background: purple !important;
+  }
+
+  /*
   span {
     width: 100%;
     height: 100%;
@@ -16,11 +60,14 @@
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
     h1 {
+
       white-space: nowrap;
       display: inline-block;
-      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      
+      grid-area: 2 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
   }
+  */
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
@@ -41,15 +88,10 @@
 }
 
 button[class*='default'] {
+  display: flex;
+
   @extend %default-canvas;
   @extend %default-presets;
-
-  /*
-  
-  @extend %default-shadows;
-  @extend %default-filters;
-  @extend %default-motions;
-  */
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -59,60 +101,70 @@ button[class*='default'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  /*
+  @extend %default-shadows;
+  @extend %default-filters;
+  @extend %default-motions;
+  */
 }
 
 %default-canvas {
-  span[class*='dar_mon'] {
+  div[class*='dar_mon'] {
     background: Palettes.$indexLand-dark;
   }
-  span[class*='med_mon'] {
+  div[class*='med_mon'] {
     background: Palettes.$indexLand-medium;
   }
-  span[class*='lig_mon'] {
+  div[class*='lig_mon'] {
     background: Palettes.$indexLand-light;
   }
 
-  span[class*='dar_red'] {
+  div[class*='dar_red'] {
     background: Palettes.$findLink-dark;
   }
-  span[class*='med_red'] {
+  div[class*='med_red'] {
     background: Palettes.$findLink-medium;
   }
-  span[class*='lig_red'] {
+  div[class*='lig_red'] {
     background: Palettes.$findLink-light;
   }
 
-  span[class*='dar_gre'] {
+  div[class*='dar_gre'] {
     background: Palettes.$trackDay-dark;
   }
-  span[class*='med_gre'] {
+  div[class*='med_gre'] {
     background: Palettes.$trackDay-medium;
   }
-  span[class*='lig_gre'] {
+  div[class*='lig_gre'] {
     background: Palettes.$trackDay-light;
   }
 
-  span[class*='dar_blu'] {
+  div[class*='dar_blu'] {
     background: Palettes.$logTicket-dark;
   }
-  span[class*='med_blu'] {
+  div[class*='med_blu'] {
     background: Palettes.$logTicket-medium;
   }
-  span[class*='lig_blu'] {
+  div[class*='lig_blu'] {
     background: Palettes.$logTicket-light;
   }
 }
 %default-presets {
-  display: flex;
-  span {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-      margin: 0;
+  div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    span {
+      grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
     }
   }
 }

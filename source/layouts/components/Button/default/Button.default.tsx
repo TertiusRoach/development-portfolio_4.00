@@ -46,12 +46,72 @@ interface ThisProps {
   };
 }
 const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
-  const className = style as Object;
+  const className = createClass(style) as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  // const handleDefault = (pageName: string, blockName: string) => {};
-
+  const handleDefault = (pageName: string, blockName: string, className: string) => {
+    switch (style.size) {
+      case '<h1>':
+        return (
+          <div className={`one_${className}`}>
+            {/* <img src="" alt="IMAGE!" /> */}
+            <span className="">
+              <h1 className={`${className}`}>{style.text}</h1>
+            </span>
+          </div>
+        );
+      case '<h2>':
+        return (
+          <div className={`two_${className}`}>
+            <span>
+              <h2 className={`${className}`}>{style.text}</h2>
+            </span>
+          </div>
+        );
+      case '<h3>':
+        return (
+          <div className={`thr_${className}`}>
+            <span>
+              <h3 className={`${className}`}>{style.text}</h3>
+            </span>
+          </div>
+        );
+      case '<h4>':
+        return (
+          <div className={`fou_${className}`}>
+            <span>
+              <h4 className={`${className}`}>{style.text}</h4>
+            </span>
+          </div>
+        );
+      case '<h5>':
+        return (
+          <div className={`fiv_${className}`}>
+            <span>
+              <h5 className={`${className}`}>{style.text}</h5>
+            </span>
+          </div>
+        );
+      case '<h6>':
+        return (
+          <div className={`six_${className}`}>
+            <span>
+              <h6 className={`${className}`}>{style.text}</h6>
+            </span>
+          </div>
+        );
+      case '<p>':
+      default:
+        return (
+          <div className={`par_${className}`}>
+            <span>
+              <p className={`${className}`}>{style.text}</p>
+            </span>
+          </div>
+        );
+    }
+  };
   useEffect(() => {
     const className = info.className as string;
     const typeStyle = stripBrackets(style.type, '{}') as string;
@@ -62,60 +122,8 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
   }, []);
 
   // console.log(`${createClass(style)}`);
-  const handleDefault = (pageName: string, blockName: string, className: string) => {
-    switch (style.size) {
-      case '<h1>':
-        return (
-          <span className={`one_${className}`}>
-            <img src="" alt="IMAGE!" />
-            <h1 className={`${className}`}>{style.text}</h1>
-          </span>
-        );
-      case '<h2>':
-        return (
-          <span className={`two_${className}`}>
-            <h2 className={`${className}`}>{style.text}</h2>
-          </span>
-        );
-      case '<h3>':
-        return (
-          <span className={`thr_${className}`}>
-            <h3 className={`${className}`}>{style.text}</h3>
-          </span>
-        );
-      case '<h4>':
-        return (
-          <span className={`fou_${className}`}>
-            <h4 className={`${className}`}>{style.text}</h4>
-          </span>
-        );
-      case '<h5>':
-        return (
-          <span className={`fiv_${className}`}>
-            <h5 className={`${className}`}>{style.text}</h5>
-          </span>
-        );
-      case '<h6>':
-        return (
-          <span className={`six_${className}`}>
-            <h6 className={`${className}`}>{style.text}</h6>
-          </span>
-        );
-      case '<p>':
-      default:
-        return (
-          <span className={`par_${className}`}>
-            <p className={`${className}`}>{style.text}</p>
-          </span>
-        );
-    }
-  };
 
-  return (
-    <button className={`default-button ${createClass(style)}`}>
-      {handleDefault(pageName, blockName, createClass(style))}
-    </button>
-  );
+  return <button className={`default-button ${className}`}>{handleDefault(pageName, blockName, className)}</button>;
   /*
   console.log(`Size: ${sizeStyle}`);
   console.log(`View: ${viewStyle}`);
