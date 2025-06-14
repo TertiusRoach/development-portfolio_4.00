@@ -7,7 +7,7 @@ import { createClass } from './Button_default';
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 
 interface ThisProps {
@@ -45,21 +45,37 @@ interface ThisProps {
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 }
+
 const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
   const className = createClass(style) as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
+  useEffect(() => {}, [pageName, blockName]);
+
   const handleDefault = (pageName: string, blockName: string, className: string) => {
+    let imageLink =
+      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
+
+    /*
+    console.log(pageName);
+    console.log(blockName);
+    */
     switch (style.size) {
       case '<h1>':
         return (
-          <div className={`one_${className}`}>
-            {/* <img src="" alt="IMAGE!" /> */}
-            <span className={`${className}_text`}>
-              <h1>{style.text}</h1>
-            </span>
-          </div>
+          <>
+            <div className={`one_${className}_text`}>
+              <span className={`${className}_text`}>
+                <h1>{style.text}</h1>
+              </span>
+            </div>
+            <div className={`one_${className}_icon`}>
+              <span className={`${className}_icon`}>
+                <img alt={className} src={imageLink} />
+              </span>
+            </div>
+          </>
         );
       case '<h2>':
         return (
