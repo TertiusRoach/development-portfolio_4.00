@@ -29,6 +29,8 @@ interface ThisProps {
   info: {
     pageName: string;
     blockName: string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    className?: string;
   };
   style: {
     shade: '~dark~' | '~medium~' | '~light~';
@@ -39,24 +41,75 @@ interface ThisProps {
 
     text: string;
     image: string;
+
+    role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 }
 const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
   const pageName = stripBrackets(info.pageName, '[]') as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const typeStyle = stripBrackets(style.type, '{}') as string;
-  const sizeStyle = stripBrackets(style.size, '<>') as string;
-  const viewStyle = stripBrackets(style.view, '--') as string;
-  const shadeStyle = stripBrackets(style.shade, '~~') as string;
-  const colorStyle = stripBrackets(style.color, '()') as string;
-
   const handleDefault = (pageName: string, blockName: string) => {};
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const className = info.className as string;
+    const typeStyle = stripBrackets(style.type, '{}') as string;
+    const sizeStyle = stripBrackets(style.size, '<>') as string;
+    const viewStyle = stripBrackets(style.view, '--') as string;
+    const shadeStyle = stripBrackets(style.shade, '~~') as string;
+    const colorStyle = stripBrackets(style.color, '()') as string;
+  }, []);
 
-  console.log(createClass(style));
-  return <button className={`default-button ${createClass(style)}`}></button>;
+  // console.log(`${createClass(style)}`);
+  const renderButtonContent = () => {
+    switch (style.size) {
+      case '<h1>':
+        return (
+          <span>
+            <h1>{style.text}</h1>
+          </span>
+        );
+      case '<h2>':
+        return (
+          <span>
+            <h2>{style.text}</h2>
+          </span>
+        );
+      case '<h3>':
+        return (
+          <span>
+            <h3>{style.text}</h3>
+          </span>
+        );
+      case '<h4>':
+        return (
+          <span>
+            <h4>{style.text}</h4>
+          </span>
+        );
+      case '<h5>':
+        return (
+          <span>
+            <h5>{style.text}</h5>
+          </span>
+        );
+      case '<h6>':
+        return (
+          <span>
+            <h6>{style.text}</h6>
+          </span>
+        );
+      case '<p>':
+      default:
+        return (
+          <span>
+            <p>{style.text}</p>
+          </span>
+        );
+    }
+  };
+
+  return <button className={`default-button ${createClass(style)}`}>{renderButtonContent()}</button>;
   /*
   console.log(`Size: ${sizeStyle}`);
   console.log(`View: ${viewStyle}`);

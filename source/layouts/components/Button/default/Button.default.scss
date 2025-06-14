@@ -25,6 +25,8 @@
 }
 
 button[class*='default'] {
+  overflow: hidden;
+  white-space: nowrap;
   /*
   @include Mixins.button-default(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   @include Mixins.button-presets(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//

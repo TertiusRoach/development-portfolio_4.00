@@ -3,54 +3,82 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-  overflow: hidden;
 
   div {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: repeat(7, 1fr) / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: repeat(7, 1fr) / 6rem repeat(6, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
 
     button {
       border: solid black 1px;
 
-      &[class*='top_'] {
-        grid-row: 1 / 2;
-        background: red;
+      &[class*='top_dar'] {
+        grid-area: 1 / 2 / 3 / 3;
       }
-      &[class*='bot_'] {
-        grid-row: 2 / 3;
-        background: green;
+      &[class*='bot_dar'] {
+        grid-area: 1 / 3 / 3 / 4;
       }
-      &[class*='lef_'] {
-        grid-row: 3 / 4;
-        background: blue;
+      &[class*='lef_dar'] {
+        grid-area: 3 / 2 / 4 / 4;
       }
-      &[class*='rig_'] {
-        grid-row: 4 / 5;
-        background: darkred;
+      &[class*='rig_dar'] {
+        grid-area: 4 / 2 / 5 / 4;
       }
-      &[class*='cen_'] {
-        grid-row: 5 / 6;
-        background: darkgreen;
+      &[class*='cen_dar'] {
+        grid-area: 5 / 2 / 6 / 4;
       }
-      &[class*='tex_'] {
-        grid-row: 6 / 7;
-        background: darkblue;
+      &[class*='tex_dar'] {
+        grid-area: 6 / 2 / 7 / 4;
       }
-      &[class*='ico_'] {
-        grid-row: 7 / 8;
-        background: purple;
+      &[class*='ico_dar'] {
+        grid-area: 7 / 2 / 8 / 4;
       }
 
-      &[class*='_dar_'] {
-        grid-column: 2 / 3;
+      // -----------------
+      &[class*='top_med'] {
+        grid-area: 1 / 4 / 3 / 5;
       }
-      &[class*='_med_'] {
-        grid-column: 3 / 4;
+      &[class*='bot_med'] {
+        grid-area: 1 / 5 / 3 / 6;
       }
-      &[class*='_lig_'] {
-        grid-column: 4 / 5;
+      &[class*='lef_med'] {
+        grid-area: 3 / 4 / 4 / 6;
+      }
+      &[class*='rig_med'] {
+        grid-area: 4 / 4 / 5 / 6;
+      }
+      &[class*='cen_med'] {
+        grid-area: 5 / 4 / 6 / 6;
+      }
+      &[class*='tex_med'] {
+        grid-area: 6 / 4 / 7 / 6;
+      }
+      &[class*='ico_med'] {
+        grid-area: 7 / 4 / 8 / 6;
+      }
+
+      // -----------------
+      &[class*='top_lig'] {
+        grid-area: 1 / 6 / 3 / 7;
+      }
+      &[class*='bot_lig'] {
+        grid-area: 1 / 7 / 3 / 8;
+      }
+      &[class*='lef_lig'] {
+        grid-area: 3 / 6 / 4 / 8;
+      }
+      &[class*='rig_lig'] {
+        grid-area: 4 / 6 / 5 / 8;
+      }
+      &[class*='cen_lig'] {
+        grid-area: 5 / 6 / 6 / 8;
+      }
+      &[class*='tex_lig'] {
+        grid-area: 6 / 6 / 7 / 8;
+      }
+      &[class*='ico_lig'] {
+        grid-area: 7 / 6 / 8 / 8;
       }
     }
 
