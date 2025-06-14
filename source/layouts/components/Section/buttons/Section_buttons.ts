@@ -1,11 +1,13 @@
 //--|🠊 Section_buttons.ts 🠈|--//
-export function defineButton(
-  button: 'track-day' | 'log-ticket' | 'find-link',
-  info: { pageName: string; blockName: string }
-) {
+export function defineButton(info: { pageName: string; blockName: string }) {
   const { pageName, blockName } = info;
-  /*
   //--|🠋 Always Return an Object 🠋|--//
+  /*
+  switch(pageName){
+    
+  }
+  */
+  /*
   switch (button) {
     case 'track-day':
       return {

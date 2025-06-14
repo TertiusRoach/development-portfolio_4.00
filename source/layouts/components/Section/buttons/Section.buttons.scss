@@ -4,32 +4,78 @@
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
   overflow: hidden;
-  // grid-template: 1fr / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
 
   div {
     width: 100%;
     height: 100%;
+    display: grid;
+    grid-template: repeat(7, 1fr) / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
 
-    &[class*='h1'] {
-      background: rgba(darkred, 0.25);
+    button {
+      border: solid black 1px;
+
+      &[class*='top_'] {
+        grid-row: 1 / 2;
+        background: red;
+      }
+      &[class*='bot_'] {
+        grid-row: 2 / 3;
+        background: green;
+      }
+      &[class*='lef_'] {
+        grid-row: 3 / 4;
+        background: blue;
+      }
+      &[class*='rig_'] {
+        grid-row: 4 / 5;
+        background: darkred;
+      }
+      &[class*='cen_'] {
+        grid-row: 5 / 6;
+        background: darkgreen;
+      }
+      &[class*='tex_'] {
+        grid-row: 6 / 7;
+        background: darkblue;
+      }
+      &[class*='ico_'] {
+        grid-row: 7 / 8;
+        background: purple;
+      }
+
+      &[class*='_dar_'] {
+        grid-column: 2 / 3;
+      }
+      &[class*='_med_'] {
+        grid-column: 3 / 4;
+      }
+      &[class*='_lig_'] {
+        grid-column: 4 / 5;
+      }
     }
-    &[class*='h2'] {
-      background: rgba(darkgreen, 0.25);
-    }
-    &[class*='h3'] {
-      background: rgba(darkblue, 0.25);
-    }
-    &[class*='h4'] {
-      background: rgba(darkred, 0.25);
-    }
-    &[class*='h5'] {
-      background: rgba(darkgreen, 0.25);
-    }
-    &[class*='h6'] {
-      background: rgba(darkblue, 0.25);
-    }
-    &[class*='p'] {
-      background: rgba(purple, 0.25);
+
+    &[class*='size'] {
+      &[class*='h1'] {
+        background: rgba(darkred, 0.25);
+      }
+      &[class*='h2'] {
+        background: rgba(darkgreen, 0.25);
+      }
+      &[class*='h3'] {
+        background: rgba(darkblue, 0.25);
+      }
+      &[class*='h4'] {
+        background: rgba(darkred, 0.25);
+      }
+      &[class*='h5'] {
+        background: rgba(darkgreen, 0.25);
+      }
+      &[class*='h6'] {
+        background: rgba(darkblue, 0.25);
+      }
+      &[class*='p'] {
+        background: rgba(purple, 0.25);
+      }
     }
   }
 
@@ -107,7 +153,6 @@
 section[class*='buttons'] {
   display: block;
 
-  // background: rgba(darkred, 0.25);
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

@@ -1,12 +1,18 @@
 //--|🠊 buttons.ts 🠈|--//
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()'): string {
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
-    case '[]': //--|🠊 pageName 🠈|--//
+    case '[]':
       return thisText.replace(/[\[\]]/g, '');
-    case '<>': //--|🠊 blockName 🠈|--//
+    case '<>':
       return thisText.replace(/[<>]/g, '');
-    case '()': //--|🠊 roleName 🠈|--//
+    case '()':
       return thisText.replace(/[()]/g, '');
+    case '{}':
+      return thisText.replace(/[{}]/g, '');
+    case '--':
+      return thisText.replace(/[--]/g, '');
+    case '~~':
+      return thisText.replace(/[~~]/g, '');
   }
 }
 

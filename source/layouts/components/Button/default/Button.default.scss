@@ -1,0 +1,42 @@
+//--|🠊 Button.default.scss 🠈|--//
+/*
+@use '../../../../designs/Mixins.scss';
+@use '../../../../designs/Palettes.scss';
+@forward '../../../../designs/Mixins.scss';
+*/
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+button[class*='default'] {
+  /*
+  @include Mixins.button-default(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-presets(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  @include Mixins.button-spacing(); //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  */
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
