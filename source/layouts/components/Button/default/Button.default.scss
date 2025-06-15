@@ -369,6 +369,9 @@ button[class*='default'] {
             color: Palettes.$indexLand-dark;
             background: Palettes.$indexLand-light;
           }
+          img {
+            background: Palettes.$indexLand-light;
+          }
         }
         span[class*='_lig_']:hover {
           h1,
@@ -382,10 +385,11 @@ button[class*='default'] {
             background: Palettes.$indexLand-dark;
           }
         }
-        &[class*='dar_lig_text']:hover ~ div[class*='dar_lig_icon'] {
+
+        &[class*='lig_mon_text']:hover ~ div[class*='lig_mon_icon'] {
           span {
             img {
-              background: Palettes.$indexLand-light;
+              background: Palettes.$indexLand-dark;
             }
           }
         }

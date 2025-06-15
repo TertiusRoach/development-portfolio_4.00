@@ -173,15 +173,6 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
         );
     }
   };
-  /*
-  let scaleImage = (pageName: string, blockName: string, className: string) => {
-    let imageLink = style.image as string;
-
-    console.log(imageLink);
-
-    return <img alt={className} src={imageLink} />;
-  };
-  */
 
   useEffect(() => {
     const className = info.className as string;
