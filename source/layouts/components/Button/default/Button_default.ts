@@ -2,6 +2,11 @@
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
+interface InfoProps {
+  pageName: string;
+  blockName: string;
+  className: string;
+}
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
@@ -15,6 +20,15 @@ export function createClass(style: StyleProps) {
 
   return `${viewStyle}_${shadeStyle}_${colorStyle}`;
 }
+
+const scaleImage = (pageName: string, blockName: string, className: string) => {
+  // Debug logs (keep or remove as needed)
+  console.log(pageName);
+  console.log(blockName);
+  // console.log(className);
+
+  // return <img alt={className} src={imageLink} />;
+};
 /*
 export function scaleImage(fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') {
   const sizeMap: Record<typeof fontSize, number> = {

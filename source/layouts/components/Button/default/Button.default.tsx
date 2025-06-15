@@ -10,7 +10,26 @@ import { stripBrackets } from '../../../scripts/buttons';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 
-interface ThisProps {
+interface TheseProps {
+  info: {
+    pageName: string;
+    blockName: string;
+    className?: string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+  };
+  style: {
+    shade: '~dark~' | '~medium~' | '~light~';
+    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+    size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
+    view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+
+    text: string;
+    image: string;
+
+    role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
+  };
+
   onBlur?: () => void;
   onFocus?: () => void;
   onClick?: () => void;
@@ -26,108 +45,130 @@ interface ThisProps {
   onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  info: {
-    pageName: string;
-    blockName: string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
-    className?: string;
-  };
-  style: {
-    shade: '~dark~' | '~medium~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
-    size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
-
-    text: string;
-    image: string;
-
-    role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
-  };
 }
-
-const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
+const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   const className = createClass(style) as string;
-  const pageName = stripBrackets(info.pageName, '[]') as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
+  const pageName = stripBrackets(info.pageName, '[]') as string;
 
-  useEffect(() => {}, [pageName, blockName]);
+  const imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
   const handleDefault = (pageName: string, blockName: string, className: string) => {
-    let imageLink =
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
+    let scaleImage = (pageName: string, blockName: string, className: string) => {
+      let imageLink = style.image as string;
 
-    /*
-    console.log(pageName);
-    console.log(blockName);
-    */
+      console.log(imageLink);
+      /*
+      console.log(pageName);
+      console.log(blockName);
+      */
+      /*
+        console.log(className);
+      */
+
+      return <img alt={className} src={imageLink} />;
+    };
+
     switch (style.size) {
       case '<h1>':
         return (
           <>
             <div className={`one_${className}_text`}>
-              <span className={`${className}_text`}>
+              <span className={`one_${className}_text`}>
                 <h1>{style.text}</h1>
               </span>
             </div>
             <div className={`one_${className}_icon`}>
-              <span className={`${className}_icon`}>
-                <img alt={className} src={imageLink} />
+              <span className={`one_${className}_icon`}>
+                {/* Scale the image using Inline HTML to make the website more dynamic */}
+                {scaleImage(pageName, blockName, `one_${className}_text`)}
               </span>
             </div>
           </>
         );
       case '<h2>':
         return (
-          <div className={`two_${className}`}>
-            <span className={`${className}_text`}>
-              <h2>{style.text}</h2>
-            </span>
-          </div>
+          <>
+            <div className={`two_${className}_text`}>
+              <span className={`two_${className}_text`}>
+                <h2>{style.text}</h2>
+              </span>
+            </div>
+            <div className={`two_${className}_icon`}>
+              <span className={`two_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
       case '<h3>':
         return (
-          <div className={`thr_${className}`}>
-            <span className={`${className}_text`}>
-              <h3>{style.text}</h3>
-            </span>
-          </div>
+          <>
+            <div className={`thr_${className}_text`}>
+              <span className={`thr_${className}_text`}>
+                <h3>{style.text}</h3>
+              </span>
+            </div>
+            <div className={`thr_${className}_icon`}>
+              <span className={`thr_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
       case '<h4>':
         return (
-          <div className={`fou_${className}`}>
-            <span className={`${className}_text`}>
-              <h4 className={`${className}`}>{style.text}</h4>
-            </span>
-          </div>
+          <>
+            <div className={`fou_${className}_text`}>
+              <span className={`fou_${className}_text`}>
+                <h4>{style.text}</h4>
+              </span>
+            </div>
+            <div className={`fou_${className}_icon`}>
+              <span className={`fou_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
       case '<h5>':
         return (
-          <div className={`fiv_${className}`}>
-            <span className={`${className}_text`}>
-              <h5 className={`${className}`}>{style.text}</h5>
-            </span>
-          </div>
+          <>
+            <div className={`fiv_${className}_text`}>
+              <span className={`fiv_${className}_text`}>
+                <h5>{style.text}</h5>
+              </span>
+            </div>
+            <div className={`fiv_${className}_icon`}>
+              <span className={`fiv_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
       case '<h6>':
         return (
-          <div className={`six_${className}`}>
-            <span className={`${className}_text`}>
-              <h6 className={`${className}`}>{style.text}</h6>
-            </span>
-          </div>
+          <>
+            <div className={`six_${className}_text`}>
+              <span className={`six_${className}_text`}>
+                <h6>{style.text}</h6>
+              </span>
+            </div>
+            <div className={`six_${className}_icon`}>
+              <span className={`six_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
       case '<p>':
       default:
         return (
-          <div className={`par_${className}`}>
-            <span className={`${className}_text`}>
-              <p className={`${className}`}>{style.text}</p>
-            </span>
-          </div>
+          <>
+            <div className={`par_${className}_text`}>
+              <span className={`par_${className}_text`}>
+                <p>{style.text}</p>
+              </span>
+            </div>
+            <div className={`par_${className}_icon`}>
+              <span className={`par_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+            </div>
+          </>
         );
     }
   };
+
   useEffect(() => {
     const className = info.className as string;
     const typeStyle = stripBrackets(style.type, '{}') as string;
@@ -135,46 +176,9 @@ const ButtonDefault: React.FC<ThisProps> = ({ info, style }) => {
     const viewStyle = stripBrackets(style.view, '--') as string;
     const shadeStyle = stripBrackets(style.shade, '~~') as string;
     const colorStyle = stripBrackets(style.color, '()') as string;
-  }, []);
-
-  // console.log(`${createClass(style)}`);
+  }, [pageName, blockName]);
 
   return <button className={`default-button ${className}`}>{handleDefault(pageName, blockName, className)}</button>;
-  /*
-  console.log(`Size: ${sizeStyle}`);
-  console.log(`View: ${viewStyle}`);
-  console.log(`Shade: ${shadeStyle}`);
-  console.log(`Color: ${colorStyle}`);
-  */
-
-  /*
-  console.log(`View: ${style.view}`);
-  console.log(`Shade: ${style.shade}`);
-  console.log(`Color: ${style.color}`);
-  console.log(`Size: ${style.size}`);
-
-  console.log(`Image: ${style.image}`);
-  console.log(`Text: ${style.text}`);
-  console.log(`Type: ${style.type}`);
-  */
-  /*
-  switch (layoutView) {
-    case '-top-':
-      return <button></button>;
-    case '-bottom-':
-      return <button></button>;
-    case '-left-':
-      return <button></button>;
-    case '-right-':
-      return <button></button>;
-    case '-center-':
-      return <button></button>;
-    case '-icon-':
-      return <button></button>;
-    case '-text-':
-      return <button></button>;
-  }
-  */
 };
 export default ButtonDefault;
 

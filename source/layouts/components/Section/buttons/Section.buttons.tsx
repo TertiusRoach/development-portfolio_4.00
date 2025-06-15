@@ -82,9 +82,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'top-dar-mon',
+            text: 'top_dar_mon',
 
-            image: '',
+            image:
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
             size: '<h1>',
             type: '{button}',
           }}
@@ -99,7 +100,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'bot-dar-mon',
+            text: 'bot_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -116,7 +117,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'lef-dar-mon',
+            text: 'lef_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -133,7 +134,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'rig-dar-mon',
+            text: 'rig_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -150,7 +151,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'cen-dar-mon',
+            text: 'cen_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -167,7 +168,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'tex-dar-mon',
+            text: 'tex_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -184,7 +185,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~dark~',
 
-            text: 'ico-dar-mon',
+            text: 'ico_dar_mon',
 
             image: '',
             size: '<h1>',
@@ -203,7 +204,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'top-med-mon',
+            text: 'top_med_mon',
 
             image: '',
             size: '<h1>',
@@ -220,7 +221,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'bot-med-mon',
+            text: 'bot_med_mon',
 
             image: '',
             size: '<h1>',
@@ -237,7 +238,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'lef-med-mon',
+            text: 'lef_med_mon',
 
             image: '',
             size: '<h1>',
@@ -254,7 +255,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'rig-med-mon',
+            text: 'rig_med_mon',
 
             image: '',
             size: '<h1>',
@@ -271,7 +272,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'cen-med-mon',
+            text: 'cen_med_mon',
 
             image: '',
             size: '<h1>',
@@ -288,7 +289,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'tex-med-mon',
+            text: 'tex_med_mon',
 
             image: '',
             size: '<h1>',
@@ -305,7 +306,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~medium~',
 
-            text: 'ico-med-mon',
+            text: 'ico_med_mon',
 
             image: '',
             size: '<h1>',
@@ -324,7 +325,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'top-lig-mon',
+            text: 'top_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -341,7 +342,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'bot-lig-mon',
+            text: 'bot_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -358,7 +359,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'lef-lig-mon',
+            text: 'lef_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -375,7 +376,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'rig-lig-mon',
+            text: 'rig_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -392,7 +393,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'cen-lig-mon',
+            text: 'cen_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -409,7 +410,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'tex-lig-mon',
+            text: 'tex_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -426,7 +427,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             shade: '~light~',
 
-            text: 'ico-lig-mon',
+            text: 'ico_lig_mon',
 
             image: '',
             size: '<h1>',
@@ -448,68 +449,3 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default SectionButtons;
-
-/*
-  const handleButtons = (select: string) => {
-    console.log(select);
-  };
-  */
-/*
-    function logSelectValues() {
-      selects.forEach((select) => {
-        handleButtons(select.value);
-      });
-    }
-    */
-
-// {
-//   /* <div className="h1-size"></div>
-//       <div className="h2-size"></div>
-//       <div className="h3-size"></div>
-//       <div className="h4-size"></div>
-//       <div className="h5-size"></div>
-//       <div className="h6-size"></div>
-//       <div className="p-size"></div> */
-// }
-
-// {
-//   /* <div className="buttons-dark">
-//         <button>Top</button>
-//         <button>Bottom</button>
-
-//         <button>Left</button>
-//         <button>Right</button>
-//         <button>Center</button>
-
-//         <button>Text</button>
-//         <button>Icon</button>
-//       </div> */
-// }
-
-// {
-//   /* <div className="buttons-medium">
-//         <button>Top</button>
-//         <button>Bottom</button>
-
-//         <button>Left</button>
-//         <button>Right</button>
-//         <button>Center</button>
-
-//         <button>Text</button>
-//         <button>Icon</button>
-//       </div> */
-// }
-
-// {
-//   /* <div className="buttons-light">
-//         <button>Top</button>
-//         <button>Bottom</button>
-
-//         <button>Left</button>
-//         <button>Right</button>
-//         <button>Center</button>
-
-//         <button>Text</button>
-//         <button>Icon</button>
-//       </div> */
-// }

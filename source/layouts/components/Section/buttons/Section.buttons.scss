@@ -3,11 +3,8 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-
   div[class*='size'] {
-    width: 100%;
-    height: 100%;
-    display: grid;
+    //--|🠊 display: grid; 🠈|--//
     grid-template: repeat(7, 1fr) / 6rem repeat(6, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
 
     button {
@@ -103,18 +100,12 @@
 }
 
 section[class*='buttons'] {
+  width: 100%;
   display: block;
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-
   div[class*='size'] {
+    height: 100%;
+    display: grid;
+
     &[class*='h1'] {
       background: rgba(darkred, 0.25);
     }
@@ -136,5 +127,14 @@ section[class*='buttons'] {
     &[class*='p'] {
       background: rgba(purple, 0.25);
     }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
   }
 }
