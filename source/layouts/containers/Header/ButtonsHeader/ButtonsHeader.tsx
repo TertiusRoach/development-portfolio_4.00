@@ -35,7 +35,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
           <select id="style-select" defaultValue="default-style" name="style">
             <option value="stretch-style">[Stretch]</option>
             <option value="cleaned-style">[Cleaned]</option>
-            <option value="stretch-style">[Stretch]</option>
+            <option value="grading-style">[Grading]</option>
             <option value="framing-style">[Framing]</option>
             <option value="default-style">[Default]</option>
           </select>

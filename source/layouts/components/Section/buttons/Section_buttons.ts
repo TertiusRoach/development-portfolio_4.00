@@ -45,6 +45,32 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   }
   */
 }
+
+export function scrollSize(thisName: HTMLSelectElement) {
+  switch (thisName.value) {
+    case 'h1-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'h2-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'h3-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'h4-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'h5-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'h6-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+    case 'p-size':
+      console.log(`View size changed to: ${thisName.value}`);
+      break;
+  }
+}
 /*
 export function togglePreview(
   pageName: string,

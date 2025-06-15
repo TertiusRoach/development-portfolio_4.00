@@ -3,7 +3,7 @@
 import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton } from './Section_buttons';
+import { defineButton, scrollSize } from './Section_buttons';
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -25,14 +25,53 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   const handleButtons = (pageName: string, blockName: string) => {
+    /*
     console.log(`pageName: ${pageName}`);
     console.log(`blockName: ${blockName}`);
     console.log('handleButtons Reloaded!');
+    */
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    const selectStyle = document.querySelector(
+      `#${pageName}-header .buttons-menu li[class*="style"] select`
+    ) as HTMLSelectElement;
+
+    const selectSize = document.querySelector(
+      `#${pageName}-header .buttons-menu li[class*="size"] select`
+    ) as HTMLSelectElement;
+
+    const selectColor = document.querySelector(
+      `#${pageName}-header .buttons-menu li[class*="color"] select`
+    ) as HTMLSelectElement;
+
+    const cleanups: (() => void)[] = [];
+
+    if (selectStyle) {
+      const handleStyle = () => reloadDesign(pageName);
+      selectStyle.addEventListener('change', handleStyle);
+      cleanups.push(() => selectStyle.removeEventListener('change', handleStyle));
+    }
+
+    if (selectSize) {
+      const handleSize = () => showSize(pageName);
+      selectSize.addEventListener('change', handleSize);
+      cleanups.push(() => selectSize.removeEventListener('change', handleSize));
+    }
+
+    if (selectColor) {
+      const handleColor = () => viewColor(pageName);
+      selectColor.addEventListener('change', handleColor);
+      cleanups.push(() => selectSize.removeEventListener('change', handleColor));
+    }
+
+    return () => {
+      cleanups.forEach((fn) => fn());
+    };
+  }, [pageName, blockName]);
 
   return (
+    //  style={{ transform: 'translateY(250px)' }}
     <section className="buttons-section">
       <div className="h1-size">
         {/* Dark */}
@@ -414,3 +453,65 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default SectionButtons;
+
+const showSize = (pageName: string) => {
+  let selectSize = document.querySelector(`#${pageName}-header .buttons-menu li[class*="size"] select`) as HTMLSelectElement;
+
+  switch (selectSize.value) {
+    case 'h1-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'h2-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'h3-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'h4-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'h5-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'h6-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+    case 'p-size':
+      console.log(`View size changed to: ${selectSize.value}`);
+      break;
+  }
+};
+const viewColor = (pageName: string) => {
+  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
+  switch (viewColor.value) {
+    case 'mono-color':
+      return console.log(`${viewColor.value}`);
+    case 'red-color':
+      return console.log(`${viewColor.value}`);
+    case 'green-color':
+      return console.log(`${viewColor.value}`);
+
+    case 'blue-color':
+      return console.log(`${viewColor.value}`);
+    default:
+      return console.log(`${viewColor.value}`);
+  }
+};
+
+const reloadDesign = (pageName: string) => {
+  let viewStyle = document.querySelector(`#${pageName}-header .buttons-menu li[class*="style"] select`) as HTMLSelectElement;
+
+  switch (viewStyle.value) {
+    case 'stretch-style':
+      return console.log(`${viewStyle.value}`);
+    case 'cleaned-style':
+      return console.log(`${viewStyle.value}`);
+    case 'grading-style':
+      return console.log(`${viewStyle.value}`);
+
+    case 'framing-style':
+      return console.log(`${viewStyle.value}`);
+    default:
+      return console.log(`${viewStyle.value}`);
+  }
+};
