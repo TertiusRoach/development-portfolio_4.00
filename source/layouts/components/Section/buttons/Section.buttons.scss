@@ -12,7 +12,7 @@
       width: 100%;
       height: 100%;
       display: grid;
-      grid-area: 1 / 2 / 7 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      grid-area: 1 / 2 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       grid-template: 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
       div[class*='dar_mon'] {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//

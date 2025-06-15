@@ -55,6 +55,10 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
   const handleDefault = (pageName: string, blockName: string, className: string) => {
+    // let pageName: string = `${pageName}`;
+    console.log(`Button.default.tsx - Line 59`, pageName);
+    console.log(`Button.default.tsx - Line 60`, blockName);
+
     switch (style.size) {
       case '<h1>':
         return (
@@ -76,7 +80,15 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`one_${className}_back`}>
-              <span className={`one_${className}_back`}></span>
+              <span className={`one_${className}_back`}>
+                <h1
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h1>
+              </span>
             </div>
           </>
         );

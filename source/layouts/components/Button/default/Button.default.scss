@@ -5,22 +5,6 @@
   //--|🠊 display: flex; 🠈|--//
 
   div[class*='one_'] {
-    span[class*='_top_'],
-    span[class*='_bot_'] {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        margin: 0;
-        cursor: pointer;
-        padding: 8px 1rem;
-        border-radius: 8px;
-      }
-    }
-
     //--|🠊 Left <button> Element 🠈|--//
     &[class*='_lef_'] {
       //--|🠊 display: grid; 🠈|--//
@@ -45,47 +29,11 @@
         width: 100%;
         height: 4rem;
         border-radius: 8px;
-      }
-    }
-
-    //--|🠋 Left & Right 🠋|--//
-    /*
-    &[class*='_lef_'] {
-      //--|🠊 display: grid; 🠈|--//
-      grid-template: 1fr auto 1fr / 1rem 4rem auto 1fr;
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
+        border-radius: 8px;
         grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          padding-left: 4rem;
-        }
+        padding: 8px 1rem 8px 4rem;
       }
     }
-    &[class*='_rig_'] {
-      //--|🠊 display: grid; 🠈|--//
-      grid-template: 1fr auto 1fr / 1fr auto 4rem 1rem;
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          padding-right: 4rem;
-        }
-      }
-    }
-    */
-
-    //--|🠋 Center, Text & Icon 🠋|--//
-    /*
-    &[class*='_cen_'] {
-      //--|🠊 display: grid; 🠈|--//
-    }
-    &[class*='_text'] {
-      //--|🠊 display: grid; 🠈|--//
-    }
-    &[class*='_icon'] {
-      //--|🠊 display: grid; 🠈|--//
-    }
-    */
 
     //--|🠊 Top <button> Element 🠈|--//
     &[class*='_top_'] {
@@ -155,9 +103,9 @@ button[class*='default'] {
 %default-canvas {
   //--|🠊 display: flex; 🠈|--//
   div[class*='_lef_'] {
-    //--|🠋 Landing (Mono Color) 🠋|--//
     &[class*='_mon_'] {
-      &[class*='dar_mon'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_dar_'] {
         span {
           h1,
           h2,
@@ -214,51 +162,7 @@ button[class*='default'] {
           }
         }
       }
-      &[class*='med_mon'] {
-        span[class*='_icon'] {
-        }
-        span[class*='_text'] {
-        }
-        span[class*='_back'] {
-          background: Palettes.$indexLand-dark;
-
-          // grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        }
-        /*
-        span[class*='_med_'] {
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6,
-          p {
-            color: Palettes.$grey-neon;
-            background: Palettes.$indexLand-medium;
-          }
-        }
-        span[class*='_med_']:hover {
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6,
-          p {
-            color: Palettes.$indexLand-dark;
-            background: Palettes.$grey-neon;
-          }
-        }
-        &[class*='dar_med_text']:hover ~ div[class*='dar_med_icon'] {
-          span {
-            img {
-              background: Palettes.$indexLand-medium;
-            }
-          }
-        }
-        */
-      }
-      &[class*='lig_mon'] {
+      &[class*='_med_'] {
         span {
           h1,
           h2,
@@ -273,32 +177,50 @@ button[class*='default'] {
             background: Palettes.$indexLand-light;
           }
           &[class*='_back'] {
-            color: Palettes.$indexLand-dark;
+            background: Palettes.$indexLand-dark;
+          }
+
+          &[class*='_text']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              color: Palettes.$indexLand-dark;
+            }
+          }
+
+          &[class*='_icon']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              color: Palettes.$indexLand-light;
+            }
           }
         }
-        span[class*='_icon'] {
-        }
-        span[class*='_text'] {
-        }
-        span[class*='_back'] {
-          background: Palettes.$indexLand-dark;
 
-          // grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        }
-        /*
-        span[class*='_lig_'] {
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6,
-          p {
-            color: Palettes.$indexLand-dark;
+        &[class*='_text']:hover ~ div[class*='_back'] {
+          span {
             background: Palettes.$indexLand-light;
           }
         }
-        span[class*='_lig_']:hover {
+
+        &[class*='_text']:hover ~ div[class*='_icon'] {
+          span {
+            img {
+              background: Palettes.$indexLand-dark;
+            }
+          }
+        }
+      }
+      &[class*='_lig_'] {
+        span {
           h1,
           h2,
           h3,
@@ -307,25 +229,61 @@ button[class*='default'] {
           h6,
           p {
             color: Palettes.$indexLand-light;
+          }
+          img {
+            background: Palettes.$indexLand-light;
+          }
+          &[class*='_back'] {
             background: Palettes.$indexLand-dark;
           }
-        }
-        &[class*='dar_lig_text']:hover ~ div[class*='dar_lig_icon'] {
-          span {
-            img {
-              background: Palettes.$indexLand-light;
+
+          &[class*='_text']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              color: Palettes.$indexLand-dark;
+            }
+          }
+
+          &[class*='_icon']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              color: Palettes.$indexLand-light;
             }
           }
         }
-        */
+
+        &[class*='_text']:hover ~ div[class*='_back'] {
+          span {
+            background: Palettes.$indexLand-light;
+          }
+        }
+
+        &[class*='_text']:hover ~ div[class*='_icon'] {
+          span {
+            img {
+              background: Palettes.$indexLand-dark;
+            }
+          }
+        }
       }
     }
   }
+
   div[class*='_top_'],
   div[class*='_bot_'] {
     //--|🠋 Landing (Mono Color) 🠋|--//
     &[class*='_mon_'] {
-      &[class*='dar_mon'] {
+      &[class*='_dar_'] {
         span[class*='_dar_'] {
           h1,
           h2,
@@ -362,7 +320,7 @@ button[class*='default'] {
           }
         }
       }
-      &[class*='med_mon'] {
+      &[class*='_med_'] {
         span[class*='_med_'] {
           h1,
           h2,
@@ -371,8 +329,11 @@ button[class*='default'] {
           h5,
           h6,
           p {
-            color: Palettes.$grey-neon;
+            color: Palettes.$indexLand-dark;
             background: Palettes.$indexLand-medium;
+          }
+          img {
+            background: Palettes.$indexLand-light;
           }
         }
         span[class*='_med_']:hover {
@@ -387,15 +348,16 @@ button[class*='default'] {
             background: Palettes.$grey-neon;
           }
         }
-        &[class*='dar_med_text']:hover ~ div[class*='dar_med_icon'] {
+
+        &[class*='med_mon_text']:hover ~ div[class*='med_mon_icon'] {
           span {
             img {
-              background: Palettes.$indexLand-medium;
+              background: Palettes.$indexLand-dark;
             }
           }
         }
       }
-      &[class*='lig_mon'] {
+      &[class*='_lig_'] {
         span[class*='_lig_'] {
           h1,
           h2,
@@ -653,7 +615,8 @@ button[class*='default'] {
       }
     }
     span[class*='_back'] {
-      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      width: 100%;
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
 
     &[class*='_text'] {
@@ -674,9 +637,24 @@ button[class*='default'] {
     display: grid;
     position: absolute;
 
+    span[class*='_top_'],
+    span[class*='_bot_'] {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+        cursor: pointer;
+        padding: 8px 1rem;
+        border-radius: 8px;
+      }
+    }
+
     //--|🠋 Top & Bottom (Template) 🠋|--//
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
-
     &[class*='_text'] {
       z-index: 1;
 
@@ -750,6 +728,23 @@ button[class*='default'] {
 }
 %default-shadows {
   //--|🠊 display: flex; 🠈|--//
+  div[class*='_lef_'] {
+    //--|🠋 Landing (Mono Color) 🠋|--//
+    &[class*='_mon'] {
+      &[class*='_dar_'] {
+        filter: drop-shadow(0 0 1rem rgba(Palettes.$indexLand-dark, 0.75));
+      }
+      &[class*='_dar_']:hover {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+      }
+      /*
+      &[class*='_med_'] {
+      }
+      &[class*='_lig_'] {
+      }
+      */
+    }
+  }
   div[class*='_top_'],
   div[class*='_bot_'] {
     //--|🠋 Landing (Mono Color) 🠋|--//
