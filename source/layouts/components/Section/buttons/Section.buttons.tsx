@@ -139,7 +139,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        {/* <ButtonDefault
+        <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -155,7 +155,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        /> */}
+        />
 
         {/* Medium */}
         <ButtonDefault
@@ -260,7 +260,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        {/* <ButtonDefault
+        <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -276,7 +276,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        /> */}
+        />
 
         {/* Light */}
         <ButtonDefault
@@ -381,7 +381,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        {/* <ButtonDefault
+        <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -397,7 +397,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        /> */}
+        />
         <section className="design-section">
           <div className="dar_mon"></div>
           <div className="med_mon"></div>
