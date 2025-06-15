@@ -67,13 +67,16 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
             <div className={`one_${className}_icon`}>
               <span className={`one_${className}_icon`}>
                 <img
-                  alt={`one_${className}_text`}
+                  alt={`one_${className}_icon`}
                   style={{
                     maskImage: `url(${imageLink})`,
                     WebkitMaskImage: `url(${imageLink})`,
                   }}
                 ></img>
               </span>
+            </div>
+            <div className={`one_${className}_back`}>
+              <span className={`one_${className}_back`}></span>
             </div>
           </>
         );

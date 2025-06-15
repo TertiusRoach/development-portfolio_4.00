@@ -28,49 +28,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
     console.log(`pageName: ${pageName}`);
     console.log(`blockName: ${blockName}`);
     console.log('handleButtons Reloaded!');
-
-    // const header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    // const selects = header?.querySelectorAll('select') || ({} as NodeListOf<HTMLSelectElement>);
-
-    return (
-      <>
-        <div className="h1-size"></div>
-        <div className="h2-size"></div>
-        <div className="h3-size"></div>
-        <div className="h4-size"></div>
-        <div className="h5-size"></div>
-        <div className="h6-size"></div>
-        <div className="p-size"></div>
-      </>
-    );
   };
 
-  useEffect(() => {
-    /*
-    const header = document.querySelector<HTMLElement>(`#${pageName}-header`);
-
-    if (!header) return;
-
-    const selects = header.querySelectorAll<HTMLSelectElement>('select');
-
-    const handleChange = () => handleButtons(pageName, blockName);
-
-    selects.forEach((select) => {
-      select.addEventListener('change', handleChange);
-    });
-
-    return () => {
-      selects.forEach((select) => {
-        select.removeEventListener('change', handleChange);
-      });
-    };
-    */
-  }, [pageName, blockName]);
-
-  /*
-  console.log(`pageName: ${pageName}`);
-  console.log(`blockName: ${blockName}`);
-  */
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <section className="buttons-section">
@@ -232,7 +192,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        <ButtonDefault
+        {/* <ButtonDefault
           style={{
             view: '-left-',
             color: '(mono)',
@@ -248,8 +208,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-right-',
             color: '(mono)',
@@ -265,8 +225,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-center-',
             color: '(mono)',
@@ -282,8 +242,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-text-',
             color: '(mono)',
@@ -299,8 +259,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -316,7 +276,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
+        /> */}
 
         {/* Light */}
         <ButtonDefault
@@ -353,7 +313,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        <ButtonDefault
+        {/* <ButtonDefault
           style={{
             view: '-left-',
             color: '(mono)',
@@ -369,8 +329,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-right-',
             color: '(mono)',
@@ -386,8 +346,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-center-',
             color: '(mono)',
@@ -403,8 +363,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-text-',
             color: '(mono)',
@@ -420,8 +380,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -437,8 +397,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-
+        /> */}
         <section className="design-section">
           <div className="dar_mon"></div>
           <div className="med_mon"></div>
