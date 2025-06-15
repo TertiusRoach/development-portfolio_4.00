@@ -192,7 +192,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        {/* <ButtonDefault
+        <ButtonDefault
           style={{
             view: '-left-',
             color: '(mono)',
@@ -208,7 +208,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        /> */}
+        />
         {/* <ButtonDefault
           style={{
             view: '-right-',
@@ -313,7 +313,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        {/* <ButtonDefault
+        <ButtonDefault
           style={{
             view: '-left-',
             color: '(mono)',
@@ -329,7 +329,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        /> */}
+        />
         {/* <ButtonDefault
           style={{
             view: '-right-',

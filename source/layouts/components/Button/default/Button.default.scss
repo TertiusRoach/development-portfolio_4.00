@@ -103,8 +103,9 @@ button[class*='default'] {
 %default-canvas {
   //--|🠊 display: flex; 🠈|--//
   div[class*='_lef_'] {
+    //--|🠋 Landing (Mono Color) 🠋|--//
     &[class*='_mon_'] {
-      //--|🠋 Landing (Mono Color) 🠋|--//
+      //--|🠋 Dark (Mono Color) 🠋|--//
       &[class*='_dar_'] {
         span {
           h1,
@@ -148,12 +149,12 @@ button[class*='default'] {
           }
         }
 
+        //--|🠋 Sibling Animations (Mono Color) 🠋|--//
         &[class*='_text']:hover ~ div[class*='_back'] {
           span {
             background: Palettes.$indexLand-light;
           }
         }
-
         &[class*='_text']:hover ~ div[class*='_icon'] {
           span {
             img {
@@ -162,6 +163,7 @@ button[class*='default'] {
           }
         }
       }
+      //--|🠋 Medium (Mono Color) 🠋|--//
       &[class*='_med_'] {
         span {
           h1,
@@ -171,13 +173,13 @@ button[class*='default'] {
           h5,
           h6,
           p {
-            color: Palettes.$indexLand-light;
+            color: Palettes.$indexLand-dark;
           }
           img {
             background: Palettes.$indexLand-light;
           }
           &[class*='_back'] {
-            background: Palettes.$indexLand-dark;
+            background: Palettes.$indexLand-medium;
           }
 
           &[class*='_text']:hover {
@@ -205,6 +207,7 @@ button[class*='default'] {
           }
         }
 
+        //--|🠋 Sibling Animations (Mono Color) 🠋|--//
         &[class*='_text']:hover ~ div[class*='_back'] {
           span {
             background: Palettes.$indexLand-light;
@@ -219,6 +222,7 @@ button[class*='default'] {
           }
         }
       }
+      //--|🠋 Light (Mono Color) 🠋|--//
       &[class*='_lig_'] {
         span {
           h1,
@@ -228,13 +232,13 @@ button[class*='default'] {
           h5,
           h6,
           p {
-            color: Palettes.$indexLand-light;
+            color: Palettes.$indexLand-dark;
           }
           img {
-            background: Palettes.$indexLand-light;
+            background: Palettes.$indexLand-dark;
           }
           &[class*='_back'] {
-            background: Palettes.$indexLand-dark;
+            background: Palettes.$indexLand-light;
           }
 
           &[class*='_text']:hover {
@@ -245,7 +249,7 @@ button[class*='default'] {
             h5,
             h6,
             p {
-              color: Palettes.$indexLand-dark;
+              color: Palettes.$indexLand-light;
             }
           }
 
@@ -257,21 +261,22 @@ button[class*='default'] {
             h5,
             h6,
             p {
-              color: Palettes.$indexLand-light;
+              color: Palettes.$indexLand-dark;
             }
           }
         }
 
+        //--|🠋 Sibling Animations (Mono Color) 🠋|--//
         &[class*='_text']:hover ~ div[class*='_back'] {
           span {
-            background: Palettes.$indexLand-light;
+            background: Palettes.$indexLand-dark;
           }
         }
 
         &[class*='_text']:hover ~ div[class*='_icon'] {
           span {
             img {
-              background: Palettes.$indexLand-dark;
+              background: Palettes.$indexLand-light;
             }
           }
         }
@@ -734,26 +739,34 @@ button[class*='default'] {
   //--|🠊 display: flex; 🠈|--//
   div[class*='_lef_'] {
     //--|🠋 Landing (Mono Color) 🠋|--//
-    &[class*='_mon'] {
+    &[class*='_mon_'] {
       &[class*='_dar_'] {
         filter: drop-shadow(0 0 1rem rgba(Palettes.$indexLand-dark, 0.75));
       }
       &[class*='_dar_']:hover {
         filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
       }
-      /*
+
       &[class*='_med_'] {
+        filter: drop-shadow(0 0 1rem rgba(white, 0.75));
       }
+      &[class*='_med_']:hover {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$grey-neon, 0.75));
+      }
+
       &[class*='_lig_'] {
+        filter: drop-shadow(0 0 1rem rgba(Palettes.$indexLand-light, 0.25));
       }
-      */
+      &[class*='_lig_']:hover {
+        filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 0.75));
+      }
     }
   }
   div[class*='_top_'],
   div[class*='_bot_'] {
     //--|🠋 Landing (Mono Color) 🠋|--//
     &[class*='_mon'] {
-      &[class*='dar_mon'] {
+      &[class*='_dar_'] {
         filter: drop-shadow(0 0 1rem rgba(Palettes.$indexLand-dark, 0.75));
         span[class*='_dar_'] {
           h1,
@@ -778,7 +791,7 @@ button[class*='default'] {
           }
         }
       }
-      &[class*='med_mon'] {
+      &[class*='_med_'] {
         span[class*='_med_'] {
           h1,
           h2,
@@ -802,7 +815,7 @@ button[class*='default'] {
           }
         }
       }
-      &[class*='lig_mon'] {
+      &[class*='_lig_'] {
         span[class*='_lig_'] {
           h1,
           h2,
@@ -828,7 +841,7 @@ button[class*='default'] {
       }
     }
     //--|🠋 Hyperlink (Red Color) 🠋|--//
-    &[class*='_red'] {
+    &[class*='_red_'] {
       &[class*='dar_red'] {
         span[class*='_dar_'] {
           h1,
@@ -903,7 +916,7 @@ button[class*='default'] {
       }
     }
     //--|🠋 Overtime (Green Color) 🠋|--//
-    &[class*='_gre'] {
+    &[class*='_gre_'] {
       &[class*='dar_gre'] {
         span[class*='_dar_'] {
           h1,
@@ -978,7 +991,7 @@ button[class*='default'] {
       }
     }
     //--|🠋 Ticketing (Blue Color) 🠋|--//
-    &[class*='_blu'] {
+    &[class*='_blu_'] {
       &[class*='dar_blu'] {
         span[class*='_dar_'] {
           h1,
