@@ -145,7 +145,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
-        <ButtonDefault
+        {/* <ButtonDefault
           style={{
             view: '-center-',
             color: '(mono)',
@@ -161,8 +161,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-text-',
             color: '(mono)',
@@ -178,8 +178,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
-        <ButtonDefault
+        /> */}
+        {/* <ButtonDefault
           style={{
             view: '-icon-',
             color: '(mono)',
@@ -195,7 +195,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName,
             blockName: info.blockName,
           }}
-        />
+        /> */}
 
         {/* Medium */}
         <ButtonDefault
@@ -438,6 +438,12 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName,
           }}
         />
+
+        <section className="design-section">
+          <div className="dar_mon"></div>
+          <div className="med_mon"></div>
+          <div className="lig_mon"></div>
+        </section>
       </div>
       <div className="h2-size"></div>
       <div className="h3-size"></div>
