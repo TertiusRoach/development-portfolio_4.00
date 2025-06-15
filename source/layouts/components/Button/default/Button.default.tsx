@@ -55,21 +55,6 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
   const handleDefault = (pageName: string, blockName: string, className: string) => {
-    let scaleImage = (pageName: string, blockName: string, className: string) => {
-      let imageLink = style.image as string;
-
-      console.log(imageLink);
-      /*
-      console.log(pageName);
-      console.log(blockName);
-      */
-      /*
-        console.log(className);
-      */
-
-      return <img alt={className} src={imageLink} />;
-    };
-
     switch (style.size) {
       case '<h1>':
         return (
@@ -81,8 +66,13 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
             </div>
             <div className={`one_${className}_icon`}>
               <span className={`one_${className}_icon`}>
-                {/* Scale the image using Inline HTML to make the website more dynamic */}
-                {scaleImage(pageName, blockName, `one_${className}_text`)}
+                <img
+                  alt={`one_${className}_text`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
               </span>
             </div>
           </>
@@ -168,6 +158,15 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
         );
     }
   };
+  /*
+  let scaleImage = (pageName: string, blockName: string, className: string) => {
+    let imageLink = style.image as string;
+
+    console.log(imageLink);
+
+    return <img alt={className} src={imageLink} />;
+  };
+  */
 
   useEffect(() => {
     const className = info.className as string;
