@@ -50,15 +50,10 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   const className = createClass(style) as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
-
   const imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
-  const handleDefault = (pageName: string, blockName: string, className: string) => {
-    // let pageName: string = `${pageName}`;
-    console.log(`Button.default.tsx - Line 59`, pageName);
-    console.log(`Button.default.tsx - Line 60`, blockName);
-
+  const handleDefault = (className: string) => {
     switch (style.size) {
       case '<h1>':
         return (
@@ -183,7 +178,7 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
     const colorStyle = stripBrackets(style.color, '()') as string;
   }, [pageName, blockName]);
 
-  return <button className={`default-button ${className}`}>{handleDefault(pageName, blockName, className)}</button>;
+  return <button className={`default-button ${className}`}>{handleDefault(className)}</button>;
 };
 export default ButtonDefault;
 

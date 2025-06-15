@@ -28,10 +28,6 @@
       }
     }
 
-    button {
-      border: solid black 1px;
-    }
-
     //--|🠋 Dark 🠋|--//
     button[class*='top_dar'] {
       grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
@@ -100,6 +96,12 @@
     button[class*='ico_lig'] {
       grid-area: 7 / 6 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
+
+    /*
+    button[class*='default'] {
+      border: solid black 1px;
+    }
+    */
 
     /*
     &[class*='h1'] {
