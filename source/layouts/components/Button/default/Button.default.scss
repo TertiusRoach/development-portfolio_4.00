@@ -151,7 +151,6 @@ button[class*='default'] {
   }
   div[class*='_text'] {
     z-index: 0;
-
     span[class*='_text'] {
       display: inherit; //--|🠈 display: grid; 🠈|--//
       grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / cols 🠈|--//
@@ -733,12 +732,20 @@ button[class*='default'] {
       }
     }
   }
+
   //--|🠋 Ticketing (Blue Color) 🠋|--//
   div[class*='_blu'] {
     &[class*='dar_blu'] {
       span[class*='_dar_'] {
-        color: Palettes.$logTicket-light;
-        background: Palettes.$logTicket-dark;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-light, 1));
+        }
       }
       span[class*='_dar_']:hover {
         h1,
@@ -748,14 +755,21 @@ button[class*='default'] {
         h5,
         h6,
         p {
-          color: Palettes.$logTicket-dark;
-          background: Palettes.$logTicket-light;
+          filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-dark, 1));
         }
       }
     }
     &[class*='med_blu'] {
       span[class*='_med_'] {
-        background: Palettes.$logTicket-medium;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          filter: drop-shadow(0 0 8px rgba(white, 1));
+        }
       }
       span[class*='_med_']:hover {
         h1,
@@ -765,15 +779,21 @@ button[class*='default'] {
         h5,
         h6,
         p {
-          color: Palettes.$logTicket-dark;
-          background: Palettes.$blue-neon;
+          filter: drop-shadow(0 0 4px rgba(black, 1));
         }
       }
     }
     &[class*='lig_blu'] {
       span[class*='_lig_'] {
-        color: Palettes.$logTicket-dark;
-        background: Palettes.$logTicket-light;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 1));
+        }
       }
       span[class*='_lig_']:hover {
         h1,
@@ -783,8 +803,7 @@ button[class*='default'] {
         h5,
         h6,
         p {
-          color: Palettes.$logTicket-light;
-          background: Palettes.$logTicket-dark;
+          filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-light, 1));
         }
       }
     }
