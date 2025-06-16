@@ -96,8 +96,35 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`two_${className}_icon`}>
-              <span className={`two_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`two_${className}_icon`}>
+                <img
+                  alt={`two_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
             </div>
+            <div className={`two_${className}_back`}>
+              <span className={`two_${className}_back`}>
+                <h2
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h2>
+              </span>
+            </div>
+            {/* <div className={`two_${className}_text`}>
+              <span className={`two_${className}_text`}>
+                <h2>{style.text}</h2>
+              </span>
+            </div>
+            <div className={`two_${className}_icon`}>
+              <span className={`two_${className}_icon`}><img alt={className} src={imageLink} /></span>
+            </div> */}
           </>
         );
       case '<h3>':
@@ -109,7 +136,26 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`thr_${className}_icon`}>
-              <span className={`thr_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`thr_${className}_icon`}>
+                <img
+                  alt={`thr_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
+            </div>
+            <div className={`thr_${className}_back`}>
+              <span className={`thr_${className}_back`}>
+                <h3
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h3>
+              </span>
             </div>
           </>
         );
@@ -122,7 +168,26 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`fou_${className}_icon`}>
-              <span className={`fou_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`fou_${className}_icon`}>
+                <img
+                  alt={`fou_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
+            </div>
+            <div className={`fou_${className}_back`}>
+              <span className={`fou_${className}_back`}>
+                <h4
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h4>
+              </span>
             </div>
           </>
         );
@@ -135,7 +200,26 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`fiv_${className}_icon`}>
-              <span className={`fiv_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`fiv_${className}_icon`}>
+                <img
+                  alt={`fiv_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
+            </div>
+            <div className={`fiv_${className}_back`}>
+              <span className={`fiv_${className}_back`}>
+                <h5
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h5>
+              </span>
             </div>
           </>
         );
@@ -148,12 +232,31 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`six_${className}_icon`}>
-              <span className={`six_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`six_${className}_icon`}>
+                <img
+                  alt={`six_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
+            </div>
+            <div className={`six_${className}_back`}>
+              <span className={`six_${className}_back`}>
+                <h6
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </h6>
+              </span>
             </div>
           </>
         );
-      case '<p>':
       default:
+      case '<p>':
         return (
           <>
             <div className={`par_${className}_text`}>
@@ -162,8 +265,35 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
               </span>
             </div>
             <div className={`par_${className}_icon`}>
-              <span className={`par_${className}_icon`}>{/* <img alt={className} src={imageLink} /> */}</span>
+              <span className={`par_${className}_icon`}>
+                <img
+                  alt={`par_${className}_icon`}
+                  style={{
+                    maskImage: `url(${imageLink})`,
+                    WebkitMaskImage: `url(${imageLink})`,
+                  }}
+                ></img>
+              </span>
             </div>
+            <div className={`par_${className}_back`}>
+              <span className={`par_${className}_back`}>
+                <p
+                  style={{
+                    opacity: '0',
+                  }}
+                >
+                  {style.text}
+                </p>
+              </span>
+            </div>
+            {/* <div className={`par_${className}_text`}>
+              <span className={`par_${className}_text`}>
+                <p>{style.text}</p>
+              </span>
+            </div>
+            <div className={`par_${className}_icon`}>
+              <span className={`par_${className}_icon`}><img alt={className} src={imageLink} /></span>
+            </div> */}
           </>
         );
     }
@@ -181,27 +311,3 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   return <button className={`default-button ${className}`}>{handleDefault(className)}</button>;
 };
 export default ButtonDefault;
-
-/*
-const scaleWords = (
-  fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  text: [string, string] | string
-) => {
-  switch (fontSize) {
-    case '<p>':
-      return <p>{text}</p>;
-    case '<h1>':
-      return <h1>{text}</h1>;
-    case '<h2>':
-      return <h2>{text}</h2>;
-    case '<h3>':
-      return <h3>{text}</h3>;
-    case '<h4>':
-      return <h4>{text}</h4>;
-    case '<h5>':
-      return <h5>{text}</h5>;
-    case '<h6>':
-      return <h6>{text}</h6>;
-  }
-};
-*/
