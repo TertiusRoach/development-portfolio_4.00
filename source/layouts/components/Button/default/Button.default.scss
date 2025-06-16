@@ -908,6 +908,7 @@
         grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
         p {
           margin: 0;
+          padding-left: 4rem;
           /* padding-left: 4rem; */
         }
       }
@@ -924,6 +925,10 @@
       span[class*='_text'] {
         //--|🠊 display: grid; 🠈|--//
         grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        p {
+          margin: 0;
+          padding-right: 4rem;
+        }
       }
       span[class*='_icon'] {
         //--|🠊 display: flex; 🠈|--//
@@ -1820,7 +1825,7 @@
         //--|🠊 Center <button> Element 🠈|--//
         grid-template: 1fr auto 1fr / 4px 1fr 1.5rem 1fr 4px;
         span[class*='_icon'] {
-          padding-top: 6px;
+          padding-top: 12px;
           img {
             width: 1.5rem;
             height: 1.5rem;
