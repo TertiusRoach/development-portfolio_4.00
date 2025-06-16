@@ -46,96 +46,34 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   */
 }
 
-export function scrollSize(thisName: HTMLSelectElement) {
-  switch (thisName.value) {
+export function showSize(pageName: string, blockName: string) {
+  const selectSize = document.querySelector(
+    `#${pageName}-header .buttons-menu li[class*="size"] select`
+  ) as HTMLSelectElement;
+  const mainSlider = document.querySelector(`#${pageName}-${blockName} section[class*="buttons"]`) as HTMLElement;
+  const prevElement = document.querySelector(
+    `#${pageName}-${blockName} section[class*="buttons"] .visible`
+  ) as HTMLDivElement;
+  const nextElement = document.querySelector(
+    `#${pageName}-${blockName} section[class*="buttons"] .${selectSize.value}`
+  ) as HTMLDivElement;
+
+  nextElement.className = `${selectSize.value} visible`;
+  prevElement.className = `${prevElement.classList[0]} hidden`;
+  switch (selectSize.value) {
     case 'h1-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(0px)`);
     case 'h2-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 1}px)`);
     case 'h3-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 2}px)`);
     case 'h4-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 3}px)`);
     case 'h5-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 4}px)`);
     case 'h6-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 5}px)`);
     case 'p-size':
-      console.log(`View size changed to: ${thisName.value}`);
-      break;
+      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 6}px)`);
   }
 }
-/*
-export function togglePreview(
-  pageName: string,
-  action: 'highlight' | 'downplay',
-  division: 'overtime' | 'ticketing' | 'hyperlink'
-) {
-  const element = document.querySelector(
-    `#${pageName}-header section .preview-${division}`
-  ) as HTMLElement;
-  switch (action) {
-    case 'highlight':
-      element.classList.remove('downplay'); //--|🠈 Remove '.downplay' 🠈|--//
-      return element.classList.add('highlight'); //--|🠈 Toggle '.highlight' 🠈|--//
-    case 'downplay':
-      element.classList.remove('highlight'); //--|🠈 Remove '.highlight' 🠈|--//
-      return element.classList.add('downplay'); //--|🠈 Toggle '.downplay' 🠈|--//
-  }
-}
-
-export function viewDemo(
-  pageName: string,
-  viewPage: 'overtime' | 'ticketing' | 'hyperlink'
-) {
-  const showDemo = (viewDemo: string) => {
-    let element = document.querySelector(`#${viewDemo}-body`); //--|🠈 Select the new view element using its dynamic ID 🠈|--//
-    let active = document.querySelector("div[id*='body'].active") as HTMLElement | null; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
-
-    if (!(element instanceof HTMLElement)) {
-      //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
-      console.warn(`Element for view "${viewDemo}" not found.`);
-      return;
-    }
-
-    if (active) {
-      //--|🠉 If there's a visible element, hide it 🠈|--//
-      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--//
-      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--//
-    }
-
-    switch (true) {
-      case element.classList.contains('asleep'):
-        //--|🠉 Show the selected view only if it’s currently hidden 🠈|--//
-        element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--//
-        return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--//
-      case element.classList.contains('active'):
-        //--|🠉 Optional toggle: allow hiding the current element again 🠈|--//
-        element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--//
-        return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--//
-    }
-  };
-  const collapseHeader = (pageName: string) => {
-    let header = document.querySelector(`#${pageName}-header`) as HTMLElement;
-    switch (true) {
-      case header.classList.contains('collapsed'):
-        header.classList.remove('collapsed'); //--|🠈 Remove '.collapsed' 🠈|--//
-        return header.classList.add('expanded'); //--|🠈 Toggle '.expanded' 🠈|--//
-      case header.classList.contains('expanded'):
-        header.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-        return header.classList.add('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
-    }
-  };
-
-  setTimeout(() => {
-    showDemo(viewPage);
-  }, 250);
-  collapseHeader(pageName);
-}
-*/

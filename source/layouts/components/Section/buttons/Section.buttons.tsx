@@ -3,7 +3,7 @@
 import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, scrollSize } from './Section_buttons';
+import { defineButton, showSize } from './Section_buttons';
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -25,6 +25,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   const handleButtons = (pageName: string, blockName: string) => {
+    let page = pageName as string;
+    let block = blockName as string;
     /*
     console.log(`pageName: ${pageName}`);
     console.log(`blockName: ${blockName}`);
@@ -33,32 +35,31 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    const selectStyle = document.querySelector(
+    let selectStyle = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="style"] select`
     ) as HTMLSelectElement;
 
-    const selectSize = document.querySelector(
+    let selectSize = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="size"] select`
     ) as HTMLSelectElement;
 
-    const selectColor = document.querySelector(
+    let selectColor = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="color"] select`
     ) as HTMLSelectElement;
 
     const cleanups: (() => void)[] = [];
+
+    if (selectSize) {
+      const handleSize = () => showSize(pageName, blockName);
+      selectSize.addEventListener('change', handleSize);
+      cleanups.push(() => selectSize.removeEventListener('change', handleSize));
+    }
 
     if (selectStyle) {
       const handleStyle = () => reloadDesign(pageName);
       selectStyle.addEventListener('change', handleStyle);
       cleanups.push(() => selectStyle.removeEventListener('change', handleStyle));
     }
-
-    if (selectSize) {
-      const handleSize = () => showSize(pageName);
-      selectSize.addEventListener('change', handleSize);
-      cleanups.push(() => selectSize.removeEventListener('change', handleSize));
-    }
-
     if (selectColor) {
       const handleColor = () => viewColor(pageName);
       selectColor.addEventListener('change', handleColor);
@@ -73,7 +74,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   return (
     //  style={{ transform: 'translateY(250px)' }}
     <section className="buttons-section">
-      <div className="h1-size">
+      <div className="h1-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{
@@ -443,44 +444,17 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           <div className="lig_mon"></div>
         </section>
       </div>
-      <div className="h2-size"></div>
-      <div className="h3-size"></div>
-      <div className="h4-size"></div>
-      <div className="h5-size"></div>
-      <div className="h6-size"></div>
-      <div className="p-size"></div>
+      <div className="h2-size hidden"></div>
+      <div className="h3-size hidden"></div>
+      <div className="h4-size hidden"></div>
+      <div className="h5-size hidden"></div>
+      <div className="h6-size hidden"></div>
+      <div className="p-size hidden"></div>
     </section>
   );
 };
 export default SectionButtons;
 
-const showSize = (pageName: string) => {
-  let selectSize = document.querySelector(`#${pageName}-header .buttons-menu li[class*="size"] select`) as HTMLSelectElement;
-
-  switch (selectSize.value) {
-    case 'h1-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'h2-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'h3-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'h4-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'h5-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'h6-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-    case 'p-size':
-      console.log(`View size changed to: ${selectSize.value}`);
-      break;
-  }
-};
 const viewColor = (pageName: string) => {
   let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
   switch (viewColor.value) {
@@ -490,7 +464,6 @@ const viewColor = (pageName: string) => {
       return console.log(`${viewColor.value}`);
     case 'green-color':
       return console.log(`${viewColor.value}`);
-
     case 'blue-color':
       return console.log(`${viewColor.value}`);
     default:

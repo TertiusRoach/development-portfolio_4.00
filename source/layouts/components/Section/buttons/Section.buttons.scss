@@ -102,30 +102,6 @@
       border: solid black 1px;
     }
     */
-
-    /*
-    &[class*='h1'] {
-      // background: rgba(darkred, 0.25);
-    }
-    &[class*='h2'] {
-      // background: rgba(darkgreen, 0.25);
-    }
-    &[class*='h3'] {
-      // background: rgba(darkblue, 0.25);
-    }
-    &[class*='h4'] {
-      // background: rgba(darkred, 0.25);
-    }
-    &[class*='h5'] {
-      // background: rgba(darkgreen, 0.25);
-    }
-    &[class*='h6'] {
-      // background: rgba(darkblue, 0.25);
-    }
-    &[class*='p'] {
-      // background: rgba(purple, 0.25);
-    }
-    */
   }
 
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -149,6 +125,46 @@
 section[class*='buttons'] {
   width: 100%;
   display: block;
+  transform: translateY(0px);
+  transition: transform 0.5s ease-in-out;
+
+  div[class*='size'] {
+    transition: filter 0.75s ease-in-out, opacity 0.25s ease-in-out;
+
+    &[class*='hidden'] {
+      opacity: 0;
+      filter: blur(8px);
+    }
+    &[class*='visible'] {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  /*
+  div[class*='h1-size'] {
+    background: rgba(darkred, 0.5);
+  }
+  div[class*='h2-size'] {
+    background: rgba(darkgreen, 0.5);
+  }
+  div[class*='h3-size'] {
+    background: rgba(darkblue, 0.5);
+  }
+  div[class*='h4-size'] {
+    background: rgba(darkred, 0.5);
+  }
+  div[class*='h5-size'] {
+    background: rgba(darkgreen, 0.5);
+  }
+  div[class*='h6-size'] {
+    background: rgba(darkblue, 0.5);
+  }
+  div[class*='p-size'] {
+    background: rgba(purple, 0.5);
+  }
+  */
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
