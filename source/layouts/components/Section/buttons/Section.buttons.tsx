@@ -439,7 +439,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           <div className="lig_mon"></div>
         </section>
       </div>
-      <div className="h2-size hidden">
+      <div className="h2-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{
@@ -804,7 +804,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </div>
-      <div className="h3-size hidden">
+      <div className="h3-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{
@@ -1169,7 +1169,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </div>
-      <div className="h4-size hidden">
+      <div className="h4-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{
@@ -1534,7 +1534,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </div>
-      <div className="h5-size hidden">
+      <div className="h5-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{
@@ -2264,7 +2264,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </div>
-      <div className="p-size hidden">
+      <div className="p-size visible">
         {/* Dark */}
         <ButtonDefault
           style={{

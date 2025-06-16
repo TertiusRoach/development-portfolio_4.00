@@ -286,14 +286,6 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
                 </p>
               </span>
             </div>
-            {/* <div className={`par_${className}_text`}>
-              <span className={`par_${className}_text`}>
-                <p>{style.text}</p>
-              </span>
-            </div>
-            <div className={`par_${className}_icon`}>
-              <span className={`par_${className}_icon`}><img alt={className} src={imageLink} /></span>
-            </div> */}
           </>
         );
     }
