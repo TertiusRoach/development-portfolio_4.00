@@ -11,8 +11,8 @@ const ButtonsFooter = lazy(() => import('../containers/Footer/ButtonsFooter/Butt
 function Buttons() {
   return (
     <Suspense fallback={<div className="display-1">Loading...</div>}>
-      <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />
       <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />
+      <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />
       <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />
     </Suspense>
   );

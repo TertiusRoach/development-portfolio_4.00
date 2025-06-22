@@ -6,14 +6,33 @@
 
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  main[id*='main'],
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  }
 }
 @mixin mobile-portrait {
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  main[id*='main'],
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  }
 }
 
 body {
   div[id*='buttons'] {
+    main[id*='buttons'] {
+      height: 100vh;
+    }
+
     //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
       @include desktop-landscape();

@@ -3,54 +3,12 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-
   div[class*='size'] {
-    height: 100vh;
-
-    &[class*='h2'] {
-      display: hidden;
-    }
-    &[class*='h3'] {
-      display: hidden;
-    }
-    &[class*='h4'] {
-      display: hidden;
-    }
-    &[class*='h5'] {
-      display: hidden;
-    }
-    &[class*='h6'] {
-      display: hidden;
-    }
-    &[class*='p'] {
-      display: hidden;
-    }
-    /*
-
-    height: 100%;
     display: grid;
-    grid-template: repeat(7, 1fr) / 6rem repeat(6, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
-    
-    section[class*='design'] {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-area: 1 / 2 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
-      div[class*='dar_mon'] {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        background: rgba(Palettes.$indexLand-light, 0.75);
-      }
-      div[class*='med_mon'] {
-        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        background: rgba(Palettes.$indexLand-medium, 0.75);
-      }
-      div[class*='lig_mon'] {
-        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        background: rgba(Palettes.$indexLand-dark, 0.75);
-      }
-    }
+    grid-template-rows: 4rem repeat(7, 1fr) 4rem; //--|🠊 rows 🠈|--//
+    grid-template-columns: 6rem repeat(3, 1fr) 6rem; //--|🠊 columns 🠈|--//
 
+    /*
     //--|🠋 Dark 🠋|--//
     button[class*='top_dar'] {
       grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
@@ -120,11 +78,25 @@
       grid-area: 7 / 6 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
     }
     */
-    /*
-    button[class*='default'] {
-      border: solid black 1px;
+
+    &[class*='h2'] {
+      display: hidden;
     }
-    */
+    &[class*='h3'] {
+      display: hidden;
+    }
+    &[class*='h4'] {
+      display: hidden;
+    }
+    &[class*='h5'] {
+      display: hidden;
+    }
+    &[class*='h6'] {
+      display: hidden;
+    }
+    &[class*='p'] {
+      display: hidden;
+    }
   }
 
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -148,23 +120,74 @@
 section[class*='buttons'] {
   width: 100%;
   display: block;
+  grid-area: inherit; //--|🠊 grid-area: 1 / 1 / 4 / 4; 🠈|--//
   transform: translateY(0px);
   transition: transform 0.5s ease-in-out;
 
+  @extend %section-shadows;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+
+%section-shadows {
   div[class*='size'] {
     transition: filter 0.75s ease-in-out, opacity 0.25s ease-in-out;
 
-    &[class*='hidden'] {
-      opacity: 0;
-      filter: blur(8px);
-    }
-    &[class*='visible'] {
-      opacity: 1;
-      filter: blur(0);
-    }
+    @extend %section-motion;
   }
+}
+%section-motion {
+  &[class*='hidden'] {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  &[class*='visible'] {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
 
-  /*
+/*
+    height: 100%;
+    display: grid;
+    grid-template: repeat(7, 1fr) / 6rem repeat(6, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
+    
+    section[class*='design'] {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-area: 1 / 2 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      grid-template: 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
+      div[class*='dar_mon'] {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        background: rgba(Palettes.$indexLand-light, 0.75);
+      }
+      div[class*='med_mon'] {
+        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        background: rgba(Palettes.$indexLand-medium, 0.75);
+      }
+      div[class*='lig_mon'] {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        background: rgba(Palettes.$indexLand-dark, 0.75);
+      }
+    }
+
+
+    */
+/*
+    button[class*='default'] {
+      border: solid black 1px;
+    }
+    */
+
+/*
   div[class*='h1-size'] {
     background: rgba(darkred, 0.5);
   }
@@ -187,13 +210,3 @@ section[class*='buttons'] {
     background: rgba(purple, 0.5);
   }
   */
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-}

@@ -3,7 +3,7 @@
 import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, showSize } from './Section_buttons';
+import { defineButton, showSize, sizeDivs } from './Section_buttons';
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -35,6 +35,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
+    sizeDivs(pageName, blockName);
+
+    //--|🠋 Event Listeners 🠋|--//
     let selectStyle = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="style"] select`
     ) as HTMLSelectElement;
@@ -44,6 +47,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
     let selectColor = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="color"] select`
     ) as HTMLSelectElement;
+
     const cleanupArray: (() => void)[] = [];
 
     if (selectSize) {

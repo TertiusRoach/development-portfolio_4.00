@@ -46,6 +46,16 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   */
 }
 
+export function sizeDivs(pageName: string, blockName: string) {
+  const mainBlock = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  const mainDivs = mainBlock.querySelectorAll('section div[class*="size"]') as NodeListOf<HTMLDivElement>;
+  for (let i = 0; i < mainDivs.length; i++) {
+    let mainDiv = mainDivs[i] as HTMLDivElement;
+    mainDiv.style.width = `${mainBlock.offsetWidth}px`;
+    mainDiv.style.height = `${mainBlock.offsetHeight}px`;
+  }
+}
+
 export function showSize(pageName: string, blockName: string) {
   const selectSize = document.querySelector(
     `#${pageName}-header .buttons-menu li[class*="size"] select`
