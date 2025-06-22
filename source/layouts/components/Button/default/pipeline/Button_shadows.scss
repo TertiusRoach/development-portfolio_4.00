@@ -1,0 +1,664 @@
+//--|🠊 Button_shadows.scss 🠈|--//
+@use '../../../../designs/Palettes.scss' as Palettes;
+
+@mixin desktop-shadows {
+  @extend %desktop-shadows;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-shadows {
+  @extend %mobile-shadows;
+
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+//--|🠋 Desktop (Landscape) 🠋|--//
+%desktop-shadows {
+  @media screen and (orientation: landscape) {
+    //--|🠊 display: flex; 🠈|--//
+    div[class*='_top_'],
+    div[class*='_bot_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        &[class*='_dar_'] {
+          filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 1));
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+          }
+          span[class*='_dar_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+            }
+          }
+        }
+        &[class*='_med_'] {
+          &[class*='_med_'] {
+            // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+
+            span[class*='_med_'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 0.25));
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6,
+              p {
+                filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+              }
+            }
+          }
+          &[class*='_med_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+            }
+          }
+        }
+        &[class*='_lig_'] {
+          filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 1));
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 1rem rgba(Palettes.$indexLand-dark, 0.25));
+            }
+          }
+          span[class*='_lig_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+          }
+        }
+      }
+      //--|🠋 Hyperlink (Red Color) 🠋|--//
+      &[class*='_red_'] {
+        &[class*='dar_red'] {
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-light, 1));
+            }
+          }
+          span[class*='_dar_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$findLink-dark, 1));
+            }
+          }
+        }
+        &[class*='med_red'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(white, 1));
+            }
+          }
+          span[class*='_med_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(black, 1));
+            }
+          }
+        }
+        &[class*='lig_red'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$findLink-dark, 1));
+            }
+          }
+          span[class*='_lig_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$findLink-light, 1));
+            }
+          }
+        }
+      }
+      //--|🠋 Overtime (Green Color) 🠋|--//
+      &[class*='_gre_'] {
+        &[class*='dar_gre'] {
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-light, 1));
+            }
+          }
+          span[class*='_dar_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+            }
+          }
+        }
+        &[class*='med_gre'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(white, 1));
+            }
+          }
+          span[class*='_med_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(black, 1));
+            }
+          }
+        }
+        &[class*='lig_gre'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 1));
+            }
+          }
+          span[class*='_lig_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+          }
+        }
+      }
+      //--|🠋 Ticketing (Blue Color) 🠋|--//
+      &[class*='_blu_'] {
+        &[class*='dar_blu'] {
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-light, 1));
+            }
+          }
+          span[class*='_dar_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-dark, 1));
+            }
+          }
+        }
+        &[class*='med_blu'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(white, 1));
+            }
+          }
+          span[class*='_med_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(black, 1));
+            }
+          }
+        }
+        &[class*='lig_blu'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$logTicket-dark, 1));
+            }
+          }
+          span[class*='_lig_']:hover {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$logTicket-light, 1));
+            }
+          }
+        }
+      }
+    }
+    div[class*='_lef_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        &[class*='_dar_'] {
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 0.75));
+            }
+          }
+        }
+        &[class*='_dar_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+          &[class*='_back'] {
+            filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 1));
+          }
+        }
+
+        &[class*='_med_'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_med_']:hover {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+          }
+        }
+
+        &[class*='_lig_'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.75));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+
+              // filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_lig_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 0.75));
+        }
+      }
+    }
+    div[class*='_rig_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        &[class*='_dar_'] {
+          // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 0.75));
+            }
+          }
+        }
+        &[class*='_dar_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+          &[class*='_back'] {
+            filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 1));
+          }
+        }
+
+        &[class*='_med_'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_med_']:hover {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+          }
+        }
+
+        &[class*='_lig_'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.75));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+
+              // filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_lig_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 0.75));
+        }
+      }
+    }
+    div[class*='_cen_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        &[class*='_dar_'] {
+          // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 0.75));
+            }
+          }
+        }
+        &[class*='_dar_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+          &[class*='_back'] {
+            filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 1));
+          }
+        }
+
+        &[class*='_med_'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_med_']:hover {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+          }
+        }
+
+        &[class*='_lig_'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.75));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+
+              // filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_lig_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 0.75));
+        }
+      }
+    }
+    div[class*='_tex_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        &[class*='_dar_'] {
+          // filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+          span[class*='_dar_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 0.75));
+            }
+          }
+        }
+        &[class*='_dar_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.5));
+          &[class*='_back'] {
+            filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-medium, 1));
+          }
+        }
+
+        &[class*='_med_'] {
+          span[class*='_med_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 1));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_med_']:hover {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-dark, 1));
+          }
+        }
+
+        &[class*='_lig_'] {
+          span[class*='_lig_'] {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 0.75));
+            }
+            &[class*='_back'] {
+              filter: drop-shadow(0 0 8px rgba(Palettes.$indexLand-dark, 0.75));
+
+              // filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-medium, 1));
+            }
+          }
+        }
+        &[class*='_lig_']:hover {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$indexLand-light, 0.75));
+        }
+      }
+    }
+    div[class*='_ico_'] {
+      //--|🠋 Landing (Mono Color) 🠋|--//
+      &[class*='_mon_'] {
+        filter: drop-shadow(0 0 0 rgba(Palettes.$grey-neon, 0));
+      }
+    }
+  }
+}
+//--|🠋 Mobile (Portrait) 🠋|--//
+%mobile-shadows {
+  @media screen and (orientation: portrait) {
+  }
+}

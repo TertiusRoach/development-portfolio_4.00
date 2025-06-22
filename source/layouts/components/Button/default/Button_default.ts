@@ -25,6 +25,7 @@ const scaleImage = (pageName: string, blockName: string, className: string) => {
   // Debug logs (keep or remove as needed)
   console.log(pageName);
   console.log(blockName);
+  console.log(`Line 28, Button_default.ts: ${className}`);
   // console.log(className);
 
   // return <img alt={className} src={imageLink} />;
