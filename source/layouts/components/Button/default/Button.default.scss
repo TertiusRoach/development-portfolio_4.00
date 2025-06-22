@@ -1918,6 +1918,9 @@ button[class*='default'] {
   overflow: hidden;
   position: relative;
 
+  @include Button_default.extend-mobile();
+  @include Button_default.extend-desktop();
+
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -1926,7 +1929,4 @@ button[class*='default'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-
-  @include Button_default.extend-mobile();
-  @include Button_default.extend-desktop();
 }

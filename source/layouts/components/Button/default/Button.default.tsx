@@ -59,9 +59,7 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
         return (
           <>
             <div className={`one_${className}_text`}>
-              <span className={`one_${className}_text`}>
-                <h1>{style.text}</h1>
-              </span>
+              <span className={`one_${className}_text`}>{/* <h1>{style.text}</h1> */}</span>
             </div>
             <div className={`one_${className}_icon`}>
               <span className={`one_${className}_icon`}>
@@ -76,13 +74,13 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
             </div>
             <div className={`one_${className}_back`}>
               <span className={`one_${className}_back`}>
-                <h1
+                {/* <h1
                   style={{
                     opacity: '0',
                   }}
                 >
                   {style.text}
-                </h1>
+                </h1> */}
               </span>
             </div>
           </>

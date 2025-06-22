@@ -28,6 +28,7 @@
 %desktop-shadows {
   @media screen and (orientation: landscape) {
     //--|🠊 display: flex; 🠈|--//
+    /*
     div[class*='_top_'],
     div[class*='_bot_'] {
       //--|🠋 Landing (Mono Color) 🠋|--//
@@ -655,6 +656,7 @@
         filter: drop-shadow(0 0 0 rgba(Palettes.$grey-neon, 0));
       }
     }
+    */
   }
 }
 //--|🠋 Mobile (Portrait) 🠋|--//

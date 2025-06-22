@@ -2,32 +2,10 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-surface {
-  @extend %desktop-surface;
-
   //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-  }
-}
-@mixin mobile-surface {
-  @extend %mobile-surface;
-
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
-  }
-}
-
-//--|🠋 Desktop (Landscape) 🠋|--//
-%desktop-surface {
   @media screen and (orientation: landscape) {
     //--|🠊 display: flex; 🠈|--//
+    /*
     div[class*='_top_'],
     div[class*='_bot_'] {
       //--|🠋 Landing (Mono Color) 🠋|--//
@@ -1217,10 +1195,27 @@
         }
       }
     }
+    */
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
   }
 }
-//--|🠋 Mobile (Portrait) 🠋|--//
-%mobile-surface {
+@mixin mobile-surface {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+
   @media screen and (orientation: portrait) {
+  }
+
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
   }
 }

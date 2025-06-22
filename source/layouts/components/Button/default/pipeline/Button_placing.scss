@@ -3,34 +3,11 @@
 /* Gradually resize all the media screen sizes. */
 
 @mixin desktop-placing {
-  @extend %desktop-placing;
-
   //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-  }
-}
-@mixin mobile-placing {
-  @extend %mobile-placing;
-
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
-  }
-}
-
-//--|🠋 Desktop (Landscape) 🠋|--//
-%desktop-placing {
   @media screen and (orientation: landscape) {
     //--|🠊 display: flex; 🠈|--//
-    div[class*='_top_'],
-    div[class*='_bot_'] {
+    div[class*='_top_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -78,8 +55,61 @@
           justify-content: center;
         }
       }
+      */
+    }
+    div[class*='_bot_'] {
+      /*
+      width: 100%;
+      height: 100%;
+      display: grid;
+      position: absolute;
+
+      //--|🠋 Top & Bottom (Template) 🠋|--//
+      grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+      &[class*='_text'] {
+        z-index: 1;
+
+        span[class*='_text'] {
+          display: inherit; //--|🠈 display: grid; 🠈|--//
+          grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / cols 🠈|--//
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+          }
+        }
+        span[class*='_top_'],
+        span[class*='_bot_'] {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            margin: 0;
+            cursor: pointer;
+            padding: 8px 1rem;
+            border-radius: 8px;
+          }
+        }
+      }
+      &[class*='_icon'] {
+        z-index: 0;
+        span[class*='_icon'] {
+          display: flex;
+          cursor: pointer;
+          justify-content: center;
+        }
+      }
+      */
     }
     div[class*='_lef_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -119,8 +149,10 @@
       &[class*='_back'] {
         z-index: 0;
       }
+      */
     }
     div[class*='_rig_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -164,8 +196,10 @@
       &[class*='_back'] {
         z-index: 0;
       }
+      */
     }
     div[class*='_cen_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -210,8 +244,10 @@
       &[class*='_back'] {
         z-index: 0;
       }
+      */
     }
     div[class*='_tex_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -253,8 +289,10 @@
       &[class*='_back'] {
         z-index: 0;
       }
+      */
     }
     div[class*='_ico_'] {
+      /*
       width: 100%;
       height: 100%;
       display: grid;
@@ -290,11 +328,28 @@
           grid-template: repeat(3, 1fr) / repeat(3, 1fr);
         }
       }
+      */
+    }
+
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 360px) {
     }
   }
 }
-//--|🠋 Mobile (Portrait) 🠋|--//
-%mobile-placing {
+
+@mixin mobile-placing {
+  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    //--|🠋 Tablet (Portrait) 🠋|--//
+    @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 360px) {
+    }
   }
 }

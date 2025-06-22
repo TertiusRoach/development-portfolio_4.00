@@ -27,6 +27,7 @@
 %desktop-motions {
   @media screen and (orientation: landscape) {
     //--|🠊 display: flex; 🠈|--//
+    /*
     div[class*='_top_'],
     div[class*='_bot_'] {
       span {
@@ -147,6 +148,7 @@
         }
       }
     }
+    */
   }
 }
 //--|🠋 Mobile (Portrait) 🠋|--//
