@@ -37,6 +37,17 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {
     sizeDivs(pageName, blockName);
 
+    // Resize handler — triggers sizeDivs with current parameters
+    const handleResize = () => {
+      sizeDivs(pageName, blockName);
+    };
+
+    // Run once on initial mount and when dependencies change
+    handleResize();
+
+    // Attach resize event listener
+    window.addEventListener('resize', handleResize);
+
     //--|🠋 Event Listeners 🠋|--//
     let selectStyle = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="style"] select`
@@ -66,7 +77,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
       cleanupArray.push(() => selectSize.removeEventListener('change', handleColor));
     }
 
+    // Cleanup on unmount or dependency change
     return () => {
+      window.removeEventListener('resize', handleResize);
       cleanupArray.forEach((cleanupFunction) => cleanupFunction());
     };
   }, [pageName, blockName]);
