@@ -5,32 +5,70 @@
   //--|🠊 display: block; 🠈|--//
   div[class*='size'] {
     display: grid;
-    grid-template-rows: 4rem repeat(7, 1fr) 4rem; //--|🠊 rows 🠈|--//
+    grid-template-rows: 4rem 1fr 4rem; //--|🠊 rows 🠈|--//
     grid-template-columns: 6rem repeat(3, 1fr) 6rem; //--|🠊 columns 🠈|--//
 
+    & {
+      aside[class*='aside'] {
+        grid-row: 2 / 3; //--|🠈 row-start / row-end 🠈|--//
+        display: inherit; //--|🠈 display: grid; 🠈|--//
+        grid-template: 2fr repeat(5, 1fr) / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
+        button[class*='dar'] {
+          grid-column: 1 / 3; //--|🠈 col-start / col-end 🠈|--//
+        }
+      }
+
+      aside[class*='dar'] {
+        grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--//
+        background: Palettes.$indexLand-light;
+        //--|🠋 Dark 🠋|--//
+        button[class*='top_'] {
+          background: rgba(red, 0.25);
+          grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button[class*='bot_'] {
+          background: rgba(blue, 0.25);
+
+          grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+
+        button[class*='lef_'] {
+          background: rgba(green, 0.25);
+
+          grid-area: 2 / 1 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+
+        button[class*='rig_'] {
+          background: rgba(orange, 0.25);
+          grid-area: 3 / 1 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button[class*='cen_'] {
+          background: rgba(purple, 0.25);
+          grid-area: 4 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button[class*='tex_'] {
+          background: rgba(maroon, 0.25);
+
+          grid-area: 5 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        button[class*='ico_'] {
+          background: rgba(turquoise, 0.25);
+          grid-area: 6 / 1 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        }
+      }
+      aside[class*='med'] {
+        grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--//
+
+        background: Palettes.$indexLand-medium;
+      }
+      aside[class*='lig'] {
+        grid-column: 4 / 5; //--|🠈 col-start / col-end 🠈|--//
+        background: Palettes.$indexLand-dark;
+      }
+    }
+
     /*
-    //--|🠋 Dark 🠋|--//
-    button[class*='top_dar'] {
-      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='bot_dar'] {
-      grid-area: 1 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='lef_dar'] {
-      grid-area: 3 / 2 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='rig_dar'] {
-      grid-area: 4 / 2 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='cen_dar'] {
-      grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='tex_dar'] {
-      grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    button[class*='ico_dar'] {
-      grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
+
 
     //--|🠋 Medium 🠋|--//
     button[class*='top_med'] {
@@ -118,13 +156,12 @@
 }
 
 section[class*='buttons'] {
-  width: 100%;
   display: block;
   grid-area: inherit; //--|🠊 grid-area: 1 / 1 / 4 / 4; 🠈|--//
   transform: translateY(0px);
   transition: transform 0.5s ease-in-out;
 
-  @extend %section-shadows;
+  @extend %section-motion;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -136,21 +173,17 @@ section[class*='buttons'] {
   }
 }
 
-%section-shadows {
+%section-motion {
   div[class*='size'] {
     transition: filter 0.75s ease-in-out, opacity 0.25s ease-in-out;
-
-    @extend %section-motion;
-  }
-}
-%section-motion {
-  &[class*='hidden'] {
-    opacity: 0;
-    filter: blur(8px);
-  }
-  &[class*='visible'] {
-    opacity: 1;
-    filter: blur(0);
+    &[class*='hidden'] {
+      opacity: 0;
+      filter: blur(8px);
+    }
+    &[class*='visible'] {
+      opacity: 1;
+      filter: blur(0);
+    }
   }
 }
 
