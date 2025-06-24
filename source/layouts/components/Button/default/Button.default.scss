@@ -3,11 +3,11 @@
 
 @mixin desktop-landscape {
   //--|🠉 display: flex; 🠉|--//
-
+  /*
   //--|🠊 button[class*='default'] 🠈|--//
   div[class*='one_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -148,11 +148,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='two_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -293,11 +293,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='thr_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -438,11 +438,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='fou_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -583,11 +583,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='fiv_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -728,11 +728,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='six_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -873,11 +873,11 @@
         display: none;
       }
     }
-    */
+    
   }
   div[class*='par_'] {
     //--|🠊 display: grid; 🠈|--//
-    /*
+    
     &[class*='_top_'] {
       //--|🠊 Top <button> Element 🠈|--//
       span[class*='_text'] {
@@ -1023,9 +1023,9 @@
         display: none;
       }
     }
-    */
+    
   }
-
+  */
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
   }
@@ -1937,17 +1937,6 @@ button[class*='default'] {
     height: 100%;
     display: grid;
     position: absolute;
-    /*
-    &:nth-child(1) {
-      background: rgba(darkred, 0.5);
-    }
-    &:nth-child(2) {
-      background: rgba(darkblue, 0.5);
-    }
-    &:nth-child(3) {
-      background: rgba(darkgreen, 0.5);
-    }
-    */
   }
 
   @include Button_default.extend-mobile();

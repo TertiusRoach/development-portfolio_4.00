@@ -5,6 +5,32 @@
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     //--|🠊 display: flex; 🠈|--//
+
+    div[class*='_mon_'] {
+      //--|🠊 display: grid; 🠈|--//
+      &[class*='_dar_'] {
+        *[class*='_back'] {
+          margin: 0;
+          color: rgba(darkred, 0.5);
+          border-radius: 8px;
+          background: rgba(darkred, 0.5);
+        }
+      }
+      &[class*='_med_'] {
+        *[class*='_back'] {
+          margin: 0;
+          color: red;
+          border-radius: 8px;
+          background: rgba(red, 0.5);
+        }
+      }
+      &[class*='_lig_'] {
+        *[class*='_back'] {
+          color: rgba(pink, 0.5);
+          background: rgba(pink, 0.5);
+        }
+      }
+    }
     /*
     div[class*='_top_'],
     div[class*='_bot_'] {

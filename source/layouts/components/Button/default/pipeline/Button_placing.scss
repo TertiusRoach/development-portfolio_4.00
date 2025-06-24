@@ -10,16 +10,34 @@
       //--|🠊 display: grid; 🠈|--//
       grid-template-columns: 8px 1fr 8px; //--|🠊 columns 🠈|--//
       grid-template-rows: 8px 4rem 1fr 8px; //--|🠊 rows 🠈|--//
+      *[class*='_text'],
+      *[class*='_back'] {
+        margin: 0;
+        text-align: center;
+        border-radius: 8px;
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
     }
     div[class*='_bot_'] {
       //--|🠊 display: grid; 🠈|--//
       grid-template-columns: 8px 1fr 8px; //--|🠊 columns 🠈|--//
       grid-template-rows: 8px 1fr 4rem 8px; //--|🠊 rows 🠈|--//
+      *[class*='_text'] {
+        grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
     }
     div[class*='_lef_'] {
       //--|🠊 display: grid; 🠈|--//
       grid-template-rows: 8px 1fr 4rem 1fr 8px; //--|🠊 rows 🠈|--//
       grid-template-columns: 8px 4rem auto 1fr 8px; //--|🠊 columns 🠈|--//
+      *[class*='_text'] {
+        margin: 0;
+        display: flex;
+        text-align: left;
+        padding-left: 8px;
+        align-items: center;
+        grid-area: 3 / 3 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      }
     }
     div[class*='_rig_'] {
       //--|🠊 display: grid; 🠈|--//
@@ -58,6 +76,11 @@
         //--|🠊 display: grid; 🠈|--//
         grid-template-rows: 8px 1fr 3rem 1fr 8px; //--|🠊 rows 🠈|--//
         grid-template-columns: 8px 3rem auto 1fr 8px; //--|🠊 columns 🠈|--//
+        div[class*='_lef_'] {
+          *[class*='_text'] {
+            padding-left: 8px;
+          }
+        }
       }
       div[class*='_rig_'] {
         //--|🠊 display: grid; 🠈|--//
@@ -95,6 +118,11 @@
         //--|🠊 display: grid; 🠈|--//
         grid-template-rows: 4px 1fr 2rem 1fr 4px; //--|🠊 rows 🠈|--//
         grid-template-columns: 4px 2rem auto 1fr 4px; //--|🠊 columns 🠈|--//
+        div[class*='_lef_'] {
+          *[class*='_text'] {
+            padding-left: 4px;
+          }
+        }
       }
       div[class*='_rig_'] {
         //--|🠊 display: grid; 🠈|--//
@@ -132,6 +160,11 @@
         //--|🠊 display: grid; 🠈|--//
         grid-template-rows: 2px 1fr 1.5rem 1fr 2px; //--|🠊 rows 🠈|--//
         grid-template-columns: 2px 1.5rem auto 1fr 2px; //--|🠊 columns 🠈|--//
+        div[class*='_lef_'] {
+          *[class*='_text'] {
+            padding-left: 2px;
+          }
+        }
       }
       div[class*='_rig_'] {
         //--|🠊 display: grid; 🠈|--//

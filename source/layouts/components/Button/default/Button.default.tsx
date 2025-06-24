@@ -58,30 +58,26 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
       case '<h1>':
         return (
           <>
-            <div className={`one_${className}_text`}>
-              <span className={`one_${className}_text`}>{/* <h1>{style.text}</h1> */}</span>
-            </div>
+            <div className={`one_${className}_text`}>{/* <h1 className={`one_${className}_text`}>{style.text}</h1> */}</div>
             <div className={`one_${className}_icon`}>
-              <span className={`one_${className}_icon`}>
-                <img
-                  alt={`one_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+              <img
+                className={`one_${className}_icon`}
+                alt={`one_${className}_icon`}
+                style={{
+                  maskImage: `url(${imageLink})`,
+                  WebkitMaskImage: `url(${imageLink})`,
+                }}
+              ></img>
             </div>
             <div className={`one_${className}_back`}>
-              <span className={`one_${className}_back`}>
-                {/* <h1
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h1> */}
-              </span>
+              <h1
+                className={`one_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                {style.text}
+              </h1>
             </div>
           </>
         );
