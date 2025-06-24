@@ -6,16 +6,15 @@
 
 @mixin extend-desktop {
   //--|🠋 Desktop (Landscape) 🠋|--//
-  @include Button_placing.desktop-placing();
-
-  @include Button_surface.desktop-surface();
   @include Button_motions.desktop-motions();
+  @include Button_placing.desktop-placing();
   @include Button_shadows.desktop-shadows();
+  @include Button_surface.desktop-surface();
 }
 @mixin extend-mobile {
   //--|🠋 Mobile (Portrait) 🠋|--//
-  @include Button_placing.mobile-placing();
-  @include Button_surface.mobile-surface();
   @include Button_motions.mobile-motions();
+  @include Button_placing.mobile-placing();
   @include Button_shadows.mobile-shadows();
+  @include Button_surface.mobile-surface();
 }
