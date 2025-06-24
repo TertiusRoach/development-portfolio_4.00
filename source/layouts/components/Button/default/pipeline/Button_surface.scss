@@ -10,17 +10,13 @@
       //--|🠊 display: grid; 🠈|--//
       &[class*='_dar_'] {
         *[class*='_back'] {
-          margin: 0;
           color: rgba(darkred, 0.5);
-          border-radius: 8px;
           background: rgba(darkred, 0.5);
         }
       }
       &[class*='_med_'] {
         *[class*='_back'] {
-          margin: 0;
           color: red;
-          border-radius: 8px;
           background: rgba(red, 0.5);
         }
       }
