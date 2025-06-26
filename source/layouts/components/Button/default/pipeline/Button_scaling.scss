@@ -1,0 +1,25 @@
+//--|🠊 Button_scaling.scss 🠈|--//
+@mixin desktop-scaling {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 360px) {
+    }
+  }
+}
+@mixin mobile-scaling {
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    //--|🠋 Tablet (Portrait) 🠋|--//
+    @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 360px) {
+    }
+  }
+}

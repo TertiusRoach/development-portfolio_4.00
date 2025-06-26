@@ -3,11 +3,13 @@
 @use './pipeline/Button_surface.scss';
 @use './pipeline/Button_motions.scss';
 @use './pipeline/Button_shadows.scss';
+@use './pipeline/Button_scaling.scss';
 
 @mixin extend-desktop {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @include Button_motions.desktop-motions();
   @include Button_placing.desktop-placing();
+  @include Button_scaling.desktop-scaling();
   @include Button_shadows.desktop-shadows();
   @include Button_surface.desktop-surface();
 }
@@ -15,6 +17,7 @@
   //--|🠋 Mobile (Portrait) 🠋|--//
   @include Button_motions.mobile-motions();
   @include Button_placing.mobile-placing();
+  @include Button_scaling.mobile-scaling();
   @include Button_shadows.mobile-shadows();
   @include Button_surface.mobile-surface();
 }
