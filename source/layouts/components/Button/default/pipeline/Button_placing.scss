@@ -218,7 +218,14 @@
       }
       img[class*='_icon'] {
         //--|🠊 display: flex; 🠈|--//
+        overflow: hidden;
         grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+
+        /*
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        */
       }
     }
 

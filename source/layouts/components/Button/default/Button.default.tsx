@@ -297,15 +297,26 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      sizeIcon(style);
-    }, 750);
-
     const typeStyle = stripBrackets(style.type, '{}') as string;
     const sizeStyle = stripBrackets(style.size, '<>') as string;
     const viewStyle = stripBrackets(style.view, '--') as string;
     const shadeStyle = stripBrackets(style.shade, '~~') as string;
     const colorStyle = stripBrackets(style.color, '()') as string;
+
+    setTimeout(() => {
+      sizeIcon(style);
+    }, 750);
+
+    const handleResize = () => {
+      location.reload();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [pageName, blockName]);
 
   return <button className={`default-button ${className}`}>{handleDefault(className)}</button>;
