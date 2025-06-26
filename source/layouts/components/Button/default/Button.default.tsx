@@ -73,8 +73,8 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
                 className={`one_${className}_icon`}
                 alt={`one_${className}_icon`}
                 style={{
-                  maskImage: `url(${imageLink})`,
-                  WebkitMaskImage: `url(${imageLink})`,
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
                 }}
               ></img>
             </div>

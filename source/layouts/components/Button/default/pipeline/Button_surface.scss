@@ -13,17 +13,26 @@
           color: rgba(darkred, 0.5);
           background: rgba(darkred, 0.5);
         }
+        *[class*='_icon'] {
+          background: darkred;
+        }
       }
       &[class*='_med_'] {
         *[class*='_back'] {
           color: red;
           background: rgba(red, 0.5);
         }
+        *[class*='_icon'] {
+          background: red;
+        }
       }
       &[class*='_lig_'] {
         *[class*='_back'] {
           color: rgba(pink, 0.5);
           background: rgba(pink, 0.5);
+        }
+        *[class*='_icon'] {
+          background: pink;
         }
       }
     }

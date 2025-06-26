@@ -1,4 +1,6 @@
 //--|🠊 Button_scaling.scss 🠈|--//
+/* Gradually resize all the media screen sizes. */
+
 @mixin desktop-scaling {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

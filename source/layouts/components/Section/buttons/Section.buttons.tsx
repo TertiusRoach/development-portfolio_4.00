@@ -23,6 +23,8 @@ interface InfoProps {
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const imagePath: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
 
   const handleButtons = (pageName: string, blockName: string) => {
     let page = pageName as string;
@@ -95,8 +97,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~dark~',
               text: 'top_dar_mon',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -113,8 +114,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -130,8 +131,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -147,8 +148,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -164,8 +165,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -181,8 +182,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -198,8 +199,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h1>',
               type: '{button}',
             }}
@@ -2688,7 +2689,6 @@ const viewColor = (pageName: string) => {
       return console.log(`${viewColor.value}`);
   }
 };
-
 const reloadDesign = (pageName: string) => {
   let viewStyle = document.querySelector(`#${pageName}-header .buttons-menu li[class*="style"] select`) as HTMLSelectElement;
 
