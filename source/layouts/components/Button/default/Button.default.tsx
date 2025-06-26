@@ -25,7 +25,7 @@ interface TheseProps {
     view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
     text: string;
-    image: string;
+    image?: string | null | undefined;
 
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
@@ -54,12 +54,21 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
   const handleDefault = (className: string) => {
+    let imageStatus: 'graphic' | 'missing';
+    if (style.image == null) {
+      imageStatus = 'missing';
+    } else {
+      imageStatus = 'graphic';
+    }
+
     switch (style.size) {
       case '<h1>':
         return (
           <>
-            <div className={`one_${className}_text`}>{/* <h1 className={`one_${className}_text`}>{style.text}</h1> */}</div>
-            <div className={`one_${className}_icon`}>
+            <div className={`one_${className}_text ${imageStatus}`}>
+              {/* <h1 className={`one_${className}_text`}>{style.text}</h1> */}
+            </div>
+            <div className={`one_${className}_icon ${imageStatus}`}>
               <img
                 className={`one_${className}_icon`}
                 alt={`one_${className}_icon`}
@@ -69,7 +78,7 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            <div className={`one_${className}_back`}>
+            <div className={`one_${className}_back ${imageStatus}`}>
               <h1
                 className={`one_${className}_back`}
                 style={{
@@ -292,6 +301,14 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
     const viewStyle = stripBrackets(style.view, '--') as string;
     const shadeStyle = stripBrackets(style.shade, '~~') as string;
     const colorStyle = stripBrackets(style.color, '()') as string;
+
+    /*
+    if (style.image == null) {
+      console.log(style.image);
+      console.log(`${style.image}`);
+      console.log(typeof style.image);
+    }
+    */
   }, [pageName, blockName]);
 
   return <button className={`default-button ${className}`}>{handleDefault(className)}</button>;

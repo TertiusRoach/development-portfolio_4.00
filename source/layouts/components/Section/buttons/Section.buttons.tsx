@@ -87,8 +87,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className="buttons-section">
       <div className="h1-size visible">
-        {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -97,6 +97,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               text: 'top_dar_mon',
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
+
               size: '<h1>',
               type: '{button}',
             }}
@@ -208,8 +209,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        {/* Medium */}
         <aside className="med-aside">
+          {/* Medium */}
           {/* <ButtonDefault
           style={{
             view: '-top-',
@@ -330,8 +331,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           }}
         /> */}
         </aside>
-        {/* Light */}
         <aside className="lig-aside">
+          {/* Light */}
           {/* <ButtonDefault
           style={{
             view: '-top-',
