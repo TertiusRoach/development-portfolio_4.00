@@ -61,14 +61,19 @@
         grid-template-columns: 8px 4rem auto 1fr 8px; //--|🠊 columns 🠈|--//
         *[class*='_text'],
         *[class*='_back'] {
-          @extend %align-left-icon;
+          @extend %align-left-text;
           grid-area: 3 / 2 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
         }
         img[class*='_icon'] {
+          @extend %align-left-icon;
           grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
         }
 
         %align-left-icon {
+          top: 2px;
+          position: relative;
+        }
+        %align-left-text {
           //--|🠊 display: flex; 🠈|--//
           & {
             margin: 0;
@@ -109,13 +114,17 @@
         *[class*='_text'],
         *[class*='_back'] {
           grid-area: 3 / 3 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-          @extend %align-right-icon;
+          @extend %align-right-text;
         }
         img[class*='_icon'] {
+          @extend %align-right-icon;
           grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
         }
-
         %align-right-icon {
+          top: 2px;
+          position: relative;
+        }
+        %align-right-text {
           //--|🠊 display: flex; 🠈|--//
           & {
             margin: 0;
@@ -156,15 +165,20 @@
       *[class*='_text'],
       *[class*='_back'] {
         //--|🠊 display: flex; 🠈|--//
-        @extend %align-center;
+        @extend %align-center-text;
         grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
       img[class*='_icon'] {
+        @extend %align-center-icon;
         //--|🠊 display: flex; 🠈|--//
         grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
+      %align-center-icon {
+        top: 2px;
+        position: relative;
+      }
 
-      %align-center {
+      %align-center-text {
         //--|🠊 display: flex; 🠈|--//
         & {
           margin: 0;
@@ -220,12 +234,6 @@
         //--|🠊 display: flex; 🠈|--//
         overflow: hidden;
         grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-
-        /*
-        mask-size: contain;
-        mask-position: center;
-        mask-repeat: no-repeat;
-        */
       }
     }
 
@@ -339,6 +347,9 @@
           *[class*='_back'] {
             padding: 0 4px 0 36px; //--|🠈 top / right / bottom / left 🠈|--//
           }
+          img[class*='_icon'] {
+            top: 1px;
+          }
         }
         &.missing {
           grid-template-rows: 4px 1fr 2rem 1fr 4px; //--|🠊 rows 🠈|--//
@@ -359,6 +370,9 @@
           *[class*='_back'] {
             padding: 0 36px 0 4px; //--|🠈 top / right / bottom / left 🠈|--//
           }
+          img[class*='_icon'] {
+            top: 1px;
+          }
         }
         &.missing {
           grid-template-rows: 4px 1fr 2rem 1fr 4px; //--|🠊 rows 🠈|--//
@@ -377,6 +391,9 @@
         *[class*='_text'],
         *[class*='_back'] {
           padding: 0 4px; //--|🠈 top & bot / right & left 🠈|--//
+        }
+        img[class*='_icon'] {
+          top: 1px;
         }
       }
       div[class*='_tex_'] {
@@ -421,6 +438,9 @@
           *[class*='_back'] {
             padding: 0 2px 0 26px; //--|🠈 top / right / bottom / left 🠈|--//
           }
+          img[class*='_icon'] {
+            top: 0;
+          }
         }
         &.missing {
           grid-template-rows: 2px 1fr 1.5rem 1fr 2px; //--|🠊 rows 🠈|--//
@@ -441,6 +461,9 @@
           *[class*='_back'] {
             padding: 0 26px 0 2px; //--|🠈 top / right / bottom / left 🠈|--//
           }
+          img[class*='_icon'] {
+            top: 0;
+          }
         }
         &.missing {
           grid-template-rows: 2px 1fr 1.5rem 1fr 2px; //--|🠊 rows 🠈|--//
@@ -459,6 +482,9 @@
         *[class*='_text'],
         *[class*='_back'] {
           padding: 0 2px; //--|🠈 top & bot / right & left 🠈|--//
+        }
+        img[class*='_icon'] {
+          top: 0;
         }
       }
       div[class*='_tex_'] {

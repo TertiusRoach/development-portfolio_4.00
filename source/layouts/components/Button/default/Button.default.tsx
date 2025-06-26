@@ -305,17 +305,17 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
 
     setTimeout(() => {
       sizeIcon(style);
-    }, 750);
+    }, 250);
 
-    const handleResize = () => {
-      location.reload();
+    let reloadHandler = () => {
+      setTimeout(() => {
+        sizeIcon(style);
+      }, 250);
     };
+    window.addEventListener('resize', reloadHandler);
 
-    window.addEventListener('resize', handleResize);
-
-    // Clean up event listener on unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', reloadHandler);
     };
   }, [pageName, blockName]);
 
