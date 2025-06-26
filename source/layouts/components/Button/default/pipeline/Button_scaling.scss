@@ -4,14 +4,20 @@
 @mixin desktop-scaling {
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
-    div[class*='one_'],
+    div[class*='one_'] {
+      h1[class*='_text'],
+      h1[class*='_back'] {
+        font-weight: 600;
+      }
+    }
     div[class*='two_'] {
       //--|🠊 display: grid; 🠈|--//
-      h1[class*='_text'],
       h2[class*='_text'],
-      h1[class*='_back'],
       h2[class*='_back'] {
+        display: flex;
         font-weight: 600;
+        align-items: center;
+        justify-content: center;
       }
     }
     div[class*='thr_'],

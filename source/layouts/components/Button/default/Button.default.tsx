@@ -95,168 +95,150 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
       case '<h2>':
         return (
           <>
-            <div className={`two_${className}_text`}>
-              <span className={`two_${className}_text`}>
-                <h2>{style.text}</h2>
-              </span>
+            <div className={`two_${className}_text ${imageStatus}`}>
+              <h2 className={`two_${className}_text`}>
+                <span>{style.text}</span>
+              </h2>
             </div>
-            <div className={`two_${className}_icon`}>
-              <span className={`two_${className}_icon`}>
-                <img
-                  alt={`two_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`two_${className}_icon ${imageStatus}`}>
+              <img
+                className={`two_${className}_icon`}
+                alt={`two_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`two_${className}_back`}>
-              <span className={`two_${className}_back`}>
-                <h2
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h2>
-              </span>
+            <div className={`two_${className}_back ${imageStatus}`}>
+              <h2
+                className={`two_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </h2>
             </div>
-            {/* <div className={`two_${className}_text`}>
-              <span className={`two_${className}_text`}>
-                <h2>{style.text}</h2>
-              </span>
-            </div>
-            <div className={`two_${className}_icon`}>
-              <span className={`two_${className}_icon`}><img alt={className} src={imageLink} /></span>
-            </div> */}
           </>
         );
       case '<h3>':
         return (
           <>
-            <div className={`thr_${className}_text`}>
-              <span className={`thr_${className}_text`}>
-                <h3>{style.text}</h3>
-              </span>
+            <div className={`thr_${className}_text ${imageStatus}`}>
+              <h3 className={`thr_${className}_text`}>
+                <span>{style.text}</span>
+              </h3>
             </div>
-            <div className={`thr_${className}_icon`}>
-              <span className={`thr_${className}_icon`}>
-                <img
-                  alt={`thr_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`thr_${className}_icon ${imageStatus}`}>
+              <img
+                className={`thr_${className}_icon`}
+                alt={`thr_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`thr_${className}_back`}>
-              <span className={`thr_${className}_back`}>
-                <h3
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h3>
-              </span>
+            <div className={`thr_${className}_back ${imageStatus}`}>
+              <h3
+                className={`thr_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </h3>
             </div>
           </>
         );
       case '<h4>':
         return (
           <>
-            <div className={`fou_${className}_text`}>
-              <span className={`fou_${className}_text`}>
-                <h4>{style.text}</h4>
-              </span>
+            <div className={`fou_${className}_text ${imageStatus}`}>
+              <h4 className={`fou_${className}_text`}>
+                <span>{style.text}</span>
+              </h4>
             </div>
-            <div className={`fou_${className}_icon`}>
-              <span className={`fou_${className}_icon`}>
-                <img
-                  alt={`fou_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`fou_${className}_icon ${imageStatus}`}>
+              <img
+                className={`fou_${className}_icon`}
+                alt={`fou_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`fou_${className}_back`}>
-              <span className={`fou_${className}_back`}>
-                <h4
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h4>
-              </span>
+            <div className={`fou_${className}_back ${imageStatus}`}>
+              <h4
+                className={`fou_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </h4>
             </div>
           </>
         );
       case '<h5>':
         return (
           <>
-            <div className={`fiv_${className}_text`}>
-              <span className={`fiv_${className}_text`}>
-                <h5>{style.text}</h5>
-              </span>
+            <div className={`fiv_${className}_text ${imageStatus}`}>
+              <h5 className={`fiv_${className}_text`}>
+                <span>{style.text}</span>
+              </h5>
             </div>
-            <div className={`fiv_${className}_icon`}>
-              <span className={`fiv_${className}_icon`}>
-                <img
-                  alt={`fiv_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`fiv_${className}_icon ${imageStatus}`}>
+              <img
+                className={`fiv_${className}_icon`}
+                alt={`fiv_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`fiv_${className}_back`}>
-              <span className={`fiv_${className}_back`}>
-                <h5
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h5>
-              </span>
+            <div className={`fiv_${className}_back ${imageStatus}`}>
+              <h5
+                className={`fiv_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </h5>
             </div>
           </>
         );
       case '<h6>':
         return (
           <>
-            <div className={`six_${className}_text`}>
-              <span className={`six_${className}_text`}>
-                <h6>{style.text}</h6>
-              </span>
+            <div className={`six_${className}_text ${imageStatus}`}>
+              <h6 className={`six_${className}_text`}>
+                <span>{style.text}</span>
+              </h6>
             </div>
-            <div className={`six_${className}_icon`}>
-              <span className={`six_${className}_icon`}>
-                <img
-                  alt={`six_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`six_${className}_icon ${imageStatus}`}>
+              <img
+                className={`six_${className}_icon`}
+                alt={`six_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`six_${className}_back`}>
-              <span className={`six_${className}_back`}>
-                <h6
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </h6>
-              </span>
+            <div className={`six_${className}_back ${imageStatus}`}>
+              <h6
+                className={`six_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </h6>
             </div>
           </>
         );
@@ -264,32 +246,30 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
       case '<p>':
         return (
           <>
-            <div className={`par_${className}_text`}>
-              <span className={`par_${className}_text`}>
-                <p>{style.text}</p>
-              </span>
+            <div className={`par_${className}_text ${imageStatus}`}>
+              <p className={`par_${className}_text`}>
+                <span>{style.text}</span>
+              </p>
             </div>
-            <div className={`par_${className}_icon`}>
-              <span className={`par_${className}_icon`}>
-                <img
-                  alt={`par_${className}_icon`}
-                  style={{
-                    maskImage: `url(${imageLink})`,
-                    WebkitMaskImage: `url(${imageLink})`,
-                  }}
-                ></img>
-              </span>
+            <div className={`par_${className}_icon ${imageStatus}`}>
+              <img
+                className={`par_${className}_icon`}
+                alt={`par_${className}_icon`}
+                style={{
+                  maskImage: `url(${style.image})`,
+                  WebkitMaskImage: `url(${style.image})`,
+                }}
+              ></img>
             </div>
-            <div className={`par_${className}_back`}>
-              <span className={`par_${className}_back`}>
-                <p
-                  style={{
-                    opacity: '0',
-                  }}
-                >
-                  {style.text}
-                </p>
-              </span>
+            <div className={`par_${className}_back ${imageStatus}`}>
+              <p
+                className={`par_${className}_back`}
+                style={{
+                  opacity: '1',
+                }}
+              >
+                <span>{style.text}</span>
+              </p>
             </div>
           </>
         );

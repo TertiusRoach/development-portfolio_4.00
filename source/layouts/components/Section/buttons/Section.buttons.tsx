@@ -37,18 +37,13 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    sizeDivs(pageName, blockName);
+    // sizeDivs(pageName, blockName);
 
-    // Resize handler — triggers sizeDivs with current parameters
-    const handleResize = () => {
+    const loadSize = () => {
       sizeDivs(pageName, blockName);
     };
-
-    // Run once on initial mount and when dependencies change
-    handleResize();
-
-    // Attach resize event listener
-    window.addEventListener('resize', handleResize);
+    loadSize();
+    window.addEventListener('resize', loadSize);
 
     //--|🠋 Event Listeners 🠋|--//
     let selectStyle = document.querySelector(
@@ -81,7 +76,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
 
     // Cleanup on unmount or dependency change
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', loadSize);
       cleanupArray.forEach((cleanupFunction) => cleanupFunction());
     };
   }, [pageName, blockName]);
@@ -210,264 +205,20 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        <aside className="med-aside">
-          {/* Medium */}
-          {/* <ButtonDefault
-          style={{
-            view: '-top-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'top_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-bottom-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'bot_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-left-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'lef_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-right-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'rig_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-center-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'cen_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-text-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'tex_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-icon-',
-            color: '(mono)',
-            shade: '~medium~',
-
-            text: 'ico_med_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-        </aside>
-        <aside className="lig-aside">
-          {/* Light */}
-          {/* <ButtonDefault
-          style={{
-            view: '-top-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'top_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-bottom-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'bot_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-left-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'lef_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-right-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'rig_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-center-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'cen_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-text-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'tex_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-          {/* <ButtonDefault
-          style={{
-            view: '-icon-',
-            color: '(mono)',
-            shade: '~light~',
-
-            text: 'ico_lig_mon',
-
-            image: '',
-            size: '<h1>',
-            type: '{button}',
-          }}
-          info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-          }}
-        /> */}
-        </aside>
+        <aside className="med-aside">{/* Medium */}</aside>
+        <aside className="lig-aside">{/* Light */}</aside>
       </div>
       <div className="h2-size hidden">
-        {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<h2>',
               type: '{button}',
             }}
@@ -483,8 +234,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -500,8 +251,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -517,8 +268,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -534,8 +285,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -551,8 +302,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -568,8 +319,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h2>',
               type: '{button}',
             }}
@@ -579,264 +330,20 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        {/* Medium */}
-        <aside className="med-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'top_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'bot_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'lef_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'rig_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'cen_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'tex_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'ico_med_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
-        {/* Light */}
-        <aside className="lig-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'top_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'bot_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'lef_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'rig_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'cen_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'tex_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'ico_lig_mon',
-
-              image: '',
-              size: '<h2>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="med-aside">{/* Medium */}</aside>
+        <aside className="lig-aside">{/* Light */}</aside>
       </div>
       <div className="h3-size hidden">
-        {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<h3>',
               type: '{button}',
             }}
@@ -852,8 +359,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -869,8 +376,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -886,8 +393,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -903,8 +410,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -920,8 +427,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -937,8 +444,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h3>',
               type: '{button}',
             }}
@@ -948,8 +455,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        {/* Medium */}
         <aside className="med-aside">
+          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1196,16 +703,15 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
       <div className="h4-size hidden">
         {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1221,8 +727,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1238,8 +744,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1255,8 +761,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1272,8 +778,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1289,8 +795,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1306,8 +812,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h4>',
               type: '{button}',
             }}
@@ -1570,11 +1076,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1590,8 +1094,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1607,8 +1111,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1624,8 +1128,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1641,8 +1145,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1658,8 +1162,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1675,8 +1179,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h5>',
               type: '{button}',
             }}
@@ -1687,263 +1191,22 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         {/* Medium */}
-        <aside className="med-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'top_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'bot_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'lef_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'rig_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'cen_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'tex_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'ico_med_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="med-aside"></aside>
         {/* Light */}
-        <aside className="lig-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'top_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'bot_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'lef_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'rig_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'cen_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'tex_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'ico_lig_mon',
-
-              image: '',
-              size: '<h5>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="lig-aside"></aside>
       </div>
       <div className="h6-size hidden">
         {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<h6>',
               type: '{button}',
             }}
@@ -1959,8 +1222,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -1976,8 +1239,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -1993,8 +1256,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -2010,8 +1273,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -2027,8 +1290,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -2044,8 +1307,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<h6>',
               type: '{button}',
             }}
@@ -2056,263 +1319,22 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         {/* Medium */}
-        <aside className="med-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'top_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'bot_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'lef_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'rig_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'cen_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'tex_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'ico_med_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="med-aside"></aside>
         {/* Light */}
-        <aside className="lig-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'top_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'bot_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'lef_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'rig_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'cen_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'tex_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'ico_lig_mon',
-
-              image: '',
-              size: '<h6>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="lig-aside"></aside>
       </div>
       <div className="p-size hidden">
         {/* Dark */}
         <aside className="dar-aside">
+          {/* Dark */}
           <ButtonDefault
             style={{
               view: '-top-',
               color: '(mono)',
               shade: '~dark~',
-
               text: 'top_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg',
               size: '<p>',
               type: '{button}',
             }}
@@ -2328,8 +1350,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'bot_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2345,8 +1367,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'lef_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2362,8 +1384,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'rig_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2379,8 +1401,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'cen_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2396,8 +1418,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'tex_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2413,8 +1435,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
-              image: '',
               size: '<p>',
               type: '{button}',
             }}
@@ -2425,249 +1447,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         {/* Medium */}
-        <aside className="med-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'top_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'bot_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'lef_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'rig_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'cen_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'tex_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~medium~',
-
-              text: 'ico_med_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="med-aside"></aside>
         {/* Light */}
-        <aside className="lig-aside">
-          <ButtonDefault
-            style={{
-              view: '-top-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'top_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-bottom-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'bot_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-left-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'lef_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-right-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'rig_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-center-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'cen_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-text-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'tex_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-          <ButtonDefault
-            style={{
-              view: '-icon-',
-              color: '(mono)',
-              shade: '~light~',
-
-              text: 'ico_lig_mon',
-
-              image: '',
-              size: '<p>',
-              type: '{button}',
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-            }}
-          />
-        </aside>
+        <aside className="lig-aside"></aside>
       </div>
     </section>
   );
