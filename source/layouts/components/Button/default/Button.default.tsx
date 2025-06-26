@@ -66,7 +66,7 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
         return (
           <>
             <div className={`one_${className}_text ${imageStatus}`}>
-              {/* <h1 className={`one_${className}_text`}>{style.text}</h1> */}
+              <h1 className={`one_${className}_text`}>{style.text}</h1>
             </div>
             <div className={`one_${className}_icon ${imageStatus}`}>
               <img

@@ -8,6 +8,15 @@
     height: 100%;
     display: grid;
     position: absolute;
+    &[class*='_text'] {
+      z-index: 2;
+    }
+    &[class*='_icon'] {
+      z-index: 1;
+    }
+    &[class*='_back'] {
+      z-index: 0;
+    }
   }
   @include Button_default.extend-desktop();
   //--|🠋 Desktop (Landscape) 🠋|--//
