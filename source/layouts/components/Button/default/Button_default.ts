@@ -2,17 +2,13 @@
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
-interface InfoProps {
-  pageName: string;
-  blockName: string;
-  className: string;
-}
+
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 }
-
 export function createClass(style: StyleProps) {
   const viewStyle = stripBrackets(style.view, '--').substring(0, 3) as string;
   const shadeStyle = stripBrackets(style.shade, '~~').substring(0, 3) as string;
@@ -20,28 +16,51 @@ export function createClass(style: StyleProps) {
 
   return `${viewStyle}_${shadeStyle}_${colorStyle}`;
 }
+export function sizeIcon(style: StyleProps) {
+  let iconQuery: string | undefined;
+  let backQuery: string | undefined;
+  const resizeElement = (iconQuery: string, backQuery: string) => {
+    let iconTag = document.querySelectorAll(iconQuery) as NodeListOf<HTMLDivElement>;
+    let backTag = document.querySelectorAll(backQuery) as NodeListOf<HTMLDivElement>;
+    for (let i = 0; i < iconTag.length; i++) {
+      let back = backTag[i].firstChild as HTMLDivElement;
+      let icon = iconTag[i].firstChild as HTMLImageElement;
 
-const scaleImage = (pageName: string, blockName: string, className: string) => {
-  // Debug logs (keep or remove as needed)
-  console.log(pageName);
-  console.log(blockName);
-  console.log(`Line 28, Button_default.ts: ${className}`);
-  // console.log(className);
-
-  // return <img alt={className} src={imageLink} />;
-};
-/*
-export function scaleImage(fontSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>') {
-  const sizeMap: Record<typeof fontSize, number> = {
-    '<p>': 2,
-    '<h6>': 3,
-    '<h5>': 4,
-    '<h4>': 5,
-    '<h3>': 6,
-    '<h2>': 7,
-    '<h1>': 8,
+      back.style.width = `${icon.offsetHeight}px`;
+    }
   };
-
-  return sizeMap[fontSize];
+  if (style.view == '-icon-') {
+    switch (style.size) {
+      case '<h1>':
+        iconQuery = `div[class*="one_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="one_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<h2>':
+        iconQuery = `div[class*="two_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="two_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<h3>':
+        iconQuery = `div[class*="thr_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="thr_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<h4>':
+        iconQuery = `div[class*="fou_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="fou_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<h5>':
+        iconQuery = `div[class*="fiv_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="fiv_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<h6>':
+        iconQuery = `div[class*="six_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="six_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      case '<p>':
+        iconQuery = `div[class*="par_${createClass(style)}_icon"]`;
+        backQuery = `div[class*="par_${createClass(style)}_back"]`;
+        return resizeElement(iconQuery, backQuery);
+      default:
+        return undefined;
+    }
+  }
 }
-*/

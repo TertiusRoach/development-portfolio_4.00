@@ -202,14 +202,23 @@
     div[class*='_ico_'] {
       //--|🠊 display: grid; 🠈|--//
       grid-template-rows: 2px 1fr 2px; //--|🠊 rows 🠈|--//
-      grid-template-columns: 2px 1fr 2px; //--|🠊 columns 🠈|--//
-      *[class*='_back'],
+      grid-template-columns: 2px 1fr auto 1fr 2px; //--|🠊 columns 🠈|--//
+
       *[class*='_text'] {
         display: none;
       }
+      *[class*='_back'] {
+        margin: 0;
+        border-radius: 8px;
+        text-overflow: clip;
+        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        span {
+          display: none;
+        }
+      }
       img[class*='_icon'] {
         //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
     }
 

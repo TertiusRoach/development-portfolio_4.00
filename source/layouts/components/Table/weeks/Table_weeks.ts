@@ -2,9 +2,7 @@
 export function loadWeekdays(pageName: string, blockName: string) {
   const thisDate: Date = new Date(); //--|🠈 Get the current date 🠈|--//
   const thisDay: string = thisDate.toISOString().split('T')[0]; //--|🠈 Get the current day in ISO format 🠈|--//
-  const tableWeeks = document.querySelector(
-    `#${pageName}-${blockName} table[class*="weeks"]`
-  ) as HTMLElement;
+  const tableWeeks = document.querySelector(`#${pageName}-${blockName} table[class*="weeks"]`) as HTMLElement;
 
   //--|🠊 01. createWeeks 🠈|--//
   const createWeeks = (pageName: string, blockName: string, thisDay: string) => {
@@ -109,9 +107,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
   //--|🠊 02. labelWeeks 🠈|--//
   const labelWeeks = (pageName: string, blockName: string, thisDay: string) => {
     let year: number = Number(thisDay.split('-')[0]); //--|🠈 const year: number = 2000; 🠈|--//
-    let tableRows: NodeListOf<HTMLTableRowElement> = document.querySelectorAll(
-      `#${pageName}-${blockName} tr`
-    );
+    let tableRows: NodeListOf<HTMLTableRowElement> = document.querySelectorAll(`#${pageName}-${blockName} tr`);
 
     let formatDate = (date: Date): string => {
       let YYYY = date.getFullYear();
@@ -145,9 +141,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
           tableRows[i].id = formatDate(findEnd(year));
 
           let presentDay = document.getElementById(`${thisDay}`) as HTMLTableRowElement;
-          let container = document.querySelector(
-            `#${pageName}-${blockName} .weekdays-container`
-          ) as HTMLElement;
+          let container = document.querySelector(`#${pageName}-${blockName} .weekdays-container`) as HTMLElement;
 
           let currentWeek = presentDay.parentElement as HTMLElement;
           let futureWeek = currentWeek.nextElementSibling as HTMLElement;
@@ -173,22 +167,12 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
   //--|🠊 03. scaleWeeks 🠈|--//
   const scaleWeeks = (pageName: string, blockName: string) => {
-    let carousel = document.querySelector(
-      `#${pageName}-${blockName} aside[class*="carousel"]`
-    ) as HTMLElement;
+    let carousel = document.querySelector(`#${pageName}-${blockName} aside[class*="carousel"]`) as HTMLElement;
     if (carousel) {
-      let weekDays = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(1)`
-      ) as NodeListOf<HTMLElement>;
-      let clockIn = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(2)`
-      ) as NodeListOf<HTMLElement>;
-      let clockOut = carousel.querySelectorAll(
-        `.weeks-table tbody tr td:nth-child(3)`
-      ) as NodeListOf<HTMLElement>;
-      let dataRows = carousel.querySelectorAll(
-        `.weeks-table tbody tr td`
-      ) as NodeListOf<HTMLElement>;
+      let weekDays = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(1)`) as NodeListOf<HTMLElement>;
+      let clockIn = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(2)`) as NodeListOf<HTMLElement>;
+      let clockOut = carousel.querySelectorAll(`.weeks-table tbody tr td:nth-child(3)`) as NodeListOf<HTMLElement>;
+      let dataRows = carousel.querySelectorAll(`.weeks-table tbody tr td`) as NodeListOf<HTMLElement>;
       let heightRows = carousel.offsetHeight / 7; //--|🠈 1 Week is equal to 7 Days 🠈|--//
       let heightColumns = (carousel.offsetWidth - 128) / 2; //--|🠈 3 Divided is equal to 3 Columns etc. 🠈|--//
 
@@ -214,9 +198,7 @@ export function loadWeekdays(pageName: string, blockName: string) {
 
   //--|🠊 04. adjustWeeks 🠈|--//
   const adjustWeeks = (pageName: string, blockName: string, viewAxis: '<y>' | '<x>') => {
-    let container = document.querySelector(
-      `#${pageName}-${blockName} div[class*="container"]`
-    ) as HTMLElement; //--|🠈 Select the container inside the carousel — assumed to have a class containing "container". 🠈|--//
+    let container = document.querySelector(`#${pageName}-${blockName} div[class*="container"]`) as HTMLElement; //--|🠈 Select the container inside the carousel — assumed to have a class containing "container". 🠈|--//
     let firstWeek = container.querySelector(`tbody:nth-child(1)`) as HTMLElement;
     switch (viewAxis) {
       case '<y>':
@@ -238,5 +220,4 @@ export function loadWeekdays(pageName: string, blockName: string) {
     createWeeks(pageName, blockName, thisDay);
   }
 }
-
 export default loadWeekdays;

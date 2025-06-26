@@ -3,7 +3,7 @@
 import './Button.default.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { createClass } from './Button_default';
+import { createClass, sizeIcon } from './Button_default';
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -66,7 +66,9 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
         return (
           <>
             <div className={`one_${className}_text ${imageStatus}`}>
-              <h1 className={`one_${className}_text`}>{style.text}</h1>
+              <h1 className={`one_${className}_text`}>
+                <span>{style.text}</span>
+              </h1>
             </div>
             <div className={`one_${className}_icon ${imageStatus}`}>
               <img
@@ -85,7 +87,7 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                {style.text}
+                <span>{style.text}</span>
               </h1>
             </div>
           </>
@@ -295,20 +297,15 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   };
 
   useEffect(() => {
-    const className = info.className as string;
+    setTimeout(() => {
+      sizeIcon(style);
+    }, 750);
+
     const typeStyle = stripBrackets(style.type, '{}') as string;
     const sizeStyle = stripBrackets(style.size, '<>') as string;
     const viewStyle = stripBrackets(style.view, '--') as string;
     const shadeStyle = stripBrackets(style.shade, '~~') as string;
     const colorStyle = stripBrackets(style.color, '()') as string;
-
-    /*
-    if (style.image == null) {
-      console.log(style.image);
-      console.log(`${style.image}`);
-      console.log(typeof style.image);
-    }
-    */
   }, [pageName, blockName]);
 
   return <button className={`default-button ${className}`}>{handleDefault(className)}</button>;
