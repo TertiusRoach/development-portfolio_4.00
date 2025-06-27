@@ -1,50 +1,27 @@
 //--|🠊 Button_motions.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-motions {
-  //--|🠉 display: flex; 🠉|--//
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
-
-  // div[class*='_ico_'] {
-  //   &[class*='dar_mon'] {
-  //     img:hover {
-  //       background: Palettes.$indexLand-dark;
-  //     }
-  //     &[class*='_icon']:hover {
-  //       ~ div[class*='_back'] h1 {
-  //         background: Palettes.$indexLand-medium;
-  //       }
-  //       // ~ div[class*='_icon'] img {
-  //       //   background: Palettes.$indexLand-dark !important;
-  //       // }
-  //     }
-  //   }
-  // }
-
-  div[class*='_ico_'][class*='dar_mon'] {
-    &[class*='_icon']:hover {
-      ~ div[class*='_back'] h1 {
-        background: Palettes.$indexLand-medium;
-      }
-    }
-    &[class*='_icon']:hover {
-      img {
-        background: Palettes.$indexLand-dark;
-      }
-    }
-  }
-
   div[class*='_top_'],
   div[class*='_bot_'] {
     //--|🠋 Monochrome 🠋|--//
     &[class*='dar_mon'] {
-      h1:hover {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
         color: Palettes.$indexLand-dark;
       }
       &[class*='_text']:hover {
-        ~ div[class*='_back'] h1 {
-          background: Palettes.$indexLand-medium;
-        }
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
           background: Palettes.$indexLand-medium;
         }
@@ -57,11 +34,24 @@
   div[class*='_cen_'],
   div[class*='_tex_'] {
     &[class*='dar_mon'] {
-      h1:hover {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
         color: Palettes.$indexLand-dark;
       }
       &[class*='_text']:hover {
-        ~ div[class*='_back'] h1 {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
           background: Palettes.$indexLand-medium;
         }
         ~ div[class*='_icon'] img {
@@ -71,6 +61,27 @@
     }
   }
 
+  div[class*='_ico_'] {
+    &[class*='dar_mon'] {
+      &[class*='_icon']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$indexLand-medium;
+        }
+      }
+      &[class*='_icon']:hover {
+        img {
+          background: Palettes.$indexLand-dark;
+        }
+      }
+    }
+  }
   div {
     img,
     h1,
