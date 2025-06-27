@@ -4,12 +4,39 @@
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   //--|🠊 button[class*='default'] 🠈|--//
-  //--|🠋 Monochrome 🠋|--//
-  div[class*='_mon_'] {
+
+  // div[class*='_ico_'] {
+  //   &[class*='dar_mon'] {
+  //     img:hover {
+  //       background: Palettes.$indexLand-dark;
+  //     }
+  //     &[class*='_icon']:hover {
+  //       ~ div[class*='_back'] h1 {
+  //         background: Palettes.$indexLand-medium;
+  //       }
+  //       // ~ div[class*='_icon'] img {
+  //       //   background: Palettes.$indexLand-dark !important;
+  //       // }
+  //     }
+  //   }
+  // }
+
+  div[class*='_ico_'][class*='dar_mon'] {
+    &[class*='_icon']:hover {
+      ~ div[class*='_back'] h1 {
+        background: Palettes.$indexLand-medium;
+      }
+    }
+    &[class*='_icon']:hover {
+      img {
+        background: Palettes.$indexLand-dark;
+      }
+    }
   }
 
   div[class*='_top_'],
   div[class*='_bot_'] {
+    //--|🠋 Monochrome 🠋|--//
     &[class*='dar_mon'] {
       h1:hover {
         color: Palettes.$indexLand-dark;
