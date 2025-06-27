@@ -108,6 +108,9 @@ button[class*='default'] {
     }
     img[class*='_icon'] {
       overflow: hidden;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
     }
 
     &[class*='_text'] {
