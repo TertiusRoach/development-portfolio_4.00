@@ -26,6 +26,7 @@
 @mixin button-presets {
   cursor: default;
   div {
+    /*
     h1,
     h2,
     h3,
@@ -35,12 +36,15 @@
     p {
       cursor: pointer;
     }
+    */
+    /*
     img {
       cursor: pointer;
       mask-size: contain;
       mask-position: center;
       mask-repeat: no-repeat;
     }
+    */
   }
   &[class*='icon'] {
     padding: 0;
