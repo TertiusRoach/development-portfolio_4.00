@@ -1,5 +1,4 @@
 //--|🠊 Button_scaling.scss 🠈|--//
-
 @mixin desktop-scaling {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
@@ -8,7 +7,6 @@
     //--|🠊 display: grid; 🠈|--//
     h1[class*='_text'],
     h1[class*='_back'] {
-      margin: 0;
       font-weight: 600;
     }
   }
@@ -16,7 +14,6 @@
     //--|🠊 display: grid; 🠈|--//
     h2[class*='_text'],
     h2[class*='_back'] {
-      margin: 0;
       font-weight: 550;
     }
   }
@@ -24,7 +21,6 @@
     //--|🠊 display: grid; 🠈|--//
     h3[class*='_text'],
     h3[class*='_back'] {
-      margin: 0;
       font-weight: 500;
     }
   }
@@ -32,7 +28,6 @@
     //--|🠊 display: grid; 🠈|--//
     h4[class*='_text'],
     h4[class*='_back'] {
-      margin: 0;
       font-weight: 450;
     }
   }
@@ -40,7 +35,6 @@
     //--|🠊 display: grid; 🠈|--//
     h5[class*='_text'],
     h5[class*='_back'] {
-      margin: 0;
       font-weight: 400;
     }
   }
@@ -48,7 +42,6 @@
     //--|🠊 display: grid; 🠈|--//
     h6[class*='_text'],
     h6[class*='_back'] {
-      margin: 0;
       font-weight: 350;
     }
   }
@@ -56,7 +49,6 @@
     //--|🠊 display: grid; 🠈|--//
     p[class*='_text'],
     p[class*='_back'] {
-      margin: 0;
       font-weight: 300;
     }
   }
@@ -136,28 +128,6 @@
   }
 }
 /*
-    %align-top {
-      //--|🠊 display: flex; 🠈|--//
-      & {
-        margin: 0;
-        text-align: center;
-        border-radius: 8px;
-        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    */
-/*
-    %align-bot {
-      //--|🠊 display: flex; 🠈|--//
-      & {
-        margin: 0;
-        text-align: center;
-        border-radius: 8px;
-        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    */
-/*
       %align-left-icon {
         top: 2px;
         position: relative;
@@ -165,10 +135,8 @@
       %align-left-text {
         //--|🠊 display: flex; 🠈|--//
         & {
-          margin: 0;
-          text-align: left;
+          
           border-radius: 8px;
-          padding: 8px 8px 0 72px; //--|🠈 top / right / bottom / left 🠈|--//
         }
       }
       */
@@ -176,7 +144,7 @@
       %align-left-null {
         //--|🠊 display: flex; 🠈|--//
         & {
-          margin: 0;
+          
           text-align: left;
           border-radius: 8px;
           padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
@@ -191,7 +159,7 @@
       %align-right-text {
         //--|🠊 display: flex; 🠈|--//
         & {
-          margin: 0;
+          
           text-align: right;
           border-radius: 8px;
           padding: 8px 72px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
@@ -202,7 +170,7 @@
       %align-right-null {
         //--|🠊 display: flex; 🠈|--//
         & {
-          margin: 0;
+          
           text-align: right;
           border-radius: 8px;
           padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
@@ -217,7 +185,7 @@
     %align-center-text {
       //--|🠊 display: flex; 🠈|--//
       & {
-        margin: 0;
+        
         text-align: center;
         border-radius: 8px;
         padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
@@ -228,7 +196,7 @@
     %align-text {
       //--|🠊 display: flex; 🠈|--//
       & {
-        margin: 0;
+        
         text-align: center;
         border-radius: 8px;
         padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//

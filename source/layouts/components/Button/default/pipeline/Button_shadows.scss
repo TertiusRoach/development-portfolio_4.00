@@ -1,10 +1,10 @@
 //--|🠊 Button_shadows.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
-
 @mixin button-shadows {
   //--|🠊 button[class*='default'] 🠈|--//
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Monochrome 🠋|--//
+  /*
   div[class*='_mon_'] {
     //--|🠊 display: grid; 🠈|--//
     &[class*='_dar_'] {
@@ -32,6 +32,7 @@
       }
     }
   }
+  */
 }
 /*
   div[class*='_red_'] {

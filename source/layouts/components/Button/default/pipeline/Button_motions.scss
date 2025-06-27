@@ -1,9 +1,97 @@
 //--|🠊 Button_motions.scss 🠈|--//
-
 @mixin desktop-motions {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
   //--|🠊 button[class*='default'] 🠈|--//
+  /*
+  div[class*='_top_'] {
+    //--|🠊 display: grid; 🠈|--//
+    *[class*='_text'],
+    *[class*='_back'] {
+      //--|🠊 display: flex; 🠈|--//
+    }
+    img[class*='_icon'] {
+    }
+  }
+  div[class*='_bot_'] {
+    *[class*='_text'],
+    *[class*='_back'] {
+      //--|🠊 display: flex; 🠈|--//
+    }
+    img[class*='_icon'] {
+    }
+  }
+  div[class*='_lef_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &.graphic {
+      *[class*='_text'],
+      *[class*='_back'] {
+        //--|🠊 display: flex; 🠈|--//
+      }
+      img[class*='_icon'] {
+      }
+    }
+    &.missing {
+      *[class*='_text'],
+      *[class*='_back'] {
+        //--|🠊 display: flex; 🠈|--//
+      }
+      img[class*='_icon'] {
+      }
+    }
+  }
+  div[class*='_rig_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &.graphic {
+      *[class*='_text'],
+      *[class*='_back'] {
+        //--|🠊 display: flex; 🠈|--//
+      }
+      img[class*='_icon'] {
+      }
+    }
+    &.missing {
+      *[class*='_text'],
+      *[class*='_back'] {
+        //--|🠊 display: flex; 🠈|--//
+      }
+      img[class*='_icon'] {
+      }
+    }
+  }
+  div[class*='_cen_'] {
+    //--|🠊 display: grid; 🠈|--//
+    *[class*='_text'],
+    *[class*='_back'] {
+      //--|🠊 display: flex; 🠈|--//
+    }
+    img[class*='_icon'] {
+    }
+  }
+  div[class*='_tex_'] {
+    //--|🠊 display: grid; 🠈|--//
+    *[class*='_text'],
+    *[class*='_back'] {
+      //--|🠊 display: flex; 🠈|--//
+    }
+    img[class*='_icon'] {
+      display: none;
+    }
+  }
+  div[class*='_ico_'] {
+    //--|🠊 display: grid; 🠈|--//
+
+    &[class*='_text'] {
+    }
+    *[class*='_back'] {
+      span {
+      }
+    }
+    img[class*='_icon'] {
+    }
+  }
+  */
+
   @media screen and (max-height: 768px) {
   }
   @media screen and (max-height: 480px) {
