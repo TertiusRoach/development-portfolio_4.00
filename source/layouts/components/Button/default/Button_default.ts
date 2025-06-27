@@ -27,6 +27,7 @@ export function sizeIcon(style: StyleProps) {
       let icon = iconTag[i].firstChild as HTMLImageElement;
 
       back.style.width = `${icon.offsetHeight}px`;
+      icon.style.width = `${icon.offsetHeight}px`;
     }
   };
   if (style.view == '-icon-') {

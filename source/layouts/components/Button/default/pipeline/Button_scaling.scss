@@ -1,1150 +1,381 @@
 //--|🠊 Button_scaling.scss 🠈|--//
-/* Gradually resize all the media screen sizes. */
 
 @mixin desktop-scaling {
+  //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    div[class*='one_'] {
-      h1[class*='_text'],
-      h1[class*='_back'] {
-        font-weight: 600;
-      }
-    }
-    div[class*='two_'] {
-      //--|🠊 display: grid; 🠈|--//
-      h2[class*='_text'],
-      h2[class*='_back'] {
-        display: flex;
-        font-weight: 600;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-    div[class*='thr_'],
-    div[class*='fou_'] {
-      //--|🠊 display: grid; 🠈|--//
-      h3[class*='_text'],
-      h4[class*='_text'],
-      h3[class*='_back'],
-      h4[class*='_back'] {
-        font-weight: 500;
-      }
-    }
-    div[class*='fiv_'],
-    div[class*='six_'] {
-      //--|🠊 display: grid; 🠈|--//
-      h5[class*='_text'],
-      h6[class*='_text'],
-      h5[class*='_back'],
-      h6[class*='_back'] {
-        font-weight: 400;
-      }
-    }
-
-    div[class*='par_'] {
-      //--|🠊 display: grid; 🠈|--//
-      p[class*='_text'],
-      p[class*='_back'] {
-        font-weight: 300;
-      }
-    }
-
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (max-height: 768px) {
-    }
-    @media screen and (max-height: 480px) {
-      //--|🠋 ~~~ 🠋|--//
-      div[class*='one_'] {
-        //--|🠊 display: grid; 🠈|--//
-        *[class*='_text'],
-        *[class*='_back'] {
-          font-size: 1.75rem;
-        }
-      }
-      /*
-      div[class*='two_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='thr_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='fou_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='fiv_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='six_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='par_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      */
-    }
-    @media screen and (max-height: 360px) {
-      div[class*='one_'] {
-        //--|🠊 display: grid; 🠈|--//
-        *[class*='_text'],
-        *[class*='_back'] {
-          font-size: 1.25rem;
-        }
-      }
-      /*
-      div[class*='two_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='thr_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='fou_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='fiv_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='six_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      div[class*='par_'] {
-        //--|🠊 display: grid; 🠈|--//
-      }
-      */
-    }
-  }
-}
-@mixin mobile-scaling {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    //--|🠋 Tablet (Portrait) 🠋|--//
-    @media screen and (max-width: 768px) {
-    }
-    @media screen and (max-width: 480px) {
-    }
-    @media screen and (max-width: 360px) {
-    }
-  }
-}
-/*
   //--|🠊 button[class*='default'] 🠈|--//
   div[class*='one_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h1[class*='_text'],
+    h1[class*='_back'] {
+      margin: 0;
+      font-weight: 600;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h1 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        padding: 0 1rem;
-        border-radius: 8px;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='two_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h2[class*='_text'],
+    h2[class*='_back'] {
+      margin: 0;
+      font-weight: 550;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h2 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h2 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h2 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h2 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='thr_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h3[class*='_text'],
+    h3[class*='_back'] {
+      margin: 0;
+      font-weight: 500;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h3 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h3 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h3 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h3 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='fou_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h4[class*='_text'],
+    h4[class*='_back'] {
+      margin: 0;
+      font-weight: 450;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h4 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h4 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h4 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h4 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='fiv_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h5[class*='_text'],
+    h5[class*='_back'] {
+      margin: 0;
+      font-weight: 400;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h5 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h5 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h5 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h5 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='six_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    h6[class*='_text'],
+    h6[class*='_back'] {
+      margin: 0;
+      font-weight: 350;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h6 {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h6 {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h6 {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        h6 {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2/ 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
   div[class*='par_'] {
     //--|🠊 display: grid; 🠈|--//
-    
-    &[class*='_top_'] {
-      //--|🠊 Top <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        //--|🠊 grid-template: repeat(5, 1fr) / repeat(5, 1fr); 🠈|--//
-        grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 3 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+    p[class*='_text'],
+    p[class*='_back'] {
+      margin: 0;
+      font-weight: 300;
     }
-    &[class*='_bot_'] {
-      //--|🠊 Bottom <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 1 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 4 / 1 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_lef_'] {
-      //--|🠊 Left <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-          // //--|🠋 Desktop (Landscape) 🠋|--//
-          // @media screen and (max-height: 360px) {
-          //   width: 1.5rem;
-          //   height: 1.5rem;
-          // }
-        }
-      }
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        p {
-          margin: 0;
-          padding-left: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_rig_'] {
-      //--|🠊 Right <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        p {
-          margin: 0;
-          padding-right: 4rem;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 4rem;
-          height: 4rem;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        padding: 8px 1rem 8px 4rem;
-      }
-    }
-    &[class*='_cen_'] {
-      //--|🠊 Center <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        p {
-          margin: 0;
-        }
-      }
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-          opacity: 0.5;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    &[class*='_tex_'] {
-      //--|🠊 Text <button> Element 🠈|--//
-      span[class*='_text'] {
-        //--|🠊 display: grid; 🠈|--//
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        p {
-          margin: 0;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 8px;
-        padding: 0 1rem;
-        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_icon'] {
-        display: none;
-      }
-    }
-    &[class*='_ico_'] {
-      //--|🠊 Icon <button> Element 🠈|--//
-      span[class*='_icon'] {
-        //--|🠊 display: flex; 🠈|--//
-        padding-top: 6px;
-        grid-area: 1 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      span[class*='_back'] {
-        width: 100%;
-        border-radius: 8px;
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      span[class*='_text'] {
-        display: none;
-      }
-    }
-    
   }
-  */
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠋 ~~~ 🠋|--//
+    div[class*='one_'] {
+      //--|🠊 display: grid; 🠈|--//
+      *[class*='_text'],
+      *[class*='_back'] {
+        font-size: 1.75rem;
+      }
+    }
+    /*
+      div[class*='two_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='thr_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='fou_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='fiv_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='six_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='par_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      */
+  }
+  @media screen and (max-height: 360px) {
+    div[class*='one_'] {
+      //--|🠊 display: grid; 🠈|--//
+      *[class*='_text'],
+      *[class*='_back'] {
+        font-size: 1.25rem;
+      }
+    }
+    /*
+      div[class*='two_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='thr_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='fou_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='fiv_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='six_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      div[class*='par_'] {
+        //--|🠊 display: grid; 🠈|--//
+      }
+      */
+  }
+}
+@mixin mobile-scaling {
+  //--|🠉 display: flex; 🠉|--//
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  //--|🠊 button[class*='default'] 🠈|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+/*
+    %align-top {
+      //--|🠊 display: flex; 🠈|--//
+      & {
+        margin: 0;
+        text-align: center;
+        border-radius: 8px;
+        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    */
+/*
+    %align-bot {
+      //--|🠊 display: flex; 🠈|--//
+      & {
+        margin: 0;
+        text-align: center;
+        border-radius: 8px;
+        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    */
+/*
+      %align-left-icon {
+        top: 2px;
+        position: relative;
+      }
+      %align-left-text {
+        //--|🠊 display: flex; 🠈|--//
+        & {
+          margin: 0;
+          text-align: left;
+          border-radius: 8px;
+          padding: 8px 8px 0 72px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+      }
+      */
+/*
+      %align-left-null {
+        //--|🠊 display: flex; 🠈|--//
+        & {
+          margin: 0;
+          text-align: left;
+          border-radius: 8px;
+          padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+      }
+      */
+/*
+      %align-right-icon {
+        top: 2px;
+        position: relative;
+      }
+      %align-right-text {
+        //--|🠊 display: flex; 🠈|--//
+        & {
+          margin: 0;
+          text-align: right;
+          border-radius: 8px;
+          padding: 8px 72px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+      }
+      */
+/*
+      %align-right-null {
+        //--|🠊 display: flex; 🠈|--//
+        & {
+          margin: 0;
+          text-align: right;
+          border-radius: 8px;
+          padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+      }
+      */
+/*
+    %align-center-icon {
+      top: 2px;
+      position: relative;
+    }
+    %align-center-text {
+      //--|🠊 display: flex; 🠈|--//
+      & {
+        margin: 0;
+        text-align: center;
+        border-radius: 8px;
+        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    */
+/*
+    %align-text {
+      //--|🠊 display: flex; 🠈|--//
+      & {
+        margin: 0;
+        text-align: center;
+        border-radius: 8px;
+        padding: 8px 8px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+      }
+    }
+    */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 8px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 8px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 8px 0 56px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 56px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 8px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 8px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 4px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 4px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 4px 0 36px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 36px 0 4px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 4px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 4px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 2px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 2px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 2px 0 26px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 26px 0 2px; //--|🠈 top / right / bottom / left 🠈|--//
+        }
+        */
+/*
+        *[class*='_text'],
+        *[class*='_back'] {
+          padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--//
+        }
+        */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 2px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
+/*
+      *[class*='_text'],
+      *[class*='_back'] {
+        padding: 0 2px; //--|🠈 top & bot / right & left 🠈|--//
+      }
+      */
