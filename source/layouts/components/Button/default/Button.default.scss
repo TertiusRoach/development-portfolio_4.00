@@ -59,6 +59,7 @@
 }
 
 button[class*='default'] {
+  @extend %apply-cursor;
   @extend %toggle-symbol;
   @extend %default-presets;
   @extend %include-styling;
@@ -70,7 +71,20 @@ button[class*='default'] {
     @include desktop-landscape();
   }
 }
-
+%apply-cursor {
+  div {
+    *[class*='_text'],
+    *[class*='_back'] {
+      cursor: default;
+      span {
+        cursor: pointer;
+      }
+    }
+    img[class*='_icon'] {
+      cursor: pointer;
+    }
+  }
+}
 %toggle-symbol {
   //--|🠊 display: flex; 🠈|--//
   .graphic {
