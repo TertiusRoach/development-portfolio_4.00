@@ -98,6 +98,7 @@ button[class*='default'] {
     *[class*='_back'] {
       margin: 0;
       display: flex;
+      overflow: hidden;
       align-items: center;
       span {
         flex-grow: 1;
@@ -108,6 +109,7 @@ button[class*='default'] {
     img[class*='_icon'] {
       overflow: hidden;
     }
+
     &[class*='_text'] {
       z-index: 2;
     }
