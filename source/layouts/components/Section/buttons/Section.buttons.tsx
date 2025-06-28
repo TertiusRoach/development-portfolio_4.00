@@ -3,13 +3,14 @@
 import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, sizeDivs } from './Section_buttons';
 import { stripBrackets } from '../../../scripts/overtime';
+import { defineButton, sizeDivs } from './Section_buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import { reloadDesign } from './extension/Section_reload';
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 
@@ -2492,3 +2493,19 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default SectionButtons;
+
+export function viewColor(pageName: string) {
+  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
+  switch (viewColor.value) {
+    case 'mono-color':
+      return console.log(`${viewColor.value}`);
+    case 'red-color':
+      return console.log(`${viewColor.value}`);
+    case 'green-color':
+      return console.log(`${viewColor.value}`);
+    case 'blue-color':
+      return console.log(`${viewColor.value}`);
+    default:
+      return console.log(`${viewColor.value}`);
+  }
+}

@@ -1,4 +1,4 @@
-//--|🠊 landing.tsx 🠈|--//
+//--|🠊 buttons.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy } from 'react';
 //--|🠉 Dependencies 🠉|--//
