@@ -1,33 +1,27 @@
 //--|🠊 Button.default.scss 🠈|--//
-@use './Button_default.scss';
-@use './pipeline/Button_presets.scss';
 @use './pipeline/Button_motions.scss';
+@use './pipeline/Button_placing.scss';
+@use './pipeline/Button_presets.scss';
+@use './pipeline/Button_scaling.scss';
 @use './pipeline/Button_shadows.scss';
+@use './pipeline/Button_spacing.scss';
 @use './pipeline/Button_surface.scss';
 
-@mixin desktop-landscape {
-  //--|🠊 display: flex; 🠈|--//
-  @include Button_default.desktop-default();
-}
-@mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
-  @include Button_default.mobile-default();
-}
-
 button[class*='default'] {
-  @extend %include-pipeline;
-
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-}
-%include-pipeline {
   //--|🠊 display: flex; 🠈|--//
   @include Button_presets.button-presets();
   @include Button_motions.button-motions();
   @include Button_shadows.button-shadows();
   @include Button_surface.button-surface();
+
+  @media screen and (orientation: landscape) {
+    @include Button_placing.desktop-placing();
+    @include Button_scaling.desktop-scaling();
+    @include Button_spacing.desktop-spacing();
+  }
+  @media screen and (orientation: portrait) {
+    @include Button_placing.mobile-placing();
+    @include Button_scaling.mobile-scaling();
+    @include Button_spacing.mobile-spacing();
+  }
 }

@@ -2,55 +2,61 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-surface {
   //--|🠊 button[class*='default'] 🠈|--//
+  @extend %mono-surface;
   //--|🠉 display: flex; 🠉|--//
-  //--|🠋 Monochrome 🠋|--//
+}
+%mono-surface {
+  //--|🠊 Monochrome 🠈|--//
+  //--|🠊 display: flex; 🠈|--//
+  %dar-mon {
+    *[class*='_text'] {
+      color: Palettes.$grey-light;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$grey-light;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$grey-dark;
+      }
+    }
+    *[class*='_back'] {
+      background: Palettes.$grey-dark;
+    }
+  }
+  /*
+  %med-mon {
+    *[class*='_text'] {
+    }
+    img[class*='_icon'] {
+    }
+    *[class*='_back'] {
+    }
+  }
+  */
+  /*
+  %lig-mon {
+    *[class*='_text'] {
+    }
+    img[class*='_icon'] {
+    }
+    *[class*='_back'] {
+    }
+  }
+  */
+
   div[class*='_mon_'] {
     //--|🠊 display: grid; 🠈|--//
-    &[class*='_dar_'] {
-      *[class*='_text'] {
-        color: Palettes.$indexLand-light;
-      }
-      img[class*='_icon'] {
-        background: Palettes.$indexLand-light;
-        &[class*='_top_'],
-        &[class*='_bot_'] {
-          background: Palettes.$indexLand-dark;
-        }
-      }
-      *[class*='_back'] {
-        background: Palettes.$indexLand-dark;
-      }
+    &[class*='dar_mon'] {
+      @extend %dar-mon;
     }
     /*
-    &[class*='_med_'] {
-      *[class*='_text'] {
-        color: Palettes.$indexLand-medium;
-      }
-      img[class*='_icon'] {
-        background: Palettes.$indexLand-medium;
-        &[class*='_top_'],
-        &[class*='_bot_'] {
-          background: Palettes.$indexLand-medium;
-        }
-      }
-      *[class*='_back'] {
-        background: Palettes.$indexLand-medium;
-      }
+    &[class*='med_mon'] {
+      @extend %med-mon;
     }
-    &[class*='_lig_'] {
-      *[class*='_text'] {
-        color: Palettes.$indexLand-dark;
-      }
-      img[class*='_icon'] {
-        background: Palettes.$indexLand-dark;
-        &[class*='_top_'],
-        &[class*='_bot_'] {
-          background: Palettes.$indexLand-light;
-        }
-      }
-      *[class*='_back'] {
-        background: Palettes.$indexLand-light;
-      }
+    */
+    /*
+    &[class*='lig_mon'] {
+      @extend %lig-mon;
     }
     */
   }

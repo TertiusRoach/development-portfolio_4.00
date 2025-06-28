@@ -39,7 +39,7 @@
     }
   }
 
-  @extend %toggle-border; //--|🠈 Resize Radius 🠈|--//
+  @extend %toggle-radius; //--|🠈 Resize Radius 🠈|--//
   @extend %toggle-cursor; //--|🠈 Apply Cursor 🠈|--//
   @extend %toggle-symbol; //--|🠈 Remove Text 🠈|--//
 }
@@ -69,7 +69,7 @@
     }
   }
 }
-%toggle-border {
+%toggle-radius {
   //--|🠋 Border Radius 🠋|--//
   div {
     *[class*='_text'],
