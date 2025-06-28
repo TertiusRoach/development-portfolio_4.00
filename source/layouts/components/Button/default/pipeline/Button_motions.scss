@@ -213,20 +213,98 @@
       }
     }
   }
-  /*
-  %mon-lig {
+  %lig-mon {
     &[class*='_top_'],
     &[class*='_bot_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(black, 1);
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 4px rgba(white, 0.5));
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
     }
+
     &[class*='_lef_'],
     &[class*='_rig_'],
     &[class*='_cen_'],
     &[class*='_tex_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(black, 1);
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 2px rgba(black, 1));
+          img {
+            background: Palettes.$grey-light;
+          }
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
     }
+
     &[class*='_ico_'] {
+      &[class*='_icon']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 4px rgba(black, 0.75);
+        }
+      }
+      &[class*='_icon']:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+        img {
+          background: Palettes.$grey-light;
+        }
+      }
     }
   }
-  */
   div[class*='_mon_'] {
     //--|🠊 display: grid; 🠈|--//
     &[class*='dar_mon'] {
@@ -235,10 +313,8 @@
     &[class*='med_mon'] {
       @extend %med-mon;
     }
-    /*
     &[class*='lig_mon'] {
       @extend %lig-mon;
     }
-    */
   }
 }

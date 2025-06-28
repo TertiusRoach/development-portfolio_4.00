@@ -38,16 +38,21 @@
       background: Palettes.$grey-medium;
     }
   }
-  /*
   %lig-mon {
     *[class*='_text'] {
+      color: Palettes.$grey-dark;
     }
     img[class*='_icon'] {
+      background: Palettes.$grey-dark;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$grey-light;
+      }
     }
     *[class*='_back'] {
+      background: Palettes.$grey-light;
     }
   }
-  */
 
   div[class*='_mon_'] {
     //--|🠊 display: grid; 🠈|--//
@@ -57,10 +62,8 @@
     &[class*='med_mon'] {
       @extend %med-mon;
     }
-    /*
     &[class*='lig_mon'] {
       @extend %lig-mon;
     }
-    */
   }
 }

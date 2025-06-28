@@ -288,7 +288,120 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        <aside className="lig-aside">{/* Light */}</aside>
+        <aside className="lig-aside">
+          {/* Light */}
+          <ButtonDefault
+            style={{
+              view: '-top-',
+              color: '(mono)',
+              shade: '~light~',
+              text: 'top_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/08.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              color: '(mono)',
+              view: '-bottom-',
+              shade: '~light~',
+              text: 'bot_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/09.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-left-',
+              color: '(mono)',
+              shade: '~light~',
+              text: 'lef_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/10.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-right-',
+              color: '(mono)',
+              shade: '~light~',
+              text: 'rig_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/11.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-center-',
+              color: '(mono)',
+              shade: '~light~',
+              text: 'cen_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/12.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-text-',
+              color: '(mono)',
+              shade: '~light~',
+              text: 'tex_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              color: '(mono)',
+              type: '{button}',
+              shade: '~light~',
+              text: 'ico_lig_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+        </aside>
       </div>
       <div className="h2-size hidden">
         <aside className="dar-aside">
