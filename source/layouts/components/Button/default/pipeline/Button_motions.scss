@@ -121,10 +121,38 @@
       }
     }
   }
-  /*
   %med-mon {
     &[class*='_top_'],
     &[class*='_bot_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-medium;
+        filter: drop-shadow(0 0 4px rgba(white, 1));
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 4px rgba(black, 0.5));
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
     }
     &[class*='_lef_'],
     &[class*='_rig_'],
@@ -134,7 +162,6 @@
     &[class*='_ico_'] {
     }
   }
-  */
   /*
   %mon-lig {
     &[class*='_top_'],
@@ -154,11 +181,9 @@
     &[class*='dar_mon'] {
       @extend %dar-mon;
     }
-    /*
     &[class*='med_mon'] {
       @extend %med-mon;
     }
-    */
     /*
     &[class*='lig_mon'] {
       @extend %lig-mon;

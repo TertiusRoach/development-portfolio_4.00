@@ -23,16 +23,21 @@
       background: Palettes.$grey-dark;
     }
   }
-  /*
   %med-mon {
     *[class*='_text'] {
+      color: black;
     }
     img[class*='_icon'] {
+      background: Palettes.$grey-dark;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$grey-dark;
+      }
     }
     *[class*='_back'] {
+      background: Palettes.$grey-medium;
     }
   }
-  */
   /*
   %lig-mon {
     *[class*='_text'] {
@@ -49,11 +54,9 @@
     &[class*='dar_mon'] {
       @extend %dar-mon;
     }
-    /*
     &[class*='med_mon'] {
       @extend %med-mon;
     }
-    */
     /*
     &[class*='lig_mon'] {
       @extend %lig-mon;

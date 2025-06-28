@@ -174,7 +174,25 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </aside>
-        <aside className="med-aside">{/* Medium */}</aside>
+        <aside className="med-aside">
+          {/* Medium */}
+          <ButtonDefault
+            style={{
+              view: '-top-',
+              color: '(mono)',
+              shade: '~medium~',
+              text: 'top_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+        </aside>
         <aside className="lig-aside">{/* Light */}</aside>
       </div>
       <div className="h2-size hidden">

@@ -25,16 +25,20 @@
       box-shadow: inset 0 0 8px rgba(black, 1);
     }
   }
-  /*
   %med-mon {
     *[class*='_text'] {
+      filter: drop-shadow(0 0 4px rgba(white, 1));
     }
     &[class*='_icon'] {
+      filter: drop-shadow(0 0 8px rgba(black, 1));
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        filter: drop-shadow(0 0 8px rgba(white, 1));
+      }
     }
     *[class*='_back'] {
     }
   }
-  */
   /*
   %lig-mon {
     *[class*='_text'] {
@@ -51,11 +55,9 @@
     &[class*='dar_mon'] {
       @extend %dar_mon;
     }
-    /*
     &[class*='med_mon'] {
       @extend %med-mon;
     }
-    */
     /*
     &[class*='lig_mon'] {
       @extend %lig-mon;
