@@ -6,6 +6,7 @@ import { stripBrackets } from '../../../scripts/buttons';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import MenuButtons from '../../../components/Menu/buttons/Menu.buttons';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
@@ -24,7 +25,8 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <menu className={`${pageName}-menu`}>
+      <MenuButtons info={info} />
+      {/* <menu className={`${pageName}-menu`}>
         <li className="logo-list">
           <img
             className="logo-image"
@@ -59,7 +61,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             <option value="mono-color">(Mono)</option>
           </select>
         </li>
-      </menu>
+      </menu> */}
       {/* <section className={`${pageName}-section`}></section> */}
     </header>
   );

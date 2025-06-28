@@ -3,7 +3,7 @@
 import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { defineButton, showSize, sizeDivs } from './Section_buttons';
+import { defineButton, sizeDivs } from './Section_buttons';
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -45,39 +45,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
     loadSize();
     window.addEventListener('resize', loadSize);
 
-    //--|🠋 Event Listeners 🠋|--//
-    let selectStyle = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="style"] select`
-    ) as HTMLSelectElement;
-    let selectSize = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="size"] select`
-    ) as HTMLSelectElement;
-    let selectColor = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="color"] select`
-    ) as HTMLSelectElement;
-
-    const cleanupArray: (() => void)[] = [];
-
-    if (selectSize) {
-      const handleSize = () => showSize(pageName, blockName);
-      selectSize.addEventListener('change', handleSize);
-      cleanupArray.push(() => selectSize.removeEventListener('change', handleSize));
-    }
-    if (selectStyle) {
-      const handleStyle = () => reloadDesign(pageName);
-      selectStyle.addEventListener('change', handleStyle);
-      cleanupArray.push(() => selectStyle.removeEventListener('change', handleStyle));
-    }
-    if (selectColor) {
-      const handleColor = () => viewColor(pageName);
-      selectColor.addEventListener('change', handleColor);
-      cleanupArray.push(() => selectSize.removeEventListener('change', handleColor));
-    }
-
-    // Cleanup on unmount or dependency change
     return () => {
       window.removeEventListener('resize', loadSize);
-      cleanupArray.forEach((cleanupFunction) => cleanupFunction());
     };
   }, [pageName, blockName]);
 
@@ -962,36 +931,3 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default SectionButtons;
-
-const viewColor = (pageName: string) => {
-  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
-  switch (viewColor.value) {
-    case 'mono-color':
-      return console.log(`${viewColor.value}`);
-    case 'red-color':
-      return console.log(`${viewColor.value}`);
-    case 'green-color':
-      return console.log(`${viewColor.value}`);
-    case 'blue-color':
-      return console.log(`${viewColor.value}`);
-    default:
-      return console.log(`${viewColor.value}`);
-  }
-};
-const reloadDesign = (pageName: string) => {
-  let viewStyle = document.querySelector(`#${pageName}-header .buttons-menu li[class*="style"] select`) as HTMLSelectElement;
-
-  switch (viewStyle.value) {
-    case 'stretch-style':
-      return console.log(`${viewStyle.value}`);
-    case 'cleaned-style':
-      return console.log(`${viewStyle.value}`);
-    case 'grading-style':
-      return console.log(`${viewStyle.value}`);
-
-    case 'framing-style':
-      return console.log(`${viewStyle.value}`);
-    default:
-      return console.log(`${viewStyle.value}`);
-  }
-};

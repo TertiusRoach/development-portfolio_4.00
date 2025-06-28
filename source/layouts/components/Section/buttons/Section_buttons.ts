@@ -55,35 +55,3 @@ export function sizeDivs(pageName: string, blockName: string) {
     mainDiv.style.height = `${mainBlock.offsetHeight}px`;
   }
 }
-
-export function showSize(pageName: string, blockName: string) {
-  const selectSize = document.querySelector(
-    `#${pageName}-header .buttons-menu li[class*="size"] select`
-  ) as HTMLSelectElement;
-  const mainSlider = document.querySelector(`#${pageName}-${blockName} section[class*="buttons"]`) as HTMLElement;
-  const prevElement = document.querySelector(
-    `#${pageName}-${blockName} section[class*="buttons"] .visible`
-  ) as HTMLDivElement;
-  const nextElement = document.querySelector(
-    `#${pageName}-${blockName} section[class*="buttons"] .${selectSize.value}`
-  ) as HTMLDivElement;
-
-  nextElement.className = `${selectSize.value} visible`;
-  prevElement.className = `${prevElement.classList[0]} hidden`;
-  switch (selectSize.value) {
-    case 'h1-size':
-      return (mainSlider.style.transform = `translateY(0px)`);
-    case 'h2-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 1}px)`);
-    case 'h3-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 2}px)`);
-    case 'h4-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 3}px)`);
-    case 'h5-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 4}px)`);
-    case 'h6-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 5}px)`);
-    case 'p-size':
-      return (mainSlider.style.transform = `translateY(-${mainSlider.offsetHeight * 6}px)`);
-  }
-}

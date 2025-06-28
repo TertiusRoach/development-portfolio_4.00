@@ -1,0 +1,62 @@
+//--|🠊 Menu.buttons.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 4rem / 6rem repeat(3, 1fr) 6rem; //--|🠊 rows / columns 🠈|--//
+
+  li[class*='logo'] {
+    grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+
+    img[class*='logo'] {
+      width: 75%;
+    }
+  }
+  li[class*='style'] {
+    grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  }
+
+  li {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    select {
+      width: 75%;
+      padding: 8px;
+      text-align: center;
+      border-radius: 4px;
+    }
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+menu[class*='buttons'] {
+  display: grid;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
