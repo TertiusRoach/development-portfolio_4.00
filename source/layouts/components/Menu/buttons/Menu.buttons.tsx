@@ -117,7 +117,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
 };
 export default MenuButtons;
 
-const viewColor = (pageName: string) => {
+export function viewColor(pageName: string) {
   let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
   switch (viewColor.value) {
     case 'mono-color':
@@ -131,21 +131,4 @@ const viewColor = (pageName: string) => {
     default:
       return console.log(`${viewColor.value}`);
   }
-};
-const reloadDesign = (pageName: string) => {
-  let viewStyle = document.querySelector(`#${pageName}-header .buttons-menu li[class*="style"] select`) as HTMLSelectElement;
-
-  switch (viewStyle.value) {
-    case 'stretch-style':
-      return console.log(`${viewStyle.value}`);
-    case 'cleaned-style':
-      return console.log(`${viewStyle.value}`);
-    case 'grading-style':
-      return console.log(`${viewStyle.value}`);
-
-    case 'framing-style':
-      return console.log(`${viewStyle.value}`);
-    default:
-      return console.log(`${viewStyle.value}`);
-  }
-};
+}
