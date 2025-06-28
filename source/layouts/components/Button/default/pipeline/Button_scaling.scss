@@ -6,31 +6,37 @@
   div[class*='one_'],
   div[class*='two_'] {
     //--|🠊 display: grid; 🠈|--//
-    h1,
-    h2 {
+    h1 {
       font-weight: 800;
+    }
+    h2 {
+      font-weight: 750;
     }
   }
   div[class*='thr_'],
   div[class*='fou_'] {
     //--|🠊 display: grid; 🠈|--//
-    h3,
-    h4 {
+    h3 {
       font-weight: 600;
+    }
+    h4 {
+      font-weight: 550;
     }
   }
   div[class*='fiv_'],
   div[class*='six_'] {
     //--|🠊 display: grid; 🠈|--//
-    h5,
-    h6 {
+    h5 {
       font-weight: 400;
+    }
+    h6 {
+      font-weight: 350;
     }
   }
   div[class*='par_'] {
     //--|🠊 display: grid; 🠈|--//
     p {
-      font-weight: 200;
+      font-weight: 100;
     }
   }
 
