@@ -1,8 +1,8 @@
 //--|🠊 Button_shadows.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-shadows {
-  //--|🠊 button[class*='default'] 🠈|--//
   //--|🠉 display: flex; 🠉|--//
+  //--|🠊 button[class*='default'] 🠈|--//
   @extend %mono-shadows; //--|🠈 Monochrome 🠈|--//
 }
 %mono-shadows {
