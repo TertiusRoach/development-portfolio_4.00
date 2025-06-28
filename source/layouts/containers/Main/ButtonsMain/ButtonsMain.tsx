@@ -21,7 +21,25 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    /*
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowUp') {
+        console.log('Go to previous size');
+      }
+      if (event.key === 'ArrowDown') {
+        console.log('Go to next size');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Clean up on unmount or dependency change
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    */
+  }, [pageName, blockName]);
 
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
