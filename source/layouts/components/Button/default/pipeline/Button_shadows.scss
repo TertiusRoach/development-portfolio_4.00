@@ -27,7 +27,7 @@
   }
   %med-mon {
     *[class*='_text'] {
-      filter: drop-shadow(0 0 4px rgba(white, 1));
+      filter: drop-shadow(0 0 4px rgba(Palettes.$grey-neon, 0.75));
     }
     &[class*='_icon'] {
       filter: drop-shadow(0 0 8px rgba(black, 1));

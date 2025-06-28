@@ -25,10 +25,10 @@
   }
   %med-mon {
     *[class*='_text'] {
-      color: black;
+      color: Palettes.$grey-dark;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-dark;
+      background: Palettes.$grey-light;
       &[class*='_top_'],
       &[class*='_bot_'] {
         background: Palettes.$grey-dark;

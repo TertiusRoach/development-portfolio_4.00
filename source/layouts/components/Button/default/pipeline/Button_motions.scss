@@ -39,7 +39,7 @@
       h4:hover,
       h5:hover,
       h6:hover {
-        color: Palettes.$indexLand-dark;
+        color: Palettes.$grey-dark;
       }
       &[class*='_text']:hover {
         ~ div[class*='_back'] p,
@@ -50,7 +50,7 @@
         ~ div[class*='_back'] h5,
         ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+          background: Palettes.$grey-medium;
           box-shadow: inset 0 0 8px rgba(white, 1);
         }
         ~ div[class*='_icon'] {
@@ -73,7 +73,7 @@
       h4:hover,
       h5:hover,
       h6:hover {
-        color: Palettes.$indexLand-dark;
+        color: Palettes.$grey-dark;
       }
       &[class*='_text']:hover {
         ~ div[class*='_back'] p,
@@ -84,13 +84,13 @@
         ~ div[class*='_back'] h5,
         ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+          background: Palettes.$grey-medium;
           box-shadow: inset 0 0 8px rgba(white, 1);
         }
         ~ div[class*='_icon'] {
           filter: drop-shadow(0 0 2px rgba(white, 1));
           img {
-            background: Palettes.$indexLand-dark;
+            background: Palettes.$grey-dark;
           }
         }
       }
@@ -109,14 +109,14 @@
         ~ div[class*='_back'] h5,
         ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+          background: Palettes.$grey-medium;
           box-shadow: inset 0 0 4px rgba(white, 0.75);
         }
       }
       &[class*='_icon']:hover {
         filter: drop-shadow(0 0 2px rgba(white, 1));
         img {
-          background: Palettes.$indexLand-dark;
+          background: Palettes.$grey-dark;
         }
       }
     }
@@ -154,15 +154,64 @@
         filter: drop-shadow(0 0 2px rgba(white, 1));
       }
     }
-    /*
     &[class*='_lef_'],
     &[class*='_rig_'],
     &[class*='_cen_'],
     &[class*='_tex_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-medium;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-light, 1));
+          img {
+            background: Palettes.$grey-medium;
+          }
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
     }
+
     &[class*='_ico_'] {
+      &[class*='_icon']:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+        img {
+          background: Palettes.$grey-dark;
+        }
+      }
+      &[class*='_icon']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 4px rgba(white, 0.75);
+        }
+      }
     }
-    */
   }
   /*
   %mon-lig {

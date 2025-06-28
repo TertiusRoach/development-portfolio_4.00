@@ -1,0 +1,2 @@
+menu[class*=buttons]{display:grid}@media screen and (orientation:landscape){menu[class*=buttons]{grid-template:4rem/6rem repeat(3,1fr) 6rem}menu[class*=buttons] li[class*=logo]{grid-area:1/1/2/2}menu[class*=buttons] li[class*=logo] img[class*=logo]{width:75%}menu[class*=buttons] li[class*=style]{grid-area:1/2/2/3}menu[class*=buttons] li{align-items:center;display:flex;justify-content:center;list-style:none}menu[class*=buttons] li select{border-radius:4px;padding:8px;text-align:center;width:75%}}
+/*# sourceMappingURL=922.index.css.map*/

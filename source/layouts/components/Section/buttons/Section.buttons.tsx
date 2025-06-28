@@ -182,10 +182,105 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'top_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/08.svg`,
 
               size: '<h1>',
               type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              color: '(mono)',
+              view: '-bottom-',
+              shade: '~medium~',
+              text: 'bot_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/09.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-left-',
+              color: '(mono)',
+              shade: '~medium~',
+              text: 'lef_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/10.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-right-',
+              color: '(mono)',
+              shade: '~medium~',
+              text: 'rig_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/11.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-center-',
+              color: '(mono)',
+              shade: '~medium~',
+              text: 'cen_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/12.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-text-',
+              color: '(mono)',
+              shade: '~medium~',
+              text: 'tex_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
+
+              size: '<h1>',
+              type: '{button}',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              color: '(mono)',
+              type: '{button}',
+              shade: '~medium~',
+              text: 'ico_med_mon',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
             }}
             info={{
               pageName: info.pageName,
