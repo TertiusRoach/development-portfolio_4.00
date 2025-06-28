@@ -163,7 +163,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
 
               text: 'ico_dar_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -182,7 +182,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'top_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/08.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -198,7 +198,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               view: '-bottom-',
               shade: '~medium~',
               text: 'bot_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/09.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/08.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -214,7 +214,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'lef_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/10.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/09.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -230,7 +230,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'rig_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/11.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/10.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -246,7 +246,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'cen_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/12.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/11.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -262,7 +262,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~medium~',
               text: 'tex_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -280,7 +279,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               type: '{button}',
               shade: '~medium~',
               text: 'ico_med_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/12.svg`,
             }}
             info={{
               pageName: info.pageName,
@@ -296,7 +295,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~light~',
               text: 'top_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/08.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -312,7 +311,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               view: '-bottom-',
               shade: '~light~',
               text: 'bot_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/09.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/14.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -328,7 +327,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~light~',
               text: 'lef_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/10.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/15.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -344,7 +343,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~light~',
               text: 'rig_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/11.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/16.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -360,7 +359,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
               shade: '~light~',
               text: 'cen_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/12.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/17.svg`,
 
               size: '<h1>',
               type: '{button}',
@@ -372,14 +371,12 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
           <ButtonDefault
             style={{
+              size: '<h1>',
               view: '-text-',
               color: '(mono)',
               shade: '~light~',
-              text: 'tex_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
-
-              size: '<h1>',
               type: '{button}',
+              text: 'tex_lig_mon',
             }}
             info={{
               pageName: info.pageName,
@@ -394,7 +391,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               type: '{button}',
               shade: '~light~',
               text: 'ico_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/13.svg`,
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/18.svg`,
             }}
             info={{
               pageName: info.pageName,
