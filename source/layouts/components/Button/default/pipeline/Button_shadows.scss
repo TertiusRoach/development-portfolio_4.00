@@ -4,17 +4,27 @@
   //--|🠊 button[class*='default'] 🠈|--//
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Monochrome 🠋|--//
-  /*
   div[class*='_mon_'] {
     //--|🠊 display: grid; 🠈|--//
     &[class*='_dar_'] {
       *[class*='_text'] {
+        span {
+          filter: drop-shadow(0 0 4px rgba(black, 1));
+        }
       }
-      *[class*='_icon'] {
+      &[class*='_icon'] {
+        filter: drop-shadow(0 0 8px rgba(black, 1));
+        &[class*='_top_'],
+        &[class*='_bot_'] {
+          filter: drop-shadow(0 0 8px rgba(white, 1));
+        }
       }
+
       *[class*='_back'] {
+        box-shadow: inset 0 0 8px rgba(black, 1);
       }
     }
+    /*
     &[class*='_med_'] {
       *[class*='_text'] {
       }
@@ -31,17 +41,6 @@
       *[class*='_back'] {
       }
     }
+    */
   }
-  */
 }
-/*
-  div[class*='_red_'] {
-    //--|🠊 display: grid; 🠈|--//
-  }
-  div[class*='_gre_'] {
-    //--|🠊 display: grid; 🠈|--//
-  }
-  div[class*='_blu_'] {
-    //--|🠊 display: grid; 🠈|--//
-  }
-  */

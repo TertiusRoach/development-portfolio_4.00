@@ -1,68 +1,21 @@
 //--|🠊 Button.default.scss 🠈|--//
 @use './Button_default.scss';
+@use './pipeline/Button_presets.scss';
+@use './pipeline/Button_motions.scss';
 @use './pipeline/Button_shadows.scss';
 @use './pipeline/Button_surface.scss';
 
 @mixin desktop-landscape {
   //--|🠊 display: flex; 🠈|--//
   @include Button_default.desktop-default();
-  div {
-    *[class*='_back'] {
-      border-radius: 10px;
-      //--|🠊 background: purple !important; 🠈|--//
-    }
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (max-height: 768px) {
-      *[class*='_back'] {
-        border-radius: 8px;
-        //--|🠊 background: red !important; 🠈|--//
-      }
-    }
-    @media screen and (max-height: 480px) {
-      *[class*='_back'] {
-        border-radius: 6px;
-        //--|🠊 background: green !important; 🠈|--//
-      }
-    }
-    @media screen and (max-height: 360px) {
-      *[class*='_back'] {
-        border-radius: 4px;
-        //--|🠊 background: blue !important; 🠈|--//
-      }
-    }
-  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: flex; 🠈|--//
   @include Button_default.mobile-default();
-  div {
-    *[class*='_back'] {
-      border-radius: 8px;
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (max-width: 768px) {
-      *[class*='_back'] {
-        border-radius: 6px;
-      }
-    }
-    @media screen and (max-width: 480px) {
-      *[class*='_back'] {
-        border-radius: 4px;
-      }
-    }
-    @media screen and (max-width: 360px) {
-      *[class*='_back'] {
-        border-radius: 2px;
-      }
-    }
-  }
 }
 
 button[class*='default'] {
-  @extend %apply-cursor;
-  @extend %toggle-symbol;
-  @extend %default-presets;
-  @extend %include-styling;
+  @extend %include-pipeline;
 
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
@@ -71,75 +24,10 @@ button[class*='default'] {
     @include desktop-landscape();
   }
 }
-%apply-cursor {
-  div {
-    *[class*='_text'],
-    *[class*='_back'] {
-      cursor: default;
-      span {
-        cursor: pointer;
-      }
-    }
-    img[class*='_icon'] {
-      cursor: pointer;
-    }
-  }
-}
-%toggle-symbol {
+%include-pipeline {
   //--|🠊 display: flex; 🠈|--//
-  .graphic {
-    //--|🠊 div[class*='graphic'] 🠈|--//
-    img[class*='_icon'] {
-      color: rgba(255, 255, 255, 0);
-    }
-  }
-  .missing {
-    //--|🠊 div[class*='missing'] 🠈|--//
-    img[class*='_icon'] {
-      display: none;
-    }
-  }
-}
-%default-presets {
-  display: flex;
-  position: relative;
-  div {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    position: absolute;
-    *[class*='_text'],
-    *[class*='_back'] {
-      margin: 0;
-      display: flex;
-      overflow: hidden;
-      align-items: center;
-      span {
-        flex-grow: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-    img[class*='_icon'] {
-      overflow: hidden;
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-    }
-
-    &[class*='_text'] {
-      z-index: 2;
-    }
-    &[class*='_icon'] {
-      z-index: 1;
-    }
-    &[class*='_back'] {
-      z-index: 0;
-    }
-  }
-}
-%include-styling {
-  //--|🠊 display: flex; 🠈|--//
+  @include Button_presets.button-presets();
+  @include Button_motions.button-motions();
   @include Button_shadows.button-shadows();
   @include Button_surface.button-surface();
 }

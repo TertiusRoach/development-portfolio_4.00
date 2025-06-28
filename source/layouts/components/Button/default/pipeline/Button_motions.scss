@@ -1,89 +1,115 @@
 //--|🠊 Button_motions.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
-@mixin desktop-motions {
-  div[class*='_top_'],
-  div[class*='_bot_'] {
-    //--|🠋 Monochrome 🠋|--//
-    &[class*='dar_mon'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$indexLand-dark;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+@mixin button-motions {
+  //--|🠊 button[class*='default'] 🠈|--//
+  @extend %animation-transition;
+  //--|🠉 display: flex; 🠉|--//
+  //--|🠋 Monochrome 🠋|--//
+  div[class*='_mon_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &[class*='_dar_'] {
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+          color: Palettes.$indexLand-dark;
+        }
+        &[class*='_text']:hover {
+          ~ div[class*='_back'] p,
+          ~ div[class*='_back'] h1,
+          ~ div[class*='_back'] h2,
+          ~ div[class*='_back'] h3,
+          ~ div[class*='_back'] h4,
+          ~ div[class*='_back'] h5,
+          ~ div[class*='_back'] h6,
+          ~ div[class*='_icon'] img {
+            background: Palettes.$indexLand-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+          ~ div[class*='_icon'] {
+            filter: drop-shadow(0 0 4px rgba(black, 0.5));
+          }
+        }
+        &[class*='_text'] span:hover {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
         }
       }
-    }
-  }
 
-  div[class*='_lef_'],
-  div[class*='_rig_'],
-  div[class*='_cen_'],
-  div[class*='_tex_'] {
-    &[class*='dar_mon'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$indexLand-dark;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+      &[class*='_lef_'],
+      &[class*='_rig_'],
+      &[class*='_cen_'],
+      &[class*='_tex_'] {
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+          color: Palettes.$indexLand-dark;
         }
-        ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-dark;
+        &[class*='_text']:hover {
+          ~ div[class*='_back'] p,
+          ~ div[class*='_back'] h1,
+          ~ div[class*='_back'] h2,
+          ~ div[class*='_back'] h3,
+          ~ div[class*='_back'] h4,
+          ~ div[class*='_back'] h5,
+          ~ div[class*='_back'] h6,
+          ~ div[class*='_icon'] img {
+            background: Palettes.$indexLand-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+          ~ div[class*='_icon'] {
+            filter: drop-shadow(0 0 2px rgba(white, 1));
+            img {
+              background: Palettes.$indexLand-dark;
+            }
+          }
+        }
+        &[class*='_text'] span:hover {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
         }
       }
-    }
-  }
 
-  div[class*='_ico_'] {
-    &[class*='dar_mon'] {
-      &[class*='_icon']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$indexLand-medium;
+      &[class*='_ico_'] {
+        &[class*='_icon']:hover {
+          ~ div[class*='_back'] p,
+          ~ div[class*='_back'] h1,
+          ~ div[class*='_back'] h2,
+          ~ div[class*='_back'] h3,
+          ~ div[class*='_back'] h4,
+          ~ div[class*='_back'] h5,
+          ~ div[class*='_back'] h6,
+          ~ div[class*='_icon'] img {
+            background: Palettes.$indexLand-medium;
+            box-shadow: inset 0 0 4px rgba(white, 0.75);
+          }
         }
-      }
-      &[class*='_icon']:hover {
-        img {
-          background: Palettes.$indexLand-dark;
+        &[class*='_icon']:hover {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
+          img {
+            background: Palettes.$indexLand-dark;
+          }
         }
       }
     }
+    /*
+    &[class*='_med_'] {
+    }
+    &[class*='_lig_'] {
+    }
+    */
   }
+}
+
+%animation-transition {
   div {
-    img,
     h1,
     h2,
     h3,
@@ -91,27 +117,17 @@
     h5,
     h6,
     p {
-      transition: background 0.25s ease-in-out;
+      transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
       span {
-        transition: color 0.25s ease-in-out;
+        transition: color 0.25s ease-in-out, filter 0.5s ease-in-out;
       }
     }
-  }
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-  }
-}
-@mixin mobile-motions {
-  //--|🠉 display: flex; 🠉|--//
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
+
+    &[class*='_icon'] {
+      transition: filter 1.25s ease-in-out;
+      img {
+        transition: background 0.5s ease-in-out;
+      }
+    }
   }
 }

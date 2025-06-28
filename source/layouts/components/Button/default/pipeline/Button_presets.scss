@@ -1,0 +1,103 @@
+//--|🠊 Button_presets.scss 🠈|--//
+@mixin button-presets {
+  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠉 display: flex; 🠉|--//
+  display: flex;
+  position: relative;
+  div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    position: absolute;
+    *[class*='_text'],
+    *[class*='_back'] {
+      margin: 0;
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      span {
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    img[class*='_icon'] {
+      overflow: hidden;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+
+    &[class*='_text'] {
+      z-index: 2;
+    }
+    &[class*='_icon'] {
+      z-index: 1;
+    }
+    &[class*='_back'] {
+      z-index: 0;
+    }
+  }
+
+  @extend %toggle-border; //--|🠈 Resize Radius 🠈|--//
+  @extend %toggle-cursor; //--|🠈 Apply Cursor 🠈|--//
+  @extend %toggle-symbol; //--|🠈 Remove Text 🠈|--//
+}
+
+%toggle-cursor {
+  //--|🠋 Toggle Cursor 🠋|--//
+  div[class*='_text'],
+  div[class*='_icon'] {
+    span,
+    img {
+      cursor: pointer;
+    }
+  }
+}
+%toggle-symbol {
+  //--|🠋 Hide Glitch 🠋|--//
+  .graphic {
+    //--|🠊 div[class*='graphic'] 🠈|--//
+    img[class*='_icon'] {
+      color: rgba(255, 255, 255, 0);
+    }
+  }
+  .missing {
+    //--|🠊 div[class*='missing'] 🠈|--//
+    img[class*='_icon'] {
+      display: none;
+    }
+  }
+}
+%toggle-border {
+  //--|🠋 Border Radius 🠋|--//
+  div {
+    *[class*='_text'],
+    *[class*='_back'] {
+      border-radius: 10px;
+      //--|🠊 background: purple !important; 🠈|--//
+    }
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (max-height: 768px) {
+      *[class*='_text'],
+      *[class*='_back'] {
+        border-radius: 8px;
+        //--|🠊 background: red !important; 🠈|--//
+      }
+    }
+    @media screen and (max-height: 480px) {
+      *[class*='_text'],
+      *[class*='_back'] {
+        border-radius: 6px;
+        //--|🠊 background: green !important; 🠈|--//
+      }
+    }
+    @media screen and (max-height: 360px) {
+      *[class*='_text'],
+      *[class*='_back'] {
+        border-radius: 4px;
+        //--|🠊 background: blue !important; 🠈|--//
+      }
+    }
+  }
+}
