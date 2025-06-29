@@ -11,7 +11,9 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 // import { reloadDesign } from './extension/Section_reload';
+import AsideButtons from '../../Aside/buttons/Aside.buttons';
 import ButtonDefault from '../../Button/default/Button.default';
+// import AsideMain from '../../Aside/buttons/extensions/Aside-main';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -27,19 +29,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const imagePath: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
 
-  const handleButtons = (pageName: string, blockName: string) => {
-    let page = pageName as string;
-    let block = blockName as string;
-    /*
-    console.log(`pageName: ${pageName}`);
-    console.log(`blockName: ${blockName}`);
-    console.log('handleButtons Reloaded!');
-    */
-  };
+  const handleButtons = (pageName: string, blockName: string) => {};
 
   useEffect(() => {
-    // sizeDivs(pageName, blockName);
-
     const loadSize = () => {
       sizeDivs(pageName, blockName);
     };
@@ -50,12 +42,11 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
       window.removeEventListener('resize', loadSize);
     };
   }, [pageName, blockName]);
-
   return (
     <section className="buttons-section">
       <div className="h1-size visible">
-        <aside className="dar-aside">
-          {/* Dark */}
+        <AsideButtons info={info} />
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -176,7 +167,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -289,7 +279,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -399,11 +388,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
       <div className="h2-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -524,7 +512,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -637,7 +624,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -747,11 +733,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
       <div className="h3-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -872,7 +857,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -985,7 +969,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1095,11 +1078,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
       <div className="h4-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1220,7 +1202,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1333,7 +1314,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1443,11 +1423,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
       <div className="h5-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1568,7 +1547,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1681,7 +1659,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1791,11 +1768,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
       <div className="h6-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -1916,7 +1892,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -2029,7 +2004,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -2139,11 +2113,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>{' '}
+        </aside> */}
       </div>
       <div className="p-size hidden">
-        <aside className="dar-aside">
-          {/* Dark */}
+        {/* <aside className="dar-aside">
           <ButtonDefault
             style={{
               view: '-top-',
@@ -2264,7 +2237,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="med-aside">
-          {/* Medium */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -2377,7 +2349,6 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
           />
         </aside>
         <aside className="lig-aside">
-          {/* Light */}
           <ButtonDefault
             style={{
               view: '-top-',
@@ -2487,7 +2458,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               blockName: info.blockName,
             }}
           />
-        </aside>
+        </aside> */}
       </div>
     </section>
   );
