@@ -5,6 +5,7 @@ import './Menu.buttons.scss';
 //--|🠋 Functions 🠋|--//
 import { showSize } from './Menu_buttons';
 import { stripBrackets } from '../../../scripts/buttons';
+
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
@@ -40,13 +41,13 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
                 src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/81562c9457867ac7e8724b068a85db04f094477a/source/assets/svg-files/my-signature/signature-icon/primary-medium.svg"
               />
             </li>
-            <li className="style-list">
-              <select id="style-select" defaultValue="default-style" name="style">
-                <option value="stretch-style">[Stretch]</option>
-                <option value="cleaned-style">[Cleaned]</option>
-                <option value="grading-style">[Grading]</option>
-                <option value="framing-style">[Framing]</option>
-                <option value="default-style">[Default]</option>
+            <li className="load-list">
+              <select id="load-select" defaultValue="default-style" name="style">
+                <option value="[stretch]">[Stretch]</option>
+                <option value="[cleaned]">[Cleaned]</option>
+                <option value="[grading]">[Grading]</option>
+                <option value="[framing]">[Framing]</option>
+                <option value="[default]">[Default]</option>
               </select>
             </li>
             <li className="size-list">
@@ -80,7 +81,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     //--|🠋 Event Listeners 🠋|--//
-    let selectStyle = document.querySelector(
+    let selectLoad = document.querySelector(
       `#${pageName}-header .buttons-menu li[class*="style"] select`
     ) as HTMLSelectElement;
     let selectSize = document.querySelector(
@@ -97,10 +98,10 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
       selectSize.addEventListener('change', handleSize);
       cleanupArray.push(() => selectSize.removeEventListener('change', handleSize));
     }
-    if (selectStyle) {
-      const handleStyle = () => reloadDesign(pageName);
-      selectStyle.addEventListener('change', handleStyle);
-      cleanupArray.push(() => selectStyle.removeEventListener('change', handleStyle));
+    if (selectLoad) {
+      // const handleStyle = () => reloadDesign(pageName);
+      // selectStyle.addEventListener('change', handleStyle);
+      // cleanupArray.push(() => selectStyle.removeEventListener('change', handleStyle));
     }
     if (selectColor) {
       const handleColor = () => viewColor(pageName);

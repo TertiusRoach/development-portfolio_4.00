@@ -46,6 +46,19 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   */
 }
 
+export function classShade(specShade: '~dark~' | '~medium~' | '~light~') {
+  switch (specShade) {
+    case '~dark~':
+      return 'dar';
+    case '~medium~':
+      return 'med';
+    case '~light~':
+      return 'lig';
+    default:
+      return null;
+  }
+}
+
 export function sizeDivs(pageName: string, blockName: string) {
   const mainBlock = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   const mainDivs = mainBlock.querySelectorAll('section div[class*="size"]') as NodeListOf<HTMLDivElement>;

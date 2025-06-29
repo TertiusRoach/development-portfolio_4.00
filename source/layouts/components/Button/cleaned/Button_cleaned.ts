@@ -1,4 +1,4 @@
-//--|🠊 Button_default.ts 🠈|--//
+//--|🠊 Button_cleaned.ts 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
