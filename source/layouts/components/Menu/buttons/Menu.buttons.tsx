@@ -42,7 +42,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
               />
             </li>
             <li className="load-list">
-              <select id="load-select" defaultValue="default-style" name="style">
+              <select id="load-select" defaultValue="[default]" name="style">
                 <option value="[stretch]">[Stretch]</option>
                 <option value="[cleaned]">[Cleaned]</option>
                 <option value="[grading]">[Grading]</option>
@@ -62,11 +62,11 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
               </select>
             </li>
             <li className="color-list">
-              <select id="color-select" defaultValue="mono-color" name="color">
-                <option value="red-color">(Red)</option>
-                <option value="blue-color">(Blue)</option>
-                <option value="green-color">(Green)</option>
-                <option value="mono-color">(Mono)</option>
+              <select id="color-select" defaultValue="(mono)" name="color">
+                <option value="(red)">(Red)</option>
+                <option value="(blue)">(Blue)</option>
+                <option value="(green)">(Green)</option>
+                <option value="(mono)">(Mono)</option>
               </select>
             </li>
           </>
