@@ -10,7 +10,7 @@ import { defineButton, sizeDivs } from './Section_buttons';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import { reloadDesign } from './extension/Section_reload';
+// import { reloadDesign } from './extension/Section_reload';
 import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 
