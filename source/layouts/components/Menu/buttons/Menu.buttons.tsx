@@ -80,37 +80,23 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    //--|🠋 Event Listeners 🠋|--//
-    let selectLoad = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="style"] select`
-    ) as HTMLSelectElement;
-    let selectSize = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="size"] select`
-    ) as HTMLSelectElement;
-    let selectColor = document.querySelector(
-      `#${pageName}-header .buttons-menu li[class*="color"] select`
-    ) as HTMLSelectElement;
+    const select = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="size"] select`
+    ) as HTMLSelectElement | null;
 
-    const cleanupArray: (() => void)[] = [];
+    const handleChange = (event: Event) => {
+      const target = event.target as HTMLSelectElement;
+      console.log('Selected:', target.value);
+      showSize(pageName);
+    };
 
-    if (selectSize) {
-      const handleSize = () => showSize(pageName);
-      selectSize.addEventListener('change', handleSize);
-      cleanupArray.push(() => selectSize.removeEventListener('change', handleSize));
-    }
-    if (selectLoad) {
-      // const handleStyle = () => reloadDesign(pageName);
-      // selectStyle.addEventListener('change', handleStyle);
-      // cleanupArray.push(() => selectStyle.removeEventListener('change', handleStyle));
-    }
-    if (selectColor) {
-      const handleColor = () => viewColor(pageName);
-      selectColor.addEventListener('change', handleColor);
-      cleanupArray.push(() => selectSize.removeEventListener('change', handleColor));
+    if (select) {
+      select.addEventListener('change', handleChange);
+      showSize(pageName); // Initial run
     }
 
     return () => {
-      cleanupArray.forEach((cleanupFunction) => cleanupFunction());
+      select?.removeEventListener('change', handleChange);
     };
   }, [pageName, blockName]);
 

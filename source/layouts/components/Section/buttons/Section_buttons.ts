@@ -46,6 +46,26 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   */
 }
 
+export function loadStyle(pageName: string): string | undefined {
+  let result: string | undefined;
+  setTimeout(() => {
+    let viewLoad = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+    ) as HTMLSelectElement;
+    switch (viewLoad?.value) {
+      default:
+        result = undefined;
+        break;
+      case '[default]':
+        result = viewLoad.value as '[default]';
+        break;
+      case '[cleaned]':
+        result = viewLoad.value as '[cleaned]';
+        break;
+    }
+  }, 125);
+  return result;
+}
 export function sizeDivs(pageName: string, blockName: string) {
   setTimeout(() => {
     const mainBlock = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
@@ -56,4 +76,20 @@ export function sizeDivs(pageName: string, blockName: string) {
       mainDiv.style.height = `${mainBlock.offsetHeight}px`;
     }
   }, 125);
+}
+export function viewColor(pageName: string) {
+  let viewColor = document.querySelector(
+    `#${pageName}-header .${pageName}-menu li[class*="color"] select`
+  ) as HTMLSelectElement;
+  switch (viewColor.value) {
+    case '(red)':
+      return console.log(`${viewColor.value}`);
+    case '(green)':
+      return console.log(`${viewColor.value}`);
+    case '(blue)':
+      return console.log(`${viewColor.value}`);
+    case '(mono)':
+    default:
+      return console.log(`${viewColor.value}`);
+  }
 }

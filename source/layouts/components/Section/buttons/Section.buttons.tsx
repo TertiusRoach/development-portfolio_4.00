@@ -4,16 +4,13 @@ import './Section.buttons.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/overtime';
-import { defineButton, sizeDivs } from './Section_buttons';
+import { sizeDivs, loadStyle } from './Section_buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-// import { reloadDesign } from './extension/Section_reload';
 import AsideButtons from '../../Aside/buttons/Aside.buttons';
-import ButtonDefault from '../../Button/default/Button.default';
-// import AsideMain from '../../Aside/buttons/extensions/Aside-main';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -24,49 +21,124 @@ interface InfoProps {
   };
 }
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
-  const handleButtons = (pageName: string, blockName: string) => {
-    console.log(`#${pageName}-${blockName}`);
-    // setTimeout(() => {
-    //   return (
-    //     <>
-    //       <AsideButtons info={info} style={style} />
-    //     </>
-    //   );
-    // }, 250);
-  };
-
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
+  const [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
+
+  const handleButtons = (pageName: string, blockName: string) => {
+    return (
+      <section className="buttons-section" key={getStyle}>
+        <div className="h1-size visible">
+          <AsideButtons
+            style={{
+              specSize: '<h1>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            info={info}
+            load={getStyle}
+          />
+        </div>
+        <div className="h2-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<h2>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+        <div className="h3-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<h3>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+        <div className="h4-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<h4>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+        <div className="h5-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<h5>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+        <div className="h6-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<h6>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+        <div className="p-size hidden">
+          <AsideButtons
+            info={info}
+            style={{
+              specSize: '<p>',
+              specShade: ['~dark~', '~medium~', '~light~'],
+              specLoad: getStyle as '[default]' | '[cleaned]',
+              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+            }}
+            load={getStyle}
+          />
+        </div>
+      </section>
+    );
+  };
+
   useEffect(() => {
+    let loadSelect = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+    ) as HTMLSelectElement;
+
+    let handleChange = () => {
+      setStyle(loadSelect.value);
+      handleButtons(pageName, blockName);
+    };
+    if (loadSelect) {
+      loadSelect.addEventListener('change', handleChange);
+    }
+
     sizeDivs(pageName, blockName);
     window.addEventListener('resize', () => sizeDivs(pageName, blockName));
+
     return () => {
+      loadSelect.removeEventListener('change', handleChange);
       window.removeEventListener('resize', () => sizeDivs(pageName, blockName));
     };
   }, [pageName, blockName]);
-  let style = {
-    specShade: ['~dark~', '~medium~', '~light~'],
-    specSize: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'],
-    specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
-  };
 
-  return <section className="buttons-section">{<AsideButtons info={info} style={style} />}</section>;
+  return handleButtons(pageName, blockName);
 };
 export default SectionButtons;
-
-export function viewColor(pageName: string) {
-  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
-  switch (viewColor.value) {
-    case 'mono-color':
-      return console.log(`${viewColor.value}`);
-    case 'red-color':
-      return console.log(`${viewColor.value}`);
-    case 'green-color':
-      return console.log(`${viewColor.value}`);
-    case 'blue-color':
-      return console.log(`${viewColor.value}`);
-    default:
-      return console.log(`${viewColor.value}`);
-  }
-}

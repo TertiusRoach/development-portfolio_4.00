@@ -10,7 +10,8 @@ import { defineButton, sizeDivs } from './Aside_buttons';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import AsideMain from './extensions/Aside-main';
+// import AsideMain from './extensions/main/Aside-main';
+import ButtonDefault from '../../Button/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -18,16 +19,135 @@ interface InfoProps {
     pageName: '[buttons]' | string;
     blockName: '<main>' | string;
   };
+  load: '[default]' | '[cleaned]' | string;
   style: {
-    specSize: Array<string>;
     specView: Array<string>;
     specShade: Array<string>;
+
+    specLoad: '[default]' | '[cleaned]' | string;
+    specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
 }
 const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const handleButtons = (pageName: string, blockName: 'main') => {
+  const imagePath: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
+
+  const handleButtons = (pageName: string, blockName: 'main', shadeType: '~dark~' | '~medium~' | '~light~') => {
+    switch (blockName) {
+      case 'main':
+        return (
+          <>
+            <ButtonDefault
+              style={{
+                view: '-top-',
+                color: '(mono)',
+                text: 'top_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+                type: '{button}',
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-bottom-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'bot_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-left-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'lef_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-right-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'rig_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-center-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'cen_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-text-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'tex_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                view: '-icon-',
+                color: '(mono)',
+                type: '{button}',
+                text: 'ico_dar_mon',
+                shade: shadeType as '~dark~' | '~medium~' | '~light~',
+                size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </>
+        );
+    }
+
     const theseTags: { [key: string]: HTMLElement | null } = {
       bodyPage: document.querySelector(`body #${pageName}-body`) as HTMLElement | null,
       mainPage: document.querySelector(`main[id*="${pageName}-main"]`) as HTMLElement | null,
@@ -37,223 +157,18 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
       leftPage: document.querySelector(`aside[id*="${pageName}-leftbar"]`) as HTMLElement | null,
       rightPage: document.querySelector(`aside[id*="${pageName}-rightbar"]`) as HTMLElement | null,
     };
-    switch (blockName) {
-      case 'main':
-        return (
-          <>
-            <div className="h1-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h1>',
-                  specView: style.specView[0],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h1>',
-                  specView: style.specView[0],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h1>',
-                  specView: style.specView[0],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="h2-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h2>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h2>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h2>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="h3-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h3>',
-                  specView: style.specView[2],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h3>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h3>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="h4-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h4>',
-                  specView: style.specView[3],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h4>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h4>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="h5-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h5>',
-                  specView: style.specView[4],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h5>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h5>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="h6-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h6>',
-                  specView: style.specView[5],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h6>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<h6>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-            <div className="p-size visible">
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<p>',
-                  specView: style.specView[6],
-                  specShade: style.specShade[0],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<p>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[1],
-                }}
-                info={info}
-              />
-              <AsideMain
-                style={{
-                  specLoad: '[default]',
-                  specSize: '<p>',
-                  specView: style.specView[1],
-                  specShade: style.specShade[2],
-                }}
-                info={info}
-              />
-            </div>
-          </>
-        );
-    }
+    let specShade: Array<string> = ['~dark~', '~medium~', '~light~'];
   };
 
-  useEffect(() => {
-    // setTimeout(() => handleButtons(pageName, blockName), 250);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
-  return <aside className="dar-aside">{handleButtons(pageName, blockName)}</aside>;
+  return (
+    <>
+      <aside className="dar-aside">{handleButtons(pageName, blockName, '~dark~')}</aside>
+      <aside className="med-aside">{handleButtons(pageName, blockName, '~medium~')}</aside>
+      <aside className="lig-aside">{handleButtons(pageName, blockName, '~light~')}</aside>
+    </>
+  );
 };
 export default AsideButtons;
 
