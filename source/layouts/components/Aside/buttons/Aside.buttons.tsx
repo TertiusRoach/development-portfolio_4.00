@@ -44,6 +44,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h1-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h1>',
                   specView: style.specView[0],
                   specShade: style.specShade[0],
@@ -52,6 +53,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h1>',
                   specView: style.specView[0],
                   specShade: style.specShade[1],
@@ -60,6 +62,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h1>',
                   specView: style.specView[0],
                   specShade: style.specShade[2],
@@ -70,6 +73,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h2-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h2>',
                   specView: style.specView[1],
                   specShade: style.specShade[0],
@@ -78,6 +82,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h2>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -86,6 +91,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h2>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
@@ -96,6 +102,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h3-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h3>',
                   specView: style.specView[2],
                   specShade: style.specShade[0],
@@ -104,6 +111,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h3>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -112,6 +120,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h3>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
@@ -122,6 +131,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h4-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h4>',
                   specView: style.specView[3],
                   specShade: style.specShade[0],
@@ -130,6 +140,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h4>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -138,6 +149,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h4>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
@@ -148,6 +160,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h5-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h5>',
                   specView: style.specView[4],
                   specShade: style.specShade[0],
@@ -156,6 +169,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h5>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -164,6 +178,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h5>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
@@ -174,6 +189,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="h6-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h6>',
                   specView: style.specView[5],
                   specShade: style.specShade[0],
@@ -182,6 +198,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h6>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -190,6 +207,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<h6>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
@@ -200,6 +218,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
             <div className="p-size visible">
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<p>',
                   specView: style.specView[6],
                   specShade: style.specShade[0],
@@ -208,6 +227,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<p>',
                   specView: style.specView[1],
                   specShade: style.specShade[1],
@@ -216,6 +236,7 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
               />
               <AsideMain
                 style={{
+                  specLoad: '[default]',
                   specSize: '<p>',
                   specView: style.specView[1],
                   specShade: style.specShade[2],
