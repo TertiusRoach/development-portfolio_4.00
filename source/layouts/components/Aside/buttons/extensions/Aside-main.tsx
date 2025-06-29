@@ -337,14 +337,13 @@ const AsideMain: React.FC<InfoProps> = ({ info, style }) => {
           />
           <ButtonDefault
             style={{
-              view: '-center-',
               color: '(mono)',
               shade: '~light~',
-              text: 'cen_lig_mon',
-              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/17.svg`,
-
-              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              view: '-center-',
               type: '{button}',
+              text: 'cen_lig_mon',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/17.svg`,
             }}
             info={{
               pageName: info.pageName,
