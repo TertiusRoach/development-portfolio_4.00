@@ -27,6 +27,8 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
 
   const handleButtons = (pageName: string, blockName: string) => {
+    let page = pageName as '[buttons]';
+    let block = blockName as '<main>';
     return (
       <section className="buttons-section" key={getStyle}>
         <div className="h1-size visible">

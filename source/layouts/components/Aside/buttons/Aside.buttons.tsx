@@ -164,9 +164,9 @@ const AsideButtons: React.FC<InfoProps> = ({ info, style }) => {
 
   return (
     <>
-      <aside className="dar-aside">{handleButtons(pageName, blockName, '~dark~')}</aside>
-      <aside className="med-aside">{handleButtons(pageName, blockName, '~medium~')}</aside>
-      <aside className="lig-aside">{handleButtons(pageName, blockName, '~light~')}</aside>
+      <aside className={`${pageName}-aside dar`}>{handleButtons(pageName, blockName, '~dark~')}</aside>
+      <aside className={`${pageName}-aside med`}>{handleButtons(pageName, blockName, '~medium~')}</aside>
+      <aside className={`${pageName}-aside lig`}>{handleButtons(pageName, blockName, '~light~')}</aside>
     </>
   );
 };

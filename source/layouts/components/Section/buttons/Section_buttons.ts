@@ -1,4 +1,6 @@
 //--|🠊 Section_buttons.ts 🠈|--//
+import { createRoot, Root } from 'react-dom/client';
+
 export function defineButton(info: { pageName: string; blockName: string }) {
   const { pageName, blockName } = info;
   //--|🠋 Always Return an Object 🠋|--//
@@ -91,5 +93,18 @@ export function viewColor(pageName: string) {
     case '(mono)':
     default:
       return console.log(`${viewColor.value}`);
+  }
+}
+let root: Root | null = null;
+export function loadSection(asideElement: HTMLElement, content: React.ReactNode) {
+  if (!root) {
+    root = createRoot(asideElement);
+  }
+  root.render(content);
+}
+export function clearSection() {
+  if (root) {
+    root.unmount();
+    root = null;
   }
 }

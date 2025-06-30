@@ -1,9 +1,11 @@
 //--|🠊 ButtonsMain.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/buttons';
+import { loadSection, clearSection } from '../../../components/Section/buttons/Section_buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
+import { createRoot, Root } from 'react-dom/client';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import SectionButtons from '../../../components/Section/buttons/Section.buttons';
@@ -21,30 +23,48 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
+  const handleButtons = (pageName: string, blockName: string) => {
+    let page: string = pageName;
+    let block: string = blockName;
+
+    return <SectionButtons info={info} />;
+  };
+
   useEffect(() => {
-    /*
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowUp') {
-        console.log('Go to previous size');
-      }
-      if (event.key === 'ArrowDown') {
-        console.log('Go to next size');
-      }
-    };
+    let loadSelect = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+    ) as HTMLSelectElement;
 
-    window.addEventListener('keydown', handleKeyDown);
+    if (loadSelect) {
+      loadSelect.addEventListener('change', () => handleButtons(info.pageName, info.blockName));
 
-    // Clean up on unmount or dependency change
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-    */
-  }, [pageName, blockName]);
+      return () => {
+        clearSection();
+        loadSelect.removeEventListener('change', () => handleButtons(info.pageName, info.blockName));
+      };
+    } else {
+      console.warn('Load select element not found.');
+    }
+  }, [pageName, blockName, [info]]);
 
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
-      <SectionButtons info={info} />
+      {handleButtons(info.pageName, info.blockName)}
     </main>
   );
 };
 export default ButtonsMain;
+
+// let root: Root | null = null;
+// export function loadSection(asideElement: HTMLElement, content: React.ReactNode) {
+//   if (!root) {
+//     root = createRoot(asideElement);
+//   }
+//   root.render(content);
+// }
+// export function clearSection() {
+//   if (root) {
+//     root.unmount();
+//     root = null;
+//   }
+// }
