@@ -59,3 +59,19 @@ export function showSize(pageName: string) {
     });
   }, revealDelayMs);
 }
+
+export function viewColor(pageName: string) {
+  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
+  switch (viewColor.value) {
+    case 'mono-color':
+      return console.log(`${viewColor.value}`);
+    case 'red-color':
+      return console.log(`${viewColor.value}`);
+    case 'green-color':
+      return console.log(`${viewColor.value}`);
+    case 'blue-color':
+      return console.log(`${viewColor.value}`);
+    default:
+      return console.log(`${viewColor.value}`);
+  }
+}
