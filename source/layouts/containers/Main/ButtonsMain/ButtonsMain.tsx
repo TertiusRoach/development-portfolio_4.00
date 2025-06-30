@@ -54,17 +54,3 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ButtonsMain;
-
-// let root: Root | null = null;
-// export function loadSection(asideElement: HTMLElement, content: React.ReactNode) {
-//   if (!root) {
-//     root = createRoot(asideElement);
-//   }
-//   root.render(content);
-// }
-// export function clearSection() {
-//   if (root) {
-//     root.unmount();
-//     root = null;
-//   }
-// }
