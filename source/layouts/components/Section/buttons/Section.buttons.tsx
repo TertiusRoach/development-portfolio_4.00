@@ -24,7 +24,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  const [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
+  let [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[cleaned]');
 
   const handleButtons = (pageName: 'buttons') => {
     let loadSelect = document.querySelector(

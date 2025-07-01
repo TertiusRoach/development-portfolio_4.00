@@ -16,37 +16,32 @@
       background: Palettes.$grey-dark;
     }
     *[class*='_back'] {
-      background: rgba(Palettes.$grey-dark, 0);
+      background: none;
+      color: rgba(Palettes.$grey-dark, 0);
     }
   }
   %med-mon {
     *[class*='_text'] {
-      color: Palettes.$grey-dark;
+      color: Palettes.$grey-medium;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-dark;
-      }
+      background: Palettes.$grey-medium;
     }
     *[class*='_back'] {
-      background: rgba(Palettes.$grey-medium, 0);
+      background: none;
+      color: rgba(Palettes.$grey-medium, 0);
     }
   }
   %lig-mon {
     *[class*='_text'] {
-      color: Palettes.$grey-dark;
+      color: Palettes.$grey-light;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-dark;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-light;
-      }
+      background: Palettes.$grey-light;
     }
     *[class*='_back'] {
-      background: rgba(Palettes.$grey-light, 0);
+      background: none;
+      color: rgba(Palettes.$grey-light, 0);
     }
   }
 

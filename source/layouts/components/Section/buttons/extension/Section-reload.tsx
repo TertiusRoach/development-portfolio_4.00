@@ -1,5 +1,6 @@
 import ButtonDefault from '../../../Button/default/Button.default';
 
+/*
 interface InfoProps {
   info: {
     pageName: '[buttons]' | string;
@@ -28,7 +29,6 @@ export function reloadDesign(info: InfoProps['info']) {
         <>
           <div className="h1-size visible">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -149,7 +149,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -262,7 +261,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -376,7 +374,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="h2-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -497,7 +494,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -610,7 +606,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -724,7 +719,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="h3-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -845,7 +839,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -958,7 +951,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1072,7 +1064,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="h4-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1193,7 +1184,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1306,7 +1296,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1420,7 +1409,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="h5-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1541,7 +1529,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1654,7 +1641,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1768,7 +1754,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="h6-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -1889,7 +1874,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -2002,7 +1986,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -2116,7 +2099,6 @@ export function reloadDesign(info: InfoProps['info']) {
           </div>
           <div className="p-size hidden">
             <aside className="dar-aside">
-              {/* Dark */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -2237,7 +2219,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="med-aside">
-              {/* Medium */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -2350,7 +2331,6 @@ export function reloadDesign(info: InfoProps['info']) {
               />
             </aside>
             <aside className="lig-aside">
-              {/* Light */}
               <ButtonDefault
                 style={{
                   view: '-top-',
@@ -2466,3 +2446,4 @@ export function reloadDesign(info: InfoProps['info']) {
       );
   }
 }
+*/

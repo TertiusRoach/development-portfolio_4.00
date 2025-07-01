@@ -35,8 +35,7 @@ export function showSize(pageName: string) {
     }
   };
 
-  let sectionSlider = document.querySelector(`#${pageName}-main section[class*="buttons"]`) as HTMLElement;
-
+  const sectionSlider = document.querySelector(`#${pageName}-main section[class*="buttons"]`) as HTMLElement;
   if (sectionSlider) {
     scrollMain(sectionSlider);
   } else {
