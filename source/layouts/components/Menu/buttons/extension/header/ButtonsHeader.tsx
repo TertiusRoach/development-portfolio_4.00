@@ -35,7 +35,7 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </li>
       <li className="load-list">
-        <select id="load-select" defaultValue="[cleaned]" name="style">
+        <select id="load-select" defaultValue="[default]" name="style">
           <option value="[stretch]">[Stretch]</option>
           <option value="[cleaned]">[Cleaned]</option>
           <option value="[grading]">[Grading]</option>
