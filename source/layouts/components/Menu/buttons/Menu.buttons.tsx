@@ -5,12 +5,13 @@ import './Menu.buttons.scss';
 //--|🠋 Functions 🠋|--//
 import { showSize } from './Menu_buttons';
 import { stripBrackets } from '../../../scripts/buttons';
-
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
-
+//--|🠋 Extensions 🠋|--//
+import ButtonsHeader from './extension/header/ButtonsHeader';
+//--|🠉 Extensions 🠉|--//
 interface InfoProps {
   info: {
     pageName: '[buttons]' | '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -33,44 +34,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
       case '<rightbar>':
         return <></>;
       case '<header>':
-        return (
-          <>
-            <li className="logo-list">
-              <img
-                className="logo-image"
-                src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/81562c9457867ac7e8724b068a85db04f094477a/source/assets/svg-files/my-signature/signature-icon/primary-medium.svg"
-              />
-            </li>
-            <li className="load-list">
-              <select id="load-select" defaultValue="[default]" name="style">
-                <option value="[stretch]">[Stretch]</option>
-                <option value="[cleaned]">[Cleaned]</option>
-                <option value="[grading]">[Grading]</option>
-                <option value="[framing]">[Framing]</option>
-                <option value="[default]">[Default]</option>
-              </select>
-            </li>
-            <li className="size-list">
-              <select id="size-select" defaultValue="h1-size" name="size">
-                <option value="h1-size">&lt;h1&gt;</option>
-                <option value="h2-size">&lt;h2&gt;</option>
-                <option value="h3-size">&lt;h3&gt;</option>
-                <option value="h4-size">&lt;h4&gt;</option>
-                <option value="h5-size">&lt;h5&gt;</option>
-                <option value="h6-size">&lt;h6&gt;</option>
-                <option value="p-size">&lt;p&gt;</option>
-              </select>
-            </li>
-            <li className="color-list">
-              <select id="color-select" defaultValue="(mono)" name="color">
-                <option value="(red)">(Red)</option>
-                <option value="(blue)">(Blue)</option>
-                <option value="(green)">(Green)</option>
-                <option value="(mono)">(Mono)</option>
-              </select>
-            </li>
-          </>
-        );
+        return <ButtonsHeader info={info} />;
       case '<footer>':
         return <></>;
       case '<main>':
