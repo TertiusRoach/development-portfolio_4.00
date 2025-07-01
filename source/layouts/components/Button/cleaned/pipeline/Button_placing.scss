@@ -2,7 +2,7 @@
 @mixin desktop-placing {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   div[class*='_top_'] {
     //--|🠊 display: grid; 🠈|--//
     grid-template-columns: 8px 1fr 8px; //--|🠊 columns 🠈|--//
@@ -265,7 +265,7 @@
 @mixin mobile-placing {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Mobile (Portrait) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {

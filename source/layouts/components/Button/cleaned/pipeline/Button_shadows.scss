@@ -2,7 +2,7 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-shadows {
   //--|🠉 display: flex; 🠉|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @extend %mono-shadows; //--|🠈 Monochrome 🠈|--//
 }
 %mono-shadows {

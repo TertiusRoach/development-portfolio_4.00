@@ -1,7 +1,7 @@
 //--|🠊 Button_motions.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-motions {
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @extend %mono-motions; //--|🠈 Monochrome 🠈|--//
   //--|🠉 display: flex; 🠉|--//
   div {

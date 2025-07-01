@@ -1,2 +1,2 @@
 //--|🠉 pageName: [buttons] 🠉|--//
-//--|🠊 Aside-header.tsx 🠈|--//
+//--|🠊 ButtonsFooter.tsx 🠈|--//

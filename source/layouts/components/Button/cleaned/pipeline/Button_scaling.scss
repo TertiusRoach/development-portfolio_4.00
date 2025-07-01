@@ -2,7 +2,7 @@
 @mixin desktop-scaling {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   div[class*='one_'],
   div[class*='two_'] {
     //--|🠊 display: grid; 🠈|--//
@@ -177,7 +177,7 @@
 @mixin mobile-scaling {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Tablet (Portrait) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {

@@ -59,6 +59,12 @@ export function classShade(specShade: '~dark~' | '~medium~' | '~light~') {
       return null;
   }
 }
+
+export function makeText(styleType: { specShade: string; specColor: string }) {
+  const abbrShade: string = stripBrackets(styleType.specShade, '~~').substring(0, 3);
+  const abbrColor: string = stripBrackets(styleType.specColor, '()').substring(0, 3);
+  return `${abbrShade}_${abbrColor}`;
+}
 export function classLoad(pageName: string): '[default]' | '[cleaned]' | string {
   const viewLoad = document.querySelector(
     `#${stripBrackets(pageName, '[]')}-header .buttons-menu li[class*="load"] select`
@@ -101,3 +107,45 @@ export function viewColor(pageName: string) {
       return console.log(`${viewColor.value}`);
   }
 }
+
+/*
+export function viewColor(pageName: string) {
+  let viewColor = document.querySelector(`#${pageName}-header .buttons-menu li[class*="color"] select`) as HTMLSelectElement;
+  switch (viewColor.value) {
+    case 'mono-color':
+      return console.log(`${viewColor.value}`);
+    case 'red-color':
+      return console.log(`${viewColor.value}`);
+    case 'green-color':
+      return console.log(`${viewColor.value}`);
+    case 'blue-color':
+      return console.log(`${viewColor.value}`);
+    default:
+      return console.log(`${viewColor.value}`);
+  }
+}
+*/
+/*
+    console.log(style.specSize);
+    console.log(style.specShade);
+    console.log(style.specColor);
+    switch (blockName) {
+      case 'main':
+        return (
+          <>
+
+          </>
+        );
+    }
+
+    const theseTags: { [key: string]: HTMLElement | null } = {
+      bodyPage: document.querySelector(`body #${pageName}-body`) as HTMLElement | null,
+      mainPage: document.querySelector(`main[id*="${pageName}-main"]`) as HTMLElement | null,
+      headPage: document.querySelector(`header[id*="${pageName}-header"]`) as HTMLElement | null,
+      footPage: document.querySelector(`footer[id*="${pageName}-footer"]`) as HTMLElement | null,
+      overPage: document.querySelector(`section[id*="${pageName}-overlay"]`) as HTMLElement | null,
+      leftPage: document.querySelector(`aside[id*="${pageName}-leftbar"]`) as HTMLElement | null,
+      rightPage: document.querySelector(`aside[id*="${pageName}-rightbar"]`) as HTMLElement | null,
+    };
+    let specShade: Array<string> = ['~dark~', '~medium~', '~light~'];
+    */

@@ -80,7 +80,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`one_${className}_back ${imageStatus}`}>
+            <div className={`one_${className}_back ${imageStatus}`}>
               <h1
                 className={`one_${className}_back`}
                 style={{
@@ -89,7 +89,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h1>
-            </div> */}
+            </div>
           </>
         );
       case '<h2>':
@@ -110,7 +110,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`two_${className}_back ${imageStatus}`}>
+            <div className={`two_${className}_back ${imageStatus}`}>
               <h2
                 className={`two_${className}_back`}
                 style={{
@@ -119,7 +119,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h2>
-            </div> */}
+            </div>
           </>
         );
       case '<h3>':
@@ -140,7 +140,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`thr_${className}_back ${imageStatus}`}>
+            <div className={`thr_${className}_back ${imageStatus}`}>
               <h3
                 className={`thr_${className}_back`}
                 style={{
@@ -149,7 +149,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h3>
-            </div> */}
+            </div>
           </>
         );
       case '<h4>':
@@ -170,7 +170,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`fou_${className}_back ${imageStatus}`}>
+            <div className={`fou_${className}_back ${imageStatus}`}>
               <h4
                 className={`fou_${className}_back`}
                 style={{
@@ -179,7 +179,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h4>
-            </div> */}
+            </div>
           </>
         );
       case '<h5>':
@@ -200,7 +200,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`fiv_${className}_back ${imageStatus}`}>
+            <div className={`fiv_${className}_back ${imageStatus}`}>
               <h5
                 className={`fiv_${className}_back`}
                 style={{
@@ -209,7 +209,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h5>
-            </div> */}
+            </div>
           </>
         );
       case '<h6>':
@@ -230,7 +230,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`six_${className}_back ${imageStatus}`}>
+            <div className={`six_${className}_back ${imageStatus}`}>
               <h6
                 className={`six_${className}_back`}
                 style={{
@@ -239,7 +239,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </h6>
-            </div> */}
+            </div>
           </>
         );
       default:
@@ -261,7 +261,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
                 }}
               ></img>
             </div>
-            {/* <div className={`par_${className}_back ${imageStatus}`}>
+            <div className={`par_${className}_back ${imageStatus}`}>
               <p
                 className={`par_${className}_back`}
                 style={{
@@ -270,7 +270,7 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
               >
                 <span>{style.text}</span>
               </p>
-            </div> */}
+            </div>
           </>
         );
     }

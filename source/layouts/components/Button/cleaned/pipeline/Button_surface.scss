@@ -1,7 +1,7 @@
 //--|🠊 Button_surface.scss 🠈|--//
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-surface {
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @extend %mono-surface;
   //--|🠉 display: flex; 🠉|--//
 }
@@ -20,7 +20,7 @@
       }
     }
     *[class*='_back'] {
-      background: Palettes.$grey-dark;
+      background: rgba(Palettes.$grey-dark, 0);
     }
   }
   %med-mon {
@@ -35,7 +35,7 @@
       }
     }
     *[class*='_back'] {
-      background: Palettes.$grey-medium;
+      background: rgba(Palettes.$grey-medium, 0);
     }
   }
   %lig-mon {
@@ -50,7 +50,7 @@
       }
     }
     *[class*='_back'] {
-      background: Palettes.$grey-light;
+      background: rgba(Palettes.$grey-light, 0);
     }
   }
 

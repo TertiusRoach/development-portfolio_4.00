@@ -1,18 +1,18 @@
 //--|🠉 pageName: [buttons] 🠉|--//
-//--|🠊 Aside-main.tsx 🠈|--//
+//--|🠊 ButtonsMain.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Aside-main.scss';
+import './ButtonsMain.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { classShade } from '../../Aside_buttons';
+import { classShade, makeText } from '../../Aside_buttons';
 import { stripBrackets } from '../../../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../../../Button/default/Button.default';
+import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
 //--|🠉 Components 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
-import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
 //--|🠉 Dependencies 🠉|--//
 
 interface InfoProps {
@@ -22,9 +22,9 @@ interface InfoProps {
   };
   style: {
     specLoad: '[default]' | '[cleaned]' | string;
-    specShade: '~dark~' | '~medium~' | '~light~' | string;
-    specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>' | string;
-    specView: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-' | string;
+    specShade: '~dark~' | '~medium~' | '~light~';
+    specColor: '(red)' | '(green)' | '(blue)' | '(mono)' | string;
+    specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
 }
 const AsideMain: React.FC<InfoProps> = ({ info, style }) => {
@@ -732,21 +732,229 @@ const AsideMain: React.FC<InfoProps> = ({ info, style }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  switch (style.specSize) {
-    case '<h1>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<h2>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<h3>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<h4>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<h5>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<h6>':
-      return handleAside(pageName, blockName, [info, style]);
-    case '<p>':
-      return handleAside(pageName, blockName, [info, style]);
+  console.log(style.specLoad);
+  switch (style.specLoad) {
+    case '[default]':
+    default:
+      return (
+        <>
+          <ButtonDefault
+            style={{
+              view: '-top-',
+              text: `top_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+              type: '{button}',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-bottom-',
+              type: '{button}',
+              text: `bot_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-left-',
+              type: '{button}',
+              text: `lef_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-right-',
+              type: '{button}',
+              text: `rig_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-center-',
+              type: '{button}',
+              text: `cen_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-text-',
+              type: '{button}',
+              text: `tex_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonDefault
+            style={{
+              view: '-icon-',
+              type: '{button}',
+              text: `ico_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+        </>
+      );
+    case '[cleaned]':
+      return (
+        <>
+          <ButtonCleaned
+            style={{
+              view: '-top-',
+              text: `top_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+              type: '{button}',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-bottom-',
+              type: '{button}',
+              text: `bot_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-left-',
+              type: '{button}',
+              text: `lef_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-right-',
+              type: '{button}',
+              text: `rig_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-center-',
+              type: '{button}',
+              text: `cen_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-text-',
+              type: '{button}',
+              text: `tex_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonCleaned
+            style={{
+              view: '-icon-',
+              type: '{button}',
+              text: `ico_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+        </>
+      );
   }
 };
 export default AsideMain;

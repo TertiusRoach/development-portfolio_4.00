@@ -1,2 +1,2 @@
 //--|🠉 pageName: [buttons] 🠉|--//
-//--|🠊 Aside-rightbar.tsx 🠈|--//
+//--|🠊 ButtonsRightbar.tsx 🠈|--//

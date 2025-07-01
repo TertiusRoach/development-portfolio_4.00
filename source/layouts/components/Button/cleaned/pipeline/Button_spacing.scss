@@ -2,7 +2,7 @@
 @mixin desktop-spacing {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Desktop (Landscape) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   div[class*='_top_'],
   div[class*='_bot_'] {
     //--|🠊 display: grid; 🠈|--//
@@ -244,7 +244,7 @@
 @mixin mobile-spacing {
   //--|🠉 display: flex; 🠉|--//
   //--|🠋 Tablet (Portrait) 🠋|--//
-  //--|🠊 button[class*='default'] 🠈|--//
+  //--|🠊 button[class*='cleaned'] 🠈|--//
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
