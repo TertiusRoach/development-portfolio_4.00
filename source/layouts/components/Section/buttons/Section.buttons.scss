@@ -147,7 +147,7 @@
 section[class*='buttons'] {
   display: block;
   grid-area: inherit; //--|🠊 grid-area: 1 / 1 / 4 / 4; 🠈|--//
-  @extend %fancy-motion;
+  @extend %section-motion;
   transform: translateY(0px);
   transition: transform 0.5s ease-in-out;
 
@@ -161,6 +161,7 @@ section[class*='buttons'] {
   }
 }
 
+/*
 %fancy-motion {
   div[class*='size'] {
     // Custom properties - refined for "enjoyment"
@@ -207,6 +208,7 @@ section[class*='buttons'] {
     }
   }
 }
+*/
 %section-motion {
   div[class*='size'] {
     transition: filter 0.75s ease-in-out, opacity 0.25s ease-in-out;

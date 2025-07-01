@@ -21,10 +21,8 @@ interface InfoProps {
   };
   load: '[default]' | '[cleaned]' | string;
   style: {
-    specView: Array<string>;
-    specShade: Array<string>;
-
     specLoad: '[default]' | '[cleaned]' | string;
+    specShade: '~dark~' | '~medium~' | '~light~';
     specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
 }

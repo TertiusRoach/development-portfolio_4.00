@@ -95,6 +95,7 @@ export function viewColor(pageName: string) {
       return console.log(`${viewColor.value}`);
   }
 }
+
 let root: Root | null = null;
 export function loadSection(asideElement: HTMLElement, content: React.ReactNode) {
   if (!root) {

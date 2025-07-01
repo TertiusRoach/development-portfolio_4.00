@@ -27,17 +27,20 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
 
   const handleButtons = (pageName: string, blockName: string) => {
+    let loadSelect = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+    ) as HTMLSelectElement;
+
     let page = pageName as '[buttons]';
     let block = blockName as '<main>';
     return (
-      <section className="buttons-section" key={getStyle}>
+      <>
         <div className="h1-size visible">
           <AsideButtons
             style={{
               specSize: '<h1>',
-              specShade: ['~dark~', '~medium~', '~light~'],
-              specLoad: getStyle as '[default]' | '[cleaned]',
-              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+              specShade: '~dark~',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]',
             }}
             info={info}
             load={getStyle}
@@ -45,18 +48,17 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
         </div>
         <div className="h2-size hidden">
           <AsideButtons
-            info={info}
             style={{
-              specSize: '<h2>',
-              specShade: ['~dark~', '~medium~', '~light~'],
-              specLoad: getStyle as '[default]' | '[cleaned]',
-              specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
+              specSize: '<h1>',
+              specShade: '~dark~',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]',
             }}
+            info={info}
             load={getStyle}
           />
         </div>
         <div className="h3-size hidden">
-          <AsideButtons
+          {/* <AsideButtons
             info={info}
             style={{
               specSize: '<h3>',
@@ -65,10 +67,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
             }}
             load={getStyle}
-          />
+          /> */}
         </div>
         <div className="h4-size hidden">
-          <AsideButtons
+          {/* <AsideButtons
             info={info}
             style={{
               specSize: '<h4>',
@@ -77,10 +79,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
             }}
             load={getStyle}
-          />
+          /> */}
         </div>
         <div className="h5-size hidden">
-          <AsideButtons
+          {/* <AsideButtons
             info={info}
             style={{
               specSize: '<h5>',
@@ -89,10 +91,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
             }}
             load={getStyle}
-          />
+          /> */}
         </div>
         <div className="h6-size hidden">
-          <AsideButtons
+          {/* <AsideButtons
             info={info}
             style={{
               specSize: '<h6>',
@@ -101,10 +103,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
             }}
             load={getStyle}
-          />
+          /> */}
         </div>
         <div className="p-size hidden">
-          <AsideButtons
+          {/* <AsideButtons
             info={info}
             style={{
               specSize: '<p>',
@@ -113,9 +115,9 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specView: ['-top-', '-bottom-', '-left-', '-right-', '-center-', '-text-', '-icon-'],
             }}
             load={getStyle}
-          />
+          /> */}
         </div>
-      </section>
+      </>
     );
   };
 
@@ -141,6 +143,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
     };
   }, [pageName, blockName]);
 
-  return handleButtons(pageName, blockName);
+  return (
+    <section className="buttons-section" key={getStyle}>
+      {handleButtons(pageName, blockName)}
+    </section>
+  );
 };
 export default SectionButtons;

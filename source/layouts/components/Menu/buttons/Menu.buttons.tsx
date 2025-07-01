@@ -86,7 +86,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
 
     const handleChange = (event: Event) => {
       const target = event.target as HTMLSelectElement;
-      console.log('Selected:', target.value);
+      // console.log('Selected:', target.value);
       showSize(pageName);
     };
 
