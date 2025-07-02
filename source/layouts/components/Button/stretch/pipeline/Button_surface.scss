@@ -14,17 +14,9 @@
     }
     img[class*='_icon'] {
       background: Palettes.$grey-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-dark;
-      }
     }
     *[class*='_back'] {
       background: Palettes.$grey-dark;
-      color: red;
-      // color: rgba(Palettes.$grey-dark, 0);
-
-      //--|🠊 background: Palettes.$grey-dark; 🠈|--//
     }
   }
   %med-mon {
@@ -32,14 +24,9 @@
       color: Palettes.$grey-dark;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-dark;
-      }
+      background: Palettes.$grey-dark;
     }
     *[class*='_back'] {
-      color: red;
       background: Palettes.$grey-medium;
     }
   }
@@ -49,13 +36,8 @@
     }
     img[class*='_icon'] {
       background: Palettes.$grey-dark;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-light;
-      }
     }
     *[class*='_back'] {
-      color: red;
       background: Palettes.$grey-light;
     }
   }

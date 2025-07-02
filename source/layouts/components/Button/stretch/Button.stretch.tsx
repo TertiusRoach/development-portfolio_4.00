@@ -79,14 +79,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`one_${className}_back ${imageStatus}`}>
-              <h1
-                className={`one_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h1>
+              <span className={`one_${className}_back`}></span>
             </div>
           </>
         );
@@ -109,14 +102,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`two_${className}_back ${imageStatus}`}>
-              <h2
-                className={`two_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h2>
+              <span className={`two_${className}_back`}></span>
             </div>
           </>
         );
@@ -139,14 +125,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`thr_${className}_back ${imageStatus}`}>
-              <h3
-                className={`thr_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h3>
+              <span className={`thr_${className}_back`}></span>
             </div>
           </>
         );
@@ -169,14 +148,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`fou_${className}_back ${imageStatus}`}>
-              <h4
-                className={`fou_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h4>
+              <span className={`fou_${className}_back`}></span>
             </div>
           </>
         );
@@ -199,14 +171,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`fiv_${className}_back ${imageStatus}`}>
-              <h5
-                className={`fiv_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h5>
+              <span className={`fiv_${className}_back`}></span>
             </div>
           </>
         );
@@ -229,14 +194,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`six_${className}_back ${imageStatus}`}>
-              <h6
-                className={`six_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </h6>
+              <span className={`six_${className}_back`}></span>
             </div>
           </>
         );
@@ -260,14 +218,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
               ></img>
             </div>
             <div className={`par_${className}_back ${imageStatus}`}>
-              <p
-                className={`par_${className}_back`}
-                style={{
-                  opacity: '1',
-                }}
-              >
-                {/* <span>{style.text}</span> */}
-              </p>
+              <span className={`par_${className}_back`}></span>
             </div>
           </>
         );
