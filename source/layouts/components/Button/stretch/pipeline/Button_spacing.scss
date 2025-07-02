@@ -22,8 +22,7 @@
       *[class*='_back'] {
         //--|🠊 display: flex; 🠈|--//
         text-align: left;
-        margin-bottom: 4px;
-        padding: 0 8px 0 64px; //--|🠈 top / right / bottom / left 🠈|--//
+        padding: 0 8px 4px 64px; //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     &.missing {
@@ -42,8 +41,7 @@
       *[class*='_back'] {
         //--|🠊 display: flex; 🠈|--//
         text-align: right;
-        margin-bottom: 4px;
-        padding: 0 64px 0 8px; //--|🠈 top / right / bottom / left 🠈|--//
+        padding: 0 64px 4px 8px; //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     &.missing {
@@ -60,9 +58,8 @@
     *[class*='_text'],
     *[class*='_back'] {
       //--|🠊 display: flex; 🠈|--//
-      padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--//
       text-align: center;
-      margin-bottom: 6px;
+      padding: 0 8px 6px 8px; //--|🠈 top / right / bottom / left 🠈|--//
     }
   }
   div[class*='_tex_'] {
@@ -94,7 +91,7 @@
       *[class*='_text'],
       *[class*='_back'] {
         //--|🠊 display: flex; 🠈|--//
-        padding: 0 6px; //--|🠈 top & bottom / left & right 🠈|--//
+        padding: 0 6px 4px 6px; //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     div[class*='_lef_'] {
@@ -149,7 +146,7 @@
       *[class*='_text'],
       *[class*='_back'] {
         //--|🠊 display: flex; 🠈|--//
-        padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--//
+        padding: 0 4px 5px 4px; //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     div[class*='_lef_'] {
@@ -158,7 +155,7 @@
         *[class*='_text'],
         *[class*='_back'] {
           //--|🠊 display: flex; 🠈|--//
-          padding: 0 4px 0 32px; //--|🠈 top / right / bottom / left 🠈|--//
+          padding: 0 4px 4px 32px; //--|🠈 top / right / bottom / left 🠈|--//
         }
       }
       &.missing {
@@ -175,7 +172,7 @@
         *[class*='_text'],
         *[class*='_back'] {
           //--|🠊 display: flex; 🠈|--//
-          padding: 0 32px 0 4px; //--|🠈 top / right / bottom / left 🠈|--//
+          padding: 0 32px 4px 4px; //--|🠈 top / right / bottom / left 🠈|--//
         }
       }
       &.missing {

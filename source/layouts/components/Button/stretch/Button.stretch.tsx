@@ -85,7 +85,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h1>
             </div>
           </>
@@ -115,7 +115,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h2>
             </div>
           </>
@@ -145,7 +145,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h3>
             </div>
           </>
@@ -175,7 +175,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h4>
             </div>
           </>
@@ -205,7 +205,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h5>
             </div>
           </>
@@ -235,7 +235,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </h6>
             </div>
           </>
@@ -266,7 +266,7 @@ const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
                   opacity: '1',
                 }}
               >
-                <span>{style.text}</span>
+                {/* <span>{style.text}</span> */}
               </p>
             </div>
           </>
