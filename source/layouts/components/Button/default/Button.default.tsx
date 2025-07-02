@@ -50,8 +50,6 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
   const className = createClass(style) as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg';
 
   const handleDefault = (className: string) => {
     let imageStatus: 'graphic' | 'missing';

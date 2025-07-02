@@ -1,9 +1,9 @@
-//--|🠊 Button.cleaned.tsx 🠈|--//
+//--|🠊 Button.stretch.tsx 🠈|--//
 //--|🠋 Styles 🠋|--//
-import './Button.cleaned.scss';
+import './Button.stretch.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { createClass, sizeIcon } from './Button_cleaned';
+import { createClass, sizeIcon } from './Button_stretch';
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
@@ -46,12 +46,12 @@ interface TheseProps {
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
+const ButtonStretch: React.FC<TheseProps> = ({ info, style }) => {
   const className = createClass(style) as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
 
-  const handleDefault = (className: string) => {
+  const handleStretch = (className: string) => {
     let imageStatus: 'graphic' | 'missing';
     if (style.image == null) {
       imageStatus = 'missing';
@@ -297,6 +297,6 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
     };
   }, [pageName, blockName]);
 
-  return <button className={`cleaned-button ${className}`}>{handleDefault(className)}</button>;
+  return <button className={`stretch-button ${className}`}>{handleStretch(className)}</button>;
 };
-export default ButtonCleaned;
+export default ButtonStretch;

@@ -10,6 +10,7 @@ import { stripBrackets } from '../../../../../scripts/buttons';
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../../../Button/default/Button.default';
 import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
+import ButtonStretch from '../../../../Button/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
@@ -21,8 +22,8 @@ interface InfoProps {
     pageName: '[buttons]' | string;
   };
   style: {
-    specLoad: '[default]' | '[cleaned]' | string;
     specShade: '~dark~' | '~medium~' | '~light~';
+    specLoad: '[default]' | '[cleaned]' | '[stretch]' | string;
     specColor: '(red)' | '(green)' | '(blue)' | '(mono)' | string;
     specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
@@ -36,6 +37,116 @@ const AsideMain: React.FC<InfoProps> = ({ info, style }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   switch (style.specLoad) {
+    case '[stretch]':
+      return (
+        <>
+          <ButtonStretch
+            style={{
+              view: '-top-',
+              text: `top_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+              type: '{button}',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-bottom-',
+              type: '{button}',
+              text: `bot_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-left-',
+              type: '{button}',
+              text: `lef_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-right-',
+              type: '{button}',
+              text: `rig_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-center-',
+              type: '{button}',
+              text: `cen_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-text-',
+              type: '{button}',
+              text: `tex_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+          <ButtonStretch
+            style={{
+              view: '-icon-',
+              type: '{button}',
+              text: `ico_${makeText(style)}`,
+              shade: style.specShade as '~dark~' | '~medium~' | '~light~',
+              color: style.specColor as '(red)' | '(green)' | '(blue)' | '(mono)',
+              size: style.specSize as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
+              image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+            }}
+          />
+        </>
+      );
     case '[cleaned]':
       return (
         <>

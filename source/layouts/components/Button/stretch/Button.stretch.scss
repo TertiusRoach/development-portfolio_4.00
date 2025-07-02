@@ -1,0 +1,28 @@
+//--|🠊 Button.stretch.scss 🠈|--//
+@use './pipeline/Button_motions.scss';
+@use './pipeline/Button_placing.scss';
+@use './pipeline/Button_presets.scss';
+@use './pipeline/Button_scaling.scss';
+@use './pipeline/Button_shadows.scss';
+@use './pipeline/Button_spacing.scss';
+@use './pipeline/Button_surface.scss';
+button[class*='stretch'] {
+  //--|🠉 display: flex; 🠉|--//
+  @include Button_presets.button-presets();
+  @include Button_motions.button-motions();
+  @include Button_shadows.button-shadows();
+  @include Button_surface.button-surface();
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include Button_placing.desktop-placing();
+    @include Button_scaling.desktop-scaling();
+    @include Button_spacing.desktop-spacing();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include Button_placing.mobile-placing();
+    @include Button_scaling.mobile-scaling();
+    @include Button_spacing.mobile-spacing();
+  }
+}

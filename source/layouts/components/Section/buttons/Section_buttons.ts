@@ -1,6 +1,30 @@
 //--|🠊 Section_buttons.ts 🠈|--//
 import { createRoot, Root } from 'react-dom/client';
 
+export function loadStyle(pageName: string): string | undefined {
+  let result: string | undefined;
+  setTimeout(() => {
+    let viewLoad = document.querySelector(
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+    ) as HTMLSelectElement;
+    switch (viewLoad?.value) {
+      case '[default]':
+        result = viewLoad.value as '[default]';
+        break;
+      case '[cleaned]':
+        result = viewLoad.value as '[cleaned]';
+        break;
+      case '[stretch]':
+        result = viewLoad.value as '[stretch]';
+        break;
+      default:
+        result = undefined;
+        break;
+    }
+  }, 125);
+  return result;
+}
+
 export function defineButton(info: { pageName: string; blockName: string }) {
   const { pageName, blockName } = info;
   //--|🠋 Always Return an Object 🠋|--//
@@ -48,26 +72,6 @@ export function defineButton(info: { pageName: string; blockName: string }) {
   */
 }
 
-export function loadStyle(pageName: string): string | undefined {
-  let result: string | undefined;
-  setTimeout(() => {
-    let viewLoad = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
-    ) as HTMLSelectElement;
-    switch (viewLoad?.value) {
-      default:
-        result = undefined;
-        break;
-      case '[default]':
-        result = viewLoad.value as '[default]';
-        break;
-      case '[cleaned]':
-        result = viewLoad.value as '[cleaned]';
-        break;
-    }
-  }, 125);
-  return result;
-}
 export function sizeDivs(pageName: string, blockName: string) {
   setTimeout(() => {
     const mainBlock = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;

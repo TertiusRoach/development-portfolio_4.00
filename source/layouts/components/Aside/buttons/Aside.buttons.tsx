@@ -22,8 +22,8 @@ interface InfoProps {
     blockName: '<main>' | string;
   };
   style: {
-    specLoad: '[default]' | '[cleaned]' | string;
     specShade: '~dark~' | '~medium~' | '~light~';
+    specLoad: '[default]' | '[cleaned]' | '[stretch]' | string;
     specColor: '(red)' | '(green)' | '(blue)' | '(mono)' | string;
     specSize: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };

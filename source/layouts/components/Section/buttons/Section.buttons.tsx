@@ -24,7 +24,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  let [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
+  let [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[stretch]');
 
   const handleButtons = (pageName: 'buttons') => {
     let loadSelect = document.querySelector(
@@ -42,7 +42,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h1>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -51,7 +51,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h1>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -60,7 +60,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h1>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -71,7 +71,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h2>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -80,7 +80,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h2>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -89,7 +89,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h2>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -100,7 +100,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h3>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -109,7 +109,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h3>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -118,7 +118,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h3>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -129,7 +129,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h4>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -138,7 +138,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h4>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -147,7 +147,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h4>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -158,7 +158,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h5>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -167,7 +167,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h5>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -176,7 +176,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h5>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -187,7 +187,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h6>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -196,7 +196,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h6>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -205,7 +205,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<h6>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -216,7 +216,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<p>',
               specShade: '~dark~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -225,7 +225,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<p>',
               specShade: '~medium~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />
@@ -234,7 +234,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
               specSize: '<p>',
               specShade: '~light~',
               specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]',
+              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
             }}
             info={info}
           />

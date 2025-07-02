@@ -23,11 +23,10 @@ interface InfoProps {
 }
 const MenuHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
 
   return (
     <>
-      {' '}
       <li className="logo-list">
         <img
           className="logo-image"
@@ -35,7 +34,7 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </li>
       <li className="load-list">
-        <select id="load-select" defaultValue="[default]" name="style">
+        <select id="load-select" defaultValue="[stretch]" name="style">
           <option value="[stretch]">[Stretch]</option>
           <option value="[cleaned]">[Cleaned]</option>
           <option value="[grading]">[Grading]</option>
