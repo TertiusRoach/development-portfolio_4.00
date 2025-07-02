@@ -1,30 +1,18 @@
-//--|🠊 Section.buttons.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
+//--|🠊 Section.buttons.tsx 🠈|--\\
+import { lazy } from 'react';
+import React, { useEffect, useState } from 'react';
+//--|🠋 Styles 🠋|--\\
 import './Section.buttons.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Functions 🠋|--//
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
 import { sizeDivs, loadStyle } from './Section_buttons';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import React, { useEffect, useState } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import AsideButtons from '../../Aside/buttons/Aside.buttons';
-//--|🠉 Components 🠉|--//
-
-interface InfoProps {
-  info: {
-    pageName: '[buttons]' | string;
-    blockName: '<main>' | string;
-    roleName?: string;
-  };
-}
+//--|🠋 Components 🠋|--\\
+const AsideButtons = lazy(() => import('../../Aside/buttons/Aside.buttons'));
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  let [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[stretch]');
+  let [getStyle, setStyle] = useState<string>(loadStyle(pageName) || '[default]');
 
   const handleButtons = (pageName: 'buttons') => {
     let loadSelect = document.querySelector(
@@ -272,3 +260,11 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default SectionButtons;
+
+interface InfoProps {
+  info: {
+    pageName: '[buttons]' | string;
+    blockName: '<main>' | string;
+    roleName?: string;
+  };
+}

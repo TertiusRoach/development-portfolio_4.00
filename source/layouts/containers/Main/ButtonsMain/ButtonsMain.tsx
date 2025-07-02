@@ -1,15 +1,11 @@
-//--|🠊 ButtonsMain.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/buttons';
-import { loadSection, clearSection } from '../../../components/Section/buttons/Section_buttons';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 ButtonsMain.tsx 🠈|--\\
+import { lazy } from 'react';
 import React, { useEffect } from 'react';
-import { createRoot, Root } from 'react-dom/client';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import SectionButtons from '../../../components/Section/buttons/Section.buttons';
-//--|🠉 Components 🠉|--//
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/buttons';
+import { clearSection } from '../../../components/Section/buttons/Section_buttons';
+//--|🠋 Components 🠋|--\\
+const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
 
 interface InfoProps {
   info: {
@@ -18,7 +14,6 @@ interface InfoProps {
     roleName?: string;
   };
 }
-
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
@@ -26,7 +21,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const handleButtons = (pageName: string, blockName: string) => {
     let page: string = pageName;
     let block: string = blockName;
-
     return <SectionButtons info={info} />;
   };
 
