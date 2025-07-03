@@ -1,14 +1,10 @@
-//--|🠊 Button.default.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
+//--|🠊 Button.default.tsx 🠈|--\\
+import React, { useEffect } from 'react';
+//--|🠋 Styles 🠋|--\\
 import './Button.default.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { createClass, sizeIcon } from './Button_default';
+//--|🠋 Functions 🠋|--\\
+import { createLayout, createColor, createClass, sizeIcon } from './Button_default';
 import { stripBrackets } from '../../../scripts/buttons';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import React, { useEffect, useState } from 'react';
-//--|🠉 Dependencies 🠉|--//
 
 interface TheseProps {
   info: {
@@ -61,6 +57,11 @@ const ButtonDefault: React.FC<TheseProps> = ({ info, style }) => {
 
     switch (style.size) {
       case '<h1>':
+        /*
+        console.log(createLayout(style.size, style.view));
+        console.log(createColor(style.shade, style.color));
+        */
+
         return (
           <>
             <div className={`one_${className}_text ${imageStatus}`}>
