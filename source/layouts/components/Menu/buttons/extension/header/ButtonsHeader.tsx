@@ -6,6 +6,9 @@ import './ButtonsHeader.scss';
 //--|🠋 Functions 🠋|--\\
 import { viewSize, viewColor } from '../../Menu_buttons';
 import { stripBrackets } from '../../../../../scripts/buttons';
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../../../Button/default/Button.default';
+import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
 
 interface InfoProps {
   info: {
@@ -16,6 +19,10 @@ interface InfoProps {
 const MenuHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
+
+  const handleHeader = () => {
+    alert('Go to Landing Page');
+  };
 
   useEffect(() => {
     let selectSize = document.querySelector(
@@ -50,12 +57,41 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <>
-      <li className="logo-list">
+      <li className="land-list">
+        <ButtonCleaned
+          onClick={() => handleHeader()}
+          info={{ pageName: pageName, blockName: blockName, labelName: 'landing-navigation' }}
+          style={{
+            size: '<h4>',
+            view: '-icon-',
+            color: '(mono)',
+            type: '{button}',
+            shade: '~medium~',
+            image:
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-medium.svg',
+          }}
+        />
+        {/* <ButtonDefault
+          info={{ pageName: pageName, blockName: blockName, labelName: 'landing-navigation' }}
+          style={{
+            size: '<h4>',
+            view: '-icon-',
+            color: '(mono)',
+            type: '{button}',
+            shade: '~medium~',
+            text: 'klfsdjlkjkfldasjlkas',
+            // The HTML is there but why isn't it working?
+            image:
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/tertius-roach/signature-icon/primary-medium.svg',
+          }}
+        /> */}
+      </li>
+      {/* <li className="logo-list">
         <img
           className="logo-image"
           src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/81562c9457867ac7e8724b068a85db04f094477a/source/assets/svg-files/my-signature/signature-icon/primary-medium.svg"
         />
-      </li>
+      </li> */}
       <li className="load-list">
         <select id="load-select" defaultValue="[default]" name="style">
           <option value="[stretch]">[Stretch]</option>
@@ -76,9 +112,15 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
       </li>
       <li className="color-list">
         <select id="color-select" defaultValue="(mono)" name="color">
-          <option value="(red)">(Red)</option>
-          <option value="(blue)">(Blue)</option>
-          <option value="(green)">(Green)</option>
+          <option value="(red)" disabled>
+            (Red)
+          </option>
+          <option value="(blue)" disabled>
+            (Blue)
+          </option>
+          <option value="(green)" disabled>
+            (Green)
+          </option>
           <option value="(mono)">(Mono)</option>
         </select>
       </li>

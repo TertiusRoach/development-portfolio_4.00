@@ -2,12 +2,14 @@
 @mixin button-presets {
   //--|🠊 button[class*='default'] 🠈|--\\
   //--|🠉 display: flex; 🠉|--\\
+  width: 100%;
+  height: 100%;
   display: flex;
   position: relative;
   div {
-    width: 100%;
-    height: 100%;
     display: grid;
+    width: inherit;
+    height: inherit;
     position: absolute;
     *.text,
     *.back {

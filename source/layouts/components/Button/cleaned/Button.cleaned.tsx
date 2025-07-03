@@ -14,8 +14,7 @@ interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
-    className?: string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    labelName?: string;
   };
   style: {
     shade: '~dark~' | '~medium~' | '~light~';
@@ -24,7 +23,7 @@ interface TheseProps {
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
     view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
-    text: string;
+    text?: string;
     image?: string | null | undefined;
 
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
@@ -46,7 +45,27 @@ interface TheseProps {
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
+const ButtonCleaned: React.FC<TheseProps> = ({
+  info,
+  style,
+  onClick,
+  /*
+  onBlur,
+  onFocus,
+  onMouseUp,
+  onTouchEnd,
+  onMouseDown,
+  onTouchStart,
+  onMouseEnter,
+  onMouseLeave,
+  onDoubleClick,
+  onAnimationEnd,
+  onTransitionEnd,
+  onKeyUp,
+  onKeyDown,
+  onContextMenu,
+  */
+}) => {
   const className = createClass(style) as string;
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
@@ -297,6 +316,10 @@ const ButtonCleaned: React.FC<TheseProps> = ({ info, style }) => {
     };
   }, [pageName, blockName]);
 
-  return <button className={`cleaned-button ${className}`}>{handleDefault(className)}</button>;
+  return (
+    <button onClick={onClick} className={`cleaned-button ${className}`}>
+      {handleDefault(className)}
+    </button>
+  );
 };
 export default ButtonCleaned;
