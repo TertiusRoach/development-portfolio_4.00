@@ -3,11 +3,11 @@
   //--|🠉 display: flex; 🠉|--\\
   //--|🠋 Desktop (Landscape) 🠋|--\\
   //--|🠊 button[class*='default'] 🠈|--\\
-  div[class*='_top_'],
-  div[class*='_bot_'] {
+  div[class*='_top'],
+  div[class*='_bot'] {
     //--|🠊 display: grid; 🠈|--\\
-    *[class*='_text'],
-    *[class*='_back'] {
+    *.text,
+    *.back {
       //--|🠊 display: flex; 🠈|--\\
       span {
         padding: 0 8px;
@@ -15,11 +15,11 @@
       }
     }
   }
-  div[class*='_lef_'] {
+  div[class*='_lef'] {
     //--|🠊 display: grid; 🠈|--\\
     &.graphic {
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         text-align: left;
         margin-bottom: 4px;
@@ -27,19 +27,19 @@
       }
     }
     &.missing {
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--\\
         text-align: left;
       }
     }
   }
-  div[class*='_rig_'] {
+  div[class*='_rig'] {
     //--|🠊 display: grid; 🠈|--\\
     &.graphic {
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         text-align: right;
         margin-bottom: 4px;
@@ -47,28 +47,28 @@
       }
     }
     &.missing {
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--\\
         text-align: right;
       }
     }
   }
-  div[class*='_cen_'] {
+  div[class*='_cen'] {
     //--|🠊 display: grid; 🠈|--\\
-    *[class*='_text'],
-    *[class*='_back'] {
+    *.text,
+    *.back {
       //--|🠊 display: flex; 🠈|--\\
       padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--\\
       text-align: center;
       margin-bottom: 6px;
     }
   }
-  div[class*='_tex_'] {
+  div[class*='_tex'] {
     //--|🠊 display: grid; 🠈|--\\
-    *[class*='_text'],
-    *[class*='_back'] {
+    *.text,
+    *.back {
       //--|🠊 display: flex; 🠈|--\\
       padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--\\
       text-align: center;
@@ -77,55 +77,55 @@
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (max-height: 768px) {
-    div[class*='_top_'],
-    div[class*='_bot_'] {
+    div[class*='_top'],
+    div[class*='_bot'] {
       //--|🠊 display: grid; 🠈|--\\
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         span {
           padding: 0 6px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_cen_'],
-    div[class*='_tex_'] {
+    div[class*='_cen'],
+    div[class*='_tex'] {
       //--|🠊 display: grid; 🠈|--\\
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         padding: 0 6px; //--|🠈 top & bottom / left & right 🠈|--\\
       }
     }
-    div[class*='_lef_'] {
+    div[class*='_lef'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 6px 0 48px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 6px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_rig_'] {
+    div[class*='_rig'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 48px 0 6px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 6px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
@@ -133,54 +133,54 @@
     }
   }
   @media screen and (max-height: 480px) {
-    div[class*='_top_'],
-    div[class*='_bot_'] {
-      *[class*='_text'],
-      *[class*='_back'] {
+    div[class*='_top'],
+    div[class*='_bot'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         span {
           padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_cen_'],
-    div[class*='_tex_'] {
+    div[class*='_cen'],
+    div[class*='_tex'] {
       //--|🠊 display: grid; 🠈|--\\
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--\\
       }
     }
-    div[class*='_lef_'] {
+    div[class*='_lef'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 4px 0 32px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_rig_'] {
+    div[class*='_rig'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 32px 0 4px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 4px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
@@ -188,54 +188,54 @@
     }
   }
   @media screen and (max-height: 360px) {
-    div[class*='_top_'],
-    div[class*='_bot_'] {
-      *[class*='_text'],
-      *[class*='_back'] {
+    div[class*='_top'],
+    div[class*='_bot'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         span {
           padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_cen_'],
-    div[class*='_tex_'] {
+    div[class*='_cen'],
+    div[class*='_tex'] {
       //--|🠊 display: grid; 🠈|--\\
-      *[class*='_text'],
-      *[class*='_back'] {
+      *.text,
+      *.back {
         //--|🠊 display: flex; 🠈|--\\
         padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--\\
       }
     }
-    div[class*='_lef_'] {
+    div[class*='_lef'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 2px 0 24px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--\\
         }
       }
     }
-    div[class*='_rig_'] {
+    div[class*='_rig'] {
       //--|🠊 display: grid; 🠈|--\\
       &.graphic {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 24px 0 2px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
       &.missing {
-        *[class*='_text'],
-        *[class*='_back'] {
+        *.text,
+        *.back {
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 2px; //--|🠈 top & bottom / left & right 🠈|--\\
         }

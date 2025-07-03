@@ -1,63 +1,61 @@
-//--|🠊 Button_surface.scss 🠈|--//
+//--|🠊 Button_surface.scss 🠈|--\\
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-surface {
-  //--|🠊 button[class*='default'] 🠈|--//
-  @extend %red-surface;
+  //--|🠊 button[class*='default'] 🠈|--\\
   @extend %mono-surface;
-  //--|🠉 display: flex; 🠉|--//
+  //--|🠉 display: flex; 🠉|--\\
 }
-
 %mono-surface {
-  //--|🠊 Monochrome 🠈|--//
-  //--|🠊 display: flex; 🠈|--//
+  //--|🠊 Monochrome 🠈|--\\
+  //--|🠊 display: flex; 🠈|--\\
   %dar-mon {
-    *[class*='_text'] {
+    *.text {
       color: Palettes.$grey-light;
     }
-    img[class*='_icon'] {
+    img.icon {
       background: Palettes.$grey-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         background: Palettes.$grey-dark;
       }
     }
-    *[class*='_back'] {
+    *.back {
       background: Palettes.$grey-dark;
     }
   }
   %med-mon {
-    *[class*='_text'] {
+    *.text {
       color: Palettes.$grey-dark;
     }
-    img[class*='_icon'] {
+    img.icon {
       background: Palettes.$grey-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         background: Palettes.$grey-dark;
       }
     }
-    *[class*='_back'] {
+    *.back {
       background: Palettes.$grey-medium;
     }
   }
   %lig-mon {
-    *[class*='_text'] {
+    *.text {
       color: Palettes.$grey-dark;
     }
-    img[class*='_icon'] {
+    img.icon {
       background: Palettes.$grey-dark;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         background: Palettes.$grey-light;
       }
     }
-    *[class*='_back'] {
+    *.back {
       background: Palettes.$grey-light;
     }
   }
 
-  div[class*='_mon_'] {
-    //--|🠊 display: grid; 🠈|--//
+  div[class*='_mon'] {
+    //--|🠊 display: grid; 🠈|--\\
     &[class*='dar_mon'] {
       @extend %dar-mon;
     }
@@ -66,68 +64,6 @@
     }
     &[class*='lig_mon'] {
       @extend %lig-mon;
-    }
-  }
-}
-%red-surface {
-  //--|🠊 Red 🠈|--//
-  //--|🠊 display: flex; 🠈|--//
-  %dar-red {
-    *[class*='_text'] {
-      color: Palettes.$red-light;
-    }
-    img[class*='_icon'] {
-      background: Palettes.$red-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$grey-dark;
-      }
-    }
-    *[class*='_back'] {
-      background: Palettes.$red-dark;
-    }
-  }
-  %med-red {
-    *[class*='_text'] {
-      color: Palettes.$red-dark;
-    }
-    img[class*='_icon'] {
-      background: Palettes.$red-light;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$red-dark;
-      }
-    }
-    *[class*='_back'] {
-      background: Palettes.$red-medium;
-    }
-  }
-  %lig-red {
-    *[class*='_text'] {
-      color: Palettes.$red-dark;
-    }
-    img[class*='_icon'] {
-      background: Palettes.$red-dark;
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        background: Palettes.$red-light;
-      }
-    }
-    *[class*='_back'] {
-      background: Palettes.$red-light;
-    }
-  }
-
-  div[class*='_red_'] {
-    //--|🠊 display: grid; 🠈|--//
-    &[class*='dar_red'] {
-      @extend %dar-red;
-    }
-    &[class*='med_red'] {
-      @extend %med-red;
-    }
-    &[class*='lig_red'] {
-      @extend %lig-red;
     }
   }
 }

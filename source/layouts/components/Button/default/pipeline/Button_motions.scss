@@ -1,129 +1,216 @@
-//--|🠊 Button_motions.scss 🠈|--//
+//--|🠊 Button_motions.scss 🠈|--\\
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-motions {
-  //--|🠊 button[class*='default'] 🠈|--//
-  @extend %mono-motions; //--|🠈 Monochrome 🠈|--//
-  //--|🠉 display: flex; 🠉|--//
-  div {
-    &[class*='_icon'] {
-      transition: filter 1.25s ease-in-out;
-      img {
-        transition: background 1.5s ease-in-out;
+  //--|🠊 button[class*='default'] 🠈|--\\
+  @extend %mono-motions; //--|🠈 Monochrome 🠈|--\\
+  //--|🠉 display: flex; 🠉|--\\
+
+  div[class*='_top'],
+  div[class*='_bot'] {
+    &.text span {
+      transition: filter 0.5s ease-in-out;
+    }
+    &.text {
+      ~ div.back p,
+      ~ div.back h1,
+      ~ div.back h2,
+      ~ div.back h3,
+      ~ div.back h4,
+      ~ div.back h5,
+      ~ div.back h6 {
+        transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
+      }
+      ~ div.icon {
+        transition: filter 0.5s ease-in-out;
+        img {
+          transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
+        }
       }
     }
+    p,
     h1,
     h2,
     h3,
     h4,
     h5,
-    h6,
-    p {
-      transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
-      span {
-        transition: color 0.25s ease-in-out, filter 0.5s ease-in-out;
+    h6 {
+      transition: color 0.25s ease-in-out, filter 0.5s ease-in-out;
+    }
+  }
+  div[class*='_lef'],
+  div[class*='_rig'],
+  div[class*='_cen'],
+  div[class*='_tex'] {
+    &.text span {
+      transition: filter 0.5s ease-in-out;
+    }
+    &.text {
+      ~ div.back p,
+      ~ div.back h1,
+      ~ div.back h2,
+      ~ div.back h3,
+      ~ div.back h4,
+      ~ div.back h5,
+      ~ div.back h6 {
+        transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
+      }
+      ~ div.icon {
+        transition: filter 0.5s ease-in-out;
+        img {
+          transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
+        }
+      }
+    }
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      transition: color 0.25s ease-in-out;
+    }
+  }
+  div[class*='_ico'] {
+    &.icon {
+      ~ div.back p,
+      ~ div.back h1,
+      ~ div.back h2,
+      ~ div.back h3,
+      ~ div.back h4,
+      ~ div.back h5,
+      ~ div.back h6 {
+        transition: background 0.75s ease-in-out, box-shadow 1s ease-in-out;
+      }
+      ~ div.icon {
+        img {
+          transition: background 0.75s ease-in-out, filter 0.5s ease-in-out;
+        }
       }
     }
   }
 }
-
 %mono-motions {
-  //--|🠊 Monochrome 🠈|--//
-  //--|🠊 display: flex; 🠈|--//
+  //--|🠊 Monochrome 🠈|--\\
+  //--|🠊 display: flex; 🠈|--\\
   %dar-mon {
-    &[class*='_top_'],
-    &[class*='_bot_'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$grey-dark;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$grey-medium;
-          box-shadow: inset 0 0 8px rgba(white, 1);
-        }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 4px rgba(black, 0.5));
-        }
-      }
-      &[class*='_text'] span:hover {
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
         filter: drop-shadow(0 0 2px rgba(white, 1));
       }
-    }
-
-    &[class*='_lef_'],
-    &[class*='_rig_'],
-    &[class*='_cen_'],
-    &[class*='_tex_'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$grey-dark;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-medium;
           box-shadow: inset 0 0 8px rgba(white, 1);
         }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 2px rgba(white, 1));
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(black, 0.5));
           img {
-            background: Palettes.$grey-dark;
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
           }
         }
       }
-      &[class*='_text'] span:hover {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-dark;
+        filter: drop-shadow(0 0 4px rgba(white, 1));
       }
     }
-
-    &[class*='_ico_'] {
-      &[class*='_icon']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
+          img {
+            background: Palettes.$grey-dark;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-dark;
+      }
+    }
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-medium;
           box-shadow: inset 0 0 4px rgba(white, 0.75);
         }
-      }
-      &[class*='_icon']:hover {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        img {
-          background: Palettes.$grey-dark;
+        ~ div.icon {
+          img {
+            background: Palettes.$grey-dark;
+            filter: drop-shadow(0 0 2px rgba(white, 1));
+          }
         }
       }
     }
   }
   %med-mon {
-    &[class*='_top_'],
-    &[class*='_bot_'] {
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(Palettes.$grey-neon, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(black, 0.5));
+          img {
+            background: Palettes.$grey-neon;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
       p:hover,
       h1:hover,
       h2:hover,
@@ -134,30 +221,33 @@
         color: Palettes.$grey-medium;
         filter: drop-shadow(0 0 4px rgba(white, 1));
       }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+    }
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-neon;
           box-shadow: inset 0 0 8px rgba(white, 1);
         }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 4px rgba(black, 0.5));
+        ~ div.icon {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
+          img {
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
         }
       }
-      &[class*='_text'] span:hover {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-    &[class*='_lef_'],
-    &[class*='_rig_'],
-    &[class*='_cen_'],
-    &[class*='_tex_'] {
       p:hover,
       h1:hover,
       h2:hover,
@@ -167,146 +257,125 @@
       h6:hover {
         color: Palettes.$grey-medium;
       }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$grey-neon;
-          box-shadow: inset 0 0 8px rgba(white, 1);
-        }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-light, 1));
-          img {
-            background: Palettes.$grey-medium;
-          }
-        }
-      }
-      &[class*='_text'] span:hover {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
     }
-
-    &[class*='_ico_'] {
-      &[class*='_icon']:hover {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        img {
-          background: Palettes.$grey-dark;
-        }
-      }
-      &[class*='_icon']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-neon;
           box-shadow: inset 0 0 4px rgba(white, 0.75);
+        }
+        ~ div.icon {
+          img {
+            background: Palettes.$grey-dark;
+            filter: drop-shadow(0 0 2px rgba(white, 1));
+          }
         }
       }
     }
   }
   %lig-mon {
-    &[class*='_top_'],
-    &[class*='_bot_'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$grey-light;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
-          background: Palettes.$grey-medium;
-          box-shadow: inset 0 0 8px rgba(black, 1);
-        }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 4px rgba(white, 0.5));
-        }
-      }
-      &[class*='_text'] span:hover {
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
         filter: drop-shadow(0 0 2px rgba(black, 1));
       }
-    }
-
-    &[class*='_lef_'],
-    &[class*='_rig_'],
-    &[class*='_cen_'],
-    &[class*='_tex_'] {
-      p:hover,
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      h4:hover,
-      h5:hover,
-      h6:hover {
-        color: Palettes.$grey-light;
-      }
-      &[class*='_text']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-medium;
           box-shadow: inset 0 0 8px rgba(black, 1);
         }
-        ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 2px rgba(black, 1));
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(white, 0.5));
           img {
-            background: Palettes.$grey-light;
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(black, 1);
           }
         }
       }
-      &[class*='_text'] span:hover {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+        filter: drop-shadow(0 0 4px rgba(black, 1));
       }
     }
-
-    &[class*='_ico_'] {
-      &[class*='_icon']:hover {
-        ~ div[class*='_back'] p,
-        ~ div[class*='_back'] h1,
-        ~ div[class*='_back'] h2,
-        ~ div[class*='_back'] h3,
-        ~ div[class*='_back'] h4,
-        ~ div[class*='_back'] h5,
-        ~ div[class*='_back'] h6,
-        ~ div[class*='_icon'] img {
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(black, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 2px rgba(black, 1));
+          img {
+            background: Palettes.$grey-light;
+            box-shadow: inset 0 0 8px rgba(black, 1);
+          }
+        }
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+      }
+    }
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
           background: Palettes.$grey-medium;
           box-shadow: inset 0 0 4px rgba(black, 0.75);
         }
-      }
-      &[class*='_icon']:hover {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-        img {
-          background: Palettes.$grey-light;
+        ~ div.icon {
+          img {
+            background: Palettes.$grey-light;
+            filter: drop-shadow(0 0 2px rgba(black, 1));
+          }
         }
       }
     }
   }
-  div[class*='_mon_'] {
-    //--|🠊 display: grid; 🠈|--//
+
+  //--|🠋 Extend Color 🠋|--\\
+  div[class*='_mon'] {
+    //--|🠊 display: grid; 🠈|--\\
     &[class*='dar_mon'] {
       @extend %dar-mon;
     }
@@ -318,3 +387,281 @@
     }
   }
 }
+/*
+Dark
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(black, 0.5));
+          img {
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-dark;
+      }
+    }
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 2px rgba(white, 1));
+          img {
+            background: Palettes.$grey-dark;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-dark;
+      }
+    }
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 4px rgba(white, 0.75);
+        }
+        img {
+          background: Palettes.$grey-dark;
+          filter: drop-shadow(0 0 2px rgba(white, 1));
+        }
+      }
+    }
+    */
+/*
+Medium
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(Palettes.$grey-neon, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(black, 0.5));
+          img {
+            background: Palettes.$grey-neon;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-medium;
+        filter: drop-shadow(0 0 4px rgba(white, 1));
+      }
+    }
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 8px rgba(white, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-light, 1));
+          img {
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(white, 1);
+          }
+        }
+      }
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-medium;
+      }
+    }
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-neon;
+          box-shadow: inset 0 0 4px rgba(white, 0.75);
+        }
+        ~ div.icon {
+          img {
+            background: Palettes.$grey-dark;
+            filter: drop-shadow(0 0 2px rgba(white, 1));
+          }
+        }
+      }
+    }
+    */
+/*
+Light
+    &[class*='_top'],
+    &[class*='_bot'] {
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(black, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 4px rgba(white, 0.5));
+          img {
+            background: Palettes.$grey-medium;
+            box-shadow: inset 0 0 8px rgba(black, 1);
+          }
+        }
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+      }
+    }
+    &[class*='_lef'],
+    &[class*='_rig'],
+    &[class*='_cen'],
+    &[class*='_tex'] {
+      &.text:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6 {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 8px rgba(black, 1);
+        }
+        ~ div.icon {
+          filter: drop-shadow(0 0 2px rgba(black, 1));
+          img {
+            background: Palettes.$grey-light;
+            box-shadow: inset 0 0 8px rgba(black, 1);
+          }
+        }
+      }
+      &.text span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+      }
+    }
+    &[class*='_ico'] {
+      &.icon:hover {
+        ~ div.back p,
+        ~ div.back h1,
+        ~ div.back h2,
+        ~ div.back h3,
+        ~ div.back h4,
+        ~ div.back h5,
+        ~ div.back h6,
+        ~ div.icon img {
+          background: Palettes.$grey-medium;
+          box-shadow: inset 0 0 4px rgba(black, 0.75);
+        }
+        img {
+          background: Palettes.$grey-light;
+          filter: drop-shadow(0 0 2px rgba(black, 1));
+        }
+      }
+    }
+    */

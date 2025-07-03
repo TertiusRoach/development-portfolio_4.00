@@ -1,67 +1,67 @@
-//--|🠊 Button_shadows.scss 🠈|--//
+//--|🠊 Button_shadows.scss 🠈|--\\
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-shadows {
-  //--|🠉 display: flex; 🠉|--//
-  //--|🠊 button[class*='default'] 🠈|--//
-  @extend %mono-shadows; //--|🠈 Monochrome 🠈|--//
+  //--|🠉 display: flex; 🠉|--\\
+  //--|🠊 button[class*='default'] 🠈|--\\
+  @extend %mono-shadows; //--|🠈 Monochrome 🠈|--\\
 }
 %mono-shadows {
-  //--|🠊 Monochrome 🠈|--//
-  //--|🠊 display: flex; 🠈|--//
+  //--|🠊 Monochrome 🠈|--\\
+  //--|🠊 display: flex; 🠈|--\\
   %dar_mon {
-    *[class*='_text'] {
+    *.text {
       span {
         filter: drop-shadow(0 0 4px rgba(black, 1));
       }
     }
-    &[class*='_icon'] {
+    &.icon {
       filter: drop-shadow(0 0 8px rgba(black, 1));
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         filter: drop-shadow(0 0 8px rgba(white, 1));
       }
     }
-    *[class*='_back'] {
+    *.back {
       box-shadow: inset 0 0 8px rgba(black, 1);
     }
   }
   %med-mon {
-    *[class*='_text'] {
+    *.text {
       span {
         filter: drop-shadow(0 0 4px rgba(Palettes.$grey-neon, 0.75));
       }
     }
-    &[class*='_icon'] {
+    &.icon {
       filter: drop-shadow(0 0 8px rgba(black, 1));
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         filter: drop-shadow(0 0 8px rgba(white, 1));
       }
     }
-    *[class*='_back'] {
+    *.back {
       box-shadow: inset 0 0 8px rgba(Palettes.$grey-neon, 0.5);
     }
   }
   %lig-mon {
-    *[class*='_text'] {
+    *.text {
       span {
         filter: drop-shadow(0 0 4px rgba(white, 1));
       }
     }
-    &[class*='_icon'] {
+    &.icon {
       filter: drop-shadow(0 0 8px rgba(white, 1));
-      &[class*='_top_'],
-      &[class*='_bot_'] {
+      &[class*='_top'],
+      &[class*='_bot'] {
         filter: drop-shadow(0 0 8px rgba(black, 1));
       }
     }
-    *[class*='_back'] {
+    *.back {
       box-shadow: inset 0 0 8px rgba(white, 1);
     }
   }
 
-  div[class*='_mon_'] {
-    //--|🠊 display: grid; 🠈|--//
+  div[class*='_mon'] {
+    //--|🠊 display: grid; 🠈|--\\
     &[class*='dar_mon'] {
       @extend %dar_mon;
     }
