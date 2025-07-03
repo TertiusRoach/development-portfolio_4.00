@@ -8,6 +8,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 import { sizeDivs, loadStyle } from './Section_buttons';
 //--|🠋 Components 🠋|--\\
 const AsideButtons = lazy(() => import('../../Aside/buttons/Aside.buttons'));
+
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
