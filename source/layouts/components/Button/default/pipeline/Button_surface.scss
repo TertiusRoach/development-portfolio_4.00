@@ -2,9 +2,11 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin button-surface {
   //--|🠊 button[class*='default'] 🠈|--//
+  @extend %red-surface;
   @extend %mono-surface;
   //--|🠉 display: flex; 🠉|--//
 }
+
 %mono-surface {
   //--|🠊 Monochrome 🠈|--//
   //--|🠊 display: flex; 🠈|--//
@@ -64,6 +66,68 @@
     }
     &[class*='lig_mon'] {
       @extend %lig-mon;
+    }
+  }
+}
+%red-surface {
+  //--|🠊 Red 🠈|--//
+  //--|🠊 display: flex; 🠈|--//
+  %dar-red {
+    *[class*='_text'] {
+      color: Palettes.$red-light;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$red-light;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$grey-dark;
+      }
+    }
+    *[class*='_back'] {
+      background: Palettes.$red-dark;
+    }
+  }
+  %med-red {
+    *[class*='_text'] {
+      color: Palettes.$red-dark;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$red-light;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$red-dark;
+      }
+    }
+    *[class*='_back'] {
+      background: Palettes.$red-medium;
+    }
+  }
+  %lig-red {
+    *[class*='_text'] {
+      color: Palettes.$red-dark;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$red-dark;
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        background: Palettes.$red-light;
+      }
+    }
+    *[class*='_back'] {
+      background: Palettes.$red-light;
+    }
+  }
+
+  div[class*='_red_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &[class*='dar_red'] {
+      @extend %dar-red;
+    }
+    &[class*='med_red'] {
+      @extend %med-red;
+    }
+    &[class*='lig_red'] {
+      @extend %lig-red;
     }
   }
 }
