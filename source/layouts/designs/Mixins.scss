@@ -1,1 +1,95 @@
 //--|🠊 Mixins.scss 🠈|--//
+//--|🠋 Resolution Testing 🠋|--//
+@mixin orientation-testing {
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    & {
+      width: 100%;
+      aside[class*='leftbar'] {
+        background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      aside[class*='rightbar'] {
+        // background: rgba($red-light, 0.25);
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+      }
+      section[class*='overlay'] {
+        header[class*='foreground'] {
+          background: rgba($green-neon, 0.25);
+        }
+        div[class*='background'] {
+          background: rgba($green-dark, 0.25);
+        }
+        footer[class*='midground'] {
+          background: rgba($green-neon, 0.25);
+        }
+      }
+
+      header {
+        background: rgba($red-light, 0.25);
+      }
+      main {
+        background: rgba($red-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+      footer {
+        background: rgba($red-light, 0.25);
+      }
+    }
+    //--|🠊 border: 2px dashed $red-neon; 🠈|--//
+    //--|🠊 background: rgba($red-dark, 0.25); 🠈|--//
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    & {
+      aside[class*='leftbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      aside[class*='rightbar'] {
+        background: rgba($blue-light, 0.25);
+      }
+      section[class*='overlay'] {
+        background: rgba($blue-dark, 0.25);
+      }
+
+      header {
+        background: rgba($blue-light, 0.25);
+      }
+      footer {
+        background: rgba($blue-light, 0.25);
+      }
+      main {
+        background: rgba($blue-dark, 1);
+        div[id*='fore'],
+        div[id*='mid'],
+        div[id*='back'] {
+          background: rgba($purple-dark, 0.25) !important;
+        }
+      }
+    }
+    //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
+    //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
+  }
+}

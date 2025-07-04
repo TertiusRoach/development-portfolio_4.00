@@ -1,13 +1,11 @@
-//--|🠊 Menu.landing.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Menu.landing.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 Menu.landing.tsx 🠈|--\\
 import React, { useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
+//--|🠋 Styles 🠋|--\\
+import './Menu.landing.scss';
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠋 Extensions 🠋|--\\
+import LandingOverlay from './extensions/overlay/LandingOverlay';
 
 interface InfoProps {
   info: {
@@ -20,50 +18,48 @@ const MenuLanding: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'landing';
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const handleLanding = (blockName: 'overlay' | 'leftbar' | 'rightbar' | 'header' | 'footer' | 'main' | string) => {
+  const handleLanding = (
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
+  ) => {
     switch (blockName) {
-      case 'overlay':
+      case '<overlay>':
+        return <LandingOverlay info={info} />;
+      case '<leftbar>':
         return (
-          <ul className={`${blockName}-list`}>
-            <li>Overlay content</li>
-          </ul>
-        );
-      case 'leftbar':
-        return (
-          <ul className={`${blockName}-list`}>
+          <>
             <li>Leftbar content</li>
-          </ul>
+          </>
         );
-      case 'rightbar':
+      case '<rightbar>':
         return (
-          <ul className={`${blockName}-list`}>
+          <>
             <li>Rightbar content</li>
-          </ul>
+          </>
         );
-      case 'header':
+      case '<header>':
         return (
-          <ul className={`${blockName}-list`}>
+          <>
             <li>Header Content</li>
-          </ul>
+          </>
         );
-      case 'footer':
+      case '<footer>':
         return (
-          <ul className={`${blockName}-list`}>
+          <>
             <li>Footer Content</li>
-          </ul>
+          </>
         );
-      case 'main':
+      case '<main>':
       default:
         return (
-          <ul className={`${blockName}-list`}>
+          <>
             <li>Main content</li>
-          </ul>
+          </>
         );
     }
   };
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return <menu className={`${pageName}-menu`}>{handleLanding(blockName)}</menu>;
+  return <menu className={`${pageName}-menu`}>{handleLanding(info.blockName)}</menu>;
 };
 export default MenuLanding;

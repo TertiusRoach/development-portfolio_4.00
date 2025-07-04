@@ -1,72 +1,75 @@
-//--|🠊 Palettes.scss 🠈|--//
+//--||🠊 Palettes.scss 🠈|--\\
+//--||🠋 Preset Palettes 🠋|--\\
+$red-neon: #ff0000; //--|🠈 rgba() 🠈|--\\
+$red-dark: #660000; //--|🠈 rgba() 🠈|--\\
+$red-light: #ea9999; //--|🠈 rgba() 🠈|--\\
+$red-medium: #863236; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Preset Palettes |🠋|--//
-$red-neon: #ff0000;
-$red-dark: #660000;
-$red-light: #ea9999;
-$red-medium: #863236;
+$green-neon: #00ff00; //--|🠈 rgba() 🠈|--\\
+$green-dark: #0d1a07; //--|🠈 rgba() 🠈|--\\
+$green-light: #b6d7a8; //--|🠈 rgba() 🠈|--\\
+$green-medium: #274e13; //--|🠈 rgba() 🠈|--\\
 
-$green-neon: #00ff00;
-$green-dark: #0d1a07;
-$green-light: #b6d7a8;
-$green-medium: #274e13;
+$blue-neon: #006eff; //--|🠈 rgba() 🠈|--\\
+$blue-dark: #0b1431; //--|🠈 rgba() 🠈|--\\
+$blue-light: #9fc5e8; //--|🠈 rgba() 🠈|--\\
+$blue-medium: #073763; //--|🠈 rgba() 🠈|--\\
 
-$blue-neon: #006eff;
-$blue-dark: #0b1431;
-$blue-light: #9fc5e8;
-$blue-medium: #073763;
+$purple-neon: #9900ff; //--|🠈 rgba() 🠈|--\\
+$purple-dark: #0e091b; //--|🠈 rgba() 🠈|--\\
+$purple-light: #7f6fa8; //--|🠈 rgba() 🠈|--\\
+$purple-medium: #2a1d55; //--|🠈 rgba() 🠈|--\\
 
-$purple-neon: #9900ff;
-$purple-dark: #0e091b;
-$purple-light: #7f6fa8;
-$purple-medium: #2a1d55;
+$pink-neon: #ff00ff; //--|🠈 rgba() 🠈|--\\
+$pink-dark: #4c1130; //--|🠈 rgba() 🠈|--\\
+$pink-light: #d5a6bd; //--|🠈 rgba() 🠈|--\\
+$pink-medium: #814381; //--|🠈 rgba() 🠈|--\\
 
-$pink-neon: #ff00ff;
-$pink-dark: #4c1130;
-$pink-light: #d5a6bd;
-$pink-medium: #814381;
+$yellow-neon: #ffff00; //--|🠈 rgba() 🠈|--\\
+$yellow-dark: #4d1f05; //--|🠈 rgba() 🠈|--\\
+$yellow-light: #ffe599; //--|🠈 rgba() 🠈|--\\
+$yellow-medium: #7f6000; //--|🠈 rgba() 🠈|--\\
 
-$yellow-neon: #ffff00;
-$yellow-dark: #4d1f05;
-$yellow-light: #ffe599;
-$yellow-medium: #7f6000;
+$orange-neon: #ffc400; //--|🠈 rgba() 🠈|--\\
+$orange-dark: #783f04; //--|🠈 rgba() 🠈|--\\
+$orange-light: #e4d8cc; //--|🠈 rgba() 🠈|--\\
+$orange-medium: #e08f14; //--|🠈 rgba() 🠈|--\\
 
-$orange-neon: #ffc400;
-$orange-dark: #783f04;
-$orange-light: #e4d8cc;
-$orange-medium: #e08f14;
+$brown-neon: #9c4600; //--|🠈 rgba() 🠈|--\\
+$brown-dark: #302114; //--|🠈 rgba() 🠈|--\\
+$brown-light: #ffd3af; //--|🠈 rgba() 🠈|--\\
+$brown-medium: #b46849; //--|🠈 rgba() 🠈|--\\
 
-$brown-neon: #9c4600;
-$brown-dark: #302114;
-$brown-light: #ffd3af;
-$brown-medium: #b46849;
+$grey-neon: #eeeee0; //--|🠈 rgba() 🠈|--\\
+$grey-dark: #111111; //--|🠈 rgba() 🠈|--\\
+$grey-light: #c5c5c5; //--|🠈 rgba() 🠈|--\\
+$grey-medium: #585858; //--|🠈 rgba() 🠈|--\\
 
-$grey-neon: #eeeee0;
-$grey-dark: #111111;
-$grey-light: #c5c5c5;
-$grey-medium: #585858;
+$turquoise-neon: #00ffff; //--|🠈 rgba() 🠈|--\\
+$turquoise-dark: #0c1f24; //--|🠈 rgba() 🠈|--\\
+$turquoise-light: #b9d1d4; //--|🠈 rgba() 🠈|--\\
+$turquoise-medium: #115f70; //--|🠈 rgba() 🠈|--\\
 
-$turquoise-neon: #00ffff;
-$turquoise-dark: #0c1f24;
-$turquoise-light: #b9d1d4;
-$turquoise-medium: #115f70;
+//--|🠋 Track a Day - Trinity {A]pps 🠋|--\\
+$trackDay-neon: #00ff44; //--|🠈 rgba() 🠈|--\\
+$trackDay-dark: #072007; //--|🠈 rgba() 🠈|--\\
+$trackDay-light: #afebb2; //--|🠈 rgba() 🠈|--\\
+$trackDay-medium: #39853b; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Track a Day - Trinity {A]pps |🠋|--//
-$trackDay-dark: #072007; //--🠊 rgba(7, 32, 7, 1) 🠈--//
-$trackDay-medium: #39853b; //--🠊 rgba(57, 133, 59, 1) 🠈--//
-$trackDay-light: #9ee6a1; //--🠊 rgba(158, 230, 161, 1) 🠈--//
+//--|🠋 Log a Ticket - Trinity {A]pps 🠋|--\\
+$logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
+$logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
+$logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
+$logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Log a Ticket - Trinity {A]pps |🠋|--//
-$logTicket-dark: #070e27; //--🠊 rgba(7, 14, 39, 1) 🠈--//
-$logTicket-medium: #0b2583; //--🠊 rgba(11, 37, 131, 1) 🠈--//
-$logTicket-light: #a8b8f3; //--🠊 rgba(168, 184, 243, 1) 🠈--//
+//--|🠋 Find a Link - Trinity {A]pps 🠋|--\\
+$findLink-neon: #eb1224; //--|🠈 rgba() 🠈|--\\
+$findLink-dark: #2b0a0d; //--|🠈 rgba() 🠈|--\\
+$findLink-light: #e2bcca; //--|🠈 rgba() 🠈|--\\
+$findLink-medium: #893141; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Find a Link - Trinity {A]pps |🠋|--//
-$findLink-dark: #230709; //--🠊 rgba(35, 7, 9, 1) 🠈--//
-$findLink-medium: #881a3d; //--🠊 rgba(136, 26, 61, 1) 🠈--//
-$findLink-light: #e2bcca; //--🠊 rgba(226, 188, 202, 1) 🠈--//
-
-//--|🠋| Index or Landing |🠋|--//
-$indexLand-dark: #161517; //--🠊 rgba(0, 0, 0, 1) 🠈--//
-$indexLand-medium: #737373; //--🠊 rgba(115, 115, 115, 1) 🠈--//
-$indexLand-light: #efefe7; //--🠊 rgba(255, 255, 255, 1) 🠈--//
+//--|🠋 Index or Landing - Trinity {A]pps 🠋|--\\
+$indexLand-neon: #ffffd3; //--|🠈 rgba() 🠈|--\\
+$indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+$indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+$indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\

@@ -10,9 +10,23 @@
 //--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {
   grid-template: 8rem 1fr 4rem / 3rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
   //   grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
 div[id*='hyperlink'] {

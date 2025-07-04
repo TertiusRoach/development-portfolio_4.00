@@ -1,20 +1,13 @@
-//--|🠊 Aside.buttons.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Aside.buttons.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/buttons';
-import { defineButton, sizeDivs, makeText } from './Aside_buttons';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 Aside.buttons.tsx 🠈|--\\
 import React, { useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Extensions 🠋|--//
-import AsideMain from './extensions/main/ButtonsMain';
-//--|🠉 Extensions 🠉|--//
-//--|🠋 Components 🠋|--//
+//--|🠋 Styles 🠋|--\\
+import './Aside.buttons.scss';
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/buttons';
+//--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
-//--|🠉 Components 🠉|--//
+//--|🠋 Extensions 🠋|--\\
+import AsideMain from './extensions/main/ButtonsMain';
 
 interface InfoProps {
   info: {
