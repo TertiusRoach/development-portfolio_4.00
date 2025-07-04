@@ -1,5 +1,4 @@
 //--|🠊 Article_landing.ts 🠈|--\\
-
 export function defineButton(
   button: 'login' | 'register' | 'track-day' | 'log-ticket' | 'find-link' | 'index-land',
   info: { blockName: string; pageName: string }
@@ -147,6 +146,7 @@ export function getIcon(image: 'brand' | 'demo' | 'apps') {
 //--|🠋 Declare a variable to store the debounce timer. 🠋|--//
 let debounceTimer: NodeJS.Timeout | null = null; //--|🠈 This ensures we can clear previous timers to prevent rapid re-triggering. 🠈|--//
 export function hideFigure(event: React.MouseEvent<HTMLElement>) {
+  /*
   const activeElement = event.currentTarget as HTMLElement; //--|🠈 `event.currentTarget` refers to the element the event is bound to (the <figure>). 🠈|--//
   const demoNav = document.querySelector('.demo-navigation') as HTMLElement;
 
@@ -165,8 +165,10 @@ export function hideFigure(event: React.MouseEvent<HTMLElement>) {
     activeElement.style.zIndex = '0'; //--|🠈 Move the element behind other elements. 🠈|--//
     activeElement.style.opacity = '0'; //--|🠈 Fully hide the element with opacity. 🠈|--//
   }, 250);
+  */
 }
 export function showFigure(overlay: 'apps' | 'demo') {
+  /*
   //--|🠋 Find the correct figure element based on the `overlay` parameter. 🠋|--//
   // The `class*=` selector matches elements where class names contain `overlay` ("apps" or "demo").
   const figureElement = document.querySelector(`figure[class*="${overlay}"]`) as HTMLElement;
@@ -194,4 +196,5 @@ export function showFigure(overlay: 'apps' | 'demo') {
       tag.style.removeProperty('opacity'); //--|🠈 Remove the inline opacity style. 🠈|--//
     }
   }, 3000);
+  */
 }

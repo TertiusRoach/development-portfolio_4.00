@@ -4,15 +4,18 @@ import React, { useEffect } from 'react';
 import { loadDemo } from '../../../../index';
 import { stripBrackets } from '../../../scripts/landing';
 import { defineButton, hideFigure, showFigure, showMain, getIcon } from './Article_landing';
-//--|🠉 Functions 🠉|--\\
 //--|🠋 Styles 🠋|--\\
 import './Article.landing.scss';
 //--|🠋 Components 🠋|--\\
+/*
 import MenuBranding from '../../Menu/branding/Menu.branding';
 import ButtonGrade from '../../Button/archive/grade/Button.grade';
-// import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
-// import ButtonDefault from '../../Button/archive/default/Button.default';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
+*/
+//--|🠋 Extensions 🠋|--\\
+import ArticleOverlay from './extensions/overlay/LandingOverlay';
 
 interface InfoProps {
   onMouseLeave?: () => void;
@@ -31,82 +34,7 @@ const ArticleLanding: React.FC<InfoProps> = ({ info }) => {
   ) => {
     switch (blockName) {
       case '<overlay>':
-        return (
-          <>
-            <aside className="apps-aside" onMouseLeave={() => showFigure('apps')}>
-              <figure
-                className="apps-figure"
-                onClick={(event) => hideFigure(event)}
-                onMouseEnter={(event) => hideFigure(event)}
-              >
-                {toggleFont('open-apps')}
-                <img
-                  style={{
-                    maskImage: `url(${getIcon('apps')})`,
-                    WebkitMaskImage: `url(${getIcon('apps')})`,
-                  }}
-                />
-              </figure>
-              <nav className="apps-navigation">
-                {/* <ButtonDefault
-                  type="button"
-                  text={'Login'}
-                  onClick={() => showMain('login', pageName)}
-                  style={defineButton('login', { pageName, blockName })}
-                /> */}
-                {/* <ButtonDefault
-                  type="button"
-                  text={'Register'}
-                  onClick={() => showMain('register', pageName)}
-                  style={defineButton('register', { pageName, blockName })}
-                /> */}
-              </nav>
-            </aside>
-            <aside className="demo-aside" onMouseLeave={() => showFigure('demo')}>
-              <figure
-                className="demo-figure"
-                onClick={(event) => hideFigure(event)}
-                onMouseEnter={(event) => hideFigure(event)}
-              >
-                {toggleFont('view-demo')}
-                <img
-                  style={{
-                    maskImage: `url(${getIcon('demo')})`,
-                    WebkitMaskImage: `url(${getIcon('demo')})`,
-                  }}
-                />
-              </figure>
-              <nav className="demo-navigation downplay">
-                {/* <ButtonStretch
-                  type="button"
-                  text={'Track a Day'}
-                  onClick={() => loadDemo('overtime')}
-                  style={defineButton('track-day', { pageName, blockName })}
-                /> */}
-                {/* <ButtonStretch
-                  type="button"
-                  text={'Log a Ticket'}
-                  onClick={() => loadDemo('ticketing')}
-                  style={defineButton('log-ticket', { pageName, blockName })}
-                /> */}
-                {/* <ButtonStretch
-                  type="button"
-                  text={'Find a Link'}
-                  onClick={() => loadDemo('hyperlink')}
-                  style={defineButton('find-link', { pageName, blockName })}
-                /> */}
-              </nav>
-            </aside>
-            <div className="branding-division">
-              <img
-                style={{
-                  maskImage: `url(${getIcon('brand')})`,
-                  WebkitMaskImage: `url(${getIcon('brand')})`,
-                }}
-              />
-            </div>
-          </>
-        );
+        return <ArticleOverlay info={info} />;
       case '<leftbar>':
         return (
           <ul className="leftbar-list">
@@ -146,51 +74,3 @@ const ArticleLanding: React.FC<InfoProps> = ({ info }) => {
   return <article className="landing-article">{handleLanding(info.blockName)}</article>;
 };
 export default ArticleLanding;
-
-const toggleFont = (text: 'open-apps' | 'view-demo') => {
-  let portrait = window.matchMedia('(orientation: portrait)').matches;
-  let landscape = window.matchMedia('(orientation: landscape)').matches;
-
-  let innerText = (text: string) => {
-    switch (text) {
-      case 'open-apps':
-        return (
-          <>
-            View
-            <br />
-            Demo
-          </>
-        );
-      case 'view-demo':
-        return (
-          <>
-            View
-            <br />
-            Demo
-          </>
-        );
-    }
-  };
-
-  if (landscape) {
-    if (window.innerHeight < 360) {
-      return <h6>{innerText(text)}</h6>; //--|🠈 Landscape < 360px (Less than) 🠈|--\\
-    } else if (window.innerHeight < 480) {
-      return <h4>{innerText(text)}</h4>; //--|🠈 Landscape < 480px (Less than) 🠈|--\\
-    } else if (window.innerHeight < 768) {
-      return <h2>{innerText(text)}</h2>; //--|🠈 Landscape < 768px (Less than) 🠈|--\\
-    } else {
-      return <h1>{innerText(text)}</h1>; //--|🠈 Landscape > 768px (Larger than) 🠈|--\\
-    }
-  } else if (portrait) {
-    if (window.innerWidth < 360) {
-      return <h4>{innerText(text)}</h4>; //--|🠈 Portrait < 360px (Less than) 🠈|--\\
-    } else if (window.innerWidth < 480) {
-      return <h3>{innerText(text)}</h3>; //--|🠈 Portrait < 480px (Less than) 🠈|--\\
-    } else if (window.innerWidth < 768) {
-      return <h2>{innerText(text)}</h2>; //--|🠈 Portrait < 768px (Less than) 🠈|--\\
-    } else {
-      return <h1>{innerText(text)}</h1>; //--|🠈 Portrait > 768px (Larger than) 🠈|--\\
-    }
-  }
-};

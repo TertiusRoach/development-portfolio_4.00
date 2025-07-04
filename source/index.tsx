@@ -1,21 +1,16 @@
-//--|🠊 index.tsx (Entry Point) 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './index.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 index.tsx (Entry Point) 🠈|--\\
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Containers 🠋|--//
+//--|🠋 Styles 🠋|--\\
+import './index.scss';
+//--|🠋 Containers 🠋|--\\
 import Buttons from './layouts/pages/buttons';
 import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
-//--|🠉 Containers 🠉|--//
 
-//--|🠋 Component Mapping 🠋|--//
+//--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
   'buttons-body': Buttons,
   'landing-body': Landing,
@@ -24,7 +19,7 @@ const pages: { [key: string]: React.ElementType } = {
   'hyperlink-body': Hyperlink,
 };
 
-//--|🠋 Render Components 🠋|--//
+//--|🠋 Render Components 🠋|--\\
 Object.entries(pages).forEach(([id]) => {
   const elementBody = document.getElementById(id) as HTMLElement;
   const pageName = elementBody.id.split('-')[0] as 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
@@ -69,32 +64,32 @@ export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'but
     }
   };
   const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons') => {
-    let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--//
-    let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--//
+    let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+    let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--\\
 
     /*
     if (!(element instanceof HTMLElement)) {
-      //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--//
+      //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--\\
       console.warn(`Element for view "${pageName}" not found.`);
       return;
     }
     */
 
     if (active) {
-      //--|🠉 If there's a visible element, hide it 🠈|--//
-      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--//
-      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--//
+      //--|🠉 If there's a visible element, hide it 🠈|--\\
+      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--\\
+      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--\\
     }
 
     switch (true) {
       case element.classList.contains('asleep'):
-        //--|🠉 Show the selected view only if it’s currently hidden 🠈|--//
-        element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--//
-        return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--//
+        //--|🠉 Show the selected view only if it’s currently hidden 🠈|--\\
+        element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--\\
+        return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--\\
       case element.classList.contains('active'):
-        //--|🠉 Optional toggle: allow hiding the current element again 🠈|--//
-        element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--//
-        return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--//
+        //--|🠉 Optional toggle: allow hiding the current element again 🠈|--\\
+        element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--\\
+        return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--\\
     }
   };
 

@@ -31,7 +31,7 @@ const MenuOverlay: React.FC<InfoProps> = ({ info }) => {
     <ul className={`${blockName}-list`}>
       <li>
         <img
-          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-light.svg"
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/tertius-roach/signature-adjacent/primary-dark.svg"
           alt=""
         />
       </li>

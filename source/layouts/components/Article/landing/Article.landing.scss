@@ -1,257 +1,32 @@
 //--|🠊 Article.landing.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
-
+@use '../../../designs/Palettes.scss' as Palettes;
+//--|🠉 pageName: [landing] 🠉|--\\
 @mixin desktop-landscape {
-  aside[class*='aside'] {
-    position: relative;
-
-    &[class*='apps'] {
-      grid-area: 2 / 1 / 4 / 2;
-      nav {
-        grid-template: 1fr auto 2fr auto 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
-        button[class*='login'] {
-          grid-area: 2 / 2 / 3 / 3;
-        }
-        button[class*='register'] {
-          grid-area: 4 / 2 / 5 / 3;
-        }
-      }
-      figure {
-        display: none;
-        &:first-child {
-          border-bottom-left-radius: 4rem;
-        }
-      }
-    }
-    &[class*='demo'] {
-      grid-area: 2 / 2 / 4 / 3;
-
-      nav {
-        button[class*='track-day'],
-        button[class*='log-ticket'] {
-          border-top-left-radius: 1rem;
-          border-bottom-left-radius: 1rem;
-        }
-        button[class*='find-link'] {
-          border-top-left-radius: 1rem;
-          border-bottom-right-radius: 4rem;
-        }
-      }
-      figure {
-        border-bottom-right-radius: 4rem;
-        border-left: 2px dashed Palettes.$indexLand-light;
-        border-top: 2px dashed Palettes.$indexLand-light;
-      }
-    }
-    &:hover {
-      figure {
-        opacity: 0;
-      }
-    }
-
-    nav,
-    figure {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      position: absolute;
-      &[class*='figure'] {
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-      }
-      &[class*='navigation'] {
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        button {
-          background: none;
-        }
-        button[class*='login'] {
-          grid-area: 2 / 2 / 3 / 3;
-        }
-        button[class*='register'] {
-          grid-area: 4 / 2 / 5 / 3;
-        }
-      }
-    }
-  }
-  div[class*='branding'] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-area: 1 / 1 / 2 / 3;
-    img {
-      width: 50%;
-      height: 50%;
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-      filter: drop-shadow(2px black);
-      background: Palettes.$indexLand-light;
-    }
-  }
+  //--|🠊 display: grid; 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
-    aside[class*='aside'] figure[class*='figure'] {
-      img {
-        opacity: 0.25;
-        height: 50%;
-      }
-    }
+  }
+  @media screen and (max-height: 480px) {
   }
   @media screen and (max-height: 360px) {
-    margin-top: -1rem;
-    margin-bottom: -1rem;
   }
 }
 @mixin mobile-portrait {
-  div[class*='branding'] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-area: 1 / 1 / 2 / 3;
-    img {
-      width: 50%;
-      height: 50%;
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-      background: Palettes.$indexLand-light;
-    }
-  }
-  aside[class*='aside'] {
-    position: relative;
-  }
-  aside[class*='apps'],
-  aside[class*='demo'] {
-    &[class*='apps'] {
-      grid-area: 2 / 1 / 4 / 2;
-      nav {
-        grid-template: 1fr auto 2fr auto 1fr / repeat(3, 1fr); //--|🠊 rows / columns 🠈|--//
-        button[class*='login'] {
-          grid-area: 2 / 2 / 3 / 3;
-        }
-        button[class*='register'] {
-          grid-area: 4 / 2 / 5 / 3;
-        }
-      }
-      figure {
-        display: none;
-        &:first-child {
-          border-bottom-left-radius: 4rem;
-        }
-      }
-    }
-    &[class*='demo'] {
-      grid-area: 2 / 2 / 4 / 3;
-      nav {
-        button[class*='track-day'],
-        button[class*='log-ticket'] {
-          border-top-left-radius: 1rem;
-          border-bottom-left-radius: 1rem;
-        }
-        button[class*='find-link'] {
-          border-top-left-radius: 1rem;
-          border-bottom-right-radius: 4rem;
-        }
-      }
-      figure {
-        border-bottom-right-radius: 4rem;
-        border-left: 2px dashed Palettes.$indexLand-light;
-        border-top: 2px dashed Palettes.$indexLand-light;
-      }
-    }
-    figure,
-    nav {
-      display: grid;
-      position: absolute;
-      &[class*='figure'] {
-        z-index: 1;
-        opacity: 1;
-        width: 100%;
-        height: 100%;
-        margin-bottom: 0;
-        /* backdrop-filter: blur(1rem); */
-        background: Palettes.$indexLand-dark;
-        transition: opacity 0.25s ease-in-out;
-        grid-template: repeat(2, 1fr) / 1fr; //--|🠊 rows / columns 🠈|--//
-        box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-          z-index: 1;
-          display: flex;
-          color: white;
-          font-weight: bold;
-          margin-bottom: 8px;
-          text-align: center;
-          letter-spacing: 4px;
-          align-items: flex-end;
-          justify-content: center;
-          grid-area: 1 / 1 / 2 / 2;
-          transition: opacity 1s ease-in-out;
-          text-shadow: 0 0 1rem rgba(black, 0.75);
-        }
-        img {
-          top: 0;
-          left: 50%;
-          width: 50%;
-          height: 50%;
-          opacity: 0.75;
-          margin-top: 8px;
-          position: absolute;
-          background: white;
-          mask-position: center;
-          mask-repeat: no-repeat;
-          grid-area: 2 / 1 / 3 / 2;
-          transform: translate(-50%, 0);
-        }
-
-        @media screen and (max-height: 768px) {
-          box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-medium, 1);
-          img {
-            opacity: 0.25;
-            height: 25%;
-          }
-        }
-      }
-      &[class*='nav'] {
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  aside:hover {
-    figure {
-      opacity: 0;
-    }
-  }
-
-  //--|🠋 Tablet (Portrait) 🠋|--//
+  //--|🠊 display: grid; 🠈|--\\
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (max-width: 768px) {
-    aside[class*='aside'] figure[class*='figure'] {
-      img {
-        opacity: 0.25;
-        height: 50%;
-      }
-    }
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
   }
 }
 
 article[class*='landing'] {
   display: grid;
+  overflow: hidden;
+  @extend %article-design;
 
-  @extend %place-design;
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -261,62 +36,11 @@ article[class*='landing'] {
     @include mobile-portrait();
   }
 }
-%place-design {
+%article-design {
   border-radius: 4rem;
-  grid-template: repeat(3, 1fr) / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-  background: rgba(Palettes.$indexLand-dark, 0.75);
+  background: Palettes.$indexLand-dark;
   border-left: 4px solid Palettes.$indexLand-light;
   border-right: 4px solid Palettes.$indexLand-light;
-  filter: drop-shadow(0 0 2rem Palettes.$indexLand-medium);
+  filter: drop-shadow(0 0 1rem Palettes.$indexLand-medium);
   box-shadow: inset 0 0 1rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-
-  aside[class*='aside'] {
-    figure[class*='figure'] {
-      opacity: 1;
-      margin-bottom: 0;
-      transition: opacity 0.25s ease-in-out;
-      background: rgba(Palettes.$indexLand-dark, 0.75);
-      box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 0.5); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        z-index: 1;
-        display: flex;
-        color: white;
-        font-weight: bold;
-        margin-bottom: 8px;
-        text-align: center;
-        letter-spacing: 4px;
-        align-items: flex-end;
-        justify-content: center;
-        grid-area: 1 / 1 / 2 / 2;
-        transition: opacity 1s ease-in-out;
-        text-shadow: 0 0 1rem rgba(black, 0.75);
-      }
-      img {
-        top: 0;
-        left: 50%;
-        width: 50%;
-        height: 50%;
-        opacity: 0.75;
-        margin-top: 8px;
-        position: absolute;
-        background: white;
-        mask-position: center;
-        mask-repeat: no-repeat;
-        grid-area: 2 / 1 / 3 / 2;
-        transform: translate(-50%, 0);
-      }
-    }
-    nav[class*='navigation'] {
-      button {
-        background: none;
-      }
-    }
-  }
 }

@@ -22,9 +22,15 @@
       *.back {
         //--|🠊 display: flex; 🠈|--\\
         text-align: left;
-        margin-bottom: 4px;
         padding: 0 8px 0 64px; //--|🠈 top / right / bottom / left 🠈|--\\
       }
+      /*
+      img {
+        margin: 8px;
+        width: 3rem;
+        height: 3rem;
+      }
+      */
     }
     &.missing {
       *.text,
@@ -42,9 +48,15 @@
       *.back {
         //--|🠊 display: flex; 🠈|--\\
         text-align: right;
-        margin-bottom: 4px;
         padding: 0 64px 0 8px; //--|🠈 top / right / bottom / left 🠈|--\\
       }
+      /*
+      img {
+        margin: 8px;
+        width: 3rem;
+        height: 3rem;
+      }
+      */
     }
     &.missing {
       *.text,
@@ -62,7 +74,6 @@
       //--|🠊 display: flex; 🠈|--\\
       padding: 0 8px; //--|🠈 top & bottom / left & right 🠈|--\\
       text-align: center;
-      margin-bottom: 6px;
     }
   }
   div[class*='_tex'] {
@@ -105,6 +116,13 @@
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 6px 0 48px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
+        /*
+        img {
+          margin: 4px;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+        */
       }
       &.missing {
         *.text,
@@ -122,6 +140,13 @@
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 48px 0 6px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
+        /*
+        img {
+          margin: 4px;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+        */
       }
       &.missing {
         *.text,
@@ -160,6 +185,12 @@
           //--|🠊 display: flex; 🠈|--\\
           padding: 0 4px 0 32px; //--|🠈 top / right / bottom / left 🠈|--\\
         }
+        /*
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+        */
       }
       &.missing {
         *.text,
