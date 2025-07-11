@@ -15,14 +15,13 @@
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   /* transition: transform 1s ease-in-out; */
-  div[id*='buttons'],
   div[id*='landing'],
+  div[id*='buttons'],
   div[id*='overtime'],
   div[id*='ticketing'],
   div[id*='hyperlink'] {
     display: grid;
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
-
     @include Transition.body-transition();
     @include Transition.header-transition();
     @include Transition.footer-transition();
