@@ -23,7 +23,7 @@ function Landing() {
 
         <Suspense fallback={<div className="display-1">Loading...</div>}>
           {/* <LandingHeader info={{ pageName: '[landing]', blockName: '<header>' }} /> */}
-          {/* <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} /> */}
+          <LandingMain info={{ pageName: '[landing]', blockName: '<main>' }} />
           {/* <LandingFooter info={{ pageName: '[landing]', blockName: '<footer>' }} /> */}
 
           {/* <LandingLeftbar info={{ pageName: '[landing]', blockName: '<leftbar>' }} /> */}

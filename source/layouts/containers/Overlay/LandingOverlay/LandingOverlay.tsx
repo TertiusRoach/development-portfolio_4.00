@@ -24,15 +24,15 @@ const LandingOverlay: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <section className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 3 }}>
+    <section id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 3 }}>
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="loading-section">
           <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif"
             alt="loading-logo"
+            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif"
           />
         </section>
-        <section className="select-section">
+        <section className="picking-section">
           <MenuLanding info={info} />
           <ArticleLanding info={info} />
         </section>
