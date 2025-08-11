@@ -81,7 +81,7 @@ section[id*='landing'] {
   grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   div[class*='carousel'] {
     display: flex;
-    @extend %show-section;
+    /* @extend %show-section; */
     @extend %place-design;
     flex-direction: column;
 
