@@ -15,6 +15,7 @@
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   /* transition: transform 1s ease-in-out; */
+  div[id*='buttons'],
   div[id*='landing'] {
     display: grid;
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
@@ -24,7 +25,7 @@ body {
     @include Transition.overlay-transition();
     @include Transition.sidebar-transition();
   }
-  div[id*='buttons'],
+
   div[id*='overtime'],
   div[id*='ticketing'],
   div[id*='hyperlink'] {
