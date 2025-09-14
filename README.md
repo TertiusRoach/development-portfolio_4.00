@@ -46,7 +46,7 @@
 # Logical Breakdown
 
 This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
-The aforementioned containers resides inside of `source/layouts/container/` and includes the following `${blockName}`.
+The aforementioned containers resides inside of `source/layouts/container/` and includes the following `${blockName}`
 
 - `Overlay`
 - `Leftbar`
@@ -269,17 +269,31 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 # Orchestrating Visibility
 
-Indicates if the application is currently in use and responsive (.active) or in a background, inactive state (.asleep).
-`.active` & `.asleep`
+**Indicates** if the application is currently in use:
+`.active` means it shows in the background, while `.asleep` means it's out of sight.
 
-Controls the visual presence of the block: .visible indicates it is currently displayed, while .hidden means it is not rendered on the screen.
-`.visible` & `.hidden`
+- `.active` & `.asleep`
 
-Indicates the display state of a potentially expandable element: .expanded shows the full content, while .collapsed hides a portion of it from view.
-`.expanded` & `.collapsed`
+---
 
-Controls the visual emphasis of the tag: .highlight applies styling to draw the user's attention, while .downplay reduces its visual prominence.
-`.highlight` & `.downplay`
+**Indicates** the display state of a potentially expandable element:
+`.expanded` shows the full content, while `.collapsed` hides a portion of it from view.
+
+- `.visible` & `.hidden`
+
+---
+
+**Controls** the visual presence of the block:
+`.visible` indicates it is currently displayed, while `.hidden` means it is not rendered on the screen.
+
+- `.expanded` & `.collapsed`
+
+---
+
+**Controls** the visual emphasis of the tag:
+`.highlight` applies styling to draw the user's attention, while `.downplay` reduces its visual prominence.
+
+- `.highlight` & `.downplay`
 
 ---
 
