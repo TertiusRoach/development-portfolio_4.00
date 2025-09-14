@@ -291,9 +291,7 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-# Tertius Roach's [Trinity {Apps]
-
-## Track a Day
+# **Tertius Roach's Trinity {Apps]**
 
 ## Track a Day
 
