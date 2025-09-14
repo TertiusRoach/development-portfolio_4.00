@@ -1,4 +1,4 @@
-# Tertius Roach's [ Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 ---
 
@@ -274,21 +274,15 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 - `.active` & `.asleep`
 
----
-
 **Indicates** the display state of a potentially expandable element:
 `.expanded` shows the full content, while `.collapsed` hides a portion of it from view.
 
 - `.visible` & `.hidden`
 
----
-
 **Controls** the visual presence of the block:
 `.visible` indicates it is currently displayed, while `.hidden` means it is not rendered on the screen.
 
 - `.expanded` & `.collapsed`
-
----
 
 **Controls** the visual emphasis of the tag:
 `.highlight` applies styling to draw the user's attention, while `.downplay` reduces its visual prominence.
@@ -297,35 +291,40 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-# Determining Responsibilities
-
-For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
+# Tertius Roach's [Trinity {Apps]
 
 ## Track a Day
 
-Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
+## Track a Day
 
-> What's your vocation?
-> `.established` & `.freelancing`
+Frustrated with spreadsheets and done with guesswork?
+Discipline gets rewarded because it benefits all parties.
+Just track your time, and let the numbers speak for themselves.
+
+> What's your vocation? - `.established` & `.freelancing`
 
 ## Log a Ticket
 
-No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+No one likes filling out tickets.
+Until we simplify it it for easy validation.
+Making it so easy to become fun over a while.
 
-> What's your position?
-> `.manager` & `.employee`
+> What's your position? - `.manager` & `.employee`
 
 ## Find a Link
 
-Instantly access knowledge bases for all your company's applications through streamlined links.
+Instantly access all base links if the company.
+Applications streamlined like a highway pit stop for links.
+Track the inner workings of the business while streamlining workflows.
 
-> What's your occupation?
-> `.specialist` & `.technician`
+> What's your occupation? - `.specialist` & `.technician`
+
+---
 
 Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
 `.apple` & `.android`
 `.microsoft` & `.google`
-`.planet-fitness` & `.anytime-fitness`
+`.anytime-fitness` & `.planet-fitness`
 
 ---
 
