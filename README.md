@@ -8,7 +8,6 @@ An office application that tracks overtime, logs tickets and stores links. For d
 
 ## Track a Day
 
-![track-a-day](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/track-a-day/primary-light.svg)
 Frustrated with spreadsheets and done with guesswork?
 Track your time, and let the numbers speak for itself.
 
@@ -18,9 +17,8 @@ Track your time, and let the numbers speak for itself.
 > Global Reach
 > `.apple` or `.android`
 
-## Log a Ticket
+## [Log a Ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
 
-![log-a-ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
 No one likes tickets, unless it's easy,
 with rewarding perks for the competitive.
 
@@ -30,9 +28,8 @@ with rewarding perks for the competitive.
 > Improve Efficiency
 > `.anytime-fitness` or `.planet-fitness`
 
-## Find a Link
+## [Find a Link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
 
-![find-a-link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
 Instantly access the links you need from,
 Spreadsheets, websites, schedules, or docs.
 
@@ -42,7 +39,7 @@ Spreadsheets, websites, schedules, or docs.
 > Consider Technologies
 > `.microsoft` (Excel) or `.google` (Sheets)
 
-## Add Space
+## [Pick a Page](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.01/source/assets/svg-files/trinity-apps/pick-a-page/logo-white.svg)
 
 Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
 

@@ -392,3 +392,47 @@ HyperlinkOccupation: `.technician`
     Ensure strategic cohesion between technical, human, and operational systems.
 
 ---
+
+## **Thesis**
+
+### Track a Day
+
+![track-a-day](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/track-a-day/primary-light.svg)
+Frustrated with spreadsheets and done with guesswork?
+Track your time, and let the numbers speak for itself.
+
+> What's your vocation?
+> `.freelancing` & `.established`
+
+> Global Reach
+> `.apple` or `.android`
+
+### Log a Ticket
+
+![log-a-ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
+No one likes tickets, unless it's easy,
+with rewarding perks for the competitive.
+
+> What's your position?
+> `.manager` & `.employee`
+
+> Improve Efficiency
+> `.anytime-fitness` or `.planet-fitness`
+
+### Find a Link
+
+![find-a-link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
+Instantly access the links you need from,
+Spreadsheets, websites, schedules, or docs.
+
+> What's your occupation?
+> `.specialist` & `.technician`
+
+> Consider Technologies
+> `.microsoft` (Excel) or `.google` (Sheets)
+
+## Pick a Page
+
+Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
+
+---
