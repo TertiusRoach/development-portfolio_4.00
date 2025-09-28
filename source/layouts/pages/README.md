@@ -257,9 +257,13 @@ HyperlinkOccupation: `.technician`
     Country: United Kingdom
 
 **Department: Coordination**
+
 Head of Department: **True**
+
 OvertimeVocation: `.established`
+
 TicketingPosition: `.manager`
+
 HyperlinkOccupation: `.specialist`
 
 ### **18.** Fullname: Malik Tremaine Carter
