@@ -1,4 +1,4 @@
-# Tertius Roach's Development Portfolio
+# Tertius Roach's [Development Portfolio](https://github.com/TertiusRoach/development-portfolio_4.00)
 
 ## **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
 
@@ -6,9 +6,9 @@
 
 ---
 
----
-
 # [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+
+---
 
 This determines how your front-end displays the information depending on the database information.
 
@@ -51,9 +51,9 @@ Company Comparisons because it's an interesting thought experiment: The '&' icon
 
 ---
 
----
-
 # Back-end Installation
+
+---
 
 You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
 
