@@ -291,31 +291,9 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-# **Tertius Roach's Trinity {Apps]**
+# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
 
-## Track a Day
-
-Frustrated with spreadsheets and done with guesswork?
-Discipline gets rewarded because it benefits all parties.
-Just track your time, and let the numbers speak for themselves.
-
-> What's your vocation? - `.established` & `.freelancing`
-
-## Log a Ticket
-
-No one likes filling out tickets.
-Until we simplify it it for easy validation.
-Making it so easy to become fun over a while.
-
-> What's your position? - `.manager` & `.employee`
-
-## Find a Link
-
-Instantly access all base links if the company.
-Applications streamlined like a highway pit stop for links.
-Track the inner workings of the business while streamlining workflows.
-
-> What's your occupation? - `.specialist` & `.technician`
+An office application that tracks overtime, logs tickets and stores links.
 
 ---
 
