@@ -10,7 +10,11 @@ In the end, the company itself becomes the protagonist—an ever-growing organis
 
 ---
 
+---
+
 ## **Character Lore**
+
+---
 
 ### **01.** Jane Lester
 
@@ -30,6 +34,8 @@ TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **02.** Hammad Dean
 
 ![hammad-dean](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/hammad-dean.png)
@@ -47,6 +53,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.technician`
+
+---
 
 ### **03.** Dimitri Lewis
 
@@ -66,6 +74,8 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **04.** Dale Sutton
 
 ![dale-sutton](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/dale-sutton.png)
@@ -83,6 +93,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
+
+---
 
 ### **05.** Dr. Alaric Voss
 
@@ -102,6 +114,8 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **06.** Conrad Guy
 
 ![conrad-guy](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/conrad-guy.png)
@@ -119,6 +133,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
+
+---
 
 ### **07.** Daniel Meyers
 
@@ -138,6 +154,8 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
 
+---
+
 ### **08.** Ms. Kady Deacon
 
 ![kady-deacon](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/kady-deacon.png)
@@ -155,6 +173,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
+
+---
 
 ### **09.** Seamus O'Donnell
 
@@ -174,6 +194,8 @@ TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **10.** Sipho Dlamini
 
 ![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/sipho-dlamini.png)
@@ -191,6 +213,8 @@ OvertimeVocation: `.freelancing`
 TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
+
+---
 
 ### **11.** Tasneem Kemp
 
@@ -210,6 +234,8 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
 
+---
+
 ### **12.** Danish Copeland
 
 ![danish-copeland](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/danish-copeland.png)
@@ -227,6 +253,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
+
+---
 
 ### **13.** Elliot Crane
 
@@ -246,6 +274,8 @@ TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **14.** Zuberi Thorne
 
 ![zuberi-thorne](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/zuberi-thorne.png)
@@ -263,6 +293,8 @@ OvertimeVocation: `.freelancing`
 TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
+
+---
 
 ### **15.** Nyra Solari
 
@@ -282,6 +314,8 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
 
+---
+
 ### **16.** Victor Langston
 
 ![victor-langston](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/victor-langston.png)
@@ -299,6 +333,8 @@ OvertimeVocation: `.established`
 TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
+
+---
 
 ### **17.** Aelin Darrow
 
@@ -340,7 +376,11 @@ HyperlinkOccupation: `.technician`
 
 ---
 
+---
+
 ## **Departments**
+
+---
 
 ### Owner / CEO / Founder
 
@@ -349,12 +389,16 @@ HyperlinkOccupation: `.technician`
     Oversees profitability, sustainability, and high-level decision-making.
     Having achieved foundational goals, now steers purpose toward legacy, innovation, and impact.
 
+---
+
 ### Technical Department
 
     Develop, maintain, and troubleshoot software, hardware, and digital infrastructure.
     Ensure cybersecurity and data integrity across all systems.
     Support other departments with tech solutions and automation tools.
     Research and implement emerging technologies to improve efficiency.
+
+---
 
 ### Admin Department
 
@@ -363,12 +407,16 @@ HyperlinkOccupation: `.technician`
     Maintain records, reports, and compliance documentation.
     Serve as the organizational backbone for day-to-day operations.
 
+---
+
 ### Maintenance Department
 
     Ensure physical infrastructure is safe, functional, and well-maintained.
     Conduct routine inspections and repairs of equipment and facilities.
     Coordinate with Technical and Operational departments for system upkeep.
     Respond to emergencies and minimize downtime.
+
+---
 
 ### Human Resources Department
 
@@ -377,6 +425,8 @@ HyperlinkOccupation: `.technician`
     Uphold workplace policies, ethics, and legal compliance.
     Foster a positive and inclusive work culture.
 
+---
+
 ### Operational Department
 
     Execute core business functions and service delivery.
@@ -384,12 +434,16 @@ HyperlinkOccupation: `.technician`
     Coordinate with other departments to meet strategic goals.
     Adapt processes to meet client or market demands.
 
+---
+
 ### Coordination Department
 
     Act as the central hub for interdepartmental communication and alignment.
     Identify inefficiencies and streamline cross-functional workflows.
     Monitor KPIs across departments and report to leadership.
     Ensure strategic cohesion between technical, human, and operational systems.
+
+---
 
 ---
 
@@ -404,9 +458,6 @@ Track your time, and let the numbers speak for itself.
 > What's your vocation?
 > `.freelancing` & `.established`
 
-> Global Reach
-> `.apple` or `.android`
-
 ### Log a Ticket
 
 ![log-a-ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
@@ -416,9 +467,6 @@ with rewarding perks for the competitive.
 > What's your position?
 > `.manager` & `.employee`
 
-> Improve Efficiency
-> `.anytime-fitness` or `.planet-fitness`
-
 ### Find a Link
 
 ![find-a-link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
@@ -427,9 +475,6 @@ Spreadsheets, websites, schedules, or docs.
 
 > What's your occupation?
 > `.specialist` & `.technician`
-
-> Consider Technologies
-> `.microsoft` (Excel) or `.google` (Sheets)
 
 ## Pick a Page
 

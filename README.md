@@ -1,12 +1,20 @@
-# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+# Development Portfolio 4.00
+
+## Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 ---
 
-# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+---
+
+# [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+
+You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
 
 An office application that tracks overtime, logs tickets and stores links. For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
 
-## [Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/assets/svg-files/trinity-apps/track-a-day)
+## **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+
+### [Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/assets/svg-files/trinity-apps/track-a-day)
 
 Frustrated with spreadsheets and done with guesswork?
 Track your time, and let the numbers speak for itself.
@@ -17,7 +25,7 @@ Track your time, and let the numbers speak for itself.
 > Global Reach
 > `.apple` or `.android`
 
-## [Log a Ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
+### [Log a Ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
 
 No one likes tickets, unless it's easy,
 with rewarding perks for the competitive.
@@ -28,7 +36,7 @@ with rewarding perks for the competitive.
 > Improve Efficiency
 > `.anytime-fitness` or `.planet-fitness`
 
-## [Find a Link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
+### [Find a Link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
 
 Instantly access the links you need from,
 Spreadsheets, websites, schedules, or docs.
@@ -39,9 +47,15 @@ Spreadsheets, websites, schedules, or docs.
 > Consider Technologies
 > `.microsoft` (Excel) or `.google` (Sheets)
 
-## [Pick a Page](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.01/source/assets/svg-files/trinity-apps/pick-a-page/logo-white.svg)
+### [Pick a Page](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.01/source/assets/svg-files/trinity-apps/pick-a-page/logo-white.svg)
 
 Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
+
+---
+
+---
+
+# Back-end Development
 
 ## Orchestrating Visibility
 
@@ -68,73 +82,9 @@ Company Comparisons because it's an interesting thought experiment: The '&' icon
 
 `.highlight` applies styling to draw the user's attention, while `.downplay` reduces its visual prominence.
 
-## Reviewed Notes
+---
 
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) Note Here [🠋](https://www.compart.com/en/unicode/U+1F80B)|--\\
-
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) Note Here [🠉](https://www.compart.com/en/unicode/U+1F809)|--\\
-
-# Logical Breakdown
-
-This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
-The aforementioned containers resides inside of `source/layouts/container/` and includes the following `${blockName}`
-
-- `Overlay`
-- `Leftbar`
-- `Rightbar`
-
-- `Header`
-- `Main`
-- `Footer`
-
-These containers utilize the following HTML tags: `<header>`, `<section>`, `<main>`, `<aside>` and `<footer>`.
-
-- `Overlay <section id="${pageName}-overlay">`
-- `Leftbar <aside id="${pageName}-leftbar">`
-- `Rightbar <aside id="${pageName}-rightbar">`
-
-- `Header <header id="${pageName}-rightbar">`
-- `Main <main id="${pageName}-rightbar">`
-- `Footer <footer id="${pageName}-rightbar">`
-
-These `${blockName}` keywords avoids any asynchronous overlapping when it comes to CSS styling.
-
-# Terminal Commands
-
-//--|🠋 Launch front-end 🠈|--//
-
-    Open Terminal & type in...
-
-> npm run app
-
-//--|🠋 Launch back-end 🠈|--//
-
-    Go to 'root\source\modules\server'
-    Open Terminal & type in...
-
-> nodemon landing
-
-//--|🠋 Compile project into public 🠈|--//
-
-> npm run deploy
-
-//--|🠋 Launch testing environment 🠈|--//
-
-> npm run launch
-
-//--|🠋 Close testing environment 🠈|--//
-
-> npm run stop
-
-//--|🠋 Switch GitHub branches 🠈|--//
-
-> git checkout 4.01
-
-# Application Installation
+## Application Installation
 
 Click on the top right green button with the text of "<> Code" and "Open with [Visual Studio](https://visualstudio.microsoft.com/)".
 Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of your choice along with [Node.js](https://nodejs.org/en).
@@ -184,6 +134,8 @@ Install [Visual Studio Code](https://code.visualstudio.com/) or an editor of you
     npm install --save-dev extract-text-webpack-plugin
     npm install --save-dev css-minimizer-webpack-plugin
     npm install --save-dev @babel/core @babel/preset-env
+
+---
 
 ## Installation Breakdown
 
@@ -296,108 +248,123 @@ Entry Point: source/index.tsx |🠊 source/layouts/containers/Main/IndexMain/Ind
 
 > Open Appropriate Terminal: Ctrl + C
 
-# [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) Development
+---
 
-You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+## Logical Breakdown
+
+This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
+The aforementioned containers resides inside of `source/layouts/container/` and includes the following `${blockName}`
+
+- `Overlay`
+- `Leftbar`
+- `Rightbar`
+
+- `Header`
+- `Main`
+- `Footer`
+
+These containers utilize the following HTML tags: `<header>`, `<section>`, `<main>`, `<aside>` and `<footer>`.
+
+- `Overlay <section id="${pageName}-overlay">`
+- `Leftbar <aside id="${pageName}-leftbar">`
+- `Rightbar <aside id="${pageName}-rightbar">`
+
+- `Header <header id="${pageName}-header">`
+- `Main <main id="${pageName}-main">`
+- `Footer <footer id="${pageName}-footer">`
+
+These `${blockName}` keywords avoids any asynchronous overlapping when it comes to CSS styling.
 
 ---
 
-## Page Links
+## Terminal Commands
 
-[Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
+//--|🠋 Launch front-end 🠈|--//
 
-[My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
+    Open Terminal & type in...
 
-[Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
+> npm run app
 
-[Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
+//--|🠋 Launch back-end 🠈|--//
 
-[Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
+    Go to 'root\source\modules\server'
+    Open Terminal & type in...
+
+> nodemon landing
+
+//--|🠋 Compile project into public 🠈|--//
+
+> npm run deploy
+
+//--|🠋 Launch testing environment 🠈|--//
+
+> npm run launch
+
+//--|🠋 Close testing environment 🠈|--//
+
+> npm run stop
+
+//--|🠋 Switch GitHub branches 🠈|--//
+
+> git checkout 4.01
+
+---
 
 ## Folder Structure
 
-```bash
-root/
-├── .vscode/
-│   └── launch.json
-├── public/ # Final product for users
-│   ├── index.css
-│   ├── index.js
-│   └── index.html
-├── source/
-│   ├── assets/
-│   │   ├── gif-files/
-│   │   ├── svg-files/
-│   │   └── png-files/
-│   ├── layouts/
-│   │   ├── containers/
-│   │   ├── components/
-│   │   ├── designs/
-│   │   ├── styles/
-│   │   └── pages/
-│   ├── modules/
-│   │   ├── context/
-│   │   ├── routes/
-│   │   ├── server/
-│   │   └── tools/
-│   ├── utilities/
-│   │   ├── ~flex-setup/
-│   │   ├── ~grid-setup/
-│   │   ├── animations/
-│   │   ├── projects/
-│   │   └── vendors/
-│   ├── index.html
-│   ├── index.scss
-│   └── index.tsx
-├── README.md
-├── .gitignore
-├── package.json
-├── tsconfig.json
-├── package-lock.json
-└── webpack.config.js
-```
+    ```bash
+    root/
+    ├── .vscode/
+    │   └── launch.json
+    ├── public/ # Final product for users
+    │   ├── index.css
+    │   ├── index.js
+    │   └── index.html
+    ├── source/
+    │   ├── assets/
+    │   │   ├── gif-files/
+    │   │   ├── svg-files/
+    │   │   └── png-files/
+    │   ├── layouts/
+    │   │   ├── containers/
+    │   │   ├── components/
+    │   │   ├── designs/
+    │   │   ├── styles/
+    │   │   └── pages/
+    │   ├── modules/
+    │   │   ├── context/
+    │   │   ├── routes/
+    │   │   ├── server/
+    │   │   └── tools/
+    │   ├── utilities/
+    │   │   ├── ~flex-setup/
+    │   │   ├── ~grid-setup/
+    │   │   ├── animations/
+    │   │   ├── projects/
+    │   │   └── vendors/
+    │   ├── index.html
+    │   ├── index.scss
+    │   └── index.tsx
+    ├── README.md
+    ├── .gitignore
+    ├── package.json
+    ├── tsconfig.json
+    ├── package-lock.json
+    └── webpack.config.js
+    ```
 
 ---
 
-## Archived Navigation
+## Reviewed Notes
 
-<details>
-        <summary><strong>Documentation</strong></summary>
-        <ul>
-            <li>
-                <a href="#logical-breakdown">|🠋 Logical Breakdown 🠋|</a>
-                <!--
-                <ul>
-                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-                </ul> -->
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#terminal-commands">|🠋 Development Commands 🠋|</a>
-                <ul>
-                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-                </ul>
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#application-installation">|🠋 Application Installation 🠋|</a>
-                <ul>
-                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
-                </ul>
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#back-end-development">|🠋 Back-end Development 🠋|</a>
-                <ul>
-                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
-                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
-                </ul>
-            </li>
-            <br>
-            <li>
-                <a href="#page-links">|🠊 Page Links 🠈|</a>
-            </li>
-        </ul>
-</details>
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
+
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) Note Here [🠋](https://www.compart.com/en/unicode/U+1F80B)|--\\
+
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
+
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) Note Here [🠉](https://www.compart.com/en/unicode/U+1F809)|--\\
+
+---
 
 ---
