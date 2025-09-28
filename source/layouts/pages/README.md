@@ -1,4 +1,4 @@
-# [**TraLogFin**](https://drive.google.com/drive/u/3/folders/13w880Vx_4PHTMCb6CpzUfrhlmO-chIpI) Demonstration
+# **[Tra](https://docs.google.com/spreadsheets/d/1jOIurYeQ35Wca4VcsSZ5h1qp0LUPok5WbzI3hjFhzak/edit?gid=0#gid=0)[Log](https://docs.google.com/spreadsheets/d/1DhICUSo1Yh6UU1BN-rcXAzEdyUKjdcM_bu9thgOzngY/edit?gid=0#gid=0)[Fin](https://docs.google.com/spreadsheets/d/1OYBoeSTg3O0M1subaR3_sYkzcAKJjV9OE4Ks19639Pk/edit?gid=0#gid=0)** Demonstration
 
 The company is less an organization than a pressure cooker of competing survival strategies. Jane Lester’s empire thrives not on sustainable growth, but on manufactured crises and charisma-fueled expansion. Every department reflects a different philosophy of Effort Economy—some burning themselves out to hold the line (Hammad, Elliot), some retreating into protective silos (Voss, Seamus), others freelancing from within (Dimitri, Sipho, Malik), and a few clinging to outdated ideals of order and routine (Dale, Victor, Conrad).
 
