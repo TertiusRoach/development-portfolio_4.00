@@ -1,6 +1,4 @@
-# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
-
-# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) or **[Demonstration Lore](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
 
 An office application that tracks overtime, logs tickets and stores links.
 
