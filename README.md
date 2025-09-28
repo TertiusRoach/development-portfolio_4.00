@@ -1,6 +1,8 @@
-# Development Portfolio 4.00
+# Tertius Roach's Development Portfolio
 
-## Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+## **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+
+## [**Trinity {Apps\]**](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 ---
 
@@ -8,11 +10,7 @@
 
 # [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
 
-You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
-
-An office application that tracks overtime, logs tickets and stores links. For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
-
-## **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+This determines how your front-end displays the information depending on the database information.
 
 ### [Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/assets/svg-files/trinity-apps/track-a-day)
 
@@ -55,7 +53,11 @@ Company Comparisons because it's an interesting thought experiment: The '&' icon
 
 ---
 
-# Back-end Development
+# Back-end Installation
+
+You can find the [source code here](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server) and the full [tutorial playlist here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) for a deeper dive into [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This documentation provides a concise overview of the steps involved in coding, implementing, testing, and running a MongoDB database connected to your project.
+
+An office application that tracks overtime, logs tickets and stores links. For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
 
 ## Orchestrating Visibility
 
