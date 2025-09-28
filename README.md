@@ -1,38 +1,50 @@
-# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) or **[Demonstration Lore](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+# Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-An office application that tracks overtime, logs tickets and stores links.
+---
 
-For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
+# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
+
+An office application that tracks overtime, logs tickets and stores links. For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
 
 ## Track a Day
 
-Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
+![track-a-day](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/track-a-day/primary-light.svg)
+Frustrated with spreadsheets and done with guesswork?
+Track your time, and let the numbers speak for itself.
 
 > What's your vocation?
-> `.established` & `.freelancing`
+> `.freelancing` & `.established`
+
+> Global Reach
+> `.apple` or `.android`
 
 ## Log a Ticket
 
-No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+![log-a-ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
+No one likes tickets, unless it's easy,
+with rewarding perks for the competitive.
 
 > What's your position?
 > `.manager` & `.employee`
 
+> Improve Efficiency
+> `.anytime-fitness` or `.planet-fitness`
+
 ## Find a Link
 
-Instantly access knowledge bases for all your company's applications through streamlined links.
+![find-a-link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
+Instantly access the links you need from,
+Spreadsheets, websites, schedules, or docs.
 
 > What's your occupation?
 > `.specialist` & `.technician`
 
+> Consider Technologies
+> `.microsoft` (Excel) or `.google` (Sheets)
+
 ## Add Space
 
 Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
-`.apple` & `.android`
-`.microsoft` & `.google`
-`.anytime-fitness` & `.planet-fitness`
-
----
 
 ## Orchestrating Visibility
 
