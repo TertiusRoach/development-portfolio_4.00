@@ -1,4 +1,5 @@
 bin
+.txt
 .env
 .wsuo
 6.5.1
