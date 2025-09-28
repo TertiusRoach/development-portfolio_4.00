@@ -1,47 +1,75 @@
 # Tertius Roach's [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
----
+# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
 
-<details>
-        <summary><strong>Documentation</strong></summary>
-        <ul>
-            <li>
-                <a href="#logical-breakdown">|🠋 Logical Breakdown 🠋|</a>
-                <!--
-                <ul>
-                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-                </ul> -->
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#terminal-commands">|🠋 Development Commands 🠋|</a>
-                <ul>
-                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
-                </ul>
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#application-installation">|🠋 Application Installation 🠋|</a>
-                <ul>
-                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
-                </ul>
-            </li>
-            <!-- <br> -->
-            <li>
-                <a href="#back-end-development">|🠋 Back-end Development 🠋|</a>
-                <ul>
-                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
-                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
-                </ul>
-            </li>
-            <br>
-            <li>
-                <a href="#page-links">|🠊 Page Links 🠈|</a>
-            </li>
-        </ul>
-</details>
+An office application that tracks overtime, logs tickets and stores links.
+
+For demonstration purposes, the `roleName` will represent the user's selected company position, influencing the application's behavior accordingly.
+
+## Track a Day
+
+Frustrated with spreadsheets? Done with guesswork? Just track your time, and let the numbers speak for themselves.
+
+> What's your vocation?
+> `.established` & `.freelancing`
+
+## Log a Ticket
+
+No one likes filling out tickets, but this makes it so easy, you won’t even think about it.
+
+> What's your position?
+> `.manager` & `.employee`
+
+## Find a Link
+
+Instantly access knowledge bases for all your company's applications through streamlined links.
+
+> What's your occupation?
+> `.specialist` & `.technician`
+
+## Add Space
+
+Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
+`.apple` & `.android`
+`.microsoft` & `.google`
+`.anytime-fitness` & `.planet-fitness`
 
 ---
+
+## Orchestrating Visibility
+
+**Reveals** the applications currently in use:
+`.active` means it shows in the background, while `.asleep` means it's out of sight.
+
+> `.active` & `.asleep`
+
+**Indicates** the display state of a potentially expandable element:
+
+> `.visible` & `.hidden`
+
+`.expanded` shows the full content, while `.collapsed` hides a portion of it from view.
+
+**Controls** the visual presence of the block:
+
+> `.expanded` & `.collapsed`
+
+`.visible` indicates it is currently displayed, while `.hidden` means it is not rendered on the screen.
+
+**Controls** the visual emphasis of the tag:
+
+> `.highlight` & `.downplay`
+
+`.highlight` applies styling to draw the user's attention, while `.downplay` reduces its visual prominence.
+
+## Reviewed Notes
+
+//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
+
+//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) Note Here [🠋](https://www.compart.com/en/unicode/U+1F80B)|--\\
+
+//--|[🠈](https://www.compart.com/en/unicode/U+1F808) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
+
+//--|[🠉](https://www.compart.com/en/unicode/U+1F809) Note Here [🠉](https://www.compart.com/en/unicode/U+1F809)|--\\
 
 # Logical Breakdown
 
@@ -267,52 +295,6 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 ---
 
-# Orchestrating Visibility
-
-**Indicates** if the application is currently in use:
-`.active` means it shows in the background, while `.asleep` means it's out of sight.
-
-- `.active` & `.asleep`
-
-**Indicates** the display state of a potentially expandable element:
-`.expanded` shows the full content, while `.collapsed` hides a portion of it from view.
-
-- `.visible` & `.hidden`
-
-**Controls** the visual presence of the block:
-`.visible` indicates it is currently displayed, while `.hidden` means it is not rendered on the screen.
-
-- `.expanded` & `.collapsed`
-
-**Controls** the visual emphasis of the tag:
-`.highlight` applies styling to draw the user's attention, while `.downplay` reduces its visual prominence.
-
-- `.highlight` & `.downplay`
-
----
-
-# **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
-
-An office application that tracks overtime, logs tickets and stores links.
-
----
-
-Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
-`.apple` & `.android`
-`.microsoft` & `.google`
-`.anytime-fitness` & `.planet-fitness`
-
----
-
-## Reviewed Notes
-
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) Note Here [🠋](https://www.compart.com/en/unicode/U+1F80B)|--\\
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) Note Here [🠉](https://www.compart.com/en/unicode/U+1F809)|--\\
-
-## Integrated HTML Navigation
-
 ## Page Links
 
 [Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
@@ -367,3 +349,48 @@ root/
 ├── package-lock.json
 └── webpack.config.js
 ```
+
+---
+
+## Archived Navigation
+
+<details>
+        <summary><strong>Documentation</strong></summary>
+        <ul>
+            <li>
+                <a href="#logical-breakdown">|🠋 Logical Breakdown 🠋|</a>
+                <!--
+                <ul>
+                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
+                </ul> -->
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#terminal-commands">|🠋 Development Commands 🠋|</a>
+                <ul>
+                    <li><a href="#visual-studio-code">|🠊 Visual Studio Code 🠈|</a></li>
+                </ul>
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#application-installation">|🠋 Application Installation 🠋|</a>
+                <ul>
+                    <li><a href="#installation-breakdown">|🠊 Installation Breakdown 🠈|</a></li>
+                </ul>
+            </li>
+            <!-- <br> -->
+            <li>
+                <a href="#back-end-development">|🠋 Back-end Development 🠋|</a>
+                <ul>
+                    <li><a href="#folder-structure-reference">|🠊 Folder Structure Reference 🠈|</a></li>
+                    <li><a href="#visual-states">|🠊 Visual States 🠈|</a></li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <a href="#page-links">|🠊 Page Links 🠈|</a>
+            </li>
+        </ul>
+</details>
+
+---
