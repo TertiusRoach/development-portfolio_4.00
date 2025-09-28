@@ -14,6 +14,8 @@ In the end, the company itself becomes the protagonist—an ever-growing organis
 
 ### **01.** Jane Lester
 
+![jane-lester](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.01/source/assets/png-files/tralogfin-demonstration/original/jane-lester.png)
+
 > Jane is the quintessential "visionary chaos" CEO. She can raise $10 million in a single meeting but sees her employees as resources rather than people. Her purpose is not profit, but the ego-driven thrill of expansion, which she pursues by constantly breaking boundaries. Disruptive technology, the sound of her own voice in an all-hands meeting, the myth of the 80-hour work week. Processes, quarterly reports, anyone who asks for a vacation or a raise. Charisma, uncanny ability to secure funding, strategic ruthlessness. Detached from reality, short attention span, addicted to crisis (she creates them to feel productive). To make the company so big that its success retroactively justifies all the collateral damage.
 
     Country: United States (Silicon Valley Origin)
