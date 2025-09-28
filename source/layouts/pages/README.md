@@ -62,9 +62,13 @@
     Country: United States (Silicon Valley Origin)
 
 **Department: Owner/CEO**
+
 Head of Department: **True**
+
 OvertimeVocation: `.established`
+
 TicketingPosition: `.manager`
+
 HyperlinkOccupation: `.specialist`
 
 ### **02.** Hammad Dean
