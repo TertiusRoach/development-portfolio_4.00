@@ -1,8 +1,6 @@
-# Tertius Roach's [Development Portfolio](https://github.com/TertiusRoach/development-portfolio_4.00)
+# **Tertius Roach's** [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-## **[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)**
-
-## [**Trinity {Apps\]**](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+## [**TraLogFin**](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages) Testing
 
 ---
 
