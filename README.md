@@ -6,16 +6,12 @@ This project started the honest way, with a mistake I never wanted to repeat. Wh
 
 Where it is going is simple and ambitious at the same time. TraLogFin is becoming a small, sharp suite that scales without losing its manners. A front end that stays structured and readable as it grows, a workflow that stays fast even when the data gets real, and a codebase that welcomes contributors because the intent is obvious the moment you open the project. If you like tools that value clarity, speed, and practical design over ceremony, you are exactly the kind of person I want reading this, using it, and helping push it forward.
 
-A three-headed answer to workplace chaos. This is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
-
 **[View Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)** | **[Source Code](https://github.com/TertiusRoach/development-portfolio_4.00)**
 
 ---
 
 ## Table of Contents
 
-- [Origin Story](#origin-story)
-- [Vision](#vision)
 - [Testing Environment](#testing-environment)
 - [Front-end Database](#front-end-database)
   - [Track a Day](#track-a-day)
@@ -38,26 +34,6 @@ A three-headed answer to workplace chaos. This is the kind of tool you open, do 
 - [Documentation Standards](#documentation-standards)
   - [Review Flags](#review-flags)
   - [Git Workflow](#git-workflow)
-
----
-
-## Origin Story
-
-This project started the honest way, with a mistake I never wanted to repeat. While moderating multiple studios at Akademia, I accidentally deleted someone's ticket on a clunky system I did not build. That moment burned in the lesson: **Good software should protect users from the worst day they are having, not amplify it.**
-
-TraLogFin is me building the system I wish I had then—cleaner flows, safer patterns, and a user experience that does not ask for permission to waste your time.
-
----
-
-## Vision
-
-Where it is going is simple and ambitious at the same time. TraLogFin is becoming a small, sharp suite that scales without losing its manners:
-
-- A **front end** that stays structured and readable as it grows
-- A **workflow** that stays fast even when the data gets real
-- A **codebase** that welcomes contributors because the intent is obvious the moment you open the project
-
-> If you like tools that value clarity, speed, and practical design over ceremony, you are exactly the kind of person I want reading this, using it, and helping push it forward.
 
 ---
 
