@@ -1,4 +1,4 @@
-# **Tertius Roach’s [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)** — Track a Day, Log a Ticket, Find a Link
+# **Tertius Roach’s** [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 TraLogFin is my three headed answer to workplace chaos: Track a Day, Log a Ticket, Find a Link. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
 
@@ -37,64 +37,52 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 
 ---
 
-## Testing Environment
-
-**[View Database Characters](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)**
+## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)
 
 This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
 
 ---
 
-## Front-end Database
-
-**[Technical Documentation](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)**
+## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
 
 ### Track a Day
-
-\*\*[View Assets](https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/time-tracking-icon.svg
 
 Frustrated with spreadsheets and done with guesswork? Track time cleanly and let totals speak.
 
 | Configuration             | Options                         |
 | ------------------------- | ------------------------------- |
 | **What's your vocation?** | `.freelancing` · `.established` |
-| **Global reach**          | `.apple` · `.android`           |
 
 ### Log a Ticket
 
-\*\*[View Logo](https://play-lh.googleusercontent.com/UPx_cwE2NZh-WCsgrcl2NycpxrptpWMDvL7hNlKpCFZMUghdYha5BHC6slvz052wKmU=w240-h480-rw
-
 Ticketing should feel like momentum, not admin. The goal is quick capture, clear ownership, and visible progress.
 
-| Configuration             | Options                                |
-| ------------------------- | -------------------------------------- |
-| **What's your position?** | `.manager` · `.employee`               |
-| **Improve efficiency**    | `.anytime-fitness` · `.planet-fitness` |
+| Configuration             | Options                  |
+| ------------------------- | ------------------------ |
+| **What's your position?** | `.manager` · `.employee` |
 
 ### Find a Link
 
-\*\*[View Logo](https://play-lh.googleusercontent.com/QXwQaI4-mYKWxxp082Tr5d0KktYM0HKdNJqB-gDTynWVYG-Ye11sf3_8VxBDcxnbqFr-
-
 A fast index for links a team actually uses. Think spreadsheets, schedules, docs, dashboards.
 
-| Configuration               | Options                                   |
-| --------------------------- | ----------------------------------------- |
-| **What's your occupation?** | `.specialist` · `.technician`             |
-| **Consider technologies**   | `.microsoft` (Excel) · `.google` (Sheets) |
+| Configuration               | Options                       |
+| --------------------------- | ----------------------------- |
+| **What's your occupation?** | `.specialist` · `.technician` |
 
 ### Pick a Page
 
-\*\*[View Logo](https://i.ytimg.com/vi/wWOGTuds0xs/sddefault.jpg
-
 Company comparisons as a thought experiment: the `&` icon looks like a dog scratching its anus.
+
+| Configuration             | Options                                   |
+| ------------------------- | ----------------------------------------- |
+| **Layouts Resolutions**   | `.landscape` · `.portrait` · `.square`    |
+| **Consider Technologies** | `.microsoft` (Excel) · `.google` (Sheets) |
 
 ---
 
-## Back-end Installation & Development
-
-**[Back-end Documentation](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)** | **[Source Code](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)** | **[MongoDB Tutorial Playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA)**
+## [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) [Installation](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) & [Development](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)
 
 This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed server module to support an office application suite that tracks overtime, logs tickets, and stores links.
 
@@ -367,14 +355,14 @@ npm install --save-dev dotenv-webpack
 
 ### VSCode Tips
 
-| Action                    | Shortcut                                                 | Description                                      |
-| ------------------------- | -------------------------------------------------------- | ------------------------------------------------ |
-| **Collapse Folders**      | `Ctrl + Shift + P` → Type "Collapse Folders in Explorer" | Collapse all folders in Explorer                 |
-| **Collapse Sections**     | `Ctrl + K` → `0`                                         | Collapse all code sections (caret in root scope) |
-| **Open Settings**         | `Ctrl + ,`                                               | Access VSCode settings                           |
-| **See Props & Callbacks** | `Ctrl + SpaceBar`                                        | IntelliSense autocomplete                        |
-| **Open Run & Debug**      | `Ctrl + Shift + D` → `F5`                                | Launch debugger                                  |
-| **Stop Terminal Server**  | `Ctrl + C`                                               | Stop running server process                      |
+| Action                    | Shortcut           | Description                                      |
+| ------------------------- | ------------------ | ------------------------------------------------ |
+| **Collapse Folders**      | `Ctrl + Shift + P` | Collapse all folders in Explorer                 |
+| **Collapse Sections**     | `Ctrl + K + 0`     | Collapse all code sections (caret in root scope) |
+| **Open Settings**         | `Ctrl + ,`         | Access VSCode settings                           |
+| **See Props & Callbacks** | `Ctrl + SpaceBar`  | IntelliSense autocomplete                        |
+| **Open Run & Debug**      | `Ctrl + Shift + D` | Launch debugger                                  |
+| **Stop Terminal Server**  | `Ctrl + C`         | Stop running server process                      |
 
 ### Folder Structure
 
@@ -574,15 +562,6 @@ These arrows are intentional review markers. They flag areas I have personally r
 | [🠋](https://www.compart.com/en/unicode/U+1F80B) | U+1F80B | Reviewed with follow ups planned    |
 | [🠈](https://www.compart.com/en/unicode/U+1F808) | U+1F808 | Needs another pass                  |
 | [🠉](https://www.compart.com/en/unicode/U+1F809) | U+1F809 | Promising direction, keep iterating |
-
-#### Code Comment Templates
-
-```txt
-//--|[🠊](https://www.compart.com/en/unicode/U+1F80A) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-//--|[🠋](https://www.compart.com/en/unicode/U+1F80B) Note Here [🠋](https://www.compart.com/en/unicode/U+1F80B)|--\\
-//--|[🠈](https://www.compart.com/en/unicode/U+1F808) Note Here [🠈](https://www.compart.com/en/unicode/U+1F808)|--\\
-//--|[🠉](https://www.compart.com/en/unicode/U+1F809) Note Here [🠉](https://www.compart.com/en/unicode/U+1F809)|--\\
-```
 
 ### Git Workflow
 
