@@ -1,0 +1,7 @@
+7 Styles: Top, Bottom, Left, Right, Center, Text and Icon
+
+8 Displays: 1920x1080, 1080x1920, 1366x768, 768x1366, 854x480, 480x854, 640x360 and 360x640
+
+2 Shades: Dark and Light
+
+7 Fonts/Sizes: <h1>, <h2> , <h3>, <h4>, <h5>, <h6> and <p>
