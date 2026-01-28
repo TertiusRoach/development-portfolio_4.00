@@ -25,7 +25,7 @@ This is a small suite of office apps built around one obsession and that's to ke
 
 ## TraLogFin Testing
 
-[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)
+[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)
 
 This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
 
@@ -37,7 +37,7 @@ This is the contract between data and display. The database and role selection d
 
 ### Track a Day
 
-[Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/assets/svg-files/trinity-apps/track-a-day)
+[Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/assets/svg-files/trinity-apps/track-a-day)
 
 Frustrated with spreadsheets and done with guesswork? Track time cleanly and let totals speak.
 
