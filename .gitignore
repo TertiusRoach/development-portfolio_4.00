@@ -1,7 +1,9 @@
 bin
 .env
 .wsuo
+6.5.1
 build
+*.txt
 secret.*
 *secret.*
 node_modules
