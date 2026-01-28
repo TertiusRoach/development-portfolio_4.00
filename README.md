@@ -1,33 +1,29 @@
 # Tertius Roach’s [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-This is a small suite of office apps built around one obsession: keep UI structure predictable, let state drive behavior, and move fast without turning the codebase into a mystery novel. I paused this project for months. The point of this documentation is to make restarting painless.
+This is a small suite of office apps built around one obsession and that's to keep the UI structure predictable, let state drive behavior, and to move fast without turning the codebase into a mystery novel.
 
-## Add chapter navigation here
-
-I am leaving this section blank on purpose so you can add your own anchored chapter navigation after your review.
+## Documentation
 
 <details>
-  <summary><strong>Documentation (workbench)</strong></summary>
-
+  <summary><strong>Documentation</strong></summary>
   <ul>
-    <li><a href="#tralogfin-testing">TraLogFin testing</a></li>
-    <li><a href="#front-end-database-ui-state-driven">Front end database (UI state driven)</a></li>
-    <li><a href="#back-end-installation-and-development">Back end installation and development</a></li>
-    <li><a href="#orchestrating-visibility-state-vocabulary">Orchestrating visibility (state vocabulary)</a></li>
-    <li><a href="#determining-responsibilities-role-driven-behavior">Determining responsibilities (role driven behavior)</a></li>
-    <li><a href="#logical-breakdown-layout-containers-and-naming">Logical breakdown (layout containers and naming)</a></li>
-    <li><a href="#terminal-commands-project-scripts-and-dev-flow">Terminal commands</a></li>
-    <li><a href="#application-installation">Application installation</a></li>
-    <li><a href="#installation-breakdown-entry-point-and-build-flow">Installation breakdown</a></li>
-    <li><a href="#visual-studio-code-tips-fast-navigation-and-control">Visual Studio Code tips</a></li>
-    <li><a href="#page-links-published-output">Page links</a></li>
-    <li><a href="#folder-structure-opinionated-and-intentional">Folder structure</a></li>
-    <li><a href="#reviewed-notes-and-review-flags">Reviewed notes and review flags</a></li>
-    <li><a href="#git-workflow-merge-401-into-main-then-create-402">Git workflow (merge 4.01 into main, create 4.02)</a></li>
+    <li><a href="#tralogfin-testing">TraLogFin Testing</a></li>
+    <li><a href="#front-end-database-ui-state-driven">Front-end Database</a></li>
+    <li><a href="#back-end-installation-&-development">Back-end Installation & Development</a></li>
+    <li><a href="#orchestrating-visibility">Orchestrating Visibility (CSS & HTML Vocabulary)</a></li>
+    <li><a href="#determining-responsibilities">Determining Element Responsibilities</a></li>
+    <li><a href="#logical-breakdown">Layout Container Breakdown</a></li>
+    <li><a href="#terminal-commands-project-scripts-and-dev-flow">Terminal Commands</a></li>
+    <li><a href="#application-installation">Application Installation</a></li>
+    <li><a href="#installation-breakdown">Installation Breakdown</a></li>
+    <li><a href="#hints-&-tips-for-vscode">Hints & Tips for VSCode</a></li>
+    <li><a href="#folder-structure">Folder Structure</a></li>
+    <li><a href="#reviewed-notes-&-review-flags">Reviewed Notes & Review Flags</a></li>
+    <li><a href="#git-workflow-merge-401-into-main-then-create-402">Git Workflow Example</a></li>
   </ul>
 </details>
 
-## TraLogFin testing
+## TraLogFin Testing
 
 [TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)
 
@@ -81,7 +77,7 @@ Consider technologies
 
 Company comparisons as a thought experiment: the `&` icon looks like a dog scratching its anus.
 
-## Back end installation and development
+## Back-end Installation & Development
 
 [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
 
@@ -89,7 +85,7 @@ You can find the [source code here](https://github.com/TertiusRoach/development-
 
 This project uses a MongoDB backed server module to support an office application suite that tracks overtime, logs tickets, and stores links. For demonstration purposes, `roleName` represents the user’s selected company position and drives behavior and visibility.
 
-## Orchestrating visibility (state vocabulary)
+## Orchestrating Visibility
 
 These classes are intentionally simple. They act like a UI contract.
 
@@ -109,7 +105,7 @@ Emphasis state
 `.highlight` and `.downplay`  
 Use these to guide attention without changing layout or flow.
 
-## Determining responsibilities (role driven behavior)
+## Determining Responsibilities
 
 For demonstration purposes, the `roleName` represents the user’s selected company position and influences the application’s behavior accordingly.
 
@@ -140,7 +136,7 @@ Company comparisons because it's an interesting thought experiment: The '&' icon
 `.microsoft` and `.google`  
 `.planet-fitness` and `.anytime-fitness`
 
-## Logical breakdown (layout containers and naming)
+## Logical Breakdown
 
 This project uses a predictable layout container system to prevent CSS collisions and keep page structure readable at a glance.
 
@@ -259,7 +255,7 @@ npm install --save-dev @babel/core @babel/preset-env
 
 </details>
 
-## Installation breakdown (entry point and build flow)
+## Installation Breakdown
 
 Entry point: `source/index.tsx` |🠊 `source/layouts/containers/Main/IndexMain/IndexMain.tsx` |🠊 `layouts/components/Section/default/` |🠊 [Section.default.tsx](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/layouts/containers/Main/IndexMain/IndexMain.tsx) | `*.scss`
 
@@ -357,7 +353,7 @@ npm install --save-dev mongodb
 npm install --save-dev dotenv-webpack
 ```
 
-## Visual Studio Code tips (fast navigation and control)
+## Hints & Tips for VSCode
 
 Collapse all folders in the Explorer  
 Open Command Palette: `Ctrl + Shift + P`  
@@ -378,23 +374,11 @@ Open Run and Debug
 Stop server inside terminal  
 `Ctrl + C`
 
-## Page links (published output)
-
-[Index Page](https://tertiusroach.github.io/development-portfolio_4.00/public/index/index.html)
-
-[My Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/resume/index.html)
-
-[Log a Ticket](https://tertiusroach.github.io/development-portfolio_4.00/public/ticket/index.html)
-
-[Univer Track](https://tertiusroach.github.io/development-portfolio_4.00/public/university/index.html)
-
-[Journal Fits](https://tertiusroach.github.io/development-portfolio_4.00/public/fitness/index.html)
-
-## Folder structure (opinionated and intentional)
+## Folder Structure
 
 This layout is modular on purpose. It is optimized for forward momentum and predictable scaling, not for matching a single framework template. The naming is descriptive, the separation is strict, and the intent is obvious when you scan the tree.
 
-### Reference tree
+### Reference Tree
 
 ```bash
 root/
@@ -560,7 +544,7 @@ From the older reference layout, this area typically contains:
 
 Editor configuration for consistent debugging and project workflows.
 
-## Reviewed notes and review flags
+## Reviewed notes & review flags
 
 These arrows are intentional review markers. They flag areas I have personally reviewed, reworked, and tested.
 
