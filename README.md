@@ -11,7 +11,7 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 <details>
   <summary><strong>Documentation</strong></summary>
   <ul>
-    <li><a href="#tralogfin-testing">TraLogFin Testing</a></li>
+    <li><a href="#database-characters">Testing Environment</a></li>
     <li><a href="#front-end-database-ui-state-driven">Front-end Database</a></li>
     <li><a href="#back-end-installation-&-development">Back-end Installation & Development</a></li>
     <li><a href="#orchestrating-visibility">Orchestrating Visibility (CSS & HTML Vocabulary)</a></li>
@@ -27,57 +27,45 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
   </ul>
 </details>
 
-## TraLogFin Testing
-
-[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)
+## [Database Characters](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)
 
 This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
 
-## Front end database (UI state driven)
-
-[Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
 
-### Track a Day
-
-[Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/assets/svg-files/trinity-apps/track-a-day)
+### [Track a Day](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/assets/svg-files/trinity-apps/track-a-day)
 
 Frustrated with spreadsheets and done with guesswork? Track time cleanly and let totals speak.
 
-What’s your vocation?
-`.freelancing` and `.established`
+> What’s your vocation?
+> `.freelancing` and `.established`
 
-Global reach
-`.apple` or `.android`
+> Global reach
+> `.apple` or `.android`
 
-### Log a Ticket
-
-[Log a Ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
+### [Log a Ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
 
 Ticketing should feel like momentum, not admin. The goal is quick capture, clear ownership, and visible progress.
 
-What’s your position?
-`.manager` and `.employee`
+> What’s your position?
+> `.manager` and `.employee`
 
-Improve efficiency
-`.anytime-fitness` or `.planet-fitness`
+> Improve efficiency
+> `.anytime-fitness` or `.planet-fitness`
 
-### Find a Link
-
-[Find a Link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
+### [Find a Link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
 
 A fast index for links a team actually uses. Think spreadsheets, schedules, docs, dashboards.
 
-What’s your occupation?
-`.specialist` and `.technician`
+> What’s your occupation?
+> `.specialist` and `.technician`
 
-Consider technologies
-`.microsoft` (Excel) or `.google` (Sheets)
+> Consider technologies
+> `.microsoft` (Excel) or `.google` (Sheets)
 
-### Pick a Page
-
-[Pick a Page](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.01/source/assets/svg-files/trinity-apps/pick-a-page/logo-white.svg)
+### [Pick a Page](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.01/source/assets/svg-files/trinity-apps/pick-a-page/logo-white.svg)
 
 Company comparisons as a thought experiment: the `&` icon looks like a dog scratching its anus.
 
@@ -93,9 +81,10 @@ This project uses a MongoDB backed server module to support an office applicatio
 
 These classes are intentionally simple. They act like a UI contract.
 
-Active state  
-`.active` and `.asleep`  
 Use these to indicate whether a feature is currently in use (active) or parked (asleep). Active should feel responsive. Asleep should stay out of the user’s way.
+
+Active state  
+`.active` and `.asleep`
 
 Visibility state  
 `.visible` and `.hidden`  
