@@ -10,7 +10,10 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 
 ---
 
-## Table of Contents
+## Documentation
+
+<details>
+  <summary><strong>Table of Contents</strong></summary>
 
 - [Testing Environment](#testing-environment)
 - [Front-end Database](#front-end-database)
@@ -34,6 +37,8 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 - [Documentation Standards](#documentation-standards)
   - [Review Flags](#review-flags)
   - [Git Workflow](#git-workflow)
+
+</details>
 
 ---
 
