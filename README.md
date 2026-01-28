@@ -1,8 +1,12 @@
 # Tertius Roach’s [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-This is a small suite of office apps built around one obsession and that's to keep the UI structure predictable, let state drive behavior, and to move fast without turning the codebase into a mystery novel.
+TraLogFin is my three headed answer to workplace chaos: Track a Day, Log a Ticket, Find a Link. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
 
-## Documentation
+This project started the honest way, with a mistake I never wanted to repeat. While moderating multiple studios at Akademia, I accidentally deleted someone’s ticket on a clunky system I did not build. That moment burned in the lesson: Good software should protect users from the worst day they are having, not amplify it. TraLogFin is me building the system I wish I had then, cleaner flows, safer patterns, and a user experience that does not ask for permission to waste your time.
+
+Where it is going is simple and ambitious at the same time. TraLogFin is becoming a small, sharp suite that scales without losing its manners. A front end that stays structured and readable as it grows, a workflow that stays fast even when the data gets real, and a codebase that welcomes contributors because the intent is obvious the moment you open the project. If you like tools that value clarity, speed, and practical design over ceremony, you are exactly the kind of person I want reading this, using it, and helping push it forward.
+
+---
 
 <details>
   <summary><strong>Documentation</strong></summary>
@@ -25,7 +29,7 @@ This is a small suite of office apps built around one obsession and that's to ke
 
 ## TraLogFin Testing
 
-[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.02/source/layouts/pages)
+[TraLogFin](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01-archive/source/layouts/pages)
 
 This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
 
