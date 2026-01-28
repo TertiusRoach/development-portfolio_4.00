@@ -1,6 +1,24 @@
-# Tertius Roach’s [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+# Tertius Roach’s **TraLogFin** (Trinity {Apps\])
 
-This is a small suite of office apps built around one obsession and that's to keep the UI structure predictable, let state drive behavior, and to move fast without turning the codebase into a mystery novel.
+Live build: [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)  
+Testing surface: [TraLogFin pages](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)
+
+TraLogFin is the working name for my “three tools, one brain” portfolio project: **TRAck a Day**, **LOG a Ticket**, and **FINd a Link**. It’s built for real workplace friction: overtime tracking that does not waste your time, ticket logging that does not punish the user, and a link hub that stops teams from hunting through spreadsheets and bookmarks like it’s a sport.
+
+What TraLogFin does (in plain terms):
+
+- **Track a Day**: track time and overtime fast, then get out of the way.
+- **Log a Ticket**: a front end ticketing experience designed to be simple, safe, and hard to mess up.
+- **Find a Link**: a clean, searchable home for the links a company actually needs.
+
+Technical intent (developer view):
+This project modernizes front end structure by leaning into semantic layout and styling it deliberately. Core page regions use consistent, state driven styling across `<header>`, `<main>`, `<footer>`, `<section>`, and `<aside>`. Each region gets a distinct visual treatment so layouts stay readable, responsive, and predictable as the UI grows.
+
+Why this exists (origin story, short version):
+I once deleted someone’s ticket while moderating four studios at Akademia. The system was clunky, and I did not build it. That moment was enough motivation to start building my own: a cleaner ticketing front end with safer flows and fewer chances to do something destructive by accident. TraLogFin is the evolution of that mindset, now expanded into a suite.
+
+Status:
+This is a work in progress. The testing environment will change as the app matures, but the goal stays the same: speed, clarity, and a UI that respects the user’s time.
 
 ## Documentation
 
