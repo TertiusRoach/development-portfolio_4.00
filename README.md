@@ -1,26 +1,12 @@
-# Tertius Roach’s **TraLogFin** (Trinity {Apps\])
+# Tertius Roach’s [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-Live build: [Trinity {Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)  
-Testing surface: [TraLogFin pages](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.01/source/layouts/pages)
+TraLogFin is my three headed answer to workplace chaos: Track a Day, Log a Ticket, Find a Link. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
 
-TraLogFin is the working name for my “three tools, one brain” portfolio project: **TRAck a Day**, **LOG a Ticket**, and **FINd a Link**. It’s built for real workplace friction: overtime tracking that does not waste your time, ticket logging that does not punish the user, and a link hub that stops teams from hunting through spreadsheets and bookmarks like it’s a sport.
+This project started the honest way, with a mistake I never wanted to repeat. While moderating multiple studios at Akademia, I accidentally deleted someone’s ticket on a clunky system I did not build. That moment burned in the lesson: Good software should protect users from the worst day they are having, not amplify it. TraLogFin is me building the system I wish I had then, cleaner flows, safer patterns, and a user experience that does not ask for permission to waste your time.
 
-What TraLogFin does (in plain terms):
+Where it is going is simple and ambitious at the same time. TraLogFin is becoming a small, sharp suite that scales without losing its manners. A front end that stays structured and readable as it grows, a workflow that stays fast even when the data gets real, and a codebase that welcomes contributors because the intent is obvious the moment you open the project. If you like tools that value clarity, speed, and practical design over ceremony, you are exactly the kind of person I want reading this, using it, and helping push it forward.
 
-- **Track a Day**: track time and overtime fast, then get out of the way.
-- **Log a Ticket**: a front end ticketing experience designed to be simple, safe, and hard to mess up.
-- **Find a Link**: a clean, searchable home for the links a company actually needs.
-
-Technical intent (developer view):
-This project modernizes front end structure by leaning into semantic layout and styling it deliberately. Core page regions use consistent, state driven styling across `<header>`, `<main>`, `<footer>`, `<section>`, and `<aside>`. Each region gets a distinct visual treatment so layouts stay readable, responsive, and predictable as the UI grows.
-
-Why this exists (origin story, short version):
-I once deleted someone’s ticket while moderating four studios at Akademia. The system was clunky, and I did not build it. That moment was enough motivation to start building my own: a cleaner ticketing front end with safer flows and fewer chances to do something destructive by accident. TraLogFin is the evolution of that mindset, now expanded into a suite.
-
-Status:
-This is a work in progress. The testing environment will change as the app matures, but the goal stays the same: speed, clarity, and a UI that respects the user’s time.
-
-## Documentation
+---
 
 <details>
   <summary><strong>Documentation</strong></summary>
