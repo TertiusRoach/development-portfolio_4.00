@@ -2,32 +2,40 @@
 //--|🠋 Styles 🠋|--//
 import './Form.register.scss';
 //--|🠉 Styles 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { showDemos, defineButton, generatePassword } from './Form_register';
-import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../pages/landing';
+import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const FormRegister: React.FC<InfoProps> = ({ info }) => {
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  /*
   const blockName = 'main';
   const pageName = info.identification;
+  */
+
   const imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg';
 

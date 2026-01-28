@@ -1,4 +1,7 @@
 //--|🠊 Navigation.landing.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Navigation.landing.scss';
 //--|🠉 Styles 🠉|--//
@@ -15,19 +18,19 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   form: 'register' | 'login' | 'password';
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const NavigationLanding: React.FC<InfoProps> = ({ info, form }) => {
-  const blockName = 'main';
-  const pageName = info.identification as 'landing';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   const handleLanding = async () => {};
 

@@ -1,0 +1,45 @@
+//--|🠊 ButtonsMain.scss 🠈|--//
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--//
+  section[class*='buttons'] {
+    width: 100%; //--|🠊 height: 100%; 🠈|--//
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+
+@mixin mobile-portrait {
+  //--|🠊 display: flex; 🠈|--//
+  //--|🠊 Go to Section.buttons.tsx 🠈|--//
+
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+main[id*='buttons'] {
+  display: grid;
+  grid-template: inherit; //--|🠊 4rem 1fr 4rem / 6rem 1fr 6rem 🠈|--//
+  //--|🠊 background: rgba(darkgreen, 0.5); 🠈|--//
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

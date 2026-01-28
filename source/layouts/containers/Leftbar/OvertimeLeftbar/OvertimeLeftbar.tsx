@@ -1,9 +1,8 @@
 //--|🠊 OvertimeLeftbar.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/overtime';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Frameworks 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Components 🠋|--//
@@ -17,31 +16,21 @@ import NavigationOvertime from '../../../components/Navigation/overtime/Navigati
 
 interface InfoProps {
   info: {
-    pageName: string;
-    blockName:
-      | string
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>';
-    stateName?: 'established' | 'freelancing';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'leftbar';
-  const pageName = info.pageName;
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside
-      style={{ zIndex: 4 }}
-      id={`${pageName}-${blockName}`}
-      className={`default-${blockName} collapsed`}
-    >
+    <aside style={{ zIndex: 4 }} id={`${pageName}-${blockName}`} className={`default-${blockName} collapsed`}>
       <header className="clocking-header">
         <TimeDaily info={info} />
         <NavigationOvertime info={info} />

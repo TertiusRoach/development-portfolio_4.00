@@ -1,62 +1,76 @@
-//--|🠊 Palettes.scss 🠈|--//
+//--||🠊 Palettes.scss 🠈|--\\
+//--||🠋 Preset Palettes 🠋|--\\
+$red-neon: #ff0000; //--|🠈 rgba() 🠈|--\\
+$red-dark: #660000; //--|🠈 rgba() 🠈|--\\
+$red-light: #ea9999; //--|🠈 rgba() 🠈|--\\
+$red-medium: #863236; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Track a Day - Trinity {A]pps |🠋|--//
-$trackDay-dark: #072007; //--🠊 rgba(7, 32, 7, 1) 🠈--//
-$trackDay-medium: #39853b; //--🠊 rgba(57, 133, 59, 1) 🠈--//
-$trackDay-light: #9ee6a1; //--🠊 rgba(158, 230, 161, 1) 🠈--//
+$green-neon: #00ff00; //--|🠈 rgba() 🠈|--\\
+$green-dark: #0d1a07; //--|🠈 rgba() 🠈|--\\
+$green-light: #b6d7a8; //--|🠈 rgba() 🠈|--\\
+$green-medium: #274e13; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Log a Ticket - Trinity {A]pps |🠋|--//
-$logTicket-dark: #070e27; //--🠊 rgba(7, 14, 39, 1) 🠈--//
-$logTicket-medium: #0b2583; //--🠊 rgba(11, 37, 131, 1) 🠈--//
-$logTicket-light: #a8b8f3; //--🠊 rgba(168, 184, 243, 1) 🠈--//
+$blue-neon: #006eff; //--|🠈 rgba() 🠈|--\\
+$blue-dark: #0b1431; //--|🠈 rgba() 🠈|--\\
+$blue-light: #9fc5e8; //--|🠈 rgba() 🠈|--\\
+$blue-medium: #073763; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Find a Link - Trinity {A]pps |🠋|--//
-$findLink-dark: #230709; //--🠊 rgba(35, 7, 9, 1) 🠈--//
-$findLink-medium: #881a3d; //--🠊 rgba(136, 26, 61, 1) 🠈--//
-$findLink-light: #e2bcca; //--🠊 rgba(226, 188, 202, 1) 🠈--//
+$purple-neon: #9900ff; //--|🠈 rgba() 🠈|--\\
+$purple-dark: #0e091b; //--|🠈 rgba() 🠈|--\\
+$purple-light: #7f6fa8; //--|🠈 rgba() 🠈|--\\
+$purple-medium: #2a1d55; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Index or Landing |🠋|--//
-$indexLand-dark: #212121; //--🠊 rgba(0, 0, 0, 1) 🠈--//
-$indexLand-medium: #737373; //--🠊 rgba(115, 115, 115, 1) 🠈--//
-$indexLand-light: #ffffff; //--🠊 rgba(255, 255, 255, 1) 🠈--//
+$pink-neon: #ff00ff; //--|🠈 rgba() 🠈|--\\
+$pink-dark: #4c1130; //--|🠈 rgba() 🠈|--\\
+$pink-light: #d5a6bd; //--|🠈 rgba() 🠈|--\\
+$pink-medium: #814381; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋| Preset Palettes |🠋|--//
-$red-neon: #ff0000; //--🠊 rgba(255, 0, 0, 1) 🠈--//
-$red-dark: #660000; //--🠊 rgba(102, 0, 0, 1) 🠈--//
-$red-light: #ea9999; //--🠊 rgba(234, 153, 153, 1) 🠈--//
+$yellow-neon: #ffff00; //--|🠈 rgba() 🠈|--\\
+$yellow-dark: #4d1f05; //--|🠈 rgba() 🠈|--\\
+$yellow-light: #ffe599; //--|🠈 rgba() 🠈|--\\
+$yellow-medium: #7f6000; //--|🠈 rgba() 🠈|--\\
 
-$green-neon: #00ff00; //--🠊 rgba(0, 255, 0, 1) 🠈--//
-$green-dark: #274e13; //--🠊 rgba(39, 78, 19, 1) 🠈--//
-$green-light: #b6d7a8; //--🠊 rgba(182, 215, 168, 1) 🠈--//
+$orange-neon: #ffc400; //--|🠈 rgba() 🠈|--\\
+$orange-dark: #783f04; //--|🠈 rgba() 🠈|--\\
+$orange-light: #e4d8cc; //--|🠈 rgba() 🠈|--\\
+$orange-medium: #e08f14; //--|🠈 rgba() 🠈|--\\
 
-$blue-neon: #3c90ff; //--🠊 rgba(0, 0, 255, 1) 🠈--//
-$blue-dark: #073763; //--🠊 rgba(127, 17, 224, 1) 🠈--//
-$blue-light: #9fc5e8; //--🠊 rgba(159, 197, 232, 1) 🠈--//
+$brown-neon: #9c4600; //--|🠈 rgba() 🠈|--\\
+$brown-dark: #302114; //--|🠈 rgba() 🠈|--\\
+$brown-light: #ffd3af; //--|🠈 rgba() 🠈|--\\
+$brown-medium: #b46849; //--|🠈 rgba() 🠈|--\\
 
-$purple-neon: #9900ff; //--🠊 rgba(153, 0, 255, 1) 🠈--//
-$purple-dark: #20124d; //--🠊 rgba(32, 18, 77, 1) 🠈--//
-$purple-light: #b4a7d6; //--🠊 rgba(180, 167, 214, 1) 🠈--//
+$grey-neon: #eeeee0; //--|🠈 rgba() 🠈|--\\
+$grey-dark: #111111; //--|🠈 rgba() 🠈|--\\
+$grey-light: #c5c5c5; //--|🠈 rgba() 🠈|--\\
+$grey-medium: #585858; //--|🠈 rgba() 🠈|--\\
 
-$pink-neon: #ff00ff; //--🠊 rgba(255, 0, 255, 1) 🠈--//
-$pink-dark: #4c1130; //--🠊 rgba(76, 17, 48, 1) 🠈--//
-$pink-light: #d5a6bd; //--🠊 rgba(213, 166, 189, 1) 🠈--//
+$turquoise-neon: #00ffff; //--|🠈 rgba() 🠈|--\\
+$turquoise-dark: #0c1f24; //--|🠈 rgba() 🠈|--\\
+$turquoise-light: #b9d1d4; //--|🠈 rgba() 🠈|--\\
+$turquoise-medium: #115f70; //--|🠈 rgba() 🠈|--\\
 
-$yellow-neon: #ffff00; //--🠊 rgba(255, 255, 0, 1) 🠈--//
-$yellow-dark: #7f6000; //--🠊 rgba(127, 96, 0, 1) 🠈--//
-$yellow-light: #ffe599; //--🠊 rgba(255, 229, 153, 1) 🠈--//
+//--|🠋 Index or Landing - Trinity {A]pps 🠋|--\\
+$indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+$indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+$indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+$indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
-$orange-neon: #ff9900; //--🠊 rgba(255, 153, 0, 1) 🠈--//
-$orange-dark: #783f04; //--🠊 rgba(120, 63, 4, 1) 🠈--//
-$orange-light: #f9cb9c; //--🠊 rgba(249, 203, 156, 1) 🠈--//
+//--|🠋 Log a Ticket - Trinity {A]pps 🠋|--\\
+$logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
+$logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
+$logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
+$logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
 
-$brown-neon: #a97142; //--🠊 rgba(169, 113, 66, 1) 🠈--//
-$brown-dark: #4f341d; //--🠊 rgba(79, 52, 29, 1) 🠈--//
-$brown-light: #ffd3af; //--🠊 rgba(255, 211, 175, 1) 🠈--//
+//--|🠋 Find a Link - Trinity {A]pps 🠋|--\\
+$findLink-neon: #eb1224; //--|🠈 rgba() 🠈|--\\
+$findLink-dark: #2b0a0d; //--|🠈 rgba() 🠈|--\\
+$findLink-light: #e2bcca; //--|🠈 rgba() 🠈|--\\
+$findLink-medium: #893141; //--|🠈 rgba() 🠈|--\\
 
-$grey-neon: #bec2cb; //--🠊 rgba(190, 194, 203, 1) 🠈--//
-$grey-dark: #434343; //--🠊 rgba(67, 67, 67, 1) 🠈--//
-$grey-light: #efefef; //--🠊 rgba(239, 239, 239, 1) 🠈--//
+//--|🠋 Track a Day - Trinity {A]pps 🠋|--\\
+$trackDay-neon: #00ff44; //--|🠈 rgba() 🠈|--\\
+$trackDay-dark: #072007; //--|🠈 rgba() 🠈|--\\
+$trackDay-light: #afebb2; //--|🠈 rgba() 🠈|--\\
+$trackDay-medium: #39853b; //--|🠈 rgba() 🠈|--\\
 
-$turquoise-neon: #00ffff; //--🠊 rgba(0, 255, 255, 1) 🠈--//
-$turquoise-dark: #0c343d; //--🠊 rgba(12, 52, 61, 1) 🠈--//
-$turquoise-light: #a2c4c9; //--🠊 rgba(162, 196, 201, 1) 🠈--//

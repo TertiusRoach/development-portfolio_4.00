@@ -1,4 +1,4 @@
-//--|🠊 Transitions.scss 🠈|--//
+//--|🠊 Transition.scss 🠈|--//
 
 //--|🠋 div[id*="body"] 🠋|--//
 @mixin body-transition {
@@ -17,6 +17,7 @@
   header {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
+      &[id*='buttons'],
       &[id*='landing'] {
         //--|🠋 Desktop (Landscape) 🠋|--//
         @media screen and (orientation: landscape) {
@@ -130,12 +131,7 @@
   footer {
     &[class*='collapsed'] {
       backdrop-filter: blur(0px);
-      clip-path: polygon(
-        0% calc(100% - 4rem),
-        100% calc(100% - 4rem),
-        100% 100%,
-        0% 100%
-      );
+      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
       menu {
         top: 0rem;
       }
@@ -154,8 +150,7 @@
       }
     }
     & {
-      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out,
-        opacity 0.25s ease-in-out;
+      transition: clip-path 0.25s ease-in-out, backdrop-filter 0.5s ease-in-out, opacity 0.25s ease-in-out;
       menu {
         position: relative;
         transition: top 0.25s ease-in-out;

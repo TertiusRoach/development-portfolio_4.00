@@ -1,0 +1,108 @@
+//--|🠊 Section.buttons.scss 🠈|--\\
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: block; 🠈|--\\
+  div[class*='size'] {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 4rem 1fr 4rem; //--|🠊 rows 🠈|--\\
+    grid-template-columns: 6rem repeat(3, 1fr) 6rem; //--|🠊 columns 🠈|--\\
+    //--|🠋 Anchor Buttons 🠋|--\\
+    aside[class*='buttons'] {
+      button:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$red-neon; 🠈|--\\
+      }
+      button:nth-child(2) {
+        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$green-neon; 🠈|--\\
+      }
+      button:nth-child(3) {
+        grid-area: 2 / 1 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$blue-neon; 🠈|--\\
+      }
+      button:nth-child(4) {
+        grid-area: 3 / 1 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$purple-neon; 🠈|--\\
+      }
+      button:nth-child(5) {
+        grid-area: 4 / 1 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$pink-neon; 🠈|--\\
+      }
+      button:nth-child(6) {
+        grid-area: 5 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$yellow-neon; 🠈|--\\
+      }
+      button:nth-child(7) {
+        grid-area: 6 / 1 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        //--|🠊 background: Palettes.$orange-neon; 🠈|--\\
+      }
+    }
+    //--|🠋 Place Shades 🠋|--\\
+    *[class*='aside'] {
+      &[class*='dar'] {
+        //--|🠋 Dark 🠋|--\\
+        grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+        background: Palettes.$indexLand-light;
+      }
+      &[class*='med'] {
+        //--|🠋 Medium 🠋|--\\
+        grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+        background: Palettes.$indexLand-medium;
+      }
+      &[class*='lig'] {
+        //--|🠋 Light 🠋|--\\
+        grid-column: 4 / 5; //--|🠈 col-start / col-end 🠈|--\\
+        background: Palettes.$indexLand-dark;
+      }
+    }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Tablet (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+section[class*='buttons'] {
+  display: block;
+  grid-area: inherit; //--|🠊 grid-area: 1 / 1 / 4 / 4; 🠈|--\\
+  @extend %section-motion;
+  transform: translateY(0px);
+  transition: transform 0.5s ease-in-out;
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+%section-motion {
+  div[class*='size'] {
+    transition: filter 0.75s ease-in-out, opacity 0.25s ease-in-out;
+    &[class*='hidden'] {
+      opacity: 0;
+      filter: blur(8px);
+    }
+    &[class*='visible'] {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+}

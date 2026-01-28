@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Context 🠋|--//
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonStretch from '../../Button/stretch/Button.stretch';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton, assignBlock, showWeek } from './List_scrolling';
@@ -20,14 +20,7 @@ interface InfoProps {
   info: {
     resolution: string;
     orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification:
-      | 'index'
-      | 'resume'
-      | 'ticket'
-      | 'university'
-      | 'fitness'
-      | 'landing'
-      | string;
+    identification: 'index' | 'resume' | 'ticket' | 'university' | 'fitness' | 'landing' | string;
   };
 }
 const ListScrolling: React.FC<InfoProps> = ({ block, info }) => {

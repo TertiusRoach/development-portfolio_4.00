@@ -4,13 +4,17 @@
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 
-  menu {
+  menu[class*='landing'] {
     grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
-  section {
+  section[class*='blocked'] {
     grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
   }
   @media screen and (max-height: 360px) {
   }
@@ -18,7 +22,11 @@
 @mixin mobile-portrait {
   display: none;
   //--|🠊 display: grid; 🠈|--//
+
+  //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
   }
   @media screen and (max-width: 360px) {
   }

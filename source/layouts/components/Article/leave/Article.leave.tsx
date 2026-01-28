@@ -1,30 +1,32 @@
 //--|🠊 Article.leave.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { defineButton } from './Article_leave';
-//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Article.leave.scss';
 //--|🠉 Styles 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { defineButton } from './Article_leave';
+import { stripBrackets } from '../../../scripts/overtime';
+//--|🠉 Functions 🠉|--//
+
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import MenuBranding from '../../Menu/branding/Menu.branding';
-import ButtonStretch from '../../Button/stretch/Button.stretch';
-import ButtonGrading from '../../Button/grade/Button.grading';
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
+import ButtonGrade from '../../Button/archive/grade/Button.grade';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const ArticleLeave: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   const handleLeave = async () => {};
 

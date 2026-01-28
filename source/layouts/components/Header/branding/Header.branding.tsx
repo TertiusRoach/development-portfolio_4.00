@@ -1,4 +1,7 @@
 //--|🠊 Header.branding.tsx 🠈|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Header.branding.scss';
 //--|🠉 Styles 🠉|--//
@@ -15,14 +18,14 @@ import MenuBranding from '../../Menu/branding/Menu.branding';
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const HeaderBranding: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'overlay';
-  const pageName = info.identification as 'landing';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
 
   useEffect(() => {}, [pageName, blockName]);
 

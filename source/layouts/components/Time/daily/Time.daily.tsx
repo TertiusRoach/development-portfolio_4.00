@@ -14,7 +14,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import { updateDate } from './Time_daily';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {

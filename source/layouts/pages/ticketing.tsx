@@ -26,7 +26,7 @@ function Ticketing() {
 
   return (
     <>
-      <TicketingHeader info={information} />
+      {/* <TicketingHeader info={information} /> */}
       {/* <TicketingFooter info={information} /> */}
     </>
   );

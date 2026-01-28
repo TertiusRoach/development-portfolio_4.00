@@ -1,47 +1,38 @@
 //--|🠊 LandingMain.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-// import { viewBlock, viewText, outputDisplay } from '../../../pages/landing';
-//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
-import { EmailProvider } from '../../../../modules/context/EmailContext';
-import { PasswordProvider } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
+import MenuLanding from '../../../components/Menu/landing/Menu.landing';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 import FigureRotation from '../../../components/Figure/rotation/Figure.rotation';
 import NavigationLanding from '../../../components/Navigation/landing/Navigation.landing';
 //--|🠉 Components 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const LandingMain: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   useEffect(() => {
     randomizeCarousel(pageName, blockName);
   }, [pageName, blockName]);
 
   return (
-    <main
-      id={`${pageName}-${blockName}`}
-      style={{ zIndex: 0 }}
-      className={`default-${blockName}`}
-    >
+    <main id={`${pageName}-${blockName}`} style={{ zIndex: 0 }} className={`default-${blockName}`}>
+      <MenuLanding info={info} />
+
       <div className="landing-carousel" style={{ zIndex: 0 }}>
         <section className="register-section hidden">
           <div className="register-container">
@@ -71,9 +62,7 @@ const LandingMain: React.FC<InfoProps> = ({ info }) => {
 export default LandingMain;
 
 function randomizeCarousel(pageName: 'landing' | string, blockName: 'main' | string) {
-  const carousel = document.querySelector(
-    `#${pageName}-${blockName} .landing-carousel`
-  ) as HTMLElement;
+  const carousel = document.querySelector(`#${pageName}-${blockName} .landing-carousel`) as HTMLElement;
 
   let randomizeCarousel: string;
   let randomize = Math.floor(Math.random() * 3);

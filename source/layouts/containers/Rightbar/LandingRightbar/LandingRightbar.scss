@@ -10,31 +10,45 @@
   form[class*='reset'] {
     grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
   }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
 }
 @mixin mobile-portrait {
   //--|🠊 display: grid; 🠈|--//
+
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
-aside[id*='landing'] {
-  &[id*='rightbar'] {
-    display: grid;
-    overflow: hidden; //~~|🠊 Hide elements outside the visible area 🠈|~~//
-    grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
-    background: linear-gradient(
-      225deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.5) 25%,
-      rgba(0, 0, 0, 0.75) 50%,
-      rgba(0, 0, 0, 0.5) 75%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      @include desktop-landscape();
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      @include mobile-portrait();
-    }
+aside[id*='rightbar'] {
+  display: grid;
+  overflow: hidden; //~~|🠊 Hide elements outside the visible area 🠈|~~//
+  grid-area: 1 / 1 / 4 / 4; //~~|🠊 row-start / col-start / row-end / col-end 🠈|~~//
+  background: linear-gradient(
+    225deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.75) 50%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
   }
 }

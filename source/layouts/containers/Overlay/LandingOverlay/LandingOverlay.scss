@@ -1,47 +1,48 @@
-//--|🠊 LandingOverlay.scss 🠈|--//
+//--|🠊 LandingOverlay.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: block; 🠈|--//
+  //--|🠊 display: block; 🠈|--\\
   section[class*='loading'] {
     display: grid;
-    grid-template: 2rem 1fr auto 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: 2rem 1fr auto 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--\\
 
     img {
       height: 100%;
       grid-area: 3 / 3 / 4 / 4;
     }
   }
-  section[class*='selection'] {
+  section[class*='picking'] {
     display: grid;
-    grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-    header[class*='branding'] {
-      grid-area: 1 / 1 / 3 / 6;
+    grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--\\
+
+    menu[class*='landing'] {
+      grid-area: 1 / 1 / 2 / 6;
     }
-    article[class*='selection'] {
+    article[class*='landing'] {
       grid-area: 3 / 3 / 4 / 4;
     }
   }
 
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (max-height: 768px) {
     section[class*='selection'] {
-      grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+      grid-template: 4rem 1fr 26rem 1fr 4rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--\\
     }
   }
   @media screen and (max-height: 480px) {
   }
   @media screen and (max-height: 360px) {
     section[class*='selection'] {
-      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
+      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--\\
     }
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: block; 🠈|--//
+  //--|🠊 display: block; 🠈|--\\
   section[class*='loading'] {
     display: grid;
-    grid-template: 6rem 1fr 396px 1fr 6rem / 2rem 1fr 704px 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: 6rem 1fr 396px 1fr 6rem / 2rem 1fr 704px 1fr 2rem; //--|🠊 rows / columns 🠈|--\\
     img {
       width: 100%;
       // width: 100%;
@@ -50,7 +51,7 @@
   }
   section[class*='selection'] {
     display: grid;
-    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--\\
     header[class*='branding'] {
       grid-area: 1 / 2 / 2 / 3;
     }
@@ -59,10 +60,10 @@
     }
   }
 
-  //--|🠋 Tablet (Portrait) 🠋|--//
+  //--|🠋 Tablet (Portrait) 🠋|--\\
   @media screen and (max-width: 768px) {
     section[class*='loading'] {
-      grid-template: 4rem 1fr auto 1fr 4rem / 6rem 1fr auto 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+      grid-template: 4rem 1fr auto 1fr 4rem / 6rem 1fr auto 1fr 6rem; //--|🠊 rows / columns 🠈|--\\
     }
   }
   @media screen and (max-width: 480px) {
@@ -75,28 +76,29 @@
 }
 
 section[id*='landing'] {
-  //--|🠊 display: block; 🠈|--//
-  overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  //--|🠊 display: block; 🠈|--\\
+  overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--\\
+  grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   div[class*='carousel'] {
     display: flex;
     @extend %show-section;
     @extend %place-design;
     flex-direction: column;
 
-    //--|🠋 Desktop (Landscape) 🠋|--//
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       @include desktop-landscape();
     }
-    //--|🠋 Mobile (Portrait) 🠋|--//
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       @include mobile-portrait();
     }
   }
 }
+
 %show-section {
-  animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
-  animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
+  animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--\\
+  animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--\\
 
   @keyframes slide-up {
     from {
@@ -109,25 +111,17 @@ section[id*='landing'] {
 }
 %place-design {
   section[class*='loading'] {
-    background: linear-gradient(
-      0deg,
-      rgba(Palettes.$indexLand-medium, 0) 0%,
-      rgba(Palettes.$indexLand-dark, 1) 100%
-    );
+    background: linear-gradient(0deg, rgba(Palettes.$indexLand-medium, 0) 0%, rgba(Palettes.$indexLand-dark, 1) 100%);
     img {
       cursor: wait;
       border-radius: 4rem;
       filter: drop-shadow(0 0 8px black);
       background: rgba(Palettes.$indexLand-dark, 0.5);
-      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+      box-shadow: inset 0 0 4rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
     }
   }
-  section[class*='selection'] {
-    background: linear-gradient(
-      180deg,
-      rgba(Palettes.$indexLand-medium, 0) 0%,
-      rgba(Palettes.$indexLand-light, 1) 100%
-    );
+  section[class*='picking'] {
+    background: linear-gradient(180deg, rgba(Palettes.$indexLand-medium, 0) 0%, rgba(Palettes.$indexLand-light, 1) 100%);
   }
   section {
     width: 100vw;

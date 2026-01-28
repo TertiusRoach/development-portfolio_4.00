@@ -26,7 +26,7 @@ function Hyperlink() {
 
   return (
     <>
-      <HyperlinkHeader info={information} />
+      {/* <HyperlinkHeader info={information} /> */}
       {/* <HyperlinkFooter info={information} /> */}
     </>
   );

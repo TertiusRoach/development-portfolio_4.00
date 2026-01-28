@@ -14,7 +14,7 @@ export function defineButton(button: 'verify' | 'close', info: { blockName: stri
     case 'verify':
       return {
         fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'light' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -26,7 +26,7 @@ export function defineButton(button: 'verify' | 'close', info: { blockName: stri
     case 'close':
       return {
         fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'icon' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,

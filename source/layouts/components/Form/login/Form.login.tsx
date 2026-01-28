@@ -1,8 +1,12 @@
 //--|🠊 Form.login.tsx 🠈|--//
+//--|🠋 Styles 🠋|--//
+import './Form.login.scss';
+//--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
-import { axiosError, retrieveEndpoint } from '../../../pages/landing';
-import { viewBlock, viewText, viewPass } from '../../../pages/landing';
+import { stripBrackets } from '../../../scripts/landing';
+import { axiosError, retrieveEndpoint } from '../../../scripts/landing';
+import { viewBlock, viewText, viewPass } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
@@ -13,29 +17,19 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
-//--|🠋 Styles 🠋|--//
-import './Form.login.scss';
-//--|🠉 Styles 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const FormLogin: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
-  const pageName = info.identification as
-    | 'landing'
-    | 'overtime'
-    | 'ticketing'
-    | 'hyperlink'
-    | string;
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
   //--|🠋 Local Input States 🠋|--//
   let { email, setEmail } = useEmail();
@@ -128,6 +122,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
     // showDemos(pageName);
   }, [pageName, blockName]);
 
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg';
+
   return (
     <form className="login-form" onSubmit={(event) => handleLogin(event)}>
       <div className="login-header">
@@ -181,9 +178,9 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
         <menu className="login-action">
           <ButtonDefault
             type="submit"
+            disabled={submit}
             text={submit ? 'Logging in...' : 'Login'}
             style={defineButton('login', { pageName, blockName })}
-            disabled={submit}
           />
         </menu>
         <nav id="login-buttons">

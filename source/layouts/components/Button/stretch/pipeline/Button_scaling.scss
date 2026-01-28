@@ -1,0 +1,187 @@
+//--|🠊 Button_scaling.scss 🠈|--//
+@mixin desktop-scaling {
+  //--|🠉 display: flex; 🠉|--//
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠊 button[class*='stretch'] 🠈|--//
+  div[class*='one_'],
+  div[class*='two_'] {
+    //--|🠊 display: grid; 🠈|--//
+    h1 {
+      font-weight: 800;
+    }
+    h2 {
+      font-weight: 750;
+    }
+  }
+  div[class*='thr_'],
+  div[class*='fou_'] {
+    //--|🠊 display: grid; 🠈|--//
+    h3 {
+      font-weight: 600;
+    }
+    h4 {
+      font-weight: 550;
+    }
+  }
+  div[class*='fiv_'],
+  div[class*='six_'] {
+    //--|🠊 display: grid; 🠈|--//
+    h5 {
+      font-weight: 400;
+    }
+    h6 {
+      font-weight: 350;
+    }
+  }
+  div[class*='par_'] {
+    //--|🠊 display: grid; 🠈|--//
+    p {
+      font-weight: 100;
+    }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+    div[class*='one_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+    div[class*='two_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h2 {
+        font-size: 1.65rem;
+      }
+    }
+    div[class*='thr_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h3 {
+        font-size: 1.55rem;
+      }
+    }
+    div[class*='fou_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h4 {
+        font-size: 1.45rem;
+      }
+    }
+    div[class*='fiv_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h5 {
+        font-size: 1.35rem;
+      }
+    }
+    div[class*='six_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h6 {
+        font-size: 1.25rem;
+      }
+    }
+    div[class*='par_'] {
+      //--|🠊 display: grid; 🠈|--//
+      p {
+        font-size: 1.15rem;
+      }
+    }
+  }
+  @media screen and (max-height: 480px) {
+    div[class*='one_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    div[class*='two_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+    div[class*='thr_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h3 {
+        font-size: 1.3rem;
+      }
+    }
+    div[class*='fou_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h4 {
+        font-size: 1.2rem;
+      }
+    }
+    div[class*='fiv_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h5 {
+        font-size: 1.1rem;
+      }
+    }
+    div[class*='six_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h6 {
+        font-size: 1rem;
+      }
+    }
+    div[class*='par_'] {
+      //--|🠊 display: grid; 🠈|--//
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  @media screen and (max-height: 360px) {
+    div[class*='one_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h1 {
+        font-size: 1.25rem;
+      }
+    }
+    div[class*='two_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h2 {
+        font-size: 1.15rem;
+      }
+    }
+    div[class*='thr_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h3 {
+        font-size: 1.05rem;
+      }
+    }
+    div[class*='fou_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h4 {
+        font-size: 0.95rem;
+      }
+    }
+    div[class*='fiv_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h5 {
+        font-size: 0.85rem;
+      }
+    }
+    div[class*='six_'] {
+      //--|🠊 display: grid; 🠈|--//
+      h6 {
+        font-size: 0.75rem;
+      }
+    }
+    div[class*='par_'] {
+      //--|🠊 display: grid; 🠈|--//
+      p {
+        font-size: 0.65rem;
+      }
+    }
+  }
+}
+@mixin mobile-scaling {
+  //--|🠉 display: flex; 🠉|--//
+  //--|🠋 Tablet (Portrait) 🠋|--//
+  //--|🠊 button[class*='stretch'] 🠈|--//
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}

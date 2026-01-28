@@ -1,0 +1,187 @@
+//--|🠊 Button_motions.scss 🠈|--//
+@use '../../../../designs/Palettes.scss' as Palettes;
+@mixin button-motions {
+  //--|🠊 button[class*='cleaned'] 🠈|--//
+  @extend %mono-motions; //--|🠈 Monochrome 🠈|--//
+  //--|🠉 display: flex; 🠉|--//
+  div {
+    &[class*='_icon'] {
+      transition: filter 1.25s ease-in-out;
+      img {
+        transition: background 1.5s ease-in-out;
+      }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      transition: filter 0.5s ease-in-out;
+      span {
+        transition: color 0.25s ease-in-out, filter 0.5s ease-in-out;
+      }
+    }
+  }
+}
+%mono-motions {
+  //--|🠊 Monochrome 🠈|--//
+  //--|🠊 display: flex; 🠈|--//
+  %dar-mon {
+    &[class*='_top_'],
+    &[class*='_bot_'],
+    &[class*='_lef_'],
+    &[class*='_rig_'],
+    &[class*='_cen_'],
+    &[class*='_tex_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-light;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-dark, 1));
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 2px rgba(Palettes.$grey-dark, 1));
+          img {
+            background: Palettes.$grey-light;
+          }
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+    }
+
+    &[class*='_ico_'] {
+      &[class*='_icon']:hover {
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        img {
+          background: Palettes.$grey-light;
+        }
+      }
+    }
+  }
+  %med-mon {
+    &[class*='_top_'],
+    &[class*='_bot_'],
+    &[class*='_lef_'],
+    &[class*='_rig_'],
+    &[class*='_cen_'],
+    &[class*='_tex_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-neon;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          filter: drop-shadow(0 0 4px rgba(black, 1));
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 2px rgba(black, 1));
+          img {
+            background: Palettes.$grey-neon;
+          }
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+    }
+
+    &[class*='_ico_'] {
+      &[class*='_icon']:hover {
+        filter: drop-shadow(0 0 4px rgba(black, 1));
+        img {
+          background: Palettes.$grey-neon;
+        }
+      }
+    }
+  }
+  %lig-mon {
+    &[class*='_top_'],
+    &[class*='_bot_'],
+    &[class*='_lef_'],
+    &[class*='_rig_'],
+    &[class*='_cen_'],
+    &[class*='_tex_'] {
+      p:hover,
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      h4:hover,
+      h5:hover,
+      h6:hover {
+        color: Palettes.$grey-dark;
+      }
+      &[class*='_text']:hover {
+        ~ div[class*='_back'] p,
+        ~ div[class*='_back'] h1,
+        ~ div[class*='_back'] h2,
+        ~ div[class*='_back'] h3,
+        ~ div[class*='_back'] h4,
+        ~ div[class*='_back'] h5,
+        ~ div[class*='_back'] h6,
+        ~ div[class*='_icon'] img {
+          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-light, 1));
+        }
+        ~ div[class*='_icon'] {
+          filter: drop-shadow(0 0 2px rgba(Palettes.$grey-light, 1));
+          img {
+            background: Palettes.$grey-dark;
+          }
+        }
+      }
+      &[class*='_text'] span:hover {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+    }
+
+    &[class*='_ico_'] {
+      &[class*='_icon']:hover {
+        filter: drop-shadow(0 0 4px rgba(white, 1));
+        img {
+          background: Palettes.$grey-dark;
+        }
+      }
+    }
+  }
+  div[class*='_mon_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &[class*='dar_mon'] {
+      @extend %dar-mon;
+    }
+    &[class*='med_mon'] {
+      @extend %med-mon;
+    }
+    &[class*='lig_mon'] {
+      @extend %lig-mon;
+    }
+  }
+}

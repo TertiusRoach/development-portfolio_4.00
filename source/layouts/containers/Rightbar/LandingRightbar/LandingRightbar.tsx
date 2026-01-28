@@ -1,42 +1,31 @@
-// LandingRightbar.tsx
+//--|🠊 LandingRightbar.tsx 🠈|--//
 //--|🠋 Frameworks 🠋|--//
-import axios from 'axios';
-import ReactDOM from 'react-dom/client';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
-//--|🠋 Utilities 🠋|--//
-/*
-import getResolution from '../../../../modules/utilities/getResolution';
-import getOrientation from '../../../../modules/utilities/getOrientation';
-import getIdentification from '../../../../modules/utilities/getIdentification';
-*/
-//--|🠉 Utilities 🠉|--//
+//--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
+//--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormReset from '../../../components/Form/reset/Form.reset';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'rightbar';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside
-      className={`default-${blockName} collapsed`}
-      id={`${pageName}-${blockName}`}
-      style={{ zIndex: 2 }}
-    >
+    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
       <h4 className="reset-label display-4">Reset</h4>
       <FormReset info={info} />
     </aside>

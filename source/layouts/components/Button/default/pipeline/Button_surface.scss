@@ -1,0 +1,69 @@
+//--|🠊 Button_surface.scss 🠈|--\\
+@use '../../../../designs/Palettes.scss' as Palettes;
+@mixin button-surface {
+  //--|🠊 button[class*='default'] 🠈|--\\
+  @extend %mono-surface;
+  //--|🠉 display: flex; 🠉|--\\
+}
+%mono-surface {
+  //--|🠊 Monochrome 🠈|--\\
+  //--|🠊 display: flex; 🠈|--\\
+  %dar-mon {
+    *.text {
+      color: Palettes.$grey-light;
+    }
+    img.icon {
+      background: Palettes.$grey-light;
+      &[class*='_top'],
+      &[class*='_bot'] {
+        background: Palettes.$grey-dark;
+      }
+    }
+    *.back {
+      background: Palettes.$grey-dark;
+    }
+  }
+  %med-mon {
+    *.text {
+      color: Palettes.$grey-dark;
+    }
+    img.icon {
+      background: Palettes.$grey-light;
+      &[class*='_top'],
+      &[class*='_bot'] {
+        background: Palettes.$grey-dark;
+      }
+    }
+    *.back {
+      background: Palettes.$grey-medium;
+    }
+  }
+  %lig-mon {
+    *.text {
+      color: Palettes.$grey-dark;
+    }
+    img.icon {
+      background: Palettes.$grey-dark;
+      &[class*='_top'],
+      &[class*='_bot'] {
+        background: Palettes.$grey-light;
+      }
+    }
+    *.back {
+      background: Palettes.$grey-light;
+    }
+  }
+
+  div[class*='_mon'] {
+    //--|🠊 display: grid; 🠈|--\\
+    &[class*='dar_mon'] {
+      @extend %dar-mon;
+    }
+    &[class*='med_mon'] {
+      @extend %med-mon;
+    }
+    &[class*='lig_mon'] {
+      @extend %lig-mon;
+    }
+  }
+}

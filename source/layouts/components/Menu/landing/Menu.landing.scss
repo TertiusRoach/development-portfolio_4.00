@@ -1,9 +1,15 @@
-//--|🠊 Button.grading.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
+//--|🠊 Menu.landing.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
 
 @mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--\\
+  ul[class*='list'] {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (max-height: 768px) {
   }
   @media screen and (max-height: 480px) {
@@ -12,6 +18,8 @@
   }
 }
 @mixin mobile-portrait {
+  //--|🠊 display: flex; 🠈|--\\
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
@@ -20,19 +28,14 @@
   }
 }
 
-button[class*='grading'] {
-  width: 100%;
-  height: 100%;
+menu[class*='landing'] {
+  display: flex;
 
-  @include Mixins.button-presets();
-  @include Mixins.button-spacing();
-  @include Mixins.button-grading();
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

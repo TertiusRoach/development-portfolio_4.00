@@ -13,22 +13,25 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
+import { stripBrackets } from '../../../scripts/landing';
 import { animateGrid, defineButton } from './Section_launch';
-import { viewBlock, viewText, axiosError } from '../../../pages/landing';
+import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | string;
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
+
 const SectionLaunch: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'header';
-  const pageName = info.identification;
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+
   const stateName: 'highlight' | 'downplay' = 'downplay';
 
   //--|🠋 State Management 🠋|--//

@@ -1,36 +1,28 @@
 //--|🠊 Button.stretch.scss 🠈|--//
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
-@forward '../../../designs/Mixins.scss';
-
-@mixin desktop-landscape {
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-  }
-}
-@mixin mobile-portrait {
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
-  }
-}
-
+@use './pipeline/Button_motions.scss';
+@use './pipeline/Button_placing.scss';
+@use './pipeline/Button_presets.scss';
+@use './pipeline/Button_scaling.scss';
+@use './pipeline/Button_shadows.scss';
+@use './pipeline/Button_spacing.scss';
+@use './pipeline/Button_surface.scss';
 button[class*='stretch'] {
-  @include Mixins.button-stretch();
-  @include Mixins.button-presets();
-  @include Mixins.button-spacing();
+  //--|🠉 display: flex; 🠉|--//
+  @include Button_presets.button-presets();
+  @include Button_motions.button-motions();
+  @include Button_shadows.button-shadows();
+  @include Button_surface.button-surface();
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
-    @include desktop-landscape();
+    @include Button_placing.desktop-placing();
+    @include Button_scaling.desktop-scaling();
+    @include Button_spacing.desktop-spacing();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
-    @include mobile-portrait();
+    @include Button_placing.mobile-placing();
+    @include Button_scaling.mobile-scaling();
+    @include Button_spacing.mobile-spacing();
   }
 }

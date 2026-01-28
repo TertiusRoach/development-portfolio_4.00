@@ -2,26 +2,15 @@
 //--|🠋 Styles 🠋|--//
 import './Navigation.preview.scss';
 //--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { toggleHeader, defineButton } from './Navigation_preview';
-import {
-  viewBlock,
-  viewText,
-  axiosError,
-  retrieveEndpoint,
-  viewPass,
-} from '../../../pages/landing';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
+//--|🠋 Dependencies 🠋|--//
+import axios, { AxiosError } from 'axios';
+import React, { useEffect } from 'react';
+//--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/default/Button.default';
+import ButtonDefault from '../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {

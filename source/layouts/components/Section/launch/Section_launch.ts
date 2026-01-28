@@ -9,7 +9,7 @@ export function defineButton(
     case 'track-day':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -20,7 +20,7 @@ export function defineButton(
     case 'log-ticket':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,
@@ -31,7 +31,7 @@ export function defineButton(
     case 'find-link':
       return {
         fontSize: '<h1>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: 'text' as 'left' | 'right' | 'center' | 'icon' | 'text',
+        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
         shadingView: 'dark' as 'dark' | 'medium' | 'light',
 
         className: button,

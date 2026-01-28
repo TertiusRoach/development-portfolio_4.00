@@ -1,0 +1,46 @@
+//--|🠊 Article.landing.scss 🠈|--//
+@use '../../../designs/Palettes.scss' as Palettes;
+//--|🠉 pageName: [landing] 🠉|--\\
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--\\
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--\\
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+article[class*='landing'] {
+  display: grid;
+  overflow: hidden;
+  @extend %article-design;
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+%article-design {
+  border-radius: 4rem;
+  background: Palettes.$indexLand-dark;
+  border-left: 4px solid Palettes.$indexLand-light;
+  border-right: 4px solid Palettes.$indexLand-light;
+  filter: drop-shadow(0 0 1rem Palettes.$indexLand-medium);
+  box-shadow: inset 0 0 1rem rgba(Palettes.$indexLand-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
+}

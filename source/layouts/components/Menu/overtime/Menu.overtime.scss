@@ -2,14 +2,26 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: flex; 🠈|--//
-  ol[class*='list'] {
+  //--|🠊 display: grid; 🠈|--//
+  &[class*='header'] {
+    grid-template: repeat(2, 4rem) / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
+    li[class*='route'] {
+      grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+      background: rgba(darkred, 0.75);
+      //--|🠊 background: rgba(darkred, 0.75); 🠈|--//
+    }
+  }
+
+  ul[class*='list'] {
+    /*
     margin: 0;
     padding: 0;
     width: 100%;
     display: grid;
     list-style: none;
+    */
 
+    /*
     &[class*='header'] {
       grid-template: repeat(2, 4rem) / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
       li[class*='daily'] {
@@ -23,12 +35,15 @@
         grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
     }
+    */
+    /*
     &[class*='footer'] {
       grid-template: 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
       li[class*='scrolling'] {
         grid-area: 1 / 2 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
       }
     }
+    */
 
     /*
     &[class*='overlay'] {
@@ -53,7 +68,7 @@
 }
 
 menu[class*='overtime'] {
-  display: flex;
+  display: grid;
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {

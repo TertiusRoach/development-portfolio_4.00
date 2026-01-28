@@ -2,18 +2,16 @@
 //--|🠋 Styles 🠋|--//
 import './Menu.overtime.scss';
 //--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from './Menu_overtime';
+import { defineButton } from './Menu_overtime';
+import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
+//--|🠋 Dependencies 🠋|--//
+import React, { useEffect } from 'react';
+//--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
+import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
+
 import TimeDaily from '../../../components/Time/daily/Time.daily';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
@@ -23,58 +21,26 @@ import NavigationPreview from '../../../components/Navigation/preview/Navigation
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
-    pageName: string;
-    blockName:
-      | string
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>';
-    stateName?: 'established' | 'freelancing';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as string;
-  const pageName = info.pageName as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as string;
 
-  const handleOvertime = (
-    blockName:
-      | '<overlay>'
-      | '<leftbar>'
-      | '<rightbar>'
-      | '<header>'
-      | '<footer>'
-      | '<main>'
-      | string
-  ) => {
+  const handleOvertime = (blockName: 'overlay' | 'leftbar' | 'rightbar' | 'header' | 'footer' | 'main' | string) => {
     switch (blockName) {
-      case '<overlay>':
+      case 'header':
+        console.log(defineButton(`${blockName}`, { pageName, blockName }));
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li>Overlay content</li>
-          </ol>
-        );
-
-      case '<leftbar>':
-        return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li>Leftbar content</li>
-          </ol>
-        );
-
-      case '<rightbar>':
-        return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li>Rightbar content</li>
-          </ol>
-        );
-
-      case '<header>':
-        return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="identity-list">
+          <>
+            <li className="route-list">
+              {/* <ButtonStretch style={defineButton(`${blockName}`, { pageName, blockName })} /> */}
+            </li>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li className="identity-list">
               <DivisionIdentity info={info} />
             </li>
             <li className="daily-list">
@@ -86,28 +52,59 @@ const MenuOvertime: React.FC<InfoProps> = ({ info }) => {
             <li className="preview-list">
               <NavigationPreview info={info} />
             </li>
-          </ol>
+            </ul> */}
+          </>
         );
-      case '<footer>':
+      case 'footer':
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li className="scrolling-list">
+          <>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li className="scrolling-list">
               <SpanScrolling block={blockName} info={info} />
             </li>
-          </ol>
+            </ul> */}
+          </>
         );
-      case '<main>':
+      case 'overlay':
+        return (
+          <>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li>Overlay content</li>
+            </ul> */}
+          </>
+        );
+
+      case 'leftbar':
+        return (
+          <>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li>Leftbar content</li>
+            </ul> */}
+          </>
+        );
+
+      case 'rightbar':
+        return (
+          <>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li>Rightbar content</li>
+            </ul> */}
+          </>
+        );
+      case 'main':
       default:
         return (
-          <ol className={`${stripBrackets(blockName, '<>')}-list`}>
-            <li>Main content</li>
-          </ol>
+          <>
+            {/* <ul className={`${stripBrackets(blockName, '<>')}-list`}>
+              <li>Main content</li>
+            </ul> */}
+          </>
         );
     }
   };
 
   useEffect(() => {}, [pageName, blockName]);
 
-  return <menu className={'overtime-menu'}>{handleOvertime(blockName)}</menu>;
+  return <menu className={`overtime-menu ${stripBrackets(blockName, '<>')}`}>{handleOvertime(blockName)}</menu>;
 };
 export default MenuOvertime;

@@ -3,44 +3,65 @@
 
 @mixin desktop-landscape {
   //--|🠊 display: block; 🠈|--//
-  div[class*='container'] {
-    height: 100%;
-    display: grid;
-    min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-    grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  div[class*='carousel'] {
+    z-index: 0;
+    section {
+      div[class*='container'] {
+        height: 100%;
+        display: grid;
+        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
+        grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
 
-    nav {
-      z-index: 3;
-      grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    form[class*='login'],
-    form[class*='register'],
-    form[class*='password'] {
-      z-index: 1;
-      grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    figure[class*='rotation'] {
-      z-index: 0;
-      grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        nav {
+          z-index: 3;
+          grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        form[class*='login'],
+        form[class*='register'],
+        form[class*='password'] {
+          z-index: 1;
+          grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+        figure[class*='rotation'] {
+          z-index: 0;
+          grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        }
+      }
     }
   }
 
+  menu[class*='landing'] {
+    z-index: 1;
+    grid-area: 1 / 1 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (max-height: 768px) {
-    div[class*='container'] {
-      grid-template: 2rem 1fr 26rem 1fr 2rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
-      nav {
-        grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      form {
-        grid-area: 2 / 3 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    div[class*='carousel'] {
+      section {
+        div[class*='container'] {
+          grid-template: 4rem 1fr 26rem 1fr 4rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
+          nav {
+            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+          form {
+            grid-area: 2 / 3 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+        }
       }
     }
+  }
+  @media screen and (max-height: 480px) {
   }
   @media screen and (max-height: 360px) {
-    div[class*='container'] {
-      grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
-      nav {
-        grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    div[class*='carousel'] {
+      section {
+        div[class*='container'] {
+          grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
+          nav {
+            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+          }
+        }
       }
     }
   }
@@ -54,13 +75,10 @@
     grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
 
     nav {
-      // display: none;
       z-index: 1;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
-    form[class*='login'],
-    form[class*='register'],
-    form[class*='password'] {
+    form[class*='form'] {
       z-index: 2;
       grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     }
@@ -70,7 +88,12 @@
     }
   }
 
+  //--|🠋 Tablet (Portrait) 🠋|--//
   @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
   }
 }
 
@@ -79,51 +102,22 @@ main[id*='landing'] {
   overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
   grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  .landing-carousel {
+  div[class*='carousel'] {
     display: flex;
     grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
     transform: translateX(-100vw);
     transition: transform 0.5s ease-in-out;
     section {
-      //--|🠊 display: block; 🠈|--//
-      //--|🠋 Desktop (Landscape) 🠋|--//
-      @media screen and (orientation: landscape) {
-        @include desktop-landscape();
-      }
-      //--|🠋 Mobile (Portrait) 🠋|--//
-      @media screen and (orientation: portrait) {
-        @include mobile-portrait();
-      }
-
-      /*
-      div[class*='container'] {
-        h6[class*='register'] {
-          color: Palettes.$trackDay-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$trackDay-light, 1));
-        }
-        h6[class*='login'] {
-          color: Palettes.$logTicket-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$logTicket-light, 1));
-        }
-        h6[class*='password'] {
-          color: Palettes.$findLink-dark;
-          filter: drop-shadow(0 0 2rem rgba(Palettes.$findLink-light, 1));
-        }
-
-        form {
-          &[class*='password'] {
-            box-shadow: inset 0 0 8px rgba(Palettes.$findLink-light, 1);
-          }
-          &[class*='login'] {
-            box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
-            // background: red;
-          }
-          &[class*='register'] {
-            box-shadow: inset 0 0 8px rgba(Palettes.$trackDay-light, 1);
-          }
-        }
-      }
-      */
+      display: block;
     }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
   }
 }

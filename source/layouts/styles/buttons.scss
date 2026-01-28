@@ -1,0 +1,59 @@
+//--|🠊 styles/buttons.scss 🠈|--//
+//--|🠋 Containers 🠋|--//
+@use '../containers/Main/ButtonsMain/ButtonsMain.scss';
+@use '../containers/Header/ButtonsHeader/ButtonsHeader.scss';
+@use '../containers/Footer/ButtonsFooter/ButtonsFooter.scss';
+
+//--|🠋 Device Layouts 🠋|--//
+@mixin desktop-landscape {
+  main[id*='main'],
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  main[id*='main'],
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+body {
+  div[id*='buttons'] {
+    main[id*='buttons'] {
+      height: 100vh;
+    }
+
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+    }
+  }
+}
