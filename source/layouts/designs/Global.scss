@@ -35,6 +35,19 @@
       height: 100vh;
       position: absolute;
     }
+
+    //--|🠋 Z-index Settings 🠋|--\\
+    & {
+      *[class='foreground'] {
+        z-index: 2;
+      }
+      *[class='midground'] {
+        z-index: 1;
+      }
+      *[class='background'] {
+        z-index: 0;
+      }
+    }
   }
   time {
     cursor: default;

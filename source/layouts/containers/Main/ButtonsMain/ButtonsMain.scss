@@ -17,7 +17,7 @@
     grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
   }
 
-  //--|🠋 Desktop (Margin) 🠋|--//
+  //--|🠋 Desktop (Margins) 🠋|--//
   section[class='foreground'] {
     margin: 0 96px;
     @media screen and (max-height: 768px) {
@@ -47,7 +47,7 @@
     grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
   }
 
-  //--|🠋 Mobile (Margin) 🠋|--//
+  //--|🠋 Mobile (Margins) 🠋|--//
   section[class='foreground'] {
     margin: 0 64px;
     @media screen and (max-width: 768px) {
@@ -62,26 +62,32 @@
   }
 }
 
-@mixin desktop-margin {
-}
-@mixin mobile-margin {
-}
-
 main[id*='buttons'] {
   @media screen and (orientation: landscape) {
-    @include desktop-margin();
     @include desktop-landscape();
-    /*
     //--|🠋 Desktop (Separate) 🠋|--//
     section[class='foreground'] {
-      margin: 0 96px;
-      grid-area: 3 / 1 / 4 / 4;
-      background: rgba(purple, 0.5);
+      div {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+
+        aside {
+          display: inherit;
+          grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--\\
+          grid-template-columns: repeat(2, 1fr); //--|🠈 columns 🠈|--\\
+          background: Palettes.$indexLand-medium;
+        }
+
+        aside[class*='left'] {
+          button:nth-child(1) {
+            grid-area: 1 / 1 / 3 / 2;
+          }
+        }
+      }
     }
-    */
   }
   @media screen and (orientation: portrait) {
-    @include mobile-margin();
     @include mobile-portrait();
 
     /*
@@ -92,7 +98,6 @@ main[id*='buttons'] {
   }
   section[class='foreground'] {
     grid-area: 3 / 1 / 4 / 4;
-    background: rgba(purple, 0.5);
   }
   div[class='background'] {
     display: inherit;

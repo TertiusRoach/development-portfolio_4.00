@@ -7,6 +7,8 @@ import { clearSection } from '../../../components/Section/buttons/Section_button
 //--|🠋 Components 🠋|--\\
 const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
 
+import ButtonDefault from '../../../components/Button/default/Button.default';
+
 interface InfoProps {
   info: {
     pageName: '[buttons]' | string;
@@ -15,8 +17,10 @@ interface InfoProps {
   };
 }
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
+  const imagePath =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
 
   const handleButtons = (pageName: string, blockName: string) => {
     let page: string = pageName;
@@ -45,33 +49,26 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
         <div className="h1-size visible">
-          {/* <AsideButtons
-            style={{
-              specSize: '<h1>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h1>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h1>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          /> */}
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                view: '-top-',
+                text: `one_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+                size: '<h1>',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+
+                type: '{button}',
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
         </div>
         {/* <div className="h2-size hidden">
           <AsideButtons
