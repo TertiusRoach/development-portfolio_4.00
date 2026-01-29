@@ -9,8 +9,8 @@ import { stripBrackets } from '../../../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
 import ButtonDefault from '../../../../Button/default/Button.default';
-import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
-import ButtonStretch from '../../../../Button/stretch/Button.stretch';
+import ButtonCleaned from '../../../../Button/archive/cleaned/Button.cleaned';
+import ButtonStretch from '../../../../Button/archive/stretch/Button.stretch';
 //--|🠉 Components 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';

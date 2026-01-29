@@ -1,6 +1,6 @@
 //--|🠊 Button_cleaned.ts 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/buttons';
+import { stripBrackets } from '../../../../scripts/buttons';
 //--|🠉 Functions 🠉|--//
 
 interface StyleProps {

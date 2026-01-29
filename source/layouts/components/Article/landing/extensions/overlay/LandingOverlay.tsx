@@ -8,8 +8,8 @@ import { defineButton, getIcon, showFigure, hideFigure } from '../../Article_lan
 import { stripBrackets } from '../../../../../scripts/buttons';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../../Button/default/Button.default';
-import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
-import ButtonStretch from '../../../../Button/stretch/Button.stretch';
+import ButtonCleaned from '../../../../Button/archive/cleaned/Button.cleaned';
+import ButtonStretch from '../../../../Button/archive/stretch/Button.stretch';
 
 interface InfoProps {
   info: {

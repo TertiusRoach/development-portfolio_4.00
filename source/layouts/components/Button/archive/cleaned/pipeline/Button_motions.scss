@@ -1,5 +1,5 @@
 //--|🠊 Button_motions.scss 🠈|--//
-@use '../../../../designs/Palettes.scss' as Palettes;
+@use '../../../../../designs/Palettes.scss' as Palettes;
 @mixin button-motions {
   //--|🠊 button[class*='cleaned'] 🠈|--//
   @extend %mono-motions; //--|🠈 Monochrome 🠈|--//
@@ -20,7 +20,9 @@
     p {
       transition: filter 0.5s ease-in-out;
       span {
-        transition: color 0.25s ease-in-out, filter 0.5s ease-in-out;
+        transition:
+          color 0.25s ease-in-out,
+          filter 0.5s ease-in-out;
       }
     }
   }
