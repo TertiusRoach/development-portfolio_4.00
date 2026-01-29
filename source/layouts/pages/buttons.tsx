@@ -31,13 +31,13 @@ function Buttons() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />}
-      </Suspense>
+      </Suspense> */}
 
-      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />}
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
         {getMain && <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />}

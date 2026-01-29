@@ -25,7 +25,7 @@ const ButtonsFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <menu></menu>
+      {/* <menu></menu> */}
       {/* <MenuLanding info={info} /> */}
       {/* <SectionBlocked info={info} /> */}
     </footer>

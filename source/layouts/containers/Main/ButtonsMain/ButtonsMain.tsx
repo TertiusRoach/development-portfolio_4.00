@@ -43,6 +43,21 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
+      {/* <section></section> */}
+
+      <div className="background">
+        <header>
+          <div></div>
+          <div></div>
+        </header>
+        <aside className="left"></aside>
+        <aside className="right"></aside>
+        <footer>
+          <div></div>
+          <div></div>
+        </footer>
+      </div>
+
       {/* {handleButtons(info.pageName, info.blockName)} */}
     </main>
   );

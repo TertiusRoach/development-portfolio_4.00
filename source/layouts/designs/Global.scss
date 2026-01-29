@@ -23,6 +23,19 @@
     cursor: default;
     white-space: wrap;
   }
+
+  body {
+    position: relative;
+    > div[id*='landing'],
+    > div[id*='overtime'],
+    > div[id*='ticketing'],
+    > div[id*='hyperlink'],
+    > div[id*='buttons'] {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+    }
+  }
   time {
     cursor: default;
   }
