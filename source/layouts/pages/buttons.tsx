@@ -31,6 +31,10 @@ function Buttons() {
 
   return (
     <>
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />}
+      </Suspense>
+
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />}
       </Suspense>
@@ -38,17 +42,13 @@ function Buttons() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />}
       </Suspense>
-
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />}
-      </Suspense>
     </>
-
-    // <Suspense fallback={<div className="display-1">Loading...</div>}>
-    //   <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />
-    //   <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />
-    //   <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />
-    // </Suspense>
   );
 }
 export default Buttons;
+
+// <Suspense fallback={<div className="display-1">Loading...</div>}>
+//   <ButtonsHeader info={{ pageName: '[buttons]', blockName: '<header>' }} />
+//   <ButtonsMain info={{ pageName: '[buttons]', blockName: '<main>' }} />
+//   <ButtonsFooter info={{ pageName: '[buttons]', blockName: '<footer>' }} />
+// </Suspense>

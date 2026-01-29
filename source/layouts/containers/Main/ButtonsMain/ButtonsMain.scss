@@ -6,6 +6,7 @@
   grid-template: //--|🠋 1080px 🠋|--//
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
     / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-height: 768px) {
     grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
   }
@@ -15,12 +16,27 @@
   @media screen and (max-height: 360px) {
     grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
   }
+
+  //--|🠋 Desktop (Margin) 🠋|--//
+  section[class='foreground'] {
+    margin: 0 96px;
+    @media screen and (max-height: 768px) {
+      margin: 0 64px;
+    }
+    @media screen and (max-height: 480px) {
+      margin: 0 48px;
+    }
+    @media screen and (max-height: 360px) {
+      margin: 0 32px;
+    }
+  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Portrait) 🠋|--//
   grid-template: //--|🠋 1920px 🠋|--//
     repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
     / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-width: 768px) {
     grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
   }
@@ -30,15 +46,54 @@
   @media screen and (max-width: 360px) {
     grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
   }
+
+  //--|🠋 Mobile (Margin) 🠋|--//
+  section[class='foreground'] {
+    margin: 0 64px;
+    @media screen and (max-width: 768px) {
+      margin: 0 48px;
+    }
+    @media screen and (max-width: 480px) {
+      margin: 0 32px;
+    }
+    @media screen and (max-width: 360px) {
+      margin: 0 24px;
+    }
+  }
 }
+
+@mixin desktop-margin {
+}
+@mixin mobile-margin {
+}
+
 main[id*='buttons'] {
   @media screen and (orientation: landscape) {
+    @include desktop-margin();
     @include desktop-landscape();
+    /*
+    //--|🠋 Desktop (Separate) 🠋|--//
+    section[class='foreground'] {
+      margin: 0 96px;
+      grid-area: 3 / 1 / 4 / 4;
+      background: rgba(purple, 0.5);
+    }
+    */
   }
   @media screen and (orientation: portrait) {
+    @include mobile-margin();
     @include mobile-portrait();
-  }
 
+    /*
+    //--|🠋 Mobile (Separate) 🠋|--//
+    section {
+    }
+    */
+  }
+  section[class='foreground'] {
+    grid-area: 3 / 1 / 4 / 4;
+    background: rgba(purple, 0.5);
+  }
   div[class='background'] {
     display: inherit;
     grid-template: inherit;
