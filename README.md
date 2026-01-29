@@ -15,6 +15,11 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 <details>
   <summary><strong>Table of Contents</strong></summary>
 
+- [Terminal Commands](#terminal-commands)
+- [Installation Guide](#installation-guide)
+  - [Quick Start](#quick-start)
+  - [Full Installation](#full-installation)
+  - [Installation Breakdown](#installation-breakdown)
 - [Testing Environment](#testing-environment)
 - [Front-end Database](#front-end-database)
   - [Track a Day](#track-a-day)
@@ -26,11 +31,6 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
   - [Orchestrating Visibility](#orchestrating-visibility)
   - [Determining Element Responsibilities](#determining-element-responsibilities)
   - [Layout Container Breakdown](#layout-container-breakdown)
-- [Terminal Commands](#terminal-commands)
-- [Installation Guide](#installation-guide)
-  - [Quick Start](#quick-start)
-  - [Full Installation](#full-installation)
-  - [Installation Breakdown](#installation-breakdown)
 - [Development Environment](#development-environment)
   - [VSCode Tips](#vscode-tips)
   - [Folder Structure](#folder-structure)
@@ -39,119 +39,6 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
   - [Git Workflow](#git-workflow)
 
 </details>
-
----
-
-## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.02/source/layouts/pages)
-
-This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
-
----
-
-## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
-
-This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
-
-### Track a Day
-
-Frustrated with spreadsheets and done with guesswork? Track time cleanly and let totals speak.
-
-| Configuration             | Options                         |
-| ------------------------- | ------------------------------- |
-| **What's your vocation?** | `.freelancing` · `.established` |
-
-### Log a Ticket
-
-Ticketing should feel like momentum, not admin. The goal is quick capture, clear ownership, and visible progress.
-
-| Configuration             | Options                  |
-| ------------------------- | ------------------------ |
-| **What's your position?** | `.manager` · `.employee` |
-
-### Find a Link
-
-A fast index for links a team actually uses. Think spreadsheets, schedules, docs, dashboards.
-
-| Configuration               | Options                       |
-| --------------------------- | ----------------------------- |
-| **What's your occupation?** | `.specialist` · `.technician` |
-
-### Pick a Page
-
-Company comparisons as a thought experiment: the `&` icon looks like a dog scratching its anus.
-
-| Configuration             | Options                                   |
-| ------------------------- | ----------------------------------------- |
-| **Layouts Resolutions**   | `.landscape` · `.portrait` · `.square`    |
-| **Consider Technologies** | `.microsoft` (Excel) · `.google` (Sheets) |
-
----
-
-## [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) [Installation](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) & [Development](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)
-
-This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed server module to support an office application suite that tracks overtime, logs tickets, and stores links.
-
-> **Note:** For demonstration purposes, `roleName` represents the user's selected company position and drives behavior and visibility.
-
----
-
-## CSS & HTML Vocabulary
-
-### Orchestrating Visibility
-
-These classes are intentionally simple. They act like a UI contract.
-
-#### State Management
-
-| State Type           | Classes                    | Purpose                                                                       |
-| -------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| **Active State**     | `.active` · `.asleep`      | Indicate whether a feature is currently in use (active) or parked (asleep)    |
-| **Visibility State** | `.visible` · `.hidden`     | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State**  | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
-| **Emphasis State**   | `.highlight` · `.downplay` | Guide attention without changing layout or flow                               |
-
-> **Design Principle:** Active should feel responsive. Asleep should stay out of the user's way.
-
-### Determining Element Responsibilities
-
-For demonstration purposes, the `roleName` represents the user's selected company position and influences the application's behavior accordingly.
-
-#### Application Roles
-
-| Application      | Role Question           | Options                         |
-| ---------------- | ----------------------- | ------------------------------- |
-| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
-| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
-| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
-
-#### Company Comparisons
-
-> Company comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
-
-| Category                | Options                                |
-| ----------------------- | -------------------------------------- |
-| **Mobile Platforms**    | `.apple` · `.android`                  |
-| **Productivity Suites** | `.microsoft` · `.google`               |
-| **Fitness Chains**      | `.planet-fitness` · `.anytime-fitness` |
-
-### Layout Container Breakdown
-
-This project uses a predictable layout container system to prevent CSS collisions and keep page structure readable at a glance.
-
-Primary containers live under `source/layouts/containers/` and use the following block names:
-
-#### Container Architecture
-
-| Container    | HTML Tag    | ID Pattern             | Purpose                            |
-| ------------ | ----------- | ---------------------- | ---------------------------------- |
-| **Overlay**  | `<section>` | `${pageName}-overlay`  | Top layer UI, modals, focus states |
-| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Left sidebar navigation zone       |
-| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Right sidebar utility zone         |
-| **Header**   | `<header>`  | `${pageName}-header`   | Top layout zone for identity       |
-| **Main**     | `<main>`    | `${pageName}-main`     | Primary content area               |
-| **Footer**   | `<footer>`  | `${pageName}-footer`   | Bottom layout zone                 |
-
-> **Important:** The `${blockName}` keywords are not decoration. They are how the codebase stays stable when styles grow and features multiply.
 
 ---
 
@@ -178,8 +65,6 @@ npm run stop
 # Switch GitHub branches
 git checkout 4.01
 ```
-
----
 
 ## Installation Guide
 
@@ -353,6 +238,119 @@ npm install --save-dev express
 npm install --save-dev mongodb
 npm install --save-dev dotenv-webpack
 ```
+
+---
+
+## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.02/source/layouts/pages)
+
+This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
+
+---
+
+## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+
+This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
+
+### Track a Day
+
+Frustrated with spreadsheets and done with guesswork? Track time cleanly and let totals speak.
+
+| Configuration             | Options                         |
+| ------------------------- | ------------------------------- |
+| **What's your vocation?** | `.freelancing` · `.established` |
+
+### Log a Ticket
+
+Ticketing should feel like momentum, not admin. The goal is quick capture, clear ownership, and visible progress.
+
+| Configuration             | Options                  |
+| ------------------------- | ------------------------ |
+| **What's your position?** | `.manager` · `.employee` |
+
+### Find a Link
+
+A fast index for links a team actually uses. Think spreadsheets, schedules, docs, dashboards.
+
+| Configuration               | Options                       |
+| --------------------------- | ----------------------------- |
+| **What's your occupation?** | `.specialist` · `.technician` |
+
+### Pick a Page
+
+Company comparisons as a thought experiment: the `&` icon looks like a dog scratching its anus.
+
+| Configuration             | Options                                   |
+| ------------------------- | ----------------------------------------- |
+| **Layouts Resolutions**   | `.landscape` · `.portrait` · `.square`    |
+| **Consider Technologies** | `.microsoft` (Excel) · `.google` (Sheets) |
+
+---
+
+## [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) [Installation](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) & [Development](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)
+
+This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed server module to support an office application suite that tracks overtime, logs tickets, and stores links.
+
+> **Note:** For demonstration purposes, `roleName` represents the user's selected company position and drives behavior and visibility.
+
+---
+
+## CSS & HTML Vocabulary
+
+### Orchestrating Visibility
+
+These classes are intentionally simple. They act like a UI contract.
+
+#### State Management
+
+| State Type           | Classes                    | Purpose                                                                       |
+| -------------------- | -------------------------- | ----------------------------------------------------------------------------- |
+| **Active State**     | `.active` · `.asleep`      | Indicate whether a feature is currently in use (active) or parked (asleep)    |
+| **Visibility State** | `.visible` · `.hidden`     | Control whether something is rendered for the user or intentionally not shown |
+| **Expansion State**  | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
+| **Emphasis State**   | `.highlight` · `.downplay` | Guide attention without changing layout or flow                               |
+
+> **Design Principle:** Active should feel responsive. Asleep should stay out of the user's way.
+
+### Determining Element Responsibilities
+
+For demonstration purposes, the `roleName` represents the user's selected company position and influences the application's behavior accordingly.
+
+#### Application Roles
+
+| Application      | Role Question           | Options                         |
+| ---------------- | ----------------------- | ------------------------------- |
+| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
+| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
+| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
+
+#### Company Comparisons
+
+> Company comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
+
+| Category                | Options                                |
+| ----------------------- | -------------------------------------- |
+| **Mobile Platforms**    | `.apple` · `.android`                  |
+| **Productivity Suites** | `.microsoft` · `.google`               |
+| **Fitness Chains**      | `.planet-fitness` · `.anytime-fitness` |
+
+### Layout Container Breakdown
+
+This project uses a predictable layout container system to prevent CSS collisions and keep page structure readable at a glance.
+
+Primary containers live under `source/layouts/containers/` and use the following block names:
+
+#### Container Architecture
+
+| Container    | HTML Tag    | ID Pattern             | Purpose                            |
+| ------------ | ----------- | ---------------------- | ---------------------------------- |
+| **Overlay**  | `<section>` | `${pageName}-overlay`  | Top layer UI, modals, focus states |
+| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Left sidebar navigation zone       |
+| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Right sidebar utility zone         |
+| **Header**   | `<header>`  | `${pageName}-header`   | Top layout zone for identity       |
+| **Main**     | `<main>`    | `${pageName}-main`     | Primary content area               |
+| **Footer**   | `<footer>`  | `${pageName}-footer`   | Bottom layout zone                 |
+
+> **Important:** The `${blockName}` keywords are not decoration. They are how the codebase stays stable when styles grow and features multiply.
 
 ---
 
