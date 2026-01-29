@@ -53,7 +53,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             <ButtonDefault
               style={{
                 view: '-top-',
-                text: `one_top_dar_mon`,
+                text: `Button`,
                 shade: '~dark~',
                 color: '(mono)',
                 size: '<h1>',

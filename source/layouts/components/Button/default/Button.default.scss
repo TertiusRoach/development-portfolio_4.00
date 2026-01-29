@@ -1,28 +1,59 @@
 //--|🠊 Button.default.scss 🠈|--//
-@use './pipeline/Button_motions.scss';
-@use './pipeline/Button_placing.scss';
-@use './pipeline/Button_presets.scss';
-@use './pipeline/Button_scaling.scss';
-@use './pipeline/Button_shadows.scss';
-@use './pipeline/Button_spacing.scss';
-@use './pipeline/Button_surface.scss';
+@use './pipeline/Button_grid.scss';
+@use './pipeline/Button_flex.scss';
+
+/*
+@use './rework/Button_motions.scss';
+@use './rework/Button_placing.scss';
+@use './rework/Button_presets.scss';
+@use './rework/Button_scaling.scss';
+@use './rework/Button_shadows.scss';
+@use './rework/Button_spacing.scss';
+@use './rework/Button_surface.scss';
+*/
 button[class*='default'] {
-  //--|🠉 display: flex; 🠉|--//
+  display: grid;
+  /*
   @include Button_presets.button-presets();
   @include Button_motions.button-motions();
   @include Button_shadows.button-shadows();
   @include Button_surface.button-surface();
+  */
 
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
+    @include Button_grid.desktop-grid();
+    @include Button_flex.desktop-flex();
+
+    .text {
+      z-index: 2;
+      background: rgba(darkred, 0.25);
+    }
+
+    .icon {
+      z-index: 1;
+      img {
+        background: black;
+      }
+    }
+    .back {
+      z-index: 0;
+      background: rgba(darkblue, 0.25);
+    }
+    background: rgba(pink, 0.5);
+
+    /*
     @include Button_placing.desktop-placing();
     @include Button_scaling.desktop-scaling();
     @include Button_spacing.desktop-spacing();
+    */
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    /*
     @include Button_placing.mobile-placing();
     @include Button_scaling.mobile-scaling();
     @include Button_spacing.mobile-spacing();
+    */
   }
 }

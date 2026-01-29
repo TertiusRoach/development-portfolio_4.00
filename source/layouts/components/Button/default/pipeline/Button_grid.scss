@@ -1,0 +1,1495 @@
+//--|🠊 Button_grid.scss 🠈|--\\
+@mixin desktop-grid {
+  &[class*='_top_'] {
+    .text,
+    .back {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    &[class*='one_'] {
+      grid-template-rows: 1fr 56px 174px 1fr; //--|🠊 rows 🠈|--\\
+      grid-template-columns: 1fr 28px 174px 28px 1fr; //--|🠊 columns 🠈|--\\
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-height: 768px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_bot_'] {
+    .text,
+    .back {
+    }
+    .icon {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-height: 768px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_lef_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_cen_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_tex_'] {
+    .text,
+    .back {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-height: 768px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_ico_'] {
+    .icon {
+    }
+    .back {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-height: 768px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+}
+@mixin mobile-grid {
+  &[class*='_top_'] {
+    .text,
+    .back {
+    }
+    .icon {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-width: 768px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 Top Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_bot_'] {
+    .text,
+    .back {
+    }
+    .icon {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-width: 768px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 Bot Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_lef_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Lef_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Lef_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Rig_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Rig_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_cen_'] {
+    &[class*='_def'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Cen_Def Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .back {
+      }
+      .icon {
+      }
+
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+
+      @media screen and (max-width: 768px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 Cen_Alt Button 🠋|--\\
+        &[class*='one_'] {
+        }
+        &[class*='two_'] {
+        }
+        &[class*='thr_'] {
+        }
+        &[class*='fou_'] {
+        }
+        &[class*='fiv_'] {
+        }
+        &[class*='six_'] {
+        }
+        &[class*='par_'] {
+        }
+      }
+    }
+  }
+  &[class*='_tex_'] {
+    .text,
+    .back {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-width: 768px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 Tex Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+  &[class*='_ico_'] {
+    .icon {
+    }
+    .back {
+    }
+
+    &[class*='one_'] {
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+
+    @media screen and (max-width: 768px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 Ico Button 🠋|--\\
+      &[class*='one_'] {
+      }
+      &[class*='two_'] {
+      }
+      &[class*='thr_'] {
+      }
+      &[class*='fou_'] {
+      }
+      &[class*='fiv_'] {
+      }
+      &[class*='six_'] {
+      }
+      &[class*='par_'] {
+      }
+    }
+  }
+}

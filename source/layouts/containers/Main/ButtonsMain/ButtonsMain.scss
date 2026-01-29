@@ -67,7 +67,7 @@ main[id*='buttons'] {
     @include desktop-landscape();
     //--|🠋 Desktop (Separate) 🠋|--//
     section[class='foreground'] {
-      div {
+      div[class*='size'] {
         height: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
