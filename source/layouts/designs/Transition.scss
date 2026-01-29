@@ -15,7 +15,25 @@
 //--|🠋 header[id*="header"] 🠋|--//
 @mixin header-transition {
   header {
-    &[class*='collapsed'] {
+    &[class*='expanded'] {
+      backdrop-filter: blur(2rem);
+      &[id*='landing'] {
+        menu {
+          top: -4rem;
+        }
+      }
+      &[id*='overtime'] {
+        menu {
+          top: -8rem;
+        }
+      }
+
+      section,
+      &[id*='header'] {
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+    &[class*='unfolded'] {
       backdrop-filter: blur(0px);
       &[id*='buttons'],
       &[id*='landing'] {
@@ -64,22 +82,27 @@
         clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
       }
     }
-    &[class*='expanded'] {
-      backdrop-filter: blur(2rem);
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      &[id*='buttons'],
       &[id*='landing'] {
-        menu {
-          top: -4rem;
-        }
+        clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0);
       }
       &[id*='overtime'] {
-        menu {
-          top: -8rem;
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+        }
+        //--|🠋 Mobile (Portrait) 🠋|--//
+        @media screen and (orientation: portrait) {
         }
       }
 
-      section,
-      &[id*='header'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      menu {
+        top: 0rem;
+      }
+      section {
+        clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
       }
     }
     @extend %header-transition;
