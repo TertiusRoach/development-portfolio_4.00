@@ -34,6 +34,7 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 - [Development Environment](#development-environment)
   - [VSCode Tips](#vscode-tips)
   - [Folder Structure](#folder-structure)
+  - [Repository Synchronization](#repository-synchronization)
 - [Documentation Standards](#documentation-standards)
   - [Review Flags](#review-flags)
   - [Git Workflow](#git-workflow)
@@ -49,10 +50,10 @@ Open [Visual Studio Code](https://code.visualstudio.com/) and, with the applicat
 ### Development Workflow
 
 ```bash
-# Launch front end
+# Launch front-end
 npm run app
 
-# Launch back end (from root/source/modules/server)
+# Launch back-end (from root/source/modules/server)
 nodemon landing
 
 # Compile project into public/
@@ -552,6 +553,10 @@ Reusable utilities and patterns. This is the toolbox that keeps code duplication
 ##### `.vscode/`
 
 Editor configuration for consistent debugging and project workflows.
+
+### Repository Synchronization
+
+Open the [README](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.02/source/assets/md-files/repository-synchronization.md) to see the agreed workflow for syncing `main` and version-controlled branches into one clean, shared history. You’ll also see how branches are “archived” in practice and what gets created next to keep teamwork moving smoothly. Follow it top-to-bottom and you’ll end up with one source of truth and a predictable, low-drama branch state.
 
 ---
 
