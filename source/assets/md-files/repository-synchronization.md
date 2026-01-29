@@ -1,5 +1,7 @@
 # Git/GitHub Repository Synchronization Guide
 
+## Generated with [DeepSeek](https://www.deepseek.com/en/)
+
 <div align="center">
 
 ![Platform](https://img.shields.io/badge/Platform-Linux%20Mint%20XFCE-87CF3E?style=for-the-badge&logo=linux&logoColor=white)
