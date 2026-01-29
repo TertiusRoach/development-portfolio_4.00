@@ -1,60 +1,83 @@
 //--|🠊 ButtonsHeader.scss 🠈|--//
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-
-  menu[class*='buttons'] {
-    z-index: 1;
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  section[class*='buttons'] {
-    z-index: 0;
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-
-    // background: darkred;
-  }
-
   //--|🠋 Desktop (Landscape) 🠋|--//
+  grid-template: //--|🠋 1080px 🠋|--//
+    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
   @media screen and (max-height: 768px) {
+    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
   }
   @media screen and (max-height: 480px) {
+    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
   }
   @media screen and (max-height: 360px) {
+    grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-
-  menu[class*='branding'] {
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  section[class*='launch'] {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-
   //--|🠋 Mobile (Portrait) 🠋|--//
+  grid-template: //--|🠋 1920px 🠋|--//
+    repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
   @media screen and (max-width: 768px) {
+    grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
   }
   @media screen and (max-width: 480px) {
+    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
   }
   @media screen and (max-width: 360px) {
+    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
   }
 }
 
 header[id*='buttons'] {
-  /*
-  display: grid;
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-  */
+
+  div[class='background'] {
+    display: inherit;
+    grid-template: inherit;
+    grid-area: 1 / 1 / 6 / 4;
+    background: rgba(darkred, 0.25);
+
+    header {
+      grid-area: 1 / 1 / 3 / 4;
+      div {
+        height: 50%;
+
+        &:nth-child(1) {
+          background: rgba(darkred, 0.5);
+        }
+        &:nth-child(2) {
+          background: rgba(darkred, 0.25);
+        }
+      }
+    }
+    aside {
+      &[class='left'] {
+        grid-area: 3 / 1 / 4 / 2;
+      }
+      &[class='right'] {
+        grid-area: 3 / 3 / 4 / 4;
+      }
+      background: rgba(#ab9ceb, 0.25);
+    }
+    footer {
+      grid-area: 4 / 1 / 6 / 4;
+      div {
+        height: 50%;
+
+        &:nth-child(1) {
+          background: rgba(darkred, 0.25);
+        }
+        &:nth-child(2) {
+          background: rgba(darkred, 0.5);
+        }
+      }
+    }
+  }
 }

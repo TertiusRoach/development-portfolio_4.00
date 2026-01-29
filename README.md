@@ -305,12 +305,12 @@ These classes are intentionally simple. They act like a UI contract.
 
 #### State Management
 
-| State Type           | Classes                    | Purpose                                                                       |
-| -------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| **Active State**     | `.active` · `.asleep`      | Indicate whether a feature is currently in use (active) or parked (asleep)    |
-| **Visibility State** | `.visible` · `.hidden`     | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State**  | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
-| **Emphasis State**   | `.highlight` · `.downplay` | Guide attention without changing layout or flow                               |
+| State Type           | Classes                                  | Purpose                                                                       |
+| -------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
+| **Active State**     | `.active` · `.asleep`                    | Indicate whether a feature is currently in use (active) or parked (asleep)    |
+| **Visibility State** | `.visible` · `.hidden`                   | Control whether something is rendered for the user or intentionally not shown |
+| **Expansion State**  | `.expanded` · `.unfolded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
+| **Emphasis State**   | `.highlight` · `.downplay`               | Guide attention without changing layout or flow                               |
 
 > **Design Principle:** Active should feel responsive. Asleep should stay out of the user's way.
 
