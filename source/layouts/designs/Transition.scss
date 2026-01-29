@@ -88,6 +88,7 @@
       &[id*='landing'] {
         clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0);
       }
+      /*
       &[id*='overtime'] {
         //--|🠋 Desktop (Landscape) 🠋|--//
         @media screen and (orientation: landscape) {
@@ -97,6 +98,7 @@
         @media screen and (orientation: portrait) {
         }
       }
+      */
 
       menu {
         top: 0rem;
@@ -119,6 +121,7 @@
     }
   }
   %header-constituents {
+    /*
     &[id*='ticketing'][class*='collapsed'] {
       //--|🠋 Desktop (Landscape) 🠋|--//
       @media screen and (orientation: landscape) {
@@ -137,6 +140,113 @@
       @media screen and (orientation: portrait) {
       }
     }
+    */
+  }
+}
+//--|🠋 footer[id*="footer"] 🠋|--//
+@mixin footer-transition {
+  //--|🠋 Footer 🠋|--//
+  footer {
+    &[class*='unfolded'] {
+      backdrop-filter: blur(0px);
+      &[id*='buttons'],
+      &[id*='landing'] {
+        //--|🠋 Desktop (Landscape) 🠋|--//
+        @media screen and (orientation: landscape) {
+          clip-path: polygon(0% calc(100% - 8rem), 100% calc(100% - 8rem), 100% 100%, 0% 100%);
+
+          @media screen and (max-height: 768px) {
+            clip-path: polygon(0% calc(100% - 6rem), 100% calc(100% - 6rem), 100% 100%, 0% 100%);
+          }
+          @media screen and (max-height: 480px) {
+            clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+          }
+          @media screen and (max-height: 360px) {
+            clip-path: polygon(0% calc(100% - 3rem), 100% calc(100% - 3rem), 100% 100%, 0% 100%);
+          }
+        }
+        @media screen and (orientation: portrait) {
+          clip-path: polygon(0% calc(100% - 12rem), 100% calc(100% - 12rem), 100% 100%, 0% 100%);
+
+          @media screen and (max-width: 768px) {
+            clip-path: polygon(0% calc(100% - 10rem), 100% calc(100% - 10rem), 100% 100%, 0% 100%);
+          }
+          @media screen and (max-width: 480px) {
+            clip-path: polygon(0% calc(100% - 6rem), 100% calc(100% - 6rem), 100% 100%, 0% 100%);
+          }
+          @media screen and (max-width: 360px) {
+            clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+          }
+        }
+      }
+
+      /*
+      menu {
+        top: 0rem;
+      }
+      section {
+        opacity: 0;
+      }
+      */
+    }
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0px);
+      &[id*='buttons'],
+      &[id*='landing'] {
+        clip-path: polygon(0% calc(100% - 0px), 100% calc(100% - 0px), 100% 100%, 0% 100%);
+      }
+
+      menu {
+        top: 0rem;
+      }
+      section {
+        opacity: 0;
+      }
+    }
+    &[class*='expanded'] {
+      backdrop-filter: blur(32px);
+      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+      menu {
+        top: 4rem;
+      }
+      section {
+        opacity: 1;
+      }
+    }
+    @extend %footer-transition;
+    @extend %footer-constituents;
+  }
+  %footer-transition {
+    transition: clip-path 0.75s ease-in-out;
+    menu {
+      position: relative;
+      transition: top 0.25s ease-in-out;
+    }
+    section {
+      transition: clip-path 0.5s ease-in-out;
+    }
+  }
+  %footer-constituents {
+    /*
+    &[id*='ticketing'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
+    }
+    &[id*='hyperlink'][class*='collapsed'] {
+      //--|🠋 Desktop (Landscape) 🠋|--//
+      @media screen and (orientation: landscape) {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+      }
+      //--|🠋 Mobile (Portrait) 🠋|--//
+      @media screen and (orientation: portrait) {
+      }
+    }
+    */
   }
 }
 //--|🠋 aside[id*="bar"] 🠋|--//
@@ -163,42 +273,6 @@
     &[id*='leftbar'],
     &[id*='rightbar'] {
       backdrop-filter: blur(8px);
-    }
-  }
-}
-//--|🠋 footer[id*="footer"] 🠋|--//
-@mixin footer-transition {
-  //--|🠋 Footer 🠋|--//
-  footer {
-    &[class*='collapsed'] {
-      backdrop-filter: blur(0px);
-      clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
-      menu {
-        top: 0rem;
-      }
-      section {
-        opacity: 0;
-      }
-    }
-    &[class*='expanded'] {
-      backdrop-filter: blur(32px);
-      clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
-      menu {
-        top: 4rem;
-      }
-      section {
-        opacity: 1;
-      }
-    }
-    & {
-      transition:
-        clip-path 0.25s ease-in-out,
-        backdrop-filter 0.5s ease-in-out,
-        opacity 0.25s ease-in-out;
-      menu {
-        position: relative;
-        transition: top 0.25s ease-in-out;
-      }
     }
   }
 }

@@ -4,6 +4,7 @@
   grid-template: //--|🠋 1080px 🠋|--//
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
     / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-height: 768px) {
     grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
   }
@@ -19,6 +20,7 @@
   grid-template: //--|🠋 1920px 🠋|--//
     repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
     / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-width: 768px) {
     grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
   }
