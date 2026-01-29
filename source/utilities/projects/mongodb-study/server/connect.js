@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 
 //--|▼| This connects the application to a MongoDB cluster |▼|--//
 async function main() {
-  const uri = 'mongodb+srv://TertiusRoach:F9MTuRf6dKXTfM0b@cluster0.n1t9opj.mongodb.net/?retryWrites=true&w=majority'; //--|◄| Keep Confidential |◄|--//
+  const uri = ''; //--|◄| Keep Confidential |◄|--//
   const client = new MongoClient(uri);
   try {
     await client.connect();
@@ -86,7 +86,7 @@ async function createMultiple(client, newListings) {
 //--|▼| Read |▼|--//
 async function findListingsWithMinimumBedroomsBathroomsAndMostRecentReviews(
   client,
-  { minimumNumberOfBedrooms = 0, minimumNumberOfBathrooms = 0, maximumNumberOfResults = Number.MAX_SAFE_INTEGER } = {}
+  { minimumNumberOfBedrooms = 0, minimumNumberOfBathrooms = 0, maximumNumberOfResults = Number.MAX_SAFE_INTEGER } = {},
 ) {
   // See https://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#find for the find() docs
   const cursor = client
@@ -104,7 +104,9 @@ async function findListingsWithMinimumBedroomsBathroomsAndMostRecentReviews(
 
   // Print the results
   if (results.length > 0) {
-    console.log(`Found listing(s) with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms:`);
+    console.log(
+      `Found listing(s) with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms:`,
+    );
     results.forEach((result, i) => {
       const date = new Date(result.last_review).toDateString();
 
@@ -116,7 +118,9 @@ async function findListingsWithMinimumBedroomsBathroomsAndMostRecentReviews(
       console.log(`   most recent review date: ${date}`);
     });
   } else {
-    console.log(`No listings found with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms`);
+    console.log(
+      `No listings found with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms`,
+    );
   }
 }
 async function findOneListingByName(client, nameOfListing) {
@@ -139,14 +143,20 @@ async function updateAllListingsToHavePropertyType(client) {
   console.log(`${result.modifiedCount} document(s) was/were updated.`);
 }
 async function updateListingByName(client, nameOfListing, updatedListing) {
-  const result = await client.db('sample_airbnb').collection('listingsAndReviews').updateOne({ name: nameOfListing }, { $set: updatedListing });
+  const result = await client
+    .db('sample_airbnb')
+    .collection('listingsAndReviews')
+    .updateOne({ name: nameOfListing }, { $set: updatedListing });
 
   console.log(`${result.matchedCount} document(s) matched the query criteria`);
   console.log(`${result.modifiedCount} documents was/were updated`);
 }
 
 async function upsertListingByName(client, nameOfListing, updatedListing) {
-  const result = await client.db('sample_airbnb').collection('listingsAndReviews').updateOne({ name: nameOfListing }, { $set: updatedListing }, { upsert: true });
+  const result = await client
+    .db('sample_airbnb')
+    .collection('listingsAndReviews')
+    .updateOne({ name: nameOfListing }, { $set: updatedListing }, { upsert: true });
 
   console.log(`${result.matchedCount} document(s) matched the query criteria`);
 
