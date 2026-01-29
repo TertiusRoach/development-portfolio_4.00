@@ -4,47 +4,63 @@
 @use '../containers/Header/ButtonsHeader/ButtonsHeader.scss';
 @use '../containers/Footer/ButtonsFooter/ButtonsFooter.scss';
 
-//--|🠋 Device Layouts 🠋|--//
+//--|🠋 Desktop (Landscape) 🠋|--\\
 @mixin desktop-landscape {
-  main[id*='main'],
-  header[id*='header'],
-  footer[id*='footer'],
-  aside[id*='leftbar'],
-  aside[id*='rightbar'],
-  section[id*='overlay'] {
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-  }
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+  //--|🠋 @media screen and (max-height: 1080px) 🠋|--//
+  grid-template: 8rem 1fr 8rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+
   @media screen and (max-height: 768px) {
+    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
   }
   @media screen and (max-height: 480px) {
+    grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem;
   }
   @media screen and (max-height: 360px) {
+    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
   }
-}
-@mixin mobile-portrait {
+
+  /*
   main[id*='main'],
   header[id*='header'],
   footer[id*='footer'],
   aside[id*='leftbar'],
   aside[id*='rightbar'],
   section[id*='overlay'] {
-    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+    // grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+    // grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
   }
-  //--|🠋 Mobile (Portrait) 🠋|--\\
+  */
+}
+
+//--|🠋 Mobile (Portrait) 🠋|--\\
+@mixin mobile-portrait {
+  //--|🠋 @media screen and (max-height: 1920px) 🠋|--//
+  grid-template: 12rem 1fr 12rem / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
+
   @media screen and (max-width: 768px) {
+    grid-template: 10rem 1fr 10rem / 3rem 1fr 3rem;
   }
   @media screen and (max-width: 480px) {
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem;
   }
   @media screen and (max-width: 360px) {
+    grid-template: 4rem 1fr 4rem / 1.5rem 1fr 1.5rem;
+  }
+
+  main[id*='main'],
+  header[id*='header'],
+  footer[id*='footer'],
+  aside[id*='leftbar'],
+  aside[id*='rightbar'],
+  section[id*='overlay'] {
+    // grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
   }
 }
 
 body {
   div[id*='buttons'] {
     main[id*='buttons'] {
-      height: 100vh;
+      height: 100vh; //--|🠊 Crops Page 🠈|--//
     }
 
     //--|🠋 Desktop (Landscape) 🠋|--//

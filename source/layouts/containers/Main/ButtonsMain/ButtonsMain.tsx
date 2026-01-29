@@ -26,7 +26,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     let loadSelect = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`,
     ) as HTMLSelectElement;
 
     if (loadSelect) {
@@ -43,7 +43,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
-      {handleButtons(info.pageName, info.blockName)}
+      {/* {handleButtons(info.pageName, info.blockName)} */}
     </main>
   );
 };

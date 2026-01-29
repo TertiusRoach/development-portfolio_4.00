@@ -5,7 +5,6 @@
 
   menu[class*='buttons'] {
     z-index: 1;
-
     grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
   }
   section[class*='buttons'] {
@@ -45,6 +44,7 @@
 }
 
 header[id*='buttons'] {
+  /*
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
@@ -56,4 +56,5 @@ header[id*='buttons'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  */
 }

@@ -30,6 +30,7 @@
 }
 
 main[id*='buttons'] {
+  /*
   display: grid;
   grid-template: inherit; //--|🠊 4rem 1fr 4rem / 6rem 1fr 6rem 🠈|--//
   //--|🠊 background: rgba(darkgreen, 0.5); 🠈|--//
@@ -42,4 +43,5 @@ main[id*='buttons'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  */
 }

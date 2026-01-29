@@ -22,10 +22,9 @@
   }
 }
 footer[id*='buttons'] {
+  /*
   display: grid;
   grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
-  // background: rgba(darkblue, 0.5);
 
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
@@ -35,6 +34,7 @@ footer[id*='buttons'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  */
 }
 
 /*

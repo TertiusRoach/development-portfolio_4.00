@@ -25,7 +25,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <MenuButtons info={info} />
+      {/* <MenuButtons info={info} /> */}
       {/* <section className={`${pageName}-section`}></section> */}
     </header>
   );
