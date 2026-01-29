@@ -7,11 +7,13 @@ interface StyleProps {
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+
+  image: string | null | undefined;
 }
 
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-'
+  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
 ): string {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
@@ -47,7 +49,7 @@ export function createLayout(
 }
 export function createColor(
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(red)' | '(green)' | '(blue)' | '(mono)'
+  color: '(red)' | '(green)' | '(blue)' | '(mono)',
 ): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -89,10 +91,19 @@ export function sizeIcon(style: StyleProps) {
 }
 
 //--| Deprecated |--\\
-export function createClass(style: StyleProps) {
+export function createClass(style: StyleProps, classCreated: String) {
+  console.log(classCreated);
+
   const viewStyle = stripBrackets(style.view, '--').substring(0, 3) as string;
   const shadeStyle = stripBrackets(style.shade, '~~').substring(0, 3) as string;
   const colorStyle = stripBrackets(style.color, '()').substring(0, 3) as string;
 
-  return `${viewStyle}_${shadeStyle}_${colorStyle}`;
+  let classCreate: 'def' | 'alt';
+  if (style.image == null) {
+    classCreate = 'alt';
+  } else {
+    classCreate = 'def';
+  }
+
+  return `${viewStyle}_${shadeStyle}_${colorStyle}_${classCreate}`;
 }

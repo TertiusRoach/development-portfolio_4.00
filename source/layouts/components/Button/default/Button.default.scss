@@ -1,6 +1,7 @@
 //--|🠊 Button.default.scss 🠈|--//
 @use './pipeline/Button_grid.scss';
 @use './pipeline/Button_flex.scss';
+@use './pipeline/Button_size.scss';
 
 /*
 @use './rework/Button_motions.scss';
@@ -22,25 +23,9 @@ button[class*='default'] {
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
+    @include Button_size.desktop-size();
     @include Button_grid.desktop-grid();
     @include Button_flex.desktop-flex();
-
-    .text {
-      z-index: 2;
-      background: rgba(darkred, 0.25);
-    }
-
-    .icon {
-      z-index: 1;
-      img {
-        background: black;
-      }
-    }
-    .back {
-      z-index: 0;
-      background: rgba(darkblue, 0.25);
-    }
-    background: rgba(pink, 0.5);
 
     /*
     @include Button_placing.desktop-placing();

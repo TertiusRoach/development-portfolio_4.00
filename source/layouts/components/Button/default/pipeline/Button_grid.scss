@@ -81,6 +81,33 @@
   &[class*='_bot_'] {
     .text,
     .back {
+      grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    &[class*='one_'] {
+      grid-template-rows: 1fr 174px 56px 1fr; //--|🠊 rows 🠈|--\\
+      grid-template-columns: 1fr 28px 174px 28px 1fr; //--|🠊 columns 🠈|--\\
+    }
+    &[class*='two_'] {
+    }
+    &[class*='thr_'] {
+    }
+    &[class*='fou_'] {
+    }
+    &[class*='fiv_'] {
+    }
+    &[class*='six_'] {
+    }
+    &[class*='par_'] {
+    }
+  }
+  /*
+  &[class*='_bot_'] {
+    .text,
+    .back {
     }
     .icon {
     }
@@ -747,6 +774,7 @@
       }
     }
   }
+  */
 }
 @mixin mobile-grid {
   &[class*='_top_'] {

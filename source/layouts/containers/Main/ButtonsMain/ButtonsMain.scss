@@ -67,22 +67,12 @@ main[id*='buttons'] {
     @include desktop-landscape();
     //--|🠋 Desktop (Separate) 🠋|--//
     section[class='foreground'] {
-      div[class*='size'] {
-        height: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-
-        aside {
-          display: inherit;
-          grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--\\
-          grid-template-columns: repeat(2, 1fr); //--|🠈 columns 🠈|--\\
-          background: Palettes.$indexLand-medium;
+      aside[class*='left'] {
+        button:nth-child(1) {
+          grid-area: 1 / 1 / 3 / 2;
         }
-
-        aside[class*='left'] {
-          button:nth-child(1) {
-            grid-area: 1 / 1 / 3 / 2;
-          }
+        button:nth-child(2) {
+          grid-area: 1 / 2 / 3 / 3;
         }
       }
     }
@@ -98,6 +88,18 @@ main[id*='buttons'] {
   }
   section[class='foreground'] {
     grid-area: 3 / 1 / 4 / 4;
+    div[class*='size'] {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+
+      aside {
+        display: inherit;
+        grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--\\
+        grid-template-columns: repeat(2, 1fr); //--|🠈 columns 🠈|--\\
+        background: Palettes.$indexLand-medium;
+      }
+    }
   }
   div[class='background'] {
     display: inherit;

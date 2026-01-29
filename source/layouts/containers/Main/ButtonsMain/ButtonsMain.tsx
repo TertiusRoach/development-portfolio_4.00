@@ -52,14 +52,30 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           <aside className="left-dark">
             <ButtonDefault
               style={{
+                size: '<h1>',
                 view: '-top-',
                 text: `Button`,
                 shade: '~dark~',
                 color: '(mono)',
-                size: '<h1>',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
 
                 type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                text: `Button`,
+                shade: '~dark~',
+                color: '(mono)',
+                view: '-bottom-',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
               }}
               info={{
                 pageName: pageName,
@@ -70,6 +86,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           <section className="info-view"></section>
           <aside className="right-light"></aside>
         </div>
+
         {/* <div className="h2-size hidden">
           <AsideButtons
             style={{

@@ -64,6 +64,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
 
+  let classColor = createColor(style.shade, style.color);
+  let classLayout = createLayout(style.size, style.view);
+  let imageStatus: 'def' | 'alt';
+  if (style.image == null) {
+    imageStatus = 'alt';
+  } else {
+    imageStatus = 'def';
+  }
+  let classCreated = `${classLayout}_${classColor}_${imageStatus}`;
+
   const handleDefault = (infoStyle: Array<object>) => {
     switch (style.size) {
       case '<h1>':
@@ -88,12 +98,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
       case '<h2>':
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <h2 className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </h2>
+            <div className="text">
+              <h2>{style.text}</h2>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -103,27 +111,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <h2
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </h2>
-            </div>
+            <div className="back"></div>
           </>
         );
       case '<h3>':
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <h3 className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </h3>
+            <div className="text">
+              <h3>{style.text}</h3>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -133,27 +130,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <h3
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </h3>
-            </div>
+            <div className="back"></div>
           </>
         );
       case '<h4>':
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <h4 className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </h4>
+            <div className="text">
+              <h4>{style.text}</h4>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -163,27 +149,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <h4
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </h4>
-            </div>
+            <div className="back"></div>
           </>
         );
       case '<h5>':
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <h5 className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </h5>
+            <div className="text">
+              <h5>{style.text}</h5>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -193,27 +168,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <h5
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </h5>
-            </div>
+            <div className="back"></div>
           </>
         );
       case '<h6>':
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <h6 className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </h6>
+            <div className="text">
+              <h6>{style.text}</h6>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -223,28 +187,17 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <h6
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </h6>
-            </div>
+            <div className="back"></div>
           </>
         );
       case '<p>':
       default:
         return (
           <>
-            <div className={`${classLayout} text ${classColor} ${imageStatus}`}>
-              <p className={`${classLayout} text ${classColor}`}>
-                <span>{style.text}</span>
-              </p>
+            <div className="text">
+              <p>{style.text}</p>
             </div>
-            <div className={`${classLayout} icon ${classColor} ${imageStatus}`}>
+            <div className="icon">
               <img
                 className={`${classLayout} icon ${classColor}`}
                 alt="icon"
@@ -254,30 +207,12 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className={`${classLayout} back ${classColor} ${imageStatus}`}>
-              <p
-                style={{
-                  opacity: '1',
-                }}
-                className={`${classLayout} back ${classColor}`}
-              >
-                <span>{style.text}</span>
-              </p>
-            </div>
+            <div className="back"></div>
           </>
         );
     }
   };
 
-  let imageStatus: 'def' | 'alt';
-  if (style.image == null) {
-    imageStatus = 'alt';
-  } else {
-    imageStatus = 'def';
-  }
-
-  let classColor = createColor(style.shade, style.color);
-  let classLayout = createLayout(style.size, style.view);
   return (
     <button
       onClick={onClick}
