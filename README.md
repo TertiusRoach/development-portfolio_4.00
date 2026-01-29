@@ -44,6 +44,8 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 
 ## Terminal Commands
 
+Open [Visual Studio Code](https://code.visualstudio.com/) and, with the application running, press **Ctrl + `** to open the integrated terminal panel. This step requires [Node.js](https://nodejs.org/en) to be installed, so ensure you have completed the [Full Installation](#full-installation) section and that **npm** is available in your system’s PATH before proceeding. Once the terminal is open, enter the following commands into the **Terminal** tab to initialize a development environment using [REACT](https://react.dev/), [SASS](https://www.w3schools.com/sass/) and [HTML](https://www.w3schools.com/html/).
+
 ### Development Workflow
 
 ```bash
