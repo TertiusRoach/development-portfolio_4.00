@@ -379,48 +379,12 @@
   }
 
   &[class*='_tex_'] {
-    h5 {
-      // padding: ??px ??px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
-      }
-    }
-    h6 {
-      // padding: ??px ??px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
-      }
-    }
-    p {
-      // padding: ??px ??px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
-      }
-    }
-
     .icon {
       opacity: 0;
       display: none;
       background: none;
     }
+
     h1 {
       padding: 2px 16px;
       @media screen and (max-height: 768px) {
@@ -467,6 +431,42 @@
       }
       @media screen and (max-height: 360px) {
         padding: 1px 4px;
+      }
+    }
+    h5 {
+      padding: 8px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 8px 16px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 4px 8px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 2px 4px;
+      }
+    }
+    h6 {
+      padding: 8px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 8px 16px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 4px 8px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 2px 4px;
+      }
+    }
+    p {
+      padding: 8px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 8px 16px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 4px 8px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 2px 4px;
       }
     }
   }
