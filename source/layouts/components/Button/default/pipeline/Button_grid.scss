@@ -1,11 +1,19 @@
 //--|🠊 Button_grid.scss 🠈|--\\
 @mixin desktop-grid {
   //--Todo--\\
-  &[class*='thr_cen'] {
+  &[class*='fou_top'] {
   }
-  &[class*='thr_tex'] {
+  &[class*='fou_bot'] {
   }
-  &[class*='thr_ico'] {
+  &[class*='fou_lef'] {
+  }
+  &[class*='fou_rig'] {
+  }
+  &[class*='fou_cen'] {
+  }
+  &[class*='fou_tex'] {
+  }
+  &[class*='fou_ico'] {
   }
 
   //--Done--\\
@@ -159,7 +167,8 @@
   }
   &[class*='_cen_'] {
     &[class*='one_cen'],
-    &[class*='two_cen'] {
+    &[class*='two_cen'],
+    &[class*='thr_cen'] {
       grid-template-rows: 1fr 72px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr auto 64px auto 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -210,6 +219,23 @@
         grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    &[class*='thr_tex'] {
+      grid-template-rows: 1fr 44px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
+
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 40px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 24px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 16px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
   }
   &[class*='_ico_'] {
     &[class*='one_ico'] {
@@ -228,7 +254,8 @@
         grid-template-columns: 1fr 32px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
-    &[class*='two_ico'] {
+    &[class*='two_ico'],
+    &[class*='thr_ico'] {
       grid-template-rows: 1fr 106px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 106px 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -245,6 +272,53 @@
       }
     }
   }
+
+  /*
+  &[class*='fiv_top'] {
+  }
+  &[class*='fiv_bot'] {
+  }
+  &[class*='fiv_lef'] {
+  }
+  &[class*='fiv_rig'] {
+  }
+  &[class*='fiv_cen'] {
+  }
+  &[class*='fiv_tex'] {
+  }
+  &[class*='fiv_ico'] {
+  }
+
+  &[class*='six_top'] {
+  }
+  &[class*='six_bot'] {
+  }
+  &[class*='six_lef'] {
+  }
+  &[class*='six_rig'] {
+  }
+  &[class*='six_cen'] {
+  }
+  &[class*='six_tex'] {
+  }
+  &[class*='six_ico'] {
+  }
+
+  &[class*='par_top'] {
+  }
+  &[class*='par_bot'] {
+  }
+  &[class*='par_lef'] {
+  }
+  &[class*='par_rig'] {
+  }
+  &[class*='par_cen'] {
+  }
+  &[class*='par_tex'] {
+  }
+  &[class*='par_ico'] {
+  }
+  */
 }
 @mixin mobile-grid {
 }
