@@ -102,6 +102,7 @@ main[id*='buttons'] {
     */
   }
   section[class='foreground'] {
+    overflow: hidden;
     grid-area: 3 / 1 / 4 / 4;
     div[class*='size'] {
       height: 100%;
