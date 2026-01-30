@@ -2,9 +2,6 @@
 
 @mixin desktop-grid {
   //--Todo--\\
-
-  &[class*='fiv_rig'] {
-  }
   &[class*='fiv_cen'] {
   }
   &[class*='fiv_tex'] {
@@ -233,7 +230,8 @@
     &[class*='one_cen'],
     &[class*='two_cen'],
     &[class*='thr_cen'],
-    &[class*='fou_cen'] {
+    &[class*='fou_cen'],
+    &[class*='fiv_cen'] {
       grid-template-rows: 1fr 72px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr auto 64px auto 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -370,8 +368,6 @@
   }
 
   /*
-
-
   &[class*='six_top'] {
       grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
     grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\

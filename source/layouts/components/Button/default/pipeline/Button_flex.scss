@@ -174,7 +174,6 @@
       }
     }
   }
-
   &[class*='_lef_'],
   &[class*='_rig_'] {
     //--Todo--\\
@@ -279,18 +278,6 @@
   }
   &[class*='_cen_'] {
     //--Todo--\\
-    h5 {
-      // padding: ??px 16px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
-      }
-    }
     h6 {
       // padding: ??px 16px;
       @media screen and (max-height: 768px) {
@@ -377,7 +364,20 @@
         padding: 10px 4px;
       }
     }
+    h5 {
+      padding: 26px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 28px 8px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 16px 4px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 10px 4px;
+      }
+    }
   }
+
   &[class*='_tex_'] {
     h5 {
       // padding: ??px ??px;
