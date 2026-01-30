@@ -1,27 +1,12 @@
 //--|🠊 Button_grid.scss 🠈|--\\
 @mixin desktop-grid {
   //--Todo--\\
-  &[class*='fou_top'] {
-  }
-  &[class*='fou_bot'] {
-  }
-  &[class*='fou_lef'] {
-  }
-  &[class*='fou_rig'] {
-  }
-  &[class*='fou_cen'] {
-  }
-  &[class*='fou_tex'] {
-  }
-  &[class*='fou_ico'] {
-  }
 
   //--Done--\\
   &[class*='_top_'] {
     &[class*='one_top'] {
       grid-template-rows: 1fr 56px 174px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 28px 174px 28px 1fr; //--|🠈 columns 🠈|--\\
-
       @media screen and (max-height: 768px) {
         grid-template-rows: 1fr 48px 116px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 24px 117px 24px 1fr; //--|🠈 columns 🠈|--\\
@@ -38,7 +23,6 @@
     &[class*='two_top'] {
       grid-template-rows: 1fr 48px 180px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 25px 180px 25px 1fr; //--|🠈 columns 🠈|--\\
-
       @media screen and (max-height: 768px) {
         grid-template-rows: 1fr 44px 114px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 22px 114px 22px 1fr; //--|🠈 columns 🠈|--\\
@@ -55,12 +39,10 @@
     &[class*='thr_top'] {
       grid-template-rows: 1fr 44px 180px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 22px 180px 22px 1fr; //--|🠈 columns 🠈|--\\
-
       @media screen and (max-height: 768px) {
         grid-template-rows: 1fr 40px 102px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 20px 102px 20px 1fr; //--|🠈 columns 🠈|--\\
       }
-
       @media screen and (max-height: 480px) {
         grid-template-rows: 1fr 24px 70px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 12px 70px 12px 1fr; //--|🠈 columns 🠈|--\\
@@ -68,6 +50,23 @@
       @media screen and (max-height: 360px) {
         grid-template-rows: 1fr 16px 54px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 8px 54px 8px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='fou_top'] {
+      grid-template-rows: 1fr 40px 180px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 20px 180px 20px 1fr; //--|🠈 columns 🠈|--\\
+
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 36px 102px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 18px 102px 18px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 24px 66px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 12px 66px 12px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 16px 52px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 8px 52px 8px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
   }
@@ -124,11 +123,29 @@
         grid-template-columns: 1fr 8px 54px 8px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    &[class*='fou_bot'] {
+      grid-template-rows: 1fr 180px 40px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 20px 180px 20px 1fr; //--|🠈 columns 🠈|--\\
+
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 102px 36px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 18px 102px 18px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 66px 24px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 12px 66px 12px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 52px 16px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 8px 52px 8px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
   }
   &[class*='_lef_'] {
     &[class*='one_lef'],
     &[class*='two_lef'],
-    &[class*='thr_lef'] {
+    &[class*='thr_lef'],
+    &[class*='fou_lef'] {
       grid-template-rows: 1fr 56px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 16px 40px 16px auto 16px 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -148,7 +165,8 @@
   &[class*='_rig_'] {
     &[class*='one_rig'],
     &[class*='two_rig'],
-    &[class*='thr_rig'] {
+    &[class*='thr_rig'],
+    &[class*='fou_rig'] {
       grid-template-rows: 1fr 56px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 16px auto 16px 40px 16px; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -168,7 +186,8 @@
   &[class*='_cen_'] {
     &[class*='one_cen'],
     &[class*='two_cen'],
-    &[class*='thr_cen'] {
+    &[class*='thr_cen'],
+    &[class*='fou_cen'] {
       grid-template-rows: 1fr 72px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr auto 64px auto 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -222,9 +241,24 @@
     &[class*='thr_tex'] {
       grid-template-rows: 1fr 44px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
-
       @media screen and (max-height: 768px) {
         grid-template-rows: 1fr 40px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 24px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 16px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='fou_tex'] {
+      grid-template-rows: 1fr 40px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 36px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 480px) {
@@ -269,6 +303,22 @@
       @media screen and (max-height: 360px) {
         grid-template-rows: 1fr 28px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 28px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='fou_ico'] {
+      grid-template-rows: 1fr 102px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 102px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 68px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 68px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 36px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 36px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 24px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 24px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
   }

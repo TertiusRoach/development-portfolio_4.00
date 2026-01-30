@@ -3,83 +3,73 @@
   &[class*='_top_'],
   &[class*='_bot_'] {
     //--Todo--\\
-    &[class*='fou_'] {
-      h4 {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-          // padding: ??px ??px;
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-          // padding: ??px ??px;
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-          // padding: ??px ??px;
-        }
-      }
-    }
+
     &[class*='fiv_'] {
       h5 {
         // padding: ??px ??px;
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
+        @media screen and (max-height: 768px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 480px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 360px) {
           // padding: ??px ??px;
         }
       }
-      @media screen and (max-height: 480px) {
-        h5 {
-          // padding: ??px ??px;
+      img {
+        // margin: ??px;
+        @media screen and (max-height: 768px) {
         }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-          // padding: ??px ??px;
+        @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 360px) {
         }
       }
     }
     &[class*='six_'] {
       h6 {
         // padding: ??px ??px;
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
+        @media screen and (max-height: 768px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 480px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 360px) {
           // padding: ??px ??px;
         }
       }
-      @media screen and (max-height: 480px) {
-        h6 {
-          // padding: ??px ??px;
+      img {
+        // margin: ??px;
+        @media screen and (max-height: 768px) {
         }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-          // padding: ??px ??px;
+        @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 360px) {
         }
       }
     }
     &[class*='par_'] {
       p {
         // padding: ??px ??px;
-      }
-      @media screen and (max-height: 768px) {
-        p {
+        @media screen and (max-height: 768px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 480px) {
+          // padding: ??px ??px;
+        }
+        @media screen and (max-height: 360px) {
           // padding: ??px ??px;
         }
       }
-      @media screen and (max-height: 480px) {
-        p {
-          // padding: ??px ??px;
+      img {
+        // margin: ??px;
+        @media screen and (max-height: 768px) {
         }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-          // padding: ??px ??px;
+        @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 360px) {
         }
       }
     }
@@ -88,78 +78,95 @@
     &[class*='one_'] {
       h1 {
         padding: 4px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 4px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 0 4px;
+        }
       }
       img {
         margin: 4px;
-      }
-      @media screen and (max-height: 768px) {
-        h1 {
-          padding: 4px 16px;
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h1 {
-          padding: 2px 8px;
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h1 {
-          padding: 0 4px;
-        }
       }
     }
     &[class*='two_'] {
       h2 {
         padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 1px 4px;
+        }
       }
       img {
         margin: 6px;
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-          padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          margin: 5px 6px;
         }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-          padding: 3px 8px;
+        @media screen and (max-height: 480px) {
+          margin: 4px 6px;
         }
-        img {
-          margin: 4px;
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-          padding: 1px 4px;
+        @media screen and (max-height: 360px) {
+          margin: 3px 6px;
         }
       }
     }
     &[class*='thr_'] {
       h3 {
         padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 8px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 1px 4px;
+        }
       }
       img {
         margin: 8px;
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-          padding: 8px 16px;
-        }
-        img {
+        @media screen and (max-height: 768px) {
           margin: 4px 8px;
         }
+        @media screen and (max-height: 480px) {
+          margin: 3px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          margin: 2px 8px;
+        }
       }
-      @media screen and (max-height: 480px) {
-        h3 {
+    }
+    &[class*='fou_'] {
+      h4 {
+        padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-height: 480px) {
           padding: 3px 8px;
         }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
+        @media screen and (max-height: 360px) {
           padding: 1px 4px;
         }
-        img {
-          margin: 2px 8px;
+      }
+      img {
+        margin: 10px;
+        @media screen and (max-height: 768px) {
+          margin: 6px 10px;
+        }
+        @media screen and (max-height: 480px) {
+          margin: 4px 10px;
+        }
+        @media screen and (max-height: 360px) {
+          margin: 2px 10px;
         }
       }
     }
@@ -167,52 +174,40 @@
   &[class*='_lef_'],
   &[class*='_rig_'] {
     //--Todo--\\
-    h4 {
-      // padding: ??px ??px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
-      }
-    }
     h5 {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
     h6 {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
     p {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
 
@@ -265,56 +260,55 @@
         padding: 3px 4px;
       }
     }
+    h4 {
+      padding: 14px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 8px 8px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 5px 4px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 3px 4px;
+      }
+    }
   }
   &[class*='_cen_'] {
     //--Todo--\\
-
-    h4 {
-      // padding: ??px ??px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
-      }
-    }
     h5 {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
     h6 {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
     p {
-      // padding: ??px ??px;
+      // padding: ??px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px ??px;
+        // padding: ??px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px ??px;
+        // padding: ??px 4px;
       }
     }
 
@@ -367,38 +361,54 @@
         padding: 10px 4px;
       }
     }
-  }
-  &[class*='_tex_'] {
     h4 {
+      padding: 22px 16px;
       @media screen and (max-height: 768px) {
+        padding: 24px 8px;
       }
       @media screen and (max-height: 480px) {
+        padding: 14px 4px;
       }
       @media screen and (max-height: 360px) {
+        padding: 10px 4px;
       }
     }
+  }
+  &[class*='_tex_'] {
     h5 {
+      // padding: ??px ??px;
       @media screen and (max-height: 768px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 480px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 360px) {
+        // padding: ??px ??px;
       }
     }
     h6 {
+      // padding: ??px ??px;
       @media screen and (max-height: 768px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 480px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 360px) {
+        // padding: ??px ??px;
       }
     }
     p {
+      // padding: ??px ??px;
       @media screen and (max-height: 768px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 480px) {
+        // padding: ??px ??px;
       }
       @media screen and (max-height: 360px) {
+        // padding: ??px ??px;
       }
     }
 
@@ -443,46 +453,31 @@
         padding: 1px 4px;
       }
     }
+    h4 {
+      padding: 6px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 6px 16px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 3px 8px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 1px 4px;
+      }
+    }
   }
   &[class*='_ico_'] {
     //--Todo--\\
-
-    &[class*='fou_'] {
-      img {
-        // margin-top: ??px;
-      }
-      @media screen and (max-height: 768px) {
-        img {
-          // margin-top: ??px;
-        }
-      }
-      @media screen and (max-height: 480px) {
-        img {
-          // margin-top: ??px;
-        }
-      }
-      @media screen and (max-height: 360px) {
-        img {
-          // margin-top: ??px;
-        }
-      }
-    }
     &[class*='fiv_'] {
       img {
         // margin-top: ??px;
-      }
-      @media screen and (max-height: 768px) {
-        img {
+        @media screen and (max-height: 768px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 480px) {
-        img {
+        @media screen and (max-height: 480px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 360px) {
-        img {
+        @media screen and (max-height: 360px) {
           // margin-top: ??px;
         }
       }
@@ -490,19 +485,13 @@
     &[class*='six_'] {
       img {
         // margin-top: ??px;
-      }
-      @media screen and (max-height: 768px) {
-        img {
+        @media screen and (max-height: 768px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 480px) {
-        img {
+        @media screen and (max-height: 480px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 360px) {
-        img {
+        @media screen and (max-height: 360px) {
           // margin-top: ??px;
         }
       }
@@ -510,19 +499,13 @@
     &[class*='par_'] {
       img {
         // margin-top: ??px;
-      }
-      @media screen and (max-height: 768px) {
-        img {
+        @media screen and (max-height: 768px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 480px) {
-        img {
+        @media screen and (max-height: 480px) {
           // margin-top: ??px;
         }
-      }
-      @media screen and (max-height: 360px) {
-        img {
+        @media screen and (max-height: 360px) {
           // margin-top: ??px;
         }
       }
@@ -563,6 +546,20 @@
       }
     }
     &[class*='thr_'] {
+      img {
+        margin-top: 4px;
+        @media screen and (max-height: 768px) {
+          margin-top: 4px;
+        }
+        @media screen and (max-height: 480px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 360px) {
+          margin-top: 1px;
+        }
+      }
+    }
+    &[class*='fou_'] {
       img {
         margin-top: 4px;
         @media screen and (max-height: 768px) {
