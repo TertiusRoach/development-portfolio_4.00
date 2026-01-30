@@ -1,6 +1,20 @@
 //--|🠊 Button_grid.scss 🠈|--\\
 @mixin desktop-grid {
   //--Todo--\\
+  &[class*='fiv_top'] {
+  }
+  &[class*='fiv_bot'] {
+  }
+  &[class*='fiv_lef'] {
+  }
+  &[class*='fiv_rig'] {
+  }
+  &[class*='fiv_cen'] {
+  }
+  &[class*='fiv_tex'] {
+  }
+  &[class*='fiv_ico'] {
+  }
 
   //--Done--\\
   &[class*='_top_'] {
@@ -324,20 +338,7 @@
   }
 
   /*
-  &[class*='fiv_top'] {
-  }
-  &[class*='fiv_bot'] {
-  }
-  &[class*='fiv_lef'] {
-  }
-  &[class*='fiv_rig'] {
-  }
-  &[class*='fiv_cen'] {
-  }
-  &[class*='fiv_tex'] {
-  }
-  &[class*='fiv_ico'] {
-  }
+
 
   &[class*='six_top'] {
   }
