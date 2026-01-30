@@ -1,32 +1,9 @@
 //--|🠊 Button_flex.scss 🠈|--\\
+//-Todo-\\
 @mixin desktop-flex {
   &[class*='_top_'],
   &[class*='_bot_'] {
     //--Todo--\\
-
-    &[class*='fiv_'] {
-      h5 {
-        // padding: ??px ??px;
-        @media screen and (max-height: 768px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // padding: ??px ??px;
-        }
-      }
-      img {
-        // margin: ??px;
-        @media screen and (max-height: 768px) {
-        }
-        @media screen and (max-height: 480px) {
-        }
-        @media screen and (max-height: 360px) {
-        }
-      }
-    }
     &[class*='six_'] {
       h6 {
         // padding: ??px ??px;
@@ -170,7 +147,34 @@
         }
       }
     }
+    &[class*='fiv_'] {
+      h5 {
+        padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 7px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 4px 4px;
+        }
+      }
+      img {
+        margin: 12px;
+        @media screen and (max-height: 768px) {
+          margin: 6px 12px;
+        }
+        @media screen and (max-height: 480px) {
+          margin: 3px 12px;
+        }
+        @media screen and (max-height: 360px) {
+          margin: 0 12px;
+        }
+      }
+    }
   }
+
   &[class*='_lef_'],
   &[class*='_rig_'] {
     //--Todo--\\
