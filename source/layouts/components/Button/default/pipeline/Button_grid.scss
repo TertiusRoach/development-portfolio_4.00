@@ -1,22 +1,8 @@
 //--|🠊 Button_grid.scss 🠈|--\\
+
 @mixin desktop-grid {
   //--Todo--\\
-  &[class*='fiv_lef'] {
-    grid-template-rows: 1fr 56px 1fr; //--|🠈 rows 🠈|--\\
-    grid-template-columns: 16px 40px 16px auto 16px 1fr; //--|🠈 columns 🠈|--\\
-    @media screen and (max-height: 768px) {
-      grid-template-rows: 1fr 40px 1fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: 8px 32px 8px auto 8px 1fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      grid-template-rows: 1fr 28px 1fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: 4px 24px 4px auto 4px 1fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      grid-template-rows: 1fr 20px 1fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: 4px 16px 4px auto 4px 1fr; //--|🠈 columns 🠈|--\\
-    }
-  }
+
   &[class*='fiv_rig'] {
   }
   &[class*='fiv_cen'] {
