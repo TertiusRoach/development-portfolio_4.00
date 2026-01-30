@@ -54,7 +54,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               style={{
                 size: '<h1>',
                 view: '-top-',
-                text: `Button`,
+                text: `Button-------------------------`,
                 shade: '~dark~',
                 color: '(mono)',
 
@@ -69,10 +69,90 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             <ButtonDefault
               style={{
                 size: '<h1>',
-                text: `Button`,
+                view: '-bottom-',
+                text: `Button-------------------------`,
                 shade: '~dark~',
                 color: '(mono)',
-                view: '-bottom-',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-left-',
+                text: `one_lef_dar_mon-------------------------`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-right-',
+                text: `one_rig_dar_mon-------------------------`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-center-',
+                text: `one_cen_dar_mon-------------------------`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-text-',
+                text: `one_tex_dar_mon-------------------------`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-icon-',
+                text: `one_ico_dar_mon-------------------------`,
+                shade: '~dark~',
+                color: '(mono)',
 
                 type: '{button}',
                 image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,

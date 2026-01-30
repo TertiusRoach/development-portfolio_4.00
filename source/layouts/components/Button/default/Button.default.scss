@@ -2,6 +2,134 @@
 @use './pipeline/Button_grid.scss';
 @use './pipeline/Button_flex.scss';
 @use './pipeline/Button_size.scss';
+@use './pipeline/Button_tint.scss';
+
+button[class*='default'] {
+  display: grid;
+
+  @extend %button-grid;
+  @extend %button-flex;
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include Button_size.desktop-size();
+    @include Button_grid.desktop-grid();
+    @include Button_flex.desktop-flex();
+    @include Button_tint.desktop-tint();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include Button_size.mobile-size();
+    @include Button_grid.mobile-grid();
+    @include Button_flex.mobile-flex();
+    @include Button_tint.mobile-tint();
+  }
+
+  @extend %button-test;
+}
+
+%button-flex {
+  .text {
+    z-index: 2;
+  }
+  .icon {
+    z-index: 1;
+    img {
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+  .back {
+    z-index: 0;
+  }
+}
+%button-grid {
+  &[class*='_top_'] {
+    .text,
+    .back {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_bot_'] {
+    .text,
+    .back {
+      grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_lef_'] {
+    .text {
+      grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .back {
+      grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_rig_'] {
+    .text {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 4 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .back {
+      grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_cen_'] {
+    .text {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .back {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_tex_'] {
+    .text,
+    .back {
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_ico_'] {
+    .icon,
+    .back {
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+}
+
+%button-test {
+  .text {
+    background: rgba(darkred, 0.25);
+    * {
+      color: maroon;
+    }
+  }
+  .icon {
+    background: rgba(darkred, 0.25);
+    img {
+      background: black;
+    }
+  }
+  .back {
+    background: rgba(darkblue, 0.25);
+  }
+  background: rgba(pink, 0.5);
+}
 
 /*
 @use './rework/Button_motions.scss';
@@ -12,33 +140,20 @@
 @use './rework/Button_spacing.scss';
 @use './rework/Button_surface.scss';
 */
-button[class*='default'] {
-  display: grid;
-  /*
+
+/*
   @include Button_presets.button-presets();
   @include Button_motions.button-motions();
   @include Button_shadows.button-shadows();
   @include Button_surface.button-surface();
   */
-
-  //--|🠋 Desktop (Landscape) 🠋|--\\
-  @media screen and (orientation: landscape) {
-    @include Button_size.desktop-size();
-    @include Button_grid.desktop-grid();
-    @include Button_flex.desktop-flex();
-
-    /*
+/*
     @include Button_placing.desktop-placing();
     @include Button_scaling.desktop-scaling();
     @include Button_spacing.desktop-spacing();
     */
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    /*
+/*
     @include Button_placing.mobile-placing();
     @include Button_scaling.mobile-scaling();
     @include Button_spacing.mobile-spacing();
     */
-  }
-}

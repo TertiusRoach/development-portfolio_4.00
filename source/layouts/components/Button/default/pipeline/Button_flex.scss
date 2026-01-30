@@ -1,697 +1,62 @@
 //--|🠊 Button_flex.scss 🠈|--\\
 @mixin desktop-flex {
-  .text {
-    z-index: 2;
-    background: rgba(darkred, 0.25);
-  }
-
-  .icon {
-    z-index: 1;
-    img {
-      background: black;
-    }
-  }
-  .back {
-    z-index: 0;
-    background: rgba(darkblue, 0.25);
-  }
-  background: rgba(pink, 0.5);
-
-  &[class*='_top_'] {
+  &[class*='_top_'],
+  &[class*='_bot_'] {
     &[class*='one_'] {
+      h1 {
+        padding: 4px 16px;
+      }
       img {
         padding: 4px;
       }
       @media screen and (max-height: 768px) {
         h1 {
-        }
-        img {
+          padding: 4px 16px;
         }
       }
       @media screen and (max-height: 480px) {
         h1 {
-        }
-        img {
+          padding: 2px 8px;
         }
       }
       @media screen and (max-height: 360px) {
         h1 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
+          padding: 0 4px;
         }
       }
     }
   }
-  &[class*='_bot_'] {
-    &[class*='one_'] {
-      h1 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h1 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
-        }
-      }
-    }
-  }
-  &[class*='_lef_'] {
-    &[class*='one_'] {
-      h1 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h1 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
-        }
-      }
-    }
-  }
+  &[class*='_lef_'],
   &[class*='_rig_'] {
     &[class*='one_'] {
       h1 {
+        padding: 4px 16px;
       }
       img {
+        margin-top: 4px;
       }
       @media screen and (max-height: 768px) {
         h1 {
+          padding: 2px 8px;
         }
         img {
+          margin-top: 2px;
         }
       }
       @media screen and (max-height: 480px) {
         h1 {
+          padding: 0 4px;
         }
         img {
+          margin-top: 1px;
         }
       }
       @media screen and (max-height: 360px) {
         h1 {
+          padding: 0 4px;
         }
         img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
+          margin-top: 0;
         }
       }
     }
@@ -699,547 +64,92 @@
   &[class*='_cen_'] {
     &[class*='one_'] {
       h1 {
+        padding: 12px 16px;
       }
       img {
+        margin-top: 4px;
       }
+
       @media screen and (max-height: 768px) {
         h1 {
+          padding: 16px 8px;
         }
         img {
+          margin-top: 2px;
         }
       }
       @media screen and (max-height: 480px) {
         h1 {
+          padding: 10px 4px;
         }
         img {
+          margin-top: 3px;
         }
       }
       @media screen and (max-height: 360px) {
         h1 {
+          padding: 8px 4px;
         }
         img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
+          margin-top: 1px;
         }
       }
     }
   }
   &[class*='_tex_'] {
+    .icon {
+      opacity: 0;
+      display: none;
+      background: none;
+    }
+
     &[class*='one_'] {
       h1 {
-      }
-      img {
+        padding: 4px 16px;
       }
       @media screen and (max-height: 768px) {
         h1 {
-        }
-        img {
+          padding: 4px 16px;
         }
       }
       @media screen and (max-height: 480px) {
         h1 {
-        }
-        img {
+          padding: 2px 8px;
         }
       }
       @media screen and (max-height: 360px) {
         h1 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
+          padding: 0 4px;
         }
       }
     }
   }
   &[class*='_ico_'] {
+    .text {
+      opacity: 0;
+      display: none;
+      background: none;
+    }
+
     &[class*='one_'] {
-      h1 {
-      }
       img {
+        margin-top: 8px;
       }
-      @media screen and (max-height: 768px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h1 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h1 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='two_'] {
-      h2 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h2 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h2 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='thr_'] {
-      h3 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h3 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h3 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fou_'] {
-      h4 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h4 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h4 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='fiv_'] {
-      h5 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h5 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h5 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='six_'] {
-      h6 {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        h6 {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        h6 {
-        }
-        img {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-      }
-      img {
-      }
-      @media screen and (max-height: 768px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 480px) {
-        p {
-        }
-        img {
-        }
-      }
-      @media screen and (max-height: 360px) {
-        p {
-        }
-        img {
-        }
-      }
-    }
-  }
 
-  &.default-button {
-    .text * {
-      margin: 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    .icon * {
-      height: 100%;
-      display: flex;
-    }
-
-    &[class*='_top_'],
-    &[class*='_bot_'] {
-      .text * {
-        justify-content: center;
+      @media screen and (max-height: 768px) {
+        img {
+          margin-top: 4px;
+        }
       }
-    }
-    &[class*='_lef_'] {
-      .text * {
-        justify-content: left;
+      @media screen and (max-height: 480px) {
+        img {
+          margin-top: 3px;
+        }
       }
-    }
-    &[class*='_rig_'] {
-      .text * {
-        justify-content: right;
-      }
-    }
-    &[class*='_cen_'],
-    &[class*='_tex_'] {
-      .text * {
-        justify-content: center;
+      @media screen and (max-height: 360px) {
+        img {
+          margin-top: 2px;
+        }
       }
     }
   }
@@ -1355,38 +265,6 @@
     }
     @media screen and (max-width: 360px) {
       p {
-      }
-    }
-  }
-
-  &.default-button {
-    .text * {
-      margin: 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    &[class*='_top_'],
-    &[class*='_bot_'] {
-      .text * {
-        justify-content: center;
-      }
-    }
-    &[class*='_lef_'] {
-      .text * {
-        justify-content: left;
-      }
-    }
-    &[class*='_rig_'] {
-      .text * {
-        justify-content: right;
-      }
-    }
-    &[class*='_cen_'],
-    &[class*='_tex_'] {
-      .text * {
-        justify-content: center;
       }
     }
   }

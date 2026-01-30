@@ -80,7 +80,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h1>{style.text}</h1>
+              <h1>
+                <span>{style.text}</span>
+              </h1>
             </div>
             <div className="icon">
               <img
@@ -99,7 +101,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h2>{style.text}</h2>
+              <h2>
+                <span>{style.text}</span>
+              </h2>
             </div>
             <div className="icon">
               <img
@@ -118,7 +122,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h3>{style.text}</h3>
+              <h3>
+                <span>{style.text}</span>
+              </h3>
             </div>
             <div className="icon">
               <img
@@ -137,7 +143,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h4>{style.text}</h4>
+              <h4>
+                <span>{style.text}</span>
+              </h4>
             </div>
             <div className="icon">
               <img
@@ -156,7 +164,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h5>{style.text}</h5>
+              <h5>
+                <span>{style.text}</span>
+              </h5>
             </div>
             <div className="icon">
               <img
@@ -175,7 +185,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <h6>{style.text}</h6>
+              <h6>
+                <span>{style.text}</span>
+              </h6>
             </div>
             <div className="icon">
               <img
@@ -195,7 +207,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
         return (
           <>
             <div className="text">
-              <p>{style.text}</p>
+              <p>
+                <span>{style.text}</span>
+              </p>
             </div>
             <div className="icon">
               <img
@@ -217,7 +231,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
     <button
       onClick={onClick}
       id={info.labelName || undefined}
-      className={`${classLayout}_${classColor}_${imageStatus} default-button`}
+      className={`default-button ${classLayout}_${classColor}_${imageStatus}`}
     >
       {handleDefault([info, style])}
     </button>

@@ -68,11 +68,26 @@ main[id*='buttons'] {
     //--|🠋 Desktop (Separate) 🠋|--//
     section[class='foreground'] {
       aside[class*='left'] {
-        button:nth-child(1) {
+        button[class*='_top_'] {
           grid-area: 1 / 1 / 3 / 2;
         }
-        button:nth-child(2) {
+        button[class*='_bot_'] {
           grid-area: 1 / 2 / 3 / 3;
+        }
+        button[class*='_lef_'] {
+          grid-area: 3 / 1 / 4 / 3;
+        }
+        button[class*='_rig_'] {
+          grid-area: 4 / 1 / 5 / 3;
+        }
+        button[class*='_cen_'] {
+          grid-area: 5 / 1 / 6 / 3;
+        }
+        button[class*='_tex_'] {
+          grid-area: 6 / 1 / 7 / 3;
+        }
+        button[class*='_ico_'] {
+          grid-area: 7 / 1 / 8 / 3;
         }
       }
     }
@@ -95,7 +110,7 @@ main[id*='buttons'] {
 
       aside {
         display: inherit;
-        grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--\\
+        grid-template-rows: repeat(7, auto); //--|🠈 rows 🠈|--\\
         grid-template-columns: repeat(2, 1fr); //--|🠈 columns 🠈|--\\
         background: Palettes.$indexLand-medium;
       }

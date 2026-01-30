@@ -1,0 +1,7 @@
+//--|🠊 Button_tint.scss 🠈|--\\
+@mixin desktop-tint {
+  &[class*='_mon_'] {
+  }
+}
+@mixin mobile-tint {
+}
