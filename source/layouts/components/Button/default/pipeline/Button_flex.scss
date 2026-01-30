@@ -178,18 +178,6 @@
   &[class*='_lef_'],
   &[class*='_rig_'] {
     //--Todo--\\
-    h5 {
-      // padding: ??px 16px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
-      }
-    }
     h6 {
       // padding: ??px 16px;
       @media screen and (max-height: 768px) {
@@ -271,6 +259,18 @@
       }
       @media screen and (max-height: 480px) {
         padding: 5px 4px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 3px 4px;
+      }
+    }
+    h5 {
+      padding: 16px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 12px 8px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 6px 4px;
       }
       @media screen and (max-height: 360px) {
         padding: 3px 4px;
