@@ -577,6 +577,20 @@
         }
       }
     }
+    &[class*='fiv_'] {
+      img {
+        margin-top: 6px;
+        @media screen and (max-height: 768px) {
+          margin-top: 4px;
+        }
+        @media screen and (max-height: 480px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 360px) {
+          margin-top: 1px;
+        }
+      }
+    }
   }
 }
 @mixin mobile-flex {

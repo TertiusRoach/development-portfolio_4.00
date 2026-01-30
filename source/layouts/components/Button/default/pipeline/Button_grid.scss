@@ -2,11 +2,34 @@
 
 @mixin desktop-grid {
   //--Todo--\\
-  &[class*='fiv_cen'] {
+  &[class*='six_top'] {
+    // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
+    // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+
+    @media screen and (max-height: 768px) {
+      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
+      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
+      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
+      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+    }
   }
-  &[class*='fiv_tex'] {
+  &[class*='six_bot'] {
   }
-  &[class*='fiv_ico'] {
+  &[class*='six_lef'] {
+  }
+  &[class*='six_rig'] {
+  }
+  &[class*='six_cen'] {
+  }
+  &[class*='six_tex'] {
+  }
+  &[class*='six_ico'] {
   }
 
   //--Done--\\
@@ -314,6 +337,22 @@
         grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    &[class*='fiv_tex'] {
+      grid-template-rows: 1fr 36px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 32px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 22px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 14px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
   }
   &[class*='_ico_'] {
     &[class*='one_ico'] {
@@ -349,7 +388,8 @@
         grid-template-columns: 1fr 28px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
-    &[class*='fou_ico'] {
+    &[class*='fou_ico'],
+    &[class*='fiv_ico'] {
       grid-template-rows: 1fr 102px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 102px 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -368,35 +408,7 @@
   }
 
   /*
-  &[class*='six_top'] {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-    grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
 
-    @media screen and (max-height: 768px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-  }
-  &[class*='six_bot'] {
-  }
-  &[class*='six_lef'] {
-  }
-  &[class*='six_rig'] {
-  }
-  &[class*='six_cen'] {
-  }
-  &[class*='six_tex'] {
-  }
-  &[class*='six_ico'] {
-  }
 
   &[class*='par_top'] {
         grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
