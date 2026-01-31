@@ -2,6 +2,8 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
+import { showCode } from './ButtonsFunctions';
+
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
 //--|🠋 Components 🠋|--\\
@@ -45,10 +47,34 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     }
   }, [pageName, blockName, [info]]);
 
+  // show-size, show-dark, show-light
+  const handleShowCode = () => {
+    const result = showCode();
+    console.log(result);
+  };
+
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
-        <div className="h1-size visible">
+        <ButtonDefault
+          style={{
+            size: '<h1>',
+            view: '-center-',
+            text: `Show Code`,
+            shade: '~dark~',
+            color: '(mono)',
+
+            type: '{button}',
+            image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+          }}
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+          onClick={handleShowCode}
+        />
+
+        {/* <div className="h1-size visible">
           <aside className="left-dark">
             <ButtonDefault
               style={{
@@ -873,187 +899,16 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           </aside>
           <section className="info-view"></section>
           <aside className="right-light"></aside>
-        </div>
-
-        {/* --Todo-- */}
-
-        {/* ----------------------------------------- */}
-        {/* <div className="h2-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<h2>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h2>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h2>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-        </div>
-        <div className="h3-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<h3>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h3>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h3>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-        </div>
-        <div className="h4-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<h4>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h4>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h4>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-        </div>
-        <div className="h5-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<h5>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h5>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h5>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-        </div>
-        <div className="h6-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<h6>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h6>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<h6>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-        </div>
-        <div className="p-size hidden">
-          <AsideButtons
-            style={{
-              specSize: '<p>',
-              specShade: '~dark~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<p>',
-              specShade: '~medium~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
-          <AsideButtons
-            style={{
-              specSize: '<p>',
-              specShade: '~light~',
-              specColor: colorSelect.value,
-              specLoad: loadSelect.value as '[default]' | '[cleaned]' | '[stretch]',
-            }}
-            info={info}
-          />
         </div> */}
       </section>
-      <aside className="midground"></aside>
+      <figure className="midground show-size">
+        <aside className="dark-code"></aside>
+        <section className="size-font"></section>
+        <aside className="light-code"></aside>
+
+        {/* <div className="preview"></div> */}
+        {/* <div className="section"></div> */}
+      </figure>
       <div className="background">
         <header>
           <div></div>

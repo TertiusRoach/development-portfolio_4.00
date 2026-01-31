@@ -1,5 +1,4 @@
 //--|🠊 Button_default.ts 🠈|--\\
-//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
@@ -11,6 +10,7 @@ interface StyleProps {
   image: string | null | undefined;
 }
 
+//--|🠋 Functions 🠋|--\\
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
