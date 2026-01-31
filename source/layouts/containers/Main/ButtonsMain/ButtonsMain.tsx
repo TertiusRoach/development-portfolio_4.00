@@ -24,17 +24,106 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const imagePath =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
 
-  const handleButtons = (pageName: string, blockName: string) => {
-    let page: string = pageName;
-    let block: string = blockName;
-    return <SectionButtons info={info} />;
-  };
-  // show-size, show-dark, show-light
-  const handleShowCode = () => {
-    const result = showCode();
-    console.log(result);
+  const handleButtons = (
+    pageName: string,
+    blockName: string,
+    blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light',
+  ) => {
+    const qs = (selector: string) => {
+      const el = document.querySelector(selector) as HTMLElement | null;
+      if (!el) throw new Error(`Missing element: ${selector}`);
+      return el;
+    };
+
+    const show = (el: HTMLElement) => {
+      el.classList.add('visible');
+      el.classList.remove('hidden');
+    };
+
+    const hide = (el: HTMLElement) => {
+      el.classList.add('hidden');
+      el.classList.remove('visible');
+    };
+
+    // centerElement contains a .visible className
+    // rightLight & leftDark contains a .hidden className
+    const leftDark = qs(`#${pageName}-main .midground .dark-code`);
+    const rightLight = qs(`#${pageName}-main .midground .light-code`);
+    const centerElement = qs(`#${pageName}-main .midground .size-font`);
+
+    switch (blockAction) {
+      case 'open-dark':
+        // toggle .hidden on leftDark to .visible
+        show(leftDark);
+        // toggle the centerElement from .visible to .hidden
+        hide(centerElement);
+        break;
+
+      case 'close-dark':
+        // toggle .visible on leftDark to .hidden
+        hide(leftDark);
+        // toggle .hidden on centerElement to .visible
+        show(centerElement);
+        break;
+
+      case 'open-light':
+        // toggle .hidden on rightLight to .visible
+        show(rightLight);
+        // toggle the centerElement from .visible to .hidden
+        hide(centerElement);
+        break;
+
+      case 'close-light':
+        // toggle .visible on rightLight to .hidden
+        hide(rightLight);
+        // toggle .hidden on centerElement to .visible
+        show(centerElement);
+        break;
+
+      default:
+        throw new Error(
+          '//--|🠊 ERROR - C:/Develop/development-portfolio_4.00/source/layouts/containers/Main/ButtonsMain/ButtonsMain.tsx 🠈|--//',
+        );
+    }
+
+    console.log({ blockName, leftDark, rightLight, centerElement });
+    /*
+    // centerElement contains a .visible className
+    // rightLight & leftDark contains a .hidden className
+    let leftDark = document.querySelector(`#${pageName}-main .midground .dark-code`) as HTMLElement;
+    let rightLight = document.querySelector(`#${pageName}-main .midground .light-code`) as HTMLElement;
+    let centerElement = document.querySelector(`#${pageName}-main .midground .size-font`) as HTMLElement;
+
+    // Take these three elements and do the following with them, please.
+    switch (blockAction) {
+      case 'open-dark':
+        //  If blockAction is equal to 'open-dark' then toggle .hidden on leftDark to .visible
+        //  then toggle the centerElement from .visible to .hidden
+        break;
+      case 'close-dark':
+        // If blockAction is equal to 'close-dark' then toggle .visible on leftDark to .hidden
+        // then toggle .hidden on centerElement to .visible
+        break;
+      case 'open-light':
+        //  If blockAction is equal to 'open-light' then toggle .hidden on rightLight to .visible
+        //  then toggle the centerElement from .visible to .hidden
+        break;
+      case 'close-light':
+        // If blockAction is equal to 'close-light' then toggle .visible on rightLight to .hidden
+        // then toggle .hidden on centerElement to .visible
+        break;
+      default:
+        throw new Error(
+          '//--|🠊 ERROR - C:/Develop/development-portfolio_4.00/source/layouts/containers/Main/ButtonsMain/ButtonsMain.tsx 🠈|--//',
+        );
+    }
+    console.log(leftDark);
+    console.log(rightLight);
+    console.log(centerElement);
+    */
   };
 
+  const result = showCode();
   useEffect(() => {
     /*
     ### Centering text inside a “tall box” (no padding math needed)  
@@ -71,6 +160,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     });
 
     //--|🠋 I can't remember what this does but I'm keeping it for now. 🠋|--\\
+    /*
+    Version 2.0
     let loadSelect = document.querySelector(
       `#${pageName}-header .${pageName}-menu li[class*="load"] select`,
     ) as HTMLSelectElement;
@@ -85,12 +176,17 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     } else {
       console.warn('Load select element not found.');
     }
+    */
   }, [pageName, blockName, [info]]);
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
         {/* --Todo-- */}
-        <aside className="dark-side">
+        <aside
+          className="dark-side"
+          onMouseEnter={() => handleButtons(pageName, blockName, 'open-dark')}
+          onMouseLeave={() => handleButtons(pageName, blockName, 'close-dark')}
+        >
           {/* <div className="h1-size visible">
             <aside className="left-dark">
               <ButtonDefault
@@ -937,7 +1033,11 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           }}
           onClick={handleShowCode}
         /> */}
-        <aside className="light-side">
+        <aside
+          className="light-side"
+          onMouseEnter={() => handleButtons(pageName, blockName, 'open-light')}
+          onMouseLeave={() => handleButtons(pageName, blockName, 'close-light')}
+        >
           {/* <div className="h1-size visible">
             <aside className="left-dark">
               <ButtonDefault
@@ -1810,3 +1910,12 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ButtonsMain;
+
+// const versionTwo = (pageName: string, blockName: string) => {
+//   console.log();
+//   /*
+//     let page: string = pageName;
+//     let block: string = blockName;
+//     return <SectionButtons info={info} />;
+//     */
+// };
