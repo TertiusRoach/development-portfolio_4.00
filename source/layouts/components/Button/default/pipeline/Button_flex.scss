@@ -1,57 +1,7 @@
 //--|🠊 Button_flex.scss 🠈|--\\
-//-Todo-\\
 @mixin desktop-flex {
   &[class*='_top_'],
   &[class*='_bot_'] {
-    //--Todo--\\
-    &[class*='six_'] {
-      h6 {
-        // padding: ??px ??px;
-        @media screen and (max-height: 768px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // padding: ??px ??px;
-        }
-      }
-      img {
-        // margin: ??px;
-        @media screen and (max-height: 768px) {
-        }
-        @media screen and (max-height: 480px) {
-        }
-        @media screen and (max-height: 360px) {
-        }
-      }
-    }
-    &[class*='par_'] {
-      p {
-        // padding: ??px ??px;
-        @media screen and (max-height: 768px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // padding: ??px ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // padding: ??px ??px;
-        }
-      }
-      img {
-        // margin: ??px;
-        @media screen and (max-height: 768px) {
-        }
-        @media screen and (max-height: 480px) {
-        }
-        @media screen and (max-height: 360px) {
-        }
-      }
-    }
-
-    //--Done--\\
     &[class*='one_'] {
       h1 {
         padding: 4px 16px;
@@ -173,36 +123,61 @@
         }
       }
     }
+    &[class*='six_'] {
+      h6 {
+        padding: 6px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 1px 4px;
+        }
+      }
+      img {
+        margin: 4px 14px;
+        @media screen and (max-height: 768px) {
+          margin: 4px 14px;
+        }
+        @media screen and (max-height: 480px) {
+          margin: 2px 14px;
+        }
+        @media screen and (max-height: 360px) {
+          margin: 0 14px;
+        }
+      }
+    }
+    &[class*='par_'] {
+      p {
+        padding: 4px 16px;
+        @media screen and (max-height: 768px) {
+          padding: 4px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 1px 4px;
+        }
+      }
+      img {
+        margin: 2px 16px;
+        @media screen and (max-height: 768px) {
+          margin: 2px 16px;
+        }
+        @media screen and (max-height: 480px) {
+          margin: 0 12px;
+        }
+        @media screen and (max-height: 360px) {
+          margin: 2px 6px;
+        }
+      }
+    }
   }
   &[class*='_lef_'],
   &[class*='_rig_'] {
-    //--Todo--\\
-    h6 {
-      // padding: ??px 16px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
-      }
-    }
-    p {
-      // padding: ??px 16px;
-      @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
-      }
-      @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
-      }
-      @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
-      }
-    }
-
-    //--Done--\\
     img {
       margin-top: 4px;
       @media screen and (max-height: 768px) {
@@ -275,35 +250,32 @@
         padding: 3px 4px;
       }
     }
-  }
-  &[class*='_cen_'] {
-    //--Todo--\\
     h6 {
-      // padding: ??px 16px;
+      padding: 18px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
+        padding: 11px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
+        padding: 7px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
+        padding: 4px 4px;
       }
     }
     p {
-      // padding: ??px 16px;
+      padding: 16px 16px;
       @media screen and (max-height: 768px) {
-        // padding: ??px 8px;
+        padding: 12px 8px;
       }
       @media screen and (max-height: 480px) {
-        // padding: ??px 4px;
+        padding: 7px 4px;
       }
       @media screen and (max-height: 360px) {
-        // padding: ??px 4px;
+        padding: 4px 4px;
       }
     }
-
-    //--Done--\\
+  }
+  &[class*='_cen_'] {
     img {
       margin-top: 4px;
       @media screen and (max-height: 768px) {
@@ -376,15 +348,32 @@
         padding: 10px 4px;
       }
     }
-  }
-
-  &[class*='_tex_'] {
-    .icon {
-      opacity: 0;
-      display: none;
-      background: none;
+    h6 {
+      padding: 26px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 26px 8px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 16px 4px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 12px 4px;
+      }
     }
-
+    p {
+      padding: 25px 16px;
+      @media screen and (max-height: 768px) {
+        padding: 26px 8px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 16px 4px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 12px 4px;
+      }
+    }
+  }
+  &[class*='_tex_'] {
     h1 {
       padding: 2px 16px;
       @media screen and (max-height: 768px) {
@@ -458,69 +447,49 @@
       }
     }
     p {
-      padding: 8px 16px;
+      padding: 5px 16px;
       @media screen and (max-height: 768px) {
-        padding: 8px 16px;
+        padding: 5px 16px;
       }
       @media screen and (max-height: 480px) {
-        padding: 4px 8px;
+        padding: 2px 8px;
       }
       @media screen and (max-height: 360px) {
-        padding: 2px 4px;
-      }
-    }
-  }
-  &[class*='_ico_'] {
-    //--Todo--\\
-    &[class*='fiv_'] {
-      img {
-        // margin-top: ??px;
-        @media screen and (max-height: 768px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // margin-top: ??px;
-        }
-      }
-    }
-    &[class*='six_'] {
-      img {
-        // margin-top: ??px;
-        @media screen and (max-height: 768px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // margin-top: ??px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      img {
-        // margin-top: ??px;
-        @media screen and (max-height: 768px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 480px) {
-          // margin-top: ??px;
-        }
-        @media screen and (max-height: 360px) {
-          // margin-top: ??px;
-        }
+        padding: 0 4px;
       }
     }
 
-    //--Done--\\
+    .icon {
+      opacity: 0;
+      display: none;
+      background: none;
+    }
+  }
+  &[class*='_ico_'] {
     .text {
       opacity: 0;
       display: none;
       background: none;
     }
+
+    //--Todo--\\
+    &[class*='par_'] {
+      img {
+        margin-top: 6px;
+        @media screen and (max-height: 768px) {
+          margin-top: 3px;
+        }
+        @media screen and (max-height: 480px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 360px) {
+          margin-top: 1px;
+        }
+      }
+    }
+
+    //--Done--\\
+
     &[class*='one_'] {
       img {
         margin-top: 8px;
@@ -582,6 +551,20 @@
         margin-top: 6px;
         @media screen and (max-height: 768px) {
           margin-top: 4px;
+        }
+        @media screen and (max-height: 480px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 360px) {
+          margin-top: 1px;
+        }
+      }
+    }
+    &[class*='six_'] {
+      img {
+        margin-top: 4px;
+        @media screen and (max-height: 768px) {
+          margin-top: 3px;
         }
         @media screen and (max-height: 480px) {
           margin-top: 2px;

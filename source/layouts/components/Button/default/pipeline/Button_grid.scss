@@ -1,37 +1,5 @@
 //--|🠊 Button_grid.scss 🠈|--\\
-
 @mixin desktop-grid {
-  //--Todo--\\
-  &[class*='six_top'] {
-    // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-    // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-
-    @media screen and (max-height: 768px) {
-      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      // grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      // grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
-  }
-  &[class*='six_bot'] {
-  }
-  &[class*='six_lef'] {
-  }
-  &[class*='six_rig'] {
-  }
-  &[class*='six_cen'] {
-  }
-  &[class*='six_tex'] {
-  }
-  &[class*='six_ico'] {
-  }
-
   //--Done--\\
   &[class*='_top_'] {
     &[class*='one_top'] {
@@ -39,7 +7,7 @@
       grid-template-columns: 1fr 28px 174px 28px 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
         grid-template-rows: 1fr 48px 116px 1fr; //--|🠈 rows 🠈|--\\
-        grid-template-columns: 1fr 24px 117px 24px 1fr; //--|🠈 columns 🠈|--\\
+        grid-template-columns: 1fr 24px 116px 24px 1fr; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 480px) {
         grid-template-rows: 1fr 32px 68px 1fr; //--|🠈 rows 🠈|--\\
@@ -114,6 +82,38 @@
       @media screen and (max-height: 360px) {
         grid-template-rows: 1fr 20px 52px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr 7px 52px 7px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='six_top'] {
+      grid-template-rows: 1fr 32px 180px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 16px 180px 16px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 30px 102px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 15px 102px 15px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 20px 60px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 10px 60px 10px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 14px 50px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 7px 50px 7px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='par_top'] {
+      grid-template-rows: 1fr 30px 178px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 15px 178px 15px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 28px 102px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 14px 102px 14px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 18px 58px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 9px 58px 9px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 12px 50px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 6px 50px 6px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
   }
@@ -204,13 +204,47 @@
         grid-template-columns: 1fr 7px 52px 7px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    &[class*='six_bot'] {
+      grid-template-rows: 1fr 180px 32px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 16px 180px 16px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 102px 30px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 15px 102px 15px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 60px 20px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 10px 60px 10px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 50px 14px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 7px 50px 7px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='par_bot'] {
+      grid-template-rows: 1fr 178px 30px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 15px 178px 15px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 102px 28px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 14px 102px 14px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 58px 18px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 9px 58px 9px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 50px 12px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 6px 50px 6px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
   }
   &[class*='_lef_'] {
     &[class*='one_lef'],
     &[class*='two_lef'],
     &[class*='thr_lef'],
     &[class*='fou_lef'],
-    &[class*='fiv_lef'] {
+    &[class*='fiv_lef'],
+    &[class*='six_lef'],
+    &[class*='par_lef'] {
       grid-template-rows: 1fr 56px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 16px 40px 16px auto 16px 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -232,7 +266,9 @@
     &[class*='two_rig'],
     &[class*='thr_rig'],
     &[class*='fou_rig'],
-    &[class*='fiv_rig'] {
+    &[class*='fiv_rig'],
+    &[class*='six_rig'],
+    &[class*='par_rig'] {
       grid-template-rows: 1fr 56px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr 16px auto 16px 40px 16px; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -254,7 +290,9 @@
     &[class*='two_cen'],
     &[class*='thr_cen'],
     &[class*='fou_cen'],
-    &[class*='fiv_cen'] {
+    &[class*='fiv_cen'],
+    &[class*='six_cen'],
+    &[class*='par_cen'] {
       grid-template-rows: 1fr 72px 1fr; //--|🠈 rows 🠈|--\\
       grid-template-columns: 1fr auto 64px auto 1fr; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -353,6 +391,38 @@
         grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    &[class*='six_tex'] {
+      grid-template-rows: 1fr 32px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 30px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 20px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 14px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    &[class*='par_tex'] {
+      grid-template-rows: 1fr 30px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 250px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 28px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 18px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 12px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 74px 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
   }
   &[class*='_ico_'] {
     &[class*='one_ico'] {
@@ -405,41 +475,39 @@
         grid-template-columns: 1fr 24px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
-  }
-
-  /*
-
-
-  &[class*='par_top'] {
-        grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-    grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-
-    @media screen and (max-height: 768px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+    &[class*='six_ico'] {
+      grid-template-rows: 1fr 100px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 100px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 64px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 64px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 32px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 32px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 20px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 20px 1fr; //--|🠈 columns 🠈|--\\
+      }
     }
-    @media screen and (max-height: 480px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
+    &[class*='par_ico'] {
+      grid-template-rows: 1fr 98px 1fr; //--|🠈 rows 🠈|--\\
+      grid-template-columns: 1fr 98px 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template-rows: 1fr 62px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 62px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template-rows: 1fr 30px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 30px 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template-rows: 1fr 18px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 18px 1fr; //--|🠈 columns 🠈|--\\
+      }
     }
-    @media screen and (max-height: 360px) {
-      grid-template-rows: ??fr ??px ??px ??fr; //--|🠈 rows 🠈|--\\
-      grid-template-columns: ??fr ??px ??px ??px ??fr; //--|🠈 columns 🠈|--\\
-    }
   }
-  &[class*='par_bot'] {
-  }
-  &[class*='par_lef'] {
-  }
-  &[class*='par_rig'] {
-  }
-  &[class*='par_cen'] {
-  }
-  &[class*='par_tex'] {
-  }
-  &[class*='par_ico'] {
-  }
-  */
 }
 @mixin mobile-grid {
 }

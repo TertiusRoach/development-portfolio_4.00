@@ -29,6 +29,9 @@
     p {
       font-size: 14px;
       font-weight: 200;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     @media screen and (max-height: 768px) {
       max-width: 22rem;
