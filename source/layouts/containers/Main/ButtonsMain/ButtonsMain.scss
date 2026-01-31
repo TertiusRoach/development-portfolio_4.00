@@ -7,23 +7,56 @@
     margin: 0;
     overflow: hidden;
     grid-area: 3 / 1 / 4 / 4;
+    //------------------\\
+    display: flex;
+    position: relative; /* Important: Creates the 'box' for the children */
 
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+    z-index: 99;
 
-    background: rgba(darkred, 0.5);
-
-    aside[class*='dark'] {
-      grid-area: 1 / 1 / 2 / 2;
-      background: Palettes.$indexLand-dark;
-    }
-    aside[class*='light'] {
-      grid-area: 1 / 3 / 2 / 4;
-      background: Palettes.$indexLand-light;
-    }
+    aside[class*='dark'],
+    aside[class*='light'],
     section[class*='size'] {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      position: absolute;
+
+      &.dark-code {
+        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 2fr; //--|🠈 columns 🠈|--\\
+
+        pre {
+          grid-area: 1 / 1 / 2 / 2;
+          background: rgba(Palettes.$indexLand-dark, 0.5);
+        }
+      }
+      &.light-code {
+        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 2fr 1fr; //--|🠈 columns 🠈|--\\
+
+        pre {
+          grid-area: 1 / 2 / 2 / 3;
+          background: rgba(Palettes.$indexLand-light, 0.5);
+        }
+      }
+      &.size-font {
+        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+
+        background: rgba(Palettes.$indexLand-medium, 0.5);
+      }
     }
+
+    // background: rgba(darkred, 0.5);
+    // grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+    //  {
+    //   grid-area: 1 / 1 / 2 / 2;
+    //   background: Palettes.$indexLand-dark;
+    // }
+    //  {
+    //   grid-area: 1 / 3 / 2 / 4;
+    //   background: Palettes.$indexLand-light;
+    // }
 
     & {
       //--|🠋 Midground Margins 🠋|--//
