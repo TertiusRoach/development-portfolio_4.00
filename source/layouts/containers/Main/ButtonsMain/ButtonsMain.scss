@@ -5,23 +5,67 @@
   //--|🠋 Todo 🠋|--//
   figure[class*='midground'] {
     margin: 0;
-    overflow: hidden;
-    grid-area: 3 / 1 / 4 / 4;
-    //------------------\\
     display: flex;
-    position: relative; /* Important: Creates the 'box' for the children */
-
-    z-index: 99;
+    overflow: hidden;
+    position: relative; //--|🠊 Important: Creates the 'box' for the children 🠈|--//
+    grid-area: 3 / 1 / 4 / 4;
 
     aside[class*='dark'],
     aside[class*='light'],
     section[class*='size'] {
       width: 100%;
       height: 100%;
-
       display: grid;
       position: absolute;
 
+      &[class*='font'] {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        background: rgba(Palettes.$indexLand-medium, 0.5);
+
+        ol {
+          padding: 0;
+          display: flex;
+
+          text-align: center; // centers the text inside full-width items, too
+          flex-direction: column;
+
+          justify-content: center;
+          h1 {
+            margin: 0;
+            // padding-top: 10rem;
+          }
+          grid-area: 1 / 2 / 2 / 3;
+          /*
+          // list-style: none;
+          justify-content: center; // vertical (because column)
+          align-items: center; // horizontal (centers the items)
+
+
+          > * {
+            margin: 0;
+
+            // pick ONE of these depending on what you want:
+            align-self: center; // force centering even if other rules exist
+            width: fit-content; // make each item shrink-wrap to its text
+            max-width: 100%; // safety
+          }
+          */
+
+          // .sizes-stack {
+          //   grid-area: 1 / 2 / 2 / 3; // ONLY the wrapper gets the grid placement
+          //   display: flex;
+          //   flex-direction: column; // stacks children vertically
+          //   gap: 0; // add if you want spacing
+          //   background: rgba(darkred, 0.25);
+          // }
+
+          // .sizes-stack > div[class*='size'] {
+          //   position: static; // just in case something else set absolute
+          // }
+        }
+      }
       &[class*='code'] {
         display: grid;
         grid-template-rows: 1fr; // same for all states
@@ -39,12 +83,13 @@
 
         &.dark-code > pre {
           grid-area: 1 / 2 / 2 / 3;
-          background: red;
+          background: rgba(Palettes.$indexLand-dark, 0.5);
         }
 
         &.light-code > pre {
           grid-area: 1 / 2 / 2 / 3;
           background: blue;
+          background: rgba(Palettes.$indexLand-light, 0.5);
         }
 
         &.hidden.dark-code {
@@ -108,12 +153,6 @@
           }
         }
         */
-      }
-      &.size-font {
-        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-        grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-
-        background: rgba(Palettes.$indexLand-medium, 0.5);
       }
     }
     & {
