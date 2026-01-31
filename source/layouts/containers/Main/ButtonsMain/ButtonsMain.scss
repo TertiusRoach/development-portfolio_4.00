@@ -18,26 +18,96 @@
     section[class*='size'] {
       width: 100%;
       height: 100%;
+
       display: grid;
       position: absolute;
 
-      &.dark-code {
-        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-        grid-template-columns: 1fr 2fr; //--|🠈 columns 🠈|--\\
+      &[class*='code'] {
+        display: grid;
+        grid-template-rows: 1fr; // same for all states
+        transition: grid-template-columns 250ms ease;
 
-        pre {
-          grid-area: 1 / 1 / 2 / 2;
-          background: rgba(Palettes.$indexLand-dark, 0.5);
+        // If any child refuses to shrink, ellipsis/overflow + animation can look "stuck"
+        min-width: 0;
+
+        // If you truly need pre to have its own internal 3-col grid:
+        > pre {
+          display: grid; // required for grid-template-columns to apply
+          grid-template-columns: 1fr 1fr 1fr;
+          min-width: 0;
         }
-      }
-      &.light-code {
-        grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-        grid-template-columns: 2fr 1fr; //--|🠈 columns 🠈|--\\
 
-        pre {
+        &.dark-code > pre {
           grid-area: 1 / 2 / 2 / 3;
-          background: rgba(Palettes.$indexLand-light, 0.5);
+          background: red;
         }
+
+        &.light-code > pre {
+          grid-area: 1 / 2 / 2 / 3;
+          background: blue;
+        }
+
+        &.hidden.dark-code {
+          grid-template-columns: 0.001fr 1fr 2fr;
+        }
+        &.visible.dark-code {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        // IMPORTANT: you must decide a different visible layout, otherwise no animation.
+        &.hidden.light-code {
+          grid-template-columns: 2fr 1fr 0.001fr;
+        }
+        &.visible.light-code {
+          grid-template-columns: 1fr 1fr 1fr;
+        } // <- change if you want a different end state
+        /*
+        &.hidden {
+          &.dark-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 0fr 1fr 2fr; //--|🠈 columns 🠈|--\\
+            pre {
+              grid-area: 1 / 2 / 2 / 3;
+              background: red;
+              grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
+              // background: rgba(Palettes.$indexLand-dark, 0.5);
+            }
+          }
+          &.light-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
+
+            pre {
+              grid-area: 1 / 2 / 2 / 4;
+
+              background: blue;
+              // background: rgba(Palettes.$indexLand-light, 0.5);
+            }
+          }
+        }
+        &.visible {
+          &.dark-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
+            pre {
+              grid-area: 1 / 2 / 2 / 3;
+              background: red;
+              // background: rgba(Palettes.$indexLand-dark, 0.5);
+            }
+          }
+          &.light-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
+
+            pre {
+              grid-area: 1 / 2 / 2 / 4;
+
+              background: blue;
+              // background: rgba(Palettes.$indexLand-light, 0.5);
+            }
+          }
+        }
+        */
       }
       &.size-font {
         grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
@@ -46,18 +116,6 @@
         background: rgba(Palettes.$indexLand-medium, 0.5);
       }
     }
-
-    // background: rgba(darkred, 0.5);
-    // grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-    //  {
-    //   grid-area: 1 / 1 / 2 / 2;
-    //   background: Palettes.$indexLand-dark;
-    // }
-    //  {
-    //   grid-area: 1 / 3 / 2 / 4;
-    //   background: Palettes.$indexLand-light;
-    // }
-
     & {
       //--|🠋 Midground Margins 🠋|--//
       margin: 0 96px;

@@ -902,18 +902,19 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         </div> */}
       </section>
       <figure className="midground show-size">
-        <aside className="dark-code">
+        <aside className="dark-code hidden">
           <pre>
             <code></code>
           </pre>
         </aside>
 
-        <aside className="light-code">
+        <section className="size-font hidden"></section>
+
+        <aside className="light-code hidden">
           <pre>
             <code></code>
           </pre>
         </aside>
-        <section className="size-font"></section>
 
         {/* <div className="preview"></div> */}
         {/* <div className="section"></div> */}
