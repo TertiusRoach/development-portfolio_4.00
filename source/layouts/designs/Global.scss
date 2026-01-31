@@ -7,46 +7,49 @@
   border: none;
   box-sizing: border-box;
   font-family: 'Baloo Bhai 2', arial !important;
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    outline: none;
-    cursor: default;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  p {
-    cursor: default;
-    white-space: wrap;
-  }
 
+  & {
+    //--|🠋 General Settings 🠋|--\\
+    *[class='foreground'] {
+      z-index: 2;
+    }
+    *[class='midground'] {
+      z-index: 1;
+    }
+    *[class='background'] {
+      z-index: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      outline: none;
+      cursor: default;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    p {
+      cursor: default;
+      white-space: wrap;
+    }
+  }
+  pre {
+    margin: 0;
+  }
   body {
     position: relative;
+    > div[id*='buttons'],
     > div[id*='landing'],
     > div[id*='overtime'],
     > div[id*='ticketing'],
-    > div[id*='hyperlink'],
-    > div[id*='buttons'] {
+    > div[id*='hyperlink'] {
       width: 100vw;
       height: 100vh;
       position: absolute;
-    }
-
-    //--|🠋 Z-index Settings 🠋|--\\
-    & {
-      *[class='foreground'] {
-        z-index: 2;
-      }
-      *[class='midground'] {
-        z-index: 1;
-      }
-      *[class='background'] {
-        z-index: 0;
-      }
     }
   }
   time {
