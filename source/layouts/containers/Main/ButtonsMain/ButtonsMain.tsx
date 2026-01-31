@@ -48,7 +48,714 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
-        {/* --Todo-- */}
+        <div className="h1-size visible">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-top-',
+                text: `one_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-bottom-',
+                text: `one_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-left-',
+                text: `one_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-right-',
+                text: `one_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-center-',
+                text: `one_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-text-',
+                text: `one_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h1>',
+                view: '-icon-',
+                text: `one_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
+        <div className="h2-size hidden">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-top-',
+                text: `two_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-bottom-',
+                text: `two_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-left-',
+                text: `two_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-right-',
+                text: `two_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-center-',
+                text: `two_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-text-',
+                text: `two_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h2>',
+                view: '-icon-',
+                text: `two_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
+        <div className="h3-size hidden">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-top-',
+                text: `thr_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-bottom-',
+                text: `thr_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-left-',
+                text: `thr_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-right-',
+                text: `thr_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-center-',
+                text: `thr_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-text-',
+                text: `thr_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-icon-',
+                text: `thr_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
+        <div className="h4-size hidden">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-top-',
+                text: `fou_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-bottom-',
+                text: `fou_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-left-',
+                text: `fou_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-right-',
+                text: `fou_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-center-',
+                text: `fou_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-text-',
+                text: `fou_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-icon-',
+                text: `fou_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
+        <div className="h5-size hidden">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-top-',
+                text: `fiv_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-bottom-',
+                text: `fiv_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-left-',
+                text: `fiv_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-right-',
+                text: `fiv_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-center-',
+                text: `fiv_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-text-',
+                text: `fiv_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h5>',
+                view: '-icon-',
+                text: `fiv_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
+        <div className="h6-size hidden">
+          <aside className="left-dark">
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-top-',
+                text: `six_top_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-bottom-',
+                text: `six_bot_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-left-',
+                text: `six_lef_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-right-',
+                text: `six_rig_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-center-',
+                text: `six_cen_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-text-',
+                text: `six_tex_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h6>',
+                view: '-icon-',
+                text: `six_ico_dar_mon`,
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+              }}
+            />
+          </aside>
+          <section className="info-view"></section>
+          <aside className="right-light"></aside>
+        </div>
         <div className="p-size hidden">
           <aside className="left-dark">
             <ButtonDefault
@@ -157,716 +864,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
                 type: '{button}',
                 image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-
-        {/* --Done-- */}
-        <div className="h1-size visible">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-left-',
-                text: `one_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-right-',
-                text: `one_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-center-',
-                text: `one_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-text-',
-                text: `one_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h1>',
-                view: '-icon-',
-                text: `one_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-        <div className="h2-size hidden">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-left-',
-                text: `two_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-right-',
-                text: `two_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-center-',
-                text: `two_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-text-',
-                text: `two_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h2>',
-                view: '-icon-',
-                text: `two_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-        <div className="h3-size hidden">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-left-',
-                text: `two_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-right-',
-                text: `two_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-center-',
-                text: `two_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-text-',
-                text: `two_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-icon-',
-                text: `two_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-        <div className="h4-size hidden">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-left-',
-                text: `two_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-right-',
-                text: `two_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-center-',
-                text: `two_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-text-',
-                text: `two_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h4>',
-                view: '-icon-',
-                text: `two_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-        <div className="h5-size hidden">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-left-',
-                text: `two_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-right-',
-                text: `two_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-center-',
-                text: `two_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-text-',
-                text: `two_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h5>',
-                view: '-icon-',
-                text: `two_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-          </aside>
-          <section className="info-view"></section>
-          <aside className="right-light"></aside>
-        </div>
-        <div className="h6-size hidden">
-          <aside className="left-dark">
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-top-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-bottom-',
-                text: `Button-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-left-',
-                text: `two_lef_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-right-',
-                text: `two_rig_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-center-',
-                text: `two_cen_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-text-',
-                text: `two_tex_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-              }}
-            />
-            <ButtonDefault
-              style={{
-                size: '<h6>',
-                view: '-icon-',
-                text: `two_ico_dar_mon-------------------------`,
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
               }}
               info={{
                 pageName: pageName,
