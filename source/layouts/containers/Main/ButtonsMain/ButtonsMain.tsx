@@ -97,8 +97,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           onMouseLeave={() => handleButtons(pageName, blockName, 'close-dark')}
         >
           <div className="h1-size visible">
-            <aside className="left-dark">
-              <ButtonDefault
+                          <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-top-',
@@ -114,7 +113,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   blockName: blockName,
                 }}
               />
-              {/* <ButtonDefault
+              <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-bottom-',
@@ -129,8 +128,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-              {/* <ButtonDefault
+              />
+              <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-left-',
@@ -145,8 +144,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-              {/* <ButtonDefault
+              />
+                            <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-right-',
@@ -161,8 +160,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-              {/* <ButtonDefault
+              />
+              <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-center-',
@@ -177,8 +176,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-              {/* <ButtonDefault
+              />
+                            <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-text-',
@@ -193,8 +192,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-              {/* <ButtonDefault
+              />
+                            <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-icon-',
@@ -209,10 +208,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              /> */}
-            </aside>
-            <section className="info-view"></section>
-            <aside className="right-light"></aside>
+              />
           </div>
           <div className="h2-size hidden">
             <aside className="left-dark">
