@@ -2,12 +2,12 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { showCode } from './ButtonsFunctions';
+import { toggleAside, showCode } from './ButtonsFunctions';
 
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
 //--|🠋 Components 🠋|--\\
-const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
+// const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
 
 import ButtonDefault from '../../../components/Button/default/Button.default';
 
@@ -29,98 +29,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     blockName: string,
     blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light',
   ) => {
-    const qs = (selector: string) => {
-      const el = document.querySelector(selector) as HTMLElement | null;
-      if (!el) throw new Error(`Missing element: ${selector}`);
-      return el;
-    };
-
-    const show = (el: HTMLElement) => {
-      el.classList.add('visible');
-      el.classList.remove('hidden');
-    };
-
-    const hide = (el: HTMLElement) => {
-      el.classList.add('hidden');
-      el.classList.remove('visible');
-    };
-
-    // centerElement contains a .visible className
-    // rightLight & leftDark contains a .hidden className
-    const leftDark = qs(`#${pageName}-main .midground .dark-code`);
-    const rightLight = qs(`#${pageName}-main .midground .light-code`);
-    const centerElement = qs(`#${pageName}-main .midground .size-font`);
-
-    switch (blockAction) {
-      case 'open-dark':
-        // toggle .hidden on leftDark to .visible
-        show(leftDark);
-        // toggle the centerElement from .visible to .hidden
-        hide(centerElement);
-        break;
-
-      case 'close-dark':
-        // toggle .visible on leftDark to .hidden
-        hide(leftDark);
-        // toggle .hidden on centerElement to .visible
-        show(centerElement);
-        break;
-
-      case 'open-light':
-        // toggle .hidden on rightLight to .visible
-        show(rightLight);
-        // toggle the centerElement from .visible to .hidden
-        hide(centerElement);
-        break;
-
-      case 'close-light':
-        // toggle .visible on rightLight to .hidden
-        hide(rightLight);
-        // toggle .hidden on centerElement to .visible
-        show(centerElement);
-        break;
-
-      default:
-        throw new Error(
-          '//--|🠊 ERROR - C:/Develop/development-portfolio_4.00/source/layouts/containers/Main/ButtonsMain/ButtonsMain.tsx 🠈|--//',
-        );
-    }
-
-    console.log({ blockName, leftDark, rightLight, centerElement });
-    /*
-    // centerElement contains a .visible className
-    // rightLight & leftDark contains a .hidden className
-    let leftDark = document.querySelector(`#${pageName}-main .midground .dark-code`) as HTMLElement;
-    let rightLight = document.querySelector(`#${pageName}-main .midground .light-code`) as HTMLElement;
-    let centerElement = document.querySelector(`#${pageName}-main .midground .size-font`) as HTMLElement;
-
-    // Take these three elements and do the following with them, please.
-    switch (blockAction) {
-      case 'open-dark':
-        //  If blockAction is equal to 'open-dark' then toggle .hidden on leftDark to .visible
-        //  then toggle the centerElement from .visible to .hidden
-        break;
-      case 'close-dark':
-        // If blockAction is equal to 'close-dark' then toggle .visible on leftDark to .hidden
-        // then toggle .hidden on centerElement to .visible
-        break;
-      case 'open-light':
-        //  If blockAction is equal to 'open-light' then toggle .hidden on rightLight to .visible
-        //  then toggle the centerElement from .visible to .hidden
-        break;
-      case 'close-light':
-        // If blockAction is equal to 'close-light' then toggle .visible on rightLight to .hidden
-        // then toggle .hidden on centerElement to .visible
-        break;
-      default:
-        throw new Error(
-          '//--|🠊 ERROR - C:/Develop/development-portfolio_4.00/source/layouts/containers/Main/ButtonsMain/ButtonsMain.tsx 🠈|--//',
-        );
-    }
-    console.log(leftDark);
-    console.log(rightLight);
-    console.log(centerElement);
-    */
+    toggleAside(pageName, blockName, blockAction);
   };
 
   const result = showCode();
@@ -187,7 +96,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           onMouseEnter={() => handleButtons(pageName, blockName, 'open-dark')}
           onMouseLeave={() => handleButtons(pageName, blockName, 'close-dark')}
         >
-          {/* <div className="h1-size visible">
+          <div className="h1-size visible">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -205,7 +114,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   blockName: blockName,
                 }}
               />
-              <ButtonDefault
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-bottom-',
@@ -220,8 +129,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
-              <ButtonDefault
+              /> */}
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-left-',
@@ -236,8 +145,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
-              <ButtonDefault
+              /> */}
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-right-',
@@ -252,8 +161,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
-              <ButtonDefault
+              /> */}
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-center-',
@@ -268,8 +177,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
-              <ButtonDefault
+              /> */}
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-text-',
@@ -284,8 +193,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
-              <ButtonDefault
+              /> */}
+              {/* <ButtonDefault
                 style={{
                   size: '<h1>',
                   view: '-icon-',
@@ -300,12 +209,12 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   pageName: pageName,
                   blockName: blockName,
                 }}
-              />
+              /> */}
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="h2-size hidden">
+          </div>
+          <div className="h2-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -422,8 +331,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="h3-size hidden">
+          </div>
+          <div className="h3-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -540,8 +449,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="h4-size hidden">
+          </div>
+          <div className="h4-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -658,8 +567,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="h5-size hidden">
+          </div>
+          <div className="h5-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -776,8 +685,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="h6-size hidden">
+          </div>
+          <div className="h6-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -894,8 +803,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
-          {/* <div className="p-size hidden">
+          </div>
+          <div className="p-size hidden">
             <aside className="left-dark">
               <ButtonDefault
                 style={{
@@ -1012,7 +921,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </aside>
             <section className="info-view"></section>
             <aside className="right-light"></aside>
-          </div> */}
+          </div>
         </aside>
 
         {/* --Todo-- */}
@@ -1910,12 +1819,3 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ButtonsMain;
-
-// const versionTwo = (pageName: string, blockName: string) => {
-//   console.log();
-//   /*
-//     let page: string = pageName;
-//     let block: string = blockName;
-//     return <SectionButtons info={info} />;
-//     */
-// };

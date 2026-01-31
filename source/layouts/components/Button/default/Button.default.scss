@@ -29,6 +29,8 @@ button[class*='default'] {
 }
 
 %button-flex {
+  width: 100%;
+  height: 100%;
   .text {
     z-index: 2;
   }
