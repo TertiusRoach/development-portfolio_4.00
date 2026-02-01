@@ -2,7 +2,7 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { toggleAside, resizeHeaders } from './ButtonsFunctions';
+import { toggleAside, scrollSection, resizePreview } from './ButtonsFunctions';
 
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
@@ -25,135 +25,23 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const handleButtons = (
     pageName: string,
     blockName: string,
+    blockEvent: 'scroll-section' | 'toggle-aside',
     blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down',
   ) => {
-    if (blockAction === 'go-up' || blockAction === 'scroll-down') {
-      let goUp = document.getElementById(`${pageName}_${blockName}_go-up`) as HTMLElement;
-      let scrollDown = document.getElementById(`${pageName}_${blockName}_scroll-down`) as HTMLElement;
+    switch (blockEvent) {
+      case 'scroll-section':
+        scrollSection(pageName, blockName, blockAction);
 
-      let buttonTrack = document.querySelector(`#${pageName}-main .foreground .dark-side`) as HTMLElement;
-      let sectionEndpoint = document.querySelector(`#${pageName}-main .foreground .dark-side section`) as HTMLElement;
+        break;
+      case 'toggle-aside':
+        toggleAside(pageName, blockName, blockAction);
 
-      let prevElement: HTMLElement;
-      let visibleElement = document.querySelector(
-        `#${pageName}-${blockName} .foreground .dark-side .size-track .visible`,
-      ) as HTMLElement;
-      let nextElement: HTMLElement;
-      if (blockAction === 'scroll-down') {
-        console.log(visibleElement.classList);
-        switch (visibleElement.classList[0]) {
-          case 'h1-size':
-            sectionEndpoint.children[1].classList.remove('hidden');
-            sectionEndpoint.children[1].classList.add('visible');
-
-            sectionEndpoint.children[0].classList.remove('visible');
-            sectionEndpoint.children[0].classList.add('hidden');
-            break;
-          case 'h2-size':
-            sectionEndpoint.children[2].classList.remove('hidden');
-            sectionEndpoint.children[2].classList.add('visible');
-
-            sectionEndpoint.children[1].classList.add('hidden');
-            sectionEndpoint.children[1].classList.remove('visible');
-            break;
-          case 'h3-size':
-            sectionEndpoint.children[3].classList.remove('hidden');
-            sectionEndpoint.children[3].classList.add('visible');
-
-            sectionEndpoint.children[2].classList.add('hidden');
-            sectionEndpoint.children[2].classList.remove('visible');
-            break;
-          case 'h4-size':
-            sectionEndpoint.children[3].classList.remove('visible');
-            sectionEndpoint.children[3].classList.add('hidden');
-
-            sectionEndpoint.children[4].classList.add('visible');
-            sectionEndpoint.children[4].classList.remove('hidden');
-
-            break;
-          case 'h5-size':
-            sectionEndpoint.children[4].classList.remove('visible');
-            sectionEndpoint.children[4].classList.add('hidden');
-
-            sectionEndpoint.children[5].classList.add('visible');
-            sectionEndpoint.children[5].classList.remove('hidden');
-
-            break;
-          case 'h6-size':
-            sectionEndpoint.children[5].classList.remove('visible');
-            sectionEndpoint.children[5].classList.add('hidden');
-
-            sectionEndpoint.children[6].classList.add('visible');
-            sectionEndpoint.children[6].classList.remove('hidden');
-
-            break;
-          case 'p-size':
-            sectionEndpoint.children[6].classList.remove('visible');
-            sectionEndpoint.children[6].classList.add('hidden');
-
-            sectionEndpoint.children[0].classList.add('visible');
-            sectionEndpoint.children[0].classList.remove('hidden');
-            break;
-        }
-      } else if (blockAction === 'go-up') {
-        switch (visibleElement.classList[0]) {
-          case 'h1-size':
-            sectionEndpoint.children[0].classList.remove('visible');
-            sectionEndpoint.children[0].classList.add('hidden');
-
-            sectionEndpoint.children[6].classList.add('visible');
-            sectionEndpoint.children[6].classList.remove('hidden');
-            break;
-          case 'h2-size':
-            sectionEndpoint.children[1].classList.add('hidden');
-            sectionEndpoint.children[1].classList.remove('visible');
-
-            sectionEndpoint.children[0].classList.add('visible');
-            sectionEndpoint.children[0].classList.remove('hidden');
-            break;
-          case 'h3-size':
-            sectionEndpoint.children[1].classList.remove('hidden');
-            sectionEndpoint.children[1].classList.add('visible');
-
-            sectionEndpoint.children[2].classList.add('hidden');
-            sectionEndpoint.children[2].classList.remove('visible');
-            break;
-          case 'h4-size':
-            sectionEndpoint.children[2].classList.add('visible');
-            sectionEndpoint.children[2].classList.remove('hidden');
-
-            sectionEndpoint.children[3].classList.add('hidden');
-            sectionEndpoint.children[3].classList.remove('visible');
-
-            break;
-          case 'h5-size':
-            sectionEndpoint.children[4].classList.remove('visible');
-            sectionEndpoint.children[4].classList.add('hidden');
-
-            sectionEndpoint.children[3].classList.add('visible');
-            sectionEndpoint.children[3].classList.remove('hidden');
-
-            break;
-          case 'h6-size':
-            sectionEndpoint.children[5].classList.remove('visible');
-            sectionEndpoint.children[5].classList.add('hidden');
-
-            sectionEndpoint.children[4].classList.add('visible');
-            sectionEndpoint.children[4].classList.remove('hidden');
-
-            break;
-          case 'p-size':
-            sectionEndpoint.children[5].classList.add('visible');
-            sectionEndpoint.children[5].classList.remove('hidden');
-
-            sectionEndpoint.children[6].classList.remove('visible');
-            sectionEndpoint.children[6].classList.add('hidden');
-            break;
-        }
-      }
-    } else {
-      toggleAside(pageName, blockName, blockAction);
+        break;
     }
+    // if (blockAction === 'scroll-down' || blockAction === 'go-up') {
+
+    // } else {
+    // }
 
     // scrollSections(pageName, blockName);
     // let previewTrack = document.querySelector(`#${pageName}-main .foreground .light-code`);
@@ -162,7 +50,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     // Execute this every time the screen size changes.
-    resizeHeaders(pageName, blockName);
+    resizePreview(pageName, blockName);
   }, [pageName, blockName, [info]]);
 
   let imagePath =
@@ -174,8 +62,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         {/* --Todo-- */}
         <aside
           className="dark-side"
-          onMouseEnter={() => handleButtons(pageName, blockName, 'open-dark')}
-          onMouseLeave={() => handleButtons(pageName, blockName, 'close-dark')}
+          onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
+          onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-dark')}
         >
           <section className="size-track">
             <div className="h1-size visible">
@@ -980,8 +868,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         </aside>
         <aside
           className="light-side"
-          onMouseEnter={() => handleButtons(pageName, blockName, 'open-light')}
-          onMouseLeave={() => handleButtons(pageName, blockName, 'close-light')}
+          onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
+          onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
         ></aside>
 
         <nav className="scroll-sections">
@@ -1002,7 +890,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}_${blockName}_go-up`,
             }}
-            onClick={() => handleButtons(pageName, blockName, 'go-up')}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
           />
           <ButtonDefault
             style={{
@@ -1021,7 +909,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}_${blockName}_scroll-down`,
             }}
-            onClick={() => handleButtons(pageName, blockName, 'scroll-down')}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
           />
         </nav>
         {/* --Todo-- */}
