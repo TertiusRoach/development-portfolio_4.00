@@ -1670,7 +1670,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               size: '<h4>',
               view: '-icon-',
               text: `Go Up`,
-              shade: '~dark~',
+              shade: '~light~',
               color: '(mono)',
 
               type: '{button}',

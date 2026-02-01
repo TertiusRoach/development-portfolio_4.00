@@ -4,6 +4,144 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--//
   //--|🠋 Todo 🠋|--//
+
+  //--|🠋 Desktop (Elements) 🠋|--//
+  //--Done--\\
+  figure[class*='midground'] {
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+    position: relative; //--|🠊 Important: Creates the 'box' for the children 🠈|--//
+    grid-area: 3 / 1 / 4 / 4;
+
+    aside[class*='dark'],
+    aside[class*='light'],
+    section[class*='size'] {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      position: absolute;
+
+      &[class*='code'] {
+        min-width: 0; // If any child refuses to shrink, ellipsis/overflow + animation can look "stuck"
+        display: grid;
+        grid-template-rows: 1fr; // same for all states
+        transition: grid-template-columns 250ms ease;
+
+        &.dark-code > pre {
+          margin-left: 96px;
+          grid-area: 1 / 1 / 2 / 3;
+          background: rgba(Palettes.$indexLand-dark, 0.75);
+        }
+
+        &.light-code > pre {
+          margin-right: 96px;
+          grid-area: 1 / 2 / 2 / 4;
+          // background: blue;
+          background: rgba(Palettes.$indexLand-light, 0.75);
+        }
+
+        > pre {
+          /*
+          // If you truly need pre to have its own internal 3-col grid:
+          display: grid; // required for grid-template-columns to apply
+          grid-template-columns: 1fr 1fr 1fr;
+          min-width: 0;
+          */
+        }
+
+        &.hidden.dark-code {
+          grid-template-columns: 0.001fr 1fr 2fr;
+        }
+        &.visible.dark-code {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        // IMPORTANT: you must decide a different visible layout, otherwise no animation.
+        &.hidden.light-code {
+          grid-template-columns: 2fr 1fr 0.001fr;
+        }
+        &.visible.light-code {
+          grid-template-columns: 1fr 1fr 1fr;
+        } // <- change if you want a different end state
+        /*
+        &.hidden {
+          &.dark-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 0fr 1fr 2fr; //--|🠈 columns 🠈|--\\
+            pre {
+              grid-area: 1 / 2 / 2 / 3;
+              background: red;
+              grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
+              background: rgba(Palettes.$indexLand-dark, 0.5);
+            }
+          }
+          &.light-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
+
+            pre {
+              grid-area: 1 / 2 / 2 / 4;
+
+              background: blue;
+              // background: rgba(Palettes.$indexLand-light, 0.5);
+            }
+          }
+        }
+        &.visible {
+          &.dark-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
+            pre {
+              grid-area: 1 / 2 / 2 / 3;
+              background: red;
+              // background: rgba(Palettes.$indexLand-dark, 0.5);
+            }
+          }
+          &.light-code {
+            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
+            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
+
+            pre {
+              grid-area: 1 / 2 / 2 / 4;
+
+              background: blue;
+              // background: rgba(Palettes.$indexLand-light, 0.5);
+            }
+          }
+        }
+        */
+      }
+      &[class*='font'] {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        // background: rgba(Palettes.$indexLand-medium, 1);
+
+        ol {
+          padding: 0;
+          display: flex;
+          text-align: center; // centers the text inside full-width items, too
+          flex-direction: column;
+          justify-content: center;
+          grid-area: 1 / 2 / 2 / 3;
+        }
+      }
+    }
+    & {
+      //--|🠋 Midground Margins 🠋|--//
+      margin: 0 96px;
+      @media screen and (max-height: 768px) {
+        margin: 0 64px;
+      }
+      @media screen and (max-height: 480px) {
+        margin: 0 48px;
+      }
+      @media screen and (max-height: 360px) {
+        margin: 0 32px;
+      }
+    }
+  }
   section[class='foreground'] {
     display: grid;
     overflow: hidden;
@@ -118,147 +256,11 @@
       margin: 0 32px;
     }
   }
-
-  //--|🠋 Desktop (Elements) 🠋|--//
-  //--Done--\\
-  figure[class*='midground'] {
-    margin: 0;
-    display: flex;
-    overflow: hidden;
-    position: relative; //--|🠊 Important: Creates the 'box' for the children 🠈|--//
-    grid-area: 3 / 1 / 4 / 4;
-
-    aside[class*='dark'],
-    aside[class*='light'],
-    section[class*='size'] {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      position: absolute;
-
-      &[class*='code'] {
-        min-width: 0; // If any child refuses to shrink, ellipsis/overflow + animation can look "stuck"
-        display: grid;
-        grid-template-rows: 1fr; // same for all states
-        transition: grid-template-columns 250ms ease;
-
-        &.dark-code > pre {
-          grid-area: 1 / 2 / 2 / 3;
-          background: rgba(Palettes.$indexLand-dark, 0.75);
-        }
-
-        &.light-code > pre {
-          grid-area: 1 / 2 / 2 / 3;
-          background: blue;
-          background: rgba(Palettes.$indexLand-light, 0.75);
-        }
-
-        > pre {
-          /*
-          // If you truly need pre to have its own internal 3-col grid:
-          display: grid; // required for grid-template-columns to apply
-          grid-template-columns: 1fr 1fr 1fr;
-          min-width: 0;
-          */
-        }
-
-        &.hidden.dark-code {
-          grid-template-columns: 0.001fr 1fr 2fr;
-        }
-        &.visible.dark-code {
-          grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        // IMPORTANT: you must decide a different visible layout, otherwise no animation.
-        &.hidden.light-code {
-          grid-template-columns: 2fr 1fr 0.001fr;
-        }
-        &.visible.light-code {
-          grid-template-columns: 1fr 1fr 1fr;
-        } // <- change if you want a different end state
-        /*
-        &.hidden {
-          &.dark-code {
-            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-            grid-template-columns: 0fr 1fr 2fr; //--|🠈 columns 🠈|--\\
-            pre {
-              grid-area: 1 / 2 / 2 / 3;
-              background: red;
-              grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
-              // background: rgba(Palettes.$indexLand-dark, 0.5);
-            }
-          }
-          &.light-code {
-            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
-
-            pre {
-              grid-area: 1 / 2 / 2 / 4;
-
-              background: blue;
-              // background: rgba(Palettes.$indexLand-light, 0.5);
-            }
-          }
-        }
-        &.visible {
-          &.dark-code {
-            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-            grid-template-columns: 1fr 1fr 1fr; //--|🠈 columns 🠈|--\\
-            pre {
-              grid-area: 1 / 2 / 2 / 3;
-              background: red;
-              // background: rgba(Palettes.$indexLand-dark, 0.5);
-            }
-          }
-          &.light-code {
-            grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\
-            grid-template-columns: 2fr 1fr 0fr; //--|🠈 columns 🠈|--\\
-
-            pre {
-              grid-area: 1 / 2 / 2 / 4;
-
-              background: blue;
-              // background: rgba(Palettes.$indexLand-light, 0.5);
-            }
-          }
-        }
-        */
-      }
-      &[class*='font'] {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: repeat(3, 1fr);
-        // background: rgba(Palettes.$indexLand-medium, 1);
-
-        ol {
-          padding: 0;
-          display: flex;
-          text-align: center; // centers the text inside full-width items, too
-          flex-direction: column;
-          justify-content: center;
-          grid-area: 1 / 2 / 2 / 3;
-        }
-      }
-    }
-    & {
-      //--|🠋 Midground Margins 🠋|--//
-      margin: 0 96px;
-      @media screen and (max-height: 768px) {
-        margin: 0 64px;
-      }
-      @media screen and (max-height: 480px) {
-        margin: 0 48px;
-      }
-      @media screen and (max-height: 360px) {
-        margin: 0 32px;
-      }
-    }
-  }
   div[class='background'] {
     display: inherit;
     grid-template: inherit;
     grid-area: 1 / 1 / 6 / 4;
-    background: rgba(darkgreen, 0.25);
+    // background: rgba(darkgreen, 0.25);
 
     header {
       grid-area: 1 / 1 / 3 / 4;
@@ -266,10 +268,10 @@
         height: 50%;
 
         &:nth-child(1) {
-          background: rgba(darkgreen, 0.5);
+          // background: rgba(darkgreen, 0.5);
         }
         &:nth-child(2) {
-          background: rgba(darkgreen, 0.25);
+          // background: rgba(darkgreen, 0.25);
         }
       }
     }
@@ -280,7 +282,7 @@
       &[class='right'] {
         grid-area: 3 / 3 / 4 / 4;
       }
-      background: rgba(#ab9ceb, 0.25);
+      // background: rgba(#ab9ceb, 0.25);
     }
     footer {
       grid-area: 4 / 1 / 6 / 4;
@@ -288,10 +290,10 @@
         height: 50%;
 
         &:nth-child(1) {
-          background: rgba(darkgreen, 0.25);
+          // background: rgba(darkgreen, 0.25);
         }
         &:nth-child(2) {
-          background: rgba(darkgreen, 0.5);
+          // background: rgba(darkgreen, 0.5);
         }
       }
     }
