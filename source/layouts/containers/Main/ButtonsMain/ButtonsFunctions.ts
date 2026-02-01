@@ -49,13 +49,18 @@ export function toggleAside(
 
   //--|🠊 console.log({ blockName, leftDark, rightLight, centerElement }); 🠈|--\\
 }
-export function scrollSection(pageName: string, blockName: string, blockAction: 'go-up' | 'scroll-down' | String) {
+export function scrollSection(
+  pageName: string,
+  blockName: string,
+  blockAction: 'go-up' | 'scroll-down' | 'picked-default' | String,
+) {
   let visibleElement = document.querySelector(
     `#${pageName}-${blockName} .foreground .dark-side .size-track .visible`,
   ) as HTMLElement;
   let darkLeft = document.querySelector(`#${pageName}-main .foreground .dark-side section`) as HTMLElement;
   let lightRight = document.querySelector(`#${pageName}-main .foreground .light-side section`) as HTMLElement;
   let sectionHeight = darkLeft.offsetHeight;
+
   if (blockAction === 'scroll-down') {
     switch (visibleElement.classList[0]) {
       case 'h1-size':
@@ -289,6 +294,42 @@ export function scrollSection(pageName: string, blockName: string, blockAction: 
         lightRight.children[6].classList.add('hidden');
         break;
     }
+  } else if (blockAction === 'picked-default') {
+    console.log('WORKING!!!!!!!!!!');
+    switch (visibleElement.classList[0]) {
+      case 'h4-size':
+      default:
+        darkLeft.children[3].classList.add('visible');
+        darkLeft.children[3].classList.remove('hidden');
+
+        darkLeft.children[2].classList.add('hidden');
+        darkLeft.children[2].classList.remove('visible');
+
+        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
+
+        lightRight.children[3].classList.add('visible');
+        lightRight.children[3].classList.remove('hidden');
+
+        lightRight.children[2].classList.add('hidden');
+        lightRight.children[2].classList.remove('visible');
+        break;
+        darkLeft.children[5].classList.add('visible');
+        darkLeft.children[5].classList.remove('hidden');
+
+        darkLeft.children[6].classList.remove('visible');
+        darkLeft.children[6].classList.add('hidden');
+
+        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
+
+        lightRight.children[5].classList.add('visible');
+        lightRight.children[5].classList.remove('hidden');
+
+        lightRight.children[6].classList.remove('visible');
+        lightRight.children[6].classList.add('hidden');
+        break;
+    }
   }
 }
 
@@ -296,12 +337,9 @@ export function resizePreview(pageName: string, blockName: string) {
   //--|🠊 Complete documentation at bottom of function 🠈|--\\
   const sizeList = document.querySelector<HTMLOListElement>(`#${pageName}-main .size-font > ol`);
   const parent = document.querySelector<HTMLElement>(`#${pageName}-main .size-font`);
-
   if (!sizeList || !parent) return;
-
   requestAnimationFrame(() => {
     const h = parent.offsetHeight;
-
     Array.from(sizeList.children).forEach((child) => {
       const el = child as HTMLElement;
       //--|🠊 Step 1: Make each item match the parent height. 🠈|--\\
@@ -315,15 +353,15 @@ export function resizePreview(pageName: string, blockName: string) {
     });
   });
   /*
-    ### Centering text inside a “tall box” (no padding math needed)  
-  
-    If an element is forced to be as tall as its parent (e.g., via `height = parent.offsetHeight`), **don’t calculate `padding-top`** to fake vertical alignment.    
-    Instead, turn the element into a tiny layout container and let CSS do the centering for free:  
-      
-    - Set the child to `display: grid`  
-    - Use `place-items: center` to center **vertically + horizontally**  
-    - Add `text-align: center` if you want the text itself centered  
-      
+    ### Centering text inside a “tall box” (no padding math needed)
+
+    If an element is forced to be as tall as its parent (e.g., via `height = parent.offsetHeight`), **don’t calculate `padding-top`** to fake vertical alignment.
+    Instead, turn the element into a tiny layout container and let CSS do the centering for free:
+
+    - Set the child to `display: grid`
+    - Use `place-items: center` to center **vertically + horizontally**
+    - Add `text-align: center` if you want the text itself centered
+
     Result: perfectly centered content, responsive by default, and zero “maffs”.
     */
 }
