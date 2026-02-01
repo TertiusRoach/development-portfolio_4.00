@@ -1,7 +1,100 @@
 //--|🠊 Button_tint.scss 🠈|--\\
+// Now please take your time analyzing this.
+// Human code, help me please.
+
+// Add gradient backgrounds, shadow insets, for this. Get the most beautiful shade of dark, light and medium greys to accentuate the most beauty out of it.
+// Both buttons should blend in with the medium background.
+// .text className for .back inside '_dar_' should always have a dark background with light text.
+// .text className for .light inside '_lig_' should always have a light background with dark text.
+// .icon className for .back should contain the background gradients always be transparent
+// on the edges to not cut off with sharp lines. Grade .icon from inward to outward and
+// fade it on the edges to be 100% transparent.
+// Background for '_lig_' => .icon should be light gradients.
+// Background for '_dar_' => .icon should be dark gradients.
+// $indexLand-medium should be the reference center where both buttons should blend in.
+// Use inset drop-shadows to make the edges stand out as much as possible but make it look
+// like a smooth fade instead of a hard line. Its subtleness should add to the shadows.
+// Animations should happen between 250 and 500 seconds. Curve them to find the sweetspot
+// between those mechanics.
+// .back for '_dar_' should become light on button hover, .text should become dark.
+// .back for '_lig_' should become dark on hover, .text should become light.
+// Keep it clean and don't return overcomplicated solutions. Keep the separation as
+// '_dar_' and '_lig' and analyze which shade of grey would be the most attractive.
+// Then the final test, which is the hardest. Create a '_med_' one by using a
+// combination of both the rules you applied for them.
+
+//--|🠋 Index or Landing - Trinity {A]pps 🠋|--\\
+$indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+$indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+$indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+$indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
+
 @mixin desktop-tint {
-  &[class*='_mon_'] {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='_dar_'] {
+    .text {
+      color: $indexLand-light;
+    }
+    .icon {
+      img {
+        background: $indexLand-light;
+      }
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        img {
+          background: $indexLand-light;
+        }
+      }
+    }
+    .back {
+      background: $indexLand-dark;
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  // Dark seems good for now. Another thing while you analyze.
+  // Divide it up into Button_tint.scss and Button_move.scss
+  // Move is my term for movement, animation, fancy stuff.
+  // Then I can split the tints, colors backgrounds and
+  // the animations, calculations and waiting events.
+  &[class*='_lig_'] {
+    .text {
+      color: $indexLand-dark;
+    }
+    .icon {
+      img {
+        background: $indexLand-dark;
+      }
+      &[class*='_top_'],
+      &[class*='_bot_'] {
+        img {
+          background: $indexLand-light;
+        }
+      }
+    }
+    .back {
+      background: $indexLand-light;
+    }
+  }
+  &[class*='_med_'] {
   }
 }
+
 @mixin mobile-tint {
+  // Take the desktop section and compress it as much as possible for mobile.
+  // No extra drop shadow, no fades just tap and instant gratification.
+  // This way I have two versions to play with.
+  // Strictly corporate facts based speed or
+  // Be creative, take your time enjoy the journey with ANIMATIONS!
+  // Desktop Version = Oh so fancy look at all those shades, drop-shadows and insets
+  // all correlating with one another mathematically.
+  // Mobile Version = Speed! With the minimum amount of beauty! Less text more points!
+
+  &[class*='_med_'] {
+  }
 }
+
+// Final thoughts, before you generate first confirm
+// this round, ask questions if there is any uncertainties.
+// Also: What should I call my corner radius file?
+// It HAS to be 4 characters Button_????.scss
+// I'll setup a prompt for that one.

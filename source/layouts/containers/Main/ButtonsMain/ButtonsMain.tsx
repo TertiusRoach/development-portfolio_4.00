@@ -854,7 +854,11 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           </section>
         </aside>
         {/* --Todo-- */}
-        <aside className="light-side" onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}>
+        <aside
+          className="light-side"
+          onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
+          onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
+        >
           <section className="size-track">
             <div className="h1-size visible">
               <ButtonDefault
@@ -1705,11 +1709,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             <code></code>
           </pre>
         </aside>
-        <aside className="light-code hidden">
-          <pre>
-            <code></code>
-          </pre>
-        </aside>
         <section className="size-font visible">
           <ol>
             <h1 className="display-1">{'<​h1>'}</h1>
@@ -1721,6 +1720,11 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             <p className="display-1">{'<p>'}</p>
           </ol>
         </section>
+        <aside className="light-code hidden">
+          <pre>
+            <code></code>
+          </pre>
+        </aside>
 
         {/* <div className="preview"></div> */}
         {/* <div className="section"></div> */}
