@@ -49,6 +49,39 @@ export function toggleAside(
 
   //--|🠊 console.log({ blockName, leftDark, rightLight, centerElement }); 🠈|--\\
 }
-export function showCode() {
-  return `WORKING!`;
+
+export function resizeHeaders(pageName: string, blockName: string) {
+  //--|🠊 Complete documentation at bottom of function 🠈|--\\
+  const sizeList = document.querySelector<HTMLOListElement>(`#${pageName}-main .size-font > ol`);
+  const parent = document.querySelector<HTMLElement>(`#${pageName}-main .size-font`);
+
+  if (!sizeList || !parent) return;
+
+  requestAnimationFrame(() => {
+    const h = parent.offsetHeight;
+
+    Array.from(sizeList.children).forEach((child) => {
+      const el = child as HTMLElement;
+      //--|🠊 Step 1: Make each item match the parent height. 🠈|--\\
+      el.style.height = `${h}px`;
+      el.style.boxSizing = 'border-box';
+      //--|🠊 Step 1: center the text within that tall box (no padding math needed) 🠈|--\\
+      el.style.margin = '0';
+      el.style.display = 'grid';
+      el.style.textAlign = 'center';
+      el.style.placeItems = 'center';
+    });
+  });
+  /*
+    ### Centering text inside a “tall box” (no padding math needed)  
+  
+    If an element is forced to be as tall as its parent (e.g., via `height = parent.offsetHeight`), **don’t calculate `padding-top`** to fake vertical alignment.    
+    Instead, turn the element into a tiny layout container and let CSS do the centering for free:  
+      
+    - Set the child to `display: grid`  
+    - Use `place-items: center` to center **vertically + horizontally**  
+    - Add `text-align: center` if you want the text itself centered  
+      
+    Result: perfectly centered content, responsive by default, and zero “maffs”.
+    */
 }

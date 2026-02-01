@@ -9,6 +9,7 @@ button[class*='default'] {
 
   @extend %button-grid;
   @extend %button-flex;
+  @extend %button-user;
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
@@ -27,7 +28,28 @@ button[class*='default'] {
 
   @extend %button-test;
 }
+%button-user {
+  &[class*='_top_'],
+  &[class*='_bot_'],
+  &[class*='_lef_'],
+  &[class*='_rig_'],
+  &[class*='_cen_'],
+  &[class*='_tex_'] {
+    .text {
+      * {
+        cursor: pointer;
+      }
+    }
+  }
 
+  &[class*='_ico_'] {
+    .icon {
+      * {
+        cursor: pointer;
+      }
+    }
+  }
+}
 %button-flex {
   width: 100%;
   height: 100%;
