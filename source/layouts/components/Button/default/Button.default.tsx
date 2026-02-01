@@ -102,7 +102,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -127,7 +127,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -152,7 +152,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -177,7 +177,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -202,7 +202,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -227,7 +227,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
@@ -253,14 +253,41 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
 
             <div className="back">
-              <canvas></canvas>
+              <canvas className="animation"></canvas>
             </div>
           </>
         );
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    const root = document.querySelector(`#${pageName}-${blockName} div[class="text"]`) as HTMLElement | null;
+    console.log('What?');
+    console.log(root?.parentElement);
+    /*
+    if (!root) return;
+
+    const canvas = root.querySelector('canvas.animation') as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    // start hidden
+    canvas.classList.remove('is-fade-in', 'is-fade-out');
+    canvas.classList.add('is-fade-out');
+
+    const t = window.setTimeout(() => {
+      // ensure browser sees the "out" state before switching to "in"
+      requestAnimationFrame(() => {
+        canvas.classList.remove('is-fade-out');
+        canvas.classList.add('is-fade-in');
+      });
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(t);
+      canvas.classList.remove('is-fade-in', 'is-fade-out');
+    };
+    */
+  }, [pageName, blockName]);
 
   return (
     <button
