@@ -29,27 +29,15 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down',
   ) => {
     switch (blockEvent) {
-      case 'scroll-section':
-        scrollSection(pageName, blockName, blockAction);
-
-        break;
       case 'toggle-aside':
-        toggleAside(pageName, blockName, blockAction);
-
-        break;
+        return toggleAside(pageName, blockName, blockAction);
+      case 'scroll-section':
+        return scrollSection(pageName, blockName, blockAction);
     }
-    // if (blockAction === 'scroll-down' || blockAction === 'go-up') {
-
-    // } else {
-    // }
-
-    // scrollSections(pageName, blockName);
-    // let previewTrack = document.querySelector(`#${pageName}-main .foreground .light-code`);
-    // console.log(previewTrack);
   };
 
   useEffect(() => {
-    // Execute this every time the screen size changes.
+    //--|🠊 Execute this every time the screen size changes. 🠈|--\\
     resizePreview(pageName, blockName);
   }, [pageName, blockName, [info]]);
 
@@ -59,7 +47,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
-        {/* --Todo-- */}
         <aside
           className="dark-side"
           onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
@@ -866,11 +853,809 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </div>
           </section>
         </aside>
-        <aside
-          className="light-side"
-          onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
-          onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
-        ></aside>
+        {/* --Todo-- */}
+        <aside className="light-side" onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}>
+          <section className="size-track">
+            <div className="h1-size visible">
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-top-',
+                  text: `one_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-bottom-',
+                  text: `one_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-left-',
+                  text: `one_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-right-',
+                  text: `one_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-center-',
+                  text: `one_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-text-',
+                  text: `one_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h1>',
+                  view: '-icon-',
+                  text: `one_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="h2-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-top-',
+                  text: `two_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-bottom-',
+                  text: `two_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-left-',
+                  text: `two_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-right-',
+                  text: `two_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-center-',
+                  text: `two_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-text-',
+                  text: `two_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h2>',
+                  view: '-icon-',
+                  text: `two_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="h3-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-top-',
+                  text: `thr_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-bottom-',
+                  text: `thr_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-left-',
+                  text: `thr_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-right-',
+                  text: `thr_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-center-',
+                  text: `thr_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-text-',
+                  text: `thr_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h3>',
+                  view: '-icon-',
+                  text: `thr_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="h4-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-top-',
+                  text: `fou_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-bottom-',
+                  text: `fou_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-left-',
+                  text: `fou_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-right-',
+                  text: `fou_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-center-',
+                  text: `fou_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-text-',
+                  text: `fou_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h4>',
+                  view: '-icon-',
+                  text: `fou_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="h5-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-top-',
+                  text: `fiv_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-bottom-',
+                  text: `fiv_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-left-',
+                  text: `fiv_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-right-',
+                  text: `fiv_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-center-',
+                  text: `fiv_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-text-',
+                  text: `fiv_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h5>',
+                  view: '-icon-',
+                  text: `fiv_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="h6-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-top-',
+                  text: `six_top_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-bottom-',
+                  text: `six_bot_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-left-',
+                  text: `six_lef_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-right-',
+                  text: `six_rig_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-center-',
+                  text: `six_cen_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-text-',
+                  text: `six_tex_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+
+              <ButtonDefault
+                style={{
+                  size: '<h6>',
+                  view: '-icon-',
+                  text: `six_ico_lig_mon`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+            <div className="p-size hidden">
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-top-',
+                  text: `Button-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-bottom-',
+                  text: `Button-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-left-',
+                  text: `two_lef_lig_mon-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-right-',
+                  text: `two_rig_lig_mon-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-center-',
+                  text: `two_cen_lig_mon-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-text-',
+                  text: `two_tex_lig_mon-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+              <ButtonDefault
+                style={{
+                  size: '<p>',
+                  view: '-icon-',
+                  text: `two_ico_lig_mon-------------------------`,
+                  shade: '~light~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                }}
+              />
+            </div>
+          </section>
+        </aside>
 
         <nav className="scroll-sections">
           <ButtonDefault
@@ -958,79 +1743,3 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ButtonsMain;
-
-//--|🠋 I can't remember what this does but I'm keeping it for now. 🠋|--\\
-/*
-    Version 2.0
-    let loadSelect = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="load"] select`,
-    ) as HTMLSelectElement;
-
-    if (loadSelect) {
-      loadSelect.addEventListener('change', () => handleButtons(info.pageName, info.blockName));
-
-      return () => {
-        clearSection();
-        loadSelect.removeEventListener('change', () => handleButtons(info.pageName, info.blockName));
-      };
-    } else {
-      console.warn('Load select element not found.');
-    }
-    */
-// Ok, let's make some magic with JavaScript!
-// Here's the fixed and working SASS code, keep this locked.
-// We want to turn this into a carousel and here's the query tags for the scroll buttons.
-// We will use the amount of <div> tags to calculate the position of the carousel each time a button is clicked.
-// Each <div> element is the exact height and width of its parent element buttonTrack.offsetHeight.
-// Each <div> has the following className in this order. I will list the HTML for exact clarity.
-// These <div> elements are always in this respective order: 'h1-size', 'h2-size', 'h3-size', 'h4-size', 'h5-size',  'h6-size' & 'p-size'.
-// 'h1-size' contains a .visible className while all the others contain a .hidden className.
-// Here's the HTML we want to manipulate.
-
-// When this function activates, check which <div> element contains the .visible className then look for and log the only number contained within its registered class: If it's the p then make it 7 as a default.
-// Now we need to check if the button that was clicked contains and id with the words 'go-up' or 'scroll-down': blockAction has the details on this which was forwarded as a string with the onClick function.
-// If the string for blockAction is 'scroll-down' and the className of the element contains a '1' as in, 'h1','h2','h3','h4','h5','h6','p' as referenced in the <div> classes.
-// Then 'scroll-down' to 'h2-size' using a formula based on the exact height and number of buttonTrack. that essentially does the following.
-// For example: to see h2-size when clicking on 'scroll-down' then we will need to add an inline element of, transform: translateY(-576px).
-// The '-576px' will be calculated based on the height of buttonTrack and follow the following logic but using readable, minimal, maintainable, documented and easy to pick up code.
-// This is specific to my testing criteria for scroll-down
-// h1-size = transform: translateY(0px);
-// h2-size = transform: translateY(-576px);
-// h3-size = transform: translateY(-1152px);
-// h4-size = transform: translateY(-1728px);
-// h5-size = transform: translateY(-2304px);
-// h6-size = transform: translateY(-2880px);
-// p-size = transform: translateY(-3456px);
-// If the string for blockAction is 'go-up' and the className of the element contains a '1'.
-// Then do nothing and hide the <button> containing the text 'scroll-down' in its ID instead: I will implement this live but for testing this is better because it's reactive.
-// If the string for blockAction is 'scroll-down' and the className of the element contains a 'p' which is a 7.
-// Then do nothing and hide the <button> containing the text 'scroll-down' in its ID.
-// If the state is one that's in the middle for example: blockAction is 'go-up' and the className of the element contains a '3'.
-// Then 'go-up' to 'h2-size' which based on the formula of my specific testing environment, which will be relative to every user.
-// Should 'go-up' by adding transform: translateY(-576px) to buttonTrack.
-
-/*
-          if (visibleElement === 1) {
-            // How do I toggle the styles of all of the sectionEndpoint's children to .hidden?
-            // How do you
-            // console.log(sectionEndpoint);
-            sectionEndpoint.style.transform = `translateY(-${buttonTrack.offsetHeight * 6}px)`;
-          } else if (visibleElement === 2) {
-            sectionEndpoint.style.transform = `translateY(-${buttonTrack.offsetHeight}px)`;
-          } else if (visibleElement === 3) {
-            // sectionEndpoint.setAttribute(`style', 'transform: translateY(-${1152}px)`);
-            // h3-size =
-          } else if (visibleElement === 4) {
-            // sectionEndpoint.setAttribute('style', 'transform: translateY(-1728px);');
-            // h4-size =
-          } else if (visibleElement === 5) {
-            // sectionEndpoint.setAttribute('style', 'transform: translateY(-2304px);');
-            // h5-size =
-            // } else if (visibleElement === 6) {
-            // sectionEndpoint.setAttribute('style', 'transform: translateY(-2880px);');
-            // h6-size =
-          } else if (visibleElement === 7) {
-            // sectionEndpoint.setAttribute('style', 'transform: translateY(-3456px);');
-            // p-size =
-          }
-          */

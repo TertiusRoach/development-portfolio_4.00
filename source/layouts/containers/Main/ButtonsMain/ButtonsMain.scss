@@ -2,41 +2,26 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
+  //--|🠋 Desktop (Elements) 🠋|--//
   //--|🠋 Todo 🠋|--//
   section[class='foreground'] {
     display: grid;
     overflow: hidden;
     grid-area: 3 / 1 / 4 / 4;
     grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-
-    aside[class*='side'] {
+    aside[class*='light'] {
       position: relative;
       flex-direction: column;
-
       section[class*='track'] {
         inset: 0;
         display: flex;
         position: absolute;
         flex-direction: column;
         transition: transform 0.25s ease-in-out;
-
-        // h1-size = transform: translateY(0px);
-        // h2-size = transform: translateY(-576px);
-        // h3-size = transform: translateY(-1152px);
-        // h4-size = transform: translateY(-1728px);
-        // h5-size = transform: translateY(-2304px);
-        // h6-size = transform: translateY(-2880px);
-        // p-size = transform: translateY(-3456px);
-
         > div[class*='size'] {
           //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
-          flex: 0 0 100%;
-          /*
-          // height: 100%;
-          width: 100%;
-          */
-
           display: grid;
+          flex: 0 0 100%;
           position: relative;
           grid-template-rows: repeat(7, 1fr);
           grid-template-columns: repeat(2, 1fr);
@@ -63,33 +48,90 @@
             grid-area: 7 / 1 / 8 / 3;
           }
         }
-
-        // div:nth-child(1) {
-        //   background: red;
-        // }
-        // div:nth-child(2) {
-        //   background: blue;
-        // }
-        /*
-
-        will-change: transform;
-        */
       }
       /*
-      div[class*='size'] {
-        width: 100%;
-        height: 100%;
-        display: grid;
+      position: relative;
+      flex-direction: column;
+      section[class*='track'] {
+        inset: 0;
+        display: flex;
         position: absolute;
-        grid-template-rows: repeat(7, auto);
-        grid-template-columns: repeat(2, 1fr);
+        flex-direction: column;
+        transition: transform 0.25s ease-in-out;
+        > div[class*='size'] {
+          //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
+          display: grid;
+          flex: 0 0 100%;
+          position: relative;
+          grid-template-rows: repeat(7, 1fr);
+          grid-template-columns: repeat(2, 1fr);
 
-
+          button[class*='_top_'] {
+            grid-area: 1 / 1 / 3 / 2;
+          }
+          button[class*='_bot_'] {
+            grid-area: 1 / 2 / 3 / 3;
+          }
+          button[class*='_lef_'] {
+            grid-area: 3 / 1 / 4 / 3;
+          }
+          button[class*='_rig_'] {
+            grid-area: 4 / 1 / 5 / 3;
+          }
+          button[class*='_cen_'] {
+            grid-area: 5 / 1 / 6 / 3;
+          }
+          button[class*='_tex_'] {
+            grid-area: 6 / 1 / 7 / 3;
+          }
+          button[class*='_ico_'] {
+            grid-area: 7 / 1 / 8 / 3;
+          }
+        }
       }
       */
-      // display: flex;
-      // transform: translateY(-100vw);
-      // transition: transform 0.25s ease-in-out;
+    }
+
+    aside[class*='dark'] {
+      position: relative;
+      flex-direction: column;
+      section[class*='track'] {
+        inset: 0;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        transition: transform 0.25s ease-in-out;
+        > div[class*='size'] {
+          //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
+          display: grid;
+          flex: 0 0 100%;
+          position: relative;
+          grid-template-rows: repeat(7, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+
+          button[class*='_top_'] {
+            grid-area: 1 / 1 / 3 / 2;
+          }
+          button[class*='_bot_'] {
+            grid-area: 1 / 2 / 3 / 3;
+          }
+          button[class*='_lef_'] {
+            grid-area: 3 / 1 / 4 / 3;
+          }
+          button[class*='_rig_'] {
+            grid-area: 4 / 1 / 5 / 3;
+          }
+          button[class*='_cen_'] {
+            grid-area: 5 / 1 / 6 / 3;
+          }
+          button[class*='_tex_'] {
+            grid-area: 6 / 1 / 7 / 3;
+          }
+          button[class*='_ico_'] {
+            grid-area: 7 / 1 / 8 / 3;
+          }
+        }
+      }
     }
 
     nav[class*='scroll'] {
@@ -119,6 +161,7 @@
   }
 
   //--|🠋 Desktop (Elements) 🠋|--//
+  //--Done--\\
   figure[class*='midground'] {
     margin: 0;
     display: flex;
