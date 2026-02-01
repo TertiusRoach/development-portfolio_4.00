@@ -260,34 +260,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
     }
   };
 
-  useEffect(() => {
-    const root = document.querySelector(`#${pageName}-${blockName} div[class="text"]`) as HTMLElement | null;
-    console.log('What?');
-    console.log(root?.parentElement);
-    /*
-    if (!root) return;
-
-    const canvas = root.querySelector('canvas.animation') as HTMLCanvasElement | null;
-    if (!canvas) return;
-
-    // start hidden
-    canvas.classList.remove('is-fade-in', 'is-fade-out');
-    canvas.classList.add('is-fade-out');
-
-    const t = window.setTimeout(() => {
-      // ensure browser sees the "out" state before switching to "in"
-      requestAnimationFrame(() => {
-        canvas.classList.remove('is-fade-out');
-        canvas.classList.add('is-fade-in');
-      });
-    }, 1000);
-
-    return () => {
-      window.clearTimeout(t);
-      canvas.classList.remove('is-fade-in', 'is-fade-out');
-    };
-    */
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <button

@@ -53,141 +53,240 @@ export function scrollSection(pageName: string, blockName: string, blockAction: 
   let visibleElement = document.querySelector(
     `#${pageName}-${blockName} .foreground .dark-side .size-track .visible`,
   ) as HTMLElement;
-  let sectionContainer = document.querySelector(`#${pageName}-main .foreground .dark-side section`) as HTMLElement;
-  let sectionHeight = sectionContainer.offsetHeight;
+  let darkLeft = document.querySelector(`#${pageName}-main .foreground .dark-side section`) as HTMLElement;
+  let lightRight = document.querySelector(`#${pageName}-main .foreground .light-side section`) as HTMLElement;
+  let sectionHeight = darkLeft.offsetHeight;
   if (blockAction === 'scroll-down') {
     switch (visibleElement.classList[0]) {
       case 'h1-size':
-        sectionContainer.children[1].classList.remove('hidden');
-        sectionContainer.children[1].classList.add('visible');
+        darkLeft.children[1].classList.remove('hidden');
+        darkLeft.children[1].classList.add('visible');
 
-        sectionContainer.children[0].classList.remove('visible');
-        sectionContainer.children[0].classList.add('hidden');
+        darkLeft.children[0].classList.remove('visible');
+        darkLeft.children[0].classList.add('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
+
+        lightRight.children[1].classList.remove('hidden');
+        lightRight.children[1].classList.add('visible');
+
+        lightRight.children[0].classList.remove('visible');
+        lightRight.children[0].classList.add('hidden');
         break;
       case 'h2-size':
-        sectionContainer.children[2].classList.remove('hidden');
-        sectionContainer.children[2].classList.add('visible');
+        darkLeft.children[2].classList.remove('hidden');
+        darkLeft.children[2].classList.add('visible');
 
-        sectionContainer.children[1].classList.add('hidden');
-        sectionContainer.children[1].classList.remove('visible');
+        darkLeft.children[1].classList.add('hidden');
+        darkLeft.children[1].classList.remove('visible');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
+
+        lightRight.children[2].classList.remove('hidden');
+        lightRight.children[2].classList.add('visible');
+
+        lightRight.children[1].classList.add('hidden');
+        lightRight.children[1].classList.remove('visible');
         break;
       case 'h3-size':
-        sectionContainer.children[3].classList.remove('hidden');
-        sectionContainer.children[3].classList.add('visible');
+        darkLeft.children[3].classList.remove('hidden');
+        darkLeft.children[3].classList.add('visible');
 
-        sectionContainer.children[2].classList.add('hidden');
-        sectionContainer.children[2].classList.remove('visible');
+        darkLeft.children[2].classList.add('hidden');
+        darkLeft.children[2].classList.remove('visible');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
+
+        lightRight.children[3].classList.remove('hidden');
+        lightRight.children[3].classList.add('visible');
+
+        lightRight.children[2].classList.add('hidden');
+        lightRight.children[2].classList.remove('visible');
+
         break;
       case 'h4-size':
-        sectionContainer.children[3].classList.remove('visible');
-        sectionContainer.children[3].classList.add('hidden');
+      default:
+        darkLeft.children[3].classList.remove('visible');
+        darkLeft.children[3].classList.add('hidden');
 
-        sectionContainer.children[4].classList.add('visible');
-        sectionContainer.children[4].classList.remove('hidden');
+        darkLeft.children[4].classList.add('visible');
+        darkLeft.children[4].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
 
+        lightRight.children[3].classList.remove('visible');
+        lightRight.children[3].classList.add('hidden');
+
+        lightRight.children[4].classList.add('visible');
+        lightRight.children[4].classList.remove('hidden');
         break;
       case 'h5-size':
-        sectionContainer.children[4].classList.remove('visible');
-        sectionContainer.children[4].classList.add('hidden');
+        darkLeft.children[4].classList.remove('visible');
+        darkLeft.children[4].classList.add('hidden');
 
-        sectionContainer.children[5].classList.add('visible');
-        sectionContainer.children[5].classList.remove('hidden');
+        darkLeft.children[5].classList.add('visible');
+        darkLeft.children[5].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
+
+        lightRight.children[4].classList.remove('visible');
+        lightRight.children[4].classList.add('hidden');
+
+        lightRight.children[5].classList.add('visible');
+        lightRight.children[5].classList.remove('hidden');
 
         break;
       case 'h6-size':
-        sectionContainer.children[5].classList.remove('visible');
-        sectionContainer.children[5].classList.add('hidden');
+        darkLeft.children[5].classList.remove('visible');
+        darkLeft.children[5].classList.add('hidden');
 
-        sectionContainer.children[6].classList.add('visible');
-        sectionContainer.children[6].classList.remove('hidden');
+        darkLeft.children[6].classList.add('visible');
+        darkLeft.children[6].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
 
+        lightRight.children[5].classList.remove('visible');
+        lightRight.children[5].classList.add('hidden');
+
+        lightRight.children[6].classList.add('visible');
+        lightRight.children[6].classList.remove('hidden');
         break;
       case 'p-size':
-        sectionContainer.children[6].classList.remove('visible');
-        sectionContainer.children[6].classList.add('hidden');
+        darkLeft.children[6].classList.remove('visible');
+        darkLeft.children[6].classList.add('hidden');
 
-        sectionContainer.children[0].classList.add('visible');
-        sectionContainer.children[0].classList.remove('hidden');
+        darkLeft.children[0].classList.add('visible');
+        darkLeft.children[0].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
+
+        lightRight.children[6].classList.remove('visible');
+        lightRight.children[6].classList.add('hidden');
+
+        lightRight.children[0].classList.add('visible');
+        lightRight.children[0].classList.remove('hidden');
         break;
     }
   } else if (blockAction === 'go-up') {
     switch (visibleElement.classList[0]) {
       case 'h1-size':
-        sectionContainer.children[0].classList.remove('visible');
-        sectionContainer.children[0].classList.add('hidden');
+        darkLeft.children[0].classList.remove('visible');
+        darkLeft.children[0].classList.add('hidden');
 
-        sectionContainer.children[6].classList.add('visible');
-        sectionContainer.children[6].classList.remove('hidden');
+        darkLeft.children[6].classList.add('visible');
+        darkLeft.children[6].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
+
+        lightRight.children[0].classList.remove('visible');
+        lightRight.children[0].classList.add('hidden');
+
+        lightRight.children[6].classList.add('visible');
+        lightRight.children[6].classList.remove('hidden');
         break;
       case 'h2-size':
-        sectionContainer.children[1].classList.add('hidden');
-        sectionContainer.children[1].classList.remove('visible');
+        darkLeft.children[1].classList.add('hidden');
+        darkLeft.children[1].classList.remove('visible');
 
-        sectionContainer.children[0].classList.add('visible');
-        sectionContainer.children[0].classList.remove('hidden');
+        darkLeft.children[0].classList.add('visible');
+        darkLeft.children[0].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
+
+        lightRight.children[1].classList.add('hidden');
+        lightRight.children[1].classList.remove('visible');
+        lightRight.children[0].classList.add('visible');
+        lightRight.children[0].classList.remove('hidden');
         break;
       case 'h3-size':
-        sectionContainer.children[1].classList.remove('hidden');
-        sectionContainer.children[1].classList.add('visible');
+        darkLeft.children[1].classList.remove('hidden');
+        darkLeft.children[1].classList.add('visible');
 
-        sectionContainer.children[2].classList.add('hidden');
-        sectionContainer.children[2].classList.remove('visible');
+        darkLeft.children[2].classList.add('hidden');
+        darkLeft.children[2].classList.remove('visible');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
+
+        lightRight.children[1].classList.remove('hidden');
+        lightRight.children[1].classList.add('visible');
+
+        lightRight.children[2].classList.add('hidden');
+        lightRight.children[2].classList.remove('visible');
         break;
       case 'h4-size':
-        sectionContainer.children[2].classList.add('visible');
-        sectionContainer.children[2].classList.remove('hidden');
+      default:
+        darkLeft.children[2].classList.add('visible');
+        darkLeft.children[2].classList.remove('hidden');
 
-        sectionContainer.children[3].classList.add('hidden');
-        sectionContainer.children[3].classList.remove('visible');
+        darkLeft.children[3].classList.add('hidden');
+        darkLeft.children[3].classList.remove('visible');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
+
+        lightRight.children[2].classList.add('visible');
+        lightRight.children[2].classList.remove('hidden');
+
+        lightRight.children[3].classList.add('hidden');
+        lightRight.children[3].classList.remove('visible');
         break;
       case 'h5-size':
-        sectionContainer.children[4].classList.remove('visible');
-        sectionContainer.children[4].classList.add('hidden');
+        darkLeft.children[4].classList.remove('visible');
+        darkLeft.children[4].classList.add('hidden');
 
-        sectionContainer.children[3].classList.add('visible');
-        sectionContainer.children[3].classList.remove('hidden');
+        darkLeft.children[3].classList.add('visible');
+        darkLeft.children[3].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
+
+        lightRight.children[4].classList.remove('visible');
+        lightRight.children[4].classList.add('hidden');
+
+        lightRight.children[3].classList.add('visible');
+        lightRight.children[3].classList.remove('hidden');
         break;
       case 'h6-size':
-        sectionContainer.children[5].classList.remove('visible');
-        sectionContainer.children[5].classList.add('hidden');
+        darkLeft.children[5].classList.remove('visible');
+        darkLeft.children[5].classList.add('hidden');
 
-        sectionContainer.children[4].classList.add('visible');
-        sectionContainer.children[4].classList.remove('hidden');
+        darkLeft.children[4].classList.add('visible');
+        darkLeft.children[4].classList.remove('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
+
+        lightRight.children[5].classList.remove('visible');
+        lightRight.children[5].classList.add('hidden');
+
+        lightRight.children[4].classList.add('visible');
+        lightRight.children[4].classList.remove('hidden');
         break;
       case 'p-size':
-        sectionContainer.children[5].classList.add('visible');
-        sectionContainer.children[5].classList.remove('hidden');
+        darkLeft.children[5].classList.add('visible');
+        darkLeft.children[5].classList.remove('hidden');
 
-        sectionContainer.children[6].classList.remove('visible');
-        sectionContainer.children[6].classList.add('hidden');
+        darkLeft.children[6].classList.remove('visible');
+        darkLeft.children[6].classList.add('hidden');
 
-        sectionContainer.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
+
+        lightRight.children[5].classList.add('visible');
+        lightRight.children[5].classList.remove('hidden');
+
+        lightRight.children[6].classList.remove('visible');
+        lightRight.children[6].classList.add('hidden');
         break;
     }
   }
