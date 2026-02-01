@@ -40,40 +40,46 @@ interface TheseProps {
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
 const ButtonDefault: React.FC<TheseProps> = ({
   info,
   style,
   onClick,
-  /*
-  onBlur,
-  onFocus,
-  onMouseUp,
-  onTouchEnd,
-  onMouseDown,
-  onTouchStart,
-  onMouseEnter,
-  onMouseLeave,
-  onDoubleClick,
-  onAnimationEnd,
-  onTransitionEnd,
-  onKeyUp,
-  onKeyDown,
-  onContextMenu,
+  /*  
+  onBlur,  
+  onFocus,  
+  onMouseUp,  
+  onTouchEnd,  
+  onMouseDown,  
+  onTouchStart,  
+  onMouseEnter,  
+  onMouseLeave,  
+  onDoubleClick,  
+  onAnimationEnd,  
+  onTransitionEnd,  
+  onKeyUp,  
+  onKeyDown,  
+  onContextMenu,  
   */
 }) => {
+  //--|🠊 Identifiers 🠈|--\\
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
 
+  //--|🠊 Class Build 🠈|--\\
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
+
   let imageStatus: 'def' | 'alt';
   if (style.image == null) {
     imageStatus = 'alt';
   } else {
     imageStatus = 'def';
   }
+
   let classCreated = `${classLayout}_${classColor}_${imageStatus}`;
 
+  //--|🠊 Render Body 🠈|--\\
   const handleDefault = (infoStyle: Array<object>) => {
     switch (style.size) {
       case '<h1>':
@@ -84,6 +90,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h1>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -93,9 +100,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<h2>':
         return (
           <>
@@ -104,6 +115,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h2>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -113,9 +125,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<h3>':
         return (
           <>
@@ -124,6 +140,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h3>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -133,9 +150,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<h4>':
         return (
           <>
@@ -144,6 +165,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h4>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -153,9 +175,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<h5>':
         return (
           <>
@@ -164,6 +190,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h5>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -173,9 +200,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<h6>':
         return (
           <>
@@ -184,6 +215,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h6>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -193,9 +225,13 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
+
       case '<p>':
       default:
         return (
@@ -205,6 +241,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </p>
             </div>
+
             <div className="icon">
               <img
                 alt="icon"
@@ -214,11 +251,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 }}
               ></img>
             </div>
-            <div className="back"></div>
+
+            <div className="back">
+              <canvas></canvas>
+            </div>
           </>
         );
     }
   };
+
+  useEffect(() => {}, [pageName, blockName]);
 
   return (
     <button
@@ -230,4 +272,5 @@ const ButtonDefault: React.FC<TheseProps> = ({
     </button>
   );
 };
+
 export default ButtonDefault;

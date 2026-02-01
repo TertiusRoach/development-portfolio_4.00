@@ -1,100 +1,228 @@
 //--|🠊 Button_tint.scss 🠈|--\\
-// Now please take your time analyzing this.
-// Human code, help me please.
+@use 'sass:color';
 
-// Add gradient backgrounds, shadow insets, for this. Get the most beautiful shade of dark, light and medium greys to accentuate the most beauty out of it.
-// Both buttons should blend in with the medium background.
-// .text className for .back inside '_dar_' should always have a dark background with light text.
-// .text className for .light inside '_lig_' should always have a light background with dark text.
-// .icon className for .back should contain the background gradients always be transparent
-// on the edges to not cut off with sharp lines. Grade .icon from inward to outward and
-// fade it on the edges to be 100% transparent.
-// Background for '_lig_' => .icon should be light gradients.
-// Background for '_dar_' => .icon should be dark gradients.
-// $indexLand-medium should be the reference center where both buttons should blend in.
-// Use inset drop-shadows to make the edges stand out as much as possible but make it look
-// like a smooth fade instead of a hard line. Its subtleness should add to the shadows.
-// Animations should happen between 250 and 500 seconds. Curve them to find the sweetspot
-// between those mechanics.
-// .back for '_dar_' should become light on button hover, .text should become dark.
-// .back for '_lig_' should become dark on hover, .text should become light.
-// Keep it clean and don't return overcomplicated solutions. Keep the separation as
-// '_dar_' and '_lig' and analyze which shade of grey would be the most attractive.
-// Then the final test, which is the hardest. Create a '_med_' one by using a
-// combination of both the rules you applied for them.
+// Palette (yours + a few tuned helpers)
+$indexLand-neon: #fffffc;
+$indexLand-dark: #0e0e0b;
+$indexLand-light: #cecebe;
+$indexLand-medium: #737373;
 
-//--|🠋 Index or Landing - Trinity {A]pps 🠋|--\\
-$indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
-$indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-$indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
-$indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
+// Tuned “in-betweens” (Dart Sass 3-safe: use color.mix)
+$indexLand-darMed: color.mix($indexLand-dark, $indexLand-medium, $weight: 55%);
+$indexLand-ligMed: color.mix($indexLand-light, $indexLand-medium, $weight: 55%);
+$indexLand-softW: color.mix($indexLand-neon, $indexLand-light, $weight: 70%);
+$indexLand-softB: color.mix(#000000, $indexLand-dark, $weight: 60%);
 
 @mixin desktop-tint {
+  // Shared (desktop) “premium” feel: soft depth, no hard edges
+  .back {
+    box-shadow:
+      inset 0 1px 0 rgba($indexLand-neon, 0.08),
+      inset 0 -1px 0 rgba(#000, 0.25),
+      0 10px 22px rgba(#000, 0.2);
+  }
+
+  .text {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-shadow:
+      inset 0 1px 0 rgba($indexLand-neon, 0),
+      inset 0 -1px 0 rgba(#000, 0);
+  }
+
+  .icon {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='_dar_'] {
-    .text {
-      color: $indexLand-light;
-    }
-    .icon {
-      img {
-        background: $indexLand-light;
-      }
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        img {
-          background: $indexLand-light;
-        }
-      }
-    }
     .back {
-      background: $indexLand-dark;
+      background:
+        linear-gradient(180deg, rgba($indexLand-neon, 0.06) 0%, rgba($indexLand-neon, 0) 45%, rgba(#000, 0.3) 100%),
+        $indexLand-darMed;
+      box-shadow:
+        inset 0 1px 0 rgba($indexLand-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba($indexLand-medium, 0.18),
+        0 12px 26px rgba(#000, 0.28);
+    }
+
+    .text {
+      color: $indexLand-softW;
+      background: linear-gradient(
+        180deg,
+        rgba($indexLand-dark, 0) 0%,
+        rgba($indexLand-dark, 0.28) 55%,
+        rgba($indexLand-dark, 0.58) 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba($indexLand-neon, 0.06),
+        inset 0 -14px 26px rgba($indexLand-light, 0.1),
+        inset 0 0 0 1px rgba($indexLand-neon, 0.05);
+    }
+
+    .icon {
+      background:
+        radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+        radial-gradient(
+          closest-side,
+          rgba($indexLand-medium, 0.1) 0%,
+          rgba($indexLand-medium, 0) 70%,
+          rgba($indexLand-medium, 0) 100%
+        );
+    }
+
+    .icon img {
+      background: $indexLand-light;
+    }
+    .icon[class*='_top_'],
+    .icon[class*='_bot_'] {
+      // spotlight glow that still fades to transparent at edges
+      background:
+        radial-gradient(circle at 50% 35%, rgba(#fff, 0.2) 0%, rgba(#fff, 0.08) 38%, rgba(#fff, 0) 75%, rgba(#fff, 0) 100%),
+        // keep your existing halo layers under this (don’t delete them)
+        radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%);
+
+      filter: drop-shadow(0 14px 22px rgba(#000, 0.34)) drop-shadow(0 0 18px rgba(#fff, 0.12));
     }
   }
+
   //--|🠊 Light Shade 🠈|--\\
-  // Dark seems good for now. Another thing while you analyze.
-  // Divide it up into Button_tint.scss and Button_move.scss
-  // Move is my term for movement, animation, fancy stuff.
-  // Then I can split the tints, colors backgrounds and
-  // the animations, calculations and waiting events.
   &[class*='_lig_'] {
-    .text {
-      color: $indexLand-dark;
-    }
-    .icon {
-      img {
-        background: $indexLand-dark;
-      }
-      &[class*='_top_'],
-      &[class*='_bot_'] {
-        img {
-          background: $indexLand-light;
-        }
-      }
-    }
     .back {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1),
+        0 10px 22px rgba(#000, 0.18);
+    }
+
+    .text {
+      color: $indexLand-softB;
+      background: linear-gradient(
+        180deg,
+        rgba($indexLand-light, 0) 0%,
+        rgba($indexLand-light, 0.3) 55%,
+        rgba($indexLand-light, 0.64) 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.1),
+        inset 0 -14px 26px rgba(#000, 0.18),
+        inset 0 0 0 1px rgba(#000, 0.06);
+    }
+
+    .icon {
+      background:
+        radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+        radial-gradient(
+          closest-side,
+          rgba($indexLand-medium, 0.1) 0%,
+          rgba($indexLand-medium, 0) 70%,
+          rgba($indexLand-medium, 0) 100%
+        );
+    }
+
+    .icon img {
+      background: $indexLand-dark;
+    }
+    .icon[class*='_top_'],
+    .icon[class*='_bot_'] {
+      // darker spotlight to outline the (often light) img background
+      background:
+        radial-gradient(circle at 50% 35%, rgba(#000, 0.22) 0%, rgba(#000, 0.1) 40%, rgba(#000, 0) 76%, rgba(#000, 0) 100%),
+        radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%);
+
+      filter: drop-shadow(0 14px 22px rgba(#000, 0.28)) drop-shadow(0 0 16px rgba(#fff, 0.1));
+    }
+  }
+
+  //--|🠊 Medium Shade 🠈|--\\
+  &[class*='_med_'] {
+    .back {
+      background: linear-gradient(180deg, rgba(#fff, 0.1) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.22) 100%), $indexLand-medium;
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.14),
+        inset 0 -1px 0 rgba(#000, 0.3),
+        inset 0 0 0 1px rgba(#000, 0.1),
+        0 10px 22px rgba(#000, 0.22);
+    }
+
+    .text {
+      color: $indexLand-neon;
+      background: linear-gradient(
+        180deg,
+        rgba($indexLand-dark, 0) 0%,
+        rgba($indexLand-dark, 0.22) 55%,
+        rgba($indexLand-dark, 0.44) 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.08),
+        inset 0 -14px 26px rgba(#000, 0.14),
+        inset 0 0 0 1px rgba(#fff, 0.04);
+    }
+
+    .icon {
+      background:
+        radial-gradient(closest-side, rgba(#000, 0.18) 0%, rgba(#000, 0.1) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+        radial-gradient(closest-side, rgba(#fff, 0.14) 0%, rgba(#fff, 0) 70%, rgba(#fff, 0) 100%);
+    }
+
+    .icon img {
       background: $indexLand-light;
     }
   }
-  &[class*='_med_'] {
-  }
 }
-
 @mixin mobile-tint {
-  // Take the desktop section and compress it as much as possible for mobile.
-  // No extra drop shadow, no fades just tap and instant gratification.
-  // This way I have two versions to play with.
-  // Strictly corporate facts based speed or
-  // Be creative, take your time enjoy the journey with ANIMATIONS!
-  // Desktop Version = Oh so fancy look at all those shades, drop-shadows and insets
-  // all correlating with one another mathematically.
-  // Mobile Version = Speed! With the minimum amount of beauty! Less text more points!
+  &[class*='_dar_'] {
+    .back {
+      background: $indexLand-dark;
+    }
+    .text {
+      color: $indexLand-neon;
+      background: transparent;
+    }
+    .icon img {
+      background: $indexLand-light;
+    }
+  }
+
+  &[class*='_lig_'] {
+    .back {
+      background: $indexLand-light;
+    }
+    .text {
+      color: $indexLand-dark;
+      background: transparent;
+    }
+    .icon img {
+      background: $indexLand-dark;
+    }
+    .icon[class*='_top_'],
+    .icon[class*='_bot_'] {
+      img {
+        background: $indexLand-light;
+      }
+    }
+  }
 
   &[class*='_med_'] {
+    .back {
+      background: $indexLand-medium;
+    }
+    .text {
+      color: $indexLand-neon;
+      background: transparent;
+    }
+    .icon img {
+      background: $indexLand-light;
+    }
+  }
+
+  .back {
+    box-shadow:
+      inset 0 1px 0 rgba(#fff, 0.08),
+      inset 0 -1px 0 rgba(#000, 0.18);
   }
 }
-
-// Final thoughts, before you generate first confirm
-// this round, ask questions if there is any uncertainties.
-// Also: What should I call my corner radius file?
-// It HAS to be 4 characters Button_????.scss
-// I'll setup a prompt for that one.

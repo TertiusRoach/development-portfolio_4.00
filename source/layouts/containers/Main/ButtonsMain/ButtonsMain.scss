@@ -191,7 +191,7 @@
         &.light-code > pre {
           grid-area: 1 / 2 / 2 / 3;
           background: blue;
-          background: rgba(Palettes.$indexLand-dark, 0.75);
+          background: rgba(Palettes.$indexLand-light, 0.75);
         }
 
         > pre {
