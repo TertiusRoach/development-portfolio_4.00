@@ -187,8 +187,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -301,8 +301,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -415,8 +415,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -529,8 +529,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -643,8 +643,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -757,8 +757,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -871,8 +871,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~dark~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -993,8 +993,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -1107,8 +1107,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -1221,8 +1221,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -1335,8 +1335,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -1449,8 +1449,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -1677,8 +1677,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
-                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                 }}
                 info={{
                   pageName: pageName,

@@ -49,6 +49,7 @@
         }
       }
     }
+
     nav[class*='scroll'] {
       display: grid;
       background: none;
@@ -199,6 +200,7 @@
       }
     }
   }
+
   div[class='background'] {
     display: inherit;
     grid-template: inherit;
@@ -261,7 +263,7 @@
 }
 
 @mixin desktop-default {
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   grid-template: //--|🠋 1080px 🠋|--//
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
     / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
@@ -277,7 +279,7 @@
   }
 }
 @mixin mobile-default {
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   grid-template: //--|🠋 1920px 🠋|--//
     repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
     / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//

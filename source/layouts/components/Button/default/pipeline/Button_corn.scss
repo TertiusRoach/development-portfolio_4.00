@@ -1,0 +1,113 @@
+//--|🠊 Button_corn.scss 🠈|--\\
+@mixin desktop-corn {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  &[class*='_top_'],
+  &[class*='_bot_'],
+  &[class*='_cen_'],
+  &[class*='_tex_'],
+  &[class*='_ico_'] {
+    .text,
+    .back {
+      border-radius: 8px;
+      @media screen and (max-height: 768px) {
+        border-radius: 6px;
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px;
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &[class*='_lef_'] {
+    .text {
+      border-radius: 0 8px 8px 0;
+    }
+    .icon,
+    .back {
+      border-radius: 8px;
+    }
+    @media screen and (max-height: 768px) {
+      .text {
+        border-radius: 0 6px 6px 0;
+      }
+      .icon,
+      .back {
+        border-radius: 6px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      .text {
+        border-radius: 0 4px 4px 0;
+      }
+      .icon,
+      .back {
+        border-radius: 4px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      .text {
+        border-radius: 0 2px 2px 0;
+      }
+      .icon,
+      .back {
+        border-radius: 2px;
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    .text {
+      border-radius: 8px 0 0 8px;
+    }
+    .icon,
+    .back {
+      border-radius: 8px;
+    }
+    @media screen and (max-height: 768px) {
+      .text {
+        border-radius: 6px 0 0 6px;
+      }
+      .icon,
+      .back {
+        border-radius: 6px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      .text {
+        border-radius: 4px 0 0 4px;
+      }
+      .icon,
+      .back {
+        border-radius: 4px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      .text {
+        border-radius: 2px 0 0 2px;
+      }
+      .icon,
+      .back {
+        border-radius: 2px;
+      }
+    }
+  }
+
+  /*
+
+  */
+}
+@mixin mobile-corn {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  border-radius: 8px;
+  @media screen and (max-height: 768px) {
+    border-radius: 6px;
+  }
+  @media screen and (max-height: 480px) {
+    border-radius: 4px;
+  }
+  @media screen and (max-height: 360px) {
+    border-radius: 2px;
+  }
+}

@@ -4,6 +4,7 @@
 @use './pipeline/Button_size.scss';
 @use './pipeline/Button_tint.scss';
 @use './pipeline/Button_move.scss';
+@use './pipeline/Button_corn.scss';
 
 button[class*='default'] {
   display: grid;
@@ -20,6 +21,7 @@ button[class*='default'] {
     @include Button_flex.desktop-flex();
     @include Button_tint.desktop-tint();
     @include Button_move.desktop-move();
+    @include Button_corn.desktop-corn();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
@@ -27,7 +29,8 @@ button[class*='default'] {
     @include Button_grid.mobile-grid();
     @include Button_flex.mobile-flex();
     @include Button_tint.mobile-tint();
-    // @include Button_move.mobile-move();
+    @include Button_move.mobile-move();
+    @include Button_corn.desktop-corn();
   }
 
   @extend %button-test;
