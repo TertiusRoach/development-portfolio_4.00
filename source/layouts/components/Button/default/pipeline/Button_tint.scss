@@ -3,13 +3,10 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-tint {
-  // Tuned “in-betweens” (Dart Sass 3-safe: use color.mix)
   $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
   $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
   $indexLand-softW: color.mix(Palettes.$indexLand-neon, Palettes.$indexLand-light, $weight: 70%);
   $indexLand-softB: color.mix(#000000, Palettes.$indexLand-dark, $weight: 60%);
-
-  // Shared (desktop) “premium” feel: soft depth, no hard edges
 
   .text {
     background-repeat: no-repeat;
