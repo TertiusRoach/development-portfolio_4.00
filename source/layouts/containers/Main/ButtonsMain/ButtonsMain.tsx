@@ -1736,8 +1736,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           <div></div>
         </footer>
       </div>
-
-      {/* {handleButtons(info.pageName, info.blockName)} */}
     </main>
   );
 };

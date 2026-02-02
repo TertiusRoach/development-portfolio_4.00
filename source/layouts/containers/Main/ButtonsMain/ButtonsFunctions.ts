@@ -51,7 +51,11 @@ export function toggleAside(
 }
 export function scrollSection(pageName: string, blockName: string, blockAction: 'go-up' | 'scroll-down' | String) {
   const fontSize = document.querySelector(`#${pageName}-${blockName} .midground ol .visible`) as HTMLElement;
-  const showHTML = () => {};
+  const showHTML = (view: number) => {
+    darkLeft.style.transform = `translateY(-${lightRight.offsetHeight * view}px)`;
+    fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * view}px)`;
+    lightRight.style.transform = `translateY(-${darkLeft.offsetHeight * view}px)`;
+  };
   const markHTML = (fontSize: HTMLElement, prev: number, next: number, blockAction: String) => {
     let prevFont = findHTML(fontSize)[0];
     let nextFont = findHTML(fontSize)[1];
@@ -75,10 +79,6 @@ export function scrollSection(pageName: string, blockName: string, blockAction: 
     lightRight.children[next].classList.add('visible');
     lightRight.children[prev].classList.remove('visible');
     lightRight.children[prev].classList.add('hidden');
-
-    darkLeft.style.transform = `translateY(-${sectionHeight * next}px)`;
-    fontTrack.style.transform = `translateY(-${sectionHeight * next}px)`;
-    lightRight.style.transform = `translateY(-${sectionHeight * next}px)`;
   };
   const findHTML = (fontSize: HTMLElement) => {
     let nextFont: HTMLElement;
@@ -100,62 +100,75 @@ export function scrollSection(pageName: string, blockName: string, blockAction: 
   let fontTrack = document.querySelector(`#${pageName}-${blockName} .midground .size-font`) as HTMLElement;
   let darkLeft = document.querySelector(`#${pageName}-${blockName} .foreground .dark-side section`) as HTMLElement;
   let lightRight = document.querySelector(`#${pageName}-${blockName} .foreground .light-side section`) as HTMLElement;
-  let sectionHeight = fontTrack.offsetHeight;
-
-  switch (fontSize.classList[0]) {
-    case 'h1-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 0, 6, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 0, 1, blockAction);
-      }
-      break;
-    case 'h2-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 1, 0, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 1, 2, blockAction);
-      }
-      break;
-    case 'h3-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 2, 1, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 2, 3, blockAction);
-      }
-      break;
-    case 'h4-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 3, 2, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 3, 4, blockAction);
-      }
-      break;
-    case 'h5-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 4, 3, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 4, 5, blockAction);
-      }
-
-      break;
-    case 'h6-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 5, 4, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 5, 6, blockAction);
-      }
-      break;
-    case 'p-size':
-      if (blockAction === 'go-up') {
-        markHTML(fontSize, 6, 5, blockAction);
-      } else if (blockAction === 'scroll-down') {
-        markHTML(fontSize, 6, 0, blockAction);
-      }
-      break;
-  }
-
+  let whiteHeight = lightRight.offsetHeight;
+  let fontHeight = fontTrack.offsetHeight;
+  let darkHeight = darkLeft.offsetHeight;
   if (fontSize !== null) {
+    switch (fontSize.classList[0]) {
+      case 'h1-size':
+        if (blockAction === 'go-up') {
+          showHTML(6);
+          markHTML(fontSize, 0, 6, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(1);
+          markHTML(fontSize, 0, 1, blockAction);
+        }
+        break;
+      case 'h2-size':
+        if (blockAction === 'go-up') {
+          showHTML(0);
+          markHTML(fontSize, 1, 0, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(2);
+          markHTML(fontSize, 1, 2, blockAction);
+        }
+        break;
+      case 'h3-size':
+        if (blockAction === 'go-up') {
+          showHTML(1);
+          markHTML(fontSize, 2, 1, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(3);
+          markHTML(fontSize, 2, 3, blockAction);
+        }
+        break;
+      case 'h4-size':
+        if (blockAction === 'go-up') {
+          showHTML(2);
+          markHTML(fontSize, 3, 2, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(4);
+          markHTML(fontSize, 3, 4, blockAction);
+        }
+        break;
+      case 'h5-size':
+        if (blockAction === 'go-up') {
+          showHTML(3);
+          markHTML(fontSize, 4, 3, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(5);
+          markHTML(fontSize, 4, 5, blockAction);
+        }
+        break;
+      case 'h6-size':
+        if (blockAction === 'go-up') {
+          showHTML(4);
+          markHTML(fontSize, 5, 4, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(5);
+          markHTML(fontSize, 5, 6, blockAction);
+        }
+        break;
+      case 'p-size':
+        if (blockAction === 'go-up') {
+          showHTML(5);
+          markHTML(fontSize, 6, 5, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(0);
+          markHTML(fontSize, 6, 0, blockAction);
+        }
+        break;
+    }
   }
 }
 export function defaultPreview(
@@ -175,9 +188,9 @@ export function defaultPreview(
     fontSize.classList.add('visible');
     switch (blockAction) {
       case 'h1-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 0}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 0}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 0}px)`;
 
         darkLeft.children[0].classList.remove('hidden');
         darkLeft.children[0].classList.add('visible');
@@ -186,9 +199,9 @@ export function defaultPreview(
         lightRight.children[0].classList.add('visible');
         break;
       case 'h2-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 1}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 1}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 1}px)`;
 
         darkLeft.children[1].classList.remove('hidden');
         darkLeft.children[1].classList.add('visible');
@@ -197,9 +210,9 @@ export function defaultPreview(
         lightRight.children[1].classList.add('visible');
         break;
       case 'h3-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 2}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 2}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 2}px)`;
 
         darkLeft.children[2].classList.remove('hidden');
         darkLeft.children[2].classList.add('visible');
@@ -208,9 +221,9 @@ export function defaultPreview(
         lightRight.children[2].classList.add('visible');
         break;
       case 'h4-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 3}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 3}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 3}px)`;
 
         darkLeft.children[3].classList.remove('hidden');
         darkLeft.children[3].classList.add('visible');
@@ -219,9 +232,9 @@ export function defaultPreview(
         lightRight.children[3].classList.add('visible');
         break;
       case 'h5-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 4}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 4}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 4}px)`;
 
         darkLeft.children[4].classList.remove('hidden');
         darkLeft.children[4].classList.add('visible');
@@ -230,9 +243,9 @@ export function defaultPreview(
         lightRight.children[4].classList.add('visible');
         break;
       case 'h6-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 5}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 5}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 5}px)`;
 
         darkLeft.children[5].classList.remove('hidden');
         darkLeft.children[5].classList.add('visible');
@@ -241,9 +254,9 @@ export function defaultPreview(
         lightRight.children[5].classList.add('visible');
         break;
       case 'p-size':
-        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
-        fontTrack.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        darkLeft.style.transform = `translateY(-${darkLeft.offsetHeight * 6}px)`;
+        lightRight.style.transform = `translateY(-${lightRight.offsetHeight * 6}px)`;
+        fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * 6}px)`;
 
         darkLeft.children[6].classList.remove('hidden');
         darkLeft.children[6].classList.add('visible');
