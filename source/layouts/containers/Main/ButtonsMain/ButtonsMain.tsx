@@ -1723,9 +1723,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             <code></code>
           </pre>
         </aside>
-
-        {/* <div className="preview"></div> */}
-        {/* <div className="section"></div> */}
       </figure>
       <div className="background">
         <header>
