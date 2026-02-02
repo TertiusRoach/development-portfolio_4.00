@@ -174,7 +174,7 @@
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: repeat(3, 1fr);
-        // background: rgba(Palettes.$indexLand-medium, 1);
+        transition: transform 0.25s ease-in-out;
 
         ol {
           padding: 0;
@@ -200,7 +200,6 @@
       }
     }
   }
-
   div[class='background'] {
     display: inherit;
     grid-template: inherit;
@@ -245,6 +244,7 @@
       }
     }
   }
+  @include desktop-default();
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--//
@@ -260,6 +260,8 @@
       margin: 0 24px;
     }
   }
+
+  @include mobile-default();
 }
 
 @mixin desktop-default {
@@ -297,18 +299,9 @@
 
 main[id*='buttons'] {
   @media screen and (orientation: landscape) {
-    @include desktop-default();
     @include desktop-landscape();
-    //--|🠋 Desktop (Separate) 🠋|--//
   }
   @media screen and (orientation: portrait) {
-    @include mobile-default();
     @include mobile-portrait();
-
-    /*
-    //--|🠋 Mobile (Separate) 🠋|--//
-    section {
-    }
-    */
   }
 }

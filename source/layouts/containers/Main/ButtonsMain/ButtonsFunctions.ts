@@ -49,290 +49,211 @@ export function toggleAside(
 
   //--|🠊 console.log({ blockName, leftDark, rightLight, centerElement }); 🠈|--\\
 }
-export function scrollSection(
-  pageName: string,
-  blockName: string,
-  blockAction: 'go-up' | 'scroll-down' | 'picked-default' | String,
-) {
-  let visibleElement = document.querySelector(
-    `#${pageName}-${blockName} .foreground .dark-side .size-track .visible`,
-  ) as HTMLElement;
-  let darkLeft = document.querySelector(`#${pageName}-main .foreground .dark-side section`) as HTMLElement;
-  let lightRight = document.querySelector(`#${pageName}-main .foreground .light-side section`) as HTMLElement;
-  let sectionHeight = darkLeft.offsetHeight;
+export function scrollSection(pageName: string, blockName: string, blockAction: 'go-up' | 'scroll-down' | String) {
+  const fontSize = document.querySelector(`#${pageName}-${blockName} .midground ol .visible`) as HTMLElement;
+  const showHTML = () => {};
+  const markHTML = (fontSize: HTMLElement, prev: number, next: number, blockAction: String) => {
+    let prevFont = findHTML(fontSize)[0];
+    let nextFont = findHTML(fontSize)[1];
 
-  if (blockAction === 'scroll-down') {
-    switch (visibleElement.classList[0]) {
-      case 'h1-size':
-        darkLeft.children[1].classList.remove('hidden');
-        darkLeft.children[1].classList.add('visible');
-
-        darkLeft.children[0].classList.remove('visible');
-        darkLeft.children[0].classList.add('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
-
-        lightRight.children[1].classList.remove('hidden');
-        lightRight.children[1].classList.add('visible');
-
-        lightRight.children[0].classList.remove('visible');
-        lightRight.children[0].classList.add('hidden');
-        break;
-      case 'h2-size':
-        darkLeft.children[2].classList.remove('hidden');
-        darkLeft.children[2].classList.add('visible');
-
-        darkLeft.children[1].classList.add('hidden');
-        darkLeft.children[1].classList.remove('visible');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
-
-        lightRight.children[2].classList.remove('hidden');
-        lightRight.children[2].classList.add('visible');
-
-        lightRight.children[1].classList.add('hidden');
-        lightRight.children[1].classList.remove('visible');
-        break;
-      case 'h3-size':
-        darkLeft.children[3].classList.remove('hidden');
-        darkLeft.children[3].classList.add('visible');
-
-        darkLeft.children[2].classList.add('hidden');
-        darkLeft.children[2].classList.remove('visible');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
-
-        lightRight.children[3].classList.remove('hidden');
-        lightRight.children[3].classList.add('visible');
-
-        lightRight.children[2].classList.add('hidden');
-        lightRight.children[2].classList.remove('visible');
-
-        break;
-      case 'h4-size':
-      default:
-        darkLeft.children[3].classList.remove('visible');
-        darkLeft.children[3].classList.add('hidden');
-
-        darkLeft.children[4].classList.add('visible');
-        darkLeft.children[4].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
-
-        lightRight.children[3].classList.remove('visible');
-        lightRight.children[3].classList.add('hidden');
-
-        lightRight.children[4].classList.add('visible');
-        lightRight.children[4].classList.remove('hidden');
-        break;
-      case 'h5-size':
-        darkLeft.children[4].classList.remove('visible');
-        darkLeft.children[4].classList.add('hidden');
-
-        darkLeft.children[5].classList.add('visible');
-        darkLeft.children[5].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
-
-        lightRight.children[4].classList.remove('visible');
-        lightRight.children[4].classList.add('hidden');
-
-        lightRight.children[5].classList.add('visible');
-        lightRight.children[5].classList.remove('hidden');
-
-        break;
-      case 'h6-size':
-        darkLeft.children[5].classList.remove('visible');
-        darkLeft.children[5].classList.add('hidden');
-
-        darkLeft.children[6].classList.add('visible');
-        darkLeft.children[6].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
-
-        lightRight.children[5].classList.remove('visible');
-        lightRight.children[5].classList.add('hidden');
-
-        lightRight.children[6].classList.add('visible');
-        lightRight.children[6].classList.remove('hidden');
-        break;
-      case 'p-size':
-        darkLeft.children[6].classList.remove('visible');
-        darkLeft.children[6].classList.add('hidden');
-
-        darkLeft.children[0].classList.add('visible');
-        darkLeft.children[0].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
-
-        lightRight.children[6].classList.remove('visible');
-        lightRight.children[6].classList.add('hidden');
-
-        lightRight.children[0].classList.add('visible');
-        lightRight.children[0].classList.remove('hidden');
-        break;
+    fontSize.classList.add('hidden');
+    fontSize.classList.remove('visible');
+    if (blockAction === 'go-up') {
+      prevFont.classList.add('visible');
+      prevFont.classList.remove('hidden');
+    } else if (blockAction === 'scroll-down') {
+      nextFont.classList.add('visible');
+      nextFont.classList.remove('hidden');
     }
-  } else if (blockAction === 'go-up') {
-    switch (visibleElement.classList[0]) {
-      case 'h1-size':
-        darkLeft.children[0].classList.remove('visible');
-        darkLeft.children[0].classList.add('hidden');
 
-        darkLeft.children[6].classList.add('visible');
-        darkLeft.children[6].classList.remove('hidden');
+    darkLeft.children[prev].classList.add('hidden');
+    darkLeft.children[prev].classList.remove('visible');
+    darkLeft.children[next].classList.add('visible');
+    darkLeft.children[next].classList.remove('hidden');
 
-        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
+    lightRight.children[next].classList.remove('hidden');
+    lightRight.children[next].classList.add('visible');
+    lightRight.children[prev].classList.remove('visible');
+    lightRight.children[prev].classList.add('hidden');
 
-        lightRight.children[0].classList.remove('visible');
-        lightRight.children[0].classList.add('hidden');
-
-        lightRight.children[6].classList.add('visible');
-        lightRight.children[6].classList.remove('hidden');
-        break;
-      case 'h2-size':
-        darkLeft.children[1].classList.add('hidden');
-        darkLeft.children[1].classList.remove('visible');
-
-        darkLeft.children[0].classList.add('visible');
-        darkLeft.children[0].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
-
-        lightRight.children[1].classList.add('hidden');
-        lightRight.children[1].classList.remove('visible');
-        lightRight.children[0].classList.add('visible');
-        lightRight.children[0].classList.remove('hidden');
-        break;
-      case 'h3-size':
-        darkLeft.children[1].classList.remove('hidden');
-        darkLeft.children[1].classList.add('visible');
-
-        darkLeft.children[2].classList.add('hidden');
-        darkLeft.children[2].classList.remove('visible');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
-
-        lightRight.children[1].classList.remove('hidden');
-        lightRight.children[1].classList.add('visible');
-
-        lightRight.children[2].classList.add('hidden');
-        lightRight.children[2].classList.remove('visible');
-        break;
-      case 'h4-size':
-      default:
-        darkLeft.children[2].classList.add('visible');
-        darkLeft.children[2].classList.remove('hidden');
-
-        darkLeft.children[3].classList.add('hidden');
-        darkLeft.children[3].classList.remove('visible');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
-
-        lightRight.children[2].classList.add('visible');
-        lightRight.children[2].classList.remove('hidden');
-
-        lightRight.children[3].classList.add('hidden');
-        lightRight.children[3].classList.remove('visible');
-        break;
-      case 'h5-size':
-        darkLeft.children[4].classList.remove('visible');
-        darkLeft.children[4].classList.add('hidden');
-
-        darkLeft.children[3].classList.add('visible');
-        darkLeft.children[3].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
-
-        lightRight.children[4].classList.remove('visible');
-        lightRight.children[4].classList.add('hidden');
-
-        lightRight.children[3].classList.add('visible');
-        lightRight.children[3].classList.remove('hidden');
-        break;
-      case 'h6-size':
-        darkLeft.children[5].classList.remove('visible');
-        darkLeft.children[5].classList.add('hidden');
-
-        darkLeft.children[4].classList.add('visible');
-        darkLeft.children[4].classList.remove('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
-
-        lightRight.children[5].classList.remove('visible');
-        lightRight.children[5].classList.add('hidden');
-
-        lightRight.children[4].classList.add('visible');
-        lightRight.children[4].classList.remove('hidden');
-        break;
-      case 'p-size':
-        darkLeft.children[5].classList.add('visible');
-        darkLeft.children[5].classList.remove('hidden');
-
-        darkLeft.children[6].classList.remove('visible');
-        darkLeft.children[6].classList.add('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
-
-        lightRight.children[5].classList.add('visible');
-        lightRight.children[5].classList.remove('hidden');
-
-        lightRight.children[6].classList.remove('visible');
-        lightRight.children[6].classList.add('hidden');
-        break;
+    darkLeft.style.transform = `translateY(-${sectionHeight * next}px)`;
+    fontTrack.style.transform = `translateY(-${sectionHeight * next}px)`;
+    lightRight.style.transform = `translateY(-${sectionHeight * next}px)`;
+  };
+  const findHTML = (fontSize: HTMLElement) => {
+    let nextFont: HTMLElement;
+    let prevFont: HTMLElement;
+    if (fontSize.previousElementSibling !== null) {
+      prevFont = fontSize.previousElementSibling as HTMLElement;
+    } else {
+      prevFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(7)`) as HTMLElement;
     }
-  } else if (blockAction === 'picked-default') {
-    console.log('WORKING!!!!!!!!!!');
-    switch (visibleElement.classList[0]) {
-      case 'h4-size':
-      default:
-        darkLeft.children[3].classList.add('visible');
-        darkLeft.children[3].classList.remove('hidden');
-
-        darkLeft.children[2].classList.add('hidden');
-        darkLeft.children[2].classList.remove('visible');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
-
-        lightRight.children[3].classList.add('visible');
-        lightRight.children[3].classList.remove('hidden');
-
-        lightRight.children[2].classList.add('hidden');
-        lightRight.children[2].classList.remove('visible');
-        break;
-        darkLeft.children[5].classList.add('visible');
-        darkLeft.children[5].classList.remove('hidden');
-
-        darkLeft.children[6].classList.remove('visible');
-        darkLeft.children[6].classList.add('hidden');
-
-        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
-        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
-
-        lightRight.children[5].classList.add('visible');
-        lightRight.children[5].classList.remove('hidden');
-
-        lightRight.children[6].classList.remove('visible');
-        lightRight.children[6].classList.add('hidden');
-        break;
+    if (fontSize.nextElementSibling !== null) {
+      nextFont = fontSize.nextElementSibling as HTMLElement;
+    } else {
+      nextFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(1)`) as HTMLElement;
     }
+
+    return [prevFont, nextFont] as Array<HTMLElement>;
+  };
+
+  let fontTrack = document.querySelector(`#${pageName}-${blockName} .midground .size-font`) as HTMLElement;
+  let darkLeft = document.querySelector(`#${pageName}-${blockName} .foreground .dark-side section`) as HTMLElement;
+  let lightRight = document.querySelector(`#${pageName}-${blockName} .foreground .light-side section`) as HTMLElement;
+  let sectionHeight = fontTrack.offsetHeight;
+
+  switch (fontSize.classList[0]) {
+    case 'h1-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 0, 6, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 0, 1, blockAction);
+      }
+      break;
+    case 'h2-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 1, 0, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 1, 2, blockAction);
+      }
+      break;
+    case 'h3-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 2, 1, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 2, 3, blockAction);
+      }
+      break;
+    case 'h4-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 3, 2, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 3, 4, blockAction);
+      }
+      break;
+    case 'h5-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 4, 3, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 4, 5, blockAction);
+      }
+
+      break;
+    case 'h6-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 5, 4, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 5, 6, blockAction);
+      }
+      break;
+    case 'p-size':
+      if (blockAction === 'go-up') {
+        markHTML(fontSize, 6, 5, blockAction);
+      } else if (blockAction === 'scroll-down') {
+        markHTML(fontSize, 6, 0, blockAction);
+      }
+      break;
+  }
+
+  if (fontSize !== null) {
   }
 }
+export function defaultPreview(
+  pageName: string,
+  blockName: string,
+  blockAction: 'h1-size' | 'h2-size' | 'h3-size' | 'h4-size' | 'h5-size' | 'h6-size' | 'p-size',
+) {
+  //--|🠊 Scroll to Default <button> 🠈|--\\
+  setTimeout(() => {
+    let fontTrack = document.querySelector(`#${pageName}-${blockName} .midground .size-font`) as HTMLElement;
+    let fontSize = document.querySelector(`#${pageName}-${blockName} .midground ol .${blockAction}`) as HTMLElement;
+    let darkLeft = document.querySelector(`#${pageName}-${blockName} .foreground .dark-side section`) as HTMLElement;
+    let lightRight = document.querySelector(`#${pageName}-${blockName} .foreground .light-side section`) as HTMLElement;
+    let sectionHeight = fontTrack.offsetHeight;
 
+    fontSize.classList.remove('hidden');
+    fontSize.classList.add('visible');
+    switch (blockAction) {
+      case 'h1-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 0}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 0}px)`;
+
+        darkLeft.children[0].classList.remove('hidden');
+        darkLeft.children[0].classList.add('visible');
+
+        lightRight.children[0].classList.remove('hidden');
+        lightRight.children[0].classList.add('visible');
+        break;
+      case 'h2-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 1}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 1}px)`;
+
+        darkLeft.children[1].classList.remove('hidden');
+        darkLeft.children[1].classList.add('visible');
+
+        lightRight.children[1].classList.remove('hidden');
+        lightRight.children[1].classList.add('visible');
+        break;
+      case 'h3-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 2}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 2}px)`;
+
+        darkLeft.children[2].classList.remove('hidden');
+        darkLeft.children[2].classList.add('visible');
+
+        lightRight.children[2].classList.remove('hidden');
+        lightRight.children[2].classList.add('visible');
+        break;
+      case 'h4-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 3}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 3}px)`;
+
+        darkLeft.children[3].classList.remove('hidden');
+        darkLeft.children[3].classList.add('visible');
+
+        lightRight.children[3].classList.remove('hidden');
+        lightRight.children[3].classList.add('visible');
+        break;
+      case 'h5-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 4}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 4}px)`;
+
+        darkLeft.children[4].classList.remove('hidden');
+        darkLeft.children[4].classList.add('visible');
+
+        lightRight.children[4].classList.remove('hidden');
+        lightRight.children[4].classList.add('visible');
+        break;
+      case 'h6-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 5}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 5}px)`;
+
+        darkLeft.children[5].classList.remove('hidden');
+        darkLeft.children[5].classList.add('visible');
+
+        lightRight.children[5].classList.remove('hidden');
+        lightRight.children[5].classList.add('visible');
+        break;
+      case 'p-size':
+        darkLeft.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        lightRight.style.transform = `translateY(-${sectionHeight * 6}px)`;
+        fontTrack.style.transform = `translateY(-${sectionHeight * 6}px)`;
+
+        darkLeft.children[6].classList.remove('hidden');
+        darkLeft.children[6].classList.add('visible');
+
+        lightRight.children[6].classList.remove('hidden');
+        lightRight.children[6].classList.add('visible');
+        break;
+    }
+  }, 250);
+}
 export function resizePreview(pageName: string, blockName: string) {
   //--|🠊 Complete documentation at bottom of function 🠈|--\\
   const sizeList = document.querySelector<HTMLOListElement>(`#${pageName}-main .size-font > ol`);

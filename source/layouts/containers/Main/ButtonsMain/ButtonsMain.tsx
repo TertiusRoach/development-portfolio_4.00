@@ -2,7 +2,7 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { toggleAside, scrollSection, resizePreview } from './ButtonsFunctions';
+import { toggleAside, scrollSection, resizePreview, defaultPreview } from './ButtonsFunctions';
 
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
@@ -37,12 +37,9 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   };
 
   useEffect(() => {
-    //--|🠊 Execute this every time the screen size changes. 🠈|--\\
-    setTimeout(() => {
-      scrollSection(pageName, blockName, 'picked-default');
-    }, 750);
-
+    //--|🠊 Add Screen Size Detection 🠈|--\\
     resizePreview(pageName, blockName);
+    defaultPreview(pageName, blockName, 'h4-size');
   }, [pageName, blockName, [info]]);
 
   let imagePath =
@@ -51,47 +48,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
-        <nav className="scroll-sections">
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: `Go Up`,
-              shade: '~light~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_go-up`,
-            }}
-            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
-          />
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: 'Scroll Down',
-              shade: '~dark~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_scroll-down`,
-            }}
-            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
-          />
-        </nav>
-
         <aside
           className="dark-side"
           onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
@@ -440,7 +396,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 }}
               />
             </div>
-            <div className="h4-size visible">
+            <div className="h4-size hidden">
               <ButtonDefault
                 style={{
                   size: '<h4>',
@@ -898,6 +854,46 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </div>
           </section>
         </aside>
+        <nav className="scroll-sections">
+          <ButtonDefault
+            style={{
+              size: '<h4>',
+              view: '-icon-',
+              text: `Go Up`,
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}_${blockName}_go-up`,
+            }}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
+          />
+          <ButtonDefault
+            style={{
+              size: '<h4>',
+              view: '-icon-',
+              text: 'Scroll Down',
+              shade: '~dark~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}_${blockName}_scroll-down`,
+            }}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
+          />
+        </nav>
         <aside
           className="light-side"
           onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
@@ -1246,7 +1242,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 }}
               />
             </div>
-            <div className="h4-size visible">
+            <div className="h4-size hidden">
               <ButtonDefault
                 style={{
                   size: '<h4>',
@@ -1713,13 +1709,13 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         </aside>
         <section className="size-font visible">
           <ol>
-            <h1 className="display-1">{'<​h1>'}</h1>
-            <h2 className="display-1">{'<​h2>'}</h2>
-            <h3 className="display-1">{'<​h3>'}</h3>
-            <h4 className="display-1">{'<​h4>'}</h4>
-            <h5 className="display-1">{'<​h5>'}</h5>
-            <h6 className="display-1">{'<​h6>'}</h6>
-            <p className="display-1">{'<p>'}</p>
+            <h1 className="h1-size display-1 hidden">{'<​h1>'}</h1>
+            <h2 className="h2-size display-1 hidden">{'<​h2>'}</h2>
+            <h3 className="h3-size display-1 hidden">{'<​h3>'}</h3>
+            <h4 className="h4-size display-1 hidden">{'<​h4>'}</h4>
+            <h5 className="h5-size display-1 hidden">{'<​h5>'}</h5>
+            <h6 className="h6-size display-1 hidden">{'<​h6>'}</h6>
+            <p className=" p-size  display-1 hidden">{'<p>'}</p>
           </ol>
         </section>
         <aside className="light-code hidden">
