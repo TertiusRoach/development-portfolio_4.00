@@ -51,6 +51,47 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
       <section className="foreground">
+        <nav className="scroll-sections">
+          <ButtonDefault
+            style={{
+              size: '<h4>',
+              view: '-icon-',
+              text: `Go Up`,
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}_${blockName}_go-up`,
+            }}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
+          />
+          <ButtonDefault
+            style={{
+              size: '<h4>',
+              view: '-icon-',
+              text: 'Scroll Down',
+              shade: '~dark~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}_${blockName}_scroll-down`,
+            }}
+            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
+          />
+        </nav>
+
         <aside
           className="dark-side"
           onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
@@ -746,7 +787,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-top-',
-                  text: `Button-------------------------`,
+                  text: `par_top_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -762,7 +803,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-bottom-',
-                  text: `Button-------------------------`,
+                  text: `par_bot_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -778,7 +819,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-left-',
-                  text: `two_lef_dar_mon-------------------------`,
+                  text: `par_lef_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -794,7 +835,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-right-',
-                  text: `two_rig_dar_mon-------------------------`,
+                  text: `par_rig_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -810,7 +851,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-center-',
-                  text: `two_cen_dar_mon-------------------------`,
+                  text: `par_cen_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -826,7 +867,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-text-',
-                  text: `two_tex_dar_mon-------------------------`,
+                  text: `par_tex_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -842,7 +883,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-icon-',
-                  text: `two_ico_dar_mon-------------------------`,
+                  text: `par_ico_dar_mon`,
                   shade: '~dark~',
                   color: '(mono)',
 
@@ -1522,6 +1563,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   shade: '~light~',
                   color: '(mono)',
 
+                  image: '',
                   type: '{button}',
                 }}
                 info={{
@@ -1529,7 +1571,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   blockName: blockName,
                 }}
               />
-
               <ButtonDefault
                 style={{
                   size: '<h6>',
@@ -1552,7 +1593,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-top-',
-                  text: `Button-------------------------`,
+                  text: `par_top_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1568,7 +1609,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-bottom-',
-                  text: `Button-------------------------`,
+                  text: `par_bot_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1584,7 +1625,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-left-',
-                  text: `two_lef_lig_mon-------------------------`,
+                  text: `par_lef_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1600,7 +1641,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-right-',
-                  text: `two_rig_lig_mon-------------------------`,
+                  text: `par_rig_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1616,7 +1657,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-center-',
-                  text: `two_cen_lig_mon-------------------------`,
+                  text: `par_cen_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1632,7 +1673,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-text-',
-                  text: `two_tex_lig_mon-------------------------`,
+                  text: `par_tex_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1648,7 +1689,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 style={{
                   size: '<p>',
                   view: '-icon-',
-                  text: `two_ico_lig_mon-------------------------`,
+                  text: `par_ico_lig_mon`,
                   shade: '~light~',
                   color: '(mono)',
 
@@ -1663,47 +1704,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </div>
           </section>
         </aside>
-
-        <nav className="scroll-sections">
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: `Go Up`,
-              shade: '~light~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_go-up`,
-            }}
-            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
-          />
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: 'Scroll Down',
-              shade: '~dark~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_scroll-down`,
-            }}
-            onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
-          />
-        </nav>
       </section>
       <figure className="midground">
         <aside className="dark-code hidden">

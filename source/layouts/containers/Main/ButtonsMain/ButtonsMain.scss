@@ -8,7 +8,7 @@
     overflow: hidden;
     grid-area: 3 / 1 / 4 / 4;
     grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-    aside[class*='light'] {
+    aside[class*='side'] {
       position: relative;
       flex-direction: column;
       section[class*='track'] {
@@ -49,49 +49,6 @@
         }
       }
     }
-
-    aside[class*='dark'] {
-      position: relative;
-      flex-direction: column;
-      section[class*='track'] {
-        inset: 0;
-        display: flex;
-        position: absolute;
-        flex-direction: column;
-        transition: transform 0.25s ease-in-out;
-        > div[class*='size'] {
-          //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
-          display: grid;
-          flex: 0 0 100%;
-          position: relative;
-          grid-template-rows: repeat(7, 1fr);
-          grid-template-columns: repeat(2, 1fr);
-
-          button[class*='_top_'] {
-            grid-area: 1 / 1 / 3 / 2;
-          }
-          button[class*='_bot_'] {
-            grid-area: 1 / 2 / 3 / 3;
-          }
-          button[class*='_lef_'] {
-            grid-area: 3 / 1 / 4 / 3;
-          }
-          button[class*='_rig_'] {
-            grid-area: 4 / 1 / 5 / 3;
-          }
-          button[class*='_cen_'] {
-            grid-area: 5 / 1 / 6 / 3;
-          }
-          button[class*='_tex_'] {
-            grid-area: 6 / 1 / 7 / 3;
-          }
-          button[class*='_ico_'] {
-            grid-area: 7 / 1 / 8 / 3;
-          }
-        }
-      }
-    }
-
     nav[class*='scroll'] {
       display: grid;
       background: none;
@@ -242,7 +199,6 @@
       }
     }
   }
-
   div[class='background'] {
     display: inherit;
     grid-template: inherit;
