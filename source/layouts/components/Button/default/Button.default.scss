@@ -11,6 +11,7 @@ button[class*='default'] {
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
+  @extend %button-move;
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
@@ -37,17 +38,15 @@ button[class*='default'] {
   &[class*='_lef_'],
   &[class*='_rig_'],
   &[class*='_cen_'],
-  &[class*='_tex_'] {
+  &[class*='_tex_'],
+  &[class*='_ico_'] {
     .text {
       * {
         cursor: pointer;
       }
     }
-  }
-
-  &[class*='_ico_'] {
     .icon {
-      * {
+      img {
         cursor: pointer;
       }
     }
@@ -144,6 +143,8 @@ button[class*='default'] {
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
+}
+%button-move {
 }
 
 %button-test {

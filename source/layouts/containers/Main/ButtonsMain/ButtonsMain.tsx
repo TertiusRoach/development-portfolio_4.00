@@ -57,7 +57,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-dark')}
         >
           <section className="size-track">
-            <div className="h1-size visible">
+            <div className="h1-size hidden">
               <ButtonDefault
                 style={{
                   size: '<h1>',
@@ -399,7 +399,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 }}
               />
             </div>
-            <div className="h4-size hidden">
+            <div className="h4-size visible">
               <ButtonDefault
                 style={{
                   size: '<h4>',
@@ -863,7 +863,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
           onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
         >
           <section className="size-track">
-            <div className="h1-size visible">
+            <div className="h1-size hidden">
               <ButtonDefault
                 style={{
                   size: '<h1>',
@@ -1205,7 +1205,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 }}
               />
             </div>
-            <div className="h4-size hidden">
+            <div className="h4-size visible">
               <ButtonDefault
                 style={{
                   size: '<h4>',
