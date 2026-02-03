@@ -1,75 +1,101 @@
 //--||🠊 Palettes.scss 🠈|--\\
-//--|🠋 Index or Landing - Trinity {A]pps 🠋|--\\
+//--|🠋 Index or Landing - TraLogFin Trinity {A]pps 🠋|--\\
 $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
 $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Log a Ticket - Trinity {A]pps 🠋|--\\
+//--|🠋 Log a Ticket - TraLogFin Trinity {A]pps 🠋|--\\
 $logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
 $logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
 $logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
 $logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Find a Link - Trinity {A]pps 🠋|--\\
-$findLink-neon: #eb1224; //--|🠈 rgba() 🠈|--\\
-$findLink-dark: #2b0a0d; //--|🠈 rgba() 🠈|--\\
-$findLink-light: #e2bcca; //--|🠈 rgba() 🠈|--\\
-$findLink-medium: #893141; //--|🠈 rgba() 🠈|--\\
+//--|🠋 Find a Link - TraLogFin Trinity {A]pps 🠋|--\\
+/* Recommended: darker reds + luscious neon pink-red (still sophisticated) */
+$findLink-neon: #ff2d6d; //--|🠈 rgba() 🠈|--\\
+$findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
+$findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
+$findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Track a Day - Trinity {A]pps 🠋|--\\
-$trackDay-neon: #00ff44; //--|🠈 rgba() 🠈|--\\
-$trackDay-dark: #072007; //--|🠈 rgba() 🠈|--\\
-$trackDay-light: #afebb2; //--|🠈 rgba() 🠈|--\\
-$trackDay-medium: #39853b; //--|🠈 rgba() 🠈|--\\
+//--|🠋 Track a Day - TraLogFin Trinity {A]pps 🠋|--\\
+/* Recommended: energetic jungle green (less pond, more punch) */
+$trackDay-neon: #00ff66; //--|🠈 rgba() 🠈|--\\
+$trackDay-dark: #041a0a; //--|🠈 rgba() 🠈|--\\
+$trackDay-light: #c7ffd7; //--|🠈 rgba() 🠈|--\\
+$trackDay-medium: #1f7a3a; //--|🠈 rgba() 🠈|--\\
 
 //--||🠋 Preset Palettes 🠋|--\\
-$red-neon: #ff0000; //--|🠈 rgba() 🠈|--\\
-$red-dark: #660000; //--|🠈 rgba() 🠈|--\\
-$red-light: #ea9999; //--|🠈 rgba() 🠈|--\\
-$red-medium: #863236; //--|🠈 rgba() 🠈|--\\
+//--||🠋 Preset Palettes (REFINED: sleeker, more “notification-friendly”, less eye-bleed) 🠋|--\\
+// Guiding idea:
+// - "-neon"   = accent / border / icon / glow (high attention, still readable)
+// - "-medium" = solid fills / badges (main brand strength)
+// - "-light"  = subtle backgrounds / hover tints (calm + clean)
+// - "-dark"   = text on light, or deep surfaces on dark UI
 
-$green-neon: #00ff00; //--|🠈 rgba() 🠈|--\\
-$green-dark: #0d1a07; //--|🠈 rgba() 🠈|--\\
-$green-light: #b6d7a8; //--|🠈 rgba() 🠈|--\\
-$green-medium: #274e13; //--|🠈 rgba() 🠈|--\\
+$red-neon: #ff3b3b; //--|🠈 rgba() 🠈|--\\
+$red-dark: #1a070a; //--|🠈 rgba() 🠈|--\\
+$red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
+$red-medium: #b4232c; //--|🠈 rgba() 🠈|--\\
 
-$blue-neon: #006eff; //--|🠈 rgba() 🠈|--\\
-$blue-dark: #0b1431; //--|🠈 rgba() 🠈|--\\
-$blue-light: #9fc5e8; //--|🠈 rgba() 🠈|--\\
-$blue-medium: #073763; //--|🠈 rgba() 🠈|--\\
+$green-neon: #22c55e; //--|🠈 rgba() 🠈|--\\
+$green-dark: #062112; //--|🠈 rgba() 🠈|--\\
+$green-light: #cffae0; //--|🠈 rgba() 🠈|--\\
+$green-medium: #15803d; //--|🠈 rgba() 🠈|--\\
 
-$purple-neon: #9900ff; //--|🠈 rgba() 🠈|--\\
-$purple-dark: #0e091b; //--|🠈 rgba() 🠈|--\\
-$purple-light: #7f6fa8; //--|🠈 rgba() 🠈|--\\
-$purple-medium: #2a1d55; //--|🠈 rgba() 🠈|--\\
+$blue-neon: #2f6bff; //--|🠈 rgba() 🠈|--\\
+$blue-dark: #07122d; //--|🠈 rgba() 🠈|--\\
+$blue-light: #d6e6ff; //--|🠈 rgba() 🠈|--\\
+$blue-medium: #1e40af; //--|🠈 rgba() 🠈|--\\
 
-$pink-neon: #ff00ff; //--|🠈 rgba() 🠈|--\\
-$pink-dark: #4c1130; //--|🠈 rgba() 🠈|--\\
-$pink-light: #d5a6bd; //--|🠈 rgba() 🠈|--\\
-$pink-medium: #814381; //--|🠈 rgba() 🠈|--\\
+$purple-neon: #a855f7; //--|🠈 rgba() 🠈|--\\
+$purple-dark: #140a2a; //--|🠈 rgba() 🠈|--\\
+$purple-light: #eadcff; //--|🠈 rgba() 🠈|--\\
+$purple-medium: #6d28d9; //--|🠈 rgba() 🠈|--\\
 
-$yellow-neon: #ffff00; //--|🠈 rgba() 🠈|--\\
-$yellow-dark: #4d1f05; //--|🠈 rgba() 🠈|--\\
-$yellow-light: #ffe599; //--|🠈 rgba() 🠈|--\\
-$yellow-medium: #7f6000; //--|🠈 rgba() 🠈|--\\
+$pink-neon: #ff2d8d; //--|🠈 rgba() 🠈|--\\
+$pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
+$pink-light: #ffd1e6; //--|🠈 rgba() 🠈|--\\
+$pink-medium: #b4236a; //--|🠈 rgba() 🠈|--\\
 
-$orange-neon: #ffc400; //--|🠈 rgba() 🠈|--\\
-$orange-dark: #783f04; //--|🠈 rgba() 🠈|--\\
-$orange-light: #e4d8cc; //--|🠈 rgba() 🠈|--\\
-$orange-medium: #e08f14; //--|🠈 rgba() 🠈|--\\
+$yellow-neon: #ffd60a; //--|🠈 rgba() 🠈|--\\
+$yellow-dark: #2a1b00; //--|🠈 rgba() 🠈|--\\
+$yellow-light: #fff2b3; //--|🠈 rgba() 🠈|--\\
+$yellow-medium: #9a6b00; //--|🠈 rgba() 🠈|--\\
 
-$brown-neon: #9c4600; //--|🠈 rgba() 🠈|--\\
-$brown-dark: #302114; //--|🠈 rgba() 🠈|--\\
-$brown-light: #ffd3af; //--|🠈 rgba() 🠈|--\\
-$brown-medium: #b46849; //--|🠈 rgba() 🠈|--\\
+$orange-neon: #ff9f0a; //--|🠈 rgba() 🠈|--\\
+$orange-dark: #2a1300; //--|🠈 rgba() 🠈|--\\
+$orange-light: #ffe2c2; //--|🠈 rgba() 🠈|--\\
+$orange-medium: #d97706; //--|🠈 rgba() 🠈|--\\
 
-$grey-neon: #eeeee0; //--|🠈 rgba() 🠈|--\\
-$grey-dark: #111111; //--|🠈 rgba() 🠈|--\\
-$grey-light: #c5c5c5; //--|🠈 rgba() 🠈|--\\
-$grey-medium: #585858; //--|🠈 rgba() 🠈|--\\
+$brown-neon: #c56a1a; //--|🠈 rgba() 🠈|--\\
+$brown-dark: #1e120a; //--|🠈 rgba() 🠈|--\\
+$brown-light: #f3d7c2; //--|🠈 rgba() 🠈|--\\
+$brown-medium: #8a4b21; //--|🠈 rgba() 🠈|--\\
 
-$turquoise-neon: #00ffff; //--|🠈 rgba() 🠈|--\\
-$turquoise-dark: #0c1f24; //--|🠈 rgba() 🠈|--\\
-$turquoise-light: #b9d1d4; //--|🠈 rgba() 🠈|--\\
-$turquoise-medium: #115f70; //--|🠈 rgba() 🠈|--\\
+$grey-neon: #f5f5f5; //--|🠈 rgba() 🠈|--\\
+$grey-dark: #0b0b0c; //--|🠈 rgba() 🠈|--\\
+$grey-light: #d4d4d8; //--|🠈 rgba() 🠈|--\\
+$grey-medium: #52525b; //--|🠈 rgba() 🠈|--\\
+
+$turquoise-neon: #2de2e6; //--|🠈 rgba() 🠈|--\\
+$turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
+$turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
+$turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
+
+//--||🠋 App Status Mapping (your rules, wired to the refined palettes) 🠋|--\\
+// Find a Link
+// Opulence mode: you said “all colors” — these refined neons are designed to coexist
+// without looking like a casino sign that fell into a compiler error.
+
+// Log a Ticket
+$logTicket-pending: $orange-neon; // Pending  (waiting to be claimed)
+$logTicket-assigned: $blue-neon; // Assigned (claimed)
+$logTicket-resolved: $green-neon; // Resolved (done)
+$logTicket-deleted: $red-neon; // Deleted  (gone)
+
+// Track a Day
+$trackDay-pending: $yellow-neon; // Pending  (waiting approval)
+$trackDay-location: $red-neon; // Location (inconsistencies / edge cases)
+$trackDay-automatic: $grey-medium; // Automatic (it logged for you… it’s fine… it’s just sad)
+$trackDay-logged: $green-neon; // Green / Yay (you logged it yourself)

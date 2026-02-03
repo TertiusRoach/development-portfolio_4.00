@@ -1,0 +1,248 @@
+/* ------------------------------------------------------------  
+  Weather Animations — SUNNY  
+  File: style.css  
+  
+  Intent  
+  - Calm, grey-first composition.  
+  - Offline-friendly.  
+  - The whole scene drifts on a curved path (5 minutes end-to-end).  
+  - A slow rotating plate adds motion without noise.  
+  - Haze ribbons rise from below and fade at the edges.  
+  
+  Notes  
+  - Accent color is controlled by: --c-accent  
+  - Default accent is grey. JS can swap it for rare “easter egg” moments.  
+------------------------------------------------------------ */  
+  
+/* --- Reset --- */  
+* {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+}  
+  
+/* --- Palette: Grey Trinity (default) --- */  
+:root {  
+  /* Landing - Index or Landing - TraLogFin Trinity {A]pps | */  
+  --indexLand-neon: #fffffc;  
+  --indexLand-dark: #0e0e0b;  
+  --indexLand-light: #cecebe;  
+  --indexLand-medium: #737373;  
+  
+  /* Active working palette (grey-first) */  
+  --c-neon: var(--indexLand-neon);  
+  --c-dark: var(--indexLand-dark);  
+  --c-light: var(--indexLand-light);  
+  --c-medium: var(--indexLand-medium);  
+  
+  /* Accent is grey by default. JS can change this briefly. */  
+  --c-accent: var(--c-medium);  
+  
+  /* Motion */  
+  --fx-fade: 420ms;  
+  --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);  
+}  
+  
+body {  
+  background: #000;  
+  overflow: hidden;  
+  height: 100vh;  
+  color: var(--c-neon);  
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;  
+}  
+  
+/* ------------------------------------------------------------  
+  Stage  
+  The plate is still.  
+  The effect scene drifts above it.  
+------------------------------------------------------------ */  
+#stage {  
+  position: relative;  
+  width: 100%;  
+  height: 100vh;  
+  overflow: hidden;  
+  
+  /* Calm base plate (grey-first) */  
+  background:  
+    radial-gradient(ellipse at 18% 22%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 72%),  
+    radial-gradient(ellipse at 82% 78%, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0) 78%),  
+    linear-gradient(  
+      90deg,  
+      var(--c-dark) 0%,  
+      color-mix(in srgb, var(--c-light) 55%, var(--c-neon)) 50%,  
+      var(--c-light) 100%  
+    );  
+}  
+  
+/* ------------------------------------------------------------  
+  Effect lifecycle (swap-ready)  
+  When you add Cloudy/Windy later, reuse this.  
+------------------------------------------------------------ */  
+.effect {  
+  position: absolute;  
+  inset: 0;  
+  opacity: 1;  
+  transition: opacity var(--fx-fade) var(--fx-ease);  
+}  
+  
+.effect.is-exiting {  
+  opacity: 0;  
+}  
+  
+/* ------------------------------------------------------------  
+  SUNNY: Solar Haze  
+  The entire sunny scene drifts across the stage.  
+------------------------------------------------------------ */  
+.effect-sunny {  
+  /* Drift the entire scene: 5 minutes end-to-end, then returns */  
+  animation: sunny-drift 300s cubic-bezier(0.2, 0.8, 0.2, 1) infinite alternate;  
+  will-change: transform;  
+}  
+  
+/* Rotating atmospheric plate (soft, slow, low contrast) */  
+.effect-sunny::before {  
+  content: "";  
+  position: absolute;  
+  inset: -30%;  
+  opacity: 0.14;  
+  
+  background:  
+    conic-gradient(  
+      from 120deg at 50% 50%,  
+      rgba(255, 255, 255, 0.05),  
+      rgba(255, 255, 255, 0.00),  
+      rgba(0, 0, 0, 0.10),  
+      rgba(255, 255, 255, 0.03),  
+      rgba(0, 0, 0, 0.08),  
+      rgba(255, 255, 255, 0.05)  
+    );  
+  
+  filter: blur(42px);  
+  transform: translate3d(0, 0, 0);  
+  animation: sunny-rotate 48s linear infinite;  
+  pointer-events: none;  
+}  
+  
+/* Lens softness (vignettes) */  
+.effect-sunny::after {  
+  content: "";  
+  position: absolute;  
+  inset: 0;  
+  
+  background:  
+    radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 62%),  
+    radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.00) 58%);  
+  
+  pointer-events: none;  
+}  
+  
+/* Sun disc (centerpiece) */  
+.sun {  
+  position: absolute;  
+  left: 50%;  
+  top: 42%;  
+  width: min(34vmin, 320px);  
+  height: min(34vmin, 320px);  
+  transform: translate(-50%, -50%);  
+  border-radius: 999px;  
+  
+  background:  
+    radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.38) 34%, rgba(255, 255, 255, 0.00) 70%),  
+    radial-gradient(circle at 52% 52%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.00) 62%);  
+  
+  box-shadow:  
+    0 22px 60px rgba(0, 0, 0, 0.28),  
+    0 0 70px rgba(255, 255, 255, 0.12);  
+  
+  filter: blur(0.2px);  
+  pointer-events: none;  
+}  
+  
+/* Haze ribbons container (generated in JS) */  
+.haze-layer {  
+  position: absolute;  
+  inset: 0;  
+  pointer-events: none;  
+}  
+  
+/* Individual haze ribbon (generated) */  
+.haze {  
+  position: absolute;  
+  bottom: -12vh;  
+  left: 0;  
+  width: var(--w);  
+  height: var(--h);  
+  border-radius: 999px;  
+  
+  opacity: var(--op);  
+  
+  /*  
+    Ribbon pigment  
+    - Transparent at the ends  
+    - Strongest in the middle  
+    - Grey-first, accent-aware  
+  */  
+  background: linear-gradient(  
+    to top,  
+    rgba(255, 255, 255, 0.00),  
+    color-mix(in srgb, var(--c-accent) 35%, rgba(255, 255, 255, 0.18)) 50%,  
+    rgba(255, 255, 255, 0.00)  
+  );  
+  
+  filter: blur(var(--blur));  
+  transform: translate3d(var(--x), 0, 0) rotate(var(--rot));  
+  animation: haze-rise var(--dur) linear infinite;  
+  animation-delay: var(--delay);  
+}  
+  
+/* ------------------------------------------------------------  
+  Animations  
+------------------------------------------------------------ */  
+  
+/* Haze: rise + drift + slight squeeze */  
+@keyframes haze-rise {  
+  0% {  
+    transform: translate3d(var(--x), 0, 0) rotate(var(--rot)) scaleX(1);  
+  }  
+  100% {  
+    transform: translate3d(calc(var(--x) + var(--drift)), -130vh, 0) rotate(var(--rot)) scaleX(0.9);  
+  }  
+}  
+  
+/* Rotating plate: slow, continuous */  
+@keyframes sunny-rotate {  
+  0% {  
+    transform: rotate(0deg);  
+  }  
+  100% {  
+    transform: rotate(360deg);  
+  }  
+}  
+  
+/* Scene drift: curved path across the stage (5 minutes) */  
+@keyframes sunny-drift {  
+  0% {  
+    transform: translate3d(-14vw, 3vh, 0) rotate(-0.3deg);  
+  }  
+  50% {  
+    transform: translate3d(0vw, -2vh, 0) rotate(0deg);  
+  }  
+  100% {  
+    transform: translate3d(14vw, 3vh, 0) rotate(0.3deg);  
+  }  
+}  
+  
+/* ------------------------------------------------------------  
+  Reduced motion  
+  Keep it respectful. Keep it calm.  
+------------------------------------------------------------ */  
+@media (prefers-reduced-motion: reduce) {  
+  .effect,  
+  .effect-sunny,  
+  .effect-sunny::before,  
+  .haze {  
+    transition: none !important;  
+    animation: none !important;  
+    transform: none !important;  
+  }  
+}

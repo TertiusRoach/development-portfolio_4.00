@@ -1,0 +1,222 @@
+/* ------------------------------------------------------------
+  Weather Animations — WINDY
+  File: style.css
+------------------------------------------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --indexLand-neon: #fffffc;
+  --indexLand-dark: #0e0e0b;
+  --indexLand-light: #cecebe;
+  --indexLand-medium: #737373;
+
+  --c-neon: var(--indexLand-neon);
+  --c-dark: var(--indexLand-dark);
+  --c-light: var(--indexLand-light);
+  --c-medium: var(--indexLand-medium);
+
+  /* JS sets BOTH:
+     - --c-accent (hex)
+     - --accent-rgb (e.g. "115 115 115") so we can do alpha in CSS */
+  --c-accent: var(--c-medium);
+  --accent-rgb: 115 115 115;
+
+  --fx-fade: 420ms;
+  --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body {
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+  color: var(--c-neon);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Stage plate (still) */
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(ellipse at 18% 30%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(ellipse at 86% 78%, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0) 72%),
+    linear-gradient(110deg, #0e0e0b 0%, #d9d9cd 55%, #cecebe 100%);
+}
+
+/* Effect lifecycle */
+.effect {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity var(--fx-fade) var(--fx-ease);
+}
+.effect.is-exiting {
+  opacity: 0;
+}
+
+/* Windy root */
+.effect-windy {
+  animation: windy-drift 260s cubic-bezier(0.2, 0.8, 0.2, 1) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes windy-drift {
+  0%   { transform: translate3d(-4vw, 0.8vh, 0) rotate(-0.08deg); }
+  50%  { transform: translate3d(0vw, -0.6vh, 0) rotate(0deg); }
+  100% { transform: translate3d(4vw, 0.8vh, 0) rotate(0.08deg); }
+}
+
+/* Soft vignette + wind sheen */
+.effect-windy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 60%),
+    radial-gradient(ellipse at 50% 55%, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 58%),
+    linear-gradient(20deg, rgba(255, 255, 255, 0.00) 0%, rgb(var(--accent-rgb) / 0.12) 50%, rgba(255, 255, 255, 0.00) 100%);
+
+  opacity: 0.35;
+}
+
+.gust-layer,
+.debris-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Gust streak */
+.gust {
+  position: absolute;
+  left: -40vw;
+  top: var(--y);
+
+  width: var(--len);
+  height: var(--th);
+  border-radius: 999px;
+
+  opacity: var(--op);
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.00) 0%,
+    rgba(255, 255, 255, 0.18) 35%,
+    rgb(var(--accent-rgb) / 0.16) 55%,
+    rgba(255, 255, 255, 0.00) 100%
+  );
+
+  filter: blur(var(--blur));
+  transform: translate3d(0, 0, 0) rotate(var(--rot));
+  will-change: transform;
+
+  animation: gust-sweep var(--dur) cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: var(--delay);
+}
+
+/* extra strands */
+.gust::before,
+.gust::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 100%;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.00) 0%,
+    rgba(255, 255, 255, 0.10) 45%,
+    rgba(255, 255, 255, 0.00) 100%
+  );
+}
+
+.gust::before {
+  top: calc(var(--th) * -1.2);
+  filter: blur(calc(var(--blur) * 0.85));
+  transform: scaleX(0.72);
+  opacity: 0.55;
+}
+
+.gust::after {
+  top: calc(var(--th) * 1.25);
+  filter: blur(calc(var(--blur) * 0.95));
+  transform: scaleX(0.82);
+  opacity: 0.45;
+}
+
+@keyframes gust-sweep {
+  0% {
+    transform: translate3d(-10vw, 0, 0) rotate(var(--rot));
+    opacity: 0;
+  }
+  10% { opacity: var(--op); }
+  50% {
+    transform: translate3d(55vw, var(--curve), 0) rotate(var(--rot));
+  }
+  90% { opacity: var(--op); }
+  100% {
+    transform: translate3d(140vw, 0, 0) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* Debris speck */
+.speck {
+  position: absolute;
+  left: -10vw;
+  top: var(--y);
+
+  width: var(--s);
+  height: var(--s);
+  border-radius: 999px;
+
+  opacity: var(--op);
+  background: rgb(var(--accent-rgb) / 0.28);
+  filter: blur(var(--blur));
+
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+
+  animation: speck-fly var(--dur) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes speck-fly {
+  0% {
+    transform: translate3d(-10vw, 0, 0);
+    opacity: 0;
+  }
+  12% { opacity: var(--op); }
+  50% {
+    transform: translate3d(55vw, var(--dy), 0);
+  }
+  88% { opacity: var(--op); }
+  100% {
+    transform: translate3d(130vw, 0, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .effect,
+  .effect-windy,
+  .gust,
+  .speck {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

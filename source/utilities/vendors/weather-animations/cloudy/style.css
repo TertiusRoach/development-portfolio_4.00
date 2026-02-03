@@ -1,0 +1,281 @@
+/* ------------------------------------------------------------
+  Weather Animations — CLOUDY
+  File: style.css
+
+  Intent
+  - Grey-first overcast plate.
+  - Three depth layers.
+  - Calm motion.
+  - Clouds placed by JS into a 5×5 grid (3 per layer).
+
+  Structure
+  #stage
+    .effect.effect-cloudy
+      .layer.layer-back
+      .layer.layer-mid
+      .layer.layer-front
+------------------------------------------------------------ */
+
+/* --- Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Palette (grey-first) --- */
+:root {
+  /* Landing - Index or Landing - TraLogFin Trinity {A]pps | */
+  --indexLand-neon: #fffffc;
+  --indexLand-dark: #0e0e0b;
+  --indexLand-light: #cecebe;
+  --indexLand-medium: #737373;
+
+  /* Active working palette */
+  --c-neon: var(--indexLand-neon);
+  --c-dark: var(--indexLand-dark);
+  --c-light: var(--indexLand-light);
+  --c-medium: var(--indexLand-medium);
+
+  /* Accent defaults to grey. JS may switch it briefly. */
+  --c-accent: var(--c-medium);
+
+  /* Motion */
+  --fx-fade: 420ms;
+  --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body {
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+  color: var(--c-neon);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ------------------------------------------------------------
+  Stage
+  Base plate is still.
+  Clouds move above it.
+------------------------------------------------------------ */
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(ellipse at 22% 28%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(ellipse at 78% 82%, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0) 72%),
+    linear-gradient(
+      90deg,
+      var(--c-dark) 0%,
+      color-mix(in srgb, var(--c-light) 62%, var(--c-neon)) 55%,
+      var(--c-light) 100%
+    );
+}
+
+/* ------------------------------------------------------------
+  Effect lifecycle (swap-ready)
+------------------------------------------------------------ */
+.effect {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity var(--fx-fade) var(--fx-ease);
+}
+
+.effect.is-exiting {
+  opacity: 0;
+}
+
+/* ------------------------------------------------------------
+  CLOUDY effect
+  Scene drift is slow.
+  This reads as parallax because the plate stays still.
+------------------------------------------------------------ */
+.effect-cloudy {
+  animation: cloudy-drift 320s cubic-bezier(0.2, 0.8, 0.2, 1) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes cloudy-drift {
+  0% {
+    transform: translate3d(-7vw, 1.2vh, 0);
+  }
+  50% {
+    transform: translate3d(0vw, -0.8vh, 0);
+  }
+  100% {
+    transform: translate3d(7vw, 1.2vh, 0);
+  }
+}
+
+/* ------------------------------------------------------------
+  Layers
+  Back: smaller, softer, slower
+  Mid: baseline
+  Front: larger, clearer
+------------------------------------------------------------ */
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/*
+  Depth breathing (5 minutes)
+  This shifts blur in a small range.
+  It reads as depth, not as a new effect.
+*/
+.layer.layer-back {
+  opacity: 0.56;
+  animation: layer-breathe-back 300s ease-in-out infinite;
+}
+.layer.layer-mid {
+  opacity: 0.72;
+  animation: layer-breathe-mid 300s ease-in-out infinite;
+}
+.layer.layer-front {
+  opacity: 0.84;
+  animation: layer-breathe-front 300s ease-in-out infinite;
+}
+
+@keyframes layer-breathe-back {
+  0%   { filter: blur(2.2px) contrast(1.02); }
+  50%  { filter: blur(3.3px) contrast(1.04); }
+  100% { filter: blur(2.2px) contrast(1.02); }
+}
+@keyframes layer-breathe-mid {
+  0%   { filter: blur(1.4px) contrast(1.02); }
+  50%  { filter: blur(2.1px) contrast(1.04); }
+  100% { filter: blur(1.4px) contrast(1.02); }
+}
+@keyframes layer-breathe-front {
+  0%   { filter: blur(0.6px) contrast(1.01); }
+  50%  { filter: blur(1.1px) contrast(1.03); }
+  100% { filter: blur(0.6px) contrast(1.01); }
+}
+
+/* ------------------------------------------------------------
+  Cloud element (generated)
+  Placement
+  - JS sets --x and --y in percentages for 5×5 grid placement.
+  - Cloud anchors around its own center: translate(-50%, -50%).
+------------------------------------------------------------ */
+.cloud {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--w);
+  height: var(--h);
+  border-radius: 999px;
+
+  opacity: var(--op);
+
+  /*
+    Body pigment
+    - Grey-first
+    - Accent appears as a narrow highlight
+  */
+  background:
+    radial-gradient(
+      ellipse at 35% 45%,
+      color-mix(in srgb, var(--c-neon) 72%, var(--c-light)) 0%,
+      color-mix(in srgb, var(--c-neon) 36%, var(--c-medium)) 48%,
+      transparent 72%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      color-mix(in srgb, var(--c-accent) 22%, var(--c-neon)) 50%,
+      transparent 100%
+    );
+
+  box-shadow:
+    inset 0 -18px 28px rgba(0, 0, 0, 0.10),
+    0 18px 38px rgba(0, 0, 0, 0.18);
+
+  filter: blur(var(--blur));
+
+  transform: translate3d(-50%, -50%, 0) scale(var(--scale));
+  will-change: transform;
+
+  animation: cloud-float var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+/* Lobe 1 */
+.cloud::before {
+  content: "";
+  position: absolute;
+  left: 14%;
+  top: -26%;
+  width: 56%;
+  height: 80%;
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      ellipse at 40% 50%,
+      color-mix(in srgb, var(--c-neon) 70%, var(--c-light)) 0%,
+      color-mix(in srgb, var(--c-neon) 28%, var(--c-medium)) 52%,
+      transparent 74%
+    );
+
+  opacity: 0.92;
+}
+
+/* Lobe 2 */
+.cloud::after {
+  content: "";
+  position: absolute;
+  right: 10%;
+  top: -18%;
+  width: 60%;
+  height: 86%;
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      ellipse at 45% 52%,
+      color-mix(in srgb, var(--c-neon) 66%, var(--c-light)) 0%,
+      color-mix(in srgb, var(--c-neon) 24%, var(--c-medium)) 54%,
+      transparent 76%
+    );
+
+  opacity: 0.86;
+}
+
+/*
+  Float-in-place
+  - JS provides a drift vector per cloud: --dx and --dy
+  - Movement stays small and slow
+*/
+@keyframes cloud-float {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(var(--scale));
+  }
+  50% {
+    transform: translate3d(calc(-50% + var(--dx)), calc(-50% + var(--dy)), 0) scale(var(--scale));
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(var(--scale));
+  }
+}
+
+/* ------------------------------------------------------------
+  Reduced motion
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .effect,
+  .effect-cloudy,
+  .layer,
+  .cloud {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

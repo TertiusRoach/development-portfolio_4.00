@@ -1,0 +1,284 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+    <meta charset="UTF-8" />  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>Weather Animation — Windy (Busy)</title>  
+  
+    <style>  
+      * { margin: 0; padding: 0; box-sizing: border-box; }  
+  
+      :root {  
+        --c-dark: #0e0e0b;  
+        --c-light: #cecebe;  
+        --c-neon: #fffffc;  
+  
+        /* Accent (RGB triplet so we can do alpha) */  
+        --accent-rgb: 115 115 115;  
+      }  
+  
+      body {  
+        background: #000;  
+        overflow: hidden;  
+        height: 100vh;  
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;  
+      }  
+  
+      #stage {  
+        position: relative;  
+        width: 100%;  
+        height: 100vh;  
+        overflow: hidden;  
+  
+        background:  
+          radial-gradient(ellipse at 18% 30%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%),  
+          radial-gradient(ellipse at 86% 78%, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0) 72%),  
+          linear-gradient(110deg, var(--c-dark) 0%, #d9d9cd 55%, var(--c-light) 100%);  
+      }  
+  
+      .effect-windy {  
+        position: absolute;  
+        inset: 0;  
+        animation: windy-drift 28s ease-in-out infinite alternate;  
+        will-change: transform;  
+      }  
+  
+      @keyframes windy-drift {  
+        0%   { transform: translate3d(-2vw, 0.5vh, 0) rotate(-0.06deg); }  
+        50%  { transform: translate3d(0vw, -0.4vh, 0) rotate(0deg); }  
+        100% { transform: translate3d(2vw, 0.5vh, 0) rotate(0.06deg); }  
+      }  
+  
+      .effect-windy::before {  
+        content: "";  
+        position: absolute;  
+        inset: 0;  
+        pointer-events: none;  
+        background:  
+          radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 60%),  
+          radial-gradient(ellipse at 50% 55%, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 58%),  
+          linear-gradient(20deg,  
+            rgba(255, 255, 255, 0.00) 0%,  
+            rgb(var(--accent-rgb) / 0.12) 50%,  
+            rgba(255, 255, 255, 0.00) 100%);  
+        opacity: 0.42;  
+      }  
+  
+      .gust-layer, .debris-layer {  
+        position: absolute;  
+        inset: 0;  
+        pointer-events: none;  
+      }  
+  
+      /* Gust streaks (BUSY) */  
+      .gust {  
+        position: absolute;  
+        left: -60vw;  
+        top: var(--y);  
+  
+        width: var(--len);  
+        height: var(--th);  
+        border-radius: 999px;  
+  
+        opacity: var(--op);  
+  
+        background: linear-gradient(  
+          to right,  
+          rgba(255, 255, 255, 0.00) 0%,  
+          rgba(255, 255, 255, 0.34) 35%,  
+          rgb(var(--accent-rgb) / 0.30) 55%,  
+          rgba(255, 255, 255, 0.00) 100%  
+        );  
+  
+        filter: blur(var(--blur));  
+        transform: translate3d(0, 0, 0) rotate(var(--rot));  
+        will-change: transform;  
+  
+        animation: gust-sweep var(--dur) linear infinite;  
+        animation-delay: var(--delay);  
+      }  
+  
+      .gust::before,  
+      .gust::after {  
+        content: "";  
+        position: absolute;  
+        left: 10%;  
+        right: 10%;  
+        height: 100%;  
+        border-radius: 999px;  
+        background: linear-gradient(  
+          to right,  
+          rgba(255, 255, 255, 0.00) 0%,  
+          rgba(255, 255, 255, 0.16) 45%,  
+          rgba(255, 255, 255, 0.00) 100%  
+        );  
+      }  
+  
+      .gust::before {  
+        top: calc(var(--th) * -1.2);  
+        filter: blur(calc(var(--blur) * 0.8));  
+        transform: scaleX(0.75);  
+        opacity: 0.65;  
+      }  
+  
+      .gust::after {  
+        top: calc(var(--th) * 1.2);  
+        filter: blur(calc(var(--blur) * 0.9));  
+        transform: scaleX(0.85);  
+        opacity: 0.55;  
+      }  
+  
+      @keyframes gust-sweep {  
+        0%   { transform: translate3d(-18vw, 0, 0) rotate(var(--rot)); opacity: 0; }  
+        8%   { opacity: var(--op); }  
+        50%  { transform: translate3d(58vw, var(--curve), 0) rotate(var(--rot)); }  
+        92%  { opacity: var(--op); }  
+        100% { transform: translate3d(170vw, 0, 0) rotate(var(--rot)); opacity: 0; }  
+      }  
+  
+      /* Debris specks (BUSY) */  
+      .speck {  
+        position: absolute;  
+        left: -10vw;  
+        top: var(--y);  
+  
+        width: var(--s);  
+        height: var(--s);  
+        border-radius: 999px;  
+  
+        opacity: var(--op);  
+        background: rgb(var(--accent-rgb) / 0.32);  
+        filter: blur(var(--blur));  
+        will-change: transform;  
+  
+        animation: speck-fly var(--dur) linear infinite;  
+        animation-delay: var(--delay);  
+      }  
+  
+      @keyframes speck-fly {  
+        0%   { transform: translate3d(-10vw, 0, 0); opacity: 0; }  
+        10%  { opacity: var(--op); }  
+        50%  { transform: translate3d(65vw, var(--dy), 0); }  
+        90%  { opacity: var(--op); }  
+        100% { transform: translate3d(150vw, 0, 0); opacity: 0; }  
+      }  
+  
+      /* Reduced motion: instead of disabling, we SLOW it down */  
+      @media (prefers-reduced-motion: reduce) {  
+        .effect-windy { animation-duration: 80s !important; }  
+        .gust { animation-duration: calc(var(--dur) * 2) !important; }  
+        .speck { animation-duration: calc(var(--dur) * 2) !important; }  
+      }  
+    </style>  
+  </head>  
+  
+  <body>  
+    <main id="stage" aria-label="Windy animation stage"></main>  
+  
+    <script>  
+      // Busy Windy builder (inline)  
+  
+      const stage = document.getElementById("stage");  
+      const rand = (min, max) => min + Math.random() * (max - min);  
+  
+      const PALETTES = {  
+        landing: { neon: "#fffffc", medium: "#737373" },  
+        findLink: { neon: "#eb1224" },  
+        logTicket: { neon: "#132eff" },  
+        trackDay: { neon: "#00ff44" },  
+      };  
+  
+      const hexToRgbTriplet = (hex) => {  
+        const clean = hex.replace("#", "").trim();  
+        const full = clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean;  
+        const n = parseInt(full, 16);  
+        const r = (n >> 16) & 255;  
+        const g = (n >> 8) & 255;  
+        const b = n & 255;  
+        return `${r} ${g} ${b}`;  
+      };  
+  
+      function setAccent(hex) {  
+        document.documentElement.style.setProperty("--accent-rgb", hexToRgbTriplet(hex));  
+      }  
+  
+      function build() {  
+        stage.innerHTML = "";  
+  
+        const root = document.createElement("section");  
+        root.className = "effect-windy";  
+  
+        const gustLayer = document.createElement("div");  
+        gustLayer.className = "gust-layer";  
+  
+        const debrisLayer = document.createElement("div");  
+        debrisLayer.className = "debris-layer";  
+  
+        root.appendChild(gustLayer);  
+        root.appendChild(debrisLayer);  
+        stage.appendChild(root);  
+  
+        // BUSY knobs  
+        const GUSTS = 48;  
+        const SPECKS = 160;  
+  
+        for (let i = 0; i < GUSTS; i++) {  
+          const g = document.createElement("div");  
+          g.className = "gust";  
+  
+          g.style.setProperty("--y", `${rand(6, 94)}vh`);  
+          g.style.setProperty("--len", `${rand(180, 1100)}px`);  
+          g.style.setProperty("--th", `${rand(2, 12)}px`);  
+          g.style.setProperty("--blur", `${rand(0.2, 1.4)}px`);  
+          g.style.setProperty("--op", `${rand(0.16, 0.42)}`);  
+  
+          const dur = rand(1.6, 4.6);           // FAST  
+          g.style.setProperty("--dur", `${dur}s`);  
+          g.style.setProperty("--delay", `${rand(-dur, 0)}s`);  
+  
+          g.style.setProperty("--rot", `${rand(-22, -2)}deg`);  
+          g.style.setProperty("--curve", `${rand(-8, 8)}vh`);  
+  
+          gustLayer.appendChild(g);  
+        }  
+  
+        for (let i = 0; i < SPECKS; i++) {  
+          const s = document.createElement("div");  
+          s.className = "speck";  
+  
+          s.style.setProperty("--y", `${rand(8, 96)}vh`);  
+          s.style.setProperty("--s", `${rand(1.2, 4.2)}px`);  
+          s.style.setProperty("--blur", `${rand(0.0, 1.0)}px`);  
+          s.style.setProperty("--op", `${rand(0.06, 0.22)}`);  
+  
+          const dur = rand(2.4, 7.2);  
+          s.style.setProperty("--dur", `${dur}s`);  
+          s.style.setProperty("--delay", `${rand(-dur, 0)}s`);  
+          s.style.setProperty("--dy", `${rand(-4, 4)}vh`);  
+  
+          debrisLayer.appendChild(s);  
+        }  
+  
+        console.log("WINDY inline boot OK", {  
+          gusts: document.querySelectorAll(".gust").length,  
+          specks: document.querySelectorAll(".speck").length,  
+          reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,  
+        });  
+      }  
+  
+      // Base accent  
+      setAccent(PALETTES.landing.medium);  
+  
+      // Rare accent shifts (still fun even when busy)  
+      setInterval(() => {  
+        if (Math.random() > 0.08) return;  
+        const pool = [PALETTES.findLink.neon, PALETTES.logTicket.neon, PALETTES.trackDay.neon];  
+        setAccent(pool[Math.floor(Math.random() * pool.length)]);  
+        setTimeout(() => setAccent(PALETTES.landing.medium), 9000);  
+      }, 60000);  
+  
+      build();  
+    </script>  
+  </body>  
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Animation — Windy (TraLogFin Themes)</title>
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        /* Core palette vars (set by JS theme) */
+        --c-neon: #fffffc;
+        --c-dark: #0e0e0b;
+        --c-light: #cecebe;
+        --c-medium: #737373;
+
+        /* Same color as RGB triplet for alpha mixing */
+        --neon-rgb: 255 255 252;
+        --light-rgb: 206 206 190;
+        --medium-rgb: 115 115 115;
+        --dark-rgb: 14 14 11;
+
+        /* Scene knobs */
+        --wind-interval: 3000ms;  /* every 3 seconds */
+        --wind-burst: 2;          /* two gusts per burst */
+
+        --fx-vignette: 0.38;
+        --fx-sheen: 0.16;
+
+        /* Celestial position/size (theme can override) */
+        --orb-x: 14vw;
+        --orb-y: 12vh;
+        --orb-size: 210px;
+
+        /* Horizon (used in red theme mainly) */
+        --horizon-cut: 72%;
+        --ground-dark-rgb: 43 10 13; /* findLink-dark default-ish */
+        --ground-mid-rgb: 137 49 65;
+
+        /* Rain (green theme) */
+        --rain-op: 0;
+        --rain-density: 110; /* number of drops */
+
+        /* Clouds (red theme) */
+        --cloud-op: 0;
+      }
+
+      body {
+        height: 100vh;
+        overflow: hidden;
+        background: #000;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+
+      #stage {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        isolation: isolate;
+        background: #000;
+      }
+
+      /* Global “polish”: vignette + subtle film grain sheen */
+      #stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 50;
+
+        background:
+          radial-gradient(ellipse at 50% 45%,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,var(--fx-vignette)) 78%,
+            rgba(0,0,0,calc(var(--fx-vignette) + 0.12)) 100%),
+          linear-gradient(120deg,
+            rgba(255,255,255,0.00) 0%,
+            rgba(255,255,255,var(--fx-sheen)) 45%,
+            rgba(255,255,255,0.00) 100%);
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+      }
+
+      /* Starfield layer */
+      .stars {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        opacity: 0; /* enabled per theme */
+      }
+
+      .star {
+        position: absolute;
+        width: var(--s);
+        height: var(--s);
+        border-radius: 999px;
+        left: var(--x);
+        top: var(--y);
+        opacity: var(--op);
+
+        background: radial-gradient(circle,
+          rgba(255,255,255,0.95) 0%,
+          rgba(255,255,255,0.28) 55%,
+          rgba(255,255,255,0.00) 100%);
+
+        box-shadow:
+          0 0 10px rgb(var(--neon-rgb) / 0.22),
+          0 0 22px rgb(var(--neon-rgb) / 0.10);
+
+        animation: twinkle var(--dur) ease-in-out infinite;
+        animation-delay: var(--delay);
+        transform: translateZ(0);
+      }
+
+      @keyframes twinkle {
+        0%, 100% { transform: scale(0.86); opacity: calc(var(--op) * 0.72); }
+        50%      { transform: scale(1.18); opacity: var(--op); }
+      }
+
+      /* Celestial orb base */
+      .orb {
+        position: absolute;
+        left: var(--orb-x);
+        top: var(--orb-y);
+        width: var(--orb-size);
+        height: var(--orb-size);
+        border-radius: 999px;
+        z-index: 6;
+        pointer-events: none;
+        transform: translateZ(0);
+      }
+
+      /* Moon (blue theme) */
+      .orb.moon {
+        background: radial-gradient(circle at 30% 30%,
+          rgba(255,255,255,0.92) 0%,
+          rgba(210,235,255,0.85) 32%,
+          rgba(90,140,255,0.28) 68%,
+          rgba(20,35,80,0.10) 100%);
+
+        box-shadow:
+          0 0 40px rgb(19 46 255 / 0.18),
+          0 0 110px rgb(19 46 255 / 0.14),
+          inset 0 -18px 34px rgba(0,0,0,0.20),
+          inset 0 10px 18px rgba(255,255,255,0.22);
+
+        filter: saturate(1.05);
+        animation: orb-breathe 5.5s ease-in-out infinite;
+      }
+
+      /* Sun (green/red themes) */
+      .orb.sun {
+        background: radial-gradient(circle at 35% 35%,
+          rgba(255,255,255,0.88) 0%,
+          rgba(255,255,220,0.92) 22%,
+          rgba(255,220,110,0.78) 48%,
+          rgba(255,170,40,0.30) 75%,
+          rgba(255,170,40,0.05) 100%);
+
+        box-shadow:
+          0 0 50px rgb(var(--neon-rgb) / 0.22),
+          0 0 150px rgb(var(--neon-rgb) / 0.12),
+          inset 0 -18px 34px rgba(0,0,0,0.18),
+          inset 0 10px 18px rgba(255,255,255,0.18);
+
+        animation: orb-breathe 4.2s ease-in-out infinite;
+      }
+
+      @keyframes orb-breathe {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.03); }
+      }
+
+      /* Clouds (red theme) */
+      .clouds {
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        pointer-events: none;
+        opacity: var(--cloud-op);
+      }
+
+      .cloud {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--w);
+        height: var(--h);
+        opacity: var(--op);
+
+        filter: blur(var(--blur));
+        transform: translateZ(0);
+        animation: cloud-drift var(--dur) linear infinite;
+        animation-delay: var(--delay);
+
+        background: radial-gradient(ellipse at 30% 40%,
+          rgba(255,180,210,0.62) 0%,
+          rgba(235,18,36,0.20) 52%,
+          rgba(255,180,210,0.00) 100%);
+
+        box-shadow:
+          0 0 30px rgba(235,18,36,0.16),
+          0 0 70px rgba(255,140,190,0.10);
+        border-radius: 999px;
+      }
+
+      .cloud::before,
+      .cloud::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        background: inherit;
+      }
+
+      .cloud::before {
+        width: 62%;
+        height: 78%;
+        left: 10%;
+        top: -20%;
+        opacity: 0.9;
+      }
+
+      .cloud::after {
+        width: 58%;
+        height: 70%;
+        left: 44%;
+        top: -10%;
+        opacity: 0.85;
+      }
+
+      @keyframes cloud-drift {
+        0%   { transform: translate3d(-18vw, 0, 0); }
+        100% { transform: translate3d(140vw, 0, 0); }
+      }
+
+      /* Rain overlay (green theme) */
+      .rain {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: var(--rain-op);
+        mix-blend-mode: screen;
+      }
+
+      .drop {
+        position: absolute;
+        top: -30vh;
+        left: var(--x);
+        width: var(--w);
+        height: var(--h);
+        border-radius: 0 0 6px 6px;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.00) 0%,
+          rgb(var(--neon-rgb) / 0.44) 70%,
+          rgb(var(--neon-rgb) / 0.14) 100%
+        );
+
+        filter: blur(0.2px);
+        transform: skewX(-18deg);
+        animation: rain-fall var(--dur) linear infinite;
+        animation-delay: var(--delay);
+        opacity: var(--op);
+      }
+
+      @keyframes rain-fall {
+        0%   { transform: translate3d(0, -30vh, 0) skewX(-18deg); opacity: 0; }
+        8%   { opacity: var(--op); }
+        100% { transform: translate3d(12vw, 140vh, 0) skewX(-18deg); opacity: 0; }
+      }
+
+      /* Wind gusts (sharp + quick) */
+      .gust-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        pointer-events: none;
+      }
+
+      .gust {
+        position: absolute;
+        left: -40vw;
+        top: var(--y);
+        width: var(--len);
+        height: var(--th);
+        border-radius: 999px;
+        opacity: var(--op);
+        transform: rotate(var(--rot));
+        filter: drop-shadow(0 0 18px rgb(var(--neon-rgb) / 0.22));
+
+        background: linear-gradient(
+          to right,
+          rgba(255,255,255,0.00) 0%,
+          rgb(var(--neon-rgb) / 0.86) 42%,
+          rgb(var(--light-rgb) / 0.40) 60%,
+          rgba(255,255,255,0.00) 100%
+        );
+
+        animation: gust-fast var(--dur) cubic-bezier(0.2, 0.9, 0.2, 1) 1;
+        will-change: transform, opacity;
+      }
+
+      .gust::before,
+      .gust::after {
+        content: "";
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        height: 100%;
+        border-radius: 999px;
+
+        background: linear-gradient(
+          to right,
+          rgba(255,255,255,0.00) 0%,
+          rgb(var(--neon-rgb) / 0.22) 45%,
+          rgba(255,255,255,0.00) 100%
+        );
+      }
+
+      .gust::before {
+        top: calc(var(--th) * -1.15);
+        opacity: 0.8;
+      }
+
+      .gust::after {
+        top: calc(var(--th) * 1.15);
+        opacity: 0.65;
+      }
+
+      @keyframes gust-fast {
+        0%   { transform: translate3d(-14vw, 0, 0) rotate(var(--rot)); opacity: 0; }
+        10%  { opacity: var(--op); }
+        55%  { transform: translate3d(65vw, var(--curve), 0) rotate(var(--rot)); }
+        100% { transform: translate3d(170vw, 0, 0) rotate(var(--rot)); opacity: 0; }
+      }
+
+      /* Reduced motion: slow (don’t disable) */
+      @media (prefers-reduced-motion: reduce) {
+        :root { --wind-interval: 4500ms; }
+        .gust { animation-duration: calc(var(--dur) * 1.9); }
+        .drop { animation-duration: calc(var(--dur) * 1.7); }
+        .cloud { animation-duration: calc(var(--dur) * 1.6); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="stage" aria-label="Windy animation stage">
+      <section class="stars" id="stars" aria-hidden="true"></section>
+      <div class="orb" id="orb" aria-hidden="true"></div>
+      <section class="clouds" id="clouds" aria-hidden="true"></section>
+      <section class="rain" id="rain" aria-hidden="true"></section>
+      <section class="gust-layer" id="gustLayer" aria-hidden="true"></section>
+    </main>
+
+    <script>
+      // Palettes (your references)
+      const PALETTES = {
+        landing: {
+          neon: "#fffffc",
+          dark: "#0e0e0b",
+          light: "#cecebe",
+          medium: "#737373",
+        },
+        logTicket: {
+          neon: "#132eff",
+          dark: "#070e27",
+          light: "#8facec",
+          medium: "#1f3584",
+        },
+        findLink: {
+          neon: "#eb1224",
+          dark: "#2b0a0d",
+          light: "#e2bcca",
+          medium: "#893141",
+        },
+        trackDay: {
+          neon: "#00ff44",
+          dark: "#072007",
+          light: "#afebb2",
+          medium: "#39853b",
+        },
+      };
+
+      const stage = document.getElementById("stage");
+      const starsEl = document.getElementById("stars");
+      const orbEl = document.getElementById("orb");
+      const gustLayer = document.getElementById("gustLayer");
+      const rainEl = document.getElementById("rain");
+      const cloudsEl = document.getElementById("clouds");
+
+      const rand = (min, max) => min + Math.random() * (max - min);
+      const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      function hexToRgbTriplet(hex) {
+        const clean = hex.replace("#", "").trim();
+        const full = clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean;
+        const n = parseInt(full, 16);
+        const r = (n >> 16) & 255;
+        const g = (n >> 8) & 255;
+        const b = n & 255;
+        return `${r} ${g} ${b}`;
+      }
+
+      function setVar(k, v) {
+        document.documentElement.style.setProperty(k, v);
+      }
+
+      // Themes: Blue (moon+stars), Green (sun+rain), Red (sun+pink clouds+horizon)
+      const THEMES = {
+        blue: {
+          name: "Log a Ticket — Moon & Stars",
+          palette: PALETTES.logTicket,
+          stageBg: () => {
+            // bottom dark -> lighter (as requested)
+            stage.style.background = `
+              radial-gradient(ellipse at 18% 26%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.00) 62%),
+              radial-gradient(ellipse at 75% 22%, rgba(19,46,255,0.12) 0%, rgba(19,46,255,0.00) 58%),
+              linear-gradient(0deg,
+                ${PALETTES.logTicket.dark} 0%,
+                ${PALETTES.logTicket.medium} 42%,
+                ${PALETTES.logTicket.light} 100%
+              )
+            `;
+          },
+          orb: () => {
+            orbEl.className = "orb moon";
+            setVar("--orb-x", "8vw");
+            setVar("--orb-y", "10vh");
+            setVar("--orb-size", "210px");
+          },
+          stars: () => {
+            starsEl.style.opacity = "1";
+            buildStars(95);
+          },
+          rain: () => {
+            setVar("--rain-op", "0");
+            rainEl.innerHTML = "";
+          },
+          clouds: () => {
+            setVar("--cloud-op", "0");
+            cloudsEl.innerHTML = "";
+          },
+          extraVars: () => {
+            setVar("--fx-vignette", "0.44");
+            setVar("--fx-sheen", "0.10");
+          },
+        },
+
+        green: {
+          name: "Track a Day — Sun & Rain",
+          palette: PALETTES.trackDay,
+          stageBg: () => {
+            // “sophisticated green” (stylish, not neon soup)
+            stage.style.background = `
+              radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.00) 62%),
+              radial-gradient(ellipse at 20% 70%, rgba(0,255,68,0.10) 0%, rgba(0,255,68,0.00) 60%),
+              linear-gradient(180deg,
+                ${PALETTES.trackDay.light} 0%,
+                ${PALETTES.trackDay.medium} 48%,
+                ${PALETTES.trackDay.dark} 100%
+              )
+            `;
+          },
+          orb: () => {
+            orbEl.className = "orb sun";
+            setVar("--orb-x", "50%");
+            setVar("--orb-y", "10vh");
+            setVar("--orb-size", "210px");
+            // center orb
+            orbEl.style.left = "50%";
+            orbEl.style.transform = "translateX(-50%)";
+          },
+          stars: () => {
+            starsEl.style.opacity = "0";
+            starsEl.innerHTML = "";
+          },
+          rain: () => {
+            setVar("--rain-op", "0.85");
+            buildRain(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--rain-density"), 10) || 110);
+          },
+          clouds: () => {
+            setVar("--cloud-op", "0");
+            cloudsEl.innerHTML = "";
+          },
+          extraVars: () => {
+            setVar("--fx-vignette", "0.34");
+            setVar("--fx-sheen", "0.14");
+          },
+        },
+
+        red: {
+          name: "Find a Link — Pink Clouds & Sun over Maroon",
+          palette: PALETTES.findLink,
+          stageBg: () => {
+            // sky + maroon surface (horizon cut)
+            stage.style.background = `
+              radial-gradient(ellipse at 55% 38%, rgba(255,210,235,0.30) 0%, rgba(255,210,235,0.00) 55%),
+              linear-gradient(180deg,
+                ${PALETTES.findLink.light} 0%,
+                #f0c1d6 40%,
+                #c67b9d 62%,
+                rgb(${getComputedStyle(document.documentElement).getPropertyValue("--ground-mid-rgb")}) var(--horizon-cut),
+                rgb(${getComputedStyle(document.documentElement).getPropertyValue("--ground-dark-rgb")}) 100%
+              )
+            `;
+          },
+          orb: () => {
+            orbEl.className = "orb sun";
+            orbEl.style.left = ""; // reset center override
+            orbEl.style.transform = ""; // reset
+            setVar("--orb-x", "46vw");
+            setVar("--orb-y", "42vh");
+            setVar("--orb-size", "230px");
+          },
+          stars: () => {
+            starsEl.style.opacity = "0";
+            starsEl.innerHTML = "";
+          },
+          rain: () => {
+            setVar("--rain-op", "0");
+            rainEl.innerHTML = "";
+          },
+          clouds: () => {
+            setVar("--cloud-op", "0.92");
+            buildClouds(7);
+          },
+          extraVars: () => {
+            setVar("--fx-vignette", "0.42");
+            setVar("--fx-sheen", "0.12");
+            setVar("--horizon-cut", "68%");
+            setVar("--ground-dark-rgb", hexToRgbTriplet(PALETTES.findLink.dark));
+            setVar("--ground-mid-rgb", hexToRgbTriplet(PALETTES.findLink.medium));
+          },
+        },
+      };
+
+      // Build star elements
+      function buildStars(count) {
+        starsEl.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+          const s = document.createElement("span");
+          s.className = "star";
+
+          const size = rand(1.2, 3.6);
+          const op = rand(0.16, 0.62);
+          const dur = rand(1.6, 4.8);
+          const delay = rand(-dur, 0);
+
+          s.style.setProperty("--s", `${size}px`);
+          s.style.setProperty("--x", `${rand(2, 98)}vw`);
+          s.style.setProperty("--y", `${rand(2, 58)}vh`);
+          s.style.setProperty("--op", op.toFixed(3));
+          s.style.setProperty("--dur", `${dur}s`);
+          s.style.setProperty("--delay", `${delay}s`);
+
+          starsEl.appendChild(s);
+        }
+      }
+
+      // Build rain drops (green theme)
+      function buildRain(count) {
+        rainEl.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+          const d = document.createElement("span");
+          d.className = "drop";
+
+          const w = rand(1.2, 2.8);
+          const h = rand(90, 220);
+          const x = rand(-10, 110);
+
+          const dur = rand(0.8, 1.9);
+          const delay = rand(-dur, 0);
+          const op = rand(0.10, 0.38);
+
+          d.style.setProperty("--w", `${w}px`);
+          d.style.setProperty("--h", `${h}px`);
+          d.style.setProperty("--x", `${x}vw`);
+          d.style.setProperty("--dur", `${dur}s`);
+          d.style.setProperty("--delay", `${delay}s`);
+          d.style.setProperty("--op", op.toFixed(3));
+
+          rainEl.appendChild(d);
+        }
+      }
+
+      // Build pink clouds (red theme)
+      function buildClouds(count) {
+        cloudsEl.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+          const c = document.createElement("div");
+          c.className = "cloud";
+
+          const w = rand(220, 520);
+          const h = rand(90, 180);
+          const y = rand(10, 40);  // upper sky
+          const blur = rand(0.8, 2.2);
+          const op = rand(0.22, 0.55);
+
+          const dur = rand(22, 48);
+          const delay = rand(-dur, 0);
+
+          c.style.setProperty("--w", `${w}px`);
+          c.style.setProperty("--h", `${h}px`);
+          c.style.setProperty("--x", `${rand(-10, 90)}vw`);
+          c.style.setProperty("--y", `${y}vh`);
+          c.style.setProperty("--blur", `${blur}px`);
+          c.style.setProperty("--op", op.toFixed(3));
+          c.style.setProperty("--dur", `${dur}s`);
+          c.style.setProperty("--delay", `${delay}s`);
+
+          cloudsEl.appendChild(c);
+        }
+      }
+
+      // Gust spawner: two sharp quick gusts every 3s
+      function spawnGust() {
+        const g = document.createElement("div");
+        g.className = "gust";
+
+        const y = rand(8, 92);
+        const len = rand(260, 980);
+        const th = rand(2, 8);
+
+        const op = rand(0.22, 0.55);
+        const dur = rand(0.55, 0.95); // QUICK
+        const rot = rand(-18, -4);
+        const curve = `${rand(-8.0, 8.0)}vh`;
+
+        g.style.setProperty("--y", `${y}vh`);
+        g.style.setProperty("--len", `${len}px`);
+        g.style.setProperty("--th", `${th}px`);
+        g.style.setProperty("--op", op.toFixed(3));
+        g.style.setProperty("--dur", `${dur}s`);
+        g.style.setProperty("--rot", `${rot}deg`);
+        g.style.setProperty("--curve", curve);
+
+        gustLayer.appendChild(g);
+
+        // Cleanup after animation ends
+        window.setTimeout(() => g.remove(), Math.ceil(dur * 1000) + 120);
+      }
+
+      function startWind() {
+        const interval = getComputedStyle(document.documentElement).getPropertyValue("--wind-interval").trim() || "3000ms";
+        const ms = interval.endsWith("ms") ? parseFloat(interval) : (interval.endsWith("s") ? parseFloat(interval) * 1000 : 3000);
+
+        // Kick instantly so user sees motion immediately
+        spawnGust();
+        window.setTimeout(spawnGust, 140);
+
+        window.setInterval(() => {
+          spawnGust();
+          window.setTimeout(spawnGust, rand(90, 260));
+        }, ms);
+      }
+
+      function applyTheme(key) {
+        const theme = THEMES[key];
+        if (!theme) return;
+
+        // Set palette vars for “psych pleasing” consistent shading
+        const p = theme.palette;
+
+        setVar("--c-neon", p.neon);
+        setVar("--c-dark", p.dark);
+        setVar("--c-light", p.light);
+        setVar("--c-medium", p.medium);
+
+        setVar("--neon-rgb", hexToRgbTriplet(p.neon));
+        setVar("--dark-rgb", hexToRgbTriplet(p.dark));
+        setVar("--light-rgb", hexToRgbTriplet(p.light));
+        setVar("--medium-rgb", hexToRgbTriplet(p.medium));
+
+        theme.extraVars();
+        theme.stageBg();
+        theme.orb();
+        theme.stars();
+        theme.rain();
+        theme.clouds();
+
+        console.log("Theme:", theme.name);
+      }
+
+      function getThemeFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const v = (params.get("theme") || "").toLowerCase().trim();
+        if (v === "blue" || v === "green" || v === "red") return v;
+        return null;
+      }
+
+      // Boot
+      (function boot() {
+        const forced = getThemeFromURL();
+        const key = forced || pick(["blue", "green", "red"]);
+        applyTheme(key);
+        startWind();
+      })();
+    </script>
+  </body>
+</html>

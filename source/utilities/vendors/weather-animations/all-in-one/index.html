@@ -1,0 +1,964 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+    <meta charset="UTF-8" />  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>TraLogFin Weather — Windy Themes (Blue / Green / Red)</title>  
+  
+    <style>  
+      /* ============================================================  
+        TraLogFin Weather (One Page)  
+        - 3 themes: blue (Log a Ticket), green (Track a Day), red (Find a Link)  
+        - Sharp fast gusts: 2 random gusts every 3 seconds  
+        - Green theme rain: rendered on a <canvas>  
+        - Blue theme moon: crescent + glow pulse (1 second every ~60 seconds)  
+        - Blue theme wind: only 10% of the time (because it’s moody like that)  
+        - No abbreviations in code variables (readable on purpose)  
+      ============================================================ */  
+  
+      * {  
+        margin: 0;  
+        padding: 0;  
+        box-sizing: border-box;  
+      }  
+  
+      :root {  
+        /* ------------------------------------------------------------  
+          Theme variables (JavaScript sets these)  
+        ------------------------------------------------------------ */  
+        --color-neon: #fffffc;  
+        --color-dark: #0e0e0b;  
+        --color-light: #cecebe;  
+        --color-medium: #737373;  
+  
+        /* Same colors as RGB triplets so we can do alpha blending cleanly */  
+        --color-neon-rgb: 255 255 252;  
+        --color-dark-rgb: 14 14 11;  
+        --color-light-rgb: 206 206 190;  
+        --color-medium-rgb: 115 115 115;  
+  
+        /* Scene knobs */  
+        --wind-burst-interval: 3000ms; /* every 3 seconds */  
+        --wind-gusts-per-burst: 2;  
+  
+        /* Cinematic polish knobs */  
+        --vignette-strength: 0.42;  
+        --sheen-strength: 0.12;  
+  
+        /* Orb placement */  
+        --orb-left: 14vw;  
+        --orb-top: 12vh;  
+        --orb-size: 220px;  
+  
+        /* Blue moon pulse intensity */  
+        --moon-glow-strength: 0.18; /* normal */  
+        --moon-glow-strength-intense: 0.55; /* pulse */  
+  
+        /* Layer toggles */  
+        --stars-opacity: 0;  
+        --clouds-opacity: 0;  
+  
+        /* Green rain toggle */  
+        --rain-opacity: 0;  
+  
+        /* Horizon vibe (red theme uses it) */  
+        --horizon-cut: 68%;  
+      }  
+  
+      body {  
+        height: 100vh;  
+        overflow: hidden;  
+        background: #000;  
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Stage  
+        - Background is applied per theme (JavaScript sets #stage background)  
+      ------------------------------------------------------------ */  
+      #stage {  
+        position: relative;  
+        width: 100%;  
+        height: 100vh;  
+        overflow: hidden;  
+        isolation: isolate; /* lets blend modes behave like adults */  
+        background: #000;  
+      }  
+  
+      /* Film polish: vignette + faint diagonal sheen */  
+      #stage::before {  
+        content: "";  
+        position: absolute;  
+        inset: 0;  
+        pointer-events: none;  
+        z-index: 90;  
+  
+        background:  
+          radial-gradient(  
+            ellipse at 50% 45%,  
+            rgba(0, 0, 0, 0) 0%,  
+            rgba(0, 0, 0, var(--vignette-strength)) 78%,  
+            rgba(0, 0, 0, calc(var(--vignette-strength) + 0.14)) 100%  
+          ),  
+          linear-gradient(  
+            120deg,  
+            rgba(255, 255, 255, 0.00) 0%,  
+            rgba(255, 255, 255, var(--sheen-strength)) 45%,  
+            rgba(255, 255, 255, 0.00) 100%  
+          );  
+        mix-blend-mode: multiply;  
+        opacity: 0.92;  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Stars (blue theme)  
+      ------------------------------------------------------------ */  
+      .stars {  
+        position: absolute;  
+        inset: 0;  
+        z-index: 5;  
+        pointer-events: none;  
+        opacity: var(--stars-opacity);  
+      }  
+  
+      .star {  
+        position: absolute;  
+        left: var(--star-left);  
+        top: var(--star-top);  
+        width: var(--star-size);  
+        height: var(--star-size);  
+        border-radius: 999px;  
+        opacity: var(--star-opacity);  
+  
+        background: radial-gradient(  
+          circle,  
+          rgba(255, 255, 255, 0.98) 0%,  
+          rgba(255, 255, 255, 0.26) 58%,  
+          rgba(255, 255, 255, 0.00) 100%  
+        );  
+  
+        box-shadow:  
+          0 0 10px rgb(var(--color-neon-rgb) / 0.22),  
+          0 0 28px rgb(var(--color-neon-rgb) / 0.10);  
+  
+        animation: starTwinkle var(--star-duration) ease-in-out infinite;  
+        animation-delay: var(--star-delay);  
+        transform: translateZ(0);  
+      }  
+  
+      @keyframes starTwinkle {  
+        0%, 100% {  
+          transform: scale(0.86);  
+          opacity: calc(var(--star-opacity) * 0.72);  
+        }  
+        50% {  
+          transform: scale(1.18);  
+          opacity: var(--star-opacity);  
+        }  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Orb (Moon or Sun)  
+      ------------------------------------------------------------ */  
+      .orb {  
+        position: absolute;  
+        left: var(--orb-left);  
+        top: var(--orb-top);  
+        width: var(--orb-size);  
+        height: var(--orb-size);  
+        border-radius: 999px;  
+        z-index: 20;  
+        pointer-events: none;  
+        transform: translateZ(0);  
+      }  
+  
+      /* Blue theme: crescent moon (made with an overlay “bite”) */  
+      .orb.moon {  
+        /* Base moon sphere */  
+        background: radial-gradient(  
+          circle at 30% 30%,  
+          rgba(255, 255, 255, 0.92) 0%,  
+          rgba(210, 235, 255, 0.86) 36%,  
+          rgb(var(--color-neon-rgb) / 0.24) 70%,  
+          rgba(0, 0, 0, 0.08) 100%  
+        );  
+  
+        /* Glow: controlled by a CSS variable so we can “pulse” */  
+        box-shadow:  
+          0 0 34px rgb(var(--color-neon-rgb) / var(--moon-glow-strength)),  
+          0 0 110px rgb(var(--color-neon-rgb) / calc(var(--moon-glow-strength) * 0.75)),  
+          0 0 200px rgb(var(--color-neon-rgb) / calc(var(--moon-glow-strength) * 0.35)),  
+          inset 0 -18px 34px rgba(0, 0, 0, 0.18),  
+          inset 0 10px 18px rgba(255, 255, 255, 0.16);  
+  
+        animation: orbBreatheMoon 6.2s ease-in-out infinite;  
+      }  
+  
+      /* The “dark circle overlay bite” that creates the crescent */  
+      .orb.moon::after {  
+        content: "";  
+        position: absolute;  
+        inset: 0;  
+        border-radius: 999px;  
+  
+        /* The bite color uses theme dark to keep it integrated */  
+        background: radial-gradient(  
+          circle at 40% 40%,  
+          rgb(var(--color-dark-rgb) / 0.98) 0%,  
+          rgb(var(--color-dark-rgb) / 0.92) 60%,  
+          rgb(var(--color-dark-rgb) / 0.00) 100%  
+        );  
+  
+        /* Offset makes it a crescent */  
+        transform: translate3d(26%, -6%, 0);  
+        filter: blur(0.2px);  
+      }  
+  
+      /* “Most intense glow” pulse class (blue theme only uses it) */  
+      .orb.moon.is-intense-glow {  
+        box-shadow:  
+          0 0 44px rgb(var(--color-neon-rgb) / var(--moon-glow-strength-intense)),  
+          0 0 140px rgb(var(--color-neon-rgb) / calc(var(--moon-glow-strength-intense) * 0.72)),  
+          0 0 260px rgb(var(--color-neon-rgb) / calc(var(--moon-glow-strength-intense) * 0.34)),  
+          inset 0 -18px 34px rgba(0, 0, 0, 0.18),  
+          inset 0 10px 18px rgba(255, 255, 255, 0.18);  
+      }  
+  
+      @keyframes orbBreatheMoon {  
+        0%, 100% { transform: scale(1); }  
+        50% { transform: scale(1.02); }  
+      }  
+  
+      /* Sun style (green + red) */  
+      .orb.sun {  
+        background: radial-gradient(  
+          circle at 35% 35%,  
+          rgba(255, 255, 255, 0.88) 0%,  
+          rgba(255, 255, 220, 0.92) 22%,  
+          rgba(255, 220, 110, 0.78) 48%,  
+          rgba(255, 170, 40, 0.30) 75%,  
+          rgba(255, 170, 40, 0.05) 100%  
+        );  
+  
+        box-shadow:  
+          0 0 50px rgb(var(--color-neon-rgb) / 0.22),  
+          0 0 160px rgb(var(--color-neon-rgb) / 0.12),  
+          inset 0 -18px 34px rgba(0, 0, 0, 0.16),  
+          inset 0 10px 18px rgba(255, 255, 255, 0.14);  
+  
+        animation: orbBreatheSun 4.4s ease-in-out infinite;  
+      }  
+  
+      @keyframes orbBreatheSun {  
+        0%, 100% { transform: scale(1); }  
+        50% { transform: scale(1.03); }  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Clouds (red theme + subtle blue theme)  
+        - These hover above the orb for that “I am in control” vibe.  
+      ------------------------------------------------------------ */  
+      .clouds {  
+        position: absolute;  
+        inset: 0;  
+        z-index: 30;  
+        pointer-events: none;  
+        opacity: var(--clouds-opacity);  
+      }  
+  
+      .cloud {  
+        position: absolute;  
+        left: var(--cloud-left);  
+        top: var(--cloud-top);  
+        width: var(--cloud-width);  
+        height: var(--cloud-height);  
+        opacity: var(--cloud-opacity);  
+        border-radius: 999px;  
+  
+        /* Pink neon cloud body (tuned per theme by using neon + light) */  
+        background: radial-gradient(  
+          ellipse at 30% 40%,  
+          rgb(var(--color-light-rgb) / 0.58) 0%,  
+          rgb(var(--color-neon-rgb) / 0.22) 52%,  
+          rgb(var(--color-light-rgb) / 0.00) 100%  
+        );  
+  
+        box-shadow:  
+          0 0 30px rgb(var(--color-neon-rgb) / 0.18),  
+          0 0 80px rgb(var(--color-neon-rgb) / 0.10);  
+  
+        filter: blur(var(--cloud-blur));  
+        transform: translateZ(0);  
+        animation: cloudDrift var(--cloud-duration) linear infinite;  
+        animation-delay: var(--cloud-delay);  
+      }  
+  
+      .cloud::before,  
+      .cloud::after {  
+        content: "";  
+        position: absolute;  
+        border-radius: 999px;  
+        background: inherit;  
+      }  
+  
+      .cloud::before {  
+        width: 62%;  
+        height: 78%;  
+        left: 10%;  
+        top: -22%;  
+        opacity: 0.9;  
+      }  
+  
+      .cloud::after {  
+        width: 58%;  
+        height: 70%;  
+        left: 44%;  
+        top: -10%;  
+        opacity: 0.85;  
+      }  
+  
+      @keyframes cloudDrift {  
+        0% { transform: translate3d(-18vw, 0, 0); }  
+        100% { transform: translate3d(140vw, 0, 0); }  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Green theme rain canvas  
+        - We draw “drops” as diagonal strokes, like your <i> vibe,  
+          but canvas keeps it clean and fast.  
+      ------------------------------------------------------------ */  
+      #rainCanvas {  
+        position: absolute;  
+        inset: 0;  
+        z-index: 40;  
+        pointer-events: none;  
+        opacity: var(--rain-opacity);  
+        mix-blend-mode: screen;  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Wind gusts (sharp + quick)  
+      ------------------------------------------------------------ */  
+      .gust-layer {  
+        position: absolute;  
+        inset: 0;  
+        z-index: 60;  
+        pointer-events: none;  
+      }  
+  
+      .gust {  
+        position: absolute;  
+        left: -42vw;  
+        top: var(--gust-top);  
+        width: var(--gust-length);  
+        height: var(--gust-thickness);  
+        border-radius: 999px;  
+        opacity: var(--gust-opacity);  
+  
+        background: linear-gradient(  
+          to right,  
+          rgba(255, 255, 255, 0.00) 0%,  
+          rgb(var(--color-neon-rgb) / 0.92) 42%,  
+          rgb(var(--color-light-rgb) / 0.42) 60%,  
+          rgba(255, 255, 255, 0.00) 100%  
+        );  
+  
+        transform: rotate(var(--gust-rotation));  
+        filter:  
+          drop-shadow(0 0 18px rgb(var(--color-neon-rgb) / 0.22))  
+          drop-shadow(0 0 52px rgb(var(--color-neon-rgb) / 0.10));  
+        will-change: transform, opacity;  
+  
+        animation: gustFast var(--gust-duration) cubic-bezier(0.2, 0.9, 0.2, 1) 1;  
+      }  
+  
+      .gust::before,  
+      .gust::after {  
+        content: "";  
+        position: absolute;  
+        left: 8%;  
+        right: 8%;  
+        height: 100%;  
+        border-radius: 999px;  
+  
+        background: linear-gradient(  
+          to right,  
+          rgba(255, 255, 255, 0.00) 0%,  
+          rgb(var(--color-neon-rgb) / 0.22) 45%,  
+          rgba(255, 255, 255, 0.00) 100%  
+        );  
+      }  
+  
+      .gust::before {  
+        top: calc(var(--gust-thickness) * -1.15);  
+        opacity: 0.8;  
+      }  
+  
+      .gust::after {  
+        top: calc(var(--gust-thickness) * 1.15);  
+        opacity: 0.65;  
+      }  
+  
+      @keyframes gustFast {  
+        0% {  
+          transform: translate3d(-14vw, 0, 0) rotate(var(--gust-rotation));  
+          opacity: 0;  
+        }  
+        10% { opacity: var(--gust-opacity); }  
+        55% {  
+          transform: translate3d(65vw, var(--gust-curve), 0) rotate(var(--gust-rotation));  
+        }  
+        100% {  
+          transform: translate3d(170vw, 0, 0) rotate(var(--gust-rotation));  
+          opacity: 0;  
+        }  
+      }  
+  
+      /* Reduced motion: slow it down (do not kill it) */  
+      @media (prefers-reduced-motion: reduce) {  
+        :root {  
+          --wind-burst-interval: 4500ms;  
+        }  
+      }  
+    </style>  
+  </head>  
+  
+  <body>  
+    <main id="stage" aria-label="TraLogFin Weather stage">  
+      <section class="stars" id="starsLayer" aria-hidden="true"></section>  
+      <div class="orb" id="orbElement" aria-hidden="true"></div>  
+      <section class="clouds" id="cloudsLayer" aria-hidden="true"></section>  
+      <canvas id="rainCanvas" aria-hidden="true"></canvas>  
+      <section class="gust-layer" id="gustsLayer" aria-hidden="true"></section>  
+    </main>  
+  
+    <script>  
+      /* ============================================================  
+        NOTES: Old colors vs new shades (requested)  
+        ------------------------------------------------------------  
+        Find a Link (RED) - Old:  
+          neon   #eb1224  
+          dark   #2b0a0d  
+          light  #e2bcca  
+          medium #893141  
+  
+        Find a Link (RED) - New (darker reds + luscious neon pink, still sophisticated):  
+          neon   #ff2d6d   (spiking neon pink-red accent)  
+          dark   #160508   (deeper maroon-black)  
+          light  #f3c3d7   (blush light for clouds/sky)  
+          medium #7a1f39   (rich controlled wine-red)  
+  
+        Track a Day (GREEN) - Old:  
+          neon   #00ff44  
+          dark   #072007  
+          light  #afebb2  
+          medium #39853b  
+  
+        Track a Day (GREEN) - New (energetic jungle green, less “pond”, more “go”):  
+          neon   #00ff66   (electric leaf-neon)  
+          dark   #041a0a   (deep forest-black)  
+          light  #c7ffd7   (fresh mint light)  
+          medium #1f7a3a   (confident jungle mid)  
+  
+        Log a Ticket (BLUE) - unchanged (you said your neuroreceptors already approved it):  
+          neon   #132eff  
+          dark   #070e27  
+          light  #8facec  
+          medium #1f3584  
+      ============================================================ */  
+  
+      /* ------------------------------------------------------------  
+        Palettes (original references + new improved ones)  
+        - Blue stays exactly as provided.  
+        - Green and Red use new shades, but still remain “that app”.  
+      ------------------------------------------------------------ */  
+      const palettes = {  
+        logTicketBlue: {  
+          name: "Log a Ticket (Blue)",  
+          neon: "#132eff",  
+          dark: "#070e27",  
+          light: "#8facec",  
+          medium: "#1f3584"  
+        },  
+        trackDayGreenImproved: {  
+          name: "Track a Day (Green, improved)",  
+          neon: "#00ff66",  
+          dark: "#041a0a",  
+          light: "#c7ffd7",  
+          medium: "#1f7a3a"  
+        },  
+        findLinkRedImproved: {  
+          name: "Find a Link (Red, improved)",  
+          neon: "#ff2d6d",  
+          dark: "#160508",  
+          light: "#f3c3d7",  
+          medium: "#7a1f39"  
+        }  
+      };  
+  
+      /* ------------------------------------------------------------  
+        Utility helpers (no abbreviations, because we are civilized)  
+      ------------------------------------------------------------ */  
+      function randomNumberBetween(minimum, maximum) {  
+        return minimum + Math.random() * (maximum - minimum);  
+      }  
+  
+      function pickRandomItem(list) {  
+        return list[Math.floor(Math.random() * list.length)];  
+      }  
+  
+      function convertHexToRgbTriplet(hexColor) {  
+        const clean = hexColor.replace("#", "").trim();  
+        const full = clean.length === 3  
+          ? clean.split("").map(function (character) { return character + character; }).join("")  
+          : clean;  
+  
+        const number = parseInt(full, 16);  
+        const red = (number >> 16) & 255;  
+        const green = (number >> 8) & 255;  
+        const blue = number & 255;  
+        return red + " " + green + " " + blue;  
+      }  
+  
+      function setRootCssVariable(variableName, value) {  
+        document.documentElement.style.setProperty(variableName, value);  
+      }  
+  
+      /* ------------------------------------------------------------  
+        DOM references  
+      ------------------------------------------------------------ */  
+      const stageElement = document.getElementById("stage");  
+      const starsLayer = document.getElementById("starsLayer");  
+      const orbElement = document.getElementById("orbElement");  
+      const cloudsLayer = document.getElementById("cloudsLayer");  
+      const gustsLayer = document.getElementById("gustsLayer");  
+      const rainCanvas = document.getElementById("rainCanvas");  
+  
+      /* ------------------------------------------------------------  
+        Theme registry  
+        - Blue: moon + stars + clouds + wind only 10% of the time  
+        - Green: sun + canvas rain + energetic jungle gradient + normal wind  
+        - Red: sun + neon pink clouds + maroon surface + normal wind  
+      ------------------------------------------------------------ */  
+      const themes = {  
+        blue: {  
+          displayName: "Blue / Log a Ticket",  
+          palette: palettes.logTicketBlue,  
+          windBurstChance: 0.10, /* requested: winds appear only 10% of the time */  
+          showStars: true,  
+          showClouds: true,  
+          showRain: false,  
+          orbType: "moon",  
+          configureScene: function () {  
+            /* Deep neon blue night gradient (bottom dark -> lighter) */  
+            stageElement.style.background =  
+              "radial-gradient(ellipse at 18% 26%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.00) 62%)," +  
+              "radial-gradient(ellipse at 75% 22%, rgba(19,46,255,0.16) 0%, rgba(19,46,255,0.00) 58%)," +  
+              "linear-gradient(0deg," +  
+              palettes.logTicketBlue.dark + " 0%," +  
+              palettes.logTicketBlue.medium + " 42%," +  
+              palettes.logTicketBlue.light + " 100%)";  
+  
+            /* Moon in top-left */  
+            setRootCssVariable("--orb-left", "7vw");  
+            setRootCssVariable("--orb-top", "9vh");  
+            setRootCssVariable("--orb-size", "210px");  
+  
+            /* More vignette = more “night” */  
+            setRootCssVariable("--vignette-strength", "0.48");  
+            setRootCssVariable("--sheen-strength", "0.09");  
+          }  
+        },  
+  
+        green: {  
+          displayName: "Green / Track a Day",  
+          palette: palettes.trackDayGreenImproved,  
+          windBurstChance: 1.0,  
+          showStars: false,  
+          showClouds: false,  
+          showRain: true,  
+          orbType: "sun",  
+          configureScene: function () {  
+            /* Energetic jungle gradient: sophisticated greens, clean contrast */  
+            stageElement.style.background =  
+              "radial-gradient(ellipse at 50% 18%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 62%)," +  
+              "radial-gradient(ellipse at 20% 70%, rgba(0,255,102,0.12) 0%, rgba(0,255,102,0.00) 60%)," +  
+              "linear-gradient(180deg," +  
+              palettes.trackDayGreenImproved.light + " 0%," +  
+              palettes.trackDayGreenImproved.medium + " 50%," +  
+              palettes.trackDayGreenImproved.dark + " 100%)";  
+  
+            /* Sun top-middle */  
+            setRootCssVariable("--orb-left", "50%");  
+            setRootCssVariable("--orb-top", "10vh");  
+            setRootCssVariable("--orb-size", "210px");  
+  
+            /* Slightly less vignette so it reads energetic, not sleepy */  
+            setRootCssVariable("--vignette-strength", "0.34");  
+            setRootCssVariable("--sheen-strength", "0.14");  
+          }  
+        },  
+  
+        red: {  
+          displayName: "Red / Find a Link",  
+          palette: palettes.findLinkRedImproved,  
+          windBurstChance: 1.0,  
+          showStars: false,  
+          showClouds: true,  
+          showRain: false,  
+          orbType: "sun",  
+          configureScene: function () {  
+            /* Calm, collected: bright-ish sky above a maroon surface */  
+            stageElement.style.background =  
+              "radial-gradient(ellipse at 55% 38%, rgba(255,210,235,0.32) 0%, rgba(255,210,235,0.00) 55%)," +  
+              "linear-gradient(180deg," +  
+              palettes.findLinkRedImproved.light + " 0%," +  
+              "#f0b8d3 40%," +  
+              "#c26c98 62%," +  
+              palettes.findLinkRedImproved.medium + " var(--horizon-cut)," +  
+              palettes.findLinkRedImproved.dark + " 100%)";  
+  
+            /* Sun slightly above horizon */  
+            setRootCssVariable("--orb-left", "46vw");  
+            setRootCssVariable("--orb-top", "40vh");  
+            setRootCssVariable("--orb-size", "230px");  
+  
+            setRootCssVariable("--horizon-cut", "68%");  
+            setRootCssVariable("--vignette-strength", "0.44");  
+            setRootCssVariable("--sheen-strength", "0.11");  
+          }  
+        }  
+      };  
+  
+      /* ------------------------------------------------------------  
+        Build stars (blue theme)  
+      ------------------------------------------------------------ */  
+      function buildStars(count) {  
+        starsLayer.innerHTML = "";  
+        for (let index = 0; index < count; index += 1) {  
+          const starElement = document.createElement("span");  
+          starElement.className = "star";  
+  
+          const size = randomNumberBetween(1.2, 3.6);  
+          const opacity = randomNumberBetween(0.18, 0.70);  
+          const duration = randomNumberBetween(1.6, 4.8);  
+          const delay = randomNumberBetween(-duration, 0);  
+  
+          starElement.style.setProperty("--star-size", size + "px");  
+          starElement.style.setProperty("--star-left", randomNumberBetween(2, 98) + "vw");  
+          starElement.style.setProperty("--star-top", randomNumberBetween(2, 58) + "vh");  
+          starElement.style.setProperty("--star-opacity", opacity.toFixed(3));  
+          starElement.style.setProperty("--star-duration", duration + "s");  
+          starElement.style.setProperty("--star-delay", delay + "s");  
+  
+          starsLayer.appendChild(starElement);  
+        }  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Build clouds (red theme + subtle blue theme)  
+      ------------------------------------------------------------ */  
+      function buildClouds(count, heightRangeTopVh, heightRangeBottomVh) {  
+        cloudsLayer.innerHTML = "";  
+        for (let index = 0; index < count; index += 1) {  
+          const cloudElement = document.createElement("div");  
+          cloudElement.className = "cloud";  
+  
+          const width = randomNumberBetween(240, 560);  
+          const height = randomNumberBetween(90, 190);  
+          const top = randomNumberBetween(heightRangeTopVh, heightRangeBottomVh);  
+  
+          const blur = randomNumberBetween(0.8, 2.4);  
+          const opacity = randomNumberBetween(0.20, 0.55);  
+  
+          const duration = randomNumberBetween(22, 50);  
+          const delay = randomNumberBetween(-duration, 0);  
+  
+          cloudElement.style.setProperty("--cloud-width", width + "px");  
+          cloudElement.style.setProperty("--cloud-height", height + "px");  
+          cloudElement.style.setProperty("--cloud-left", randomNumberBetween(-10, 90) + "vw");  
+          cloudElement.style.setProperty("--cloud-top", top + "vh");  
+          cloudElement.style.setProperty("--cloud-blur", blur + "px");  
+          cloudElement.style.setProperty("--cloud-opacity", opacity.toFixed(3));  
+          cloudElement.style.setProperty("--cloud-duration", duration + "s");  
+          cloudElement.style.setProperty("--cloud-delay", delay + "s");  
+  
+          cloudsLayer.appendChild(cloudElement);  
+        }  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Gusts (2 sharp fast gusts per burst)  
+      ------------------------------------------------------------ */  
+      function createSingleGust() {  
+        const gustElement = document.createElement("div");  
+        gustElement.className = "gust";  
+  
+        const top = randomNumberBetween(8, 92);  
+        const length = randomNumberBetween(260, 980);  
+        const thickness = randomNumberBetween(2, 8);  
+  
+        const opacity = randomNumberBetween(0.22, 0.55);  
+        const durationSeconds = randomNumberBetween(0.55, 0.95); /* sharp, quick */  
+        const rotation = randomNumberBetween(-18, -4);  
+        const curve = randomNumberBetween(-8.0, 8.0);  
+  
+        gustElement.style.setProperty("--gust-top", top + "vh");  
+        gustElement.style.setProperty("--gust-length", length + "px");  
+        gustElement.style.setProperty("--gust-thickness", thickness + "px");  
+        gustElement.style.setProperty("--gust-opacity", opacity.toFixed(3));  
+        gustElement.style.setProperty("--gust-duration", durationSeconds + "s");  
+        gustElement.style.setProperty("--gust-rotation", rotation + "deg");  
+        gustElement.style.setProperty("--gust-curve", curve + "vh");  
+  
+        gustsLayer.appendChild(gustElement);  
+  
+        /* Remove after it finishes, so the page does not become an element museum */  
+        window.setTimeout(function () {  
+          gustElement.remove();  
+        }, Math.ceil(durationSeconds * 1000) + 140);  
+      }  
+  
+      function startWindBursts(windBurstChance) {  
+        const intervalCssValue = getComputedStyle(document.documentElement)  
+          .getPropertyValue("--wind-burst-interval")  
+          .trim();  
+  
+        let intervalMilliseconds = 3000;  
+        if (intervalCssValue.endsWith("ms")) {  
+          intervalMilliseconds = parseFloat(intervalCssValue);  
+        } else if (intervalCssValue.endsWith("s")) {  
+          intervalMilliseconds = parseFloat(intervalCssValue) * 1000;  
+        }  
+  
+        function runBurst() {  
+          /* The “10% of the time” rule lives here (blue theme uses it) */  
+          if (Math.random() > windBurstChance) {  
+            return;  
+          }  
+  
+          /* Two gusts, slightly offset, because simultaneous gusts look fake */  
+          createSingleGust();  
+          window.setTimeout(function () {  
+            createSingleGust();  
+          }, randomNumberBetween(90, 260));  
+        }  
+  
+        /* Show motion immediately */  
+        runBurst();  
+  
+        window.setInterval(function () {  
+          runBurst();  
+        }, intervalMilliseconds);  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Green rain on canvas  
+        - Inspired by your <i> rain snippet:  
+          - many strokes  
+          - random widths  
+          - random delays  
+          - different speeds  
+        - We do diagonal “windy rain” for style.  
+      ------------------------------------------------------------ */  
+      function createRainSimulationOnCanvas(palette) {  
+        const canvasContext = rainCanvas.getContext("2d", { alpha: true });  
+  
+        function resizeCanvasToViewport() {  
+          const devicePixelRatio = window.devicePixelRatio || 1;  
+          rainCanvas.width = Math.floor(window.innerWidth * devicePixelRatio);  
+          rainCanvas.height = Math.floor(window.innerHeight * devicePixelRatio);  
+          rainCanvas.style.width = window.innerWidth + "px";  
+          rainCanvas.style.height = window.innerHeight + "px";  
+          canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);  
+        }  
+  
+        resizeCanvasToViewport();  
+        window.addEventListener("resize", resizeCanvasToViewport);  
+  
+        /* Build drops */  
+        const dropCount = 140; /* tweak if you want “more rain” */  
+        const drops = [];  
+        const neonRgb = convertHexToRgbTriplet(palette.neon);  
+  
+        for (let index = 0; index < dropCount; index += 1) {  
+          drops.push({  
+            x: randomNumberBetween(-window.innerWidth * 0.2, window.innerWidth * 1.2),  
+            y: randomNumberBetween(-window.innerHeight, window.innerHeight),  
+            length: randomNumberBetween(80, 220),  
+            width: randomNumberBetween(1.0, 2.6),  
+            speed: randomNumberBetween(520, 1180), /* pixels per second-ish */  
+            opacity: randomNumberBetween(0.08, 0.28),  
+            /* slight variation per drop, because uniform is suspicious */  
+            driftX: randomNumberBetween(110, 260)  
+          });  
+        }  
+  
+        let previousTimestamp = performance.now();  
+  
+        function renderFrame(currentTimestamp) {  
+          const deltaMilliseconds = currentTimestamp - previousTimestamp;  
+          previousTimestamp = currentTimestamp;  
+  
+          const deltaSeconds = Math.min(0.033, deltaMilliseconds / 1000); /* avoid giant jumps */  
+          canvasContext.clearRect(0, 0, window.innerWidth, window.innerHeight);  
+  
+          for (let index = 0; index < drops.length; index += 1) {  
+            const drop = drops[index];  
+  
+            /* Move diagonally: down + right */  
+            drop.y += drop.speed * deltaSeconds;  
+            drop.x += drop.driftX * deltaSeconds;  
+  
+            /* Wrap around when off-screen */  
+            if (drop.y > window.innerHeight + 250 || drop.x > window.innerWidth + 250) {  
+              drop.y = randomNumberBetween(-300, -40);  
+              drop.x = randomNumberBetween(-window.innerWidth * 0.2, window.innerWidth * 1.0);  
+              drop.length = randomNumberBetween(80, 220);  
+              drop.width = randomNumberBetween(1.0, 2.6);  
+              drop.speed = randomNumberBetween(520, 1180);  
+              drop.opacity = randomNumberBetween(0.08, 0.28);  
+              drop.driftX = randomNumberBetween(110, 260);  
+            }  
+  
+            /* Draw a diagonal line with a gradient-like alpha falloff */  
+            canvasContext.lineWidth = drop.width;  
+            canvasContext.lineCap = "round";  
+  
+            const gradient = canvasContext.createLinearGradient(drop.x, drop.y, drop.x + 18, drop.y + drop.length);  
+            gradient.addColorStop(0.0, "rgba(255,255,255,0)");  
+            gradient.addColorStop(0.55, "rgba(" + neonRgb + "," + (drop.opacity + 0.10).toFixed(3) + ")");  
+            gradient.addColorStop(1.0, "rgba(" + neonRgb + ",0)");  
+  
+            canvasContext.strokeStyle = gradient;  
+  
+            canvasContext.beginPath();  
+            canvasContext.moveTo(drop.x, drop.y);  
+            canvasContext.lineTo(drop.x + 18, drop.y + drop.length);  
+            canvasContext.stroke();  
+          }  
+  
+          requestAnimationFrame(renderFrame);  
+        }  
+  
+        requestAnimationFrame(renderFrame);  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Blue moon pulse  
+        - “Most intense glow for 1 second every 60 seconds”  
+        - Randomized *within* each 60-second window to keep it alive.  
+      ------------------------------------------------------------ */  
+      function scheduleMoonGlowPulseEveryMinute() {  
+        function scheduleNextPulse() {  
+          const randomOffsetMilliseconds = Math.floor(randomNumberBetween(0, 60000));  
+  
+          window.setTimeout(function () {  
+            orbElement.classList.add("is-intense-glow");  
+  
+            window.setTimeout(function () {  
+              orbElement.classList.remove("is-intense-glow");  
+            }, 1000);  
+  
+            /* Schedule again for the next minute */  
+            scheduleNextPulse();  
+          }, randomOffsetMilliseconds);  
+        }  
+  
+        scheduleNextPulse();  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Apply theme (the big switch)  
+      ------------------------------------------------------------ */  
+      function applyTheme(themeKey) {  
+        const theme = themes[themeKey];  
+        if (!theme) {  
+          return;  
+        }  
+  
+        const palette = theme.palette;  
+  
+        /* Set color variables */  
+        setRootCssVariable("--color-neon", palette.neon);  
+        setRootCssVariable("--color-dark", palette.dark);  
+        setRootCssVariable("--color-light", palette.light);  
+        setRootCssVariable("--color-medium", palette.medium);  
+  
+        setRootCssVariable("--color-neon-rgb", convertHexToRgbTriplet(palette.neon));  
+        setRootCssVariable("--color-dark-rgb", convertHexToRgbTriplet(palette.dark));  
+        setRootCssVariable("--color-light-rgb", convertHexToRgbTriplet(palette.light));  
+        setRootCssVariable("--color-medium-rgb", convertHexToRgbTriplet(palette.medium));  
+  
+        /* Configure the stage background + positioning */  
+        theme.configureScene();  
+  
+        /* Stars */  
+        if (theme.showStars) {  
+          setRootCssVariable("--stars-opacity", "1");  
+          buildStars(110);  
+        } else {  
+          setRootCssVariable("--stars-opacity", "0");  
+          starsLayer.innerHTML = "";  
+        }  
+  
+        /* Clouds */  
+        if (theme.showClouds) {  
+          setRootCssVariable("--clouds-opacity", themeKey === "blue" ? "0.30" : "0.92");  
+          /* Blue clouds are subtle and higher; red clouds are more present */  
+          if (themeKey === "blue") {  
+            buildClouds(5, 8, 26);  
+          } else {  
+            buildClouds(7, 10, 40);  
+          }  
+        } else {  
+          setRootCssVariable("--clouds-opacity", "0");  
+          cloudsLayer.innerHTML = "";  
+        }  
+  
+        /* Rain canvas (green only) */  
+        if (theme.showRain) {  
+          setRootCssVariable("--rain-opacity", "0.88");  
+          createRainSimulationOnCanvas(palette);  
+        } else {  
+          setRootCssVariable("--rain-opacity", "0");  
+          /* We do not destroy the canvas context; it is harmless if hidden */  
+        }  
+  
+        /* Orb */  
+        orbElement.className = "orb " + theme.orbType;  
+  
+        /* Blue theme: start moon pulse scheduler */  
+        if (themeKey === "blue") {  
+          scheduleMoonGlowPulseEveryMinute();  
+        }  
+  
+        /* Start wind bursts */  
+        startWindBursts(theme.windBurstChance);  
+  
+        console.log("Theme loaded:", theme.displayName);  
+      }  
+  
+      /* ------------------------------------------------------------  
+        Theme selection  
+        - Force: ?theme=blue|green|red  
+        - Otherwise random  
+      ------------------------------------------------------------ */  
+      function getThemeFromUrl() {  
+        const searchParameters = new URLSearchParams(window.location.search);  
+        const themeValue = (searchParameters.get("theme") || "").toLowerCase().trim();  
+        if (themeValue === "blue" || themeValue === "green" || themeValue === "red") {  
+          return themeValue;  
+        }  
+        return null;  
+      }  
+  
+      (function boot() {  
+        const forcedTheme = getThemeFromUrl();  
+        const selectedTheme = forcedTheme || pickRandomItem(["blue", "green", "red"]);  
+        applyTheme(selectedTheme);  
+      })();  
+    </script>  
+  </body>  
+</html>
