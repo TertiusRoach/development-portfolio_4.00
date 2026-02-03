@@ -299,3 +299,12 @@ export function resizePreview(pageName: string, blockName: string) {
     Result: perfectly centered content, responsive by default, and zero “maffs”.
     */
 }
+export function markList(pageName: string, blockName: string, listName: 'default-buttons' | 'routing-buttons'): string {
+  const identifier = listName.split('-')[0];
+  setTimeout(() => {
+    let parentElement = document.querySelector(`#${pageName}-${blockName} .carousel-preview [class*="${identifier}"]`)
+      ?.parentElement as HTMLElement;
+    parentElement.classList.add(listName);
+  }, 125);
+  return identifier;
+}

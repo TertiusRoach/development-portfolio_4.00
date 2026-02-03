@@ -51,6 +51,11 @@
       height: 100vh;
       position: absolute;
     }
+    ul[class*='carousel'],
+    ol[class*='carousel'] {
+      padding: 0;
+      list-style: none;
+    }
   }
   time {
     cursor: default;

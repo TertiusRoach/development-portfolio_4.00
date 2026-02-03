@@ -2,25 +2,17 @@
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  section[class='foreground'] {
-    display: grid;
-    overflow: hidden;
-    grid-area: 3 / 1 / 4 / 4;
-    grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-    aside[class*='side'] {
-      position: relative;
-      flex-direction: column;
-      section[class*='track'] {
-        inset: 0;
-        display: flex;
-        position: absolute;
-        flex-direction: column;
-        transition: transform 0.25s ease-in-out;
-        > div[class*='size'] {
-          //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
+  .default-buttons {
+    //--Todo--\\
+    section[class*='foreground'] {
+      z-index: 2;
+      display: grid;
+      // overflow: hidden;
+      // style="transform: translateY(-952px)"
+      aside[class*='container'] {
+        div[class*='size'] {
           display: grid;
-          flex: 0 0 100%;
-          position: relative;
+          height: inherit;
           grid-template-rows: repeat(7, 1fr);
           grid-template-columns: repeat(2, 1fr);
 
@@ -46,62 +38,86 @@
             grid-area: 7 / 1 / 8 / 3;
           }
         }
+
+        &[id*='darkside'] {
+          grid-area: 1 / 2 / 4 / 3;
+          // background: rgba(turquoise, 0.5);
+        }
+        &[id*='lightside'] {
+          grid-area: 1 / 4 / 4 / 5;
+          // background: rgba(pink, 0.5);
+        }
+
+        /*
+        // overflow: inherit;
+        // grid-area: 2 / 1 / 3 / 2;
+        // position: relative;
+        // flex-direction: column;
+        div[class*='track'] {
+          // inset: 0;
+          // display: flex;
+          // position: absolute;
+          // flex-direction: column;
+          // transition: transform 0.25s ease-in-out;
+
+          > div[class*='size'] {
+            //--|🠉 The > symbol selects all immediate children of parent element 🠈|--//
+
+            // flex: 0 0 100%;
+            // position: relative;
+          }
+        }
+        */
       }
-    }
-    nav[class*='scroll'] {
-      display: grid;
-      background: none;
-      grid-area: 1 / 2 / 2 / 3;
-      grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-      grid-template-rows: 16px auto 1fr auto 16px; //--|🠈 rows 🠈|--\\
-      button:nth-child(1) {
-        grid-area: 2 / 2 / 3 / 3;
+
+      //--Todo--\\
+      nav[class*='scroll'] {
+        display: none;
       }
-      button:nth-child(2) {
-        grid-area: 4 / 2 / 5 / 3;
-      }
-    }
-
-    //--|🠋 Foreground Margins 🠋|--//
-    margin: 0 96px;
-    @media screen and (max-height: 768px) {
-      margin: 0 64px;
-    }
-    @media screen and (max-height: 480px) {
-      margin: 0 48px;
-    }
-    @media screen and (max-height: 360px) {
-      margin: 0 32px;
-    }
-  }
-  figure[class*='midground'] {
-    margin: 0;
-    display: flex;
-    overflow: hidden;
-    position: relative; //--|🠊 Important: Creates the 'box' for the children 🠈|--//
-    grid-area: 1 / 1 / 6 / 4;
-
-    aside[class*='dark'],
-    aside[class*='light'],
-    section[class*='size'] {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      position: absolute;
-
-      //--|🠋 Animate Beautifully 🠋|--\\
-      // Ok, here's the elements. They're all linked and working.
-      // I've attached a screenshot of the layout for you to reference.
-      // It's the button viewer we've built and I've linked the following three elements.
-
-      &[class*='code'] {
-        min-width: 0;
+      /*
+      nav[class*='scroll'] {
         display: grid;
-        grid-template-rows: 1fr;
+        background: none;
+        grid-area: 1 / 2 / 2 / 3;
+        grid-template-columns: repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+        grid-template-rows: 16px auto 1fr auto 16px; //--|🠈 rows 🠈|--\\
+        button:nth-child(1) {
+          grid-area: 2 / 2 / 3 / 3;
+        }
+        button:nth-child(2) {
+          grid-area: 4 / 2 / 5 / 3;
+        }
+      }
+      */
+    }
+
+    figure[class*='midground'] {
+      z-index: 1;
+      display: grid;
+      aside[class*='code'] {
+        display: grid;
         transition: grid-template-columns 3s ease-in-out;
+        pre {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          /*
+          code {
+          }
+          */
+        }
+
         &[class*='dark'] {
-          & > pre {
-            grid-area: 1 / 1 / 2 / 3;
+          grid-area: 1 / 2 / 4 / 4;
+
+          &.visible {
+            grid-template-columns: 1fr 1fr 0.001fr;
+          }
+          &.hidden {
+            grid-template-columns: 0.001fr 1fr 1fr;
+          }
+          pre {
+            grid-area: 1 / 2 / 2 / 3;
             // background: rgba(Palettes.$indexLand-dark, 0.75);
             background: linear-gradient(
               270deg,
@@ -111,17 +127,18 @@
               rgba(Palettes.$indexLand-dark, 0.75) 100%
             );
           }
-          &.hidden.dark-code {
-            grid-template-columns: 0.001fr 1fr 2fr;
-          }
-          &.visible.dark-code {
-            grid-template-columns: 1fr 1fr 1fr;
-          }
         }
         &[class*='light'] {
-          & > pre {
-            grid-area: 1 / 2 / 2 / 4;
-            background: rgba(Palettes.$indexLand-light, 0.75);
+          grid-area: 1 / 3 / 4 / 5;
+          &.hidden {
+            grid-template-columns: 1fr 1fr 0.001fr;
+          }
+          &.visible {
+            grid-template-columns: 0.001fr 1fr 1fr;
+          }
+          pre {
+            grid-area: 1 / 2 / 2 / 3;
+            // background: rgba(Palettes.$indexLand-light, 0.75);
             background: linear-gradient(
               90deg,
               rgba(Palettes.$indexLand-light, 0) 0%,
@@ -130,92 +147,153 @@
               rgba(Palettes.$indexLand-light, 0.75) 100%
             );
           }
-          &.hidden.light-code {
-            grid-template-columns: 2fr 1fr 0.001fr;
-          }
-          &.visible.light-code {
-            grid-template-columns: 1fr 1fr 1fr;
-          }
         }
       }
-
-      &[class*='font'] {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: repeat(3, 1fr);
-
-        transition:
-          filter 3s ease-in-out,
-          transform 1s ease-in-out;
-
-        &.hidden {
-          filter: blur(24px);
-        }
-
-        ol {
-          padding: 0;
-          display: flex;
-          text-align: center; // centers the text inside full-width items, too
-          flex-direction: column;
-          justify-content: center;
-          grid-area: 1 / 2 / 2 / 3;
-
+      section[class*='size'] {
+        grid-area: 2 / 3 / 3 / 4;
+        // transform: translateY(-952px);
+        &[class*='font'] {
           * {
-            font-weight: 800;
+            margin: 0;
             color: Palettes.$indexLand-medium;
-            filter: drop-shadow(0 0 8px Palettes.$indexLand-neon);
+            filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-medium, 0.25));
+          }
+          h1 {
+            font-weight: 800;
+          }
+          h2 {
+            font-weight: 700;
+          }
+          h3 {
+            font-weight: 600;
+          }
+          h4 {
+            font-weight: 500;
+          }
+          h5 {
+            font-weight: 400;
+          }
+          h6 {
+            font-weight: 300;
+          }
+          p {
+            font-weight: 200;
           }
         }
       }
     }
-    & {
-      //--|🠋 Midground Margins 🠋|--\\
-      margin: 0 96px;
+
+    div[class*='background'] {
+      z-index: 0;
+      display: none;
+    }
+
+    /*
+    div[class*='background'] {
+      display: inherit;
+      grid-template: inherit;
+      grid-area: 1 / 1 / 6 / 4;
+      header {
+        grid-area: 1 / 1 / 3 / 4;
+        div {
+          height: 50%;
+        }
+      }
+      aside {
+        &[class='left'] {
+          grid-area: 1 / 1 / 6 / 2;
+          background: rgba(Palettes.$indexLand-dark, 0.75);
+        }
+        &[class='right'] {
+          grid-area: 1 / 3 / 6 / 4;
+          background: rgba(Palettes.$indexLand-light, 0.75);
+        }
+      }
+      footer {
+        grid-area: 4 / 1 / 6 / 4;
+        div {
+          height: 50%;
+
+          &:nth-child(1) {
+            // background: rgba(darkgreen, 0.25);
+          }
+          &:nth-child(2) {
+            // background: rgba(darkgreen, 0.5);
+          }
+        }
+      }
+    }
+    */
+
+    section[class*='foreground'],
+    figure[class*='midground'],
+    div[class*='background'] {
+      //--|🠋 Layer Perimeters 🠋|--\\
+      width: 100%;
+      overflow: hidden;
+
+      //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 1080px 🠋|--\\
+        4rem 1fr 4rem //--|🠈 rows 🠈|--//
+        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
+      aside {
+        &[id*='side'] {
+          padding: 4rem 48px;
+        }
+        &[class*='code'] {
+          padding: 0 48px;
+        }
+      }
+
       @media screen and (max-height: 768px) {
-        margin: 0 64px;
+        //--|🠋 64px (Left & Right) for Design 🠋|--\\
+        grid-template: 3rem 1fr 3rem / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 3rem 32px;
+          }
+          &[class*='code'] {
+            padding: 0 32px;
+          }
+        }
       }
       @media screen and (max-height: 480px) {
-        margin: 0 48px;
+        //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: 2rem 1fr 2rem / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 2rem 24px;
+          }
+          &[class*='code'] {
+            padding: 0 24px;
+          }
+        }
       }
       @media screen and (max-height: 360px) {
-        margin: 0 32px;
+        //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: 1.5rem 1fr 1.5rem / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 1.5rem 16px;
+          }
+          &[class*='code'] {
+            padding: 0 16px;
+          }
+        }
       }
     }
   }
-  div[class='background'] {
-    display: inherit;
-    grid-template: inherit;
-    grid-area: 1 / 1 / 6 / 4;
-    header {
-      grid-area: 1 / 1 / 3 / 4;
-      div {
-        height: 50%;
-      }
-    }
-    aside {
-      &[class='left'] {
-        grid-area: 1 / 1 / 6 / 2;
-        background: rgba(Palettes.$indexLand-dark, 0.75);
-      }
-      &[class='right'] {
-        grid-area: 1 / 3 / 6 / 4;
-        background: rgba(Palettes.$indexLand-light, 0.75);
-      }
-    }
-    footer {
-      grid-area: 4 / 1 / 6 / 4;
-      div {
-        height: 50%;
+  .routing-buttons {
+    background: rgba(darkblue, 0.5);
+  }
 
-        &:nth-child(1) {
-          // background: rgba(darkgreen, 0.25);
-        }
-        &:nth-child(2) {
-          // background: rgba(darkgreen, 0.5);
-        }
-      }
-    }
+  //--Todo--\\
+  /*
+  .default-buttons {
+
   }
+  */
+
   @include desktop-default();
 }
 @mixin mobile-portrait {
@@ -270,10 +348,142 @@
 }
 
 main[id*='buttons'] {
+  @extend %carousel-container;
+
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+
+%carousel-container {
+  div[class*='carousel'] {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    ul[class*='carousel'] {
+      display: flex;
+      height: inherit;
+      //--|🠊 padding: 0; 🠈|--\\
+      //--|🠊 list-style: none; 🠈|--\\
+      transition: transform 250ms ease-in-out;
+      li {
+        flex: 0 0 100%;
+        height: inherit;
+        position: relative;
+        section[class*='ground'],
+        figure[class*='ground'],
+        div[class*='ground'] {
+          height: inherit;
+          position: absolute;
+        }
+      }
+      &[class*='preview'] {
+        &[class*='one'] {
+          transform: translateX(0vw);
+        }
+        &[class*='two'] {
+          transform: translateX(-100vw);
+        }
+        &[class*='thr'] {
+          transform: translateX(-200vw);
+        }
+        &[class*='fou'] {
+          transform: translateX(-300vw);
+        }
+        &[class*='fiv'] {
+          transform: translateX(-400vw);
+        }
+        &[class*='six'] {
+          transform: translateX(-500vw);
+        }
+        &[class*='sev'] {
+          transform: translateX(-600vw);
+        }
+        &[class*='eig'] {
+          transform: translateX(-700vw);
+        }
+        &[class*='nin'] {
+          transform: translateX(-800vw);
+        }
+        &[class*='ten'] {
+          transform: translateX(-900vw);
+        }
+      }
+    }
+  }
+  aside[class*='carousel'] {
+    ol[class*='carousel'] {
+      height: 100%;
+      display: flex;
+      //--|🠊 padding: 0; 🠈|--\\
+      //--|🠊 list-style: none; 🠈|--\\
+      transition: transform 500ms ease-in-out;
+      li {
+        transition:
+          opacity 250ms ease-in-out,
+          filter 250ms ease-in-out;
+      }
+      &[class*='preview'] {
+        &[class*='one'] {
+          transform: translateX(0%);
+          li:nth-child(1) {
+            // background: rgba(green, 0.5);
+          }
+          li:nth-child(2) {
+            opacity: 0;
+            filter: blur(24px);
+            // background: rgba(darkgreen, 0.5);
+          }
+        }
+        &[class*='two'] {
+          transform: translateX(-100%);
+          li:nth-child(1) {
+            opacity: 0;
+            filter: blur(24px);
+            // background: rgba(green, 0.5);
+          }
+          li:nth-child(2) {
+            // background: rgba(darkgreen, 0.5);
+          }
+        }
+        &[class*='thr'] {
+          transform: translateX(-200%);
+        }
+        &[class*='fou'] {
+          transform: translateX(-300%);
+        }
+        &[class*='fiv'] {
+          transform: translateX(-400%);
+        }
+        &[class*='six'] {
+          transform: translateX(-500%);
+        }
+        &[class*='sev'] {
+          transform: translateX(-600%);
+        }
+        &[class*='eig'] {
+          transform: translateX(-700%);
+        }
+        &[class*='nin'] {
+          transform: translateX(-800%);
+        }
+        &[class*='ten'] {
+          transform: translateX(-900%);
+        }
+      }
+    }
+  }
+  section[class*='carousel'] {
+    ol {
+      height: 100%;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }
