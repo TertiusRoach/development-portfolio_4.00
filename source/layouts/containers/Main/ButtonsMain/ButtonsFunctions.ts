@@ -220,12 +220,15 @@ export function toggleAside(
   let darkCode = document.querySelector(
     `#${pageName}-${blockName} figure[class*="midground"] aside.dark-code`,
   ) as HTMLElement;
-  let darkGrade;
+  let darkGrade = document.querySelector(
+    `#${pageName}-${blockName} div[class*="background"] aside.dark-grade`,
+  ) as HTMLElement;
   let lightCode = document.querySelector(
     `#${pageName}-${blockName} figure[class*="midground"] aside.light-code`,
   ) as HTMLElement;
-  let lightGrade;
-
+  let lightGrade = document.querySelector(
+    `#${pageName}-${blockName} div[class*="background"] aside.light-grade`,
+  ) as HTMLElement;
   let textView = document.querySelector(
     `#${pageName}-${blockName} figure[class*="midground"] section.size-font`,
   ) as HTMLElement;
@@ -237,6 +240,9 @@ export function toggleAside(
 
       textView.classList.add('hidden');
       textView.classList.remove('visible');
+
+      darkGrade.classList.add('visible');
+      darkGrade.classList.remove('hidden');
       break;
     case 'close-dark':
       darkCode.classList.add('hidden');
@@ -244,6 +250,9 @@ export function toggleAside(
 
       textView.classList.add('visible');
       textView.classList.remove('hidden');
+
+      darkGrade.classList.add('hidden');
+      darkGrade.classList.remove('visible');
       break;
     case 'open-light':
       lightCode.classList.add('visible');
@@ -251,6 +260,9 @@ export function toggleAside(
 
       textView.classList.add('hidden');
       textView.classList.remove('visible');
+
+      lightGrade.classList.add('visible');
+      lightGrade.classList.remove('hidden');
       break;
     case 'close-light':
       lightCode.classList.add('hidden');
@@ -258,6 +270,9 @@ export function toggleAside(
 
       textView.classList.add('visible');
       textView.classList.remove('hidden');
+
+      lightGrade.classList.add('hidden');
+      lightGrade.classList.remove('visible');
       break;
   }
 }
