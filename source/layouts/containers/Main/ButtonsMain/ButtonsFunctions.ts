@@ -7,6 +7,12 @@ export function controlPreview(
   pagePreview: 'default-buttons' | 'routing-buttons' | string,
 ) {
   const pagePart: String = `${pageName}-${blockName} li[class="${pagePreview}"]`;
+  let darkCarousel = Array.from(
+    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="darkside"] li[class*="slide"]`),
+  ) as HTMLElement[];
+  let lightCarousel = Array.from(
+    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="lightside"] li[class*="slide"]`),
+  ) as HTMLElement[];
 
   const findHTML = (blockAction: 'go-up' | 'scroll-down' | String, pagePart: String) => {
     let previewText = document.querySelectorAll(`#${pagePart} li.visible`) as NodeListOf<HTMLElement>;
@@ -97,22 +103,16 @@ export function controlPreview(
     });
     // console.log(elements);
   };
-
+  findHTML(blockAction, pagePart);
+  /*
   let textCarousel = document.querySelector(`#${pagePart} figure[class*="midground"] .carousel-preview`) as HTMLElement;
 
-  let darkCarousel = Array.from(
-    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="darkside"] li[class*="slide"]`),
-  ) as HTMLElement[];
   let darkDef = darkCarousel[0] as HTMLElement;
   let darkAlt = darkCarousel[1] as HTMLElement;
 
-  let lightCarousel = Array.from(
-    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="lightside"] li[class*="slide"]`),
-  ) as HTMLElement[];
   let lightDef = lightCarousel[0] as HTMLElement;
   let lightAlt = lightCarousel[1] as HTMLElement;
-
-  findHTML(blockAction, pagePart);
+  */
 }
 export function defaultPreview(
   pageName: string,
@@ -212,212 +212,56 @@ export function defaultPreview(
     findHTML(pageName, blockName, blockAction, 'default-buttons');
   }, 125);
 }
-
 export function toggleAside(
   pageName: string,
   blockName: string,
   blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | String,
 ) {
-  const qs = (selector: string) => {
-    const el = document.querySelector(selector) as HTMLElement | null;
-    if (!el) throw new Error(`Missing element: ${selector}`);
-    return el;
-  };
-  const show = (el: HTMLElement) => {
-    el.classList.add('visible');
-    el.classList.remove('hidden');
-  };
-  const hide = (el: HTMLElement) => {
-    el.classList.add('hidden');
-    el.classList.remove('visible');
-  };
+  let darkCode = document.querySelector(
+    `#${pageName}-${blockName} figure[class*="midground"] aside.dark-code`,
+  ) as HTMLElement;
+  let darkGrade;
+  let lightCode = document.querySelector(
+    `#${pageName}-${blockName} figure[class*="midground"] aside.light-code`,
+  ) as HTMLElement;
+  let lightGrade;
 
-  //--|🠊 centerElement contains a .visible className 🠈|--\\
-  //--|🠊 rightLight & leftDark contains a .hidden className 🠈|--\\
-  const leftDark = qs(`#${pageName}-main .midground .dark-code`);
-  const rightLight = qs(`#${pageName}-main .midground .light-code`);
-  const centerElement = qs(`#${pageName}-main .midground .size-font`);
+  let textView = document.querySelector(
+    `#${pageName}-${blockName} figure[class*="midground"] section.size-font`,
+  ) as HTMLElement;
 
   switch (blockAction) {
     case 'open-dark':
-      show(leftDark); //--|🠊 Toggle .hidden on leftDark to .visible 🠈|--\\
-      hide(centerElement); //--|🠊 Toggle the centerElement from .visible to .hidden 🠈|--\\
+      darkCode.classList.add('visible');
+      darkCode.classList.remove('hidden');
+
+      textView.classList.add('hidden');
+      textView.classList.remove('visible');
       break;
     case 'close-dark':
-      hide(leftDark); //--|🠊 Toggle .visible on leftDark to .hidden 🠈|--\\
-      show(centerElement); //--|🠊 Toggle .hidden on centerElement to .visible 🠈|--\\
+      darkCode.classList.add('hidden');
+      darkCode.classList.remove('visible');
+
+      textView.classList.add('visible');
+      textView.classList.remove('hidden');
       break;
     case 'open-light':
-      show(rightLight); //--|🠊 Toggle .hidden on rightLight to .visible 🠈|--\\
-      hide(centerElement); //--|🠊 Toggle the centerElement from .visible to .hidden 🠈|--\\
+      lightCode.classList.add('visible');
+      lightCode.classList.remove('hidden');
+
+      textView.classList.add('hidden');
+      textView.classList.remove('visible');
       break;
     case 'close-light':
-      hide(rightLight); //--|🠊 Toggle .visible on rightLight to .hidden 🠈|--\\
-      show(centerElement); //--|🠊 Toggle .hidden on centerElement to .visible 🠈|--\\
+      lightCode.classList.add('hidden');
+      lightCode.classList.remove('visible');
+
+      textView.classList.add('visible');
+      textView.classList.remove('hidden');
       break;
-    default:
-      throw new Error(
-        '//--|🠊 ERROR - C:/Develop/development-portfolio_4.00/source/layouts/containers/Main/ButtonsMain/ButtonsMain.tsx 🠈|--//',
-      );
-  }
-
-  //--|🠊 console.log({ blockName, leftDark, rightLight, centerElement }); 🠈|--\\
-}
-export function scrollSection(pageName: string, blockName: string, blockAction: 'go-up' | 'scroll-down' | String) {
-  const fontSize = document.querySelector(`#${pageName}-${blockName} .midground ol .visible`) as HTMLElement;
-  const showHTML = (view: number) => {
-    darkLeft.style.transform = `translateY(-${lightRight.offsetHeight * view}px)`;
-    fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * view}px)`;
-    lightRight.style.transform = `translateY(-${darkLeft.offsetHeight * view}px)`;
-  };
-  const markHTML = (fontSize: HTMLElement, prev: number, next: number, blockAction: String) => {
-    let prevFont = findHTML(fontSize)[0];
-    let nextFont = findHTML(fontSize)[1];
-
-    fontSize.classList.add('hidden');
-    fontSize.classList.remove('visible');
-    if (blockAction === 'go-up') {
-      prevFont.classList.add('visible');
-      prevFont.classList.remove('hidden');
-    } else if (blockAction === 'scroll-down') {
-      nextFont.classList.add('visible');
-      nextFont.classList.remove('hidden');
-    }
-
-    darkLeft.children[prev].classList.add('hidden');
-    darkLeft.children[prev].classList.remove('visible');
-    darkLeft.children[next].classList.add('visible');
-    darkLeft.children[next].classList.remove('hidden');
-
-    lightRight.children[next].classList.remove('hidden');
-    lightRight.children[next].classList.add('visible');
-    lightRight.children[prev].classList.remove('visible');
-    lightRight.children[prev].classList.add('hidden');
-  };
-  const findHTML = (fontSize: HTMLElement) => {
-    let nextFont: HTMLElement;
-    let prevFont: HTMLElement;
-    if (fontSize.previousElementSibling !== null) {
-      prevFont = fontSize.previousElementSibling as HTMLElement;
-    } else {
-      prevFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(7)`) as HTMLElement;
-    }
-    if (fontSize.nextElementSibling !== null) {
-      nextFont = fontSize.nextElementSibling as HTMLElement;
-    } else {
-      nextFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(1)`) as HTMLElement;
-    }
-
-    return [prevFont, nextFont] as Array<HTMLElement>;
-  };
-
-  let fontTrack = document.querySelector(`#${pageName}-${blockName} .midground .size-font`) as HTMLElement;
-  let darkLeft = document.querySelector(`#${pageName}-${blockName} .foreground .dark-side section`) as HTMLElement;
-  let lightRight = document.querySelector(`#${pageName}-${blockName} .foreground .light-side section`) as HTMLElement;
-  let whiteHeight = lightRight.offsetHeight;
-  let fontHeight = fontTrack.offsetHeight;
-  let darkHeight = darkLeft.offsetHeight;
-  if (fontSize !== null) {
-    switch (fontSize.classList[0]) {
-      case 'h1-size':
-        if (blockAction === 'go-up') {
-          showHTML(6);
-          markHTML(fontSize, 0, 6, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(1);
-          markHTML(fontSize, 0, 1, blockAction);
-        }
-        break;
-      case 'h2-size':
-        if (blockAction === 'go-up') {
-          showHTML(0);
-          markHTML(fontSize, 1, 0, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(2);
-          markHTML(fontSize, 1, 2, blockAction);
-        }
-        break;
-      case 'h3-size':
-        if (blockAction === 'go-up') {
-          showHTML(1);
-          markHTML(fontSize, 2, 1, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(3);
-          markHTML(fontSize, 2, 3, blockAction);
-        }
-        break;
-      case 'h4-size':
-        if (blockAction === 'go-up') {
-          showHTML(2);
-          markHTML(fontSize, 3, 2, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(4);
-          markHTML(fontSize, 3, 4, blockAction);
-        }
-        break;
-      case 'h5-size':
-        if (blockAction === 'go-up') {
-          showHTML(3);
-          markHTML(fontSize, 4, 3, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(5);
-          markHTML(fontSize, 4, 5, blockAction);
-        }
-        break;
-      case 'h6-size':
-        if (blockAction === 'go-up') {
-          showHTML(4);
-          markHTML(fontSize, 5, 4, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(5);
-          markHTML(fontSize, 5, 6, blockAction);
-        }
-        break;
-      case 'p-size':
-        if (blockAction === 'go-up') {
-          showHTML(5);
-          markHTML(fontSize, 6, 5, blockAction);
-        } else if (blockAction === 'scroll-down') {
-          showHTML(0);
-          markHTML(fontSize, 6, 0, blockAction);
-        }
-        break;
-    }
   }
 }
 
-export function resizePreview(pageName: string, blockName: string) {
-  //--|🠊 Complete documentation at bottom of function 🠈|--\\
-  const sizeList = document.querySelector<HTMLOListElement>(`#${pageName}-main .size-font > ol`);
-  const parent = document.querySelector<HTMLElement>(`#${pageName}-main .size-font`);
-  if (!sizeList || !parent) return;
-  requestAnimationFrame(() => {
-    const h = parent.offsetHeight;
-    Array.from(sizeList.children).forEach((child) => {
-      const el = child as HTMLElement;
-      //--|🠊 Step 1: Make each item match the parent height. 🠈|--\\
-      el.style.height = `${h}px`;
-      el.style.boxSizing = 'border-box';
-      //--|🠊 Step 1: center the text within that tall box (no padding math needed) 🠈|--\\
-      el.style.margin = '0';
-      el.style.display = 'grid';
-      el.style.textAlign = 'center';
-      el.style.placeItems = 'center';
-    });
-  });
-  /*
-    ### Centering text inside a “tall box” (no padding math needed)
-
-    If an element is forced to be as tall as its parent (e.g., via `height = parent.offsetHeight`), **don’t calculate `padding-top`** to fake vertical alignment.
-    Instead, turn the element into a tiny layout container and let CSS do the centering for free:
-
-    - Set the child to `display: grid`
-    - Use `place-items: center` to center **vertically + horizontally**
-    - Add `text-align: center` if you want the text itself centered
-
-    Result: perfectly centered content, responsive by default, and zero “maffs”.
-    */
-}
 export function markList(pageName: string, blockName: string, listName: 'default-buttons' | 'routing-buttons'): string {
   const identifier = listName.split('-')[0];
   setTimeout(() => {
@@ -643,3 +487,161 @@ export function markList(pageName: string, blockName: string, listName: 'default
     }
   }
   */
+/*
+export function resizePreview(pageName: string, blockName: string) {
+  //--|🠊 Complete documentation at bottom of function 🠈|--\\
+  const sizeList = document.querySelector<HTMLOListElement>(`#${pageName}-main .size-font > ol`);
+  const parent = document.querySelector<HTMLElement>(`#${pageName}-main .size-font`);
+  if (!sizeList || !parent) return;
+  requestAnimationFrame(() => {
+    const h = parent.offsetHeight;
+    Array.from(sizeList.children).forEach((child) => {
+      const el = child as HTMLElement;
+      //--|🠊 Step 1: Make each item match the parent height. 🠈|--\\
+      el.style.height = `${h}px`;
+      el.style.boxSizing = 'border-box';
+      //--|🠊 Step 1: center the text within that tall box (no padding math needed) 🠈|--\\
+      el.style.margin = '0';
+      el.style.display = 'grid';
+      el.style.textAlign = 'center';
+      el.style.placeItems = 'center';
+    });
+  });
+  
+    ### Centering text inside a “tall box” (no padding math needed)
+
+    If an element is forced to be as tall as its parent (e.g., via `height = parent.offsetHeight`), **don’t calculate `padding-top`** to fake vertical alignment.
+    Instead, turn the element into a tiny layout container and let CSS do the centering for free:
+
+    - Set the child to `display: grid`
+    - Use `place-items: center` to center **vertically + horizontally**
+    - Add `text-align: center` if you want the text itself centered
+
+    Result: perfectly centered content, responsive by default, and zero “maffs”.
+    
+}
+*/
+/*
+export function scrollSection(pageName: string, blockName: string, blockAction: 'go-up' | 'scroll-down' | String) {
+  const fontSize = document.querySelector(`#${pageName}-${blockName} .midground ol .visible`) as HTMLElement;
+  const showHTML = (view: number) => {
+    darkLeft.style.transform = `translateY(-${lightRight.offsetHeight * view}px)`;
+    fontTrack.style.transform = `translateY(-${fontTrack.offsetHeight * view}px)`;
+    lightRight.style.transform = `translateY(-${darkLeft.offsetHeight * view}px)`;
+  };
+  const markHTML = (fontSize: HTMLElement, prev: number, next: number, blockAction: String) => {
+    let prevFont = findHTML(fontSize)[0];
+    let nextFont = findHTML(fontSize)[1];
+
+    fontSize.classList.add('hidden');
+    fontSize.classList.remove('visible');
+    if (blockAction === 'go-up') {
+      prevFont.classList.add('visible');
+      prevFont.classList.remove('hidden');
+    } else if (blockAction === 'scroll-down') {
+      nextFont.classList.add('visible');
+      nextFont.classList.remove('hidden');
+    }
+
+    darkLeft.children[prev].classList.add('hidden');
+    darkLeft.children[prev].classList.remove('visible');
+    darkLeft.children[next].classList.add('visible');
+    darkLeft.children[next].classList.remove('hidden');
+
+    lightRight.children[next].classList.remove('hidden');
+    lightRight.children[next].classList.add('visible');
+    lightRight.children[prev].classList.remove('visible');
+    lightRight.children[prev].classList.add('hidden');
+  };
+  const findHTML = (fontSize: HTMLElement) => {
+    let nextFont: HTMLElement;
+    let prevFont: HTMLElement;
+    if (fontSize.previousElementSibling !== null) {
+      prevFont = fontSize.previousElementSibling as HTMLElement;
+    } else {
+      prevFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(7)`) as HTMLElement;
+    }
+    if (fontSize.nextElementSibling !== null) {
+      nextFont = fontSize.nextElementSibling as HTMLElement;
+    } else {
+      nextFont = document.querySelector(`#${pageName}-${blockName} .midground ol *:nth-child(1)`) as HTMLElement;
+    }
+
+    return [prevFont, nextFont] as Array<HTMLElement>;
+  };
+
+  let fontTrack = document.querySelector(`#${pageName}-${blockName} .midground .size-font`) as HTMLElement;
+  let darkLeft = document.querySelector(`#${pageName}-${blockName} .foreground .dark-side section`) as HTMLElement;
+  let lightRight = document.querySelector(`#${pageName}-${blockName} .foreground .light-side section`) as HTMLElement;
+  let whiteHeight = lightRight.offsetHeight;
+  let fontHeight = fontTrack.offsetHeight;
+  let darkHeight = darkLeft.offsetHeight;
+  if (fontSize !== null) {
+    switch (fontSize.classList[0]) {
+      case 'h1-size':
+        if (blockAction === 'go-up') {
+          showHTML(6);
+          markHTML(fontSize, 0, 6, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(1);
+          markHTML(fontSize, 0, 1, blockAction);
+        }
+        break;
+      case 'h2-size':
+        if (blockAction === 'go-up') {
+          showHTML(0);
+          markHTML(fontSize, 1, 0, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(2);
+          markHTML(fontSize, 1, 2, blockAction);
+        }
+        break;
+      case 'h3-size':
+        if (blockAction === 'go-up') {
+          showHTML(1);
+          markHTML(fontSize, 2, 1, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(3);
+          markHTML(fontSize, 2, 3, blockAction);
+        }
+        break;
+      case 'h4-size':
+        if (blockAction === 'go-up') {
+          showHTML(2);
+          markHTML(fontSize, 3, 2, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(4);
+          markHTML(fontSize, 3, 4, blockAction);
+        }
+        break;
+      case 'h5-size':
+        if (blockAction === 'go-up') {
+          showHTML(3);
+          markHTML(fontSize, 4, 3, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(5);
+          markHTML(fontSize, 4, 5, blockAction);
+        }
+        break;
+      case 'h6-size':
+        if (blockAction === 'go-up') {
+          showHTML(4);
+          markHTML(fontSize, 5, 4, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(5);
+          markHTML(fontSize, 5, 6, blockAction);
+        }
+        break;
+      case 'p-size':
+        if (blockAction === 'go-up') {
+          showHTML(5);
+          markHTML(fontSize, 6, 5, blockAction);
+        } else if (blockAction === 'scroll-down') {
+          showHTML(0);
+          markHTML(fontSize, 6, 0, blockAction);
+        }
+        break;
+    }
+  }
+}
+*/

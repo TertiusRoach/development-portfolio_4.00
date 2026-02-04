@@ -2,7 +2,7 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { controlPreview, toggleAside, scrollSection, resizePreview, defaultPreview, markList } from './ButtonsFunctions';
+import { controlPreview, toggleAside, defaultPreview, markList } from './ButtonsFunctions';
 
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
@@ -31,7 +31,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   ) => {
     switch (blockEvent) {
       case 'toggle-aside':
-      // return toggleAside(pageName, blockName, blockAction);
+        return toggleAside(pageName, blockName, blockAction);
       case 'control-preview':
         return controlPreview(pageName, blockName, blockAction, pagePreview);
     }
@@ -51,8 +51,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               <aside
                 id="default-darkside"
                 className="carousel-container"
-                // onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
-                // onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-dark')}
+                onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'open-dark')}
+                onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'close-dark')}
               >
                 <ol className="carousel-preview slide-one">
                   <li className="def-track slide-one">
@@ -901,8 +901,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               <aside
                 id="default-lightside"
                 className="carousel-container"
-                // onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
-                // onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
+                onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'open-light')}
+                onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'close-light')}
               >
                 <ol className="carousel-preview slide-one">
                   <li className="def-track slide-one">
@@ -1785,8 +1785,12 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 <div></div>
                 <div></div>
               </header>
-              <aside className="left"></aside>
-              <aside className="right"></aside>
+              <aside className="dark-grade hidden">
+                <span></span>
+              </aside>
+              <aside className="light-grade hidden">
+                <span></span>
+              </aside>
               <footer>
                 <div></div>
                 <div></div>
