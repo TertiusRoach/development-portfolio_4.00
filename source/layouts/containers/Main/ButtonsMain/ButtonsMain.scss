@@ -78,12 +78,44 @@
       z-index: 1;
       //--|🠊 display: grid; 🠈|--\\
       aside[class*='code'] {
+        z-index: 1;
         display: grid;
         transition:
           filter 1s ease-in-out,
           grid-template-columns 750ms ease-in-out,
           transform 3s cubic-bezier(0.22, 1, 0.36, 1),
           opacity 750ms cubic-bezier(0.48, 1, 0.25, 1);
+        pre {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          code {
+            background: red;
+            width: 448px;
+            height: 672px;
+            font-size: 24px;
+            border-radius: 32px;
+            @media screen and (max-height: 768px) {
+              width: 285px;
+              height: 416px;
+              font-size: 20px;
+              border-radius: 24px;
+            }
+            @media screen and (max-height: 480px) {
+              width: 214px;
+              height: 312px;
+              font-size: 16px;
+              border-radius: 16px;
+            }
+            @media screen and (max-height: 360px) {
+              width: 165px;
+              height: 240px;
+              font-size: 10px;
+              border-radius: 8px;
+            }
+          }
+        }
+
         &.hidden {
           opacity: 0;
           filter: blur(24px);
@@ -93,16 +125,6 @@
           opacity: 1;
           filter: blur(0);
           transform: scale(1);
-        }
-
-        pre {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          /*
-          code {
-          }
-          */
         }
 
         &[class*='dark'] {
@@ -131,6 +153,7 @@
         }
       }
       section[class*='size'] {
+        z-index: 0;
         grid-area: 2 / 3 / 3 / 4;
         transition:
           filter 1.5s ease-in-out,
@@ -413,46 +436,35 @@ main[id*='buttons'] {
       //--|🠊 padding: 0; 🠈|--\\
       //--|🠊 list-style: none; 🠈|--\\
 
-      li:nth-child(1) {
-        // background: rgba(green, 0.5);
+      &[class*='one'] {
+        //--|🠋 default-buttons 🠋|--\\
+        transform: translateX(0%);
       }
-      li:nth-child(2) {
-        opacity: 0;
-        filter: blur(24px);
-        // background: rgba(darkgreen, 0.5);
+      &[class*='two'] {
+        //--|🠋 routing-buttons 🠋|--\\
+        transform: translateX(-100%);
       }
-
-      &[class*='preview'] {
+      li {
         &[class*='one'] {
-          //--|🠋 default-buttons 🠋|--\\
-          transform: translateX(0%);
+          transform: translateY(0);
         }
         &[class*='two'] {
-          //--|🠋 routing-buttons 🠋|--\\
-          transform: translateX(-100%);
+          transform: translateY(-100%);
         }
-        li {
-          &[class*='one'] {
-            transform: translateY(0);
-          }
-          &[class*='two'] {
-            transform: translateY(-100%);
-          }
-          &[class*='thr'] {
-            transform: translateY(-200%);
-          }
-          &[class*='fou'] {
-            transform: translateY(-300%);
-          }
-          &[class*='fiv'] {
-            transform: translateY(-400%);
-          }
-          &[class*='six'] {
-            transform: translateY(-500%);
-          }
-          &[class*='sev'] {
-            transform: translateY(-600%);
-          }
+        &[class*='thr'] {
+          transform: translateY(-200%);
+        }
+        &[class*='fou'] {
+          transform: translateY(-300%);
+        }
+        &[class*='fiv'] {
+          transform: translateY(-400%);
+        }
+        &[class*='six'] {
+          transform: translateY(-500%);
+        }
+        &[class*='sev'] {
+          transform: translateY(-600%);
         }
       }
     }
