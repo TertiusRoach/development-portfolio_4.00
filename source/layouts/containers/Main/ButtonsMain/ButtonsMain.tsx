@@ -2,7 +2,7 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { toggleAside, scrollSection, resizePreview, defaultPreview, markList } from './ButtonsFunctions';
+import { controlPreview, toggleAside, scrollSection, resizePreview, defaultPreview, markList } from './ButtonsFunctions';
 
 import { stripBrackets } from '../../../scripts/buttons';
 import { clearSection } from '../../../components/Section/buttons/Section_buttons';
@@ -25,14 +25,15 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const handleButtons = (
     pageName: string,
     blockName: string,
-    blockEvent: 'scroll-section' | 'toggle-aside',
+    blockEvent: 'control-preview' | 'toggle-aside',
+    pagePreview: 'default-buttons' | 'routing-buttons',
     blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down',
   ) => {
     switch (blockEvent) {
       case 'toggle-aside':
       // return toggleAside(pageName, blockName, blockAction);
-      case 'scroll-section':
-      // return scrollSection(pageName, blockName, blockAction);
+      case 'control-preview':
+        return controlPreview(pageName, blockName, blockAction, pagePreview);
     }
   };
   const exportElements = (
@@ -50,11 +51,11 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
               <aside
                 id="default-darkside"
                 className="carousel-container"
-                onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
-                onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-dark')}
+                // onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-dark')}
+                // onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-dark')}
               >
                 <ol className="carousel-preview slide-one">
-                  <li className="def-track">
+                  <li className="def-track slide-one">
                     <div className="h1-size hidden">
                       <ButtonDefault
                         style={{
@@ -284,577 +285,577 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                       />
                     </div>
                     <div className="h3-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-top-',
-                        text: `thr_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-top-',
+                          text: `thr_top_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-bottom-',
-                        text: `thr_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-bottom-',
+                          text: `thr_bot_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-left-',
+                          text: `thr_lef_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-right-',
+                          text: `thr_rig_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-center-',
-                        text: `thr_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-center-',
+                          text: `thr_cen_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-text-',
-                        text: `thr_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-text-',
+                          text: `thr_tex_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        text: `thr_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-icon-',
+                          text: `thr_ico_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h4-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-top-',
-                        text: `fou_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-top-',
+                          text: `fou_top_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-bottom-',
-                        text: `fou_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-bottom-',
+                          text: `fou_bot_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-left-',
+                          text: `fou_lef_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-right-',
+                          text: `fou_rig_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-center-',
-                        text: `fou_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-center-',
+                          text: `fou_cen_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-text-',
-                        text: `fou_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-text-',
+                          text: `fou_tex_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-icon-',
-                        text: `fou_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-icon-',
+                          text: `fou_ico_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h5-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-top-',
-                        text: `fiv_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-top-',
+                          text: `fiv_top_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-bottom-',
-                        text: `fiv_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-bottom-',
+                          text: `fiv_bot_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-left-',
+                          text: `fiv_lef_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-right-',
+                          text: `fiv_rig_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-center-',
-                        text: `fiv_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-center-',
+                          text: `fiv_cen_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-text-',
-                        text: `fiv_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-text-',
+                          text: `fiv_tex_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-icon-',
-                        text: `fiv_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-icon-',
+                          text: `fiv_ico_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h6-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-top-',
-                        text: `six_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-top-',
+                          text: `six_top_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-bottom-',
-                        text: `six_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-bottom-',
+                          text: `six_bot_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-left-',
+                          text: `six_lef_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-right-',
+                          text: `six_rig_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-center-',
-                        text: `six_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-center-',
+                          text: `six_cen_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-text-',
-                        text: `six_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-text-',
+                          text: `six_tex_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-icon-',
-                        text: `six_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-icon-',
+                          text: `six_ico_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="p-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-top-',
-                        text: `par_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-top-',
+                          text: `par_top_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-bottom-',
-                        text: `par_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-bottom-',
+                          text: `par_bot_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-left-',
+                          text: `par_lef_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-right-',
+                          text: `par_rig_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-center-',
-                        text: `par_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-center-',
+                          text: `par_cen_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-text-',
-                        text: `par_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-text-',
+                          text: `par_tex_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-icon-',
-                        text: `par_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-icon-',
+                          text: `par_ico_dar_mon`,
+                          shade: '~dark~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                   </li>
-                  <li className="alt-track"></li>
+                  <li className="alt-track slide-one"></li>
                 </ol>
               </aside>
               <nav className="scroll-sections">
@@ -875,7 +876,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                     blockName: blockName,
                     labelName: `${pageName}_${blockName}_go-up`,
                   }}
-                  onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'go-up')}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
                 />
                 <ButtonDefault
                   style={{
@@ -894,17 +895,17 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                     blockName: blockName,
                     labelName: `${pageName}_${blockName}_scroll-down`,
                   }}
-                  onClick={() => handleButtons(pageName, blockName, 'scroll-section', 'scroll-down')}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
                 />
               </nav>
               <aside
                 id="default-lightside"
                 className="carousel-container"
-                onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
-                onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
+                // onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'open-light')}
+                // onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'close-light')}
               >
                 <ol className="carousel-preview slide-one">
-                  <li className="def-track">
+                  <li className="def-track slide-one">
                     <div className="h1-size hidden">
                       <ButtonDefault
                         style={{
@@ -1134,577 +1135,577 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                       />
                     </div>
                     <div className="h3-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-top-',
-                        text: `thr_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-top-',
+                          text: `thr_top_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-bottom-',
-                        text: `thr_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-bottom-',
+                          text: `thr_bot_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-left-',
+                          text: `thr_lef_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-right-',
+                          text: `thr_rig_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-center-',
-                        text: `thr_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-center-',
+                          text: `thr_cen_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-text-',
-                        text: `thr_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-text-',
+                          text: `thr_tex_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        text: `thr_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-icon-',
+                          text: `thr_ico_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h4-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-top-',
-                        text: `fou_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-top-',
+                          text: `fou_top_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-bottom-',
-                        text: `fou_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-bottom-',
+                          text: `fou_bot_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-left-',
+                          text: `fou_lef_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-right-',
+                          text: `fou_rig_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-center-',
-                        text: `fou_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-center-',
+                          text: `fou_cen_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-text-',
-                        text: `fou_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-text-',
+                          text: `fou_tex_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-icon-',
-                        text: `fou_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h4>',
+                          view: '-icon-',
+                          text: `fou_ico_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h5-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-top-',
-                        text: `fiv_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-top-',
+                          text: `fiv_top_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-bottom-',
-                        text: `fiv_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-bottom-',
+                          text: `fiv_bot_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-left-',
+                          text: `fiv_lef_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-right-',
+                          text: `fiv_rig_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-center-',
-                        text: `fiv_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-center-',
+                          text: `fiv_cen_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-text-',
-                        text: `fiv_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-text-',
+                          text: `fiv_tex_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-icon-',
-                        text: `fiv_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h5>',
+                          view: '-icon-',
+                          text: `fiv_ico_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="h6-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-top-',
-                        text: `six_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-top-',
+                          text: `six_top_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-bottom-',
-                        text: `six_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-bottom-',
+                          text: `six_bot_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-left-',
+                          text: `six_lef_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-right-',
+                          text: `six_rig_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-center-',
-                        text: `six_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-center-',
+                          text: `six_cen_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-text-',
-                        text: `six_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-text-',
+                          text: `six_tex_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-icon-',
-                        text: `six_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<h6>',
+                          view: '-icon-',
+                          text: `six_ico_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                     <div className="p-size hidden">
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-top-',
-                        text: `par_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-top-',
+                          text: `par_top_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-bottom-',
-                        text: `par_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-bottom-',
+                          text: `par_bot_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-left-',
+                          text: `par_lef_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-right-',
+                          text: `par_rig_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-center-',
-                        text: `par_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-center-',
+                          text: `par_cen_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-text-',
-                        text: `par_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-text-',
+                          text: `par_tex_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
-                      {/* <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-icon-',
-                        text: `par_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
+                          image: '',
+                          type: '{button}',
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
+                      <ButtonDefault
+                        style={{
+                          size: '<p>',
+                          view: '-icon-',
+                          text: `par_ico_lig_mon`,
+                          shade: '~light~',
+                          color: '(mono)',
 
-                        type: '{button}',
-                        image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    /> */}
+                          type: '{button}',
+                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
+                        }}
+                        info={{
+                          pageName: pageName,
+                          blockName: blockName,
+                        }}
+                      />
                     </div>
                   </li>
-                  <li className="alt-track"></li>
+                  <li className="alt-track slide-one"></li>
                 </ol>
               </aside>
             </section>
@@ -1807,7 +1808,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
     // resizePreview(pageName, blockName);
-    // defaultPreview(pageName, blockName, 'h4-size');
+    defaultPreview(pageName, blockName, 'h3-size');
   }, [pageName, blockName, [info]]);
 
   let imagePath =
