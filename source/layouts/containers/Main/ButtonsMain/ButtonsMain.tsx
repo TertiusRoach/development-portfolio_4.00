@@ -1711,7 +1711,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
             </section>
             <figure className={`${listing}-midground`}>
               <aside className="dark-code hidden">
-                <pre>
+                <pre className="dark-text">
                   <code>
                     {`<ButtonDefault
                       style={{
@@ -1758,7 +1758,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 </ol>
               </section>
               <aside className="light-code hidden">
-                <pre>
+                <pre className="light-text">
                   <code>
                     {`<ButtonDefault
                       style={{
