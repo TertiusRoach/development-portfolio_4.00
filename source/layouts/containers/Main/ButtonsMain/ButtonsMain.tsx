@@ -47,6 +47,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         return (
           <>
             <section className={`${listing}-foreground`}>
+              <header style={{ height: '96px', width: '96px', background: 'red' }}></header>
+
               <nav className="scroll-sections default-buttons">
                 <ButtonDefault
                   style={{
