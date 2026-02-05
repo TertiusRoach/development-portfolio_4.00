@@ -516,11 +516,11 @@ main[id*='buttons'] {
       }
     }
     ol {
-      &[class*='one'] {
+      &[class*='def'] {
         //--|🠋 default 🠋|--\\
         transform: translateX(0%);
       }
-      &[class*='two'] {
+      &[class*='alt'] {
         //--|🠋 alternative 🠋|--\\
         transform: translateX(-100%);
       }

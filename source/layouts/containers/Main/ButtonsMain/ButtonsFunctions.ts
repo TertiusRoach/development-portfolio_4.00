@@ -142,7 +142,14 @@ export function defaultPreview(
 
     for (let i = 0; i < textCarousel.childElementCount; i++) {
       if (textCarousel.children[i].classList[0] === blockAction) {
-        var carouselElements = [darkDef.children[i], textCarousel.children[i], lightDef.children[i]] as Array<HTMLElement>;
+        var carouselElements = [
+          textCarousel.children[i],
+          darkDef.children[i],
+          lightDef.children[i],
+          darkAlt.children[i],
+          lightAlt.children[i],
+        ] as Array<HTMLElement>;
+
         markHTML(carouselElements);
       }
     }
@@ -224,55 +231,14 @@ export function togglePreview(
   if (!input) return;
 
   const isChecked = input.checked;
-  // console.log(blockAction.split('-')[1]);
   const toggleDefault = document.querySelector(
     `#${pageName}-${blockName} #${pageAction}-${blockAction.split('-')[1]}side ol[class*="preview"]`,
   ) as HTMLOListElement | null;
 
   if (!toggleDefault) return;
 
-  toggleDefault.classList.remove('slide-one', 'slide-two');
-  toggleDefault.classList.add(isChecked ? 'slide-two' : 'slide-one');
-  /*
-  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement;
-  if (pageAction === 'default') {
-    let toggleDefault = document.querySelector(
-      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
-    ) as HTMLOListElement;
-    switch (blockAction) {
-      case 'toggle-dark':
-        console.log(toggleDefault.classList[1]);
-        if (toggleDefault.classList[1] === 'slide-one') {
-          toggleDefault.classList.add('slide-two');
-          toggleDefault.classList.remove('slide-one');
-        } else if (toggleDefault.classList[1] === 'slide-two') {
-          toggleDefault.classList.add('slide-one');
-          toggleDefault.classList.remove('slide-two');
-        }
-        break;
-      case 'toggle-light':
-        break;
-    }
-  } else if (pageAction === 'routing') {
-    let toggleRouting = document.querySelector(
-      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
-    ) as HTMLOListElement;
-    switch (blockAction) {
-      case 'toggle-dark':
-        break;
-      case 'toggle-light':
-        break;
-    }
-  }
-  */
-  /*
-  if (input?.checked === false) {
-    console.log('Show Alternative');
-  } else if (input?.checked === true) {
-    console.log('Show Default');
-  }
-  */
-  // console.log(); // true | false
+  toggleDefault.classList.remove('slide-def', 'slide-alt');
+  toggleDefault.classList.add(isChecked ? 'slide-alt' : 'slide-def');
 }
 
 export function toggleAside(
