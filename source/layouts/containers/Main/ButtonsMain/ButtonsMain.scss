@@ -36,21 +36,6 @@
           button[class*='_ico_'] {
             grid-area: 7 / 1 / 8 / 3;
           }
-
-          transition:
-            filter 1.5s ease-in-out,
-            transform 1s ease-in-out,
-            opacity 750ms ease-in-out;
-          &.hidden {
-            opacity: 0;
-            filter: blur(24px);
-            transform: scale(0.25);
-          }
-          &.visible {
-            opacity: 1;
-            filter: blur(0);
-            transform: scale(1);
-          }
         }
         &[id*='darkside'] {
           grid-area: 1 / 2 / 4 / 3;
@@ -64,11 +49,9 @@
           z-index: 1;
           display: grid;
           grid-template: 1fr auto / 1fr auto 5fr auto 1fr;
-
           label:nth-child(1) {
             grid-area: 2 / 2 / 3 / 3;
           }
-
           label:nth-child(2) {
             grid-area: 2 / 4 / 3 / 5;
           }
@@ -212,7 +195,9 @@
           filter: blur(24px);
           transform: scale(1.5);
         }
-        &[class*='font'] {
+
+        ol[class*='preview'] {
+          transition: transform 500ms ease-in-out;
           h1 {
             font-weight: 800;
           }
@@ -413,14 +398,43 @@ main[id*='buttons'] {
 
 %carousel-container {
   [class*='carousel'] {
-    ul,
     ol {
       transition: transform 500ms ease-in-out;
       li {
-        transition:
-          opacity 250ms ease-in-out,
-          filter 250ms ease-in-out;
-        transition: transform 750ms ease-in-out;
+        div {
+          transition:
+            filter 1.5s ease-in-out,
+            transform 1s ease-in-out,
+            opacity 750ms ease-in-out;
+          &.hidden {
+            opacity: 0;
+            filter: blur(24px);
+            transform: scale(0.25);
+          }
+          &.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+          }
+        }
+      }
+      &[class*='def'] {
+        li[class*='alt'] {
+          div.visible {
+            opacity: 0;
+            filter: blur(12px);
+            transform: scale(0.5);
+          }
+        }
+      }
+      &[class*='alt'] {
+        li[class*='def'] {
+          div.visible {
+            opacity: 0;
+            filter: blur(12px);
+            transform: scale(0.5);
+          }
+        }
       }
     }
   }
@@ -433,7 +447,6 @@ main[id*='buttons'] {
       height: inherit;
       //--|🠊 padding: 0; 🠈|--\\
       //--|🠊 list-style: none; 🠈|--\\
-      transition: transform 250ms ease-in-out;
       li {
         flex: 0 0 100%;
         height: inherit;
@@ -445,53 +458,18 @@ main[id*='buttons'] {
           position: absolute;
         }
       }
-      &[class*='preview'] {
-        &[class*='one'] {
-          transform: translateX(0vw);
-        }
-        &[class*='two'] {
-          transform: translateX(-100vw);
-        }
-        &[class*='thr'] {
-          transform: translateX(-200vw);
-        }
-        &[class*='fou'] {
-          transform: translateX(-300vw);
-        }
-        &[class*='fiv'] {
-          transform: translateX(-400vw);
-        }
-        &[class*='six'] {
-          transform: translateX(-500vw);
-        }
-        &[class*='sev'] {
-          transform: translateX(-600vw);
-        }
-        &[class*='eig'] {
-          transform: translateX(-700vw);
-        }
-        &[class*='nin'] {
-          transform: translateX(-800vw);
-        }
-        &[class*='ten'] {
-          transform: translateX(-900vw);
-        }
-      }
     }
   }
   aside[class*='carousel'] {
+    ol[class*='preview'] {
+    }
     ol[class*='carousel'] {
       height: 100%;
       display: flex;
       //--|🠊 padding: 0; 🠈|--\\
       //--|🠊 list-style: none; 🠈|--\\
-      .def-track {
-        background: rgba(darkred, 0.25);
-      }
-      .alt-track {
-        background: rgba(darkblue, 0.25);
-      }
-      li {
+      li[class*='track'] {
+        transition: transform 500ms ease-in-out;
         &[class*='one'] {
           transform: translateY(0);
         }
@@ -514,15 +492,15 @@ main[id*='buttons'] {
           transform: translateY(-600%);
         }
       }
-    }
-    ol {
-      &[class*='def'] {
-        //--|🠋 default 🠋|--\\
-        transform: translateX(0%);
-      }
-      &[class*='alt'] {
-        //--|🠋 alternative 🠋|--\\
-        transform: translateX(-100%);
+      &[class*='preview'] {
+        &[class*='alt'] {
+          //--|🠋 alternative 🠋|--\\
+          transform: translateX(-100%);
+        }
+        &[class*='def'] {
+          //--|🠋 default 🠋|--\\
+          transform: translateX(0%);
+        }
       }
     }
   }

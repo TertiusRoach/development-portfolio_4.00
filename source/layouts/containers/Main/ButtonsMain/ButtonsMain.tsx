@@ -925,7 +925,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   </li>
                   <li className="alt-track slide-one">
                     <div className="h1-size hidden">
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h1>',
                           view: '-top-',
@@ -940,7 +940,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
+                      />
                       {/* <ButtonDefault
                         style={{
                           size: '<h1>',
@@ -1731,7 +1731,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                 onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'open-light')}
                 onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'close-light')}
               >
-                <ol className="carousel-preview slide-one">
+                <ol className="carousel-preview slide-def">
                   <li className="def-track slide-one">
                     <div className="h1-size hidden">
                       <ButtonDefault
@@ -2534,7 +2534,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   </li>
                   <li className="alt-track slide-one">
                     <div className="h1-size hidden">
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h1>',
                           view: '-top-',
@@ -2549,7 +2549,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
+                      />
                       {/* <ButtonDefault
                         style={{
                           size: '<h1>',
