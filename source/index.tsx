@@ -18,18 +18,64 @@ const pages: { [key: string]: React.ElementType } = {
   'ticketing-body': Ticketing,
   'hyperlink-body': Hyperlink,
 };
-
 //--|🠋 Render Components 🠋|--\\
 Object.entries(pages).forEach(([id]) => {
   const elementBody = document.getElementById(id) as HTMLElement;
-  const pageName = elementBody.id.split('-')[0] as 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+  const pageName = elementBody.id.split('-')[0] as 'landing' | 'buttons' | 'overtime' | 'ticketing' | 'hyperlink';
+  const safeRender = (identification: string, container: React.ReactElement) => {
+    let elementBody = document.getElementById(identification) as HTMLElement;
+    if (!elementBody) {
+      console.error(`Can't find #${identification}`);
+      return;
+    }
+    if (elementBody.innerHTML === '') {
+      ReactDOM.createRoot(elementBody).render(<React.StrictMode>{container}</React.StrictMode>);
+    } else {
+      console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
+    }
+  };
+  const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') => {
+    let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+    let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--\\
+    if (active) {
+      //--|🠉 If there's a visible element, hide it 🠈|--\\
+      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--\\
+      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--\\
+    }
+    switch (true) {
+      case element.classList.contains('asleep'):
+        //--|🠉 Show the selected view only if it’s currently hidden 🠈|--\\
+        element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--\\
+        return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--\\
+      case element.classList.contains('active'):
+        //--|🠉 Optional toggle: allow hiding the current element again 🠈|--\\
+        element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--\\
+        return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--\\
+    }
+  };
   if (elementBody.classList.contains('active')) {
     switch (pageName) {
-      case 'landing':
-        ReactDOM.createRoot(elementBody).render(<Landing />);
+      case 'buttons':
+        setView('buttons');
+        safeRender(`${pageName}-body`, React.createElement(Buttons));
+        setTimeout(() => {}, 250);
         break;
+      case 'overtime':
+        setView('overtime');
+        safeRender(`${pageName}-body`, React.createElement(Overtime));
+        break;
+      case 'ticketing':
+        setView('ticketing');
+        safeRender(`${pageName}-body`, React.createElement(Ticketing));
+        break;
+      case 'hyperlink':
+        setView('hyperlink');
+        safeRender(`${pageName}-body`, React.createElement(Hyperlink));
+        break;
+      case 'landing':
       default:
-        loadDemo(pageName);
+        setView('landing');
+        ReactDOM.createRoot(elementBody).render(<Landing />);
         break;
     }
   }
@@ -48,69 +94,6 @@ Object.entries(pages).forEach(([id]) => {
   }
   */
 });
-
-export function loadDemo(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons') {
-  const safeRender = (id: string, component: React.ReactElement) => {
-    let elementBody = document.getElementById(id) as HTMLElement;
-    if (!elementBody) {
-      console.error(`Can't find #${id}`);
-      return;
-    }
-
-    if (elementBody.innerHTML === '') {
-      ReactDOM.createRoot(elementBody).render(component);
-    } else {
-      console.warn(`Element #${id} is not empty. Skipping render to avoid overwrite.`);
-    }
-  };
-  const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons') => {
-    let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-    let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--\\
-
-    /*
-    if (!(element instanceof HTMLElement)) {
-      //--|🠉 Safeguard: Ensure the element exists and is an HTMLElement 🠈|--\\
-      console.warn(`Element for view "${pageName}" not found.`);
-      return;
-    }
-    */
-
-    if (active) {
-      //--|🠉 If there's a visible element, hide it 🠈|--\\
-      active.classList.add('asleep'); //--|🠈 Hide it by adding 'asleep' 🠈|--\\
-      active.classList.remove('active'); //--|🠈 And remove 'active' class 🠈|--\\
-    }
-
-    switch (true) {
-      case element.classList.contains('asleep'):
-        //--|🠉 Show the selected view only if it’s currently hidden 🠈|--\\
-        element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--\\
-        return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--\\
-      case element.classList.contains('active'):
-        //--|🠉 Optional toggle: allow hiding the current element again 🠈|--\\
-        element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--\\
-        return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--\\
-    }
-  };
-
-  switch (pageName) {
-    case 'buttons':
-      setView(pageName);
-      safeRender(`${pageName}-body`, React.createElement(Buttons));
-      setTimeout(() => {}, 250);
-      break;
-    case 'overtime':
-      setView(pageName);
-      safeRender(`${pageName}-body`, React.createElement(Overtime));
-      break;
-    case 'ticketing':
-      safeRender(`${pageName}-body`, React.createElement(Ticketing));
-      break;
-    case 'hyperlink':
-      safeRender(`${pageName}-body`, React.createElement(Hyperlink));
-      break;
-  }
-}
 
 export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
   const elementBody = document.getElementsByTagName('body');

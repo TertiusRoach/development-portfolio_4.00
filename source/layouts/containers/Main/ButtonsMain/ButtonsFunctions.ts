@@ -276,98 +276,65 @@ export function toggleAside(
   }
 }
 
-/*
-export function viewBlock(page: 'register' | 'login' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked') {
-  const carousel = document.querySelector('main .landing-carousel') as HTMLElement;
-  const login = carousel.childNodes[1] as HTMLElement;
-  const register = carousel.childNodes[0] as HTMLElement;
-  const password = carousel.childNodes[2] as HTMLElement;
-  const hideBlock = () => {
-    //--|🠋 <header> 🠋|--//
-    let launch = document.querySelector("header[id*='landing']") as HTMLElement;
-    if (launch.classList.contains('expanded')) {
-      launch.className = 'default-header collapsed'; //--|🠈 Hide Launch 🠈|--//
-    }
+export function togglePreview(
+  pageName: string,
+  blockName: string,
+  pageAction: 'default' | 'routing',
+  blockAction: 'toggle-dark' | 'toggle-light',
+) {
+  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement | null;
 
-    //--|🠋 <footer> 🠋|--//
-    let blocked = document.querySelector("footer[id*='landing']") as HTMLElement;
-    if (blocked.classList.contains('expanded')) {
-      blocked.className = 'default-footer collapsed'; //--|🠈 Hide Blocked 🠈|--//
-    }
+  const input = label?.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+  if (!input) return;
 
-    //--|🠋 <leftbar> 🠋|--//
-    let verify = document.getElementById('landing-leftbar') as HTMLElement;
-    if (verify.classList.contains('expanded')) {
-      verify.className = 'default-leftbar collapsed'; //--|🠈 Hide Verify 🠈|--//
-    }
+  const isChecked = input.checked;
+  // console.log(blockAction.split('-')[1]);
+  const toggleDefault = document.querySelector(
+    `#${pageName}-${blockName} #${pageAction}-${blockAction.split('-')[1]}side ol[class*="preview"]`,
+  ) as HTMLOListElement | null;
 
-    //--|🠋 <rightbar> 🠋|--//
-    let reset = document.getElementById('landing-rightbar') as HTMLElement;
-    if (reset.classList.contains('expanded')) {
-      reset.className = 'default-rightbar collapsed'; //--|🠈 Hide Reset 🠈|--//
-    }
-  };
-  const showBlock = (view: '<header>' | '<footer>' | '<leftbar>' | '<rightbar>') => {
-    switch (view) {
-      case '<header>':
-        let launch = document.querySelector("header[id*='landing']") as HTMLElement;
-        launch.className = 'default-header expanded'; //--|🠈 Show Launch 🠈|--//
+  if (!toggleDefault) return;
+
+  toggleDefault.classList.remove('slide-one', 'slide-two');
+  toggleDefault.classList.add(isChecked ? 'slide-two' : 'slide-one');
+  /*
+  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement;
+  if (pageAction === 'default') {
+    let toggleDefault = document.querySelector(
+      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
+    ) as HTMLOListElement;
+    switch (blockAction) {
+      case 'toggle-dark':
+        console.log(toggleDefault.classList[1]);
+        if (toggleDefault.classList[1] === 'slide-one') {
+          toggleDefault.classList.add('slide-two');
+          toggleDefault.classList.remove('slide-one');
+        } else if (toggleDefault.classList[1] === 'slide-two') {
+          toggleDefault.classList.add('slide-one');
+          toggleDefault.classList.remove('slide-two');
+        }
         break;
-      case '<footer>':
-        let blocked = document.querySelector("footer[id*='landing']") as HTMLElement;
-        blocked.className = 'default-footer expanded'; //--|🠈 Show Blocked 🠈|--//
-        break;
-      case '<leftbar>':
-        let verify = document.querySelectorAll("aside[class*='leftbar']")[0] as HTMLElement;
-        verify.className = 'default-leftbar expanded'; //--|🠈 Show Verify 🠈|--//
-        break;
-      case '<rightbar>':
-        let reset = document.querySelectorAll("aside[class*='rightbar']")[0] as HTMLElement;
-        reset.className = 'default-rightbar expanded'; //--|🠈 Show Reset 🠈|--//
+      case 'toggle-light':
         break;
     }
-  };
-
-  switch (page) {
-    case 'register':
-      hideBlock();
-
-      login.className = 'login-section hidden';
-      register.className = `${page}-section visible`;
-      password.className = 'password-section hidden';
-
-      carousel.style.transform = 'translateX(0vw)';
-      break;
-    case 'login':
-      hideBlock();
-
-      login.className = `${page}-section visible`;
-      register.className = 'register-section hidden';
-      password.className = 'password-section hidden';
-
-      carousel.style.transform = 'translateX(-100vw)';
-      break;
-    case 'password':
-      hideBlock();
-
-      login.className = 'login-section hidden';
-      register.className = 'register-section hidden';
-      password.className = `${page}-section visible`;
-
-      carousel.style.transform = 'translateX(-200vw)';
-      break;
-    case 'verify':
-      showBlock('<leftbar>');
-      break;
-    case 'reset':
-      showBlock('<rightbar>');
-      break;
-    case 'launch':
-      showBlock('<header>');
-      break;
-    case 'blocked':
-      showBlock('<footer>');
-      break;
+  } else if (pageAction === 'routing') {
+    let toggleRouting = document.querySelector(
+      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
+    ) as HTMLOListElement;
+    switch (blockAction) {
+      case 'toggle-dark':
+        break;
+      case 'toggle-light':
+        break;
+    }
   }
+  */
+  /*
+  if (input?.checked === false) {
+    console.log('Show Alternative');
+  } else if (input?.checked === true) {
+    console.log('Show Default');
+  }
+  */
+  // console.log(); // true | false
 }
-*/
