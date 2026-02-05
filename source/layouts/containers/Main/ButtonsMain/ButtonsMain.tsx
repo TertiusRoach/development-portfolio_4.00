@@ -2639,7 +2639,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
     // resizePreview(pageName, blockName);
-    defaultPreview(pageName, blockName, 'h3-size');
+    defaultPreview(pageName, blockName, 'h1-size');
   }, [pageName, blockName, [info]]);
 
   let imagePath =

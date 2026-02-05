@@ -485,14 +485,11 @@ main[id*='buttons'] {
       display: flex;
       //--|🠊 padding: 0; 🠈|--\\
       //--|🠊 list-style: none; 🠈|--\\
-
-      &[class*='one'] {
-        //--|🠋 default-buttons 🠋|--\\
-        transform: translateX(0%);
+      .def-track {
+        background: rgba(darkred, 0.25);
       }
-      &[class*='two'] {
-        //--|🠋 routing-buttons 🠋|--\\
-        transform: translateX(-100%);
+      .alt-track {
+        background: rgba(darkblue, 0.25);
       }
       li {
         &[class*='one'] {
@@ -516,6 +513,16 @@ main[id*='buttons'] {
         &[class*='sev'] {
           transform: translateY(-600%);
         }
+      }
+    }
+    ol {
+      &[class*='one'] {
+        //--|🠋 default 🠋|--\\
+        transform: translateX(0%);
+      }
+      &[class*='two'] {
+        //--|🠋 alternative 🠋|--\\
+        transform: translateX(-100%);
       }
     }
   }

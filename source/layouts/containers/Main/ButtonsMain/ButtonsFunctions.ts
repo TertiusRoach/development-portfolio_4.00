@@ -6,13 +6,6 @@ export function controlPreview(
   pagePreview: 'default-buttons' | 'routing-buttons' | string,
 ) {
   const pagePart: String = `${pageName}-${blockName} li[class="${pagePreview}"]`;
-  let darkCarousel = Array.from(
-    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="darkside"] li[class*="slide"]`),
-  ) as HTMLElement[];
-  let lightCarousel = Array.from(
-    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="lightside"] li[class*="slide"]`),
-  ) as HTMLElement[];
-
   const findHTML = (blockAction: 'go-up' | 'scroll-down' | String, pagePart: String) => {
     let previewText = document.querySelectorAll(`#${pagePart} li.visible`) as NodeListOf<HTMLElement>;
     let asideButtons = document.querySelectorAll(`#${pagePart} div.visible`) as NodeListOf<HTMLElement>;
@@ -103,6 +96,14 @@ export function controlPreview(
     // console.log(elements);
   };
   findHTML(blockAction, pagePart);
+
+  let darkCarousel = Array.from(
+    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="darkside"] li[class*="slide"]`),
+  ) as HTMLElement[];
+  let lightCarousel = Array.from(
+    document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="lightside"] li[class*="slide"]`),
+  ) as HTMLElement[];
+
   /*
   let textCarousel = document.querySelector(`#${pagePart} figure[class*="midground"] .carousel-preview`) as HTMLElement;
 
@@ -211,6 +212,69 @@ export function defaultPreview(
     findHTML(pageName, blockName, blockAction, 'default-buttons');
   }, 125);
 }
+export function togglePreview(
+  pageName: string,
+  blockName: string,
+  pageAction: 'default' | 'routing',
+  blockAction: 'toggle-dark' | 'toggle-light',
+) {
+  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement | null;
+
+  const input = label?.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+  if (!input) return;
+
+  const isChecked = input.checked;
+  // console.log(blockAction.split('-')[1]);
+  const toggleDefault = document.querySelector(
+    `#${pageName}-${blockName} #${pageAction}-${blockAction.split('-')[1]}side ol[class*="preview"]`,
+  ) as HTMLOListElement | null;
+
+  if (!toggleDefault) return;
+
+  toggleDefault.classList.remove('slide-one', 'slide-two');
+  toggleDefault.classList.add(isChecked ? 'slide-two' : 'slide-one');
+  /*
+  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement;
+  if (pageAction === 'default') {
+    let toggleDefault = document.querySelector(
+      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
+    ) as HTMLOListElement;
+    switch (blockAction) {
+      case 'toggle-dark':
+        console.log(toggleDefault.classList[1]);
+        if (toggleDefault.classList[1] === 'slide-one') {
+          toggleDefault.classList.add('slide-two');
+          toggleDefault.classList.remove('slide-one');
+        } else if (toggleDefault.classList[1] === 'slide-two') {
+          toggleDefault.classList.add('slide-one');
+          toggleDefault.classList.remove('slide-two');
+        }
+        break;
+      case 'toggle-light':
+        break;
+    }
+  } else if (pageAction === 'routing') {
+    let toggleRouting = document.querySelector(
+      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
+    ) as HTMLOListElement;
+    switch (blockAction) {
+      case 'toggle-dark':
+        break;
+      case 'toggle-light':
+        break;
+    }
+  }
+  */
+  /*
+  if (input?.checked === false) {
+    console.log('Show Alternative');
+  } else if (input?.checked === true) {
+    console.log('Show Default');
+  }
+  */
+  // console.log(); // true | false
+}
+
 export function toggleAside(
   pageName: string,
   blockName: string,
@@ -274,67 +338,4 @@ export function toggleAside(
       lightGrade.classList.remove('visible');
       break;
   }
-}
-
-export function togglePreview(
-  pageName: string,
-  blockName: string,
-  pageAction: 'default' | 'routing',
-  blockAction: 'toggle-dark' | 'toggle-light',
-) {
-  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement | null;
-
-  const input = label?.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
-  if (!input) return;
-
-  const isChecked = input.checked;
-  // console.log(blockAction.split('-')[1]);
-  const toggleDefault = document.querySelector(
-    `#${pageName}-${blockName} #${pageAction}-${blockAction.split('-')[1]}side ol[class*="preview"]`,
-  ) as HTMLOListElement | null;
-
-  if (!toggleDefault) return;
-
-  toggleDefault.classList.remove('slide-one', 'slide-two');
-  toggleDefault.classList.add(isChecked ? 'slide-two' : 'slide-one');
-  /*
-  const label = document.getElementById(`${pageName}_${blockName}_${blockAction}`) as HTMLLabelElement;
-  if (pageAction === 'default') {
-    let toggleDefault = document.querySelector(
-      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
-    ) as HTMLOListElement;
-    switch (blockAction) {
-      case 'toggle-dark':
-        console.log(toggleDefault.classList[1]);
-        if (toggleDefault.classList[1] === 'slide-one') {
-          toggleDefault.classList.add('slide-two');
-          toggleDefault.classList.remove('slide-one');
-        } else if (toggleDefault.classList[1] === 'slide-two') {
-          toggleDefault.classList.add('slide-one');
-          toggleDefault.classList.remove('slide-two');
-        }
-        break;
-      case 'toggle-light':
-        break;
-    }
-  } else if (pageAction === 'routing') {
-    let toggleRouting = document.querySelector(
-      `#${pageName}-${blockName} #${pageAction}-darkside ol[class*="preview"]`,
-    ) as HTMLOListElement;
-    switch (blockAction) {
-      case 'toggle-dark':
-        break;
-      case 'toggle-light':
-        break;
-    }
-  }
-  */
-  /*
-  if (input?.checked === false) {
-    console.log('Show Alternative');
-  } else if (input?.checked === true) {
-    console.log('Show Default');
-  }
-  */
-  // console.log(); // true | false
 }
