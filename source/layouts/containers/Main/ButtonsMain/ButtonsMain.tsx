@@ -928,38 +928,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                       <ButtonDefault
                         style={{
                           size: '<h1>',
-                          view: '-top-',
-                          text: `one_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      />
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-bottom-',
-                          text: `one_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
                           view: '-left-',
                           text: `one_lef_dar_mon`,
                           shade: '~dark~',
@@ -972,8 +940,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h1>',
                           view: '-right-',
@@ -988,90 +956,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-center-',
-                          text: `one_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-text-',
-                          text: `one_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-icon-',
-                          text: `one_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h2-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-top-',
-                          text: `two_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-bottom-',
-                          text: `two_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h2>',
                           view: '-left-',
@@ -1086,8 +974,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h2>',
                           view: '-right-',
@@ -1102,90 +990,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-center-',
-                          text: `two_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-text-',
-                          text: `two_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-icon-',
-                          text: `two_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h3-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-top-',
-                          text: `thr_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-bottom-',
-                          text: `thr_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h3>',
                           view: '-left-',
@@ -1200,8 +1008,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h3>',
                           view: '-right-',
@@ -1216,90 +1024,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-center-',
-                          text: `thr_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-text-',
-                          text: `thr_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-icon-',
-                          text: `thr_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h4-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-top-',
-                          text: `fou_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-bottom-',
-                          text: `fou_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h4>',
                           view: '-left-',
@@ -1314,8 +1042,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h4>',
                           view: '-right-',
@@ -1330,90 +1058,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-center-',
-                          text: `fou_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-text-',
-                          text: `fou_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-icon-',
-                          text: `fou_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h5-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-top-',
-                          text: `fiv_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-bottom-',
-                          text: `fiv_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h5>',
                           view: '-left-',
@@ -1428,8 +1076,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h5>',
                           view: '-right-',
@@ -1444,90 +1092,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-center-',
-                          text: `fiv_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-text-',
-                          text: `fiv_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-icon-',
-                          text: `fiv_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h6-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-top-',
-                          text: `six_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-bottom-',
-                          text: `six_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h6>',
                           view: '-left-',
@@ -1542,8 +1110,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h6>',
                           view: '-right-',
@@ -1558,90 +1126,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-center-',
-                          text: `six_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-text-',
-                          text: `six_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-icon-',
-                          text: `six_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="p-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-top-',
-                          text: `par_top_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-bottom-',
-                          text: `par_bot_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<p>',
                           view: '-left-',
@@ -1656,8 +1144,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<p>',
                           view: '-right-',
@@ -1672,55 +1160,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-center-',
-                          text: `par_cen_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-text-',
-                          text: `par_tex_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-icon-',
-                          text: `par_ico_dar_mon`,
-                          shade: '~dark~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                   </li>
                 </ol>
@@ -2537,38 +1977,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                       <ButtonDefault
                         style={{
                           size: '<h1>',
-                          view: '-top-',
-                          text: `one_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      />
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-bottom-',
-                          text: `one_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
                           view: '-left-',
                           text: `one_lef_lig_mon`,
                           shade: '~light~',
@@ -2581,8 +1989,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h1>',
                           view: '-right-',
@@ -2597,90 +2005,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-center-',
-                          text: `one_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-text-',
-                          text: `one_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h1>',
-                          view: '-icon-',
-                          text: `one_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h2-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-top-',
-                          text: `two_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-bottom-',
-                          text: `two_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h2>',
                           view: '-left-',
@@ -2695,8 +2023,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h2>',
                           view: '-right-',
@@ -2711,90 +2039,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-center-',
-                          text: `two_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-text-',
-                          text: `two_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h2>',
-                          view: '-icon-',
-                          text: `two_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h3-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-top-',
-                          text: `thr_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-bottom-',
-                          text: `thr_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h3>',
                           view: '-left-',
@@ -2809,8 +2057,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h3>',
                           view: '-right-',
@@ -2825,90 +2073,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-center-',
-                          text: `thr_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-text-',
-                          text: `thr_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h3>',
-                          view: '-icon-',
-                          text: `thr_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h4-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-top-',
-                          text: `fou_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-bottom-',
-                          text: `fou_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h4>',
                           view: '-left-',
@@ -2923,8 +2091,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h4>',
                           view: '-right-',
@@ -2939,90 +2107,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-center-',
-                          text: `fou_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-text-',
-                          text: `fou_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h4>',
-                          view: '-icon-',
-                          text: `fou_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h5-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-top-',
-                          text: `fiv_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-bottom-',
-                          text: `fiv_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h5>',
                           view: '-left-',
@@ -3037,8 +2125,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h5>',
                           view: '-right-',
@@ -3053,90 +2141,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-center-',
-                          text: `fiv_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-text-',
-                          text: `fiv_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h5>',
-                          view: '-icon-',
-                          text: `fiv_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="h6-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-top-',
-                          text: `six_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-bottom-',
-                          text: `six_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<h6>',
                           view: '-left-',
@@ -3151,8 +2159,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<h6>',
                           view: '-right-',
@@ -3167,90 +2175,10 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-center-',
-                          text: `six_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-text-',
-                          text: `six_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<h6>',
-                          view: '-icon-',
-                          text: `six_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                     <div className="p-size hidden">
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-top-',
-                          text: `par_top_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-bottom-',
-                          text: `par_bot_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
+                      <ButtonDefault
                         style={{
                           size: '<p>',
                           view: '-left-',
@@ -3265,8 +2193,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
+                      />
+                      <ButtonDefault
                         style={{
                           size: '<p>',
                           view: '-right-',
@@ -3281,55 +2209,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           pageName: pageName,
                           blockName: blockName,
                         }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-center-',
-                          text: `par_cen_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-text-',
-                          text: `par_tex_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          image: '',
-                          type: '{button}',
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
-                      {/* <ButtonDefault
-                        style={{
-                          size: '<p>',
-                          view: '-icon-',
-                          text: `par_ico_lig_mon`,
-                          shade: '~light~',
-                          color: '(mono)',
-
-                          type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
-                        }}
-                        info={{
-                          pageName: pageName,
-                          blockName: blockName,
-                        }}
-                      /> */}
+                      />
                     </div>
                   </li>
                 </ol>
