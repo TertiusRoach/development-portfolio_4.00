@@ -1,5 +1,6 @@
 //--|🠊 Button_flex.scss 🠈|--\\
 @mixin desktop-flex {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   &[class*='_top_'],
   &[class*='_bot_'] {
     &[class*='_def'] {
@@ -597,4 +598,5 @@
   }
 }
 @mixin mobile-flex {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
 }

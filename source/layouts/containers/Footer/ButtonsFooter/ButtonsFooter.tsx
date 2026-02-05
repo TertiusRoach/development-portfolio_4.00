@@ -19,7 +19,7 @@ const ButtonsFooter: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
 
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 

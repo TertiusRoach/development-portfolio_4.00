@@ -1,0 +1,191 @@
+//--|🠊 Label_size.scss 🠈|--\\
+@mixin desktop-size {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  width: 86px;
+  height: 44px;
+  .switch {
+    &::after {
+      top: 4px;
+      left: 4px;
+      width: 37px;
+      height: 37px;
+    }
+  }
+  input:checked + .switch {
+    &::after {
+      transform: translateX(42px);
+    }
+  }
+  @media screen and (max-height: 768px) {
+    width: 78px;
+    height: 40px;
+    .switch {
+      &::after {
+        top: 3px;
+        left: 3px;
+        width: 33px;
+        height: 33px;
+      }
+    }
+    input:checked + .switch {
+      &::after {
+        transform: translateX(38px);
+      }
+    }
+  }
+  @media screen and (max-height: 480px) {
+    width: 47px;
+    height: 24px;
+    .switch {
+      &::after {
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    input:checked + .switch {
+      &::after {
+        transform: translateX(23px);
+      }
+    }
+  }
+  @media screen and (max-height: 360px) {
+    width: 31px;
+    height: 16px;
+    .switch {
+      &::after {
+        top: 1px;
+        left: 1px;
+        width: 13px;
+        height: 13px;
+      }
+    }
+    input:checked + .switch {
+      &::after {
+        transform: translateX(15px);
+      }
+    }
+  }
+
+  /* ============================================================================ *
+   * Proportional Scaling of UI Elements: A Case Study in Maintaining Aspect      *
+   * Ratios for Toggle Buttons                                                    *
+   * ============================================================================ *
+   *                                                                              *
+   * --Introduction: The Problem at Hand--                                        *
+   *                                                                              *
+   * As educators in the field of applied mathematics, particularly in the        *
+   * intersection of geometry and computer graphics, we often encounter           *
+   * real-world problems where preserving proportions is key to aesthetic and     *
+   * functional integrity. In this small thesis, I aim to elucidate the process   *
+   * of scaling a toggle button element in HTML/CSS while maintaining its         *
+   * original alignment, centering, and toggle behavior. Our starting point is    *
+   * a button with dimensions width: 56px and height: 28.8px, where a circular    *
+   * knob (represented by a pseudo-element) is perfectly centered and toggles     *
+   * smoothly within its bounding box. The challenge is to resize this for        *
+   * various screen heights (44px, 40px, 24px, and 16px) without distortion,      *
+   * ensuring scalability for responsive web design. This exercise draws from     *
+   * fundamental principles of ratios and proportions, akin to similarity         *
+   * transformations in Euclidean geometry, applied to pixel-based rendering.     *
+   *                                                                              *
+   * Students, imagine designing a user interface where elements must adapt       *
+   * fluidly to different devices—much like scaling a blueprint while keeping     *
+   * all features intact. Here, we'll derive and apply ratios step-by-step,       *
+   * demonstrating how algebraic simplification and fractional arithmetic         *
+   * ensure precision.                                                            *
+   *                                                                              *
+   * Deriving the Core Ratios                                                     *
+   * The foundation lies in the aspect ratio of the original button:              *
+   * width / height = 56 / 28.8. Simplifying this fraction:                       *
+   *                                                                              *
+   * - Multiply numerator and denominator by 10 for integers: 560 / 288.          *
+   * - Divide by 8: 70 / 36.                                                      *
+   * - Divide by 2: 35 / 18 ≈ 1.9444.                                             *
+   *                                                                              *
+   * Thus, for any new height h, the scaled width w = (35/18) h. This             *
+   * preserves the rectangular shape, preventing squashing or stretching that     *
+   * could misalign the internal circle.                                          *
+   *                                                                              *
+   * Next, we address the circle (knob). From the original, the circle's          *
+   * diameter is inferred as approximately 24px (height minus symmetric           *
+   * padding of 2.4px on top/bottom), yielding:                                   *
+   * - Padding = height / 12 (since 28.8 / 12 = 2.4).                             *
+   * - Circle size = height × 5/6 (since 28.8 × 5/6 = 24).                        *
+   *                                                                              *
+   * These ratios ensure vertical centering: padding_top = padding_bottom =       *
+   * (height - circle_size)/2.                                                    *
+   *                                                                              *
+   * For the toggle animation, the translation distance (translateX) moves the    *
+   * circle from left-padded "off" to right-padded "on" position: width -         *
+   * circle_size - 2 × padding. Substituting ratios:                              *
+   * - w - (h × 5/6) - 2 × (h / 12) = (35/18 h) - 5/6 h - 1/6 h = h ×             *
+   *   (35/18 - 5/6 - 1/6).                                                       *
+   * - Common denominator 18: 35/18 h - 15/18 h - 3/18 h = 17/18 h.               *
+   *                                                                              *
+   * This elegant simplification shows the translation is directly                *
+   * proportional to height by 17/18, a testament to how ratios unify             *
+   * disparate elements.                                                          *
+   *                                                                              *
+   * Step-by-Step Application and Calculations                                    *
+   * For each target height, we compute values using exact fractions, then        *
+   * optionally round for integer pixels:                                         *
+   *                                                                              *
+   * 1. Height = 44px:                                                            *
+   *    - Width = (35/18) × 44 = 1540/18 = 770/9 ≈ 85.56px (rounded: 86px).       *
+   *    - Padding = 44/12 = 11/3 ≈ 3.67px (rounded: 4px).                         *
+   *    - Circle size = 44 × 5/6 = 110/3 ≈ 36.67px (rounded: 37px).               *
+   *    - TranslateX = 44 × 17/18 = 374/9 ≈ 41.56px (rounded: 42px).              *
+   *                                                                              *
+   * 2. Height = 40px:                                                            *
+   *    - Width = (35/18) × 40 = 1400/18 = 700/9 ≈ 77.78px (rounded: 78px).       *
+   *    - Padding = 40/12 = 10/3 ≈ 3.33px (rounded: 3px).                         *
+   *    - Circle size = 40 × 5/6 = 100/3 ≈ 33.33px (rounded: 33px).               *
+   *    - TranslateX = 40 × 17/18 = 340/9 ≈ 37.78px (rounded: 38px).              *
+   *                                                                              *
+   * 3. Height = 24px:                                                            *
+   *    - Width = (35/18) × 24 = 840/18 = 140/3 ≈ 46.67px (rounded: 47px).        *
+   *    - Padding = 24/12 = 2px (exact).                                          *
+   *    - Circle size = 24 × 5/6 = 20px (exact).                                  *
+   *    - TranslateX = 24 × 17/18 = 68/3 ≈ 22.67px (rounded: 23px).               *
+   *                                                                              *
+   * 4. Height = 16px:                                                            *
+   *    - Width = (35/18) × 16 = 560/18 = 280/9 ≈ 31.11px (rounded: 31px).        *
+   *    - Padding = 16/12 = 4/3 ≈ 1.33px (rounded: 1px).                          *
+   *    - Circle size = 16 × 5/6 = 40/3 ≈ 13.33px (rounded: 13px).                *
+   *    - TranslateX = 16 × 17/18 = 136/9 ≈ 15.11px (rounded: 15px).              *
+   *                                                                              *
+   * In CSS/SASS, fractional values are implemented via calc() for precision      *
+   * (e.g., width: calc(770px / 9)), while rounded integers simplify rendering    *
+   * but may introduce subpixel shifts.                                           *
+   *                                                                              *
+   * Considerations on Rounding and Precision                                     *
+   * Rounding to integers can slightly deviate from ideal ratios, potentially     *
+   * causing minor misalignments (e.g., a 1px shift in centering for non-even     *
+   * differences). However, in practice, modern browsers' subpixel rendering      *
+   * mitigates this. For pedagogical purposes, students should prioritize         *
+   * exact fractions to grasp the purity of proportional scaling, then apply      *
+   * rounding as a practical compromise—much like approximating π in              *
+   * engineering while valuing its irrationality in theory.                       *
+   *                                                                              *
+   * Conclusion: Lessons in Applied Proportions                                   *
+   * This solution exemplifies how ratios transform a static design into a        *
+   * responsive one, bridging geometry's theoretical elegance with web            *
+   * development's pragmatic needs. By deriving unified multipliers (35/18 for    *
+   * width, 5/6 for circle, 17/18 for translation), we ensure every resized       *
+   * variant mirrors the original's aesthetics. Dear students, remember: in       *
+   * mathematics applied to design, consistency through proportions is not        *
+   * just functional—it's the art of harmony in pixels. Revisit this when         *
+   * tackling similar scaling problems, and experiment with your own UI           *
+   * elements to solidify these concepts.                                         *
+   * ============================================================================ */
+}
+@mixin mobile-size {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}

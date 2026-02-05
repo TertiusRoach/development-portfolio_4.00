@@ -30,7 +30,7 @@ button[class*='default'] {
     @include Button_flex.mobile-flex();
     @include Button_tint.mobile-tint();
     @include Button_move.mobile-move();
-    @include Button_corn.desktop-corn();
+    @include Button_corn.mobile-corn();
   }
 
   @extend %button-test;

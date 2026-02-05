@@ -1,0 +1,56 @@
+//--|🠊 Label.toggle.scss 🠈|--//
+@use './pipeline/Label_grid.scss';
+@use './pipeline/Label_flex.scss';
+@use './pipeline/Label_size.scss';
+@use './pipeline/Label_tint.scss';
+@use './pipeline/Label_move.scss';
+@use './pipeline/Label_corn.scss';
+
+//--|🠋 Index or Landing - TraLogFin Trinity {A]pps 🠋|--\\
+$indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+$indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+$indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+$indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
+
+label[class*='toggle'] {
+  position: relative;
+  display: inline-block;
+
+  input[class*='event'] {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  span[class*='switch'] {
+    inset: 0;
+    cursor: pointer;
+    position: absolute;
+
+    transition: background 500ms ease-in-out;
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      transition: transform 250ms ease-in-out;
+    }
+  }
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include Label_size.desktop-size();
+    @include Label_grid.desktop-grid();
+    @include Label_flex.desktop-flex();
+    @include Label_tint.desktop-tint();
+    @include Label_move.desktop-move();
+    @include Label_corn.desktop-corn();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include Label_size.mobile-size();
+    @include Label_grid.mobile-grid();
+    @include Label_flex.mobile-flex();
+    @include Label_tint.mobile-tint();
+    @include Label_move.mobile-move();
+    @include Label_corn.mobile-corn();
+  }
+}

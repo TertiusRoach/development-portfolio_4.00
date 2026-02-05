@@ -1,0 +1,19 @@
+//--|🠊 Label_corn.scss 🠈|--\\
+@mixin desktop-corn {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  span[class*='switch'] {
+    border-radius: 22px;
+    @media screen and (max-height: 768px) {
+      border-radius: 20px;
+    }
+    @media screen and (max-height: 480px) {
+      border-radius: 12px;
+    }
+    @media screen and (max-height: 360px) {
+      border-radius: 8px;
+    }
+  }
+}
+@mixin mobile-corn {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+}

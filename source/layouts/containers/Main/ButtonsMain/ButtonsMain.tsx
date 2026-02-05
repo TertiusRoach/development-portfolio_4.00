@@ -2,14 +2,14 @@
 import { lazy } from 'react';
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { controlPreview, toggleAside, defaultPreview, markList } from './ButtonsFunctions';
-
 import { stripBrackets } from '../../../scripts/buttons';
-import { clearSection } from '../../../components/Section/buttons/Section_buttons';
-//--|🠋 Components 🠋|--\\
-// const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
+import { controlPreview, toggleAside, defaultPreview } from './ButtonsFunctions';
 
+//--|🠋 Components 🠋|--\\
+import LabelToggle from '../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../components/Button/default/Button.default';
+// import { clearSection } from '../../../components/Section/buttons/Section_buttons';
+// const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
 
 interface InfoProps {
   info: {
@@ -42,12 +42,80 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     listName: 'default-buttons' | 'routing-buttons',
   ) => {
     let listing = listName.split('-')[0] as String;
-    markList(pageName, blockName, listName as 'default-buttons' | 'routing-buttons');
     switch (listName) {
       case 'default-buttons':
         return (
           <>
             <section className={`${listing}-foreground`}>
+              <nav className="scroll-sections">
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: `Go Up`,
+                    shade: '~light~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_go-up`,
+                  }}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
+                />
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
+                />
+              </nav>
+              <nav className="toggle-aside">
+                <LabelToggle
+                  style={{
+                    shade: '~dark~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-dark`,
+                  }}
+                  // onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
+                />
+                <LabelToggle
+                  style={{
+                    shade: '~light~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-dark`,
+                  }}
+                  // onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
+                />
+              </nav>
+
               <aside
                 id="default-darkside"
                 className="carousel-container"
@@ -858,46 +926,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   <li className="alt-track slide-one"></li>
                 </ol>
               </aside>
-              <nav className="scroll-sections">
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: `Go Up`,
-                    shade: '~light~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_go-up`,
-                  }}
-                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
-                />
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: 'Scroll Down',
-                    shade: '~dark~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_scroll-down`,
-                  }}
-                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
-                />
-              </nav>
               <aside
                 id="default-lightside"
                 className="carousel-container"
@@ -1822,8 +1850,8 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
       <div className="carousel-container">
         <ul className="carousel-preview slide-one">
-          <li className="">{exportElements(pageName, blockName, 'default-buttons')}</li>
-          <li className="">{exportElements(pageName, blockName, 'routing-buttons')}</li>
+          <li className="default-buttons">{exportElements(pageName, blockName, 'default-buttons')}</li>
+          <li className="routing-buttons">{exportElements(pageName, blockName, 'routing-buttons')}</li>
         </ul>
       </div>
     </main>
