@@ -304,10 +304,8 @@ export function toggleAside(
       break;
   }
 }
-
 //--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
-//--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
-let lastScrollTime = 0;
+let lastScrollTime = 0; //--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
 export function scrollMouse(
   pageName: string,
   blockName: string,

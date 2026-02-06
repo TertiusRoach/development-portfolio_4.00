@@ -50,7 +50,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
-    defaultPreview(pageName, blockName, 'h3-size');
+    defaultPreview(pageName, blockName, 'h1-size');
   }, [pageName, blockName, [info]]);
 
   return (
@@ -80,14 +80,94 @@ function exportElements(
         <>
           <section
             className={`${listing}-foreground`}
-            onWheel={(e) =>
-              handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', e.deltaY > 0 ? 'scroll-down' : 'go-up')
+            onWheel={(event) =>
+              handleButtons(
+                pageName,
+                'default-buttons',
+                blockName,
+                'scroll-mouse',
+                event.deltaY > 0 ? 'scroll-down' : 'go-up',
+              )
             }
           >
-            <header></header>
-            <footer></footer>
-            {/* <header style={{ height: '96px', width: '96px', background: 'red' }}></header> */}
-            {/* <footer style={{ height: '96px', width: '96px', background: 'blue' }}></footer> */}
+            <header className="default-header">
+              <nav>
+                <div>
+                  <LabelToggle
+                    style={{
+                      shade: '~dark~',
+                      color: '(mono)',
+                      type: '{toggle}',
+                    }}
+                    info={{
+                      pageName: pageName,
+                      blockName: blockName,
+                      labelName: `${pageName}_${blockName}_toggle-dark`,
+                    }}
+                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
+                  />
+                </div>
+                <div>
+                  <ButtonDefault
+                    style={{
+                      size: '<h4>',
+                      view: '-icon-',
+                      text: `Go Up`,
+                      shade: '~light~',
+                      color: '(mono)',
+
+                      type: '{button}',
+                      image:
+                        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+                    }}
+                    info={{
+                      pageName: pageName,
+                      blockName: blockName,
+                      labelName: `${pageName}_${blockName}_go-up`,
+                    }}
+                    onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
+                  />
+                </div>
+                <div>
+                  <LabelToggle
+                    style={{
+                      shade: '~light~',
+                      color: '(mono)',
+                      type: '{toggle}',
+                    }}
+                    info={{
+                      pageName: pageName,
+                      blockName: blockName,
+                      labelName: `${pageName}_${blockName}_toggle-light`,
+                    }}
+                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
+                  />
+                </div>
+              </nav>
+            </header>
+            <footer className="default-footer">
+              <nav>
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
+                />
+              </nav>
+            </footer>
 
             <aside
               id="default-darkside"
@@ -2159,75 +2239,6 @@ function exportElements(
                 </li>
               </ol>
             </aside>
-
-            {/* <nav className="scroll-sections default-buttons">
-              <ButtonDefault
-                style={{
-                  size: '<h4>',
-                  view: '-icon-',
-                  text: `Go Up`,
-                  shade: '~light~',
-                  color: '(mono)',
-
-                  type: '{button}',
-                  image:
-                    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: `${pageName}_${blockName}_go-up`,
-                }}
-                onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
-              />
-              <ButtonDefault
-                style={{
-                  size: '<h4>',
-                  view: '-icon-',
-                  text: 'Scroll Down',
-                  shade: '~dark~',
-                  color: '(mono)',
-
-                  type: '{button}',
-                  image:
-                    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: `${pageName}_${blockName}_scroll-down`,
-                }}
-                onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
-              />
-            </nav> */}
-            {/* <nav className="toggle-aside default-buttons">
-              <LabelToggle
-                style={{
-                  shade: '~dark~',
-                  color: '(mono)',
-                  type: '{toggle}',
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: `${pageName}_${blockName}_toggle-dark`,
-                }}
-                onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
-              />
-              <LabelToggle
-                style={{
-                  shade: '~light~',
-                  color: '(mono)',
-                  type: '{toggle}',
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: `${pageName}_${blockName}_toggle-light`,
-                }}
-                onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
-              />
-            </nav> */}
           </section>
           <figure className={`${listing}-midground`}>
             <aside className="dark-code hidden">
@@ -2258,22 +2269,22 @@ function exportElements(
                   <h1 className="display-1">{'<​h1>'}</h1>
                 </li>
                 <li className="h2-size hidden">
-                  <h2 className="display-1">{'<​h2>'}</h2>
+                  <h2 className="display-2">{'<​h2>'}</h2>
                 </li>
                 <li className="h3-size hidden">
-                  <h3 className="display-1">{'<​h3>'}</h3>
+                  <h3 className="display-3">{'<​h3>'}</h3>
                 </li>
                 <li className="h4-size hidden">
-                  <h4 className="display-1">{'<​h4>'}</h4>
+                  <h4 className="display-4">{'<​h4>'}</h4>
                 </li>
                 <li className="h5-size hidden">
-                  <h5 className="display-1">{'<​h5>'}</h5>
+                  <h5 className="display-5">{'<​h5>'}</h5>
                 </li>
                 <li className="h6-size hidden">
-                  <h6 className="display-1">{'<​h6>'}</h6>
+                  <h6 className="display-6">{'<​h6>'}</h6>
                 </li>
                 <li className="p-size hidden">
-                  <p className="display-1">{'<p>'}</p>
+                  <p className="display-6">{'<p>'}</p>
                 </li>
               </ol>
             </section>
