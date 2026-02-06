@@ -42,6 +42,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   info,
   style,
   onClick,
+  onMouseEnter,
   /*  
   onBlur,  
   onFocus,  
@@ -49,8 +50,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   onTouchEnd,  
   onMouseDown,  
   onTouchStart,  
-  onMouseEnter,  
-  onMouseLeave,  
+ 
   onDoubleClick,  
   onAnimationEnd,  
   onTransitionEnd,  
@@ -103,6 +103,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   return (
     <button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
       id={info.labelName || undefined}
       className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >

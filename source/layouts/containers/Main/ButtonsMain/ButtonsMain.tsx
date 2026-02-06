@@ -3,7 +3,7 @@ import { lazy } from 'react';
 import React, { useEffect, useRef } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/buttons';
-import { defaultPreview, controlPreview, toggleAside, togglePreview, scrollMouse } from './ButtonsFunctions';
+import { defaultPreview, controlPreview, toggleAside, togglePreview, toggleHeader, scrollMouse } from './ButtonsFunctions';
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../components/Label/toggle/Label.toggle';
@@ -104,6 +104,7 @@ function exportElements(
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_open-head`,
                 }}
+                onMouseEnter={() => toggleHeader(pageName, blockName)}
               />
               <nav>
                 <div>

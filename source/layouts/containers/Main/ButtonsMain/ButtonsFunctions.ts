@@ -307,6 +307,15 @@ export function toggleAside(
       break;
   }
 }
+export function toggleHeader(pageName: string, blockName: string) {
+  const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
+
+  let classesHeader = Array.from(buttonsHeader.classList);
+  if (classesHeader.length > 0) {
+    buttonsHeader.classList.add('unfolded');
+    buttonsHeader.classList.remove(classesHeader[classesHeader.length - 1]);
+  }
+}
 //--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
 let lastScrollTime = 0; //--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
 export function scrollMouse(

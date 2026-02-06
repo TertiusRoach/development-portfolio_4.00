@@ -1,7 +1,7 @@
 //--|🠊 ButtonsHeader.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
+import { toggleHeader } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
-//--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
@@ -23,7 +23,12 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
+    <header
+      className={`default-${blockName} ${stateName}`}
+      id={`${pageName}-${blockName}`}
+      style={{ zIndex: 1 }}
+      onMouseLeave={() => toggleHeader(pageName, blockName)}
+    >
       <div className="background">
         <header>
           <div></div>
