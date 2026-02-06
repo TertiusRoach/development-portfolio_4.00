@@ -13,14 +13,13 @@ interface TheseProps {
     labelName?: string;
   };
   style: {
+    image: string;
+    size: '<h1>' | '<p>';
     shade: '~dark~' | '~medium~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
-    size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+    view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-    text?: string;
-    image?: string | null | undefined;
+    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 
@@ -71,13 +70,13 @@ const ButtonRouting: React.FC<TheseProps> = ({
       case '<h1>':
         return (
           <>
-            <div className="text">
-              <h1>
+            <div className="fore">
+              {/* <h1>
                 <span>{style.text}</span>
-              </h1>
+              </h1> */}
             </div>
-            <div className="icon">
-              <img
+            <div className="mid">
+              {/* <img
                 alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
@@ -87,154 +86,22 @@ const ButtonRouting: React.FC<TheseProps> = ({
                       }
                     : {}),
                 }}
-              ></img>
+              ></img> */}
             </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
-          </>
-        );
-      case '<h2>':
-        return (
-          <>
-            <div className="text">
-              <h2>
-                <span>{style.text}</span>
-              </h2>
-            </div>
-            <div className="icon">
-              <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
-          </>
-        );
-      case '<h3>':
-        return (
-          <>
-            <div className="text">
-              <h3>
-                <span>{style.text}</span>
-              </h3>
-            </div>
-            <div className="icon">
-              <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
-          </>
-        );
-      case '<h4>':
-        return (
-          <>
-            <div className="text">
-              <h4>
-                <span>{style.text}</span>
-              </h4>
-            </div>
-            <div className="icon">
-              <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
-          </>
-        );
-      case '<h5>':
-        return (
-          <>
-            <div className="text">
-              <h5>
-                <span>{style.text}</span>
-              </h5>
-            </div>
-            <div className="icon">
-              <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
-          </>
-        );
-      case '<h6>':
-        return (
-          <>
-            <div className="text">
-              <h6>
-                <span>{style.text}</span>
-              </h6>
-            </div>
-            <div className="icon">
-              <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
+            <div className="back">{/* <canvas className="animation"></canvas> */}</div>
           </>
         );
       case '<p>':
       default:
         return (
           <>
-            <div className="text">
-              <p>
+            <div className="fore">
+              {/* <p>
                 <span>{style.text}</span>
-              </p>
+              </p> */}
             </div>
-            <div className="icon">
-              <img
+            <div className="mid">
+              {/* <img
                 alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
@@ -244,11 +111,9 @@ const ButtonRouting: React.FC<TheseProps> = ({
                       }
                     : {}),
                 }}
-              ></img>
+              ></img> */}
             </div>
-            <div className="back">
-              <canvas className="animation"></canvas>
-            </div>
+            <div className="back">{/* <canvas className="animation"></canvas> */}</div>
           </>
         );
     }
@@ -260,7 +125,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
     <button
       onClick={onClick}
       id={info.labelName || undefined}
-      className={`default-button ${createClass(style as TheseProps['style'])}`}
+      className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >
       {handleDefault(info, style)}
     </button>

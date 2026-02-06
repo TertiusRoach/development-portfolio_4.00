@@ -2,18 +2,18 @@
 import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
+  image: string;
+  size: '<h1>' | '<p>';
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
-  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
-  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+  view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-  text?: string;
-  image?: string | null | undefined;
+  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
+  /*
   //--|🠊 Class Build 🠈|--\\
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
@@ -22,6 +22,8 @@ export function createClass(style: StyleProps): String {
   } else {
     return `${classLayout}_${classColor}_def`;
   }
+  */
+  return '';
 }
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
