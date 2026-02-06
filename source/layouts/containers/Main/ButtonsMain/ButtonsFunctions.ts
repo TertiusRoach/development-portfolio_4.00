@@ -302,14 +302,8 @@ export function toggleHeader(pageName: string, blockName: string) {
 
   if (!buttonsHeader) return;
   else if (buttonsHeader.classList.contains('collapsed')) {
-    // console.log();
     buttonsHeader.classList.add('unfolded');
     buttonsHeader.classList.remove('collapsed');
-  }
-
-  if (buttonsHeader.classList.contains('unfolded')) {
-    // buttonsHeader.classList.add('collapsed');
-    // buttonsHeader.classList.remove(buttonsHeader.classList[1]);
   }
 }
 //--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
