@@ -5,7 +5,7 @@ import './Label.toggle.scss';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../index';
 
-import { createClass, createLayout, createColor } from './Label_toggle';
+import { createClass } from './Label_toggle';
 
 interface TheseProps {
   info: {

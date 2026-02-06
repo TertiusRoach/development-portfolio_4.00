@@ -89,55 +89,6 @@
       }
     }
   }
-
-  /*
-  // Focus ring: same palette, same “button-grade” glow
-
-}
-
-// Shade logic (your “opposite states” rule):
-//    - Light shade: OFF looks dark, ON transmutes to light
-//    - Dark  shade: OFF looks light, ON transmutes to dark
-
-// LIGHT SHADE
-label[class*='toggle'].light,
-label[class*='toggle'][class*='light'] {
-  // OFF (unchecked) = dark
-  .switch {
-    @include togglePill--dark();
-    &::after {
-      @include toggleKnob--dark();
-    }
-  }
-
-  // ON (checked) = light
-  input:checked + .switch {
-    @include togglePill--light();
-    &::after {
-      @include toggleKnob--light();
-    }
-  }
-}
-
-// DARK SHADE
-label[class*='toggle'].dark,
-label[class*='toggle'][class*='dark'] {
-  // OFF (unchecked) = light
-  .switch {
-    @include togglePill--light();
-    &::after {
-      @include toggleKnob--light();
-    }
-  }
-
-  // ON (checked) = dark
-  input:checked + .switch {
-    @include togglePill--dark();
-    &::after {
-      @include toggleKnob--dark();
-    }
-  }
-  */
 }
 @mixin mobile-tint {
   //--|🠋 Mobile (Portrait) 🠋|--\\
