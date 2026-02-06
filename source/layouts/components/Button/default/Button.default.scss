@@ -76,7 +76,6 @@ button[class*='default'] {
       mask-repeat: no-repeat;
     }
   }
-  // Shared (desktop) “premium” feel: soft depth, no hard edges
   .back {
     z-index: 1;
     overflow: hidden;
@@ -102,25 +101,43 @@ button[class*='default'] {
     }
   }
   &[class*='_lef_'] {
-    .text {
-      grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    &[class*='_def'] {
+      .text {
+        grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .icon {
+        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .back {
+        grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
-    .icon {
-      grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .back {
-      grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    &[class*='_alt'] {
+      .text,
+      .icon,
+      .back {
+        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
   }
   &[class*='_rig_'] {
-    .text {
-      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    &[class*='_def'] {
+      .text {
+        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .icon {
+        grid-area: 2 / 4 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .back {
+        grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
-    .icon {
-      grid-area: 2 / 4 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .back {
-      grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    &[class*='_alt'] {
+      .text,
+      .icon,
+      .back {
+        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
   }
   &[class*='_cen_'] {
@@ -168,30 +185,3 @@ button[class*='default'] {
   // }
   // // background: rgba(pink, 0.5);
 }
-
-/*
-@use './rework/Button_motions.scss';
-@use './rework/Button_placing.scss';
-@use './rework/Button_presets.scss';
-@use './rework/Button_scaling.scss';
-@use './rework/Button_shadows.scss';
-@use './rework/Button_spacing.scss';
-@use './rework/Button_surface.scss';
-*/
-
-/*
-  @include Button_presets.button-presets();
-  @include Button_motions.button-motions();
-  @include Button_shadows.button-shadows();
-  @include Button_surface.button-surface();
-  */
-/*
-    @include Button_placing.desktop-placing();
-    @include Button_scaling.desktop-scaling();
-    @include Button_spacing.desktop-spacing();
-    */
-/*
-    @include Button_placing.mobile-placing();
-    @include Button_scaling.mobile-scaling();
-    @include Button_spacing.mobile-spacing();
-    */

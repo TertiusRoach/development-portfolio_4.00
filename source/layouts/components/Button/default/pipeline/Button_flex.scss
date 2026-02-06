@@ -183,7 +183,10 @@
   }
   &[class*='_lef_'],
   &[class*='_rig_'] {
-    &[class*='_def'] {
+    // display: none;
+
+    &[class*='_def'],
+    &[class*='_alt'] {
       img {
         margin-top: 4px;
         @media screen and (max-height: 768px) {
@@ -280,9 +283,6 @@
           padding: 4px 4px;
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no image is provided--\\
     }
   }
   &[class*='_cen_'] {

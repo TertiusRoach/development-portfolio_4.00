@@ -80,7 +80,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
   let classCreated = `${classLayout}_${classColor}_${imageStatus}`;
 
   //--|🠊 Render Body 🠈|--\\
-  const handleDefault = (infoStyle: Array<object>) => {
+  const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
     switch (style.size) {
       case '<h1>':
         return (
@@ -90,23 +90,26 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h1>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  //--|🠊 Only apply if style.image is defined. 🠈|--\\
+                  ...(style.image
+                    ? //--|🠊 <h1> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<h2>':
         return (
           <>
@@ -115,23 +118,25 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h2>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <h2> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<h3>':
         return (
           <>
@@ -140,23 +145,25 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h3>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <h3> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<h4>':
         return (
           <>
@@ -165,23 +172,25 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h4>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <h4> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<h5>':
         return (
           <>
@@ -190,23 +199,25 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h5>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <h5> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<h6>':
         return (
           <>
@@ -215,23 +226,25 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </h6>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <h6> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
           </>
         );
-
       case '<p>':
       default:
         return (
@@ -241,17 +254,20 @@ const ButtonDefault: React.FC<TheseProps> = ({
                 <span>{style.text}</span>
               </p>
             </div>
-
             <div className="icon">
               <img
                 alt="icon"
                 style={{
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
+                  ...(style.image
+                    ? //--|🠊 <p> 🠈|--\\
+                      {
+                        maskImage: `url(${style.image})`,
+                        WebkitMaskImage: `url(${style.image})`,
+                      }
+                    : {}),
                 }}
               ></img>
             </div>
-
             <div className="back">
               <canvas className="animation"></canvas>
             </div>
@@ -268,7 +284,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
       id={info.labelName || undefined}
       className={`default-button ${classLayout}_${classColor}_${imageStatus}`}
     >
-      {handleDefault([info, style])}
+      {handleDefault(info, style)}
     </button>
   );
 };

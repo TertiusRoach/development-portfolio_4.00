@@ -21,7 +21,6 @@ interface InfoProps {
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
-
   const handleButtons = (
     pageName: string,
     blockName: string,
@@ -47,77 +46,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
         return (
           <>
             <section className={`${listing}-foreground`}>
-              <header style={{ height: '96px', width: '96px', background: 'red' }}></header>
-
-              <nav className="scroll-sections default-buttons">
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: `Go Up`,
-                    shade: '~light~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_go-up`,
-                  }}
-                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
-                />
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: 'Scroll Down',
-                    shade: '~dark~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_scroll-down`,
-                  }}
-                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
-                />
-              </nav>
-              <nav className="toggle-aside default-buttons">
-                <LabelToggle
-                  style={{
-                    shade: '~dark~',
-                    color: '(mono)',
-                    type: '{toggle}',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_toggle-dark`,
-                  }}
-                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
-                />
-                <LabelToggle
-                  style={{
-                    shade: '~light~',
-                    color: '(mono)',
-                    type: '{toggle}',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_toggle-light`,
-                  }}
-                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
-                />
-              </nav>
-
               <aside
                 id="default-darkside"
                 className="carousel-container"
@@ -936,7 +864,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -952,7 +879,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -970,7 +896,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -986,7 +911,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1004,7 +928,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1020,7 +943,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1038,7 +960,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1054,7 +975,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1072,7 +992,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1088,7 +1007,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1106,7 +1024,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1122,7 +1039,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1140,7 +1056,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1156,7 +1071,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -1985,7 +1899,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2001,7 +1914,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2019,7 +1931,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2035,7 +1946,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/02.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2053,7 +1963,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2069,7 +1978,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/03.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2087,7 +1995,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2103,7 +2010,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/04.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2121,7 +2027,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2137,7 +2042,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/05.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2155,7 +2059,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2171,7 +2074,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/06.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2189,7 +2091,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2205,7 +2106,6 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                           color: '(mono)',
 
                           type: '{button}',
-                          image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/07.svg`,
                         }}
                         info={{
                           pageName: pageName,
@@ -2216,6 +2116,77 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
                   </li>
                 </ol>
               </aside>
+
+              {/* <header style={{ height: '96px', width: '96px', background: 'red' }}></header> */}
+              {/* <footer></footer> */}
+              <nav className="scroll-sections default-buttons">
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: `Go Up`,
+                    shade: '~light~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_go-up`,
+                  }}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
+                />
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
+                />
+              </nav>
+              <nav className="toggle-aside default-buttons">
+                <LabelToggle
+                  style={{
+                    shade: '~dark~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-dark`,
+                  }}
+                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
+                />
+                <LabelToggle
+                  style={{
+                    shade: '~light~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-light`,
+                  }}
+                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
+                />
+              </nav>
             </section>
             <figure className={`${listing}-midground`}>
               <aside className="dark-code hidden">
@@ -2319,8 +2290,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
-    // resizePreview(pageName, blockName);
-    defaultPreview(pageName, blockName, 'h1-size');
+    defaultPreview(pageName, blockName, 'h3-size');
   }, [pageName, blockName, [info]]);
 
   let imagePath =

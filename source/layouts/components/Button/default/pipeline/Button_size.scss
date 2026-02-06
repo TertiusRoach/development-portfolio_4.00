@@ -1,7 +1,11 @@
 //--|🠊 Button_size.scss 🠈|--\\
 @mixin desktop-size {
-  .text {
+  .text,
+  .back {
     max-width: 32rem;
+  }
+
+  .text {
     h1 {
       font-size: 40px;
       font-weight: 800;
