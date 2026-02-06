@@ -4,17 +4,16 @@ import { stripBrackets } from '../../../scripts/buttons';
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
-  image: string | null | undefined;
+  text?: string;
+  image?: string | null | undefined;
+  role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
 
 //--|🠋 Functions 🠋|--\\
-export function callTypeScript(): string {
-  return `WORKING!!!!!!`;
-}
-
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
@@ -95,19 +94,13 @@ export function sizeIcon(style: StyleProps) {
 }
 
 //--| Deprecated |--\\
-export function createClass(style: StyleProps, classCreated: String) {
-  console.log(classCreated);
-
-  const viewStyle = stripBrackets(style.view, '--').substring(0, 3) as string;
-  const shadeStyle = stripBrackets(style.shade, '~~').substring(0, 3) as string;
-  const colorStyle = stripBrackets(style.color, '()').substring(0, 3) as string;
-
-  let classCreate: 'def' | 'alt';
+export function createClass(style: StyleProps): String {
+  //--|🠊 Class Build 🠈|--\\
+  let classColor = createColor(style.shade, style.color);
+  let classLayout = createLayout(style.size, style.view);
   if (style.image == null) {
-    classCreate = 'alt';
+    return `${classLayout}_${classColor}_alt`;
   } else {
-    classCreate = 'def';
+    return `${classLayout}_${classColor}_def`;
   }
-
-  return `${viewStyle}_${shadeStyle}_${colorStyle}_${classCreate}`;
 }

@@ -3,7 +3,7 @@ export function controlPreview(
   pageName: string,
   blockName: string,
   blockAction: 'go-up' | 'scroll-down' | String,
-  pagePreview: 'default-buttons' | 'routing-buttons' | string,
+  pagePreview: 'default-buttons' | 'routing-buttons' | String,
 ) {
   const pagePart: String = `${pageName}-${blockName} li[class="${pagePreview}"]`;
   const findHTML = (blockAction: 'go-up' | 'scroll-down' | String, pagePart: String) => {
@@ -240,7 +240,6 @@ export function togglePreview(
   toggleDefault.classList.remove('slide-def', 'slide-alt');
   toggleDefault.classList.add(isChecked ? 'slide-alt' : 'slide-def');
 }
-
 export function toggleAside(
   pageName: string,
   blockName: string,
@@ -304,4 +303,28 @@ export function toggleAside(
       lightGrade.classList.remove('visible');
       break;
   }
+}
+
+//--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
+//--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
+let lastScrollTime = 0;
+export function scrollMouse(
+  pageName: string,
+  blockName: string,
+  blockAction: 'scroll-down' | 'go-up' | String,
+  pagePreview: 'default-buttons' | 'routing-buttons' | String,
+) {
+  //--|🠊 2. Get the current time 🠈|--\\
+  const now = Date.now();
+
+  //--|🠊 3. Check if 500ms (half a second) has passed since the last run 🠈|--\\
+  if (now - lastScrollTime < 500) {
+    return; //--|🠈 If it's been less than 500ms, stop here (ignore the scroll). 🠈|--\\
+  }
+
+  //--|🠊 4. Update the last run time 🠈|--\\
+  lastScrollTime = now;
+
+  //--|🠊 5. Execute the actual logic 🠈|--\\
+  controlPreview(pageName, blockName, blockAction, pagePreview);
 }

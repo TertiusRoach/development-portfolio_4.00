@@ -386,7 +386,7 @@
 }
 
 main[id*='buttons'] {
-  @extend %carousel-container;
+  @extend %carousel-containers;
 
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -396,7 +396,7 @@ main[id*='buttons'] {
   }
 }
 
-%carousel-container {
+%carousel-containers {
   [class*='carousel'] {
     ol {
       transition: transform 500ms ease-in-out;

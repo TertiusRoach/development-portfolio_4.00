@@ -1,9 +1,9 @@
 //--|🠊 ButtonsMain.tsx 🠈|--\\
 import { lazy } from 'react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/buttons';
-import { defaultPreview, controlPreview, toggleAside, togglePreview } from './ButtonsFunctions';
+import { defaultPreview, controlPreview, toggleAside, togglePreview, scrollMouse } from './ButtonsFunctions';
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../components/Label/toggle/Label.toggle';
@@ -18,13 +18,13 @@ interface InfoProps {
     roleName?: string;
   };
 }
-// Add this at the top of your file, outside any component
 type HandleButtons = (
   pageName: string,
-  blockName: string,
-  blockEvent: 'control-preview' | 'toggle-aside',
   pagePreview: 'default-buttons' | 'routing-buttons',
-  blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down',
+
+  blockName: string,
+  blockEvent: 'scroll-mouse' | 'control-preview' | 'toggle-aside',
+  blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | string,
 ) => void;
 
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
@@ -32,12 +32,15 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const handleButtons: HandleButtons = (
     pageName: string,
-    blockName: string,
-    blockEvent: 'control-preview' | 'toggle-aside',
     pagePreview: 'default-buttons' | 'routing-buttons',
-    blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down',
+
+    blockName: string,
+    blockEvent: 'scroll-mouse' | 'control-preview' | 'toggle-aside',
+    blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | 'scroll-down' | string,
   ) => {
     switch (blockEvent) {
+      case 'scroll-mouse':
+        return scrollMouse(pageName, blockName, blockAction, pagePreview);
       case 'toggle-aside':
         return toggleAside(pageName, blockName, blockAction);
       case 'control-preview':
@@ -61,14 +64,12 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     </main>
   );
 };
-export default ButtonsMain;
-
-const exportElements = (
+function exportElements(
   handleButtons: HandleButtons,
   pageName: 'button' | string,
   blockName: 'main' | string,
   listName: 'default-buttons' | 'routing-buttons',
-) => {
+) {
   let listing = listName.split('-')[0] as String;
   let imagePath =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source';
@@ -77,12 +78,17 @@ const exportElements = (
     case 'default-buttons':
       return (
         <>
-          <section className={`${listing}-foreground`}>
+          <section
+            className={`${listing}-foreground`}
+            onWheel={(e) =>
+              handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', e.deltaY > 0 ? 'scroll-down' : 'go-up')
+            }
+          >
             <aside
               id="default-darkside"
               className="carousel-container"
-              onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'open-dark')}
-              onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'close-dark')}
+              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-dark')}
+              onMouseLeave={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'close-dark')}
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
@@ -1116,8 +1122,8 @@ const exportElements = (
             <aside
               id="default-lightside"
               className="carousel-container"
-              onMouseEnter={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'open-light')}
-              onMouseLeave={() => handleButtons(pageName, blockName, 'toggle-aside', 'default-buttons', 'close-light')}
+              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-light')}
+              onMouseLeave={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'close-light')}
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
@@ -2169,7 +2175,7 @@ const exportElements = (
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_go-up`,
                 }}
-                onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'go-up')}
+                onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
               />
               <ButtonDefault
                 style={{
@@ -2188,7 +2194,7 @@ const exportElements = (
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_scroll-down`,
                 }}
-                onClick={() => handleButtons(pageName, blockName, 'control-preview', 'default-buttons', 'scroll-down')}
+                onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
               />
             </nav>
             <nav className="toggle-aside default-buttons">
@@ -2318,4 +2324,5 @@ const exportElements = (
         </>
       );
   }
-};
+}
+export default ButtonsMain;
