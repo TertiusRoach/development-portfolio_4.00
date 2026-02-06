@@ -8,12 +8,14 @@
 
 button[class*='routing'] {
   display: grid;
-
+  background: red;
+  border-bottom-right-radius: 64px;
   /*
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
+  @extend %button-test;
   */
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
@@ -34,8 +36,6 @@ button[class*='routing'] {
     @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
   }
-
-  @extend %button-test;
 }
 /*
 %button-user {

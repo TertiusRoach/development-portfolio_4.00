@@ -14,7 +14,6 @@ interface TheseProps {
   };
   style: {
     image: string;
-    size: '<h1>' | '<p>';
     shade: '~dark~' | '~medium~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
@@ -66,31 +65,10 @@ const ButtonRouting: React.FC<TheseProps> = ({
 
   //--|🠊 Render Body 🠈|--\\
   const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
+    /*
     switch (style.size) {
       case '<h1>':
-        return (
-          <>
-            <div className="fore">
-              {/* <h1>
-                <span>{style.text}</span>
-              </h1> */}
-            </div>
-            <div className="mid">
-              {/* <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img> */}
-            </div>
-            <div className="back">{/* <canvas className="animation"></canvas> */}</div>
-          </>
-        );
+        return <></>;
       case '<p>':
       default:
         return (
@@ -98,7 +76,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
             <div className="fore">
               {/* <p>
                 <span>{style.text}</span>
-              </p> */}
+              </p>
             </div>
             <div className="mid">
               {/* <img
@@ -111,12 +89,13 @@ const ButtonRouting: React.FC<TheseProps> = ({
                       }
                     : {}),
                 }}
-              ></img> */}
+              ></img>
             </div>
-            <div className="back">{/* <canvas className="animation"></canvas> */}</div>
+            <div className="back">{/* <canvas className="animation"></canvas></div>
           </>
         );
     }
+    */
   };
 
   useEffect(() => {}, [pageName, blockName]);
@@ -127,7 +106,10 @@ const ButtonRouting: React.FC<TheseProps> = ({
       id={info.labelName || undefined}
       className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >
-      {handleDefault(info, style)}
+      <div className="fore"></div>
+      <div className="mid"></div>
+      <div className="back">{/* <canvas className="animation"></canvas> */}</div>
+      {/* {handleDefault(info, style)} */}
     </button>
   );
 };

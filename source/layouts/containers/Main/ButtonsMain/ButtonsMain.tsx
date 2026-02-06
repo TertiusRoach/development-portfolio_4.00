@@ -8,8 +8,7 @@ import { defaultPreview, controlPreview, toggleAside, togglePreview, scrollMouse
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../components/Button/default/Button.default';
-// import { clearSection } from '../../../components/Section/buttons/Section_buttons';
-// const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
+import ButtonRouting from '../../../components/Button/routing/Button.routing';
 
 interface InfoProps {
   info: {
@@ -91,6 +90,21 @@ function exportElements(
             }
           >
             <header className="default-header">
+              <ButtonRouting
+                style={{
+                  view: 'top-lef',
+                  shade: '~dark~',
+                  color: '(mono)',
+
+                  type: '{button}',
+                  image: `${imagePath}/assets/svg-files/archive-images/arabic-numerals/white-numbers/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: `${pageName}_${blockName}_open-head`,
+                }}
+              />
               <nav>
                 <div>
                   <LabelToggle
@@ -2342,3 +2356,6 @@ function exportElements(
   }
 }
 export default ButtonsMain;
+
+// import { clearSection } from '../../../components/Section/buttons/Section_buttons';
+// const SectionButtons = lazy(() => import('../../../components/Section/buttons/Section.buttons'));
