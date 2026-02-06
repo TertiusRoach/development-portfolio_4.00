@@ -92,12 +92,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
-                  //--|🠊 Only apply if style.image is defined. 🠈|--\\
                   ...(style.image
-                    ? //--|🠊 <h1> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -120,11 +118,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <h2> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -147,11 +144,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <h3> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -174,11 +170,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <h4> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -201,11 +196,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <h5> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -228,11 +222,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <h6> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
@@ -256,11 +249,10 @@ const ButtonDefault: React.FC<TheseProps> = ({
             </div>
             <div className="icon">
               <img
-                alt="icon"
+                alt={style.image ? 'icon' : ''}
                 style={{
                   ...(style.image
-                    ? //--|🠊 <p> 🠈|--\\
-                      {
+                    ? {
                         maskImage: `url(${style.image})`,
                         WebkitMaskImage: `url(${style.image})`,
                       }
