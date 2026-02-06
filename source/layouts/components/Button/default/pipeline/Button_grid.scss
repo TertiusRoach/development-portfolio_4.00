@@ -1,6 +1,6 @@
-//--|🠊 Button_grid.scss 🠈|--\\
+//--|🠊 default/pipeline/Button_grid.scss 🠈|--\\
 @mixin desktop-grid {
-  //--Done--\\
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   &[class*='_top_'] {
     &[class*='_def'] {
       &[class*='one_top'] {
@@ -550,4 +550,5 @@
   }
 }
 @mixin mobile-grid {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
 }

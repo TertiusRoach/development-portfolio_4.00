@@ -1,9 +1,9 @@
 //--|🠊 Button.default.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
-import './Button.default.scss';
+import './Button.routing.scss';
 //--|🠋 Functions 🠋|--\\
-import { createClass } from './Button_default';
+import { createClass } from './Button_routing';
 import { stripBrackets } from '../../../scripts/buttons';
 
 interface TheseProps {
@@ -40,7 +40,7 @@ interface TheseProps {
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ButtonDefault: React.FC<TheseProps> = ({
+const ButtonRouting: React.FC<TheseProps> = ({
   info,
   style,
   onClick,
@@ -267,4 +267,4 @@ const ButtonDefault: React.FC<TheseProps> = ({
   );
 };
 
-export default ButtonDefault;
+export default ButtonRouting;

@@ -1,0 +1,190 @@
+//--|🠊 Button.routing.scss 🠈|--//
+@use './pipeline/Button_grid.scss';
+@use './pipeline/Button_flex.scss';
+@use './pipeline/Button_size.scss';
+@use './pipeline/Button_tint.scss';
+@use './pipeline/Button_move.scss';
+@use './pipeline/Button_corn.scss';
+
+button[class*='routing'] {
+  display: grid;
+
+  /*
+  @extend %button-grid;
+  @extend %button-flex;
+  @extend %button-user;
+  @extend %button-move;
+  */
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include Button_size.desktop-size();
+    @include Button_grid.desktop-grid();
+    @include Button_flex.desktop-flex();
+    @include Button_tint.desktop-tint();
+    @include Button_move.desktop-move();
+    @include Button_corn.desktop-corn();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include Button_size.mobile-size();
+    @include Button_grid.mobile-grid();
+    @include Button_flex.mobile-flex();
+    @include Button_tint.mobile-tint();
+    @include Button_move.mobile-move();
+    @include Button_corn.mobile-corn();
+  }
+
+  @extend %button-test;
+}
+/*
+%button-user {
+  &[class*='_top_'],
+  &[class*='_bot_'],
+  &[class*='_lef_'],
+  &[class*='_rig_'],
+  &[class*='_cen_'],
+  &[class*='_tex_'],
+  &[class*='_ico_'] {
+    .text {
+      * {
+        cursor: pointer;
+      }
+    }
+    .icon {
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
+%button-flex {
+  width: 100%;
+  height: 100%;
+
+  .text {
+    z-index: 3;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .icon {
+    z-index: 2;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    img {
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+  .back {
+    z-index: 1;
+    overflow: hidden;
+  }
+}
+%button-grid {
+  &[class*='_top_'] {
+    .text,
+    .back {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_bot_'] {
+    .text,
+    .back {
+      grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_lef_'] {
+    &[class*='_def'] {
+      .text {
+        grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .icon {
+        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .back {
+        grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .icon,
+      .back {
+        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    &[class*='_def'] {
+      .text {
+        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .icon {
+        grid-area: 2 / 4 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      .back {
+        grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    &[class*='_alt'] {
+      .text,
+      .icon,
+      .back {
+        grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+  }
+  &[class*='_cen_'] {
+    .text {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .icon {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .back {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_tex_'] {
+    .text,
+    .back {
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  &[class*='_ico_'] {
+    .icon,
+    .back {
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+}
+%button-move {
+}
+%button-test {
+  // .text {
+  //   // background: rgba(darkred, 0.25);
+  //   * {
+  //     // color: maroon;
+  //   }
+  // }
+  // .icon {
+  //   // background: rgba(darkred, 0.25);
+  //   img {
+  //     // background: black;
+  //   }
+  // }
+  // .back {
+  //   // background: rgba(darkblue, 0.25);
+  // }
+  // // background: rgba(pink, 0.5);
+}
+*/

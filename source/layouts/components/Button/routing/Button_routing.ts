@@ -1,4 +1,4 @@
-//--|🠊 Button_default.ts 🠈|--\\
+//--|🠊 Button_routing.ts 🠈|--\\
 import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
@@ -12,7 +12,6 @@ interface StyleProps {
   image?: string | null | undefined;
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
-
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build 🠈|--\\

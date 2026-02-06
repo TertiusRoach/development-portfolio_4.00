@@ -1,5 +1,6 @@
-//--|🠊 Button_size.scss 🠈|--\\
+//--|🠊 default/pipeline/Button_size.scss 🠈|--\\
 @mixin desktop-size {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   .text,
   .back {
     max-width: 32rem;
@@ -112,4 +113,5 @@
   }
 }
 @mixin mobile-size {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
 }

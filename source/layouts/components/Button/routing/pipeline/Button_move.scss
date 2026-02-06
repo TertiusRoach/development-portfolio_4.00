@@ -1,29 +1,12 @@
-//--|🠊 default/pipeline/Button_move.scss 🠈|--\\
+//--|🠊 routing/pipeline/Button_move.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-move {
   //--|🠋 Desktop (Landscape) 🠋|--\\
-  &:hover,
-  &:focus-visible {
-    @include mon-color();
-  }
 }
 @mixin mobile-move {
   //--|🠋 Mobile (Portrait) 🠋|--\\
-  /*
-  // Mobile = speed
-  .back,
-  .text,
-  .icon,
-  .icon img {
-    transition: none;
-  }
-
-  &:active {
-    filter: brightness(1.05);
-  }
-  */
 }
 
 @mixin mon-color {
