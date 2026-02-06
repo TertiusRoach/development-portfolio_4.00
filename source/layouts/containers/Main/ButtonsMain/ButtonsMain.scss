@@ -44,6 +44,10 @@
           grid-area: 1 / 4 / 4 / 5;
         }
       }
+
+      header {
+      }
+      /*
       nav {
         &[class*='toggle'] {
           z-index: 1;
@@ -73,6 +77,7 @@
           }
         }
       }
+      */
     }
     figure[class*='midground'] {
       z-index: 1;

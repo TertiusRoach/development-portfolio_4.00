@@ -84,6 +84,11 @@ function exportElements(
               handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', e.deltaY > 0 ? 'scroll-down' : 'go-up')
             }
           >
+            <header></header>
+            <footer></footer>
+            {/* <header style={{ height: '96px', width: '96px', background: 'red' }}></header> */}
+            {/* <footer style={{ height: '96px', width: '96px', background: 'blue' }}></footer> */}
+
             <aside
               id="default-darkside"
               className="carousel-container"
@@ -2155,9 +2160,7 @@ function exportElements(
               </ol>
             </aside>
 
-            {/* <header style={{ height: '96px', width: '96px', background: 'red' }}></header> */}
-            {/* <footer></footer> */}
-            <nav className="scroll-sections default-buttons">
+            {/* <nav className="scroll-sections default-buttons">
               <ButtonDefault
                 style={{
                   size: '<h4>',
@@ -2196,8 +2199,8 @@ function exportElements(
                 }}
                 onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
               />
-            </nav>
-            <nav className="toggle-aside default-buttons">
+            </nav> */}
+            {/* <nav className="toggle-aside default-buttons">
               <LabelToggle
                 style={{
                   shade: '~dark~',
@@ -2224,7 +2227,7 @@ function exportElements(
                 }}
                 onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
               />
-            </nav>
+            </nav> */}
           </section>
           <figure className={`${listing}-midground`}>
             <aside className="dark-code hidden">
