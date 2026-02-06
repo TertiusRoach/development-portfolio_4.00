@@ -150,15 +150,16 @@ export function defaultPreview(
           lightAlt.children[i],
         ] as Array<HTMLElement>;
 
-        markHTML(carouselElements);
+        markHTML(pageName, blockName, carouselElements);
       }
     }
   };
-  const markHTML = (carousels: Array<HTMLElement>) => {
+  const markHTML = (pageName: string, blockName: string, carousels: Array<HTMLElement>) => {
     for (let i = 0; i < carousels.length; i++) {
       carousels[i].classList.add('visible');
       carousels[i].classList.remove('hidden');
     }
+
     viewHTML(carousels);
   };
   const viewHTML = (elements: HTMLElement[]): void => {
@@ -198,9 +199,9 @@ export function defaultPreview(
     if (!slide) return;
 
     //--|🠊 Loop over all carousel elements 🠈|--\\
-    elements.forEach((el) => {
+    elements.forEach((element) => {
       //--|🠊 Get the parent element (this is the element that receives the slide class) 🠈|--\\
-      var parent = el.parentElement;
+      var parent = element.parentElement;
 
       //--|🠊 If the element has no parent, skip it 🠈|--\\
       if (!parent) return;
@@ -218,6 +219,8 @@ export function defaultPreview(
   setTimeout(() => {
     findHTML(pageName, blockName, blockAction, 'default-buttons');
   }, 125);
+
+  setTimeout(() => {}, 6000);
 }
 export function togglePreview(
   pageName: string,

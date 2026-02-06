@@ -50,7 +50,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
-    defaultPreview(pageName, blockName, 'h1-size');
+    defaultPreview(pageName, blockName, 'h3-size');
   }, [pageName, blockName, [info]]);
 
   return (
@@ -145,29 +145,6 @@ function exportElements(
                 </div>
               </nav>
             </header>
-            <footer className="default-footer">
-              <nav>
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: 'Scroll Down',
-                    shade: '~dark~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_scroll-down`,
-                  }}
-                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
-                />
-              </nav>
-            </footer>
 
             <aside
               id="default-darkside"
@@ -1204,6 +1181,7 @@ function exportElements(
                 </li>
               </ol>
             </aside>
+            <div className="default-hitbox"></div>
             <aside
               id="default-lightside"
               className="carousel-container"
@@ -2239,6 +2217,30 @@ function exportElements(
                 </li>
               </ol>
             </aside>
+
+            <footer className="default-footer">
+              <nav>
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
+                />
+              </nav>
+            </footer>
           </section>
           <figure className={`${listing}-midground`}>
             <aside className="dark-code hidden">
