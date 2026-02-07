@@ -13,7 +13,7 @@ button[class*='default'] {
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
-
+  // Top and Bottom, if there's a space in the text, make it two lines and the back a square.
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include Button_size.desktop-size();

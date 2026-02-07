@@ -103,16 +103,6 @@ export function controlPreview(
   let lightCarousel = Array.from(
     document.querySelectorAll(`#${pagePart} section[class*="foreground"] aside[id*="lightside"] li[class*="slide"]`),
   ) as HTMLElement[];
-
-  /*
-  let textCarousel = document.querySelector(`#${pagePart} figure[class*="midground"] .carousel-preview`) as HTMLElement;
-
-  let darkDef = darkCarousel[0] as HTMLElement;
-  let darkAlt = darkCarousel[1] as HTMLElement;
-
-  let lightDef = lightCarousel[0] as HTMLElement;
-  let lightAlt = lightCarousel[1] as HTMLElement;
-  */
 }
 export function defaultPreview(
   pageName: string,
@@ -308,12 +298,12 @@ export function toggleAside(
   }
 }
 export function toggleHeader(pageName: string, blockName: string) {
-  const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
+  const buttonsHeader = document.getElementById(`${pageName}-header`);
 
-  let classesHeader = Array.from(buttonsHeader.classList);
-  if (classesHeader.length > 0) {
+  if (!buttonsHeader) return;
+  else if (buttonsHeader.classList.contains('collapsed')) {
     buttonsHeader.classList.add('unfolded');
-    buttonsHeader.classList.remove(classesHeader[classesHeader.length - 1]);
+    buttonsHeader.classList.remove('collapsed');
   }
 }
 //--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
