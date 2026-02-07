@@ -10,6 +10,7 @@ export function toggleHeader(pageName: string, blockName: string) {
     buttonsHeader.classList.remove('collapsed');
     buttonsHeader.classList.add('unfolded');
   }
+  //Testing
 
   // If it is currently expanded, collapse it.
   if (buttonsHeader.classList.contains('unfolded')) {
