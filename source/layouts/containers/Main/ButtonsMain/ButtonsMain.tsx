@@ -54,7 +54,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
       <div className="carousel-container">
-        <ul className="carousel-preview slide-one">
+        <ul className="carousel-preview slide-def">
           <li className="default-buttons">{exportElements(handleButtons, pageName, blockName, 'default-buttons')}</li>
           <li className="routing-buttons">{exportElements(handleButtons, pageName, blockName, 'routing-buttons')}</li>
         </ul>

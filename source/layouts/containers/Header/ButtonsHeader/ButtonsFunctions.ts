@@ -27,7 +27,15 @@ export function toggleHeader(pageName: string, blockName: string) {
   }, 5000);
 }
 export function togglePreview(pageName: string, blockName: string, pageAction: 'default-buttons' | 'routing-buttons') {
-  console.log(pageName);
-  console.log(blockName);
-  console.log(pageAction);
+  const carousel = document.querySelector(`#${pageName}-main ul[class*="preview"]`) as HTMLElement;
+  switch (pageAction) {
+    case 'default-buttons':
+      carousel.classList.add('slide-def');
+      carousel.classList.remove('slide-rou');
+      break;
+    case 'routing-buttons':
+      carousel.classList.add('slide-rou');
+      carousel.classList.remove('slide-def');
+      break;
+  }
 }

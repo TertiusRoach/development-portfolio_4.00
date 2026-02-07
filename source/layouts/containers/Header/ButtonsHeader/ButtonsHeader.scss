@@ -153,6 +153,7 @@
 }
 
 header[id*='buttons'] {
+  overflow: hidden;
   @media screen and (orientation: landscape) {
     @include desktop-default();
     @include desktop-landscape();

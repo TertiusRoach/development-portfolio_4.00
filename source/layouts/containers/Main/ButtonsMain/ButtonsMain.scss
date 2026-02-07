@@ -461,6 +461,7 @@ main[id*='buttons'] {
       height: inherit;
       //--|🠊 padding: 0; 🠈|--\\
       //--|🠊 list-style: none; 🠈|--\\
+      transition: transform 500ms ease-in-out;
       li {
         flex: 0 0 100%;
         height: inherit;
@@ -471,6 +472,14 @@ main[id*='buttons'] {
           height: inherit;
           position: absolute;
         }
+      }
+      &[class*='rou'] {
+        //--|🠋 <DefaultButton> 🠋|--\\
+        transform: translateX(-100%);
+      }
+      &[class*='def'] {
+        //--|🠋 <RoutingButton> 🠋|--\\
+        transform: translateX(0);
       }
     }
   }
