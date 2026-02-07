@@ -16,6 +16,11 @@
 @mixin header-transition {
   header {
     &[class*='expanded'] {
+      &[id*='header'] {
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      /*
       &[id*='landing'] {
         menu {
           top: -4rem;
@@ -26,11 +31,7 @@
           top: -8rem;
         }
       }
-
-      section,
-      &[id*='header'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
-      }
+      */
     }
     &[class*='unfolded'] {
       backdrop-filter: blur(0px);
@@ -64,7 +65,9 @@
           }
         }
       }
-      &[id*='overtime'] {
+
+      /*
+            &[id*='overtime'] {
         //--|🠋 Desktop (Landscape) 🠋|--//
         @media screen and (orientation: landscape) {
           clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
@@ -73,13 +76,13 @@
         @media screen and (orientation: portrait) {
         }
       }
-
       menu {
         top: 0rem;
       }
       section {
         clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
       }
+      */
     }
     &[class*='collapsed'] {
       &[id*='buttons'],
@@ -96,14 +99,13 @@
         @media screen and (orientation: portrait) {
         }
       }
-      */
-
-      menu {
+              menu {
         top: 0rem;
       }
       section {
         clip-path: polygon(0% 0, 100% 0, 100% 0rem, 0% 0rem);
       }
+      */
     }
     @extend %header-effects;
     @extend %header-transition;
@@ -117,7 +119,7 @@
     }
   }
   %header-transition {
-    transition: clip-path 0.75s ease-in-out;
+    transition: clip-path 250ms ease-in-out;
     menu {
       position: relative;
       transition: top 0.25s ease-in-out;
@@ -231,7 +233,7 @@
     }
   }
   %footer-transition {
-    transition: clip-path 0.75s ease-in-out;
+    transition: clip-path 250ms ease-in-out;
     menu {
       position: relative;
       transition: top 0.25s ease-in-out;

@@ -26,3 +26,8 @@ export function toggleHeader(pageName: string, blockName: string) {
     headerTimer = null;
   }, 5000);
 }
+export function togglePreview(pageName: string, blockName: string, pageAction: 'default-buttons' | 'routing-buttons') {
+  console.log(pageName);
+  console.log(blockName);
+  console.log(pageAction);
+}
