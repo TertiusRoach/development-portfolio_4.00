@@ -14,14 +14,27 @@ interface StyleProps {
 }
 
 //--|🠋 Functions 🠋|--\\
+export function createType(type: '{button}' | '{submit}' | '{reset}' | '{disabled}'): String {
+  switch (type) {
+    case '{button}':
+    default:
+      return 'default-button';
+    case '{disabled}':
+      return 'disabled-button';
+  }
+}
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build 🠈|--\\
+  let classType = createType(style.type);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
+
   if (style.image == null) {
-    return `${classLayout}_${classColor}_alt`;
+    // default-button
+
+    return `${classType} ${classLayout}_${classColor}_alt`;
   } else {
-    return `${classLayout}_${classColor}_def`;
+    return `${classType} ${classLayout}_${classColor}_def`;
   }
 }
 export function createLayout(

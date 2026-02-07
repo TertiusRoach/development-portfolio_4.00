@@ -6,7 +6,8 @@
 @use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
 
-button[class*='default'] {
+button[class*='default'],
+button[class*='disabled'] {
   display: grid;
 
   @extend %button-grid;

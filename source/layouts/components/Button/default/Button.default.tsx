@@ -64,7 +64,6 @@ const ButtonDefault: React.FC<TheseProps> = ({
   //--|🠊 Identifiers 🠈|--\\
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
-
   //--|🠊 Render Body 🠈|--\\
   const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
     switch (style.size) {
@@ -257,11 +256,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <button
-      onClick={onClick}
-      id={info.labelName || undefined}
-      className={`default-button ${createClass(style as TheseProps['style'])}`}
-    >
+    <button onClick={onClick} id={info.labelName || undefined} className={`${createClass(style as TheseProps['style'])}`}>
       {handleDefault(info, style)}
     </button>
   );

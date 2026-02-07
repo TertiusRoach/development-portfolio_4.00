@@ -16,7 +16,7 @@ interface InfoProps {
 const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -59,7 +59,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               shade: '~light~',
               color: '(mono)',
 
-              type: '{button}',
+              type: '{disabled}',
               image: `${fontPath}/caret-left.svg`,
             }}
             info={{
@@ -71,10 +71,20 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
           />
           <ol className="carousel-preview slide-def">
             <li className="default-text">
-              <h6 className="display-6">{'<DefaultButton>'}</h6>
+              <h6 className="display-4">
+                <b>Default</b>
+              </h6>
+              <h6 className="display-6">
+                <i>Button</i>
+              </h6>
             </li>
             <li className="routing-text">
-              <h6 className="display-6">{'<RoutingButton>'}</h6>
+              <h6 className="display-4">
+                <b>Routing</b>
+              </h6>
+              <h6 className="display-6">
+                <i>Button</i>
+              </h6>
             </li>
           </ol>
           <ButtonDefault

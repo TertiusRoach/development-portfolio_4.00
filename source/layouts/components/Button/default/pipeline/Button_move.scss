@@ -4,8 +4,15 @@
 
 @mixin desktop-move {
   //--|🠋 Desktop (Landscape) 🠋|--\\
-  &:hover,
-  &:focus-visible {
+  &[class*='default']:hover,
+  &[class*='default']:focus-visible {
+    @include mon-color();
+  }
+  &[class*='disabled']:hover,
+  &[class*='disabled']:focus-visible {
+    opacity: 0.25;
+    filter: blur(8px);
+    // transition: transform filter 250ms;
     @include mon-color();
   }
 }

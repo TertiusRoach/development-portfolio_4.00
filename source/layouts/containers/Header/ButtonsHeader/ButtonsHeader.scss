@@ -32,7 +32,15 @@
           align-items: center;
           justify-content: center;
           h6 {
-            font-weight: 600;
+            font-weight: 400;
+
+            b {
+              font-weight: 800;
+              transform: scale(0.25);
+            }
+            i {
+              font-weight: 200;
+            }
           }
         }
 
