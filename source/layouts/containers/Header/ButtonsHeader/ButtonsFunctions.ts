@@ -8,7 +8,6 @@ export function toggleHeader(pageName: string, blockName: string) {
     // If yes, we ignore this request completely.
     return;
   }
-  //Testing
 
   // const buttonsHeader = document.getElementById(`${pageName}-header`);
 
