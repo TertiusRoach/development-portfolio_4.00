@@ -2417,7 +2417,7 @@ function exportElements(
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  <div className="rou-size hidden">
+                  <div className="rou-size visible">
                     <ButtonRouting
                       style={{
                         size: '<h1>',
@@ -2545,8 +2545,8 @@ function exportElements(
                       }}
                     />
                   </div>
-                  <div className="alt-size hidden"></div>
-                  <div className="por-size hidden"></div>
+                  {/* <div className="alt-size hidden"></div> */}
+                  {/* <div className="por-size hidden"></div> */}
                 </li>
               </ol>
             </aside>
@@ -2558,9 +2558,7 @@ function exportElements(
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  {/* Todo: lightside */}
-                  {/* Change everything from .visible back to .hidden when you're done */}
-                  <div className="rou-size hidden">
+                  <div className="rou-size visible">
                     <ButtonRouting
                       style={{
                         size: '<h1>',
@@ -2688,8 +2686,8 @@ function exportElements(
                       }}
                     />
                   </div>
-                  <div className="por-size hidden"></div>
-                  <div className="alt-size hidden"></div>
+                  {/* <div className="por-size hidden"></div> */}
+                  {/* <div className="alt-size hidden"></div> */}
                 </li>
               </ol>
             </aside>
