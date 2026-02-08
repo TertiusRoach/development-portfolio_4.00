@@ -75,6 +75,7 @@ function exportElements(
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dca9fb650fc05e26cbc310f1befa010832f171af/source/assets/svg-files/archive-images',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images',
+    '',
   ];
 
   switch (listName) {
@@ -2416,9 +2417,7 @@ function exportElements(
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  {/* Todo: darkside */}
-                  {/* Change everything from .visible back to .hidden when you're done */}
-                  <div className="rou-size visible">
+                  <div className="rou-size hidden">
                     <ButtonRouting
                       style={{
                         size: '<h1>',
@@ -2426,7 +2425,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/white-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2546,8 +2545,8 @@ function exportElements(
                       }}
                     />
                   </div>
-                  <div className="alt-size visible"></div>
-                  <div className="por-size visible"></div>
+                  <div className="alt-size hidden"></div>
+                  <div className="por-size hidden"></div>
                 </li>
               </ol>
             </aside>
@@ -2561,7 +2560,7 @@ function exportElements(
                 <li className="def-track slide-one">
                   {/* Todo: lightside */}
                   {/* Change everything from .visible back to .hidden when you're done */}
-                  <div className="rou-size visible">
+                  <div className="rou-size hidden">
                     <ButtonRouting
                       style={{
                         size: '<h1>',
@@ -2689,8 +2688,8 @@ function exportElements(
                       }}
                     />
                   </div>
-                  <div className="por-size visible"></div>
-                  <div className="alt-size visible"></div>
+                  <div className="por-size hidden"></div>
+                  <div className="alt-size hidden"></div>
                 </li>
               </ol>
             </aside>
