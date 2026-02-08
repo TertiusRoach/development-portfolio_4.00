@@ -4,8 +4,6 @@
 
 @mixin desktop-tint {
   //--|🠋 Desktop (Landscape) 🠋|--\\
-  // background: Palettes.$red-neon !important;
-
   &[class*='_tl_'] {
     background: Palettes.$red-neon;
   }

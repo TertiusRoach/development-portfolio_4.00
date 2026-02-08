@@ -1,6 +1,19 @@
 //--|🠊 routing/pipeline/Button_grid.scss 🠈|--\\
 @mixin desktop-grid {
   //--|🠋 Desktop (Landscape) 🠋|--\\
+  display: grid;
+  &[class*='one_'] {
+    grid-template: 1fr 96px 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: 1fr 72px 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      grid-template: 1fr 48px 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      grid-template: 1fr 36px 1fr / 1fr 36px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+  }
 }
 @mixin mobile-grid {
   //--|🠋 Mobile (Portrait) 🠋|--\\

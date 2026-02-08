@@ -77,452 +77,6 @@ function exportElements(
     'https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/assets/png-files/tralogfin-demonstration/original';
 
   switch (listName) {
-    case 'routing-buttons':
-      return (
-        <>
-          <section
-            className={`${listing}-foreground`}
-            onWheel={(event) =>
-              handleButtons(
-                pageName,
-                'default-buttons',
-                blockName,
-                'scroll-mouse',
-                event.deltaY > 0 ? 'scroll-down' : 'go-up',
-              )
-            }
-          >
-            <header className="routing-header">
-              <ButtonRouting
-                style={{
-                  size: '<h1>',
-                  view: 'top-lef',
-                  shade: '~dark~',
-                  color: '(mono)',
-                  type: '{button}',
-                  image: `${svgPath}/01.svg`,
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: `${pageName}_${blockName}_open-head`,
-                }}
-                onMouseEnter={() => toggleHeader(pageName, blockName)}
-              />
-              <menu>
-                <div>
-                  <ButtonDefault
-                    style={{
-                      size: '<h4>',
-                      view: '-icon-',
-                      text: `Go Up`,
-                      shade: '~light~',
-                      color: '(mono)',
-
-                      type: '{button}',
-                      image:
-                        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_go-up`,
-                    }}
-                    onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
-                  />
-                </div>
-              </menu>
-            </header>
-            <div className="routing-hitbox"></div>
-
-            <aside
-              id="routing-darkside"
-              className="carousel-container"
-              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-dark')}
-              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-dark')}
-            >
-              <ol className="carousel-preview slide-def">
-                <li className="def-track slide-one">
-                  {/* Todo: darkside */}
-                  {/* Change everything from .visible back to .hidden when you're done */}
-                  <div className="rou-size visible">
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-lef',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-cen',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-rig',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-lef',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-cen',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{counter}',
-                        image: '5',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-rig',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-lef',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-cen',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/08.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-rig',
-                        shade: '~dark~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/09.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="alt-size visible"></div>
-                  <div className="por-size visible"></div>
-                </li>
-              </ol>
-            </aside>
-            <aside
-              id="routing-lightside"
-              className="carousel-container"
-              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-light')}
-              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-light')}
-            >
-              <ol className="carousel-preview slide-def">
-                <li className="def-track slide-one">
-                  {/* Todo: lightside */}
-                  {/* Change everything from .visible back to .hidden when you're done */}
-                  <div className="rou-size visible">
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-lef',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/10.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-cen',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'top-rig',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-lef',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-cen',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{counter}',
-                        image: '5',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'mid-rig',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-lef',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-cen',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/08.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonRouting
-                      style={{
-                        size: '<h1>',
-                        view: 'bot-rig',
-                        shade: '~light~',
-                        color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/09.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="por-size visible"></div>
-                  <div className="alt-size visible"></div>
-                </li>
-              </ol>
-            </aside>
-
-            <footer className="routing-footer">
-              <nav>
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: 'Scroll Down',
-                    shade: '~dark~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_scroll-down`,
-                  }}
-                  onClick={() => handleButtons(pageName, 'routing-buttons', blockName, 'control-preview', 'scroll-down')}
-                />
-              </nav>
-            </footer>
-          </section>
-          <figure className={`${listing}-midground`}>
-            {/* <aside className="dark-code hidden">
-              <pre className="dark-text">
-                <code>
-                  {`<ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-top-',
-                        text: 'one_top_dar_mon',
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: 'imagePath',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />`}
-                </code>
-              </pre>
-            </aside>
-            <section className="carousel-container size-font visible">
-              <ol className="carousel-preview slide-one">
-                <li className="rou-size hidden">
-                  <h1 className="display-1">{'<rou>'}</h1>
-                </li>
-                <li className="por-size hidden">
-                  <h2 className="display-2">{'<por>'}</h2>
-                </li>
-                <li className="alt-size hidden">
-                  <h3 className="display-3">{'<alt>'}</h3>
-                </li>
-              </ol>
-            </section>
-            <aside className="light-code hidden">
-              <pre className="light-text">
-                <code>
-                  {`<ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-top-',
-                        text: 'one_top_lig_mon',
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: 'imagePath',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />`}
-                </code>
-              </pre>
-            </aside> */}
-          </figure>
-          <div className={`${listing}-background`}>
-            {/* <header>
-              <div></div>
-              <div></div>
-            </header>
-            <aside className="dark-grade hidden">
-              <span></span>
-            </aside>
-            <aside className="light-grade hidden">
-              <span></span>
-            </aside>
-            <footer>
-              <div></div>
-              <div></div>
-            </footer> */}
-          </div>
-        </>
-      );
     case 'default-buttons':
       return (
         <>
@@ -2792,6 +2346,440 @@ function exportElements(
               <div></div>
               <div></div>
             </footer>
+          </div>
+        </>
+      );
+    case 'routing-buttons':
+      return (
+        <>
+          <section
+            className={`${listing}-foreground`}
+            onWheel={(event) =>
+              handleButtons(
+                pageName,
+                'default-buttons',
+                blockName,
+                'scroll-mouse',
+                event.deltaY > 0 ? 'scroll-down' : 'go-up',
+              )
+            }
+          >
+            <header className="routing-header">
+              <ButtonRouting
+                style={{
+                  size: '<h1>',
+                  view: 'top-lef',
+                  shade: '~dark~',
+                  color: '(mono)',
+                  type: '{button}',
+                  image: `${svgPath}/01.svg`,
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: `${pageName}_${blockName}_open-head`,
+                }}
+                onMouseEnter={() => toggleHeader(pageName, blockName)}
+              />
+              <menu>
+                <div>
+                  <ButtonDefault
+                    style={{
+                      size: '<h4>',
+                      view: '-icon-',
+                      text: `Go Up`,
+                      shade: '~light~',
+                      color: '(mono)',
+
+                      type: '{button}',
+                      image:
+                        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+                    }}
+                    info={{
+                      pageName: pageName,
+                      blockName: blockName,
+                      labelName: `${pageName}_${blockName}_go-up`,
+                    }}
+                    onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
+                  />
+                </div>
+              </menu>
+            </header>
+            <div className="routing-hitbox"></div>
+
+            <aside
+              id="routing-darkside"
+              className="carousel-container"
+              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-dark')}
+              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-dark')}
+            >
+              <ol className="carousel-preview slide-def">
+                <li className="def-track slide-one">
+                  {/* Todo: darkside */}
+                  {/* Change everything from .visible back to .hidden when you're done */}
+                  <div className="rou-size visible">
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-lef',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/01.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-cen',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/02.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-rig',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/03.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-lef',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/04.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-cen',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{counter}',
+                        image: '5',
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-rig',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/06.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-lef',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/07.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-cen',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/08.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-rig',
+                        shade: '~dark~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/09.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                  </div>
+                  <div className="alt-size visible"></div>
+                  <div className="por-size visible"></div>
+                </li>
+              </ol>
+            </aside>
+            <aside
+              id="routing-lightside"
+              className="carousel-container"
+              onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-light')}
+              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-light')}
+            >
+              <ol className="carousel-preview slide-def">
+                <li className="def-track slide-one">
+                  {/* Todo: lightside */}
+                  {/* Change everything from .visible back to .hidden when you're done */}
+                  <div className="rou-size visible">
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/10.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/02.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/03.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/04.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{counter}',
+                        image: '5',
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/06.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/07.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/08.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/09.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                  </div>
+                  <div className="por-size visible"></div>
+                  <div className="alt-size visible"></div>
+                </li>
+              </ol>
+            </aside>
+
+            <footer className="routing-footer">
+              <nav>
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, 'routing-buttons', blockName, 'control-preview', 'scroll-down')}
+                />
+              </nav>
+            </footer>
+          </section>
+          <figure className={`${listing}-midground`}>
+            {/* <aside className="dark-code hidden">
+              <pre className="dark-text">
+                <code>
+                  {`<ButtonDefault
+                      style={{
+                        size: '<h1>',
+                        view: '-top-',
+                        text: 'one_top_dar_mon',
+                        shade: '~dark~',
+                        color: '(mono)',
+
+                        type: '{button}',
+                        image: 'imagePath',
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />`}
+                </code>
+              </pre>
+            </aside>
+            <section className="carousel-container size-font visible">
+              <ol className="carousel-preview slide-one">
+                <li className="rou-size hidden">
+                  <h1 className="display-1">{'<rou>'}</h1>
+                </li>
+                <li className="por-size hidden">
+                  <h2 className="display-2">{'<por>'}</h2>
+                </li>
+                <li className="alt-size hidden">
+                  <h3 className="display-3">{'<alt>'}</h3>
+                </li>
+              </ol>
+            </section>
+            <aside className="light-code hidden">
+              <pre className="light-text">
+                <code>
+                  {`<ButtonDefault
+                      style={{
+                        size: '<h1>',
+                        view: '-top-',
+                        text: 'one_top_lig_mon',
+                        shade: '~light~',
+                        color: '(mono)',
+
+                        type: '{button}',
+                        image: 'imagePath',
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />`}
+                </code>
+              </pre>
+            </aside> */}
+          </figure>
+          <div className={`${listing}-background`}>
+            <aside className="dark-silhouette hidden">{/* <span></span> */}</aside>
+            <aside className="light-silhouette hidden">{/* <span></span> */}</aside>
           </div>
         </>
       );

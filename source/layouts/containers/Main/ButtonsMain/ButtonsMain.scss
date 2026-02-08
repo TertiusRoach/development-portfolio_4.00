@@ -213,13 +213,37 @@
     }
     div[class*='back'] {
       z-index: 0;
+      display: grid;
+
       //--|🠊 display: grid; 🠈|--\\
-      aside[class*='grade'] {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      aside[class*='silhouette'] {
         transition: grid-template-columns 1s ease-in-out;
+
+        display: grid;
+
+        gap: 16px;
+        grid-template-rows: 1fr repeat(3, 128px) 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr repeat(3, 128px) 1fr; //--|🠈 cols 🠈|--\\
+        @media screen and (max-height: 768px) {
+          gap: 8px;
+          grid-template-rows: 1fr repeat(3, 96px) 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-columns: 1fr repeat(3, 96px) 1fr; //--|🠈 cols 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          gap: 4px;
+          // background: red !important;
+          grid-template-rows: 1fr repeat(3, 64px) 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-columns: 1fr repeat(3, 64px) 1fr; //--|🠈 cols 🠈|--\\
+          // grid-template: 1fr repeat(3, 64px) 1fr / 1fr repeat(3, 64px) 1fr; //--|🠈 rows / cols 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          // gap: 2px;
+          background: red !important;
+          // grid-template: 1fr repeat(3, 48px) 1fr / 1fr repeat(3, 48px) 1fr; //--|🠈 rows / cols 🠈|--\\
+        }
         &[class*='dark'] {
-          grid-area: 1 / 1 / 6 / 4;
+          grid-area: 1 / 2 / 6 / 3;
+
           &.visible {
             grid-template-columns: 1fr 0.001fr;
           }

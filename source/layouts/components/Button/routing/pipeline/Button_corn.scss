@@ -3,37 +3,212 @@
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-corn {
+  .mid {
+    border-radius: inherit;
+  }
   //--|🠋 Desktop (Landscape) 🠋|--\\
   &[class*='_tl_'] {
     border-bottom-right-radius: 64px;
+    .mid {
+      border-right: 4px solid red;
+      border-bottom: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-bottom-right-radius: 48px;
+    }
+    @media screen and (max-height: 480px) {
+      border-bottom-right-radius: 32px;
+      .mid {
+        border-right: 2px solid red;
+        border-bottom: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-bottom-right-radius: 24px;
+    }
   }
   &[class*='_tr_'] {
     border-bottom-left-radius: 64px;
+    .mid {
+      border-left: 4px solid red;
+      border-bottom: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-bottom-left-radius: 48px;
+    }
+    @media screen and (max-height: 480px) {
+      .mid {
+        border-left: 2px solid red;
+        border-bottom: 2px solid red;
+      }
+      border-bottom-left-radius: 32px;
+    }
+    @media screen and (max-height: 360px) {
+      border-bottom-left-radius: 24px;
+    }
   }
+  &[class*='_mc_'] {
+    border-radius: 64px;
+    .mid {
+      border: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-radius: 48px;
+    }
+    @media screen and (max-height: 480px) {
+      .mid {
+        border: 2px solid red;
+      }
+      border-radius: 32px;
+    }
+    @media screen and (max-height: 360px) {
+      border-radius: 24px;
+    }
+  }
+  &[class*='_br_'] {
+    border-top-left-radius: 64px;
+    .mid {
+      border-left: 4px solid red;
+      border-top: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-top-left-radius: 48px;
+    }
+    @media screen and (max-height: 480px) {
+      border-top-left-radius: 32px;
+      .mid {
+        border-left: 2px solid red;
+        border-top: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-top-left-radius: 24px;
+    }
+  }
+  &[class*='_bl_'] {
+    border-top-right-radius: 64px;
+    .mid {
+      border-top: 4px solid red;
+      border-right: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-top-right-radius: 48px;
+    }
+    @media screen and (max-height: 480px) {
+      border-top-right-radius: 32px;
+      .mid {
+        border-top: 2px solid red;
+        border-right: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-top-right-radius: 24px;
+    }
+  }
+
   &[class*='_tc_'] {
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
+    .mid {
+      border-left: 4px solid red;
+      border-right: 4px solid red;
+      border-bottom: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    @media screen and (max-height: 480px) {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+
+      border-left: 2px solid blue;
+      border-right: 2px solid blue;
+      border-bottom: 2px solid blue;
+    }
+    @media screen and (max-height: 360px) {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
   }
   &[class*='_ml_'] {
     border-top-right-radius: 32px;
     border-bottom-right-radius: 32px;
+    .mid {
+      border-top: 4px solid red;
+      border-right: 4px solid red;
+      border-bottom: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    @media screen and (max-height: 480px) {
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+      .mid {
+        border-top: 2px solid red;
+        border-right: 2px solid red;
+        border-bottom: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
   }
-  &[class*='_mc_'] {
-    border-radius: 64px;
-  }
+
   &[class*='_mr_'] {
     border-top-left-radius: 32px;
     border-bottom-left-radius: 32px;
-  }
-  &[class*='_bl_'] {
-    border-top-right-radius: 64px;
+    .mid {
+      border-top: 4px solid red;
+      border-left: 4px solid red;
+      border-bottom: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+    }
+    @media screen and (max-height: 480px) {
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+      .mid {
+        border-top: 2px solid red;
+        border-left: 2px solid red;
+        border-bottom: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
   }
   &[class*='_bc_'] {
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
-  }
-  &[class*='_br_'] {
-    border-top-left-radius: 64px;
+    .mid {
+      border-top: 4px solid red;
+      border-left: 4px solid red;
+      border-right: 4px solid red;
+    }
+    @media screen and (max-height: 768px) {
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+    @media screen and (max-height: 480px) {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      .mid {
+        border-top: 2px solid red;
+        border-left: 2px solid red;
+        border-right: 2px solid red;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
   }
 }
 @mixin mobile-corn {

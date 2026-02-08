@@ -3,6 +3,24 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-size {
   //--|🠋 Desktop (Landscape) 🠋|--\\
+  &[class*='one_'] {
+    width: 128px;
+    height: 128px;
+    @media screen and (max-height: 768px) {
+      width: 96px;
+      height: 96px;
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px;
+      height: 64px;
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  &[class*='par_'] {
+  }
 }
 @mixin mobile-size {
   //--|🠋 Mobile (Portrait) 🠋|--\\
