@@ -12,17 +12,7 @@ interface StyleProps {
   image?: string | null | undefined;
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
-
 //--|🠋 Functions 🠋|--\\
-export function createType(type: '{button}' | '{submit}' | '{reset}' | '{disabled}'): String {
-  switch (type) {
-    case '{button}':
-    default:
-      return 'default-button';
-    case '{disabled}':
-      return 'disabled-button';
-  }
-}
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <DefaultButton> 🠈|--\\
   let classType = createType(style.type);
@@ -35,6 +25,10 @@ export function createClass(style: StyleProps): String {
     return `${classType} ${classLayout}_${classColor}_def`;
   }
 }
+export default createClass;
+
+//--|🠋 Scoped Functions 🠋|--\\
+
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
@@ -100,4 +94,12 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
-export default createClass;
+export function createType(type: '{button}' | '{submit}' | '{reset}' | '{disabled}'): String {
+  switch (type) {
+    case '{button}':
+    default:
+      return 'default-button';
+    case '{disabled}':
+      return 'disabled-button';
+  }
+}

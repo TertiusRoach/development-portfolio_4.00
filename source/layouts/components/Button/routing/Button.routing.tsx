@@ -19,7 +19,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+    type: '{button}' | '{counter}';
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 
@@ -106,7 +106,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       id={info.labelName || undefined}
-      className={`routing-button ${createClass(style as TheseProps['style'])}`}
+      className={`${createClass(style as TheseProps['style'])}`}
     >
       <div className="fore"></div>
       <div className="mid"></div>

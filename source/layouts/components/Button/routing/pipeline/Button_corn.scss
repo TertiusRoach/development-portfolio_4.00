@@ -1,25 +1,39 @@
+//--|🠊 <PipeCorn> 🠈|--\\
 //--|🠊 routing/pipeline/Button_corn.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-corn {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   &[class*='_tl_'] {
-  }
-  &[class*='_tc_'] {
+    border-bottom-right-radius: 64px;
   }
   &[class*='_tr_'] {
+    border-bottom-left-radius: 64px;
+  }
+  &[class*='_tc_'] {
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
   }
   &[class*='_ml_'] {
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
   }
   &[class*='_mc_'] {
+    border-radius: 64px;
   }
   &[class*='_mr_'] {
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
   }
   &[class*='_bl_'] {
+    border-top-right-radius: 64px;
   }
   &[class*='_bc_'] {
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
   }
   &[class*='_br_'] {
+    border-top-left-radius: 64px;
   }
 }
 @mixin mobile-corn {

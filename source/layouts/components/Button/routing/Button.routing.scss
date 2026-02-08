@@ -1,4 +1,7 @@
 //--|🠊 Button.routing.scss 🠈|--//
+@use 'sass:color';
+@use '../../../designs/Palettes.scss' as Palettes;
+
 @use './pipeline/Button_grid.scss';
 @use './pipeline/Button_flex.scss';
 @use './pipeline/Button_size.scss';
@@ -6,9 +9,11 @@
 @use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
 
-button[class*='routing'] {
+button[class*='routing'],
+button[class*='counter'] {
   display: grid;
-
+  background: Palettes.$red-neon;
+  // background: none;
   /*
   @extend %button-grid;
   @extend %button-flex;

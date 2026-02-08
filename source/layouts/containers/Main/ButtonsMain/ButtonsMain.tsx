@@ -133,6 +133,7 @@ function exportElements(
                 </div>
               </menu>
             </header>
+            <div className="routing-hitbox"></div>
 
             <aside
               id="routing-darkside"
@@ -142,7 +143,7 @@ function exportElements(
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  {/* Todo */}
+                  {/* Todo: darkside */}
                   {/* Change everything from .visible back to .hidden when you're done */}
                   <div className="rou-size visible">
                     <ButtonRouting
@@ -207,8 +208,8 @@ function exportElements(
                         view: 'mid-cen',
                         shade: '~dark~',
                         color: '(mono)',
-                        type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        type: '{counter}',
+                        image: '5',
                       }}
                       info={{
                         pageName: pageName,
@@ -277,7 +278,6 @@ function exportElements(
                 </li>
               </ol>
             </aside>
-            <div className="routing-hitbox"></div>
             <aside
               id="routing-lightside"
               className="carousel-container"
@@ -286,9 +286,138 @@ function exportElements(
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  <div className="rou-size hidden"></div>
-                  <div className="por-size hidden"></div>
-                  <div className="alt-size hidden"></div>
+                  {/* Todo: lightside */}
+                  {/* Change everything from .visible back to .hidden when you're done */}
+                  <div className="rou-size visible">
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/10.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/02.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'top-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/03.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/04.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{counter}',
+                        image: '5',
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'mid-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/06.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-lef',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/07.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-cen',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/08.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                    <ButtonRouting
+                      style={{
+                        size: '<h1>',
+                        view: 'bot-rig',
+                        shade: '~light~',
+                        color: '(mono)',
+                        type: '{button}',
+                        image: `${svgPath}/09.svg`,
+                      }}
+                      info={{
+                        pageName: pageName,
+                        blockName: blockName,
+                      }}
+                    />
+                  </div>
+                  <div className="por-size visible"></div>
+                  <div className="alt-size visible"></div>
                 </li>
               </ol>
             </aside>
@@ -318,7 +447,7 @@ function exportElements(
             </footer>
           </section>
           <figure className={`${listing}-midground`}>
-            <aside className="dark-code hidden">
+            {/* <aside className="dark-code hidden">
               <pre className="dark-text">
                 <code>
                   {`<ButtonDefault
@@ -374,10 +503,10 @@ function exportElements(
                     />`}
                 </code>
               </pre>
-            </aside>
+            </aside> */}
           </figure>
           <div className={`${listing}-background`}>
-            <header>
+            {/* <header>
               <div></div>
               <div></div>
             </header>
@@ -390,7 +519,7 @@ function exportElements(
             <footer>
               <div></div>
               <div></div>
-            </footer>
+            </footer> */}
           </div>
         </>
       );

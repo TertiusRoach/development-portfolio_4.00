@@ -8,28 +8,22 @@ interface StyleProps {
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+  type: '{button}' | '{counter}';
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
 //--|🠋 Functions 🠋|--\\
-export function createVars(image: string): String {
-  switch (image.split('.').pop()) {
-    case 'svg':
-      return 'rou';
-    case 'png':
-      return 'por';
-    default:
-      return 'alt';
-  }
-}
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <RoutingButton> 🠈|--\\
+  let classType = createType(style.type);
   let classVars = createVars(style.image);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
-
-  return `${classLayout}_${classColor}_${classVars}`;
+  console.log(`${classType}-button ${classLayout}_${classColor}_${classVars}`);
+  return `${classType}-button ${classLayout}_${classColor}_${classVars}`;
 }
+export default createClass;
+
+//--|🠋 Scoped Functions 🠋|--\\
 export function createLayout(
   size: '<h1>' | '<p>',
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig',
@@ -39,6 +33,7 @@ export function createLayout(
     '<h1>': 'one',
     '<p>': 'par',
   };
+  const classSize = sizeMap[size];
 
   const viewMap: Record<string, string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
@@ -52,8 +47,6 @@ export function createLayout(
     'bot-cen': 'bc',
     'bot-rig': 'br',
   };
-
-  const classSize = sizeMap[size];
   const classView = viewMap[view];
 
   if (!classSize || !classView) {
@@ -92,4 +85,22 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
-export default createClass;
+export function createType(type: '{button}' | '{counter}'): String {
+  switch (type) {
+    case '{button}':
+    default:
+      return 'routing';
+    case '{counter}':
+      return 'counter';
+  }
+}
+export function createVars(image: string): String {
+  switch (image.split('.').pop()) {
+    case 'svg':
+      return 'rou';
+    case 'png':
+      return 'por';
+    default:
+      return 'alt';
+  }
+}
