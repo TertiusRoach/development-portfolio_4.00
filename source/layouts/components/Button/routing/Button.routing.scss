@@ -42,12 +42,17 @@ button[class*='counter'] {
   // @extend %button-test;
 }
 %button-grid {
-  .fore {
-    grid-area: 2 / 2 / 3 / 3;
-  }
+  display: grid;
+
+  .fore,
   .mid,
   .back {
+    display: inherit;
+    overflow: hidden;
     grid-area: 1 / 1 / 4 / 4;
+    span {
+      grid-area: 2 / 2 / 3 / 3;
+    }
   }
 }
 %button-test {

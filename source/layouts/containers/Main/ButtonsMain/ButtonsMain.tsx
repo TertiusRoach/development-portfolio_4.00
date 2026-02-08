@@ -72,7 +72,7 @@ function exportElements(
 ) {
   let listing = listName.split('-')[0] as String;
   let svgPath =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images';
   let pngPath =
     'https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/assets/png-files/tralogfin-demonstration/original';
 
@@ -2372,7 +2372,7 @@ function exportElements(
                   shade: '~dark~',
                   color: '(mono)',
                   type: '{button}',
-                  image: `${svgPath}/01.svg`,
+                  image: `${svgPath}/font-awesome/5.13.0/solid/cog.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -2425,7 +2425,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2439,7 +2439,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2453,7 +2453,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2467,7 +2467,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2481,7 +2481,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{counter}',
-                        image: '5',
+                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2495,7 +2495,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2509,7 +2509,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2523,7 +2523,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/08.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/08.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2537,7 +2537,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/09.svg`,
+                        image: `${svgPath}/arabic-numerals/white-numbers/09.svg`,
                       }}
                       info={{
                         pageName: pageName,

@@ -108,10 +108,13 @@ const ButtonRouting: React.FC<TheseProps> = ({
       id={info.labelName || undefined}
       className={`${createClass(style as TheseProps['style'])}`}
     >
-      <div className="fore"></div>
+      <div className="fore">
+        <span>
+          <img src={`${style.image}`} alt="" />
+        </span>
+      </div>
       <div className="mid"></div>
-      <div className="back">{/* <canvas className="animation"></canvas> */}</div>
-      {/* {handleDefault(info, style)} */}
+      <div className="back"></div>
     </button>
   );
 };
