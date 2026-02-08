@@ -54,9 +54,7 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
       <div className="carousel-container">
-        {/* Todo */}
-        {/* Reset 'slide-rou' to 'slide-def' when done with build */}
-        <ul className="carousel-preview slide-rou">
+        <ul className="carousel-preview slide-def">
           <li className="default-buttons">{exportElements(handleButtons, pageName, blockName, 'default-buttons')}</li>
           <li className="routing-buttons">{exportElements(handleButtons, pageName, blockName, 'routing-buttons')}</li>
         </ul>
@@ -2385,7 +2383,7 @@ function exportElements(
               />
               <menu>
                 <div>
-                  <ButtonDefault
+                  {/* <ButtonDefault
                     style={{
                       size: '<h4>',
                       view: '-icon-',
@@ -2403,7 +2401,7 @@ function exportElements(
                       labelName: `${pageName}_${blockName}_go-up`,
                     }}
                     onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
-                  />
+                  /> */}
                 </div>
               </menu>
             </header>
@@ -2694,7 +2692,7 @@ function exportElements(
 
             <footer className="routing-footer">
               <nav>
-                <ButtonDefault
+                {/* <ButtonDefault
                   style={{
                     size: '<h4>',
                     view: '-icon-',
@@ -2712,7 +2710,7 @@ function exportElements(
                     labelName: `${pageName}_${blockName}_scroll-down`,
                   }}
                   onClick={() => handleButtons(pageName, 'routing-buttons', blockName, 'control-preview', 'scroll-down')}
-                />
+                /> */}
               </nav>
             </footer>
           </section>

@@ -50,6 +50,18 @@
       }
     }
     &[class*='_lig_'] {
+      div[class='fore'] {
+        span {
+          /* put your controllable trace here */
+          // background: red;
+          background: Palettes.$indexLand-dark;
+          img {
+            opacity: 0;
+            pointer-events: none;
+            background: transparent;
+          }
+        }
+      }
       div[class='mid'] {
         border-color: Palettes.$indexLand-dark;
         filter: drop-shadow(0 0 8px rgba(black, 0.75));
