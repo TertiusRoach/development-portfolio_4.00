@@ -73,12 +73,10 @@ function exportElements(
   let listing = listName.split('-')[0] as String;
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dca9fb650fc05e26cbc310f1befa010832f171af/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images',
   ];
 
-  let pngPath =
-    'https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/assets/png-files/tralogfin-demonstration/original';
-  let svgSign =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/dca9fb650fc05e26cbc310f1befa010832f171af/source/assets/svg-files/archive-images/';
   switch (listName) {
     case 'default-buttons':
       return (
@@ -103,7 +101,7 @@ function exportElements(
                   shade: '~dark~',
                   color: '(mono)',
                   type: '{button}',
-                  image: `${svgPath[0]}/font-awesome/5.13.0/solid/cog.svg`,
+                  image: `${svgPath[1]}/my-signature/signature-icon/primary-dark.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -185,7 +183,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -201,7 +199,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -217,7 +215,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -233,7 +231,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -249,7 +247,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -281,7 +279,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -299,7 +297,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -315,7 +313,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -331,7 +329,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -347,7 +345,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -363,7 +361,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -395,7 +393,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -413,7 +411,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -429,7 +427,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -445,7 +443,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -461,7 +459,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -477,7 +475,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -509,7 +507,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -527,7 +525,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -543,7 +541,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -559,7 +557,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -575,7 +573,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -591,7 +589,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -623,7 +621,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -641,7 +639,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -657,7 +655,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -673,7 +671,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -689,7 +687,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -705,7 +703,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -737,7 +735,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -755,7 +753,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -771,7 +769,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -787,7 +785,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -803,7 +801,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -819,7 +817,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -851,7 +849,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -869,7 +867,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -885,7 +883,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -901,7 +899,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -917,7 +915,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -933,7 +931,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -965,7 +963,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1221,7 +1219,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1237,7 +1235,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1253,7 +1251,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1269,7 +1267,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1285,7 +1283,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1317,7 +1315,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/black-numbers/`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1335,7 +1333,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1351,7 +1349,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1367,7 +1365,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1383,7 +1381,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1399,7 +1397,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1431,7 +1429,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/02.svg`,
+                        image: `${svgPath[0]}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1449,7 +1447,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1465,7 +1463,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1481,7 +1479,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1497,7 +1495,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1513,7 +1511,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1545,7 +1543,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/03.svg`,
+                        image: `${svgPath[0]}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1563,7 +1561,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1579,7 +1577,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1595,7 +1593,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1611,7 +1609,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1627,7 +1625,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1659,7 +1657,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/04.svg`,
+                        image: `${svgPath[0]}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1677,7 +1675,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1693,7 +1691,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1709,7 +1707,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1725,7 +1723,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1741,7 +1739,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1773,7 +1771,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/05.svg`,
+                        image: `${svgPath[0]}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1791,7 +1789,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1807,7 +1805,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1823,7 +1821,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1839,7 +1837,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1855,7 +1853,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1887,7 +1885,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/06.svg`,
+                        image: `${svgPath[0]}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1905,7 +1903,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1921,7 +1919,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1937,7 +1935,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1953,7 +1951,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1969,7 +1967,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2001,7 +1999,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${svgPath}/07.svg`,
+                        image: `${svgPath[0]}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2372,10 +2370,10 @@ function exportElements(
                 style={{
                   size: '<h1>',
                   view: 'top-lef',
-                  shade: '~dark~',
+                  shade: '~light~',
                   color: '(mono)',
                   type: '{button}',
-                  image: `${svgPath}/font-awesome/5.13.0/solid/cog.svg`,
+                  image: `${svgPath[1]}/my-signature/signature-icon/primary-dark.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -2428,7 +2426,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/01.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/arabic-numerals/black-numbers/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2442,7 +2440,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/02.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2456,7 +2454,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/03.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2470,7 +2468,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/04.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2484,7 +2482,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{counter}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/05.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2498,7 +2496,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/06.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2512,7 +2510,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/07.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2526,7 +2524,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/08.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/08.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2540,7 +2538,7 @@ function exportElements(
                         shade: '~dark~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath}/arabic-numerals/white-numbers/09.svg`,
+                        image: `${svgPath[0]}/arabic-numerals/white-numbers/09.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2571,7 +2569,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/10.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/10.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2585,7 +2583,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/11.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/11.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2599,7 +2597,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/12.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/12.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2613,7 +2611,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/13.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/13.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2627,7 +2625,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{counter}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/14.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/14.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2641,7 +2639,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/15.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/15.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2655,7 +2653,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/16.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/16.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2669,7 +2667,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/17.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/17.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2683,7 +2681,7 @@ function exportElements(
                         shade: '~light~',
                         color: '(mono)',
                         type: '{button}',
-                        image: `${svgPath[0]}/arabic-numerals/black-numbers/18.svg`,
+                        image: `${svgPath[2]}/arabic-numerals/black-numbers/18.svg`,
                       }}
                       info={{
                         pageName: pageName,
