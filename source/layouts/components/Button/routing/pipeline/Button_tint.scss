@@ -18,16 +18,13 @@
     &[class*='_dar_'] {
       div[class='fore'] {
         span {
-          // background:
-          //   radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          //   radial-gradient(
-          //     closest-side,
-          //     rgba(Palettes.$indexLand-medium, 0.1) 0%,
-          //     rgba(Palettes.$indexLand-medium, 0) 70%,
-          //     rgba(Palettes.$indexLand-medium, 0) 100%
-          //   );
+          /* put your controllable trace here */
+          // background: red;
+          background: Palettes.$indexLand-light;
           img {
-            background: Palettes.$indexLand-light;
+            opacity: 0;
+            pointer-events: none;
+            background: transparent;
           }
         }
       }

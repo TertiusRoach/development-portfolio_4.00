@@ -43,7 +43,6 @@ button[class*='counter'] {
 }
 %button-grid {
   display: grid;
-
   .fore,
   .mid,
   .back {
@@ -52,6 +51,9 @@ button[class*='counter'] {
     grid-area: 1 / 1 / 4 / 4;
     span {
       grid-area: 2 / 2 / 3 / 3;
+      img {
+        // overflow: hidden;
+      }
     }
   }
 }
@@ -69,7 +71,9 @@ button[class*='counter'] {
 %button-user {
   div[class*='fore'] {
     z-index: 2;
-    cursor: pointer;
+    span {
+      cursor: pointer;
+    }
   }
   div[class*='mid'] {
     z-index: 1;

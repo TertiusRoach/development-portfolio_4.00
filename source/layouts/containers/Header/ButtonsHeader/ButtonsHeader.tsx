@@ -20,11 +20,11 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let imagePath =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers';
-  let fontPath =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid';
+  let svgPath =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images';
 
+  let svgSign =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images';
   return (
     <header
       className={`default-${blockName} ${stateName}`}
@@ -42,7 +42,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{button}',
-              image: `${imagePath}/01.svg`,
+              image: `${svgSign}/font-awesome/5.13.0/solid/cog.svg`,
             }}
             info={{
               pageName: pageName,
@@ -61,7 +61,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{disabled}',
-              image: `${fontPath}/caret-left.svg`,
+              image: `${svgPath}/font-awesome/6.5.1/solid/caret-left.svg`,
             }}
             info={{
               pageName: pageName,
@@ -97,7 +97,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{button}',
-              image: `${fontPath}/caret-right.svg`,
+              image: `${svgPath}/font-awesome/6.5.1/solid/caret-right.svg`,
             }}
             info={{
               pageName: pageName,

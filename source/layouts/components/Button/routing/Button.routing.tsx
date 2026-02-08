@@ -101,6 +101,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
 
   useEffect(() => {}, [pageName, blockName]);
 
+  console.log(`${createClass(style as TheseProps['style'])}`);
   return (
     <button
       onClick={onClick}
@@ -109,8 +110,12 @@ const ButtonRouting: React.FC<TheseProps> = ({
       className={`${createClass(style as TheseProps['style'])}`}
     >
       <div className="fore">
-        <span>
-          <img src={`${style.image}`} alt="" />
+        <span
+          style={{
+            ...(style.image ? { WebkitMaskImage: `url(${style.image})`, maskImage: `url(${style.image})` } : {}),
+          }}
+        >
+          <img src={style.image} alt="" />
         </span>
       </div>
       <div className="mid"></div>
