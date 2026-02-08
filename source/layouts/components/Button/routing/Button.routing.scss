@@ -13,11 +13,8 @@ button[class*='routing'],
 button[class*='counter'] {
   @extend %button-grid;
   @extend %button-flex;
-  /*
   @extend %button-user;
   @extend %button-move;
-  
-  */
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
@@ -42,7 +39,7 @@ button[class*='counter'] {
     */
   }
 
-  @extend %button-test;
+  // @extend %button-test;
 }
 %button-grid {
   .fore {
@@ -64,7 +61,18 @@ button[class*='counter'] {
     background: rgba(Palettes.$blue-medium, 0.25);
   }
 }
-
+%button-user {
+  div[class*='fore'] {
+    z-index: 2;
+    cursor: pointer;
+  }
+  div[class*='mid'] {
+    z-index: 1;
+  }
+  div[class*='back'] {
+    z-index: 0;
+  }
+}
 %button-flex {
   .text {
   }
@@ -75,32 +83,5 @@ button[class*='counter'] {
   .back {
   }
 }
-
-/*
-
-%button-user {
-  &[class*='_top_'],
-  &[class*='_bot_'],
-  &[class*='_lef_'],
-  &[class*='_rig_'],
-  &[class*='_cen_'],
-  &[class*='_tex_'],
-  &[class*='_ico_'] {
-    .text {
-      * {
-        cursor: pointer;
-      }
-    }
-    .icon {
-      img {
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-
 %button-move {
 }
-
-*/

@@ -2778,8 +2778,12 @@ function exportElements(
             </aside> */}
           </figure>
           <div className={`${listing}-background`}>
-            <aside className="dark-silhouette hidden">{/* <span></span> */}</aside>
-            <aside className="light-silhouette hidden">{/* <span></span> */}</aside>
+            <aside className="dark-silhouette hidden">
+              <span></span>
+            </aside>
+            <aside className="light-silhouette hidden">
+              <span></span>
+            </aside>
           </div>
         </>
       );
