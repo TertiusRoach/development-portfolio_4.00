@@ -24,14 +24,12 @@ export function createType(type: '{button}' | '{submit}' | '{reset}' | '{disable
   }
 }
 export function createClass(style: StyleProps): String {
-  //--|🠊 Class Build 🠈|--\\
+  //--|🠊 Class Build for <DefaultButton> 🠈|--\\
   let classType = createType(style.type);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
 
   if (style.image == null) {
-    // default-button
-
     return `${classType} ${classLayout}_${classColor}_alt`;
   } else {
     return `${classType} ${classLayout}_${classColor}_def`;
@@ -102,3 +100,4 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
+export default createClass;

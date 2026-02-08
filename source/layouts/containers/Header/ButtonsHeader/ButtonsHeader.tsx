@@ -36,6 +36,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
         <nav className="buttons-preview">
           <ButtonRouting
             style={{
+              size: '<h1>',
               view: 'top-lef',
               shade: '~dark~',
               color: '(mono)',

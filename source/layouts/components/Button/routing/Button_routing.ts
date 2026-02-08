@@ -3,6 +3,7 @@ import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
   image: string;
+  size: '<h1>' | '<p>';
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
@@ -11,43 +12,45 @@ interface StyleProps {
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
 //--|🠋 Functions 🠋|--\\
+export function createVars(image: string): String {
+  switch (image.split('.').pop()) {
+    case 'svg':
+      return 'rou';
+    case 'png':
+      return 'por';
+    default:
+      return 'alt';
+  }
+}
 export function createClass(style: StyleProps): String {
-  /*
-  //--|🠊 Class Build 🠈|--\\
+  //--|🠊 Class Build for <RoutingButton> 🠈|--\\
+  let classVars = createVars(style.image);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
-  if (style.image == null) {
-    return `${classLayout}_${classColor}_alt`;
-  } else {
-    return `${classLayout}_${classColor}_def`;
-  }
-  */
-  return '';
+
+  return `${classLayout}_${classColor}_${classVars}`;
 }
 export function createLayout(
-  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
+  size: '<h1>' | '<p>',
+  view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig',
 ): string {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
-    '<h2>': 'two',
-    '<h3>': 'thr',
-    '<h4>': 'fou',
-    '<h5>': 'fiv',
-    '<h6>': 'six',
     '<p>': 'par',
   };
 
   const viewMap: Record<string, string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
-    '-top-': 'top',
-    '-bottom-': 'bot',
-    '-left-': 'lef',
-    '-right-': 'rig',
-    '-center-': 'cen',
-    '-text-': 'tex',
-    '-icon-': 'ico',
+    'top-lef': 'tl',
+    'top-cen': 'tc',
+    'top-rig': 'tr',
+    'mid-lef': 'ml',
+    'mid-cen': 'mc',
+    'mid-rig': 'mr',
+    'bot-lef': 'bl',
+    'bot-cen': 'bc',
+    'bot-rig': 'br',
   };
 
   const classSize = sizeMap[size];
@@ -89,3 +92,4 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
+export default createClass;

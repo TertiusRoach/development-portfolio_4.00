@@ -3,10 +3,67 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  .default-buttons {
+  .routing-buttons {
+    // background: rgba(darkblue, 0.5);
     section[class*='fore'] {
       z-index: 2;
       //--|🠊 display: grid; 🠈|--\\
+
+      aside[class*='container'] {
+        z-index: 0;
+        div[class*='size'] {
+          gap: 16px;
+          display: grid;
+          height: inherit;
+          grid-template: 1fr repeat(3, 128px) 1fr / 1fr repeat(3, 128px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          @media screen and (max-height: 768px) {
+            gap: 8px;
+            grid-template: 1fr repeat(3, 96px) 1fr / 1fr repeat(3, 96px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+          @media screen and (max-height: 480px) {
+            gap: 4px;
+            grid-template: 1fr repeat(3, 64px) 1fr / 1fr repeat(3, 64px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+          @media screen and (max-height: 360px) {
+            gap: 2px;
+            grid-template: 1fr repeat(3, 48px) 1fr / 1fr repeat(3, 48px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+
+          button[class*='_tl_'] {
+            grid-area: 2 / 2 / 3 / 3;
+          }
+          button[class*='_tc_'] {
+            grid-area: 2 / 3 / 3 / 4;
+          }
+          button[class*='_tr_'] {
+            grid-area: 2 / 4 / 3 / 5;
+          }
+          button[class*='_ml_'] {
+            grid-area: 3 / 2 / 4 / 3;
+          }
+          button[class*='_mc_'] {
+            grid-area: 3 / 3 / 4 / 4;
+          }
+          button[class*='_mr_'] {
+            grid-area: 3 / 4 / 4 / 5;
+          }
+          button[class*='_bl_'] {
+            grid-area: 4 / 2 / 5 / 3;
+          }
+          button[class*='_bc_'] {
+            grid-area: 4 / 3 / 5 / 4;
+          }
+          button[class*='_br_'] {
+            grid-area: 4 / 4 / 5 / 5;
+          }
+        }
+        &[id*='darkside'] {
+          grid-area: 1 / 2 / 6 / 3;
+        }
+        &[id*='lightside'] {
+          grid-area: 1 / 4 / 6 / 5;
+        }
+      }
       header,
       footer {
         z-index: 2;
@@ -43,43 +100,6 @@
         }
         @media screen and (max-height: 360px) {
           grid-template-columns: 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-        }
-      }
-      aside[class*='container'] {
-        z-index: 0;
-        &[id*='darkside'] {
-          grid-area: 1 / 2 / 6 / 3;
-        }
-        &[id*='lightside'] {
-          grid-area: 1 / 4 / 6 / 5;
-        }
-        div[class*='size'] {
-          display: grid;
-          height: inherit;
-          grid-template-rows: repeat(7, 1fr);
-          grid-template-columns: repeat(2, 1fr);
-
-          button[class*='_top_'] {
-            grid-area: 1 / 1 / 3 / 2;
-          }
-          button[class*='_bot_'] {
-            grid-area: 1 / 2 / 3 / 3;
-          }
-          button[class*='_lef_'] {
-            grid-area: 3 / 1 / 4 / 3;
-          }
-          button[class*='_rig_'] {
-            grid-area: 4 / 1 / 5 / 3;
-          }
-          button[class*='_cen_'] {
-            grid-area: 5 / 1 / 6 / 3;
-          }
-          button[class*='_tex_'] {
-            grid-area: 6 / 1 / 7 / 3;
-          }
-          button[class*='_ico_'] {
-            grid-area: 7 / 1 / 8 / 3;
-          }
         }
       }
       div[class*='hitbox'] {
@@ -247,19 +267,18 @@
         / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
       aside {
         &[id*='side'] {
-          padding: 4rem 48px;
+          padding: 8rem 0;
         }
         &[class*='code'] {
           padding: 0 48px;
         }
       }
-
       @media screen and (max-height: 768px) {
         //--|🠋 64px (Left & Right) for Design 🠋|--\\
         grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
         aside {
           &[id*='side'] {
-            padding: 3rem 32px;
+            padding: 6rem 0;
           }
           &[class*='code'] {
             padding: 0 32px;
@@ -271,7 +290,7 @@
         grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
         aside {
           &[id*='side'] {
-            padding: 2rem 24px;
+            padding: 4rem 0;
           }
           &[class*='code'] {
             padding: 0 24px;
@@ -283,7 +302,7 @@
         grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
         aside {
           &[id*='side'] {
-            padding: 1.5rem 16px;
+            padding: 3rem 0;
           }
           &[class*='code'] {
             padding: 0 16px;
@@ -292,8 +311,7 @@
       }
     }
   }
-  .routing-buttons {
-    // background: rgba(darkblue, 0.5);
+  .default-buttons {
     section[class*='fore'] {
       z-index: 2;
       //--|🠊 display: grid; 🠈|--\\

@@ -10,6 +10,7 @@
 }
 
 @mixin mon-color {
+  /*
   //--|🠊 Button Motion 🠈|--\\
   $button-time: 375ms; // 250–500ms
   $button-curve: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -143,6 +144,7 @@
         0 14px 28px rgba(#000, 0.3);
     }
   }
+  */
 }
 @mixin red-color {
   &[class*='_top_'],

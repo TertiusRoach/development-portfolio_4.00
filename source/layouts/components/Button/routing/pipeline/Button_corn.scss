@@ -1,6 +1,26 @@
 //--|🠊 routing/pipeline/Button_corn.scss 🠈|--\\
+@use 'sass:color';
+@use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-corn {
   //--|🠋 Desktop (Landscape) 🠋|--\\
+  &[class*='_tl_'] {
+  }
+  &[class*='_tc_'] {
+  }
+  &[class*='_tr_'] {
+  }
+  &[class*='_ml_'] {
+  }
+  &[class*='_mc_'] {
+  }
+  &[class*='_mr_'] {
+  }
+  &[class*='_bl_'] {
+  }
+  &[class*='_bc_'] {
+  }
+  &[class*='_br_'] {
+  }
 }
 @mixin mobile-corn {
   //--|🠋 Mobile (Portrait) 🠋|--\\

@@ -54,7 +54,9 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
       <div className="carousel-container">
-        <ul className="carousel-preview slide-def">
+        {/* Todo */}
+        {/* Reset 'slide-rou' to 'slide-def' when done with build */}
+        <ul className="carousel-preview slide-rou">
           <li className="default-buttons">{exportElements(handleButtons, pageName, blockName, 'default-buttons')}</li>
           <li className="routing-buttons">{exportElements(handleButtons, pageName, blockName, 'routing-buttons')}</li>
         </ul>
@@ -69,11 +71,13 @@ function exportElements(
   listName: 'default-buttons' | 'routing-buttons',
 ) {
   let listing = listName.split('-')[0] as String;
-  let imagePath =
+  let svgPath =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3518122412fa887d7f7d7d894f05346860b8181c/source/assets/svg-files/archive-images/arabic-numerals/white-numbers';
+  let pngPath =
+    'https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/assets/png-files/tralogfin-demonstration/original';
 
   switch (listName) {
-    case 'default-buttons':
+    case 'routing-buttons':
       return (
         <>
           <section
@@ -88,15 +92,15 @@ function exportElements(
               )
             }
           >
-            <header className="default-header">
+            <header className="routing-header">
               <ButtonRouting
                 style={{
+                  size: '<h1>',
                   view: 'top-lef',
                   shade: '~dark~',
                   color: '(mono)',
-
                   type: '{button}',
-                  image: `${imagePath}/01.svg`,
+                  image: `${svgPath}/01.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -106,21 +110,6 @@ function exportElements(
                 onMouseEnter={() => toggleHeader(pageName, blockName)}
               />
               <menu>
-                <div>
-                  <LabelToggle
-                    style={{
-                      shade: '~dark~',
-                      color: '(mono)',
-                      type: '{toggle}',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_toggle-dark`,
-                    }}
-                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
-                  />
-                </div>
                 <div>
                   <ButtonDefault
                     style={{
@@ -142,857 +131,140 @@ function exportElements(
                     onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
                   />
                 </div>
-                <div>
-                  <LabelToggle
-                    style={{
-                      shade: '~light~',
-                      color: '(mono)',
-                      type: '{toggle}',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_toggle-light`,
-                    }}
-                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
-                  />
-                </div>
               </menu>
             </header>
 
             <aside
-              id="default-darkside"
+              id="routing-darkside"
               className="carousel-container"
               onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-dark')}
-              onMouseLeave={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'close-dark')}
+              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-dark')}
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  <div className="h1-size hidden">
-                    <ButtonDefault
+                  {/* Todo */}
+                  {/* Change everything from .visible back to .hidden when you're done */}
+                  <div className="rou-size visible">
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-top-',
-                        text: `one_top_dar_mon`,
+                        view: 'top-lef',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-bottom-',
-                        text: `one_bot_dar_mon`,
+                        view: 'top-cen',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-left-',
-                        text: `one_lef_dar_mon`,
+                        view: 'top-rig',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-right-',
-                        text: `one_rig_dar_mon`,
+                        view: 'mid-lef',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-center-',
-                        text: `one_cen_dar_mon`,
+                        view: 'mid-cen',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-text-',
-                        text: `one_tex_dar_mon`,
+                        view: 'mid-rig',
                         shade: '~dark~',
                         color: '(mono)',
-
-                        image: '',
                         type: '{button}',
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-icon-',
-                        text: `one_ico_dar_mon`,
+                        view: 'bot-lef',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                  </div>
-                  <div className="h2-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-top-',
-                        text: `two_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-bottom-',
-                        text: `two_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-left-',
-                        text: `two_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-right-',
-                        text: `two_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-center-',
-                        text: `two_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-text-',
-                        text: `two_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-icon-',
-                        text: `two_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h3-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-top-',
-                        text: `thr_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-bottom-',
-                        text: `thr_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-center-',
-                        text: `thr_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-text-',
-                        text: `thr_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        text: `thr_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h4-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-top-',
-                        text: `fou_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-bottom-',
-                        text: `fou_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-center-',
-                        text: `fou_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-text-',
-                        text: `fou_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-icon-',
-                        text: `fou_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h5-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-top-',
-                        text: `fiv_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-bottom-',
-                        text: `fiv_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-center-',
-                        text: `fiv_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-text-',
-                        text: `fiv_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-icon-',
-                        text: `fiv_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h6-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-top-',
-                        text: `six_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-bottom-',
-                        text: `six_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-center-',
-                        text: `six_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-text-',
-                        text: `six_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-icon-',
-                        text: `six_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="p-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-top-',
-                        text: `par_top_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-bottom-',
-                        text: `par_bot_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-center-',
-                        text: `par_cen_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-text-',
-                        text: `par_tex_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-icon-',
-                        text: `par_ico_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                </li>
-                <li className="alt-track slide-one">
-                  <div className="h1-size hidden">
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-left-',
-                        text: `one_lef_dar_mon`,
+                        view: 'bot-cen',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
+                        image: `${svgPath}/08.svg`,
                       }}
                       info={{
                         pageName: pageName,
                         blockName: blockName,
                       }}
                     />
-                    <ButtonDefault
+                    <ButtonRouting
                       style={{
                         size: '<h1>',
-                        view: '-right-',
-                        text: `one_rig_dar_mon`,
+                        view: 'bot-rig',
                         shade: '~dark~',
                         color: '(mono)',
-
                         type: '{button}',
+                        image: `${svgPath}/09.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -1000,1239 +272,28 @@ function exportElements(
                       }}
                     />
                   </div>
-                  <div className="h2-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-left-',
-                        text: `two_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-right-',
-                        text: `two_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h3-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h4-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h5-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h6-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="p-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_dar_mon`,
-                        shade: '~dark~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
+                  <div className="alt-size visible"></div>
+                  <div className="por-size visible"></div>
                 </li>
               </ol>
             </aside>
-            <div className="default-hitbox"></div>
+            <div className="routing-hitbox"></div>
             <aside
-              id="default-lightside"
+              id="routing-lightside"
               className="carousel-container"
               onMouseEnter={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'open-light')}
-              onMouseLeave={() => handleButtons(pageName, 'default-buttons', blockName, 'toggle-aside', 'close-light')}
+              onMouseLeave={() => handleButtons(pageName, 'routing-buttons', blockName, 'toggle-aside', 'close-light')}
             >
               <ol className="carousel-preview slide-def">
                 <li className="def-track slide-one">
-                  <div className="h1-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-top-',
-                        text: `one_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-bottom-',
-                        text: `one_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-left-',
-                        text: `one_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-right-',
-                        text: `one_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-center-',
-                        text: `one_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-text-',
-                        text: `one_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-icon-',
-                        text: `one_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/01.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h2-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-top-',
-                        text: `two_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-bottom-',
-                        text: `two_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-left-',
-                        text: `two_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-right-',
-                        text: `two_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-center-',
-                        text: `two_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-text-',
-                        text: `two_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-icon-',
-                        text: `two_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/02.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h3-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-top-',
-                        text: `thr_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-bottom-',
-                        text: `thr_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-center-',
-                        text: `thr_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-text-',
-                        text: `thr_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        text: `thr_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/03.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h4-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-top-',
-                        text: `fou_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-bottom-',
-                        text: `fou_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-center-',
-                        text: `fou_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-text-',
-                        text: `fou_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-icon-',
-                        text: `fou_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/04.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h5-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-top-',
-                        text: `fiv_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-bottom-',
-                        text: `fiv_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-center-',
-                        text: `fiv_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-text-',
-                        text: `fiv_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-icon-',
-                        text: `fiv_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/05.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h6-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-top-',
-                        text: `six_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-bottom-',
-                        text: `six_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-center-',
-                        text: `six_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-text-',
-                        text: `six_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-icon-',
-                        text: `six_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/06.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="p-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-top-',
-                        text: `par_top_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-bottom-',
-                        text: `par_bot_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-center-',
-                        text: `par_cen_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-text-',
-                        text: `par_tex_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        image: '',
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-icon-',
-                        text: `par_ico_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                        image: `${imagePath}/07.svg`,
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                </li>
-                <li className="alt-track slide-one">
-                  <div className="h1-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-left-',
-                        text: `one_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h1>',
-                        view: '-right-',
-                        text: `one_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h2-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-left-',
-                        text: `two_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h2>',
-                        view: '-right-',
-                        text: `two_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h3-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-left-',
-                        text: `thr_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-right-',
-                        text: `thr_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h4-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-left-',
-                        text: `fou_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h4>',
-                        view: '-right-',
-                        text: `fou_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h5-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-left-',
-                        text: `fiv_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h5>',
-                        view: '-right-',
-                        text: `fiv_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="h6-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-left-',
-                        text: `six_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<h6>',
-                        view: '-right-',
-                        text: `six_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
-                  <div className="p-size hidden">
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-left-',
-                        text: `par_lef_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                    <ButtonDefault
-                      style={{
-                        size: '<p>',
-                        view: '-right-',
-                        text: `par_rig_lig_mon`,
-                        shade: '~light~',
-                        color: '(mono)',
-
-                        type: '{button}',
-                      }}
-                      info={{
-                        pageName: pageName,
-                        blockName: blockName,
-                      }}
-                    />
-                  </div>
+                  <div className="rou-size hidden"></div>
+                  <div className="por-size hidden"></div>
+                  <div className="alt-size hidden"></div>
                 </li>
               </ol>
             </aside>
 
-            <footer className="default-footer">
+            <footer className="routing-footer">
               <nav>
                 <ButtonDefault
                   style={{
@@ -2251,7 +312,7 @@ function exportElements(
                     blockName: blockName,
                     labelName: `${pageName}_${blockName}_scroll-down`,
                   }}
-                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
+                  onClick={() => handleButtons(pageName, 'routing-buttons', blockName, 'control-preview', 'scroll-down')}
                 />
               </nav>
             </footer>
@@ -2281,26 +342,14 @@ function exportElements(
             </aside>
             <section className="carousel-container size-font visible">
               <ol className="carousel-preview slide-one">
-                <li className="h1-size hidden">
-                  <h1 className="display-1">{'<​h1>'}</h1>
+                <li className="rou-size hidden">
+                  <h1 className="display-1">{'<rou>'}</h1>
                 </li>
-                <li className="h2-size hidden">
-                  <h2 className="display-2">{'<​h2>'}</h2>
+                <li className="por-size hidden">
+                  <h2 className="display-2">{'<por>'}</h2>
                 </li>
-                <li className="h3-size hidden">
-                  <h3 className="display-3">{'<​h3>'}</h3>
-                </li>
-                <li className="h4-size hidden">
-                  <h4 className="display-4">{'<​h4>'}</h4>
-                </li>
-                <li className="h5-size hidden">
-                  <h5 className="display-5">{'<​h5>'}</h5>
-                </li>
-                <li className="h6-size hidden">
-                  <h6 className="display-6">{'<​h6>'}</h6>
-                </li>
-                <li className="p-size hidden">
-                  <p className="display-6">{'<p>'}</p>
+                <li className="alt-size hidden">
+                  <h3 className="display-3">{'<alt>'}</h3>
                 </li>
               </ol>
             </section>
@@ -2345,7 +394,7 @@ function exportElements(
           </div>
         </>
       );
-    case 'routing-buttons':
+    case 'default-buttons':
       return (
         <>
           <section
@@ -2363,12 +412,12 @@ function exportElements(
             <header className="default-header">
               <ButtonRouting
                 style={{
+                  size: '<h1>',
                   view: 'top-lef',
                   shade: '~dark~',
                   color: '(mono)',
-
                   type: '{button}',
-                  image: `${imagePath}/01.svg`,
+                  image: `${svgPath}/01.svg`,
                 }}
                 info={{
                   pageName: pageName,
@@ -2450,7 +499,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2466,7 +515,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2482,7 +531,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2498,7 +547,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2514,7 +563,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2546,7 +595,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2564,7 +613,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2580,7 +629,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2596,7 +645,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2612,7 +661,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2628,7 +677,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2660,7 +709,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2678,7 +727,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2694,7 +743,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2710,7 +759,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2726,7 +775,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2742,7 +791,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2774,7 +823,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2792,7 +841,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2808,7 +857,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2824,7 +873,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2840,7 +889,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2856,7 +905,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2888,7 +937,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2906,7 +955,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2922,7 +971,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2938,7 +987,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2954,7 +1003,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -2970,7 +1019,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3002,7 +1051,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3020,7 +1069,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3036,7 +1085,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3052,7 +1101,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3068,7 +1117,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3084,7 +1133,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3116,7 +1165,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3134,7 +1183,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3150,7 +1199,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3166,7 +1215,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3182,7 +1231,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3198,7 +1247,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3230,7 +1279,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3486,7 +1535,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3502,7 +1551,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3518,7 +1567,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3534,7 +1583,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3550,7 +1599,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3582,7 +1631,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/01.svg`,
+                        image: `${svgPath}/01.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3600,7 +1649,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3616,7 +1665,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3632,7 +1681,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3648,7 +1697,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3664,7 +1713,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3696,7 +1745,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/02.svg`,
+                        image: `${svgPath}/02.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3714,7 +1763,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3730,7 +1779,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3746,7 +1795,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3762,7 +1811,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3778,7 +1827,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3810,7 +1859,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/03.svg`,
+                        image: `${svgPath}/03.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3828,7 +1877,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3844,7 +1893,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3860,7 +1909,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3876,7 +1925,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3892,7 +1941,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3924,7 +1973,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/04.svg`,
+                        image: `${svgPath}/04.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3942,7 +1991,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3958,7 +2007,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3974,7 +2023,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -3990,7 +2039,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4006,7 +2055,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4038,7 +2087,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/05.svg`,
+                        image: `${svgPath}/05.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4056,7 +2105,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4072,7 +2121,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4088,7 +2137,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4104,7 +2153,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4120,7 +2169,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4152,7 +2201,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/06.svg`,
+                        image: `${svgPath}/06.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4170,7 +2219,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4186,7 +2235,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4202,7 +2251,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4218,7 +2267,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4234,7 +2283,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
@@ -4266,7 +2315,7 @@ function exportElements(
                         color: '(mono)',
 
                         type: '{button}',
-                        image: `${imagePath}/07.svg`,
+                        image: `${svgPath}/07.svg`,
                       }}
                       info={{
                         pageName: pageName,
