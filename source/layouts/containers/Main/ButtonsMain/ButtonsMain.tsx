@@ -2,7 +2,7 @@
 import React, { useEffect, lazy } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/buttons';
-import { defaultPreview, controlPreview, toggleAside, togglePreview, toggleHeader, scrollMouse } from './ButtonsFunctions';
+import { defaultPreview, controlPreview, toggleAside, togglePreview, unfoldHeader, scrollMouse } from './ButtonsFunctions';
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../components/Label/toggle/Label.toggle';
@@ -107,7 +107,7 @@ function exportElements(
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_open-head`,
                 }}
-                onMouseEnter={() => toggleHeader(pageName, blockName)}
+                onMouseEnter={() => unfoldHeader(pageName, blockName)}
               />
               <menu>
                 <div>
@@ -2379,7 +2379,7 @@ function exportElements(
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_open-head`,
                 }}
-                onMouseEnter={() => toggleHeader(pageName, blockName)}
+                onMouseEnter={() => unfoldHeader(pageName, blockName)}
               />
               <menu>
                 <div>

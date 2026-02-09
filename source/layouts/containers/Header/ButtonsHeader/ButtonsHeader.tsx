@@ -1,7 +1,7 @@
 //--|🠊 ButtonsHeader.tsx 🠈|--//
 import React, { useEffect, lazy } from 'react';
 //--|🠋 Functions 🠋|--//
-import { toggleHeader, togglePreview } from './ButtonsFunctions';
+import { togglePreview, expandHeader } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠋 Components 🠋|--//
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
@@ -16,7 +16,7 @@ interface InfoProps {
 const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -27,12 +27,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   ];
 
   return (
-    <header
-      className={`default-${blockName} ${stateName}`}
-      id={`${pageName}-${blockName}`}
-      style={{ zIndex: 1 }}
-      onMouseLeave={() => toggleHeader(pageName, blockName)}
-    >
+    <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 1 }}>
       <section className="foreground">
         <nav className="buttons-preview">
           <ButtonRouting
@@ -50,7 +45,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}_${blockName}_view-apps`,
             }}
-            onMouseEnter={() => toggleHeader(pageName, blockName)}
+            onClick={() => expandHeader(pageName, blockName)}
           />
 
           <ButtonDefault

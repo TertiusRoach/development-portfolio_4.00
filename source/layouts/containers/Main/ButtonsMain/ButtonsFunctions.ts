@@ -297,17 +297,8 @@ export function toggleAside(
       break;
   }
 }
-export function toggleHeader(pageName: string, blockName: string) {
-  const buttonsHeader = document.getElementById(`${pageName}-header`);
-
-  if (!buttonsHeader) return;
-  else if (buttonsHeader.classList.contains('collapsed')) {
-    buttonsHeader.classList.add('unfolded');
-    buttonsHeader.classList.remove('collapsed');
-  }
-}
-//--|🠊 1. Declare this variable OUTSIDE the function scope. 🠈|--\\
-let lastScrollTime = 0; //--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
+//--|🠊 1. Declare timer outside of scope. 🠈|--\\
+let scrollTime = 0; //--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
 export function scrollMouse(
   pageName: string,
   blockName: string,
@@ -318,13 +309,37 @@ export function scrollMouse(
   const now = Date.now();
 
   //--|🠊 3. Check if 500ms (half a second) has passed since the last run 🠈|--\\
-  if (now - lastScrollTime < 500) {
+  if (now - scrollTime < 500) {
     return; //--|🠈 If it's been less than 500ms, stop here (ignore the scroll). 🠈|--\\
   }
 
   //--|🠊 4. Update the last run time 🠈|--\\
-  lastScrollTime = now;
+  scrollTime = now;
 
   //--|🠊 5. Execute the actual logic 🠈|--\\
   controlPreview(pageName, blockName, blockAction, pagePreview);
+}
+
+//--|🠊 1. Declare timer outside of scope. 🠈|--\\
+let headTime: ReturnType<typeof setTimeout> | null = null;
+export function unfoldHeader(pageName: string, blockName: string) {
+  const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
+  //--|🠊 2. Check if 'headTime' is running 🠈|--\\
+  if (headTime === null) {
+    //--|🠊 If yes, then ignore this request. 🠈|--\\
+    //--|🠊 3. Check the className of the <header>. 🠈|--\\
+    if (buttonsHeader.classList.contains('collapsed')) {
+      buttonsHeader.classList.add('unfolded');
+      buttonsHeader.classList.remove('collapsed');
+      //--|🠊 4. Reset 'headTime' to null. 🠈|--\\
+      headTime = setTimeout(() => {
+        if (buttonsHeader.classList.contains('unfolded')) {
+          buttonsHeader.classList.add('collapsed');
+          buttonsHeader.classList.remove('unfolded');
+        }
+        headTime = null; //--|🠈 Reset headTime to signal readiness 🠈|--\\
+      }, 6000);
+    }
+    return;
+  }
 }
