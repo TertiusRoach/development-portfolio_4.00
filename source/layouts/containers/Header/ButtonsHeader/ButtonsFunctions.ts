@@ -56,14 +56,9 @@ export function togglePreview(pageName: string, blockName: string, pageAction: '
       break;
   }
 }
-//--|🠊 1. Declare timer outside of scope. 🠈|--\\
-let headTime: ReturnType<typeof setTimeout> | null = null;
 export function expandHeader(pageName: string, blockName: string) {
   const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
-
   if (buttonsHeader.classList.contains('unfolded')) {
-    console.log(buttonsHeader.classList.contains('unfolded'));
-
     buttonsHeader.classList.add('expanded');
     buttonsHeader.classList.remove('unfolded');
   } else if (buttonsHeader.classList.contains('expanded')) {

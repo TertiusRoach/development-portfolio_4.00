@@ -12,14 +12,12 @@ $logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
 $logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
 
 //--|🠋 Find a Link - TraLogFin Trinity {A]pps 🠋|--\\
-/* Recommended: darker reds + luscious neon pink-red (still sophisticated) */
 $findLink-neon: #ff2d6d; //--|🠈 rgba() 🠈|--\\
 $findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
 $findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
 $findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
 
 //--|🠋 Track a Day - TraLogFin Trinity {A]pps 🠋|--\\
-/* Recommended: energetic jungle green (less pond, more punch) */
 $trackDay-neon: #00ff66; //--|🠈 rgba() 🠈|--\\
 $trackDay-dark: #041a0a; //--|🠈 rgba() 🠈|--\\
 $trackDay-light: #c7ffd7; //--|🠈 rgba() 🠈|--\\
@@ -99,3 +97,149 @@ $trackDay-pending: $yellow-neon; // Pending  (waiting approval)
 $trackDay-location: $red-neon; // Location (inconsistencies / edge cases)
 $trackDay-automatic: $grey-medium; // Automatic (it logged for you… it’s fine… it’s just sad)
 $trackDay-logged: $green-neon; // Green / Yay (you logged it yourself)
+
+/*
+@mixin palette-recipes {
+  // TRACK A DAY — DARK
+  $grad-trackDay-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.35) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$trackDay-neon, 0.22) 0%,
+      rgba(Palettes.$trackDay-medium, 0.16) 34%,
+      rgba(Palettes.$trackDay-dark, 0) 68%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$trackDay-dark, #000, 82%) 0%,
+      color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-medium, 78%) 45%,
+      color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-neon, 90%) 100%
+    );
+
+  // TRACK A DAY — LIGHT
+  $grad-trackDay-light:
+    linear-gradient(180deg, rgba(#fff, 0.7) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$trackDay-neon, 0.14) 0%,
+      rgba(Palettes.$trackDay-medium, 0.1) 38%,
+      rgba(#fff, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$trackDay-light, #fff, 84%) 0%,
+      Palettes.$trackDay-light 52%,
+      color.mix(Palettes.$trackDay-light, Palettes.$trackDay-medium, 86%) 100%
+    );
+
+  $trackDay-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.4),
+    inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.18),
+    0 14px 30px rgba(#000, 0.35);
+
+  $trackDay-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.55),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $trackDay-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $trackDay-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+
+  // LOG A TICKET — DARK
+  $grad-logTicket-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.38) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$logTicket-neon, 0.18) 0%,
+      rgba(Palettes.$logTicket-medium, 0.14) 38%,
+      rgba(Palettes.$logTicket-dark, 0) 72%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$logTicket-dark, #000, 78%) 0%,
+      color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-medium, 78%) 46%,
+      color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-neon, 92%) 100%
+    );
+
+  // LOG A TICKET — LIGHT
+  $grad-logTicket-light:
+    linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$logTicket-neon, 0.11) 0%,
+      rgba(Palettes.$logTicket-medium, 0.09) 40%,
+      rgba(#fff, 0) 74%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$logTicket-light, #fff, 86%) 0%,
+      Palettes.$logTicket-light 55%,
+      color.mix(Palettes.$logTicket-light, Palettes.$logTicket-medium, 86%) 100%
+    );
+
+  $logTicket-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.42),
+    inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.18),
+    0 14px 30px rgba(#000, 0.36);
+
+  $logTicket-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.6),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $logTicket-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $logTicket-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+
+  // FIND A LINK — DARK
+  $grad-findLink-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.38) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$findLink-neon, 0.2) 0%,
+      rgba(Palettes.$findLink-medium, 0.16) 36%,
+      rgba(Palettes.$findLink-dark, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$findLink-dark, #000, 78%) 0%,
+      color.mix(Palettes.$findLink-dark, Palettes.$findLink-medium, 76%) 46%,
+      color.mix(Palettes.$findLink-dark, Palettes.$findLink-neon, 92%) 100%
+    );
+
+  // FIND A LINK — LIGHT
+  $grad-findLink-light:
+    linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$findLink-neon, 0.12) 0%,
+      rgba(Palettes.$findLink-medium, 0.09) 40%,
+      rgba(#fff, 0) 72%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$findLink-light, #fff, 86%) 0%,
+      Palettes.$findLink-light 55%,
+      color.mix(Palettes.$findLink-light, Palettes.$findLink-medium, 86%) 100%
+    );
+
+  $findLink-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.4),
+    inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.18),
+    0 14px 30px rgba(#000, 0.35);
+
+  $findLink-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.58),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $findLink-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $findLink-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+}
+@include palette-recipes();
+*/

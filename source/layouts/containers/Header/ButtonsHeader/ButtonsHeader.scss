@@ -1,4 +1,5 @@
 //--|🠊 ButtonsHeader.scss 🠈|--//
+@use 'sass:color';
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
@@ -66,8 +67,410 @@
       }
     }
     div[class*='software'] {
-      grid-area: 3 / 1 / 6 / 4;
-      background: rgba(Palettes.$indexLand-light, 0.5);
+      display: inherit;
+      grid-area: 2 / 2 / 5 / 3;
+      grid-template: 1fr / repeat(3, 1fr);
+      aside[class*='software'] {
+        display: inherit;
+        &[class*='overtime'] {
+          grid-area: 1 / 1 / 2 / 2;
+        }
+        &[class*='ticketing'] {
+          grid-area: 1 / 2 / 2 / 3;
+        }
+        &[class*='hyperlink'] {
+          grid-area: 1 / 3 / 2 / 4;
+        }
+
+        figure {
+          display: inherit;
+
+          mask-repeat: no-repeat;
+          mask-composite: intersect;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-composite: source-in;
+
+          span {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            grid-area: 2 / 2 / 3 / 3;
+            justify-content: space-around;
+            img {
+              display: block;
+              mask-size: contain;
+              object-fit: contain;
+              mask-position: center;
+              mask-repeat: no-repeat;
+              -webkit-mask-size: contain;
+              -webkit-mask-position: center;
+              -webkit-mask-repeat: no-repeat;
+            }
+            h1 {
+              font-weight: 800;
+            }
+          }
+        }
+
+        &[class*='overtime'] {
+          figure[class='dark'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.35) 100%),
+              radial-gradient(
+                120% 140% at 18% 12%,
+                rgba(Palettes.$trackDay-neon, 0.22) 0%,
+                rgba(Palettes.$trackDay-medium, 0.16) 34%,
+                rgba(Palettes.$trackDay-dark, 0) 68%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$trackDay-dark, #000, 82%) 0%,
+                color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-medium, 78%) 45%,
+                color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-neon, 90%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.08),
+              inset 0 -1px 0 rgba(#000, 0.4),
+              0 16px 34px rgba(#000, 0.38);
+
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$trackDay-neon, 0.1) 0%,
+                  rgba(Palettes.$trackDay-medium, 0.1) 42%,
+                  rgba(#fff, 0) 76%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$trackDay-light, #fff, 92%) 0%,
+                  Palettes.$trackDay-light 56%,
+                  color.mix(Palettes.$trackDay-light, Palettes.$trackDay-medium, 84%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.7),
+                inset 0 -1px 0 rgba(#000, 0.14),
+                inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.14),
+                0 12px 24px rgba(#000, 0.16);
+              filter: drop-shadow(0 10px 16px rgba(#000, 0.16));
+            }
+            h1 {
+              color: color.mix(Palettes.$trackDay-neon, Palettes.$trackDay-light, 70%);
+              text-shadow:
+                0 2px 14px rgba(#000, 0.55),
+                0 1px 0 rgba(#000, 0.35);
+            }
+          }
+          figure[class='light'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.7) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+              radial-gradient(
+                120% 140% at 18% 10%,
+                rgba(Palettes.$trackDay-neon, 0.14) 0%,
+                rgba(Palettes.$trackDay-medium, 0.1) 38%,
+                rgba(#fff, 0) 70%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$trackDay-light, #fff, 84%) 0%,
+                Palettes.$trackDay-light 52%,
+                color.mix(Palettes.$trackDay-light, Palettes.$trackDay-medium, 86%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.6),
+              inset 0 -1px 0 rgba(#000, 0.12),
+              0 14px 28px rgba(#000, 0.14);
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$trackDay-neon, 0.2) 0%,
+                  rgba(Palettes.$trackDay-medium, 0.12) 38%,
+                  rgba(#000, 0) 72%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$trackDay-dark, #000, 86%) 0%,
+                  color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-medium, 76%) 55%,
+                  color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-neon, 92%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.1),
+                inset 0 -1px 0 rgba(#000, 0.45),
+                inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.18),
+                0 14px 30px rgba(#000, 0.4);
+              filter: drop-shadow(0 10px 18px rgba(#000, 0.35));
+            }
+
+            h1 {
+              color: color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-medium, 62%);
+              text-shadow:
+                0 2px 10px rgba(#000, 0.16),
+                0 1px 0 rgba(#fff, 0.35);
+            }
+          }
+        }
+        &[class*='ticketing'] {
+          figure[class='dark'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.38) 100%),
+              radial-gradient(
+                120% 140% at 18% 12%,
+                rgba(Palettes.$logTicket-neon, 0.18) 0%,
+                rgba(Palettes.$logTicket-medium, 0.14) 38%,
+                rgba(Palettes.$logTicket-dark, 0) 72%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$logTicket-dark, #000, 78%) 0%,
+                color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-medium, 78%) 46%,
+                color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-neon, 92%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.08),
+              inset 0 -1px 0 rgba(#000, 0.42),
+              0 16px 34px rgba(#000, 0.38);
+
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$logTicket-neon, 0.1) 0%,
+                  rgba(Palettes.$logTicket-medium, 0.09) 42%,
+                  rgba(#fff, 0) 76%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$logTicket-light, #fff, 92%) 0%,
+                  Palettes.$logTicket-light 58%,
+                  color.mix(Palettes.$logTicket-light, Palettes.$logTicket-medium, 84%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.7),
+                inset 0 -1px 0 rgba(#000, 0.14),
+                inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.14),
+                0 12px 24px rgba(#000, 0.16);
+              filter: drop-shadow(0 10px 16px rgba(#000, 0.16));
+            }
+
+            h1 {
+              color: color.mix(Palettes.$logTicket-neon, Palettes.$logTicket-light, 62%);
+              text-shadow:
+                0 2px 14px rgba(#000, 0.55),
+                0 1px 0 rgba(#000, 0.35);
+            }
+          }
+          figure[class='light'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+              radial-gradient(
+                120% 140% at 18% 10%,
+                rgba(Palettes.$logTicket-neon, 0.11) 0%,
+                rgba(Palettes.$logTicket-medium, 0.09) 40%,
+                rgba(#fff, 0) 74%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$logTicket-light, #fff, 86%) 0%,
+                Palettes.$logTicket-light 55%,
+                color.mix(Palettes.$logTicket-light, Palettes.$logTicket-medium, 86%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.6),
+              inset 0 -1px 0 rgba(#000, 0.12),
+              0 14px 28px rgba(#000, 0.14);
+
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$logTicket-neon, 0.16) 0%,
+                  rgba(Palettes.$logTicket-medium, 0.12) 40%,
+                  rgba(#000, 0) 74%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$logTicket-dark, #000, 86%) 0%,
+                  color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-medium, 78%) 56%,
+                  color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-neon, 94%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.1),
+                inset 0 -1px 0 rgba(#000, 0.45),
+                inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.18),
+                0 14px 30px rgba(#000, 0.4);
+              filter: drop-shadow(0 10px 18px rgba(#000, 0.35));
+            }
+            h1 {
+              color: color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-medium, 58%);
+              text-shadow:
+                0 2px 10px rgba(#000, 0.16),
+                0 1px 0 rgba(#fff, 0.35);
+            }
+          }
+        }
+        &[class*='hyperlink'] {
+          figure[class='dark'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.38) 100%),
+              radial-gradient(
+                120% 140% at 18% 12%,
+                rgba(Palettes.$findLink-neon, 0.2) 0%,
+                rgba(Palettes.$findLink-medium, 0.16) 36%,
+                rgba(Palettes.$findLink-dark, 0) 70%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$findLink-dark, #000, 78%) 0%,
+                color.mix(Palettes.$findLink-dark, Palettes.$findLink-medium, 76%) 46%,
+                color.mix(Palettes.$findLink-dark, Palettes.$findLink-neon, 92%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.08),
+              inset 0 -1px 0 rgba(#000, 0.42),
+              0 16px 34px rgba(#000, 0.38);
+
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$findLink-neon, 0.1) 0%,
+                  rgba(Palettes.$findLink-medium, 0.09) 42%,
+                  rgba(#fff, 0) 76%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$findLink-light, #fff, 92%) 0%,
+                  Palettes.$findLink-light 58%,
+                  color.mix(Palettes.$findLink-light, Palettes.$findLink-medium, 84%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.7),
+                inset 0 -1px 0 rgba(#000, 0.14),
+                inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.14),
+                0 12px 24px rgba(#000, 0.16);
+              filter: drop-shadow(0 10px 16px rgba(#000, 0.16));
+            }
+
+            h1 {
+              color: color.mix(Palettes.$findLink-neon, Palettes.$findLink-light, 60%);
+              text-shadow:
+                0 2px 14px rgba(#000, 0.55),
+                0 1px 0 rgba(#000, 0.35);
+            }
+          }
+          figure[class='light'] {
+            background:
+              linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+              radial-gradient(
+                120% 140% at 18% 10%,
+                rgba(Palettes.$findLink-neon, 0.12) 0%,
+                rgba(Palettes.$findLink-medium, 0.09) 40%,
+                rgba(#fff, 0) 72%
+              ),
+              linear-gradient(
+                135deg,
+                color.mix(Palettes.$findLink-light, #fff, 86%) 0%,
+                Palettes.$findLink-light 55%,
+                color.mix(Palettes.$findLink-light, Palettes.$findLink-medium, 86%) 100%
+              );
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.6),
+              inset 0 -1px 0 rgba(#000, 0.12),
+              0 14px 28px rgba(#000, 0.14);
+            img {
+              background:
+                radial-gradient(
+                  120% 140% at 20% 15%,
+                  rgba(Palettes.$findLink-neon, 0.16) 0%,
+                  rgba(Palettes.$findLink-medium, 0.12) 40%,
+                  rgba(#000, 0) 74%
+                ),
+                linear-gradient(
+                  135deg,
+                  color.mix(Palettes.$findLink-dark, #000, 86%) 0%,
+                  color.mix(Palettes.$findLink-dark, Palettes.$findLink-medium, 76%) 56%,
+                  color.mix(Palettes.$findLink-dark, Palettes.$findLink-neon, 94%) 100%
+                );
+              box-shadow:
+                inset 0 1px 0 rgba(#fff, 0.1),
+                inset 0 -1px 0 rgba(#000, 0.45),
+                inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.18),
+                0 14px 30px rgba(#000, 0.4);
+              filter: drop-shadow(0 10px 18px rgba(#000, 0.35));
+            }
+
+            h1 {
+              color: color.mix(Palettes.$findLink-dark, Palettes.$findLink-medium, 56%);
+              text-shadow:
+                0 2px 10px rgba(#000, 0.16),
+                0 1px 0 rgba(#fff, 0.35);
+            }
+          }
+        }
+
+        figure {
+          -webkit-mask-image:
+            linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+            linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+          mask-image:
+            linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+            linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+
+          grid-template: 1fr 400px 1fr / 1fr 400px 1fr; //--|🠈 rows / cols 🠈|--//
+          span {
+            img {
+              width: 256px;
+              height: 256px;
+            }
+            h1 {
+              font-size: 48px;
+            }
+          }
+        }
+        @media screen and (max-height: 768px) {
+          figure {
+            grid-template: 1fr 280px 1fr / 1fr 280px 1fr; //--|🠈 rows / cols 🠈|--//
+            span {
+              img {
+                width: 196px;
+                height: 196px;
+              }
+              h1 {
+                font-size: 36px;
+              }
+            }
+          }
+        }
+        @media screen and (max-height: 480px) {
+          figure {
+            grid-template: 1fr 175px 1fr / 1fr 175px 1fr; //--|🠈 rows / cols 🠈|--//
+            span {
+              img {
+                width: 127px;
+                height: 127px;
+              }
+              h1 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+        @media screen and (max-height: 360px) {
+          figure {
+            grid-template: 1fr 130px 1fr / 1fr 130px 1fr; //--|🠈 rows / cols 🠈|--//
+            span {
+              img {
+                width: 99px;
+                height: 99px;
+              }
+              h1 {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
     }
   }
   figure[class*='mid'] {
@@ -160,8 +563,152 @@
   }
 }
 
+@mixin palette-recipes {
+  // TRACK A DAY — DARK
+  $grad-trackDay-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.35) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$trackDay-neon, 0.22) 0%,
+      rgba(Palettes.$trackDay-medium, 0.16) 34%,
+      rgba(Palettes.$trackDay-dark, 0) 68%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$trackDay-dark, #000, 82%) 0%,
+      color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-medium, 78%) 45%,
+      color.mix(Palettes.$trackDay-dark, Palettes.$trackDay-neon, 90%) 100%
+    );
+
+  // TRACK A DAY — LIGHT
+  $grad-trackDay-light:
+    linear-gradient(180deg, rgba(#fff, 0.7) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$trackDay-neon, 0.14) 0%,
+      rgba(Palettes.$trackDay-medium, 0.1) 38%,
+      rgba(#fff, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$trackDay-light, #fff, 84%) 0%,
+      Palettes.$trackDay-light 52%,
+      color.mix(Palettes.$trackDay-light, Palettes.$trackDay-medium, 86%) 100%
+    );
+
+  $trackDay-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.4),
+    inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.18),
+    0 14px 30px rgba(#000, 0.35);
+
+  $trackDay-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.55),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$trackDay-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $trackDay-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $trackDay-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+
+  // LOG A TICKET — DARK
+  $grad-logTicket-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 45%, rgba(#000, 0.38) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$logTicket-neon, 0.18) 0%,
+      rgba(Palettes.$logTicket-medium, 0.14) 38%,
+      rgba(Palettes.$logTicket-dark, 0) 72%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$logTicket-dark, #000, 78%) 0%,
+      color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-medium, 78%) 46%,
+      color.mix(Palettes.$logTicket-dark, Palettes.$logTicket-neon, 92%) 100%
+    );
+
+  // LOG A TICKET — LIGHT
+  $grad-logTicket-light:
+    linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$logTicket-neon, 0.11) 0%,
+      rgba(Palettes.$logTicket-medium, 0.09) 40%,
+      rgba(#fff, 0) 74%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$logTicket-light, #fff, 86%) 0%,
+      Palettes.$logTicket-light 55%,
+      color.mix(Palettes.$logTicket-light, Palettes.$logTicket-medium, 86%) 100%
+    );
+
+  $logTicket-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.42),
+    inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.18),
+    0 14px 30px rgba(#000, 0.36);
+
+  $logTicket-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.6),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$logTicket-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $logTicket-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $logTicket-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+
+  // FIND A LINK — DARK
+  $grad-findLink-dark:
+    linear-gradient(180deg, rgba(#fff, 0.06) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.38) 100%),
+    radial-gradient(
+      120% 140% at 18% 12%,
+      rgba(Palettes.$findLink-neon, 0.2) 0%,
+      rgba(Palettes.$findLink-medium, 0.16) 36%,
+      rgba(Palettes.$findLink-dark, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$findLink-dark, #000, 78%) 0%,
+      color.mix(Palettes.$findLink-dark, Palettes.$findLink-medium, 76%) 46%,
+      color.mix(Palettes.$findLink-dark, Palettes.$findLink-neon, 92%) 100%
+    );
+
+  // FIND A LINK — LIGHT
+  $grad-findLink-light:
+    linear-gradient(180deg, rgba(#fff, 0.72) 0%, rgba(#fff, 0) 48%, rgba(#000, 0.1) 100%),
+    radial-gradient(
+      120% 140% at 18% 10%,
+      rgba(Palettes.$findLink-neon, 0.12) 0%,
+      rgba(Palettes.$findLink-medium, 0.09) 40%,
+      rgba(#fff, 0) 72%
+    ),
+    linear-gradient(
+      135deg,
+      color.mix(Palettes.$findLink-light, #fff, 86%) 0%,
+      Palettes.$findLink-light 55%,
+      color.mix(Palettes.$findLink-light, Palettes.$findLink-medium, 86%) 100%
+    );
+
+  $findLink-img-shadows-dark:
+    inset 0 1px 0 rgba(#fff, 0.08),
+    inset 0 -1px 0 rgba(#000, 0.4),
+    inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.18),
+    0 14px 30px rgba(#000, 0.35);
+
+  $findLink-img-shadows-light:
+    inset 0 1px 0 rgba(#fff, 0.58),
+    inset 0 -1px 0 rgba(#000, 0.14),
+    inset 0 0 0 1px rgba(Palettes.$findLink-medium, 0.14),
+    0 12px 26px rgba(#000, 0.16);
+
+  $findLink-text-shadow-dark: 0 2px 14px rgba(#000, 0.55);
+  $findLink-text-shadow-light: 0 2px 10px rgba(#000, 0.18);
+}
+
 header[id*='buttons'] {
   overflow: hidden;
+  @include palette-recipes();
   @media screen and (orientation: landscape) {
     @include desktop-default();
     @include desktop-landscape();

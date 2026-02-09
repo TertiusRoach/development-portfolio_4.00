@@ -16,13 +16,13 @@ interface InfoProps {
 const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
 
   useEffect(() => {}, [pageName, blockName]);
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/bd5b14dcf63c8238ed9907f1f7c101ee1a66b69f/source/assets/svg-files/archive-images',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/09ff331e3a094e34ac50aecc4f09f65465cc319e/source/assets/svg-files/archive-images',
   ];
 
@@ -103,7 +103,47 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             onClick={() => togglePreview(pageName, blockName, 'routing-buttons')}
           />
         </nav>
-        <div className="buttons-software"></div>
+        <div className="buttons-software">
+          <aside className="overtime-software">
+            <figure className="dark">
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[1]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[1]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Track a Day</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="ticketing-software">
+            <figure className="dark">
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[1]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[1]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Log a Ticket</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="hyperlink-software">
+            <figure className="dark">
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[1]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[1]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Find a Link</h1>
+              </span>
+            </figure>
+          </aside>
+        </div>
       </section>
       <figure className="midground"></figure>
       <div className="background">

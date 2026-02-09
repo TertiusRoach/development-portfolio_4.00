@@ -65,39 +65,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   const pageName = stripBrackets(info.pageName, '[]') as string;
 
   //--|🠊 Render Body 🠈|--\\
-  const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
-    /*
-    switch (style.size) {
-      case '<h1>':
-        return <></>;
-      case '<p>':
-      default:
-        return (
-          <>
-            <div className="fore">
-              {/* <p>
-                <span>{style.text}</span>
-              </p>
-            </div>
-            <div className="mid">
-              {/* <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">{/* <canvas className="animation"></canvas></div>
-          </>
-        );
-    }
-    */
-  };
+  const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {};
 
   useEffect(() => {}, [pageName, blockName]);
 
