@@ -20,11 +20,12 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let svgPath =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images';
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/09ff331e3a094e34ac50aecc4f09f65465cc319e/source/assets/svg-files/archive-images',
+  ];
 
-  let svgSign =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images';
   return (
     <header
       className={`default-${blockName} ${stateName}`}
@@ -42,7 +43,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{button}',
-              image: `${svgSign}/font-awesome/5.13.0/solid/cog.svg`,
+              image: `${svgPath[2]}/trinity-apps/tralogfin/logo-white.svg`,
             }}
             info={{
               pageName: pageName,
@@ -61,7 +62,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{disabled}',
-              image: `${svgPath}/font-awesome/6.5.1/solid/caret-left.svg`,
+              image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-left.svg`,
             }}
             info={{
               pageName: pageName,
@@ -97,7 +98,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               color: '(mono)',
 
               type: '{button}',
-              image: `${svgPath}/font-awesome/6.5.1/solid/caret-right.svg`,
+              image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-right.svg`,
             }}
             info={{
               pageName: pageName,

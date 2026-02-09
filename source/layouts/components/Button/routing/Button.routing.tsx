@@ -101,7 +101,6 @@ const ButtonRouting: React.FC<TheseProps> = ({
 
   useEffect(() => {}, [pageName, blockName]);
 
-  console.log(`${createClass(style as TheseProps['style'])}`);
   return (
     <button
       onClick={onClick}

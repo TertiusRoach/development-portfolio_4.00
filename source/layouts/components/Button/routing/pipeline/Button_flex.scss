@@ -2,17 +2,10 @@
 @mixin desktop-flex {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   .fore {
-    padding: 16px;
     span {
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      img {
-        height: 100%;
-        display: flex;
-        overflow: hidden;
-        mask-position: center;
-        mask-repeat: no-repeat;
-      }
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
     }
   }
 }
