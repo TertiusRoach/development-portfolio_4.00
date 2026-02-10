@@ -20,32 +20,18 @@ interface InfoProps {
 }
 
 const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
 
-  useEffect(() => {
-    let selector = `#${pageName}-${blockName} .marketing-section`;
-    let addSpace = document.querySelector(selector) as HTMLElement;
+  useEffect(() => {}, [pageName, blockName]);
 
-    if (!addSpace) return;
+  let svgPath: Array<String> = ['', '', ''];
 
-    let hidePromo = () => {
-      addSpace.style.opacity = '0';
-
-      setTimeout(() => {
-        addSpace.style.display = 'none';
-      }, 250);
-    };
-
-    addSpace.addEventListener('mouseenter', hidePromo);
-    return () => {
-      addSpace.removeEventListener('mouseenter', hidePromo);
-    };
-  }, [pageName, blockName]);
-
-  return (
-    <main style={{ zIndex: 0 }} id={`${pageName}-${blockName}`} className={`default-${blockName}`}>
-      <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
+  return <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}></main>;
+};
+export default OvertimeMain;
+{
+  /* <aside className={`${pageName}-carousel`} style={{ zIndex: 0 }}>
         <section className="weekdays-section">
           <div
             className="weekdays-container"
@@ -77,8 +63,5 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         </section>
 
         <ArticleLeave info={info} />
-      </aside>
-    </main>
-  );
-};
-export default OvertimeMain;
+      </aside> */
+}

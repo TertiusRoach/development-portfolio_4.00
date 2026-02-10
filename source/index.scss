@@ -19,9 +19,6 @@ body {
   div[id*='buttons'],
   div[id*='landing'],
   div[id*='overtime'] {
-    /*
-    display: grid;
-    */
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
     @include Transition.body-transition();
     @include Transition.header-transition();

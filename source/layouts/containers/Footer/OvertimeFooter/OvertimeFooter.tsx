@@ -18,19 +18,14 @@ interface InfoProps {
   };
 }
 const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
-
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <MenuOvertime info={{ pageName, blockName: '<footer>' }} />
-
-      {/* <section className={`${pageName}-section`}></section> */}
-    </footer>
+    <footer id={`${pageName}-${blockName}`} className={`default-${blockName} collapsed`} style={{ zIndex: 1 }}></footer>
   );
 };
 export default OvertimeFooter;

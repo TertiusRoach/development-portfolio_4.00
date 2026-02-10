@@ -23,18 +23,16 @@ interface InfoProps {
 }
 
 const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const blockName = stripBrackets(info.blockName, '<>') as 'header';
-
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+
   useEffect(() => {}, [pageName, blockName]);
 
-  return (
-    <header style={{ zIndex: 2 }} id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`}>
-      <MenuOvertime info={{ pageName, blockName: '<header>' }} />
+  let svgPath: Array<String> = ['', '', ''];
 
-      <SectionPreview info={info} />
-    </header>
+  return (
+    <header style={{ zIndex: 2 }} id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`}></header>
   );
 };
 export default OvertimeHeader;
