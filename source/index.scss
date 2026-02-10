@@ -25,6 +25,10 @@ body {
     @include Transition.footer-transition();
     @include Transition.overlay-transition();
     @include Transition.sidebar-transition();
+
+    &.overtime-body {
+      background: red;
+    }
   }
 
   div[id*='ticketing'],

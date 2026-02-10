@@ -707,7 +707,6 @@
 
 main[id*='buttons'] {
   @extend %carousel-containers;
-
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

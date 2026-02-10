@@ -2,48 +2,51 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: repeat(2, 4rem) 1fr 4rem / 8rem repeat(3, 1fr) 3rem; //--|🠊 rows / columns 🠈|--//
-
-  menu[class*='overtime'] {
-    z-index: 1;
-    grid-area: 1 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  section[class*='preview'] {
-    z-index: 0;
-    grid-area: 1 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-  }
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  @include desktop-default();
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-  display: none;
+  //--|🠋 Mobile (Elements) 🠋|--//
+  @include mobile-default();
+}
 
-  //--|🠋 Tablet (Portrait) 🠋|--//
+@mixin desktop-default {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  grid-template: //--|🠋 1080px 🠋|--//
+    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
+  @media screen and (max-height: 768px) {
+    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
+  }
+  @media screen and (max-height: 480px) {
+    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
+  }
+  @media screen and (max-height: 360px) {
+    grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
+  }
+}
+@mixin mobile-default {
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  grid-template: //--|🠋 1920px 🠋|--//
+    repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-width: 768px) {
+    grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
   }
   @media screen and (max-width: 480px) {
+    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
   }
   @media screen and (max-width: 360px) {
+    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
   }
 }
 
 header[id*='overtime'] {
-  display: grid;
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

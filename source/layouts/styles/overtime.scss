@@ -4,46 +4,59 @@
 @use '../containers/Main/OvertimeMain/OvertimeMain.scss';
 @use '../containers/Header/OvertimeHeader/OvertimeHeader.scss';
 @use '../containers/Footer/OvertimeFooter/OvertimeFooter.scss';
-@use '../containers/Overlay/OvertimeOverlay/OvertimeOverlay.scss';
-@use '../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar.scss';
-// @use '../containers/Rightbar/OvertimeRightbar/OvertimeRightbar.scss';
 
-//--|🠋 Device Layouts 🠋|--//
 @mixin desktop-landscape {
-  grid-template: 8rem 1fr 4rem / 8rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
   //--|🠋 Desktop (Landscape) 🠋|--\\
+  grid-template: //--|🠋 1080px 🠋|--//
+    8rem 1fr 8rem //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-height: 768px) {
+    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
   }
   @media screen and (max-height: 480px) {
+    grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem;
   }
   @media screen and (max-height: 360px) {
+    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
   }
 }
 @mixin mobile-portrait {
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
   //--|🠋 Mobile (Portrait) 🠋|--\\
+  grid-template: //--|🠋 1920px 🠋|--//
+    12rem 1fr 12rem //--|🠈 rows 🠈|--//
+    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
   @media screen and (max-width: 768px) {
+    grid-template: 10rem 1fr 10rem / 3rem 1fr 3rem;
   }
   @media screen and (max-width: 480px) {
+    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem;
   }
   @media screen and (max-width: 360px) {
+    grid-template: 4rem 1fr 4rem / 1.5rem 1fr 1.5rem;
   }
 }
+body {
+  div[id*='overtime'] {
+    display: grid; //--|🠈 Sets Grid 🠈|--//
+    > * {
+      display: inherit;
+      grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
 
-div[id*='overtime'] {
-  background: linear-gradient(90deg, rgba(Palettes.$trackDay-light, 1) 0%, rgba(Palettes.$trackDay-dark, 1) 10%);
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
+      //--|🠊 All direct children inherit the parent layout mode and are placed 🠈|--//
+      //--|🠊 into the same grid coordinates (row 1–4, col 1–4). 🠈|--//
+      //--|🠊 This intentionally stacks child elements on top of each other, 🠈|--//
+      //--|🠊 enabling controlled view switching via state, z-index, or visibility. 🠈|--//
+      //--|🠊 Only direct children are affected to preserve layout boundaries. 🠈|--//
+    }
+    //--|🠋 Desktop (Landscape) 🠋|--//
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+    }
+    //--|🠋 Mobile (Portrait) 🠋|--//
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+    }
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-
-  /*
-  &[id*='overtime'] {
-    background: Palettes.$trackDay-dark;
-  }
-  */
 }
