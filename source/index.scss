@@ -17,11 +17,12 @@ body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   /* transition: transform 1s ease-in-out; */
   div[id*='buttons'],
-  div[id*='landing'] {
+  div[id*='landing'],
+  div[id*='overtime'] {
     /*
     display: grid;
-    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
     */
+    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
     @include Transition.body-transition();
     @include Transition.header-transition();
     @include Transition.footer-transition();
@@ -29,7 +30,6 @@ body {
     @include Transition.sidebar-transition();
   }
 
-  div[id*='overtime'],
   div[id*='ticketing'],
   div[id*='hyperlink'] {
     display: none;

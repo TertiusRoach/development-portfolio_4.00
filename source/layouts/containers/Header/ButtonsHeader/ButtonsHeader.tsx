@@ -1,7 +1,7 @@
 //--|🠊 ButtonsHeader.tsx 🠈|--//
 import React, { useEffect, lazy } from 'react';
 //--|🠋 Functions 🠋|--//
-import { togglePreview, expandHeader } from './ButtonsFunctions';
+import { togglePreview, expandHeader, loadSoftware } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
 //--|🠋 Components 🠋|--//
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
@@ -108,7 +108,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
         </nav>
         <div className="buttons-software">
           <aside className="overtime-software">
-            <figure className="dark">
+            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'overtime')}>
               <span>
                 <img
                   style={{
@@ -121,7 +121,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             </figure>
           </aside>
           <aside className="ticketing-software">
-            <figure className="dark">
+            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'ticketing')}>
               <span>
                 <img
                   style={{
@@ -134,7 +134,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             </figure>
           </aside>
           <aside className="hyperlink-software">
-            <figure className="dark">
+            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'hyperlink')}>
               <span>
                 <img
                   style={{

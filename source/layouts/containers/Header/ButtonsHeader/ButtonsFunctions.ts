@@ -66,3 +66,24 @@ export function expandHeader(pageName: string, blockName: string) {
     buttonsHeader.classList.remove('expanded');
   }
 }
+export function loadSoftware(pageName: string, blockName: string, blockAction: 'overtime' | 'ticketing' | 'hyperlink') {
+  const buttonsBody = document.getElementById('buttons-body') as HTMLDivElement;
+  const activateBody = document.getElementById(`${blockAction}-body`) as HTMLDivElement;
+
+  if (buttonsBody.classList.contains('active')) {
+    buttonsBody.classList.add('asleep');
+    buttonsBody.classList.remove('active');
+
+    activateBody.classList.add('active');
+    activateBody.classList.remove('asleep');
+  }
+
+  switch (blockAction) {
+    case 'overtime':
+      break;
+    case 'ticketing':
+      break;
+    case 'hyperlink':
+      break;
+  }
+}

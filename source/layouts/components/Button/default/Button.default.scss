@@ -9,7 +9,19 @@
 button[class*='default'],
 button[class*='disabled'] {
   display: grid;
-
+  /*
+  This fades the edges: Use for <CleanedButton> or <StretchedButton>
+  mask-repeat: no-repeat;
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  */
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
