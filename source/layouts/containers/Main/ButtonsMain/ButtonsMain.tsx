@@ -107,7 +107,8 @@ function exportElements(
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_open-head`,
                 }}
-                onMouseEnter={() => unfoldHeader(pageName, blockName)}
+                onClick={() => unfoldHeader(pageName, blockName, 'click')}
+                onMouseEnter={() => unfoldHeader(pageName, blockName, 'hover')}
               />
               <menu>
                 <div>
@@ -2379,7 +2380,8 @@ function exportElements(
                   blockName: blockName,
                   labelName: `${pageName}_${blockName}_open-head`,
                 }}
-                onMouseEnter={() => unfoldHeader(pageName, blockName)}
+                onClick={() => unfoldHeader(pageName, blockName, 'click')}
+                onMouseEnter={() => unfoldHeader(pageName, blockName, 'hover')}
               />
               <menu>
                 <div>

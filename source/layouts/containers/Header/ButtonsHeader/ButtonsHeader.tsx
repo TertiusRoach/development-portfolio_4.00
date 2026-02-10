@@ -16,7 +16,7 @@ interface InfoProps {
 const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -30,42 +30,63 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
     <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 1 }}>
       <section className="foreground">
         <nav className="buttons-preview">
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'top-lef',
-              shade: '~dark~',
-              color: '(mono)',
+          <menu className="header-preview">
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'top-lef',
+                shade: '~dark~',
+                color: '(mono)',
 
-              type: '{button}',
-              image: `${svgPath[2]}/trinity-apps/tralogfin/logo-white.svg`,
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_view-apps`,
-            }}
-            onClick={() => expandHeader(pageName, blockName)}
-          />
+                type: '{button}',
+                image: `${svgPath[2]}/trinity-apps/tralogfin/logo-white.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: `${pageName}_${blockName}_view-apps`,
+              }}
+              onClick={() => expandHeader(pageName, blockName)}
+            />
 
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: `Go Up`,
-              shade: '~light~',
-              color: '(mono)',
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-icon-',
+                text: `Go Up`,
+                shade: '~light~',
+                color: '(mono)',
 
-              type: '{disabled}',
-              image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-left.svg`,
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_default-preview`,
-            }}
-            onClick={() => togglePreview(pageName, blockName, 'default-buttons')}
-          />
+                type: '{disabled}',
+                image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-left.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: `${pageName}_${blockName}_default-preview`,
+              }}
+              onClick={() => togglePreview(pageName, blockName, 'default-buttons')}
+            />
+            <ButtonDefault
+              style={{
+                size: '<h4>',
+                view: '-icon-',
+                text: `Go Up`,
+                shade: '~light~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-right.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: `${pageName}_${blockName}_routing-preview`,
+              }}
+              onClick={() => togglePreview(pageName, blockName, 'routing-buttons')}
+            />
+          </menu>
+
           <ol className="carousel-preview slide-def">
             <li className="default-text">
               <h6 className="display-4">
@@ -84,24 +105,6 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
               </h6>
             </li>
           </ol>
-          <ButtonDefault
-            style={{
-              size: '<h4>',
-              view: '-icon-',
-              text: `Go Up`,
-              shade: '~light~',
-              color: '(mono)',
-
-              type: '{button}',
-              image: `${svgPath[0]}/font-awesome/6.5.1/solid/caret-right.svg`,
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}_${blockName}_routing-preview`,
-            }}
-            onClick={() => togglePreview(pageName, blockName, 'routing-buttons')}
-          />
         </nav>
         <div className="buttons-software">
           <aside className="overtime-software">

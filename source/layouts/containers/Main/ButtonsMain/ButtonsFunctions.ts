@@ -322,24 +322,52 @@ export function scrollMouse(
 
 //--|🠊 1. Declare timer outside of scope. 🠈|--\\
 let headTime: ReturnType<typeof setTimeout> | null = null;
-export function unfoldHeader(pageName: string, blockName: string) {
+export function unfoldHeader(pageName: string, blockName: string, blockAction: 'click' | 'hover' | 'exit') {
   const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
-  //--|🠊 2. Check if 'headTime' is running 🠈|--\\
-  if (headTime === null) {
-    //--|🠊 If yes, then ignore this request. 🠈|--\\
-    //--|🠊 3. Check the className of the <header>. 🠈|--\\
-    if (buttonsHeader.classList.contains('collapsed')) {
+
+  switch (blockAction) {
+    case 'hover':
+      //--|🠊 2. Check if 'headTime' is running 🠈|--\\
+      if (headTime === null) {
+        //--|🠊 If yes, then ignore this request. 🠈|--\\
+        //--|🠊 3. Check the className of the <header>. 🠈|--\\
+        if (buttonsHeader.classList.contains('collapsed')) {
+          buttonsHeader.classList.add('unfolded');
+          buttonsHeader.classList.remove('collapsed');
+          //--|🠊 4. Reset 'headTime' to null. 🠈|--\\
+          headTime = setTimeout(() => {
+            if (buttonsHeader.classList.contains('unfolded')) {
+              buttonsHeader.classList.add('collapsed');
+              buttonsHeader.classList.remove('unfolded');
+              setTimeout(() => {
+                headTime = null; //--|🠈 Reset headTime to signal readiness 🠈|--\\
+              }, 250);
+            }
+          }, 5750);
+        }
+        return;
+      }
+      break;
+    case 'click':
       buttonsHeader.classList.add('unfolded');
       buttonsHeader.classList.remove('collapsed');
-      //--|🠊 4. Reset 'headTime' to null. 🠈|--\\
-      headTime = setTimeout(() => {
+      break;
+    case 'exit':
+      if (buttonsHeader.classList.contains('unfolded')) {
+        headTime = setTimeout(() => {
+          buttonsHeader.classList.add('collapsed');
+          buttonsHeader.classList.remove('unfolded');
+        }, 1500);
+        /*
         if (buttonsHeader.classList.contains('unfolded')) {
           buttonsHeader.classList.add('collapsed');
           buttonsHeader.classList.remove('unfolded');
+          setTimeout(() => {
+            headTime = null; //--|🠈 Reset headTime to signal readiness 🠈|--\\
+          }, 250);
         }
-        headTime = null; //--|🠈 Reset headTime to signal readiness 🠈|--\\
-      }, 6000);
-    }
-    return;
+        */
+      }
+      break;
   }
 }
