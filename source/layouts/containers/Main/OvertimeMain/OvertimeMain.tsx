@@ -11,7 +11,19 @@ import ArticleLeave from '../../../components/Article/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
 //--|🠉 Components 🠉|--//
-
+/*
+Use <table> when:
+Data maps 1:1 to database records
+Columns are stable & named
+Rows are inspectable units
+The purpose is review, audit, admin, or debugging
+---
+Do NOT use <table> when:
+Data is user-facing content
+Layout implies hierarchy or storytelling
+Interaction is the primary goal
+Data is heavily transformed or abstracted
+*/
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
