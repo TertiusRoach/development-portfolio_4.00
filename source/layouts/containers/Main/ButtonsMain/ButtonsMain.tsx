@@ -110,60 +110,78 @@ function exportElements(
                 onClick={() => unfoldHeader(pageName, blockName, 'click')}
                 onMouseEnter={() => unfoldHeader(pageName, blockName, 'hover')}
               />
-              <menu>
-                <div>
-                  <LabelToggle
-                    style={{
-                      shade: '~dark~',
-                      color: '(mono)',
-                      type: '{toggle}',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_toggle-dark`,
-                    }}
-                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
-                  />
-                </div>
-                <div>
-                  <ButtonDefault
-                    style={{
-                      size: '<h4>',
-                      view: '-icon-',
-                      text: `Go Up`,
-                      shade: '~light~',
-                      color: '(mono)',
 
-                      type: '{button}',
-                      image:
-                        'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_go-up`,
-                    }}
-                    onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
-                  />
-                </div>
-                <div>
-                  <LabelToggle
-                    style={{
-                      shade: '~light~',
-                      color: '(mono)',
-                      type: '{toggle}',
-                    }}
-                    info={{
-                      pageName: pageName,
-                      blockName: blockName,
-                      labelName: `${pageName}_${blockName}_toggle-light`,
-                    }}
-                    onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
-                  />
-                </div>
+              <menu className="default-toggle">
+                <LabelToggle
+                  style={{
+                    shade: '~dark~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-dark`,
+                  }}
+                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-dark')}
+                />
+                <LabelToggle
+                  style={{
+                    shade: '~light~',
+                    color: '(mono)',
+                    type: '{toggle}',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_toggle-light`,
+                  }}
+                  onClick={() => togglePreview(pageName, blockName, 'default', 'toggle-light')}
+                />
               </menu>
             </header>
+            <nav className="default-scrolling">
+              <menu className="default-preview">
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: `Go Up`,
+                    shade: '~light~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-up.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_go-up`,
+                  }}
+                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'go-up')}
+                />
+                <ButtonDefault
+                  style={{
+                    size: '<h4>',
+                    view: '-icon-',
+                    text: 'Scroll Down',
+                    shade: '~dark~',
+                    color: '(mono)',
+
+                    type: '{button}',
+                    image:
+                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
+                  }}
+                  info={{
+                    pageName: pageName,
+                    blockName: blockName,
+                    labelName: `${pageName}_${blockName}_scroll-down`,
+                  }}
+                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
+                />
+              </menu>
+            </nav>
 
             <aside
               id="default-darkside"
@@ -1200,7 +1218,6 @@ function exportElements(
                 </li>
               </ol>
             </aside>
-            <div className="default-hitbox"></div>
             <aside
               id="default-lightside"
               className="carousel-container"
@@ -2236,30 +2253,6 @@ function exportElements(
                 </li>
               </ol>
             </aside>
-
-            <footer className="default-footer">
-              <nav>
-                <ButtonDefault
-                  style={{
-                    size: '<h4>',
-                    view: '-icon-',
-                    text: 'Scroll Down',
-                    shade: '~dark~',
-                    color: '(mono)',
-
-                    type: '{button}',
-                    image:
-                      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/caret-down.svg',
-                  }}
-                  info={{
-                    pageName: pageName,
-                    blockName: blockName,
-                    labelName: `${pageName}_${blockName}_scroll-down`,
-                  }}
-                  onClick={() => handleButtons(pageName, 'default-buttons', blockName, 'control-preview', 'scroll-down')}
-                />
-              </nav>
-            </footer>
           </section>
           <figure className={`${listing}-midground`}>
             <aside className="dark-code hidden">
@@ -2333,20 +2326,14 @@ function exportElements(
             </aside>
           </figure>
           <div className={`${listing}-background`}>
-            <header>
-              <div></div>
-              <div></div>
-            </header>
+            <header></header>
             <aside className="dark-grade hidden">
               <span></span>
             </aside>
             <aside className="light-grade hidden">
               <span></span>
             </aside>
-            <footer>
-              <div></div>
-              <div></div>
-            </footer>
+            <footer></footer>
           </div>
         </>
       );
@@ -2407,7 +2394,6 @@ function exportElements(
                 </div>
               </menu>
             </header>
-            <div className="routing-hitbox"></div>
 
             <aside
               id="routing-darkside"
