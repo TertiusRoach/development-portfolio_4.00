@@ -1,10 +1,12 @@
 //--|🠊 OvertimeHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { expandHeader } from './OvertimeFunctions';
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
+import ButtonRouting from '../../../components/Button/routing/Button.routing';
 
 interface InfoProps {
   info: {
@@ -13,7 +15,6 @@ interface InfoProps {
     roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
-
 const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
@@ -23,11 +24,37 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
     console.log('//--|🠊 Overtime Loaded 🠈|--//');
   }, [pageName, blockName]);
 
-  let svgPath: Array<String> = ['', '', ''];
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
+    '',
+    '',
+  ];
 
   return (
     <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
-      <section className={`${blockName}-foreground`}></section>
+      <section className={`${blockName}-foreground`}>
+        <nav className={`global-${blockName}`}>
+          <menu className={`global-${blockName}`}>
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'top-lef',
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${svgPath[0]}/trinity-apps/track-a-day/primary-light.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: `${pageName}_${blockName}_view-apps`,
+              }}
+              onClick={() => expandHeader(pageName)}
+            />
+          </menu>
+        </nav>
+      </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </header>

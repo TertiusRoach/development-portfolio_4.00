@@ -55,7 +55,7 @@ export function togglePreview(pageName: string, blockName: string, pageAction: '
       break;
   }
 }
-export function expandHeader(pageName: string, blockName: string) {
+export function expandHeader(pageName: string) {
   const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
   if (buttonsHeader.classList.contains('unfolded')) {
     buttonsHeader.classList.add('expanded');

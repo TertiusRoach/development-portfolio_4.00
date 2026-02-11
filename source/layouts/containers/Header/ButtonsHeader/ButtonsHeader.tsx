@@ -1,5 +1,5 @@
 //--|🠊 ButtonsHeader.tsx 🠈|--//
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--//
 import { togglePreview, expandHeader, loadSoftware } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
@@ -46,7 +46,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
                 blockName: blockName,
                 labelName: `${pageName}_${blockName}_view-apps`,
               }}
-              onClick={() => expandHeader(pageName, blockName)}
+              onClick={() => expandHeader(pageName)}
             />
 
             <ButtonDefault
