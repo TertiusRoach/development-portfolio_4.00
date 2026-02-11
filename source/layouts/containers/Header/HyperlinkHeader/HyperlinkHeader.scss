@@ -20,6 +20,13 @@
 header[id*='hyperlink'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    section[class*='foreground'],
+    figure[class*='midground'],
+    div[class*='background'] {
+      display: inherit;
+      grid-template: inherit;
+      grid-area: 1 / 1 / 6 / 4;
+    }
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();

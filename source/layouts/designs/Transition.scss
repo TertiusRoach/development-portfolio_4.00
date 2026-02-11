@@ -1,6 +1,5 @@
-//--|🠊 Transition.scss 🠈|--//
-
-//--|🠋 div[id*="body"] 🠋|--//
+//--|🠊 Transition.scss 🠈|--\\
+//--|🠋 div[id*="body"] 🠋|--\\
 @mixin body-transition {
   &[id*='body'] {
     transition: height 1.5s ease-in-out;
@@ -12,7 +11,7 @@
     }
   }
 }
-//--|🠋 header[id*="header"] 🠋|--//
+//--|🠋 header[id*="header"] 🠋|--\\
 @mixin header-transition {
   header {
     @extend %header-effects;
@@ -23,7 +22,7 @@
     @media screen and (orientation: landscape) {
       &[class*='expanded'] {
         backdrop-filter: blur(24px);
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav ol li,
           nav ul li {
             filter: blur(12px);
@@ -36,7 +35,7 @@
       }
       &[class*='unfolded'] {
         backdrop-filter: blur(12px);
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav ol li,
           nav ul li {
             filter: blur(0);
@@ -49,7 +48,7 @@
       }
       &[class*='collapsed'] {
         backdrop-filter: blur(0);
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav ol li,
           nav ul li {
             filter: blur(24px);
@@ -69,9 +68,9 @@
       transition:
         clip-path 250ms ease-in-out,
         backdrop-filter 1.5s ease-in-out;
-      section[class='foreground'],
-      figure[class='midground'],
-      div[class='background'] {
+      section[class='header-foreground'],
+      figure[class='header-midground'],
+      div[class='header-background'] {
         nav {
           menu {
             z-index: 1;
@@ -109,7 +108,7 @@
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
     @media screen and (orientation: landscape) {
       &[class*='expanded'] {
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav {
             menu {
               button:not(:first-child) {
@@ -147,7 +146,7 @@
         clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       }
       &[class*='unfolded'] {
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav {
             menu {
               button:not(:first-child) {
@@ -192,7 +191,7 @@
         }
       }
       &[class*='collapsed'] {
-        section[class='foreground'] {
+        section[class='header-foreground'] {
           nav {
             menu {
               button:not(:first-child) {
@@ -258,7 +257,7 @@
     }
   }
 }
-//--|🠋 footer[id*="footer"] 🠋|--//
+//--|🠋 footer[id*="footer"] 🠋|--\\
 @mixin footer-transition {
   //--|🠋 Footer 🠋|--//
   footer {
@@ -372,7 +371,7 @@
   }
   */
 }
-//--|🠋 aside[id*="bar"] 🠋|--//
+//--|🠋 aside[id*="bar"] 🠋|--\\
 @mixin sidebar-transition {
   //--|🠋 Leftbar & Rightbar 🠋|--//
   aside {
@@ -399,7 +398,7 @@
     }
   }
 }
-//--|🠋 section[id*="overlay"] 🠋|--//
+//--|🠋 section[id*="overlay"] 🠋|--\\
 @mixin overlay-transition {
   section[class*='overlay'] {
     transition:

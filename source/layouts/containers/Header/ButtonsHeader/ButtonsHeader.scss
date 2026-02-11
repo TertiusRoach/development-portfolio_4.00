@@ -417,11 +417,13 @@
         }
       }
     }
-    nav[class*='preview'] {
+    nav[class*='global'] {
       display: inherit;
       grid-area: 1 / 1 / 3 / 4;
-      menu[class*='preview'] {
+      menu[class*='global'] {
+        // z-index: 1;
         display: inherit;
+        grid-area: 1 / 1 / 3 / 2;
         button[id*='view-apps'] {
           grid-area: 1 / 1 / 3 / 2;
         }
@@ -444,7 +446,9 @@
         }
       }
       ol[class*='preview'] {
+        // z-index: 0;
         display: flex;
+        grid-area: 1 / 1 / 3 / 2;
         transition: transform 250ms ease-in-out;
         li[class*='default'],
         li[class*='routing'] {
@@ -488,46 +492,13 @@
   //--|🠋 Mobile (Portrait) 🠋|--//
 }
 
-@mixin desktop-default {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  grid-template: //--|🠋 1080px 🠋|--//
-    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-height: 768px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
-  }
-  @media screen and (max-height: 480px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
-  }
-}
-@mixin mobile-default {
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  grid-template: //--|🠋 1920px 🠋|--//
-    repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
-    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-width: 768px) {
-    grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-width: 480px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
-  }
-  @media screen and (max-width: 360px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
-  }
-}
-
 header[id*='buttons'] {
   overflow: hidden;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
     section[class*='foreground'],
     figure[class*='midground'],
-    div[class='background'] {
+    div[class*='background'] {
       display: inherit;
       grid-template: inherit;
       grid-area: 1 / 1 / 6 / 4;

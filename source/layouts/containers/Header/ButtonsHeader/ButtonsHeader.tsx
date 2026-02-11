@@ -28,9 +28,9 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 1 }}>
-      <section className="foreground">
-        <nav className="buttons-preview">
-          <menu className="header-preview">
+      <section className={`${blockName}-foreground`}>
+        <nav className={`global-${blockName}`}>
+          <menu className={`global-${blockName}`}>
             <ButtonRouting
               style={{
                 size: '<h1>',
@@ -148,8 +148,8 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
           </aside>
         </div>
       </section>
-      <figure className="midground"></figure>
-      <div className="background">
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}>
         <header>
           <div></div>
           <div></div>

@@ -1,5 +1,4 @@
 //--|🠊 Header/ButtonsFunctions.ts 🠈|--\\
-
 export function togglePreview(pageName: string, blockName: string, pageAction: 'default-buttons' | 'routing-buttons') {
   /*
       I need the code that is commented out. I need it to change the className (TypeScript Version) but keep it in the same position. 
