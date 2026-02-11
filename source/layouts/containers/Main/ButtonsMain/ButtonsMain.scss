@@ -1,8 +1,69 @@
 //--|🠊 ButtonsMain.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
-
+@use './elements/default-buttons/DefaultButtons.scss' as default;
+@use './elements/routing-buttons/RoutingButtons.scss' as routing;
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    display: grid;
+    overflow: hidden;
+
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
+    aside {
+      &[id*='side'] {
+        padding: 4rem 48px;
+      }
+      &[class*='code'] {
+        padding: 0 48px;
+      }
+    }
+
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 3rem 32px;
+        }
+        &[class*='code'] {
+          padding: 0 32px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 2rem 24px;
+        }
+        &[class*='code'] {
+          padding: 0 24px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 1.5rem 16px;
+        }
+        &[class*='code'] {
+          padding: 0 16px;
+        }
+      }
+    }
+  }
+
+  /*
   .default-buttons {
     section[class*='fore'] {
       z-index: 2;
@@ -238,6 +299,8 @@
       }
     }
   }
+  */
+  /*
   .routing-buttons {
     // background: rgba(darkblue, 0.5);
     section[class*='fore'] {
@@ -462,25 +525,6 @@
             background: rgba(Palettes.$indexLand-dark, 0.75);
             filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-light, 0.75));
           }
-
-          /*
-          &.downplay {
-            grid-template-columns: 1fr 0.001fr;
-          }
-          &.highlight {
-            grid-template-columns: 1fr 0.001fr;
-          }
-          span {
-            grid-column: 1 / 2;
-            background: linear-gradient(
-              270deg,
-              rgba(Palettes.$indexLand-dark, 0) 0%,
-              rgba(Palettes.$indexLand-dark, 0.5) 25%,
-              rgba(Palettes.$indexLand-dark, 0.75) 75%,
-              rgba(Palettes.$indexLand-dark, 0.75) 100%
-            );
-          }
-          */
         }
         &[class*='light'] {
           grid-area: 1 / 4 / 6 / 5;
@@ -491,21 +535,6 @@
             background: rgba(Palettes.$indexLand-light, 0.75);
             filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-dark, 0.75));
           }
-          /*
-          &.visible {
-            grid-template-columns: 0.001fr 1fr;
-          }
-          span {
-            grid-column: 2 / 3;
-            background: linear-gradient(
-              90deg,
-              rgba(Palettes.$indexLand-light, 0) 0%,
-              rgba(Palettes.$indexLand-light, 0.5) 25%,
-              rgba(Palettes.$indexLand-light, 0.75) 75%,
-              rgba(Palettes.$indexLand-light, 0.75) 100%
-            );
-          }
-            */
         }
 
         display: grid;
@@ -597,6 +626,7 @@
       }
     }
   }
+  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--//
@@ -620,64 +650,8 @@ main[id*='buttons'] {
   @extend %carousel-containers;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-      //--|🠋 Layer Perimeters 🠋|--\\
-      width: 100%;
-      display: grid;
-      overflow: hidden;
-
-      //--|🠋 96px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 1080px 🠋|--\\
-        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
-      aside {
-        &[id*='side'] {
-          padding: 4rem 48px;
-        }
-        &[class*='code'] {
-          padding: 0 48px;
-        }
-      }
-
-      @media screen and (max-height: 768px) {
-        //--|🠋 64px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 3rem 32px;
-          }
-          &[class*='code'] {
-            padding: 0 32px;
-          }
-        }
-      }
-      @media screen and (max-height: 480px) {
-        //--|🠋 48px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 2rem 24px;
-          }
-          &[class*='code'] {
-            padding: 0 24px;
-          }
-        }
-      }
-      @media screen and (max-height: 360px) {
-        //--|🠋 32px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 1.5rem 16px;
-          }
-          &[class*='code'] {
-            padding: 0 16px;
-          }
-        }
-      }
-    }
+    @include default.desktop-landscape;
+    @include routing.desktop-landscape;
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();

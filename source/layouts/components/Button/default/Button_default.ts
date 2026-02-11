@@ -4,7 +4,7 @@ import { stripBrackets } from '../../../scripts/buttons';
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
-  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+  type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 

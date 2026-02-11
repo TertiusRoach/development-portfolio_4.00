@@ -358,15 +358,6 @@ export function unfoldHeader(pageName: string, blockName: string, blockAction: '
           buttonsHeader.classList.add('collapsed');
           buttonsHeader.classList.remove('unfolded');
         }, 1500);
-        /*
-        if (buttonsHeader.classList.contains('unfolded')) {
-          buttonsHeader.classList.add('collapsed');
-          buttonsHeader.classList.remove('unfolded');
-          setTimeout(() => {
-            headTime = null; //--|🠈 Reset headTime to signal readiness 🠈|--\\
-          }, 250);
-        }
-        */
       }
       break;
   }
