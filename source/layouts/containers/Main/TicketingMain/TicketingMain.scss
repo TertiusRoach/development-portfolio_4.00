@@ -1,9 +1,9 @@
-//--|🠊 OvertimeMain.scss 🠈|--//
+//--|🠊 TicketingMain.scss 🠈|--//
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  background: rgba(Palettes.$trackDay-medium, 0.5);
+  background: rgba(Palettes.$logTicket-medium, 0.5);
   /*
   section[class*='fore'] {
   }
@@ -17,7 +17,7 @@
   //--|🠋 Mobile (Elements) 🠋|--//
 }
 
-main[id*='overtime'] {
+main[id*='ticketing'] {
   position: relative;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

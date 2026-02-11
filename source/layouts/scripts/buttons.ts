@@ -1,4 +1,4 @@
-//--|🠊 buttons.ts 🠈|--//
+//--|🠊 buttons.ts 🠈|--\\
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
     case '[]':

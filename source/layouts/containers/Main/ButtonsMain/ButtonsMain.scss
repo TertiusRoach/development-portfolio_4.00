@@ -237,65 +237,6 @@
         background: rgba(Palettes.$indexLand-dark, 0.75);
       }
     }
-
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-      //--|🠋 Layer Perimeters 🠋|--\\
-      width: 100%;
-      display: grid;
-      overflow: hidden;
-
-      //--|🠋 96px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 1080px 🠋|--\\
-        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
-      aside {
-        &[id*='side'] {
-          padding: 4rem 48px;
-        }
-        &[class*='code'] {
-          padding: 0 48px;
-        }
-      }
-
-      @media screen and (max-height: 768px) {
-        //--|🠋 64px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 3rem 32px;
-          }
-          &[class*='code'] {
-            padding: 0 32px;
-          }
-        }
-      }
-      @media screen and (max-height: 480px) {
-        //--|🠋 48px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 2rem 24px;
-          }
-          &[class*='code'] {
-            padding: 0 24px;
-          }
-        }
-      }
-      @media screen and (max-height: 360px) {
-        //--|🠋 32px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
-        aside {
-          &[id*='side'] {
-            padding: 1.5rem 16px;
-          }
-          &[class*='code'] {
-            padding: 0 16px;
-          }
-        }
-      }
-    }
   }
   .routing-buttons {
     // background: rgba(darkblue, 0.5);
@@ -679,6 +620,64 @@ main[id*='buttons'] {
   @extend %carousel-containers;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    section[class*='foreground'],
+    figure[class*='midground'],
+    div[class*='background'] {
+      //--|🠋 Layer Perimeters 🠋|--\\
+      width: 100%;
+      display: grid;
+      overflow: hidden;
+
+      //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 1080px 🠋|--\\
+        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
+      aside {
+        &[id*='side'] {
+          padding: 4rem 48px;
+        }
+        &[class*='code'] {
+          padding: 0 48px;
+        }
+      }
+
+      @media screen and (max-height: 768px) {
+        //--|🠋 64px (Left & Right) for Design 🠋|--\\
+        grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 3rem 32px;
+          }
+          &[class*='code'] {
+            padding: 0 32px;
+          }
+        }
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 2rem 24px;
+          }
+          &[class*='code'] {
+            padding: 0 24px;
+          }
+        }
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
+        aside {
+          &[id*='side'] {
+            padding: 1.5rem 16px;
+          }
+          &[class*='code'] {
+            padding: 0 16px;
+          }
+        }
+      }
+    }
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();

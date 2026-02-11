@@ -20,12 +20,16 @@ interface InfoProps {
 const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer id={`${pageName}-${blockName}`} className={`default-${blockName} collapsed`} style={{ zIndex: 1 }}></footer>
+    <footer id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 1 }}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
+    </footer>
   );
 };
 export default OvertimeFooter;

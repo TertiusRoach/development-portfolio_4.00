@@ -5,43 +5,22 @@
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
 @use './layouts/styles/hyperlink.scss';
-//--|🠉 Styles 🠉|--//
+
 //--|🠋 Designs 🠋|--//
 @use './layouts/designs/Global.scss';
 @use './layouts/designs/Mixins.scss';
 @use './layouts/designs/Palettes.scss';
 @use './layouts/designs/Transition.scss';
-//--|🠊 @use './layouts/designs/Transition.scss'; 🠈|--//
-//--|🠉 Designs 🠉|--//
+
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   /* transition: transform 1s ease-in-out; */
-  div[id*='buttons'],
-  div[id*='landing'],
-  div[id*='overtime'] {
+  div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
     @include Transition.body-transition();
     @include Transition.header-transition();
     @include Transition.footer-transition();
     @include Transition.overlay-transition();
     @include Transition.sidebar-transition();
-
-    &.overtime-body {
-      background: red;
-    }
-  }
-
-  div[id*='ticketing'],
-  div[id*='hyperlink'] {
-    display: none;
-    /*
-    display: grid;
-    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
-    @include Transition.body-transition();
-    @include Transition.header-transition();
-    @include Transition.footer-transition();
-    @include Transition.overlay-transition();
-    @include Transition.sidebar-transition();
-    */
   }
 }

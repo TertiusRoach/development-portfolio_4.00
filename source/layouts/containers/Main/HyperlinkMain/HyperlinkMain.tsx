@@ -1,16 +1,11 @@
-//--|🠊 OvertimeMain.tsx 🠈|--//
+//--|🠊 TicketingMain.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/overtime';
-//--|🠉 Functions 🠉|--//
+import { stripBrackets } from '../../../scripts/hyperlink';
 //--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import TableWeeks from '../../../components/Table/weeks/Table.weeks';
-import ArticleLeave from '../../../components/Article/leave/Article.leave';
-import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
-import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
-//--|🠉 Components 🠉|--//
+import ButtonDefault from '../../../components/Button/default/Button.default';
+
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -21,7 +16,7 @@ interface InfoProps {
 
 const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
 
   useEffect(() => {}, [pageName, blockName]);
 

@@ -1,4 +1,4 @@
-//--|🠊 landing.ts 🠈|--//
+//--|🠊 landing.ts 🠈|--\\
 import axios from 'axios';
 
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()'): string {
@@ -156,7 +156,7 @@ export function axiosError(error: unknown) {
 }
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
-  address: 'http://localhost:3000' | string
+  address: 'http://localhost:3000' | string,
 ) {
   //--|🠊 URL: Uniform Resource Locator 🠈|--//
   //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--//
