@@ -1,13 +1,12 @@
 //--|🠊 OvertimeHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { expandHeader } from './TicketingFunctions';
 import { stripBrackets } from '../../../scripts/ticketing';
+import { expandHeader, loadSoftware } from './TicketingFunctions';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
-
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -15,7 +14,6 @@ interface InfoProps {
     roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
-
 const TicketingHeader: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
@@ -55,6 +53,47 @@ const TicketingHeader: React.FC<InfoProps> = ({ info }) => {
             />
           </menu>
         </nav>
+        <div className={`global-${blockName}`}>
+          <aside className="overtime-software">
+            <figure className="dark" onClick={() => loadSoftware('overtime')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Track a Day</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="ticketing-software">
+            <figure className="dark" onClick={() => loadSoftware('ticketing')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Log a Ticket</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="hyperlink-software">
+            <figure className="dark" onClick={() => loadSoftware('hyperlink')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Find a Link</h1>
+              </span>
+            </figure>
+          </aside>
+        </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

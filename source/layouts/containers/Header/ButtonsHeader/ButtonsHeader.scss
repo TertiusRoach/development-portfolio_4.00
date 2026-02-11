@@ -6,7 +6,7 @@
   //--|🠋 Desktop (Landscape) 🠋|--//
   section[class*='fore'] {
     z-index: 2;
-    div[class*='software'] {
+    div[class*='global'] {
       display: inherit;
       grid-area: 2 / 2 / 5 / 3;
       grid-template: 1fr auto 1fr / auto 1fr auto 1fr auto;

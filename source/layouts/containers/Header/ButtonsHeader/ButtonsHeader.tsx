@@ -106,9 +106,9 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             </li>
           </ol>
         </nav>
-        <div className="buttons-software">
+        <div className={`global-${blockName}`}>
           <aside className="overtime-software">
-            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'overtime')}>
+            <figure className="dark" onClick={() => loadSoftware('overtime')}>
               <span>
                 <img
                   style={{
@@ -121,7 +121,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             </figure>
           </aside>
           <aside className="ticketing-software">
-            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'ticketing')}>
+            <figure className="dark" onClick={() => loadSoftware('ticketing')}>
               <span>
                 <img
                   style={{
@@ -134,7 +134,7 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             </figure>
           </aside>
           <aside className="hyperlink-software">
-            <figure className="dark" onClick={() => loadSoftware(pageName, blockName, 'hyperlink')}>
+            <figure className="dark" onClick={() => loadSoftware('hyperlink')}>
               <span>
                 <img
                   style={{

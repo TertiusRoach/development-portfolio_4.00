@@ -65,7 +65,7 @@ export function expandHeader(pageName: string) {
     buttonsHeader.classList.remove('expanded');
   }
 }
-export function loadSoftware(pageName: string, blockName: string, blockAction: 'overtime' | 'ticketing' | 'hyperlink') {
+export function loadSoftware(blockAction: 'overtime' | 'ticketing' | 'hyperlink') {
   const buttonsBody = document.getElementById('buttons-body') as HTMLDivElement;
   const activateBody = document.getElementById(`${blockAction}-body`) as HTMLDivElement;
 

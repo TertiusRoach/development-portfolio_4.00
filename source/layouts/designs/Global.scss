@@ -1,4 +1,5 @@
 //--|🠊 Global.scss 🠈|--//
+@use './Transition.scss';
 @use '../../utilities/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
 * {
@@ -42,19 +43,17 @@
   }
   body {
     position: relative;
-    > div[id*='buttons'],
-    > div[id*='landing'],
-    > div[id*='overtime'],
-    > div[id*='ticketing'],
-    > div[id*='hyperlink'] {
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-    }
-    ul[class*='carousel'],
-    ol[class*='carousel'] {
-      padding: 0;
-      list-style: none;
+    div[id*='body'] {
+      @include Transition.body-transition();
+      @include Transition.header-transition();
+      @include Transition.footer-transition();
+      @include Transition.overlay-transition();
+      @include Transition.sidebar-transition();
+      ul,
+      ol {
+        padding: 0;
+        list-style: none;
+      }
     }
   }
   time {

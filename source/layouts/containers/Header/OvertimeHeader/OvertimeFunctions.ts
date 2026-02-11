@@ -9,3 +9,15 @@ export function expandHeader(pageName: string) {
     buttonsHeader.classList.remove('expanded');
   }
 }
+export function loadSoftware(blockAction: 'overtime' | 'ticketing' | 'hyperlink') {
+  const overtimeBody = document.getElementById('overtime-body') as HTMLDivElement;
+  const activateBody = document.getElementById(`${blockAction}-body`) as HTMLDivElement;
+
+  if (overtimeBody.classList.contains('active')) {
+    overtimeBody.classList.add('asleep');
+    overtimeBody.classList.remove('active');
+
+    activateBody.classList.add('active');
+    activateBody.classList.remove('asleep');
+  }
+}

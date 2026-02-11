@@ -8,19 +8,12 @@
 
 //--|🠋 Designs 🠋|--//
 @use './layouts/designs/Global.scss';
-@use './layouts/designs/Mixins.scss';
-@use './layouts/designs/Palettes.scss';
-@use './layouts/designs/Transition.scss';
+// @use './layouts/designs/Mixins.scss';
+// @use './layouts/designs/Palettes.scss';
 
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
-  /* transition: transform 1s ease-in-out; */
   div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
-    @include Transition.body-transition();
-    @include Transition.header-transition();
-    @include Transition.footer-transition();
-    @include Transition.overlay-transition();
-    @include Transition.sidebar-transition();
   }
 }
