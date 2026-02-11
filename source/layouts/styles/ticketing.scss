@@ -1,45 +1,90 @@
 //--|🠊 styles/ticketing.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
+/*
+@use '../containers/Main/TicketingMain/TicketingMain.scss';
 @use '../containers/Header/TicketingHeader/TicketingHeader.scss';
-// @use '../containers/Main/TicketingMain/TicketingMain.scss';
-// @use '../containers/Footer/TicketingFooter/TicketingFooter.scss';
-@use '../containers/Overlay/TicketingOverlay/TicketingOverlay.scss';
-// @use '../containers/Leftbar/TicketingLeftbar/TicketingLeftbar.scss';
-// @use '../containers/Rightbar/TicketingRightbar/TicketingRightbar.scss';
-
-//--|🠋 Device Layouts 🠋|--//
+@use '../containers/Footer/TicketingFooter/TicketingFooter.scss';
+*/
 @mixin desktop-landscape {
-  grid-template: 8rem 1fr 4rem / 3rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
   //--|🠋 Desktop (Landscape) 🠋|--\\
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
+  header[id*='ticketing'],
+  footer[id*='ticketing'] {
+    grid-template: //--|🠋 1080px 🠋|--//
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
+    @media screen and (max-height: 768px) {
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
+    }
+    @media screen and (max-height: 480px) {
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
+    }
+    @media screen and (max-height: 360px) {
+      grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
+    }
   }
 }
 @mixin mobile-portrait {
-  //   grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
   //--|🠋 Mobile (Portrait) 🠋|--\\
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
+  header[id*='ticketing'],
+  footer[id*='ticketing'] {
+    grid-template: //--|🠋 1920px 🠋|--//
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
+    @media screen and (max-width: 768px) {
+      grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
+    }
+    @media screen and (max-width: 480px) {
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
+    }
+    @media screen and (max-width: 360px) {
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
+    }
   }
 }
 
-div[id*='ticketing'] {
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  //--|🠋 Mobile (Portrait) 🠋|--//
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
+body {
+  div[id*='ticketing'] {
+    display: grid; //--|🠈 Sets Grid 🠈|--//
+    > * {
+      display: inherit;
+      //--|🠊 Only direct children are affected to preserve layout boundaries. 🠈|--//
+      grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      //--|🠊 All direct children inherit the parent layout mode and are placed into the same grid coordinates (row 1–4, col 1–4). 🠈|--//
+      //--|🠊 This intentionally stacks child elements on top of each other, enabling controlled view switching via state, z-index, or visibility. 🠈|--//
+    }
+    @media screen and (orientation: landscape) {
+      @include desktop-landscape();
+      grid-template: //--|🠋 1080px 🠋|--//
+        8rem 1fr 8rem //--|🠈 rows 🠈|--//
+        / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
 
-  &[id*='ticketing'] {
-    background: lightblue;
+      @media screen and (max-height: 768px) {
+        grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
+      }
+      @media screen and (max-height: 480px) {
+        grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem;
+      }
+      @media screen and (max-height: 360px) {
+        grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
+      }
+    }
+    @media screen and (orientation: portrait) {
+      @include mobile-portrait();
+      grid-template: //--|🠋 1920px 🠋|--//
+        12rem 1fr 12rem //--|🠈 rows 🠈|--//
+        / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
+      @media screen and (max-width: 768px) {
+        grid-template: 10rem 1fr 10rem / 3rem 1fr 3rem;
+      }
+      @media screen and (max-width: 480px) {
+        grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem;
+      }
+      @media screen and (max-width: 360px) {
+        grid-template: 4rem 1fr 4rem / 1.5rem 1fr 1.5rem;
+      }
+    }
   }
 }

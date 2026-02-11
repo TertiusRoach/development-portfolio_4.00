@@ -1,5 +1,4 @@
 //--|🠊 styles/overtime.scss 🠈|--//
-@use '../designs/Palettes.scss';
 //--|🠋 Containers 🠋|--//
 @use '../containers/Main/OvertimeMain/OvertimeMain.scss';
 @use '../containers/Header/OvertimeHeader/OvertimeHeader.scss';
@@ -7,56 +6,84 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\
-  grid-template: //--|🠋 1080px 🠋|--//
-    8rem 1fr 8rem //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+  header[id*='overtime'],
+  footer[id*='overtime'] {
+    grid-template: //--|🠋 1080px 🠋|--//
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
 
-  @media screen and (max-height: 768px) {
-    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
-  }
-  @media screen and (max-height: 480px) {
-    grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem;
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
+    @media screen and (max-height: 768px) {
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
+    }
+    @media screen and (max-height: 480px) {
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
+    }
+    @media screen and (max-height: 360px) {
+      grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
+    }
   }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Portrait) 🠋|--\\
-  grid-template: //--|🠋 1920px 🠋|--//
-    12rem 1fr 12rem //--|🠈 rows 🠈|--//
-    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+  header[id*='overtime'],
+  footer[id*='overtime'] {
+    grid-template: //--|🠋 1920px 🠋|--//
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
 
-  @media screen and (max-width: 768px) {
-    grid-template: 10rem 1fr 10rem / 3rem 1fr 3rem;
-  }
-  @media screen and (max-width: 480px) {
-    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem;
-  }
-  @media screen and (max-width: 360px) {
-    grid-template: 4rem 1fr 4rem / 1.5rem 1fr 1.5rem;
+    @media screen and (max-width: 768px) {
+      grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
+    }
+    @media screen and (max-width: 480px) {
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
+    }
+    @media screen and (max-width: 360px) {
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
+    }
   }
 }
+
 body {
   div[id*='overtime'] {
     display: grid; //--|🠈 Sets Grid 🠈|--//
     > * {
       display: inherit;
-      grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-
-      //--|🠊 All direct children inherit the parent layout mode and are placed 🠈|--//
-      //--|🠊 into the same grid coordinates (row 1–4, col 1–4). 🠈|--//
-      //--|🠊 This intentionally stacks child elements on top of each other, 🠈|--//
-      //--|🠊 enabling controlled view switching via state, z-index, or visibility. 🠈|--//
       //--|🠊 Only direct children are affected to preserve layout boundaries. 🠈|--//
+      grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      //--|🠊 All direct children inherit the parent layout mode and are placed into the same grid coordinates (row 1–4, col 1–4). 🠈|--//
+      //--|🠊 This intentionally stacks child elements on top of each other, enabling controlled view switching via state, z-index, or visibility. 🠈|--//
     }
-    //--|🠋 Desktop (Landscape) 🠋|--//
     @media screen and (orientation: landscape) {
       @include desktop-landscape();
+      grid-template: //--|🠋 1080px 🠋|--//
+        8rem 1fr 8rem //--|🠈 rows 🠈|--//
+        / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+
+      @media screen and (max-height: 768px) {
+        grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
+      }
+      @media screen and (max-height: 480px) {
+        grid-template: 4rem 1fr 4rem / 3rem 1fr 3rem;
+      }
+      @media screen and (max-height: 360px) {
+        grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
+      }
     }
-    //--|🠋 Mobile (Portrait) 🠋|--//
     @media screen and (orientation: portrait) {
       @include mobile-portrait();
+      grid-template: //--|🠋 1920px 🠋|--//
+        12rem 1fr 12rem //--|🠈 rows 🠈|--//
+        / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
+
+      @media screen and (max-width: 768px) {
+        grid-template: 10rem 1fr 10rem / 3rem 1fr 3rem;
+      }
+      @media screen and (max-width: 480px) {
+        grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem;
+      }
+      @media screen and (max-width: 360px) {
+        grid-template: 4rem 1fr 4rem / 1.5rem 1fr 1.5rem;
+      }
     }
   }
 }

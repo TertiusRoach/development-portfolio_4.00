@@ -651,11 +651,10 @@
       }
     }
   }
-
-  @include desktop-default();
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--//
+  /*
   section[class='foreground'] {
     margin: 0 64px;
     @media screen and (max-width: 768px) {
@@ -668,41 +667,7 @@
       margin: 0 24px;
     }
   }
-
-  @include mobile-default();
-}
-
-@mixin desktop-default {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
-  grid-template: //--|🠋 1080px 🠋|--//
-    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-height: 768px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
-  }
-  @media screen and (max-height: 480px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
-  }
-}
-@mixin mobile-default {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
-  grid-template: //--|🠋 1920px 🠋|--//
-    repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
-    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-width: 768px) {
-    grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-width: 480px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
-  }
-  @media screen and (max-width: 360px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
-  }
+  */
 }
 
 main[id*='buttons'] {
