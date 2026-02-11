@@ -26,18 +26,19 @@ function Ticketing() {
     };
   }, []);
 
+  // console.log('adflskjjkldasf');
   return (
     <>
-      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <OvertimeHeader info={{ pageName: '[ticketing]', blockName: '<header>' }} />}
-      </Suspense> */}
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <TicketingHeader info={{ pageName: '[ticketing]', blockName: '<header>' }} />}
+      </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
         {getMain && <TicketingMain info={{ pageName: '[ticketing]', blockName: '<main>' }} />}
       </Suspense>
 
       {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
-        {getFooter && <OvertimeFooter info={{ pageName: '[ticketing]', blockName: '<footer>' }} />}
+        {getFooter && <TicketingFooter info={{ pageName: '[ticketing]', blockName: '<footer>' }} />}
       </Suspense> */}
     </>
   );

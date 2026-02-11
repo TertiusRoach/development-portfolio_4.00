@@ -1,39 +1,26 @@
-//--|🠊 HyperlinkHeader.scss 🠈|--//
+//--|🠊 HyperlinkHeader.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: repeat(2, 4rem) 1fr 4rem / 8rem 1fr 3rem; //--|🠊 rows / columns 🠈|--//
-  nav[class*='preview'] {
-    z-index: 3;
-    grid-area: 1 / 1 / 3 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  background: rgba(Palettes.$findLink-dark, 0.5);
+  /*
+  section[class*='fore'] {
   }
-  div[class*='identity'] {
-    z-index: 2;
-    grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  figure[class*='mid'] {
   }
-  menu[class*='features'] {
-    z-index: 1;
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  div[class*='back'] {
   }
-  section[class*='preview'] {
-    z-index: 0;
-    grid-area: 1 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
+  */
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠋 Mobile (Elements) 🠋|--\\
 }
 
 header[id*='hyperlink'] {
-  display: grid;
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

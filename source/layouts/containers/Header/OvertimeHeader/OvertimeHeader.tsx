@@ -1,18 +1,10 @@
-//--|🠊 OvertimeHeader.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
+//--|🠊 OvertimeHeader.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
-import SectionPreview from '../../../components/Section/preview/Section.preview';
-//--|🠉 Components 🠉|--//
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../../components/Button/default/Button.default';
 
 interface InfoProps {
   info: {
@@ -27,7 +19,9 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    console.log('//--|🠊 Overtime Loaded 🠈|--//');
+  }, [pageName, blockName]);
 
   let svgPath: Array<String> = ['', '', ''];
 

@@ -28,16 +28,16 @@ function Hyperlink() {
 
   return (
     <>
-      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <OvertimeHeader info={{ pageName: '[hyperlink]', blockName: '<header>' }} />}
-      </Suspense> */}
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>' }} />}
+      </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
         {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>' }} />}
       </Suspense>
 
       {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
-        {getFooter && <OvertimeFooter info={{ pageName: '[hyperlink]', blockName: '<footer>' }} />}
+        {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>' }} />}
       </Suspense> */}
     </>
   );
