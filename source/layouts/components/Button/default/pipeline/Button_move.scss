@@ -3,7 +3,7 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-move {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+  //--|🠋 Desktop (Move) 🠋|--\\
   &[class*='default']:hover,
   &[class*='default']:focus-visible {
     @include mon-color();
@@ -12,25 +12,21 @@
   &[class*='disabled']:focus-visible {
     opacity: 0.25;
     filter: blur(8px);
-    // transition: transform filter 250ms;
     @include mon-color();
   }
 }
 @mixin mobile-move {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
-  /*
-  // Mobile = speed
-  .back,
-  .text,
-  .icon,
-  .icon img {
-    transition: none;
+  //--|🠋 Mobile (Move) 🠋|--\\
+  &[class*='default']:hover,
+  &[class*='default']:focus-visible {
+    @include mon-color();
   }
-
-  &:active {
-    filter: brightness(1.05);
+  &[class*='disabled']:hover,
+  &[class*='disabled']:focus-visible {
+    opacity: 0.25;
+    filter: blur(8px);
+    @include mon-color();
   }
-  */
 }
 
 @mixin mon-color {

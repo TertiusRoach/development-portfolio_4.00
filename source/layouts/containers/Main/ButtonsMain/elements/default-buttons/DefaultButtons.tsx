@@ -44,10 +44,7 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {
-    //--|🠊 Add Screen Size Detection 🠈|--\\
-    defaultPreview(pageName, blockName, 'h3-size');
-  }, [pageName, blockName, [info]]);
+  useEffect(() => {}, [pageName, blockName]);
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
@@ -2310,5 +2307,4 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
     </>
   );
 };
-
 export default DefaultButtons;

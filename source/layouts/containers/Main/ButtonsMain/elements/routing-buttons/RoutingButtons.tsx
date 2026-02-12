@@ -26,6 +26,8 @@ const RoutingButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
 
+  useEffect(() => {}, [pageName, blockName]);
+
   const handleButtons = (
     pageName: string,
     pagePreview: 'default-buttons' | 'routing-buttons',

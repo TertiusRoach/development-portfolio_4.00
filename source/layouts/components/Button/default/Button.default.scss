@@ -9,26 +9,13 @@
 button[class*='default'],
 button[class*='disabled'] {
   display: grid;
-  /*
-  This fades the edges: Use for <CleanedButton> or <StretchedButton>
-  mask-repeat: no-repeat;
-  mask-composite: intersect;
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
-  mask-image:
-    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: source-in;
-  */
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
-  // Top and Bottom, if there's a space in the text, make it two lines and the back a square.
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+
   @media screen and (orientation: landscape) {
+    //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
     @include Button_size.desktop-size();
     @include Button_grid.desktop-grid();
     @include Button_flex.desktop-flex();
@@ -36,8 +23,8 @@ button[class*='disabled'] {
     @include Button_move.desktop-move();
     @include Button_corn.desktop-corn();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    //--|🠋 <DefaultButton> for [MobilePortrait] 🠈|--\\
     @include Button_size.mobile-size();
     @include Button_grid.mobile-grid();
     @include Button_flex.mobile-flex();
@@ -65,6 +52,11 @@ button[class*='disabled'] {
     .icon {
       img {
         cursor: pointer;
+      }
+    }
+    .back {
+      canvas {
+        display: none;
       }
     }
   }

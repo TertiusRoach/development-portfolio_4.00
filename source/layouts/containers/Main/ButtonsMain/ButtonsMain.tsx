@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import DefaultButtons from './elements/default-buttons/DefaultButtons';
 import RoutingButtons from './elements/routing-buttons/RoutingButtons';
 //--|🠋 Functions 🠋|--\\
+import { defaultPreview } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
 //
 
@@ -31,6 +32,12 @@ type HandleButtons = (
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
+
+  useEffect(() => {
+    //--|🠊 Add Screen Size Detection 🠈|--\\
+    defaultPreview(pageName, blockName, 'h1-size');
+  }, [pageName, blockName]);
+
   return (
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
       <div className="carousel-container">
@@ -46,12 +53,4 @@ const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
     </main>
   );
 };
-function exportElements(info: InfoProps['info'], listName: 'default-buttons' | 'routing-buttons') {
-  switch (listName) {
-    case 'default-buttons':
-      return <DefaultButtons info={info} />;
-    case 'routing-buttons':
-      return <RoutingButtons info={info} />;
-  }
-}
 export default ButtonsMain;
