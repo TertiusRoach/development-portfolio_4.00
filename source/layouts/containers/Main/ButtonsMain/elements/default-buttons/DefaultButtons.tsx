@@ -26,6 +26,7 @@ interface InfoProps {
 const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
+  const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   const handleButtons = (
     pageName: string,
@@ -45,7 +46,16 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🠋 1. Define the media query for landscape 🠈|--\\
+    const mediaQuery = window.matchMedia('(orientation: landscape)');
+    const handleOrientationChange = () => {
+      //--|🠋 2. Create the handler function 🠈|--\\
+      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
+    };
+    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
+    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
+  }, [pageName, blockName]);
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',

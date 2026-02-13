@@ -1,14 +1,15 @@
 //--|🠊 RoutingButtons.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../scripts/buttons';
 import {
   defaultPreview,
   controlPreview,
-  toggleAside,
   togglePreview,
   unfoldHeader,
+  toggleAside,
   scrollMouse,
+  viewDisplay,
 } from '../../ButtonsFunctions';
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
@@ -25,8 +26,7 @@ interface InfoProps {
 const RoutingButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
-
-  useEffect(() => {}, [pageName, blockName]);
+  const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   const handleButtons = (
     pageName: string,
@@ -49,7 +49,16 @@ const RoutingButtons: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {
     //--|🠊 Add Screen Size Detection 🠈|--\\
     defaultPreview(pageName, blockName, 'h3-size');
-  }, [pageName, blockName, [info]]);
+
+    //--|🠋 1. Define the media query for landscape 🠈|--\\
+    const mediaQuery = window.matchMedia('(orientation: landscape)');
+    const handleOrientationChange = () => {
+      //--|🠋 2. Create the handler function 🠈|--\\
+      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
+    };
+    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
+    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
+  }, [pageName, blockName]);
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
@@ -70,10 +79,10 @@ const RoutingButtons: React.FC<InfoProps> = ({ info }) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              view: 'top-lef',
               shade: '~light~',
               color: '(mono)',
               type: '{button}',
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
               image: `${svgPath[1]}/my-signature/signature-icon/primary-dark.svg`,
             }}
             info={{
@@ -378,12 +387,14 @@ const RoutingButtons: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className="routing-midground"></figure>
       <div className="routing-background">
+        <header></header>
         <aside className="dark-silhouette hidden">
           <span></span>
         </aside>
         <aside className="light-silhouette hidden">
           <span></span>
         </aside>
+        <footer></footer>
       </div>
     </>
   );

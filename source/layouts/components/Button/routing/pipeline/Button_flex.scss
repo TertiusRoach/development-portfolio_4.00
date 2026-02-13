@@ -1,6 +1,6 @@
 //--|🠊 routing/pipeline/Button_flex.scss 🠈|--\\
 @mixin desktop-flex {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+  //--|🠋 Desktop (Flex) 🠋|--\\
   .fore {
     span {
       mask-size: contain;
@@ -10,5 +10,12 @@
   }
 }
 @mixin mobile-flex {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
+  //--|🠋 Mobile (Flex) 🠋|--\\
+  .fore {
+    span {
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
 }

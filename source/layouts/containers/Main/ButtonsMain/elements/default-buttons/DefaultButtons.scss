@@ -393,6 +393,10 @@
     }
     div[class*='back'] {
       z-index: 0;
+      header {
+        grid-area: 1 / 1 / 2 / 6;
+        background: rgba(Palettes.$indexLand-dark, 0.75);
+      }
       aside[class*='grade'] {
         display: grid;
         transition: grid-template-rows 1s ease-in-out;
@@ -468,6 +472,10 @@
             }
           }
         }
+      }
+      footer {
+        grid-area: 7 / 1 / 8 / 6;
+        background: rgba(Palettes.$indexLand-dark, 0.75);
       }
     }
   }
