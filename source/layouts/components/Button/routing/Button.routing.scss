@@ -15,31 +15,26 @@ button[class*='counter'] {
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
+  // @extend %button-test;
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
-    @include Button_size.desktop-size();
     @include Button_corn.desktop-corn();
-    @include Button_tint.desktop-tint();
-    @include Button_grid.desktop-grid();
     @include Button_flex.desktop-flex();
-    /*
+    @include Button_grid.desktop-grid();
     @include Button_move.desktop-move();
-    */
+    @include Button_size.desktop-size();
+    @include Button_tint.desktop-tint();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
-    /*
-    @include Button_size.mobile-size();
-    @include Button_grid.mobile-grid();
-    @include Button_flex.mobile-flex();
-    @include Button_tint.mobile-tint();
-    @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
-    */
+    @include Button_flex.mobile-flex();
+    @include Button_grid.mobile-grid();
+    @include Button_move.mobile-move();
+    @include Button_size.mobile-size();
+    @include Button_tint.mobile-tint();
   }
-
-  // @extend %button-test;
 }
 %button-grid {
   display: grid;

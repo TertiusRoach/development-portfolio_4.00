@@ -19,7 +19,7 @@ export function createClass(style: StyleProps): String {
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
   // console.log(`${classType}-button ${classLayout}_${classColor}_${classVars}`);
-  return `${classType}-button ${classLayout}_${classColor}_${classVars}`;
+  return `${classLayout}_${classColor}_${classVars}`;
 }
 export default createClass;
 

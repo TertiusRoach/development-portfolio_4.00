@@ -1,9 +1,9 @@
-//--|🠊 ButtonsHeader.tsx 🠈|--//
-import React, { useEffect } from 'react';
-//--|🠋 Functions 🠋|--//
-import { togglePreview, expandHeader, loadSoftware } from './ButtonsFunctions';
+//--|🠊 ButtonsHeader.tsx 🠈|--\\
+import React, { useEffect, useState } from 'react';
+//--|🠋 Functions 🠋|--\\
+import { togglePreview, expandHeader, loadSoftware, viewDisplay } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
-//--|🠋 Components 🠋|--//
+//--|🠋 Components 🠋|--\\
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonDefault from '../../../components/Button/default/Button.default';
 interface InfoProps {
@@ -17,8 +17,18 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🠋 1. Define the media query for landscape 🠈|--\\
+    const mediaQuery = window.matchMedia('(orientation: landscape)');
+    const handleOrientationChange = () => {
+      //--|🠋 2. Create the handler function 🠈|--\\
+      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
+    };
+    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
+    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
+  }, [pageName, blockName]);
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b0979a4b3451384187fbb5eff59e42c84b0bdbbf/source/assets/svg-files/archive-images',
@@ -34,11 +44,10 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
             <ButtonRouting
               style={{
                 size: '<h1>',
-                view: 'top-lef',
                 shade: '~dark~',
                 color: '(mono)',
-
                 type: '{button}',
+                view: viewDisplay() as 'top-lef' | 'bot-rig',
                 image: `${svgPath[2]}/trinity-apps/tralogfin/logo-white.svg`,
               }}
               info={{

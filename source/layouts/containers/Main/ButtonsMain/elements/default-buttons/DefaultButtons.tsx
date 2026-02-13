@@ -1,14 +1,15 @@
 //--|🠊 DefaultButtons.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../scripts/buttons';
 import {
   defaultPreview,
   controlPreview,
-  toggleAside,
   togglePreview,
   unfoldHeader,
+  toggleAside,
   scrollMouse,
+  viewDisplay,
 } from '../../ButtonsFunctions';
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
@@ -65,10 +66,10 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              view: 'top-lef',
               shade: '~dark~',
               color: '(mono)',
               type: '{button}',
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
               image: `${svgPath[1]}/my-signature/signature-icon/primary-dark.svg`,
             }}
             info={{

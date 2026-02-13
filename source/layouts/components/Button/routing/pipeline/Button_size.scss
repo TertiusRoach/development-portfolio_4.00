@@ -2,7 +2,7 @@
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 @mixin desktop-size {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+  //--|🠋 Desktop (Size) 🠋|--\\
   &[class*='one_'] {
     width: 128px;
     height: 128px;
@@ -47,5 +47,45 @@
   }
 }
 @mixin mobile-size {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='one_'] {
+    width: 192px;
+    height: 192px;
+    .fore {
+      span {
+        width: 144px;
+        height: 144px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 160px;
+      height: 160px;
+      .fore {
+        span {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px;
+      height: 96px;
+      .fore {
+        span {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px;
+      height: 64px;
+      .fore {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
 }

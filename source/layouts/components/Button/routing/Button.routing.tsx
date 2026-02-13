@@ -74,7 +74,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       id={info.labelName || undefined}
-      className={`${createClass(style as TheseProps['style'])}`}
+      className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >
       <div className="fore">
         <span

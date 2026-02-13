@@ -76,49 +76,17 @@
     grid-template: //--|🠋 1080px 🠋|--\\
       repeat(2, 6rem) repeat(3, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
       / 64px 1fr 64px; //--|🠈 columns 🠈|--//
-    aside {
-      &[id*='side'] {
-        padding: 0 64px;
-      }
-      &[class*='code'] {
-        padding: 0 64px;
-      }
-    }
     @media screen and (max-width: 768px) {
       //--|🠋 48px (Left & Right) for Design 🠋|--\\
       grid-template: repeat(2, 5rem) repeat(3, 1fr) repeat(2, 5rem) / 48px 1fr 48px; //--|🠈 row / col 🠈|--\\
-      aside {
-        &[id*='side'] {
-          padding: 0 48px;
-        }
-        &[class*='code'] {
-          padding: 0 48px;
-        }
-      }
     }
     @media screen and (max-width: 480px) {
       //--|🠋 32px (Left & Right) for Design 🠋|--\\
       grid-template: repeat(2, 3rem) repeat(3, 1fr) repeat(2, 3rem) / 32px 1fr 32px; //--|🠈 row / col 🠈|--\\
-      aside {
-        &[id*='side'] {
-          padding: 0 32px;
-        }
-        &[class*='code'] {
-          padding: 0 32px;
-        }
-      }
     }
     @media screen and (max-width: 360px) {
       //--|🠋 24px (Left & Right) for Design 🠋|--\\
       grid-template: repeat(2, 2rem) repeat(3, 1fr) repeat(2, 2rem) / 24px 1fr 24px; //--|🠈 row / col 🠈|--\\
-      aside {
-        &[id*='side'] {
-          padding: 0 24px;
-        }
-        &[class*='code'] {
-          padding: 0 24px;
-        }
-      }
     }
   }
 }
@@ -132,7 +100,7 @@ main[id*='buttons'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
     @include default.mobile-portrait;
-    // @include routing.mobile-landscape;
+    @include routing.mobile-portrait;
   }
 }
 %carousel-containers {

@@ -56,6 +56,11 @@ button[class*='default'] {
         cursor: pointer;
       }
     }
+    .back {
+      canvas {
+        display: none;
+      }
+    }
     &:disabled {
       img,
       h1,
@@ -66,34 +71,6 @@ button[class*='default'] {
       h6,
       p {
         cursor: default;
-      }
-    }
-
-    /*
-    &:disabled {
-      .icon,
-      .text {
-        img {
-          // color: red !important;
-          cursor: default !important;
-        }
-      }
-    }
-
-    .text {
-      * {
-        cursor: pointer;
-      }
-    }
-    .icon {
-      img {
-        cursor: pointer;
-      }
-    }
-    */
-    .back {
-      canvas {
-        display: none;
       }
     }
   }
@@ -210,20 +187,22 @@ button[class*='default'] {
 %button-move {
 }
 %button-test {
-  // .text {
-  //   // background: rgba(darkred, 0.25);
-  //   * {
-  //     // color: maroon;
-  //   }
-  // }
-  // .icon {
-  //   // background: rgba(darkred, 0.25);
-  //   img {
-  //     // background: black;
-  //   }
-  // }
-  // .back {
-  //   // background: rgba(darkblue, 0.25);
-  // }
-  // // background: rgba(pink, 0.5);
+  /*
+  .text {
+    background: rgba(darkred, 0.25);
+    * {
+      color: maroon;
+    }
+  }
+  .icon {
+    background: rgba(darkred, 0.25);
+    img {
+      background: black;
+    }
+  }
+  .back {
+    background: rgba(darkblue, 0.25);
+  }
+  background: rgba(pink, 0.5);
+  */
 }

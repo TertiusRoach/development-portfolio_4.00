@@ -3,14 +3,17 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   li[class='routing-buttons'] {
-    // background: rgba(darkblue, 0.5);
     section[class*='fore'] {
       z-index: 2;
-      // z-index: -1;
       //--|🠊 display: grid; 🠈|--\\
-
       aside[class*='container'] {
         z-index: 0;
+        &[id*='darkside'] {
+          grid-area: 1 / 2 / 6 / 3;
+        }
+        &[id*='lightside'] {
+          grid-area: 1 / 4 / 6 / 5;
+        }
         div[class*='size'] {
           gap: 16px;
           display: grid;
@@ -56,12 +59,6 @@
           button[class*='_br_'] {
             grid-area: 4 / 4 / 5 / 5;
           }
-        }
-        &[id*='darkside'] {
-          grid-area: 1 / 2 / 6 / 3;
-        }
-        &[id*='lightside'] {
-          grid-area: 1 / 4 / 6 / 5;
         }
       }
       header,
@@ -302,11 +299,10 @@
         }
       }
     }
-
+    //--|🠋 Layer Perimeters 🠋|--\\
     section[class*='foreground'],
     figure[class*='midground'],
     div[class*='background'] {
-      //--|🠋 Layer Perimeters 🠋|--\\
       width: 100%;
       display: grid;
       overflow: hidden;
@@ -364,4 +360,178 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
+  li[class='routing-buttons'] {
+    section[class*='fore'] {
+      z-index: 2;
+      aside[class*='container'] {
+        z-index: 0;
+        &[id*='darkside'] {
+          // background: rgba(darkred, 0.75);
+          grid-area: 3 / 3 / 4 / 4;
+        }
+        &[id*='lightside'] {
+          // background: rgba(darkblue, 0.75);
+          grid-area: 5 / 3 / 6 / 4;
+        }
+        div[class*='size'] {
+          display: grid;
+          height: inherit;
+
+          gap: 16px;
+          grid-template: 1fr repeat(3, 192px) 1fr / 1fr repeat(3, 192px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          @media screen and (max-width: 768px) {
+            gap: 8px;
+            grid-template: 1fr repeat(3, 160px) 1fr / 1fr repeat(3, 160px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+          @media screen and (max-width: 480px) {
+            gap: 4px;
+            grid-template: 1fr repeat(3, 96px) 1fr / 1fr repeat(3, 96px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+          @media screen and (max-width: 360px) {
+            gap: 2px;
+            grid-template: 1fr repeat(3, 64px) 1fr / 1fr repeat(3, 64px) 1fr; //--|🠈 rows / cols 🠈|--\\
+          }
+
+          button[class*='_tl_'] {
+            grid-area: 2 / 2 / 3 / 3;
+          }
+          button[class*='_tc_'] {
+            grid-area: 2 / 3 / 3 / 4;
+          }
+          button[class*='_tr_'] {
+            grid-area: 2 / 4 / 3 / 5;
+          }
+          button[class*='_ml_'] {
+            grid-area: 3 / 2 / 4 / 3;
+          }
+          button[class*='_mc_'] {
+            grid-area: 3 / 3 / 4 / 4;
+          }
+          button[class*='_mr_'] {
+            grid-area: 3 / 4 / 4 / 5;
+          }
+          button[class*='_bl_'] {
+            grid-area: 4 / 2 / 5 / 3;
+          }
+          button[class*='_bc_'] {
+            grid-area: 4 / 3 / 5 / 4;
+          }
+          button[class*='_br_'] {
+            grid-area: 4 / 4 / 5 / 5;
+          }
+        }
+      }
+      header,
+      footer {
+        display: none;
+      }
+      div[class*='hitbox'] {
+        display: none;
+      }
+    }
+    figure[class*='mid'] {
+      z-index: 1;
+      display: none;
+    }
+    div[class*='back'] {
+      z-index: 0;
+      display: grid;
+
+      //--|🠊 display: grid; 🠈|--\\
+      aside[class*='silhouette'] {
+        display: flex;
+
+        &[class*='dark'] {
+          grid-area: 3 / 3 / 4 / 4;
+          span {
+            background: rgba(Palettes.$indexLand-dark, 0.75);
+            filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-light, 0.75));
+          }
+        }
+        &[class*='light'] {
+          grid-area: 5 / 3 / 6 / 4;
+          span {
+            background: rgba(Palettes.$indexLand-light, 0.75);
+            filter: drop-shadow(0 0 16px rgba(Palettes.$indexLand-dark, 0.75));
+          }
+        }
+        span {
+          width: 100%;
+          border-radius: 16px;
+          @media screen and (max-width: 768px) {
+            border-radius: 8px;
+          }
+          @media screen and (max-width: 480px) {
+            border-radius: 4px;
+          }
+          @media screen and (max-width: 360px) {
+            border-radius: 2px;
+          }
+        }
+
+        /*
+        display: grid;
+        grid-template-rows: 1fr 448px 1fr; //--|🠈 rows 🠈|--\\
+        grid-template-columns: 1fr 448px 1fr; //--|🠈 cols 🠈|--\\
+        transition: grid-template-columns 1s ease-in-out;
+        span {
+          border-radius: 16px;
+        }
+        @media screen and (max-height: 768px) {
+          span {
+            border-radius: 8px;
+          }
+          grid-template-rows: 1fr 320px 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-columns: 1fr 320px 1fr; //--|🠈 cols 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          span {
+            border-radius: 4px;
+          }
+          grid-template-rows: 1fr 208px 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-columns: 1fr 208px 1fr; //--|🠈 cols 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          span {
+            border-radius: 2px;
+          }
+          grid-template-rows: 1fr 152px 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-columns: 1fr 152px 1fr; //--|🠈 cols 🠈|--\\
+        }
+        */
+      }
+    }
+
+    //--|🠋 Layer Perimeters 🠋|--\\
+    section[class*='foreground'],
+    figure[class*='midground'],
+    div[class*='background'] {
+      width: 100%;
+      display: grid;
+      overflow: hidden;
+
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 1080px 🠋|--\\
+        repeat(2, 6rem) 640px 1fr 640px repeat(2, 6rem) //--|🠈 rows 🠈|--//
+        / 64px 1fr 640px 1fr 64px; //--|🠈 columns 🠈|--//
+      @media screen and (max-width: 768px) {
+        //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 768px 🠋|--\\
+          repeat(2, 5rem) 512px 1fr 512px repeat(2, 5rem) //--|🠈 rows 🠈|--//
+          / 48px 1fr 512px 1fr 48px; //--|🠈 columns 🠈|--//
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 480px 🠋|--\\
+          repeat(2, 3rem) 304px 1fr 304px repeat(2, 3rem) //--|🠈 rows 🠈|--//
+          / 32px 1fr 304px 1fr 32px; //--|🠈 columns 🠈|--//
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 24px (Left & Right) for Design 🠋|--\\
+        grid-template:  //--|🠋 360px 🠋|--\\
+          repeat(2, 2rem) 200px 1fr 200px repeat(2, 2rem) //--|🠈 rows 🠈|--//
+          / 24px 1fr 200px 1fr 24px; //--|🠈 columns 🠈|--//
+      }
+    }
+  }
 }

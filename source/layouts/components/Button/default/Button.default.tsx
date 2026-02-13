@@ -255,15 +255,6 @@ const ButtonDefault: React.FC<TheseProps> = ({
 
   useEffect(() => {}, [pageName, blockName]);
 
-  /*
-  let isDisabled: boolean;
-  if (style.type === '{disabled}') {
-    isDisabled = true;
-  } else {
-    isDisabled = false;
-  }
-  console.log(isDisabled);
-  */
   return (
     <button
       onClick={onClick}
