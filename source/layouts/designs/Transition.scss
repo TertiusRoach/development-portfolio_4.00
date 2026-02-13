@@ -61,7 +61,7 @@
   }
   %header-transition {
     transition:
-      clip-path 250ms ease-in-out,
+      clip-path 500ms ease-in-out,
       backdrop-filter 1.5s ease-in-out;
 
     section[class='header-foreground'],
@@ -105,6 +105,7 @@
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
     @media screen and (orientation: landscape) {
       &[class*='expanded'] {
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
         section[class='header-foreground'] {
           nav {
             grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
@@ -140,9 +141,9 @@
           }
           //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--//
         }
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
       }
       &[class*='unfolded'] {
+        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
         section[class='header-foreground'] {
           nav {
             menu {
@@ -172,7 +173,6 @@
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
         @media screen and (max-height: 768px) {
           clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
         }
@@ -184,6 +184,7 @@
         }
       }
       &[class*='collapsed'] {
+        clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0);
         section[class='header-foreground'] {
           nav {
             menu {
@@ -219,11 +220,11 @@
           }
           //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--//
         }
-        clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0);
       }
     }
     @media screen and (orientation: portrait) {
       &[class*='expanded'] {
+        clip-path: inset(0 0 0 0);
         section[class='header-foreground'] {
           nav {
             grid-template-rows: repeat(2, 96px); //--|🠈 rows 🠈|--\\
@@ -259,7 +260,6 @@
           }
           //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--//
         }
-        clip-path: inset(0 0 0 0);
       }
       &[class*='unfolded'] {
         section[class='header-foreground'] {
@@ -303,19 +303,20 @@
         }
       }
       &[class*='collapsed'] {
+        clip-path: inset(100% 0 0 0);
         section[class='header-foreground'] {
           nav {
             grid-template-rows: repeat(2, 96px); //--|🠈 rows 🠈|--\\
             menu {
               button:not(:first-child) {
-                top: -192px;
+                bottom: -192px;
               }
             }
             @media screen and (max-width: 768px) {
               grid-template-rows: repeat(2, 80px); //--|🠈 rows 🠈|--\\
               menu {
                 button:not(:first-child) {
-                  top: -160px;
+                  bottom: -160px;
                 }
               }
             }
@@ -323,7 +324,7 @@
               grid-template-rows: repeat(2, 48px); //--|🠈 rows 🠈|--\\
               menu {
                 button:not(:first-child) {
-                  top: -96px;
+                  bottom: -96px;
                 }
               }
             }
@@ -331,14 +332,13 @@
               grid-template-rows: repeat(2, 32px); //--|🠈 rows 🠈|--\\
               menu {
                 button:not(:first-child) {
-                  top: -64px;
+                  bottom: -64px;
                 }
               }
             }
           }
           //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--//
         }
-        clip-path: inset(100% 0 0 0);
       }
     }
   }
