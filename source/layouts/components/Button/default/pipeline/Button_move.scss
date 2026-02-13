@@ -4,28 +4,16 @@
 
 @mixin desktop-move {
   //--|🠋 Desktop (Move) 🠋|--\\
-  &[class*='default']:hover,
-  &[class*='default']:focus-visible {
+  &[class*='default']:hover {
     @include mon-color();
-  }
-  &[class*='disabled']:hover,
-  &[class*='disabled']:focus-visible {
-    opacity: 0.25;
-    filter: blur(8px);
-    @include mon-color();
+    //--|🠊 &[class*='default']:focus-visible 🠈|--\\
   }
 }
 @mixin mobile-move {
   //--|🠋 Mobile (Move) 🠋|--\\
-  &[class*='default']:hover,
-  &[class*='default']:focus-visible {
+  &[class*='default']:hover {
     @include mon-color();
-  }
-  &[class*='disabled']:hover,
-  &[class*='disabled']:focus-visible {
-    opacity: 0.25;
-    filter: blur(8px);
-    @include mon-color();
+    //--|🠊 &[class*='default']:focus-visible 🠈|--\\
   }
 }
 

@@ -6,8 +6,7 @@
 @use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
 
-button[class*='default'],
-button[class*='disabled'] {
+button[class*='default'] {
   display: grid;
   @extend %button-grid;
   @extend %button-flex;
@@ -44,6 +43,43 @@ button[class*='disabled'] {
   &[class*='_cen_'],
   &[class*='_tex_'],
   &[class*='_ico_'] {
+    .text,
+    .icon {
+      img,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        cursor: pointer;
+      }
+    }
+    &:disabled {
+      img,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        cursor: default;
+      }
+    }
+
+    /*
+    &:disabled {
+      .icon,
+      .text {
+        img {
+          // color: red !important;
+          cursor: default !important;
+        }
+      }
+    }
+
     .text {
       * {
         cursor: pointer;
@@ -54,6 +90,7 @@ button[class*='disabled'] {
         cursor: pointer;
       }
     }
+    */
     .back {
       canvas {
         display: none;

@@ -15,14 +15,13 @@ interface StyleProps {
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <DefaultButton> 🠈|--\\
-  let classType = createType(style.type);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
 
   if (style.image == null) {
-    return `${classType} ${classLayout}_${classColor}_alt`;
+    return `${classLayout}_${classColor}_alt`;
   } else {
-    return `${classType} ${classLayout}_${classColor}_def`;
+    return `${classLayout}_${classColor}_def`;
   }
 }
 export default createClass;
@@ -93,13 +92,4 @@ export function createColor(
   }
 
   return `${classShade}_${classColor}`;
-}
-export function createType(type: '{button}' | '{submit}' | '{reset}' | '{disabled}'): String {
-  switch (type) {
-    case '{button}':
-    default:
-      return 'default-button';
-    case '{disabled}':
-      return 'disabled-button';
-  }
 }

@@ -9,49 +9,28 @@ export function togglePreview(pageName: string, blockName: string, pageAction: '
   const carousel = document.querySelector(`#${pageName}-main ul[class*="preview"]`) as HTMLElement;
   const preview = document.querySelector(`#${pageName}-header ol[class*="preview"]`) as HTMLElement;
 
-  const defaultButton = document.getElementById(`buttons_header_default-preview`) as HTMLElement;
-  const routingButton = document.getElementById(`buttons_header_routing-preview`) as HTMLElement;
+  const defaultButton = document.getElementById(`buttons_header_default-preview`) as HTMLButtonElement;
+  const routingButton = document.getElementById(`buttons_header_routing-preview`) as HTMLButtonElement;
   switch (pageAction) {
     case 'default-buttons':
-      if (defaultButton.classList[0].includes('default') === false) {
-        carousel.classList.add('slide-def');
-        carousel.classList.remove('slide-rou');
+      carousel.classList.add('slide-def');
+      carousel.classList.remove('slide-rou');
 
-        preview.classList.add('slide-def');
-        preview.classList.remove('slide-rou');
+      preview.classList.add('slide-def');
+      preview.classList.remove('slide-rou');
 
-        routingButton.classList.add('default-button');
-        routingButton.classList.remove('disabled-button');
-
-        defaultButton.classList.add('disabled-button');
-        defaultButton.classList.remove('default-button');
-      }
+      routingButton.setAttribute('aria-disabled', 'false');
+      defaultButton.setAttribute('aria-disabled', 'true');
       break;
     case 'routing-buttons':
-      if (defaultButton.classList[0].includes('default') === false) {
-        carousel.classList.add('slide-rou');
-        carousel.classList.remove('slide-def');
+      carousel.classList.add('slide-rou');
+      carousel.classList.remove('slide-def');
 
-        preview.classList.add('slide-rou');
-        preview.classList.remove('slide-def');
+      preview.classList.add('slide-rou');
+      preview.classList.remove('slide-def');
 
-        routingButton.classList.add('disabled-button');
-        routingButton.classList.remove('default-button');
-
-        defaultButton.classList.add('default-button');
-        defaultButton.classList.remove('disabled-button');
-      }
-
-      /*
-
-      goLeft.classList.add('default-button');
-      goLeft.classList.remove('disabled-button');
-
-      goRight.classList.add('disabled-button');
-      goRight.classList.remove('default-button');
-
-      */
-
+      routingButton.setAttribute('aria-disabled', 'true');
+      defaultButton.setAttribute('aria-disabled', 'false');
       break;
   }
 }
