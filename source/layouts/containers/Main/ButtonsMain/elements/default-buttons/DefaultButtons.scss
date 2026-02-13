@@ -309,11 +309,32 @@
       aside[class*='container'] {
         z-index: 1;
         overflow: hidden;
+
         &[id*='darkside'] {
-          grid-area: 2 / 1 / 4 / 4;
+          grid-area: 1 / 1 / 4 / 4;
+          padding: 96px 64px 0 64px;
+          @media screen and (max-width: 768px) {
+            padding: 80px 48px 0 48px;
+          }
+          @media screen and (max-width: 480px) {
+            padding: 48px 32px 0 32px;
+          }
+          @media screen and (max-width: 360px) {
+            padding: 32px 24px 0 24px;
+          }
         }
         &[id*='lightside'] {
           grid-area: 5 / 1 / 7 / 4;
+          padding: 0 64px 96px 64px;
+          @media screen and (max-width: 768px) {
+            padding: 0 48px 80px 48px;
+          }
+          @media screen and (max-width: 480px) {
+            padding: 0 32px 48px 32px;
+          }
+          @media screen and (max-width: 360px) {
+            padding: 0 24px 32px 24px;
+          }
         }
         div[class*='size'] {
           display: grid;
