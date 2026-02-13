@@ -8,14 +8,13 @@
 
 button[class*='default'] {
   display: grid;
-
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
-  // Top and Bottom, if there's a space in the text, make it two lines and the back a square.
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+
   @media screen and (orientation: landscape) {
+    //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
     @include Button_size.desktop-size();
     @include Button_grid.desktop-grid();
     @include Button_flex.desktop-flex();
@@ -23,8 +22,8 @@ button[class*='default'] {
     @include Button_move.desktop-move();
     @include Button_corn.desktop-corn();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
+    //--|🠋 <DefaultButton> for [MobilePortrait] 🠈|--\\
     @include Button_size.mobile-size();
     @include Button_grid.mobile-grid();
     @include Button_flex.mobile-flex();
@@ -36,6 +35,7 @@ button[class*='default'] {
   @extend %button-test;
 }
 %button-user {
+  background: none;
   &[class*='_top_'],
   &[class*='_bot_'],
   &[class*='_lef_'],
@@ -43,14 +43,34 @@ button[class*='default'] {
   &[class*='_cen_'],
   &[class*='_tex_'],
   &[class*='_ico_'] {
-    .text {
-      * {
+    .text,
+    .icon {
+      img,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
         cursor: pointer;
       }
     }
-    .icon {
-      img {
-        cursor: pointer;
+    .back {
+      canvas {
+        display: none;
+      }
+    }
+    &:disabled {
+      img,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        cursor: default;
       }
     }
   }
@@ -166,22 +186,23 @@ button[class*='default'] {
 }
 %button-move {
 }
-
 %button-test {
-  // .text {
-  //   // background: rgba(darkred, 0.25);
-  //   * {
-  //     // color: maroon;
-  //   }
-  // }
-  // .icon {
-  //   // background: rgba(darkred, 0.25);
-  //   img {
-  //     // background: black;
-  //   }
-  // }
-  // .back {
-  //   // background: rgba(darkblue, 0.25);
-  // }
-  // // background: rgba(pink, 0.5);
+  /*
+  .text {
+    background: rgba(darkred, 0.25);
+    * {
+      color: maroon;
+    }
+  }
+  .icon {
+    background: rgba(darkred, 0.25);
+    img {
+      background: black;
+    }
+  }
+  .back {
+    background: rgba(darkblue, 0.25);
+  }
+  background: rgba(pink, 0.5);
+  */
 }

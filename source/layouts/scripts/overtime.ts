@@ -1,4 +1,4 @@
-//--|🠊 overtime.ts 🠈|--//
+//--|🠊 overtime.ts 🠈|--\\
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()'): string {
   switch (wrapType) {
     case '[]': //--|🠊 pageName 🠈|--//

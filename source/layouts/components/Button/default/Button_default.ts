@@ -4,7 +4,7 @@ import { stripBrackets } from '../../../scripts/buttons';
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
-  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+  type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
@@ -12,18 +12,22 @@ interface StyleProps {
   image?: string | null | undefined;
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
-
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
-  //--|🠊 Class Build 🠈|--\\
+  //--|🠊 Class Build for <DefaultButton> 🠈|--\\
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
+
   if (style.image == null) {
     return `${classLayout}_${classColor}_alt`;
   } else {
     return `${classLayout}_${classColor}_def`;
   }
 }
+export default createClass;
+
+//--|🠋 Scoped Functions 🠋|--\\
+
 export function createLayout(
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',

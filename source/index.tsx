@@ -18,22 +18,11 @@ const pages: { [key: string]: React.ElementType } = {
   'ticketing-body': Ticketing,
   'hyperlink-body': Hyperlink,
 };
+
 //--|🠋 Render Components 🠋|--\\
 Object.entries(pages).forEach(([id]) => {
   const elementBody = document.getElementById(id) as HTMLElement;
   const pageName = elementBody.id.split('-')[0] as 'landing' | 'buttons' | 'overtime' | 'ticketing' | 'hyperlink';
-  const safeRender = (identification: string, container: React.ReactElement) => {
-    let elementBody = document.getElementById(identification) as HTMLElement;
-    if (!elementBody) {
-      console.error(`Can't find #${identification}`);
-      return;
-    }
-    if (elementBody.innerHTML === '') {
-      ReactDOM.createRoot(elementBody).render(<React.StrictMode>{container}</React.StrictMode>);
-    } else {
-      console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
-    }
-  };
   const setView = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') => {
     let element = document.querySelector(`#${pageName}-body`) as HTMLElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
     let active = document.querySelector("div[id*='body'].active") as HTMLElement; //--|🠈 Find the 'div[id*='body']' tag with a '.active' class 🠈|--\\
@@ -53,60 +42,49 @@ Object.entries(pages).forEach(([id]) => {
         return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--\\
     }
   };
-  if (elementBody.classList.contains('active')) {
-    switch (pageName) {
-      case 'buttons':
-        setView('buttons');
-        safeRender(`${pageName}-body`, React.createElement(Buttons));
-        setTimeout(() => {}, 250);
-        break;
-      case 'overtime':
-        setView('overtime');
-        safeRender(`${pageName}-body`, React.createElement(Overtime));
-        break;
-      case 'ticketing':
-        setView('ticketing');
-        safeRender(`${pageName}-body`, React.createElement(Ticketing));
-        break;
-      case 'hyperlink':
-        setView('hyperlink');
-        safeRender(`${pageName}-body`, React.createElement(Hyperlink));
-        break;
-      case 'landing':
-      default:
-        setView('landing');
-        ReactDOM.createRoot(elementBody).render(<Landing />);
-        break;
+  const safeLoad = (identification: string, container: React.ReactElement) => {
+    let elementBody = document.getElementById(identification) as HTMLElement;
+    if (!elementBody) {
+      console.error(`Can't find #${identification}`);
+      return;
     }
+    if (elementBody.innerHTML === '') {
+      ReactDOM.createRoot(elementBody).render(<React.StrictMode>{container}</React.StrictMode>);
+    } else {
+      console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
+    }
+  };
+
+  switch (pageName) {
+    case 'buttons':
+      setView('buttons');
+      safeLoad(`${pageName}-body`, React.createElement(Buttons));
+      break;
+    case 'overtime':
+      // setView('overtime');
+      safeLoad(`${pageName}-body`, React.createElement(Overtime));
+      break;
+    case 'ticketing':
+      // setView('ticketing');
+      safeLoad(`${pageName}-body`, React.createElement(Ticketing));
+      break;
+    case 'hyperlink':
+      // setView('hyperlink');
+      safeLoad(`${pageName}-body`, React.createElement(Hyperlink));
+      break;
+    case 'landing':
+    default:
+      // setView('landing');
+      ReactDOM.createRoot(elementBody).render(<Landing />);
+      break;
   }
 
   /*
-  // console.log(elementBody.id.split('-')[0]);
-  // console.log(elementBody.classList.contains('active'));
-  // console.log(elementBody.classList.contains('asleep'));
-  // const landingBody = document.getElementById('landing-body') as HTMLElement;
-  */
-  /*
-  if (landingBody) {
-    ReactDOM.createRoot(landingBody).render(<Landing />);
-  } else {
-    console.error("Can't find #landing-body");
+  if (elementBody.classList.contains('active')) {
   }
   */
 });
 
-export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
-  const elementBody = document.getElementsByTagName('body');
-
-  switch (view) {
-    case 'track-day':
-      break;
-    case 'log-ticket':
-      break;
-    case 'find-link':
-      break;
-  }
-}
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
     case '[]':
@@ -123,3 +101,17 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
+/*
+export function openApps(view: 'track-day' | 'log-ticket' | 'find-link') {
+  const elementBody = document.getElementsByTagName('body');
+
+  switch (view) {
+    case 'track-day':
+      break;
+    case 'log-ticket':
+      break;
+    case 'find-link':
+      break;
+  }
+}
+*/

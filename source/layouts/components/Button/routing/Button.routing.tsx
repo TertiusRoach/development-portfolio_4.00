@@ -14,11 +14,12 @@ interface TheseProps {
   };
   style: {
     image: string;
+    size: '<h1>' | '<p>';
     shade: '~dark~' | '~medium~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+    type: '{button}' | '{counter}';
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 
@@ -64,39 +65,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   const pageName = stripBrackets(info.pageName, '[]') as string;
 
   //--|🠊 Render Body 🠈|--\\
-  const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
-    /*
-    switch (style.size) {
-      case '<h1>':
-        return <></>;
-      case '<p>':
-      default:
-        return (
-          <>
-            <div className="fore">
-              {/* <p>
-                <span>{style.text}</span>
-              </p>
-            </div>
-            <div className="mid">
-              {/* <img
-                alt={style.image ? 'icon' : ''}
-                style={{
-                  ...(style.image
-                    ? {
-                        maskImage: `url(${style.image})`,
-                        WebkitMaskImage: `url(${style.image})`,
-                      }
-                    : {}),
-                }}
-              ></img>
-            </div>
-            <div className="back">{/* <canvas className="animation"></canvas></div>
-          </>
-        );
-    }
-    */
-  };
+  const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {};
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -107,10 +76,17 @@ const ButtonRouting: React.FC<TheseProps> = ({
       id={info.labelName || undefined}
       className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >
-      <div className="fore"></div>
+      <div className="fore">
+        <span
+          style={{
+            ...(style.image ? { WebkitMaskImage: `url(${style.image})`, maskImage: `url(${style.image})` } : {}),
+          }}
+        >
+          <img src={style.image} alt="" />
+        </span>
+      </div>
       <div className="mid"></div>
-      <div className="back">{/* <canvas className="animation"></canvas> */}</div>
-      {/* {handleDefault(info, style)} */}
+      <div className="back"></div>
     </button>
   );
 };

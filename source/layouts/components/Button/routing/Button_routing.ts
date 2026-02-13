@@ -3,54 +3,50 @@ import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
   image: string;
+  size: '<h1>' | '<p>';
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
-  type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+  type: '{button}' | '{counter}';
   role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
 }
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
-  /*
-  //--|🠊 Class Build 🠈|--\\
+  //--|🠊 Class Build for <RoutingButton> 🠈|--\\
+  let classType = createType(style.type);
+  let classVars = createVars(style.image);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
-  if (style.image == null) {
-    return `${classLayout}_${classColor}_alt`;
-  } else {
-    return `${classLayout}_${classColor}_def`;
-  }
-  */
-  return '';
+  // console.log(`${classType}-button ${classLayout}_${classColor}_${classVars}`);
+  return `${classLayout}_${classColor}_${classVars}`;
 }
+export default createClass;
+
+//--|🠋 Scoped Functions 🠋|--\\
 export function createLayout(
-  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
+  size: '<h1>' | '<p>',
+  view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig',
 ): string {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
-    '<h2>': 'two',
-    '<h3>': 'thr',
-    '<h4>': 'fou',
-    '<h5>': 'fiv',
-    '<h6>': 'six',
     '<p>': 'par',
   };
+  const classSize = sizeMap[size];
 
   const viewMap: Record<string, string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
-    '-top-': 'top',
-    '-bottom-': 'bot',
-    '-left-': 'lef',
-    '-right-': 'rig',
-    '-center-': 'cen',
-    '-text-': 'tex',
-    '-icon-': 'ico',
+    'top-lef': 'tl',
+    'top-cen': 'tc',
+    'top-rig': 'tr',
+    'mid-lef': 'ml',
+    'mid-cen': 'mc',
+    'mid-rig': 'mr',
+    'bot-lef': 'bl',
+    'bot-cen': 'bc',
+    'bot-rig': 'br',
   };
-
-  const classSize = sizeMap[size];
   const classView = viewMap[view];
 
   if (!classSize || !classView) {
@@ -88,4 +84,23 @@ export function createColor(
   }
 
   return `${classShade}_${classColor}`;
+}
+export function createType(type: '{button}' | '{counter}'): String {
+  switch (type) {
+    case '{button}':
+    default:
+      return 'routing';
+    case '{counter}':
+      return 'counter';
+  }
+}
+export function createVars(image: string): String {
+  switch (image.split('.').pop()) {
+    case 'svg':
+      return 'rou';
+    case 'png':
+      return 'por';
+    default:
+      return 'alt';
+  }
 }

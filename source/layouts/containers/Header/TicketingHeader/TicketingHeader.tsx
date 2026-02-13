@@ -1,38 +1,102 @@
-//--|🠊 TicketingHeader.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
-import ReactDOM from 'react-dom/client';
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import MenuFeatures from '../../../components/Menu/features/Menu.features';
-import SectionPreview from '../../../components/Section/preview/Section.preview';
-import DivisionIdentity from '../../../components/Division/identity/Division.identity';
-import NavigationPreview from '../../../components/Navigation/preview/Navigation.preview';
-//--|🠉 Components 🠉|--//
-
+//--|🠊 OvertimeHeader.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/ticketing';
+import { expandHeader, loadSoftware } from './TicketingFunctions';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../../components/Button/default/Button.default';
+import ButtonRouting from '../../../components/Button/routing/Button.routing';
 interface InfoProps {
   info: {
-    resolution: string;
-    orientation: 'desktop-landscape' | 'mobile-portrait' | 'tablet-square' | string;
-    identification: 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const TicketingHeader: React.FC<InfoProps> = ({ info }) => {
-  const blockName: string = 'header';
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
-  const pageName: string = info.identification as 'ticketing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    console.log('//--|🠊 Ticketing Loaded 🠈|--//');
+  }, [pageName, blockName]);
+
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
+    '',
+    '',
+  ];
 
   return (
-    <header className={`default-${blockName} ${stateName}`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <SectionPreview info={info} />
-      <DivisionIdentity info={info} />
-      <NavigationPreview info={info} />
-      <MenuFeatures style={{ blockName: blockName, pageName: pageName }} />
+    <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
+      <section className={`${blockName}-foreground`}>
+        <nav className={`global-${blockName}`}>
+          <menu className={`global-${blockName}`}>
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'top-lef',
+                shade: '~dark~',
+                color: '(mono)',
+
+                type: '{button}',
+                image: `${svgPath[0]}/trinity-apps/log-a-ticket/primary-light.svg`,
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: `${pageName}_${blockName}_view-apps`,
+              }}
+              onClick={() => expandHeader(pageName)}
+            />
+          </menu>
+        </nav>
+        <div className={`global-${blockName}`}>
+          <aside className="overtime-software">
+            <figure className="dark" onClick={() => loadSoftware('overtime')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Track a Day</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="ticketing-software">
+            <figure className="dark" onClick={() => loadSoftware('ticketing')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Log a Ticket</h1>
+              </span>
+            </figure>
+          </aside>
+          <aside className="hyperlink-software">
+            <figure className="dark" onClick={() => loadSoftware('hyperlink')}>
+              <span>
+                <img
+                  style={{
+                    maskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
+                  }}
+                />
+                <h1>Find a Link</h1>
+              </span>
+            </figure>
+          </aside>
+        </div>
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </header>
   );
 };

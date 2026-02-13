@@ -3,7 +3,26 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-tint {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
+  //--|🠋 Desktop (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
+    }
+  }
+}
+@mixin mobile-tint {
+  //--|🠋 Mobile (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
+    }
+  }
+}
+@mixin mon-color {
   &[class*='_mon_'] {
     $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
     $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
@@ -124,59 +143,18 @@
       }
     }
   }
-}
-@mixin mobile-tint {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
   /*
-  &[class*='_dar_'] {
-    .back {
-      background: Palettes.$indexLand-dark;
-    }
-    .text {
-      color: Palettes.$indexLand-neon;
-      background: transparent;
-    }
-    .icon img {
-      background: Palettes.$indexLand-light;
-    }
-  }
-
-  &[class*='_lig_'] {
-    .back {
-      background: Palettes.$indexLand-light;
-    }
-    .text {
-      color: Palettes.$indexLand-dark;
-      background: transparent;
-    }
-    .icon img {
-      background: Palettes.$indexLand-dark;
-    }
-    .icon[class*='_top_'],
-    .icon[class*='_bot_'] {
-      img {
-        background: Palettes.$indexLand-light;
-      }
-    }
-  }
-
-  &[class*='_med_'] {
-    .back {
-      background: Palettes.$indexLand-medium;
-    }
-    .text {
-      color: Palettes.$indexLand-neon;
-      background: transparent;
-    }
-    .icon img {
-      background: Palettes.$indexLand-light;
-    }
-  }
-
-  .back {
-    box-shadow:
-      inset 0 1px 0 rgba(#fff, 0.08),
-      inset 0 -1px 0 rgba(#000, 0.18);
-  }
+  // Top and Bottom, if there's a space in the text, make it two lines and the back a square.
+  This fades the edges: Use for <CleanedButton> or <StretchedButton>
+  mask-repeat: no-repeat;
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
   */
 }

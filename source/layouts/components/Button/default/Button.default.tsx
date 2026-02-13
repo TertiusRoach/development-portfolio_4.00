@@ -15,7 +15,7 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~medium~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    type: '{button}' | '{submit}' | '{reset}' | '{disabled}';
+    type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
     view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
@@ -64,7 +64,6 @@ const ButtonDefault: React.FC<TheseProps> = ({
   //--|🠊 Identifiers 🠈|--\\
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
-
   //--|🠊 Render Body 🠈|--\\
   const handleDefault = (info: TheseProps['info'], style: TheseProps['style']) => {
     switch (style.size) {
@@ -260,6 +259,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
     <button
       onClick={onClick}
       id={info.labelName || undefined}
+      aria-disabled={style.type === '{disabled}'}
       className={`default-button ${createClass(style as TheseProps['style'])}`}
     >
       {handleDefault(info, style)}

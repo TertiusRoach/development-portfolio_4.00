@@ -1,55 +1,45 @@
 //--|🠊 overtime.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
-import React, { Suspense, lazy } from 'react';
-//--|🠉 Dependencies 🠉|--//
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
-import OvertimeMain from '../containers/Main/OvertimeMain/OvertimeMain';
-import OvertimeHeader from '../containers/Header/OvertimeHeader/OvertimeHeader';
-import OvertimeFooter from '../containers/Footer/OvertimeFooter/OvertimeFooter';
+const OvertimeMain = lazy(() => import('../containers/Main/OvertimeMain/OvertimeMain'));
+const OvertimeHeader = lazy(() => import('../containers/Header/OvertimeHeader/OvertimeHeader'));
+const OvertimeFooter = lazy(() => import('../containers/Footer/OvertimeFooter/OvertimeFooter'));
 
-import OvertimeOverlay from '../containers/Overlay/OvertimeOverlay/OvertimeOverlay';
-import OvertimeLeftbar from '../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar';
-// import OvertimeRightbar from '../containers/Rightbar/OvertimeRightbar/OvertimeRightbar';
-//--|🠉 Containers 🠉|--//
 function Overtime() {
+  const [getMain, setMain] = useState(false);
+  const [getHeader, setHeader] = useState(false);
+  const [getFooter, setFooter] = useState(false);
+
+  useEffect(() => {
+    const overlayTimer = setTimeout(() => setHeader(true), 0);
+    const leftbarTimer = setTimeout(() => setMain(true), 500);
+    const rightbarTimer = setTimeout(() => setFooter(true), 500);
+
+    const mainTimer = setTimeout(() => setMain(true), 750);
+    const headerTimer = setTimeout(() => setHeader(true), 250);
+    const footerTimer = setTimeout(() => setFooter(true), 250);
+    return () => {
+      clearTimeout(headerTimer);
+      clearTimeout(footerTimer);
+      clearTimeout(mainTimer);
+    };
+  }, []);
+
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading...</div>}>
-        <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>' }} />
-        <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>' }} />
-
-        {/* <OvertimeRightbar info={{ pageName: '[overtime]', blockName: '<rightbar>' }} /> */}
-        <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} />
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>' }} />}
       </Suspense>
 
-      <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />
-      <OvertimeOverlay info={{ pageName: '[overtime]', blockName: '<overlay>' }} />
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />}
+      </Suspense>
+
+      {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+        {getFooter && <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} />}
+      </Suspense> */}
     </>
   );
 }
 export default Overtime;
-
-export function viewBlock(page: 'clocking' | 'leaving') {
-  const rightbar = document.getElementById('overtime-rightbar') as HTMLElement;
-  const leftbar = document.getElementById('overtime-leftbar') as HTMLElement;
-
-  switch (page) {
-    case 'clocking':
-      leftbar.className = 'default-leftbar expanded'; //--|🠈 Show Verify 🠈|--//
-      break;
-    case 'leaving':
-      break;
-  }
-}
-export function hideBlock(page: 'clocking' | 'leaving') {
-  const rightbar = document.getElementById('overtime-rightbar') as HTMLElement;
-  const leftbar = document.getElementById('overtime-leftbar') as HTMLElement;
-
-  switch (page) {
-    case 'clocking':
-      leftbar.className = 'default-leftbar collapsed'; //--|🠈 Show Verify 🠈|--//
-      break;
-    case 'leaving':
-      break;
-  }
-}

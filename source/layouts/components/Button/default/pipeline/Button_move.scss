@@ -3,27 +3,18 @@
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-move {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
-  &:hover,
-  &:focus-visible {
+  //--|🠋 Desktop (Move) 🠋|--\\
+  &[class*='default']:hover {
     @include mon-color();
+    //--|🠊 &[class*='default']:focus-visible 🠈|--\\
   }
 }
 @mixin mobile-move {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
-  /*
-  // Mobile = speed
-  .back,
-  .text,
-  .icon,
-  .icon img {
-    transition: none;
+  //--|🠋 Mobile (Move) 🠋|--\\
+  &[class*='default']:hover {
+    @include mon-color();
+    //--|🠊 &[class*='default']:focus-visible 🠈|--\\
   }
-
-  &:active {
-    filter: brightness(1.05);
-  }
-  */
 }
 
 @mixin mon-color {

@@ -1,178 +1,90 @@
-//--|🠊 Button_tint.scss 🠈|--\\
+//--|🠊 routing/pipeline/Button_tint.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-tint {
-  &[class*='_mon_'] {
-    $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
-    $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
-    $indexLand-softW: color.mix(Palettes.$indexLand-neon, Palettes.$indexLand-light, $weight: 70%);
-    $indexLand-softB: color.mix(#000000, Palettes.$indexLand-dark, $weight: 60%);
-
-    //--|🠊 Dark Shade 🠈|--\\
-    &[class*='_dar_'] {
-      .text {
-        color: $indexLand-softW;
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$indexLand-dark, 0) 0%,
-          rgba(Palettes.$indexLand-dark, 0.28) 55%,
-          rgba(Palettes.$indexLand-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$indexLand-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$indexLand-neon, 0.05);
-      }
-      .icon {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$indexLand-medium, 0.1) 0%,
-            rgba(Palettes.$indexLand-medium, 0) 70%,
-            rgba(Palettes.$indexLand-medium, 0) 100%
-          );
-        img {
-          background: Palettes.$indexLand-light;
-        }
-      }
-      .back {
-        background:
-          linear-gradient(
-            180deg,
-            rgba(Palettes.$indexLand-neon, 0.06) 0%,
-            rgba(Palettes.$indexLand-neon, 0) 45%,
-            rgba(#000, 0.3) 100%
-          ),
-          $indexLand-darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$indexLand-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
-      }
-    }
-    //--|🠊 Light Shade 🠈|--\\
-    &[class*='_lig_'] {
-      .text {
-        color: $indexLand-softB;
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$indexLand-light, 0) 0%,
-          rgba(Palettes.$indexLand-light, 0.3) 55%,
-          rgba(Palettes.$indexLand-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      .icon {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$indexLand-medium, 0.1) 0%,
-            rgba(Palettes.$indexLand-medium, 0) 70%,
-            rgba(Palettes.$indexLand-medium, 0) 100%
-          );
-        img {
-          background: Palettes.$indexLand-dark;
-        }
-      }
-      .back {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
-      }
-    }
-
-    //--|🠊 Edge Cases 🠈|--\\
-    &[class*='_def'] {
-      .text {
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0),
-          inset 0 -1px 0 rgba(#000, 0);
-      }
-      .icon {
-        color: rgba(black, 0);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-      }
-      .back {
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.08),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          0 10px 22px rgba(#000, 0.2);
-      }
-    }
-    &[class*='_alt'] {
-      &[class*='_lef_'],
-      &[class*='_rig_'] {
-        .icon {
-          img {
-            background: none;
-          }
-        }
-      }
+  //--|🠋 Desktop (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
     }
   }
 }
 @mixin mobile-tint {
-  &[class*='_dar_'] {
-    .back {
-      background: Palettes.$indexLand-dark;
-    }
-    .text {
-      color: Palettes.$indexLand-neon;
-      background: transparent;
-    }
-    .icon img {
-      background: Palettes.$indexLand-light;
+  //--|🠋 Mobile (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
     }
   }
+}
+@mixin mon-color {
+  $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-softW: color.mix(Palettes.$indexLand-neon, Palettes.$indexLand-light, $weight: 70%);
+  $indexLand-softB: color.mix(#000000, Palettes.$indexLand-dark, $weight: 60%);
 
-  &[class*='_lig_'] {
-    .back {
-      background: Palettes.$indexLand-light;
-    }
-    .text {
-      color: Palettes.$indexLand-dark;
-      background: transparent;
-    }
-    .icon img {
-      background: Palettes.$indexLand-dark;
-    }
-    .icon[class*='_top_'],
-    .icon[class*='_bot_'] {
-      img {
+  &[class*='_dar_'] {
+    div[class='fore'] {
+      span {
+        /* put your controllable trace here */
+        // background: red;
         background: Palettes.$indexLand-light;
+        img {
+          opacity: 0;
+          pointer-events: none;
+          background: transparent;
+        }
       }
     }
+    div[class='mid'] {
+      border-color: Palettes.$indexLand-light;
+      filter: drop-shadow(0 0 16px rgba(white, 0.25));
+    }
+    div[class='back'] {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(Palettes.$indexLand-neon, 0.06) 0%,
+          rgba(Palettes.$indexLand-neon, 0) 45%,
+          rgba(#000, 0.3) 100%
+        ),
+        $indexLand-darMed;
+      box-shadow:
+        inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$indexLand-medium, 0.18),
+        0 12px 26px rgba(#000, 0.28);
+    }
   }
-
-  &[class*='_med_'] {
-    .back {
-      background: Palettes.$indexLand-medium;
+  &[class*='_lig_'] {
+    div[class='fore'] {
+      span {
+        /* put your controllable trace here */
+        // background: red;
+        background: Palettes.$indexLand-dark;
+        img {
+          opacity: 0;
+          pointer-events: none;
+          background: transparent;
+        }
+      }
     }
-    .text {
-      color: Palettes.$indexLand-neon;
-      background: transparent;
+    div[class='mid'] {
+      border-color: Palettes.$indexLand-dark;
+      filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
-    .icon img {
-      background: Palettes.$indexLand-light;
+    div[class='back'] {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1),
+        0 10px 22px rgba(#000, 0.18);
     }
-  }
-
-  .back {
-    box-shadow:
-      inset 0 1px 0 rgba(#fff, 0.08),
-      inset 0 -1px 0 rgba(#000, 0.18);
   }
 }

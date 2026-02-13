@@ -37,20 +37,20 @@ label[class*='toggle'] {
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
-    @include Label_size.desktop-size();
-    @include Label_grid.desktop-grid();
-    @include Label_flex.desktop-flex();
-    @include Label_tint.desktop-tint();
-    @include Label_move.desktop-move();
     @include Label_corn.desktop-corn();
+    @include Label_flex.desktop-flex();
+    @include Label_grid.desktop-grid();
+    @include Label_move.desktop-move();
+    @include Label_size.desktop-size();
+    @include Label_tint.desktop-tint();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
-    @include Label_size.mobile-size();
-    @include Label_grid.mobile-grid();
-    @include Label_flex.mobile-flex();
-    @include Label_tint.mobile-tint();
-    @include Label_move.mobile-move();
     @include Label_corn.mobile-corn();
+    @include Label_flex.mobile-flex();
+    @include Label_grid.mobile-grid();
+    @include Label_move.mobile-move();
+    @include Label_size.mobile-size();
+    @include Label_tint.mobile-tint();
   }
 }
