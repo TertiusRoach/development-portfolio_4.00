@@ -49,6 +49,13 @@
       @include Transition.footer-transition();
       @include Transition.overlay-transition();
       @include Transition.sidebar-transition();
+      &[class*='active'] {
+        height: 100svh;
+      }
+      &[class*='asleep'] {
+        height: 0svh;
+      }
+
       ul,
       ol {
         padding: 0;
