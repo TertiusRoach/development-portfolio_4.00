@@ -10,7 +10,7 @@ import {
   toggleAside,
   scrollMouse,
   viewDisplay,
-  useSwipePhone,
+  useSwipePhone as useSwipe,
 } from '../../ButtonsFunctions';
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
@@ -47,6 +47,11 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
         return controlPreview(pageName, blockName, blockAction, pagePreview);
     }
   };
+  const handleMobile = useSwipe({
+    onSwipeAction: (action) => {
+      handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', action);
+    },
+  });
 
   useEffect(() => {
     //--|🠋 1. Define the media query for landscape 🠈|--\\
@@ -65,11 +70,6 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/7c0642deb743fd1fd415a8d6b32adbc12595d3ed/source/assets/svg-files/archive-images',
     '',
   ];
-  let swipeHandlers = useSwipePhone({
-    onSwipeAction: (action) => {
-      handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', action);
-    },
-  });
 
   return (
     <>
@@ -78,10 +78,10 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
         onWheel={(event) =>
           handleButtons(pageName, 'default-buttons', blockName, 'scroll-mouse', event.deltaY > 0 ? 'scroll-down' : 'go-up')
         }
-        onPointerUp={swipeHandlers.onPointerUp}
-        onPointerDown={swipeHandlers.onPointerDown}
-        onPointerMove={swipeHandlers.onPointerMove}
-        onPointerCancel={swipeHandlers.onPointerCancel}
+        onPointerUp={handleMobile.onPointerUp}
+        onPointerDown={handleMobile.onPointerDown}
+        onPointerMove={handleMobile.onPointerMove}
+        onPointerCancel={handleMobile.onPointerCancel}
       >
         <header className="default-header">
           <ButtonRouting

@@ -24,7 +24,9 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
-      <section className={`${blockName}-foreground`}></section>
+      <section className={`${blockName}-foreground`}>
+        <header className="default-header"></header>
+      </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </main>
