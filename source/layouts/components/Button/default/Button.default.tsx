@@ -266,5 +266,4 @@ const ButtonDefault: React.FC<TheseProps> = ({
     </button>
   );
 };
-
 export default ButtonDefault;

@@ -1,4 +1,5 @@
 //--|🠊 Main/ButtonsFunctions.ts 🠈|--\\
+import * as React from 'react';
 export function controlPreview(
   pageName: string,
   blockName: string,
@@ -328,9 +329,7 @@ export function scrollMouse(
   const now = Date.now();
 
   //--|🠊 3. Check if 500ms (half a second) has passed since the last run 🠈|--\\
-  if (now - scrollTime < 500) {
-    return; //--|🠈 If it's been less than 500ms, stop here (ignore the scroll). 🠈|--\\
-  }
+  if (now - scrollTime < 500) return;
 
   //--|🠊 4. Update the last run time 🠈|--\\
   scrollTime = now;
@@ -380,4 +379,61 @@ export function unfoldHeader(pageName: string, blockName: string, blockAction: '
       }
       break;
   }
+}
+
+type SwipeAction = 'scroll-down' | 'go-up';
+
+type UseSwipePhoneParams = {
+  onSwipeAction: (action: SwipeAction) => void;
+
+  // Tuning knobs (safe defaults)
+  minDistancePx?: number; // how far before it counts as a swipe
+  maxOffAxisPx?: number; // how much sideways movement allowed for vertical swipes
+};
+
+export function useSwipePhone({ onSwipeAction, minDistancePx = 40, maxOffAxisPx = 60 }: UseSwipePhoneParams) {
+  const startRef = React.useRef<{ x: number; y: number } | null>(null);
+  const firedRef = React.useRef(false);
+
+  const onPointerDown = React.useCallback((e: React.PointerEvent) => {
+    // Only track primary pointer for sanity
+    if (!e.isPrimary) return;
+
+    startRef.current = { x: e.clientX, y: e.clientY };
+    firedRef.current = false;
+  }, []);
+
+  const onPointerMove = React.useCallback(
+    (e: React.PointerEvent) => {
+      if (!e.isPrimary) return;
+      if (!startRef.current) return;
+      if (firedRef.current) return;
+
+      const dx = e.clientX - startRef.current.x;
+      const dy = e.clientY - startRef.current.y;
+
+      // We only care about vertical swipes
+      if (Math.abs(dx) > maxOffAxisPx) return;
+      if (Math.abs(dy) < minDistancePx) return;
+
+      // Your chosen mapping:
+      // swipe up (dy < 0) => 'scroll-down'
+      // swipe down (dy > 0) => 'go-up'
+      const action: SwipeAction = dy < 0 ? 'scroll-down' : 'go-up';
+
+      firedRef.current = true;
+      onSwipeAction(action);
+    },
+    [maxOffAxisPx, minDistancePx, onSwipeAction],
+  );
+
+  const endGesture = React.useCallback(() => {
+    startRef.current = null;
+    firedRef.current = false;
+  }, []);
+
+  const onPointerUp = endGesture;
+  const onPointerCancel = endGesture;
+
+  return { onPointerDown, onPointerMove, onPointerUp, onPointerCancel };
 }

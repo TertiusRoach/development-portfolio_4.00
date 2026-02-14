@@ -146,9 +146,9 @@ main[id*='buttons'] {
     }
   }
   div[class*='carousel'] {
-    //--|🠊 width: 100vw; 🠈|--\\
     height: 100svh;
     overflow: hidden;
+    //--|🠊 width: 100vw; 🠈|--\\
     ul[class*='preview'] {
       display: flex;
       height: inherit;
