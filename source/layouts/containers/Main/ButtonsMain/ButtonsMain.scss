@@ -162,8 +162,7 @@ main[id*='buttons'] {
         section[class*='ground'],
         figure[class*='ground'],
         div[class*='ground'] {
-          height: inherit;
-          // height: 100svh;
+          height: inherit; //--|🠈 height: 100svh; 🠈|--\\
           position: absolute;
         }
       }
