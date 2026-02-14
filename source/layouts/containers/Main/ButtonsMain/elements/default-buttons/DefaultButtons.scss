@@ -246,6 +246,7 @@
   li[class='default-buttons'] {
     section[class*='fore'] {
       z-index: 2;
+      touch-action: none;
       //--|🠊 display: grid; 🠈|--\\
       header[class*='header'] {
         z-index: 0;
