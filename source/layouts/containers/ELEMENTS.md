@@ -9,3 +9,5 @@ These containers, residing in `source/layouts/container/`, include:
 - `Header`
 - `Main`
 - `Footer`
+
+source/assets/pdf-files/logical-structure
