@@ -20,19 +20,19 @@ source/assets/pdf-files/logical-structure
 
 ## Freelancing
 
-<main class="report-main">
-<header class="clockboard-header">
-<aside class="clocking-leftbar">
-<aside class="request-rightbar">
-<footer class="messages-footer">
+    <main class="report-main">
+    <header class="clockboard-header">
+    <aside class="clocking-leftbar">
+    <aside class="request-rightbar">
+    <footer class="messages-footer">
 
 ## Established
 
-<main class="approve-main">
-<header class="clockboard-header">
-<aside class="clocking-leftbar">
-<aside class="request-rightbar">
-<footer class="messages-footer">
+    <main class="approve-main">
+    <header class="clockboard-header">
+    <aside class="clocking-leftbar">
+    <aside class="request-rightbar">
+    <footer class="messages-footer">
 
 ---
 
@@ -42,19 +42,19 @@ source/assets/pdf-files/logical-structure
 
 # Manager
 
-<main class="tickets-main">
-<header class="scoreboard-header">
-<aside class="completed-leftbar">
-<aside class="employees-rightbar">
-<footer class="messages-footer">
+    <main class="tickets-main">
+    <header class="scoreboard-header">
+    <aside class="completed-leftbar">
+    <aside class="employees-rightbar">
+    <footer class="messages-footer">
 
 # Employee
 
-<main class="logged-main">
-<header class="scoreboard-header">
-<aside class="profile-leftbar">
-<aside class="colleagues-rightbar">
-<footer class="messages-footer">
+    <main class="logged-main">
+    <header class="scoreboard-header">
+    <aside class="profile-leftbar">
+    <aside class="colleagues-rightbar">
+    <footer class="messages-footer">
 
 ---
 
@@ -62,24 +62,24 @@ source/assets/pdf-files/logical-structure
 
 # Specialist
 
-<main class="iframe-main">
+    <main class="iframe-main">
 
-<section class="bookmarks-overlay">
+    <section class="bookmarks-overlay">
 
-<aside class="edit-leftbar">
-<aside class="links-rightbar">
+    <aside class="edit-leftbar">
+    <aside class="links-rightbar">
 
-<footer class="messages-footer">
+    <footer class="messages-footer">
 
 # Technician
 
-<main class="iframe-main">
+    <main class="iframe-main">
 
-<section class="bookmarks-overlay">
+    <section class="bookmarks-overlay">
 
-<aside class="links-rightbar">
-<aside class="archive-leftbar">
+    <aside class="links-rightbar">
+    <aside class="archive-leftbar">
 
-<footer class="messages-footer">
+    <footer class="messages-footer">
 
 ---
