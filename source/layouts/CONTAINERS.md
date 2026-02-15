@@ -1,6 +1,6 @@
-# [Elements](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
+# [Containers](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
-This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
+Layouts is the folder that contains all my front-end based code. It's also the skill I'm most qualified in. Back-end still catches me off guard with a few things. This project employs a refined system of visual states to orchestrate user attention and establish a clear hierarchy within your **source layout containers** folder.
 These containers, residing in `source/layouts/container/`, include:
 
 - `Overlay`
