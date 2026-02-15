@@ -98,17 +98,17 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
 
           <ol className="carousel-preview slide-def">
             <li className="default-text">
-              <h6 className="display-4">
+              <h4 className="display-4">
                 <b>Default</b>
-              </h6>
+              </h4>
               <h6 className="display-6">
                 <i>Button</i>
               </h6>
             </li>
             <li className="routing-text">
-              <h6 className="display-4">
+              <h4 className="display-4">
                 <b>Routing</b>
-              </h6>
+              </h4>
               <h6 className="display-6">
                 <i>Button</i>
               </h6>
@@ -170,9 +170,6 @@ const ButtonsHeader: React.FC<InfoProps> = ({ info }) => {
           <div></div>
         </footer>
       </div>
-
-      {/* <MenuButtons info={info} /> */}
-      {/* <section className={`${pageName}-section`}></section> */}
     </header>
   );
 };
