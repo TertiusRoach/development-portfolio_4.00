@@ -18,17 +18,39 @@ body {
   div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
   }
-  &[class*='downplay'] {
-    //--|🠋 Index or Landing - TraLogFin Trinity {A]pps 🠋|--\\
-    $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
-    $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-    $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
-    $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
-
-    // background: red;
-  }
 }
-body[class*='downplay'] {
+
+body[class*='ante-meridiem'] {
+  //--|🠋 TraLogFin Trinity {A]pps 🠋|--\\
+  $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+  $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+  $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+  $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
+
+  // Highlight = "light mode": neon-forward, luminous fog, premium & clean
+  background:
+    // bright sky fog (top-down)
+    linear-gradient(180deg, rgba($indexLand-neon, 0.72) 0%, rgba($indexLand-neon, 0.18) 46%, rgba(#000, 0.1) 100%),
+    // soft “sunbeam” direction (gives life without looking neon-y)
+    linear-gradient(135deg, rgba($indexLand-neon, 0.5) 0%, rgba($indexLand-light, 0.34) 38%, rgba(#fff, 0) 70%),
+    // gentle fog bloom (center)
+    radial-gradient(
+        120% 140% at 42% 22%,
+        rgba($indexLand-neon, 0.44) 0%,
+        rgba($indexLand-light, 0.26) 36%,
+        rgba(#fff, 0) 72%
+      ),
+    // subtle edge vignette (light version)
+    radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 62%, rgba(#fff, 0.55) 100%),
+    // base tone (light compliments neon)
+    linear-gradient(
+        135deg,
+        color.mix($indexLand-neon, #fff, 92%) 0%,
+        color.mix($indexLand-light, $indexLand-neon, 62%) 52%,
+        color.mix($indexLand-light, #fff, 88%) 100%
+      );
+}
+body[class*='post-meridiem'] {
   //--|🠋 TraLogFin Trinity {A]pps 🠋|--\\
   $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
   $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
@@ -61,36 +83,5 @@ body[class*='downplay'] {
         color.mix($indexLand-dark, #000, 84%) 0%,
         color.mix($indexLand-dark, $indexLand-medium, 70%) 55%,
         color.mix($indexLand-dark, $indexLand-medium, 82%) 100%
-      );
-}
-
-body[class*='highlight'] {
-  //--|🠋 TraLogFin Trinity {A]pps 🠋|--\\
-  $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
-  $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-  $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
-  $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
-
-  // Highlight = "light mode": neon-forward, luminous fog, premium & clean
-  background:
-    // bright sky fog (top-down)
-    linear-gradient(180deg, rgba($indexLand-neon, 0.72) 0%, rgba($indexLand-neon, 0.18) 46%, rgba(#000, 0.1) 100%),
-    // soft “sunbeam” direction (gives life without looking neon-y)
-    linear-gradient(135deg, rgba($indexLand-neon, 0.5) 0%, rgba($indexLand-light, 0.34) 38%, rgba(#fff, 0) 70%),
-    // gentle fog bloom (center)
-    radial-gradient(
-        120% 140% at 42% 22%,
-        rgba($indexLand-neon, 0.44) 0%,
-        rgba($indexLand-light, 0.26) 36%,
-        rgba(#fff, 0) 72%
-      ),
-    // subtle edge vignette (light version)
-    radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 62%, rgba(#fff, 0.55) 100%),
-    // base tone (light compliments neon)
-    linear-gradient(
-        135deg,
-        color.mix($indexLand-neon, #fff, 92%) 0%,
-        color.mix($indexLand-light, $indexLand-neon, 62%) 52%,
-        color.mix($indexLand-light, #fff, 88%) 100%
       );
 }

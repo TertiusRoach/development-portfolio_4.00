@@ -33,7 +33,12 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         <header className="default-header"></header>
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <header></header>
+        <aside className="left-side hidden"></aside>
+        <aside className="right-side hidden"></aside>
+        <footer></footer>
+      </div>
     </main>
   );
 };
