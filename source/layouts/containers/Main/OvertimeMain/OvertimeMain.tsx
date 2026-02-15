@@ -20,15 +20,16 @@ interface InfoProps {
 }
 
 const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
+  const labelName = 'report' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
 
-  useEffect(() => {}, [pageName, blockName]);
+  // console.log(labelName);
 
   let svgPath: Array<String> = ['', '', ''];
 
   return (
-    <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
+    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
         <header className="default-header"></header>
         <nav className="default-navigation"></nav>

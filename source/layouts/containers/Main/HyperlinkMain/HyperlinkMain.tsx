@@ -15,6 +15,7 @@ interface InfoProps {
 }
 
 const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
+  const labelName = 'report' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
 
