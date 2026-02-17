@@ -9,20 +9,36 @@ Layouts is the folder that contains all my front-end based code. To separate con
 - `Main`
 - `Footer`
 
+Memorization and habits are critical when it comes to the user experience and development flow. This means that each block needs to have a guiding principle.
+
+<section id="${pageName}-overlay">: The first page you see. This lets the user set which page they want to preview in the demo.
+<main id="${pageName}-main">: Second page you see and toggles the criteria based on the data set by the application based on what the user does.
+<aside id="${pageName}-leftbar">: Is an accompanying container determining actions the user needs to take in order to use the software.
+<aside id="${pageName}-rightbar">: Just like its counterpart, this does the same to interconnect the goal and loop established by the software.
+<header class="${pageName}-header">: This contains all the settings and features for the user to change as they wish.
+
 ---
 
 # [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf)
 
 > .freelancing or .established
 
-<section id="overtime-overlay" class="selection-overlay highlight/downplay">
+<section id="overtime-overlay" class="default-overlay highlight/downplay">
 
 ## Freelancing
 
+Description.
+
 <main class="report-main">
+
+> stateName: No state toggles.
+
 <header class="clockboard-header expanded/collapsed/unfolded">
+
 <aside class="clocking-leftbar expanded/collapsed">
+
 <aside class="request-rightbar expanded/collapsed">
+
 <footer class="messages-footer expanded/collapsed/unfolded">
 
 ## Established
@@ -39,7 +55,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 > .manager or .employee
 
-<section id="ticketing-overlay" class="selection-overlay highlight/downplay">
+<section id="ticketing-overlay" class="default-overlay highlight/downplay">
 
 # Manager
 
@@ -52,10 +68,10 @@ Layouts is the folder that contains all my front-end based code. To separate con
 # Employee
 
 <main class="logged-main">
-<header class="scoreboard-header">
-<aside class="profile-leftbar">
-<aside class="colleagues-rightbar">
-<footer class="messages-footer">
+<header class="scoreboard-header expanded/collapsed/unfolded">
+<aside class="profile-leftbar expanded/collapsed">
+<aside class="colleagues-rightbar expanded/collapsed">
+<footer class="messages-footer expanded/collapsed/unfolded">
 
 ---
 
@@ -63,26 +79,24 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 > .specialist or .technician
 
+<section id="hyperlink-overlay" class="default-overlay highlight/downplay">
+
 # Specialist
 
-<main class="iframe-main">
+<main class="resources-main">
 
-<section class="bookmarks-overlay">
-
-<aside class="edit-leftbar">
-<aside class="links-rightbar">
-
-<footer class="messages-footer">
+<header class="discovery-header expanded/collapsed/unfolded">
+<aside class="modify-leftbar expanded/collapsed">
+<aside class="bookmarks-rightbar expanded/collapsed">
+<footer class="messages-footer expanded/collapsed/unfolded">
 
 # Technician
 
-<main class="iframe-main">
+<main class="resources-main">
 
-<section class="bookmarks-overlay">
-
-<aside class="links-rightbar">
-<aside class="archive-leftbar">
-
-<footer class="messages-footer">
+<header class="discovery-header expanded/collapsed/unfolded">
+<aside class="modify-leftbar expanded/collapsed">
+<aside class="bookmarks-rightbar expanded/collapsed">
+<footer class="messages-footer expanded/collapsed/unfolded">
 
 ---
