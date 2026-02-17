@@ -29,8 +29,8 @@ Memorization and habits are critical when it comes to the user experience and de
 
 Description.
 
-> <main class="report-main">
-> stateName: No state toggles.
+    > <main class="report-main">
+    > stateName: No state toggles.
 
 <header class="clockboard-header expanded/collapsed/unfolded">
 
