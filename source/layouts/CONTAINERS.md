@@ -28,9 +28,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ---
 
-# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf)
-
-Description: .freelancing or .established.
+# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Freelancing or Established
 
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="overtime-overlay" class="default-overlay">`
@@ -63,14 +61,12 @@ Description: .freelancing or .established.
 
 ---
 
-# [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf)
-
-Description: .manager or .employee.
+# [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf): Manager or Employee
 
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="ticketing-overlay" class="default-overlay">`
 
-# Manager
+## Manager
 
 - stateName: No state toggles |🠊|
   `<main class="tickets-main">`
@@ -83,7 +79,7 @@ Description: .manager or .employee.
   `<header class="scoreboard-header">`
   `<footer class="messages-footer">`
 
-# Employee
+## Employee
 
 - stateName: No state toggles |🠊|
   `<main class="logged-main">`
@@ -98,14 +94,12 @@ Description: .manager or .employee.
 
 ---
 
-# [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf)
-
-Description: .specialist or .technician.
+# [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
 
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="hyperlink-overlay" class="default-overlay">`
 
-# Specialist
+## Specialist
 
 - stateName: No state toggles |🠊|
   `<main class="resources-main">`
@@ -118,7 +112,7 @@ Description: .specialist or .technician.
   `<header class="discovery-header">`
   `<footer class="messages-footer">`
 
-# Technician
+## Technician
 
 - stateName: No state toggles |🠊|
   `<main class="resources-main">`
