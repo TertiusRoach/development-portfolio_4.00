@@ -7,18 +7,18 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
+import { useEmail } from '../../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
+import { stripBrackets } from '../../../../scripts/landing';
 import { animateGrid, defineButton } from './Section_launch';
-import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
+import { viewBlock, viewText, axiosError } from '../../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/archive/default/Button.default';
+import ButtonDefault from '../../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {

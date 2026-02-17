@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Section.buttons.scss';
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/overtime';
+import { stripBrackets } from '../../../../scripts/overtime';
 import { sizeDivs, loadStyle } from './Section_buttons';
 //--|🠋 Components 🠋|--\\
-const AsideButtons = lazy(() => import('../../Aside/buttons/Aside.buttons'));
+const AsideButtons = lazy(() => import('../../../Aside/buttons/Aside.buttons'));
 
 const SectionButtons: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
@@ -17,10 +17,10 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
 
   const handleButtons = (pageName: 'buttons') => {
     let loadSelect = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`,
     ) as HTMLSelectElement;
     let colorSelect = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="color"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="color"] select`,
     ) as HTMLSelectElement;
 
     return (
@@ -234,7 +234,7 @@ const SectionButtons: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     let loadSelect = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="load"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="load"] select`,
     ) as HTMLSelectElement;
 
     let handleChange = () => {

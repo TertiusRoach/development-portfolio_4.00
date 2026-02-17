@@ -1,4 +1,4 @@
-import ButtonDefault from '../../../Button/default/Button.default';
+import ButtonDefault from '../../../../Button/default/Button.default';
 
 /*
 interface InfoProps {

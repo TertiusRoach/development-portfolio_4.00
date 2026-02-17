@@ -20,14 +20,6 @@ interface InfoProps {
     roleName?: string;
   };
 }
-type HandleButtons = (
-  pageName: string,
-  pagePreview: 'default-buttons' | 'routing-buttons',
-
-  blockName: string,
-  blockEvent: 'scroll-mouse' | 'control-preview' | 'toggle-aside',
-  blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | string,
-) => void;
 
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';

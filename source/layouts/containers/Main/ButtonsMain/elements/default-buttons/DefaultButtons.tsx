@@ -24,7 +24,6 @@ interface InfoProps {
     roleName?: string;
   };
 }
-
 const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
