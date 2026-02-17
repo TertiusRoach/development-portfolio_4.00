@@ -32,21 +32,21 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 Description: .freelancing or .established.
 
-|🠋| stateName: **.highlight** or **.downplay** |🠋|
-`<section id="overtime-overlay" class="default-overlay">`
+- stateName: **.highlight** or **.downplay** |🠋|
+  `<section id="overtime-overlay" class="default-overlay">`
 
 ## Freelancing
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="report-main">`
+- stateName: No state toggles |🠋|
+  `<main class="report-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="clocking-leftbar">`
-`<aside class="request-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠋|
+  `<aside class="clocking-leftbar">`
+  `<aside class="request-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="clockboard-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
+  `<header class="clockboard-header">`
+  `<footer class="messages-footer">`
 
 ## Established
 
