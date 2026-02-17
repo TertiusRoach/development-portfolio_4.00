@@ -32,34 +32,34 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 Description: .freelancing or .established.
 
-- stateName: **.highlight** or **.downplay** |🠋|
+- stateName: **.highlight** or **.downplay** |🠊|
   `<section id="overtime-overlay" class="default-overlay">`
 
 ## Freelancing
 
-- stateName: No state toggles |🠋|
+- stateName: No state toggles |🠊|
   `<main class="report-main">`
 
-- stateName: **.expanded** or **.collapsed** |🠋|
+- stateName: **.expanded** or **.collapsed** |🠊|
   `<aside class="clocking-leftbar">`
   `<aside class="request-rightbar">`
 
-- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
   `<header class="clockboard-header">`
   `<footer class="messages-footer">`
 
 ## Established
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="approve-main">`
+- stateName: No state toggles |🠊|
+  `<main class="approve-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="clocking-leftbar">`
-`<aside class="request-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠊|
+  `<aside class="clocking-leftbar">`
+  `<aside class="request-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="clockboard-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
+  `<header class="clockboard-header">`
+  `<footer class="messages-footer">`
 
 ---
 
@@ -67,34 +67,34 @@ Description: .freelancing or .established.
 
 Description: .manager or .employee.
 
-|🠋| stateName: **.highlight** or **.downplay** |🠋|
-`<section id="ticketing-overlay" class="default-overlay">`
+- stateName: **.highlight** or **.downplay** |🠊|
+  `<section id="ticketing-overlay" class="default-overlay">`
 
 # Manager
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="tickets-main">`
+- stateName: No state toggles |🠊|
+  `<main class="tickets-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="completed-leftbar">`
-`<aside class="employees-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠊|
+  `<aside class="completed-leftbar">`
+  `<aside class="employees-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="scoreboard-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
+  `<header class="scoreboard-header">`
+  `<footer class="messages-footer">`
 
 # Employee
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="logged-main">`
+- stateName: No state toggles |🠊|
+  `<main class="logged-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="profile-leftbar">`
-`<aside class="colleagues-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠊|
+  `<aside class="profile-leftbar">`
+  `<aside class="colleagues-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="scoreboard-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
+  `<header class="scoreboard-header">`
+  `<footer class="messages-footer">`
 
 ---
 
@@ -102,33 +102,33 @@ Description: .manager or .employee.
 
 Description: .specialist or .technician.
 
-|🠋| stateName: **.highlight** or **.downplay** |🠋|
-`<section id="hyperlink-overlay" class="default-overlay">`
+- stateName: **.highlight** or **.downplay** |🠊|
+  `<section id="hyperlink-overlay" class="default-overlay">`
 
 # Specialist
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="resources-main">`
+- stateName: No state toggles |🠊|
+  `<main class="resources-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="modify-leftbar">`
-`<aside class="bookmarks-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠊|
+  `<aside class="modify-leftbar">`
+  `<aside class="bookmarks-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="discovery-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
+  `<header class="discovery-header">`
+  `<footer class="messages-footer">`
 
 # Technician
 
-|🠋| stateName: No state toggles |🠋|
-`<main class="resources-main">`
+- stateName: No state toggles |🠊|
+  `<main class="resources-main">`
 
-|🠋| stateName: **.expanded** or **.collapsed** |🠋|
-`<aside class="modify-leftbar">`
-`<aside class="bookmarks-rightbar">`
+- stateName: **.expanded** or **.collapsed** |🠊|
+  `<aside class="modify-leftbar">`
+  `<aside class="bookmarks-rightbar">`
 
-|🠋| stateName: **.expanded** or **.collapsed** or **.unfolded** |🠋|
-`<header class="discovery-header">`
-`<footer class="messages-footer">`
+- stateName: **.expanded** or **.collapsed** or **.unfolded** |🠊|
+  `<header class="discovery-header">`
+  `<footer class="messages-footer">`
 
 ---
