@@ -34,9 +34,7 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 - [Development Environment](#development-environment)
   - [VSCode Tips](#vscode-tips)
   - [Folder Structure](#folder-structure)
-    <<<<<<< HEAD
-  - # [Repository Synchronization](#repository-synchronization)
-    > > > > > > > b0979a4b3451384187fbb5eff59e42c84b0bdbbf
+  - [Repository Synchronization](#repository-synchronization)
 - [Documentation Standards](#documentation-standards)
   - [Review Flags](#review-flags)
   - [Git Workflow](#git-workflow)
@@ -259,7 +257,7 @@ This is where the testing surface lives. If something breaks, it usually breaks 
 
 ---
 
-## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+## [Front-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
 

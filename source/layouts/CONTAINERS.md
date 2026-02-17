@@ -1,45 +1,36 @@
 # [Containers](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
-Layouts is the folder that contains all my front-end based code. To separate concerns, this project employs a strategy by tagging all the main blocks with the following criteria <element class="${labelName}-${blockName}">. It's refined to orchestrate user attention and establish a clear hierarchy where the entry point resides in ==source/pages/== and calls the structure from the ==source/layout/containers/== folder. The layout will relate to the roleName which will be applied as a className to the parent container labelled <div class id="${pageName}-body" class="${roleName} active">. The criteria that affects the user experience will be based on those factors.
+Layouts is the folder that contains all my front-end based code. To separate concerns, this project employs a strategy by tagging all the main blocks with the following criteria `<element class="${labelName}-${blockName}">`. It's refined to orchestrate user attention and establish a clear hierarchy where the entry point resides in ==source/pages/== and calls the structure from the ==source/layout/containers/== folder. The layout will relate to the roleName which will be applied as a className to the parent container labelled `<div class id="${pageName}-body" class="${roleName} active/asleep">`. The criteria that affects the user experience will be based on those factors. Memorization and habits are critical when it comes to the user experience and development flow. This means that each block needs to have a guiding principle.
 
-- `Overlay`
-- `Leftbar`
-- `Rightbar`
-- `Header`
-- `Main`
-- `Footer`
+1. This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
 
-Memorization and habits are critical when it comes to the user experience and development flow. This means that each block needs to have a guiding principle.
-
-`<section id="${pageName}-overlay">`
+- `<section id="${pageName}-overlay">`
 
 > Initial entry layer.
 
-This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
+2. This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions
 
-`<main id="${pageName}-main">`
+- `<main id="${pageName}-main">`
 
 > Primary workspace.
 
-This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions
+3. A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
 
-`<aside id="${pageName}-leftbar">`
+- `<aside id="${pageName}-leftbar">`
 
 > Action and guidance panel.
 
-A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
+4. A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
 
-`<aside id="${pageName}-rightbar">`
+- `<aside id="${pageName}-rightbar">`
 
 > Context and loop reinforcement panel.
 
-A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
+5. Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
 
-`<header id="${pageName}-header">`
+- `<header id="${pageName}-header">`
 
 > Controls and configuration surface.
-
-Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
 
 ---
 
