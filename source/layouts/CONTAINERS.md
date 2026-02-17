@@ -13,23 +13,33 @@ Memorization and habits are critical when it comes to the user experience and de
 
 `<section id="${pageName}-overlay">`
 
-> Initial entry layer. This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
+> Initial entry layer.
+
+This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
 
 `<main id="${pageName}-main">`
 
-> Primary workspace. This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions.
+> Primary workspace.
+
+This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions
 
 `<aside id="${pageName}-leftbar">`
 
-> Action and guidance panel. A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
+> Action and guidance panel.
+
+A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
 
 `<aside id="${pageName}-rightbar">`
 
-> Context and loop reinforcement panel. A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
+> Context and loop reinforcement panel.
+
+A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
 
 `<header id="${pageName}-header">`
 
-> Controls and configuration surface. Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
+> Controls and configuration surface.
+
+Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
 
 ---
 
