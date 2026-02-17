@@ -32,7 +32,9 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 Description: .freelancing or .established.
 
-<section id="overtime-overlay" class="default-overlay highlight/downplay">
+`<section id="overtime-overlay" class="default-overlay">`
+
+> stateName: .highlight or .downplay
 
 ## Freelancing
 
@@ -40,12 +42,10 @@ Description: .freelancing or .established.
 
 > stateName: No state toggles.
 
-`<header class="clockboard-header expanded/collapsed/unfolded">`
-
 `<aside class="clocking-leftbar expanded/collapsed">`
-
 `<aside class="request-rightbar expanded/collapsed">`
 
+`<header class="clockboard-header expanded/collapsed/unfolded">`
 `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ## Established
@@ -54,9 +54,10 @@ Description: .freelancing or .established.
 
 > stateName: No state toggles.
 
-`<header class="clockboard-header expanded/collapsed/unfolded">`
 `<aside class="clocking-leftbar expanded/collapsed">`
 `<aside class="request-rightbar expanded/collapsed">`
+
+`<header class="clockboard-header expanded/collapsed/unfolded">`
 `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ---
@@ -71,19 +72,17 @@ Description: .manager or .employee.
 
 # Manager
 
-## `<main class="tickets-main">`
+- [ ] `<main class="tickets-main">`
 
 > stateName: No state toggles.
 
-## `<aside class="completed-leftbar">`
-
-## `<aside class="employees-rightbar">`
+- [ ] `<aside class="completed-leftbar">`
+- [ ] `<aside class="employees-rightbar">`
 
 > stateName: .expanded or .collapsed
 
-## `<header class="scoreboard-header">`
-
-## `<footer class="messages-footer">`
+- [ ] `<header class="scoreboard-header">`
+- [ ] `<footer class="messages-footer">`
 
 > stateName: .expanded or .collapsed or .unfolded
 
@@ -93,9 +92,10 @@ Description: .manager or .employee.
 
 > stateName: No state toggles.
 
-`<header class="scoreboard-header expanded/collapsed/unfolded">`
 `<aside class="profile-leftbar expanded/collapsed">`
 `<aside class="colleagues-rightbar expanded/collapsed">`
+
+`<header class="scoreboard-header expanded/collapsed/unfolded">`
 `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ---
@@ -114,9 +114,10 @@ Description: .specialist or .technician.
 
 > stateName: No state toggles.
 
-`<header class="discovery-header expanded/collapsed/unfolded">`
 `<aside class="modify-leftbar expanded/collapsed">`
 `<aside class="bookmarks-rightbar expanded/collapsed">`
+
+`<header class="discovery-header expanded/collapsed/unfolded">`
 `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 # Technician
@@ -125,9 +126,10 @@ Description: .specialist or .technician.
 
 > stateName: No state toggles.
 
-`<header class="discovery-header expanded/collapsed/unfolded">`
 `<aside class="modify-leftbar expanded/collapsed">`
 `<aside class="bookmarks-rightbar expanded/collapsed">`
+
+`<header class="discovery-header expanded/collapsed/unfolded">`
 `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ---
