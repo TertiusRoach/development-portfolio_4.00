@@ -38,15 +38,19 @@ Description: .freelancing or .established.
 
 ## Freelancing
 
-`<main class="report-main">`
+|🠋| stateName: No state toggles |🠋|
 
-> stateName: No state toggles.
+- [ ] `<main class="report-main">`
 
-`<aside class="clocking-leftbar expanded/collapsed">`
-`<aside class="request-rightbar expanded/collapsed">`
+|🠋| stateName: .expanded or .collapsed |🠋|
 
-`<header class="clockboard-header expanded/collapsed/unfolded">`
-`<footer class="messages-footer expanded/collapsed/unfolded">`
+- [ ] `<aside class="clocking-leftbar expanded/collapsed">`
+- [ ] `<aside class="request-rightbar expanded/collapsed">`
+
+|🠋| stateName: .expanded or .collapsed or .unfolded |🠋|
+
+- [ ] `<header class="clockboard-header expanded/collapsed/unfolded">`
+- [ ] `<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ## Established
 
