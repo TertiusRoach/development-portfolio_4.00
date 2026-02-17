@@ -11,11 +11,25 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 Memorization and habits are critical when it comes to the user experience and development flow. This means that each block needs to have a guiding principle.
 
-<section id="${pageName}-overlay">: The first page you see. This lets the user set which page they want to preview in the demo.
-<main id="${pageName}-main">: Second page you see and toggles the criteria based on the data set by the application based on what the user does.
-<aside id="${pageName}-leftbar">: Is an accompanying container determining actions the user needs to take in order to use the software.
-<aside id="${pageName}-rightbar">: Just like its counterpart, this does the same to interconnect the goal and loop established by the software.
-<header class="${pageName}-header">: This contains all the settings and features for the user to change as they wish.
+`<section id="${pageName}-overlay">`
+
+> Initial entry layer. This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
+
+`<main id="${pageName}-main">`
+
+> Primary workspace. This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions.
+
+`<aside id="${pageName}-leftbar">`
+
+> Action and guidance panel. A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
+
+`<aside id="${pageName}-rightbar">`
+
+> Context and loop reinforcement panel. A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
+
+`<header id="${pageName}-header">`
+
+> Controls and configuration surface. Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
 
 ---
 
