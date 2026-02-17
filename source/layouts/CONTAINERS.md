@@ -27,27 +27,27 @@ Memorization and habits are critical when it comes to the user experience and de
 
 ## Freelancing
 
-Description.
-
 `<main class="report-main">`
 
-> stateName: No state toggles.
+Description. [^1]
 
-<header class="clockboard-header expanded/collapsed/unfolded">
+[^1]: stateName: No state toggles.
 
-<aside class="clocking-leftbar expanded/collapsed">
+`<header class="clockboard-header expanded/collapsed/unfolded">`
 
-<aside class="request-rightbar expanded/collapsed">
+`<aside class="clocking-leftbar expanded/collapsed">`
 
-<footer class="messages-footer expanded/collapsed/unfolded">
+`<aside class="request-rightbar expanded/collapsed">`
+
+`<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ## Established
 
-<main class="approve-main">
-<header class="clockboard-header expanded/collapsed/unfolded">
-<aside class="clocking-leftbar expanded/collapsed">
-<aside class="request-rightbar expanded/collapsed">
-<footer class="messages-footer expanded/collapsed/unfolded">
+`<main class="approve-main">`
+`<header class="clockboard-header expanded/collapsed/unfolded">`
+`<aside class="clocking-leftbar expanded/collapsed">`
+`<aside class="request-rightbar expanded/collapsed">`
+`<footer class="messages-footer expanded/collapsed/unfolded">`
 
 ---
 
