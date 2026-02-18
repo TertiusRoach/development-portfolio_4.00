@@ -30,6 +30,9 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 # [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Freelancing or Established
 
+- stateName: **.active** or **.asleep** |🠊|
+  `<div id="overtime-body" class="default-body">`
+
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="overtime-overlay" class="default-overlay">`
 
@@ -63,6 +66,9 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 # [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf): Manager or Employee
 
+- stateName: **.active** or **.asleep** |🠊|
+  `<div id="ticketing-body" class="default-body">`
+
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="ticketing-overlay" class="default-overlay">`
 
@@ -95,6 +101,9 @@ Layouts is the folder that contains all my front-end based code. To separate con
 ---
 
 # [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
+
+- stateName: **.active** or **.asleep** |🠊|
+  `<div id="hyperlink-body" class="default-body">`
 
 - stateName: **.highlight** or **.downplay** |🠊|
   `<section id="hyperlink-overlay" class="default-overlay">`

@@ -7,15 +7,15 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
+import { useEmail } from '../../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ListCountdown from '../../List/countdown/List.countdown';
+import ListCountdown from '../../../List/countdown/List.countdown';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
+import { stripBrackets } from '../../../../scripts/landing';
+import { viewBlock, viewText, axiosError } from '../../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 
 interface InfoProps {
