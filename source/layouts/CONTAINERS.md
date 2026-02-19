@@ -135,3 +135,30 @@ Layouts is the folder that contains all my front-end based code. To separate con
   `<footer class="messages-footer">`
 
 ---
+
+Overtime: Freelancing or Established
+  `<div id="overtime-body" class="default-body">`  `<section id="overtime-overlay" class="default-overlay">`
+Freelancing  `<main class="report-main">`  `<aside class="clocking-leftbar">`  `<aside class="request-rightbar">`  `<header class="clockboard-header">`  `<footer class="messages-footer">`
+Established  `<main class="approve-main">`  `<aside class="clocking-leftbar">`  `<aside class="request-rightbar">`  `<header class="clockboard-header">`  `<footer class="messages-footer">`
+
+---
+
+Ticketing: Manager or Employee  `<div id="ticketing-body" class="default-body">`  `<section id="ticketing-overlay" class="default-overlay">`
+Manager  `<main class="tickets-main">`An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
+  `<aside class="completed-leftbar">`Managers can view their logged tickets which employees completed.
+  `<aside class="employees-rightbar">`This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
+  `<header class="scoreboard-header">`This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
+  `<footer class="messages-footer">`This blpcl will be repeated throughout and is meant to update the user.
+Employee  `<main class="logged-main">`This page shows all the pending tickets that uasn't been claimed. Allowing employees to have purpose by grabbing it to complete for the day.
+  `<aside class="claimed-leftbar">`This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
+  `<aside class="colleagues-rightbar">`Here you can view and claim any outstanding tickets from co-workers to continue the process incase the person is on vacation or not able to complete it in time.
+  `<header class="scoreboard-header">`This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
+  `<footer class="messages-footer">`Like the previous description. This updates the user on the statis of whatever they were doing.
+
+---
+
+Hyperlink: Specialist or Technician  `<div id="hyperlink-body" class="default-body">`  `<section id="hyperlink-overlay" class="default-overlay">`
+Specialist  `<main class="resources-main">`  `<aside class="modify-leftbar">`  `<aside class="bookmarks-rightbar">`  `<header class="discovery-header">`  `<footer class="messages-footer">`
+Technician  `<main class="resources-main">`  `<aside class="modify-leftbar">`  `<aside class="bookmarks-rightbar">`  `<header class="discovery-header">`  `<footer class="messages-footer">`
+
+---
