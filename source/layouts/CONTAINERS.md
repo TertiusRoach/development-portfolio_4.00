@@ -30,24 +30,22 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 # [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Freelancing or Established
 
-- `<div id="overtime-body" class="default-body">`
-  <br> stateName: **.active** or **.asleep**
+## Uniform Containers
 
-- `<section id="overtime-overlay" class="default-overlay">`
-  <br> stateName: **.highlight** or **.downplay**
+| HTML Identification               | Class               | State Toggles                   | Description |
+| --------------------------------- | ------------------- | ------------------------------- | ----------- |
+| `<div id="overtime-body">`        | **default-body**    | **.active** or **.asleep**      | ??          |
+| `<section id="overtime-overlay">` | **default-overlay** | **.highlight** or **.downplay** | ??          |
 
 ## Freelancing
 
-- `<main class="report-main">`
-  <br> stateName: No state toggles
-
-- `<aside class="clocking-leftbar">`
-  <br> stateName: **.expanded** or **.collapsed**
-  `<aside class="request-rightbar">`
-
-- `<header class="clockboard-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+| HTML Identification               | Class                 | State Toggles                                    | Description |
+| --------------------------------- | --------------------- | ------------------------------------------------ | ----------- |
+| `<main id="overtime-main">`       | **report-main**       | No state toggles                                 | ??          |
+| `<aside  id="overtime-leftbar">`  | **clocking-leftbar**  | **.expanded** or **.collapsed**                  | ??          |
+| `<aside  id="overtime-rightbar">` | **request-rightbar**  | **.expanded** or **.collapsed**                  | ??          |
+| `<header id="overtime-header">`   | **clockboard-header** | **.expanded** or **.collapsed** or **.unfolded** | ??          |
+| `<footer id="overtime-footer">`   | **messages-footer**   | **.expanded** or **.collapsed** or **.unfolded** | ??          |
 
 ## Established
 
@@ -65,6 +63,8 @@ Layouts is the folder that contains all my front-end based code. To separate con
 ---
 
 # [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf): Manager or Employee
+
+## Uniform Containers
 
 - `<div id="ticketing-body" class="default-body">`
   <br> stateName: **.active** or **.asleep**
@@ -101,6 +101,8 @@ Layouts is the folder that contains all my front-end based code. To separate con
 ---
 
 # [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
+
+## Uniform Containers
 
 - `<div id="hyperlink-body" class="default-body">`
   <br> stateName: **.active** or **.asleep**
@@ -167,6 +169,7 @@ Ticketing: Manager or Employee
 Manager
 `<main class="tickets-main">`
 An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
+
 `<aside class="completed-leftbar">`
 Managers can view their logged tickets which employees completed.
 `<aside class="employees-rightbar">`
@@ -191,8 +194,22 @@ Like the previous description. This updates the user on the status of whatever t
 
 ---
 
-Hyperlink: Specialist or Technician  `<div id="hyperlink-body" class="default-body">`  `<section id="hyperlink-overlay" class="default-overlay">`
-Specialist  `<main class="resources-main">`  `<aside class="modify-leftbar">`  `<aside class="bookmarks-rightbar">`  `<header class="discovery-header">`  `<footer class="messages-footer">`
-Technician  `<main class="resources-main">`  `<aside class="modify-leftbar">`  `<aside class="bookmarks-rightbar">`  `<header class="discovery-header">`  `<footer class="messages-footer">`
+Hyperlink: Specialist or Technician
+`<div id="hyperlink-body" class="default-body">`
+`<section id="hyperlink-overlay" class="default-overlay">`
+
+Specialist
+`<main class="resources-main">`
+`<aside class="modify-leftbar">`
+`<aside class="bookmarks-rightbar">`
+`<header class="discovery-header">`
+`<footer class="messages-footer">`
+
+Technician
+`<main class="resources-main">`
+`<aside class="modify-leftbar">`
+`<aside class="bookmarks-rightbar">`
+`<header class="discovery-header">`
+`<footer class="messages-footer">`
 
 ---
