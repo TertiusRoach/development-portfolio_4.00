@@ -98,7 +98,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ---------------------------------- | ------------------------------------------------ |
 | `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> This block will be repeated throughout and is meant to update the user.
+> Status + guidance messages. A persistent feedback channel for confirmations, warnings, and next-step prompts (e.g., “Ticket logged”, “Permission denied”, “Network error—try again”). This keeps the UI responsive without forcing popups for every event. Edge case: multiple events firing quickly (batch actions, rapid clicks, retries) should not spam the user—messages should queue, deduplicate, or summarize when appropriate.
 
 ## Employee
 
@@ -106,31 +106,31 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ---------------------------- | ---------------- |
 | `<main class="logged-main">` | No state toggles |
 
-> This page shows all the pending tickets that hasn't been claimed. Allowing employees to have purpose by grabbing it to complete for the day.
+> Primary workspace (employee view). Displays all pending tickets that have not been claimed. This is the “starting line” where employees pick work for the day and establish purpose through clear, available tasks. Edge case: if there are no pending tickets, show a positive empty state (e.g., “All caught up”) and optionally point to alternate actions (check colleagues, review claimed, etc.).
 
 | Container                         | States                          |
 | --------------------------------- | ------------------------------- |
 | `<aside class="claimed-leftbar">` | **.expanded** or **.collapsed** |
 
-> This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
+> Claimed/assigned work panel. Shows tickets currently claimed by (or assigned to) the employee—this is where the “work in progress → completion → scoring” loop actually lives. Edge case: tickets can become stale (reassigned, resolved elsewhere, or deleted). The panel should handle conflicts cleanly (refresh state, show what changed, and avoid silently dropping items).
 
 | Container                             | States                          |
 | ------------------------------------- | ------------------------------- |
 | `<aside class="colleagues-rightbar">` | **.expanded** or **.collapsed** |
 
-> Here you can view and claim any outstanding tickets from co-workers to continue the process in case the person is on vacation or not able to complete it in time.
+> Colleague coverage / continuity panel. Lets employees view and claim outstanding tickets from coworkers to keep momentum when someone is unavailable (vacation, sick leave, bandwidth issues). This supports continuity without breaking the workflow. Edge case: prevent double-claim race conditions (two people trying to claim the same ticket). If it happens, show a clear resolution message and reflect the updated ownership immediately.
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
+> Shared transparency scoreboard. Visible to everyone, showing clear system-wide states (pending, assigned, deleted, resolved). The primary “score” is the resolved count to reinforce completion. Edge case: if certain states are restricted (e.g., deleted reasons, sensitive tickets), keep transparency by showing totals without exposing sensitive details.
 
 | Container                          | States                                           |
 | ---------------------------------- | ------------------------------------------------ |
 | `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> Like the previous description. This updates the user on the status of whatever they were doing.
+> Status + guidance messages (employee). Same role as in the manager view: confirms actions (claimed, unclaimed, resolved), surfaces errors, and provides next-step guidance without disrupting flow. Edge case: offline/slow network should degrade gracefully (clear retry messaging, “pending sync” indicator if applicable, and no misleading success confirmations).
 
 ---
 
