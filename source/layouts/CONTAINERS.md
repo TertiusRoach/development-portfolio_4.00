@@ -74,25 +74,25 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ----------------------------- | ---------------- |
 | `<main class="tickets-main">` | No state toggles |
 
-> An screen where you can log a ticket appears inside `<main>` on top of everything when ypu click on "Log Ticket" inside of `<header>`. For simplicity's sake, only Managers can log tickets for now.
+> Primary workspace (manager view). This is where the manager’s ticket logging screen is rendered. When the user clicks “Log Ticket” in the `<header>`, a ticket form/dialog is displayed in the `<section class="default-overlay">` container on top of the rest of the page (so the logging flow stays focused and can be completed quickly). Edge case: if the user is not authorized (non-manager), the log UI should not open and a clear message should be shown (e.g., via the footer message system). Also handle “cancel/close with unsaved changes” gracefully.
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<aside class="completed-leftbar">` | **.expanded** or **.collapsed** |
 
-> Managers can view their logged tickets which employees completed.
+> Completed tickets panel. Shows tickets that were logged by managers and completed by employees, so managers can review outcomes and confirm throughput at a glance. Edge case: empty state (no completed tickets yet) should be informative rather than blank; long lists should remain usable (scrolling, grouping, or basic filtering) so the panel doesn’t become noise.
 
 | Container                            | States                          |
 | ------------------------------------ | ------------------------------- |
 | `<aside class="employees-rightbar">` | **.expanded** or **.collapsed** |
 
-> This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
+> Employee-side feature access (manager scope). This panel mirrors the employee-facing tools and views, but with broader navigation: managers can browse across departments, not just a single department tied to one user. Edge case: if department metadata is missing or the manager has no assigned departments, fall back to a safe default (e.g., “All” or “Unassigned”) and explain what’s happening instead of breaking navigation.
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
+> Scoreboard + accountability hook. This header is the “engagement surface”: it makes progress visible, keeps the system competitive in a friendly way, and reinforces accountability through transparent scoring. 1 completed ticket = 1 point. Edge case: ties, zero-activity days, or sudden score changes (e.g., a ticket reversed/deleted) should be communicated clearly so the scoreboard feels fair and trusted.
 
 | Container                          | States                                           |
 | ---------------------------------- | ------------------------------------------------ |
