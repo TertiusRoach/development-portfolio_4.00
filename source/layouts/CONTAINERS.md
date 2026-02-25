@@ -28,16 +28,18 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ---
 
-# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Established or Freelancing
+# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf)
 
-## Uniform Containers
+## 🏢 Established or 🧭 Freelancing
+
+### Uniform Containers
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
-## Established
+### Established
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
@@ -47,7 +49,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | `<header class="clockboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 | `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-## Freelancing
+### Freelancing
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
@@ -59,16 +61,18 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ---
 
-# [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf): Manager or Employee
+# [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf)
 
-## Uniform Containers
+## 📋 Manager or 📦 Employee
+
+### Uniform Containers
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
-## Manager
+### Manager
 
 | Container                     | States           |
 | ----------------------------- | ---------------- |
@@ -100,7 +104,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 > Status + guidance messages. A persistent feedback channel for confirmations, warnings, and next-step prompts (e.g., “Ticket logged”, “Permission denied”, “Network error—try again”). This keeps the UI responsive without forcing popups for every event. Edge case: multiple events firing quickly (batch actions, rapid clicks, retries) should not spam the user—messages should queue, deduplicate, or summarize when appropriate.
 
-## Employee
+### Employee
 
 | Container                    | States           |
 | ---------------------------- | ---------------- |
@@ -134,16 +138,18 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ---
 
-# [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
+# [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf)
 
-## Uniform Containers
+## 🔍 Specialist or 🔧 Technician
+
+### Uniform Containers
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
-## Specialist
+### Specialist
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
@@ -153,7 +159,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
 | `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-## Technician
+### Technician
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
