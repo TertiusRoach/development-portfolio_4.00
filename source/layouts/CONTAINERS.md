@@ -136,24 +136,6 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 # [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
 
-Hyperlink: Specialist or Technician
-`<div id="hyperlink-body" class="default-body">`
-`<section id="hyperlink-overlay" class="default-overlay">`
-
-Specialist
-`<main class="resources-main">`
-`<aside class="modify-leftbar">`
-`<aside class="bookmarks-rightbar">`
-`<header class="discovery-header">`
-`<footer class="messages-footer">`
-
-Technician
-`<main class="resources-main">`
-`<aside class="modify-leftbar">`
-`<aside class="bookmarks-rightbar">`
-`<header class="discovery-header">`
-`<footer class="messages-footer">`
-
 ## Uniform Containers
 
 | Container                           | States                          |
