@@ -32,14 +32,14 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Uniform Containers
 
-| Container Elements                  | State Toggles                   |
+| Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
 ## Established
 
-| Container Elements                   | State Toggles                                    |
+| Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<main class="approve-main">`        | No state toggles                                 |
 | `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
@@ -49,7 +49,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Freelancing
 
-| Container Elements                   | State Toggles                                    |
+| Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<main class="report-main">`         | No state toggles                                 |
 | `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
@@ -63,116 +63,78 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Uniform Containers
 
-| Container Elements                  | State Toggles                   |
+| Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
 ## Manager
 
-| Container Elements            | State Toggles    |
+| Container                     | States           |
 | ----------------------------- | ---------------- |
 | `<main class="tickets-main">` | No state toggles |
 
 > An screen where you can log a ticket appears inside `<main>` on top of everything when ypu click on "Log Ticket" inside of `<header>`. For simplicity's sake, only Managers can log tickets for now.
 
-| Container Elements                   | State Toggles                                    |
+| Container                           | States                          |
+| ----------------------------------- | ------------------------------- |
+| `<aside class="completed-leftbar">` | **.expanded** or **.collapsed** |
+
+> Managers can view their logged tickets which employees completed.
+
+| Container                            | States                          |
+| ------------------------------------ | ------------------------------- |
+| `<aside class="employees-rightbar">` | **.expanded** or **.collapsed** |
+
+> This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
+
+| Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
-| `<aside class="completed-leftbar">`  | **.expanded** or **.collapsed**                  |
-| `<aside class="employees-rightbar">` | **.expanded** or **.collapsed**                  |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-`<main class="tickets-main">`
+> This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
 
-`<aside class="completed-leftbar">`
-Managers can view their logged tickets which employees completed.
-`<aside class="employees-rightbar">`
-This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
-`<header class="scoreboard-header">`
-This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
-`<footer class="messages-footer">`
-This block will be repeated throughout and is meant to update the user.
+| Container                          | States                                           |
+| ---------------------------------- | ------------------------------------------------ |
+| `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
+
+> This block will be repeated throughout and is meant to update the user.
 
 ## Employee
 
-| Container Elements                    | State Toggles                                    |
-| ------------------------------------- | ------------------------------------------------ |
-| `<main class="logged-main">`          | No state toggles                                 |
-| `<aside class="claimed-leftbar">`     | **.expanded** or **.collapsed**                  |
-| `<aside class="colleagues-rightbar">` | **.expanded** or **.collapsed**                  |
-| `<header class="scoreboard-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`    | **.expanded** or **.collapsed** or **.unfolded** |
+| Container                    | States           |
+| ---------------------------- | ---------------- |
+| `<main class="logged-main">` | No state toggles |
 
-`<main class="logged-main">`
+> This page shows all the pending tickets that hasn't been claimed. Allowing employees to have purpose by grabbing it to complete for the day.
 
-`<aside class="claimed-leftbar">`
-This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
-`<aside class="colleagues-rightbar">`
-Here you can view and claim any outstanding tickets from co-workers to continue the process in case the person is on vacation or not able to complete it in time.
-`<header class="scoreboard-header">`
-This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
-`<footer class="messages-footer">`
-Like the previous description. This updates the user on the status of whatever they were doing.
+| Container                         | States                          |
+| --------------------------------- | ------------------------------- |
+| `<aside class="claimed-leftbar">` | **.expanded** or **.collapsed** |
+
+> This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
+
+| Container                             | States                          |
+| ------------------------------------- | ------------------------------- |
+| `<aside class="colleagues-rightbar">` | **.expanded** or **.collapsed** |
+
+> Here you can view and claim any outstanding tickets from co-workers to continue the process in case the person is on vacation or not able to complete it in time.
+
+| Container                            | States                                           |
+| ------------------------------------ | ------------------------------------------------ |
+| `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
+
+> This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
+
+| Container                          | States                                           |
+| ---------------------------------- | ------------------------------------------------ |
+| `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
+
+> Like the previous description. This updates the user on the status of whatever they were doing.
 
 ---
 
 # [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
-
-## Uniform Containers
-
-| Container Elements                  | State Toggles                   |
-| ----------------------------------- | ------------------------------- |
-| `<div class="default-body">`        | **.active** or **.asleep**      |
-| `<section class="default-overlay">` | **.highlight** or **.downplay** |
-
-## Specialist
-
-| Container Elements                   | State Toggles                                    |
-| ------------------------------------ | ------------------------------------------------ |
-| `<main class="resources-main">`      | No state toggles                                 |
-| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
-| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
-| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
-
-## Technician
-
-| Container Elements                   | State Toggles                                    |
-| ------------------------------------ | ------------------------------------------------ |
-| `<main class="resources-main">`      | No state toggles                                 |
-| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
-| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
-| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
-
----
-
-### Incorporate Information (Todo)
-
-Overtime: Freelancing or Established
-
-`<div id="overtime-body" class="default-body">`
-`<section id="overtime-overlay" class="default-overlay">`
-
-Freelancing 
-
-`<main class="report-main">`
-`<aside class="clocking-leftbar">`
-`<aside class="request-rightbar">`
-`<header class="clockboard-header">`
-`<footer class="messages-footer">`
-
-Established
-`<main class="approve-main">`
-`<aside class="clocking-leftbar">`
-`<aside class="request-rightbar">`
-`<header class="clockboard-header">`
-`<footer class="messages-footer">`
-
----
-
----
 
 Hyperlink: Specialist or Technician
 `<div id="hyperlink-body" class="default-body">`
@@ -191,5 +153,32 @@ Technician
 `<aside class="bookmarks-rightbar">`
 `<header class="discovery-header">`
 `<footer class="messages-footer">`
+
+## Uniform Containers
+
+| Container                           | States                          |
+| ----------------------------------- | ------------------------------- |
+| `<div class="default-body">`        | **.active** or **.asleep**      |
+| `<section class="default-overlay">` | **.highlight** or **.downplay** |
+
+## Specialist
+
+| Container                            | States                                           |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="resources-main">`      | No state toggles                                 |
+| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
+| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
+
+## Technician
+
+| Container                            | States                                           |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="resources-main">`      | No state toggles                                 |
+| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
+| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
 ---
