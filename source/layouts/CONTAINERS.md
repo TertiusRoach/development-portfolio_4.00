@@ -30,109 +30,109 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 # [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Freelancing or Established
 
-- stateName: **.active** or **.asleep**
-  `<div id="overtime-body" class="default-body">`
+- `<div id="overtime-body" class="default-body">`
+  <br> stateName: **.active** or **.asleep**
 
-- stateName: **.highlight** or **.downplay**
-  `<section id="overtime-overlay" class="default-overlay">`
+- `<section id="overtime-overlay" class="default-overlay">`
+  <br> stateName: **.highlight** or **.downplay**
 
 ## Freelancing
 
-- stateName: No state toggles
-  `<main class="report-main">`
+- `<main class="report-main">`
+  <br> stateName: No state toggles
 
-- stateName: **.expanded** or **.collapsed**
-  `<aside class="clocking-leftbar">`
+- `<aside class="clocking-leftbar">`
+  <br> stateName: **.expanded** or **.collapsed**
   `<aside class="request-rightbar">`
 
-- stateName: **.expanded** or **.collapsed** or **.unfolded**
-  `<header class="clockboard-header">`
-  `<footer class="messages-footer">`
+- `<header class="clockboard-header">`
+- `<footer class="messages-footer">`
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ## Established
 
-- stateName: No state toggles
-  `<main class="approve-main">`
+- `<main class="approve-main">`
+  <br> stateName: No state toggles
 
-- stateName: **.expanded** or **.collapsed**
-  `<aside class="clocking-leftbar">`
-  `<aside class="request-rightbar">`
+- `<aside class="clocking-leftbar">`
+- `<aside class="request-rightbar">`
+  <br> stateName: **.expanded** or **.collapsed**
 
-- stateName: **.expanded** or **.collapsed** or **.unfolded**
-  `<header class="clockboard-header">`
-  `<footer class="messages-footer">`
+- `<header class="clockboard-header">`
+- `<footer class="messages-footer">`
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ---
 
 # [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf): Manager or Employee
 
 - `<div id="ticketing-body" class="default-body">`
-  stateName: **.active** or **.asleep**
+  <br> stateName: **.active** or **.asleep**
 
 - `<section id="ticketing-overlay" class="default-overlay">`
-  stateName: **.highlight** or **.downplay**
+  <br> stateName: **.highlight** or **.downplay**
 
 ## Manager
 
 - `<main class="tickets-main">`
-  stateName: No state toggles
+  <br> stateName: No state toggles
 
 - `<aside class="completed-leftbar">`
 - `<aside class="employees-rightbar">`
-  stateName: **.expanded** or **.collapsed**
+  <br> stateName: **.expanded** or **.collapsed**
 
 - `<header class="scoreboard-header">`
 - `<footer class="messages-footer">`
-  stateName: **.expanded** or **.collapsed** or **.unfolded**
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ## Employee
 
 - `<main class="logged-main">`
-  stateName: No state toggles
+  <br> stateName: No state toggles
 
 - `<aside class="profile-leftbar">`
 - `<aside class="colleagues-rightbar">`
-  stateName: **.expanded** or **.collapsed**
+  <br> stateName: **.expanded** or **.collapsed**
 
 - `<header class="scoreboard-header">`
 - `<footer class="messages-footer">`
-  stateName: **.expanded** or **.collapsed** or **.unfolded**
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ---
 
 # [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf): Specialist or Technician
 
 - `<div id="hyperlink-body" class="default-body">`
-  stateName: **.active** or **.asleep**
+  <br> stateName: **.active** or **.asleep**
 
 - `<section id="hyperlink-overlay" class="default-overlay">`
-  stateName: **.highlight** or **.downplay**
+  <br> stateName: **.highlight** or **.downplay**
 
 ## Specialist
 
 - `<main class="resources-main">`
-  stateName: No state toggles
+  <br> stateName: No state toggles
 
 - `<aside class="modify-leftbar">`
 - `<aside class="bookmarks-rightbar">`
-  stateName: **.expanded** or **.collapsed**
+  <br> stateName: **.expanded** or **.collapsed**
 
 - `<header class="discovery-header">`
 - `<footer class="messages-footer">`
-  stateName: **.expanded** or **.collapsed** or **.unfolded**
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ## Technician
 
 - `<main class="resources-main">`
-  stateName: No state toggles
+  <br> stateName: No state toggles
 
 - `<aside class="modify-leftbar">`
 - `<aside class="bookmarks-rightbar">`
-  stateName: **.expanded** or **.collapsed**
+  <br> stateName: **.expanded** or **.collapsed**
 
 - `<header class="discovery-header">`
 - `<footer class="messages-footer">`
-  stateName: **.expanded** or **.collapsed** or **.unfolded**
+  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
 
 ---
 
