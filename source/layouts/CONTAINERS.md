@@ -74,7 +74,7 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ----------------------------- | ---------------- |
 | `<main class="tickets-main">` | No state toggles |
 
-> An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
+> An screen where you can log a ticket appears inside `<main>` on top of everything when ypu click on "Log Ticket" inside of `<header>`. For simplicity's sake, only Managers can log tickets for now.
 
 | Container Elements                   | State Toggles                                    |
 | ------------------------------------ | ------------------------------------------------ |
