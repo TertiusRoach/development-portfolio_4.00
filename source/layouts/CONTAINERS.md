@@ -70,16 +70,20 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Manager
 
+| Container Elements            | State Toggles    |
+| ----------------------------- | ---------------- |
+| `<main class="tickets-main">` | No state toggles |
+
+> An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
+
 | Container Elements                   | State Toggles                                    |
 | ------------------------------------ | ------------------------------------------------ |
-| `<main class="tickets-main">`        | No state toggles                                 |
 | `<aside class="completed-leftbar">`  | **.expanded** or **.collapsed**                  |
 | `<aside class="employees-rightbar">` | **.expanded** or **.collapsed**                  |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 | `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
 `<main class="tickets-main">`
-An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
 
 `<aside class="completed-leftbar">`
 Managers can view their logged tickets which employees completed.
