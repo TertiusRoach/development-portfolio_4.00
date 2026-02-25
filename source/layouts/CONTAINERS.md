@@ -28,37 +28,34 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ---
 
-# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Freelancing or Established
+# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf): Established or Freelancing
 
 ## Uniform Containers
 
-| HTML Identification               | Class               | State Toggles                   | Description |
-| --------------------------------- | ------------------- | ------------------------------- | ----------- |
-| `<div id="overtime-body">`        | **default-body**    | **.active** or **.asleep**      | ??          |
-| `<section id="overtime-overlay">` | **default-overlay** | **.highlight** or **.downplay** | ??          |
-
-## Freelancing
-
-| HTML Identification               | Class                 | State Toggles                                    | Description |
-| --------------------------------- | --------------------- | ------------------------------------------------ | ----------- |
-| `<main id="overtime-main">`       | **report-main**       | No state toggles                                 | ??          |
-| `<aside  id="overtime-leftbar">`  | **clocking-leftbar**  | **.expanded** or **.collapsed**                  | ??          |
-| `<aside  id="overtime-rightbar">` | **request-rightbar**  | **.expanded** or **.collapsed**                  | ??          |
-| `<header id="overtime-header">`   | **clockboard-header** | **.expanded** or **.collapsed** or **.unfolded** | ??          |
-| `<footer id="overtime-footer">`   | **messages-footer**   | **.expanded** or **.collapsed** or **.unfolded** | ??          |
+| Container Elements                  | State Toggles                   |
+| ----------------------------------- | ------------------------------- |
+| `<div class="default-body">`        | **.active** or **.asleep**      |
+| `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
 ## Established
 
-- `<main class="approve-main">`
-  <br> stateName: No state toggles
+| Container Elements                   | State Toggles                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="approve-main">`        | No state toggles                                 |
+| `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
+| `<aside class="request-rightbar">`   | **.expanded** or **.collapsed**                  |
+| `<header class="clockboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-- `<aside class="clocking-leftbar">`
-- `<aside class="request-rightbar">`
-  <br> stateName: **.expanded** or **.collapsed**
+## Freelancing
 
-- `<header class="clockboard-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+| Container Elements                   | State Toggles                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="report-main">`         | No state toggles                                 |
+| `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
+| `<aside class="request-rightbar">`   | **.expanded** or **.collapsed**                  |
+| `<header class="clockboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
 ---
 
@@ -66,37 +63,53 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Uniform Containers
 
-- `<div id="ticketing-body" class="default-body">`
-  <br> stateName: **.active** or **.asleep**
-
-- `<section id="ticketing-overlay" class="default-overlay">`
-  <br> stateName: **.highlight** or **.downplay**
+| Container Elements                  | State Toggles                   |
+| ----------------------------------- | ------------------------------- |
+| `<div class="default-body">`        | **.active** or **.asleep**      |
+| `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
 ## Manager
 
-- `<main class="tickets-main">`
-  <br> stateName: No state toggles
+| Container Elements                   | State Toggles                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="tickets-main">`        | No state toggles                                 |
+| `<aside class="completed-leftbar">`  | **.expanded** or **.collapsed**                  |
+| `<aside class="employees-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-- `<aside class="completed-leftbar">`
-- `<aside class="employees-rightbar">`
-  <br> stateName: **.expanded** or **.collapsed**
+`<main class="tickets-main">`
+An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
 
-- `<header class="scoreboard-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+`<aside class="completed-leftbar">`
+Managers can view their logged tickets which employees completed.
+`<aside class="employees-rightbar">`
+This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
+`<header class="scoreboard-header">`
+This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
+`<footer class="messages-footer">`
+This block will be repeated throughout and is meant to update the user.
 
 ## Employee
 
-- `<main class="logged-main">`
-  <br> stateName: No state toggles
+| Container Elements                    | State Toggles                                    |
+| ------------------------------------- | ------------------------------------------------ |
+| `<main class="logged-main">`          | No state toggles                                 |
+| `<aside class="claimed-leftbar">`     | **.expanded** or **.collapsed**                  |
+| `<aside class="colleagues-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="scoreboard-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`    | **.expanded** or **.collapsed** or **.unfolded** |
 
-- `<aside class="profile-leftbar">`
-- `<aside class="colleagues-rightbar">`
-  <br> stateName: **.expanded** or **.collapsed**
+`<main class="logged-main">`
 
-- `<header class="scoreboard-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+`<aside class="claimed-leftbar">`
+This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
+`<aside class="colleagues-rightbar">`
+Here you can view and claim any outstanding tickets from co-workers to continue the process in case the person is on vacation or not able to complete it in time.
+`<header class="scoreboard-header">`
+This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
+`<footer class="messages-footer">`
+Like the previous description. This updates the user on the status of whatever they were doing.
 
 ---
 
@@ -104,37 +117,30 @@ Layouts is the folder that contains all my front-end based code. To separate con
 
 ## Uniform Containers
 
-- `<div id="hyperlink-body" class="default-body">`
-  <br> stateName: **.active** or **.asleep**
-
-- `<section id="hyperlink-overlay" class="default-overlay">`
-  <br> stateName: **.highlight** or **.downplay**
+| Container Elements                  | State Toggles                   |
+| ----------------------------------- | ------------------------------- |
+| `<div class="default-body">`        | **.active** or **.asleep**      |
+| `<section class="default-overlay">` | **.highlight** or **.downplay** |
 
 ## Specialist
 
-- `<main class="resources-main">`
-  <br> stateName: No state toggles
-
-- `<aside class="modify-leftbar">`
-- `<aside class="bookmarks-rightbar">`
-  <br> stateName: **.expanded** or **.collapsed**
-
-- `<header class="discovery-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+| Container Elements                   | State Toggles                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="resources-main">`      | No state toggles                                 |
+| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
+| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
 ## Technician
 
-- `<main class="resources-main">`
-  <br> stateName: No state toggles
-
-- `<aside class="modify-leftbar">`
-- `<aside class="bookmarks-rightbar">`
-  <br> stateName: **.expanded** or **.collapsed**
-
-- `<header class="discovery-header">`
-- `<footer class="messages-footer">`
-  <br> stateName: **.expanded** or **.collapsed** or **.unfolded**
+| Container Elements                   | State Toggles                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `<main class="resources-main">`      | No state toggles                                 |
+| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
+| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
+| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
+| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
 ---
 
@@ -161,36 +167,6 @@ Established
 `<footer class="messages-footer">`
 
 ---
-
-Ticketing: Manager or Employee
-`<div id="ticketing-body" class="default-body">`
-`<section id="ticketing-overlay" class="default-overlay">`
-
-Manager
-`<main class="tickets-main">`
-An screen where you can log a ticket appears inside <main> on top of everything when ypu click on "Log Ticket" inside of <header>. For simplicity's sake, only Managers can log tickets for now.
-
-`<aside class="completed-leftbar">`
-Managers can view their logged tickets which employees completed.
-`<aside class="employees-rightbar">`
-This is the same as page the employees see with all the usable features. Only difference is the navigation bar is divided into departments and not limited to the users specific department.
-`<header class="scoreboard-header">`
-This is the hook, this is the competing factor to make things fun whilst keeping everyone accountable. 1 Ticket completed is equal to one point.
-`<footer class="messages-footer">`
-This block will be repeated throughout and is meant to update the user.
-
-Employee
-
-`<main class="logged-main">`
-This page shows all the pending tickets that wasn't been claimed. Allowing employees to have purpose by grabbing it to complete for the day.
-`<aside class="claimed-leftbar">`
-This block shows all the tickets assigned or claimed by the user. It's the next step right after pending where the actual work and points tallying takes place.
-`<aside class="colleagues-rightbar">`
-Here you can view and claim any outstanding tickets from co-workers to continue the process in case the person is on vacation or not able to complete it in time.
-`<header class="scoreboard-header">`
-This is shown to everyone. Complete transparency on pending, assigned, deleted and resolved. The amount of resolved tickets will be the main score shown to everyone.
-`<footer class="messages-footer">`
-Like the previous description. This updates the user on the status of whatever they were doing.
 
 ---
 
