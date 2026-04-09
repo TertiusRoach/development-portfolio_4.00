@@ -4,6 +4,9 @@ import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
+import BankTime from '../../../components/Article/bank-time/Article.bank-time';
+
+//--|===|--\\
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
@@ -33,6 +36,12 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         {/* <div className="default-division"></div> */}
       </section>
       <figure className={`${blockName}-midground`}>
+        <BankTime
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
         {/* <aside className="left-side downplay"></aside> */}
         {/* <aside className="right-side downplay"></aside> */}
       </figure>
