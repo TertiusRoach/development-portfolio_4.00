@@ -13,7 +13,7 @@ import { PasswordProvider } from '../../../../modules/context/PasswordContext';
 //--|🠋 Components 🠋|--//
 import ButtonGrade from '../../../components/Button/archive/grade/Button.grade';
 import DivisionLoading from '../../../components/Division/loading/Division.loading';
-import ArticleSelection from '../../../components/Article/selection/Article.selection';
+import ArticleSelection from '../../../components/Article/archive/selection/Article.selection';
 import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
@@ -52,8 +52,8 @@ const HyperlinkOverlay: React.FC<InfoProps> = ({ info }) => {
           />
         </section>
         <section className="selection-section">
-          <HeaderBranding info={info} />
-          <ArticleSelection info={info} />
+          {/* <HeaderBranding info={info} /> */}
+          {/* <ArticleSelection info={info} /> */}
         </section>
       </div>
     </section>

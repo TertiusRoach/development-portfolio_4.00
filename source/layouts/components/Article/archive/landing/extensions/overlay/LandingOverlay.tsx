@@ -5,11 +5,11 @@ import React, { useEffect } from 'react';
 import './LandingOverlay.scss';
 //--|🠋 Functions 🠋|--\\
 import { defineButton, getIcon, showFigure, hideFigure } from '../../Article_landing';
-import { stripBrackets } from '../../../../../scripts/buttons';
+import { stripBrackets } from '../../../../../../scripts/buttons';
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../../../Button/default/Button.default';
-import ButtonCleaned from '../../../../Button/archive/cleaned/Button.cleaned';
-import ButtonStretch from '../../../../Button/archive/stretch/Button.stretch';
+import ButtonDefault from '../../../../../Button/default/Button.default';
+import ButtonCleaned from '../../../../../Button/archive/cleaned/Button.cleaned';
+import ButtonStretch from '../../../../../Button/archive/stretch/Button.stretch';
 
 interface InfoProps {
   info: {

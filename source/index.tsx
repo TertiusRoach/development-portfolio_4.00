@@ -41,7 +41,7 @@ function loadPage(identification: string, container: React.ReactElement) {
     console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
   }
 }
-function themePage(colorScheme: 'light' | 'dark') {
+function themeScheme(colorScheme: 'light' | 'dark') {
   const element: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
   switch (colorScheme) {
@@ -54,7 +54,7 @@ function themePage(colorScheme: 'light' | 'dark') {
   }
 }
 setTimeout(() => {
-  themePage('light');
+  themeScheme('light');
   viewPage('overtime');
 }, 250);
 

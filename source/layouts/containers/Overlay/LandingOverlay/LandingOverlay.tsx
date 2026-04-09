@@ -4,9 +4,9 @@ import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠋 Components 🠋|--\\
 import MenuLanding from '../../../components/Menu/landing/Menu.landing';
-import ArticleLanding from '../../../components/Article/landing/Article.landing';
+import ArticleLanding from '../../../components/Article/archive/landing/Article.landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
-import ArticleSelection from '../../../components/Article/selection/Article.selection';
+import ArticleSelection from '../../../components/Article/archive/selection/Article.selection';
 
 interface InfoProps {
   info: {

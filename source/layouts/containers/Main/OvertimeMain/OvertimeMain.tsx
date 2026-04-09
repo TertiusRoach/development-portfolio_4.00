@@ -1,16 +1,13 @@
-//--|🠊 OvertimeMain.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
+//--|🠊 OvertimeMain.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
+//--|🠋 Components 🠋|--\\
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
-import ArticleLeave from '../../../components/Article/leave/Article.leave';
+import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
-//--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;

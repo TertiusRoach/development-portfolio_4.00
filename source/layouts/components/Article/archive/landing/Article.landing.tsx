@@ -1,8 +1,8 @@
 //--|🠊 Article.landing.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
-import { loadDemo } from '../../../../index';
-import { stripBrackets } from '../../../scripts/landing';
+// import { loadDemo } from '../../../../../index';
+import { stripBrackets } from '../../../../scripts/landing';
 import { defineButton, hideFigure, showFigure, showMain, getIcon } from './Article_landing';
 //--|🠋 Styles 🠋|--\\
 import './Article.landing.scss';
@@ -30,7 +30,7 @@ const ArticleLanding: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
 
   const handleLanding = (
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string,
   ) => {
     switch (blockName) {
       case '<overlay>':
