@@ -50,7 +50,6 @@ Open [Visual Studio Code](https://code.visualstudio.com/) and, with the applicat
 ### Development Workflow
 
 ```bash
-<<<<<<< HEAD
 # Launch front-end
 npm run app
 
@@ -60,7 +59,6 @@ npm run app
 npm run app
 
 # Launch back end (from root/source/modules/server)
->>>>>>> b0979a4b3451384187fbb5eff59e42c84b0bdbbf
 nodemon landing
 
 # Compile project into public/
