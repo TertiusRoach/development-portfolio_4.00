@@ -8,7 +8,10 @@
   }
   %midground {
     .bank-time {
-      grid-area: 3 / 4 / 9 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .leave-breaks {
+      grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %background {

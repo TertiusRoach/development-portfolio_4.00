@@ -1,28 +1,39 @@
-//--|🠊 Article.bank-time.scss 🠈|--\\
+//--|🠊 Article.leave-breaks.scss 🠈|--//
 @mixin desktop-landscape {
-  %desk-grid {
+  /*
+  dl {
+    height: 100%;
     display: grid;
+    font-weight: 600;
     grid-template-rows: repeat(6, 1fr);
-
-    [class='workweek'] {
-      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
-    }
-    [class='completed'] {
-      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
-    }
-    [class='remaining'] {
-      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
-    }
-    [class='acquired'] {
-      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
-    }
-
     grid-template-columns: repeat(2, 1fr);
-    dt {
-      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-    }
+    dt,
     dd {
-      grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & {
+      dt {
+        grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+      }
+      dd {
+        grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+      }
+
+      [class='workweek'] {
+        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+      }
+      [class='completed'] {
+        grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+      }
+      [class='remaining'] {
+        grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+      }
+      [class='acquired'] {
+        grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+      }
     }
   }
   dl {
@@ -36,6 +47,7 @@
       font-size: 64px;
       padding-right: 48px;
     }
+
     @media screen and (max-height: 768px) {
       width: 375px;
       dt {
@@ -70,32 +82,24 @@
         padding-right: 16px;
       }
     }
-    @extend %desk-grid;
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-article[class*='bank-time'] {
+article[class*='leave-breaks'] {
+  background: darkred;
+  /*
   dl {
-    height: 100%;
     color: white;
-    font-weight: 600;
     background: black;
-    dt,
-    dd {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
-
+  */
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
-    // %article-grid {
-    // }
     @include mobile-portrait();
   }
 }

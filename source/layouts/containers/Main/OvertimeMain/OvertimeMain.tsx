@@ -5,12 +5,14 @@ import { stripBrackets } from '../../../scripts/overtime';
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import BankTime from '../../../components/Article/bank-time/Article.bank-time';
+import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
 
 //--|===|--\\
 import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
+
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -37,6 +39,12 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${blockName}-midground`}>
         <BankTime
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+        <LeaveBreaks
           info={{
             pageName: pageName,
             blockName: blockName,

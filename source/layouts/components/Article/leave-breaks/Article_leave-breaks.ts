@@ -1,6 +1,6 @@
-//--|🠊 Article_bank-time.ts 🠈|--\\
+//--|🠊 Article_leave-breaks.ts 🠈|--\\
+
 /*
-//--|🠊 Button_default.ts 🠈|--\\
 import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
