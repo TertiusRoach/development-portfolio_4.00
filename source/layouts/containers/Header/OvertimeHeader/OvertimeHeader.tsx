@@ -20,7 +20,7 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {
-    console.log('//--|🠊 Overtime Loaded 🠈|--//');
+    // console.log('//--|🠊 Overtime Loaded 🠈|--\\\\');
   }, [pageName, blockName]);
 
   let svgPath: Array<String> = [

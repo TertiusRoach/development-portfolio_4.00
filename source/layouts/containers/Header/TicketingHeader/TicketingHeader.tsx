@@ -20,7 +20,7 @@ const TicketingHeader: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {
-    console.log('//--|🠊 Ticketing Loaded 🠈|--//');
+    // console.log('//--|🠊 Ticketing Loaded 🠈|--\\\\');
   }, [pageName, blockName]);
 
   let svgPath: Array<String> = [

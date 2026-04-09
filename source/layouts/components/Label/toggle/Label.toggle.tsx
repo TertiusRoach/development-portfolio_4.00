@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Label.toggle.scss';
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../index';
+import { stripBrackets } from '../../functions';
 
 import { createClass } from './Label_toggle';
 
