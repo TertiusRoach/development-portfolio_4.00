@@ -1,29 +1,31 @@
 //--|🠊 Palettes.scss 🠈|--\\
-//--|🠋 Index or Landing - TraLogFin Trinity {A]pps 🠋|--\\
+//--|🠊 TraLogFin Trinity {A]pps 🠈|--\\
+
+//--|🠋 Index or Landing 🠋|--\\
 $indexLand-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
 $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Log a Ticket - TraLogFin Trinity {A]pps 🠋|--\\
-$logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
-$logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
-$logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
-$logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
-
-//--|🠋 Find a Link - TraLogFin Trinity {A]pps 🠋|--\\
-$findLink-neon: #ff2d6d; //--|🠈 rgba() 🠈|--\\
-$findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
-$findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
-$findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
-
-//--|🠋 Track a Day - TraLogFin Trinity {A]pps 🠋|--\\
+//--|🠋 Track a Day 🠋|--\\
 $trackDay-neon: #00ff66; //--|🠈 rgba() 🠈|--\\
 $trackDay-dark: #041a0a; //--|🠈 rgba() 🠈|--\\
 $trackDay-light: #c7ffd7; //--|🠈 rgba() 🠈|--\\
 $trackDay-medium: #1f7a3a; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Palette Presets 🠋|--\\
+//--|🠋 Log a Ticket 🠋|--\\
+$logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
+$logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
+$logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
+$logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
+
+//--|🠋 Find a Link 🠋|--\\
+$findLink-neon: #ff2d6d; //--|🠈 rgba() 🠈|--\\
+$findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
+$findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
+$findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
+
+//--|🠋 Default Presets 🠋|--\\
 $red-neon: #ff3b3b; //--|🠈 rgba() 🠈|--\\
 $red-dark: #1a070a; //--|🠈 rgba() 🠈|--\\
 $red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
@@ -74,6 +76,43 @@ $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
 $turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
 $turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
 
+//--|===============|--\\
+@use 'sass:color';
+//--|🠋 Index or Landing - Background 🠋|--\\
+$indexLand-lightMode:
+  linear-gradient(180deg, rgba($indexLand-neon, 0.22) 0%, rgba($indexLand-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($indexLand-neon, 0.14) 0%, rgba($indexLand-light, 0) 45%, rgba($indexLand-light, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($indexLand-dark, 0.1) 0%,
+    rgba($indexLand-neon, 0.1) 34%,
+    rgba($indexLand-light, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($indexLand-light, #fff, 84%) 0%,
+    color.mix($indexLand-light, $indexLand-neon, 70%) 55%,
+    color.mix($indexLand-light, $indexLand-neon, 82%) 100%
+  );
+$indexLand-darkMode:
+  linear-gradient(180deg, rgba($indexLand-medium, 0.22) 0%, rgba($indexLand-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($indexLand-medium, 0.14) 0%, rgba($indexLand-dark, 0) 45%, rgba($indexLand-dark, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($indexLand-light, 0.1) 0%,
+    rgba($indexLand-medium, 0.1) 34%,
+    rgba($indexLand-dark, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($indexLand-dark, #000, 84%) 0%,
+    color.mix($indexLand-dark, $indexLand-medium, 70%) 55%,
+    color.mix($indexLand-dark, $indexLand-medium, 82%) 100%
+  );
+
+/*
 // Log a Ticket
 $logTicket-pending: $orange-neon; // Pending  (waiting to be claimed)
 $logTicket-assigned: $blue-neon; // Assigned (claimed)
@@ -85,3 +124,4 @@ $trackDay-pending: $yellow-neon; // Pending  (waiting approval)
 $trackDay-location: $red-neon; // Location (inconsistencies / edge cases)
 $trackDay-automatic: $grey-medium;
 $trackDay-logged: $green-neon;
+*/
