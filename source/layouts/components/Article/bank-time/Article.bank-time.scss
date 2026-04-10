@@ -36,6 +36,7 @@
       font-size: 64px;
       padding-right: 48px;
     }
+
     @media screen and (max-height: 768px) {
       width: 375px;
       dt {
@@ -47,6 +48,7 @@
         padding-right: 32px;
       }
     }
+
     @media screen and (max-height: 480px) {
       width: 235px;
       border-top-left-radius: 32px;
@@ -59,6 +61,7 @@
         padding-right: 24px;
       }
     }
+
     @media screen and (max-height: 360px) {
       width: 175px;
       dt {
