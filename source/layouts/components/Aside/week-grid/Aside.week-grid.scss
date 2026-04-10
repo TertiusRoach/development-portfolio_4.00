@@ -9,12 +9,23 @@
     position: relative;
     grid-area: 1 / 1 / 8 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     backdrop-filter: blur(12px);
+
     grid-template: repeat(7, 1fr) / repeat(3, 1fr); //--|🠈 rows / columns 🠈|--//
+
     &::before {
       inset: 0;
       content: '';
       position: absolute;
       background-size: 33.3333333333% 14.2857142857%;
+    }
+  }
+
+  //--|===|--\\
+  grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--//
+  grid-template-columns: 1fr clamp(0px, 75% - 512px, 512px); //--|🠈 columns 🠈|--//
+  div[class='lines'] {
+    box-shadow: 0 0 0 4px black inset;
+    &::before {
       background-image:
         linear-gradient(to top, black 2px, transparent 2px),
         linear-gradient(to right, rgba(black, 0.25) 1px, transparent 1px),
@@ -23,15 +34,22 @@
         linear-gradient(to left, rgba(black, 0.25) 1px, transparent 1px);
     }
   }
-
-  //--|===|--\\
-  grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--//
-  grid-template-columns: 1fr clamp(0px, 75% - 512px, 512px); //--|🠈 columns 🠈|--//
   @media screen and (max-height: 768px) {
     grid-template-columns: 1fr clamp(0px, 75% - 360px, 360px); //--|🠈 columns 🠈|--//
   }
   @media screen and (max-height: 480px) {
     grid-template-columns: 1fr clamp(0px, 75% - 228px, 228px); //--|🠈 columns 🠈|--//
+    div[class='lines'] {
+      box-shadow: 0 0 0 2px black inset;
+      &::before {
+        background-image:
+          linear-gradient(to top, black 1px, transparent 1px),
+          linear-gradient(to right, rgba(black, 0.25) 1px, transparent 1px),
+          //--|===|--//
+          linear-gradient(to bottom, black 1px, transparent 1px),
+          linear-gradient(to left, rgba(black, 0.25) 1px, transparent 1px);
+      }
+    }
   }
   @media screen and (max-height: 360px) {
     grid-template-columns: 1fr clamp(0px, 75% - 168px, 168px); //--|🠈 columns 🠈|--//
