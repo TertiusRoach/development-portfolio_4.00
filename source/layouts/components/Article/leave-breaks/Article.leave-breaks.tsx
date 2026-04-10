@@ -19,17 +19,25 @@ const LeaveBreaks: React.FC<TheseProps> = ({ info }) => {
   return (
     <article className="leave-breaks">
       <dl>
-        {/* <dt className="annual">Annual Breaks</dt> */}
-        {/* <dd className="annual">999 Days</dd> */}
+        <div className="annual">
+          <dt>Annual Breaks</dt>
+          <dd>999 Days</dd>
+        </div>
 
-        {/* <dt className="holiday">Public Holidays</dt> */}
-        {/* <dd className="holiday">999 Days</dd> */}
+        <div className="holiday">
+          <dt>Public Holidays</dt>
+          <dd>999 Days</dd>
+        </div>
 
-        {/* <dt className="medical">Medical Leave</dt> */}
-        {/* <dd className="medical">999 Days</dd> */}
+        <div className="medical">
+          <dt>Medical Leave</dt>
+          <dd>999 Days</dd>
+        </div>
 
-        {/* <dt className="banked">Banked Time</dt> */}
-        {/* <dd className="banked">999 Days</dd> */}
+        <div className="banked">
+          <dt>Banked Time</dt>
+          <dd>999 Days</dd>
+        </div>
       </dl>
     </article>
   );

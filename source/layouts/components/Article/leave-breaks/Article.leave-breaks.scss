@@ -1,97 +1,110 @@
 //--|🠊 Article.leave-breaks.scss 🠈|--//
 @mixin desktop-landscape {
-  /*
-  dl {
-    height: 100%;
+  %desk-grid {
     display: grid;
-    font-weight: 600;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(2, 1fr);
-    dt,
-    dd {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    align-items: center;
+    grid-template: repeat(6, 1fr) //--|🠈 rows 🠈|--//
+      / 1fr; //--|🠈 columns 🠈|--//
+
+    div[class='annual'] {
+      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
     }
-
-    & {
+    div[class='holiday'] {
+      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='medical'] {
+      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='banked'] {
+      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+    }
+  }
+  %desk-flex {
+    div {
+      align-items: center;
+      display: inline-flex;
+      justify-content: flex-end;
+      background: rgba(white, 0.25);
       dt {
-        grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-      }
-      dd {
-        grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
-      }
-
-      [class='workweek'] {
-        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
-      }
-      [class='completed'] {
-        grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
-      }
-      [class='remaining'] {
-        grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
-      }
-      [class='acquired'] {
-        grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+        text-align: center;
       }
     }
   }
   dl {
-    width: 530px;
-    border-top-left-radius: 64px;
-    dt {
+    @extend %desk-grid;
+    @extend %desk-flex;
+    div {
+      width: 26rem;
+      height: 64px;
+      margin: 0 48px;
       font-size: 32px;
-      padding-left: 48px;
-    }
-    dd {
-      font-size: 64px;
-      padding-right: 48px;
-    }
+      border-radius: 16px;
 
-    @media screen and (max-height: 768px) {
-      width: 375px;
       dt {
+        width: 224px;
+      }
+      dd {
+        width: 134px;
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+      @media screen and (max-height: 768px) {
+        height: 40px;
+        width: 18.5rem;
+        margin: 0 32px;
         font-size: 24px;
-        padding-left: 32px;
+        border-radius: 8px;
+        dt {
+          width: 178px;
+        }
+        dd {
+          width: 98px;
+          margin-left: 8px;
+          margin-right: 8px;
+        }
       }
-      dd {
-        font-size: 48px;
-        padding-right: 32px;
+      @media screen and (max-height: 480px) {
+        height: 24px;
+        margin: 0 24px;
+        width: 11.25rem;
+        font-size: 14px;
+        border-radius: 4px;
+        dt {
+          width: 100px;
+        }
+        dd {
+          width: 65px;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
       }
-    }
-    @media screen and (max-height: 480px) {
-      width: 235px;
-      border-top-left-radius: 32px;
-      dt {
-        font-size: 16px;
-        padding-left: 24px;
-      }
-      dd {
-        font-size: 32px;
-        padding-right: 24px;
-      }
-    }
-    @media screen and (max-height: 360px) {
-      width: 175px;
-      dt {
-        font-size: 12px;
-        padding-left: 16px;
-      }
-      dd {
-        font-size: 20px;
-        padding-right: 16px;
+      @media screen and (max-height: 360px) {
+        height: 20px;
+        width: 8.5rem;
+        margin: 0 16px;
+        font-size: 10px;
+        dt {
+          width: 84px;
+        }
+        dd {
+          width: 50px;
+        }
       }
     }
   }
-  */
 }
 @mixin mobile-portrait {
 }
 
 article[class*='leave-breaks'] {
-  background: darkred;
+  dl {
+    height: 100%;
+    color: black;
+    font-weight: 600;
+  }
   /*
   dl {
+
     color: white;
     background: black;
   }

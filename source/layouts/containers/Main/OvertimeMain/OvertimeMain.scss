@@ -30,22 +30,22 @@
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 1080px 🠋|--\\
       repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px repeat(2, 1fr) auto 48px; //--|🠈 columns 🠈|--//
+      / 48px 1fr repeat(2, auto) 48px; //--|🠈 columns 🠈|--//
 
     //--|🠋 64px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 768px) {
       grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px repeat(2, 1fr) auto 32px; //--|🠈 columns 🠈|--//
+        / 32px 1fr repeat(2, auto) 32px; //--|🠈 columns 🠈|--//
     }
     //--|🠋 48px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 480px) {
       grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px repeat(2, 1fr) auto 24px; //--|🠈 columns 🠈|--//
+        / 24px 1fr repeat(2, auto) 24px; //--|🠈 columns 🠈|--//
     }
     //--|🠋 32px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 360px) {
       grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px repeat(2, 1fr) auto 16px; //--|🠈 columns 🠈|--//
+        / 16px 1fr repeat(2, auto) 16px; //--|🠈 columns 🠈|--//
     }
 
     &[class*='fore'] {
