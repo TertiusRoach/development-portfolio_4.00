@@ -4,6 +4,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
+import DateString from '../../../components/Time/date-string/Time.date-string';
 import BankTime from '../../../components/Article/bank-time/Article.bank-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
 
@@ -38,6 +39,12 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         {/* <div className="default-division"></div> */}
       </section>
       <figure className={`${blockName}-midground`}>
+        <DateString
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
         <BankTime
           info={{
             pageName: pageName,
@@ -50,8 +57,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-        {/* <aside className="left-side downplay"></aside> */}
-        {/* <aside className="right-side downplay"></aside> */}
       </figure>
       <div className={`${blockName}-background`}>
         {/* SectionTesting */}

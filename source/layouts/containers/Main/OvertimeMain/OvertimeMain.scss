@@ -7,6 +7,9 @@
     // background: red;
   }
   %midground {
+    .date-string {
+      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
     .bank-time {
       grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }

@@ -6,7 +6,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
 //--|🠋 Components 🠋|--//
-import TimeDaily from '../../../components/Time/daily/Time.daily';
+import TimeDaily from '../../../components/Time/archive/daily/Time.daily';
 import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
 import DivisionIdentity from '../../../components/Division/identity/Division.identity';

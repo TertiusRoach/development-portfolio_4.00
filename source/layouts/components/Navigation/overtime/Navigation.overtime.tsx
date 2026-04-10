@@ -15,7 +15,7 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import TimeDaily from '../../Time/daily/Time.daily';
+import TimeDaily from '../../Time/archive/daily/Time.daily';
 import MenuFeatures from '../../Menu/features/Menu.features';
 import NavigationPreview from '../preview/Navigation.preview';
 import ButtonDefault from '../../Button/archive/default/Button.default';
