@@ -3,15 +3,71 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  background: rgba(Palettes.$trackDay-medium, 0.5);
-  /*
-  section[class*='fore'] {
+  %foreground {
+    z-index: 2;
+
+    // background: red;
   }
-  figure[class*='mid'] {
+  %midground {
+    z-index: 1;
+
+    .week-grid {
+      grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
+  %background {
+    z-index: 0;
+    .bank-time {
+      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .date-string {
+      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .leave-breaks {
+      grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+
+  section[class*='fore'],
+  figure[class*='mid'],
   div[class*='back'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    height: 100%;
+    display: grid;
+    overflow: hidden;
+    position: absolute;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 512px 482px 48px; //--|🠈 columns 🠈|--//
+
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 360px 343px 32px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 480px) {
+      grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 228px 211px 24px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 360px) {
+      grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 168px 159px 16px; //--|🠈 columns 🠈|--//
+    }
+
+    &[class*='fore'] {
+      @extend %foreground;
+    }
+    &[class*='mid'] {
+      @extend %midground;
+    }
+    &[class*='back'] {
+      @extend %background;
+    }
   }
-  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--//
@@ -21,32 +77,6 @@ main[id*='overtime'] {
   position: relative;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-      //--|🠋 Layer Perimeters 🠋|--\\
-      width: 100%;
-      height: 100%;
-      display: grid;
-      overflow: hidden;
-      position: absolute;
-      //--|🠋 96px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 1080px 🠋|--\\
-        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
-      @media screen and (max-height: 768px) {
-        //--|🠋 64px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
-      }
-      @media screen and (max-height: 480px) {
-        //--|🠋 48px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
-      }
-      @media screen and (max-height: 360px) {
-        //--|🠋 32px (Left & Right) for Design 🠋|--\\
-        grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
-      }
-    }
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();

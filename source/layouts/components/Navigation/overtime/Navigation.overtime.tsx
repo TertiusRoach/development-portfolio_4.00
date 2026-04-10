@@ -15,12 +15,12 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import TimeDaily from '../../Time/daily/Time.daily';
+import TimeDaily from '../../Time/archive/daily/Time.daily';
 import MenuFeatures from '../../Menu/features/Menu.features';
 import NavigationPreview from '../preview/Navigation.preview';
 import ButtonDefault from '../../Button/archive/default/Button.default';
 import SpanScrolling from '../../Span/scrolling/Span.scrolling';
-import SectionPreview from '../../Section/preview/Section.preview';
+import SectionPreview from '../../Section/archive/preview/Section.preview';
 import DivisionIdentity from '../../Division/identity/Division.identity';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
@@ -35,7 +35,7 @@ const NavigationOvertime: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'overtime';
 
   const handleOvertime = (
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string,
   ) => {
     switch (blockName) {
       case '<overlay>':

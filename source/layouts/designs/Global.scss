@@ -1,5 +1,7 @@
 //--|🠊 Global.scss 🠈|--//
 @use './Transition.scss';
+//--|🠊 https://picocss.com/ 🠈|--//
+//--|🠊 Consider replacing Bootstrap with the minimalistic alternative PicoCSS 🠈|--//
 @use '../../utilities/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
 * {

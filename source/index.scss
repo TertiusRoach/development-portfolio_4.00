@@ -1,19 +1,27 @@
 //--|🠊 index.scss (Entry Point) 🠈|--//
-//--|🠋 Styles 🠋|--//
+// @use 'sass:color';
+
+//--|🠋 Designs 🠋|--//
+@use './layouts/designs/Global.scss';
+@use './layouts/designs/Palettes.scss';
+
+//--|🠋 Applications 🠋|--//
 @use './layouts/styles/buttons.scss';
 @use './layouts/styles/landing.scss';
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
 @use './layouts/styles/hyperlink.scss';
 
-//--|🠋 Designs 🠋|--//
-@use './layouts/designs/Global.scss';
-// @use './layouts/designs/Mixins.scss';
-// @use './layouts/designs/Palettes.scss';
-
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
   div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
+  }
+
+  &[class*='ante-meridiem'] {
+    background: Palettes.$indexLand-lightMode;
+  }
+  &[class*='post-meridiem'] {
+    background: Palettes.$indexLand-darkMode;
   }
 }

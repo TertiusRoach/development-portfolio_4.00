@@ -6,7 +6,7 @@ import { stripBrackets } from '../../../scripts/landing';
 import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import SectionBlocked from '../../../components/Section/blocked/Section.blocked';
+import SectionBlocked from '../../../components/Section/archive/blocked/Section.blocked';
 import MenuLanding from '../../../components/Menu/landing/Menu.landing';
 //--|🠉 Components 🠉|--//
 

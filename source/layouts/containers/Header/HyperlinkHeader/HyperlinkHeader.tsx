@@ -20,7 +20,7 @@ const HyperlinkHeader: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {
-    console.log('//--|🠊 Hyperlink Loaded 🠈|--//');
+    // console.log('//--|🠊 Hyperlink Loaded 🠈|--\\\\');
   }, [pageName, blockName]);
 
   let svgPath: Array<String> = [

@@ -12,10 +12,10 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import ButtonStretch from '../../Button/archive/stretch/Button.stretch';
 
-import TimeDaily from '../../../components/Time/daily/Time.daily';
+import TimeDaily from '../../Time/archive/daily/Time.daily';
 import MenuFeatures from '../../../components/Menu/features/Menu.features';
 import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
-import SectionPreview from '../../../components/Section/preview/Section.preview';
+import SectionPreview from '../../Section/archive/preview/Section.preview';
 import DivisionIdentity from '../../../components/Division/identity/Division.identity';
 import NavigationPreview from '../../../components/Navigation/preview/Navigation.preview';
 //--|🠉 Components 🠉|--//

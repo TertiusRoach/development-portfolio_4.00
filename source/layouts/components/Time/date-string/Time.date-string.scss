@@ -1,0 +1,61 @@
+//--|🠊 Time.date-string.scss 🠈|--\\
+@mixin desktop-landscape {
+  display: flex;
+  line-height: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  span {
+    padding: 0 48px;
+    &[class*='week'] {
+      font-size: 64px;
+    }
+    &[class*='date'] {
+      font-size: 32px;
+    }
+    @media screen and (max-height: 768px) {
+      padding: 0 32px;
+      &[class*='week'] {
+        font-size: 48px;
+      }
+      &[class*='date'] {
+        font-size: 24px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      padding: 0 24px;
+      &[class*='week'] {
+        font-size: 32px;
+      }
+      &[class*='date'] {
+        font-size: 16px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      padding: 0 16px;
+      &[class*='week'] {
+        font-size: 24px;
+      }
+      &[class*='date'] {
+        font-size: 12px;
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+time[class*='date-string'] {
+  span {
+    color: black;
+    font-weight: 600;
+  }
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    // %article-grid {
+    // }
+    @include mobile-portrait();
+  }
+}

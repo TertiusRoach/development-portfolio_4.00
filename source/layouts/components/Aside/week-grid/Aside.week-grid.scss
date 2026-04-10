@@ -1,0 +1,186 @@
+//--|🠊 Aside.week-grid.scss 🠈|--\\
+@mixin desktop-landscape {
+  // background: rgba(darkred, 0.25);
+
+  display: grid;
+
+  div[class='lines'] {
+    display: inherit; //--|🠊 display: grid; 🠈|--\\
+    position: relative;
+    grid-area: 1 / 1 / 8 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    backdrop-filter: blur(12px);
+
+    grid-template: repeat(7, 1fr) / repeat(3, 1fr); //--|🠈 rows / columns 🠈|--//
+
+    &::before {
+      inset: 0;
+      content: '';
+      position: absolute;
+      background-size: 33.3333333333% 14.2857142857%;
+    }
+  }
+
+  //--|===|--\\
+  grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--//
+  grid-template-columns: 1fr clamp(0px, 75% - 512px, 512px); //--|🠈 columns 🠈|--//
+  div[class='lines'] {
+    box-shadow: 0 0 0 4px black inset;
+    &::before {
+      background-image:
+        linear-gradient(to top, black 2px, transparent 2px),
+        linear-gradient(to right, rgba(black, 0.25) 1px, transparent 1px),
+        //--|===|--//
+        linear-gradient(to bottom, black 2px, transparent 2px),
+        linear-gradient(to left, rgba(black, 0.25) 1px, transparent 1px);
+    }
+  }
+  @media screen and (max-height: 768px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 360px, 360px); //--|🠈 columns 🠈|--//
+  }
+  @media screen and (max-height: 480px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 228px, 228px); //--|🠈 columns 🠈|--//
+    div[class='lines'] {
+      box-shadow: 0 0 0 2px black inset;
+      &::before {
+        background-image:
+          linear-gradient(to top, black 1px, transparent 1px),
+          linear-gradient(to right, rgba(black, 0.25) 1px, transparent 1px),
+          //--|===|--//
+          linear-gradient(to bottom, black 1px, transparent 1px),
+          linear-gradient(to left, rgba(black, 0.25) 1px, transparent 1px);
+      }
+    }
+  }
+  @media screen and (max-height: 360px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 168px, 168px); //--|🠈 columns 🠈|--//
+  }
+
+  /*
+
+  div:nth-child(2) {
+    height: 100px;
+    width: 100px;
+    background: blue;
+  }
+  div:nth-child(3) {
+    height: 100px;
+    width: 100px;
+    background: purple;
+  }
+  */
+  /*
+  %desk-grid {
+    display: grid;
+    align-items: center;
+    grid-template: repeat(6, 1fr) //--|🠈 rows 🠈|--//
+      / 1fr; //--|🠈 columns 🠈|--//
+
+    div[class='annual'] {
+      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='holiday'] {
+      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='medical'] {
+      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='banked'] {
+      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+    }
+  }
+  %desk-flex {
+    div {
+      align-items: center;
+      display: inline-flex;
+      justify-content: flex-end;
+
+      dt {
+        text-align: center;
+      }
+    }
+  }
+  dl {
+    div {
+      width: 26rem;
+      height: 64px;
+      margin: 0 48px;
+      font-size: 32px;
+      border-radius: 16px;
+      dt {
+        width: 224px;
+      }
+      dd {
+        width: 134px;
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      @media screen and (max-height: 768px) {
+        height: 40px;
+        width: 18.5rem;
+        margin: 0 32px;
+        font-size: 24px;
+        border-radius: 8px;
+        dt {
+          width: 178px;
+        }
+        dd {
+          width: 98px;
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        height: 24px;
+        margin: 0 24px;
+        width: 11.25rem;
+        font-size: 14px;
+        border-radius: 4px;
+        dt {
+          width: 100px;
+        }
+        dd {
+          width: 65px;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        height: 20px;
+        width: 8.5rem;
+        margin: 0 16px;
+        font-size: 10px;
+        dt {
+          width: 84px;
+        }
+        dd {
+          width: 50px;
+        }
+      }
+    }
+    @extend %desk-grid;
+    @extend %desk-flex;
+  }
+  */
+}
+@mixin mobile-portrait {
+}
+
+aside[class*='week-grid'] {
+  /*
+  dl {
+    height: 100%;
+    color: black;
+    font-weight: 600;
+    div {
+      background: rgba(white, 0.25);
+    }
+  }
+  */
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

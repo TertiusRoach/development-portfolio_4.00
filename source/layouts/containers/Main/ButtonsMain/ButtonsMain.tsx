@@ -1,8 +1,8 @@
 //--|🠊 ButtonsMain.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Elements 🠋|--\\
-import DefaultButtons from './elements/default-buttons/DefaultButtons';
-import RoutingButtons from './elements/routing-buttons/RoutingButtons';
+import DefaultButtons from './components/default-buttons/DefaultButtons';
+import RoutingButtons from './components/routing-buttons/RoutingButtons';
 //--|🠋 Functions 🠋|--\\
 import { defaultPreview } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
@@ -20,14 +20,6 @@ interface InfoProps {
     roleName?: string;
   };
 }
-type HandleButtons = (
-  pageName: string,
-  pagePreview: 'default-buttons' | 'routing-buttons',
-
-  blockName: string,
-  blockEvent: 'scroll-mouse' | 'control-preview' | 'toggle-aside',
-  blockAction: 'open-dark' | 'close-dark' | 'open-light' | 'close-light' | 'go-up' | string,
-) => void;
 
 const ButtonsMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';

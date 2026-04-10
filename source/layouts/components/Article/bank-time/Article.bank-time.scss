@@ -1,0 +1,104 @@
+//--|🠊 Article.bank-time.scss 🠈|--\\
+@mixin desktop-landscape {
+  %desk-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+
+    [class='workweek'] {
+      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    [class='completed'] {
+      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    [class='remaining'] {
+      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    [class='acquired'] {
+      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+    }
+
+    grid-template-columns: repeat(2, 1fr);
+    dt {
+      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+    }
+    dd {
+      grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+    }
+  }
+  dl {
+    width: 530px;
+    border-top-left-radius: 64px;
+    dt {
+      font-size: 32px;
+      padding-left: 48px;
+    }
+    dd {
+      font-size: 64px;
+      padding-right: 48px;
+    }
+
+    @media screen and (max-height: 768px) {
+      width: 375px;
+      dt {
+        font-size: 24px;
+        padding-left: 32px;
+      }
+      dd {
+        font-size: 48px;
+        padding-right: 32px;
+      }
+    }
+
+    @media screen and (max-height: 480px) {
+      width: 235px;
+      border-top-left-radius: 32px;
+      dt {
+        font-size: 16px;
+        padding-left: 24px;
+      }
+      dd {
+        font-size: 32px;
+        padding-right: 24px;
+      }
+    }
+
+    @media screen and (max-height: 360px) {
+      width: 175px;
+      dt {
+        font-size: 12px;
+        padding-left: 16px;
+      }
+      dd {
+        font-size: 20px;
+        padding-right: 16px;
+      }
+    }
+    @extend %desk-grid;
+  }
+}
+@mixin mobile-portrait {
+}
+
+article[class*='bank-time'] {
+  dl {
+    height: 100%;
+    color: white;
+    font-weight: 600;
+    background: black;
+    dt,
+    dd {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    // %article-grid {
+    // }
+    @include mobile-portrait();
+  }
+}

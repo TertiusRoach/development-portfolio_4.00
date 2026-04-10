@@ -1,0 +1,114 @@
+//--|🠊 Article.leave-breaks.scss 🠈|--\\
+@mixin desktop-landscape {
+  %desk-grid {
+    display: grid;
+    align-items: center;
+    grid-template: repeat(6, 1fr) //--|🠈 rows 🠈|--//
+      / 1fr; //--|🠈 columns 🠈|--//
+
+    div[class='annual'] {
+      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='holiday'] {
+      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='medical'] {
+      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    div[class='banked'] {
+      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+    }
+  }
+  %desk-flex {
+    div {
+      align-items: center;
+      display: inline-flex;
+      justify-content: flex-end;
+
+      dt {
+        text-align: center;
+      }
+    }
+  }
+  dl {
+    div {
+      width: 26rem;
+      height: 64px;
+      margin: 0 48px;
+      font-size: 32px;
+      border-radius: 16px;
+      dt {
+        width: 224px;
+      }
+      dd {
+        width: 134px;
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      @media screen and (max-height: 768px) {
+        height: 40px;
+        width: 18.5rem;
+        margin: 0 32px;
+        font-size: 24px;
+        border-radius: 8px;
+        dt {
+          width: 178px;
+        }
+        dd {
+          width: 98px;
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        height: 24px;
+        margin: 0 24px;
+        width: 11.25rem;
+        font-size: 14px;
+        border-radius: 4px;
+        dt {
+          width: 100px;
+        }
+        dd {
+          width: 65px;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        height: 20px;
+        width: 8.5rem;
+        margin: 0 16px;
+        font-size: 10px;
+        dt {
+          width: 84px;
+        }
+        dd {
+          width: 50px;
+        }
+      }
+    }
+    @extend %desk-grid;
+    @extend %desk-flex;
+  }
+}
+@mixin mobile-portrait {
+}
+
+article[class*='leave-breaks'] {
+  dl {
+    height: 100%;
+    color: black;
+    font-weight: 600;
+    div {
+      background: rgba(white, 0.25);
+    }
+  }
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

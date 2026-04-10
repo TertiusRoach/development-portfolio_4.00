@@ -34,10 +34,7 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 - [Development Environment](#development-environment)
   - [VSCode Tips](#vscode-tips)
   - [Folder Structure](#folder-structure)
-<<<<<<< HEAD
   - [Repository Synchronization](#repository-synchronization)
-=======
->>>>>>> b0979a4b3451384187fbb5eff59e42c84b0bdbbf
 - [Documentation Standards](#documentation-standards)
   - [Review Flags](#review-flags)
   - [Git Workflow](#git-workflow)
@@ -53,7 +50,6 @@ Open [Visual Studio Code](https://code.visualstudio.com/) and, with the applicat
 ### Development Workflow
 
 ```bash
-<<<<<<< HEAD
 # Launch front-end
 npm run app
 
@@ -63,7 +59,6 @@ npm run app
 npm run app
 
 # Launch back end (from root/source/modules/server)
->>>>>>> b0979a4b3451384187fbb5eff59e42c84b0bdbbf
 nodemon landing
 
 # Compile project into public/
@@ -260,7 +255,7 @@ This is where the testing surface lives. If something breaks, it usually breaks 
 
 ---
 
-## [Front-end Database](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md)
+## [Front-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
 
@@ -316,20 +311,21 @@ These classes are intentionally simple. They act like a UI contract.
 #### State Management
 
 <<<<<<< HEAD
-| State Type           | Classes                                  | Purpose                                                                       |
+| State Type | Classes | Purpose |
 | -------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
-| **Active State**     | `.active` · `.asleep`                    | Indicate whether a feature is currently in use (active) or parked (asleep)    |
-| **Visibility State** | `.visible` · `.hidden`                   | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State**  | `.expanded` · `.unfolded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
-| **Emphasis State**   | `.highlight` · `.downplay`               | Guide attention without changing layout or flow                               |
+| **Active State** | `.active` · `.asleep` | Indicate whether a feature is currently in use (active) or parked (asleep) |
+| **Visibility State** | `.visible` · `.hidden` | Control whether something is rendered for the user or intentionally not shown |
+| **Expansion State** | `.expanded` · `.unfolded` · `.collapsed` | Manage sections that can open and close while staying part of the page |
+| **Emphasis State** | `.highlight` · `.downplay` | Highlight is light mode and Downplay is dark mode |
 =======
-| State Type           | Classes                    | Purpose                                                                       |
+| State Type | Classes | Purpose |
 | -------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| **Active State**     | `.active` · `.asleep`      | Indicate whether a feature is currently in use (active) or parked (asleep)    |
-| **Visibility State** | `.visible` · `.hidden`     | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State**  | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
-| **Emphasis State**   | `.highlight` · `.downplay` | Guide attention without changing layout or flow                               |
->>>>>>> b0979a4b3451384187fbb5eff59e42c84b0bdbbf
+| **Active State** | `.active` · `.asleep` | Indicate whether a feature is currently in use (active) or parked (asleep) |
+| **Visibility State** | `.visible` · `.hidden` | Control whether something is rendered for the user or intentionally not shown |
+| **Expansion State** | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page |
+| **Emphasis State** | `.highlight` · `.downplay` | Guide attention without changing layout or flow |
+
+> > > > > > > b0979a4b3451384187fbb5eff59e42c84b0bdbbf
 
 > **Design Principle:** Active should feel responsive. Asleep should stay out of the user's way.
 
@@ -574,12 +570,15 @@ Reusable utilities and patterns. This is the toolbox that keeps code duplication
 Editor configuration for consistent debugging and project workflows.
 
 <<<<<<< HEAD
+
 ### Repository Synchronization
 
 Open the [README](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.02/source/assets/md-files/repository-synchronization.md) to see the agreed workflow for syncing `main` and version-controlled branches into one clean, shared history. You’ll also see how branches are “archived” in practice and what gets created next to keep teamwork moving smoothly. Follow it top-to-bottom and you’ll end up with one source of truth and a predictable, low-drama branch state.
 
 =======
->>>>>>> b0979a4b3451384187fbb5eff59e42c84b0bdbbf
+
+> > > > > > > b0979a4b3451384187fbb5eff59e42c84b0bdbbf
+
 ---
 
 ## Documentation Standards
