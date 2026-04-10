@@ -18,7 +18,7 @@ const DateString: React.FC<TheseProps> = ({ info }) => {
 
   return (
     <time className="date-string" dateTime="2000-01-01">
-      <span className="weekday">Saturday</span>
+      <span className="week">Saturday</span>
       <span className="date">1st January 2000</span>
     </time>
   );
