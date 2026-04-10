@@ -4,6 +4,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
+import WeekGrid from '../../../components/Aside/week-grid/Aside.week-grid';
 import DateString from '../../../components/Time/date-string/Time.date-string';
 import BankTime from '../../../components/Article/bank-time/Article.bank-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
@@ -38,7 +39,14 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         {/* <header className="default-header"></header> */}
         {/* <div className="default-division"></div> */}
       </section>
-      <figure className={`${blockName}-midground`}></figure>
+      <figure className={`${blockName}-midground`}>
+        <WeekGrid
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+      </figure>
       <div className={`${blockName}-background`}>
         <DateString
           info={{

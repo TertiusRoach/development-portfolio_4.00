@@ -4,11 +4,19 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
+    z-index: 2;
+
     // background: red;
   }
   %midground {
+    z-index: 1;
+
+    .week-grid {
+      grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   %background {
+    z-index: 0;
     .bank-time {
       grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -32,22 +40,22 @@
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 1080px 🠋|--\\
       repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px 1fr repeat(2, auto) 48px; //--|🠈 columns 🠈|--//
+      / 48px 1fr 512px 482px 48px; //--|🠈 columns 🠈|--//
 
     //--|🠋 64px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 768px) {
       grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px 1fr repeat(2, auto) 32px; //--|🠈 columns 🠈|--//
+        / 32px 1fr 360px 343px 32px; //--|🠈 columns 🠈|--//
     }
     //--|🠋 48px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 480px) {
       grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px 1fr repeat(2, auto) 24px; //--|🠈 columns 🠈|--//
+        / 24px 1fr 228px 211px 24px; //--|🠈 columns 🠈|--//
     }
     //--|🠋 32px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 360px) {
       grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px 1fr repeat(2, auto) 16px; //--|🠈 columns 🠈|--//
+        / 16px 1fr 168px 159px 16px; //--|🠈 columns 🠈|--//
     }
 
     &[class*='fore'] {
@@ -59,14 +67,6 @@
     &[class*='back'] {
       @extend %background;
     }
-    /*
-    @media (max-aspect-ratio: 15.9/9) {
-      .date-string,
-      .leave-breaks {
-        display: none;
-      }
-    }
-    */
   }
 }
 @mixin mobile-portrait {

@@ -1,5 +1,56 @@
-//--|🠊 Article.leave-breaks.scss 🠈|--\\
+//--|🠊 Aside.week-grid.scss 🠈|--\\
 @mixin desktop-landscape {
+  // background: rgba(darkred, 0.25);
+
+  display: grid;
+
+  div[class='lines'] {
+    display: inherit; //--|🠊 display: grid; 🠈|--\\
+    position: relative;
+    grid-area: 1 / 1 / 8 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    backdrop-filter: blur(12px);
+    grid-template: repeat(7, 1fr) / repeat(3, 1fr); //--|🠈 rows / columns 🠈|--//
+    &::before {
+      inset: 0;
+      content: '';
+      position: absolute;
+      background-size: 33.3333333333% 14.2857142857%;
+      background-image:
+        linear-gradient(to top, black 2px, transparent 2px),
+        linear-gradient(to right, rgba(black, 0.25) 1px, transparent 1px),
+        //--|===|--//
+        linear-gradient(to bottom, black 2px, transparent 2px),
+        linear-gradient(to left, rgba(black, 0.25) 1px, transparent 1px);
+    }
+  }
+
+  //--|===|--\\
+  grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--//
+  grid-template-columns: 1fr clamp(0px, 75% - 512px, 512px); //--|🠈 columns 🠈|--//
+  @media screen and (max-height: 768px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 360px, 360px); //--|🠈 columns 🠈|--//
+  }
+  @media screen and (max-height: 480px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 228px, 228px); //--|🠈 columns 🠈|--//
+  }
+  @media screen and (max-height: 360px) {
+    grid-template-columns: 1fr clamp(0px, 75% - 168px, 168px); //--|🠈 columns 🠈|--//
+  }
+
+  /*
+
+  div:nth-child(2) {
+    height: 100px;
+    width: 100px;
+    background: blue;
+  }
+  div:nth-child(3) {
+    height: 100px;
+    width: 100px;
+    background: purple;
+  }
+  */
+  /*
   %desk-grid {
     display: grid;
     align-items: center;
@@ -92,11 +143,13 @@
     @extend %desk-grid;
     @extend %desk-flex;
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-article[class*='leave-breaks'] {
+aside[class*='week-grid'] {
+  /*
   dl {
     height: 100%;
     color: black;
@@ -105,6 +158,7 @@ article[class*='leave-breaks'] {
       background: rgba(white, 0.25);
     }
   }
+  */
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
