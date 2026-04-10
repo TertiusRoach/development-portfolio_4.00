@@ -38,7 +38,8 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         {/* <header className="default-header"></header> */}
         {/* <div className="default-division"></div> */}
       </section>
-      <figure className={`${blockName}-midground`}>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}>
         <DateString
           info={{
             pageName: pageName,
@@ -57,17 +58,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-      </figure>
-      <div className={`${blockName}-background`}>
-        {/* SectionTesting */}
-        <section className={`${pageName}-testing`}>
-          {/* <header></header> */}
-          {/* <footer></footer> */}
-        </section>
-        {/* <header></header> */}
-        {/* <aside className="left-side downplay"></aside> */}
-        {/* <aside className="right-side downplay"></aside> */}
-        {/* <footer></footer> */}
       </div>
     </main>
   );

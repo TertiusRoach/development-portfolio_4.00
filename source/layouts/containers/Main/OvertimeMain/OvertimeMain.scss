@@ -7,18 +7,17 @@
     // background: red;
   }
   %midground {
-    .date-string {
-      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
+  }
+  %background {
     .bank-time {
       grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .date-string {
+      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     .leave-breaks {
       grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-  }
-  %background {
-    // background: red;
   }
 
   section[class*='fore'],
@@ -60,6 +59,14 @@
     &[class*='back'] {
       @extend %background;
     }
+    /*
+    @media (max-aspect-ratio: 15.9/9) {
+      .date-string,
+      .leave-breaks {
+        display: none;
+      }
+    }
+    */
   }
 }
 @mixin mobile-portrait {
