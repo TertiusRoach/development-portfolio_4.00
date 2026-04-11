@@ -2,7 +2,7 @@
 @mixin desktop-landscape {
   %desk-grid {
     display: grid;
-    align-items: center;
+    align-items: center; //--|🠈 Grid 🠈|--\\
     grid-template: repeat(6, 1fr) //--|🠈 rows 🠈|--//
       / 1fr; //--|🠈 columns 🠈|--//
 
@@ -21,7 +21,7 @@
   }
   %desk-flex {
     div {
-      align-items: center;
+      align-items: center; //--|🠈 Flex 🠈|--\\
       display: inline-flex;
       justify-content: flex-end;
 

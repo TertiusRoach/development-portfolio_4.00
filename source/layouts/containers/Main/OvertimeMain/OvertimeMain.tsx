@@ -15,6 +15,7 @@ import ArticleLeave from '../../../components/Article/archive/leave/Article.leav
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
 import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
+import TotalTime from '../../../components/Article/total-time/Article.total-time';
 
 interface InfoProps {
   info: {
@@ -28,8 +29,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   const labelName = 'report' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-
-  // console.log(labelName);
 
   let svgPath: Array<String> = ['', '', ''];
 
@@ -61,8 +60,13 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-
         <BankTime
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+        <TotalTime
           info={{
             pageName: pageName,
             blockName: blockName,

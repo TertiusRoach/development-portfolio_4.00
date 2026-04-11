@@ -1,0 +1,80 @@
+//--|🠊 Article.total-time.scss 🠈|--\\
+@mixin desktop-landscape {
+  %desk-grid {
+    display: grid;
+    align-items: center; //--|🠈 Grid 🠈|--\\
+    grid-template: 1fr //--|🠈 rows 🠈|--//
+      / repeat(2, 1fr); //--|🠈 columns 🠈|--//
+    div[class='days'] {
+      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+    }
+    div[class='hours'] {
+      grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+    }
+  }
+  %desk-flex {
+    div {
+      display: flex;
+      line-height: 1;
+      flex-direction: column;
+      dd,
+      dt {
+        text-align: center;
+      }
+    }
+  }
+
+  dl {
+    div {
+      dd {
+        font-size: 64px;
+      }
+      dt {
+        font-size: 32px;
+      }
+      @media screen and (max-height: 768px) {
+        dd {
+          font-size: 48px;
+        }
+        dt {
+          font-size: 24px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        dd {
+          font-size: 32px;
+        }
+        dt {
+          font-size: 16px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        dd {
+          font-size: 24px;
+        }
+        dt {
+          font-size: 14px;
+        }
+      }
+    }
+    @extend %desk-grid;
+    @extend %desk-flex;
+  }
+}
+@mixin mobile-portrait {
+}
+
+article[class*='total-time'] {
+  dl {
+    height: 100%;
+    color: white;
+    font-weight: 800;
+    background: black;
+  }
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
