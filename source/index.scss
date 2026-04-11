@@ -1,11 +1,11 @@
-//--|🠊 index.scss (Entry Point) 🠈|--//
+//--|🠊 index.scss (Entry Point) 🠈|--\\
 // @use 'sass:color';
 
-//--|🠋 Designs 🠋|--//
+//--|🠋 Designs 🠋|--\\
 @use './layouts/designs/Global.scss';
 @use './layouts/designs/Palettes.scss';
 
-//--|🠋 Applications 🠋|--//
+//--|🠋 Applications 🠋|--\\
 @use './layouts/styles/buttons.scss';
 @use './layouts/styles/landing.scss';
 @use './layouts/styles/overtime.scss';
@@ -13,9 +13,9 @@
 @use './layouts/styles/hyperlink.scss';
 
 body {
-  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
+  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
   div[id*='body'] {
-    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
+    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--\\
   }
 
   &[class*='ante-meridiem'] {

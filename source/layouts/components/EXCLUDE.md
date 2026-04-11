@@ -2,7 +2,7 @@ These are the components I will exclude in my folder layout for now in order to 
 
 ---
 
-Press `Ctrl + ,` to open settings, or alternatively go to `File => Preferences`.
+Press `Ctrl + ,` to open settings, or alternatively go to `File => Preferences => Settings`.
 In the search bar at the top type in `exclude`.
 
 You'll see the list of folders you can or have excluded from your explorer tab on the left: Adjust and update according to your needs.

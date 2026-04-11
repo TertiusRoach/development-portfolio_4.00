@@ -1,0 +1,91 @@
+//--|🠊 Table.track-week.scss 🠈|--\\
+@mixin desktop-landscape {
+  display: grid;
+  grid-template-rows: 8rem repeat(7, 1fr) 8rem; //--|🠈 rows 🠈|--\\
+  grid-template-columns: repeat(3, 1fr) clamp(0px, 75% - 512px, 512px); //--|🠈 columns 🠈|--\\
+  @media screen and (max-height: 768px) {
+    grid-template-rows: 6rem repeat(7, 1fr) 6rem; //--|🠈 rows 🠈|--\\
+    grid-template-columns: repeat(3, 1fr) clamp(0px, 75% - 360px, 360px); //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    grid-template-rows: 4rem repeat(7, 1fr) 4rem; //--|🠈 rows 🠈|--\\
+    grid-template-columns: repeat(3, 1fr) clamp(0px, 75% - 228px, 228px); //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    grid-template-rows: 3rem repeat(7, 1fr) 3rem; //--|🠈 rows 🠈|--\\
+    grid-template-columns: repeat(3, 1fr) clamp(0px, 75% - 168px, 168px); //--|🠈 columns 🠈|--\\
+  }
+
+  thead {
+    background: rgba(black, 0.5);
+    grid-area: 2 / 1 / 9 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    tr {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      th {
+        width: 100%;
+        height: inherit; //--|🠈 height: 100%; 🠈|--\\
+        text-align: center;
+
+        // display: grid;
+        // grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        // justify-content: space-between;
+        // justify-content: center;
+        background: red;
+      }
+    }
+  }
+  tbody {
+    background: rgba(pink, 0.5);
+
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-area: 2 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    grid-template: repeat(7, 1fr) / repeat(2, 1fr);
+    tr {
+      grid-column: 1 / 3; //--|🠈 col-start / col-end 🠈|--\\
+      &[class*='mon'] {
+        background: rgba(darkgreen, 0.14);
+      }
+      &[class*='tue'] {
+        background: rgba(darkgreen, 0.29);
+      }
+      &[class*='wed'] {
+        background: rgba(darkgreen, 0.43);
+      }
+      &[class*='thu'] {
+        background: rgba(darkgreen, 0.57);
+      }
+      &[class*='fri'] {
+        background: rgba(darkgreen, 0.71);
+      }
+      &[class*='sat'] {
+        background: rgba(darkgreen, 0.86);
+      }
+      &[class*='sun'] {
+        background: rgba(darkgreen, 1);
+      }
+    }
+  }
+
+  %desk-grid {
+  }
+  @extend %desk-grid;
+}
+@mixin mobile-portrait {
+}
+
+table[class*='track-week'] {
+  thead,
+  tbody {
+    backdrop-filter: blur(12px);
+  }
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
