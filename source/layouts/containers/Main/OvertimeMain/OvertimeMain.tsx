@@ -10,7 +10,7 @@ import BankTime from '../../../components/Article/bank-time/Article.bank-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
 
 //--|===|--\\
-import TableWeeks from '../../../components/Table/weeks/Table.weeks';
+import TableWeeks from '../../../components/Table/archive/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';

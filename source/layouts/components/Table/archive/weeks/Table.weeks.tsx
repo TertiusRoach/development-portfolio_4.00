@@ -3,7 +3,7 @@
 import './Table.weeks.scss';
 //--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/overtime';
+import { stripBrackets } from '../../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useEffect } from 'react';
