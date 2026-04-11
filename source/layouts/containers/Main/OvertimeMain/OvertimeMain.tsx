@@ -14,6 +14,8 @@ import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
+import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
+import TotalTime from '../../../components/Article/total-time/Article.total-time';
 
 interface InfoProps {
   info: {
@@ -27,8 +29,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   const labelName = 'report' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-
-  // console.log(labelName);
 
   let svgPath: Array<String> = ['', '', ''];
 
@@ -48,7 +48,13 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
       </figure>
       <div className={`${blockName}-background`}>
-        <DateString
+        <LeaveBreaks
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+        <ClockCount
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -60,10 +66,19 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-        <LeaveBreaks
+        <TotalTime
           info={{
             pageName: pageName,
             blockName: blockName,
+          }}
+        />
+        <DateString
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+          style={{
+            shade: '~light~',
           }}
         />
       </div>

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import './Button.default.scss';
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Button_default';
-import { stripBrackets } from '../../../scripts/buttons';
+import { stripBrackets } from '../../functions';
 
 interface TheseProps {
   info: {

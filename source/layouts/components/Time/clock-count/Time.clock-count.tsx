@@ -1,6 +1,6 @@
-//--|🠊 Time.date-string.tsx 🠈|--\\
+//--|🠊 Time.clock-count.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Time.date-string.scss';
+import './Time.clock-count.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -12,22 +12,17 @@ interface TheseProps {
     pageName: string;
     blockName: string;
   };
-  style: {
-    shade: '~dark~' | '~light~';
-  };
 }
-const DateString: React.FC<TheseProps> = ({ info, style }) => {
+const ClockCount: React.FC<TheseProps> = ({ info }) => {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
 
-  // console.log( as string);
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <time className={`date-string ${stripBrackets(style.shade, '~~')}-mode`} dateTime="2000-01-01">
-      <span className="week">Saturday</span>
-      <span className="date">1st January 2000</span>
+    <time className="clock-count" dateTime="2000-01-01">
+      <span className="time">--:--</span>
     </time>
   );
 };
-export default DateString;
+export default ClockCount;
