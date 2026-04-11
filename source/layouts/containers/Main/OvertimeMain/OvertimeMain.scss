@@ -17,14 +17,17 @@
   }
   %background {
     z-index: 0;
-    .bank-time {
-      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .date-string {
-      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    .clock-count {
+      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     .leave-breaks {
       grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .date-string {
+      grid-area: 3 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .bank-time {
+      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
 

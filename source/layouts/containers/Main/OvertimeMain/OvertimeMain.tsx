@@ -14,6 +14,7 @@ import TableWeeks from '../../../components/Table/weeks/Table.weeks';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/weeks/Navigation.weeks';
+import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
 
 interface InfoProps {
   info: {
@@ -48,22 +49,32 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
       </figure>
       <div className={`${blockName}-background`}>
-        <DateString
+        <LeaveBreaks
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
         />
+        <ClockCount
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+
         <BankTime
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
         />
-        <LeaveBreaks
+        <DateString
           info={{
             pageName: pageName,
             blockName: blockName,
+          }}
+          style={{
+            shade: '~light~',
           }}
         />
       </div>

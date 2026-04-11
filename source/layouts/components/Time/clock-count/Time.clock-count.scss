@@ -1,5 +1,29 @@
-//--|🠊 Time.date-string.scss 🠈|--\\
+//--|🠊 Time.clock-count.scss 🠈|--\\
 @mixin desktop-landscape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 64px;
+  span {
+    font-size: 96px;
+  }
+  @media screen and (max-height: 768px) {
+    span {
+      font-size: 64px;
+    }
+  }
+  @media screen and (max-height: 480px) {
+    border-top-left-radius: 32px;
+    span {
+      font-size: 48px;
+    }
+  }
+  @media screen and (max-height: 360px) {
+    span {
+      font-size: 36px;
+    }
+  }
+  /*
   display: flex;
   line-height: 1;
   align-items: center;
@@ -41,34 +65,23 @@
       }
     }
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-time[class*='date-string'] {
+time[class*='clock-count'] {
+  background: black;
+
+  span {
+    color: white;
+    font-weight: 600;
+  }
+
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
-    // %article-grid {
-    // }
     @include mobile-portrait();
-  }
-
-  @extend %style-shade;
-  @extend %style-global;
-}
-
-%style-shade {
-  &.light-mode {
-    color: white;
-  }
-  &.dark-mode {
-    color: black;
-  }
-}
-%style-global {
-  span {
-    font-weight: 600;
   }
 }
