@@ -8,7 +8,6 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-
       th {
         width: 100%;
         display: grid;
@@ -22,10 +21,9 @@
     }
   }
   tbody {
-    background: rgba(white, 0.5);
-
     display: inherit; //--|🠈 display: grid; 🠈|--\\
     grid-area: 2 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    background: rgba(white, 0.5);
     grid-template: repeat(7, 1fr) / repeat(2, 1fr);
     tr {
       display: grid;
@@ -59,13 +57,12 @@
         &[class*='sun'] {
           background: rgba(darkgreen, 1);
         }
-        */
+      */
     }
   }
 
   & {
     display: grid;
-
     thead {
       margin: 8rem 0;
     }

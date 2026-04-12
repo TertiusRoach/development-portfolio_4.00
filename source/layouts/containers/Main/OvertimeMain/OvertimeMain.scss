@@ -5,8 +5,38 @@
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
     z-index: 2;
+    nav {
+      ol {
+        display: inherit;
+        grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-    // background: red;
+        background: rgba(darkred, 0.5);
+      }
+    }
+    nav {
+      display: grid;
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 1080px 🠋|--\\
+        repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+        / 1fr 512px 530px; //--|🠈 columns 🠈|--//
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      @media screen and (max-height: 768px) {
+        grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+          / 1fr 360px 375px; //--|🠈 columns 🠈|--//
+      }
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      @media screen and (max-height: 480px) {
+        grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+          / 1fr 228px 235px; //--|🠈 columns 🠈|--//
+      }
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      @media screen and (max-height: 360px) {
+        grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+          / 1fr 168px 175px; //--|🠈 columns 🠈|--//
+      }
+    }
   }
   %midground {
     z-index: 1;
@@ -49,7 +79,6 @@
     grid-template: //--|🠋 1080px 🠋|--\\
       repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
       / 48px 1fr 512px 482px 48px; //--|🠈 columns 🠈|--//
-
     //--|🠋 64px (Left & Right) for Design 🠋|--\\
     @media screen and (max-height: 768px) {
       grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
