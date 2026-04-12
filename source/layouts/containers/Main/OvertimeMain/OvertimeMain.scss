@@ -20,13 +20,13 @@
   %background {
     z-index: 0;
     .total-time {
+      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .clock-count {
       grid-area: 9 / 4 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     .leave-breaks {
       grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .clock-count {
-      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     .date-string {
       grid-area: 3 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
