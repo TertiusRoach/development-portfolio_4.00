@@ -20,6 +20,46 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
   return (
     <nav className="track-main">
       <ol>
+        <li className="prev-week">
+          <ButtonDefault
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              text: 'Down',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/prev-week.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'view-previous',
+            }}
+          />
+        </li>
+        <li className="next-week">
+          <ButtonDefault
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              text: 'Up',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/next-week.svg',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'view-future',
+            }}
+          />
+        </li>
         <li className="request-leave">
           <ButtonDefault
             style={{
