@@ -16,6 +16,8 @@ import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
 import TotalTime from '../../../components/Article/total-time/Article.total-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
 import TrackWeek from '../../../components/Table/track-week/Table.track-week';
+import ButtonDefault from '../../../components/Button/default/Button.default';
+import TrackMain from '../../../components/Navigation/track-main/Navigation.track-main';
 
 interface InfoProps {
   info: {
@@ -35,11 +37,13 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
-        <nav className="track-main">
-          <ol></ol>
-        </nav>
+        <TrackMain
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
         {/* <header className="default-header"></header> */}
-        {/* <div className="default-division"></div> */}
       </section>
       <figure className={`${blockName}-midground`}>
         <TrackWeek
@@ -62,31 +66,34 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-        <ClockCount
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-          }}
-        />
+
         <BankTime
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
         />
-        <TotalTime
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-          }}
-        />
+
         <DateString
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
           style={{
-            shade: '~light~',
+            shade: '~dark~',
+          }}
+        />
+
+        <TotalTime
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+        <ClockCount
+          info={{
+            pageName: pageName,
+            blockName: blockName,
           }}
         />
       </div>
