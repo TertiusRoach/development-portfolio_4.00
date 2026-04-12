@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["clockboard", "inspectable", "midground", "odonnell"]
+  "cSpell.words": ["clockboard", "inspectable", "midground", "odonnell"],
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }
