@@ -17,7 +17,7 @@ interface InfoProps {
 const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   useEffect(() => {
     // console.log('//--|🠊 Overtime Loaded 🠈|--\\\\');

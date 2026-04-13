@@ -5,11 +5,11 @@ export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   if (!tableWeek) return;
 
   // (2) Valid states as a literal tuple (gives you a real union type)
-  const romanNumerals = ['N', 'I', 'II', 'III'] as const;
+  const romanNumerals = ['I', 'II', 'III'] as const;
   type Roman = (typeof romanNumerals)[number];
 
   // (3) Detect current state by checking which class exists (order-independent)
-  const currentRoman = romanNumerals.find((r) => tableWeek.classList.contains(r)) ?? 'N';
+  const currentRoman = romanNumerals.find((r) => tableWeek.classList.contains(r)) ?? romanNumerals[0];
 
   // (4) Convert current roman to an index (guaranteed 0..length-1)
   const currentIndex = romanNumerals.indexOf(currentRoman);
