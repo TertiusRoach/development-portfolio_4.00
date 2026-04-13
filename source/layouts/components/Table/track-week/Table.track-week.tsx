@@ -17,7 +17,7 @@ const TrackWeek: React.FC<TheseProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <table className="track-week">
+    <table className="track-week I">
       <thead className="track-head">
         <tr>
           <th className="mon-row">
@@ -44,7 +44,7 @@ const TrackWeek: React.FC<TheseProps> = ({ info }) => {
         </tr>
       </thead>
 
-      <tbody className="table-body hidden" id="previous-week" data-week="01">
+      <tbody className="hidden" id="previous-week" data-week="01">
         <tr id="YYYY-DD-MM" className="mon-row">
           <td className="mon_clock-in_am">
             <span>08:00</span>
@@ -162,7 +162,7 @@ const TrackWeek: React.FC<TheseProps> = ({ info }) => {
         </tr>
       </tbody>
 
-      <tbody className="table-body hidden" id="future-week" data-week="03">
+      <tbody className="hidden" id="future-week" data-week="03">
         <tr id="YYYY-DD-MM" className="mon-row">
           <td className="mon_clock-in_am">
             <span>08:00</span>

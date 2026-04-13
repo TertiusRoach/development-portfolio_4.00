@@ -1,6 +1,5 @@
 //--|🠊 OvertimeMain.scss 🠈|--//
 @use '../../../designs/Palettes.scss';
-
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
@@ -34,6 +33,10 @@
     }
     .bank-time {
       grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    .overtime-background {
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
 

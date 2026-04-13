@@ -5,9 +5,11 @@ import { stripBrackets } from '../../../scripts/overtime';
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import TableWeeks from '../../../components/Table/archive/weeks/Table.weeks';
+import ButtonDefault from '../../../components/Button/default/Button.default';
 import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import NavigationWeeks from '../../../components/Navigation/archive/weeks/Navigation.weeks';
+
 //--|===|--\\
 import WeekGrid from '../../../components/Aside/week-grid/Aside.week-grid';
 import DateString from '../../../components/Time/date-string/Time.date-string';
@@ -16,7 +18,6 @@ import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
 import TotalTime from '../../../components/Article/total-time/Article.total-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
 import TrackWeek from '../../../components/Table/track-week/Table.track-week';
-import ButtonDefault from '../../../components/Button/default/Button.default';
 import TrackMain from '../../../components/Navigation/track-main/Navigation.track-main';
 
 interface InfoProps {
