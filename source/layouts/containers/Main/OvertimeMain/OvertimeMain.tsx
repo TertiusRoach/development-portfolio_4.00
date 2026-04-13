@@ -44,7 +44,6 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-        {/* <header className="default-header"></header> */}
       </section>
       <figure className={`${blockName}-midground`}>
         <TrackWeek
@@ -91,7 +90,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
 
         <TotalTime
-          //--|🠊 <time class="total-time"/> 🠈|--\\
+          //--|🠊 <article class="total-time"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,

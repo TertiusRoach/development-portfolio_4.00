@@ -84,7 +84,6 @@ article[class*='bank-time'] {
     height: 100%;
     color: white;
     font-weight: 600;
-    background: black;
     dt,
     dd {
       display: flex;
@@ -93,6 +92,8 @@ article[class*='bank-time'] {
     }
   }
 
+  @extend %desk-back;
+  //--|🠊 @extend %desk-back; 🠈|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
@@ -100,5 +101,11 @@ article[class*='bank-time'] {
     // %article-grid {
     // }
     @include mobile-portrait();
+  }
+}
+
+%desk-back {
+  dl {
+    background: rgba(black, 0.25);
   }
 }

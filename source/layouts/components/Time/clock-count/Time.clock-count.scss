@@ -27,17 +27,19 @@
 }
 
 time[class*='clock-count'] {
-  background: black;
-
   span {
     color: white;
     font-weight: 600;
   }
-
+  @extend %desk-back;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+}
+
+%desk-back {
+  background: rgba(black, 0.25);
 }
