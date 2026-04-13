@@ -38,6 +38,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
         <TrackMain
+          //--|🠊 <nav class="track-main"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -47,12 +48,14 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${blockName}-midground`}>
         <TrackWeek
+          //--|🠊 <table class="track-week"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
         />
         <WeekGrid
+          //--|🠊 <aside class="week-grid"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -61,6 +64,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
       </figure>
       <div className={`${blockName}-background`}>
         <LeaveBreaks
+          //--|🠊 <article class="leave-breaks"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -68,6 +72,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
 
         <BankTime
+          //--|🠊 <article class="bank-time"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -75,6 +80,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
 
         <DateString
+          //--|🠊 <time class="date-string"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -85,12 +91,14 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
 
         <TotalTime
+          //--|🠊 <time class="total-time"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
         />
         <ClockCount
+          //--|🠊 <time class="clock-count"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,

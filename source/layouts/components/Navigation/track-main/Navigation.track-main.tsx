@@ -1,10 +1,15 @@
 //--|🠊 Navigation.track-main.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
 import './Navigation.track-main.scss';
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+//--|🠋 Functions 🠋|--\\
+import { viewDisplay, unfoldHeader } from './Navigation_track-main';
+
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
+import ButtonRouting from '../../Button/routing/Button.routing';
 interface TheseProps {
   info: {
     pageName: string;
@@ -14,14 +19,55 @@ interface TheseProps {
 const TrackMain: React.FC<TheseProps> = ({ info }) => {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
+  const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🠋 1. Define the media query for landscape 🠈|--\\
+    const mediaQuery = window.matchMedia('(orientation: landscape)');
+    const handleOrientationChange = () => {
+      //--|🠋 2. Create the handler function 🠈|--\\
+      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
+    };
+    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
+    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
+  }, [pageName, blockName]);
+
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
+    '',
+    '',
+  ];
 
   return (
     <nav className="track-main">
       <ol>
-        <li className="prev-week">
+        <li className="open-head">
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
+              image: `${svgPath[0]}/trinity-apps/track-a-day/primary-light.svg`,
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}-${blockName}_open-head`,
+            }}
+            onClick={() => unfoldHeader(pageName, blockName, 'click')}
+            onMouseEnter={() => unfoldHeader(pageName, blockName, 'hover')}
+          />
+        </li>
+
+        <li className="prev-table">
           <ButtonDefault
+            info={{
+              labelName: `${pageName}-${blockName}_view-previous`,
+              blockName: blockName,
+              pageName: pageName,
+            }}
             style={{
               size: '<h1>',
               view: '-icon-',
@@ -33,15 +79,15 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/prev-week.svg',
             }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: 'view-previous',
-            }}
           />
         </li>
-        <li className="next-week">
+        <li className="next-table">
           <ButtonDefault
+            info={{
+              labelName: `${pageName}-${blockName}_view-future`,
+              blockName: blockName,
+              pageName: pageName,
+            }}
             style={{
               size: '<h1>',
               view: '-icon-',
@@ -53,15 +99,16 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/next-week.svg',
             }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: 'view-future',
-            }}
           />
         </li>
-        <li className="request-leave">
+
+        <li className="open-right">
           <ButtonDefault
+            info={{
+              labelName: `${pageName}-${blockName}_request-leave`,
+              blockName: blockName,
+              pageName: pageName,
+            }}
             style={{
               size: '<h1>',
               view: '-center-',
@@ -73,15 +120,15 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: 'request-leave',
-            }}
           />
         </li>
-        <li className="ante-meridiem saturday">
+        <li className="open-left saturday">
           <ButtonDefault
+            info={{
+              labelName: `${pageName}-${blockName}_clock-in`,
+              blockName: blockName,
+              pageName: pageName,
+            }}
             style={{
               size: '<h3>',
               view: '-center-',
@@ -93,15 +140,15 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: 'clock-in',
-            }}
           />
         </li>
-        <li className="post-meridiem saturday">
+        <li className="open-left saturday">
           <ButtonDefault
+            info={{
+              labelName: `${pageName}-${blockName}_clock-out`,
+              blockName: blockName,
+              pageName: pageName,
+            }}
             style={{
               size: '<h3>',
               view: '-center-',
@@ -112,11 +159,6 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               type: '{button}',
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: 'clock-out',
             }}
           />
         </li>
