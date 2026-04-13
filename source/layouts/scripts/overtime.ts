@@ -11,3 +11,7 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
+
+export function openLeftbar(pageName: string, blockName: string) {
+  console.log(document.querySelector(`#${pageName}-leftbar`));
+}

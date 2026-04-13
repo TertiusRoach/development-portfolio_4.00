@@ -54,13 +54,13 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
           }}
         />
-        <WeekGrid
+        {/* <WeekGrid
           //--|🠊 <aside class="week-grid"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
-        />
+        /> */}
       </figure>
       <div className={`${blockName}-background`}>
         <LeaveBreaks

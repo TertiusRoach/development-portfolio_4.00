@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay, unfoldHeader } from './Navigation_track-main';
 import { scrollTable } from '../../Table/track-week/Table_track-week';
+import { openLeftbar } from '../../../scripts/overtime';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -134,7 +135,7 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
             }}
             style={{
               size: '<h3>',
-              view: '-center-',
+              view: '-text-',
               text: `Clock-in`,
               shade: '~dark~',
               color: '(mono)',
@@ -143,6 +144,7 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
+            onClick={() => openLeftbar(pageName, blockName)}
           />
         </li>
         <li className="open-left saturday">
@@ -154,7 +156,7 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
             }}
             style={{
               size: '<h3>',
-              view: '-center-',
+              view: '-text-',
               text: `Clock-out`,
               shade: '~dark~',
               color: '(mono)',

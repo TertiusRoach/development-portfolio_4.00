@@ -1,15 +1,18 @@
 //--|🠊 overtime.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
+
 //--|🠋 Containers 🠋|--//
 const OvertimeMain = lazy(() => import('../containers/Main/OvertimeMain/OvertimeMain'));
 const OvertimeHeader = lazy(() => import('../containers/Header/OvertimeHeader/OvertimeHeader'));
 const OvertimeFooter = lazy(() => import('../containers/Footer/OvertimeFooter/OvertimeFooter'));
+const OvertimeLeftbar = lazy(() => import('../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar'));
 
 function Overtime() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);
   const [getFooter, setFooter] = useState(false);
+  const [getLeftbar, setLeftbar] = useState(false);
 
   useEffect(() => {
     const overlayTimer = setTimeout(() => setHeader(true), 0);
@@ -23,6 +26,8 @@ function Overtime() {
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
       clearTimeout(mainTimer);
+
+      clearTimeout(leftbarTimer);
     };
   }, []);
 
@@ -34,6 +39,10 @@ function Overtime() {
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
         {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />}
+      </Suspense>
+
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getLeftbar && <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>' }} />}
       </Suspense>
 
       {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
