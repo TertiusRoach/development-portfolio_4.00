@@ -1,8 +1,8 @@
 //--|🠊 ButtonsMain.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Elements 🠋|--\\
-import DefaultButtons from './components/default-buttons/DefaultButtons';
-import RoutingButtons from './components/routing-buttons/RoutingButtons';
+import DefaultButtons from './elements/default-buttons/DefaultButtons';
+import RoutingButtons from './elements/routing-buttons/RoutingButtons';
 //--|🠋 Functions 🠋|--\\
 import { defaultPreview } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
