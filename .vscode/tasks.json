@@ -4,12 +4,26 @@
     {
       "label": "npm run app",
       "type": "shell",
-      "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run app",
+      "command": "npm run app",
       "options": {
-        "cwd": "${workspaceFolder}",
-        "shell": {
-          "executable": "/bin/bash",
-          "args": ["-c"]
+        "cwd": "${workspaceFolder}"
+      },
+      "linux": {
+        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run app",
+        "options": {
+          "shell": {
+            "executable": "/bin/bash",
+            "args": ["-c"]
+          }
+        }
+      },
+      "windows": {
+        "command": "npm run app",
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/d", "/c"]
+          }
         }
       },
       "runOptions": {
