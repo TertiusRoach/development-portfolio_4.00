@@ -5,9 +5,9 @@ import './Navigation.track-main.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay, unfoldHeader } from './Navigation_track-main';
+import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
+import { viewDisplay } from './Navigation_track-main';
 import { scrollTable } from '../../Table/track-week/Table_track-week';
-import { openLeftbar } from '../../../scripts/overtime';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -58,8 +58,8 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}-${blockName}_open-head`,
             }}
-            onClick={() => unfoldHeader(pageName, blockName, 'click')}
-            onMouseEnter={() => unfoldHeader(pageName, blockName, 'hover')}
+            onClick={() => expandHeader(pageName, blockName, 'click')}
+            onMouseEnter={() => expandHeader(pageName, blockName, 'hover')}
           />
         </li>
 
@@ -144,7 +144,7 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
-            onClick={() => openLeftbar(pageName, blockName)}
+            onClick={() => expandLeftbar(pageName, blockName)}
           />
         </li>
         <li className="open-left saturday">
