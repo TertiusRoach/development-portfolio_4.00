@@ -15,6 +15,7 @@ interface InfoProps {
   };
 }
 const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
+  const labelName = 'profile' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';

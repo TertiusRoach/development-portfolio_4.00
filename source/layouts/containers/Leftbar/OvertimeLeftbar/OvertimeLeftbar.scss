@@ -1,97 +1,95 @@
-//--|🠊 OvertimeLeftbar.scss 🠈|--//
+//--|🠊 OvertimeMain.scss 🠈|--//
 @use '../../../designs/Palettes.scss';
-
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 8rem 1fr 4rem / 1fr; //--|🠊 rows / columns 🠈|--//
-
-  header[class*='clocking'] {
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-    grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    background: Palettes.$trackDay-dark;
-    grid-template: repeat(2, 4rem) / 8rem 1fr 8rem; //--|🠈 rows / columns 🠈|--//
-    nav[class*='overtime'] {
-      grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    time[class*='daily'] {
-      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    span[class*='scrolling'] {
-      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  %foreground {
+    z-index: 2;
+    .track-main {
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  section[class*='clocking'] {
-    grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-    background: rgba(white, 0.25);
-    grid-template: 1fr / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-
-    div {
-      display: inherit; //--|🠈 display: grid; 🠈|--//
-      grid-template: repeat(7, 1fr) / 8rem repeat(2, 1fr); //--|🠈 rows / columns 🠈|--//
-      &[class*='ante'] {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      &[class*='post'] {
-        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
+  %midground {
+    z-index: 1;
+    .track-week {
+      grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .week-grid {
+      grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  footer[class*='clocking'] {
-    grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-    background: Palettes.$trackDay-dark;
-    grid-template: 4rem / 8rem 1fr 8rem; //--|🠈 rows / columns 🠈|--//
+  %background {
+    z-index: 0;
+    .total-time {
+      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .clock-count {
+      grid-area: 9 / 4 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .leave-breaks {
+      grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .date-string {
+      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .bank-time {
+      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
 
-    span[class*='scrolling'] {
-      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+    .overtime-background {
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    height: 100%;
+    display: grid;
+    overflow: hidden;
+    position: absolute;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 512px 482px 48px; //--|🠈 columns 🠈|--//
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 360px 343px 32px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 480px) {
+      grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 228px 211px 24px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 360px) {
+      grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 168px 159px 16px; //--|🠈 columns 🠈|--//
+    }
+
+    &[class*='fore'] {
+      @extend %foreground;
+    }
+    &[class*='mid'] {
+      @extend %midground;
+    }
+    &[class*='back'] {
+      @extend %background;
     }
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠋 Mobile (Elements) 🠋|--//
 }
 
-aside[id*='overtime'] {
-  &[id*='leftbar'] {
-    display: grid;
-    overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    background: linear-gradient(
-      315deg,
-      rgba(Palettes.$trackDay-dark, 0.5) 0%,
-
-      rgba(Palettes.$trackDay-dark, 0.75) 50%,
-
-      rgba(Palettes.$trackDay-dark, 0.5) 100%
-    );
-
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      @include desktop-landscape();
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      @include mobile-portrait();
-    }
+main[id*='overtime'] {
+  position: relative;
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
   }
 }
-
-/*
-    ol {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      display: grid;
-      list-style: none;
-      grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: repeat(2, 4rem) / 8rem 1fr 8rem; //--|🠊 rows / columns 🠈|--//
-
-      li[class*='preview'],
-      li[class*='identity'] {
-        // background: red;
-        grid-area: 1 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-      }
-    }
-    */

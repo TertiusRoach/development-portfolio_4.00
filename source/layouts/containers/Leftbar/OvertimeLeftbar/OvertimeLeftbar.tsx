@@ -1,18 +1,24 @@
-//--|🠊 OvertimeLeftbar.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
+//--|🠊 OvertimeMain.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Frameworks 🠋|--//
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
-//--|🠉 Frameworks 🠉|--//
-//--|🠋 Components 🠋|--//
-import TimeDaily from '../../../components/Time/archive/daily/Time.daily';
-import MenuOvertime from '../../../components/Menu/overtime/Menu.overtime';
-import SpanScrolling from '../../../components/Span/scrolling/Span.scrolling';
-import DivisionIdentity from '../../../components/Division/identity/Division.identity';
-import NavigationPreview from '../../../components/Navigation/preview/Navigation.preview';
-import NavigationOvertime from '../../../components/Navigation/overtime/Navigation.overtime';
-//--|🠉 Components 🠉|--//
+//--|🠋 Components 🠋|--\\
+import TableWeeks from '../../../components/Table/archive/weeks/Table.weeks';
+import ButtonDefault from '../../../components/Button/default/Button.default';
+import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
+import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
+import NavigationWeeks from '../../../components/Navigation/archive/weeks/Navigation.weeks';
+
+//--|===|--\\
+import WeekGrid from '../../../components/Aside/week-grid/Aside.week-grid';
+import DateString from '../../../components/Time/date-string/Time.date-string';
+import BankTime from '../../../components/Article/bank-time/Article.bank-time';
+import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
+import TotalTime from '../../../components/Article/total-time/Article.total-time';
+import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
+import TrackWeek from '../../../components/Table/track-week/Table.track-week';
+import TrackMain from '../../../components/Navigation/track-main/Navigation.track-main';
 
 interface InfoProps {
   info: {
@@ -21,28 +27,20 @@ interface InfoProps {
     roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
-const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
 
+const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
+  const labelName = 'clocking' as string;
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const stateName: 'expanded' | 'collapsed' = 'collapsed';
 
-  useEffect(() => {}, [pageName, blockName]);
+  let svgPath: Array<String> = ['', '', ''];
 
   return (
-    <aside style={{ zIndex: 4 }} id={`${pageName}-${blockName}`} className={`default-${blockName} collapsed`}>
-      <header className="clocking-header">
-        <TimeDaily info={info} />
-        <NavigationOvertime info={info} />
-        <SpanScrolling block="<header>" info={info} />
-      </header>
-      <section className="clocking-section">
-        <div className="ante-meridiem"></div>
-        <div className="post-meridiem"></div>
-      </section>
-      <footer className="clocking-footer">
-        <SpanScrolling block="<footer>" info={info} />
-      </footer>
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 };

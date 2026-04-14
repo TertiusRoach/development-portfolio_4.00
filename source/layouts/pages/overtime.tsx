@@ -16,7 +16,7 @@ function Overtime() {
 
   useEffect(() => {
     const overlayTimer = setTimeout(() => setHeader(true), 0);
-    const leftbarTimer = setTimeout(() => setMain(true), 500);
+    const leftbarTimer = setTimeout(() => setLeftbar(true), 500);
     const rightbarTimer = setTimeout(() => setFooter(true), 500);
 
     const mainTimer = setTimeout(() => setMain(true), 750);
@@ -41,7 +41,7 @@ function Overtime() {
         {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>' }} />}
       </Suspense>
 

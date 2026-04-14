@@ -10,8 +10,6 @@ In the end, the company itself becomes the protagonist—an ever-growing organis
 
 ---
 
----
-
 ## **Character Lore**
 
 ---
