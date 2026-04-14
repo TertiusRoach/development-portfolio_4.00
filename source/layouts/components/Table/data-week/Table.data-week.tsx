@@ -17,7 +17,7 @@ const DataWeek: React.FC<TheseProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <table className="track-week I">
+    <table className="data-week I">
       {/* <thead className="track-head">
         <tr>
           <th className="mon-row">
