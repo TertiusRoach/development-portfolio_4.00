@@ -38,7 +38,7 @@ function Overtime() {
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>' }} />}
+        {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(tracking)' }} />}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>

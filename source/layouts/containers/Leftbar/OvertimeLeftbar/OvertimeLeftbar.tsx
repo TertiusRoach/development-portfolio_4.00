@@ -5,6 +5,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import NavigationClocking from '../../../components/Navigation/clocking/Navigation.clocking';
+import TableClocking from '../../../components/Table/clocking/Table.clocking';
 
 interface InfoProps {
   info: {
@@ -25,6 +26,7 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
+        {/*
         <NavigationClocking
           //--|🠊 <nav class="clocking-leftbar"/> 🠈|--\\
           info={{
@@ -33,8 +35,16 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
         />
+        */}
       </section>
       <figure className={`${blockName}-midground`}>
+        <TableClocking
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
         {/*
         <DataWeek
           info={{

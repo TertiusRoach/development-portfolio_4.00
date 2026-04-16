@@ -105,7 +105,7 @@
 @mixin mobile-portrait {
 }
 
-nav[class*='track-main'] {
+nav[class='tracking-main'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

@@ -16,11 +16,16 @@ interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    labelName: string;
   };
 }
 const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
+  const labelName: string = info.labelName as 'tracking';
+
+  console.log(labelName);
+
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   useEffect(() => {
@@ -41,7 +46,7 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
   ];
 
   return (
-    <nav className="track-main">
+    <nav className={`${labelName}-${blockName}`}>
       <ol>
         <li className="open-head">
           <ButtonRouting

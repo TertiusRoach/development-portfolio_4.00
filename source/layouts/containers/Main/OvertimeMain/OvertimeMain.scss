@@ -1,16 +1,17 @@
-//--|🠊 OvertimeMain.scss 🠈|--//
+//--|🠊 OvertimeMain.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
     z-index: 2;
-    .track-main {
+    nav[class='tracking-main'] {
       grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %midground {
     z-index: 1;
-    .tracking-main {
+    //--|🠊 The '*' symbol indicates the element has moving properties 🠈|--\\
+    table[class*='tracking-main'] {
       grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     /*

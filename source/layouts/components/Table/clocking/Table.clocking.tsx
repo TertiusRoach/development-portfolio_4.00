@@ -8,16 +8,18 @@ interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    labelName: string;
   };
 }
 const TableClocking: React.FC<TheseProps> = ({ info }) => {
-  const blockName: string = info.blockName as 'leftbar';
   const pageName: string = info.pageName as 'overtime';
+  const blockName: string = info.blockName as 'leftbar';
+  const labelName: string = info.labelName as 'clocking';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <table className="data-week I">
+    <table className={`${labelName}-${blockName} I`}>
       {/* <thead className="track-head">
         <tr>
           <th className="mon-row">

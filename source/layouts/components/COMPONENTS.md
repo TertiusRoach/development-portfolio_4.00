@@ -1,3 +1,5 @@
+## Uses `labelName` as its identifier.
+
 These are the components I will exclude in my folder layout for now in order to keep my workflow clean. I don't want to weave through lists of possibly deprecated folders to find what I'm looking for. Note: I have installed Folder Tags by Kedar Jevargi and mark the established ones in Purple.
 
 ---

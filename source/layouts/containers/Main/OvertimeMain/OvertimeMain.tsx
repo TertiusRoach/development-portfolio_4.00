@@ -21,14 +21,15 @@ interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
     blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    labelName: '(default)' | '(tracking)' | '(clocking)' | '(request)' | '(profile)' | '(message)' | string;
+    roleName?: '{established}' | '{freelancing}' | '{manager}' | '{employee}' | '{specialist}' | '{technician}' | string;
   };
 }
 
 const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
-  const labelName = 'tracking' as string;
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const labelName = stripBrackets(info.labelName, '()') as 'tracking';
 
   let svgPath: Array<String> = ['', '', ''];
 
@@ -36,10 +37,11 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
         <NavigationTracking
-          //--|🠊 <nav class="track-main"/> 🠈|--\\
+          //--|🠊 <nav class="tracking-main"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
+            labelName: labelName,
           }}
         />
       </section>
