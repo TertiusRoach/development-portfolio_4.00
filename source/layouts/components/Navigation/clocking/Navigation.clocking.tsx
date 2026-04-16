@@ -1,4 +1,4 @@
-//--|🠊 Navigation.track-leftbar.tsx 🠈|--\\
+//--|🠊 Navigation.clocking.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
 import './Navigation.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\
@@ -16,11 +16,14 @@ interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    labelName: string;
   };
 }
 const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
-  const blockName: string = info.blockName as 'leftbar';
   const pageName: string = info.pageName as 'overtime';
+  const blockName: string = info.blockName as 'leftbar';
+  const labelName: string = info.labelName as 'clocking';
+
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
   ];
 
   return (
-    <nav className="track-leftbar">
+    <nav className={`${labelName}-${blockName}`}>
       <ol>
         <li className="open-head">
           <ButtonRouting

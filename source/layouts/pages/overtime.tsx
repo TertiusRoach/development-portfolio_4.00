@@ -42,7 +42,9 @@ function Overtime() {
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
-        {getLeftbar && <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>' }} />}
+        {getLeftbar && (
+          <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>', labelName: '(clocking)' }} />
+        )}
       </Suspense>
 
       {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>

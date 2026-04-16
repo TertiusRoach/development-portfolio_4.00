@@ -10,26 +10,27 @@ interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
     blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    labelName: '(default)' | '(tracking)' | '(clocking)' | '(request)' | '(profile)' | '(message)' | string;
+    roleName?: '{established}' | '{freelancing}' | '{manager}' | '{employee}' | '{specialist}' | '{technician}' | string;
   };
 }
 
 const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  const labelName = 'clocking' as string;
-  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'collapsed' = 'collapsed';
 
-  let svgPath: Array<String> = ['', '', ''];
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'clocking';
 
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
         <NavigationClocking
-          //--|🠊 <nav class="track-leftbar"/> 🠈|--\\
+          //--|🠊 <nav class="clocking-leftbar"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
+            labelName: labelName,
           }}
         />
       </section>

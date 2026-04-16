@@ -1,4 +1,4 @@
-//--|🠊 Table.track-main.scss 🠈|--\\
+//--|🠊 Table.tracking.scss 🠈|--\\
 @mixin desktop-landscape {
   display: flex;
   position: relative;
@@ -93,7 +93,7 @@
 }
 @mixin mobile-portrait {
 }
-table[class*='tracking'] {
+table[class*='tracking-main'] {
   thead {
     tr {
       color: white;

@@ -1,14 +1,24 @@
 //--|🠊 overtime.ts 🠈|--\\
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '~~'): string {
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
-    case '[]': //--|🠈 pageName 🠈|--\\
+    case '[]':
+      //--|🠊 pageName 🠈|--\\
       return thisText.replace(/[\[\]]/g, '');
-    case '<>': //--|🠈 blockName 🠈|--\\
+    case '<>':
+      //--|🠊 blockName & style.size 🠈|--\\
       return thisText.replace(/[<>]/g, '');
-    case '()': //--|🠈 roleName 🠈|--\\
+    case '()':
+      //--|🠊 roleName, style.color & style.role 🠈|--\\
       return thisText.replace(/[()]/g, '');
-    case '~~': //--|🠈 style.shade 🠈|--\\
+    case '~~':
+      //--|🠊 style.shade 🠈|--\\
       return thisText.replace(/[~~]/g, '');
+    case '{}':
+      //--|🠊 style.type 🠈|--\\
+      return thisText.replace(/[{}]/g, '');
+    case '--':
+      //--|🠊 style.view 🠈|--\\
+      return thisText.replace(/[--]/g, '');
   }
 }
 
