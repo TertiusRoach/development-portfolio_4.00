@@ -1,24 +1,21 @@
 //--|🠊 OvertimeMain.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
+
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
-//--|🠋 Components 🠋|--\\
-import TableWeeks from '../../../components/Table/archive/weeks/Table.weeks';
-import ButtonDefault from '../../../components/Button/default/Button.default';
-import ArticleLeave from '../../../components/Article/archive/leave/Article.leave';
-import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
-import NavigationWeeks from '../../../components/Navigation/archive/weeks/Navigation.weeks';
 
-//--|===|--\\
+//--|🠋 Components 🠋|--\\
+import TableClocking from '../../../components/Table/clocking/Table.clocking';
+import NavigationTracking from '../../../components/Navigation/tracking/Navigation.tracking';
+
 import WeekGrid from '../../../components/Aside/week-grid/Aside.week-grid';
 import DateString from '../../../components/Time/date-string/Time.date-string';
 import BankTime from '../../../components/Article/bank-time/Article.bank-time';
 import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
 import TotalTime from '../../../components/Article/total-time/Article.total-time';
 import LeaveBreaks from '../../../components/Article/leave-breaks/Article.leave-breaks';
-import TrackWeek from '../../../components/Table/track-week/Table.track-week';
-import TrackMain from '../../../components/Navigation/track-main/Navigation.track-main';
+import TableTracking from '../../../components/Table/tracking/Table.tracking';
 
 interface InfoProps {
   info: {
@@ -38,7 +35,7 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
-        <TrackMain
+        <NavigationTracking
           //--|🠊 <nav class="track-main"/> 🠈|--\\
           info={{
             pageName: pageName,
@@ -47,20 +44,23 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}>
-        <TrackWeek
-          //--|🠊 <table class="track-week"/> 🠈|--\\
+        <TableTracking
+          //--|🠊 <table class="tracking-main"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
+            labelName: 'tracking',
           }}
         />
-        {/* <WeekGrid
+        {/*
+        <WeekGrid
           //--|🠊 <aside class="week-grid"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
           }}
-        /> */}
+        />
+        */}
       </figure>
       <div className={`${blockName}-background`}>
         <LeaveBreaks

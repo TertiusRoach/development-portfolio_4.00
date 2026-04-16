@@ -1,6 +1,6 @@
 //--|🠊 Table.data-week.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Table.data-week.scss';
+import './Table.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -10,7 +10,7 @@ interface TheseProps {
     blockName: string;
   };
 }
-const DataWeek: React.FC<TheseProps> = ({ info }) => {
+const TableClocking: React.FC<TheseProps> = ({ info }) => {
   const blockName: string = info.blockName as 'leftbar';
   const pageName: string = info.pageName as 'overtime';
 
@@ -223,4 +223,4 @@ const DataWeek: React.FC<TheseProps> = ({ info }) => {
     </table>
   );
 };
-export default DataWeek;
+export default TableClocking;

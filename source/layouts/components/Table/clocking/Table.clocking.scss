@@ -1,5 +1,6 @@
-//--|🠊 Table.track-week.scss 🠈|--\\
+//--|🠊 Table.clocking.scss 🠈|--\\
 @mixin desktop-landscape {
+  /*
   display: flex;
   position: relative;
   flex-direction: column;
@@ -90,10 +91,12 @@
       grid-template-columns: repeat(3, 1fr) clamp(0px, 75% - 168px, 168px); //--|🠈 columns 🠈|--\\
     }
   }
+  */
 }
 @mixin mobile-portrait {
 }
-table[class*='track-week'] {
+table[class*='data-week'] {
+  /*
   thead {
     tr {
       color: white;
@@ -109,15 +112,16 @@ table[class*='track-week'] {
 
   //--|🠊 @extend %desk-back; 🠈|--\\
   @extend %carousel-containers;
+  */
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
 }
 
+/*
 %desk-back {
   tbody {
     &:nth-child(2) {
@@ -130,11 +134,6 @@ table[class*='track-week'] {
       background: rgba(darkblue, 0.25);
     }
   }
-  /*
-  tbody {
-    background: rgba(white, 0.5);
-  }
-  */
 }
 %carousel-containers {
   transition: transform 750ms ease-in-out;
@@ -168,3 +167,4 @@ table[class*='track-week'] {
     }
   }
 }
+*/

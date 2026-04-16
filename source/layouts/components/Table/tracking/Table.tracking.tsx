@@ -1,6 +1,6 @@
-//--|🠊 Table.track-week.tsx 🠈|--\\
+//--|🠊 Table.tracking.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Table.track-week.scss';
+import './Table.tracking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -8,16 +8,18 @@ interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    labelName: string;
   };
 }
-const TrackWeek: React.FC<TheseProps> = ({ info }) => {
+const TableTracking: React.FC<TheseProps> = ({ info }) => {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
+  const labelName: string = info.labelName as 'tracking';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <table className="track-week I">
+    <table className={`${labelName}-${blockName} I`}>
       <thead className="track-head">
         <tr>
           <th className="mon-row">
@@ -223,4 +225,4 @@ const TrackWeek: React.FC<TheseProps> = ({ info }) => {
     </table>
   );
 };
-export default TrackWeek;
+export default TableTracking;

@@ -10,12 +10,14 @@
   }
   %midground {
     z-index: 1;
-    .track-week {
+    .tracking-main {
       grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    /*
     .week-grid {
       grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    */
   }
   %background {
     z-index: 0;
@@ -81,7 +83,7 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Elements) 🠋|--//
+  //--|🠋 Mobile (Elements) 🠋|--\\
 }
 
 main[id*='overtime'] {

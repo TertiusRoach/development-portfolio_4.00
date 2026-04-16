@@ -1,7 +1,7 @@
 //--|🠊 Table_track-week.ts 🠈|--\\
 export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   // (1) Query safely: allow null
-  const tableWeek = document.querySelector('#overtime-main .track-week') as HTMLTableElement | null;
+  const tableWeek = document.querySelector('#overtime-main .tracking-main') as HTMLTableElement | null;
   if (!tableWeek) return;
 
   // (2) Valid states as a literal tuple (gives you a real union type)

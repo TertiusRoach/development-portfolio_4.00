@@ -1,13 +1,13 @@
-//--|🠊 Navigation.track-main.tsx 🠈|--\\
+//--|🠊 Navigation.track-leftbar.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.track-main.scss';
+import './Navigation.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
-import { viewDisplay } from './Navigation_track-main';
-import { scrollTable } from '../../Table/track-week/Table_track-week';
+import { viewDisplay } from './Navigation_clocking';
+import { scrollTable } from '../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -18,8 +18,8 @@ interface TheseProps {
     blockName: string;
   };
 }
-const TrackMain: React.FC<TheseProps> = ({ info }) => {
-  const blockName: string = info.blockName as 'main';
+const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
+  const blockName: string = info.blockName as 'leftbar';
   const pageName: string = info.pageName as 'overtime';
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -41,7 +41,7 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
   ];
 
   return (
-    <nav className="track-main">
+    <nav className="track-leftbar">
       <ol>
         <li className="open-head">
           <ButtonRouting
@@ -171,4 +171,4 @@ const TrackMain: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default TrackMain;
+export default NavigationClocking;
