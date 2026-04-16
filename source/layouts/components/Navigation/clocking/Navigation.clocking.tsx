@@ -7,7 +7,9 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
 import { viewDisplay } from './Navigation_clocking';
-import { scrollTable } from '../../Table/tracking/Table_tracking';
+import { scrollTable } from '../../Table/clocking/Table_clocking';
+
+// import { scrollTable } from '../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -69,7 +71,7 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
         <li className="prev-table">
           <ButtonDefault
             info={{
-              labelName: `${pageName}-${blockName}_view-previous`,
+              labelName: `${labelName}_view-previous`,
               blockName: blockName,
               pageName: pageName,
             }}
@@ -90,7 +92,7 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
         <li className="next-table">
           <ButtonDefault
             info={{
-              labelName: `${pageName}-${blockName}_view-future`,
+              labelName: `${labelName}_view-future`,
               blockName: blockName,
               pageName: pageName,
             }}

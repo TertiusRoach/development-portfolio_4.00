@@ -17,7 +17,7 @@ interface InfoProps {
 }
 
 const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'collapsed' = 'expanded';
 
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
@@ -26,25 +26,25 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
-        {/*
         <NavigationClocking
-          //--|🠊 <nav class="clocking-leftbar"/> 🠈|--\\
+          //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
         />
-        */}
       </section>
       <figure className={`${blockName}-midground`}>
         <TableClocking
+          //--|🠊 <table class="clocking-leftbar" /> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
         />
+
         {/*
         <DataWeek
           info={{

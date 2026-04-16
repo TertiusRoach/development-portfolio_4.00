@@ -1,4 +1,5 @@
 //--|🠊 Navigation_track-main.ts 🠈|--\\
+
 export function viewDisplay() {
   //--|🠊 Check if the window exists. 🠈|--\\
   if (typeof window === 'undefined') {

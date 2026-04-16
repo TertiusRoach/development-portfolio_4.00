@@ -24,8 +24,6 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
   const pageName: string = info.pageName as 'overtime';
   const labelName: string = info.labelName as 'tracking';
 
-  console.log(labelName);
-
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   useEffect(() => {

@@ -3,16 +3,21 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
-    /*
     z-index: 2;
+    /*
     .track-main {
       grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     */
   }
   %midground {
-    /*
     z-index: 1;
+    //--|🠊 The '*' symbol indicates the element has moving properties 🠈|--\\
+    table[class*='clocking-leftbar'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    /*
     .track-week {
       grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -22,8 +27,8 @@
     */
   }
   %background {
-    /*
     z-index: 0;
+    /*
     .total-time {
       grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
