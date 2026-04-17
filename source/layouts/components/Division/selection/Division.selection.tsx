@@ -9,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import HeaderBranding from '../../Header/branding/Header.branding';
 import FigureRotation from '../../Figure/rotation/Figure.rotation';
 import ArticleSelection from '../../Article/selection/Article.selection';
-import MenuBranding from '../../../components/Menu/branding/Menu.branding';
+import MenuBranding from '../../Menu/archive/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 // import { scaleImage } from './Division_selection';

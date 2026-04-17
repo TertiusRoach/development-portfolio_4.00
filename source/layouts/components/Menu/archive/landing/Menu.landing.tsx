@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Menu.landing.scss';
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/landing';
+import { stripBrackets } from '../../../../scripts/landing';
 //--|🠋 Extensions 🠋|--\\
 import LandingOverlay from './extensions/overlay/LandingOverlay';
 
@@ -19,7 +19,7 @@ const MenuLanding: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
   const handleLanding = (
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string,
   ) => {
     switch (blockName) {
       case '<overlay>':

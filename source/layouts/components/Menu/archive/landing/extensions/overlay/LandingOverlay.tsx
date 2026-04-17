@@ -5,10 +5,10 @@ import React, { useEffect } from 'react';
 import './LandingOverlay.scss';
 //--|🠋 Functions 🠋|--\\
 // import { viewSize, viewColor } from '../../Menu_landing';
-import { stripBrackets } from '../../../../../scripts/buttons';
+import { stripBrackets } from '../../../../../../scripts/buttons';
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../../../Button/default/Button.default';
-import ButtonCleaned from '../../../../Button/cleaned/Button.cleaned';
+import ButtonDefault from '../../../../../Button/default/Button.default';
+// import ButtonCleaned from '../../../../../Button/cleaned/Button.cleaned';
 
 interface InfoProps {
   info: {
