@@ -34,7 +34,7 @@ function Overtime() {
   return (
     <>
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>' }} />}
+        {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(profile)' }} />}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>

@@ -4,7 +4,7 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  background: rgba(Palettes.$trackDay-dark, 0.5);
+  //--|🠊 background: rgba(Palettes.$trackDay-dark, 0.5); 🠈|--\\
   section[class*='fore'] {
     z-index: 2;
     div[class*='global'] {
