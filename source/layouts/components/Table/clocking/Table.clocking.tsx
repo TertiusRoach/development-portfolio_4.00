@@ -33,97 +33,97 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
       </thead>
 
       <tbody className="previous-week hidden" data-week="01">
-        <tr id="YYYY-DD-MM" className="mon-row">
-          <td className="mon_clock-in_am">
+        <tr id="YYYY-DD-MM" className="mon-row" data-day="mon">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>--:--</span>
           </td>
-          <td className="mon_clock-out_am">
-            <span>--:--</span>
-          </td>
-
-          <td className="mon_clock-in_pm">
-            <span>--:--</span>
-          </td>
-          <td className="mon_clock-out_pm">
-            <span>--:--</span>
-          </td>
-        </tr>
-        <tr id="YYYY-DD-MM" className="tue-row">
-          <td className="tue_clock-in_am">
-            <span>--:--</span>
-          </td>
-          <td className="tue_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>--:--</span>
           </td>
 
-          <td className="tue_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>--:--</span>
           </td>
-          <td className="tue_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="wed-row">
-          <td className="wed_clock-in_am">
+        <tr id="YYYY-DD-MM" className="tue-row" data-day="tue">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>--:--</span>
           </td>
-          <td className="wed_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>--:--</span>
           </td>
 
-          <td className="wed_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>--:--</span>
           </td>
-          <td className="wed_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="thu-row">
-          <td className="thu_clock-in_am">
+        <tr id="YYYY-DD-MM" className="wed-row" data-day="wed">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>--:--</span>
           </td>
-          <td className="thu_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>--:--</span>
           </td>
 
-          <td className="thu_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>--:--</span>
           </td>
-          <td className="thu_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="fri-row">
-          <td className="fri_clock-in_am">
+        <tr id="YYYY-DD-MM" className="thu-row" data-day="thu">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>--:--</span>
           </td>
-          <td className="fri_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>--:--</span>
           </td>
 
-          <td className="fri_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>--:--</span>
           </td>
-          <td className="fri_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sat-row">
-          <td className="sat_clock-in_am">
+        <tr id="YYYY-DD-MM" className="fri-row" data-day="fri">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>--:--</span>
           </td>
-          <td className="sat_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>--:--</span>
           </td>
 
-          <td className="sat_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>--:--</span>
           </td>
-          <td className="sat_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sun-row">
+        <tr id="YYYY-DD-MM" className="sat-row" data-day="sat">
+          <td className="clock-in_am" data-slot="clock-in_am">
+            <span>--:--</span>
+          </td>
+          <td className="clock-out_am" data-slot="clock-out_am">
+            <span>--:--</span>
+          </td>
+
+          <td className="clock-in_pm" data-slot="clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="clock-out_pm" data-slot="clock-out_pm">
+            <span>--:--</span>
+          </td>
+        </tr>
+        <tr id="YYYY-DD-MM" className="sun-row" data-day="sun">
           <td className="sun_clock-in_am">
             <span>--:--</span>
           </td>
@@ -140,215 +140,215 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
         </tr>
       </tbody>
       <tbody className="current-week visible" data-week="02">
-        <tr id="YYYY-DD-MM" className="mon-row">
-          <td className="mon_clock-in_am">
+        <tr id="YYYY-DD-MM" className="mon-row" data-day="mon">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="mon_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="mon_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="mon_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="tue-row">
-          <td className="tue_clock-in_am">
+        <tr id="YYYY-DD-MM" className="tue-row" data-day="tue">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="tue_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="tue_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="tue_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="wed-row">
-          <td className="wed_clock-in_am">
+        <tr id="YYYY-DD-MM" className="wed-row" data-day="wed">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="wed_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="wed_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="wed_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="thu-row">
-          <td className="thu_clock-in_am">
+        <tr id="YYYY-DD-MM" className="thu-row" data-day="thu">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="thu_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="thu_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="thu_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="fri-row">
-          <td className="fri_clock-in_am">
+        <tr id="YYYY-DD-MM" className="fri-row" data-day="fri">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="fri_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="fri_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="fri_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sat-row">
-          <td className="sat_clock-in_am">
+        <tr id="YYYY-DD-MM" className="sat-row" data-day="sat">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="sat_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="sat_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="sat_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sun-row">
-          <td className="sun_clock-in_am">
+        <tr id="YYYY-DD-MM" className="sun-row" data-day="sun">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>08:00</span>
           </td>
-          <td className="sun_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>17:00</span>
           </td>
 
-          <td className="sun_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>17:00</span>
           </td>
-          <td className="sun_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>00:00</span>
           </td>
         </tr>
       </tbody>
       <tbody className="future-week hidden" data-week="03">
-        <tr id="YYYY-DD-MM" className="mon-row">
-          <td className="mon_clock-in_am">
+        <tr id="YYYY-DD-MM" className="mon-row" data-day="mon">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="mon_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="mon_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="mon_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="tue-row">
-          <td className="tue_clock-in_am">
+        <tr id="YYYY-DD-MM" className="tue-row" data-day="tue">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="tue_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="tue_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="tue_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="wed-row">
-          <td className="wed_clock-in_am">
+        <tr id="YYYY-DD-MM" className="wed-row" data-day="wed">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="wed_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="wed_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="wed_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="thu-row">
-          <td className="thu_clock-in_am">
+        <tr id="YYYY-DD-MM" className="thu-row" data-day="thu">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="thu_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="thu_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="thu_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="fri-row">
-          <td className="fri_clock-in_am">
+        <tr id="YYYY-DD-MM" className="fri-row" data-day="fri">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="fri_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="fri_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="fri_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sat-row">
-          <td className="sat_clock-in_am">
+        <tr id="YYYY-DD-MM" className="sat-row" data-day="sat">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="sat_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="sat_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="sat_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
-        <tr id="YYYY-DD-MM" className="sun-row">
-          <td className="sun_clock-in_am">
+        <tr id="YYYY-DD-MM" className="sun-row" data-day="sun">
+          <td className="clock-in_am" data-slot="clock-in_am">
             <span>~~:~~</span>
           </td>
-          <td className="sun_clock-out_am">
+          <td className="clock-out_am" data-slot="clock-out_am">
             <span>~~:~~</span>
           </td>
 
-          <td className="sun_clock-in_pm">
+          <td className="clock-in_pm" data-slot="clock-in_pm">
             <span>~~:~~</span>
           </td>
-          <td className="sun_clock-out_pm">
+          <td className="clock-out_pm" data-slot="clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>

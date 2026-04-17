@@ -4,6 +4,9 @@
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
     z-index: 2;
+    menu[class='clocking-leftbar'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
     /*
     .track-main {
       grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

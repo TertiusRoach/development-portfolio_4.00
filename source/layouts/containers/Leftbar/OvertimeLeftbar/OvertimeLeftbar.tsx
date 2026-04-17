@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import NavigationClocking from '../../../components/Navigation/clocking/Navigation.clocking';
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
+import MenuClocking from '../../../components/Menu/clocking/Menu.clocking';
 
 interface InfoProps {
   info: {
@@ -17,7 +18,7 @@ interface InfoProps {
 }
 
 const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'collapsed' = 'expanded';
+  let stateName: 'expanded' | 'collapsed' = 'collapsed';
 
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
@@ -26,6 +27,14 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
+        <MenuClocking
+          //--|🠊 <menu class="clocking-leftbar" /> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
         {/*
         <NavigationClocking
           //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
