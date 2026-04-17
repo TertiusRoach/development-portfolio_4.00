@@ -26,6 +26,7 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
       <section className={`${blockName}-foreground`}>
+        {/*
         <NavigationClocking
           //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
           info={{
@@ -34,6 +35,7 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
         />
+        */}
       </section>
       <figure className={`${blockName}-midground`}>
         <TableClocking

@@ -20,12 +20,31 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
 
   return (
     <table className={`${labelName}-${blockName} I`}>
+      <thead className="track-head">
+        <tr>
+          <th className="mon-row">Mon{/* <span></span> */}</th>
+          <th className="tue-row">Tue{/* <span></span> */}</th>
+          <th className="wed-row">Wed{/* <span></span> */}</th>
+          <th className="thu-row">Thu{/* <span></span> */}</th>
+          <th className="fri-row">Fri{/* <span></span> */}</th>
+          <th className="sat-row">Sat{/* <span></span> */}</th>
+          <th className="sun-row">Sun{/* <span></span> */}</th>
+        </tr>
+      </thead>
+
       <tbody className="previous-week hidden" data-week="01">
-        {/* <tr id="YYYY-DD-MM" className="mon-row">
+        <tr id="YYYY-DD-MM" className="mon-row">
           <td className="mon_clock-in_am">
             <span>--:--</span>
           </td>
           <td className="mon_clock-out_am">
+            <span>--:--</span>
+          </td>
+
+          <td className="mon_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="mon_clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
@@ -36,12 +55,26 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="tue_clock-out_am">
             <span>--:--</span>
           </td>
+
+          <td className="tue_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="tue_clock-out_pm">
+            <span>--:--</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="wed-row">
           <td className="wed_clock-in_am">
             <span>--:--</span>
           </td>
           <td className="wed_clock-out_am">
+            <span>--:--</span>
+          </td>
+
+          <td className="wed_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="wed_clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
@@ -52,12 +85,26 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="thu_clock-out_am">
             <span>--:--</span>
           </td>
+
+          <td className="thu_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="thu_clock-out_pm">
+            <span>--:--</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="fri-row">
           <td className="fri_clock-in_am">
             <span>--:--</span>
           </td>
           <td className="fri_clock-out_am">
+            <span>--:--</span>
+          </td>
+
+          <td className="fri_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="fri_clock-out_pm">
             <span>--:--</span>
           </td>
         </tr>
@@ -68,6 +115,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sat_clock-out_am">
             <span>--:--</span>
           </td>
+
+          <td className="sat_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="sat_clock-out_pm">
+            <span>--:--</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="sun-row">
           <td className="sun_clock-in_am">
@@ -76,15 +130,29 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sun_clock-out_am">
             <span>--:--</span>
           </td>
-        </tr> */}
+
+          <td className="sun_clock-in_pm">
+            <span>--:--</span>
+          </td>
+          <td className="sun_clock-out_pm">
+            <span>--:--</span>
+          </td>
+        </tr>
       </tbody>
       <tbody className="current-week visible" data-week="02">
-        {/* <tr id="YYYY-DD-MM" className="mon-row">
+        <tr id="YYYY-DD-MM" className="mon-row">
           <td className="mon_clock-in_am">
             <span>08:00</span>
           </td>
           <td className="mon_clock-out_am">
             <span>17:00</span>
+          </td>
+
+          <td className="mon_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="mon_clock-out_pm">
+            <span>00:00</span>
           </td>
         </tr>
         <tr id="YYYY-DD-MM" className="tue-row">
@@ -94,6 +162,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="tue_clock-out_am">
             <span>17:00</span>
           </td>
+
+          <td className="tue_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="tue_clock-out_pm">
+            <span>00:00</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="wed-row">
           <td className="wed_clock-in_am">
@@ -101,6 +176,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           </td>
           <td className="wed_clock-out_am">
             <span>17:00</span>
+          </td>
+
+          <td className="wed_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="wed_clock-out_pm">
+            <span>00:00</span>
           </td>
         </tr>
         <tr id="YYYY-DD-MM" className="thu-row">
@@ -110,6 +192,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="thu_clock-out_am">
             <span>17:00</span>
           </td>
+
+          <td className="thu_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="thu_clock-out_pm">
+            <span>00:00</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="fri-row">
           <td className="fri_clock-in_am">
@@ -117,6 +206,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           </td>
           <td className="fri_clock-out_am">
             <span>17:00</span>
+          </td>
+
+          <td className="fri_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="fri_clock-out_pm">
+            <span>00:00</span>
           </td>
         </tr>
         <tr id="YYYY-DD-MM" className="sat-row">
@@ -126,6 +222,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sat_clock-out_am">
             <span>17:00</span>
           </td>
+
+          <td className="sat_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="sat_clock-out_pm">
+            <span>00:00</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="sun-row">
           <td className="sun_clock-in_am">
@@ -134,14 +237,28 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sun_clock-out_am">
             <span>17:00</span>
           </td>
-        </tr> */}
+
+          <td className="sun_clock-in_pm">
+            <span>17:00</span>
+          </td>
+          <td className="sun_clock-out_pm">
+            <span>00:00</span>
+          </td>
+        </tr>
       </tbody>
       <tbody className="future-week hidden" data-week="03">
-        {/* <tr id="YYYY-DD-MM" className="mon-row">
+        <tr id="YYYY-DD-MM" className="mon-row">
           <td className="mon_clock-in_am">
             <span>~~:~~</span>
           </td>
           <td className="mon_clock-out_am">
+            <span>~~:~~</span>
+          </td>
+
+          <td className="mon_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="mon_clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
@@ -152,12 +269,26 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="tue_clock-out_am">
             <span>~~:~~</span>
           </td>
+
+          <td className="tue_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="tue_clock-out_pm">
+            <span>~~:~~</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="wed-row">
           <td className="wed_clock-in_am">
             <span>~~:~~</span>
           </td>
           <td className="wed_clock-out_am">
+            <span>~~:~~</span>
+          </td>
+
+          <td className="wed_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="wed_clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
@@ -168,12 +299,26 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="thu_clock-out_am">
             <span>~~:~~</span>
           </td>
+
+          <td className="thu_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="thu_clock-out_pm">
+            <span>~~:~~</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="fri-row">
           <td className="fri_clock-in_am">
             <span>~~:~~</span>
           </td>
           <td className="fri_clock-out_am">
+            <span>~~:~~</span>
+          </td>
+
+          <td className="fri_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="fri_clock-out_pm">
             <span>~~:~~</span>
           </td>
         </tr>
@@ -184,6 +329,13 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sat_clock-out_am">
             <span>~~:~~</span>
           </td>
+
+          <td className="sat_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="sat_clock-out_pm">
+            <span>~~:~~</span>
+          </td>
         </tr>
         <tr id="YYYY-DD-MM" className="sun-row">
           <td className="sun_clock-in_am">
@@ -192,34 +344,15 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
           <td className="sun_clock-out_am">
             <span>~~:~~</span>
           </td>
-        </tr> */}
-      </tbody>
 
-      {/* <thead className="track-head">
-        <tr>
-          <th className="mon-row">
-            <span>Mon</span>
-          </th>
-          <th className="tue-row">
-            <span>Tue</span>
-          </th>
-          <th className="wed-row">
-            <span>Wed</span>
-          </th>
-          <th className="thu-row">
-            <span>Thu</span>
-          </th>
-          <th className="fri-row">
-            <span>Fri</span>
-          </th>
-          <th className="sat-row">
-            <span>Sat</span>
-          </th>
-          <th className="sun-row">
-            <span>Sun</span>
-          </th>
+          <td className="sun_clock-in_pm">
+            <span>~~:~~</span>
+          </td>
+          <td className="sun_clock-out_pm">
+            <span>~~:~~</span>
+          </td>
         </tr>
-      </thead> */}
+      </tbody>
     </table>
   );
 };

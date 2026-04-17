@@ -5,14 +5,57 @@
   height: 100%;
   display: flex;
   overflow-y: hidden;
-  //   background: rgba(purple, 0.25);
+  thead {
+    width: 20%;
+    tr {
+      height: 100%;
+      display: grid;
+      align-items: center;
+      grid-template: repeat(7, 1fr) //--|🠈 rows 🠈|--//
+        / 1fr; //--|🠈 columns 🠈|--\\
+      th {
+        text-align: center;
+      }
+    }
+  }
+
   tbody {
     width: 100%;
     height: 100%;
-
     display: grid;
     grid-template: repeat(7, 1fr) //--|🠈 rows 🠈|--//
       / repeat(5, 1fr); //--|🠈 columns 🠈|--\\
+    tr {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-template: 1fr //--|🠈 rows 🠈|--//
+        / repeat(4, 1fr); //--|🠈 columns 🠈|--\\
+      grid-column: 2 / 6; //--|🠈 col-start / col-end 🠈|--\\
+      align-items: center;
+      td {
+        text-align: center;
+      }
+    }
+    tr[class='mon-row'] {
+      grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='tue-row'] {
+      grid-row: 2 / 3; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='wed-row'] {
+      grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='thu-row'] {
+      grid-row: 4 / 5; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='fri-row'] {
+      grid-row: 5 / 6; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='sat-row'] {
+      grid-row: 6 / 7; //--|🠈 row-start / row-end 🠈|--\\
+    }
+    tr[class='sun-row'] {
+      grid-row: 7 / 8; //--|🠈 row-start / row-end 🠈|--\\
+    }
   }
 
   @media screen and (max-height: 768px) {

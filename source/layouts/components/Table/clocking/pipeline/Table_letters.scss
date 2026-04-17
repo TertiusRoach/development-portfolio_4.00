@@ -3,15 +3,34 @@
 
 @mixin desktop-letters {
   //--|🠉 96px: Left & Right 🠉|--\\
-
+  thead,
+  tbody {
+    font-weight: 600;
+  }
+  th,
+  td {
+    font-size: 48px;
+  }
   @media screen and (max-height: 768px) {
     //--|🠉 64px: Left & Right 🠉|--\\
+    th,
+    td {
+      font-size: 36px;
+    }
   }
   @media screen and (max-height: 480px) {
     //--|🠉 48px: Left & Right 🠉|--\\
+    th,
+    td {
+      font-size: 24px;
+    }
   }
   @media screen and (max-height: 360px) {
     //--|🠉 32px: Left & Right 🠉|--\\
+    th,
+    td {
+      font-size: 16px;
+    }
   }
 }
 @mixin mobile-letters {

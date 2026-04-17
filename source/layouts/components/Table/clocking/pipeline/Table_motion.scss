@@ -18,7 +18,7 @@
     &.visible {
       bottom: 0;
     }
-    background: rgba(darkred, 0.25);
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
   }
   .current-week {
     &.hidden {
@@ -27,7 +27,7 @@
     &.visible {
       right: 0;
     }
-    background: rgba(darkgreen, 0.25);
+    //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
   }
   .future-week {
     &.hidden {
@@ -36,7 +36,7 @@
     &.visible {
       top: 0;
     }
-    background: rgba(darkblue, 0.25);
+    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
   }
 
   @media screen and (max-height: 768px) {

@@ -3,7 +3,16 @@
 
 @mixin desktop-visuals {
   //--|🠉 96px: Left & Right 🠉|--\\
-
+  thead {
+    color: white;
+    background: black;
+  }
+  tbody {
+    color: black;
+    tr {
+      background: white;
+    }
+  }
   @media screen and (max-height: 768px) {
     //--|🠉 64px: Left & Right 🠉|--\\
   }
