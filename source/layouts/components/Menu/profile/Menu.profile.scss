@@ -1,0 +1,44 @@
+//--|🠊 Menu.profile.scss 🠈|--\\
+@mixin desktop-landscape {
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    background: black;
+  }
+  li[class*='side'] {
+    width: 398px;
+  }
+  @media screen and (max-height: 768px) {
+    li[class*='side'] {
+      width: 322px;
+    }
+  }
+  @media screen and (max-height: 480px) {
+    li[class*='side'] {
+      width: 230px;
+    }
+  }
+  @media screen and (max-height: 360px) {
+    li[class*='side'] {
+      width: 140px;
+    }
+  }
+}
+@mixin mobile-portrait {
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+menu[class='profile-header'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

@@ -39,17 +39,7 @@ const ButtonProfile: React.FC<TheseProps> = ({ info, style, onClick }) => {
         <span></span>
       </div>
       <div className="icon">
-        <img
-          alt={style.image ? 'icon' : ''}
-          style={{
-            ...(style.image
-              ? {
-                  maskImage: `url(${style.image})`,
-                  WebkitMaskImage: `url(${style.image})`,
-                }
-              : {}),
-          }}
-        ></img>
+        <img src={style.image} alt="icon" />
       </div>
       <div className="back">
         <span></span>

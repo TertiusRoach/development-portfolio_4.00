@@ -5,6 +5,8 @@ import { expandHeader, loadSoftware } from './OvertimeFunctions';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
+import MenuProfile from '../../../components/Menu/profile/Menu.profile';
+//--|===|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
@@ -26,30 +28,17 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
     // console.log('//--|🠊 Overtime Loaded 🠈|--\\\\');
   }, [pageName, blockName]);
 
-  let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/',
-    '',
-    '',
-  ];
-
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
       <section className={`${blockName}-foreground`}>
-        {/* 
-        <ButtonProfile
-          style={{
-            size: '<h1>',
-            color: '(mono)',
-            shade: '~light~',
-            type: '{button}',
-            image: `${svgPath[0]}/source/assets/png-files/tralogfin-demonstration/upscaled/Jane%20Lester.png`,
-          }}
+        <MenuProfile
+          //--|🠊 <nav class="profile-header"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
+            labelName: labelName,
           }}
         />
-        */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

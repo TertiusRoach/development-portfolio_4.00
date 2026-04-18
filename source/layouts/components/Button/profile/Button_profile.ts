@@ -11,68 +11,30 @@ interface StyleProps {
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <ProfileButton> 🠈|--\\
-  console.log(style.image);
-  console.log(style.size);
-  console.log(style.shade);
-  console.log(style.color);
-  console.log(style.type);
-
-  /*
+  let classLayout = createLayout(style.size);
   let classColor = createColor(style.shade, style.color);
-  let classLayout = createLayout(style.size, style.view);
-
-  if (style.image == null) {
-    return `${classLayout}_${classColor}_alt`;
-  } else {
-    
-  }
-  */
-  return `-_-_pro`;
+  return `${classLayout}_${classColor}_pro`;
 }
 export default createClass;
 
 //--|🠋 Scoped Functions 🠋|--\\
-
-export function createLayout(
-  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
-): string {
+function createLayout(size: '<h1>' | '<p>'): string {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
-    '<h1>': 'one',
-    '<h2>': 'two',
-    '<h3>': 'thr',
-    '<h4>': 'fou',
-    '<h5>': 'fiv',
-    '<h6>': 'six',
-    '<p>': 'par',
-  };
-
-  const viewMap: Record<string, string> = {
-    //--|🠊 Map of view options to class abbreviations 🠈|--\\
-    '-top-': 'top',
-    '-bottom-': 'bot',
-    '-left-': 'lef',
-    '-right-': 'rig',
-    '-center-': 'cen',
-    '-text-': 'tex',
-    '-icon-': 'ico',
+    '<h1>': 'big',
+    '<p>': 'sma',
   };
 
   const classSize = sizeMap[size];
-  const classView = viewMap[view];
 
-  if (!classSize || !classView) {
+  if (!classSize) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid size (${size}) or view (${view}) provided to createLayout()`);
+    throw new Error(`Invalid size (${size}) provided to createLayout()`);
   }
 
-  return `${classSize}_${classView}`;
+  return `${classSize}`;
 }
-export function createColor(
-  shade: '~dark~' | '~medium~' | '~light~',
-  color: '(red)' | '(green)' | '(blue)' | '(mono)',
-): string {
+function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(red)' | '(green)' | '(blue)' | '(mono)'): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
