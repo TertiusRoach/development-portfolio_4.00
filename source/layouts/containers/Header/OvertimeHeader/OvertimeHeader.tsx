@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
+import ButtonProfile from '../../../components/Button/profile/Button.profile';
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -26,14 +27,30 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/',
     '',
     '',
   ];
 
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
-      <section className={`${blockName}-foreground`}></section>
+      <section className={`${blockName}-foreground`}>
+        {/* 
+        <ButtonProfile
+          style={{
+            size: '<h1>',
+            color: '(mono)',
+            shade: '~light~',
+            type: '{button}',
+            image: `${svgPath[0]}/source/assets/png-files/tralogfin-demonstration/upscaled/Jane%20Lester.png`,
+          }}
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
+        */}
+      </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </header>

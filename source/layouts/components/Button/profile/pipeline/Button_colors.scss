@@ -1,0 +1,27 @@
+//--|🠊 profile/pipeline/Button_colors.scss 🠈|--\\
+//--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
+
+@mixin desktop-colors {
+  //--|🠉 96px: Left & Right 🠉|--\\
+  @media screen and (max-height: 768px) {
+    //--|🠉 64px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+}
+@mixin mobile-colors {
+  //--|🠉 64px: Left & Right 🠉|--\\
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+}
