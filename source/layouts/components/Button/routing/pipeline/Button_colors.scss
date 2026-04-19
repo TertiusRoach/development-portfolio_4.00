@@ -1,8 +1,11 @@
-//--|🠊 routing/pipeline/Button_tint.scss 🠈|--\\
+//--|🠊 profile/pipeline/Button_colors.scss 🠈|--\\
+//--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 
-@mixin desktop-tint {
+@mixin desktop-colors {
+  //--|🠋 Desktop (Colors) 🠋|--\\
+
   //--|🠋 Desktop (Tint) 🠋|--\\
   &[class*='button'] {
     @include mon-color();
@@ -12,7 +15,8 @@
     }
   }
 }
-@mixin mobile-tint {
+@mixin mobile-colors {
+  //--|🠋 Mobile (Colors) 🠋|--\\
   //--|🠋 Mobile (Tint) 🠋|--\\
   &[class*='button'] {
     @include mon-color();
@@ -30,10 +34,8 @@
 
   &[class*='_dar_'] {
     div[class='fore'] {
+      background: rgba(Palettes.$indexLand-light, 1);
       span {
-        /* put your controllable trace here */
-        // background: red;
-        background: Palettes.$indexLand-light;
         img {
           opacity: 0;
           pointer-events: none;
@@ -42,7 +44,7 @@
       }
     }
     div[class='mid'] {
-      border-color: Palettes.$indexLand-light;
+      border-color: rgba(Palettes.$indexLand-light, 1);
       filter: drop-shadow(0 0 16px rgba(white, 0.25));
     }
     div[class='back'] {
@@ -64,9 +66,7 @@
   &[class*='_lig_'] {
     div[class='fore'] {
       span {
-        /* put your controllable trace here */
-        // background: red;
-        background: Palettes.$indexLand-dark;
+        background: rgba(Palettes.$indexLand-dark, 1);
         img {
           opacity: 0;
           pointer-events: none;
@@ -75,8 +75,8 @@
       }
     }
     div[class='mid'] {
-      border-color: Palettes.$indexLand-dark;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
+      border-color: rgba(Palettes.$indexLand-dark, 0.75);
     }
     div[class='back'] {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;

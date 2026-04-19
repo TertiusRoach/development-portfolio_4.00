@@ -2,12 +2,15 @@
 @use 'sass:color';
 @use '../../../designs/Palettes.scss' as Palettes;
 
-@use './pipeline/Button_grid.scss';
-@use './pipeline/Button_flex.scss';
-@use './pipeline/Button_size.scss';
-@use './pipeline/Button_tint.scss';
-@use './pipeline/Button_move.scss';
-@use './pipeline/Button_corn.scss';
+@use './pipeline/Button_colors.scss';
+@use './pipeline/Button_layout.scss';
+@use './pipeline/Button_motion.scss';
+// @use './pipeline/Button_grid.scss';
+// @use './pipeline/Button_flex.scss';
+// @use './pipeline/Button_size.scss';
+// @use './pipeline/Button_tint.scss';
+// @use './pipeline/Button_move.scss';
+// @use './pipeline/Button_corn.scss';
 
 button[class*='routing'],
 button[class*='counter'] {
@@ -19,21 +22,33 @@ button[class*='counter'] {
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
-    @include Button_corn.desktop-corn();
-    @include Button_flex.desktop-flex();
-    @include Button_grid.desktop-grid();
-    @include Button_move.desktop-move();
-    @include Button_size.desktop-size();
-    @include Button_tint.desktop-tint();
+    //--|🠊 <RoutingButton> for [DesktopLandscape] 🠈|--\\
+    @include Button_colors.desktop-colors();
+    @include Button_layout.desktop-layout();
+    &:hover {
+      @include Button_motion.desktop-motion();
+    }
+    // @include Button_corn.desktop-corn();
+    // @include Button_flex.desktop-flex();
+    // @include Button_grid.desktop-grid();
+    // @include Button_size.desktop-size();
+    // @include Button_tint.desktop-tint();
+    // @include Button_move.desktop-move();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
-    @include Button_corn.mobile-corn();
-    @include Button_flex.mobile-flex();
-    @include Button_grid.mobile-grid();
-    @include Button_move.mobile-move();
-    @include Button_size.mobile-size();
-    @include Button_tint.mobile-tint();
+    //--|🠊 <RoutingButton> for [MobilePortrait] 🠈|--\\
+    @include Button_colors.mobile-colors();
+    @include Button_layout.mobile-layout();
+    &:hover {
+      @include Button_motion.mobile-motion();
+    }
+    // @include Button_corn.mobile-corn();
+    // @include Button_flex.mobile-flex();
+    // @include Button_grid.mobile-grid();
+    // @include Button_move.mobile-move();
+    // @include Button_size.mobile-size();
+    // @include Button_tint.mobile-tint();
   }
 }
 %button-grid {
@@ -51,18 +66,6 @@ button[class*='counter'] {
 }
 
 %button-user {
-  div[class*='fore'] {
-    z-index: 2;
-    span {
-      cursor: pointer;
-    }
-  }
-  div[class*='mid'] {
-    z-index: 1;
-  }
-  div[class*='back'] {
-    z-index: 0;
-  }
 }
 %button-flex {
   .fore {

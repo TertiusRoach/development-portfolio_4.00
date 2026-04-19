@@ -1,15 +1,48 @@
-//--|🠊 routing/pipeline/Button_move.scss 🠈|--\\
+//--|🠊 profile/pipeline/Button_motion.scss 🠈|--\\
+//--|🠊 Motion: Transforms, transitions & carousels 🠈|--\\
 @use 'sass:color';
 @use '../../../../designs/Palettes.scss' as Palettes;
 
-@mixin desktop-move {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
-}
-@mixin mobile-move {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
+@mixin desktop-motion {
+  @include mon-fade();
+  .fore {
+    z-index: 2;
+    span {
+      cursor: pointer;
+      transition: background 250ms ease-in-out;
+    }
+  }
+  .mid {
+    z-index: 1;
+    transition: border-color 500ms ease-in-out;
+  }
+  .back {
+    z-index: 0;
+    transition: background 750ms ease-in-out;
+  }
 }
 
-@mixin mon-color {
+@mixin mobile-motion {
+}
+
+@mixin mon-fade {
+  $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
+
+  &[class*='_lig_']:hover {
+    .fore {
+      span {
+        background: rgba(Palettes.$indexLand-light, 1);
+      }
+    }
+    .mid {
+      border-color: rgba(Palettes.$indexLand-light, 0.75);
+      transition: border-color 750ms ease-in-out;
+      filter: drop-shadow(0 0 8px rgba(white, 0.75));
+    }
+    .back {
+      background: rgba(Palettes.$indexLand-medium, 1);
+    }
+  }
   /*
   //--|🠊 Button Motion 🠈|--\\
   $button-time: 375ms; // 250–500ms

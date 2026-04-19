@@ -16,10 +16,6 @@
     &[class*='expanded'] {
       backdrop-filter: blur(24px);
       section[class='header-foreground'] {
-        nav ol li,
-        nav ul li {
-          filter: blur(12px);
-        }
         div[class*='-'] {
           opacity: 1;
           filter: blur(0);

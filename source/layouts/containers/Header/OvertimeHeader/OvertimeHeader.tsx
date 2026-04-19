@@ -10,6 +10,7 @@ import MenuProfile from '../../../components/Menu/profile/Menu.profile';
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
+import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -32,6 +33,14 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
       <section className={`${blockName}-foreground`}>
         <MenuProfile
+          //--|🠊 <menu class="profile-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+        <NavigationProfile
           //--|🠊 <nav class="profile-header"/> 🠈|--\\
           info={{
             pageName: pageName,

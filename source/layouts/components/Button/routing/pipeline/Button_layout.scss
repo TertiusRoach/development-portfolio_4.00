@@ -1,5 +1,75 @@
-//--|🠊 routing/pipeline/Button_corn.scss 🠈|--\\
-@mixin desktop-corn {
+//--|🠊 profile/pipeline/Button_layout.scss 🠈|--\\
+//--|🠊 Layout: Grid and flex styles 🠈|--\\
+@mixin desktop-layout {
+  //--|🠋 Desktop (Layout) 🠋|--\\
+  //--|🠋 Desktop (Grid) 🠋|--\\
+  &[class*='one_'] {
+    .fore {
+      grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
+      @media screen and (max-height: 768px) {
+        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        grid-template: 1fr auto 1fr / 1fr 36px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+    }
+  }
+
+  .fore {
+    span {
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+
+  //--|🠋 Desktop (Size) 🠋|--\\
+  &[class*='one_'] {
+    width: 128px;
+    height: 128px;
+    .fore {
+      span {
+        width: 94px;
+        height: 94px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      width: 96px;
+      height: 96px;
+      .fore {
+        span {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px;
+      height: 64px;
+      .fore {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px;
+      height: 48px;
+      .fore {
+        span {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    }
+  }
+  &[class*='par_'] {
+  }
+
   //--|🠋 Desktop (Corners) 🠋|--\\
   .fore,
   .mid,
@@ -221,7 +291,61 @@
     }
   }
 }
-@mixin mobile-corn {
+@mixin mobile-layout {
+  //--|🠋 Mobile (Layout) 🠋|--\\
+  //--|🠋 Mobile (Grid) 🠋|--\\
+
+  //--|🠋 Mobile (Flex) 🠋|--\\
+  .fore {
+    span {
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='one_'] {
+    width: 192px;
+    height: 192px;
+    .fore {
+      span {
+        width: 144px;
+        height: 144px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 160px;
+      height: 160px;
+      .fore {
+        span {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px;
+      height: 96px;
+      .fore {
+        span {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px;
+      height: 64px;
+      .fore {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+
   //--|🠋 Mobile (Corners) 🠋|--\\
   .fore,
   .mid,

@@ -5,13 +5,19 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   %foreground {
+    z-index: 2;
+    nav[class='profile-header'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
     menu[class='profile-header'] {
       grid-area: 2/1/5/4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %midground {
+    z-index: 1;
   }
   %background {
+    z-index: 0;
   }
 }
 @mixin mobile-portrait {
