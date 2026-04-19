@@ -249,9 +249,9 @@ npm install --save-dev dotenv-webpack
 
 ---
 
-## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.02/source/layouts/pages)
+## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CHARACTERS.md)
 
-This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
+This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point. It also encompasses a lot of storytelling elements. I wanted to do three years to test the demo but realized that it's unnecessary so I might just log 4 weeks, which is a month and play around with that maths.
 
 ---
 
