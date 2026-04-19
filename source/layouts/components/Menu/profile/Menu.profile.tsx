@@ -116,7 +116,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<h1>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.jane_lester[1]}`,
           }}
@@ -132,7 +132,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.malik_tremaine_carter[1]}`,
           }}
@@ -147,7 +147,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.dimitri_lewis[1]}`,
           }}
@@ -162,7 +162,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.dale_sutton[1]}`,
           }}
@@ -177,7 +177,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.alaric_voss[1]}`,
           }}
@@ -192,7 +192,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.conrad_guy[1]}`,
           }}
@@ -207,7 +207,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.daniel_meyers[1]}`,
           }}
@@ -222,7 +222,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.kady_deacon[1]}`,
           }}
@@ -237,7 +237,7 @@ const MenuProfile: React.FC<TheseProps> = ({ info }) => {
           style={{
             size: '<p>',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
             type: '{button}',
             image: `${svgPath.seamus_odonnell[1]}`,
           }}
