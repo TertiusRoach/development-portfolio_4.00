@@ -7,7 +7,7 @@
     display: grid;
     gap: 8px 16px;
 
-    background: black;
+    // background: black;
 
     button:nth-child(1) {
       grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

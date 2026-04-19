@@ -5,7 +5,7 @@ import './Navigation.profile.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
+import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
 import { viewDisplay } from './Navigation_profile';
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
@@ -38,7 +38,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/logo-white.svg',
     '',
     '',
   ];
@@ -46,23 +46,23 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
   return (
     <nav className={`${labelName}-${blockName}`}>
       <ol>
-        <li className="open-head">
+        <li className="close-head">
           <ButtonRouting
-            style={{
-              size: '<h1>',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              view: viewDisplay() as 'top-lef' | 'bot-rig',
-              image: `${svgPath[0]}/trinity-apps/track-a-day/primary-light.svg`,
-            }}
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_open-head`,
+              labelName: `${pageName}-${blockName}_close-head`,
             }}
-            onClick={() => expandHeader(pageName, blockName, 'click')}
-            onMouseEnter={() => expandHeader(pageName, blockName, 'hover')}
+            style={{
+              size: '<h1>',
+              color: '(mono)',
+              shade: '~light~',
+              type: '{button}',
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
+              image: `${svgPath[0]}`,
+            }}
+            onClick={() => collapseHeader(pageName, 'click', blockName)}
+            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
         </li>
       </ol>

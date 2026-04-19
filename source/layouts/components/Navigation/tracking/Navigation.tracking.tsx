@@ -61,8 +61,8 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}-${blockName}_open-head`,
             }}
-            onClick={() => expandHeader(pageName, blockName, 'click')}
-            onMouseEnter={() => expandHeader(pageName, blockName, 'hover')}
+            onClick={() => expandHeader(pageName, 'click', blockName)}
+            // onMouseEnter={() => expandHeader(pageName, 'hover', blockName)}
           />
         </li>
 

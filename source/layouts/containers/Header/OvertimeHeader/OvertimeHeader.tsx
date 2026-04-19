@@ -50,7 +50,17 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <div className="nav-top">{/* <span></span> */}</div>
+        <div className="nav-bot">{/* <span></span> */}</div>
+
+        <div className="nav-lef">
+          <span></span>
+        </div>
+        <div className="nav-rig">
+          <span></span>
+        </div>
+      </div>
     </header>
   );
 };

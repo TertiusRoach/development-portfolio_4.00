@@ -18,6 +18,58 @@
   }
   %background {
     z-index: 0;
+    .nav-top {
+      grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      background: black;
+    }
+    .nav-bot {
+      grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      background: black;
+    }
+
+    .nav-lef,
+    .nav-rig {
+      display: flex;
+
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      span {
+        height: 100%;
+        background: darkblue;
+
+        width: 398px;
+        @media screen and (max-height: 768px) {
+          width: 322px;
+        }
+        @media screen and (max-height: 480px) {
+          width: 230px;
+        }
+        @media screen and (max-height: 360px) {
+          width: 140px;
+        }
+      }
+      &[class*='rig'] {
+        justify-content: right;
+        span {
+          background: black;
+        }
+      }
+      &[class*='lef'] {
+        justify-content: left;
+        span {
+          background: black;
+        }
+      }
+      .nav-lef,
+      .nav-rig {
+        display: flex;
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      &[class*='nav'] {
+      }
+    }
   }
 }
 @mixin mobile-portrait {
