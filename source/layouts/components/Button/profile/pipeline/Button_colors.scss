@@ -6,7 +6,7 @@
   background: none;
   &[class*='_dar_'] {
     .fore {
-      border-color: black;
+      border-color: rgba(black, 1);
     }
     .back {
       background: rgba(black, 0.5);
@@ -14,7 +14,7 @@
   }
   &[class*='_lig_'] {
     .fore {
-      border-color: white;
+      border-color: rgba(white, 1);
     }
     .back {
       background: rgba(white, 0.5);

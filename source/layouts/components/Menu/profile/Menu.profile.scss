@@ -4,24 +4,67 @@
   justify-content: space-between;
 
   li {
+    display: grid;
+    gap: 8px 16px;
+
     background: black;
+
+    button:nth-child(1) {
+      grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(2) {
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(3) {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(4) {
+      grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(5) {
+      grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(6) {
+      grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(7) {
+      grid-area: 4 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(8) {
+      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button:nth-child(9) {
+      grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   li[class*='side'] {
     width: 398px;
+    grid-template: //--|🠋 1080px 🠋|--\\
+      56px repeat(4, auto) 1fr 56px //--|🠈 rows 🠈|--//
+      / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--//
   }
   @media screen and (max-height: 768px) {
     li[class*='side'] {
       width: 322px;
+      grid-template: //--|🠋 1366px 🠋|--\\
+        40px repeat(4, auto) 1fr 40px //--|🠈 rows 🠈|--//
+        / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--//
     }
   }
   @media screen and (max-height: 480px) {
     li[class*='side'] {
       width: 230px;
+      grid-template: //--|🠋 854px 🠋|--\\
+        24px repeat(4, auto) 1fr 24px //--|🠈 rows 🠈|--//
+        / 8px repeat(3, 1fr) 8px; //--|🠈 columns 🠈|--//
     }
   }
   @media screen and (max-height: 360px) {
     li[class*='side'] {
       width: 140px;
+      grid-template: //--|🠋 640px 🠋|--\\
+        16px repeat(4, auto) 1fr 16px //--|🠈 rows 🠈|--//
+        / auto repeat(3, 1fr) auto; //--|🠈 columns 🠈|--//
     }
   }
 }

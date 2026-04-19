@@ -4,19 +4,20 @@
 @use './pipeline/Button_motion.scss';
 
 button[class*='profile'] {
-  .fore:hover {
-    cursor: pointer;
-  }
   @media screen and (orientation: landscape) {
     //--|🠊 <ProfileButton> for [DesktopLandscape] 🠈|--\\
     @include Button_colors.desktop-colors();
     @include Button_layout.desktop-layout();
-    @include Button_motion.desktop-motion();
+    &:hover {
+      @include Button_motion.desktop-motion();
+    }
   }
   @media screen and (orientation: portrait) {
     //--|🠊 <ProfileButton> for [MobilePortrait] 🠈|--\\
     @include Button_colors.mobile-colors();
     @include Button_layout.mobile-layout();
-    @include Button_motion.mobile-motion();
+    &:hover {
+      @include Button_motion.mobile-motion();
+    }
   }
 }
