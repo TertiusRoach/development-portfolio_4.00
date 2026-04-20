@@ -17,7 +17,7 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 interface TheseProps<Names extends Info> {
   info: Names;
   cases: {
-    user: 'jane-lester' | 'hammad-dean';
+    user: 'randomize-character' | 'jane-lester' | 'hammad-dean';
     // call: React.ComponentType<{ info: Names }>;
     // level: '<fore>' | '<mid>' | '<back>';
     // view: '-top-' | '-bot-' | '-lef-' | '-rig-' | '-cen-' | '-mid-' | '-nul-';

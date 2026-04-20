@@ -21,8 +21,8 @@
   }
   %midground {
     z-index: 1;
-    div[class='profile-header_carousel'] {
-      grid-area: 3 / 2 / 4 / 3;
+    div[class*='profile-header'] {
+      grid-area: 1/1/6/4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %background {
