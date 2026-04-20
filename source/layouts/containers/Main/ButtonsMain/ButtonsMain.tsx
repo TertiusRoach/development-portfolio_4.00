@@ -6,7 +6,6 @@ import RoutingButtons from './elements/routing-buttons/RoutingButtons';
 //--|🠋 Functions 🠋|--\\
 import { defaultPreview } from './ButtonsFunctions';
 import { stripBrackets } from '../../../scripts/buttons';
-//
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../components/Label/toggle/Label.toggle';

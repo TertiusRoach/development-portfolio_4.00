@@ -12,6 +12,7 @@ import {
   viewDisplay,
   useSwipePhone as useSwipe,
 } from '../../ButtonsFunctions';
+
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../components/Button/default/Button.default';

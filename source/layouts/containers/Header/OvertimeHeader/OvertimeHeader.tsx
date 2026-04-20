@@ -3,14 +3,20 @@
 import { stripBrackets } from '../../../scripts/overtime';
 import { expandHeader, loadSoftware } from './OvertimeFunctions';
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { ComponentType, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import MenuProfile from '../../../components/Menu/profile/Menu.profile';
+
 //--|===|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
 import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
+//--|🠋 Elements 🠋|--\\
+import ProfileOvertime from './elements/profile-overtime/ProfileOvertime';
+
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -49,10 +55,23 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </section>
-      <figure className={`${blockName}-midground`}></figure>
+      <figure className={`${blockName}-midground`}>
+        <DivisionCarousel
+          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+          cases={{
+            axis: '[y]',
+            call: ProfileOvertime,
+          }}
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+      </figure>
       <div className={`${blockName}-background`}>
-        <div className="nav-top">{/* <span></span> */}</div>
-        <div className="nav-bot">{/* <span></span> */}</div>
+        <div className="nav-top"></div>
+        <div className="nav-bot"></div>
 
         <div className="nav-lef">
           <span></span>

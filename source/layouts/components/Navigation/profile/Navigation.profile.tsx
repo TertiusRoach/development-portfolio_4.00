@@ -5,8 +5,10 @@ import './Navigation.profile.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
 import { viewDisplay } from './Navigation_profile';
+import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
+import { previewElement } from '../../Division/carousel/Division_carousel';
+
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
 //--|🠋 Components 🠋|--\\
@@ -63,6 +65,49 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             }}
             onClick={() => collapseHeader(pageName, 'click', blockName)}
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+          />
+        </li>
+
+        <li className="prev-card">
+          <ButtonDefault
+            info={{
+              labelName: 'prev',
+              blockName: blockName,
+              pageName: pageName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              text: 'Down',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/prev-week.svg',
+            }}
+            onClick={() => previewElement(pageName, blockName, labelName, 'prev-view')}
+          />
+        </li>
+        <li className="next-card">
+          <ButtonDefault
+            info={{
+              labelName: 'next',
+              blockName: blockName,
+              pageName: pageName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              text: 'Up',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/next-week.svg',
+            }}
+            onClick={() => previewElement(pageName, blockName, labelName, 'next-view')}
           />
         </li>
       </ol>

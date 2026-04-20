@@ -1,6 +1,7 @@
 //--|🠊 OvertimeHeader.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../designs/Palettes.scss';
+@use './elements/profile-overtime/ProfileOvertime.scss' as profile;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
@@ -20,6 +21,9 @@
   }
   %midground {
     z-index: 1;
+    div[class='profile-header_carousel'] {
+      grid-area: 3 / 2 / 4 / 3;
+    }
   }
   %background {
     z-index: 0;
@@ -105,6 +109,8 @@
 header[id*='overtime'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    @include profile.desktop-landscape;
+
     //--|🠊 Default Landscape 🠈|--\\
     section[class*='foreground'],
     figure[class*='midground'],

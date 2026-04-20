@@ -1,9 +1,10 @@
 //--|🠊 OvertimeMain.tsx 🠈|--\\
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/overtime';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/overtime';
 
 //--|🠋 Components 🠋|--\\
 import TableClocking from '../../../components/Table/clocking/Table.clocking';

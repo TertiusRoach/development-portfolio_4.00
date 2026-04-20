@@ -1,10 +1,16 @@
-//--|🠊 Navigation.profile.scss 🠈|--\\
+//--|🠊 Section.profile.scss 🠈|--\\
 @mixin desktop-landscape {
+  &.jane-lester {
+    background: rgba(darkred, 0.25);
+  }
+  &.hammad-dean {
+    background: rgba(darkblue, 0.25);
+  }
 }
 @mixin mobile-portrait {
 }
 
-nav[class*='profile-header'] {
+section[class*='profile-header'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
