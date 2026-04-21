@@ -14,36 +14,19 @@ import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
 
 //--|🠋 Functions 🠋|--\\
-export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') {
+export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'elements' | 'buttons') {
   const enable = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
   const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
 
-  console.log(disable);
-
-  disable.classList.add('asleep');
-  disable.classList.remove('active');
-
+  if (disable !== null) {
+    disable.classList.add('asleep');
+    disable.classList.remove('active');
+  }
   enable.classList.add('active');
   enable.classList.remove('asleep');
-
   console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
 }
 
-function viewPage(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') {
-  const element = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-  switch (true) {
-    case element.classList.contains('asleep'):
-      //--|🠉 Show if element is hidden 🠈|--\\
-      element.classList.remove('asleep'); //--|🠈 Remove '.asleep' 🠈|--\\
-      console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
-
-      return element.classList.add('active'); //--|🠈 Toggle '.active' 🠈|--\\
-    case element.classList.contains('active'):
-      //--|🠉 Optional toggle: allow hiding the current element again 🠈|--\\
-      element.classList.remove('active'); //--|🠈 Remove '.active' 🠈|--\\
-      return element.classList.add('asleep'); //--|🠈 Toggle '.asleep' 🠈|--\\
-  }
-}
 function loadPage(identification: string, container: React.ReactElement) {
   const element = document.getElementById(identification) as HTMLDivElement;
   if (!element) {
@@ -70,7 +53,7 @@ function themeScheme(colorScheme: 'light' | 'dark') {
 }
 setTimeout(() => {
   themeScheme('light');
-  viewPage('overtime');
+  viewBody('overtime');
 }, 250);
 
 //--|🠋 Component Mapping 🠋|--\\
