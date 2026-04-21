@@ -423,10 +423,12 @@ figure {
   margin: 0;
 }
 
+/*
 img,
 svg {
   vertical-align: middle;
 }
+*/
 
 table {
   caption-side: bottom;
