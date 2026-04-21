@@ -70,8 +70,8 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </figure>
       <div className={`${blockName}-background`}>
-        <div className="nav-top"></div>
-        <div className="nav-bot"></div>
+        {/* <div className="nav-top"></div> */}
+        {/* <div className="nav-bot"></div> */}
 
         <div className="nav-lef">
           <span></span>
