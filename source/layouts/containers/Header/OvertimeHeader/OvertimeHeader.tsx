@@ -59,7 +59,7 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         <DivisionCarousel
           //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
           cases={{
-            axis: '[y]',
+            axis: '[x]',
             call: ProfileOvertime,
           }}
           info={{

@@ -40,14 +40,22 @@ const SectionProfile = <T extends Info>({ info, cases }: TheseProps<T>) => {
 
   return (
     <section className={`${labelName}-${blockName} ${cases.user}`}>
-      <menu>
-        <li>
-          <details>
-            <summary>Track a Day</summary>
-            <h4></h4>
-          </details>
-        </li>
-      </menu>
+      <article>
+        <img
+          src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-light.svg"
+          alt="Track a Day"
+        />
+        <h4>Track a Day</h4>
+        <p>
+          Protect your time and use it for rest because that's your most valuable currency.
+          <br />
+          <br />
+          Built to log overtime faster than anyone can complain about it.
+          <br />
+          <br />
+          Because fair treatment leads to happier teams and accountable employers leads to long-term growth.
+        </p>
+      </article>
     </section>
   );
 };

@@ -68,6 +68,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
           />
         </li>
 
+        {/*
         <li className="prev-card">
           <ButtonDefault
             info={{
@@ -89,6 +90,8 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             onClick={() => previewElement(pageName, blockName, labelName, 'prev-view')}
           />
         </li>
+        */}
+        {/*
         <li className="next-card">
           <ButtonDefault
             info={{
@@ -110,6 +113,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             onClick={() => previewElement(pageName, blockName, labelName, 'next-view')}
           />
         </li>
+        */}
       </ol>
     </nav>
   );
