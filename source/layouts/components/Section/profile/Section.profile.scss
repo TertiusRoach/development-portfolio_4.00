@@ -1,16 +1,51 @@
 //--|🠊 Section.profile.scss 🠈|--\\
 @mixin desktop-landscape {
   display: grid;
+
+  menu {
+    grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+    // display: flex;
+    li {
+      width: 448px;
+      height: 672px;
+      background: rgba(darkred, 0.25);
+    }
+  }
+
   grid-template: //--|🠋 1080px 🠋|--\\
-    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-    / 48px 1fr 48px; //--|🠈 columns 🠈|--//
-  /*
+    4rem 1fr 4rem //--|🠈 rows 🠈|--//
+    / 48px 350px 1fr auto 1fr 350px 48px; //--|🠈 columns 🠈|--//
+  @media screen and (max-height: 768px) {
+    grid-template: //--|🠋 1366px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 32px 290px 1fr auto 1fr 290px 32px; //--|🠈 columns 🠈|--//
+  }
+  @media screen and (max-height: 480px) {
+    grid-template: //--|🠋 854px 🠋|--\\
+      2rem 1fr 2rem //--|🠈 rows 🠈|--//
+      / 24px 206px 1fr auto 1fr 206px 24px; //--|🠈 columns 🠈|--//
+  }
+  @media screen and (max-height: 360px) {
+    grid-template: //--|🠋 640px 🠋|--\\
+      1.5rem 1fr 1.5rem //--|🠈 rows 🠈|--//
+      / 16px 140px 1fr auto 1fr 140px 16px; //--|🠈 columns 🠈|--//
+  }
   &.jane-lester {
-    background: rgba(darkred, 0.25);
+    menu {
+      li {
+        background: rgba(darkred, 0.25);
+      }
+    }
   }
   &.hammad-dean {
-    background: rgba(darkblue, 0.25);
+    menu {
+      li {
+        background: rgba(darkblue, 0.25);
+      }
+    }
   }
+  /*
   */
 
   /*

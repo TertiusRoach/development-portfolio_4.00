@@ -16,13 +16,13 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     menu[class='profile-header'] {
-      grid-area: 2/1/5/4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 2 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %midground {
     z-index: 1;
     div[class*='profile-header'] {
-      grid-area: 1/1/6/4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %background {
@@ -101,6 +101,50 @@
       }
     }
   }
+
+  //--|🠊 Default Landscape 🠈|--\\
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    width: 100%;
+    height: 100%;
+    display: inherit; //--|🠊 display: grid; 🠈|--\\
+    overflow: hidden;
+    position: absolute;
+
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 48px; //--|🠈 columns 🠈|--//
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: //--|🠋 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 480px) {
+      grid-template://--|🠋 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 360px) {
+      grid-template://--|🠋 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 16px; //--|🠈 columns 🠈|--//
+    }
+
+    &[class*='fore'] {
+      @extend %foreground;
+    }
+    &[class*='mid'] {
+      @extend %midground;
+    }
+    &[class*='back'] {
+      @extend %background;
+    }
+  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
@@ -110,47 +154,6 @@ header[id*='overtime'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
     @include profile.desktop-landscape;
-
-    //--|🠊 Default Landscape 🠈|--\\
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-      width: 100%;
-      height: 100%;
-      display: inherit; //--|🠊 display: grid; 🠈|--\\
-      overflow: hidden;
-      position: absolute;
-
-      //--|🠋 96px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 1080px 🠋|--\\
-        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-        / 48px 1fr 48px; //--|🠈 columns 🠈|--//
-      //--|🠋 64px (Left & Right) for Design 🠋|--\\
-      @media screen and (max-height: 768px) {
-        grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-          / 32px 1fr 32px; //--|🠈 columns 🠈|--//
-      }
-      //--|🠋 48px (Left & Right) for Design 🠋|--\\
-      @media screen and (max-height: 480px) {
-        grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-          / 24px 1fr 24px; //--|🠈 columns 🠈|--//
-      }
-      //--|🠋 32px (Left & Right) for Design 🠋|--\\
-      @media screen and (max-height: 360px) {
-        grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-          / 16px 1fr 16px; //--|🠈 columns 🠈|--//
-      }
-
-      &[class*='fore'] {
-        @extend %foreground;
-      }
-      &[class*='mid'] {
-        @extend %midground;
-      }
-      &[class*='back'] {
-        @extend %background;
-      }
-    }
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();

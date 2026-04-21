@@ -38,6 +38,17 @@ const SectionProfile = <T extends Info>({ info, cases }: TheseProps<T>) => {
 
   let svgPath: Array<String> = ['', '', ''];
 
-  return <section className={`${labelName}-${blockName} ${cases.user}`}></section>;
+  return (
+    <section className={`${labelName}-${blockName} ${cases.user}`}>
+      <menu>
+        <li>
+          <details>
+            <summary>Track a Day</summary>
+            <h4></h4>
+          </details>
+        </li>
+      </menu>
+    </section>
+  );
 };
 export default SectionProfile;

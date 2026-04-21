@@ -23,7 +23,7 @@ interface TheseProps {
 }
 const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
   const pageName: string = info.pageName as 'overtime';
-  const blockName: string = info.blockName as 'leftbar';
+  const blockName: string = info.blockName as 'header';
   const labelName: string = info.labelName as 'profile';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
@@ -76,7 +76,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               pageName: pageName,
             }}
             style={{
-              size: '<h1>',
+              size: '<p>',
               view: '-icon-',
               text: 'Down',
               shade: '~light~',
@@ -97,7 +97,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               pageName: pageName,
             }}
             style={{
-              size: '<h1>',
+              size: '<p>',
               view: '-icon-',
               text: 'Up',
               shade: '~light~',

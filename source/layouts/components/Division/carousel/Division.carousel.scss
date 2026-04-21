@@ -1,16 +1,28 @@
 //--|🠊 Division.carousel.scss 🠈|--\\
 @mixin desktop-landscape {
   overflow: hidden;
+  li {
+    transition: transform 500ms ease-in-out;
+  }
 
   //--|🠊 Vertical Y-axis 🠈|--\\
+  %vert-stack {
+    div {
+      display: block;
+      width: inherit; //--|🠊 width: 100%; 🠈|--\\
+      section {
+        height: 100%;
+      }
+    }
+  }
   ol {
     height: 100%;
     display: flex;
     li {
       width: 100%;
       display: inherit; //--|🠊 display: flex; 🠈|--\\
+
       @extend %vert-stack;
-      transition: transform 500ms ease-in-out;
 
       &.I {
         transform: translateY(0);
@@ -76,15 +88,28 @@
   }
 
   //--|🠊 Horizontal X-axis 🠈|--\\
+  %hori-stack {
+    div {
+      width: 100vw;
+      display: flex;
+      height: 100svh;
+      section {
+        height: 100svh;
+        flex: 0 0 100vw;
+      }
+    }
+  }
   ul {
-    height: 100%;
+    width: 100vw;
     display: flex;
-    li {
-      width: 100%;
-      display: inherit; //--|🠊 display: flex; 🠈|--\\
-      @extend %hori-stack;
-      transition: transform 500ms ease-in-out;
+    height: 100svh;
 
+    li {
+      height: 100svh;
+      flex: 0 0 100vw;
+      display: inherit; //--|🠊 display: flex; 🠈|--\\
+
+      @extend %hori-stack;
       &.I {
         transform: translateX(0);
       }
@@ -144,26 +169,6 @@
       }
       &.XX {
         transform: translateX(-1900%);
-      }
-    }
-  }
-
-  %vert-stack {
-    div {
-      display: block;
-      width: inherit; //--|🠊 width: 100%; 🠈|--\\
-      * {
-        height: 100%;
-      }
-    }
-  }
-  %hori-stack {
-    * {
-      display: flex;
-      width: inherit; //--|🠊 width: 100%; 🠈|--\\
-      * {
-        display: block;
-        flex-shrink: 0;
       }
     }
   }
