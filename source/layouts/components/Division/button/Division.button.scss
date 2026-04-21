@@ -1,0 +1,186 @@
+//--|🠊 Division.button.scss 🠈|--\\
+/*
+@mixin desktop-landscape {
+  overflow: hidden;
+  li {
+    transition: transform 500ms ease-in-out;
+  }
+
+  //--|🠊 Vertical Y-axis 🠈|--\\
+  %vert-stack {
+    div {
+      display: block;
+      width: inherit; //--|🠊 width: 100%; 🠈|--\\
+      section {
+        height: 100%;
+      }
+    }
+    &.I {
+      transform: translateY(0);
+    }
+    &.II {
+      transform: translateY(-100%);
+    }
+    &.III {
+      transform: translateY(-200%);
+    }
+    &.IV {
+      transform: translateY(-300%);
+    }
+    &.V {
+      transform: translateY(-400%);
+    }
+    &.VI {
+      transform: translateY(-500%);
+    }
+    &.VII {
+      transform: translateY(-600%);
+    }
+    &.VIII {
+      transform: translateY(-700%);
+    }
+    &.IX {
+      transform: translateY(-800%);
+    }
+    &.X {
+      transform: translateY(-900%);
+    }
+    &.XI {
+      transform: translateY(-1000%);
+    }
+    &.XII {
+      transform: translateY(-1100%);
+    }
+    &.XIII {
+      transform: translateY(-1200%);
+    }
+    &.XIV {
+      transform: translateY(-1300%);
+    }
+    &.XV {
+      transform: translateY(-1400%);
+    }
+    &.XVI {
+      transform: translateY(-1500%);
+    }
+    &.XVII {
+      transform: translateY(-1600%);
+    }
+    &.XVIII {
+      transform: translateY(-1700%);
+    }
+    &.XIX {
+      transform: translateY(-1800%);
+    }
+    &.XX {
+      transform: translateY(-1900%);
+    }
+  }
+  ol {
+    height: 100%;
+    display: flex;
+    li {
+      width: 100%;
+      display: inherit; //--|🠊 display: flex; 🠈|--\\
+      @extend %vert-stack;
+    }
+  }
+
+  //--|🠊 Horizontal X-axis 🠈|--\\
+  %hori-stack {
+    div {
+      width: 100vw;
+      display: flex;
+      height: 100svh;
+      section {
+        height: 100svh;
+        flex: 0 0 100vw;
+      }
+    }
+
+    &.I {
+      transform: translateX(0);
+    }
+    &.II {
+      transform: translateX(-100%);
+    }
+    &.III {
+      transform: translateX(-200%);
+    }
+    &.IV {
+      transform: translateX(-300%);
+    }
+    &.V {
+      transform: translateX(-400%);
+    }
+    &.VI {
+      transform: translateX(-500%);
+    }
+    &.VII {
+      transform: translateX(-600%);
+    }
+    &.VIII {
+      transform: translateX(-700%);
+    }
+    &.IX {
+      transform: translateX(-800%);
+    }
+    &.X {
+      transform: translateX(-900%);
+    }
+    &.XI {
+      transform: translateX(-1000%);
+    }
+    &.XII {
+      transform: translateX(-1100%);
+    }
+    &.XIII {
+      transform: translateX(-1200%);
+    }
+    &.XIV {
+      transform: translateX(-1300%);
+    }
+    &.XV {
+      transform: translateX(-1400%);
+    }
+    &.XVI {
+      transform: translateX(-1500%);
+    }
+    &.XVII {
+      transform: translateX(-1600%);
+    }
+    &.XVIII {
+      transform: translateX(-1700%);
+    }
+    &.XIX {
+      transform: translateX(-1800%);
+    }
+    &.XX {
+      transform: translateX(-1900%);
+    }
+  }
+  ul {
+    width: 100vw;
+    display: flex;
+    height: 100svh;
+
+    li {
+      height: 100svh;
+      flex: 0 0 100vw;
+      display: inherit; //--|🠊 display: flex; 🠈|--\\
+      @extend %hori-stack;
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+div[class*='carousel'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+*/

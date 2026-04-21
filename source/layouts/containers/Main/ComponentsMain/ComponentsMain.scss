@@ -1,0 +1,265 @@
+//--|🠊 ComponentsMain.scss 🠈|--\\
+/*
+@use '../../../designs/Palettes.scss';
+@use './elements/default-buttons/DefaultButtons.scss' as default;
+@use './elements/routing-buttons/RoutingButtons.scss' as routing;
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    display: grid;
+    overflow: hidden;
+
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--//
+    aside {
+      &[id*='side'] {
+        padding: 4rem 48px;
+      }
+      &[class*='code'] {
+        padding: 0 48px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 32px repeat(3, 1fr) 32px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 3rem 32px;
+        }
+        &[class*='code'] {
+          padding: 0 32px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px repeat(3, 1fr) 24px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 2rem 24px;
+        }
+        &[class*='code'] {
+          padding: 0 24px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px repeat(3, 1fr) 16px; //--|🠈 row / col 🠈|--\\
+      aside {
+        &[id*='side'] {
+          padding: 1.5rem 16px;
+        }
+        &[class*='code'] {
+          padding: 0 16px;
+        }
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Elements) 🠋|--//
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    display: grid;
+    overflow: hidden;
+
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 6rem) repeat(3, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 64px 1fr 64px; //--|🠈 columns 🠈|--//
+    @media screen and (max-width: 768px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 5rem) repeat(3, 1fr) repeat(2, 5rem) / 48px 1fr 48px; //--|🠈 row / col 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 3rem) repeat(3, 1fr) repeat(2, 3rem) / 32px 1fr 32px; //--|🠈 row / col 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 24px (Left & Right) for Design 🠋|--\\
+      grid-template: repeat(2, 2rem) repeat(3, 1fr) repeat(2, 2rem) / 24px 1fr 24px; //--|🠈 row / col 🠈|--\\
+    }
+  }
+}
+main[id*='buttons'] {
+  @extend %carousel-containers;
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+    @include default.desktop-landscape;
+    @include routing.desktop-landscape;
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+    @include default.mobile-portrait;
+    @include routing.mobile-portrait;
+  }
+}
+%carousel-containers {
+  [class*='carousel'] {
+    ol {
+      transition: transform 500ms ease-in-out;
+      li {
+        div {
+          transition:
+            filter 1.5s ease-in-out,
+            transform 1s ease-in-out,
+            opacity 750ms ease-in-out;
+          &.hidden {
+            opacity: 0;
+            filter: blur(24px);
+            transform: scale(0.25);
+          }
+          &.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+          }
+        }
+      }
+      &[class*='def'] {
+        li[class*='alt'] {
+          div.visible {
+            opacity: 0;
+            filter: blur(12px);
+            transform: scale(0.5);
+          }
+        }
+      }
+      &[class*='alt'] {
+        li[class*='def'] {
+          div.visible {
+            opacity: 0;
+            filter: blur(12px);
+            transform: scale(0.5);
+          }
+        }
+      }
+    }
+  }
+  div[class*='carousel'] {
+    height: 100svh;
+    overflow: hidden;
+    //--|🠊 width: 100vw; 🠈|--\\
+    ul[class*='preview'] {
+      display: flex;
+      height: inherit;
+      //--|🠊 padding: 0; 🠈|--\\
+      //--|🠊 list-style: none; 🠈|--\\
+      transition: transform 500ms ease-in-out;
+      li {
+        flex: 0 0 100%;
+        height: inherit;
+        position: relative;
+        section[class*='ground'],
+        figure[class*='ground'],
+        div[class*='ground'] {
+          height: inherit; //--|🠈 height: 100svh; 🠈|--\\
+          position: absolute;
+        }
+      }
+      &[class*='rou'] {
+        //--|🠋 <DefaultButton> 🠋|--\\
+        transform: translateX(-100%);
+      }
+      &[class*='def'] {
+        //--|🠋 <RoutingButton> 🠋|--\\
+        transform: translateX(0);
+      }
+    }
+  }
+  aside[class*='carousel'] {
+    ol[class*='preview'] {
+      height: 100%;
+      display: flex;
+      //--|🠊 padding: 0; 🠈|--\\
+      //--|🠊 list-style: none; 🠈|--\\
+      li[class*='track'] {
+        transition: transform 500ms ease-in-out;
+        &[class*='one'] {
+          transform: translateY(0);
+        }
+        &[class*='two'] {
+          transform: translateY(-100%);
+        }
+        &[class*='thr'] {
+          transform: translateY(-200%);
+        }
+        &[class*='fou'] {
+          transform: translateY(-300%);
+        }
+        &[class*='fiv'] {
+          transform: translateY(-400%);
+        }
+        &[class*='six'] {
+          transform: translateY(-500%);
+        }
+        &[class*='sev'] {
+          transform: translateY(-600%);
+        }
+      }
+      &[class*='carousel'] {
+        &[class*='alt'] {
+          //--|🠋 alternative 🠋|--\\
+          transform: translateX(-100%);
+        }
+        &[class*='def'] {
+          //--|🠋 default 🠋|--\\
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
+  section[class*='carousel'] {
+    ol {
+      height: 100%;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &[class*='preview'] {
+        &[class*='one'] {
+          transform: translateY(0%);
+        }
+        &[class*='two'] {
+          transform: translateY(-100%);
+        }
+        &[class*='thr'] {
+          transform: translateY(-200%);
+        }
+        &[class*='fou'] {
+          transform: translateY(-300%);
+        }
+        &[class*='fiv'] {
+          transform: translateY(-400%);
+        }
+        &[class*='six'] {
+          transform: translateY(-500%);
+        }
+        &[class*='sev'] {
+          transform: translateY(-600%);
+        }
+        &[class*='eig'] {
+          transform: translateY(-700%);
+        }
+        &[class*='nin'] {
+          transform: translateY(-800%);
+        }
+        &[class*='ten'] {
+          transform: translateY(-900%);
+        }
+      }
+    }
+  }
+}
+*/
