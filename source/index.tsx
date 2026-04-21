@@ -14,6 +14,21 @@ import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
 
 //--|🠋 Functions 🠋|--\\
+export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') {
+  const enable = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+  const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+
+  console.log(disable);
+
+  disable.classList.add('asleep');
+  disable.classList.remove('active');
+
+  enable.classList.add('active');
+  enable.classList.remove('asleep');
+
+  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
+}
+
 function viewPage(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'buttons' | 'landing') {
   const element = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
   switch (true) {

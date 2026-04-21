@@ -43,6 +43,22 @@
       background: rgba(Palettes.$indexLand-medium, 1);
     }
   }
+
+  &[class*='_dar_']:hover {
+    .fore {
+      span {
+        background: rgba(Palettes.$indexLand-dark, 1);
+      }
+    }
+    .mid {
+      border-color: rgba(Palettes.$indexLand-dark, 0.75);
+      transition: border-color 750ms ease-in-out;
+      filter: drop-shadow(0 0 8px rgba(black, 0.75));
+    }
+    .back {
+      background: rgba(Palettes.$indexLand-medium, 1);
+    }
+  }
   /*
   //--|🠊 Button Motion 🠈|--\\
   $button-time: 375ms; // 250–500ms

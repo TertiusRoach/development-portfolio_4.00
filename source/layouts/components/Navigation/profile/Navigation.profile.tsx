@@ -8,12 +8,13 @@ import React, { useEffect, useState } from 'react';
 import { viewDisplay } from './Navigation_profile';
 import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
 import { previewElement } from '../../Division/carousel/Division_carousel';
-
+import { viewBody } from '../../../../index';
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 import ButtonRouting from '../../Button/routing/Button.routing';
+
 interface TheseProps {
   info: {
     pageName: string;
@@ -41,7 +42,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
 
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/logo-white.svg',
-    '',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
     '',
   ];
 
@@ -67,7 +68,25 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
         </li>
-
+        <li className="load-tags">
+          <ButtonRouting
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}-${blockName}_load-tags`,
+            }}
+            style={{
+              size: '<h1>',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{button}',
+              view: 'bot-rig',
+              image: `${svgPath[1]}`,
+            }}
+            onClick={() => viewBody('buttons')}
+            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+          />
+        </li>
         {/*
         <li className="prev-card">
           <ButtonDefault

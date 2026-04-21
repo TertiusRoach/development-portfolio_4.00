@@ -110,7 +110,7 @@
         clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
         section[class='header-foreground'] {
           nav {
-            grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
+            // grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
             menu {
               button:not(:first-child) {
                 top: -128px;
