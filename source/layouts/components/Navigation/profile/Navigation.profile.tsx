@@ -83,7 +83,7 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               view: 'bot-rig',
               image: `${svgPath[1]}`,
             }}
-            onClick={() => viewBody('buttons')}
+            onClick={() => viewBody('components')}
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
         </li>

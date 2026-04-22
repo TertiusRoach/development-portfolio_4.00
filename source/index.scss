@@ -2,13 +2,13 @@
 // @use 'sass:color';
 
 //--|🠋 Designs 🠋|--\\
-@use './layouts/designs/Transition.scss';
 @use './layouts/designs/Global.scss';
 @use './layouts/designs/Palettes.scss';
+@use './layouts/designs/Transition.scss';
 
 //--|🠋 Applications 🠋|--\\
-@use './layouts/styles/buttons.scss';
-
+// @use './layouts/styles/buttons.scss';
+@use './layouts/styles/components.scss';
 @use './layouts/styles/landing.scss';
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
@@ -18,12 +18,25 @@ body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
   div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--\\
+    @extend %transitions;
 
-    @include Transition.body-transition();
-    @include Transition.header-transition();
-    @include Transition.footer-transition();
-    @include Transition.overlay-transition();
-    @include Transition.sidebar-transition();
+    section[class*='overlay'] {
+      z-index: 15;
+      background: rgba(Palettes.$orange-medium, 0.125);
+    }
+    header[class*='header'],
+    footer[class*='footer'] {
+      z-index: 10;
+    }
+    aside[class*='bar'] {
+      z-index: 5;
+    }
+    main[class*='main'] {
+      z-index: 0;
+    }
+  }
+
+  div[id*='components'] {
   }
 
   &[class*='ante-meridiem'] {
@@ -32,4 +45,12 @@ body {
   &[class*='post-meridiem'] {
     background: Palettes.$indexLand-darkMode;
   }
+}
+
+%transitions {
+  @include Transition.body-transition();
+  @include Transition.header-transition();
+  @include Transition.footer-transition();
+  @include Transition.overlay-transition();
+  @include Transition.sidebar-transition();
 }

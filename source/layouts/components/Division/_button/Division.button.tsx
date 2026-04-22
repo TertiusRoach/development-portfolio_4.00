@@ -1,4 +1,4 @@
-//--|🠊 Division.article.tsx 🠈|--\\
+//--|🠊 _button/Division.button.tsx 🠈|--\\
 /*
 //--|🠋 Styles 🠋|--\\
 import './Division.article.scss';

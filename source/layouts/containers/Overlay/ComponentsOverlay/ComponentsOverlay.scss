@@ -1,4 +1,4 @@
-//--|🠊 ComponentsMain.scss 🠈|--\\
+//--|🠊 ComponentsOverlay.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
@@ -11,6 +11,10 @@
     grid-template: inherit;
     grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
@@ -30,7 +34,8 @@
     }
   }
 }
-main[id*='components'] {
+
+section#components-overlay {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
     //--|🠋 96px (Left & Right) for Design 🠋|--\\

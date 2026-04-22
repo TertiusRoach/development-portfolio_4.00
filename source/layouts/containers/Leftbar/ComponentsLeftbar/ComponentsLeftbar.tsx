@@ -1,4 +1,4 @@
-//--|🠊 ComponentsMain.tsx 🠈|--\\
+//--|🠊 ComponentsLeftbar.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/components';
 
@@ -12,21 +12,23 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<ComponentsMain>`}</h1>
+        <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
-    </main>
+    </aside>
   );
 };
-export default ComponentsMain;
+export default ComponentsLeftbar;

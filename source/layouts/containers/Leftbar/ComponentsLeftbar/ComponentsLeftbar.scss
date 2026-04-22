@@ -1,4 +1,4 @@
-//--|🠊 ComponentsMain.scss 🠈|--\\
+//--|🠊 ComponentsLeftbar.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
@@ -10,6 +10,7 @@
     display: inherit; //--|🠈 display: grid; 🠈|--\\
     grid-template: inherit;
     grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
     h1 {
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -26,11 +27,12 @@
     grid-template: inherit;
     grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     h1 {
+      color: darkblue;
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
 }
-main[id*='components'] {
+aside#components-leftbar {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
     //--|🠋 96px (Left & Right) for Design 🠋|--\\

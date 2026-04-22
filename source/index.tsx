@@ -12,20 +12,13 @@ import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
+import Components from './layouts/pages/components';
 
 //--|🠋 Functions 🠋|--\\
-export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'elements' | 'buttons') {
-  const enable = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-  const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-
-  if (disable !== null) {
-    disable.classList.add('asleep');
-    disable.classList.remove('active');
-  }
-  enable.classList.add('active');
-  enable.classList.remove('asleep');
-  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
-}
+setTimeout(() => {
+  themeScheme('light');
+  viewBody('components');
+}, 250);
 
 function loadPage(identification: string, container: React.ReactElement) {
   const element = document.getElementById(identification) as HTMLDivElement;
@@ -51,15 +44,12 @@ function themeScheme(colorScheme: 'light' | 'dark') {
       return element.classList.add('post-meridiem');
   }
 }
-setTimeout(() => {
-  themeScheme('light');
-  viewBody('overtime');
-}, 250);
-
 //--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
-  'buttons-body': Buttons,
+  // 'buttons-body': Buttons,
   'landing-body': Landing,
+  'components-body': Components,
+
   'overtime-body': Overtime,
   'ticketing-body': Ticketing,
   'hyperlink-body': Hyperlink,
@@ -67,10 +57,20 @@ const pages: { [key: string]: React.ElementType } = {
 Object.entries(pages).forEach(([id]) => {
   //--|🠋 Render Components 🠋|--\\
   const container = document.getElementById(id) as HTMLDivElement;
-  const pageName: string = container.id.split('-')[0] as 'landing' | 'buttons' | 'overtime' | 'ticketing' | 'hyperlink';
+  const pageName: string = container.id.split('-')[0] as
+    | 'overtime'
+    | 'ticketing'
+    | 'hyperlink'
+    | 'landing'
+    | 'buttons'
+    | 'components';
+
   switch (pageName) {
     case 'buttons':
       loadPage(`${pageName}-body`, React.createElement(Buttons));
+      break;
+    case 'components':
+      loadPage(`${pageName}-body`, React.createElement(Components));
       break;
     case 'overtime':
       loadPage(`${pageName}-body`, React.createElement(Overtime));
@@ -87,3 +87,16 @@ Object.entries(pages).forEach(([id]) => {
       break;
   }
 });
+
+export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components') {
+  const enable = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+  const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+
+  if (disable !== null) {
+    disable.classList.add('asleep');
+    disable.classList.remove('active');
+  }
+  enable.classList.add('active');
+  enable.classList.remove('asleep');
+  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
+}

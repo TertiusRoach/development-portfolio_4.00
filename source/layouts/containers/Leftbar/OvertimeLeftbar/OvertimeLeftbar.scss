@@ -98,7 +98,7 @@
   //--|🠋 Mobile (Elements) 🠋|--//
 }
 
-aside[id*='leftbar'] {
+aside[id*='overtime-leftbar'] {
   position: relative;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
