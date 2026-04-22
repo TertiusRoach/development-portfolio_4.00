@@ -21,15 +21,31 @@ body {
     @extend %transitions;
 
     section[class*='overlay'] {
-      z-index: 15;
+      display: none;
+
+      z-index: 10;
       background: rgba(Palettes.$orange-medium, 0.125);
     }
-    header[class*='header'],
-    footer[class*='footer'] {
-      z-index: 10;
+    header,
+    footer {
+      &[class*='header'] {
+        display: none;
+        z-index: 9;
+      }
+      &[class*='footer'] {
+        display: none;
+        z-index: 6;
+      }
     }
     aside[class*='bar'] {
-      z-index: 5;
+      &[class*='left'] {
+        display: none;
+        z-index: 5;
+      }
+      &[class*='right'] {
+        display: none;
+        z-index: 4;
+      }
     }
     main[class*='main'] {
       z-index: 0;

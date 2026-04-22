@@ -13,6 +13,8 @@ interface InfoProps {
   };
 }
 const ComponentsFooter: React.FC<InfoProps> = ({ info }) => {
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
@@ -20,7 +22,7 @@ const ComponentsFooter: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+    <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}  ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <h1 className="display-1">{`<ComponentsFooter>`}</h1>
       </section>

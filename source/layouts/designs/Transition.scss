@@ -415,16 +415,17 @@
         opacity: 1;
       }
     }
-    // @extend %footer-effects;
-    // @extend %footer-transition;
-    // @extend %footer-constituents;
+    @extend %footer-effects;
+    @extend %footer-transition;
+    @extend %footer-constituents;
   }
-  /*
   %footer-effects {
-    &[class*='expanded'],
-    &[class*='unfolded'],
-    &[class*='collapsed'] {
+    &[class*='expanded'] {
       backdrop-filter: blur(24px);
+    }
+    &[class*='unfolded'] {
+    }
+    &[class*='collapsed'] {
     }
   }
   %footer-transition {
@@ -457,7 +458,6 @@
       }
     }
   }
-  */
 }
 //--|🠋 aside[id*="bar"] 🠋|--\\
 @mixin sidebar-transition {
