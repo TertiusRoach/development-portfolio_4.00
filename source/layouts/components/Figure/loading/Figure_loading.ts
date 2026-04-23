@@ -1,4 +1,4 @@
-//--|🠊 Navigation_profile.ts 🠈|--\\
+//--|🠊 Navigation_characters.ts 🠈|--\\
 
 export function viewDisplay() {
   //--|🠊 Check if the window exists. 🠈|--\\

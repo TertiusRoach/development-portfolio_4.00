@@ -1,4 +1,4 @@
-//--|🠊 Section.profile.scss 🠈|--\\
+//--|🠊 Section.characters.scss 🠈|--\\
 @mixin desktop-landscape {
   display: grid;
   align-items: center;
@@ -138,7 +138,7 @@
 @mixin mobile-portrait {
 }
 
-section[class*='profile-header'] {
+section[class*='characters'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

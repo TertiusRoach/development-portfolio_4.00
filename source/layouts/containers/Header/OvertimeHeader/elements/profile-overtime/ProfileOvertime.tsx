@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import SectionProfile from '../../../../../components/Section/profile/Section.profile';
+import SectionCharacters from '../../../../../components/Section/characters/Section.characters';
 
 //--|🠋 Functions 🠋|--\\
 
@@ -22,7 +22,7 @@ const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <>
-      <SectionProfile
+      <SectionCharacters
         //--|🠊 <section class="profile-header"/> 🠈|--\\
         info={{
           pageName: pageName,
@@ -33,7 +33,7 @@ const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
           user: 'jane-lester',
         }}
       />
-      <SectionProfile
+      <SectionCharacters
         //--|🠊 <section class="profile-header"/> 🠈|--\\
         info={{
           pageName: pageName,

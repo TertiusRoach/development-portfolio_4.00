@@ -9,7 +9,7 @@ import './Header.branding.scss';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import FigureRotation from '../../Figure/rotation/Figure.rotation';
+import FigureRotation from '../../Figure/archive/rotation/Figure.rotation';
 import ArticleSelection from '../../Article/selection/Article.selection';
 import MenuBranding from '../../Menu/archive/branding/Menu.branding';
 //--|🠉 Components 🠉|--//

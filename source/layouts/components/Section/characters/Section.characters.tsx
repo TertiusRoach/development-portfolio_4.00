@@ -1,11 +1,11 @@
-//--|🠊 Section.profile.tsx 🠈|--\\
+//--|🠊 Section.characters.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Section.profile.scss';
+import './Section.characters.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Section_profile';
+import { viewDisplay } from './Section_characters';
 import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
 import { previewElement } from '../../Division/carousel/Division_carousel';
 
@@ -29,10 +29,10 @@ interface Info {
   blockName: string;
   labelName: string;
 }
-const SectionProfile = <T extends Info>({ info, cases }: TheseProps<T>) => {
+const SectionCharacters = <T extends Info>({ info, cases }: TheseProps<T>) => {
   const pageName: string = info.pageName as 'overtime';
   const blockName: string = info.blockName as 'header';
-  const labelName: string = info.labelName as 'profile';
+  const labelName: string = info.labelName as 'characters';
 
   useEffect(() => {}, [pageName, blockName]);
 
@@ -59,4 +59,4 @@ const SectionProfile = <T extends Info>({ info, cases }: TheseProps<T>) => {
     </section>
   );
 };
-export default SectionProfile;
+export default SectionCharacters;
