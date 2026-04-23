@@ -13,7 +13,7 @@ interface InfoProps {
   };
 }
 const ComponentsRightbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
   const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';

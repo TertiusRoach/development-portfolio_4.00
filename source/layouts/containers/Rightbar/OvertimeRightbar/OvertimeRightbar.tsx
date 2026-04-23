@@ -20,12 +20,12 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'landing';
   const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
 
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
+    <aside id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
       <h4 className="reset-label display-4">Reset</h4>
       <FormReset info={info} />
     </aside>

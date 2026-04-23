@@ -36,10 +36,10 @@ body {
   header,
   footer {
     &[class*='header'] {
-      z-index: 9;
+      z-index: 6;
     }
     &[class*='footer'] {
-      z-index: 6;
+      z-index: 9;
     }
   }
   aside[class*='bar'] {

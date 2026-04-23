@@ -13,7 +13,7 @@ interface InfoProps {
   };
 }
 const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
