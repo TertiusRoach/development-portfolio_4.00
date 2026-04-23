@@ -1,4 +1,17 @@
 //--|🠊 Overlay/ComponentsFunctions.ts 🠈|--\\
+export function hideOverlay(pageName: string, blockName: string) {
+  const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
+  if (disable.classList.contains('visible')) {
+    disable.classList.add('hidden');
+    disable.classList.remove('visible');
+
+    setTimeout(() => {
+      disable.style.display = 'none';
+    }, 1500);
+  }
+
+  console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
+}
 /*
 import * as React from 'react';
 export function controlPreview(

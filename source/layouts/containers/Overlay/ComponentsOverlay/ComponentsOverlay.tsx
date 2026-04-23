@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/components';
 import FigureLoading from '../../../components/Figure/loading/Figure.loading';
+import { hideOverlay } from './ComponentsFunctions';
 
 interface InfoProps {
   info: {
@@ -20,7 +21,11 @@ const ComponentsOverlay: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    setTimeout(() => {
+      hideOverlay(pageName, blockName);
+    }, 1500);
+  }, [pageName, blockName]);
 
   return (
     <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>

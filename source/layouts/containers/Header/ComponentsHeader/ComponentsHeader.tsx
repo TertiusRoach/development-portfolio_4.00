@@ -13,7 +13,7 @@ interface InfoProps {
   };
 }
 const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
