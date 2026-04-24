@@ -1,0 +1,36 @@
+//--|🠊 DefaultTable.scss 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  aside[class*='default'] {
+    //--|🠋 Desktop (Layers) 🠋|--\\
+    section[class*='foreground'] {
+      h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    figure[class*='midground'] {
+    }
+    div[class*='background'] {
+    }
+
+    @include Mixins.landscape-grid;
+  }
+}
+@mixin mobile-portrait {
+  aside[class*='default'] {
+    //--|🠋 Mobile (Layers) 🠋|--\\
+    section[class*='foreground'] {
+    }
+    figure[class*='midground'] {
+    }
+    div[class*='background'] {
+    }
+
+    @include Mixins.portrait-grid;
+  }
+}

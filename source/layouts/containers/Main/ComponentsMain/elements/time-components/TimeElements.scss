@@ -1,0 +1,15 @@
+//--|🠊 TimeElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-time/DefaultTime.scss';
+
+section[class*='time'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultTime.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultTime.mobile-portrait;
+    }
+  }
+}

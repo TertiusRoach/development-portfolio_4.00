@@ -15,6 +15,12 @@ import ButtonElements from './elements/button-components/ButtonElements';
 import DivisionElements from './elements/division-components/DivisionElements';
 import ArticleElements from './elements/article-components/ArticleElements';
 import AsideElements from './elements/aside-components/AsideElements';
+import FigureElements from './elements/figure-components/FigureElements';
+import MenuElements from './elements/menu-components/MenuElements';
+import NavigationElements from './elements/navigation-components/NavigationElements';
+import SectionElements from './elements/section-components/SectionElements';
+import TableElements from './elements/table-components/TableElements';
+import TimeElements from './elements/time-components/TimeElements';
 
 interface InfoProps {
   info: {
@@ -118,13 +124,12 @@ function ComponentsElements({ info }: InfoProps) {
       <AsideElements info={asideInfo} />
       <ButtonElements info={buttonInfo} />
       <DivisionElements info={divisionInfo} />
-
-      {/* <FigureElements info={figureInfo} /> */}
-      {/* <MenuElements info={menuInfo} /> */}
-      {/* <NavigationElements info={navigationInfo} /> */}
-      {/* <SectionElements info={sectionInfo} /> */}
-      {/* <TableElements info={tableInfo} /> */}
-      {/* <TimeElements info={timeInfo} /> */}
+      <FigureElements info={figureInfo} />
+      <MenuElements info={menuInfo} />
+      <NavigationElements info={navigationInfo} />
+      <SectionElements info={sectionInfo} />
+      <TableElements info={tableInfo} />
+      <TimeElements info={timeInfo} />
     </>
   );
 }

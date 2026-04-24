@@ -1,0 +1,15 @@
+//--|🠊 MenuElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-menu/DefaultMenu.scss';
+
+section[class*='menu'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultMenu.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultMenu.mobile-portrait;
+    }
+  }
+}
