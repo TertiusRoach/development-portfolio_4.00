@@ -1,6 +1,36 @@
-//--|🠊 DefaultButtons.tsx 🠈|--\\
+//--|🠊 ArticleElements.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+
+//--|🠋 Styles 🠋|--\\
+import './ArticleElements.scss';
+
+interface InfoProps {
+  info: {
+    blockName: 'main';
+    pageName: 'components';
+    labelName: 'article' | string;
+  };
+}
+
+const ArticleElements: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'article';
+  const pageName = info.pageName as 'components';
+
+  useEffect(() => {
+    // console.log(blockName, labelName, pageName);
+  }, [pageName, blockName]);
+
+  return (
+    <section className={`${labelName}-${blockName}`}>
+      <h1 className="display-1">{`<ArticleComponents>`}</h1>
+    </section>
+  );
+};
+export default ArticleElements;
 /*
-import React, { useEffect, useState } from 'react';
+
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../scripts/buttons';
 import {
@@ -19,13 +49,7 @@ import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../../../components/Button/routing/Button.routing';
 
-interface InfoProps {
-  info: {
-    pageName: 'buttons' | string;
-    blockName: 'main' | string;
-    roleName?: string;
-  };
-}
+
 const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const pageName = stripBrackets(info.pageName, '[]') as 'buttons';
@@ -2330,5 +2354,5 @@ const DefaultButtons: React.FC<InfoProps> = ({ info }) => {
     </>
   );
 };
-export default DefaultButtons;
+
 */

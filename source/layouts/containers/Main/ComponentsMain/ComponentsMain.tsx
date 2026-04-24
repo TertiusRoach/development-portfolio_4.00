@@ -1,6 +1,16 @@
 //--|🠊 ComponentsMain.tsx 🠈|--\\
 import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../scripts/components';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../../scripts';
+
+//--|🠋 Components 🠋|--\\
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
+//--|🠋 Elements 🠋|--\\
+import ArticleElements from './elements/article-components/ArticleElements';
+import AsideElements from './elements/aside-components/AsideElements';
+import ButtonElements from './elements/button-components/ButtonElements';
 
 interface InfoProps {
   info: {
@@ -22,11 +32,50 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<ComponentsMain>`}</h1>
+        <DivisionCarousel
+          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+          cases={{
+            axis: '[y]',
+            call: ComponentsElements,
+          }}
+          info={{
+            labelName: 'elements',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+          }}
+        />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <h1 className="display-1">{`<ComponentsMain>`}</h1>
+      </div>
     </main>
   );
 };
 export default ComponentsMain;
+
+function ComponentsElements({ info }: InfoProps) {
+  let articleInfo = {
+    labelName: 'article' as string,
+    blockName: info.blockName as 'main',
+    pageName: info.pageName as 'components',
+  };
+  let asideInfo = {
+    labelName: 'aside' as string,
+    blockName: info.blockName as 'main',
+    pageName: info.pageName as 'components',
+  };
+  let buttonInfo = {
+    labelName: 'button' as string,
+    blockName: info.blockName as 'main',
+    pageName: info.pageName as 'components',
+  };
+
+  return (
+    <>
+      <ArticleElements info={articleInfo} />
+      <AsideElements info={asideInfo} />
+      <ButtonElements info={buttonInfo} />
+    </>
+  );
+}

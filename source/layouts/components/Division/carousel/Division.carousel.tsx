@@ -37,7 +37,7 @@ const DivisionCarousel = <T extends Info>({ info, cases }: TheseProps<T>) => {
     <div className={`${labelName}-${blockName}_carousel`}>
       <ListItem>
         <li className="I">
-          <div>
+          <div className={`${labelName}-${blockName}_container`}>
             <CallTag info={info} />
           </div>
         </li>

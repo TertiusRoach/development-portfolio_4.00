@@ -1,6 +1,7 @@
 //--|🠊 OvertimeHeader.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../designs/Palettes.scss';
+
 @use './elements/profile-overtime/ProfileOvertime.scss' as profile;
 
 @mixin desktop-landscape {

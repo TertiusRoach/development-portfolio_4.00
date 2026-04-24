@@ -293,6 +293,8 @@
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
+
+        /*
         clip-path: inset(calc(100% - 12rem) 0 0 0);
         @media screen and (max-width: 768px) {
           clip-path: inset(calc(100% - 10rem) 0 0 0);
@@ -303,6 +305,7 @@
         @media screen and (max-width: 360px) {
           clip-path: inset(calc(100% - 4rem) 0 0 0);
         }
+        */
       }
       &[class*='collapsed'] {
         clip-path: inset(100% 0 0 0);

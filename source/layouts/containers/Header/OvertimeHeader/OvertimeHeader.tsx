@@ -4,6 +4,10 @@ import { stripBrackets } from '../../../scripts/overtime';
 import { expandHeader, loadSoftware } from './OvertimeFunctions';
 //--|🠋 Dependencies 🠋|--\\
 import React, { ComponentType, useEffect } from 'react';
+
+//--|🠋 Elements 🠋|--\\
+import ProfileOvertime from './elements/profile-overtime/ProfileOvertime';
+
 //--|🠋 Components 🠋|--\\
 import MenuProfile from '../../../components/Menu/profile/Menu.profile';
 
@@ -13,9 +17,6 @@ import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
 import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
 import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
-
-//--|🠋 Elements 🠋|--\\
-import ProfileOvertime from './elements/profile-overtime/ProfileOvertime';
 
 interface InfoProps {
   info: {
@@ -56,18 +57,18 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}>
-        <DivisionCarousel
+        {/* <DivisionCarousel
           //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
           cases={{
             axis: '[x]',
-            call: ProfileOvertime,
+            call: [ProfileOvertime],
           }}
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
-        />
+        /> */}
       </figure>
       <div className={`${blockName}-background`}>
         {/* <div className="nav-top"></div> */}

@@ -1,0 +1,18 @@
+//--|🠊 ButtonElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-button/DefaultButton.scss';
+@use './routing-button/RoutingButton.scss';
+
+section[class*='button'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultButton.desktop-landscape;
+      @include RoutingButton.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultButton.mobile-portrait;
+      @include RoutingButton.mobile-portrait;
+    }
+  }
+}
