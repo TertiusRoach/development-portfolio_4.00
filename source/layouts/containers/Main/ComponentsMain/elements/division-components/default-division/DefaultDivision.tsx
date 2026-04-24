@@ -1,8 +1,8 @@
-//--|🠊 RoutingButton.tsx 🠈|--\\
+//--|🠊 DefaultDivision.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './RoutingButton.scss';
+import './DefaultDivision.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
@@ -11,23 +11,23 @@ import { stripBrackets } from '../../../../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: string;
     blockName: string;
     labelName: string;
+    pageName: string;
   };
 }
-const RoutingButton: React.FC<InfoProps> = ({ info }) => {
+const DefaultDivision: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'routing';
+  const labelName = info.labelName as 'default';
 
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<RoutingButton>`}</h1>
+        <h1 className="display-1">{`<DefaultDivision>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
 };
-export default RoutingButton;
+export default DefaultDivision;

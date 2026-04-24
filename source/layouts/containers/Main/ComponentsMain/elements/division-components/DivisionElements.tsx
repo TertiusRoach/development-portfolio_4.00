@@ -1,32 +1,31 @@
-//--|🠊 ButtonElements.tsx 🠈|--\\
+//--|🠊 DivisionElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './ButtonElements.scss';
+import './DivisionElements.scss';
 
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultButton from './default-button/DefaultButton';
-import RoutingButton from './routing-button/RoutingButton';
+import DefaultDivision from './default-division/DefaultDivision';
 
 interface InfoProps {
   info: {
-    blockName: 'main';
-    pageName: 'components';
-    labelName: 'button' | string;
+    pageName: string;
+    blockName: string;
+    labelName: string;
   };
 }
 
-const ButtonElements: React.FC<InfoProps> = ({ info }) => {
+const DivisionElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
           axis: '[x]',
-          call: ButtonComponents,
+          call: DivisionComponents,
         }}
         info={{
           pageName: info.pageName,
@@ -37,24 +36,17 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
     </section>
   );
 };
-
-function ButtonComponents({ info }: InfoProps) {
+function DivisionComponents({ info }: InfoProps) {
   let defaultInfo = {
     pageName: info.pageName,
     blockName: info.blockName,
     labelName: 'default' as string,
   };
-  let routingInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'routing' as string,
-  };
 
   return (
     <>
-      <DefaultButton info={defaultInfo} />
-      <RoutingButton info={routingInfo} />
+      <DefaultDivision info={defaultInfo} />
     </>
   );
 }
-export default ButtonElements;
+export default DivisionElements;

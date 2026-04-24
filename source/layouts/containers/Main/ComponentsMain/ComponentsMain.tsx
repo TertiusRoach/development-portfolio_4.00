@@ -8,9 +8,13 @@ import { stripBrackets } from '../../../../scripts';
 import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
+// import ArticleElements from './elements/article-components/ArticleElements';
+// import AsideElements from './elements/aside-components/AsideElements';
+
+import ButtonElements from './elements/button-components/ButtonElements';
+import DivisionElements from './elements/division-components/DivisionElements';
 import ArticleElements from './elements/article-components/ArticleElements';
 import AsideElements from './elements/aside-components/AsideElements';
-import ButtonElements from './elements/button-components/ButtonElements';
 
 interface InfoProps {
   info: {
@@ -55,20 +59,57 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
 export default ComponentsMain;
 
 function ComponentsElements({ info }: InfoProps) {
+  const blockName = info.blockName as 'main';
+  const pageName = info.pageName as 'components';
   let articleInfo = {
+    pageName: pageName,
+    blockName: blockName,
     labelName: 'article' as string,
-    blockName: info.blockName as 'main',
-    pageName: info.pageName as 'components',
   };
   let asideInfo = {
+    pageName: pageName,
+    blockName: blockName,
     labelName: 'aside' as string,
-    blockName: info.blockName as 'main',
-    pageName: info.pageName as 'components',
   };
   let buttonInfo = {
+    pageName: pageName,
+    blockName: blockName,
     labelName: 'button' as string,
-    blockName: info.blockName as 'main',
-    pageName: info.pageName as 'components',
+  };
+  let divisionInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'division' as string,
+  };
+  let figureInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'figure' as string,
+  };
+  let menuInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'menu' as string,
+  };
+  let navigationInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'navigation' as string,
+  };
+  let sectionInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'section' as string,
+  };
+  let tableInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'table' as string,
+  };
+  let timeInfo = {
+    pageName: pageName,
+    blockName: blockName,
+    labelName: 'time' as string,
   };
 
   return (
@@ -76,6 +117,14 @@ function ComponentsElements({ info }: InfoProps) {
       <ArticleElements info={articleInfo} />
       <AsideElements info={asideInfo} />
       <ButtonElements info={buttonInfo} />
+      <DivisionElements info={divisionInfo} />
+
+      {/* <FigureElements info={figureInfo} /> */}
+      {/* <MenuElements info={menuInfo} /> */}
+      {/* <NavigationElements info={navigationInfo} /> */}
+      {/* <SectionElements info={sectionInfo} /> */}
+      {/* <TableElements info={tableInfo} /> */}
+      {/* <TimeElements info={timeInfo} /> */}
     </>
   );
 }

@@ -5,20 +5,18 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 
 interface InfoProps {
   info: {
-    blockName: 'main' | string;
-    labelName: 'default' | string;
-    pageName: 'component' | string;
+    pageName: string;
+    blockName: string;
+    labelName: string;
   };
 }
 const DefaultButton: React.FC<InfoProps> = ({ info }) => {
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const pageName = stripBrackets(info.pageName, '[]') as 'component';
+  const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
 
   return (
