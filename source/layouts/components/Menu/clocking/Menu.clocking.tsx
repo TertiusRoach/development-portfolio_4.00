@@ -1,4 +1,4 @@
-//--|🠊 Table.clocking.tsx 🠈|--\\
+//--|🠊 Menu.clocking.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
 import './Menu.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\

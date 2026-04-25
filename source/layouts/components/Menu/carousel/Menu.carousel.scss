@@ -1,0 +1,20 @@
+//--|🠊 Menu.carousel.scss 🠈|--\\
+@use './pipeline/Menu_layout.scss';
+@use './pipeline/Menu_letters.scss';
+@use './pipeline/Menu_motion.scss';
+@use './pipeline/Menu_visuals.scss';
+
+menu[class*='carousel'] {
+  @media screen and (orientation: landscape) {
+    @include Menu_layout.desktop-layout();
+    @include Menu_motion.desktop-motion();
+    @include Menu_visuals.desktop-visuals();
+    @include Menu_letters.desktop-letters();
+  }
+  @media screen and (orientation: portrait) {
+    @include Menu_layout.mobile-layout();
+    @include Menu_motion.mobile-motion();
+    @include Menu_visuals.mobile-visuals();
+    @include Menu_letters.mobile-letters();
+  }
+}

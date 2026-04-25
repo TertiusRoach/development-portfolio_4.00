@@ -1,10 +1,5 @@
 //--|🠊 Division_carousel.ts 🠈|--\\
-export function previewElement(
-  pageName: string,
-  blockName: string,
-  labelName: string,
-  blockAction: 'next-view' | 'prev-view',
-) {
+function previewElement(pageName: string, blockName: string, labelName: string, blockAction: 'next-view' | 'prev-view') {
   // (1) Query safely: allow null
   const tableWeek = document.querySelector(
     `#${pageName}-${blockName} .${labelName}-${blockName}_carousel li`,
@@ -66,3 +61,6 @@ export function previewElement(
   console.log('from:', currentRoman, 'to:', nextRoman);
   console.log('position (1-based):', position1Based);
 }
+export default previewElement;
+export function scrollCarousel(cases: object) {}
+export function selectCarousel(cases: object) {}

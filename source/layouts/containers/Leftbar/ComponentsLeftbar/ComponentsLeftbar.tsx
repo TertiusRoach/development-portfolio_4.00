@@ -1,6 +1,7 @@
 //--|🠊 ComponentsLeftbar.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/components';
+import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
 
 interface InfoProps {
   info: {
@@ -24,6 +25,19 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
+        <MenuCarousel
+          cases={{ axis: '[y]', link: 'elements-main', array: [''] }}
+          style={{
+            view: '-lef-',
+            color: '(mono)',
+            shade: '~light~',
+            type: '{select}',
+          }}
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+          }}
+        />
         <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>

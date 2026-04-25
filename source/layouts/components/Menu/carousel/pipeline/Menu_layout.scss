@@ -1,0 +1,155 @@
+//--|🠊 carousel/pipeline/Menu_layout.scss 🠈|--\\
+//--|🠊 Layout: Grid and flex styles 🠈|--\\
+
+@mixin desktop-layout {
+  @include style-clip;
+  @include style-axis;
+  @include style-grid;
+  @include style-flex;
+}
+@mixin mobile-layout {
+  /*
+  //--|🠉 64px: Left & Right 🠉|--\\
+
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+  */
+}
+//--|===|--\\
+@mixin style-grid {
+  %select-grid {
+    &[class*='_lef'] {
+      background: rgba(darkgreen, 0.5);
+    }
+
+    //--|===|--\\
+    &[class*='_top'] {
+      background: darkred;
+    }
+    &[class*='_rig'] {
+      background: darkred;
+    }
+    &[class*='_bot'] {
+      background: darkred;
+    }
+  }
+  %scroll-grid {
+    &[class*='_top'] {
+      background: rgba(darkgreen, 0.5);
+    }
+
+    //--|===|--\\
+    &[class*='_rig'] {
+      background: darkred;
+    }
+    &[class*='_bot'] {
+      background: darkred;
+    }
+    &[class*='_lef'] {
+      background: darkred;
+    }
+  }
+
+  li[class*='vert'] {
+    //--|🠋 Contains <ol> Element 🠋|--\\
+    ol[class*='_lef'] {
+      @extend %select-grid;
+    }
+    //--|===|--\\
+    ol[class*='scr_'] {
+      //--|🠉 Work on "_sel"! 🠉|--\\
+      background: darkred;
+      @extend %scroll-grid;
+    }
+  }
+
+  li[class*='hori'] {
+    //--|🠋 Contains <ul> Element 🠋|--\\
+    ul[class*='scr_'] {
+      background: darkgreen;
+    }
+
+    //--|===|--\\
+    ul[class*='sel_'] {
+      //--|🠉 Work on "_scr"! 🠉|--\\
+      background: darkred;
+    }
+  }
+}
+@mixin style-axis {
+  //--|🠋 Y-axis 🠋|--\\
+  li[class*='vert'] {
+    @include style-clip;
+  }
+
+  //--|🠋 X-axis 🠋|--\\
+  li[class*='hori'] {
+    @include style-clip;
+  }
+}
+@mixin style-flex {
+  li {
+    height: 100%;
+    ol,
+    ul {
+      height: inherit;
+    }
+  }
+}
+@mixin style-clip {
+  &[class*='_lef_'] {
+    clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    @media screen and (max-height: 768px) {
+      clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      clip-path: inset(0% calc(100% - 48px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+  }
+  &[class*='_rig_'] {
+    clip-path: inset(0% 0% 0% calc(100% - 128px)); //--|🠈 top / right / bottom / left 🠈|--\\
+    @media screen and (max-height: 768px) {
+      clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      clip-path: inset(0% 0% 0% calc(100% - 64px)); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      clip-path: inset(0% 0% 0% calc(100% - 48px)); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+  }
+  &[class*='_top_'] {
+    clip-path: inset(0% 0% calc(100% - 128px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    @media screen and (max-height: 768px) {
+      clip-path: inset(0% 0% calc(100% - 96px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      clip-path: inset(0% 0% calc(100% - 64px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      clip-path: inset(0% 0% calc(100% - 48px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+  }
+  &[class*='_bot_'] {
+    clip-path: inset(calc(100% - 128px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    @media screen and (max-height: 768px) {
+      clip-path: inset(calc(100% - 96px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      clip-path: inset(calc(100% - 64px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      clip-path: inset(calc(100% - 48px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+  }
+}

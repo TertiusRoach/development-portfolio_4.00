@@ -1,0 +1,59 @@
+//--|🠊 carousel/pipeline/Menu_visuals.scss 🠈|--\\
+//--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
+@mixin desktop-visuals {
+  /*
+  //--|🠉 96px: Left & Right 🠉|--\\
+
+  .mon-row {
+    background: rgba(darkred, 0.25);
+  }
+
+  .tue-row {
+    background: rgba(darkgreen, 0.25);
+  }
+
+  .wed-row {
+    background: rgba(darkblue, 0.25);
+  }
+
+  .thu-row {
+    background: rgba(purple, 0.25);
+  }
+
+  .fri-row {
+    background: rgba(yellow, 0.25);
+  }
+
+  .sat-row {
+    background: rgba(pink, 0.25);
+  }
+
+  .sun-row {
+    background: rgba(orange, 0.25);
+  }
+  @media screen and (max-height: 768px) {
+    //--|🠉 64px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  */
+}
+@mixin mobile-visuals {
+  /*
+  //--|🠉 64px: Left & Right 🠉|--\\
+
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+  */
+}
