@@ -12,10 +12,9 @@ export function createClass(style: StyleProps): String {
   return `${type}_${view}_${shade}_${color}`;
 }
 
-export function labelStyle(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string {
+export function createStyle(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string {
   return `${abbrType(type)}_${abbrView(view)}`;
 }
-export default createClass;
 
 interface InfoProps {
   pageName: string;
@@ -28,13 +27,16 @@ interface StyleProps {
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
 }
 interface CasesProps {
-  link: string;
+  items: number;
   axis: '[x]' | '[y]';
   array: Array<string>;
 }
 
 export function labelList(style: StyleProps, cases: CasesProps): string {
   return `${abbrView(style.view)}_${abbrAxis(cases.axis)}`;
+}
+export function labelButtons(style: StyleProps, cases: CasesProps): string {
+  return `${abbrType(style.type)}_${abbrView(style.view)}`;
 }
 
 //--|🠋 Scoped Functions 🠋|--\\

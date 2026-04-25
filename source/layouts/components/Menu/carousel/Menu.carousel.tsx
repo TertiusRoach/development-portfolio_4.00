@@ -1,17 +1,20 @@
 //--|🠊 Menu.carousel.tsx 🠈|--\\
+
 //--|🠋 Styles 🠋|--\\
 import './Menu.carousel.scss';
+
+//--|🠋 Addons 🠋|--\\
+import { selectLef } from './addons/select';
+import { scrollTop } from './addons/scroll';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../functions';
+import { labelList, labelButtons } from './Menu_carousel';
+import { createClass, createStyle } from './Menu_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Functions 🠋|--\\
-import createClass from './Menu_carousel';
-import { stripBrackets } from '../../functions';
-import { labelList, labelStyle } from './Menu_carousel';
-
-//--|🠋 Components 🠋|--\\
-import RoutingButton from '../../../containers/Main/ComponentsMain/elements/button-components/routing-button/RoutingButton';
 interface TheseProps {
   info: {
     pageName: string;
@@ -24,9 +27,9 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    link: string;
+    items: number;
     axis: '[x]' | '[y]';
-    array: Array<string>;
+    paths: Array<string>;
   };
 
   onClick?: () => void;
@@ -44,41 +47,70 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     setTimeout(() => {
       console.log(info.pageName, info.blockName);
       console.log(style.color, style.shade, style.type, style.view);
-      console.log(cases.array, cases.axis, cases.link);
+      // console.log(cases.paths, cases.axis, cases.link);
     }, 30000);
   }, [pageName, blockName]);
 
-  return <menu className={`carousel-${blockName} ${labelName}`}>{buildTags(info, style, cases)}</menu>;
+  return <menu className={`carousel-${blockName} ${labelName}`}>{buildMenu(style, cases)}</menu>;
 };
 export default MenuCarousel;
 
-function buildTags(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
+function buildMenu(style: TheseProps['style'], cases: TheseProps['cases']) {
   const caseAxis: '[x]' | '[y]' = cases.axis;
+
   let styleType: '{select}' | '{scroll}' = style.type;
   let styleShade: '~dark~' | '~medium~' | '~light~' = style.shade;
   let styleView: '-top-' | '-rig-' | '-bot-' | '-lef-' = style.view;
   let styleColor: '(red)' | '(green)' | '(blue)' | '(mono)' = style.color;
 
+  let labelName: string = '';
+  if (style.type === '{select}') {
+    labelName = `sel_${labelList(style, cases)}`;
+  } else if (style.type === '{scroll}') {
+    labelName = `scr_${labelList(style, cases)}`;
+  }
   switch (caseAxis) {
     case '[x]':
-      return <li className={`${labelList(style, cases)}`}>{markAxis(style.type, style.view, '[x]')}</li>;
+      return (
+        <li className={`${labelList(style, cases)}`}>
+          {buildList('[x]', cases.items, labelName as 'scr_top', style, cases.paths)}
+        </li>
+      );
     case '[y]':
-      return <li className={`${labelList(style, cases)}`}>{markAxis(style.type, style.view, '[y]')}</li>;
+      return (
+        <li className={`${labelList(style, cases)}`}>
+          {buildList('[y]', cases.items, labelName as 'sel_lef', style, cases.paths)}
+        </li>
+      );
   }
 }
-function markAxis(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-', axis: '[x]' | '[y]') {
+function buildList(
+  axis: '[x]' | '[y]',
+  items: number,
+  label: 'sel_lef' | 'scr_top',
+  style: TheseProps['style'],
+  paths: Array<string>,
+) {
   switch (axis) {
     case '[x]':
-      return <ul className={labelStyle(type, view)}>{returnElements(type, view)}</ul>;
+      return (
+        <ul className={createStyle(style.type, style.view) as 'scr_top'}>
+          {buildButtons('[x]', items, label as 'top_hori', paths as Array<string>)}
+        </ul>
+      );
     case '[y]':
-      return <ol className={labelStyle(type, view)}>{returnElements(type, view)}</ol>;
+      return (
+        <ol className={createStyle(style.type, style.view) as 'sel_lef'}>
+          {buildButtons('[y]', items, label as 'lef_vert', paths as Array<string>)}
+        </ol>
+      );
   }
 }
-function returnElements(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-') {
-  switch (type) {
-    case '{select}':
-      return <></>;
-    case '{scroll}':
-      return <></>;
+function buildButtons(axis: '[x]' | '[y]', items: number, label: 'top_hori' | 'lef_vert', paths: Array<string>) {
+  switch (label) {
+    case 'top_hori':
+      return <li className={label}>{scrollTop('[x]', items, label as 'top_hori', paths as Array<string>)}</li>;
+    case 'lef_vert':
+      return <li className={label}>{selectLef('[y]', items, label as 'lef_vert', paths as Array<string>)}</li>;
   }
 }
