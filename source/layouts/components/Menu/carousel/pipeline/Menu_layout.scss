@@ -22,6 +22,7 @@
   }
   */
 }
+
 //--|===|--\\
 @mixin style-grid {
   %select-grid {
@@ -97,6 +98,7 @@
 @mixin style-flex {
   li {
     height: 100%;
+    overflow-y: auto;
     ol,
     ul {
       height: inherit;
