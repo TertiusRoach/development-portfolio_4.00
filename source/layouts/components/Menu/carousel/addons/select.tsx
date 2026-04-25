@@ -2,12 +2,13 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
-import RoutingButton from '../../../../containers/Main/ComponentsMain/elements/button-components/routing-button/RoutingButton';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 export const selectLef = (axis: '[y]', items: number, label: 'lef_vert', paths: Array<string>) => {
   console.log(items);
   console.log(paths);
   return <></>;
 };
+
 //--|===|--\\
 // export const selectTop = (type: '{select}', view: '-top-', axis: '[x]' | '[y]') => {
 //   console.log(axis);

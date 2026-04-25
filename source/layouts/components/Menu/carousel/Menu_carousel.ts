@@ -33,7 +33,7 @@ interface CasesProps {
 }
 
 export function labelList(style: StyleProps, cases: CasesProps): string {
-  return `${abbrView(style.view)}_${abbrAxis(cases.axis)}`;
+  return `${abbrAxis(cases.axis)}_${abbrView(style.view)}`;
 }
 export function labelButtons(style: StyleProps, cases: CasesProps): string {
   return `${abbrType(style.type)}_${abbrView(style.view)}`;

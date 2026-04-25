@@ -101,6 +101,20 @@
     ul {
       height: inherit;
     }
+
+    width: 128px; //--|🠋 128px for Squares 🠋|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      width: 96px; //--|🠋 96px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      width: 64px; //--|🠋 64px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      width: 48px; //--|🠋 48px for Squares 🠋|--\\
+    }
   }
 }
 @mixin style-clip {

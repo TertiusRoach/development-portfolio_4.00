@@ -14,11 +14,13 @@ import { createClass, createStyle } from './Menu_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
+import ButtonRouting from '../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    roleName: string;
   };
   style: {
     type: '{select}' | '{scroll}';
@@ -101,16 +103,147 @@ function buildList(
     case '[y]':
       return (
         <ol className={createStyle(style.type, style.view) as 'sel_lef'}>
-          {buildButtons('[y]', items, label as 'lef_vert', paths as Array<string>)}
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[0]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[1]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[2]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[3]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[4]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[5]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[6]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[7]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[8]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              image: `${paths[9]}`,
+            }}
+            info={{
+              blockName: 'leftbar',
+              pageName: 'components',
+            }}
+          />
         </ol>
       );
-  }
-}
-function buildButtons(axis: '[x]' | '[y]', items: number, label: 'top_hori' | 'lef_vert', paths: Array<string>) {
-  switch (label) {
-    case 'top_hori':
-      return <li className={label}>{scrollTop('[x]', items, label as 'top_hori', paths as Array<string>)}</li>;
-    case 'lef_vert':
-      return <li className={label}>{selectLef('[y]', items, label as 'lef_vert', paths as Array<string>)}</li>;
   }
 }
