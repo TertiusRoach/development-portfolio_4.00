@@ -49,7 +49,7 @@
   }
 }
 aside[id='components-leftbar'] {
-  background: rgba(darkred, 0.25);
+  // background: rgba(darkred, 0.25);
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
     @include Mixins.landscape-grid;

@@ -26,18 +26,18 @@
 @mixin style-grid {
   %select-grid {
     &[class*='_lef'] {
-      background: rgba(darkgreen, 0.5);
+      // background: rgba(darkgreen, 0.5);
     }
 
     //--|===|--\\
     &[class*='_top'] {
-      background: darkred;
+      // background: darkred;
     }
     &[class*='_rig'] {
-      background: darkred;
+      // background: darkred;
     }
     &[class*='_bot'] {
-      background: darkred;
+      // background: darkred;
     }
   }
   %scroll-grid {
@@ -47,13 +47,13 @@
 
     //--|===|--\\
     &[class*='_rig'] {
-      background: darkred;
+      // background: darkred;
     }
     &[class*='_bot'] {
-      background: darkred;
+      // background: darkred;
     }
     &[class*='_lef'] {
-      background: darkred;
+      // background: darkred;
     }
   }
 
