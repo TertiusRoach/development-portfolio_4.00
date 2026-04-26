@@ -5,6 +5,9 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import ButtonRouting from '../../../../Button/routing/Button.routing';
 
+//--|🠋 Functions 🠋|--\\
+import { markMenu, selectSection } from './Select_carousel';
+
 interface TheseProps {
   info: {
     pageName: string;
@@ -46,8 +49,8 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
             style={{
               size: '<h1>',
               view: 'mid-lef', // You could also dynamically use style.view here!
-              shade: '~light~', // You could use style.shade here
               color: '(mono)', // You could use style.color here
+              shade: '~light~', // You could use style.shade here
               type: '{button}',
               image: path, // 👈 This puts the current image link here!
             }}
@@ -56,6 +59,8 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
+            onClick={(event) => selectSection(info.pageName, info.blockName, event)}
+            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
           />
         </li>
       ))}

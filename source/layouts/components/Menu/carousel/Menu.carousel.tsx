@@ -8,8 +8,8 @@ import SelectCarousel from './addons/select-carousel/SelectCarousel';
 import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../functions';
-import { labelList, labelButtons } from './Menu_carousel';
+import stripBrackets from '../../functions';
+import { labelList } from './Menu_carousel';
 import { createClass, createStyle } from './Menu_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
@@ -62,7 +62,6 @@ function buildMenu(info: TheseProps['info'], style: TheseProps['style'], cases: 
   } else if (style.type === '{scroll}') {
     layoutPreview = `scr_${labelList(style)}`;
   }
-  console.log();
   switch (styleAxis) {
     case '[x]':
       return (

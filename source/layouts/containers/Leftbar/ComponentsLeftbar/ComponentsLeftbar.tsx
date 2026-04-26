@@ -1,5 +1,6 @@
 //--|🠊 ComponentsLeftbar.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { selectCarousel } from './ComponentsFunctions';
 import { stripBrackets } from '../../../scripts/components';
 
 //--|🠋 Components 🠋|--\\
@@ -31,16 +32,12 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/table-element.svg',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/time-element.svg',
   ];
+  const tagLink: Array<string> = [''];
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {
-    const menuCarousel = document.querySelector('menu[class*="carousel"]') as HTMLElement;
-    const divisionCarousel = document.querySelector('div[class*="carousel"]') as HTMLElement;
-    console.log(menuCarousel);
-    console.log(divisionCarousel);
-  }, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
   return (
@@ -60,7 +57,7 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName as '<leftbar>',
             pageName: pageName as '[components]',
           }}
-          // onClick={() => }
+          // onClick={() => selectCarousel(pageName, blockName, 'select-element')}
         />
         <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>
       </section>
