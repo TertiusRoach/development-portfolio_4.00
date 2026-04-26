@@ -515,6 +515,11 @@
     }
   }
   %leftbar-transition {
+    &[class*='unfolded'] {
+    }
+    &[class*='expanded'] {
+      transition: clip-path 0.25s;
+    }
     /*--|🠋
 
     🠉|--*/
@@ -567,6 +572,9 @@
     //--|🠊 Definition: Serving as part of a whole 🠈|--\\
     @media screen and (orientation: landscape) {
       &[class*='unfolded'] {
+        /*--|🠋
+
+        🠉|--*/
         clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-height: 768px) {
           clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -579,11 +587,29 @@
         }
       }
       &[class*='expanded'] {
-        transition: clip-path 0.25s;
+        @extend %menu-constituents;
         clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
       }
       &[class*='collapsed'] {
+        @extend %menu-constituents;
         clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+      }
+
+      %menu-constituents {
+        section[class='leftbar-foreground'] {
+          menu[class*='leftbar_carousel'] {
+            transform: translateX(-128px);
+            @media screen and (max-height: 768px) {
+              transform: translateX(-96px);
+            }
+            @media screen and (max-height: 480px) {
+              transform: translateX(-64px);
+            }
+            @media screen and (max-height: 360px) {
+              transform: translateX(-48px);
+            }
+          }
+        }
       }
     }
     @media screen and (orientation: portrait) {

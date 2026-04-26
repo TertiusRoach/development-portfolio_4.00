@@ -1,4 +1,6 @@
 //--|🠊 Division_carousel.ts 🠈|--\\
+import { stripBrackets } from '../../functions';
+
 function previewElement(pageName: string, blockName: string, labelName: string, blockAction: 'next-view' | 'prev-view') {
   // (1) Query safely: allow null
   const tableWeek = document.querySelector(
@@ -62,5 +64,55 @@ function previewElement(pageName: string, blockName: string, labelName: string, 
   console.log('position (1-based):', position1Based);
 }
 export default previewElement;
-export function scrollCarousel(cases: object) {}
-export function selectCarousel(cases: object) {}
+export const abbrType = (type: '{select}' | '{scroll}'): string => {
+  const typeMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '{select}': 'sel',
+    '{scroll}': 'scr',
+  };
+
+  const classType = typeMap[type];
+
+  return `${classType}`;
+};
+export const abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string => {
+  const classView = stripBrackets(view, '--');
+
+  return `${classView}`;
+};
+export const abbrShade = (shade: '~dark~' | '~medium~' | '~light~'): string => {
+  const shadeMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '~dark~': 'dar',
+    '~medium~': 'med',
+    '~light~': 'lig',
+  };
+
+  const classShade = shadeMap[shade];
+
+  return `${classShade}`;
+};
+export const abbrColor = (color: '(red)' | '(green)' | '(blue)' | '(mono)'): string => {
+  const colorMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '(red)': 'red',
+    '(green)': 'gre',
+    '(blue)': 'blu',
+    '(mono)': 'mon',
+  };
+
+  const classColor = colorMap[color];
+
+  return `${classColor}`;
+};
+export const abbrAxis = (axis: '[x]' | '[y]'): string => {
+  const axisMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '[x]': 'hori',
+    '[y]': 'vert',
+  };
+
+  const classAxis = axisMap[axis];
+
+  return `${classAxis}`;
+};

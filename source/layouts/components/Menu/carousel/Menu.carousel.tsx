@@ -15,7 +15,9 @@ import { createClass, createStyle } from './Menu_carousel';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
-import { selectCarousel } from '../../Division/carousel/Division_carousel';
+
+//--|🠋 Components 🠋|--\\
+import selectCarousel from '../../Division/carousel/Division_carousel';
 
 interface TheseProps {
   info: {

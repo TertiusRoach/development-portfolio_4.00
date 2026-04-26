@@ -6,6 +6,8 @@
   li[class*='_sel'] {
     @include desk-grid;
     @include desk-flex;
+  }
+  li {
     @include Mixins.clip-menu();
   }
 }
