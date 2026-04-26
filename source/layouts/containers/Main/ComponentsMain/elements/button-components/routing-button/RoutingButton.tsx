@@ -23,7 +23,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<RoutingButton>`}</h1>
+        <h1 className="display-1">{`<RoutingButtonComponents>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

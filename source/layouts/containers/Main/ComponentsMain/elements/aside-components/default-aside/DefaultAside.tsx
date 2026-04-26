@@ -23,7 +23,7 @@ const DefaultAside: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<DefaultArticle>`}</h1>
+        <h1 className="display-1">{`<DefaultAside>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

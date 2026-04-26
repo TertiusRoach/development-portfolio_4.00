@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Button.profile.scss';
 //--|🠋 Functions 🠋|--\\
+import stripBrackets from '../../functions';
 import { createClass } from './Button_profile';
-import { stripBrackets } from '../../functions';
 
 interface TheseProps {
   info: {

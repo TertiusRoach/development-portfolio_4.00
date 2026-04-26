@@ -1,9 +1,7 @@
 //--|🠊 Menu_carousel.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../functions';
-
-//--|🠋 Scoped Functions 🠋|--\\
-import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../Division/carousel/Division_carousel';
+import stripBrackets from '../../functions';
+import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../functions';
 
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <DefaultButton> 🠈|--\\

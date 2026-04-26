@@ -1,7 +1,12 @@
 //--|🠊 ComponentsLeftbar.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/components';
+
+//--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 interface InfoProps {
   info: {
@@ -14,14 +19,6 @@ interface InfoProps {
   };
 }
 const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
-
-  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
-
-  useEffect(() => {}, [pageName, blockName]);
-
   const svgPath: Array<string> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/article-element.svg',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/aside-element.svg',
@@ -34,7 +31,18 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/table-element.svg',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/time-element.svg',
   ];
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
+  useEffect(() => {
+    const menuCarousel = document.querySelector('menu[class*="carousel"]') as HTMLElement;
+    const divisionCarousel = document.querySelector('div[class*="carousel"]') as HTMLElement;
+    console.log(menuCarousel);
+    console.log(divisionCarousel);
+  }, [pageName, blockName]);
+
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
@@ -52,6 +60,7 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName as '<leftbar>',
             pageName: pageName as '[components]',
           }}
+          // onClick={() => }
         />
         <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>
       </section>

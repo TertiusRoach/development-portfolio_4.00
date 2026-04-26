@@ -20,7 +20,7 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
   useEffect(() => {
     setTimeout(() => {
       console.log(`|🠊 Link: <div class="${labelName}-${blockName}_carousel"> 🠈|`);
-    }, 15000);
+    }, 3600000);
   }, [pageName, blockName]);
 
   return (

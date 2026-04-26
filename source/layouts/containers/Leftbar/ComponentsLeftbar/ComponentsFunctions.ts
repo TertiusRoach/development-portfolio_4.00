@@ -1,4 +1,11 @@
 //--|🠊 Leftbar/ComponentsFunctions.ts 🠈|--\\
+
+export function scrollCarousel(
+  pageName: string,
+  blockName: string,
+  blockAction: 'go-up' | 'scroll-down' | String,
+  blockPreview: 'default-buttons' | 'routing-buttons' | String,
+) {}
 /*
 import * as React from 'react';
 export function controlPreview(
