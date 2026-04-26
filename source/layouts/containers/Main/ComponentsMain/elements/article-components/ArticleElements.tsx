@@ -23,8 +23,10 @@ const ArticleElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
-        cases={{
+        style={{
           axis: '[x]',
+        }}
+        cases={{
           call: ArticleComponents,
         }}
         info={{

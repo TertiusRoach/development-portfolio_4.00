@@ -1,0 +1,153 @@
+//--|🠊 carousel/addons/select-carousel 🠈|--\\
+@use '../../../../../designs/Mixins.scss';
+@use '../../../../../designs/Palettes.scss';
+
+@mixin desktop-select {
+  li[class*='_sel'] {
+    @include desk-grid;
+    @include desk-flex;
+    @include Mixins.clip-menu();
+  }
+}
+@mixin mobile-select {
+}
+
+@mixin desk-grid {
+  /*
+  %select-grid {
+    &[class*='_lef'] {
+      // background: rgba(darkgreen, 0.5);
+    }
+
+    //--|===|--\\
+    &[class*='_top'] {
+      // background: darkred;
+    }
+    &[class*='_rig'] {
+      // background: darkred;
+    }
+    &[class*='_bot'] {
+      // background: darkred;
+    }
+  }
+  %scroll-grid {
+    &[class*='_top'] {
+      background: rgba(darkgreen, 0.5);
+    }
+
+    //--|===|--\\
+    &[class*='_rig'] {
+      // background: darkred;
+    }
+    &[class*='_bot'] {
+      // background: darkred;
+    }
+    &[class*='_lef'] {
+      // background: darkred;
+    }
+  }
+
+  li[class*='vert'] {
+    //--|🠋 Contains <ol> Element 🠋|--\\
+    ol[class*='_lef'] {
+      @extend %select-grid;
+    }
+    //--|===|--\\
+    ol[class*='scr_'] {
+      //--|🠉 Work on "_sel"! 🠉|--\\
+      background: darkred;
+      @extend %scroll-grid;
+    }
+  }
+
+  li[class*='hori'] {
+    //--|🠋 Contains <ul> Element 🠋|--\\
+    ul[class*='scr_'] {
+      background: darkgreen;
+    }
+
+    //--|===|--\\
+    ul[class*='sel_'] {
+      //--|🠉 Work on "_scr"! 🠉|--\\
+      background: darkred;
+    }
+  }
+  */
+}
+
+@mixin desk-flex {
+  //--|🠋 Y-axis 🠋|--\\
+  &[class*='vert_lef'] {
+    height: 100%;
+    overflow-y: auto;
+    ol {
+      height: inherit;
+      & {
+        li:first-child {
+          padding-top: 8rem;
+        }
+        li {
+          padding: 1rem 0;
+        }
+        li:last-child {
+          padding-bottom: 8rem;
+        }
+      }
+      @media screen and (max-height: 768px) {
+        & {
+          li:first-child {
+            padding-top: 6rem;
+          }
+          li {
+            padding: 0.75rem 0;
+          }
+          li:last-child {
+            padding-bottom: 6rem;
+          }
+        }
+      }
+      @media screen and (max-height: 480px) {
+        & {
+          li:first-child {
+            padding-top: 4rem;
+          }
+          li {
+            padding: 0.5rem 0;
+          }
+          li:last-child {
+            padding-bottom: 4rem;
+          }
+        }
+      }
+      @media screen and (max-height: 360px) {
+        & {
+          li:first-child {
+            padding-top: 3rem;
+          }
+          li {
+            padding: 0.25rem 0;
+          }
+          li:last-child {
+            padding-bottom: 3rem;
+          }
+        }
+      }
+    }
+  }
+  @include square-menu();
+}
+@mixin square-menu {
+  width: 128px; //--|🠋 128px for Squares 🠋|--\\
+  @media screen and (max-height: 768px) {
+    //--|🠋 96px for Squares 🠋|--\\
+    width: 96px; //--|🠋 96px for Squares 🠋|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠋 64px for Squares 🠋|--\\
+    width: 64px; //--|🠋 64px for Squares 🠋|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠋 48px for Squares 🠋|--\\
+    width: 48px; //--|🠋 48px for Squares 🠋|--\\
+  }
+}

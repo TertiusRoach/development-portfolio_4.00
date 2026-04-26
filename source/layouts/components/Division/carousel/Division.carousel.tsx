@@ -9,29 +9,19 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 
-interface TheseProps<Names extends Info> {
-  info: Names;
-  cases: {
-    axis: '[x]' | '[y]';
-    call: React.ComponentType<{ info: Names }>;
-  };
-}
-
-interface Info {
-  pageName: string;
-  blockName: string;
-  labelName: string;
-}
-
-const DivisionCarousel = <T extends Info>({ info, cases }: TheseProps<T>) => {
+const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
   const CallTag = cases.call;
-  const ListItem = cases.axis === '[x]' ? 'ul' : 'ol';
+  const ListItem = style.axis === '[x]' ? 'ul' : 'ol';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`|🠊 Link: <div class="${labelName}-${blockName}_carousel"> 🠈|`);
+    }, 15000);
+  }, [pageName, blockName]);
 
   return (
     <div className={`${labelName}-${blockName}_carousel`}>
@@ -45,4 +35,18 @@ const DivisionCarousel = <T extends Info>({ info, cases }: TheseProps<T>) => {
     </div>
   );
 };
+interface TheseProps<Names extends PropsInfo> {
+  info: Names;
+  style: {
+    axis: '[x]' | '[y]';
+  };
+  cases: {
+    call: React.ComponentType<{ info: Names }>;
+  };
+}
+interface PropsInfo {
+  pageName: string;
+  blockName: string;
+  labelName: string;
+}
 export default DivisionCarousel;

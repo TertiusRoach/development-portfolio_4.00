@@ -44,8 +44,10 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
       <section className={`${blockName}-foreground`}>
         <DivisionCarousel
           //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
-          cases={{
+          style={{
             axis: '[y]',
+          }}
+          cases={{
             call: ComponentsElements,
           }}
           info={{

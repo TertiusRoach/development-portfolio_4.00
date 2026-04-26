@@ -39,16 +39,18 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <MenuCarousel
-          cases={{ axis: '[y]', items: 10, paths: svgPath as Array<string> }}
           style={{
+            axis: '[y]',
             view: '-lef-',
             color: '(mono)',
             shade: '~light~',
             type: '{select}',
           }}
+          cases={{ paths: svgPath as Array<string> }}
           info={{
-            pageName: pageName,
-            blockName: blockName,
+            labelName: 'elements',
+            blockName: blockName as '<leftbar>',
+            pageName: pageName as '[components]',
           }}
         />
         <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>

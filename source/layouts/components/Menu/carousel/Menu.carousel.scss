@@ -3,6 +3,7 @@
 @use './pipeline/Menu_letters.scss';
 @use './pipeline/Menu_motion.scss';
 @use './pipeline/Menu_visuals.scss';
+@use './pipeline/Menu_queries.scss';
 
 menu[class*='carousel'] {
   @media screen and (orientation: landscape) {
@@ -10,11 +11,13 @@ menu[class*='carousel'] {
     @include Menu_motion.desktop-motion();
     @include Menu_visuals.desktop-visuals();
     @include Menu_letters.desktop-letters();
+    @include Menu_queries.desktop-queries();
   }
   @media screen and (orientation: portrait) {
     @include Menu_layout.mobile-layout();
     @include Menu_motion.mobile-motion();
     @include Menu_visuals.mobile-visuals();
     @include Menu_letters.mobile-letters();
+    @include Menu_queries.mobile-queries();
   }
 }
