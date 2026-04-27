@@ -1,5 +1,4 @@
 //--|🠊 Menu.carousel.tsx 🠈|--\\
-
 //--|🠋 Styles 🠋|--\\
 import './Menu.carousel.scss';
 
@@ -42,52 +41,61 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
-  // const labelName = createClass(style as TheseProps['style']) as string;
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(`|🠊 Link: <menu class="${labelName}-${blockName}_carousel"> 🠈|`);
-    }, 15000);
-  }, [pageName, blockName]);
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  const buildMenu = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+    const styleAxis: '[x]' | '[y]' = style.axis;
 
-  return <menu className={`${labelName}-${blockName}_carousel`}>{buildMenu(info, style, cases)}</menu>;
+    let layoutPreview: string = '';
+    if (style.type === '{select}') {
+      layoutPreview = `sel_${labelList(style)}`;
+    } else if (style.type === '{scroll}') {
+      layoutPreview = `scr_${labelList(style)}`;
+    }
+
+    switch (styleAxis) {
+      case '[x]':
+        return (
+          <li className={`${createClass(style)}`}>
+            <ul>{callAddon(info, style, cases)}</ul>
+          </li>
+        );
+      case '[y]':
+        return (
+          <li className={`${createClass(style)}`}>
+            <ol>{callAddon(info, style, cases)}</ol>
+          </li>
+        );
+    }
+
+    let styleType: '{select}' | '{scroll}' = style.type;
+    let styleShade: '~dark~' | '~medium~' | '~light~' = style.shade;
+    let styleView: '-top-' | '-rig-' | '-bot-' | '-lef-' = style.view;
+    let styleColor: '(red)' | '(green)' | '(blue)' | '(mono)' = style.color;
+  };
+  //--|🠊 Loads <DefaultButton> or <RoutingButton> 🠈|--\\
+  const callAddon = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+    switch (style.type) {
+      case '{scroll}':
+        return <ScrollCarousel info={info} style={style} cases={cases} />;
+      case '{select}':
+        return <SelectCarousel info={info} style={style} cases={cases} />;
+    }
+  };
+
+  useEffect(() => {}, [pageName, blockName]);
+
+  return (
+    <menu
+      className={`${labelName}-${blockName}_carousel`}
+      onMouseEnter={(event) => {
+        console.log('Mouse entered the carousel menu!');
+        // You can also pass the event or call a function here:
+        // myHoverFunction(info.pageName, event);
+      }}
+    >
+      {buildMenu(info, style, cases)}
+    </menu>
+  );
 };
 export default MenuCarousel;
-
-function buildMenu(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
-  let styleAxis: '[x]' | '[y]' = style.axis;
-  let layoutPreview: string = '';
-  if (style.type === '{select}') {
-    layoutPreview = `sel_${labelList(style)}`;
-  } else if (style.type === '{scroll}') {
-    layoutPreview = `scr_${labelList(style)}`;
-  }
-  switch (styleAxis) {
-    case '[x]':
-      return (
-        <li className={`${createClass(style)}`}>
-          <ul>{buildList(info, style, cases)}</ul>
-        </li>
-      );
-    case '[y]':
-      return (
-        <li className={`${createClass(style)}`}>
-          <ol>{buildList(info, style, cases)}</ol>
-        </li>
-      );
-  }
-
-  let styleType: '{select}' | '{scroll}' = style.type;
-  let styleShade: '~dark~' | '~medium~' | '~light~' = style.shade;
-  let styleView: '-top-' | '-rig-' | '-bot-' | '-lef-' = style.view;
-  let styleColor: '(red)' | '(green)' | '(blue)' | '(mono)' = style.color;
-}
-function buildList(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
-  switch (style.type) {
-    case '{select}':
-      return <SelectCarousel info={info} style={style} cases={cases} />;
-
-    case '{scroll}':
-      return <ScrollCarousel info={info} style={style} cases={cases} />;
-  }
-}

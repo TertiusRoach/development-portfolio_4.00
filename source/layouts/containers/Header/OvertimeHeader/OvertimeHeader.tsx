@@ -33,7 +33,9 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
 
   useEffect(() => {
-    // console.log('//--|🠊 Overtime Loaded 🠈|--\\\\');
+    setTimeout(() => {
+      console.log(`|🠊Load: <header id="${pageName}-${blockName}"> 🠈|`);
+    }, 60000);
   }, [pageName, blockName]);
 
   return (

@@ -249,24 +249,36 @@ npm install --save-dev dotenv-webpack
 
 ---
 
----
-
 # [Front-end Development](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
 
-## State Management
-
-| State Type          | Classes                                  | Purpose                                                                       |
-| ------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
-| **Running State**   | `.active` · `.asleep`                    | Indicate whether a feature is currently in use (active) or parked (asleep)    |
-| **Conceal State**   | `.visible` · `.hidden`                   | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State** | `.expanded` · `.unfolded` · `.collapsed` | Manage sections that can open and close while staying part of the page        |
-| **Emphasis State**  | `.highlight` · `.downplay`               | Guide attention without changing layout or flow                               |
-
 ## [TraLogFin Application](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CHARACTERS.md)
 
 This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point. It also encompasses a lot of storytelling elements. I wanted to do three years to test the demo but realized that it's unnecessary so I might just log 4 weeks, which is a month and play around with that maths.
+
+## State Management: Orchestrating Visibility
+
+These classes are intentionally simple. They act like a UI contract.
+
+| State Type           | Classes                                  | Alt                      | Purpose                                                                    |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Operating State**  | `.active` · `.asleep`                    | `.running` · `.disabled` | Indicate whether an app in use or inactive                                 |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Preview State**    | `.visible` · `.hidden`                   | `.conceal` · `.reveal`   | Used for recording front-end and used on, 'layout/components'              |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Indexed State**    | `.expanded` · `.collapsed`               | `.unfolded`              | Manage sections that can open and close while staying part of the page     |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Emphasize State**  | `.highlight` · `.downplay`               |                          | Applied to <DefaultButton> component for testing before production release |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+
+## Application Roles
+
+| Application      | Role Question           | Options                         |
+| ---------------- | ----------------------- | ------------------------------- |
+| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
+| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
+| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
 
 ### Track a Day
 
@@ -313,21 +325,9 @@ This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed serv
 
 ## CSS & HTML Vocabulary
 
-### Orchestrating Visibility
-
-These classes are intentionally simple. They act like a UI contract.
-
 ### Determining Element Responsibilities
 
 For demonstration purposes, the `roleName` represents the user's selected company position and influences the application's behavior accordingly.
-
-#### Application Roles
-
-| Application      | Role Question           | Options                         |
-| ---------------- | ----------------------- | ------------------------------- |
-| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
-| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
-| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
 
 #### Company Comparisons
 
