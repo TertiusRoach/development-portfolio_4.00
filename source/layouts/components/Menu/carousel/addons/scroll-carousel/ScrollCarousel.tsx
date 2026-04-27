@@ -31,13 +31,13 @@ interface TheseProps {
 const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   return (
     <>
-      {/* 
-        .map() loops through the array.
-        'path' is the current string (like cases.paths[i]).
-        'index' is the current number (like 'i').
-      */}
+      <h1>
+        <span>
+          <b>{`<Default`}</b>
+          <i>{`Button>`}</i>
+        </span>
+      </h1>
       {cases.paths.map((path, index) => (
-        // React requires a unique 'key' prop on the outermost element of a generated list
         <li key={index}>
           <ButtonDefault
             style={{
@@ -57,24 +57,6 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               scrollSection(info.pageName, info.blockName, eventInfo)
             }
           />
-          {/* <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef', // You could also dynamically use style.view here!
-              color: '(mono)', // You could use style.color here
-              shade: '~light~', // You could use style.shade here
-              type: '{button}',
-              image: path, // 👈 This puts the current image link here!
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
-              selectSection(info.pageName, info.blockName, eventInfo)
-            }
-          /> */}
         </li>
       ))}
     </>

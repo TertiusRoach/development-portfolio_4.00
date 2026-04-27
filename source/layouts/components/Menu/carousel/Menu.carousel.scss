@@ -39,44 +39,6 @@ menu[class*='carousel'] {
       //--|🠋 48px for Squares 🠋|--\\
       clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
     }
-    ul {
-      li:first-child,
-      li:last-child {
-        &:first-child {
-          padding-left: calc(128px + 1rem);
-        }
-        &:last-child {
-          padding-right: calc(256px + 1rem);
-        }
-        @media screen and (max-height: 768px) {
-          //--|🠋 96px for Squares 🠋|--\\
-          &:first-child {
-            padding-left: calc(96px + 0.75rem);
-          }
-          &:last-child {
-            padding-right: calc(192px + 0.75rem);
-          }
-        }
-        @media screen and (max-height: 480px) {
-          //--|🠋 64px for Squares 🠋|--\\
-          &:first-child {
-            padding-left: calc(64px + 0.5rem);
-          }
-          &:last-child {
-            padding-right: calc(128px + 0.5rem);
-          }
-        }
-        @media screen and (max-height: 360px) {
-          //--|🠋 48px for Squares 🠋|--\\
-          &:first-child {
-            padding-left: calc(48px + 0.25rem);
-          }
-          &:last-child {
-            padding-right: calc(96px + 0.25rem);
-          }
-        }
-      }
-    }
   }
   &:has(> li:first-child[class*='_lef_']),
   &:has(> li:first-child[class*='_rig_']) {

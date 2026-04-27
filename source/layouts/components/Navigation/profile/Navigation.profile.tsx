@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Navigation_profile';
-import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
-import { previewElement } from '../../Division/carousel/Division_carousel';
+import { collapseLeftbar, expandLeftbar, collapseHeader } from '../../../../scripts';
+// import { previewElement } from '../../Division/carousel/Division_carousel';
 import { viewBody } from '../../../../index';
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
@@ -23,6 +23,12 @@ interface TheseProps {
   };
 }
 const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/logo-white.svg',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
+    '',
+  ];
+
   const pageName: string = info.pageName as 'overtime';
   const blockName: string = info.blockName as 'header';
   const labelName: string = info.labelName as 'profile';
@@ -39,12 +45,6 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
     mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
     return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
   }, [pageName, blockName]);
-
-  let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/logo-white.svg',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
-    '',
-  ];
 
   return (
     <nav className={`${labelName}-${blockName}`}>
@@ -64,8 +64,10 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               view: viewDisplay() as 'top-lef' | 'bot-rig',
               image: `${svgPath[0]}`,
             }}
-            onClick={() => collapseHeader(pageName, 'click', blockName)}
-            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+            onClick={() => {
+              collapseHeader(pageName, 'click', blockName);
+              collapseLeftbar(pageName, 'click', 'leftbar');
+            }}
           />
         </li>
         <li className="load-tags">
@@ -87,52 +89,6 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
         </li>
-        {/*
-        <li className="prev-card">
-          <ButtonDefault
-            info={{
-              labelName: 'prev',
-              blockName: blockName,
-              pageName: pageName,
-            }}
-            style={{
-              size: '<p>',
-              view: '-icon-',
-              text: 'Down',
-              shade: '~light~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/prev-week.svg',
-            }}
-            onClick={() => previewElement(pageName, blockName, labelName, 'prev-view')}
-          />
-        </li>
-        */}
-        {/*
-        <li className="next-card">
-          <ButtonDefault
-            info={{
-              labelName: 'next',
-              blockName: blockName,
-              pageName: pageName,
-            }}
-            style={{
-              size: '<p>',
-              view: '-icon-',
-              text: 'Up',
-              shade: '~light~',
-              color: '(mono)',
-
-              type: '{button}',
-              image:
-                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/next-week.svg',
-            }}
-            onClick={() => previewElement(pageName, blockName, labelName, 'next-view')}
-          />
-        </li>
-        */}
       </ol>
     </nav>
   );

@@ -30,21 +30,23 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <MenuCarousel
-          style={{
-            axis: '[x]',
-            view: '-top-',
-            color: '(mono)',
-            shade: '~dark~',
-            type: '{scroll}',
-          }}
-          cases={{ paths: svgPath as Array<string> }}
-          info={{
-            labelName: 'elements',
-            blockName: blockName as '<leftbar>',
-            pageName: pageName as '[components]',
-          }}
-        />
+        <header className="component-carousels">
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{ paths: svgPath as Array<string> }}
+            info={{
+              labelName: 'buttons',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+        </header>
         <NavigationProfile //--|🠊 <nav class="profile-header"/> 🠈|--\\
           info={{
             pageName: pageName,

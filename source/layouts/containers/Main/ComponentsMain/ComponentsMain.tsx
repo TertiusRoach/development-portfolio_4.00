@@ -122,9 +122,10 @@ function ComponentsElements({ info }: InfoProps) {
 
   return (
     <>
+      <ButtonElements info={buttonInfo} />
+
       <ArticleElements info={articleInfo} />
       <AsideElements info={asideInfo} />
-      <ButtonElements info={buttonInfo} />
       <DivisionElements info={divisionInfo} />
       <FigureElements info={figureInfo} />
       <MenuElements info={menuInfo} />

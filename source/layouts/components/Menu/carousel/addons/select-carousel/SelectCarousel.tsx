@@ -30,6 +30,9 @@ interface TheseProps {
 }
 
 const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
+  useEffect(() => {
+    console.log('djklfljkfasdlkjfasd');
+  }, [info.pageName, info.blockName]);
   return (
     <>
       {/* 
@@ -60,6 +63,53 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
           />
         </li>
       ))}
+
+      {/*
+        <li className="prev-card">
+          <ButtonDefault
+            info={{
+              labelName: 'prev',
+              blockName: blockName,
+              pageName: pageName,
+            }}
+            style={{
+              size: '<p>',
+              view: '-icon-',
+              text: 'Down',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/prev-week.svg',
+            }}
+            onClick={() => previewElement(pageName, blockName, labelName, 'prev-view')}
+          />
+        </li>
+        */}
+      {/*
+        <li className="next-card">
+          <ButtonDefault
+            info={{
+              labelName: 'next',
+              blockName: blockName,
+              pageName: pageName,
+            }}
+            style={{
+              size: '<p>',
+              view: '-icon-',
+              text: 'Up',
+              shade: '~light~',
+              color: '(mono)',
+
+              type: '{button}',
+              image:
+                'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/next-week.svg',
+            }}
+            onClick={() => previewElement(pageName, blockName, labelName, 'next-view')}
+          />
+        </li>
+        */}
     </>
   );
 };

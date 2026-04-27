@@ -148,6 +148,21 @@
       &[class*='unfolded'] {
         clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
         section[class='header-foreground'] {
+          header {
+            clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
+            @media screen and (max-height: 768px) {
+              //--|🠋 96px for Squares 🠋|--\\
+              clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              //--|🠋 64px for Squares 🠋|--\\
+              clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              //--|🠋 48px for Squares 🠋|--\\
+              clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+          }
           nav {
             menu {
               z-index: 1;

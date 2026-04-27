@@ -83,8 +83,6 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     }
   };
 
-  useEffect(() => {}, [pageName, blockName]);
-
   return (
     <menu className={`${labelName}-${blockName}_carousel`} onMouseEnter={() => markMenu(info.pageName, info.blockName)}>
       {buildMenu(info, style, cases)}

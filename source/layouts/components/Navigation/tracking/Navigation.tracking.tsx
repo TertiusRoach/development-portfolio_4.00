@@ -5,8 +5,8 @@ import './Navigation.tracking.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
 import { viewDisplay } from './Navigation_tracking';
+import { expandLeftbar, expandHeader } from '../../../../scripts';
 import { scrollTable } from '../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
