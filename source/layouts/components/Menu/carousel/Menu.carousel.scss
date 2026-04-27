@@ -7,7 +7,6 @@
 
 menu[class*='carousel'] {
   @extend %flex-clip;
-
   @media screen and (orientation: landscape) {
     @include Menu_layout.desktop-layout();
     @include Menu_motion.desktop-motion();

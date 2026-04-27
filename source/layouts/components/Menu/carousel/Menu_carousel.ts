@@ -63,11 +63,35 @@ export function markMenu(pageName: string, blockName: string) {
   const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
   const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
 
-  const scrollYMenu = getTags('[x]', '{scroll}')?.menu as HTMLElement;
-  const scrollYCarousel = getTags('[x]', '{scroll}')?.division as HTMLElement;
+  const scrollXMenu = getTags('[x]', '{scroll}')?.menu as HTMLElement;
+  const scrollXCarousel = getTags('[x]', '{scroll}')?.division as HTMLElement;
 
-  console.log(scrollYMenu);
-  console.log(scrollYCarousel);
+  if (scrollXCarousel.childElementCount !== scrollXMenu.childElementCount) {
+    for (let i = 0; i < scrollXCarousel.childElementCount; i++) {
+      const carAside = scrollXCarousel.childNodes[i] as HTMLElement;
+      console.log(carAside.classList[0]);
+
+      /*
+      Using TypeScript: Create the following elements in this order...
+
+      
+      <li className="carousel-preview">
+        <span class=`${carAside.classList[0]}>
+          <h1 className={`${info.labelName}-${info.blockName} I`}>
+            <b>{`<{carAside.classList[0].split('-')[0]}`}</b>
+            <i>{`Button>`}</i>
+          </h1>
+        </span>
+        <span>
+          <h1 className={`${info.labelName}-${info.blockName} I`}>
+            <b>{`<{carAside.classList[0].split('-')[0]}`}</b>
+            <i>{`Button>`}</i>
+          </h1>
+        </span>
+      </li>
+      */
+    }
+  }
 
   const yParent = selectYCarousel.parentElement as HTMLLIElement;
   const yPosition: string = yParent.className;

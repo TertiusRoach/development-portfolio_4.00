@@ -54,6 +54,22 @@
       grid-template-columns: 48px 1fr 48px;
     }
   }
+  %grid-width {
+    text-align: center;
+    width: calc(100vw - 128px * 2);
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      width: calc(100vw - 96px * 2);
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      width: calc(100vw - 64px * 2);
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      width: calc(100vw - 48px * 2);
+    }
+  }
   &[class*='hori_top'] {
     ul {
       display: grid;
@@ -62,18 +78,22 @@
 
       li:first-child {
         grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        h1 {
+        // overflow-x: hidden;
+        width: 100%;
+        span {
+          position: relative;
+
+          flex-direction: row;
+
           display: flex;
           align-items: center;
-          @extend %flex-height;
-
-          &:nth-child(1) {
-            background: darkred;
-          }
-          &:nth-child(2) {
-            background: darkred;
-          }
           justify-content: center;
+
+          @extend %grid-height;
+          h1 {
+            // position: absolute;
+            // @extend %grid-width;
+          }
         }
       }
       li.button:nth-child(2) {
@@ -99,10 +119,10 @@
       }
     }
     &[class*='_top_'] {
-      @extend %flex-height;
+      @extend %grid-height;
     }
   }
-  %flex-height {
+  %grid-height {
     height: 128px; //--|🠋 128px for Squares 🠋|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 96px for Squares 🠋|--\\
