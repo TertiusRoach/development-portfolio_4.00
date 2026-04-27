@@ -33,8 +33,8 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   // console.log(document.querySelector(`#${info.pageName}-main`));
   return (
     <>
-      {/* <li className="carousel-preview"> */}
-      {/* <span>
+      <li>
+        <span className="carousel-preview">
           <h1 className={`${info.labelName}-${info.blockName} I`}>
             <b>{`<{Default}`}</b>
             <i>{`Button>`}</i>
@@ -45,8 +45,8 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
             <b>{`<{Routing`}</b>
             <i>{`Button>`}</i>
           </h1>
-        </span> */}
-      {/* </li> */}
+        </span>
+      </li>
       {cases.paths.map((path, index) => (
         <li className={`button`} key={index}>
           <ButtonDefault
