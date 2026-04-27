@@ -16,8 +16,8 @@ interface TheseProps {
     labelName: string;
   };
   style: {
+    type: '{select}';
     axis: '[x]' | '[y]';
-    type: '{select}' | '{scroll}';
     shade: '~dark~' | '~medium~' | '~light~';
     view: '-top-' | '-rig-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';

@@ -15,66 +15,6 @@
 }
 
 @mixin desk-grid {
-  /*
-  %select-grid {
-    &[class*='_lef'] {
-      // background: rgba(darkgreen, 0.5);
-    }
-
-    //--|===|--\\
-    &[class*='_top'] {
-      // background: darkred;
-    }
-    &[class*='_rig'] {
-      // background: darkred;
-    }
-    &[class*='_bot'] {
-      // background: darkred;
-    }
-  }
-  %scroll-grid {
-    &[class*='_top'] {
-      background: rgba(darkgreen, 0.5);
-    }
-
-    //--|===|--\\
-    &[class*='_rig'] {
-      // background: darkred;
-    }
-    &[class*='_bot'] {
-      // background: darkred;
-    }
-    &[class*='_lef'] {
-      // background: darkred;
-    }
-  }
-
-  li[class*='vert'] {
-    //--|🠋 Contains <ol> Element 🠋|--\\
-    ol[class*='_lef'] {
-      @extend %select-grid;
-    }
-    //--|===|--\\
-    ol[class*='scr_'] {
-      //--|🠉 Work on "_sel"! 🠉|--\\
-      background: darkred;
-      @extend %scroll-grid;
-    }
-  }
-
-  li[class*='hori'] {
-    //--|🠋 Contains <ul> Element 🠋|--\\
-    ul[class*='scr_'] {
-      background: darkgreen;
-    }
-
-    //--|===|--\\
-    ul[class*='sel_'] {
-      //--|🠉 Work on "_scr"! 🠉|--\\
-      background: darkred;
-    }
-  }
-  */
 }
 
 @mixin desk-flex {

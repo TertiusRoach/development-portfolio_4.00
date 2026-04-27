@@ -1,9 +1,12 @@
-//--|🠊 SelectCarousel.tsx 🠈|--\\
+//--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../../../Button/routing/Button.routing';
+import ButtonDefault from '../../../../Button/default/Button.default';
+
+//--|🠋 Functions 🠋|--\\
+import { scrollSection } from './Scroll_carousel';
 
 interface TheseProps {
   info: {
@@ -12,8 +15,8 @@ interface TheseProps {
     labelName: string;
   };
   style: {
+    type: '{scroll}';
     axis: '[x]' | '[y]';
-    type: '{select}' | '{scroll}';
     shade: '~dark~' | '~medium~' | '~light~';
     view: '-top-' | '-rig-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
@@ -22,182 +25,60 @@ interface TheseProps {
     paths: Array<string>;
   };
 
-  onClick?: () => void;
+  onClick?: () => number;
 }
 
 const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
-  console.log(info);
-  console.log(style);
-  console.log(cases);
   return (
     <>
-      <li></li>
-      <li></li>
+      {/* 
+        .map() loops through the array.
+        'path' is the current string (like cases.paths[i]).
+        'index' is the current number (like 'i').
+      */}
+      {cases.paths.map((path, index) => (
+        // React requires a unique 'key' prop on the outermost element of a generated list
+        <li key={index}>
+          <ButtonDefault
+            style={{
+              size: '<h3>',
+              view: '-icon-', // You could also dynamically use style.view here!
+              color: style.color, // You could use style.color here
+              shade: style.shade, // You could use style.shade here
+              type: '{button}',
+              image: path, // 👈 This puts the current image link here!
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
+              scrollSection(info.pageName, info.blockName, eventInfo)
+            }
+          />
+          {/* <ButtonRouting
+            style={{
+              size: '<h1>',
+              view: 'mid-lef', // You could also dynamically use style.view here!
+              color: '(mono)', // You could use style.color here
+              shade: '~light~', // You could use style.shade here
+              type: '{button}',
+              image: path, // 👈 This puts the current image link here!
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
+              selectSection(info.pageName, info.blockName, eventInfo)
+            }
+          /> */}
+        </li>
+      ))}
     </>
   );
-
-  /*
-  switch (style.axis) {
-    case '[x]':
-      //  className={createStyle(style.type, style.view) as 'scr_top'}
-      return <li></li>;
-    case '[y]':
-      return (
-        //  className={createStyle(style.type, style.view) as 'sel_lef'}
-        <li>
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[0],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[1],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[2],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[3],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[4],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[5],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[6],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[7],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[8],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-          <ButtonRouting
-            style={{
-              size: '<h1>',
-              view: 'mid-lef',
-              shade: '~light~',
-              color: '(mono)',
-              type: '{button}',
-              image: cases.paths[9],
-            }}
-            info={{
-              pageName: info.pageName,
-              blockName: info.blockName,
-              labelName: info.labelName,
-            }}
-          />
-        </li>
-      );
-    }
-    */
 };
+
 export default ScrollCarousel;

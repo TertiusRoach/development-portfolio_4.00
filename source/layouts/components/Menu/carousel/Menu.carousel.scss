@@ -6,6 +6,8 @@
 @use './pipeline/Menu_queries.scss';
 
 menu[class*='carousel'] {
+  @extend %flex-clip;
+
   @media screen and (orientation: landscape) {
     @include Menu_layout.desktop-layout();
     @include Menu_motion.desktop-motion();
@@ -19,5 +21,64 @@ menu[class*='carousel'] {
     @include Menu_visuals.mobile-visuals();
     @include Menu_letters.mobile-letters();
     @include Menu_queries.mobile-queries();
+  }
+}
+%flex-clip {
+  &:has(> li:first-child[class*='_top_']),
+  &:has(> li:first-child[class*='_bot_']) {
+    clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    ul {
+      li:first-child,
+      li:last-child {
+        &:first-child {
+          padding-left: calc(128px + 1rem);
+        }
+        &:last-child {
+          padding-right: calc(256px + 1rem);
+        }
+        @media screen and (max-height: 768px) {
+          //--|🠋 96px for Squares 🠋|--\\
+          &:first-child {
+            padding-left: calc(96px + 0.75rem);
+          }
+          &:last-child {
+            padding-right: calc(192px + 0.75rem);
+          }
+        }
+        @media screen and (max-height: 480px) {
+          //--|🠋 64px for Squares 🠋|--\\
+          &:first-child {
+            padding-left: calc(64px + 0.5rem);
+          }
+          &:last-child {
+            padding-right: calc(128px + 0.5rem);
+          }
+        }
+        @media screen and (max-height: 360px) {
+          //--|🠋 48px for Squares 🠋|--\\
+          &:first-child {
+            padding-left: calc(48px + 0.25rem);
+          }
+          &:last-child {
+            padding-right: calc(96px + 0.25rem);
+          }
+        }
+      }
+    }
+  }
+  &:has(> li:first-child[class*='_lef_']),
+  &:has(> li:first-child[class*='_rig_']) {
   }
 }

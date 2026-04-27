@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/components';
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
+import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
 
 interface InfoProps {
   info: {
@@ -20,7 +21,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   ];
 
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const labelName = stripBrackets(info.labelName, '()') as 'profile';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {}, [pageName, blockName]);
@@ -44,16 +45,14 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as '[components]',
           }}
         />
-        {/*
-        <NavigationProfile
-          //--|🠊 <nav class="profile-header"/> 🠈|--\\
+        <NavigationProfile //--|🠊 <nav class="profile-header"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
         />
-        */}
+
         {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>

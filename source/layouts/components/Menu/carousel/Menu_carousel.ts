@@ -48,23 +48,17 @@ export function markMenu(pageName: string, blockName: string) {
       const carMenu = carouselMenu.childNodes[i] as HTMLElement;
       //--|🠊 Emphasize with ".visible" or ".hidden": Line 63 🠈|--\\
       const carSection = carouselDivision.childNodes[i] as HTMLElement;
-      //--|🠊 Emphasize with ".highlight" or ".downplay": Line 64 🠈|--\\
-      const carButton = carMenu.childNodes[0] as HTMLButtonElement;
       //--|🠊 Retrieve the Roman String in the component container of the Carousel 🠈|--\\
       let carContainer = carSection.parentElement?.parentElement as HTMLElement;
       let carRoman = carContainer.classList[0] as string;
       if (romanToArabic(carRoman) === i + 1) {
-        carMenu.className = `${carSection.className}`;
-        setTimeout(() => {
-          carSection.classList.add('visible');
-          carButton.classList.add('highlight');
-        }, 125);
+        carSection.classList.add('visible');
+        carSection.classList.remove('hidden');
+        carMenu.className = `${carSection.classList[0]} highlight`;
       } else {
-        carMenu.className = `${carSection.className}`;
-        setTimeout(() => {
-          carSection.classList.add('hidden');
-          carButton.classList.add('downplay');
-        }, 125);
+        carSection.classList.add('hidden');
+        carSection.classList.remove('visible');
+        carMenu.className = `${carSection.classList[0]} downplay`;
       }
     }
   }
