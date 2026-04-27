@@ -23,16 +23,18 @@ interface TheseProps {
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
 
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+
   onBlur?: () => void;
   onFocus?: () => void;
-  onClick?: () => void;
   onMouseUp?: () => void;
   onTouchEnd?: () => void;
   onMouseDown?: () => void;
   onTouchStart?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onDoubleClick?: () => void;
   onAnimationEnd?: () => void;
   onTransitionEnd?: () => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;

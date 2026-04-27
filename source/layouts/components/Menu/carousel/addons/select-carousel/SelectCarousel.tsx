@@ -6,7 +6,8 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
-import { markMenu, selectSection } from './Select_carousel';
+import { markMenu } from '../../Menu_carousel';
+import { selectSection } from './Select_carousel';
 
 interface TheseProps {
   info: {
@@ -25,16 +26,10 @@ interface TheseProps {
     paths: Array<string>;
   };
 
-  onClick?: () => void;
+  onClick?: () => number;
 }
 
 const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
-  // Generate a list of <li> elements.
-  // Reference the amount you should generate by counting the amount of items contained within `cases.paths`.
-  // Use a for loop on the array containing the string links for the button images: `cases.paths[i]`.
-  /*
-  Please let me know if you have any questions before we start.
-  */
   return (
     <>
       {/* 
@@ -59,12 +54,14 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-            onClick={(event) => selectSection(info.pageName, info.blockName, event)}
-            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
+              selectSection(info.pageName, info.blockName, eventInfo)
+            }
           />
         </li>
       ))}
     </>
   );
 };
+
 export default SelectCarousel;

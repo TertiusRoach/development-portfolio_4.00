@@ -9,7 +9,7 @@ import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 //--|🠋 Functions 🠋|--\\
 import stripBrackets from '../../functions';
 import { labelList } from './Menu_carousel';
-import { createClass, createStyle } from './Menu_carousel';
+import { markMenu, markClass, markStyle } from './Menu_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -56,13 +56,13 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     switch (styleAxis) {
       case '[x]':
         return (
-          <li className={`${createClass(style)}`}>
+          <li className={`${markClass(style)}`}>
             <ul>{callAddon(info, style, cases)}</ul>
           </li>
         );
       case '[y]':
         return (
-          <li className={`${createClass(style)}`}>
+          <li className={`${markClass(style)}`}>
             <ol>{callAddon(info, style, cases)}</ol>
           </li>
         );
@@ -86,14 +86,7 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   return (
-    <menu
-      className={`${labelName}-${blockName}_carousel`}
-      onMouseEnter={(event) => {
-        console.log('Mouse entered the carousel menu!');
-        // You can also pass the event or call a function here:
-        // myHoverFunction(info.pageName, event);
-      }}
-    >
+    <menu className={`${labelName}-${blockName}_carousel`} onMouseEnter={() => markMenu(info.pageName, info.blockName)}>
       {buildMenu(info, style, cases)}
     </menu>
   );
