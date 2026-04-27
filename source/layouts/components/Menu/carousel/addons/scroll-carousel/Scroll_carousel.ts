@@ -46,6 +46,7 @@ export function scrollSection(pageName: string, blockName: string, eventName: Re
   let clickedElement = eventName.currentTarget.parentElement as HTMLElement;
   let identifyElement: string = clickedElement.classList[0];
   let selectPosition: number = 0;
+  /*
   for (let i = 0; i < carouselMenu.childElementCount; i++) {
     var sectionElement = carouselDivision.childNodes[i] as HTMLElement;
     if (sectionElement.classList[0] === identifyElement) {
@@ -54,5 +55,6 @@ export function scrollSection(pageName: string, blockName: string, eventName: Re
       selectPosition = i;
     }
   }
+  */
   return selectPosition as number;
 }

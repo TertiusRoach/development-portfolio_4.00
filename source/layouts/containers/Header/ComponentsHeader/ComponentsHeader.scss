@@ -8,10 +8,9 @@
   %foreground {
     header[class*='component'] {
       z-index: 5;
-      grid-area: 1/1/6/4;
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
       menu[class*='carousel'] {
-        // z-index: 5;
         grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }

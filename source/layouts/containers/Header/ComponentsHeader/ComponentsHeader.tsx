@@ -39,7 +39,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
               type: '{scroll}',
             }}
-            cases={{ paths: svgPath as Array<string> }}
+            cases={{ paths: svgPath as Array<string | HTMLElement> }}
             info={{
               labelName: 'buttons',
               blockName: blockName as '<leftbar>',

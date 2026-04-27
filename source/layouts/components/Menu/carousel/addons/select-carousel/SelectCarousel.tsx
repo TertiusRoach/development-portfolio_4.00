@@ -16,10 +16,10 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    type: '{select}';
     axis: '[x]' | '[y]';
+    type: '{select}' | string;
     shade: '~dark~' | '~medium~' | '~light~';
-    view: '-top-' | '-rig-' | '-bot-' | '-lef-';
+    view: '-top-' | '-rig-' | '-bot-' | '-lef-' | string;
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
@@ -31,7 +31,7 @@ interface TheseProps {
 
 const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   useEffect(() => {
-    console.log('djklfljkfasdlkjfasd');
+    // console.log(style);
   }, [info.pageName, info.blockName]);
   return (
     <>

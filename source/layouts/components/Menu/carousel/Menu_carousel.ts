@@ -7,34 +7,70 @@ export function markMenu(pageName: string, blockName: string) {
   /*--|🠋
 
   🠉|--*/
-  const getTags = (axis: '[x]' | '[y]'): Record<string, HTMLElement | string> => {
-    const xAxisUl = 'ul';
+  const getTags = (axis: '[x]' | '[y]', type: '{select}' | '{scroll}' | string): Record<string, HTMLElement> | undefined => {
     if (axis === '[x]') {
-      return {
-        menu: document.querySelector(
-          `#${pageName}-${blockName} menu[class*="carousel"] li[class*="_sel"] ${xAxisUl}`,
-        ) as HTMLElement,
-        division: document.querySelector(
-          `#${pageName}-main div[class*="carousel"] ${xAxisUl} .I div[class*="container"]`,
-        ) as HTMLElement,
-      };
-    }
+      let AxisX = 'ul';
 
-    const yAxisOl = 'ol';
-    return {
-      menu: document.querySelector(
-        `#${pageName}-${blockName} menu[class*="carousel"] li[class*="_sel"] ${yAxisOl}`,
-      ) as HTMLElement,
-      division: document.querySelector(
-        `#${pageName}-main div[class*="carousel"] ${yAxisOl} li div[class*="container"]`,
-      ) as HTMLElement,
-    };
+      switch (type) {
+        case '{scroll}':
+          let TypeX = 'scr';
+          return {
+            menu: document.querySelector(
+              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeX}"] ${AxisX}`,
+            ) as HTMLElement,
+            division: document.querySelector(
+              `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
+            ) as HTMLElement,
+          };
+        case '{select}':
+          let TypeXSel = 'sel';
+          return {
+            menu: document.querySelector(
+              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeXSel}"] ${AxisX}`,
+            ) as HTMLElement,
+            division: document.querySelector(
+              `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
+            ) as HTMLElement,
+          };
+      }
+    } else if (axis === '[y]') {
+      let AxisY = 'ol';
+      switch (type) {
+        case '{select}':
+          let TypeY = 'sel';
+          return {
+            menu: document.querySelector(
+              `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeY}"] ${AxisY}`,
+            ) as HTMLElement,
+            division: document.querySelector(
+              `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
+            ) as HTMLElement,
+          };
+        case '{scroll}':
+          let TypeYScr = 'scr';
+          return {
+            menu: document.querySelector(
+              `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeYScr}"] ${AxisY}`,
+            ) as HTMLElement,
+            division: document.querySelector(
+              `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
+            ) as HTMLElement,
+          };
+      }
+    }
   };
 
-  const carouselMenu = getTags('[y]').menu as HTMLElement;
-  const carouselDivision = getTags('[y]').division as HTMLElement;
-  const carouselParent = carouselDivision.parentElement as HTMLLIElement;
-  const carouselPosition: string = carouselParent.className;
+  const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
+  const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
+
+  const scrollYMenu = getTags('[x]', '{scroll}')?.menu as HTMLElement;
+  const scrollYCarousel = getTags('[x]', '{scroll}')?.division as HTMLElement;
+
+  console.log(scrollYMenu);
+  console.log(scrollYCarousel);
+
+  const yParent = selectYCarousel.parentElement as HTMLLIElement;
+  const yPosition: string = yParent.className;
 
   /*
   //--|🠋|=================================================|🠋|--\\
@@ -42,12 +78,12 @@ export function markMenu(pageName: string, blockName: string) {
   //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
   //--|🠉|=================================================|🠉|--\\
   */
-  if (carouselDivision.childElementCount === carouselMenu.childElementCount) {
-    for (let i = 0; i < carouselDivision.childElementCount; i++) {
+  if (selectYCarousel.childElementCount === selectYMenu.childElementCount) {
+    for (let i = 0; i < selectYCarousel.childElementCount; i++) {
       //--|🠊 Match carousel identifiers to <li> items inside <menu>: Line 61 🠈|--\\
-      const carMenu = carouselMenu.childNodes[i] as HTMLElement;
+      const carMenu = selectYMenu.childNodes[i] as HTMLElement;
       //--|🠊 Emphasize with ".visible" or ".hidden": Line 63 🠈|--\\
-      const carSection = carouselDivision.childNodes[i] as HTMLElement;
+      const carSection = selectYCarousel.childNodes[i] as HTMLElement;
       //--|🠊 Retrieve the Roman String in the component container of the Carousel 🠈|--\\
       let carContainer = carSection.parentElement?.parentElement as HTMLElement;
       let carRoman = carContainer.classList[0] as string;

@@ -32,7 +32,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    paths: Array<string>;
+    paths: Array<Array<string | HTMLElement>>;
   };
 
   onClick?: () => void;
@@ -57,13 +57,13 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
       case '[x]':
         return (
           <li className={`${markClass(style)}`}>
-            <ul>{callAddon(info, style, cases)}</ul>
+            <ul className="carousel-preview">{callAddon(info, style, cases)}</ul>
           </li>
         );
       case '[y]':
         return (
           <li className={`${markClass(style)}`}>
-            <ol>{callAddon(info, style, cases)}</ol>
+            <ol className="carousel-preview">{callAddon(info, style, cases)}</ol>
           </li>
         );
     }
