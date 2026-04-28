@@ -6,6 +6,7 @@ import './DefaultNavigation.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
+import NavigationDefault from '../../../../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Components 🠋|--\\
 
@@ -17,13 +18,21 @@ interface InfoProps {
   };
 }
 const DefaultNavigation: React.FC<InfoProps> = ({ info }) => {
+  const pageName = info.pageName as string;
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
 
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<DefaultNavigation>`}</h1>
+        <NavigationDefault
+          //--|🠊 <nav class="default-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

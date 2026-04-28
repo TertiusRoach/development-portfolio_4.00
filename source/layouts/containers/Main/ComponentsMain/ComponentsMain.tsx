@@ -21,6 +21,8 @@ import NavigationElements from './elements/navigation-components/NavigationEleme
 import SectionElements from './elements/section-components/SectionElements';
 import TableElements from './elements/table-components/TableElements';
 import TimeElements from './elements/time-components/TimeElements';
+import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+import NavigationBrowse from '../../../components/Navigation/browse/Navigation.browse';
 
 interface InfoProps {
   info: {
@@ -42,6 +44,15 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
+        <NavigationBrowse
+          //--|🠊 <nav class="browse-main"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+
         <DivisionCarousel
           //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
           style={{

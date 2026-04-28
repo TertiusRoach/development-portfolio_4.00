@@ -8,6 +8,9 @@
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    nav[class*='browse'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }

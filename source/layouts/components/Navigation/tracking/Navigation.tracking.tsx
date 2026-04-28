@@ -147,7 +147,7 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
-            onClick={() => expandLeftbar(pageName, blockName)}
+            onClick={() => expandLeftbar(pageName, 'click', blockName)}
           />
         </li>
         <li className="open-left saturday">

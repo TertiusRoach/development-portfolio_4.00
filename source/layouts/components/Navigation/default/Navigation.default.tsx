@@ -1,19 +1,12 @@
-//--|🠊 Navigation.profile.tsx 🠈|--\\
+//--|🠊 Navigation.default.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.browse.scss';
+import './Navigation.default.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_browse';
-import {
-  unfoldHeader,
-  unfoldLeftbar,
-  collapseLeftbar,
-  expandLeftbar,
-  collapseHeader,
-  expandHeader,
-} from '../../../../scripts';
+import { viewDisplay } from './Navigation_default';
+import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import ButtonRouting from '../../Button/routing/Button.routing';
@@ -25,14 +18,15 @@ interface TheseProps {
     labelName: string;
   };
 }
-const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
-  let svgPath: Array<String> = [
+const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
+  const svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg',
   ];
 
-  const pageName: string = info.pageName as 'overtime';
-  const blockName: string = info.blockName as 'header';
-  const labelName: string = info.labelName as 'profile';
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as 'default';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -50,12 +44,12 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
   return (
     <nav className={`browse-${blockName}`}>
       <ol>
-        <li className="close-head">
+        <li className="open-head">
           <ButtonRouting
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_close-head`,
+              labelName: `${pageName}-${blockName}_open-head`,
             }}
             style={{
               size: '<h1>',
@@ -66,24 +60,33 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
               image: `${svgPath[0]}`,
             }}
             onMouseEnter={() => {
-              if (blockName === 'main') {
-                unfoldHeader(pageName, 'hover', 'header');
-                unfoldLeftbar(pageName, 'hover', 'leftbar');
-              }
+              unfoldHeader(pageName, 'hover', blockName);
+              unfoldLeftbar(pageName, 'click', 'leftbar');
             }}
-            onClick={() => {
-              if (blockName === 'header') {
-                collapseHeader(pageName, 'click', 'header');
-                collapseLeftbar(pageName, 'click', 'leftbar');
-              } else if (blockName === 'main') {
-                unfoldHeader(pageName, 'click', 'header');
-                unfoldLeftbar(pageName, 'click', 'leftbar');
-              }
-            }}
+            // onMouseEnter={() => unfoldHeader(pageName, 'hover', blockName)}
           />
         </li>
+        {/* <li className="load-tags">
+          <ButtonRouting
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}-${blockName}_load-tags`,
+            }}
+            style={{
+              size: '<h1>',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{button}',
+              view: 'bot-rig',
+              image: `${svgPath[1]}`,
+            }}
+            onClick={() => viewBody('components')}
+            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+          />
+        </li> */}
       </ol>
     </nav>
   );
 };
-export default NavigationBrowse;
+export default NavigationDefault;

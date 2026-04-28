@@ -27,10 +27,18 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
+        <NavigationBrowse
+          //--|🠊 <nav class="browse-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
         <header className="component-carousels">
           <MenuCarousel
             style={{
@@ -48,13 +56,6 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </header>
-        <NavigationBrowse //--|🠊 <nav class="profile-header"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        />
 
         {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </section>

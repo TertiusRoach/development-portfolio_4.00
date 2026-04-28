@@ -69,7 +69,7 @@ export function markMenu(pageName: string, blockName: string) {
   if (scrollXCarousel.childElementCount !== scrollXMenu.childElementCount) {
     for (let i = 0; i < scrollXCarousel.childElementCount; i++) {
       const carAside = scrollXCarousel.childNodes[i] as HTMLElement;
-      console.log(carAside.classList[0]);
+      // console.log(carAside.classList[0]);
 
       /*
       Using TypeScript: Create the following elements in this order...

@@ -6,6 +6,9 @@
   aside[class*='default'] {
     //--|🠋 Desktop (Layers) 🠋|--\\
     section[class*='foreground'] {
+      nav[class*='default'] {
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
       h1 {
         display: flex;
         align-items: center;

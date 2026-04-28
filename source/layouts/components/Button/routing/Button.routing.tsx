@@ -46,6 +46,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   style,
   onClick,
   onMouseEnter,
+  onMouseLeave,
   /*  
   onBlur,  
   onFocus,  
@@ -75,6 +76,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
     <button
       onClick={onClick}
       onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       id={info.labelName || undefined}
       className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >
