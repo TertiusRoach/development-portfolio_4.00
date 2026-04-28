@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/components';
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
+// import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
+import NavigationBrowse from '../../../components/Navigation/browse/Navigation.browse';
 
 interface InfoProps {
   info: {
@@ -39,7 +40,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
               type: '{scroll}',
             }}
-            cases={{ paths: svgPath as Array<string | HTMLElement> }}
+            cases={{ paths: svgPath as Array<string | HTMLElement | any> }}
             info={{
               labelName: 'buttons',
               blockName: blockName as '<leftbar>',
@@ -47,7 +48,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </header>
-        <NavigationProfile //--|🠊 <nav class="profile-header"/> 🠈|--\\
+        <NavigationBrowse //--|🠊 <nav class="profile-header"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,

@@ -1,0 +1,47 @@
+//--|🠊 Navigation.profile.scss 🠈|--\\
+@mixin desktop-landscape {
+  display: grid;
+  grid-area: 1 / 1 / 6 / 4;
+
+  ol {
+    height: 100%;
+    display: inherit;
+    .close-head {
+      grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .load-tags {
+      grid-area: 3 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    grid-template: //--|🠋 1080px 🠋|--\\
+      8rem 1fr 8rem //--|🠈 rows 🠈|--//
+      / 128px 270px 1fr 270px 128px; //--|🠈 columns 🠈|--//
+
+    @media screen and (max-height: 768px) {
+      grid-template: //--|🠋 1366px 🠋|--\\
+        6rem 1fr 6rem //--|🠈 rows 🠈|--//
+        / 96px 226px 1fr 226px 96px; //--|🠈 columns 🠈|--//
+    }
+    @media screen and (max-height: 480px) {
+      grid-template: //--|🠋 854px 🠋|--\\
+        4rem 1fr 4rem //--|🠈 rows 🠈|--//
+        / 64px 166px 1fr 166px 64px; //--|🠈 columns 🠈|--//
+    }
+    @media screen and (max-height: 360px) {
+      grid-template: //--|🠋 640px 🠋|--\\
+        3rem 1fr 3rem //--|🠈 rows 🠈|--//
+        / 48px 92px 1fr 92px 48px; //--|🠈 columns 🠈|--//
+    }
+  }
+}
+@mixin mobile-portrait {
+}
+
+nav[class*='browse-header'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
