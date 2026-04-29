@@ -180,7 +180,6 @@ export function romanNumerals(): Array<string> {
   ];
 }
 //--|===|--\\
-
 export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   const disableElement: string = 'disabled-header';
   const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -212,7 +211,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 6000);
+          }, 12000);
           console.log(`|🠊 Hovered on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -222,6 +221,37 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
     }
   }, 125);
 }
+export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  const disableElement: string = 'disabled-leftbar';
+  const locateElement: string = `#${pageName}-body aside[class*="leftbar"]`;
+  setTimeout(() => {
+    let leftbarContainer = document.querySelector(locateElement) as HTMLElement;
+    switch (blockAction) {
+      case 'click':
+        if (leftbarContainer.classList.contains('collapsed') || leftbarContainer.classList.contains('unfolded')) {
+          leftbarContainer.classList.add('expanded');
+          leftbarContainer.classList.remove('collapsed', 'unfolded');
+        }
+        break;
+      case 'hover':
+        if (!leftbarContainer.classList.contains(disableElement)) {
+          leftbarContainer.classList.add(disableElement);
+          if (leftbarContainer.classList.contains('collapsed') || leftbarContainer.classList.contains('unfolded')) {
+            leftbarContainer.classList.add('expanded');
+            leftbarContainer.classList.remove('collapsed', 'unfolded');
+          }
+          setTimeout(() => {
+            leftbarContainer.classList.remove(disableElement);
+          }, 12000);
+          console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
+        }
+        break;
+      case 'exit':
+        break;
+    }
+  }, 125);
+}
+
 export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   const disableElement: string = 'disabled-header';
   const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -246,7 +276,7 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 12000);
         }
         console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         break;
@@ -279,7 +309,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 12000);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -292,12 +322,12 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
     }
   }, 125);
 }
+
 export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   const disableElement: string = 'disabled-header';
   const locateElement: string = `#${pageName}-body header[class*="header"]`;
   setTimeout(() => {
     let headerContainer = document.querySelector(locateElement) as HTMLElement;
-
     switch (blockAction) {
       case 'click':
         if (headerContainer.classList.contains('unfolded') || headerContainer.classList.contains('expanded')) {
@@ -315,7 +345,7 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 6000);
+          }, 12000);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         }
         break;
@@ -325,36 +355,6 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
           headerContainer.classList.remove('collapsed', 'unfolded');
         }
         console.log(`|🠊 Left <button> in <${blockName}> to unfold <header> 🠈|`);
-        break;
-    }
-  }, 125);
-}
-export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
-  const disableElement: string = 'disabled-leftbar';
-  const locateElement: string = `#${pageName}-body aside[class*="leftbar"]`;
-  setTimeout(() => {
-    let leftbarContainer = document.querySelector(locateElement) as HTMLElement;
-    switch (blockAction) {
-      case 'click':
-        if (leftbarContainer.classList.contains('collapsed') || leftbarContainer.classList.contains('unfolded')) {
-          leftbarContainer.classList.add('expanded');
-          leftbarContainer.classList.remove('collapsed', 'unfolded');
-        }
-        break;
-      case 'hover':
-        if (!leftbarContainer.classList.contains(disableElement)) {
-          leftbarContainer.classList.add(disableElement);
-          if (leftbarContainer.classList.contains('collapsed') || leftbarContainer.classList.contains('unfolded')) {
-            leftbarContainer.classList.add('expanded');
-            leftbarContainer.classList.remove('collapsed', 'unfolded');
-          }
-          setTimeout(() => {
-            leftbarContainer.classList.remove(disableElement);
-          }, 6000);
-          console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
-        }
-        break;
-      case 'exit':
         break;
     }
   }, 125);
