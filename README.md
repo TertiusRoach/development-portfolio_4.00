@@ -1,6 +1,6 @@
-# **TLF** [{Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+## **TLF** [{Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
-Track a day, Log a Ticket, Find a Link. That's where all three of these application fill a specific need while working in tandem with one another to create the optimal counterpoints for continual use. Solve workplace chaos: Track a Day, Log a Ticket, Find a Link. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
+Track a day, Log a Ticket, Find a Link: These three applications were inspired by a vision to solve certain gaps in a corporate environment. From film production, education institutes, governmental responsibilities and events industries. All three of these applications work together to fill a specific need to create an easy to use and helpful. It essentially solves workplace chaos while daring to improve politics associated with the territory: Track a Day, Log a Ticket, Find a Link. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half remembered URLs ever again.
 
 This project started the honest way, with a mistake I never wanted to repeat. While moderating multiple studios at Akademia, I accidentally deleted someone’s ticket on a clunky system I did not build. That moment burned in the lesson: Good software should protect users from the worst day they are having, not amplify it. TraLogFin is me building the system I wish I had then, cleaner flows, safer patterns, and a user experience that does not ask for permission to waste your time.
 
@@ -10,7 +10,7 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 
 ---
 
-## Documentation
+# Documentation
 
 <details>
   <summary><strong>Table of Contents</strong></summary>
@@ -249,15 +249,36 @@ npm install --save-dev dotenv-webpack
 
 ---
 
-## [Testing Environment](https://github.com/TertiusRoach/development-portfolio_4.00/tree/4.02/source/layouts/pages)
-
-This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point.
-
----
-
-## [Front-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
+# [Front-end Development](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
 
 This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active.
+
+## [TraLogFin Application](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CHARACTERS.md)
+
+This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point. It also encompasses a lot of storytelling elements. I wanted to do three years to test the demo but realized that it's unnecessary so I might just log 4 weeks, which is a month and play around with that maths.
+
+## State Management: Orchestrating Visibility
+
+These classes are intentionally simple. They act like a UI contract.
+
+| State Type           | Classes                                  | Alt                      | Purpose                                                                    |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Operating State**  | `.active` · `.asleep`                    | `.running` · `.disabled` | Indicate whether an app in use or inactive                                 |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Preview State**    | `.visible` · `.hidden`                   | `.conceal` · `.reveal`   | Used for recording front-end and used on, 'layout/components'              |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Indexed State**    | `.expanded` · `.collapsed`               | `.unfolded`              | Manage sections that can open and close while staying part of the page     |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| **Emphasize State**  | `.highlight` · `.downplay`               |                          | Applied to <DefaultButton> component for testing before production release |
+| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+
+## Application Roles
+
+| Application      | Role Question           | Options                         |
+| ---------------- | ----------------------- | ------------------------------- |
+| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
+| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
+| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
 
 ### Track a Day
 
@@ -294,7 +315,7 @@ Company comparisons as a thought experiment: the `&` icon looks like a dog scrat
 
 ---
 
-## [Back-end](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) [Installation](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) & [Development](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)
+# [Back-end Development](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/modules/server/README.md) [Installation](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) & [Development](https://github.com/TertiusRoach/development-portfolio_4.00/tree/main/source/modules/server)
 
 This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed server module to support an office application suite that tracks overtime, logs tickets, and stores links.
 
@@ -304,42 +325,9 @@ This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB) backed serv
 
 ## CSS & HTML Vocabulary
 
-### Orchestrating Visibility
-
-These classes are intentionally simple. They act like a UI contract.
-
-#### State Management
-
-<<<<<<< HEAD
-| State Type | Classes | Purpose |
-| -------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
-| **Active State** | `.active` · `.asleep` | Indicate whether a feature is currently in use (active) or parked (asleep) |
-| **Visibility State** | `.visible` · `.hidden` | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State** | `.expanded` · `.unfolded` · `.collapsed` | Manage sections that can open and close while staying part of the page |
-| **Emphasis State** | `.highlight` · `.downplay` | Highlight is light mode and Downplay is dark mode |
-=======
-| State Type | Classes | Purpose |
-| -------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| **Active State** | `.active` · `.asleep` | Indicate whether a feature is currently in use (active) or parked (asleep) |
-| **Visibility State** | `.visible` · `.hidden` | Control whether something is rendered for the user or intentionally not shown |
-| **Expansion State** | `.expanded` · `.collapsed` | Manage sections that can open and close while staying part of the page |
-| **Emphasis State** | `.highlight` · `.downplay` | Guide attention without changing layout or flow |
-
-> > > > > > > b0979a4b3451384187fbb5eff59e42c84b0bdbbf
-
-> **Design Principle:** Active should feel responsive. Asleep should stay out of the user's way.
-
 ### Determining Element Responsibilities
 
 For demonstration purposes, the `roleName` represents the user's selected company position and influences the application's behavior accordingly.
-
-#### Application Roles
-
-| Application      | Role Question           | Options                         |
-| ---------------- | ----------------------- | ------------------------------- |
-| **Track a Day**  | What's your vocation?   | `.established` · `.freelancing` |
-| **Log a Ticket** | What's your position?   | `.manager` · `.employee`        |
-| **Find a Link**  | What's your occupation? | `.specialist` · `.technician`   |
 
 #### Company Comparisons
 
@@ -568,8 +556,6 @@ Reusable utilities and patterns. This is the toolbox that keeps code duplication
 ##### `.vscode/`
 
 Editor configuration for consistent debugging and project workflows.
-
-<<<<<<< HEAD
 
 ### Repository Synchronization
 

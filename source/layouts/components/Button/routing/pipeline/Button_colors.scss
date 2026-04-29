@@ -1,0 +1,110 @@
+//--|🠊 profile/pipeline/Button_colors.scss 🠈|--\\
+//--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
+@use 'sass:color';
+@use '../../../../designs/Palettes.scss' as Palettes;
+
+@mixin desktop-colors {
+  //--|🠋 Desktop (Colors) 🠋|--\\
+
+  //--|🠋 Desktop (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
+    }
+  }
+}
+@mixin mobile-colors {
+  //--|🠋 Mobile (Colors) 🠋|--\\
+  //--|🠋 Mobile (Tint) 🠋|--\\
+  &[class*='button'] {
+    @include mon-color();
+    &[aria-disabled='true'] {
+      opacity: 0.25;
+      filter: blur(8px);
+    }
+  }
+}
+
+@mixin mon-color {
+  $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-softW: color.mix(Palettes.$indexLand-neon, Palettes.$indexLand-light, $weight: 70%);
+  $indexLand-softB: color.mix(#000000, Palettes.$indexLand-dark, $weight: 60%);
+
+  &[class*='_lig_'] {
+    div[class='fore'] {
+      span {
+        background: rgba(Palettes.$indexLand-dark, 1);
+        img {
+          opacity: 0;
+          pointer-events: none;
+          background: transparent;
+        }
+      }
+    }
+    div[class='mid'] {
+      filter: drop-shadow(0 0 8px rgba(black, 0.75));
+      border-color: rgba(Palettes.$indexLand-dark, 0.75);
+    }
+    div[class='back'] {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1),
+        0 10px 22px rgba(#000, 0.18);
+    }
+  }
+
+  &[class*='_dar_'] {
+    div[class='fore'] {
+      span {
+        background: rgba(Palettes.$indexLand-light, 1);
+        img {
+          opacity: 0;
+          pointer-events: none;
+          background: transparent;
+        }
+      }
+    }
+    div[class='mid'] {
+      border-color: rgba(Palettes.$indexLand-light, 1);
+      filter: drop-shadow(0 0 16px rgba(white, 0.25));
+    }
+    div[class='back'] {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(Palettes.$indexLand-neon, 0.06) 0%,
+          rgba(Palettes.$indexLand-neon, 0) 45%,
+          rgba(#000, 0.3) 100%
+        ),
+        $indexLand-darMed;
+      box-shadow:
+        inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$indexLand-medium, 0.18),
+        0 12px 26px rgba(#000, 0.28);
+    }
+    /*
+    div[class='fore'] {
+      // background: rgba(Palettes.$indexLand-light, 1);
+      span {
+        img {
+          opacity: 0;
+          pointer-events: none;
+          background: transparent;
+        }
+      }
+    }
+    div[class='mid'] {
+
+    }
+    div[class='back'] {
+
+    }
+    */
+  }
+}

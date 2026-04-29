@@ -317,6 +317,7 @@ export function viewDisplay() {
 
   return 'mid-cen'; //--|🠈 Default Fallback 🠈|--\\
 }
+
 //--|🠊 1. Declare timer outside of scope. 🠈|--\\
 let scrollTime = 0; //--|🠊 It acts as the memory for the last time a scroll was allowed. 🠈|--\\
 export function scrollMouse(

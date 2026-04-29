@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 64px;
+
   span {
     font-size: 96px;
   }
@@ -13,7 +13,6 @@
     }
   }
   @media screen and (max-height: 480px) {
-    border-top-left-radius: 32px;
     span {
       font-size: 48px;
     }
@@ -23,65 +22,24 @@
       font-size: 36px;
     }
   }
-  /*
-  display: flex;
-  line-height: 1;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  span {
-    padding: 0 48px;
-    &[class*='week'] {
-      font-size: 64px;
-    }
-    &[class*='date'] {
-      font-size: 32px;
-    }
-    @media screen and (max-height: 768px) {
-      padding: 0 32px;
-      &[class*='week'] {
-        font-size: 48px;
-      }
-      &[class*='date'] {
-        font-size: 24px;
-      }
-    }
-    @media screen and (max-height: 480px) {
-      padding: 0 24px;
-      &[class*='week'] {
-        font-size: 32px;
-      }
-      &[class*='date'] {
-        font-size: 16px;
-      }
-    }
-    @media screen and (max-height: 360px) {
-      padding: 0 16px;
-      &[class*='week'] {
-        font-size: 24px;
-      }
-      &[class*='date'] {
-        font-size: 12px;
-      }
-    }
-  }
-  */
 }
 @mixin mobile-portrait {
 }
 
 time[class*='clock-count'] {
-  background: black;
-
   span {
     color: white;
     font-weight: 600;
   }
-
+  @extend %desk-back;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+}
+
+%desk-back {
+  background: rgba(black, 0.25);
 }

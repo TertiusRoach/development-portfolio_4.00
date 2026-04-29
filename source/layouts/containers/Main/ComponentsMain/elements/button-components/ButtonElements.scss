@@ -1,0 +1,24 @@
+//--|🠊 ButtonElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-button/DefaultButton.scss';
+@use './routing-button/RoutingButton.scss';
+@use './profile-button/ProfileButton.scss';
+@use './stretch-button/StretchButton.scss';
+
+section[class*='button'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultButton.desktop-landscape;
+      @include RoutingButton.desktop-landscape;
+      @include ProfileButton.desktop-landscape;
+      @include StretchButton.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultButton.mobile-portrait;
+      @include RoutingButton.mobile-portrait;
+      @include ProfileButton.mobile-portrait;
+      @include StretchButton.mobile-portrait;
+    }
+  }
+}

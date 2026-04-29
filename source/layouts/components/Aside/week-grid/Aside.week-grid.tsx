@@ -19,7 +19,6 @@ const WeekGrid: React.FC<TheseProps> = ({ info }) => {
   return (
     <aside className="week-grid">
       <div className="lines"></div>
-      <div className="fade"></div>
     </aside>
   );
 };

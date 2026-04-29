@@ -143,18 +143,4 @@
       }
     }
   }
-  /*
-  // Top and Bottom, if there's a space in the text, make it two lines and the back a square.
-  This fades the edges: Use for <CleanedButton> or <StretchedButton>
-  mask-repeat: no-repeat;
-  mask-composite: intersect;
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
-  mask-image:
-    linear-gradient(90deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 8px, #000 calc(100% - 8px), transparent 100%);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: source-in;
-  */
 }

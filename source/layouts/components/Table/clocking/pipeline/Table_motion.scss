@@ -1,0 +1,64 @@
+//--|🠊 clocking/pipeline/Table_motion.scss 🠈|--\\
+//--|🠊 Motion: Transforms, transitions & carousels 🠈|--\\
+@mixin desktop-motion {
+  //--|🠉 96px: Left & Right 🠉|--\\
+  position: relative;
+  tbody {
+    position: absolute;
+    transition:
+      top 500ms ease-in-out,
+      right 500ms ease-in-out,
+      bottom 500ms ease-in-out;
+  }
+
+  .previous-week {
+    &.hidden {
+      bottom: 100%;
+    }
+    &.visible {
+      bottom: 0;
+    }
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
+  }
+  .current-week {
+    &.hidden {
+      right: 100%;
+    }
+    &.visible {
+      right: 0;
+    }
+    //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
+  }
+  .future-week {
+    &.hidden {
+      top: 100%;
+    }
+    &.visible {
+      top: 0;
+    }
+    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
+  }
+
+  @media screen and (max-height: 768px) {
+    //--|🠉 64px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+}
+@mixin mobile-motion {
+  //--|🠉 64px: Left & Right 🠉|--\\
+
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+}

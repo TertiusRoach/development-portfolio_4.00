@@ -1,0 +1,50 @@
+//--|🠊 profile/pipeline/Button_motion.scss 🠈|--\\
+//--|🠊 Motion: Transforms, transitions & carousels 🠈|--\\
+@use 'sass:color';
+@use '../../../../designs/Palettes.scss' as Palettes;
+
+@mixin desktop-motion {
+  &:hover {
+    .back {
+      transition: background 750ms ease-in-out;
+    }
+    @include mon-color();
+  }
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-motion {
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+@mixin mon-color {
+  cursor: pointer;
+
+  &[class*='_dar_'] {
+    .fore:hover {
+      border-color: rgba(gray, 0.5);
+      transition: border-color 750ms ease-in-out;
+    }
+    .back {
+      background: rgba(white, 0.5);
+    }
+  }
+  &[class*='_lig_'] {
+    .fore {
+      border-color: rgba(gray, 0.5);
+      transition: border-color 250ms ease-in-out;
+    }
+    .back {
+      background: rgba(black, 0.5);
+    }
+  }
+}

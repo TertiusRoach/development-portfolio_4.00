@@ -1,0 +1,38 @@
+//--|🠊 clocking/pipeline/Table_visuals.scss 🠈|--\\
+//--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
+
+@mixin desktop-visuals {
+  //--|🠉 96px: Left & Right 🠉|--\\
+  thead {
+    color: white;
+    background: black;
+  }
+  tbody {
+    color: black;
+    tr {
+      background: white;
+    }
+  }
+  @media screen and (max-height: 768px) {
+    //--|🠉 64px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+}
+@mixin mobile-visuals {
+  //--|🠉 64px: Left & Right 🠉|--\\
+
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+}

@@ -1,13 +1,182 @@
 //--|🠊 overtime.ts 🠈|--\\
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '~~'): string {
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
-    case '[]': //--|🠈 pageName 🠈|--\\
+    case '[]':
+      //--|🠊 pageName 🠈|--\\
       return thisText.replace(/[\[\]]/g, '');
-    case '<>': //--|🠈 blockName 🠈|--\\
+    case '<>':
+      //--|🠊 blockName & style.size 🠈|--\\
       return thisText.replace(/[<>]/g, '');
-    case '()': //--|🠈 roleName 🠈|--\\
+    case '()':
+      //--|🠊 roleName, style.color & style.role 🠈|--\\
       return thisText.replace(/[()]/g, '');
-    case '~~': //--|🠈 style.shade 🠈|--\\
+    case '~~':
+      //--|🠊 style.shade 🠈|--\\
       return thisText.replace(/[~~]/g, '');
+    case '{}':
+      //--|🠊 style.type 🠈|--\\
+      return thisText.replace(/[{}]/g, '');
+    case '--':
+      //--|🠊 style.view 🠈|--\\
+      return thisText.replace(/[--]/g, '');
   }
 }
+
+/*
+I
+II
+III
+IV
+V
+VI
+VII
+VIII
+IX
+X
+XI
+XII
+XIII
+XIV
+XV
+XVI
+XVII
+XVIII
+XIX
+XX
+XXI
+XXII
+XXIII
+XXIV
+XXV
+XXVI
+XXVII
+XXVIII
+XXIX
+XXX
+XXXI
+XXXII
+XXXIII
+XXXIV
+XXXV
+XXXVI
+XXXVII
+XXXVIII
+XXXIX
+XL
+XLI
+XLII
+XLIII
+XLIV
+XLV
+XLVI
+XLVII
+XLVIII
+XLIX
+L
+LI
+LII
+LIII
+LIV
+LV
+LVI
+LVII
+LVIII
+LIX
+LX
+LXI
+LXII
+LXIII
+LXIV
+LXV
+LXVI
+LXVII
+LXVIII
+LXIX
+LXX
+LXXI
+LXXII
+LXXIII
+LXXIV
+LXXV
+LXXVI
+LXXVII
+LXXVIII
+LXXIX
+LXXX
+LXXXI
+LXXXII
+LXXXIII
+LXXXIV
+LXXXV
+LXXXVI
+LXXXVII
+LXXXVIII
+LXXXIX
+XC
+XCI
+XCII
+XCIII
+XCIV
+XCV
+XCVI
+XCVII
+XCVIII
+XCIX
+C
+CI
+CII
+CIII
+CIV
+CV
+CVI
+CVII
+CVIII
+CIX
+CX
+CXI
+CXII
+CXIII
+CXIV
+CXV
+CXVI
+CXVII
+CXVIII
+CXIX
+CXX
+CXXI
+CXXII
+CXXIII
+CXXIV
+CXXV
+CXXVI
+CXXVII
+CXXVIII
+CXXIX
+CXXX
+CXXXI
+CXXXII
+CXXXIII
+CXXXIV
+CXXXV
+CXXXVI
+CXXXVII
+CXXXVIII
+CXXXIX
+CXL
+CXLI
+CXLII
+CXLIII
+CXLIV
+CXLV
+CXLVI
+CXLVII
+CXLVIII
+CXLIX
+CL
+CLI
+CLII
+CLIII
+CLIV
+CLV
+CLVI
+*/

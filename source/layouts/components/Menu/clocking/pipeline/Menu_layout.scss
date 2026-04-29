@@ -1,0 +1,37 @@
+//--|🠊 clocking/pipeline/Menu_layout.scss 🠈|--\\
+//--|🠊 Layout: Grid and flex styles 🠈|--\\
+@mixin desktop-layout {
+  //--|🠉 96px: Left & Right 🠉|--\\
+  display: grid;
+  overflow-y: hidden;
+  grid-template-rows: repeat(7, 1fr); //--|🠈 rows 🠈|--\\
+  li {
+    height: 100%;
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: 1fr //--|🠈 rows 🠈|--//
+      / repeat(8, 1fr); //--|🠈 columns 🠈|--\\
+    padding-left: 20%;
+  }
+  @media screen and (max-height: 768px) {
+    //--|🠉 64px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+}
+@mixin mobile-layout {
+  //--|🠉 64px: Left & Right 🠉|--\\
+
+  @media screen and (max-width: 768px) {
+    //--|🠉 48px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠉 32px: Left & Right 🠉|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠉 24px: Left & Right 🠉|--\\
+  }
+}

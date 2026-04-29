@@ -1,7 +1,7 @@
 //--|🠊 ButtonsMain.scss 🠈|--\\
 @use '../../../designs/Palettes.scss';
-@use './components/default-buttons/DefaultButtons.scss' as default;
-@use './components/routing-buttons/RoutingButtons.scss' as routing;
+@use './elements/default-buttons/DefaultButtons.scss' as default;
+@use './elements/routing-buttons/RoutingButtons.scss' as routing;
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   section[class*='foreground'],

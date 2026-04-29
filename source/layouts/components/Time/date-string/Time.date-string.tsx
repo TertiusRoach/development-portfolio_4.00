@@ -5,7 +5,7 @@ import './Time.date-string.scss';
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../functions';
+import stripBrackets from '../../functions';
 
 interface TheseProps {
   info: {
@@ -20,7 +20,6 @@ const DateString: React.FC<TheseProps> = ({ info, style }) => {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
 
-  // console.log( as string);
   useEffect(() => {}, [pageName, blockName]);
 
   return (

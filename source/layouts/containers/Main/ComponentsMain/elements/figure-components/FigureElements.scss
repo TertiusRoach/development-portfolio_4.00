@@ -1,0 +1,15 @@
+//--|🠊 FigureElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-figure/DefaultFigure.scss';
+
+section[class*='figure'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultFigure.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultFigure.mobile-portrait;
+    }
+  }
+}

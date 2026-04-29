@@ -4,6 +4,8 @@
 @use '../containers/Header/OvertimeHeader/OvertimeHeader.scss';
 @use '../containers/Footer/OvertimeFooter/OvertimeFooter.scss';
 
+@use '../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar.scss';
+
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   header[id*='overtime'],

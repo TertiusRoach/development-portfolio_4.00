@@ -1,0 +1,47 @@
+//--|🠊 ComponentsMain.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Layers) 🠋|--\\
+  section[class*='foreground'] {
+    div[class*='elements-main'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    nav[class*='browse'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+    h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      display: none;
+      color: rgba(darkgreen, 0.5);
+    }
+  }
+  @include Mixins.landscape-grid;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Layers) 🠋|--//
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+
+  @include Mixins.portrait-grid;
+}
+main[id*='components'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

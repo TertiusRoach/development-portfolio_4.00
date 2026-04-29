@@ -1,0 +1,23 @@
+//--|🠊 Button.profile.scss 🠈|--\\
+@use './pipeline/Button_colors.scss';
+@use './pipeline/Button_layout.scss';
+@use './pipeline/Button_motion.scss';
+
+button[class*='profile'] {
+  @media screen and (orientation: landscape) {
+    //--|🠊 <ProfileButton> for [DesktopLandscape] 🠈|--\\
+    @include Button_colors.desktop-colors();
+    @include Button_layout.desktop-layout();
+    &:hover {
+      @include Button_motion.desktop-motion();
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 <ProfileButton> for [MobilePortrait] 🠈|--\\
+    @include Button_colors.mobile-colors();
+    @include Button_layout.mobile-layout();
+    &:hover {
+      @include Button_motion.mobile-motion();
+    }
+  }
+}

@@ -2,11 +2,34 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "app",
+      "label": "npm run app",
+      "type": "shell",
+      "command": "npm run app",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "linux": {
+        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run app",
+        "options": {
+          "shell": {
+            "executable": "/bin/bash",
+            "args": ["-c"]
+          }
+        }
+      },
+      "windows": {
+        "command": "npm run app",
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/d", "/c"]
+          }
+        }
+      },
       "runOptions": {
         "runOn": "folderOpen"
-      }
+      },
+      "problemMatcher": []
     }
   ]
 }

@@ -1,0 +1,15 @@
+//--|🠊 NavigationElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-navigation/DefaultNavigation.scss';
+
+section[class*='navigation'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultNavigation.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultNavigation.mobile-portrait;
+    }
+  }
+}

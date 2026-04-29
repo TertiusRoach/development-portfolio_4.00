@@ -1,0 +1,72 @@
+//--|🠊 Section.loading.scss 🠈|--\\
+@mixin desktop-landscape {
+  background: rgba(black, 0.25);
+  border-radius: 64px;
+  img {
+    width: 1008px;
+    height: 567px;
+  }
+  @media screen and (max-height: 768px) {
+    border-radius: 48px;
+    img {
+      width: 672px;
+      height: 378px;
+    }
+  }
+  @media screen and (max-height: 480px) {
+    border-radius: 32px;
+    img {
+      width: 384px;
+      height: 216px;
+    }
+  }
+  @media screen and (max-height: 360px) {
+    border-radius: 24px;
+    img {
+      width: 288px;
+      height: 162px;
+    }
+  }
+}
+
+@mixin mobile-portrait {
+  background: rgba(black, 0.25);
+  border-radius: 48px;
+  img {
+    width: 672px;
+    height: 378px;
+  }
+  @media screen and (max-width: 768px) {
+    border-radius: 32px;
+    img {
+      width: 384px;
+      height: 216px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    border-radius: 24px;
+    img {
+      width: 288px;
+      height: 162px;
+    }
+  }
+  @media screen and (max-width: 360px) {
+    border-radius: 16px;
+    img {
+      width: 256px;
+      height: 144px;
+    }
+  }
+}
+
+figure[class*='loading'] {
+  figcaption {
+    display: none;
+  }
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

@@ -25,6 +25,8 @@
   }
 
   dl {
+    @extend %desk-grid;
+    @extend %desk-flex;
     div {
       dd {
         font-size: 64px;
@@ -57,8 +59,6 @@
         }
       }
     }
-    @extend %desk-grid;
-    @extend %desk-flex;
   }
 }
 @mixin mobile-portrait {
@@ -69,12 +69,22 @@ article[class*='total-time'] {
     height: 100%;
     color: white;
     font-weight: 800;
-    background: black;
   }
+  @extend %desk-back;
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+}
+%desk-back {
+  dl {
+    background: rgba(black, 0.25);
+
+    border-top-left-radius: 64px;
+    @media screen and (max-height: 480px) {
+      border-top-left-radius: 32px;
+    }
   }
 }

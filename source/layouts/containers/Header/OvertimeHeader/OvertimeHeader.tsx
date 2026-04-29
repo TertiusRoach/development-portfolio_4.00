@@ -3,100 +3,86 @@
 import { stripBrackets } from '../../../scripts/overtime';
 import { expandHeader, loadSoftware } from './OvertimeFunctions';
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { ComponentType, useEffect } from 'react';
+
+//--|🠋 Elements 🠋|--\\
+import ProfileOvertime from './elements/profile-overtime/ProfileOvertime';
+
 //--|🠋 Components 🠋|--\\
+import MenuProfile from '../../../components/Menu/profile/Menu.profile';
+
+//--|===|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
+import ButtonProfile from '../../../components/Button/profile/Button.profile';
+import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
     blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
+    labelName: '(default)' | '(tracking)' | '(clocking)' | '(request)' | '(profile)' | '(message)' | string;
     roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
   };
 }
 const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  const labelName = stripBrackets(info.labelName, '()') as 'profile';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' = 'expanded';
 
   useEffect(() => {
-    // console.log('//--|🠊 Overtime Loaded 🠈|--\\\\');
+    setTimeout(() => {
+      console.log(`|🠊Load: <header id="${pageName}-${blockName}"> 🠈|`);
+    }, 60000);
   }, [pageName, blockName]);
 
-  let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/a2e108e4ff99bab6768dfd293556e017ee5da5b3/source/assets/svg-files/archive-images',
-    '',
-    '',
-  ];
-
   return (
-    <header id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
+    <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 2 }}>
       <section className={`${blockName}-foreground`}>
-        <nav className={`global-${blockName}`}>
-          <menu className={`global-${blockName}`}>
-            <ButtonRouting
-              style={{
-                size: '<h1>',
-                view: 'top-lef',
-                shade: '~dark~',
-                color: '(mono)',
-
-                type: '{button}',
-                image: `${svgPath[0]}/trinity-apps/track-a-day/primary-light.svg`,
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: `${pageName}_${blockName}_view-apps`,
-              }}
-              onClick={() => expandHeader(pageName)}
-            />
-          </menu>
-        </nav>
-        <div className={`global-${blockName}`}>
-          <aside className="overtime-software">
-            <figure className="dark" onClick={() => loadSoftware('overtime')}>
-              <span>
-                <img
-                  style={{
-                    maskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
-                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/track-a-day/primary-medium.svg)`,
-                  }}
-                />
-                <h1>Track a Day</h1>
-              </span>
-            </figure>
-          </aside>
-          <aside className="ticketing-software">
-            <figure className="dark" onClick={() => loadSoftware('ticketing')}>
-              <span>
-                <img
-                  style={{
-                    maskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
-                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/log-a-ticket/primary-medium.svg)`,
-                  }}
-                />
-                <h1>Log a Ticket</h1>
-              </span>
-            </figure>
-          </aside>
-          <aside className="hyperlink-software">
-            <figure className="dark" onClick={() => loadSoftware('hyperlink')}>
-              <span>
-                <img
-                  style={{
-                    maskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
-                    WebkitMaskImage: `url(${svgPath[0]}/trinity-apps/find-a-link/primary-medium.svg)`,
-                  }}
-                />
-                <h1>Find a Link</h1>
-              </span>
-            </figure>
-          </aside>
-        </div>
+        <MenuProfile
+          //--|🠊 <menu class="profile-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+        <NavigationProfile
+          //--|🠊 <nav class="profile-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
       </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <figure className={`${blockName}-midground`}>
+        {/* <DivisionCarousel
+          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+          cases={{
+            axis: '[x]',
+            call: [ProfileOvertime],
+          }}
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        /> */}
+      </figure>
+      <div className={`${blockName}-background`}>
+        {/* <div className="nav-top"></div> */}
+        {/* <div className="nav-bot"></div> */}
+
+        <div className="nav-lef">
+          <span></span>
+        </div>
+        <div className="nav-rig">
+          <span></span>
+        </div>
+      </div>
     </header>
   );
 };

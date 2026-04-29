@@ -1,0 +1,42 @@
+//--|🠊 Menu.landing.scss 🠈|--\\
+@use '../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: flex; 🠈|--\\
+  ul[class*='list'] {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 360px) {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 display: flex; 🠈|--\\
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 360px) {
+  }
+}
+
+menu[class*='landing'] {
+  display: flex;
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

@@ -1,0 +1,148 @@
+//--|🠊 Section.characters.scss 🠈|--\\
+@mixin desktop-landscape {
+  display: grid;
+  align-items: center;
+
+  //--|🠊 Add to Global.scss 🠈|--\\
+
+  article {
+    grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+    display: flex;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(black, 0.5);
+    h4 {
+      font-weight: 600;
+    }
+    p {
+      text-align: left;
+      // 1. Distributes the text evenly from left to right edge
+      // text-align: justify;
+    }
+  }
+
+  grid-template: //--|🠋 1080px 🠋|--\\
+    4rem 1fr 4rem //--|🠈 rows 🠈|--//
+    / 48px 350px 1fr auto 1fr 350px 48px; //--|🠈 columns 🠈|--//
+  article {
+    width: 448px;
+    height: 672px;
+    border-radius: 32px;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+
+    padding: 32px;
+    h4 {
+      padding: 32px 0;
+      font-size: 64px;
+    }
+    p {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+  @media screen and (max-height: 768px) {
+    grid-template: //--|🠋 1366px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 32px 290px 1fr auto 1fr 290px 32px; //--|🠈 columns 🠈|--//
+    article {
+      width: 285px;
+      height: 416px;
+
+      border-radius: 24px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      padding: 16px;
+      h4 {
+        padding: 16px 0;
+        font-size: 36px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+  @media screen and (max-height: 480px) {
+    grid-template: //--|🠋 854px 🠋|--\\
+      2rem 1fr 2rem //--|🠈 rows 🠈|--//
+      / 24px 206px 1fr auto 1fr 206px 24px; //--|🠈 columns 🠈|--//
+    article {
+      width: 214px;
+      height: 312px;
+      border-radius: 16px;
+      img {
+        width: 75px;
+        height: 75px;
+      }
+
+      padding: 8px;
+      h4 {
+        padding: 8px 0;
+        font-size: 32px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  @media screen and (max-height: 360px) {
+    grid-template: //--|🠋 640px 🠋|--\\
+      1.5rem 1fr 1.5rem //--|🠈 rows 🠈|--//
+      / 16px 140px 1fr auto 1fr 140px 16px; //--|🠈 columns 🠈|--//
+    article {
+      width: 165px;
+      height: 240px;
+      border-radius: 8px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      padding: 4px;
+      h4 {
+        padding: 4px 0;
+        font-size: 20px;
+      }
+      p {
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+  /*
+  &.jane-lester {
+    menu {
+      li {
+        background: rgba(darkred, 0.25);
+      }
+    }
+  }
+  &.hammad-dean {
+    menu {
+      li {
+        background: rgba(darkblue, 0.25);
+      }
+    }
+  }
+  */
+}
+@mixin mobile-portrait {
+}
+
+section[class*='characters'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

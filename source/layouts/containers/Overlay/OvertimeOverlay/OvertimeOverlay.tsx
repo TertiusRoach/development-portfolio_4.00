@@ -8,9 +8,9 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--//
 import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
 import ButtonGrade from '../../../components/Button/archive/grade/Button.grade';
-import DivisionLoading from '../../../components/Division/loading/Division.loading';
+// import DivisionLoading from '../../../components/Division/loading/Division.loading';
 import ArticleSelection from '../../../components/Article/archive/selection/Article.selection';
-import DivisionSelection from '../../../components/Division/selection/Division.selection';
+// import DivisionSelection from '../../../components/Division/selection/Division.selection';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import HeaderBranding from '../../../components/Header/branding/Header.branding';

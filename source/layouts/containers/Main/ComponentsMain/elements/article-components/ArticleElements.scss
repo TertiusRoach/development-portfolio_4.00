@@ -1,0 +1,15 @@
+//--|🠊 AsideElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-article/DefaultArticle.scss';
+
+section[class*='article'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultArticle.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultArticle.mobile-portrait;
+    }
+  }
+}

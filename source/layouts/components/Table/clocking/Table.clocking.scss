@@ -1,0 +1,19 @@
+//--|🠊 Table.clocking.scss 🠈|--\\
+@use './pipeline/Table_layout.scss';
+@use './pipeline/Table_letters.scss';
+@use './pipeline/Table_motion.scss';
+@use './pipeline/Table_visuals.scss';
+table[class*='clocking-leftbar'] {
+  @media screen and (orientation: landscape) {
+    @include Table_layout.desktop-layout();
+    @include Table_letters.desktop-letters();
+    @include Table_motion.desktop-motion();
+    @include Table_visuals.desktop-visuals();
+  }
+  @media screen and (orientation: portrait) {
+    @include Table_layout.mobile-layout();
+    @include Table_letters.mobile-letters();
+    @include Table_motion.mobile-motion();
+    @include Table_visuals.mobile-visuals();
+  }
+}

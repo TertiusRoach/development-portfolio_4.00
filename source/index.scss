@@ -1,21 +1,24 @@
-//--|🠊 index.scss (Entry Point) 🠈|--//
+//--|🠊 index.scss (Entry Point) 🠈|--\\
 // @use 'sass:color';
 
-//--|🠋 Designs 🠋|--//
+//--|🠋 Designs 🠋|--\\
 @use './layouts/designs/Global.scss';
 @use './layouts/designs/Palettes.scss';
+@use './layouts/designs/Transition.scss';
 
-//--|🠋 Applications 🠋|--//
-@use './layouts/styles/buttons.scss';
+//--|🠋 Applications 🠋|--\\
+// @use './layouts/styles/buttons.scss';
+@use './layouts/styles/components.scss';
 @use './layouts/styles/landing.scss';
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
 @use './layouts/styles/hyperlink.scss';
 
 body {
-  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--//
+  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
   div[id*='body'] {
-    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--//
+    overflow: inherit; //--|🠈 overflow: hidden; 🠈|--\\
+    @extend %transitions;
   }
 
   &[class*='ante-meridiem'] {
@@ -24,4 +27,36 @@ body {
   &[class*='post-meridiem'] {
     background: Palettes.$indexLand-darkMode;
   }
+}
+
+%transitions {
+  section[class*='overlay'] {
+    z-index: 10;
+  }
+  header,
+  footer {
+    &[class*='header'] {
+      z-index: 6;
+    }
+    &[class*='footer'] {
+      z-index: 9;
+    }
+  }
+  aside[class*='bar'] {
+    &[class*='left'] {
+      z-index: 5;
+    }
+    &[class*='right'] {
+      z-index: 4;
+    }
+  }
+  main[class*='main'] {
+    z-index: 0;
+  }
+
+  @include Transition.body-transition();
+  @include Transition.header-transition();
+  @include Transition.footer-transition();
+  @include Transition.overlay-transition();
+  @include Transition.sidebar-transition();
 }

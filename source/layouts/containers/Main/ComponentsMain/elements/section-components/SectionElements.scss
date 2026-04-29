@@ -1,0 +1,15 @@
+//--|🠊 SectionElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-section/DefaultSection.scss';
+
+section[class*='section'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultSection.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultSection.mobile-portrait;
+    }
+  }
+}

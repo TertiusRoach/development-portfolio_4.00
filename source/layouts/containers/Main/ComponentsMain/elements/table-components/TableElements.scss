@@ -1,0 +1,15 @@
+//--|🠊 TableElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-table/DefaultTable.scss';
+
+section[class*='table'] {
+  div[class*='main_container'] {
+    @media screen and (orientation: landscape) {
+      @include DefaultTable.desktop-landscape;
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultTable.mobile-portrait;
+    }
+  }
+}
