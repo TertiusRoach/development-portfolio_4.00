@@ -32,10 +32,11 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    paths: Array<Array<string | HTMLElement>>;
+    paths: Array<string | HTMLElement>;
   };
 
   onClick?: () => void;
+  onMouseEnter?: () => void;
 }
 const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;

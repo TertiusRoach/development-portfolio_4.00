@@ -86,7 +86,7 @@
   //--|🠋 Y-axis 🠋|--\\
 
   //--|🠋 X-axis 🠋|--\\
-  %flexXView {
+  %flex-view {
     &.I {
       transform: translateX(0);
     }
@@ -148,43 +148,7 @@
       transform: translateX(-1900%);
     }
   }
-
-  height: 100%;
-  li[class*='hori_top'] {
-    height: inherit; //--|🠈 height: 100%; 🠈|--\\
-    ul[class*='scroll'] {
-      height: inherit; //--|🠈 height: 100%; 🠈|--\\
-      li[class*='buttons'] {
-        z-index: 1;
-      }
-      li[class*='preview'] {
-        z-index: 0;
-        display: flex;
-        @extend %flexXView;
-        transition: transform 500ms ease-in-out;
-        div {
-          flex: 0 0 100%;
-          h1 {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-      }
-    }
-  }
-
-  /*
-  &[class*='hori_top'] {
-    ul {
-
-    }
-    &[class*='_top_'] {
-      @extend %grid-height;
-    }
-  }
-  %grid-height {
+  %flex-height {
     height: 128px; //--|🠋 128px for Squares 🠋|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 96px for Squares 🠋|--\\
@@ -199,22 +163,30 @@
       height: 48px; //--|🠋 48px for Squares 🠋|--\\
     }
   }
-  %flex-width {
-    width: 128px; //--|🠋 128px for Squares 🠋|--\\
-    @media screen and (max-height: 768px) {
-      //--|🠋 96px for Squares 🠋|--\\
-      width: 96px; //--|🠋 96px for Squares 🠋|--\\
-    }
-    @media screen and (max-height: 480px) {
-      //--|🠋 64px for Squares 🠋|--\\
-      width: 64px; //--|🠋 64px for Squares 🠋|--\\
-    }
-    @media screen and (max-height: 360px) {
-      //--|🠋 48px for Squares 🠋|--\\
-      width: 48px; //--|🠋 48px for Squares 🠋|--\\
+  li[class*='hori_top'] {
+    height: inherit; //--|🠈 height: 100%; 🠈|--\\
+    ul[class*='scroll'] {
+      height: inherit; //--|🠈 height: 100%; 🠈|--\\
+      li[class*='buttons'] {
+        z-index: 1;
+      }
+      li[class*='preview'] {
+        z-index: 0;
+        display: flex;
+        @extend %flex-view;
+        transition: transform 500ms ease-in-out;
+        div {
+          flex: 0 0 100%;
+          h1 {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
     }
   }
-  */
 }
 
 //--|===|--\\

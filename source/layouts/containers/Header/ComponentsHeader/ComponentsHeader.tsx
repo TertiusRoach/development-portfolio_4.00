@@ -1,6 +1,7 @@
 //--|🠊 ComponentsHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/components';
+import { markMenu } from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
@@ -32,15 +33,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <NavigationBrowse
-          //--|🠊 <nav class="browse-header"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        />
-        <header className="component-carousels">
+        <header className="component-carousels I">
           <MenuCarousel
             style={{
               axis: '[x]',
@@ -49,14 +42,61 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
               type: '{scroll}',
             }}
-            cases={{ paths: svgPath as Array<string | HTMLElement | any> }}
+            cases={{
+              paths: ['<Default_Article>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'article',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Aside>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'aside',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
+            }}
             info={{
               labelName: 'button',
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}
+            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
           />
         </header>
+        <NavigationBrowse
+          //--|🠊 <nav class="browse-header"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
 
         {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </section>
