@@ -32,7 +32,6 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <MenuCarousel
-          onClick={() => selectHeader(pageName, blockName)}
           style={{
             axis: '[y]',
             view: '-lef-',

@@ -69,7 +69,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
             onClick={(): number => scrollCarousel(info.pageName, info.blockName, info.labelName, 'go-left')}
           />
         </div>
-        <div className="next-view highlight">
+        <div className="next-view downplay">
           <ButtonDefault
             style={{
               size: '<h3>',

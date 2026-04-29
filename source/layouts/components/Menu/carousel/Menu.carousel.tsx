@@ -36,9 +36,9 @@ interface TheseProps {
   };
 
   onClick?: () => void;
-  onMouseEnter: () => void;
+  onMouseEnter?: () => void;
 }
-const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases, onMouseEnter }) => {
+const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
