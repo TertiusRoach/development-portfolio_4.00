@@ -1,11 +1,5 @@
 //--|🠊 Leftbar/ComponentsFunctions.ts 🠈|--\\
 
-export function selectCarousel(
-  pageName: string,
-  blockName: string,
-  compLink: Array<string>,
-  axisPreview: '[x]' | '[y]',
-  eventAction: 'select-element',
-) {
-  alert('TEST!!!!!');
+export function selectHeader(pageName: string, blockName: string) {
+  console.log('TEST!!!!!');
 }

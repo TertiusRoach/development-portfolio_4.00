@@ -13,7 +13,7 @@ interface CasesProps {
   array: Array<string>;
 }
 
-export function selectCarousel(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): number {
+function selectCarousel(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): number {
   /*--|🠋
 
   🠉|--*/
@@ -84,3 +84,4 @@ export function selectCarousel(pageName: string, blockName: string, eventName: R
 
   return 0 as number;
 }
+export default selectCarousel;

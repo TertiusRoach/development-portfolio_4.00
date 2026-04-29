@@ -22,7 +22,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    paths: Array<Array<string | HTMLElement>>;
+    paths: Array<string | HTMLElement>;
   };
 
   onClick?: () => number;
