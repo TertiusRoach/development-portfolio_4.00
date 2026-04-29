@@ -7,7 +7,7 @@ import ButtonRouting from '../../../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import { markMenu } from '../../Menu_carousel';
-import { selectSection } from './Select_carousel';
+import { selectCarousel } from './Select_carousel';
 
 interface TheseProps {
   info: {
@@ -23,7 +23,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    paths: Array<string>;
+    paths: Array<Array<string | HTMLElement>>;
   };
 
   onClick?: () => number;
@@ -50,7 +50,7 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               color: '(mono)', // You could use style.color here
               shade: '~light~', // You could use style.shade here
               type: '{button}',
-              image: path, // 👈 This puts the current image link here!
+              image: path as string, // 👈 This puts the current image link here!
             }}
             info={{
               pageName: info.pageName,
@@ -58,7 +58,7 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               labelName: info.labelName,
             }}
             onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
-              selectSection(info.pageName, info.blockName, eventInfo)
+              selectCarousel(info.pageName, info.blockName, eventInfo)
             }
           />
         </li>

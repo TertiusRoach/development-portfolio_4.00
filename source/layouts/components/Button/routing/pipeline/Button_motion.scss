@@ -5,6 +5,7 @@
 
 @mixin desktop-motion {
   @include mon-fade();
+
   .fore {
     z-index: 2;
     span {

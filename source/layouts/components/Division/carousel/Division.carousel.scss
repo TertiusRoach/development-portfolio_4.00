@@ -89,13 +89,10 @@
   //--|🠊 Horizontal X-axis 🠈|--\\
   %hori-stack {
     div {
-      // width: 100vw;
       display: flex;
-      // height: 100svh;
       section,
       figure,
       aside {
-        // height: 100svh;
         flex: 0 0 100vw;
       }
     }
@@ -162,14 +159,8 @@
     }
   }
   ul {
-    // width: 100vw;
-    // display: flex;
-    // height: 100svh;
-
     li {
       height: 100svh;
-      // flex: 0 0 100vw;
-      // display: inherit; //--|🠊 display: flex; 🠈|--\\
       @extend %hori-stack;
     }
   }

@@ -52,18 +52,17 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     } else if (style.type === '{scroll}') {
       layoutPreview = `scr_${labelList(style)}`;
     }
-
     switch (styleAxis) {
       case '[x]':
         return (
           <li className={`${markClass(style)}`}>
-            <ul className="carousel-preview">{callAddon(info, style, cases)}</ul>
+            <ul className={`${stripBrackets(style.type, '{}')}-carousel`}>{callAddon(info, style, cases)}</ul>
           </li>
         );
       case '[y]':
         return (
           <li className={`${markClass(style)}`}>
-            <ol className="carousel-preview">{callAddon(info, style, cases)}</ol>
+            <ol className={`${stripBrackets(style.type, '{}')}-carousel`}>{callAddon(info, style, cases)}</ol>
           </li>
         );
     }

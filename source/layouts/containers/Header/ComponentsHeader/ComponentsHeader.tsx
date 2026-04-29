@@ -1,9 +1,13 @@
 //--|🠊 ComponentsHeader.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/components';
+
+//--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-// import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
 import NavigationBrowse from '../../../components/Navigation/browse/Navigation.browse';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 interface InfoProps {
   info: {
@@ -16,18 +20,15 @@ interface InfoProps {
   };
 }
 const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
-  const svgPath: Array<string> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/rightbar/rightbar-dark.svg',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/leftbar/leftbar-dark.svg',
-  ];
+  const svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'];
 
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const labelName = stripBrackets(info.labelName, '()') as 'profile';
+  const labelName = stripBrackets(info.labelName, '()') as 'browse';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
@@ -50,7 +51,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{ paths: svgPath as Array<string | HTMLElement | any> }}
             info={{
-              labelName: 'buttons',
+              labelName: 'button',
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}

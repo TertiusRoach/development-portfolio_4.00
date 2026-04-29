@@ -48,23 +48,3 @@ const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ProfileOvertime;
-
-/*
-import { stripBrackets } from '../../../../../scripts/buttons';
-import {
-  defaultPreview,
-  controlPreview,
-  togglePreview,
-  unfoldHeader,
-  toggleAside,
-  scrollMouse,
-  viewDisplay,
-  useSwipePhone as useSwipe,
-} from '../../ButtonsFunctions';
-//--|🠋 Components 🠋|--\\
-import LabelToggle from '../../../../../components/Label/toggle/Label.toggle';
-import ButtonDefault from '../../../../../components/Button/default/Button.default';
-import ButtonRouting from '../../../../../components/Button/routing/Button.routing';
-
-
-*/

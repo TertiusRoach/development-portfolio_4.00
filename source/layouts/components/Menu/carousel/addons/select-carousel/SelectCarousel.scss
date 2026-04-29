@@ -11,12 +11,8 @@
     @include Mixins.clip-menu();
   }
 }
-@mixin mobile-select {
-}
-
 @mixin desk-grid {
 }
-
 @mixin desk-flex {
   //--|🠋 Y-axis 🠋|--\\
   &[class*='vert_lef'] {
@@ -24,7 +20,16 @@
     overflow-y: auto;
     ol {
       height: inherit;
-      & {
+      li {
+        transition: opacity 250ms ease-in-out;
+        &.downplay {
+          opacity: 0.5;
+        }
+        &.highlight {
+          opacity: 1;
+        }
+      }
+      &[class*='select'] {
         li:first-child {
           padding-top: 8rem + 1rem;
         }
@@ -34,9 +39,7 @@
         li:last-child {
           padding-bottom: 8rem + 1rem;
         }
-      }
-      @media screen and (max-height: 768px) {
-        & {
+        @media screen and (max-height: 768px) {
           li:first-child {
             padding-top: 6rem + 0.75rem;
           }
@@ -47,9 +50,7 @@
             padding-bottom: 6rem + 0.75rem;
           }
         }
-      }
-      @media screen and (max-height: 480px) {
-        & {
+        @media screen and (max-height: 480px) {
           li:first-child {
             padding-top: 4rem + 0.5rem;
           }
@@ -60,9 +61,7 @@
             padding-bottom: 4rem + 0.5rem;
           }
         }
-      }
-      @media screen and (max-height: 360px) {
-        & {
+        @media screen and (max-height: 360px) {
           li:first-child {
             padding-top: 3rem + 0.25rem;
           }
@@ -75,21 +74,24 @@
         }
       }
     }
+
+    width: 128px; //--|🠋 128px for Squares 🠋|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      width: 96px; //--|🠋 96px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      width: 64px; //--|🠋 64px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      width: 48px; //--|🠋 48px for Squares 🠋|--\\
+    }
   }
 
   //--|🠋 X-axis 🠋|--\\
-
-  width: 128px; //--|🠋 128px for Squares 🠋|--\\
-  @media screen and (max-height: 768px) {
-    //--|🠋 96px for Squares 🠋|--\\
-    width: 96px; //--|🠋 96px for Squares 🠋|--\\
-  }
-  @media screen and (max-height: 480px) {
-    //--|🠋 64px for Squares 🠋|--\\
-    width: 64px; //--|🠋 64px for Squares 🠋|--\\
-  }
-  @media screen and (max-height: 360px) {
-    //--|🠋 48px for Squares 🠋|--\\
-    width: 48px; //--|🠋 48px for Squares 🠋|--\\
-  }
+}
+//--|===|--\\
+@mixin mobile-select {
 }

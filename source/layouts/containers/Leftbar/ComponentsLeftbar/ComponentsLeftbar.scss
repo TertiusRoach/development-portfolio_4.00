@@ -7,16 +7,6 @@
   %foreground {
     menu[class*='carousel'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      li {
-        transition: opacity 250ms ease-in-out;
-        &.downplay {
-          opacity: 0.5;
-          // cursor: default;
-        }
-        &.highlight {
-          opacity: 1;
-        }
-      }
     }
   }
   %midground {

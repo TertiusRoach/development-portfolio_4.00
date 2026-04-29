@@ -3,23 +3,18 @@
 @use '../../../../../designs/Palettes.scss';
 
 @mixin desktop-scroll {
-  li[class*='_scr'] {
-    @include desk-grid;
-    @include desk-flex;
-  }
+  @include desk-grid;
+  @include desk-flex;
+
   li {
     @include Mixins.clip-menu();
   }
 }
-@mixin mobile-scroll {
-}
-
 @mixin desk-grid {
   //--|🠋 Y-axis 🠋|--\\
 
   //--|🠋 X-axis 🠋|--\\
-
-  %grid-rows {
+  %gridXRows {
     //--|🠋 128px for Squares 🠋|--\\
     grid-template-rows: 128px;
     @media screen and (max-height: 768px) {
@@ -35,7 +30,7 @@
       grid-template-rows: 48px; //--|🠋 48px for Squares 🠋|--\\
     }
   }
-  %grid-cols {
+  %gridXCols {
     margin: 0 128px;
     grid-template-columns: 128px 1fr 128px; //--|🠋 128px for Squares 🠋|--\\
     @media screen and (max-height: 768px) {
@@ -54,53 +49,35 @@
       grid-template-columns: 48px 1fr 48px;
     }
   }
-  %grid-width {
-    text-align: center;
-    width: calc(100vw - 128px * 2);
-    @media screen and (max-height: 768px) {
-      //--|🠋 96px for Squares 🠋|--\\
-      width: calc(100vw - 96px * 2);
-    }
-    @media screen and (max-height: 480px) {
-      //--|🠋 64px for Squares 🠋|--\\
-      width: calc(100vw - 64px * 2);
-    }
-    @media screen and (max-height: 360px) {
-      //--|🠋 48px for Squares 🠋|--\\
-      width: calc(100vw - 48px * 2);
-    }
-  }
-  &[class*='hori_top'] {
-    ul {
+
+  li[class*='hori_top'] {
+    ul[class*='scroll'] {
       display: grid;
-      @extend %grid-rows;
-      @extend %grid-cols;
-
-      li:first-child {
-        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        // overflow-x: hidden;
-        width: 100%;
-        span {
-          position: relative;
-
-          flex-direction: row;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          @extend %grid-height;
-          h1 {
-            // position: absolute;
-            // @extend %grid-width;
-          }
+      @extend %gridXRows;
+      @extend %gridXCols;
+      li[class*='_buttons'] div {
+        transition: opacity 250ms ease-in-out;
+        &.downplay {
+          opacity: 0;
+        }
+        &.highlight {
+          opacity: 1;
         }
       }
-      li.button:nth-child(2) {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      li[class*='buttons'] {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-template: inherit;
+        grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        div[class*='prev'] {
+          grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        div[class*='next'] {
+          grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
       }
-      li.button:last-child {
-        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      li[class*='preview'] {
+        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }
@@ -109,14 +86,99 @@
   //--|🠋 Y-axis 🠋|--\\
 
   //--|🠋 X-axis 🠋|--\\
+  %flexXView {
+    &.I {
+      transform: translateX(0);
+    }
+    &.II {
+      transform: translateX(-100%);
+    }
+    &.III {
+      transform: translateX(-200%);
+    }
+    &.IV {
+      transform: translateX(-300%);
+    }
+    &.V {
+      transform: translateX(-400%);
+    }
+    &.VI {
+      transform: translateX(-500%);
+    }
+    &.VII {
+      transform: translateX(-600%);
+    }
+    &.VIII {
+      transform: translateX(-700%);
+    }
+    &.IX {
+      transform: translateX(-800%);
+    }
+    &.X {
+      transform: translateX(-900%);
+    }
+    &.XI {
+      transform: translateX(-1000%);
+    }
+    &.XII {
+      transform: translateX(-1100%);
+    }
+    &.XIII {
+      transform: translateX(-1200%);
+    }
+    &.XIV {
+      transform: translateX(-1300%);
+    }
+    &.XV {
+      transform: translateX(-1400%);
+    }
+    &.XVI {
+      transform: translateX(-1500%);
+    }
+    &.XVII {
+      transform: translateX(-1600%);
+    }
+    &.XVIII {
+      transform: translateX(-1700%);
+    }
+    &.XIX {
+      transform: translateX(-1800%);
+    }
+    &.XX {
+      transform: translateX(-1900%);
+    }
+  }
 
+  height: 100%;
+  li[class*='hori_top'] {
+    height: inherit; //--|🠈 height: 100%; 🠈|--\\
+    ul[class*='scroll'] {
+      height: inherit; //--|🠈 height: 100%; 🠈|--\\
+      li[class*='buttons'] {
+        z-index: 1;
+      }
+      li[class*='preview'] {
+        z-index: 0;
+        display: flex;
+        @extend %flexXView;
+        transition: transform 500ms ease-in-out;
+        div {
+          flex: 0 0 100%;
+          h1 {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
+  /*
   &[class*='hori_top'] {
     ul {
-      h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+
     }
     &[class*='_top_'] {
       @extend %grid-height;
@@ -152,4 +214,9 @@
       width: 48px; //--|🠋 48px for Squares 🠋|--\\
     }
   }
+  */
+}
+
+//--|===|--\\
+@mixin mobile-scroll {
 }

@@ -1,14 +1,13 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
+import scrollCarousel from './Scroll_carousel';
+import { arabicToRoman } from '../../../../functions';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../../Button/default/Button.default';
 
-//--|🠋 Functions 🠋|--\\
-import { scrollSection } from './Scroll_carousel';
-import { arabicToRoman } from '../../../../functions';
-
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 interface TheseProps {
   info: {
     pageName: string;
@@ -23,52 +22,72 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    paths: Array<string | HTMLElement>;
+    paths: Array<Array<string | HTMLElement>>;
   };
 
   onClick?: () => number;
 }
 
 const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
-  // console.log(document.querySelector(`#${info.pageName}-main`));
+  const svgIcons: Array<string> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/rightbar/rightbar-dark.svg',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/leftbar/leftbar-dark.svg',
+  ];
   return (
     <>
-      <li>
-        <span className="carousel-preview">
-          <h1 className={`${info.labelName}-${info.blockName} I`}>
-            <b>{`<{Default}`}</b>
-            <i>{`Button>`}</i>
-          </h1>
-        </span>
-        <span>
-          <h1 className={`${info.labelName}-${info.blockName} I`}>
-            <b>{`<{Routing`}</b>
-            <i>{`Button>`}</i>
-          </h1>
-        </span>
+      <li className={`${info.labelName}-${info.blockName}_preview I`}>
+        {cases.paths.map((path, index) => {
+          const [boldText, italicText] = String(path).split('_');
+          return (
+            <div key={index}>
+              <h1>
+                <span>
+                  <b>{boldText}</b>
+                  <i>{italicText}</i>
+                </span>
+              </h1>
+            </div>
+          );
+        })}
       </li>
-      {cases.paths.map((path, index) => (
-        <li className={`button`} key={index}>
+      <li className={`${info.labelName}-${info.blockName}_buttons`}>
+        <div className="prev-view downplay">
           <ButtonDefault
             style={{
               size: '<h3>',
-              view: '-icon-', // You could also dynamically use style.view here!
-              color: style.color, // You could use style.color here
-              shade: style.shade, // You could use style.shade here
+              view: '-icon-',
+              color: style.color,
+              shade: style.shade,
               type: '{button}',
-              image: path as string, // 👈 This puts the current image link here!
+              image: svgIcons[0] as string,
             }}
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
-              scrollSection(info.pageName, info.blockName, eventInfo)
-            }
+            onClick={(): number => scrollCarousel(info.pageName, info.blockName, info.labelName, 'go-left')}
           />
-        </li>
-      ))}
+        </div>
+        <div className="next-view highlight">
+          <ButtonDefault
+            style={{
+              size: '<h3>',
+              view: '-icon-',
+              color: style.color,
+              shade: style.shade,
+              type: '{button}',
+              image: svgIcons[1] as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            onClick={(): number => scrollCarousel(info.pageName, info.blockName, info.labelName, 'go-right')}
+          />
+        </div>
+      </li>
     </>
   );
 };

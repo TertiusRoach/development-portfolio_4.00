@@ -13,7 +13,7 @@ interface CasesProps {
   array: Array<string>;
 }
 
-export function selectSection(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): number {
+export function selectCarousel(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): number {
   /*--|🠋
 
   🠉|--*/

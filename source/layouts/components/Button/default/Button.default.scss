@@ -11,7 +11,6 @@ button[class*='default'] {
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
-  @extend %button-move;
 
   @media screen and (orientation: landscape) {
     //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
@@ -31,11 +30,10 @@ button[class*='default'] {
     @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
   }
-
-  @extend %button-test;
 }
 %button-user {
   background: none;
+
   &[class*='_top_'],
   &[class*='_bot_'],
   &[class*='_lef_'],
@@ -61,7 +59,7 @@ button[class*='default'] {
         display: none;
       }
     }
-    &:disabled {
+    .downplay & {
       img,
       h1,
       h2,
@@ -183,26 +181,4 @@ button[class*='default'] {
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-}
-%button-move {
-}
-%button-test {
-  /*
-  .text {
-    background: rgba(darkred, 0.25);
-    * {
-      color: maroon;
-    }
-  }
-  .icon {
-    background: rgba(darkred, 0.25);
-    img {
-      background: black;
-    }
-  }
-  .back {
-    background: rgba(darkblue, 0.25);
-  }
-  background: rgba(pink, 0.5);
-  */
 }

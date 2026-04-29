@@ -16,7 +16,7 @@ export function markMenu(pageName: string, blockName: string) {
           let TypeX = 'scr';
           return {
             menu: document.querySelector(
-              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeX}"] ${AxisX}`,
+              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeX}"] ${AxisX} li[class*="preview"]`,
             ) as HTMLElement,
             division: document.querySelector(
               `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
@@ -60,57 +60,37 @@ export function markMenu(pageName: string, blockName: string) {
     }
   };
 
-  const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
-  const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
-
+  //--|🠋|==============================================|🠋|--\\
+  //--|🠊 See if <CarouselDivision> is on ".I" position to
+  //--|🠊 Match the emphasis on the <button> tags in <CarouselMenu>
+  //--|🠉|==============================================|🠉|--\\
   const scrollXMenu = getTags('[x]', '{scroll}')?.menu as HTMLElement;
   const scrollXCarousel = getTags('[x]', '{scroll}')?.division as HTMLElement;
+  if (scrollXCarousel.childElementCount === scrollXMenu.childElementCount) {
+    let prevMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="prev"]') as HTMLElement;
+    let nextMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="next"]') as HTMLElement;
 
-  if (scrollXCarousel.childElementCount !== scrollXMenu.childElementCount) {
-    for (let i = 0; i < scrollXCarousel.childElementCount; i++) {
-      const carAside = scrollXCarousel.childNodes[i] as HTMLElement;
-      // console.log(carAside.classList[0]);
-
-      /*
-      Using TypeScript: Create the following elements in this order...
-
-      
-      <li className="carousel-preview">
-        <span class=`${carAside.classList[0]}>
-          <h1 className={`${info.labelName}-${info.blockName} I`}>
-            <b>{`<{carAside.classList[0].split('-')[0]}`}</b>
-            <i>{`Button>`}</i>
-          </h1>
-        </span>
-        <span>
-          <h1 className={`${info.labelName}-${info.blockName} I`}>
-            <b>{`<{carAside.classList[0].split('-')[0]}`}</b>
-            <i>{`Button>`}</i>
-          </h1>
-        </span>
-      </li>
-      */
+    if (!prevMenu.classList.contains('downplay')) {
+      prevMenu.classList.add('downplay');
+    }
+    if (!nextMenu.classList.contains('highlight')) {
+      nextMenu.classList.add('highlight');
     }
   }
 
-  const yParent = selectYCarousel.parentElement as HTMLLIElement;
-  const yPosition: string = yParent.className;
-
-  /*
-  //--|🠋|=================================================|🠋|--\\
+  //--|🠋|==============================================|🠋|--\\
   //--|🠊 See if the amount of children in <CarouselDivision>
   //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
-  //--|🠉|=================================================|🠉|--\\
-  */
+  //--|🠉|==============================================|🠉|--\\
+  const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
+  const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
   if (selectYCarousel.childElementCount === selectYMenu.childElementCount) {
     for (let i = 0; i < selectYCarousel.childElementCount; i++) {
-      //--|🠊 Match carousel identifiers to <li> items inside <menu>: Line 61 🠈|--\\
-      const carMenu = selectYMenu.childNodes[i] as HTMLElement;
-      //--|🠊 Emphasize with ".visible" or ".hidden": Line 63 🠈|--\\
-      const carSection = selectYCarousel.childNodes[i] as HTMLElement;
-      //--|🠊 Retrieve the Roman String in the component container of the Carousel 🠈|--\\
-      let carContainer = carSection.parentElement?.parentElement as HTMLElement;
-      let carRoman = carContainer.classList[0] as string;
+      let carMenu = selectYMenu.childNodes[i] as HTMLElement; //--|🠈 Match carousel identifiers to <li> items inside <menu> 🠈|--\\
+      let carSection = selectYCarousel.childNodes[i] as HTMLElement; //--|🠈 Emphasize with ".visible" or ".hidden" 🠈|--\\
+
+      var carContainer = carSection.parentElement?.parentElement as HTMLElement; //--|🠈 Retrieve the Roman String in the component container of the Carousel 🠈|--\\
+      var carRoman = carContainer.classList[0] as string;
       if (romanToArabic(carRoman) === i + 1) {
         carSection.classList.add('visible');
         carSection.classList.remove('hidden');

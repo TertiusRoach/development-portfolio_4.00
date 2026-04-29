@@ -13,48 +13,66 @@ interface CasesProps {
   array: Array<string>;
 }
 
-export function scrollSection(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): number {
+function scrollCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  blockAction: 'go-left' | 'go-right',
+): number {
   /*--|🠋
-
+  
   🠉|--*/
-  const getTags = (axis: '[x]' | '[y]'): Record<string, HTMLElement | string> => {
-    const xAxis = 'ul';
-    if (axis === '[x]') {
-      return {
-        menu: document.querySelector(
-          `#${pageName}-${blockName} menu[class*="carousel"] li[class*="_sel"] ${xAxis}`,
-        ) as HTMLElement,
-        division: document.querySelector(
-          `#${pageName}-main div[class*="carousel"] ${xAxis} .I div[class*="container"]`,
-        ) as HTMLElement,
-      };
-    }
+  const findPreview: string = `#${pageName}-${blockName} section.${blockName}-foreground li[class*="${labelName}-${blockName}_preview"]`;
+  const findButtons: string = `#${pageName}-${blockName} section.${blockName}-foreground li[class*="${labelName}-${blockName}_buttons"]`;
+  const findDivision: string = `#${pageName}-main section.main-foreground div.${labelName}-main_carousel li:first-child`;
 
-    const yAxis = 'ol';
-    return {
-      menu: document.querySelector(
-        `#${pageName}-${blockName} menu[class*="carousel"] li[class*="_sel"] ${yAxis}`,
-      ) as HTMLElement,
-      division: document.querySelector(
-        `#${pageName}-main div[class*="carousel"] ${yAxis} li div[class*="container"]`,
-      ) as HTMLElement,
-    };
-  };
-  const carouselMenu = getTags('[y]').menu as HTMLElement;
-  const carouselDivision = getTags('[y]').division as HTMLElement;
+  const carouselPreview = document.querySelector(findPreview) as HTMLElement;
+  const carouselButtons = document.querySelector(findButtons) as HTMLElement;
+  const prevButton = carouselButtons.childNodes[0] as HTMLElement;
+  const nextButton = carouselButtons.childNodes[1] as HTMLElement;
+  const carouselDivision = document.querySelector(findDivision) as HTMLElement;
 
-  let clickedElement = eventName.currentTarget.parentElement as HTMLElement;
-  let identifyElement: string = clickedElement.classList[0];
-  let selectPosition: number = 0;
-  /*
-  for (let i = 0; i < carouselMenu.childElementCount; i++) {
-    var sectionElement = carouselDivision.childNodes[i] as HTMLElement;
-    if (sectionElement.classList[0] === identifyElement) {
-      var carContainer = carouselDivision.parentElement as HTMLElement;
-      carContainer.className = arabicToRoman(i + 1);
-      selectPosition = i;
-    }
+  let prevSlide: number = romanToArabic(carouselDivision.classList[0]) - 1;
+  let currSlide: number = romanToArabic(carouselDivision.classList[0]) + 0;
+  let nextSlide: number = romanToArabic(carouselDivision.classList[0]) + 1;
+  let lastSlide: number = carouselDivision.childNodes[0].childNodes.length;
+  switch (blockAction) {
+    case 'go-left':
+      if (prevButton.classList.contains('downplay')) return 0 as number;
+
+      carouselPreview.classList.add(arabicToRoman(prevSlide));
+      carouselDivision.classList.add(arabicToRoman(prevSlide));
+
+      carouselPreview.classList.remove(arabicToRoman(currSlide));
+      carouselDivision.classList.remove(arabicToRoman(currSlide));
+
+      if (prevSlide === 1) {
+        prevButton.classList.add('downplay');
+        prevButton.classList.remove('highlight');
+      } else if (nextButton.classList.contains('downplay')) {
+        nextButton.classList.add('highlight');
+        nextButton.classList.remove('downplay');
+      }
+      return prevSlide as number;
+    case 'go-right':
+      if (nextButton.classList.contains('downplay')) return 0 as number;
+
+      carouselPreview.classList.add(arabicToRoman(nextSlide));
+      carouselDivision.classList.add(arabicToRoman(nextSlide));
+
+      carouselPreview.classList.remove(arabicToRoman(currSlide));
+      carouselDivision.classList.remove(arabicToRoman(currSlide));
+
+      console.log(nextSlide);
+
+      if (nextSlide === lastSlide) {
+        nextButton.classList.add('downplay');
+        nextButton.classList.remove('highlight');
+      } else if (prevButton.classList.contains('downplay')) {
+        prevButton.classList.add('highlight');
+        prevButton.classList.remove('downplay');
+      }
+      return nextSlide as number;
   }
-  */
-  return selectPosition as number;
 }
+export default scrollCarousel;

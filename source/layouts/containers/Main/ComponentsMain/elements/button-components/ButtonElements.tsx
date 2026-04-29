@@ -11,6 +11,8 @@ import DivisionCarousel from '../../../../../components/Division/carousel/Divisi
 //--|🠋 Elements 🠋|--\\
 import DefaultButton from './default-button/DefaultButton';
 import RoutingButton from './routing-button/RoutingButton';
+import ProfileButton from './profile-button/ProfileButton';
+import StretchButton from './stretch-button/StretchButton';
 
 interface InfoProps {
   info: {
@@ -51,11 +53,22 @@ function ButtonComponents({ info }: InfoProps) {
     blockName: info.blockName,
     labelName: 'routing' as string,
   };
-
+  let profileInfo = {
+    pageName: info.pageName,
+    blockName: info.blockName,
+    labelName: 'profile' as string,
+  };
+  let stretchInfo = {
+    pageName: info.pageName,
+    blockName: info.blockName,
+    labelName: 'stretch' as string,
+  };
   return (
     <>
       <DefaultButton info={defaultInfo} />
       <RoutingButton info={routingInfo} />
+      <ProfileButton info={profileInfo} />
+      <StretchButton info={stretchInfo} />
     </>
   );
 }
