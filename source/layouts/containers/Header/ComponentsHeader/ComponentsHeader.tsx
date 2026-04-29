@@ -28,7 +28,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
