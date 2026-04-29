@@ -1,5 +1,6 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { markMenu } from './Scroll_carousel';
 import scrollCarousel from './Scroll_carousel';
 import { arabicToRoman } from '../../../../functions';
 
@@ -15,8 +16,8 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    type: '{scroll}' | string;
     axis: '[x]' | '[y]';
+    type: '{scroll}' | string;
     shade: '~dark~' | '~medium~' | '~light~';
     view: '-top-' | '-rig-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
@@ -37,20 +38,23 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     <>
       <li className={`${info.labelName}-${info.blockName}_preview I`}>
         {cases.paths.map((path, index) => {
-          const [boldText, italicText] = String(path).split('_');
+          const [boldText, italText] = String(path).split('_');
           return (
             <div key={index}>
               <h1>
                 <span>
                   <b>{boldText}</b>
-                  <i>{italicText}</i>
+                  <i>{italText}</i>
                 </span>
               </h1>
             </div>
           );
         })}
       </li>
-      <li className={`${info.labelName}-${info.blockName}_buttons`}>
+      <li
+        className={`${info.labelName}-${info.blockName}_buttons`}
+        onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+      >
         <div className="prev-view downplay">
           <ButtonDefault
             style={{

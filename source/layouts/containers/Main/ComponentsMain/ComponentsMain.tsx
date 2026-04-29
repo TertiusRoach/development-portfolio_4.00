@@ -39,7 +39,29 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    let TLLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol li button`;
+    let TLButton = document.querySelector(TLLocate) as HTMLButtonElement;
+
+    // 1. Define the function you want to run on hover
+    const onMouseEnter = (event: MouseEvent) => {
+      let TopLefLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol li button`;
+      let TopLefButton = document.querySelector(TopLefLocate) as HTMLButtonElement;
+    };
+
+    // 2. Safety check: Only add the listener if the button actually exists on the page
+    if (TLButton) {
+      TLButton.addEventListener('mouseenter', onMouseEnter);
+    }
+
+    // 3. CLEANUP: React runs this 'return' block right before the component
+    // re-renders or is destroyed, removing the old listener so they don't stack up!
+    return () => {
+      if (TLButton) {
+        TLButton.removeEventListener('mouseenter', onMouseEnter);
+      }
+    };
+  }, [pageName, blockName]);
 
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
