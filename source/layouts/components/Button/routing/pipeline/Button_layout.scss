@@ -1,8 +1,30 @@
 //--|🠊 profile/pipeline/Button_layout.scss 🠈|--\\
 //--|🠊 Layout: Grid and flex styles 🠈|--\\
 @mixin desktop-layout {
-  //--|🠋 Desktop (Layout) 🠋|--\\
-  //--|🠋 Desktop (Grid) 🠋|--\\
+  @include desk-grid; //--|🠈 Desktop (Grid) 🠈|--\\
+  @include desk-flex; //--|🠈 Desktop (Flex) 🠈|--\\
+  @include desk-edge; //--|🠈 Desktop (Edge) 🠈|--\\
+}
+@mixin desk-grid {
+  display: grid;
+  &[class*='routing'] {
+    div {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      overflow: hidden;
+      grid-area: 1 / 1 / 4 / 4;
+      span {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+      &.fore {
+        span {
+          mask-size: contain;
+          mask-position: center;
+          mask-repeat: no-repeat;
+        }
+      }
+    }
+  }
+
   &[class*='one_'] {
     .fore {
       grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
@@ -17,16 +39,8 @@
       }
     }
   }
-
-  .fore {
-    span {
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-    }
-  }
-
-  //--|🠋 Desktop (Size) 🠋|--\\
+}
+@mixin desk-flex {
   &[class*='one_'] {
     width: 128px;
     height: 128px;
@@ -69,8 +83,8 @@
   }
   &[class*='par_'] {
   }
-
-  //--|🠋 Desktop (Corners) 🠋|--\\
+}
+@mixin desk-edge {
   .fore,
   .mid,
   .back {
@@ -291,11 +305,33 @@
     }
   }
 }
-@mixin mobile-layout {
-  //--|🠋 Mobile (Layout) 🠋|--\\
-  //--|🠋 Mobile (Grid) 🠋|--\\
 
-  //--|🠋 Mobile (Flex) 🠋|--\\
+//--|===|--\\
+@mixin mobile-layout {
+  @include mobi-grid; //--|🠈 Mobile (Grid) 🠈|--\\
+  @include mobi-flex; //--|🠈 Mobile (Flex) 🠈|--\\
+  @include mobi-edge; //--|🠈 Mobile (Edge) 🠈|--\\
+}
+@mixin mobi-grid {
+  &[class*='routing'] {
+    div {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      overflow: hidden;
+      grid-area: 1 / 1 / 4 / 4;
+      span {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+      &.fore {
+        span {
+          mask-size: contain;
+          mask-position: center;
+          mask-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+@mixin mobi-flex {
   .fore {
     span {
       mask-size: contain;
@@ -303,7 +339,6 @@
       mask-repeat: no-repeat;
     }
   }
-
   //--|🠋 Mobile (Size) 🠋|--\\
   &[class*='one_'] {
     width: 192px;
@@ -345,8 +380,8 @@
       }
     }
   }
-
-  //--|🠋 Mobile (Corners) 🠋|--\\
+}
+@mixin mobi-edge {
   .fore,
   .mid,
   .back {
@@ -567,3 +602,5 @@
     }
   }
 }
+
+//--|===|--\\

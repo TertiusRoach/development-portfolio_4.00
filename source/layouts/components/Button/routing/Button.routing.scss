@@ -14,7 +14,6 @@
 
 button[class*='routing'],
 button[class*='counter'] {
-  @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
   @extend %button-move;
@@ -28,12 +27,6 @@ button[class*='counter'] {
     &:hover {
       @include Button_motion.desktop-motion();
     }
-    // @include Button_corn.desktop-corn();
-    // @include Button_flex.desktop-flex();
-    // @include Button_grid.desktop-grid();
-    // @include Button_size.desktop-size();
-    // @include Button_tint.desktop-tint();
-    // @include Button_move.desktop-move();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
@@ -42,25 +35,6 @@ button[class*='counter'] {
     @include Button_layout.mobile-layout();
     &:hover {
       @include Button_motion.mobile-motion();
-    }
-    // @include Button_corn.mobile-corn();
-    // @include Button_flex.mobile-flex();
-    // @include Button_grid.mobile-grid();
-    // @include Button_move.mobile-move();
-    // @include Button_size.mobile-size();
-    // @include Button_tint.mobile-tint();
-  }
-}
-%button-grid {
-  display: grid;
-  .fore,
-  .mid,
-  .back {
-    display: inherit;
-    overflow: hidden;
-    grid-area: 1 / 1 / 4 / 4;
-    span {
-      grid-area: 2 / 2 / 3 / 3;
     }
   }
 }
