@@ -557,8 +557,6 @@ Reusable utilities and patterns. This is the toolbox that keeps code duplication
 
 Editor configuration for consistent debugging and project workflows.
 
-<<<<<<< HEAD
-
 ### Repository Synchronization
 
 Open the [README](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.02/source/assets/md-files/repository-synchronization.md) to see the agreed workflow for syncing `main` and version-controlled branches into one clean, shared history. You’ll also see how branches are “archived” in practice and what gets created next to keep teamwork moving smoothly. Follow it top-to-bottom and you’ll end up with one source of truth and a predictable, low-drama branch state.
