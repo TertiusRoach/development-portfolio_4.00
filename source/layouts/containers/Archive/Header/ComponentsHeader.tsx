@@ -27,7 +27,11 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'browse';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    addEventListener('mouseenter', (event) => {});
+
+    onmouseenter = (event) => {};
+  }, [pageName, blockName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   return (

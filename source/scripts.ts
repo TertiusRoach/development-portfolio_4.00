@@ -197,7 +197,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
           console.log(`|🠊 Clicked on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -212,7 +212,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
           console.log(`|🠊 Hovered on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -243,7 +243,7 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -275,7 +275,7 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         }
         break;
@@ -321,7 +321,7 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
         }
         console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         break;
@@ -354,7 +354,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -362,7 +362,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
         console.log(`|🠊 Left <button> in <${blockName}> to unfold <leftbar> 🠈|`);
         setTimeout(() => {
           leftbarContainer.classList.remove('disabled');
-        }, 3000);
+        }, 1500);
         break;
     }
   }, 125);
@@ -392,7 +392,7 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 3000);
+          }, 1500);
         }
         console.log(`|🠊 Hovered on <${blockName}> to square <header> 🠈|`);
         break;

@@ -49,11 +49,14 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     let menuButtons = menuContainer.childNodes[1] as HTMLElement;
 
     if (menuPreview.childElementCount > 1) {
-      console.log('WEIRD BUG!');
       var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
       var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
       nextButton.classList.add('highlight');
       nextButton.classList.remove('downplay');
+
+      console.log(`/\/--\|🠋 This here is a fancy text log. 🠋\|--\\\\`);
+      console.log(`/\/--\|🠊 Keep a leisurely pace, please. 🠈\|--\\\\`);
+      console.log(`/\/--\|🠉 Look at me repeating designs. 🠉\|--\\\\`);
     }
   }, [info.pageName, info.blockName, info.labelName]);
 
