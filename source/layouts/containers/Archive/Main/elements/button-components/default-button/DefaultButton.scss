@@ -9,8 +9,6 @@
     section[class*='foreground'] {
       @include desk-grid;
       @include desk-flex;
-
-      background: rgba(darkgreen, 0.5);
     }
     figure[class*='midground'] {
     }
@@ -38,8 +36,8 @@
         div[class*='carousel'] {
           grid-area: 2 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           div[class*='container'] {
-            // height: 100%;
-            background: rgba(black, 0.25);
+            section[class*='default'] {
+            }
           }
         }
         //--|🠋 96px (Left & Right) for Design 🠋|--\\
@@ -118,6 +116,37 @@
   }
 }
 @mixin desk-flex {
+  aside[class*='default'] {
+    div[class*='carousel'] {
+      div[class*='container'] {
+        flex-direction: column;
+        // position: relative;
+        section[class*='default'] {
+          position: absolute;
+          inset: 0; /* top:0 right:0 bottom:0 left:0 */
+          width: 100%;
+          height: 100vh;
+          // width: 100%;
+          // width: inherit; //--|🠈 width: 100%; 🠈|--//
+        }
+        section:nth-child(1) {
+          inset: 0 0 0 0; /* top:0 right:0 bottom:0 left:0 */
+
+          background: rgba(darkred, 0.25);
+        }
+        section:nth-child(2) {
+          inset: 100% 0 0 0; /* top:0 right:0 bottom:0 left:0 */
+
+          background: rgba(darkgreen, 0.25);
+        }
+        section:nth-child(3) {
+          inset: 200% 0 0 0; /* top:0 right:0 bottom:0 left:0 */
+
+          background: rgba(darkblue, 0.25);
+        }
+      }
+    }
+  }
 }
 
 //--|===|--\\
