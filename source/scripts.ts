@@ -179,6 +179,7 @@ export function romanNumerals(): Array<string> {
     'CLVI',
   ];
 }
+
 //--|===|--\\
 export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   const disableElement: string = 'disabled-header';
