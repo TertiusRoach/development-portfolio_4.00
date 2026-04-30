@@ -14,10 +14,10 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../scripts';
+} from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
@@ -51,12 +51,12 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
   return (
     <nav className={`browse-${blockName}`}>
       <ol>
-        <li className="close-head">
+        <li className="view-head">
           <ButtonRouting
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_close-head`,
+              labelName: `${pageName}-${blockName}_view-head`,
             }}
             style={{
               size: '<h1>',
@@ -67,18 +67,40 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
               image: `${svgPath[0]}`,
             }}
             onMouseEnter={() => {
-              if (blockName === 'main') {
+              if (blockName === 'header') {
                 unfoldHeader(pageName, 'hover', 'header');
-                unfoldLeftbar(pageName, 'hover', 'leftbar');
-              } else if (blockName === 'header') {
-                unfoldHeader(pageName, 'hover', 'header');
-                unfoldLeftbar(pageName, 'hover', 'leftbar');
               }
             }}
             onClick={() => {
               if (blockName === 'header') {
-                squaringHeader(pageName, 'click', 'header');
-                collapseLeftbar(pageName, 'click', 'leftbar');
+                unfoldLeftbar(pageName, 'click', 'leftbar');
+              }
+            }}
+          />
+        </li>
+        <li className="view-foot">
+          <ButtonRouting
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: `${pageName}-${blockName}_view-head`,
+            }}
+            style={{
+              size: '<h1>',
+              color: '(mono)',
+              shade: '~light~',
+              type: '{button}',
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
+              image: `${svgPath[0]}`,
+            }}
+            onMouseEnter={() => {
+              if (blockName === 'header') {
+                unfoldHeader(pageName, 'hover', 'header');
+              }
+            }}
+            onClick={() => {
+              if (blockName === 'header') {
+                unfoldLeftbar(pageName, 'click', 'leftbar');
               }
             }}
           />

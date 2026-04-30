@@ -1,19 +1,15 @@
-//--|🠊 Navigation.profile.tsx 🠈|--\\
+//--|🠊 Navigation.default.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.profile.scss';
+import './Navigation.default.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_profile';
-import { collapseLeftbar, expandLeftbar, collapseHeader } from '../../../../scripts';
-// import { previewElement } from '../../Division/carousel/Division_carousel';
-import { viewBody } from '../../../../index';
-import { scrollTable } from '../../Table/clocking/Table_clocking';
+import { viewDisplay } from './Navigation_default';
+import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
@@ -22,16 +18,15 @@ interface TheseProps {
     labelName: string;
   };
 }
-const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
-  let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/logo-white.svg',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
-    '',
+const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
+  const svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg',
   ];
 
-  const pageName: string = info.pageName as 'overtime';
-  const blockName: string = info.blockName as 'header';
-  const labelName: string = info.labelName as 'profile';
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as 'default';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -47,14 +42,14 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <nav className={`${labelName}-${blockName}`}>
+    <nav className={`browse-${blockName}`}>
       <ol>
-        <li className="close-head">
+        <li className="open-head">
           <ButtonRouting
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_close-head`,
+              labelName: `${pageName}-${blockName}_open-head`,
             }}
             style={{
               size: '<h1>',
@@ -64,13 +59,14 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               view: viewDisplay() as 'top-lef' | 'bot-rig',
               image: `${svgPath[0]}`,
             }}
-            onClick={() => {
-              collapseHeader(pageName, 'click', blockName);
-              collapseLeftbar(pageName, 'click', 'leftbar');
+            onMouseEnter={() => {
+              unfoldHeader(pageName, 'hover', blockName);
+              unfoldLeftbar(pageName, 'click', 'leftbar');
             }}
+            // onMouseEnter={() => unfoldHeader(pageName, 'hover', blockName)}
           />
         </li>
-        <li className="load-tags">
+        {/* <li className="load-tags">
           <ButtonRouting
             info={{
               pageName: pageName,
@@ -88,9 +84,9 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
             onClick={() => viewBody('components')}
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
-        </li>
+        </li> */}
       </ol>
     </nav>
   );
 };
-export default NavigationProfile;
+export default NavigationDefault;

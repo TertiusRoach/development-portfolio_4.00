@@ -4,7 +4,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
-import NavigationClocking from '../../../components/Navigation/clocking/Navigation.clocking';
+import NavigationClocking from '../../../components/Navigation/Overtime/clocking/Navigation.clocking';
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
 import MenuClocking from '../../../components/Menu/clocking/Menu.clocking';
 

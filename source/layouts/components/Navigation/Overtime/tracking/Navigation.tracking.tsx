@@ -1,19 +1,17 @@
-//--|🠊 Navigation.clocking.tsx 🠈|--\\
+//--|🠊 Navigation.track-main.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.clocking.scss';
+import './Navigation.tracking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
-import { viewDisplay } from './Navigation_clocking';
-import { scrollTable } from '../../Table/clocking/Table_clocking';
-
-// import { scrollTable } from '../../Table/tracking/Table_tracking';
+import { viewDisplay } from './Navigation_tracking';
+import { expandLeftbar, expandHeader } from '../../../../../scripts';
+import { scrollTable } from '../../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonDefault from '../../../Button/default/Button.default';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 interface TheseProps {
   info: {
     pageName: string;
@@ -21,10 +19,10 @@ interface TheseProps {
     labelName: string;
   };
 }
-const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
+const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
+  const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
-  const blockName: string = info.blockName as 'leftbar';
-  const labelName: string = info.labelName as 'clocking';
+  const labelName: string = info.labelName as 'tracking';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -63,15 +61,15 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
               blockName: blockName,
               labelName: `${pageName}-${blockName}_open-head`,
             }}
-            onClick={() => expandHeader(pageName, blockName, 'click')}
-            onMouseEnter={() => expandHeader(pageName, blockName, 'hover')}
+            onClick={() => expandHeader(pageName, 'click', blockName)}
+            // onMouseEnter={() => expandHeader(pageName, 'hover', blockName)}
           />
         </li>
 
         <li className="prev-table">
           <ButtonDefault
             info={{
-              labelName: `${labelName}_view-previous`,
+              labelName: `${pageName}-${blockName}_view-previous`,
               blockName: blockName,
               pageName: pageName,
             }}
@@ -92,7 +90,7 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
         <li className="next-table">
           <ButtonDefault
             info={{
-              labelName: `${labelName}_view-future`,
+              labelName: `${pageName}-${blockName}_view-future`,
               blockName: blockName,
               pageName: pageName,
             }}
@@ -149,7 +147,7 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
               image:
                 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/overtime-page/%7Esort/clock-time.svg',
             }}
-            onClick={() => expandLeftbar(pageName, blockName)}
+            onClick={() => expandLeftbar(pageName, 'click', blockName)}
           />
         </li>
         <li className="open-left saturday">
@@ -176,4 +174,4 @@ const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default NavigationClocking;
+export default NavigationTracking;

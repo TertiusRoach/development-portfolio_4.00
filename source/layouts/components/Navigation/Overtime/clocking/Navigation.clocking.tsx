@@ -1,17 +1,19 @@
-//--|🠊 Navigation.track-main.tsx 🠈|--\\
+//--|🠊 Navigation.clocking.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.tracking.scss';
+import './Navigation.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_tracking';
-import { expandLeftbar, expandHeader } from '../../../../scripts';
-import { scrollTable } from '../../Table/tracking/Table_tracking';
+import { expandLeftbar, expandHeader } from '../../../../../scripts';
+import { viewDisplay } from './Navigation_clocking';
+import { scrollTable } from '../../../Table/clocking/Table_clocking';
+
+// import { scrollTable } from '../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonDefault from '../../../Button/default/Button.default';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 interface TheseProps {
   info: {
     pageName: string;
@@ -19,10 +21,10 @@ interface TheseProps {
     labelName: string;
   };
 }
-const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
-  const blockName: string = info.blockName as 'main';
+const NavigationClocking: React.FC<TheseProps> = ({ info }) => {
   const pageName: string = info.pageName as 'overtime';
-  const labelName: string = info.labelName as 'tracking';
+  const blockName: string = info.blockName as 'leftbar';
+  const labelName: string = info.labelName as 'clocking';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -62,14 +64,14 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
               labelName: `${pageName}-${blockName}_open-head`,
             }}
             onClick={() => expandHeader(pageName, 'click', blockName)}
-            // onMouseEnter={() => expandHeader(pageName, 'hover', blockName)}
+            onMouseEnter={() => expandHeader(pageName, 'hover', blockName)}
           />
         </li>
 
         <li className="prev-table">
           <ButtonDefault
             info={{
-              labelName: `${pageName}-${blockName}_view-previous`,
+              labelName: `${labelName}_view-previous`,
               blockName: blockName,
               pageName: pageName,
             }}
@@ -90,7 +92,7 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
         <li className="next-table">
           <ButtonDefault
             info={{
-              labelName: `${pageName}-${blockName}_view-future`,
+              labelName: `${labelName}_view-future`,
               blockName: blockName,
               pageName: pageName,
             }}
@@ -174,4 +176,4 @@ const NavigationTracking: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default NavigationTracking;
+export default NavigationClocking;

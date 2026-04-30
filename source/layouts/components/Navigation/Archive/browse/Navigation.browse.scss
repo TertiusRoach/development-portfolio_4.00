@@ -6,17 +6,18 @@
   ol {
     height: 100%;
     display: inherit;
-    .close-head {
+    .view-head {
+      display: none;
       grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    .load-tags {
-      grid-area: 3 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
+    .view-foot {
+      background: red;
 
+      // grid-area: 4 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
     grid-template: //--|🠋 1080px 🠋|--\\
       8rem 1fr 8rem //--|🠈 rows 🠈|--//
-      / 128px 270px 1fr 270px 128px; //--|🠈 columns 🠈|--//
-
+      / 128px 270px 1fr 270px 128px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       grid-template: //--|🠋 1366px 🠋|--\\
         6rem 1fr 6rem //--|🠈 rows 🠈|--//

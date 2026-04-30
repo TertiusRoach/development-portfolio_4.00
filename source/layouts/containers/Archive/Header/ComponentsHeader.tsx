@@ -5,7 +5,7 @@ import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-import NavigationBrowse from '../../../components/Navigation/browse/Navigation.browse';
+import NavigationBrowse from '../../../components/Navigation/Archive/browse/Navigation.browse';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -28,10 +28,12 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
-    addEventListener('mouseenter', (event) => {});
+    addEventListener('mouseenter', (event) => {
+      console.log(document.querySelector(`#${pageName}-${blockName}`));
+    });
 
     onmouseenter = (event) => {};
-  }, [pageName, blockName]);
+  }, [pageName, blockName, labelName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   return (

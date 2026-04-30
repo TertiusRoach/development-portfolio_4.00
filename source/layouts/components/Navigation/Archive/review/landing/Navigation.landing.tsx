@@ -1,6 +1,6 @@
 //--|🠊 Navigation.landing.tsx 🠈|--//
 //--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../../scripts/landing';
+import { stripBrackets } from '../../../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Styles 🠋|--//
 import './Navigation.landing.scss';
@@ -14,11 +14,11 @@ import { showDemos, defineButton } from './Navigation_landing';
 // import { viewBlock, viewText, axiosError, retrieveEndpoint, viewPass } from '../../../../pages/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../../modules/context/PasswordContext';
+import { useEmail } from '../../../../../../modules/context/EmailContext';
+import { usePassword } from '../../../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../../Button/archive/default/Button.default';
+import ButtonDefault from '../../../../Button/archive/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   form: 'register' | 'login' | 'password';

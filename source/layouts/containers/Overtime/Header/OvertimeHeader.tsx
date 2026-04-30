@@ -15,7 +15,7 @@ import MenuProfile from '../../../components/Menu/profile/Menu.profile';
 import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
-import NavigationProfile from '../../../components/Navigation/profile/Navigation.profile';
+import NavigationProfile from '../../../components/Navigation/Overtime/profile/Navigation.profile';
 import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
 
 interface InfoProps {

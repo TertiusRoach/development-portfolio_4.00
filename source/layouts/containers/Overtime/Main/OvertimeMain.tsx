@@ -8,9 +8,9 @@ import { stripBrackets } from '../../../scripts/overtime';
 
 //--|🠋 Components 🠋|--\\
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
-import NavigationTracking from '../../../components/Navigation/tracking/Navigation.tracking';
+import NavigationTracking from '../../../components/Navigation/Overtime/tracking/Navigation.tracking';
 
-import WeekGrid from '../../../components/Aside/week-grid/Aside.week-grid';
+import WeekGrid from '../../../components/Aside/week/Aside.week-grid';
 import DateString from '../../../components/Time/date-string/Time.date-string';
 import BankTime from '../../../components/Article/bank-time/Article.bank-time';
 import ClockCount from '../../../components/Time/clock-count/Time.clock-count';
