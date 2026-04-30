@@ -41,8 +41,8 @@ function Components() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
-        {getLeftbar && (
+      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
+        {getOverlay && (
           <ComponentsOverlay info={{ pageName: '[components]', blockName: '<overlay>', labelName: '(default)' }} />
         )}
       </Suspense>
