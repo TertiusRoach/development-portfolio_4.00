@@ -22,7 +22,10 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <div className={`${labelName}-container`}></div>
+        <div className={`${labelName}-container`}>
+          <aside className={`${labelName}-dark`}></aside>
+          <aside className={`${labelName}-light`}></aside>
+        </div>
 
         {/* <h1 className="display-1">{`<DefaultButton>`}</h1> */}
       </section>

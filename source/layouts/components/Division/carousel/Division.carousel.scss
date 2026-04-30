@@ -91,9 +91,9 @@
     div[class*='_container'] {
       display: flex;
       height: inherit;
-      section,
-      figure,
-      aside {
+      section[class*='main'],
+      figure[class*='main'],
+      aside[class*='main'] {
         flex: 0 0 100vw;
       }
     }

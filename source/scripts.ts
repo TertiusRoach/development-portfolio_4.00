@@ -211,7 +211,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
           console.log(`|🠊 Hovered on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -242,7 +242,7 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -274,7 +274,7 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         }
         break;
@@ -320,7 +320,7 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
         }
         console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         break;
@@ -353,7 +353,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -391,7 +391,7 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 12000);
+          }, 3000);
         }
         console.log(`|🠊 Hovered on <${blockName}> to square <header> 🠈|`);
         break;

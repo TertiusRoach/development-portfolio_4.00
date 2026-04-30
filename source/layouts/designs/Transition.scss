@@ -10,7 +10,7 @@
 @mixin header-transition {
   header {
     @extend %header-effects;
-    @extend %header-transition;
+    @extend %header-transitions;
     @extend %header-constituents;
   }
   %header-effects {
@@ -48,8 +48,20 @@
         opacity: 0;
       }
     }
+    &[class*='squaring'] {
+      backdrop-filter: blur(0);
+      section[class='header-foreground'] {
+        nav ol li,
+        nav ul li {
+          filter: blur(0);
+        }
+      }
+      div[class='header-background'] {
+        opacity: 0;
+      }
+    }
   }
-  %header-transition {
+  %header-transitions {
     transition:
       clip-path 500ms ease-in-out,
       backdrop-filter 1.5s ease-in-out;
@@ -96,7 +108,7 @@
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
     @media screen and (orientation: landscape) {
       &[class*='expanded'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: inset(0 0 0 0);
         section[class='header-foreground'] {
           nav {
             // grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
@@ -134,7 +146,7 @@
         }
       }
       &[class*='collapsed'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0);
+        clip-path: inset(0 0 100% 0);
         section[class='header-foreground'] {
           nav {
             menu {
@@ -173,7 +185,17 @@
       }
 
       &[class*='unfolded'] {
-        clip-path: polygon(0% 0, 100% 0, 100% 8rem, 0% 8rem);
+        clip-path: inset(0 0 calc(100% - 8rem) 0);
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0 0 calc(100% - 6rem) 0);
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0 0 calc(100% - 4rem) 0);
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0 0 calc(100% - 3rem) 0);
+        }
+
         section[class='header-foreground'] {
           header {
             clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -218,17 +240,9 @@
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
-        @media screen and (max-height: 768px) {
-          clip-path: polygon(0% 0, 100% 0, 100% 6rem, 0% 6rem);
-        }
-        @media screen and (max-height: 480px) {
-          clip-path: polygon(0% 0, 100% 0, 100% 4rem, 0% 4rem);
-        }
-        @media screen and (max-height: 360px) {
-          clip-path: polygon(0% 0, 100% 0, 100% 3rem, 0% 3rem);
-        }
       }
       &[class*='squaring'] {
+        transition: clip-path 500ms ease-in-out;
         clip-path: inset(0 calc(100% - 8rem) calc(100% - 8rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-height: 768px) {
           clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -242,7 +256,45 @@
 
         section[class='header-foreground'] {
           header {
-            display: none;
+            clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
+            @media screen and (max-height: 768px) {
+              //--|🠋 96px for Squares 🠋|--\\
+              clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              //--|🠋 64px for Squares 🠋|--\\
+              clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              //--|🠋 48px for Squares 🠋|--\\
+              clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
+            }
+          }
+          nav {
+            menu {
+              z-index: 1;
+              grid-area: 1 / 1 / 3 / 2;
+              button:not(:first-child) {
+                top: 0;
+                position: relative;
+              }
+            }
+            grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
+            @media screen and (max-height: 768px) {
+              grid-template-rows: repeat(2, 48px); //--|🠈 rows 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              grid-template-rows: repeat(2, 32px); //--|🠈 rows 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
+            }
+
+            ol,
+            ul {
+              z-index: 0;
+              grid-area: 1 / 1 / 3 / 2;
+            }
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
@@ -481,7 +533,7 @@
 @mixin sidebar-transition {
   aside[id*='leftbar'] {
     @extend %leftbar-effects;
-    @extend %leftbar-transition;
+    @extend %leftbar-transitions;
     @extend %leftbar-constituents;
   }
   %leftbar-effects {
@@ -537,7 +589,7 @@
       }
     }
   }
-  %leftbar-transition {
+  %leftbar-transitions {
     &[class*='unfolded'] {
     }
     &[class*='expanded'] {
