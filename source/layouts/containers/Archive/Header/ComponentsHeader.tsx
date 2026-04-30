@@ -43,6 +43,23 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               type: '{scroll}',
             }}
             cases={{
+              paths: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'button',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
               paths: ['<Default_Article>'] as Array<string>,
             }}
             info={{
@@ -64,23 +81,6 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'aside',
-              blockName: blockName as '<leftbar>',
-              pageName: pageName as '[components]',
-            }}
-          />
-          <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'button',
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}

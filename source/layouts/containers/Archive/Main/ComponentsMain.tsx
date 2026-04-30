@@ -155,16 +155,16 @@ function ComponentsElements({ info }: InfoProps) {
 
   return (
     <>
-      <ArticleElements info={articleInfo} />
-      <AsideElements info={asideInfo} />
-      <ButtonElements info={buttonInfo} />
-      <DivisionElements info={divisionInfo} />
-      <FigureElements info={figureInfo} />
-      <MenuElements info={menuInfo} />
-      <NavigationElements info={navigationInfo} />
-      <SectionElements info={sectionInfo} />
-      <TableElements info={tableInfo} />
-      <TimeElements info={timeInfo} />
+      <ButtonElements info={{ pageName: pageName, blockName: blockName, labelName: 'button' as string }} />
+      <ArticleElements info={{ pageName: pageName, blockName: blockName, labelName: 'article' as string }} />
+      <AsideElements info={{ pageName: pageName, blockName: blockName, labelName: 'aside' as string }} />
+      <DivisionElements info={{ pageName: pageName, blockName: blockName, labelName: 'division' as string }} />
+      <FigureElements info={{ pageName: pageName, blockName: blockName, labelName: 'figure' as string }} />
+      <MenuElements info={{ pageName: pageName, blockName: blockName, labelName: 'menu' as string }} />
+      <NavigationElements info={{ pageName: pageName, blockName: blockName, labelName: 'navigation' as string }} />
+      <SectionElements info={{ pageName: pageName, blockName: blockName, labelName: 'section' as string }} />
+      <TableElements info={{ pageName: pageName, blockName: blockName, labelName: 'table' as string }} />
+      <TimeElements info={{ pageName: pageName, blockName: blockName, labelName: 'time' as string }} />
     </>
   );
 }

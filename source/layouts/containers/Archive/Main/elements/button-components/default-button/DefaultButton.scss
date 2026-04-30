@@ -4,15 +4,10 @@
 
 @mixin desktop-landscape {
   aside[class*='default'] {
-    // height: inherit; //--|🠈 height: 100%; 🠈|--\\
-
     //--|🠋 Desktop (Layers) 🠋|--\\
     section[class*='foreground'] {
-      // background: rgba(darkgreen, 0.5);
-      h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .default-button_container {
+        background: rgba(darkgreen, 0.5);
         grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
@@ -21,6 +16,14 @@
     div[class*='background'] {
     }
 
+    section[class*='foreground'] {
+      h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
     @include Mixins.landscape-grid;
   }
 }

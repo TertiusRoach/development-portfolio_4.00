@@ -22,6 +22,8 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
+        <div className="default-button_container"></div>
+
         <h1 className="display-1">{`<DefaultButtonComponents>`}</h1>
       </section>
       <figure className={`${blockName}-midground`}></figure>
