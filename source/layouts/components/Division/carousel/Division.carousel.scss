@@ -90,6 +90,7 @@
     ol[class='car-two'] {
       @extend %vert-stack;
       ol[class='car-thr'] {
+        //--|🠊 Vertical Y-axis 🠈|--\\
         @extend %vert-stack;
       }
     }
@@ -178,6 +179,7 @@
     ul[class='car-two'] {
       @extend %hori-stack;
       ul[class='car-thr'] {
+        //--|🠊 Horizontal X-axis 🠈|--\\
         @extend %hori-stack;
       }
     }
