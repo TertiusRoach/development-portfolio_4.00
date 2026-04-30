@@ -39,23 +39,22 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     let pageName: string = info.pageName;
     let blockName: string = info.blockName;
     let labelName: string = info.labelName;
-    setTimeout(() => {
-      const menuLocate: string = `#${pageName}-${blockName} menu.${labelName}-${blockName}_carousel`;
-      const menuElement = document.querySelector(menuLocate) as HTMLElement;
-      const menuContainer = menuElement.querySelector('li ul') as HTMLElement;
-      /*--|🠋
+    /*--|🠋
 
-      🠉|--*/
-      let menuPreview = menuContainer.childNodes[0] as HTMLElement;
-      let menuButtons = menuContainer.childNodes[1] as HTMLElement;
+    🠉|--*/
+    const menuLocate: string = `#${pageName}-${blockName} menu.${labelName}-${blockName}_carousel`;
+    const menuElement = document.querySelector(menuLocate) as HTMLElement;
+    const menuContainer = menuElement.querySelector('li ul') as HTMLElement;
+    let menuPreview = menuContainer.childNodes[0] as HTMLElement;
+    let menuButtons = menuContainer.childNodes[1] as HTMLElement;
 
-      if (menuPreview.childElementCount > 1) {
-        var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
-        var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
-        nextButton.classList.add('highlight');
-        nextButton.classList.remove('downplay');
-      }
-    }, 125);
+    if (menuPreview.childElementCount > 1) {
+      console.log('WEIRD BUG!');
+      var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
+      var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
+      nextButton.classList.add('highlight');
+      nextButton.classList.remove('downplay');
+    }
   }, [info.pageName, info.blockName, info.labelName]);
 
   return (

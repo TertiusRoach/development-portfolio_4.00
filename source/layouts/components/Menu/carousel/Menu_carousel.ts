@@ -7,23 +7,6 @@ function markMenu(pageName: string, blockName: string) {
   /*--|🠋
 
   🠉|--*/
-
-  //--|🠋|==============================================|🠋|--\\
-  //--|🠊 See if <CarouselDivision> is on ".I" position to
-  //--|🠊 Match the emphasis on the <button> tags in <CarouselMenu>
-  //--|🠉|==============================================|🠉|--\\
-  const scrollXMenu = retrieveTags(pageName, blockName, '[x]', '{scroll}')?.menu as HTMLElement;
-  const scrollXCarousel = retrieveTags(pageName, blockName, '[x]', '{scroll}')?.division as HTMLElement;
-  const scrollXSection = scrollXCarousel.childNodes[0].childNodes as NodeListOf<HTMLElement>;
-  if (scrollXCarousel.childElementCount === scrollXMenu.childElementCount) {
-    let prevMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="prev"]') as HTMLElement;
-    let nextMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="next"]') as HTMLElement;
-    if (scrollXMenu.childNodes[0].childNodes.length === 1) {
-      nextMenu.classList.add('downplay');
-      nextMenu.classList.remove('highlight');
-    }
-  }
-
   //--|🠋|==============================================|🠋|--\\
   //--|🠊 See if the amount of children in <CarouselDivision>
   //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
