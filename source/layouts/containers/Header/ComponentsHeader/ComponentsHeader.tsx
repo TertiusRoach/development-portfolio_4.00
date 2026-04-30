@@ -1,7 +1,7 @@
 //--|🠊 ComponentsHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/components';
-import { markMenu } from '../../../components/Menu/carousel/Menu_carousel';
+import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
@@ -50,7 +50,6 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}
-            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
           />
           <MenuCarousel
             style={{
@@ -68,7 +67,6 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}
-            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
           />
           <MenuCarousel
             style={{
@@ -86,7 +84,125 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<leftbar>',
               pageName: pageName as '[components]',
             }}
-            onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Division>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'division',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Figure>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'figure',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Menu>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'menu',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Navigation>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'navigation',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Section>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'section',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Table>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'table',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
+          />
+          <MenuCarousel
+            style={{
+              axis: '[x]',
+              view: '-top-',
+              color: '(mono)',
+              shade: '~dark~',
+              type: '{scroll}',
+            }}
+            cases={{
+              paths: ['<Default_Time>'] as Array<string>,
+            }}
+            info={{
+              labelName: 'time',
+              blockName: blockName as '<leftbar>',
+              pageName: pageName as '[components]',
+            }}
           />
         </header>
         <NavigationBrowse

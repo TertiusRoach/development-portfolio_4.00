@@ -1,6 +1,5 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { markMenu } from './Scroll_carousel';
 import scrollCarousel from './Scroll_carousel';
 import { arabicToRoman } from '../../../../functions';
 
@@ -53,7 +52,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
       </li>
       <li
         className={`${info.labelName}-${info.blockName}_buttons`}
-        onMouseEnter={() => markMenu(info.pageName, info.blockName)}
+        // onMouseEnter={() => markMenu(info.pageName, info.blockName)}
       >
         <div className="prev-view downplay">
           <ButtonDefault

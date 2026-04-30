@@ -7,16 +7,17 @@ import SelectCarousel from './addons/select-carousel/SelectCarousel';
 import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 
 //--|🠋 Functions 🠋|--\\
+import markMenu from './Menu_carousel';
 import stripBrackets from '../../functions';
 import { labelList } from './Menu_carousel';
-import { markMenu, markClass, markStyle } from './Menu_carousel';
+import { loadClass, loadStyle } from './Menu_carousel';
+
+//--|🠋 Components 🠋|--\\
+import selectCarousel from '../../Division/carousel/Division_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
-
-//--|🠋 Components 🠋|--\\
-import selectCarousel from '../../Division/carousel/Division_carousel';
 
 interface TheseProps {
   info: {
@@ -56,13 +57,13 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     switch (styleAxis) {
       case '[x]':
         return (
-          <li className={`${markClass(style)}`}>
+          <li className={`${loadClass(style)}`}>
             <ul className={`${stripBrackets(style.type, '{}')}-carousel`}>{callAddon(info, style, cases)}</ul>
           </li>
         );
       case '[y]':
         return (
-          <li className={`${markClass(style)}`}>
+          <li className={`${loadClass(style)}`}>
             <ol className={`${stripBrackets(style.type, '{}')}-carousel`}>{callAddon(info, style, cases)}</ol>
           </li>
         );

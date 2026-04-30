@@ -1,96 +1,7 @@
 //--|🠊 Scroll_carousel.ts 🠈|--\\
+
+//--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../../../functions';
-
-interface InfoProps {
-  pageName: string;
-  blockName: string;
-}
-interface StyleProps {
-  type: '{select}';
-  axis: '[x]' | '[y]';
-}
-interface CasesProps {
-  array: Array<string>;
-}
-
-export function markMenu(pageName: string, blockName: string) {
-  /*--|🠋
-
-  🠉|--*/
-  const getTags = (axis: '[x]' | '[y]'): Record<string, HTMLElement> | undefined => {
-    if (axis === '[x]') {
-      let AxisX = 'ul';
-      let TypeXScr = 'scr';
-      return {
-        menu: document.querySelector(
-          `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeXScr}"] ${AxisX} li[class*="preview"]`,
-        ) as HTMLElement,
-        division: document.querySelector(
-          `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
-        ) as HTMLElement,
-      };
-    } else if (axis === '[y]') {
-      let AxisY = 'ol';
-      let TypeYScr = 'scr';
-      return {
-        menu: document.querySelector(
-          `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeYScr}"] ${AxisY}`,
-        ) as HTMLElement,
-        division: document.querySelector(
-          `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
-        ) as HTMLElement,
-      };
-    }
-  };
-
-  //--|🠋|==============================================|🠋|--\\
-  //--|🠊 See if <CarouselDivision> is on ".I" position to
-  //--|🠊 Match the emphasis on the <button> tags in <CarouselMenu>
-  //--|🠉|==============================================|🠉|--\\
-  const scrollXMenu = getTags('[x]')?.menu as HTMLElement;
-  const scrollXCarousel = getTags('[x]')?.division as HTMLElement;
-  const scrollXSection = scrollXCarousel.childNodes[0].childNodes as NodeListOf<HTMLElement>;
-  if (scrollXCarousel.childElementCount === scrollXMenu.childElementCount) {
-    let prevMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="prev"]') as HTMLElement;
-    let nextMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="next"]') as HTMLElement;
-    if (scrollXMenu.childNodes[0].childNodes.length === 1) {
-      console.log(scrollXMenu.parentElement?.querySelector('li[class*="preview"] div')?.childNodes);
-      // console.log(scrollXMenu.querySelector(``));
-      nextMenu.classList.add('highlight');
-      nextMenu.classList.remove('downplay');
-    }
-    /*
-
-    */
-  }
-
-  //--|🠋|==============================================|🠋|--\\
-  //--|🠊 See if the amount of children in <CarouselDivision>
-  //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
-  //--|🠉|==============================================|🠉|--\\
-  /*
-  const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
-  const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
-  if (selectYCarousel.childElementCount === selectYMenu.childElementCount) {
-    for (let i = 0; i < selectYCarousel.childElementCount; i++) {
-      let carMenu = selectYMenu.childNodes[i] as HTMLElement; //--|🠈 Match carousel identifiers to <li> items inside <menu> 🠈|--\\
-      let carSection = selectYCarousel.childNodes[i] as HTMLElement; //--|🠈 Emphasize with ".visible" or ".hidden" 🠈|--\\
-
-      var carContainer = carSection.parentElement?.parentElement as HTMLElement; //--|🠈 Retrieve the Roman String in the component container of the Carousel 🠈|--\\
-      var carRoman = carContainer.classList[0] as string;
-      if (romanToArabic(carRoman) === i + 1) {
-        carSection.classList.add('visible');
-        carSection.classList.remove('hidden');
-        carMenu.className = `${carSection.classList[0]} highlight`;
-      } else {
-        carSection.classList.add('hidden');
-        carSection.classList.remove('visible');
-        carMenu.className = `${carSection.classList[0]} downplay`;
-      }
-    }
-  }
-  */
-}
 
 function scrollCarousel(
   pageName: string,
@@ -155,4 +66,69 @@ function scrollCarousel(
   }
 }
 
+interface InfoProps {
+  pageName: string;
+  blockName: string;
+}
+interface StyleProps {
+  type: '{select}';
+  axis: '[x]' | '[y]';
+}
+interface CasesProps {
+  array: Array<string>;
+}
+
 export default scrollCarousel;
+
+//--|===|--\\
+const retrieveTags = (pageName: string, blockName: string, axis: '[x]' | '[y]'): Record<string, HTMLElement> | undefined => {
+  if (axis === '[x]') {
+    let AxisX = 'ul';
+    let TypeXScr = 'scr';
+    return {
+      menu: document.querySelector(
+        `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeXScr}"] ${AxisX} li[class*="preview"]`,
+      ) as HTMLElement,
+      division: document.querySelector(
+        `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
+      ) as HTMLElement,
+    };
+  } else if (axis === '[y]') {
+    let AxisY = 'ol';
+    let TypeYScr = 'scr';
+    return {
+      menu: document.querySelector(
+        `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeYScr}"] ${AxisY}`,
+      ) as HTMLElement,
+      division: document.querySelector(
+        `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
+      ) as HTMLElement,
+    };
+  }
+};
+const markMenu = (pageName: string, blockName: string) => {
+  //--|🠋|==============================================|🠋|--\\
+  //--|🠊 See if <CarouselDivision> is on ".I" position to
+  //--|🠊 Match the emphasis on the <button> tags in <CarouselMenu>
+  //--|🠉|==============================================|🠉|--\\
+  const scrollXMenu = retrieveTags(pageName, blockName, '[x]')?.menu as HTMLElement;
+  const scrollXCarousel = retrieveTags(pageName, blockName, '[x]')?.division as HTMLElement;
+  const scrollXSection = scrollXCarousel.childNodes[0].childNodes as NodeListOf<HTMLElement>;
+  /*--|🠋
+
+  🠉|--*/
+  if (scrollXCarousel.childElementCount === scrollXMenu.childElementCount) {
+    let prevMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="prev"]') as HTMLElement;
+    let nextMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="next"]') as HTMLElement;
+    if (scrollXMenu.childNodes[0].childNodes.length === 1) {
+      console.log(scrollXMenu.parentElement?.querySelector('li[class*="preview"] div')?.childNodes);
+      // console.log(scrollXMenu.querySelector(``));
+      nextMenu.classList.add('highlight');
+      nextMenu.classList.remove('downplay');
+    }
+    /*
+
+    */
+  }
+};
+//--|===|--\\

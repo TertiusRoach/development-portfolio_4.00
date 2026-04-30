@@ -9,8 +9,8 @@
   %foreground {
     header[class*='component'] {
       z-index: 5;
+      position: absolute;
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
       menu[class*='carousel'] {
         grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -70,67 +70,72 @@ header[id*='components'] {
     @include Mixins.portrait-grid;
   }
 }
+
 %preview-elements {
-  .I {
-    transform: translateY(0);
+  header[class*='carousels'] {
+    transition: transform 250ms ease-in-out;
+    &.I {
+      transform: translateY(0);
+    }
+    &.II {
+      transform: translateY(-128px * 1);
+    }
+    &.III {
+      transform: translateY(-128px * 2);
+    }
+    &.IV {
+      transform: translateY(-128px * 3);
+    }
+    &.V {
+      transform: translateY(-128px * 4);
+    }
+    &.VI {
+      transform: translateY(-128px * 5);
+    }
+    &.VII {
+      transform: translateY(-128px * 6);
+    }
+    &.VIII {
+      transform: translateY(-128px * 7);
+    }
+    &.IX {
+      transform: translateY(-128px * 8);
+    }
+    &.X {
+      transform: translateY(-128px * 9);
+    }
+    .XI {
+      transform: translateY(-128px * 10);
+    }
+    .XII {
+      transform: translateY(-128px * 11);
+    }
+    .XIII {
+      transform: translateY(-128px * 12);
+    }
+    .XIV {
+      transform: translateY(-128px * 13);
+    }
+    .XV {
+      transform: translateY(-128px * 14);
+    }
+    .XVI {
+      transform: translateY(-128px * 15);
+    }
+    .XVII {
+      transform: translateY(-128px * 16);
+    }
+    .XVIII {
+      transform: translateY(-128px * 17);
+    }
+    .XIX {
+      transform: translateY(-128px * 18);
+    }
+    .XX {
+      transform: translateY(-128px * 19);
+    }
   }
-  .II {
-    transform: translateY(-128px * 1);
-  }
-  .III {
-    transform: translateY(-128px * 2);
-  }
-  .IV {
-    transform: translateY(-128px * 3);
-  }
-  .V {
-    transform: translateY(-128px * 4);
-  }
-  .VI {
-    transform: translateY(-128px * 5);
-  }
-  .VII {
-    transform: translateY(-128px * 6);
-  }
-  .VIII {
-    transform: translateY(-128px * 7);
-  }
-  .IX {
-    transform: translateY(-128px * 8);
-  }
-  .X {
-    transform: translateY(-128px * 9);
-  }
-  .XI {
-    transform: translateY(-128px * 10);
-  }
-  .XII {
-    transform: translateY(-128px * 11);
-  }
-  .XIII {
-    transform: translateY(-128px * 12);
-  }
-  .XIV {
-    transform: translateY(-128px * 13);
-  }
-  .XV {
-    transform: translateY(-128px * 14);
-  }
-  .XVI {
-    transform: translateY(-128px * 15);
-  }
-  .XVII {
-    transform: translateY(-128px * 16);
-  }
-  .XVIII {
-    transform: translateY(-128px * 17);
-  }
-  .XIX {
-    transform: translateY(-128px * 18);
-  }
-  .XX {
-    transform: translateY(-128px * 19);
-  }
+
   @media screen and (max-height: 768px) {
     //--|🠋 96px for Squares 🠋|--\\
     .II {

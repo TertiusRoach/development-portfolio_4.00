@@ -6,8 +6,8 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
+import markMenu from '../../Menu_carousel';
 import selectCarousel from './Select_carousel';
-import { markMenu } from '../../Menu_carousel';
 
 interface TheseProps {
   info: {
@@ -31,7 +31,7 @@ interface TheseProps {
 
 const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
   useEffect(() => {
-    // console.log(style);
+    setTimeout(() => {}, 125);
   }, [info.pageName, info.blockName]);
   return (
     <>
@@ -51,9 +51,10 @@ const SelectCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number =>
-              selectCarousel(info.pageName, info.blockName, eventInfo)
-            }
+            onClick={(eventInfo: React.MouseEvent<HTMLElement>): number => {
+              selectCarousel(info.pageName, info.blockName, eventInfo);
+              return 0;
+            }}
           />
         </li>
       ))}

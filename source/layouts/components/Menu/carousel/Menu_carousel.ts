@@ -3,70 +3,17 @@
 import { romanToArabic } from '../../functions';
 import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../functions';
 
-export function markMenu(pageName: string, blockName: string) {
-  console.log('Mark Menu');
+function markMenu(pageName: string, blockName: string) {
   /*--|🠋
 
   🠉|--*/
-  const getTags = (axis: '[x]' | '[y]', type: '{select}' | '{scroll}' | string): Record<string, HTMLElement> | undefined => {
-    if (axis === '[x]') {
-      let AxisX = 'ul';
-
-      switch (type) {
-        case '{scroll}':
-          let TypeX = 'scr';
-          return {
-            menu: document.querySelector(
-              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeX}"] ${AxisX} li[class*="preview"]`,
-            ) as HTMLElement,
-            division: document.querySelector(
-              `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
-            ) as HTMLElement,
-          };
-        case '{select}':
-          let TypeXSel = 'sel';
-          return {
-            menu: document.querySelector(
-              `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeXSel}"] ${AxisX}`,
-            ) as HTMLElement,
-            division: document.querySelector(
-              `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
-            ) as HTMLElement,
-          };
-      }
-    } else if (axis === '[y]') {
-      let AxisY = 'ol';
-      switch (type) {
-        case '{select}':
-          let TypeY = 'sel';
-          return {
-            menu: document.querySelector(
-              `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeY}"] ${AxisY}`,
-            ) as HTMLElement,
-            division: document.querySelector(
-              `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
-            ) as HTMLElement,
-          };
-        case '{scroll}':
-          let TypeYScr = 'scr';
-          return {
-            menu: document.querySelector(
-              `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeYScr}"] ${AxisY}`,
-            ) as HTMLElement,
-            division: document.querySelector(
-              `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
-            ) as HTMLElement,
-          };
-      }
-    }
-  };
 
   //--|🠋|==============================================|🠋|--\\
   //--|🠊 See if <CarouselDivision> is on ".I" position to
   //--|🠊 Match the emphasis on the <button> tags in <CarouselMenu>
   //--|🠉|==============================================|🠉|--\\
-  const scrollXMenu = getTags('[x]', '{scroll}')?.menu as HTMLElement;
-  const scrollXCarousel = getTags('[x]', '{scroll}')?.division as HTMLElement;
+  const scrollXMenu = retrieveTags(pageName, blockName, '[x]', '{scroll}')?.menu as HTMLElement;
+  const scrollXCarousel = retrieveTags(pageName, blockName, '[x]', '{scroll}')?.division as HTMLElement;
   const scrollXSection = scrollXCarousel.childNodes[0].childNodes as NodeListOf<HTMLElement>;
   if (scrollXCarousel.childElementCount === scrollXMenu.childElementCount) {
     let prevMenu = scrollXMenu.parentElement?.querySelector('li[class*="_buttons"] div[class*="prev"]') as HTMLElement;
@@ -81,8 +28,9 @@ export function markMenu(pageName: string, blockName: string) {
   //--|🠊 See if the amount of children in <CarouselDivision>
   //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
   //--|🠉|==============================================|🠉|--\\
-  const selectYMenu = getTags('[y]', '{select}')?.menu as HTMLElement;
-  const selectYCarousel = getTags('[y]', '{select}')?.division as HTMLElement;
+  const selectYMenu = retrieveTags(pageName, blockName, '[y]', '{select}')?.menu as HTMLElement;
+  const selectYCarousel = retrieveTags(pageName, blockName, '[y]', '{select}')?.division as HTMLElement;
+  const selectYSection = selectYCarousel.childNodes[0].childNodes as NodeListOf<HTMLElement>;
   if (selectYCarousel.childElementCount === selectYMenu.childElementCount) {
     for (let i = 0; i < selectYCarousel.childElementCount; i++) {
       let carMenu = selectYMenu.childNodes[i] as HTMLElement; //--|🠈 Match carousel identifiers to <li> items inside <menu> 🠈|--\\
@@ -102,7 +50,9 @@ export function markMenu(pageName: string, blockName: string) {
     }
   }
 }
-export function markClass(style: StyleProps): String {
+export default markMenu;
+
+export function loadClass(style: StyleProps): String {
   //--|🠊 Class Build for <DefaultButton> 🠈|--\\
   let axis = abbrAxis(style.axis);
   let type = abbrType(style.type);
@@ -112,7 +62,7 @@ export function markClass(style: StyleProps): String {
 
   return `${axis}_${view}_${shade}_${color}_${type}`;
 }
-export function markStyle(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string {
+export function loadStyle(type: '{select}' | '{scroll}', view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string {
   return `${abbrType(type)}_${abbrView(view)}`;
 }
 
@@ -134,3 +84,60 @@ interface CasesProps {
 export function labelList(style: StyleProps): string {
   return `${abbrAxis(style.axis)}_${abbrView(style.view)}`;
 }
+const retrieveTags = (
+  pageName: string,
+  blockName: string,
+  axis: '[x]' | '[y]',
+  type: '{select}' | '{scroll}' | string,
+): Record<string, HTMLElement> | undefined => {
+  if (axis === '[x]') {
+    let AxisX = 'ul';
+
+    switch (type) {
+      case '{scroll}':
+        let TypeX = 'scr';
+        return {
+          menu: document.querySelector(
+            `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeX}"] ${AxisX} li[class*="preview"]`,
+          ) as HTMLElement,
+          division: document.querySelector(
+            `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
+          ) as HTMLElement,
+        };
+      case '{select}':
+        let TypeXSel = 'sel';
+        return {
+          menu: document.querySelector(
+            `#${pageName}-header menu[class*="carousel"] li[class*="_${TypeXSel}"] ${AxisX}`,
+          ) as HTMLElement,
+          division: document.querySelector(
+            `#${pageName}-main div[class*="carousel"] ${AxisX} .I div[class*="container"]`,
+          ) as HTMLElement,
+        };
+    }
+  } else if (axis === '[y]') {
+    let AxisY = 'ol';
+    switch (type) {
+      case '{select}':
+        let TypeY = 'sel';
+        return {
+          menu: document.querySelector(
+            `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeY}"] ${AxisY}`,
+          ) as HTMLElement,
+          division: document.querySelector(
+            `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
+          ) as HTMLElement,
+        };
+      case '{scroll}':
+        let TypeYScr = 'scr';
+        return {
+          menu: document.querySelector(
+            `#${pageName}-leftbar menu[class*="carousel"] li[class*="_${TypeYScr}"] ${AxisY}`,
+          ) as HTMLElement,
+          division: document.querySelector(
+            `#${pageName}-main div[class*="carousel"] ${AxisY} li div[class*="container"]`,
+          ) as HTMLElement,
+        };
+    }
+  }
+};
