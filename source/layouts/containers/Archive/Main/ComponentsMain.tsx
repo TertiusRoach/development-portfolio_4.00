@@ -76,7 +76,7 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
         /> */}
 
         <DivisionCarousel
-          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+          //--|🠊 <div class="elements-main_carousel"/> 🠈|--\\
           style={{
             axis: '[y]',
           }}
@@ -102,6 +102,21 @@ export default ComponentsMain;
 function ComponentsElements({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'components';
+  return (
+    <>
+      <ButtonElements info={{ pageName: pageName, blockName: blockName, labelName: 'button' as string }} />
+      <ArticleElements info={{ pageName: pageName, blockName: blockName, labelName: 'article' as string }} />
+      <AsideElements info={{ pageName: pageName, blockName: blockName, labelName: 'aside' as string }} />
+      <DivisionElements info={{ pageName: pageName, blockName: blockName, labelName: 'division' as string }} />
+      <FigureElements info={{ pageName: pageName, blockName: blockName, labelName: 'figure' as string }} />
+      <MenuElements info={{ pageName: pageName, blockName: blockName, labelName: 'menu' as string }} />
+      <NavigationElements info={{ pageName: pageName, blockName: blockName, labelName: 'navigation' as string }} />
+      <SectionElements info={{ pageName: pageName, blockName: blockName, labelName: 'section' as string }} />
+      <TableElements info={{ pageName: pageName, blockName: blockName, labelName: 'table' as string }} />
+      <TimeElements info={{ pageName: pageName, blockName: blockName, labelName: 'time' as string }} />
+    </>
+  );
+
   let articleInfo = {
     pageName: pageName,
     blockName: blockName,
@@ -152,19 +167,4 @@ function ComponentsElements({ info }: InfoProps) {
     blockName: blockName,
     labelName: 'time' as string,
   };
-
-  return (
-    <>
-      <ButtonElements info={{ pageName: pageName, blockName: blockName, labelName: 'button' as string }} />
-      <ArticleElements info={{ pageName: pageName, blockName: blockName, labelName: 'article' as string }} />
-      <AsideElements info={{ pageName: pageName, blockName: blockName, labelName: 'aside' as string }} />
-      <DivisionElements info={{ pageName: pageName, blockName: blockName, labelName: 'division' as string }} />
-      <FigureElements info={{ pageName: pageName, blockName: blockName, labelName: 'figure' as string }} />
-      <MenuElements info={{ pageName: pageName, blockName: blockName, labelName: 'menu' as string }} />
-      <NavigationElements info={{ pageName: pageName, blockName: blockName, labelName: 'navigation' as string }} />
-      <SectionElements info={{ pageName: pageName, blockName: blockName, labelName: 'section' as string }} />
-      <TableElements info={{ pageName: pageName, blockName: blockName, labelName: 'table' as string }} />
-      <TimeElements info={{ pageName: pageName, blockName: blockName, labelName: 'time' as string }} />
-    </>
-  );
 }

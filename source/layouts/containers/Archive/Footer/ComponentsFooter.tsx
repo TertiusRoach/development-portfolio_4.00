@@ -13,7 +13,7 @@ interface InfoProps {
   };
 }
 const ComponentsFooter: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
   const labelName = stripBrackets(info.labelName, '()') as 'default';

@@ -7,14 +7,6 @@
 
   //--|🠊 Vertical Y-axis 🠈|--\\
   %vert-stack {
-    div {
-      // height: 100%;
-      // display: block;
-      // width: inherit; //--|🠊 width: 100%; 🠈|--\\
-      section {
-        height: 100%;
-      }
-    }
     &.I {
       transform: translateY(0);
     }
@@ -83,6 +75,14 @@
       width: 100%;
       display: inherit; //--|🠊 display: flex; 🠈|--\\
       @extend %vert-stack;
+      div {
+        width: inherit; //--|🠊 width: 100%; 🠈|--\\
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          height: 100%;
+        }
+      }
     }
   }
 
