@@ -1,8 +1,8 @@
 //--|🠊 styles/hyperlink.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Main/HyperlinkMain/HyperlinkMain.scss';
-@use '../containers/Header/HyperlinkHeader/HyperlinkHeader.scss';
-@use '../containers/Footer/HyperlinkFooter/HyperlinkFooter.scss';
+@use '../containers/Hyperlink/Main/HyperlinkMain.scss';
+@use '../containers/Hyperlink/Header/HyperlinkHeader.scss';
+@use '../containers/Hyperlink/Footer/HyperlinkFooter.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\

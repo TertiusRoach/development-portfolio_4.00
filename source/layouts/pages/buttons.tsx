@@ -2,9 +2,9 @@
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
-const ButtonsMain = lazy(() => import('../containers/Main/ButtonsMain/ButtonsMain'));
-const ButtonsHeader = lazy(() => import('../containers/Header/ButtonsHeader/ButtonsHeader'));
-const ButtonsFooter = lazy(() => import('../containers/Footer/ButtonsFooter/ButtonsFooter'));
+const ButtonsMain = lazy(() => import('../containers/Buttons/Main/ButtonsMain'));
+const ButtonsHeader = lazy(() => import('../containers/Buttons/Header/ButtonsHeader'));
+const ButtonsFooter = lazy(() => import('../containers/Buttons/Footer/ButtonsFooter'));
 
 function Buttons() {
   const [getMain, setMain] = useState(false);

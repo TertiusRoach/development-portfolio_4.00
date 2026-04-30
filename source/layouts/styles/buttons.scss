@@ -1,8 +1,8 @@
 //--|🠊 styles/buttons.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Main/ButtonsMain/ButtonsMain.scss';
-@use '../containers/Header/ButtonsHeader/ButtonsHeader.scss';
-@use '../containers/Footer/ButtonsFooter/ButtonsFooter.scss';
+@use '../containers/Buttons/Main/ButtonsMain.scss';
+@use '../containers/Buttons/Header/ButtonsHeader.scss';
+@use '../containers/Buttons/Footer/ButtonsFooter.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\
