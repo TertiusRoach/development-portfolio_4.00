@@ -66,14 +66,14 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <NavigationBrowse
+        {/* <NavigationBrowse
           //--|🠊 <nav class="browse-main"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
-        />
+        /> */}
 
         <DivisionCarousel
           //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\

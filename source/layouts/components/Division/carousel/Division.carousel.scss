@@ -8,9 +8,9 @@
   //--|🠊 Vertical Y-axis 🠈|--\\
   %vert-stack {
     div {
-      height: 100%;
-      display: block;
-      width: inherit; //--|🠊 width: 100%; 🠈|--\\
+      // height: 100%;
+      // display: block;
+      // width: inherit; //--|🠊 width: 100%; 🠈|--\\
       section {
         height: 100%;
       }
@@ -88,8 +88,9 @@
 
   //--|🠊 Horizontal X-axis 🠈|--\\
   %hori-stack {
-    div {
+    div[class*='_container'] {
       display: flex;
+      height: inherit;
       section,
       figure,
       aside {

@@ -9,6 +9,7 @@ import { viewDisplay } from './Navigation_browse';
 import {
   unfoldHeader,
   unfoldLeftbar,
+  squaringHeader,
   collapseLeftbar,
   expandLeftbar,
   collapseHeader,
@@ -69,15 +70,15 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
               if (blockName === 'main') {
                 unfoldHeader(pageName, 'hover', 'header');
                 unfoldLeftbar(pageName, 'hover', 'leftbar');
+              } else if (blockName === 'header') {
+                unfoldHeader(pageName, 'hover', 'header');
+                unfoldLeftbar(pageName, 'hover', 'leftbar');
               }
             }}
             onClick={() => {
               if (blockName === 'header') {
-                collapseHeader(pageName, 'click', 'header');
+                squaringHeader(pageName, 'click', 'header');
                 collapseLeftbar(pageName, 'click', 'leftbar');
-              } else if (blockName === 'main') {
-                unfoldHeader(pageName, 'click', 'header');
-                unfoldLeftbar(pageName, 'click', 'leftbar');
               }
             }}
           />
