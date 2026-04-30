@@ -378,7 +378,7 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
           headerContainer.classList.add('squaring');
           headerContainer.classList.remove('unfolded', 'expanded');
         }
-        console.log(`|🠊 Clicked on <${blockName}> to unfold <header> 🠈|`);
+        console.log(`|🠊 Clicked on <${blockName}> to square <header> 🠈|`);
         break;
       case 'hover':
         if (!headerContainer.classList.contains(disableElement)) {
@@ -393,10 +393,10 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
             headerContainer.classList.remove(disableElement);
           }, 12000);
         }
-        console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
+        console.log(`|🠊 Hovered on <${blockName}> to square <header> 🠈|`);
         break;
       case 'exit':
-        console.log(`|🠊 Left <button> in <${blockName}> to unfold <header> 🠈|`);
+        console.log(`|🠊 Left <button> in <${blockName}> to square <header> 🠈|`);
         break;
     }
   }, 125);
