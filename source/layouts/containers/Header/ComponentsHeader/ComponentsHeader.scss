@@ -8,7 +8,8 @@
 
   %foreground {
     header[class*='component'] {
-      z-index: 5;
+      z-index: 1;
+      width: 100%;
       position: absolute;
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       menu[class*='carousel'] {
@@ -16,7 +17,8 @@
       }
     }
     nav[class='default-header'] {
-      grid-area: 1/1/6/4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      z-index: 2;
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   %midground {

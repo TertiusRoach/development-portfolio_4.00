@@ -8,6 +8,7 @@ import ButtonDefault from '../../../../Button/default/Button.default';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
+
 interface TheseProps {
   info: {
     pageName: string;
@@ -33,6 +34,30 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/rightbar/rightbar-dark.svg',
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/project-pages/index-page/leftbar/leftbar-dark.svg',
   ];
+
+  useEffect(() => {
+    let pageName: string = info.pageName;
+    let blockName: string = info.blockName;
+    let labelName: string = info.labelName;
+    setTimeout(() => {
+      const menuLocate: string = `#${pageName}-${blockName} menu.${labelName}-${blockName}_carousel`;
+      const menuElement = document.querySelector(menuLocate) as HTMLElement;
+      const menuContainer = menuElement.querySelector('li ul') as HTMLElement;
+      /*--|🠋
+
+      🠉|--*/
+      let menuPreview = menuContainer.childNodes[0] as HTMLElement;
+      let menuButtons = menuContainer.childNodes[1] as HTMLElement;
+
+      if (menuPreview.childElementCount > 1) {
+        var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
+        var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
+        nextButton.classList.add('highlight');
+        nextButton.classList.remove('downplay');
+      }
+    }, 125);
+  }, [info.pageName, info.blockName, info.labelName]);
+
   return (
     <>
       <li className={`${info.labelName}-${info.blockName}_preview I`}>
@@ -50,10 +75,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
           );
         })}
       </li>
-      <li
-        className={`${info.labelName}-${info.blockName}_buttons`}
-        // onMouseEnter={() => markMenu(info.pageName, info.blockName)}
-      >
+      <li className={`${info.labelName}-${info.blockName}_buttons`}>
         <div className="prev-view downplay">
           <ButtonDefault
             style={{

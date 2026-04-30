@@ -31,21 +31,18 @@
     }
   }
   %gridXCols {
-    margin: 0 128px;
-    grid-template-columns: 128px 1fr 128px; //--|🠋 128px for Squares 🠋|--\\
+    margin: 0 128px; //--|🠈 128px for Squares 🠈|--\\
+    grid-template-columns: 128px 1fr 128px;
     @media screen and (max-height: 768px) {
-      //--|🠋 96px for Squares 🠋|--\\
-      margin: 0 96px;
+      margin: 0 96px; //--|🠈 96px for Squares 🠈|--\\
       grid-template-columns: 96px 1fr 96px;
     }
     @media screen and (max-height: 480px) {
-      //--|🠋 64px for Squares 🠋|--\\
-      margin: 0 64px;
-      grid-template-columns: 64px 1fr 64px; //--|🠋 64px for Squares 🠋|--\\
+      margin: 0 64px; //--|🠈 64px for Squares 🠈|--\\
+      grid-template-columns: 64px 1fr 64px;
     }
     @media screen and (max-height: 360px) {
-      //--|🠋 48px for Squares 🠋|--\\
-      margin: 0 48px;
+      margin: 0 48px; //--|🠈 48px for Squares 🠈|--\\
       grid-template-columns: 48px 1fr 48px;
     }
   }
