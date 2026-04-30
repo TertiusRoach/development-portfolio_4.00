@@ -25,6 +25,7 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
       <DivisionCarousel
         style={{
           axis: '[x]',
+          scope: '<one>',
         }}
         cases={{
           call: SectionComponents,

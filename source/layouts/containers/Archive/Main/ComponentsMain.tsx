@@ -21,6 +21,7 @@ import NavigationElements from './elements/navigation-components/NavigationEleme
 import SectionElements from './elements/section-components/SectionElements';
 import TableElements from './elements/table-components/TableElements';
 import TimeElements from './elements/time-components/TimeElements';
+
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import NavigationBrowse from '../../../components/Navigation/browse/Navigation.browse';
 
@@ -43,24 +44,24 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
     let TLLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol li button`;
     let TLButton = document.querySelector(TLLocate) as HTMLButtonElement;
 
-    // 1. Define the function you want to run on hover
+    //--|🠋 Step 1 🠋|--\\
     const onMouseEnter = (event: MouseEvent) => {
-      let TopLefLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol li button`;
+      //--|🠊 Define the function you want to run on hover 🠈|--\\
+      let TopLefLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol.car-one li button`;
       let TopLefButton = document.querySelector(TopLefLocate) as HTMLButtonElement;
     };
 
-    // 2. Safety check: Only add the listener if the button actually exists on the page
+    //--|🠋 Step 2 🠋|--\\
     if (TLButton) {
-      TLButton.addEventListener('mouseenter', onMouseEnter);
+      TLButton.addEventListener('mouseenter', onMouseEnter); //--|🠈 Safety check: Only add the listener if the button actually exists on the page 🠈|--\\
     }
 
-    // 3. CLEANUP: React runs this 'return' block right before the component
-    // re-renders or is destroyed, removing the old listener so they don't stack up!
-    return () => {
-      if (TLButton) {
-        TLButton.removeEventListener('mouseenter', onMouseEnter);
-      }
-    };
+    //--|🠋 Step 3 🠋|--\\
+    if (TLButton) {
+      return () => {
+        TLButton.removeEventListener('mouseenter', onMouseEnter); //--|🠈 React runs this 'return' block right before the component re-renders or is destroyed, removing the old listener so they don't stack up! 🠈|--\\
+      };
+    }
   }, [pageName, blockName]);
 
   return (
@@ -79,6 +80,7 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 <div class="elements-main_carousel"/> 🠈|--\\
           style={{
             axis: '[y]',
+            scope: '<one>',
           }}
           cases={{
             call: ComponentsElements,
@@ -98,7 +100,7 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ComponentsMain;
-
+//--|===|--\\
 function ComponentsElements({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'components';

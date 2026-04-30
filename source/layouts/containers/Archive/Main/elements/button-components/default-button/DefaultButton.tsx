@@ -29,6 +29,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
               style={{
                 axis: '[y]',
+                scope: '<two>',
               }}
               cases={{
                 call: defaultSize,

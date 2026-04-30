@@ -7,74 +7,73 @@
 
   //--|🠊 Vertical Y-axis 🠈|--\\
   %vert-stack {
-    &.I {
+    .I {
       transform: translateY(0);
     }
-    &.II {
+    .II {
       transform: translateY(-100%);
     }
-    &.III {
+    .III {
       transform: translateY(-200%);
     }
-    &.IV {
+    .IV {
       transform: translateY(-300%);
     }
-    &.V {
+    .V {
       transform: translateY(-400%);
     }
-    &.VI {
+    .VI {
       transform: translateY(-500%);
     }
-    &.VII {
+    .VII {
       transform: translateY(-600%);
     }
-    &.VIII {
+    .VIII {
       transform: translateY(-700%);
     }
-    &.IX {
+    .IX {
       transform: translateY(-800%);
     }
-    &.X {
+    .X {
       transform: translateY(-900%);
     }
-    &.XI {
+    .XI {
       transform: translateY(-1000%);
     }
-    &.XII {
+    .XII {
       transform: translateY(-1100%);
     }
-    &.XIII {
+    .XIII {
       transform: translateY(-1200%);
     }
-    &.XIV {
+    .XIV {
       transform: translateY(-1300%);
     }
-    &.XV {
+    .XV {
       transform: translateY(-1400%);
     }
-    &.XVI {
+    .XVI {
       transform: translateY(-1500%);
     }
-    &.XVII {
+    .XVII {
       transform: translateY(-1600%);
     }
-    &.XVIII {
+    .XVIII {
       transform: translateY(-1700%);
     }
-    &.XIX {
+    .XIX {
       transform: translateY(-1800%);
     }
-    &.XX {
+    .XX {
       transform: translateY(-1900%);
     }
   }
-  ol {
+  %vert-scope {
     height: 100%;
     display: flex;
     li {
       width: 100%;
       display: inherit; //--|🠊 display: flex; 🠈|--\\
-      @extend %vert-stack;
       div {
         width: inherit; //--|🠊 width: 100%; 🠈|--\\
         section[class*='main'],
@@ -85,84 +84,102 @@
       }
     }
   }
+  ol {
+    @extend %vert-scope;
+    @extend %vert-stack;
+    ol[class='car-two'] {
+      @extend %vert-stack;
+      ol[class='car-thr'] {
+        @extend %vert-stack;
+      }
+    }
+  }
 
   //--|🠊 Horizontal X-axis 🠈|--\\
   %hori-stack {
-    div[class*='_container'] {
-      display: flex;
-      height: inherit;
-      section[class*='main'],
-      figure[class*='main'],
-      aside[class*='main'] {
-        flex: 0 0 100vw;
-      }
-    }
-
-    &.I {
+    .I {
       transform: translateX(0);
     }
-    &.II {
+    .II {
       transform: translateX(-100%);
     }
-    &.III {
+    .III {
       transform: translateX(-200%);
     }
-    &.IV {
+    .IV {
       transform: translateX(-300%);
     }
-    &.V {
+    .V {
       transform: translateX(-400%);
     }
-    &.VI {
+    .VI {
       transform: translateX(-500%);
     }
-    &.VII {
+    .VII {
       transform: translateX(-600%);
     }
-    &.VIII {
+    .VIII {
       transform: translateX(-700%);
     }
-    &.IX {
+    .IX {
       transform: translateX(-800%);
     }
-    &.X {
+    .X {
       transform: translateX(-900%);
     }
-    &.XI {
+    .XI {
       transform: translateX(-1000%);
     }
-    &.XII {
+    .XII {
       transform: translateX(-1100%);
     }
-    &.XIII {
+    .XIII {
       transform: translateX(-1200%);
     }
-    &.XIV {
+    .XIV {
       transform: translateX(-1300%);
     }
-    &.XV {
+    .XV {
       transform: translateX(-1400%);
     }
-    &.XVI {
+    .XVI {
       transform: translateX(-1500%);
     }
-    &.XVII {
+    .XVII {
       transform: translateX(-1600%);
     }
-    &.XVIII {
+    .XVIII {
       transform: translateX(-1700%);
     }
-    &.XIX {
+    .XIX {
       transform: translateX(-1800%);
     }
-    &.XX {
+    .XX {
       transform: translateX(-1900%);
     }
   }
-  ul {
+  %hori-scope {
     li {
       height: 100svh;
+      div[class*='_container'] {
+        display: flex;
+        height: inherit;
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          flex: 0 0 100vw;
+        }
+      }
+    }
+  }
+  ul {
+    @extend %hori-scope;
+    @extend %hori-stack;
+    ul[class='car-two'] {
       @extend %hori-stack;
+      ul[class='car-thr'] {
+        @extend %hori-stack;
+      }
     }
   }
 }
