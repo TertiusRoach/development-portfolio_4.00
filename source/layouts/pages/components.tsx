@@ -3,13 +3,13 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--//
-const ComponentsMain = lazy(() => import('../containers/Main/ComponentsMain/ComponentsMain'));
-const ComponentsHeader = lazy(() => import('../containers/Header/ComponentsHeader/ComponentsHeader'));
-const ComponentsFooter = lazy(() => import('../containers/Footer/ComponentsFooter/ComponentsFooter'));
+const ComponentsMain = lazy(() => import('../containers/Archive/Main/ComponentsMain'));
+const ComponentsHeader = lazy(() => import('../containers/Archive/Header/ComponentsHeader'));
+const ComponentsFooter = lazy(() => import('../containers/Archive/Footer/ComponentsFooter'));
 
-const ComponentsOverlay = lazy(() => import('../containers/Overlay/ComponentsOverlay/ComponentsOverlay'));
-const ComponentsLeftbar = lazy(() => import('../containers/Leftbar/ComponentsLeftbar/ComponentsLeftbar'));
-const ComponentsRightbar = lazy(() => import('../containers/Rightbar/ComponentsRightbar/ComponentsRightbar'));
+const ComponentsOverlay = lazy(() => import('../containers/Archive/Overlay/ComponentsOverlay'));
+const ComponentsLeftbar = lazy(() => import('../containers/Archive/Leftbar/ComponentsLeftbar'));
+const ComponentsRightbar = lazy(() => import('../containers/Archive/Rightbar/ComponentsRightbar'));
 
 function Components() {
   const [getMain, setMain] = useState(false);

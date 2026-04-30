@@ -1,12 +1,12 @@
 //--|🠊 styles/components.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Main/ComponentsMain/ComponentsMain.scss';
-@use '../containers/Header/ComponentsHeader/ComponentsHeader.scss';
-@use '../containers/Footer/ComponentsFooter/ComponentsFooter.scss';
+@use '../containers/Archive/Main/ComponentsMain.scss';
+@use '../containers/Archive/Header/ComponentsHeader.scss';
+@use '../containers/Archive/Footer/ComponentsFooter.scss';
 
-@use '../containers/Overlay/ComponentsOverlay/ComponentsOverlay.scss';
-@use '../containers/Leftbar/ComponentsLeftbar/ComponentsLeftbar.scss';
-@use '../containers/Rightbar/ComponentsRightbar/ComponentsRightbar.scss';
+@use '../containers/Archive/Overlay/ComponentsOverlay.scss';
+@use '../containers/Archive/Leftbar/ComponentsLeftbar.scss';
+@use '../containers/Archive/Rightbar/ComponentsRightbar.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\
