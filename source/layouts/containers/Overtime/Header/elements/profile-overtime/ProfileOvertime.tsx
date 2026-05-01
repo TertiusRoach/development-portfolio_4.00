@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import SectionCharacters from '../../../../../components/Section/characters/Section.characters';
+import SectionCharacters from '../../../../../components/Section/Overtime/characters/Section.characters';
 
 //--|🠋 Functions 🠋|--\\
 

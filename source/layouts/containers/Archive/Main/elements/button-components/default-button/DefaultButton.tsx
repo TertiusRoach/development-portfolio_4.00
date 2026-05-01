@@ -26,7 +26,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       <section className={`${labelName}-foreground`}>
         <div className={`${labelName}-container`}>
           <aside className={`${labelName}-dark`}>
-            <DivisionCarousel
+            {/* <DivisionCarousel
               //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
               style={{
                 axis: '[y]',
@@ -40,7 +40,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
-            />
+            /> */}
           </aside>
           <aside className={`${labelName}-light`}></aside>
         </div>

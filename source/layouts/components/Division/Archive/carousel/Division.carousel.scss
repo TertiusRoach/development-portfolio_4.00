@@ -78,7 +78,7 @@
         aside[class*='main'] {
           flex: 0 0 100vw;
           ol[class*='car-'] {
-            @extend %vert-stack;
+            @extend %vert-stack-one;
           }
         }
       }
@@ -89,8 +89,13 @@
     @extend %hori-scope;
     @extend %hori-stack;
   }
+  ul[class='car-two'] {
+    @extend %hori-scope;
+    @extend %hori-stack;
+  }
 
-  %vert-stack {
+  //--|🠊 Vertical Y-axis 🠈|--\\
+  %vert-stack-one {
     .I {
       transform: translateY(0);
     }
@@ -152,7 +157,7 @@
       transform: translateY(-1900%);
     }
   }
-  %vert-scope {
+  %vert-scope-one {
     height: 100%;
     display: flex;
     li {
@@ -164,43 +169,106 @@
         section[class*='main'],
         figure[class*='main'],
         aside[class*='main'] {
-          height: 100%;
+          // height: 100%;
           ul[class*='car-'] {
             @extend %hori-stack;
           }
         }
-        /*
-// 1. Establish the fixed dimensions
-Here's the maths.
-
-The result should be this...
-height: 672px;
-width: 587px;
-
-For a screen resolution of 1366x768
-Width: 1366px
-Height: 768px
-
-Based on the result of that it should scale the child elements appropriately.
-// Or just let all the children inherit it. Is there a media query for this?
-
-        height: 951px;
-        width: 832px;
-
-        This is the formula reference. It's based on the height and width of the elements it should lock.
-                section[class*='main'],
-        figure[class*='main'],
-        aside[class*='main'] {
-        You mentioned something in the lines of a component passing down a locked height and width.
-        }
-        */
       }
     }
   }
-  //--|🠊 Vertical Y-axis 🠈|--\\
   ol[class='car-one'] {
-    @extend %vert-scope;
-    @extend %vert-stack;
+    @extend %vert-stack-one;
+    @extend %vert-scope-one;
+  }
+
+  //--|🠊 Vertical Y-axis 🠈|--\\
+  %vert-stack-two {
+    .I {
+      transform: translateY(0);
+    }
+    .II {
+      transform: translateY(-100%);
+    }
+    .III {
+      transform: translateY(-200%);
+    }
+    .IV {
+      transform: translateY(-300%);
+    }
+    .V {
+      transform: translateY(-400%);
+    }
+    .VI {
+      transform: translateY(-500%);
+    }
+    .VII {
+      transform: translateY(-600%);
+    }
+    .VIII {
+      transform: translateY(-700%);
+    }
+    .IX {
+      transform: translateY(-800%);
+    }
+    .X {
+      transform: translateY(-900%);
+    }
+    .XI {
+      transform: translateY(-1000%);
+    }
+    .XII {
+      transform: translateY(-1100%);
+    }
+    .XIII {
+      transform: translateY(-1200%);
+    }
+    .XIV {
+      transform: translateY(-1300%);
+    }
+    .XV {
+      transform: translateY(-1400%);
+    }
+    .XVI {
+      transform: translateY(-1500%);
+    }
+    .XVII {
+      transform: translateY(-1600%);
+    }
+    .XVIII {
+      transform: translateY(-1700%);
+    }
+    .XIX {
+      transform: translateY(-1800%);
+    }
+    .XX {
+      transform: translateY(-1900%);
+    }
+  }
+  %vert-scope-two {
+    height: 100%;
+    display: flex;
+    li {
+      width: 100%;
+      // display: inherit; //--|🠊 display: flex; 🠈|--\\
+      div {
+        width: inherit; //--|🠊 width: 100%; 🠈|--\\
+        // How do I lock all the children elements with these classNames
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          // height: 100%;
+          ul[class*='car-'] {
+            @extend %hori-stack;
+          }
+        }
+      }
+    }
+  }
+  ol[class='car-two'] {
+    overflow: hidden;
+    @extend %vert-stack-two;
+    @extend %vert-scope-two;
   }
 }
 @mixin mobile-portrait {

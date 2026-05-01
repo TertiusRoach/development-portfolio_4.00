@@ -7,11 +7,11 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Section_characters';
 
-import { scrollTable } from '../../Table/clocking/Table_clocking';
+import { scrollTable } from '../../../Table/clocking/Table_clocking';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonDefault from '../../../Button/default/Button.default';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 interface TheseProps<Names extends Info> {
   info: Names;
   cases: {
