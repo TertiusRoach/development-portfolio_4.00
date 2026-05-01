@@ -14,7 +14,7 @@ function scrollCarousel(
   🠉|--*/
   const findPreview: string = `#${pageName}-${blockName} section.${blockName}-foreground li[class*="${labelName}-${blockName}_preview"]`;
   const findButtons: string = `#${pageName}-${blockName} section.${blockName}-foreground li[class*="${labelName}-${blockName}_buttons"]`;
-  const findDivision: string = `#${pageName}-main section.main-foreground div.${labelName}-main_carousel li:first-child`;
+  const findDivision: string = `#${pageName}-main section.main-foreground div.${labelName}-main_carousel-default li:first-child`;
 
   const carouselPreview = document.querySelector(findPreview) as HTMLElement;
   const carouselButtons = document.querySelector(findButtons) as HTMLElement;
@@ -42,6 +42,7 @@ function scrollCarousel(
       } else if (nextButton.classList.contains('downplay')) {
         nextButton.classList.add('highlight');
         nextButton.classList.remove('downplay');
+        console.log(carouselDivision);
       }
       return prevSlide as number;
     case 'go-right':

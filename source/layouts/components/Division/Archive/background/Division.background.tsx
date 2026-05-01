@@ -17,7 +17,7 @@ function blockExtensions(pageName: 'components' | string, blockName: 'header' | 
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_archive';
+import { viewDisplay } from './Division_background';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -26,12 +26,12 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../scripts';
+} from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import FooterComponents from './extensions/footer-components/FooterComponents';
-import MainComponents from './extensions/main-components/MainComponents';
-import HeaderComponents from './extensions/header-components/HeaderComponents';
+import FooterComponents from './extensions/footer-background/FooterComponents';
+import MainComponents from './extensions/main-background/MainComponents';
+import HeaderComponents from './extensions/header-background/HeaderComponents';
 
 interface TheseProps {
   info: {

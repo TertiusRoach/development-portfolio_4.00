@@ -15,7 +15,7 @@ import TimeElements from './elements/time-components/TimeElements';
 import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+import DivisionCarousel from '../../../components/Division/Archive/carousel/Division.carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

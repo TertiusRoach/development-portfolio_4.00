@@ -6,8 +6,6 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Section_characters';
-import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
-import { previewElement } from '../../Division/carousel/Division_carousel';
 
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
@@ -18,9 +16,6 @@ interface TheseProps<Names extends Info> {
   info: Names;
   cases: {
     user: 'randomize-character' | 'jane-lester' | 'hammad-dean';
-    // call: React.ComponentType<{ info: Names }>;
-    // level: '<fore>' | '<mid>' | '<back>';
-    // view: '-top-' | '-bot-' | '-lef-' | '-rig-' | '-cen-' | '-mid-' | '-nul-';
   };
 }
 

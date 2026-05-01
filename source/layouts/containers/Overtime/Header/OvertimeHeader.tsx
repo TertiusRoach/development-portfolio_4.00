@@ -16,7 +16,7 @@ import ButtonDefault from '../../../components/Button/default/Button.default';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import ButtonProfile from '../../../components/Button/profile/Button.profile';
 import NavigationProfile from '../../../components/Navigation/Overtime/review/profile/Navigation.profile';
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+import DivisionCarousel from '../../../components/Division/Archive/carousel/Division.carousel';
 
 interface InfoProps {
   info: {

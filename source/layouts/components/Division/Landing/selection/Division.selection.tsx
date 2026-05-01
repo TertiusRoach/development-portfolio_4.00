@@ -6,10 +6,10 @@ import './Division.selection.scss';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import HeaderBranding from '../../Header/branding/Header.branding';
-import FigureRotation from '../../Figure/rotation/Figure.rotation';
-import ArticleSelection from '../../Article/selection/Article.selection';
-import MenuBranding from '../../Menu/archive/branding/Menu.branding';
+// import HeaderBranding from '../../Header/branding/Header.branding';
+// import FigureRotation from '../../Figure/rotation/Figure.rotation';
+// import ArticleSelection from '../../Article/selection/Article.selection';
+// import MenuBranding from '../../Menu/archive/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 // import { scaleImage } from './Division_selection';
@@ -30,8 +30,8 @@ const DivisionSelection: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <div className="selection-division">
-      <HeaderBranding info={info} />
-      <ArticleSelection info={info} />
+      {/* <HeaderBranding info={info} /> */}
+      {/* <ArticleSelection info={info} /> */}
       {/* <FigureRotation style={{ fadeView: 'test-a-fade' }} /> */}
     </div>
   );

@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './FigureElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultFigure from './default-figure/DefaultFigure';

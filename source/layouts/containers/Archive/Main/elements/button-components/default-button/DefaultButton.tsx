@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
 import './DefaultButton.scss';
-import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
 
 //--|🠋 Functions 🠋|--\\
 

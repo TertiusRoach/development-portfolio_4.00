@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { stripBrackets } from '../../../scripts/archive';
 
-import NavigationArchive from '../../../components/Navigation/Archive/Navigation.archive';
+import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
 
 interface InfoProps {
   info: {
@@ -26,7 +26,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <footer></footer>
-        <NavigationArchive
+        <ArchiveNavigation
           //--|🠊 <nav className={`${pageName}-footer_${labelName}`}> 🠈|--\\
           info={{
             pageName: pageName,

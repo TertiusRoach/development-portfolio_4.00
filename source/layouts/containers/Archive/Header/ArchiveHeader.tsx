@@ -5,7 +5,7 @@ import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-import NavigationArchive from '../../../components/Navigation/Archive/Navigation.archive';
+import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -35,11 +35,11 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
     onmouseenter = (event) => {};
   }, [pageName, blockName, labelName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <header className={`${pageName}-carousels I`}>
+        <header className={`${pageName}-carousels-default_header I`}>
           <MenuCarousel
             style={{
               axis: '[x]',
@@ -211,7 +211,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </header>
-        <NavigationArchive
+        <ArchiveNavigation
           //--|🠊 <nav className={`${pageName}-header`}> 🠈|--\\
           info={{
             pageName: pageName,
@@ -219,11 +219,11 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
         />
-
-        {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <h1 className="display-1">{`<ComponentsHeader>`}</h1>
+      </div>
     </header>
   );
 };

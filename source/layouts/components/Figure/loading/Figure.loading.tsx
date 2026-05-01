@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Figure_loading';
 import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
-import { previewElement } from '../../Division/carousel/Division_carousel';
+import { previewElement } from '../../Division/Archive/carousel/Division_carousel';
 
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 

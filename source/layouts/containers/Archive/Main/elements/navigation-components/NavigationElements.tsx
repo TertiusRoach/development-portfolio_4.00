@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './NavigationElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultNavigation from './default-navigation/DefaultNavigation';

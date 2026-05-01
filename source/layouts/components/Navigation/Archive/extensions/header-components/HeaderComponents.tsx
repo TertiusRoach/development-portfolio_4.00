@@ -48,7 +48,7 @@ const HeaderComponents: React.FC<TheseProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <nav className={`${pageName}-header_${labelName}`}>
+    <nav className={`${pageName}-${labelName}_header`}>
       <ButtonRouting
         info={{
           pageName: pageName,
@@ -63,16 +63,14 @@ const HeaderComponents: React.FC<TheseProps> = ({ info }) => {
           view: viewDisplay() as 'top-lef' | 'bot-rig',
           image: `${svgPath[0]}`,
         }}
-        onMouseEnter={() => {
-          unfoldHeader(pageName, 'hover', 'header');
-          // if (blockName === 'header') {
-          // }
+        onClick={() => {
+          if (blockName === 'header') {
+            unfoldLeftbar(pageName, 'click', 'leftbar');
+          }
         }}
-        // onClick={() => {
-        //   if (blockName === 'header') {
-        //     unfoldLeftbar(pageName, 'click', 'leftbar');
-        //   }
-        // }}
+        onMouseEnter={() => {
+          unfoldHeader(pageName, 'hover', blockName);
+        }}
       />
     </nav>
   );
