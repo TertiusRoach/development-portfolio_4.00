@@ -2,29 +2,6 @@
 @use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
 
-@mixin desktop-landscape {
-  aside[class*='default'] {
-    //--|🠋 Desktop (Layers) 🠋|--\\
-    @include Mixins.landscape-grid;
-    section[class*='foreground'] {
-      @include desk-grid;
-      @include desk-flex;
-    }
-    figure[class*='midground'] {
-    }
-    div[class*='background'] {
-    }
-
-    section[class*='foreground'] {
-      h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-    }
-  }
-}
 @mixin desk-grid {
   .default-container {
     display: inherit; //--|🠈 display: grid; 🠈|--\\
@@ -34,7 +11,7 @@
       &.default-dark {
         grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         div[class*='carousel'] {
-          grid-area: 2 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 1/1/6/5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           div[class*='container'] {
             section[class*='default'] {
             }
@@ -118,28 +95,7 @@
 @mixin desk-flex {
   aside[class*='default'] {
     div[class*='carousel'] {
-      div[class*='container'] {
-        flex-direction: column;
-        // position: relative;
-        section[class*='default'] {
-          position: absolute;
-          inset: 0; /* top:0 right:0 bottom:0 left:0 */
-          width: 100%;
-          height: 100vh;
-          // width: 100%;
-          // width: inherit; //--|🠈 width: 100%; 🠈|--//
-
-          &:nth-child(1) {
-            // inset: 0 0 0 0; /* top:0 right:0 bottom:0 left:0 */
-          }
-          &:nth-child(2) {
-            // inset: 100% 0 0 0; /* top:0 right:0 bottom:0 left:0 */
-          }
-          &:nth-child(3) {
-            // inset: 200% 0 0 0; /* top:0 right:0 bottom:0 left:0 */
-          }
-        }
-
+      section[class*='carousel'] {
         section:nth-child(1) {
           background: rgba(darkred, 0.25);
         }
@@ -149,6 +105,30 @@
         section:nth-child(3) {
           background: rgba(darkblue, 0.25);
         }
+      }
+    }
+  }
+}
+
+@mixin desktop-landscape {
+  aside[class*='default'] {
+    //--|🠋 Desktop (Layers) 🠋|--\\
+    @include Mixins.landscape-grid;
+    section[class*='foreground'] {
+      @include desk-grid;
+      @include desk-flex;
+    }
+    figure[class*='midground'] {
+    }
+    div[class*='background'] {
+    }
+
+    section[class*='foreground'] {
+      h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }

@@ -110,23 +110,23 @@ function defaultSize({ info }: InfoProps) {
   );
 }
 function ViewOne({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewTwo({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewThr({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewFou({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewFiv({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewSix({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
 function ViewPar({ info }: InfoProps) {
-  return <section className={`default-${info.labelName}`}></section>;
+  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
 }
