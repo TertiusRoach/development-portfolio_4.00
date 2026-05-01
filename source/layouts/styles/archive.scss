@@ -1,4 +1,6 @@
-//--|🠊 styles/archive.scss 🠈|--//
+//--|🠊 styles/archive.scss 🠈|--\\
+@use '../designs/Palettes.scss';
+
 //--|🠋 Containers 🠋|--//
 @use '../containers/Archive/Main/ArchiveMain.scss';
 @use '../containers/Archive/Header/ArchiveHeader.scss';
