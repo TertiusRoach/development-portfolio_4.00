@@ -3,6 +3,7 @@
 
 //--|🠋 Designs 🠋|--\\
 @use './layouts/designs/Global.scss';
+@use './layouts/designs/Queries.scss';
 @use './layouts/designs/Palettes.scss';
 @use './layouts/designs/Transition.scss';
 
@@ -16,6 +17,7 @@
 
 body {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
+  // Import Queries
   div[id*='body'] {
     overflow: inherit; //--|🠈 overflow: hidden; 🠈|--\\
     @extend %transitions;

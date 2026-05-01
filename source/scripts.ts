@@ -190,7 +190,7 @@ export function hideOverlay(pageName: string, blockName: string) {
 
       setTimeout(() => {
         disable.style.display = 'none';
-      }, 1500);
+      }, 125);
     }
 
     console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
@@ -219,7 +219,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Clicked on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -234,7 +234,7 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Hovered on <${blockName}> to expand <header> 🠈|`);
         }
         break;
@@ -265,7 +265,7 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -297,7 +297,7 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
           }
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         }
         break;
@@ -331,10 +331,19 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
     let leftbarContainer = document.querySelector(leftbarElement) as HTMLElement;
     switch (blockAction) {
       case 'click':
-        if (headerContainer.classList.contains('collapsed') || headerContainer.classList.contains('expanded')) {
-          headerContainer.classList.add('unfolded');
-          headerContainer.classList.remove('collapsed', 'expanded');
+        if (!leftbarContainer.classList.contains(disableElement)) {
+          leftbarContainer.classList.add(disableElement);
+
+          if (headerContainer.classList.contains('collapsed') || headerContainer.classList.contains('expanded')) {
+            headerContainer.classList.add('unfolded');
+            headerContainer.classList.remove('collapsed', 'expanded');
+          }
+
+          setTimeout(() => {
+            headerContainer.classList.remove(disableElement);
+          }, 125);
         }
+
         console.log(`|🠊 Clicked on <${blockName}> to unfold <header> 🠈|`);
         break;
       case 'hover':
@@ -348,9 +357,9 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
+          console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         }
-        console.log(`|🠊 Hovered on <${blockName}> to unfold <header> 🠈|`);
         break;
       case 'exit':
         console.log(`|🠊 Left <button> in <${blockName}> to unfold <header> 🠈|`);
@@ -393,7 +402,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
           }
           setTimeout(() => {
             leftbarContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Hovered on <${blockName}> to unfold <leftbar> 🠈|`);
         }
         break;
@@ -405,9 +414,10 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
 
           setTimeout(() => {
             leftbarContainer.classList.remove('disabled');
-          }, 1500);
+          }, 125);
           console.log(`|🠊 Left <button> in <${blockName}> to unfold <leftbar> 🠈|`);
         }
+
         break;
     }
   }, 125);
@@ -440,7 +450,7 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
 
           setTimeout(() => {
             headerContainer.classList.remove(disableElement);
-          }, 1500);
+          }, 125);
         }
         console.log(`|🠊 Hovered on <${blockName}> to square <header> 🠈|`);
         break;

@@ -6,13 +6,9 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Navigation_profile';
-import { collapseLeftbar, expandLeftbar, collapseHeader } from '../../../../../../scripts';
-// import { previewElement } from '../../Division/carousel/Division_carousel';
-import { viewBody } from '../../../../../../index';
-import { scrollTable } from '../../../../Table/clocking/Table_clocking';
+import { collapseLeftbar, collapseHeader } from '../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../../../Button/default/Button.default';
 import ButtonRouting from '../../../../Button/routing/Button.routing';
 
 interface TheseProps {
@@ -85,7 +81,8 @@ const NavigationProfile: React.FC<TheseProps> = ({ info }) => {
               view: 'bot-rig',
               image: `${svgPath[1]}`,
             }}
-            onClick={() => viewBody('components')}
+
+            // onClick={() => setShade('components')}
             // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
           />
         </li>

@@ -160,6 +160,7 @@
       // display: inherit; //--|🠊 display: flex; 🠈|--\\
       div {
         width: inherit; //--|🠊 width: 100%; 🠈|--\\
+        // How do I lock all the children elements with these classNames
         section[class*='main'],
         figure[class*='main'],
         aside[class*='main'] {
@@ -168,6 +169,31 @@
             @extend %hori-stack;
           }
         }
+        /*
+// 1. Establish the fixed dimensions
+Here's the maths.
+
+The result should be this...
+height: 672px;
+width: 587px;
+
+For a screen resolution of 1366x768
+Width: 1366px
+Height: 768px
+
+Based on the result of that it should scale the child elements appropriately.
+// Or just let all the children inherit it. Is there a media query for this?
+
+        height: 951px;
+        width: 832px;
+
+        This is the formula reference. It's based on the height and width of the elements it should lock.
+                section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+        You mentioned something in the lines of a component passing down a locked height and width.
+        }
+        */
       }
     }
   }
