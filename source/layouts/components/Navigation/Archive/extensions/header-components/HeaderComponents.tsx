@@ -71,6 +71,11 @@ const HeaderComponents: React.FC<TheseProps> = ({ info }) => {
         onMouseEnter={() => {
           unfoldHeader(pageName, 'hover', blockName);
         }}
+        onMouseLeave={() => {
+          setTimeout(() => {
+            squaringHeader(pageName, 'exit', blockName);
+          }, 12500);
+        }}
       />
     </nav>
   );

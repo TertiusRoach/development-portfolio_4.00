@@ -27,13 +27,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'archive';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {
-    addEventListener('mouseenter', (event) => {
-      console.log(document.querySelector(`#${pageName}-${blockName}`));
-    });
-
-    onmouseenter = (event) => {};
-  }, [pageName, blockName, labelName]);
+  useEffect(() => {}, [pageName, blockName, labelName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   return (
