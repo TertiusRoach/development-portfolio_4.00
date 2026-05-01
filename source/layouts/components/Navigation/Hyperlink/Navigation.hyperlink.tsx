@@ -1,30 +1,37 @@
-//--|🠊 Navigation.default.tsx 🠈|--\\
+//--|🠊 Navigation.profile.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.default.scss';
+import './Navigation.archive.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_default';
-import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../../scripts';
+import { viewDisplay } from './Navigation_hyperlink';
+import {
+  unfoldHeader,
+  unfoldLeftbar,
+  squaringHeader,
+  collapseLeftbar,
+  expandLeftbar,
+  collapseHeader,
+  expandHeader,
+} from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../../Button/routing/Button.routing';
+import ButtonRouting from '../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
+    pageName: 'hyperlink';
+    blockName: 'header' | 'main' | 'footer';
+    labelName: 'default' | string;
   };
 }
-const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
-  const svgPath: Array<String> = [
+const NavigationHyperlink: React.FC<TheseProps> = ({ info }) => {
+  let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg',
   ];
 
-  const pageName: string = info.pageName as string;
+  const pageName: string = info.pageName as 'hyperlink';
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as 'default';
 
@@ -32,8 +39,8 @@ const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
 
   useEffect(() => {
     //--|🠋 1. Define the media query for landscape 🠈|--\\
-    const mediaQuery = window.matchMedia('(orientation: landscape)');
-    const handleOrientationChange = () => {
+    let mediaQuery = window.matchMedia('(orientation: landscape)');
+    let handleOrientationChange = () => {
       //--|🠋 2. Create the handler function 🠈|--\\
       setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
     };
@@ -42,14 +49,14 @@ const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <nav className={`browse-${blockName}`}>
+    <nav className={`${pageName}-${blockName}`}>
       <ol>
-        <li className="open-head">
+        <li className="view-head">
           <ButtonRouting
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_open-head`,
+              labelName: `${pageName}-${blockName}_view-head`,
             }}
             style={{
               size: '<h1>',
@@ -60,33 +67,46 @@ const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
               image: `${svgPath[0]}`,
             }}
             onMouseEnter={() => {
-              unfoldHeader(pageName, 'hover', blockName);
-              unfoldLeftbar(pageName, 'click', 'leftbar');
+              if (blockName === 'header') {
+                unfoldHeader(pageName, 'hover', 'header');
+              }
             }}
-            // onMouseEnter={() => unfoldHeader(pageName, 'hover', blockName)}
+            onClick={() => {
+              if (blockName === 'header') {
+                unfoldLeftbar(pageName, 'click', 'leftbar');
+              }
+            }}
           />
         </li>
-        {/* <li className="load-tags">
+        <li className="view-foot">
           <ButtonRouting
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: `${pageName}-${blockName}_load-tags`,
+              labelName: `${pageName}-${blockName}_view-head`,
             }}
             style={{
               size: '<h1>',
               color: '(mono)',
-              shade: '~dark~',
+              shade: '~light~',
               type: '{button}',
-              view: 'bot-rig',
-              image: `${svgPath[1]}`,
+              view: viewDisplay() as 'top-lef' | 'bot-rig',
+              image: `${svgPath[0]}`,
             }}
-            onClick={() => viewBody('components')}
-            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+            onMouseEnter={() => {
+              if (blockName === 'header') {
+                unfoldHeader(pageName, 'hover', 'header');
+              }
+            }}
+            onClick={() => {
+              if (blockName === 'header') {
+                unfoldLeftbar(pageName, 'click', 'leftbar');
+              }
+            }}
           />
-        </li> */}
+        </li>
       </ol>
     </nav>
   );
 };
-export default NavigationDefault;
+export default NavigationHyperlink;

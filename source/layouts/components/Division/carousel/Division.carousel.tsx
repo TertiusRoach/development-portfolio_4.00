@@ -9,7 +9,7 @@ interface TheseProps<Names extends PropsInfo> {
   info: Names;
   style: {
     axis: '[x]' | '[y]';
-    scope: '<one>' | '<two>' | '<thr>' | '<fou>' | '<fiv>' | '<six>' | '<sev>' | '<eig>' | '<nin>' | '<ten>';
+    scope: '<one>' | '<two>' | '<thr>';
   };
   cases: {
     call: React.ComponentType<{ info: Names }>;
@@ -31,13 +31,6 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
     '<one>': 'car-one',
     '<two>': 'car-two',
     '<thr>': 'car-thr',
-    '<fou>': 'car-fou',
-    '<fiv>': 'car-fiv',
-    '<six>': 'car-six',
-    '<sev>': 'car-sev',
-    '<eig>': 'car-eig',
-    '<nin>': 'car-nin',
-    '<ten>': 'car-ten',
   };
 
   useEffect(() => {

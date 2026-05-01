@@ -5,7 +5,7 @@ import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-import NavigationBrowse from '../../../components/Navigation/Archive/browse/Navigation.browse';
+import NavigationBrowse from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

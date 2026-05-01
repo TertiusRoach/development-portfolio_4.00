@@ -1,5 +1,12 @@
-//--|🠊 Navigation.profile.scss 🠈|--\\
+//--|🠊 Navigation.hyperlink.scss 🠈|--\\
 @mixin desktop-landscape {
+  &[class*='header'] {
+  }
+  &[class*='main'] {
+  }
+  &[class*='footer'] {
+  }
+  /*
   display: grid;
   grid-area: 1 / 1 / 6 / 4;
 
@@ -34,11 +41,12 @@
         / 48px 92px 1fr 92px 48px; //--|🠈 columns 🠈|--//
     }
   }
+  */
 }
 @mixin mobile-portrait {
 }
 
-nav[class*='browse-header'] {
+nav[class*='overtime'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

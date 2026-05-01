@@ -8,7 +8,7 @@ import { stripBrackets } from '../../../scripts/overtime';
 
 //--|🠋 Components 🠋|--\\
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
-import NavigationTracking from '../../../components/Navigation/Overtime/tracking/Navigation.tracking';
+import NavigationTracking from '../../../components/Navigation/Overtime/review/tracking/Navigation.tracking';
 
 import WeekGrid from '../../../components/Aside/week/Aside.week-grid';
 import DateString from '../../../components/Time/date-string/Time.date-string';

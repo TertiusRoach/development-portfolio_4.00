@@ -6,7 +6,7 @@ import './DefaultNavigation.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import NavigationDefault from '../../../../../../components/Navigation/Archive/default/Navigation.default';
+import NavigationDefault from '../../../../../../components/Navigation/Archive/review/default/Navigation.default';
 
 //--|🠋 Components 🠋|--\\
 

@@ -6,12 +6,12 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Navigation_tracking';
-import { expandLeftbar, expandHeader } from '../../../../../scripts';
-import { scrollTable } from '../../../Table/tracking/Table_tracking';
+import { expandLeftbar, expandHeader } from '../../../../../../scripts';
+import { scrollTable } from '../../../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../../Button/default/Button.default';
-import ButtonRouting from '../../../Button/routing/Button.routing';
+import ButtonDefault from '../../../../Button/default/Button.default';
+import ButtonRouting from '../../../../Button/routing/Button.routing';
 interface TheseProps {
   info: {
     pageName: string;

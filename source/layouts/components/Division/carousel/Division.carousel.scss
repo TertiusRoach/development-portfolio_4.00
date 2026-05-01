@@ -5,7 +5,95 @@
     transition: transform 500ms ease-in-out;
   }
 
-  //--|🠊 Vertical Y-axis 🠈|--\\
+  %hori-stack {
+    .I {
+      transform: translateX(0);
+    }
+    .II {
+      transform: translateX(-100%);
+    }
+    .III {
+      transform: translateX(-200%);
+    }
+    .IV {
+      transform: translateX(-300%);
+    }
+    .V {
+      transform: translateX(-400%);
+    }
+    .VI {
+      transform: translateX(-500%);
+    }
+    .VII {
+      transform: translateX(-600%);
+    }
+    .VIII {
+      transform: translateX(-700%);
+    }
+    .IX {
+      transform: translateX(-800%);
+    }
+    .X {
+      transform: translateX(-900%);
+    }
+    .XI {
+      transform: translateX(-1000%);
+    }
+    .XII {
+      transform: translateX(-1100%);
+    }
+    .XIII {
+      transform: translateX(-1200%);
+    }
+    .XIV {
+      transform: translateX(-1300%);
+    }
+    .XV {
+      transform: translateX(-1400%);
+    }
+    .XVI {
+      transform: translateX(-1500%);
+    }
+    .XVII {
+      transform: translateX(-1600%);
+    }
+    .XVIII {
+      transform: translateX(-1700%);
+    }
+    .XIX {
+      transform: translateX(-1800%);
+    }
+    .XX {
+      transform: translateX(-1900%);
+    }
+  }
+  %hori-scope {
+    li {
+      height: 100svh;
+      div[class*='_container'] {
+        display: flex;
+        height: inherit;
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          flex: 0 0 100vw;
+        }
+      }
+    }
+  }
+  //--|🠊 Horizontal X-axis 🠈|--\\
+  ul {
+    @extend %hori-scope;
+    @extend %hori-stack;
+    ul[class='car-two'] {
+      @extend %hori-stack;
+      ul[class='car-thr'] {
+        //--|🠊 Horizontal X-axis 🠈|--\\
+        @extend %hori-stack;
+      }
+    }
+  }
+
   %vert-stack {
     .I {
       transform: translateY(0);
@@ -84,6 +172,7 @@
       }
     }
   }
+  //--|🠊 Vertical Y-axis 🠈|--\\
   ol {
     @extend %vert-scope;
     @extend %vert-stack;
@@ -92,95 +181,6 @@
       ol[class='car-thr'] {
         //--|🠊 Vertical Y-axis 🠈|--\\
         @extend %vert-stack;
-      }
-    }
-  }
-
-  //--|🠊 Horizontal X-axis 🠈|--\\
-  %hori-stack {
-    .I {
-      transform: translateX(0);
-    }
-    .II {
-      transform: translateX(-100%);
-    }
-    .III {
-      transform: translateX(-200%);
-    }
-    .IV {
-      transform: translateX(-300%);
-    }
-    .V {
-      transform: translateX(-400%);
-    }
-    .VI {
-      transform: translateX(-500%);
-    }
-    .VII {
-      transform: translateX(-600%);
-    }
-    .VIII {
-      transform: translateX(-700%);
-    }
-    .IX {
-      transform: translateX(-800%);
-    }
-    .X {
-      transform: translateX(-900%);
-    }
-    .XI {
-      transform: translateX(-1000%);
-    }
-    .XII {
-      transform: translateX(-1100%);
-    }
-    .XIII {
-      transform: translateX(-1200%);
-    }
-    .XIV {
-      transform: translateX(-1300%);
-    }
-    .XV {
-      transform: translateX(-1400%);
-    }
-    .XVI {
-      transform: translateX(-1500%);
-    }
-    .XVII {
-      transform: translateX(-1600%);
-    }
-    .XVIII {
-      transform: translateX(-1700%);
-    }
-    .XIX {
-      transform: translateX(-1800%);
-    }
-    .XX {
-      transform: translateX(-1900%);
-    }
-  }
-  %hori-scope {
-    li {
-      height: 100svh;
-      div[class*='_container'] {
-        display: flex;
-        height: inherit;
-        section[class*='main'],
-        figure[class*='main'],
-        aside[class*='main'] {
-          flex: 0 0 100vw;
-        }
-      }
-    }
-  }
-  ul {
-    @extend %hori-scope;
-    @extend %hori-stack;
-    ul[class='car-two'] {
-      @extend %hori-stack;
-      ul[class='car-thr'] {
-        //--|🠊 Horizontal X-axis 🠈|--\\
-        @extend %hori-stack;
       }
     }
   }

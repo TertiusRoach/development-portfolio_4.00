@@ -22,8 +22,8 @@ import SectionElements from './elements/section-components/SectionElements';
 import TableElements from './elements/table-components/TableElements';
 import TimeElements from './elements/time-components/TimeElements';
 
-import NavigationDefault from '../../../components/Navigation/Archive/default/Navigation.default';
-import NavigationBrowse from '../../../components/Navigation/Archive/browse/Navigation.browse';
+import NavigationDefault from '../../../components/Navigation/Archive/review/default/Navigation.default';
+import NavigationBrowse from '../../../components/Navigation/Archive/Navigation.archive';
 
 interface InfoProps {
   info: {

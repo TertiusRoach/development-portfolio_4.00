@@ -1,11 +1,11 @@
 //--|🠊 Navigation.profile.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.browse.scss';
+import './Navigation.archive.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_browse';
+import { viewDisplay } from './Navigation_overtime';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -14,33 +14,33 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../../scripts';
+} from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../../Button/routing/Button.routing';
+import ButtonRouting from '../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
+    pageName: 'overtime';
+    blockName: 'header' | 'main' | 'footer';
+    labelName: 'default' | string;
   };
 }
-const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
+const NavigationOvertime: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
 
   const pageName: string = info.pageName as 'overtime';
-  const blockName: string = info.blockName as 'header';
-  const labelName: string = info.labelName as 'profile';
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as 'default';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   useEffect(() => {
     //--|🠋 1. Define the media query for landscape 🠈|--\\
-    const mediaQuery = window.matchMedia('(orientation: landscape)');
-    const handleOrientationChange = () => {
+    let mediaQuery = window.matchMedia('(orientation: landscape)');
+    let handleOrientationChange = () => {
       //--|🠋 2. Create the handler function 🠈|--\\
       setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
     };
@@ -49,7 +49,7 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
   }, [pageName, blockName]);
 
   return (
-    <nav className={`browse-${blockName}`}>
+    <nav className={`${pageName}-${blockName}`}>
       <ol>
         <li className="view-head">
           <ButtonRouting
@@ -109,4 +109,4 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default NavigationBrowse;
+export default NavigationOvertime;
