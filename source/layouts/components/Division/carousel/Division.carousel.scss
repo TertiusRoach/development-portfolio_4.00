@@ -161,7 +161,7 @@
     display: flex;
     li {
       width: 100%;
-      display: inherit; //--|🠊 display: flex; 🠈|--\\
+      // display: inherit; //--|🠊 display: flex; 🠈|--\\
       div {
         width: inherit; //--|🠊 width: 100%; 🠈|--\\
         section[class*='main'],

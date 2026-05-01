@@ -8,7 +8,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 //--|🠋 Components 🠋|--//
 import FigureRotation from '../../Figure/archive/rotation/Figure.rotation';
 import ArticleSelection from '../../Article/selection/Article.selection';
-import MenuBranding from '../../Menu/archive/branding/Menu.branding';
+import MenuBranding from '../../Menu/review/branding/Menu.branding';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 //--|🠉 Functions 🠉|--//

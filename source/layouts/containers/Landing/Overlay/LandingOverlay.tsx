@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠋 Components 🠋|--\\
-import MenuLanding from '../../../components/Menu/archive/landing/Menu.landing';
+import MenuLanding from '../../../components/Menu/review/landing/Menu.landing';
 import ArticleLanding from '../../../components/Article/archive/landing/Article.landing';
 import HeaderBranding from '../../../components/Header/branding/Header.branding';
 import ArticleSelection from '../../../components/Article/archive/selection/Article.selection';
