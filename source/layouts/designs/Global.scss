@@ -17,30 +17,34 @@
   body {
     position: relative;
     div[id*='body'] {
-      ul,
-      ol {
-        padding: 0;
-        list-style: none;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin: 0;
-        outline: none;
-        cursor: default;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-family: 'Baloo Bhai 2', arial;
-      }
-      p {
-        margin: 0;
-        cursor: default;
-        white-space: wrap;
-        font-family: 'Source Sans 3', arial;
+      section,
+      figure,
+      div[class*='background'] {
+        ul,
+        ol {
+          padding: 0;
+          list-style: none;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin: 0;
+          outline: none;
+          cursor: default;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-family: 'Baloo Bhai 2', arial;
+        }
+        p {
+          margin: 0;
+          cursor: default;
+          white-space: wrap;
+          font-family: 'Source Sans 3', arial;
+        }
       }
     }
   }

@@ -46,12 +46,12 @@ const NavigationArchive: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
-  return <>{layoutContainer(pageName, blockName as 'header' | 'main' | 'footer', labelName)}</>;
+  return <>{blockExtensions(pageName, blockName as 'header' | 'main' | 'footer', labelName)}</>;
 };
 export default NavigationArchive;
 
 //--|🠊 1. Create a quick render function here 🠈|--\\
-const layoutContainer = (pageName: 'components' | string, blockName: 'header' | 'main' | 'footer', labelName: string) => {
+const blockExtensions = (pageName: 'components' | string, blockName: 'header' | 'main' | 'footer', labelName: string) => {
   switch (blockName) {
     case 'header':
       return <HeaderComponents info={{ pageName, blockName, labelName }} />;

@@ -1,11 +1,11 @@
 //--|🠊 Navigation.archive.scss 🠈|--\\
-
 @use './extensions/header-components/HeaderComponents.scss';
 @use './extensions/main-components/MainComponents.scss';
 @use './extensions/footer-components/FooterComponents.scss';
 
 @use './pipeline/Navigation_queries.scss';
 @mixin desktop-landscape {
+  /*
   display: grid;
   grid-area: 1 / 1 / 6 / 4;
 
@@ -40,6 +40,7 @@
         / 48px 92px 1fr 92px 48px; //--|🠈 columns 🠈|--//
     }
   }
+  */
 }
 @mixin mobile-portrait {
 }

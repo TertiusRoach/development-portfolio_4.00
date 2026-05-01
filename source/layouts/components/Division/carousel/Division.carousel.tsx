@@ -40,7 +40,7 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
   }, [pageName, blockName, labelName]);
 
   return (
-    <div className={`${labelName}-${blockName}_carousel`}>
+    <div className={`${labelName}-${blockName}_carousel-default`}>
       <ListItem className={scopeClass[style.scope]}>
         <li className="I">
           <div className={`${labelName}-${blockName}_container`}>

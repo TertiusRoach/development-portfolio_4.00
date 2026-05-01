@@ -1,4 +1,4 @@
-//--|🠊 FooterArchive.tsx 🠈|--\\
+//--|🠊 FooterComponents.tsx 🠈|--\\
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';

@@ -35,7 +35,11 @@
       }
     }
     &[class*='unfolded'] {
-      backdrop-filter: blur(32px);
+      opacity: 1;
+
+      backdrop-filter: blur(32px) brightness(0.9) saturate(1.2); // or contrast(), etc.
+
+      // backdrop-filter: blur(32px);
       section[class='header-foreground'] {
         nav ol li,
         nav ul li {

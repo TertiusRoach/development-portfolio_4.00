@@ -1,3 +1,4 @@
+//--|🠊 MainComponents.ts 🠈|--\\
 export function viewDisplay() {
   //--|🠊 Check if the window exists. 🠈|--\\
   if (typeof window === 'undefined') {
