@@ -1,10 +1,10 @@
-//--|🠊 MainArchive.tsx 🠈|--\\
+//--|🠊 HeaderArchive.tsx 🠈|--\\
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Main_archive';
+import { viewDisplay } from './Header_components';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -14,17 +14,18 @@ import {
   collapseHeader,
   expandHeader,
 } from '../../../../../../scripts';
+import ButtonRouting from '../../../../Button/routing/Button.routing';
 
 //--|🠋 Components 🠋|--\\
 
 interface TheseProps {
   info: {
     pageName: string;
-    blockName: 'main';
+    blockName: 'header';
     labelName: 'components' | string;
   };
 }
-const MainArchive: React.FC<TheseProps> = ({ info }) => {
+const HeaderComponents: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
@@ -46,6 +47,34 @@ const MainArchive: React.FC<TheseProps> = ({ info }) => {
     return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
   }, [pageName, blockName]);
 
-  return <nav className={`${pageName}-main_${labelName}`}></nav>;
+  return (
+    <nav className={`${pageName}-header_${labelName}`}>
+      <ButtonRouting
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: `${pageName}-${blockName}_view-head`,
+        }}
+        style={{
+          size: '<h1>',
+          color: '(mono)',
+          shade: '~dark~',
+          type: '{button}',
+          view: viewDisplay() as 'top-lef' | 'bot-rig',
+          image: `${svgPath[0]}`,
+        }}
+        onMouseEnter={() => {
+          unfoldHeader(pageName, 'hover', 'header');
+          // if (blockName === 'header') {
+          // }
+        }}
+        // onClick={() => {
+        //   if (blockName === 'header') {
+        //     unfoldLeftbar(pageName, 'click', 'leftbar');
+        //   }
+        // }}
+      />
+    </nav>
+  );
 };
-export default MainArchive;
+export default HeaderComponents;

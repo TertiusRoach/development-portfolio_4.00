@@ -1,4 +1,10 @@
-//--|🠊 Navigation.profile.scss 🠈|--\\
+//--|🠊 Navigation.archive.scss 🠈|--\\
+
+@use './extensions/header-components/HeaderComponents.scss';
+@use './extensions/main-components/MainComponents.scss';
+@use './extensions/footer-components/FooterComponents.scss';
+
+@use './pipeline/Navigation_queries.scss';
 @mixin desktop-landscape {
   display: grid;
   grid-area: 1 / 1 / 6 / 4;
@@ -38,11 +44,11 @@
 @mixin mobile-portrait {
 }
 
-nav[class*='archive'] {
+nav[class*='components'] {
   @media screen and (orientation: landscape) {
-    @include desktop-landscape();
+    @include Navigation_queries.desktop-queries();
   }
   @media screen and (orientation: portrait) {
-    @include mobile-portrait();
+    @include Navigation_queries.mobile-queries();
   }
 }

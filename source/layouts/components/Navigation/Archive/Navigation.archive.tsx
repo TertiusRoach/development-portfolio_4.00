@@ -1,8 +1,4 @@
 //--|🠊 Navigation.archive.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './extensions/header-components/HeaderArchive.scss';
-import './extensions/main-components/MainArchive.scss';
-import './extensions/footer-components/FooterArchive.scss';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
@@ -20,10 +16,9 @@ import {
 } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../Button/routing/Button.routing';
-import FooterArchive from './extensions/footer-components/FooterArchive';
-import MainArchive from './extensions/main-components/MainArchive';
-import HeaderArchive from './extensions/header-components/HeaderArchive';
+import FooterComponents from './extensions/footer-components/FooterComponents';
+import MainComponents from './extensions/main-components/MainComponents';
+import HeaderComponents from './extensions/header-components/HeaderComponents';
 
 interface TheseProps {
   info: {
@@ -48,8 +43,6 @@ const NavigationArchive: React.FC<TheseProps> = ({ info }) => {
     mediaQuery.addEventListener('change', handleOrientationChange);
     return () => mediaQuery.removeEventListener('change', handleOrientationChange);
   }, [pageName, blockName]);
-
-  //--|🠊 2. Call the function cleanly inside your return 🠈|--\\
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
@@ -61,11 +54,11 @@ export default NavigationArchive;
 const layoutContainer = (pageName: 'components' | string, blockName: 'header' | 'main' | 'footer', labelName: string) => {
   switch (blockName) {
     case 'header':
-      return <HeaderArchive info={{ pageName, blockName, labelName }} />;
+      return <HeaderComponents info={{ pageName, blockName, labelName }} />;
     case 'main':
-      return <MainArchive info={{ pageName, blockName, labelName }} />;
+      return <MainComponents info={{ pageName, blockName, labelName }} />;
     case 'footer':
-      return <FooterArchive info={{ pageName, blockName, labelName }} />;
+      return <FooterComponents info={{ pageName, blockName, labelName }} />;
     default:
       return null; // Failsafe
   }

@@ -1,10 +1,10 @@
-//--|🠊 HeaderArchive.tsx 🠈|--\\
+//--|🠊 FooterArchive.tsx 🠈|--\\
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Header_archive';
+import { viewDisplay } from './Footer_components';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -20,17 +20,17 @@ import {
 interface TheseProps {
   info: {
     pageName: string;
-    blockName: 'header';
+    blockName: 'footer';
     labelName: 'components' | string;
   };
 }
-const HeaderArchive: React.FC<TheseProps> = ({ info }) => {
+const FooterComponents: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
 
-  const pageName: string = info.pageName as 'components';
-  const blockName: string = info.blockName as 'header';
+  const pageName: string = info.pageName as 'archive';
+  const blockName: string = info.blockName as 'footer';
   const labelName: string = info.labelName as string;
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
@@ -46,6 +46,6 @@ const HeaderArchive: React.FC<TheseProps> = ({ info }) => {
     return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
   }, [pageName, blockName]);
 
-  return <nav className={`${pageName}-header_${labelName}`}></nav>;
+  return <nav className={`${pageName}-footer_${labelName}`}></nav>;
 };
-export default HeaderArchive;
+export default FooterComponents;

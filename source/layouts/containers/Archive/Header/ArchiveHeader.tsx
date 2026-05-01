@@ -35,7 +35,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
     onmouseenter = (event) => {};
   }, [pageName, blockName, labelName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
