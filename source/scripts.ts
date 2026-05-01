@@ -181,6 +181,23 @@ export function romanNumerals(): Array<string> {
 }
 
 //--|===|--\\
+export function hideOverlay(pageName: string, blockName: string) {
+  const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
+  if (disable.classList.contains('visible')) {
+    disable.classList.add('hidden');
+    disable.classList.remove('visible');
+
+    setTimeout(() => {
+      disable.style.display = 'none';
+    }, 1500);
+  }
+
+  console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
+}
+export function showOverlay(pageName: string, blockName: string) {
+  console.log(`|🠊 Show: <section id="${pageName}-${blockName}"> 🠈|`);
+}
+
 export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   const disableElement: string = 'disabled-header';
   const locateElement: string = `#${pageName}-body header[class*="header"]`;

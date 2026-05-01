@@ -1,6 +1,6 @@
-//--|🠊 ComponentsRightbar.tsx 🠈|--\\
+//--|🠊 ArchiveRightbar.tsx 🠈|--\\
 import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../scripts/components';
+import { stripBrackets } from '../../../scripts/archive';
 
 interface InfoProps {
   info: {
@@ -12,7 +12,7 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsRightbar: React.FC<InfoProps> = ({ info }) => {
+const ArchiveRightbar: React.FC<InfoProps> = ({ info }) => {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
 
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
@@ -31,4 +31,4 @@ const ComponentsRightbar: React.FC<InfoProps> = ({ info }) => {
     </aside>
   );
 };
-export default ComponentsRightbar;
+export default ArchiveRightbar;

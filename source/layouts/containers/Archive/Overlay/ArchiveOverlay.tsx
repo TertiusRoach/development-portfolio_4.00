@@ -1,8 +1,14 @@
-//--|🠊 ComponentsOverlay.tsx 🠈|--\\
+//--|🠊 ArchiveOverlay.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { hideOverlay } from '../../../../scripts';
+import { stripBrackets } from '../../../scripts/archive';
+
+//--|🠋 Components 🠋|--\\
+import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
+
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../scripts/components';
 import FigureLoading from '../../../components/Figure/loading/Figure.loading';
-import { hideOverlay } from './ComponentsFunctions';
 
 interface InfoProps {
   info: {
@@ -14,7 +20,7 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsOverlay: React.FC<InfoProps> = ({ info }) => {
+const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
   let stateName: 'hidden' | 'visible' = 'visible';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
@@ -49,4 +55,4 @@ const ComponentsOverlay: React.FC<InfoProps> = ({ info }) => {
     </section>
   );
 };
-export default ComponentsOverlay;
+export default ArchiveOverlay;

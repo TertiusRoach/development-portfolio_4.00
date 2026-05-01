@@ -12,7 +12,7 @@ import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
-import Components from './layouts/pages/components';
+import Components from './layouts/containers/archive';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {

@@ -1,16 +1,5 @@
-//--|🠊 ComponentsMain.tsx 🠈|--\\
-import React, { useEffect } from 'react';
-
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
-
-//--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
-
+//--|🠊 ArchiveMain.tsx 🠈|--\\
 //--|🠋 Elements 🠋|--\\
-// import ArticleElements from './elements/article-components/ArticleElements';
-// import AsideElements from './elements/aside-components/AsideElements';
-
 import ButtonElements from './elements/button-components/ButtonElements';
 import DivisionElements from './elements/division-components/DivisionElements';
 import ArticleElements from './elements/article-components/ArticleElements';
@@ -22,8 +11,14 @@ import SectionElements from './elements/section-components/SectionElements';
 import TableElements from './elements/table-components/TableElements';
 import TimeElements from './elements/time-components/TimeElements';
 
-import NavigationDefault from '../../../components/Navigation/Archive/review/default/Navigation.default';
-import NavigationArchive from '../../../components/Navigation/Archive/Navigation.archive';
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../../scripts';
+
+//--|🠋 Components 🠋|--\\
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 interface InfoProps {
   info: {
@@ -35,7 +30,7 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
+const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
@@ -99,7 +94,7 @@ const ComponentsMain: React.FC<InfoProps> = ({ info }) => {
     </main>
   );
 };
-export default ComponentsMain;
+export default ArchiveMain;
 //--|===|--\\
 function ComponentsElements({ info }: InfoProps) {
   const blockName = info.blockName as 'main';

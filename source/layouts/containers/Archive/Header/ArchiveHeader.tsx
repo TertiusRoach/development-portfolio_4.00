@@ -1,6 +1,6 @@
-//--|🠊 ComponentsHeader.tsx 🠈|--\\
+//--|🠊 ArchiveHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/components';
+import { stripBrackets } from '../../../scripts/archive';
 import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
@@ -20,11 +20,11 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
+const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   const svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'];
 
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
-  const labelName = stripBrackets(info.labelName, '()') as 'browse';
+  const labelName = stripBrackets(info.labelName, '()') as 'archive';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <header className="component-carousels I">
+        <header className={`${pageName}-carousels I`}>
           <MenuCarousel
             style={{
               axis: '[x]',
@@ -212,7 +212,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
           />
         </header>
         <NavigationArchive
-          //--|🠊 <nav class="browse-header"/> 🠈|--\\
+          //--|🠊 <nav className={`${pageName}-header`}> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -227,4 +227,4 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
     </header>
   );
 };
-export default ComponentsHeader;
+export default ArchiveHeader;

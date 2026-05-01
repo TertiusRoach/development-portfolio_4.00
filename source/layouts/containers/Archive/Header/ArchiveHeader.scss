@@ -24,17 +24,16 @@
   %midground {
   }
   %background {
+    h1 {
+      // color: red;
+      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
 
   //--|🠋 Layers 🠋|--\\
   section[class*='foreground'],
   figure[class*='midground'],
   div[class*='background'] {
-    h1 {
-      // color: red;
-      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-
     &[class*='fore'] {
       @extend %foreground;
     }

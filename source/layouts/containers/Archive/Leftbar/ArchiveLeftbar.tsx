@@ -1,7 +1,7 @@
-//--|🠊 ComponentsLeftbar.tsx 🠈|--\\
+//--|🠊 ArchiveLeftbar.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { selectHeader } from './ComponentsFunctions';
-import { stripBrackets } from '../../../scripts/components';
+import { selectHeader } from './ArchiveFunctions';
+import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
@@ -19,7 +19,7 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
+const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
   // const svgPath: Array<string> = ;
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -66,4 +66,4 @@ const ComponentsLeftbar: React.FC<InfoProps> = ({ info }) => {
     </aside>
   );
 };
-export default ComponentsLeftbar;
+export default ArchiveLeftbar;
