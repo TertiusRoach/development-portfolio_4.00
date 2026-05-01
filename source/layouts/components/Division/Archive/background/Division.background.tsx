@@ -29,9 +29,9 @@ import {
 } from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import FooterComponents from './extensions/footer-background/FooterComponents';
-import MainComponents from './extensions/main-background/MainComponents';
-import HeaderComponents from './extensions/header-background/HeaderComponents';
+// import FooterComponents from './extensions/footer-background/FooterComponents';
+// import MainComponents from './extensions/main-background/MainComponents';
+// import HeaderComponents from './extensions/header-background/HeaderComponents';
 
 interface TheseProps {
   info: {
