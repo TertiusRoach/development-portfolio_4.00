@@ -23,8 +23,11 @@ interface InfoProps {
 }
 
 const ButtonElements: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'button';
+  const pageName = info.pageName as 'components';
   return (
-    <section className={`${info.labelName}-${info.blockName}`}>
+    <section className={`${labelName}-${blockName}`}>
       <DivisionCarousel
         style={{
           axis: '[x]',
@@ -44,32 +47,30 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
 };
 
 function ButtonComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
-  let routingInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'routing' as string,
-  };
-  let profileInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'profile' as string,
-  };
-  let stretchInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'stretch' as string,
-  };
   return (
     <>
-      <DefaultButton info={defaultInfo} />
-      <RoutingButton info={routingInfo} />
-      <ProfileButton info={profileInfo} />
-      <StretchButton info={stretchInfo} />
+      <DefaultButton info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'default' as string }} />
+      <RoutingButton
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'routing' as string,
+        }}
+      />
+      <ProfileButton
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'profile' as string,
+        }}
+      />
+      <StretchButton
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'stretch' as string,
+        }}
+      />
     </>
   );
 }

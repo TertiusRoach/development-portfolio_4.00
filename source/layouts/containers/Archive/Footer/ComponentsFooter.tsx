@@ -23,11 +23,11 @@ const ComponentsFooter: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
-      <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<ComponentsFooter>`}</h1>
-      </section>
+      <section className={`${blockName}-foreground`}></section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <h1 className="display-1">{`<ComponentsFooter>`}</h1>
+      </div>
     </footer>
   );
 };

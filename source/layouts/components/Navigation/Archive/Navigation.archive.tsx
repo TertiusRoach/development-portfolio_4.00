@@ -22,18 +22,18 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 interface TheseProps {
   info: {
     pageName: string;
-    blockName: 'header' | 'footer' | 'main' | string;
+    blockName: 'header' | 'footer' | 'main';
     labelName: string;
   };
 }
-const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
+const NavigationArchive: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
 
   const pageName: string = info.pageName as 'archive';
-  const blockName: string = info.blockName as string;
-  const labelName: string = info.labelName as 'default';
+  const blockName: string = info.blockName as 'header' | 'footer' | 'main';
+  const labelName: string = info.labelName as string;
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
@@ -66,14 +66,14 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
               view: viewDisplay() as 'top-lef' | 'bot-rig',
               image: `${svgPath[0]}`,
             }}
-            onMouseEnter={() => {
-              if (blockName === 'header') {
-                unfoldHeader(pageName, 'hover', 'header');
-              }
-            }}
             onClick={() => {
               if (blockName === 'header') {
                 unfoldLeftbar(pageName, 'click', 'leftbar');
+              }
+            }}
+            onMouseEnter={() => {
+              if (blockName === 'header') {
+                unfoldHeader(pageName, 'hover', 'header');
               }
             }}
           />
@@ -109,4 +109,4 @@ const NavigationBrowse: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default NavigationBrowse;
+export default NavigationArchive;

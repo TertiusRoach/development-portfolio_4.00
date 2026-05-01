@@ -23,7 +23,7 @@ import TableElements from './elements/table-components/TableElements';
 import TimeElements from './elements/time-components/TimeElements';
 
 import NavigationDefault from '../../../components/Navigation/Archive/review/default/Navigation.default';
-import NavigationBrowse from '../../../components/Navigation/Archive/Navigation.archive';
+import NavigationArchive from '../../../components/Navigation/Archive/Navigation.archive';
 
 interface InfoProps {
   info: {

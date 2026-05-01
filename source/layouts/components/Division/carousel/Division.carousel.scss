@@ -77,21 +77,17 @@
         figure[class*='main'],
         aside[class*='main'] {
           flex: 0 0 100vw;
+          ol[class*='car-'] {
+            @extend %vert-stack;
+          }
         }
       }
     }
   }
   //--|🠊 Horizontal X-axis 🠈|--\\
-  ul {
+  ul[class='car-one'] {
     @extend %hori-scope;
     @extend %hori-stack;
-    ul[class='car-two'] {
-      @extend %hori-stack;
-      ul[class='car-thr'] {
-        //--|🠊 Horizontal X-axis 🠈|--\\
-        @extend %hori-stack;
-      }
-    }
   }
 
   %vert-stack {
@@ -168,21 +164,17 @@
         figure[class*='main'],
         aside[class*='main'] {
           height: 100%;
+          ul[class*='car-'] {
+            @extend %hori-stack;
+          }
         }
       }
     }
   }
   //--|🠊 Vertical Y-axis 🠈|--\\
-  ol {
+  ol[class='car-one'] {
     @extend %vert-scope;
     @extend %vert-stack;
-    ol[class='car-two'] {
-      @extend %vert-stack;
-      ol[class='car-thr'] {
-        //--|🠊 Vertical Y-axis 🠈|--\\
-        @extend %vert-stack;
-      }
-    }
   }
 }
 @mixin mobile-portrait {

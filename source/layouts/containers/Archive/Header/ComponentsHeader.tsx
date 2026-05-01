@@ -5,7 +5,7 @@ import markMenu from '../../../components/Menu/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
-import NavigationBrowse from '../../../components/Navigation/Archive/Navigation.archive';
+import NavigationArchive from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -211,7 +211,7 @@ const ComponentsHeader: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </header>
-        <NavigationBrowse
+        <NavigationArchive
           //--|🠊 <nav class="browse-header"/> 🠈|--\\
           info={{
             pageName: pageName,

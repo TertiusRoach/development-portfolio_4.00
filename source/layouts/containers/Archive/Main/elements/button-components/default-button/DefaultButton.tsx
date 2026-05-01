@@ -19,10 +19,11 @@ interface InfoProps {
 const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'component';
 
   return (
     <aside className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}>
+      <section className={`${labelName}-foreground`}>
         <div className={`${labelName}-container`}>
           <aside className={`${labelName}-dark`}>
             <DivisionCarousel
@@ -46,8 +47,8 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
 
         <h1 className="display-1">{`<DefaultButton>`}</h1>
       </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <figure className={`${labelName}-midground`}></figure>
+      <div className={`${labelName}-background`}></div>
     </aside>
   );
 };

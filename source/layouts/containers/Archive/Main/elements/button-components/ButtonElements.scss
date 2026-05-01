@@ -6,7 +6,7 @@
 @use './profile-button/ProfileButton.scss';
 @use './stretch-button/StretchButton.scss';
 
-section[class*='button'] {
+section[class*='button-main'] {
   div[class*='main_container'] {
     @media screen and (orientation: landscape) {
       @include DefaultButton.desktop-landscape;
