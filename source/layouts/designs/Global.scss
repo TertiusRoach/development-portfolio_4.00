@@ -17,13 +17,6 @@
   body {
     position: relative;
     div[id*='body'] {
-      &[class*='active'] {
-        height: 100svh;
-      }
-      &[class*='asleep'] {
-        height: 0svh;
-      }
-
       ul,
       ol {
         padding: 0;
@@ -48,17 +41,6 @@
         cursor: default;
         white-space: wrap;
         font-family: 'Source Sans 3', arial;
-      }
-
-      //--|🠋 General Settings 🠋|--\\
-      section[class*='foreground'] {
-        z-index: 2;
-      }
-      figure[class*='midground'] {
-        z-index: 1;
-      }
-      div[class*='background'] {
-        z-index: 0;
       }
     }
   }

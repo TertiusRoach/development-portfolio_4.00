@@ -15,20 +15,19 @@ interface InfoProps {
   };
 }
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'collapsed';
-
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
 
   useEffect(() => {}, [pageName, blockName]);
 
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
   return (
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <footer></footer>
         <NavigationArchive
-          //--|🠊 <nav className={`${pageName}-footer`}> 🠈|--\\
+          //--|🠊 <nav className={`${pageName}-footer_${labelName}`}> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,

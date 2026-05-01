@@ -1,6 +1,9 @@
-//--|🠊 Navigation.profile.tsx 🠈|--\\
+//--|🠊 Navigation.archive.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Navigation.archive.scss';
+import './extensions/header-components/HeaderArchive.scss';
+import './extensions/main-components/MainArchive.scss';
+import './extensions/footer-components/FooterArchive.scss';
+
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -18,6 +21,9 @@ import {
 
 //--|🠋 Components 🠋|--\\
 import ButtonRouting from '../../Button/routing/Button.routing';
+import FooterArchive from './extensions/footer-components/FooterArchive';
+import MainArchive from './extensions/main-components/MainArchive';
+import HeaderArchive from './extensions/header-components/HeaderArchive';
 
 interface TheseProps {
   info: {
@@ -27,86 +33,40 @@ interface TheseProps {
   };
 }
 const NavigationArchive: React.FC<TheseProps> = ({ info }) => {
-  let svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
-  ];
-
-  const pageName: string = info.pageName as 'archive';
-  const blockName: string = info.blockName as 'header' | 'footer' | 'main';
   const labelName: string = info.labelName as string;
+  const pageName: string = info.pageName as 'components';
+  const blockName: string = info.blockName as 'header' | 'main' | 'footer';
 
   const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
 
   useEffect(() => {
-    //--|🠋 1. Define the media query for landscape 🠈|--\\
     let mediaQuery = window.matchMedia('(orientation: landscape)');
     let handleOrientationChange = () => {
-      //--|🠋 2. Create the handler function 🠈|--\\
-      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
+      setView(viewDisplay() as 'top-lef' | 'bot-rig');
     };
-    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
-    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
+
+    mediaQuery.addEventListener('change', handleOrientationChange);
+    return () => mediaQuery.removeEventListener('change', handleOrientationChange);
   }, [pageName, blockName]);
 
-  return (
-    <nav className={`${pageName}-${blockName}`}>
-      <ol>
-        <li className="view-head">
-          <ButtonRouting
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}-${blockName}_view-head`,
-            }}
-            style={{
-              size: '<h1>',
-              color: '(mono)',
-              shade: '~light~',
-              type: '{button}',
-              view: viewDisplay() as 'top-lef' | 'bot-rig',
-              image: `${svgPath[0]}`,
-            }}
-            onClick={() => {
-              if (blockName === 'header') {
-                unfoldLeftbar(pageName, 'click', 'leftbar');
-              }
-            }}
-            onMouseEnter={() => {
-              if (blockName === 'header') {
-                unfoldHeader(pageName, 'hover', 'header');
-              }
-            }}
-          />
-        </li>
-        <li className="view-foot">
-          <ButtonRouting
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}-${blockName}_view-head`,
-            }}
-            style={{
-              size: '<h1>',
-              color: '(mono)',
-              shade: '~light~',
-              type: '{button}',
-              view: viewDisplay() as 'top-lef' | 'bot-rig',
-              image: `${svgPath[0]}`,
-            }}
-            onMouseEnter={() => {
-              if (blockName === 'header') {
-                unfoldHeader(pageName, 'hover', 'header');
-              }
-            }}
-            onClick={() => {
-              if (blockName === 'header') {
-                unfoldLeftbar(pageName, 'click', 'leftbar');
-              }
-            }}
-          />
-        </li>
-      </ol>
-    </nav>
-  );
+  //--|🠊 2. Call the function cleanly inside your return 🠈|--\\
+  let svgPath: Array<String> = [
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
+  ];
+  return <>{layoutContainer(pageName, blockName as 'header' | 'main' | 'footer', labelName)}</>;
 };
 export default NavigationArchive;
+
+//--|🠊 1. Create a quick render function here 🠈|--\\
+const layoutContainer = (pageName: 'components' | string, blockName: 'header' | 'main' | 'footer', labelName: string) => {
+  switch (blockName) {
+    case 'header':
+      return <HeaderArchive info={{ pageName, blockName, labelName }} />;
+    case 'main':
+      return <MainArchive info={{ pageName, blockName, labelName }} />;
+    case 'footer':
+      return <FooterArchive info={{ pageName, blockName, labelName }} />;
+    default:
+      return null; // Failsafe
+  }
+};

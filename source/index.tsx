@@ -12,7 +12,7 @@ import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
-import Components from './layouts/containers/archive';
+import Archive from './layouts/containers/archive';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
@@ -48,7 +48,7 @@ function themeScheme(colorScheme: 'light' | 'dark') {
 const pages: { [key: string]: React.ElementType } = {
   // 'buttons-body': Buttons,
   'landing-body': Landing,
-  'components-body': Components,
+  'components-body': Archive,
 
   'overtime-body': Overtime,
   'ticketing-body': Ticketing,
@@ -70,7 +70,7 @@ Object.entries(pages).forEach(([id]) => {
       loadPage(`${pageName}-body`, React.createElement(Buttons));
       break;
     case 'components':
-      loadPage(`${pageName}-body`, React.createElement(Components));
+      loadPage(`${pageName}-body`, React.createElement(Archive));
       break;
     case 'overtime':
       loadPage(`${pageName}-body`, React.createElement(Overtime));

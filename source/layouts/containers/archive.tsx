@@ -13,7 +13,7 @@ const ArchiveOverlay = lazy(() => import('./Archive/Overlay/ArchiveOverlay'));
 const ArchiveLeftbar = lazy(() => import('./Archive/Leftbar/ArchiveLeftbar'));
 const ArchiveRightbar = lazy(() => import('./Archive/Rightbar/ArchiveRightbar'));
 
-function Components() {
+function Archive() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);
   const [getFooter, setFooter] = useState(false);
@@ -77,4 +77,4 @@ function Components() {
     </>
   );
 }
-export default Components;
+export default Archive;
