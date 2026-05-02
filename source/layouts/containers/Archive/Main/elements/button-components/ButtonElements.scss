@@ -8,17 +8,19 @@
 
 section[class*='button-main'] {
   div[class*='main_container'] {
-    @media screen and (orientation: landscape) {
-      @include DefaultButton.desktop-landscape;
-      @include RoutingButton.desktop-landscape;
-      @include ProfileButton.desktop-landscape;
-      @include StretchButton.desktop-landscape;
-    }
-    @media screen and (orientation: portrait) {
-      @include DefaultButton.mobile-portrait;
-      @include RoutingButton.mobile-portrait;
-      @include ProfileButton.mobile-portrait;
-      @include StretchButton.mobile-portrait;
+    section[class*='default-main'] {
+      @media screen and (orientation: landscape) {
+        @include DefaultButton.desktop-landscape;
+        @include RoutingButton.desktop-landscape;
+        @include ProfileButton.desktop-landscape;
+        @include StretchButton.desktop-landscape;
+      }
+      @media screen and (orientation: portrait) {
+        @include DefaultButton.mobile-portrait;
+        @include RoutingButton.mobile-portrait;
+        @include ProfileButton.mobile-portrait;
+        @include StretchButton.mobile-portrait;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
-//--|🠊 Division.carousel.tsx 🠈|--\\
+//--|🠊 Section.carousel.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Division.carousel.scss';
+import './Section.carousel.scss';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -20,7 +20,7 @@ interface PropsInfo {
   blockName: string;
   labelName: string;
 }
-const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
+const SectionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -32,28 +32,24 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
     '<two>': 'car-two',
     '<thr>': 'car-thr',
   };
-  let axisClass: Record<TheseProps<T>['style']['axis'], string> = {
-    '[x]': 'hori-X-axis',
-    '[y]': 'vert-Y-axis',
-  };
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(`|🠊 Link: <div class="${labelName}-${blockName}_carousel"> 🠈|`);
+      console.log(`|🠊 Link: <section class="${labelName}-${blockName}_carousel"> 🠈|`);
     }, 3600000);
   }, [pageName, blockName, labelName]);
 
   return (
-    <div className={`${labelName}-${blockName}_carousel-default`}>
-      <ListItem className={axisClass[style.axis]}>
+    <section className={`${labelName}-${blockName}_carousel-default`}>
+      <ListItem className={scopeClass[style.scope]}>
         <li className="I">
           <div className={`${labelName}-${blockName}_container`}>
             <CallItem info={info} />
           </div>
         </li>
       </ListItem>
-    </div>
+    </section>
   );
 };
 
-export default DivisionCarousel;
+export default SectionCarousel;

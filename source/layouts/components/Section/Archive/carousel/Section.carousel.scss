@@ -1,61 +1,6 @@
-//--|🠊 Division.carousel.scss 🠈|--\\
+//--|🠊 Section.carousel.scss 🠈|--\\
 @mixin desktop-landscape {
   overflow: hidden;
-  ul[class='hori-X-axis'] {
-    @extend %hori-scope;
-    @extend %hori-stack;
-    ol[class='vert-Y-axis'] {
-      @extend %vert-stack;
-      @extend %vert-scope;
-    }
-  }
-  ol[class='vert-Y-axis'] {
-    @extend %vert-stack;
-    @extend %vert-scope;
-    ul[class='hori-X-axis'] {
-      @extend %hori-scope;
-      @extend %hori-stack;
-    }
-  }
-
-  %hori-scope {
-    //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
-    li {
-      height: 100svh;
-      transition: transform 500ms ease-in-out;
-      div[class*='_container'] {
-        display: flex;
-        height: inherit;
-        section[class*='main'],
-        figure[class*='main'],
-        aside[class*='main'] {
-          flex: 0 0 100vw;
-        }
-      }
-    }
-  }
-
-  %vert-scope {
-    //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
-    height: 100%;
-    display: flex;
-    li {
-      width: 100%;
-      transition: transform 500ms ease-in-out;
-      div {
-        width: inherit; //--|🠊 width: 100%; 🠈|--\\
-        // How do I lock all the children elements with these classNames
-        section[class*='main'],
-        figure[class*='main'],
-        aside[class*='main'] {
-          // height: 100%;
-          ul[class*='car-'] {
-            @extend %hori-stack;
-          }
-        }
-      }
-    }
-  }
 
   %hori-stack {
     .I {
@@ -119,6 +64,31 @@
       transform: translateX(-1900%);
     }
   }
+  %hori-scope {
+    li {
+      height: 100svh;
+      div[class*='_container'] {
+        display: flex;
+        height: inherit;
+
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          flex: 0 0 100vw;
+        }
+      }
+    }
+  }
+  //--|🠊 Horizontal X-axis 🠈|--\\
+  ul {
+    li {
+      transition: transform 500ms ease-in-out;
+    }
+    @extend %hori-scope;
+    @extend %hori-stack;
+  }
+
+  //--|🠊 Vertical Y-axis 🠈|--\\
   %vert-stack {
     .I {
       transform: translateY(0);
@@ -181,11 +151,32 @@
       transform: translateY(-1900%);
     }
   }
+  %vert-scope {
+    height: 100%;
+    display: flex;
+    li {
+      width: 100%;
+      section[class*='_container'] {
+        width: inherit; //--|🠊 width: 100%; 🠈|--\\
+        // section[class*='main'],
+        // figure[class*='main'],
+        // aside[class*='main'] {
+        // }
+      }
+    }
+  }
+  ol {
+    li {
+      transition: transform 500ms ease-in-out;
+    }
+    @extend %vert-stack;
+    @extend %vert-scope;
+  }
 }
 @mixin mobile-portrait {
 }
 
-div[class*='carousel'] {
+section[class*='carousel'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

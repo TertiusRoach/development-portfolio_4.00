@@ -22,11 +22,11 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
-      <section className={`${labelName}-foreground`}>
-        <div className={`${labelName}-container`}>
-          <aside className={`${labelName}-dark`}>
-            {/* <DivisionCarousel
+    <section className={`${labelName}-${blockName}`}>
+      <div className={`${info.blockName}-container`}>
+        <section className={`${info.blockName}-foreground`}>
+          <aside className={`${info.blockName}-darkside`}>
+            <DivisionCarousel
               //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
               style={{
                 axis: '[y]',
@@ -40,16 +40,16 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
-            /> */}
+            />
           </aside>
-          <aside className={`${labelName}-light`}></aside>
+          <aside className={`${info.blockName}-lightside`}></aside>
+        </section>
+        <figure className={`${info.blockName}-midground`}></figure>
+        <div className={`${info.blockName}-background`}>
+          <h1 className="display-1">{`<DefaultButton>`}</h1>
         </div>
-
-        <h1 className="display-1">{`<DefaultButton>`}</h1>
-      </section>
-      <figure className={`${labelName}-midground`}></figure>
-      <div className={`${labelName}-background`}></div>
-    </aside>
+      </div>
+    </section>
   );
 };
 export default DefaultButton;
@@ -110,7 +110,20 @@ function defaultSize({ info }: InfoProps) {
   );
 }
 function ViewOne({ info }: InfoProps) {
-  return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
+  return (
+    <section className={`default-${info.blockName}_${info.labelName}`}>
+      <div className={`${info.blockName}-container`}>
+        <section className={`${info.blockName}-foreground`}>
+          <aside className={`${info.blockName}-darkside`}></aside>
+          <aside className={`${info.blockName}-lightside`}></aside>
+        </section>
+        <figure className={`${info.blockName}-midground`}></figure>
+        <div className={`${info.blockName}-background`}>
+          <h1 className="display-1">{`<DefaultButton>`}</h1>
+        </div>
+      </div>
+    </section>
+  );
 }
 function ViewTwo({ info }: InfoProps) {
   return <section className={`default-${info.blockName}_${info.labelName}`}></section>;
