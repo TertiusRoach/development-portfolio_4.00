@@ -22,9 +22,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   return (
-    <section className={`${labelName}-${blockName}`}>
-      <div className={`${info.blockName}-container`}>
-        <section className={`${info.blockName}-foreground`}>
+    <section className={`${labelName}-wrapper`}>
+      <section className={`${info.blockName}-foreground`}>
+        <div className={`${labelName}-wrapper`}>
           <aside className={`${info.blockName}-darkside`}>
             <DivisionCarousel
               //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
@@ -36,18 +36,18 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 call: defaultSize,
               }}
               info={{
-                labelName: 'view-size',
+                labelName: 'darkside',
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
             />
           </aside>
           <aside className={`${info.blockName}-lightside`}></aside>
-        </section>
-        <figure className={`${info.blockName}-midground`}></figure>
-        <div className={`${info.blockName}-background`}>
-          <h1 className="display-1">{`<DefaultButton>`}</h1>
         </div>
+      </section>
+      <figure className={`${info.blockName}-midground`}></figure>
+      <div className={`${info.blockName}-background`}>
+        <h1 className="display-1">{`<DefaultButton>`}</h1>
       </div>
     </section>
   );

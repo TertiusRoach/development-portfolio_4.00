@@ -50,27 +50,27 @@ function ButtonComponents({ info }: InfoProps) {
   return (
     <>
       <DefaultButton info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'default' as string }} />
-      <RoutingButton
+      {/* <RoutingButton
         info={{
           pageName: info.pageName,
           blockName: info.blockName,
           labelName: 'routing' as string,
         }}
-      />
-      <ProfileButton
+      /> */}
+      {/* <ProfileButton
         info={{
           pageName: info.pageName,
           blockName: info.blockName,
           labelName: 'profile' as string,
         }}
-      />
-      <StretchButton
+      /> */}
+      {/* <StretchButton
         info={{
           pageName: info.pageName,
           blockName: info.blockName,
           labelName: 'stretch' as string,
         }}
-      />
+      /> */}
     </>
   );
 }

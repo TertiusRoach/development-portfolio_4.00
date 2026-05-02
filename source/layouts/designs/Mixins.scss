@@ -1,9 +1,9 @@
 //--|🠊 Mixins.scss 🠈|--\\
 @use './Palettes.scss';
 
+//--|🠊 @include Mixins.landscape-grid; 🠈|--\\
 @mixin landscape-grid {
   display: grid;
-
   //--|🠋 96px (Left & Right) for Design 🠋|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
