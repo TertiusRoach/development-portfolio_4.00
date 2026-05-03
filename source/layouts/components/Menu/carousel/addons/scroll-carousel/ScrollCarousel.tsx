@@ -66,7 +66,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
         {cases.paths.map((path, index) => {
           const [boldText, italText] = String(path).split('_');
           return (
-            <div key={index}>
+            <div className={`${info.labelName}-${info.blockName}_heading`} key={index}>
               <h1>
                 <span>
                   <b>{boldText}</b>

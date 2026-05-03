@@ -107,35 +107,221 @@ header[id*='components'] {
     &.X {
       transform: translateY(-128px * 9);
     }
-    .XI {
+    &.XI {
       transform: translateY(-128px * 10);
     }
-    .XII {
+    &.XII {
       transform: translateY(-128px * 11);
     }
-    .XIII {
+    &.XIII {
       transform: translateY(-128px * 12);
     }
-    .XIV {
+    &.XIV {
       transform: translateY(-128px * 13);
     }
-    .XV {
+    &.XV {
       transform: translateY(-128px * 14);
     }
-    .XVI {
+    &.XVI {
       transform: translateY(-128px * 15);
     }
-    .XVII {
+    &.XVII {
       transform: translateY(-128px * 16);
     }
-    .XVIII {
+    &.XVIII {
       transform: translateY(-128px * 17);
     }
-    .XIX {
+    &.XIX {
       transform: translateY(-128px * 18);
     }
-    .XX {
+    &.XX {
       transform: translateY(-128px * 19);
+    }
+    @media screen and (max-height: 768px) {
+      &.I {
+        transform: translateY(0);
+      }
+      &.II {
+        transform: translateY(-96px * 1);
+      }
+      &.III {
+        transform: translateY(-96px * 2);
+      }
+      &.IV {
+        transform: translateY(-96px * 3);
+      }
+      &.V {
+        transform: translateY(-96px * 4);
+      }
+      &.VI {
+        transform: translateY(-96px * 5);
+      }
+      &.VII {
+        transform: translateY(-96px * 6);
+      }
+      &.VIII {
+        transform: translateY(-96px * 7);
+      }
+      &.IX {
+        transform: translateY(-96px * 8);
+      }
+      &.X {
+        transform: translateY(-96px * 9);
+      }
+      &.XI {
+        transform: translateY(-96px * 10);
+      }
+      &.XII {
+        transform: translateY(-96px * 11);
+      }
+      &.XIII {
+        transform: translateY(-96px * 12);
+      }
+      &.XIV {
+        transform: translateY(-96px * 13);
+      }
+      &.XV {
+        transform: translateY(-96px * 14);
+      }
+      &.XVI {
+        transform: translateY(-96px * 15);
+      }
+      &.XVII {
+        transform: translateY(-96px * 16);
+      }
+      &.XVIII {
+        transform: translateY(-96px * 17);
+      }
+      &.XIX {
+        transform: translateY(-96px * 18);
+      }
+      &.XX {
+        transform: translateY(-96px * 19);
+      }
+    }
+    @media screen and (max-height: 480px) {
+      &.I {
+        transform: translateY(0);
+      }
+      &.II {
+        transform: translateY(-64px * 1);
+      }
+      &.III {
+        transform: translateY(-64px * 2);
+      }
+      &.IV {
+        transform: translateY(-64px * 3);
+      }
+      &.V {
+        transform: translateY(-64px * 4);
+      }
+      &.VI {
+        transform: translateY(-64px * 5);
+      }
+      &.VII {
+        transform: translateY(-64px * 6);
+      }
+      &.VIII {
+        transform: translateY(-64px * 7);
+      }
+      &.IX {
+        transform: translateY(-64px * 8);
+      }
+      &.X {
+        transform: translateY(-64px * 9);
+      }
+      &.XI {
+        transform: translateY(-64px * 10);
+      }
+      &.XII {
+        transform: translateY(-64px * 11);
+      }
+      &.XIII {
+        transform: translateY(-64px * 12);
+      }
+      &.XIV {
+        transform: translateY(-64px * 13);
+      }
+      &.XV {
+        transform: translateY(-64px * 14);
+      }
+      &.XVI {
+        transform: translateY(-64px * 15);
+      }
+      &.XVII {
+        transform: translateY(-64px * 16);
+      }
+      &.XVIII {
+        transform: translateY(-64px * 17);
+      }
+      &.XIX {
+        transform: translateY(-64px * 18);
+      }
+      &.XX {
+        transform: translateY(-64px * 19);
+      }
+    }
+    @media screen and (max-height: 360px) {
+      &.I {
+        transform: translateY(0);
+      }
+      &.II {
+        transform: translateY(-48px * 1);
+      }
+      &.III {
+        transform: translateY(-48px * 2);
+      }
+      &.IV {
+        transform: translateY(-48px * 3);
+      }
+      &.V {
+        transform: translateY(-48px * 4);
+      }
+      &.VI {
+        transform: translateY(-48px * 5);
+      }
+      &.VII {
+        transform: translateY(-48px * 6);
+      }
+      &.VIII {
+        transform: translateY(-48px * 7);
+      }
+      &.IX {
+        transform: translateY(-48px * 8);
+      }
+      &.X {
+        transform: translateY(-48px * 9);
+      }
+      &.XI {
+        transform: translateY(-48px * 10);
+      }
+      &.XII {
+        transform: translateY(-48px * 11);
+      }
+      &.XIII {
+        transform: translateY(-48px * 12);
+      }
+      &.XIV {
+        transform: translateY(-48px * 13);
+      }
+      &.XV {
+        transform: translateY(-48px * 14);
+      }
+      &.XVI {
+        transform: translateY(-48px * 15);
+      }
+      &.XVII {
+        transform: translateY(-48px * 16);
+      }
+      &.XVIII {
+        transform: translateY(-48px * 17);
+      }
+      &.XIX {
+        transform: translateY(-48px * 18);
+      }
+      &.XX {
+        transform: translateY(-48px * 19);
+      }
     }
   }
 

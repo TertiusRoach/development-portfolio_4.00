@@ -22,10 +22,16 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   return (
-    <section className={`${labelName}-wrapper`}>
-      <section className={`${info.blockName}-foreground`}>
-        <div className={`${labelName}-wrapper`}>
-          <aside className={`${info.blockName}-darkside`}>
+    <>
+      <section className={`${info.blockName}-foreground`}></section>
+      <figure className={`${info.blockName}-midground`}></figure>
+      <div className={`${info.blockName}-background`}>
+        <h1 className="display-1">{`<DefaultButton>`}</h1>
+      </div>
+      {/* // <section className={`${labelName}-wrapper`}>
+  
+      // </section> */}
+      {/* <aside className={`${info.blockName}-darkside`}>
             <DivisionCarousel
               //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
               style={{
@@ -42,14 +48,8 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
             />
           </aside>
-          <aside className={`${info.blockName}-lightside`}></aside>
-        </div>
-      </section>
-      <figure className={`${info.blockName}-midground`}></figure>
-      <div className={`${info.blockName}-background`}>
-        <h1 className="display-1">{`<DefaultButton>`}</h1>
-      </div>
-    </section>
+          <aside className={`${info.blockName}-lightside`}></aside> */}
+    </>
   );
 };
 export default DefaultButton;

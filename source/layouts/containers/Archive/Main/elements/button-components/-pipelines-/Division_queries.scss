@@ -1,0 +1,14 @@
+//--|🠊 default-button/pipeline/Division_queries.scss 🠈|--\\
+
+@mixin desktop-queries {
+  @media screen and (max-height: 768px) {
+    // background: rgba(darkred, 0.5);
+    section[class*='foreground'],
+    figure[class*='midground'],
+    div[class*='background'] {
+      height: 768px;
+    }
+  }
+}
+@mixin mobile-queries {
+}

@@ -7,7 +7,7 @@
 @use './stretch-button/StretchButton.scss';
 
 section[class*='button-main'] {
-  div[class*='main_container'] {
+  div.button-main_container {
     @media screen and (orientation: landscape) {
       @include DefaultButton.desktop-landscape;
       @include RoutingButton.desktop-landscape;

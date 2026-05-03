@@ -2,7 +2,12 @@
 @use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
 
+@use '../-pipelines-/Division_queries.scss';
+
 @mixin desktop-landscape {
+  @include Division_queries.desktop-queries;
+
+  /*
   section[class*='wrapper'] {
     width: 100%;
 
@@ -111,6 +116,7 @@
       }
     }
   }
+  */
 }
 
 @mixin desk-grid {
