@@ -23,7 +23,23 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <>
-      <section className={`${info.blockName}-foreground`}></section>
+      <section className={`${info.blockName}-foreground`}>
+        {/* <DivisionCarousel
+          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+          style={{
+            axis: '[y]',
+            scope: '<two>',
+          }}
+          cases={{
+            call: defaultSize,
+          }}
+          info={{
+            labelName: 'darkside',
+            blockName: info.blockName as '<main>',
+            pageName: info.pageName as '[components]',
+          }}
+        /> */}
+      </section>
       <figure className={`${info.blockName}-midground`}></figure>
       <div className={`${info.blockName}-background`}>
         <h1 className="display-1">{`<DefaultButton>`}</h1>
@@ -32,21 +48,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   
       // </section> */}
       {/* <aside className={`${info.blockName}-darkside`}>
-            <DivisionCarousel
-              //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
-              style={{
-                axis: '[y]',
-                scope: '<two>',
-              }}
-              cases={{
-                call: defaultSize,
-              }}
-              info={{
-                labelName: 'darkside',
-                blockName: info.blockName as '<main>',
-                pageName: info.pageName as '[components]',
-              }}
-            />
+            
           </aside>
           <aside className={`${info.blockName}-lightside`}></aside> */}
     </>
