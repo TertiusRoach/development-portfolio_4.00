@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './DefaultButton.scss';
 import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
 
@@ -31,7 +32,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             scope: '<two>',
           }}
           cases={{
-            call: defaultSize,
+            call: defaultDark,
           }}
           info={{
             labelName: 'darkside',
@@ -46,7 +47,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             scope: '<two>',
           }}
           cases={{
-            call: defaultSize,
+            call: defaultLight,
           }}
           info={{
             labelName: 'lightside',
@@ -64,38 +65,556 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
 };
 export default DefaultButton;
 
-function defaultSize({ info }: InfoProps) {
+function defaultDark({ info }: InfoProps) {
   return (
     <>
       <ViewOne
         info={{
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'one',
+          labelName: 'one-dark',
         }}
       />
       <ViewTwo
         info={{
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'two',
+          labelName: 'two-dark',
         }}
       />
     </>
   );
 }
-function ViewOne({ info }: InfoProps) {
-  console.log(info.labelName);
+function defaultLight({ info }: InfoProps) {
   return (
-    <section className={`default-${info.blockName}_${info.labelName}`}>
-      <h1 className="display-1">ViewOne</h1>
-    </section>
+    <>
+      <ViewOne
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'one-light',
+        }}
+      />
+      <ViewTwo
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'two-light',
+        }}
+      />
+    </>
   );
 }
+
+function ViewOne({ info }: InfoProps) {
+  const shade: string = info.labelName;
+  const link: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
+
+  switch (true) {
+    case shade.includes('dark'):
+      return (
+        <section className={`default-${info.blockName}_${info.labelName}`}>
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-top-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-bottom-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-left-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-right-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-center-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-text-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+        </section>
+      );
+    case shade.includes('light'):
+      return (
+        <section className={`default-${info.blockName}_${info.labelName}`}>
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-top-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-bottom-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-left-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-right-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-center-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-text-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h1>',
+              view: '-icon-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+        </section>
+      );
+  }
+}
 function ViewTwo({ info }: InfoProps) {
-  return (
-    <section className={`default-${info.blockName}_${info.labelName}`}>
-      <h1 className="display-1">ViewTwo</h1>
-    </section>
-  );
+  const shade: string = info.labelName;
+  const link: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
+
+  switch (true) {
+    case shade.includes('dark'):
+      return (
+        <section className={`default-${info.blockName}_${info.labelName}`}>
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-top-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-bottom-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-left-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-right-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-center-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-text-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+        </section>
+      );
+    case shade.includes('light'):
+      return (
+        <section className={`default-${info.blockName}_${info.labelName}`}>
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-top-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-bottom-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-left-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-right-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-center-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-text-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+            style={{
+              size: '<h2>',
+              view: '-icon-',
+              shade: '~light~',
+              color: '(mono)',
+              type: '{button}',
+              text: 'Button Here',
+
+              image: link as string,
+            }}
+          />
+        </section>
+      );
+  }
 }
