@@ -85,6 +85,7 @@ function defaultSize({ info }: InfoProps) {
   );
 }
 function ViewOne({ info }: InfoProps) {
+  console.log(info.labelName);
   return (
     <section className={`default-${info.blockName}_${info.labelName}`}>
       <h1 className="display-1">ViewOne</h1>
