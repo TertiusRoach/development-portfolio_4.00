@@ -1,6 +1,6 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import scrollCarousel from './Scroll_carousel';
+import { scrollHorizontal } from './Scroll_carousel';
 import { arabicToRoman } from '../../../../functions';
 
 //--|🠋 Components 🠋|--\\
@@ -42,21 +42,25 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
     /*--|🠋
 
     🠉|--*/
-    const menuLocate: string = `#${pageName}-${blockName} menu.${labelName}-${blockName}_carousel`;
-    const menuElement = document.querySelector(menuLocate) as HTMLElement;
-    const menuContainer = menuElement.querySelector('li ul') as HTMLElement;
-    let menuPreview = menuContainer.childNodes[0] as HTMLElement;
-    let menuButtons = menuContainer.childNodes[1] as HTMLElement;
+    if (style.axis === '[x]') {
+      const menuLocate: string = `#${pageName}-${blockName} menu.${labelName}-${blockName}_carousel`;
+      const menuElement = document.querySelector(menuLocate) as HTMLElement;
+      const menuContainer = menuElement.querySelector('li ul') as HTMLElement;
+      let menuPreview = menuContainer.childNodes[0] as HTMLElement;
+      let menuButtons = menuContainer.childNodes[1] as HTMLElement;
 
-    if (menuPreview.childElementCount > 1) {
-      var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
-      var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
-      nextButton.classList.add('highlight');
-      nextButton.classList.remove('downplay');
+      if (menuPreview.childElementCount > 1) {
+        var prevButton = menuButtons.querySelector('div[class*="prev"]') as HTMLElement;
+        var nextButton = menuButtons.querySelector('div[class*="next"]') as HTMLElement;
+        nextButton.classList.add('highlight');
+        nextButton.classList.remove('downplay');
 
-      console.log(`/\/--\|🠋 This here is a fancy text log. 🠋\|--\\\\`);
-      console.log(`/\/--\|🠊 Keep a leisurely pace, please. 🠈\|--\\\\`);
-      console.log(`/\/--\|🠉 Look at me repeating designs. 🠉\|--\\\\`);
+        console.log(`/\/--\|🠋 This here is a fancy text log. 🠋\|--\\\\`);
+        console.log(`/\/--\|🠊 Keep a leisurely pace, please. 🠈\|--\\\\`);
+        console.log(`/\/--\|🠉 Look at me repeating designs. 🠉\|--\\\\`);
+      }
+    } else if (style.axis === '[y]') {
+      console.log(style.axis);
     }
   }, [info.pageName, info.blockName, info.labelName]);
 
@@ -93,7 +97,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-            onClick={(): number => scrollCarousel(info.pageName, info.blockName, info.labelName, 'go-left')}
+            onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-left')}
           />
         </div>
         <div className="next-view downplay">
@@ -111,7 +115,7 @@ const ScrollCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-            onClick={(): number => scrollCarousel(info.pageName, info.blockName, info.labelName, 'go-right')}
+            onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-right')}
           />
         </div>
       </li>

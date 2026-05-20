@@ -68,11 +68,6 @@ const MenuCarousel: React.FC<TheseProps> = ({ info, style, cases }) => {
           </li>
         );
     }
-
-    let styleType: '{select}' | '{scroll}' = style.type;
-    let styleShade: '~dark~' | '~medium~' | '~light~' = style.shade;
-    let styleView: '-top-' | '-rig-' | '-bot-' | '-lef-' = style.view;
-    let styleColor: '(red)' | '(green)' | '(blue)' | '(mono)' = style.color;
   };
   //--|🠊 Loads <DefaultButton> or <RoutingButton> 🠈|--\\
   const callAddon = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {

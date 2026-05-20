@@ -12,6 +12,32 @@
 }
 @mixin desk-grid {
   //--|🠋 Y-axis 🠋|--\\
+  %gridYRows {
+  }
+  %gridYCols {
+  }
+  %gridYArea {
+  }
+  li[class*='vert_rig'] {
+    ol[class*='scroll'] {
+      display: grid;
+      /*
+      background: rgba(darkred, 0.25);
+      @extend %gridYRows;
+      @extend %gridYCols;
+      @extend %gridYArea;
+      li[class*='_buttons'] div {
+        transition: opacity 250ms ease-in-out;
+        &.downplay {
+          opacity: 0;
+        }
+        &.highlight {
+          opacity: 1;
+        }
+      }
+      */
+    }
+  }
 
   //--|🠋 X-axis 🠋|--\\
   %gridXRows {

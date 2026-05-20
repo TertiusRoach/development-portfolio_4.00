@@ -3,7 +3,7 @@
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../../../functions';
 
-function scrollCarousel(
+export function scrollHorizontal(
   pageName: string,
   blockName: string,
   labelName: string,
@@ -79,7 +79,7 @@ interface CasesProps {
   array: Array<string>;
 }
 
-export default scrollCarousel;
+// export default scrollHorizontal;
 
 //--|===|--\\
 
