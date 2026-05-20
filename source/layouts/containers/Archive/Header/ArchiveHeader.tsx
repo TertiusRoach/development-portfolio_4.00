@@ -47,7 +47,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'button',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -64,7 +64,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'article',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -81,7 +81,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'aside',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -98,7 +98,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'division',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -115,7 +115,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'figure',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -132,7 +132,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'menu',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -149,7 +149,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'navigation',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -166,7 +166,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'section',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -183,7 +183,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'table',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
@@ -200,7 +200,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'time',
-              blockName: blockName as '<leftbar>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
           />
