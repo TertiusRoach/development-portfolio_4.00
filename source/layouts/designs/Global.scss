@@ -17,8 +17,8 @@
   body {
     position: relative;
     div[id*='body'] {
-      section,
-      figure,
+      section[class*='foreground'],
+      figure[class*='midground'],
       div[class*='background'] {
         ul,
         ol {
@@ -45,6 +45,16 @@
           white-space: wrap;
           font-family: 'Source Sans 3', arial;
         }
+      }
+
+      section[class*='foreground'] {
+        z-index: 2;
+      }
+      figure[class*='midground'] {
+        z-index: 1;
+      }
+      div[class*='background'] {
+        z-index: 0;
       }
     }
   }

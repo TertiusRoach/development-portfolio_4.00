@@ -5,128 +5,65 @@
 @use '../-pipelines-/Division_queries.scss';
 
 @mixin desktop-landscape {
+  @include desk-grid;
+  @include desk-flex;
+
   @include Division_queries.desktop-queries;
+}
 
-  background: red;
-  /*
-  section[class*='wrapper'] {
-    width: 100%;
-
-    @include Mixins.landscape-grid;
-    section[class*='foreground'] div[class*='wrapper'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+@mixin desk-grid {
+  section[class*='foreground'] div {
+    //--|🠊 display: flex; 🠈|--\\
+    section[class*='default-main'] {
+      display: grid;
 
       //--|🠋 96px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
-        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-        / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+        repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+        / 8rem repeat(2, 1fr) 8rem; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
         //--|🠋 64px (Left & Right) for Design 🠋|--\\
         grid-template: //--|🠋 Width: 1366px 🠋|--\\
-          repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-          / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+          repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+          / 6rem repeat(2, 1fr) 6rem; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 480px) {
         //--|🠋 48px (Left & Right) for Design 🠋|--\\
         grid-template: //--|🠋 Width: 854px 🠋|--\\
-          repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-          / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+          repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+          / 4rem repeat(2, 1fr) 4rem; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 360px) {
         //--|🠋 32px (Left & Right) for Design 🠋|--\\
         grid-template: //--|🠋 Width: 640px 🠋|--\\
-          repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-          / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
-      }
-      aside[class*='side'] {
-        display: inherit; //--|🠈 display: grid; 🠈|--\\
-        &[class*='dark'] {
-          div[class*='darkside'] {
-            flex-direction: column;
-            grid-area: 2 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-            section[class*='_one'] {
-              background: darkred;
-            }
-            section[class*='_two'] {
-              background: darkgreen;
-            }
-          }
-          // background: rgba(darkred, 0.25);
-          grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          //--|🠋 96px (Left & Right) for Design 🠋|--\\
-          grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-            / 48px 1fr 48px 128px; //--|🠈 columns 🠈|--\\
-          @media screen and (max-height: 768px) {
-            //--|🠋 64px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-              / 32px 1fr 32px 96px; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            //--|🠋 48px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 854px 🠋|--\\
-              repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-              / 24px 1fr 24px 64px; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            //--|🠋 32px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 640px 🠋|--\\
-              repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-              / 16px 1fr 16px 48px; //--|🠈 columns 🠈|--\\
-          }
-        }
-        &[class*='light'] {
-          // background: rgba(pink, 0.25);
-          grid-area: 1 / 3 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          //--|🠋 96px (Left & Right) for Design 🠋|--\\
-          grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-            / 128px 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-          @media screen and (max-height: 768px) {
-            //--|🠋 64px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-              / 96px 32px 1fr 32px; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            //--|🠋 48px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 854px 🠋|--\\
-              repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-              / 64px 24px 1fr 24px; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            //--|🠋 32px (Left & Right) for Design 🠋|--\\
-            grid-template: //--|🠋 Width: 640px 🠋|--\\
-              repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-              / 48px 16px 1fr 16px; //--|🠈 columns 🠈|--\\
-          }
-        }
-      }
-    }
-
-    figure[class*='midground'] {
-    }
-    div[class*='background'] {
-      h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+          / 3rem repeat(2, 1fr) 3rem; //--|🠈 columns 🠈|--\\
       }
     }
   }
-  */
-}
-
-@mixin desk-grid {
-  /*
-  @include desk-grid;
-  @include desk-flex;
-  */
 }
 @mixin desk-flex {
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    height: 100svh;
+    position: absolute;
+    justify-content: center;
+  }
+  section[class*='foreground'] {
+    div[class*='darkside-main_container'] {
+      flex-direction: column;
+      //--|🠊 display: flex; 🠈|--\\
+      section[class*='default-main'] {
+        flex: 0 0 100svh;
+      }
+    }
+    /*
+    div[class*='lightside-main_container'] {
+      background: white;
+    }
+    */
+  }
 }
 
 //--|===|--\\
