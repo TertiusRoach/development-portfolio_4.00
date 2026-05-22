@@ -8,16 +8,16 @@ import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 
 //--|🠋 Functions 🠋|--\\
 import markMenu from './Menu_carousel';
-import stripBrackets from '../../functions';
+import stripBrackets from '../../../functions';
 import { labelList } from './Menu_carousel';
 import { loadClass, loadStyle } from './Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
-import selectCarousel from '../../Division/Archive/carousel/Division_carousel';
+import selectCarousel from '../../../Division/Archive/carousel/Division_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {

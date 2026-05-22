@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
-import MenuCarousel from '../../../../../../components/Menu/carousel/Menu.carousel';
+import MenuCarousel from '../../../../../../components/Menu/archive/carousel/Menu.carousel';
 
 //--|🠋 Functions 🠋|--\\
 

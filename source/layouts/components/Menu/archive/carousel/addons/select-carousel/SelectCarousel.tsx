@@ -3,12 +3,12 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../../../Button/routing/Button.routing';
+import ButtonRouting from '../../../../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import markMenu from '../../Menu_carousel';
 import selectCarousel from './Select_carousel';
-import { romanToArabic } from '../../../../functions';
+import { romanToArabic } from '../../../../../functions';
 
 interface TheseProps {
   info: {

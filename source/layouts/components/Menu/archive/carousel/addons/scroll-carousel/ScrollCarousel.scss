@@ -1,6 +1,6 @@
 //--|🠊 carousel/addons/scroll-carousel 🠈|--\\
-@use '../../../../../designs/Mixins.scss';
-@use '../../../../../designs/Palettes.scss';
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-scroll {
   @include desk-grid;

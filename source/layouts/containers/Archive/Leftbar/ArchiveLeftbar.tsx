@@ -4,7 +4,7 @@ import { selectHeader } from './ArchiveFunctions';
 import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
+import MenuCarousel from '../../../components/Menu/archive/carousel/Menu.carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

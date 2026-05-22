@@ -1,10 +1,10 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { scrollHorizontal } from './Scroll_carousel';
-import { arabicToRoman } from '../../../../functions';
+import { arabicToRoman } from '../../../../../functions';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../../../Button/default/Button.default';
+import ButtonDefault from '../../../../../Button/default/Button.default';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

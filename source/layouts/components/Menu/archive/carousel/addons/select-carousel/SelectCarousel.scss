@@ -1,6 +1,6 @@
 //--|🠊 carousel/addons/select-carousel 🠈|--\\
-@use '../../../../../designs/Mixins.scss';
-@use '../../../../../designs/Palettes.scss';
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-select {
   li[class*='_sel'] {

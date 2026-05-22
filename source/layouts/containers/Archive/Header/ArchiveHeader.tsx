@@ -1,10 +1,10 @@
 //--|🠊 ArchiveHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/archive';
-import markMenu from '../../../components/Menu/carousel/Menu_carousel';
+import markMenu from '../../../components/Menu/archive/carousel/Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
+import MenuCarousel from '../../../components/Menu/archive/carousel/Menu.carousel';
 import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
