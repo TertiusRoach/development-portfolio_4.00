@@ -9,7 +9,7 @@ import React, { ComponentType, useEffect } from 'react';
 import ProfileOvertime from './elements/profile-overtime/ProfileOvertime';
 
 //--|🠋 Components 🠋|--\\
-import MenuProfile from '../../../components/Menu/profile/Menu.profile';
+import MenuProfile from '../../../components/Menu/review/profile/Menu.profile';
 
 //--|===|--\\
 import ButtonDefault from '../../../components/Button/default/Button.default';

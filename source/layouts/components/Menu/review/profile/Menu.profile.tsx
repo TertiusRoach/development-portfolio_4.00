@@ -5,16 +5,16 @@ import './Menu.profile.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { expandLeftbar, expandHeader } from '../../../scripts/overtime';
+// import { expandLeftbar, expandHeader } from '../../../../scripts/overtime';
 import { viewDisplay } from './Menu_profile';
-import { scrollTable } from '../../Table/clocking/Table_clocking';
+import { scrollTable } from '../../../Table/clocking/Table_clocking';
 
 // import { scrollTable } from '../../Table/tracking/Table_tracking';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
-import ButtonProfile from '../../Button/profile/Button.profile';
+import ButtonDefault from '../../../Button/default/Button.default';
+import ButtonRouting from '../../../Button/routing/Button.routing';
+import ButtonProfile from '../../../Button/profile/Button.profile';
 interface TheseProps {
   info: {
     pageName: string;
