@@ -9,6 +9,7 @@ import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
+import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
 
 interface InfoProps {
   info: {
@@ -34,7 +35,22 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <header className={`${pageName}-carousels-default_header I`}>
-          <MenuCarousel
+          <MenuSwipe
+            style={{
+              axis: '[x]',
+              color: '(mono)',
+              shade: '~dark~',
+            }}
+            info={{
+              labelName: 'button',
+              blockName: blockName as '<main>',
+              pageName: pageName as '[components]',
+
+              pages: ['<h1>', '<h2>'] as Array<string>,
+            }}
+          />
+
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -50,8 +66,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -67,8 +83,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -84,8 +100,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -101,8 +117,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -118,8 +134,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -135,8 +151,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -152,8 +168,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -169,8 +185,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -186,8 +202,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
-          <MenuCarousel
+          /> */}
+          {/* <MenuCarousel
             style={{
               axis: '[x]',
               view: '-top-',
@@ -203,7 +219,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName as '<header>',
               pageName: pageName as '[components]',
             }}
-          />
+          /> */}
         </header>
         <ArchiveNavigation
           //--|🠊 <nav className={`${pageName}-header`}> 🠈|--\\

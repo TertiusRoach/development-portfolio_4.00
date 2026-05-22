@@ -46,8 +46,7 @@
         grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    menu[class*='carousel'] {
-      overflow: hidden;
+    menu[class*='swipe'] {
       grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     //--|🠋 96px (Left & Right) for Design 🠋|--\\

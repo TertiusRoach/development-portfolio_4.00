@@ -1,0 +1,68 @@
+//--|🠊 Menu.swipe.scss 🠈|--\\
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  ul[class='hori-X-swipe'] {
+    background: darkblue;
+    width: 100%;
+    display: grid;
+    //--|🠋 128px for Squares 🠋|--\\
+    height: 128px;
+    grid-template: 128px //--|🠈 rows 🠈|--//
+      / repeat(2, 128px) 1fr repeat(2, 128px); //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      height: 96px;
+      grid-template: 96px //--|🠈 rows 🠈|--//
+        / repeat(2, 96px) 1fr repeat(2, 96px); //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      height: 64px;
+      grid-template: 64px //--|🠈 rows 🠈|--//
+        / repeat(2, 64px) 1fr repeat(2, 64px); //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      height: 48px;
+      grid-template: 48px //--|🠈 rows 🠈|--//
+        / repeat(2, 48px) 1fr repeat(2, 48px); //--|🠈 columns 🠈|--\\
+    }
+  }
+  ol[class='vert-Y-swipe'] {
+    background: darkred;
+
+    height: 100%;
+    display: grid;
+    //--|🠋 128px for Squares 🠋|--\\
+    grid-template: 128px 1fr 128px //--|🠈 rows 🠈|--//
+      / 128px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--//
+        / 96px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--//
+        / 64px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      grid-template: 48px 1fr 48px //--|🠈 rows 🠈|--//
+        / 48px; //--|🠈 columns 🠈|--\\
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Elements) 🠋|--\\
+}
+
+menu[class*='swipe'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
