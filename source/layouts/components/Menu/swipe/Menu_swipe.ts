@@ -1,12 +1,56 @@
-//--|🠊 Menu_carousel.ts 🠈|--\\
+//--|🠊 Menu_swipe.ts 🠈|--\\
+
+/*--|🠋
+
+🠉|--*/
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic } from '../../../functions';
+import { romanToArabic, arabicToRoman } from '../../functions';
+
+function swipeCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  axisStyle: '[x]' | '[y]',
+  buttonAction: 'view-prev' | 'view-next',
+): number {
+  const swipeFunc = (mainContainer: HTMLElement) => {
+    const mainIdentifier: string = mainContainer.classList[0];
+    const mainPosition: string = mainIdentifier.split('_')[1];
+    if (buttonAction === 'view-next') {
+      let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(romanToArabic(mainPosition) + 1)}`;
+      mainContainer.classList.add(mainDesignation);
+      mainContainer.classList.remove(mainIdentifier);
+    } else if (buttonAction === 'view-prev' && mainPosition !== 'I') {
+      let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(romanToArabic(mainPosition) - 1)}`;
+      mainContainer.classList.add(mainDesignation);
+      mainContainer.classList.remove(mainIdentifier);
+    }
+  };
+
+  switch (axisStyle) {
+    case '[x]':
+      const mainHorizontal = document.querySelector(
+        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ul[class="hori-X-axis"] li[class*="carousel-horizontal"]`,
+      ) as HTMLElement;
+      swipeFunc(mainHorizontal as HTMLElement);
+      break;
+    case '[y]':
+      const mainVertical = document.querySelector(
+        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
+      ) as HTMLElement;
+      console.log(mainVertical, pageName, labelName, blockName);
+      swipeFunc(mainVertical as HTMLElement);
+      break;
+  }
+  return 0;
+}
+
+export default swipeCarousel;
+/*
 import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../../functions';
 
 function markMenu(pageName: string, blockName: string) {
-  /*--|🠋
 
-  🠉|--*/
   //--|🠋|==============================================|🠋|--\\
   //--|🠊 See if the amount of children in <CarouselDivision>
   //--|🠊 Matches the amount of <button> tags in <CarouselMenu>
@@ -124,3 +168,4 @@ const retrieveTags = (
     }
   }
 };
+*/

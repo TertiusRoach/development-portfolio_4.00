@@ -1,19 +1,16 @@
 //--|🠊 Menu.carousel.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
 import './Menu.swipe.scss';
 
-//--|🠋 Addons 🠋|--\\
-// import SelectCarousel from './addons/select-carousel/SelectCarousel';
-// import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
-
 //--|🠋 Functions 🠋|--\\
+import swipeCarousel from './Menu_swipe';
 // import markMenu from './Menu_swipe';
 // import stripBrackets from '../../../functions';
 // import { labelList } from './Menu_swipe';
 // import { loadClass, loadStyle } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
 // import selectCarousel from '../../../Division/Archive/carousel/Division_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
@@ -80,7 +77,9 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      // onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-left')}
+                      onClick={(): number =>
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev')
+                      }
                     />
                   </li>
                   <li className="next-view">
@@ -98,7 +97,9 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      // onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-left')}
+                      onClick={(): number =>
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next')
+                      }
                     />
                   </li>
                 </>
@@ -126,7 +127,9 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      // onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-left')}
+                      onClick={(): number =>
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev')
+                      }
                     />
                   </li>
                   <li className="next-view">
@@ -144,7 +147,9 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      // onClick={(): number => scrollHorizontal(info.pageName, info.blockName, info.labelName, 'go-left')}
+                      onClick={(): number =>
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next')
+                      }
                     />
                   </li>
                 </>

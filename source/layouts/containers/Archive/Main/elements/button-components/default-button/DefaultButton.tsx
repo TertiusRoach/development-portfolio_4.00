@@ -52,7 +52,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             call: defaultDark,
           }}
           info={{
-            labelName: 'darkside',
+            labelName: 'default-darkside',
             blockName: info.blockName as '<main>',
             pageName: info.pageName as '[components]',
           }}
@@ -67,7 +67,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             call: defaultLight,
           }}
           info={{
-            labelName: 'lightside',
+            labelName: 'default-lightside',
             blockName: info.blockName as '<main>',
             pageName: info.pageName as '[components]',
           }}
