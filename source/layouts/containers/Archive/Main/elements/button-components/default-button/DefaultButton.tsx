@@ -150,7 +150,7 @@ function ViewOne({ info }: InfoProps) {
     case shade.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
-          <ButtonDefault
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -166,8 +166,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -183,8 +183,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -200,8 +200,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -217,8 +217,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -234,8 +234,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -251,8 +251,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -268,13 +268,13 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
+          /> */}
         </section>
       );
     case shade.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
-          <ButtonDefault
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -290,8 +290,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -307,8 +307,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -324,8 +324,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -341,8 +341,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -358,8 +358,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -375,8 +375,8 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -392,7 +392,7 @@ function ViewOne({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
+          /> */}
         </section>
       );
   }
@@ -406,7 +406,7 @@ function ViewTwo({ info }: InfoProps) {
     case shade.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
-          <ButtonDefault
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -422,8 +422,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -439,8 +439,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -456,8 +456,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -473,8 +473,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -490,8 +490,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -507,8 +507,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -524,13 +524,13 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
+          /> */}
         </section>
       );
     case shade.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
-          <ButtonDefault
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -546,8 +546,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -563,8 +563,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -580,8 +580,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -597,8 +597,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -614,8 +614,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -631,8 +631,8 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
-          <ButtonDefault
+          /> */}
+          {/* <ButtonDefault
             info={{
               pageName: info.pageName,
               blockName: info.blockName,
@@ -648,7 +648,7 @@ function ViewTwo({ info }: InfoProps) {
 
               image: link as string,
             }}
-          />
+          /> */}
         </section>
       );
   }

@@ -4,23 +4,27 @@
   ul[class='hori-X-axis'] {
     @extend %hori-scope;
     @extend %hori-stack;
+    /*
     ol[class='vert-Y-axis'] {
       @extend %vert-stack;
       @extend %vert-scope;
     }
+    */
   }
   ol[class='vert-Y-axis'] {
     @extend %vert-stack;
     @extend %vert-scope;
+    /*
     ul[class='hori-X-axis'] {
       @extend %hori-scope;
       @extend %hori-stack;
     }
+    */
   }
 
   %hori-scope {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
-    li {
+    li[class*='horizontal'] {
       height: 100svh;
       transition: transform 500ms ease-in-out;
       div[class*='_container'] {
@@ -35,65 +39,67 @@
     }
   }
   %hori-stack {
-    .I {
-      transform: translateX(0);
-    }
-    .II {
-      transform: translateX(-100%);
-    }
-    .III {
-      transform: translateX(-200%);
-    }
-    .IV {
-      transform: translateX(-300%);
-    }
-    .V {
-      transform: translateX(-400%);
-    }
-    .VI {
-      transform: translateX(-500%);
-    }
-    .VII {
-      transform: translateX(-600%);
-    }
-    .VIII {
-      transform: translateX(-700%);
-    }
-    .IX {
-      transform: translateX(-800%);
-    }
-    .X {
-      transform: translateX(-900%);
-    }
-    .XI {
-      transform: translateX(-1000%);
-    }
-    .XII {
-      transform: translateX(-1100%);
-    }
-    .XIII {
-      transform: translateX(-1200%);
-    }
-    .XIV {
-      transform: translateX(-1300%);
-    }
-    .XV {
-      transform: translateX(-1400%);
-    }
-    .XVI {
-      transform: translateX(-1500%);
-    }
-    .XVII {
-      transform: translateX(-1600%);
-    }
-    .XVIII {
-      transform: translateX(-1700%);
-    }
-    .XIX {
-      transform: translateX(-1800%);
-    }
-    .XX {
-      transform: translateX(-1900%);
+    li[class*='horizontal'] {
+      &[class*='I'] {
+        transform: translateX(0);
+      }
+      &[class*='II'] {
+        transform: translateX(-100%);
+      }
+      &[class*='III'] {
+        transform: translateX(-200%);
+      }
+      &[class*='IV'] {
+        transform: translateX(-300%);
+      }
+      &[class*='V'] {
+        transform: translateX(-400%);
+      }
+      &[class*='VI'] {
+        transform: translateX(-500%);
+      }
+      &[class*='VII'] {
+        transform: translateX(-600%);
+      }
+      &[class*='VIII'] {
+        transform: translateX(-700%);
+      }
+      &[class*='IX'] {
+        transform: translateX(-800%);
+      }
+      &[class*='X'] {
+        transform: translateX(-900%);
+      }
+      &[class*='XI'] {
+        transform: translateX(-1000%);
+      }
+      &[class*='XII'] {
+        transform: translateX(-1100%);
+      }
+      &[class*='XIII'] {
+        transform: translateX(-1200%);
+      }
+      &[class*='XIV'] {
+        transform: translateX(-1300%);
+      }
+      &[class*='XV'] {
+        transform: translateX(-1400%);
+      }
+      &[class*='XVI'] {
+        transform: translateX(-1500%);
+      }
+      &[class*='XVII'] {
+        transform: translateX(-1600%);
+      }
+      &[class*='XVIII'] {
+        transform: translateX(-1700%);
+      }
+      &[class*='XIX'] {
+        transform: translateX(-1800%);
+      }
+      &[class*='XX'] {
+        transform: translateX(-1900%);
+      }
     }
   }
 
@@ -101,7 +107,7 @@
     //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
     height: 100%;
     display: flex;
-    li {
+    li[class*='vertical'] {
       width: 100%;
       transition: transform 500ms ease-in-out;
       div {
@@ -110,7 +116,9 @@
         section[class*='main'],
         figure[class*='main'],
         aside[class*='main'] {
-          // height: 100%;
+          /*
+          height: 100%;
+          */
           ul[class*='car-'] {
             @extend %hori-stack;
           }
@@ -119,65 +127,67 @@
     }
   }
   %vert-stack {
-    .I {
-      transform: translateY(0);
-    }
-    .II {
-      transform: translateY(-100%);
-    }
-    .III {
-      transform: translateY(-200%);
-    }
-    .IV {
-      transform: translateY(-300%);
-    }
-    .V {
-      transform: translateY(-400%);
-    }
-    .VI {
-      transform: translateY(-500%);
-    }
-    .VII {
-      transform: translateY(-600%);
-    }
-    .VIII {
-      transform: translateY(-700%);
-    }
-    .IX {
-      transform: translateY(-800%);
-    }
-    .X {
-      transform: translateY(-900%);
-    }
-    .XI {
-      transform: translateY(-1000%);
-    }
-    .XII {
-      transform: translateY(-1100%);
-    }
-    .XIII {
-      transform: translateY(-1200%);
-    }
-    .XIV {
-      transform: translateY(-1300%);
-    }
-    .XV {
-      transform: translateY(-1400%);
-    }
-    .XVI {
-      transform: translateY(-1500%);
-    }
-    .XVII {
-      transform: translateY(-1600%);
-    }
-    .XVIII {
-      transform: translateY(-1700%);
-    }
-    .XIX {
-      transform: translateY(-1800%);
-    }
-    .XX {
-      transform: translateY(-1900%);
+    li[class*='vertical'] {
+      &[class*='I'] {
+        transform: translateY(0);
+      }
+      &[class*='II'] {
+        transform: translateY(-100%);
+      }
+      &[class*='III'] {
+        transform: translateY(-200%);
+      }
+      &[class*='IV'] {
+        transform: translateY(-300%);
+      }
+      &[class*='V'] {
+        transform: translateY(-400%);
+      }
+      &[class*='VI'] {
+        transform: translateY(-500%);
+      }
+      &[class*='VII'] {
+        transform: translateY(-600%);
+      }
+      &[class*='VIII'] {
+        transform: translateY(-700%);
+      }
+      &[class*='IX'] {
+        transform: translateY(-800%);
+      }
+      &[class*='X'] {
+        transform: translateY(-900%);
+      }
+      &[class*='XI'] {
+        transform: translateY(-1000%);
+      }
+      &[class*='XII'] {
+        transform: translateY(-1100%);
+      }
+      &[class*='XIII'] {
+        transform: translateY(-1200%);
+      }
+      &[class*='XIV'] {
+        transform: translateY(-1300%);
+      }
+      &[class*='XV'] {
+        transform: translateY(-1400%);
+      }
+      &[class*='XVI'] {
+        transform: translateY(-1500%);
+      }
+      &[class*='XVII'] {
+        transform: translateY(-1600%);
+      }
+      &[class*='XVIII'] {
+        transform: translateY(-1700%);
+      }
+      &[class*='XIX'] {
+        transform: translateY(-1800%);
+      }
+      &[class*='XX'] {
+        transform: translateY(-1900%);
+      }
     }
   }
 }

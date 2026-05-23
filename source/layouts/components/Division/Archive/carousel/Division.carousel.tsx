@@ -46,11 +46,26 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
   return (
     <div className={`${labelName}-${blockName}_carousel-default`}>
       <ListItem className={axisClass[style.axis]}>
-        <li className="I">
-          <div className={`${labelName}-${blockName}_container`}>
-            <CallItem info={info} />
-          </div>
-        </li>
+        {(() => {
+          switch (style.axis) {
+            case '[x]':
+              return (
+                <li className={'carousel-horizontal_I'}>
+                  <div className={`${labelName}-${blockName}_container`}>
+                    <CallItem info={info} />
+                  </div>
+                </li>
+              );
+            case '[y]':
+              return (
+                <li className={'carousel-vertical_I'}>
+                  <div className={`${labelName}-${blockName}_container`}>
+                    <CallItem info={info} />
+                  </div>
+                </li>
+              );
+          }
+        })()}
       </ListItem>
     </div>
   );
