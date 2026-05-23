@@ -41,6 +41,20 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             pages: ['<h1>', '<h2>'] as Array<string>,
           }}
         />
+        <MenuSwipe
+          style={{
+            axis: '[y]',
+            color: '(mono)',
+            shade: '~light~',
+          }}
+          info={{
+            labelName: 'default-lightside',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+
+            pages: ['<h1>', '<h2>'] as Array<string>,
+          }}
+        />
 
         <DivisionCarousel
           //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\

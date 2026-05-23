@@ -3,9 +3,9 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   ul[class='hori-X-swipe'] {
-    background: darkblue;
+    // background: darkblue;
     li[class*='showing'] {
-      background: green;
+      // background: green;
 
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
