@@ -1,8 +1,5 @@
 //--|🠊 Menu_swipe.ts 🠈|--\\
 
-/*--|🠋
-
-🠉|--*/
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../functions';
 
@@ -13,6 +10,9 @@ function swipeCarousel(
   axisStyle: '[x]' | '[y]',
   buttonAction: 'view-prev' | 'view-next',
 ): number {
+  /*--|🠋
+
+  🠉|--*/
   const swipeFunc = (mainContainer: HTMLElement) => {
     const mainIdentifier: string = mainContainer.classList[0];
     const mainPosition: string = mainIdentifier.split('_')[1];
