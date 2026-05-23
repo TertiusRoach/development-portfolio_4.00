@@ -27,11 +27,14 @@ const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProp
 
   const CallItem = cases.call as React.ComponentType<{ info: T }>;
   const ListItem = style.axis === '[x]' ? 'ul' : 'ol';
+
+  /*
   let scopeClass: Record<TheseProps<T>['style']['scope'], string> = {
     '<one>': 'car-one',
     '<two>': 'car-two',
     '<thr>': 'car-thr',
   };
+  */
   let axisClass: Record<TheseProps<T>['style']['axis'], string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',

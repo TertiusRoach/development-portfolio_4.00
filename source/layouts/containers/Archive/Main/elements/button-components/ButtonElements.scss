@@ -9,6 +9,11 @@
 section[class*='button-main'] {
   div.button-main_container {
     @media screen and (orientation: landscape) {
+      aside[class*='button'] {
+        width: 100vw;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+      }
       @include DefaultButton.desktop-landscape;
       @include RoutingButton.desktop-landscape;
       @include ProfileButton.desktop-landscape;

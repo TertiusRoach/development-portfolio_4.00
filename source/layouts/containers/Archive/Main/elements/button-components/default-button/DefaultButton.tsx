@@ -25,7 +25,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   return (
-    <>
+    <aside className="default-button">
       <section className={`${info.blockName}-foreground`}>
         <MenuSwipe
           style={{
@@ -95,7 +95,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       <div className={`${info.blockName}-background`}>
         <h1 className="display-1">{`<DefaultButton>`}</h1>
       </div>
-    </>
+    </aside>
   );
 };
 export default DefaultButton;
