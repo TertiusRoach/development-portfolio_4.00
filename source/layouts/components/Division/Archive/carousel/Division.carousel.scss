@@ -4,22 +4,10 @@
   ul[class='hori-X-axis'] {
     @extend %hori-scope;
     @extend %hori-stack;
-    /*
-    ol[class='vert-Y-axis'] {
-      @extend %vert-stack;
-      @extend %vert-scope;
-    }
-    */
   }
   ol[class='vert-Y-axis'] {
     @extend %vert-stack;
     @extend %vert-scope;
-    /*
-    ul[class='hori-X-axis'] {
-      @extend %hori-scope;
-      @extend %hori-stack;
-    }
-    */
   }
 
   %hori-scope {

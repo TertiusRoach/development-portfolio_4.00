@@ -20,58 +20,33 @@ interface PropsInfo {
   blockName: string;
   labelName: string;
 }
-const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
-  const pageName: string = info.pageName as string;
-  const blockName: string = info.blockName as string;
-  const labelName: string = info.labelName as string;
-
+function DivisionAxis<T extends PropsInfo>({ info, style, cases }: TheseProps<T>) {
   const CallItem = cases.call as React.ComponentType<{ info: T }>;
-  const ListItem = style.axis === '[x]' ? 'ul' : 'ol';
-
-  /*
-  let scopeClass: Record<TheseProps<T>['style']['scope'], string> = {
-    '<one>': 'car-one',
-    '<two>': 'car-two',
-    '<thr>': 'car-thr',
+  let axisClass: Record<'[x]' | '[y]', string> = {
+    '[x]': 'carousel-horizontal',
+    '[y]': 'carousel-vertical',
   };
-  */
-  let axisClass: Record<TheseProps<T>['style']['axis'], string> = {
+  return (
+    <li className={`${axisClass[style.axis]}_I`}>
+      <div className={`${info.labelName}-${info.blockName}_container`}>
+        <CallItem info={info} />
+      </div>
+    </li>
+  );
+}
+
+const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
+  const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[style.axis];
+  let axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(`|🠊 Link: <div class="${labelName}-${blockName}_carousel"> 🠈|`);
-    }, 3600000);
-  }, [pageName, blockName, labelName]);
-
   return (
-    <div className={`${labelName}-${blockName}_carousel-default`}>
-      <ListItem className={axisClass[style.axis]}>
-        {(() => {
-          switch (style.axis) {
-            case '[x]':
-              return (
-                <li className={'carousel-horizontal_I'}>
-                  <div className={`${labelName}-${blockName}_container`}>
-                    <CallItem info={info} />
-                  </div>
-                </li>
-              );
-            case '[y]':
-              return (
-                <li className={'carousel-vertical_I'}>
-                  <div className={`${labelName}-${blockName}_container`}>
-                    <CallItem info={info} />
-                  </div>
-                </li>
-              );
-          }
-        })()}
-      </ListItem>
+    <div className={`${info.labelName}-${info.blockName}_carousel-default`}>
+      <CallList className={axisClass[style.axis]}>
+        <DivisionAxis info={info} style={style} cases={cases} />
+      </CallList>
     </div>
   );
 };
-
 export default DivisionCarousel;

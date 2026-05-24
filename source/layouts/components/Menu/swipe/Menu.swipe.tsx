@@ -165,6 +165,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
       );
   }
 }
+
 const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
