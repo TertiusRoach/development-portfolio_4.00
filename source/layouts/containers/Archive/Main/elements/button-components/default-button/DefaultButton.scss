@@ -22,19 +22,19 @@
           //--|🠋 64px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 1366px 🠋|--\\
             repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-            / 32px repeat(2, 1fr); //--|🠈 columns 🠈|--\\
+            / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠋 48px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 854px 🠋|--\\
             repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-            / 24px repeat(2, 1fr); //--|🠈 columns 🠈|--\\
+            / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠋 32px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 640px 🠋|--\\
             repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-            / 16px repeat(2, 1fr); //--|🠈 columns 🠈|--\\
+            / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
         }
       }
       &[class*='dark'] {
@@ -46,10 +46,10 @@
         grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    menu[class*='darkside'] {
+    menu[class*='default-darkside'] {
       grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    menu[class*='lightside'] {
+    menu[class*='default-lightside'] {
       grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     //--|🠋 96px (Left & Right) for Design 🠋|--\\

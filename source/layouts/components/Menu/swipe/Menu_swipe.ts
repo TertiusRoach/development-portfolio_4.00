@@ -18,12 +18,15 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
       const horizontalCarousel = document.querySelector(
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ul[class="hori-X-axis"] li[class*="carousel-horizontal"]`,
       ) as HTMLElement;
-      const horizontalController = document.querySelectorAll(
-        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class="preview"] div[class*="view"]`,
+      const horizontalPreview = document.querySelectorAll(
+        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="preview"] div[class*="view"]`,
       ) as NodeListOf<HTMLElement>;
+      const horizontalShowing = document.querySelector(
+        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="showing"]`,
+      ) as HTMLElement;
 
-      prevView = Array.from(horizontalController).find((div) => div.classList.contains('prev-view')) as HTMLElement;
-      nextView = Array.from(horizontalController).find((div) => div.classList.contains('next-view')) as HTMLElement;
+      prevView = Array.from(horizontalPreview).find((div) => div.classList.contains('prev-view')) as HTMLElement;
+      nextView = Array.from(horizontalPreview).find((div) => div.classList.contains('next-view')) as HTMLElement;
 
       slideMark = romanToArabic(horizontalCarousel.classList[0].split('_')[1]) as number;
       slideCount = horizontalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLDivElement;
@@ -47,6 +50,9 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
       }
+
+      horizontalShowing.classList.remove(horizontalShowing.classList[0]);
+      horizontalShowing.classList.add(`showing-horizontal_${arabicToRoman(slideMark)}`);
       break;
     case '[y]':
       const verticalCarousel = document.querySelector(

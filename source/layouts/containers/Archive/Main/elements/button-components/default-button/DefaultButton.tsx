@@ -19,103 +19,6 @@ interface InfoProps {
     labelName: string;
   };
 }
-const DefaultButton: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'default';
-  const pageName = info.pageName as 'component';
-
-  return (
-    <aside className="default-button">
-      <section className={`${info.blockName}-foreground`}>
-        <MenuSwipe
-          style={{
-            axis: '[y]',
-            color: '(mono)',
-            shade: '~dark~',
-          }}
-          cases={{
-            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'default-darkside',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
-          }}
-        />
-        <MenuSwipe
-          style={{
-            axis: '[y]',
-            color: '(mono)',
-            shade: '~light~',
-          }}
-          cases={{
-            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'default-lightside',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
-          }}
-        />
-
-        <DivisionCarousel
-          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            scope: '<two>',
-          }}
-          cases={{
-            call: defaultDark,
-          }}
-          info={{
-            labelName: 'default-darkside',
-            blockName: info.blockName as '<main>',
-            pageName: info.pageName as '[components]',
-          }}
-        />
-        <DivisionCarousel
-          //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            scope: '<two>',
-          }}
-          cases={{
-            call: defaultLight,
-          }}
-          info={{
-            labelName: 'default-lightside',
-            blockName: info.blockName as '<main>',
-            pageName: info.pageName as '[components]',
-          }}
-        />
-
-        {/* <MenuCarousel
-          style={{
-            axis: '[y]',
-            view: '-rig-',
-            color: '(mono)',
-            shade: '~dark~',
-            type: '{scroll}',
-          }}
-          cases={{
-            paths: ['<h1>', '<h2>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'button',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
-          }}
-        /> */}
-      </section>
-      <figure className={`${info.blockName}-midground`}></figure>
-      <div className={`${info.blockName}-background`}>
-        <h1 className="display-1">{`<DefaultButton>`}</h1>
-      </div>
-    </aside>
-  );
-};
-export default DefaultButton;
-
 function defaultDark({ info }: InfoProps) {
   return (
     <>
@@ -228,7 +131,103 @@ function defaultLight({ info }: InfoProps) {
   );
 }
 
-const ViewOne = ({ info }: InfoProps) => {
+const DefaultButton: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'component';
+
+  return (
+    <aside className="default-button">
+      <section className={`${info.blockName}-foreground`}>
+        <MenuSwipe
+          style={{
+            axis: '[y]',
+            color: '(mono)',
+            shade: '~dark~',
+          }}
+          cases={{
+            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+          }}
+          info={{
+            labelName: 'default-darkside',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+          }}
+        />
+        <MenuSwipe
+          style={{
+            axis: '[y]',
+            color: '(mono)',
+            shade: '~light~',
+          }}
+          cases={{
+            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+          }}
+          info={{
+            labelName: 'default-lightside',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+          }}
+        />
+
+        <DivisionCarousel
+          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+          style={{
+            axis: '[y]',
+            scope: '<two>',
+          }}
+          cases={{
+            call: defaultDark,
+          }}
+          info={{
+            labelName: 'default-darkside',
+            blockName: info.blockName as '<main>',
+            pageName: info.pageName as '[components]',
+          }}
+        />
+        <DivisionCarousel
+          //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
+          style={{
+            axis: '[y]',
+            scope: '<two>',
+          }}
+          cases={{
+            call: defaultLight,
+          }}
+          info={{
+            labelName: 'default-lightside',
+            blockName: info.blockName as '<main>',
+            pageName: info.pageName as '[components]',
+          }}
+        />
+
+        {/* <MenuCarousel
+          style={{
+            axis: '[y]',
+            view: '-rig-',
+            color: '(mono)',
+            shade: '~dark~',
+            type: '{scroll}',
+          }}
+          cases={{
+            paths: ['<h1>', '<h2>'] as Array<string>,
+          }}
+          info={{
+            labelName: 'button',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+          }}
+        /> */}
+      </section>
+      <figure className={`${info.blockName}-midground`}></figure>
+      <div className={`${info.blockName}-background`}>
+        <h1 className="display-1">{`<DefaultButton>`}</h1>
+      </div>
+    </aside>
+  );
+};
+
+let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -484,7 +483,7 @@ const ViewOne = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewTwo = ({ info }: InfoProps) => {
+let ViewTwo = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -740,7 +739,7 @@ const ViewTwo = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewThr = ({ info }: InfoProps) => {
+let ViewThr = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -996,7 +995,7 @@ const ViewThr = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewFou = ({ info }: InfoProps) => {
+let ViewFou = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -1252,7 +1251,7 @@ const ViewFou = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewFiv = ({ info }: InfoProps) => {
+let ViewFiv = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -1508,7 +1507,7 @@ const ViewFiv = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewSix = ({ info }: InfoProps) => {
+let ViewSix = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -1764,7 +1763,7 @@ const ViewSix = ({ info }: InfoProps) => {
       );
   }
 };
-const ViewSev = ({ info }: InfoProps) => {
+let ViewSev = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
@@ -2020,3 +2019,4 @@ const ViewSev = ({ info }: InfoProps) => {
       );
   }
 };
+export default DefaultButton;
