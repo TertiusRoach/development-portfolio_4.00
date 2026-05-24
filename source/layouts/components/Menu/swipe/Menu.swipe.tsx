@@ -71,49 +71,51 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
             case '[x]':
               return (
                 <>
+                  <li className="preview">
+                    <div className="prev-view downplay">
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-icon-',
+                          type: '{button}',
+                          color: style.color,
+                          shade: style.shade,
+                          image: horiArrows.left as string,
+                        }}
+                        info={{
+                          pageName: info.pageName,
+                          blockName: info.blockName,
+                          // labelName: info.labelName,
+                        }}
+                        onClick={(): void => {
+                          swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
+                          markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                        }}
+                      />
+                    </div>
+                    <div className="next-view downplay">
+                      <ButtonDefault
+                        style={{
+                          size: '<h3>',
+                          view: '-icon-',
+                          type: '{button}',
+                          color: style.color,
+                          shade: style.shade,
+                          image: horiArrows.right as string,
+                        }}
+                        info={{
+                          pageName: info.pageName,
+                          blockName: info.blockName,
+                          // labelName: info.labelName,
+                        }}
+                        onClick={(): void => {
+                          swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
+                          markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                        }}
+                      />
+                    </div>
+                  </li>
                   <li className="showing"></li>
-                  <li className="prev-view downplay">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        type: '{button}',
-                        color: style.color,
-                        shade: style.shade,
-                        image: horiArrows.left as string,
-                      }}
-                      info={{
-                        pageName: info.pageName,
-                        blockName: info.blockName,
-                        // labelName: info.labelName,
-                      }}
-                      onClick={(): void => {
-                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
-                      }}
-                    />
-                  </li>
-                  <li className="next-view downplay">
-                    <ButtonDefault
-                      style={{
-                        size: '<h3>',
-                        view: '-icon-',
-                        type: '{button}',
-                        color: style.color,
-                        shade: style.shade,
-                        image: horiArrows.right as string,
-                      }}
-                      info={{
-                        pageName: info.pageName,
-                        blockName: info.blockName,
-                        // labelName: info.labelName,
-                      }}
-                      onClick={(): void => {
-                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
-                      }}
-                    />
-                  </li>
                 </>
               );
             case '[y]':

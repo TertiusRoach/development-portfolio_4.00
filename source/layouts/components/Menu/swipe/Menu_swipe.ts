@@ -19,11 +19,11 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ul[class="hori-X-axis"] li[class*="carousel-horizontal"]`,
       ) as HTMLElement;
       const horizontalController = document.querySelectorAll(
-        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li`,
+        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class="preview"] div[class*="view"]`,
       ) as NodeListOf<HTMLElement>;
 
-      prevView = Array.from(horizontalController).find((li) => li.classList.contains('prev-view')) as HTMLElement;
-      nextView = Array.from(horizontalController).find((li) => li.classList.contains('next-view')) as HTMLElement;
+      prevView = Array.from(horizontalController).find((div) => div.classList.contains('prev-view')) as HTMLElement;
+      nextView = Array.from(horizontalController).find((div) => div.classList.contains('next-view')) as HTMLElement;
 
       slideMark = romanToArabic(horizontalCarousel.classList[0].split('_')[1]) as number;
       slideCount = horizontalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLDivElement;
@@ -48,7 +48,6 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
         prevView.classList.remove('downplay');
       }
       break;
-
     case '[y]':
       const verticalCarousel = document.querySelector(
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,

@@ -28,7 +28,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
   let svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'];
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
