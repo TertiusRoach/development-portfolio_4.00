@@ -537,15 +537,16 @@
       }
       &[class*='squaring'] {
         transition: clip-path 500ms ease-in-out;
-        clip-path: inset(0 calc(100% - 8rem) calc(100% - 8rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        clip-path: inset(calc(100% - 8rem) 0 0 calc(100% - 8rem)); //--|🠈 top / right / bottom / left 🠈|--\\
+
         @media screen and (max-height: 768px) {
-          clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+          clip-path: inset(calc(100% - 6rem) 0 0 calc(100% - 6rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
         @media screen and (max-height: 480px) {
-          clip-path: inset(0 calc(100% - 4rem) calc(100% - 4rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+          clip-path: inset(calc(100% - 4rem) 0 0 calc(100% - 4rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
         @media screen and (max-height: 360px) {
-          clip-path: inset(0 calc(100% - 3rem) calc(100% - 3rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+          clip-path: inset(calc(100% - 3rem) 0 0 calc(100% - 3rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
 
         section[class='header-foreground'] {
