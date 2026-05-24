@@ -135,9 +135,10 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      onClick={(): number =>
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev')
-                      }
+                      onClick={(): void => {
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev');
+                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                      }}
                     />
                   </li>
                   <li className="next-view">
@@ -155,9 +156,10 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      onClick={(): number =>
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next')
-                      }
+                      onClick={(): void => {
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next');
+                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                      }}
                     />
                   </li>
                 </>
