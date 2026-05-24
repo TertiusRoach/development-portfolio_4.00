@@ -3,7 +3,7 @@
 import './Menu.swipe.scss';
 
 //--|🠋 Functions 🠋|--\\
-import swipeCarousel from './Menu_swipe';
+import { markCarousel, swipeCarousel } from './Menu_swipe';
 // import markMenu from './Menu_swipe';
 // import stripBrackets from '../../../functions';
 // import { labelList } from './Menu_swipe';
@@ -18,17 +18,18 @@ import React, { useEffect } from 'react';
 // import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
-  info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
-
-    pages: Array<string | HTMLElement>;
-  };
   style: {
     axis: '[x]' | '[y]';
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  };
+  cases: {
+    pages: Array<string | HTMLElement>;
+  };
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
   };
 
   onClick?: () => void;
@@ -40,12 +41,27 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
-  const ListItem = style.axis === '[x]' ? 'ul' : 'ol';
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  const ListItem = style.axis === '[x]' ? 'ul' : 'ol';
   const axisClass: Record<TheseProps['style']['axis'], string> = {
     '[x]': 'hori-X-swipe',
     '[y]': 'vert-Y-swipe',
   };
+
+  let directory: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid';
+  let horiArrows: Record<string, string> = {
+    left: `${directory}/caret-left.svg`,
+    right: `${directory}/caret-right.svg`,
+  };
+  let vertArrows: Record<string, string> = {
+    up: `${directory}/caret-up.svg`,
+    down: `${directory}/caret-down.svg`,
+  };
+
+  useEffect(() => {
+    markCarousel(pageName, blockName, labelName, style.axis);
+  }, [pageName, blockName, labelName]);
 
   return (
     <menu className={`${labelName}-${blockName}_swipe-default`}>
@@ -53,16 +69,10 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
         {(() => {
           switch (style.axis) {
             case '[x]':
-              let horiArrows: Record<string, string> = {
-                left: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/caret-left.svg',
-                right:
-                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/caret-right.svg',
-              };
-
               return (
                 <>
                   <li className="showing"></li>
-                  <li className="prev-view">
+                  <li className="prev-view downplay">
                     <ButtonDefault
                       style={{
                         size: '<h3>',
@@ -77,12 +87,13 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      onClick={(): number =>
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev')
-                      }
+                      onClick={(): void => {
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev');
+                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                      }}
                     />
                   </li>
-                  <li className="next-view">
+                  <li className="next-view downplay">
                     <ButtonDefault
                       style={{
                         size: '<h3>',
@@ -97,18 +108,15 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         blockName: info.blockName,
                         // labelName: info.labelName,
                       }}
-                      onClick={(): number =>
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next')
-                      }
+                      onClick={(): void => {
+                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next');
+                        markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                      }}
                     />
                   </li>
                 </>
               );
             case '[y]':
-              let vertArrows: Record<string, string> = {
-                up: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/caret-up.svg',
-                down: 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/caret-down.svg',
-              };
               return (
                 <>
                   <li className="showing_I"></li>

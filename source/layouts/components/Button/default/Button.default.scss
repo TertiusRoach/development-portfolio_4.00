@@ -59,7 +59,11 @@ button[class*='default'] {
         display: none;
       }
     }
+    .highlight & {
+      opacity: 1;
+    }
     .downplay & {
+      opacity: 0;
       img,
       h1,
       h2,

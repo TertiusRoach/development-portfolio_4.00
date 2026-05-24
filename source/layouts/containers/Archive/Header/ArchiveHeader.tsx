@@ -22,8 +22,6 @@ interface InfoProps {
   };
 }
 const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
-  const svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'];
-
   const blockName = stripBrackets(info.blockName, '<>') as 'header';
   const labelName = stripBrackets(info.labelName, '()') as 'archive';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
@@ -31,6 +29,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'];
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
@@ -43,10 +42,11 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
             info={{
               labelName: 'button',
-              blockName: blockName as '<main>',
+              blockName: blockName as '<header>',
               pageName: pageName as '[components]',
-
-              pages: ['<h1>', '<h2>'] as Array<string>,
+            }}
+            cases={{
+              pages: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
             }}
           />
 
