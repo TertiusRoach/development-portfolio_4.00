@@ -88,7 +88,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         // labelName: info.labelName,
                       }}
                       onClick={(): void => {
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev');
+                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
                         markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
                       }}
                     />
@@ -109,7 +109,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         // labelName: info.labelName,
                       }}
                       onClick={(): void => {
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next');
+                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
                         markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
                       }}
                     />
@@ -136,7 +136,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         // labelName: info.labelName,
                       }}
                       onClick={(): void => {
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-prev');
+                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
                         markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
                       }}
                     />
@@ -157,7 +157,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style }) => {
                         // labelName: info.labelName,
                       }}
                       onClick={(): void => {
-                        swipeCarousel(info.pageName, info.blockName, info.labelName, style.axis, 'view-next');
+                        swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
                         markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
                       }}
                     />

@@ -76,7 +76,6 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
 
 export function swipeCarousel(
   pageName: string,
-  blockName: string,
   labelName: string,
   axisStyle: '[x]' | '[y]',
   buttonAction: 'view-prev' | 'view-next',
@@ -103,26 +102,18 @@ export function swipeCarousel(
 }
 
 const swipeWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction: 'view-prev' | 'view-next') => {
-  const mainIdentifier: string = mainCarousel.classList[0];
-  const mainPosition: string = mainIdentifier.split('_')[1];
+  const [prefix, position] = mainCarousel.classList[0].split('_');
+  const currentIndex = romanToArabic(position);
+  const slideCount = mainCarousel.querySelector<HTMLDivElement>(`div[class="${labelName}-main_container"]`);
 
-  let slideMark: number = romanToArabic(mainCarousel.classList[0].split('_')[1]);
-  let slideCount = mainCarousel.querySelector(`div[class="${labelName}-main_container`) as HTMLDivElement;
+  const isPrev = buttonAction === 'view-prev' && position !== 'I';
+  const isNext = buttonAction === 'view-next' && slideCount?.childElementCount !== currentIndex;
 
-  if (buttonAction === 'view-prev' && mainPosition !== 'I') {
-    let mainDestination: number = romanToArabic(mainPosition) - 1;
-    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
-    mainCarousel.classList.add(mainDesignation);
-    mainCarousel.classList.remove(mainIdentifier);
-    return mainDestination as number;
-  } else if (buttonAction === 'view-next' && slideCount.childElementCount !== slideMark) {
-    let mainDestination: number = romanToArabic(mainPosition) + 1;
-    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
-    mainCarousel.classList.add(mainDesignation);
-    mainCarousel.classList.remove(mainIdentifier);
+  if (!isPrev && !isNext) return;
 
-    console.log(mainDesignation, mainCarousel);
+  const destination = currentIndex + (isNext ? 1 : -1);
+  const designation = `${prefix}_${arabicToRoman(destination)}`;
 
-    return mainDestination as number;
-  }
+  mainCarousel.classList.replace(mainCarousel.classList[0], designation);
+  return destination;
 };
