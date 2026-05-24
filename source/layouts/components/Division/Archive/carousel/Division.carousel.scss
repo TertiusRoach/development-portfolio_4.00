@@ -15,7 +15,7 @@
     li[class*='horizontal'] {
       height: 100svh;
       transition: transform 500ms ease-in-out;
-      div[class*='_container'] {
+      div[class*='container'] {
         display: flex;
         height: inherit;
         section[class*='main'],
@@ -99,9 +99,8 @@
     li[class*='vertical'] {
       width: 100%;
       transition: transform 500ms ease-in-out;
-      div {
-        width: inherit; //--|🠊 width: 100%; 🠈|--\\
-        // How do I lock all the children elements with these classNames
+      div[class*='container'] {
+        width: inherit; //--|🠈 width: 100%; 🠈|--\\
         section[class*='main'],
         figure[class*='main'],
         aside[class*='main'] {
