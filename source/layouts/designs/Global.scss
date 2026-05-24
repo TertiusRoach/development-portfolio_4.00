@@ -20,11 +20,6 @@
       section[class*='foreground'],
       figure[class*='midground'],
       div[class*='background'] {
-        ul,
-        ol {
-          padding: 0;
-          list-style: none;
-        }
         h1,
         h2,
         h3,
@@ -33,7 +28,6 @@
         h6 {
           margin: 0;
           outline: none;
-          cursor: default;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
@@ -41,20 +35,23 @@
         }
         p {
           margin: 0;
-          cursor: default;
           white-space: wrap;
           font-family: 'Source Sans 3', arial;
         }
-      }
-
-      section[class*='foreground'] {
-        z-index: 2;
-      }
-      figure[class*='midground'] {
-        z-index: 1;
-      }
-      div[class*='background'] {
-        z-index: 0;
+        ul,
+        ol {
+          padding: 0;
+          list-style: none;
+        }
+        &[class*='foreground'] {
+          z-index: 2;
+        }
+        &[class*='midground'] {
+          z-index: 1;
+        }
+        &[class*='background'] {
+          z-index: 0;
+        }
       }
     }
   }
