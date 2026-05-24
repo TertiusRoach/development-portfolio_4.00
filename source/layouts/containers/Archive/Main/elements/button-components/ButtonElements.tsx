@@ -47,30 +47,15 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
 };
 
 function ButtonComponents({ info }: InfoProps) {
+  const pageName = info.pageName;
+  const blockName = info.blockName;
   return (
     <>
-      <DefaultButton info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'default' as string }} />
-      <RoutingButton
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'routing' as string,
-        }}
-      />
-      {/* <ProfileButton
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'profile' as string,
-        }}
-      /> */}
-      {/* <StretchButton
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'stretch' as string,
-        }}
-      /> */}
+      <DefaultButton info={{ labelName: 'default' as string, pageName: pageName, blockName: blockName }} />
+      <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
+      {/* <CleanedButton info={{ labelName: 'cleaned' as string, pageName: pageName, blockName: blockName }} /> */}
+      {/* <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} /> */}
+      {/* <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} /> */}
     </>
   );
 }

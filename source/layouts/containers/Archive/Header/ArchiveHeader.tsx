@@ -41,12 +41,18 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               shade: '~dark~',
             }}
             info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'header',
               labelName: 'button',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
             }}
             cases={{
-              pages: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
+              pages: [
+                '<Default_Button>',
+                '<Routing_Button>',
+                '<Cleaned_Button>',
+                '<Stretch_Button>',
+                '<Profile_Button>',
+              ] as Array<string>,
             }}
           />
 
