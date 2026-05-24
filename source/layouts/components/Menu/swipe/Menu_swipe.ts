@@ -109,17 +109,20 @@ const swipeWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction:
   let slideMark: number = romanToArabic(mainCarousel.classList[0].split('_')[1]);
   let slideCount = mainCarousel.querySelector(`div[class="${labelName}-main_container`) as HTMLDivElement;
 
-  if (buttonAction === 'view-next' && slideCount.childElementCount !== slideMark) {
-    let mainDestination: number = romanToArabic(mainPosition) + 1;
-    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
-    mainCarousel.classList.add(mainDesignation);
-    mainCarousel.classList.remove(mainIdentifier);
-    return mainDestination as number;
-  } else if (buttonAction === 'view-prev' && mainPosition !== 'I') {
+  if (buttonAction === 'view-prev' && mainPosition !== 'I') {
     let mainDestination: number = romanToArabic(mainPosition) - 1;
     let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
     mainCarousel.classList.add(mainDesignation);
     mainCarousel.classList.remove(mainIdentifier);
+    return mainDestination as number;
+  } else if (buttonAction === 'view-next' && slideCount.childElementCount !== slideMark) {
+    let mainDestination: number = romanToArabic(mainPosition) + 1;
+    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
+    mainCarousel.classList.add(mainDesignation);
+    mainCarousel.classList.remove(mainIdentifier);
+
+    console.log(mainDesignation, mainCarousel);
+
     return mainDestination as number;
   }
 };
