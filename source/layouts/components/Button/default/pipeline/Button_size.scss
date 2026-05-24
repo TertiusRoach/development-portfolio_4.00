@@ -1,43 +1,40 @@
 //--|🠊 default/pipeline/Button_size.scss 🠈|--\\
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
-  .text,
-  .back {
-    max-width: 32rem;
-  }
-
-  .text {
+  div[class='text'] {
     h1 {
       font-size: 40px;
       font-weight: 800;
     }
     h2 {
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 775;
     }
     h3 {
       font-size: 28px;
-      font-weight: 600;
+      font-weight: 750;
     }
     h4 {
       font-size: 24px;
-      font-weight: 500;
+      font-weight: 725;
     }
     h5 {
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 700;
     }
     h6 {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 675;
     }
     p {
       font-size: 14px;
-      font-weight: 200;
-
+      font-weight: 650;
+    }
+    * {
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    max-width: 32rem;
     @media screen and (max-height: 768px) {
       max-width: 22rem;
       h1 {
