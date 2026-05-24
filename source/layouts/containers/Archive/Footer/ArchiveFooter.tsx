@@ -17,11 +17,11 @@ interface InfoProps {
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   return (
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>

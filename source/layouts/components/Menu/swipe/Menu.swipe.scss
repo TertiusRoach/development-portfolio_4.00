@@ -3,10 +3,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   ul[class='hori-X-swipe'] {
-    // background: darkblue;
     li[class*='showing'] {
-      // background: green;
-
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
@@ -43,11 +40,7 @@
     }
   }
   ol[class='vert-Y-swipe'] {
-    background: darkred;
-
     li[class*='showing'] {
-      background: green;
-
       grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     li[class='prev-view'] {
