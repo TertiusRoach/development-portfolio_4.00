@@ -169,6 +169,18 @@
         / 48px; //--|🠈 columns 🠈|--\\
     }
   }
+  ul[class*='swipe'],
+  ol[class*='swipe'] {
+    li[class*='highlight'] {
+      opacity: 1;
+    }
+    li[class*='downplay'] {
+      opacity: 0;
+      * {
+        cursor: default;
+      }
+    }
+  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
