@@ -30,12 +30,93 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
+
+function ComponentsElements({ info }: InfoProps) {
+  const blockName = info.blockName as 'main';
+  const pageName = info.pageName as 'components';
+  return (
+    <>
+      <ButtonElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'button' as string,
+        }}
+      />
+      <ArticleElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'article' as string,
+        }}
+      />
+      <AsideElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'aside' as string,
+        }}
+      />
+      <DivisionElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'division' as string,
+        }}
+      />
+      <FigureElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'figure' as string,
+        }}
+      />
+      <MenuElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'menu' as string,
+        }}
+      />
+      <NavigationElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'navigation' as string,
+        }}
+      />
+      <SectionElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'section' as string,
+        }}
+      />
+      <TableElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'table' as string,
+        }}
+      />
+      <TimeElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'time' as string,
+        }}
+      />
+    </>
+  );
+}
+
 const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
+    /*
     let TLLocate: string = `#${pageName}-${blockName} section.${blockName}-foreground nav ol li button`;
     let TLButton = document.querySelector(TLLocate) as HTMLButtonElement;
 
@@ -57,6 +138,7 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
         TLButton.removeEventListener('mouseenter', onMouseEnter); //--|🠈 React runs this 'return' block right before the component re-renders or is destroyed, removing the old listener so they don't stack up! 🠈|--\\
       };
     }
+    */
   }, [pageName, blockName]);
 
   return (
@@ -95,73 +177,3 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ArchiveMain;
-//--|===|--\\
-function ComponentsElements({ info }: InfoProps) {
-  const blockName = info.blockName as 'main';
-  const pageName = info.pageName as 'components';
-  return (
-    <>
-      <ButtonElements info={{ pageName: pageName, blockName: blockName, labelName: 'button' as string }} />
-      <ArticleElements info={{ pageName: pageName, blockName: blockName, labelName: 'article' as string }} />
-      <AsideElements info={{ pageName: pageName, blockName: blockName, labelName: 'aside' as string }} />
-      <DivisionElements info={{ pageName: pageName, blockName: blockName, labelName: 'division' as string }} />
-      <FigureElements info={{ pageName: pageName, blockName: blockName, labelName: 'figure' as string }} />
-      <MenuElements info={{ pageName: pageName, blockName: blockName, labelName: 'menu' as string }} />
-      <NavigationElements info={{ pageName: pageName, blockName: blockName, labelName: 'navigation' as string }} />
-      <SectionElements info={{ pageName: pageName, blockName: blockName, labelName: 'section' as string }} />
-      <TableElements info={{ pageName: pageName, blockName: blockName, labelName: 'table' as string }} />
-      <TimeElements info={{ pageName: pageName, blockName: blockName, labelName: 'time' as string }} />
-    </>
-  );
-
-  let articleInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'article' as string,
-  };
-  let asideInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'aside' as string,
-  };
-  let buttonInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'button' as string,
-  };
-  let divisionInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'division' as string,
-  };
-  let figureInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'figure' as string,
-  };
-  let menuInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'menu' as string,
-  };
-  let navigationInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'navigation' as string,
-  };
-  let sectionInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'section' as string,
-  };
-  let tableInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'table' as string,
-  };
-  let timeInfo = {
-    pageName: pageName,
-    blockName: blockName,
-    labelName: 'time' as string,
-  };
-}
