@@ -41,7 +41,6 @@ function MenuAxis({ info, style, cases }: TheseProps) {
     case '[x]':
       return <li className="preview-horizontal"></li>;
     case '[y]':
-      console.log();
       return (
         <li className="preview-vertical">
           {cases.pages.map((path, index) => {
@@ -62,7 +61,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                     labelName: `${path.labelName}-select`,
                   }}
                   onClick={(): void => {
-                    selectCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                    selectCarousel(info.pageName, info.labelName, path.labelName, style.axis);
                     /* markCarousel(info.pageName, info.blockName, info.labelName, style.axis); */
                   }}
                 />

@@ -29,6 +29,11 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <MenuSelect
+          info={{
+            labelName: 'elements',
+            blockName: blockName as 'leftbar',
+            pageName: pageName as 'components',
+          }}
           style={{
             axis: '[y]',
             color: '(mono)',
@@ -78,11 +83,6 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
                 imageLink: `${directory}/time-element.svg`,
               },
             ] as Array<{ labelName: string; imageLink: string }>,
-          }}
-          info={{
-            labelName: 'elements',
-            blockName: blockName as '<leftbar>',
-            pageName: pageName as '[components]',
           }}
         />
       </section>

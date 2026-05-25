@@ -92,7 +92,26 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
   🠉|--*/
 }
 
-export function selectCarousel(pageName: string, blockName: string, labelName: string, axisStyle: '[x]' | '[y]'): number {
+export function selectCarousel(pageName: string, labelName: string, chainName: string, axisStyle: '[x]' | '[y]'): number {
+  let selectCarousel;
+  switch (axisStyle) {
+    case '[x]':
+      break;
+    case '[y]':
+      const verticalCarousel = document.querySelector(
+        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
+      ) as HTMLElement;
+      const verticalPreview = verticalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLElement;
+
+      for (let i = 0; i < verticalPreview.childElementCount; i++) {
+        let element = verticalPreview.childNodes[i] as HTMLElement;
+        console.log(i, chainName);
+        console.log(element.classList);
+      }
+
+      break;
+  }
+
   /*--|🠋
 
   let swipeCarousel;
