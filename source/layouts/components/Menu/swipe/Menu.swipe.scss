@@ -169,18 +169,6 @@
         / 48px; //--|🠈 columns 🠈|--\\
     }
   }
-  ul[class*='swipe'],
-  ol[class*='swipe'] {
-    li[class*='highlight'] {
-      opacity: 1;
-    }
-    li[class*='downplay'] {
-      opacity: 0;
-      * {
-        cursor: default;
-      }
-    }
-  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
@@ -192,5 +180,24 @@ menu[class*='swipe'] {
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+  *[class*='swipe'] {
+    [class*='highlight'],
+    [class*='downplay'] {
+      transition:
+        opacity 1500ms ease-in-out,
+        filter 750ms ease-in-out;
+      &[class*='highlight'] {
+        opacity: 1;
+        filter: blur(0px);
+      }
+      &[class*='downplay'] {
+        opacity: 0;
+        filter: blur(24px);
+        * {
+          cursor: default;
+        }
+      }
+    }
   }
 }
