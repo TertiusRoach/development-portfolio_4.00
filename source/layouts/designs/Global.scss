@@ -1,18 +1,25 @@
 //--|🠊 Global.scss 🠈|--//
-
-//--|🠊 https://picocss.com/ 🠈|--//
-//--|🠊 Consider replacing Bootstrap with the minimalistic alternative PicoCSS 🠈|--//
 @use '../../utilities/vendors/bootstrap/5.3.3/css/bootstrap.css';
 
-* {
-  & {
+html {
+  overflow: hidden;
+  * {
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
-  }
-  pre {
-    margin: 0;
+    menu {
+      list-style: none;
+    }
+    time {
+      cursor: default;
+    }
+    button {
+      outline: none;
+    }
+    select {
+      cursor: pointer;
+    }
   }
   body {
     position: relative;
@@ -20,6 +27,19 @@
       section[class*='foreground'],
       figure[class*='midground'],
       div[class*='background'] {
+        &[class*='foreground'] {
+          z-index: 2;
+          nav {
+            z-index: 5;
+          }
+        }
+        &[class*='midground'] {
+          z-index: 1;
+        }
+        &[class*='background'] {
+          z-index: 0;
+        }
+
         h1,
         h2,
         h3,
@@ -43,34 +63,9 @@
           padding: 0;
           list-style: none;
         }
-        &[class*='foreground'] {
-          z-index: 2;
+        pre {
+          margin: 0;
         }
-        &[class*='midground'] {
-          z-index: 1;
-        }
-        &[class*='background'] {
-          z-index: 0;
-        }
-      }
-    }
-  }
-  menu {
-    list-style: none;
-  }
-  time {
-    cursor: default;
-  }
-  button {
-    outline: none;
-  }
-  select {
-    cursor: pointer;
-  }
-  main[class*='main'] {
-    section {
-      nav {
-        z-index: 5;
       }
     }
   }
