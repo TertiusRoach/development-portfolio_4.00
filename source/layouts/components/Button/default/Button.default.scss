@@ -5,12 +5,11 @@
 @use './pipeline/Button_tint.scss';
 @use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
-
 button[class*='default'] {
-  @extend %button-grid;
-  @extend %button-flex;
-  @extend %button-user;
-
+  width: 100%;
+  height: 100%;
+  display: grid;
+  background: none;
   @media screen and (orientation: landscape) {
     //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
     @include Button_size.desktop-size();
@@ -29,65 +28,44 @@ button[class*='default'] {
     @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
   }
-}
-%button-user {
-  background: none;
-
-  &[class*='_top_'],
-  &[class*='_bot_'],
-  &[class*='_lef_'],
-  &[class*='_rig_'],
-  &[class*='_cen_'],
-  &[class*='_tex_'],
-  &[class*='_ico_'] {
-    .text,
-    .icon {
-      img,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        cursor: pointer;
-      }
-    }
-    .back {
-      canvas {
-        display: none;
-      }
-    }
-  }
-}
-%button-flex {
-  width: 100%;
-  height: 100%;
-
-  .text {
-    z-index: 3;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  .icon {
-    z-index: 2;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+  div[class='text'],
+  div[class='icon'],
+  div[class='back'] {
+    p,
+    h6,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1,
     img {
-      height: 100%;
-      display: flex;
+      cursor: pointer;
+    }
+    canvas {
+      display: none;
+    }
+    &.text {
+      z-index: 3;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.icon {
+      z-index: 2;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      img {
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+        mask-position: center;
+        mask-repeat: no-repeat;
+      }
+    }
+    &.back {
+      z-index: 1;
       overflow: hidden;
-      mask-position: center;
-      mask-repeat: no-repeat;
     }
   }
-  .back {
-    z-index: 1;
-    overflow: hidden;
-  }
-}
-%button-grid {
-  display: grid;
   &[class*='_top_'] {
     .text,
     .back {
