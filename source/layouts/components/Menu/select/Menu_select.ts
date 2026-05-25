@@ -1,4 +1,4 @@
-//--|🠊 Menu_swipe.ts 🠈|--\\
+//--|🠊 Menu_select.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../functions';
@@ -93,7 +93,9 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
 }
 
 export function selectCarousel(pageName: string, labelName: string, chainName: string, axisStyle: '[x]' | '[y]'): number {
-  let selectCarousel;
+  let prevView: string;
+  let nextView: string;
+  let selectCarousel: string = '';
   switch (axisStyle) {
     case '[x]':
       break;
@@ -105,10 +107,18 @@ export function selectCarousel(pageName: string, labelName: string, chainName: s
 
       for (let i = 0; i < verticalPreview.childElementCount; i++) {
         let element = verticalPreview.childNodes[i] as HTMLElement;
-        console.log(i, chainName);
-        console.log(element.classList);
+        if (element.classList[0].includes(chainName)) {
+          selectCarousel = arabicToRoman(i + 1) as string;
+          break;
+        }
       }
+      prevView = verticalCarousel.classList[0] as string;
+      nextView = `carousel-vertical_${selectCarousel}` as string;
 
+      if (prevView !== nextView) {
+        verticalCarousel.classList.add(nextView);
+        verticalCarousel.classList.remove(prevView);
+      }
       break;
   }
 
