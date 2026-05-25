@@ -153,6 +153,7 @@
   }
 }
 @mixin red-color {
+  /*
   &[class*='_top_'],
   &[class*='_bot_'] {
   }
@@ -165,8 +166,10 @@
   }
   &[class*='_ico_'] {
   }
+  */
 }
 @mixin gre-color {
+  /*
   &[class*='_top_'],
   &[class*='_bot_'] {
   }
@@ -179,8 +182,10 @@
   }
   &[class*='_ico_'] {
   }
+  */
 }
 @mixin blu-color {
+  /*
   &[class*='_top_'],
   &[class*='_bot_'] {
   }
@@ -193,4 +198,5 @@
   }
   &[class*='_ico_'] {
   }
+  */
 }

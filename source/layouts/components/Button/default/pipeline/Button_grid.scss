@@ -118,9 +118,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If no image is provided then use text instead--\\
-    }
   }
   &[class*='_bot_'] {
     &[class*='_def'] {
@@ -243,9 +240,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If no image is provided then use text instead--\\
-    }
   }
   &[class*='_lef_'] {
     &[class*='_def'] {
@@ -332,10 +326,6 @@
         grid-template-rows: 1fr 36px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr auto 32px auto 1fr; //--|🠈 columns 🠈|--\\
       }
-    }
-    &[class*='_alt'] {
-      //--If no image is provided--\\
-      //--Match the _tex_ layout without the fixed width--\\
     }
   }
   &[class*='_tex_'] {
@@ -454,10 +444,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If the text exceeds a certain number of characters--\\
-      //--This might differ depending on the font size, test it. For funzies--\\
-    }
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
@@ -543,9 +529,6 @@
           grid-template-columns: 1fr 18px 1fr; //--|🠈 columns 🠈|--\\
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no picture is provided, turn this into a text frame--\\
     }
   }
 }
@@ -668,9 +651,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If no image is provided then use text instead--\\
-    }
   }
   &[class*='_bot_'] {
     &[class*='_def'] {
@@ -793,9 +773,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If no image is provided then use text instead--\\
-    }
   }
   &[class*='_lef_'] {
     &[class*='_def'] {
@@ -882,10 +859,6 @@
         grid-template-rows: 1fr 32px 1fr; //--|🠈 rows 🠈|--\\
         grid-template-columns: 1fr auto 28px auto 1fr; //--|🠈 columns 🠈|--\\
       }
-    }
-    &[class*='_alt'] {
-      //--If no image is provided--\\
-      //--Match the _tex_ layout without the fixed width--\\
     }
   }
   &[class*='_tex_'] {
@@ -1004,10 +977,6 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If the text exceeds a certain number of characters--\\
-      //--This might differ depending on the font size, test it. For funzies--\\
-    }
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
@@ -1093,9 +1062,6 @@
           grid-template-columns: 1fr 16px 1fr; //--|🠈 columns 🠈|--\\
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no picture is provided, turn this into a text frame--\\
     }
   }
 }

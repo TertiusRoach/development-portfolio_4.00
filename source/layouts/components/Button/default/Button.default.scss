@@ -7,7 +7,6 @@
 @use './pipeline/Button_corn.scss';
 
 button[class*='default'] {
-  display: grid;
   @extend %button-grid;
   @extend %button-flex;
   @extend %button-user;
@@ -59,24 +58,6 @@ button[class*='default'] {
         display: none;
       }
     }
-    /*
-    .highlight & {
-      opacity: 1;
-    }
-    .downplay & {
-      opacity: 0;
-      img,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        cursor: default;
-      }
-    }
-    */
   }
 }
 %button-flex {
@@ -106,6 +87,7 @@ button[class*='default'] {
   }
 }
 %button-grid {
+  display: grid;
   &[class*='_top_'] {
     .text,
     .back {

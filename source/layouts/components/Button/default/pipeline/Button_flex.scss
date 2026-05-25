@@ -362,6 +362,7 @@
       .icon {
         opacity: 0;
         display: none;
+        background: none;
       }
       h1 {
         padding: 2px 16px;
@@ -454,6 +455,7 @@
       .text {
         opacity: 0;
         display: none;
+        background: none;
       }
 
       &[class*='one_'] {
@@ -944,7 +946,7 @@
       .icon {
         opacity: 0;
         display: none;
-        // background: none;
+        background: none;
       }
       h1 {
         padding: 2px 16px;
@@ -1037,6 +1039,7 @@
       .text {
         opacity: 0;
         display: none;
+        background: none;
       }
 
       &[class*='one_'] {
