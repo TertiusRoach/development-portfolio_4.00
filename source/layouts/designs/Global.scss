@@ -6,6 +6,7 @@ html {
     overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
     position: relative; //--|🠈 Overlay Elements 🠈|--\\
     div[id*='body'] {
+      display: grid; //--|🠈 Sets Grid 🠈|--\\
       section[class*='foreground'],
       figure[class*='midground'],
       div[class*='background'] {
@@ -27,6 +28,7 @@ html {
         padding: 0;
         border: none;
         box-sizing: border-box;
+
         menu {
           list-style: none;
         }
@@ -65,6 +67,12 @@ html {
         pre {
           margin: 0;
         }
+      }
+      > * {
+        display: inherit; //--|🠈 Only direct children are affected to preserve layout boundaries. 🠈|--//
+        grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        //--|🠊 All direct children inherit the parent layout mode and are placed into the same grid coordinates (row 1–4, col 1–4). 🠈|--//
+        //--|🠊 This intentionally stacks child elements on top of each other, enabling controlled view switching via state, z-index, or visibility. 🠈|--//
       }
     }
   }

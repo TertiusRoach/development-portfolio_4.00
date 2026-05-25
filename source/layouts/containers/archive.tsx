@@ -1,8 +1,6 @@
 //--|🠊 archive.tsx 🠈|--\\
-
 //--|🠋 Dependencies 🠋|--\\
-import React from 'react';
-import { Suspense, lazy, useState, useEffect } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const ArchiveMain = lazy(() => import('./Archive/Main/ArchiveMain'));

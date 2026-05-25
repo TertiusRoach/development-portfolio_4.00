@@ -1,13 +1,12 @@
 //--|🠊 ArchiveLeftbar.tsx 🠈|--\\
-//--|🠋 Functions 🠋|--\\
-import { selectHeader } from './ArchiveFunctions';
-import { stripBrackets } from '../../../scripts/archive';
-
-//--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/archive/carousel/Menu.carousel';
-
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
+
+//--|🠋 Components 🠋|--\\
+import MenuSelect from '../../../components/Menu/select/Menu.select';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/archive';
 
 interface InfoProps {
   info: {
@@ -30,6 +29,33 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
+        <MenuSelect
+          style={{
+            axis: '[y]',
+            color: '(mono)',
+            shade: '~light~',
+          }}
+          cases={{
+            pages: [
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/button-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/article-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/aside-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/division-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/figure-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/menu-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/navigation-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/section-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/table-element.svg',
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page/time-element.svg',
+            ] as Array<string | HTMLElement>,
+          }}
+          info={{
+            labelName: 'elements',
+            blockName: blockName as '<leftbar>',
+            pageName: pageName as '[components]',
+          }}
+        />
+
         {/* <MenuCarousel
           style={{
             axis: '[y]',

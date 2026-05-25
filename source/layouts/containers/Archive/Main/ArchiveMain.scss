@@ -1,4 +1,4 @@
-//--|🠊 ComponentsMain.scss 🠈|--\\
+//--|🠊 ArchiveMain.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
@@ -26,14 +26,13 @@
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--//
+  //--|🠋 Mobile (Layers) 🠋|--\\
   section[class*='foreground'] {
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
   }
-
   @include Mixins.portrait-grid;
 }
 main[id*='components'] {
