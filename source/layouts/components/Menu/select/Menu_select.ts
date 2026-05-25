@@ -92,12 +92,7 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
   🠉|--*/
 }
 
-export function selectCarousel(
-  pageName: string,
-  labelName: string,
-  axisStyle: '[x]' | '[y]',
-  buttonAction: 'view-prev' | 'view-next',
-): number {
+export function selectCarousel(pageName: string, blockName: string, labelName: string, axisStyle: '[x]' | '[y]'): number {
   /*--|🠋
 
   let swipeCarousel;

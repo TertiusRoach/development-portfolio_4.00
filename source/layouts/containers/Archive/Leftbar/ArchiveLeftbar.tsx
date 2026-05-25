@@ -10,12 +10,9 @@ import { stripBrackets } from '../../../scripts/archive';
 
 interface InfoProps {
   info: {
-    //--|🠋 pageName: Id that represents the application 🠋|--\\
     pageName: '[components]';
-    //--|🠋 blockName: 'Toggles between '/containers' folders. 🠋|--\\
-    blockName: '<footer>' | '<header>' | '<leftbar>' | '<main>' | '<overlay>' | '<rightbar>';
-    //--|🠋 labelName: Class name marker for all components. 🠋|--\\
-    labelName: '(default)' | string;
+    blockName: '<leftbar>';
+    labelName: '(default)';
   };
 }
 const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
