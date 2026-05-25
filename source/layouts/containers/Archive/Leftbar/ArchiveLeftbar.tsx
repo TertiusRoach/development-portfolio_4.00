@@ -20,18 +20,17 @@ interface InfoProps {
   };
 }
 const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
-  // const svgPath: Array<string> = ;
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <MenuCarousel
+        {/* <MenuCarousel
           style={{
             axis: '[y]',
             view: '-lef-',
@@ -58,8 +57,8 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName as '<leftbar>',
             pageName: pageName as '[components]',
           }}
-        />
-        <h1 className="display-1">{`<ComponentsLeftbar>`}</h1>
+        /> */}
+        {/* <h1 className="display-1">{`<ComponentsLeftbar>`}</h1> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

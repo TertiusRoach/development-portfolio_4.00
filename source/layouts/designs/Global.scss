@@ -1,27 +1,10 @@
 //--|🠊 Global.scss 🠈|--//
 @use '../../utilities/vendors/bootstrap/5.3.3/css/bootstrap.css';
 html {
-  overflow: hidden;
-  * {
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-sizing: border-box;
-    menu {
-      list-style: none;
-    }
-    time {
-      cursor: default;
-    }
-    button {
-      outline: none;
-    }
-    select {
-      cursor: pointer;
-    }
-  }
+  overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
   body {
-    position: relative;
+    overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
+    position: relative; //--|🠈 Overlay Elements 🠈|--\\
     div[id*='body'] {
       section[class*='foreground'],
       figure[class*='midground'],
@@ -38,7 +21,24 @@ html {
         &[class*='background'] {
           z-index: 0;
         }
-
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+        menu {
+          list-style: none;
+        }
+        time {
+          cursor: default;
+        }
+        button {
+          outline: none;
+        }
+        select {
+          cursor: pointer;
+        }
         h1,
         h2,
         h3,

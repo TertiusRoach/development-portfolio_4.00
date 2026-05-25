@@ -5,7 +5,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
   %foreground {
-    menu[class*='carousel'] {
+    menu[class*='select'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }

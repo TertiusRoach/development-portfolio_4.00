@@ -1,8 +1,9 @@
-//--|🠊 Menu.swipe.scss 🠈|--\\
+//--|🠊 Menu.select.scss 🠈|--\\
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  ul[class='hori-X-swipe'] {
+  ul[class='hori-X-select'] {
+    /*
     position: relative;
     li[class*='preview'] {
       z-index: 1;
@@ -29,16 +30,6 @@
         display: inherit; //--|🠈 display: flex 🠈|--\\
         align-items: center;
         justify-content: center;
-        h3 {
-          span {
-            b {
-              font-weight: 800;
-            }
-            i {
-              font-weight: 400;
-            }
-          }
-        }
       }
     }
     li[class*='horizontal'] {
@@ -146,8 +137,10 @@
           / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
       }
     }
+    */
   }
-  ol[class='vert-Y-swipe'] {
+  ol[class='vert-Y-select'] {
+    /*
     li[class*='showing'] {
       grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -178,20 +171,22 @@
       grid-template: 48px 1fr 48px //--|🠈 rows 🠈|--//
         / 48px; //--|🠈 columns 🠈|--\\
     }
+    */
   }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
 }
 
-menu[class*='swipe'] {
+menu[class*='select'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-  *[class*='swipe'] {
+  *[class*='select'] {
+    /*
     [class*='highlight'],
     [class*='downplay'] {
       transition:
@@ -209,5 +204,6 @@ menu[class*='swipe'] {
         }
       }
     }
+    */
   }
 }
