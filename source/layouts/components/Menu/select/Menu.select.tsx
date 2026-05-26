@@ -36,7 +36,6 @@ function MenuAxis({ info, style, cases }: TheseProps) {
   /*--|🠋
 
   🠉|--*/
-
   switch (style.axis) {
     case '[x]':
       return <li className="preview-horizontal"></li>;
@@ -45,7 +44,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
         <li className="preview-vertical">
           {cases.pages.map((path, index) => {
             return (
-              <div className={`${path.labelName}-view downplay`} key={index}>
+              <div className={`${path.labelName}-view highlight`} key={index}>
                 <ButtonRouting
                   style={{
                     size: '<h1>',
@@ -62,7 +61,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   }}
                   onClick={(): void => {
                     selectCarousel(info.pageName, info.labelName, path.labelName, style.axis);
-                    /* markCarousel(info.pageName, info.blockName, info.labelName, style.axis); */
+                    markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
                   }}
                 />
               </div>
@@ -92,7 +91,7 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
     /*--|🠋
     
     🠉|--*/
-    // markCarousel(pageName, blockName, labelName, style.axis);
+    markCarousel(pageName, blockName, labelName, style.axis);
   }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[style.axis];

@@ -4,6 +4,63 @@
 import { romanToArabic, arabicToRoman } from '../../functions';
 
 export function markCarousel(pageName: string, blockName: string, labelName: string, axisStyle: '[x]' | '[y]') {
+  let prevView: number;
+  let nextView: HTMLElement;
+
+  let slideMark: number;
+  let slideCount: HTMLDivElement;
+  switch (axisStyle) {
+    case '[x]':
+      break;
+    case '[y]':
+      const verticalCarousel = document.querySelector(
+        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
+      ) as HTMLElement;
+      const verticalController = document.querySelector(
+        `#${pageName}-${blockName} menu[class*="${labelName}-${blockName}_select-default"] ol[class="vert-Y-select"] li[class*="preview"]`,
+      ) as HTMLElement;
+
+      slideMark = romanToArabic(verticalCarousel.classList[0].split('_')[1]) as number;
+      slideCount = verticalController.childNodes[slideMark - 1] as HTMLDivElement;
+
+      if (verticalController.querySelector(`.downplay`) === null) {
+        prevView = 0 as number;
+      } else {
+        const previousElement = verticalController.querySelector(`.downplay`) as HTMLElement;
+        for (let i = 0; i < verticalController.childElementCount; i++) {
+          const currentElement = verticalController.children[i] as HTMLElement;
+          // console.log(previousElement.classList[0].split('-')[0]);
+          // console.log(currentChild);
+          if (currentElement === previousElement) {
+            prevView = i;
+            console.log(prevView);
+            break;
+          }
+        }
+      }
+      // prevView = Array.from(verticalController).find((li) => li.classList.contains('prev-view')) as number;
+
+      console.log(verticalController.childElementCount);
+      console.log(verticalController.querySelector(`.downplay`)?.classList[0].split('-')[0]);
+      // console.log(prevView);
+      // console.log(nextView);
+
+      // nextView = Array.from(verticalController).find((li) => li.classList.contains('next-view')) as HTMLElement;
+      // console.log(pageName, blockName, labelName);
+
+      slideCount.classList.add('downplay');
+      slideCount.classList.remove('highlight');
+      /*
+      const verticalCarousel = document.querySelector(
+        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
+      ) as HTMLElement;
+      const verticalController = document.querySelectorAll(
+        `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ol[class="vert-Y-swipe"] li`,
+      ) as NodeListOf<HTMLElement>;
+      */
+
+      break;
+  }
   /*--|🠋
 
   let prevView: HTMLElement;

@@ -2,8 +2,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   //--|🠋 X-axis 🠋|--\\
-  &[class*='top'],
-  &[class*='bot'] {
+  &[class*='cen'] {
     ul[class*='hori-X-select'] {
       /*
     position: relative;
@@ -155,8 +154,7 @@
   }
 
   //--|🠋 Y-axis 🠋|--\\
-  &[class*='lef'],
-  &[class*='rig'] {
+  &[class*='mid'] {
     ol[class*='vert-Y-select'] {
       height: 100svh;
       overflow-y: auto;
@@ -232,7 +230,6 @@ menu[class*='select'] {
   }
 
   *[class*='select'] {
-    /*
     [class*='highlight'],
     [class*='downplay'] {
       transition:
@@ -240,16 +237,15 @@ menu[class*='select'] {
         filter 750ms ease-in-out;
       &[class*='highlight'] {
         opacity: 1;
-        filter: blur(0px);
+        // filter: blur(0px);
       }
       &[class*='downplay'] {
-        opacity: 0;
-        filter: blur(24px);
+        opacity: 0.5;
+        // filter: blur(24px);
         * {
           cursor: default;
         }
       }
     }
-    */
   }
 }
