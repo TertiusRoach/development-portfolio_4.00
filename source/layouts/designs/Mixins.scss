@@ -6,7 +6,7 @@
   figure[class*='midground'],
   div[class*='background'] {
     width: 100%;
-    overflow: hidden;
+    height: 100svh;
     display: inherit; //--|🠈 display: grid; 🠈|--\\
     grid-template: inherit;
     grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
