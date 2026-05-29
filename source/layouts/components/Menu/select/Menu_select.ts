@@ -3,7 +3,13 @@
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../functions';
 
-export function markCarousel(pageName: string, blockName: string, labelName: string, axisStyle: '[x]' | '[y]') {
+export function markCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  axisStyle: '[x]' | '[y]',
+  showCases: number,
+) {
   /*--|🠋
 
   🠉|--*/
@@ -18,17 +24,25 @@ export function markCarousel(pageName: string, blockName: string, labelName: str
         `#${pageName}-${blockName} menu[class*="${labelName}-${blockName}_select-default"] ol[class="vert-Y-select"] li[class*="preview"]`,
       ) as HTMLElement;
 
+      let slideShow: HTMLElement;
       let slideMark = romanToArabic(verticalCarousel.classList[0].split('_')[1]) as number;
-      let slideShow = verticalController.childNodes[slideMark - 1] as HTMLElement;
       let slideCount = Array.from(verticalController.childNodes) as HTMLElement[];
 
       if (!slideCount.some((node) => node.classList.contains('downplay'))) {
         setTimeout(() => {
+          if (showCases === 0) showCases = 1;
+
+          slideShow = verticalController.childNodes[showCases - 1] as HTMLElement;
+          var chainName = slideShow.classList[0].split('-')[0] as string;
+
           slideShow.classList.add('downplay');
           slideShow.classList.remove('highlight');
+
+          selectCarousel(pageName, labelName, chainName, axisStyle);
         }, 125);
       } else {
-        let slideHide = slideCount.find((node) => node.classList.contains('downplay')) as HTMLElement;
+        slideShow = verticalController.childNodes[slideMark - 1] as HTMLElement;
+        var slideHide = slideCount.find((node) => node.classList.contains('downplay')) as HTMLElement;
 
         slideHide.classList.add('highlight');
         slideHide.classList.remove('downplay');

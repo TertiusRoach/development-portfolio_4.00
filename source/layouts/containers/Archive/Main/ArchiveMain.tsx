@@ -36,13 +36,6 @@ function ComponentsElements({ info }: InfoProps) {
   const pageName = info.pageName as 'components';
   return (
     <>
-      <ButtonElements
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: 'button' as string,
-        }}
-      />
       <ArticleElements
         info={{
           pageName: pageName,
@@ -55,6 +48,13 @@ function ComponentsElements({ info }: InfoProps) {
           pageName: pageName,
           blockName: blockName,
           labelName: 'aside' as string,
+        }}
+      />
+      <ButtonElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'button' as string,
         }}
       />
       <DivisionElements

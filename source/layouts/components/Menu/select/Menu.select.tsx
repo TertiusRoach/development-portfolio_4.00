@@ -13,20 +13,20 @@ import { markCarousel, selectCarousel } from './Menu_select';
 import './Menu.select.scss';
 
 interface TheseProps {
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
   style: {
     axis: '[x]' | '[y]';
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-cen' | 'mid-rig' | 'bot-cen' | 'mid-lef' | 'mid-cen';
   };
-
   cases: {
     pages: Array<{ labelName: string; imageLink: string }>;
-  };
-  info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
+    show: number;
   };
 
   onClick?: () => void;
@@ -61,7 +61,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   }}
                   onClick={(): void => {
                     selectCarousel(info.pageName, info.labelName, path.labelName, style.axis);
-                    markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                    markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
                   }}
                 />
               </div>
@@ -91,7 +91,8 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
     /*--|🠋
     
     🠉|--*/
-    markCarousel(pageName, blockName, labelName, style.axis);
+
+    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[style.axis];

@@ -22,8 +22,8 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
-  let directory: string =
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  let linkString: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page';
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
@@ -41,46 +41,48 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
             shade: '~light~',
           }}
           cases={{
+            show: 3,
             pages: [
               {
-                labelName: 'button',
-                imageLink: `${directory}/button-element.svg`,
-              },
-              {
                 labelName: 'article',
-                imageLink: `${directory}/article-element.svg`,
+                imageLink: `${linkString}/article-element.svg`,
               },
               {
                 labelName: 'aside',
-                imageLink: `${directory}/aside-element.svg`,
+                imageLink: `${linkString}/aside-element.svg`,
+              },
+              {
+                labelName: 'button',
+                imageLink: `${linkString}/button-element.svg`,
               },
               {
                 labelName: 'division',
-                imageLink: `${directory}/division-element.svg`,
+                imageLink: `${linkString}/division-element.svg`,
               },
+
               {
                 labelName: 'figure',
-                imageLink: `${directory}/figure-element.svg`,
+                imageLink: `${linkString}/figure-element.svg`,
               },
               {
                 labelName: 'menu',
-                imageLink: `${directory}/menu-element.svg`,
+                imageLink: `${linkString}/menu-element.svg`,
               },
               {
                 labelName: 'navigation',
-                imageLink: `${directory}/navigation-element.svg`,
+                imageLink: `${linkString}/navigation-element.svg`,
               },
               {
                 labelName: 'section',
-                imageLink: `${directory}/section-element.svg`,
+                imageLink: `${linkString}/section-element.svg`,
               },
               {
                 labelName: 'table',
-                imageLink: `${directory}/table-element.svg`,
+                imageLink: `${linkString}/table-element.svg`,
               },
               {
                 labelName: 'time',
-                imageLink: `${directory}/time-element.svg`,
+                imageLink: `${linkString}/time-element.svg`,
               },
             ] as Array<{ labelName: string; imageLink: string }>,
           }}
