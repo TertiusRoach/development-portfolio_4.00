@@ -1,7 +1,9 @@
 //--|🠊 Mixins.scss 🠈|--\\
 //--|🠊 @include Mixins.landscape-grid; 🠈|--\\
 @mixin landscape-grid {
-  display: grid;
+  width: 100vw;
+  flex: 0 0 100vw;
+  min-width: 100vw;
   section[class*='foreground'],
   figure[class*='midground'],
   div[class*='background'] {
@@ -12,6 +14,7 @@
     grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   }
 
+  display: grid;
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
@@ -155,64 +158,6 @@
     //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
     //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
   }
-}
-
-@mixin clip-menu {
-  //--|🠋 X-axis 🠋|--\\
-  /*
-  &[class*='_rig_'] {
-    clip-path: inset(0% 0% 0% calc(100% - 128px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% 0% 0% calc(100% - 64px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% 0% 0% calc(100% - 48px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-  }
-  &[class*='_bot_'] {
-    clip-path: inset(calc(100% - 128px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(calc(100% - 96px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(calc(100% - 64px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(calc(100% - 48px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-  }
-  */
-
-  //--|🠋 Y-axis 🠋|--\\
-  /*
-  &[class*='_lef_'] {
-    clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% calc(100% - 48px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-  }
-  &[class*='_top_'] {
-    clip-path: inset(0% 0% calc(100% - 128px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% 0% calc(100% - 96px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% 0% calc(100% - 64px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% 0% calc(100% - 48px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-  }
-  */
 }
 
 //--|🠊 @include Mixins.desktop-grid; 🠈|--\\

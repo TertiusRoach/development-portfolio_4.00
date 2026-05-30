@@ -1,0 +1,13 @@
+//--|🠊 Navigation.default.scss 🠈|--\\
+
+@mixin desktop-landscape {
+}
+@mixin mobile-portrait {
+}
+
+nav[class*='default'] {
+  @media screen and (orientation: landscape) {
+  }
+  @media screen and (orientation: portrait) {
+  }
+}

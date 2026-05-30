@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
 import './DefaultButton.scss';
-import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
-import ButtonDefault from '../../../../../../components/Button/default/Button.default';
-import MenuCarousel from '../../../../../../components/Menu/archive/carousel/Menu.carousel';
-import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 
 //--|🠋 Functions 🠋|--\\
 
 //--|🠋 Components 🠋|--\\
+import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import MenuCarousel from '../../../../../../components/Menu/archive/carousel/Menu.carousel';
+import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 
 interface InfoProps {
   info: {
@@ -43,7 +43,6 @@ function defaultDark({ info }: InfoProps) {
           labelName: 'thr-dark',
         }}
       />
-
       <ViewFou
         info={{
           pageName: info.pageName,
@@ -200,24 +199,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             pageName: info.pageName as '[components]',
           }}
         />
-
-        {/* <MenuCarousel
-          style={{
-            axis: '[y]',
-            view: '-rig-',
-            color: '(mono)',
-            shade: '~dark~',
-            type: '{scroll}',
-          }}
-          cases={{
-            paths: ['<h1>', '<h2>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'button',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
-          }}
-        /> */}
       </section>
       <figure className={`${info.blockName}-midground`}></figure>
       <div className={`${info.blockName}-background`}>

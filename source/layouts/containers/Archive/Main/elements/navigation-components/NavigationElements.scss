@@ -1,15 +1,37 @@
 //--|🠊 NavigationElements.scss 🠈|--\\
+@use '../../../../../designs/Mixins.scss';
 @use '../../../../../designs/Palettes.scss';
 
-@use './default-navigation/DefaultNavigation.scss';
+@mixin desktop-landscape {
+  section[class*='foreground'] {
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
+    nav[class*='default'] {
+      background: rgba(darkred, 0.25);
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+    //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
+  }
+  div[class*='background'] {
+    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
+  }
+  @include Mixins.landscape-grid;
+}
+
+@mixin mobile-portrait {
+  @include Mixins.portrait-grid;
+}
 
 section[class*='navigation'] {
-  div[class*='main_container'] {
-    @media screen and (orientation: landscape) {
-      @include DefaultNavigation.desktop-landscape;
-    }
-    @media screen and (orientation: portrait) {
-      @include DefaultNavigation.mobile-portrait;
+  div.navigation-main_container {
+    aside[class*='navigation'] {
+      @media screen and (orientation: landscape) {
+        @include desktop-landscape();
+      }
+      @media screen and (orientation: portrait) {
+        @include mobile-portrait();
+      }
     }
   }
 }

@@ -7,9 +7,7 @@ import './NavigationElements.scss';
 
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
-
-//--|🠋 Elements 🠋|--\\
-import DefaultNavigation from './default-navigation/DefaultNavigation';
+import NavigationDefault from '../../../../../components/Navigation/default/Navigation.default';
 
 interface InfoProps {
   info: {
@@ -18,7 +16,30 @@ interface InfoProps {
     labelName: string;
   };
 }
+function NavigationComponents({ info }: InfoProps) {
+  const labelName = 'default' as string;
+  const blockName = info.blockName as 'main';
+  const pageName = info.pageName as 'components';
 
+  return (
+    <aside className="default-navigation">
+      <section className={`${blockName}-foreground`}>
+        <NavigationDefault
+          //--|🠊 <nav class="default-main_navigation-default"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}>
+        <h1 className="display-1">{`<DefaultNavigation>`}</h1>
+      </div>
+    </aside>
+  );
+}
 const NavigationElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
@@ -40,17 +61,4 @@ const NavigationElements: React.FC<InfoProps> = ({ info }) => {
   );
 };
 
-function NavigationComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
-
-  return (
-    <>
-      <DefaultNavigation info={defaultInfo} />
-    </>
-  );
-}
 export default NavigationElements;
