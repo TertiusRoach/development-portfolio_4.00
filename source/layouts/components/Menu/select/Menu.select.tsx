@@ -1,5 +1,5 @@
-//--|🠊 Menu.carousel.tsx 🠈|--\\
 //--|🠊 Menu.swipe.tsx 🠈|--\\
+
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
