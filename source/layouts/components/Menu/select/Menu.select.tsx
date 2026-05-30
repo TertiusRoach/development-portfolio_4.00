@@ -25,8 +25,8 @@ interface TheseProps {
     view: 'top-cen' | 'mid-rig' | 'bot-cen' | 'mid-lef' | 'mid-cen';
   };
   cases: {
-    pages: Array<{ labelName: string; imageLink: string }>;
     show: number;
+    pages: Array<{ labelName: string; imageLink: string }>;
   };
 
   onClick?: () => void;

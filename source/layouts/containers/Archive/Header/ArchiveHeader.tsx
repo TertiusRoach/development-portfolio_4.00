@@ -1,7 +1,15 @@
 //--|🠊 ArchiveHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/archive';
-import markMenu from '../../../components/Menu/archive/carousel/Menu_carousel';
+import {
+  unfoldHeader,
+  unfoldLeftbar,
+  squaringHeader,
+  collapseLeftbar,
+  expandLeftbar,
+  collapseHeader,
+  expandHeader,
+} from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import MenuCarousel from '../../../components/Menu/archive/carousel/Menu.carousel';
@@ -10,6 +18,7 @@ import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 interface InfoProps {
   info: {
@@ -29,6 +38,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg';
   /* let svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>']; */
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
@@ -227,12 +238,37 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             }}
           /> */}
         </header>
-        <ArchiveNavigation
-          //--|🠊 <nav className={`${pageName}-header`}> 🠈|--\\
+
+        <NavigationDefault
+          //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
+          }}
+          style={{
+            color: '(mono)',
+            view: 'top-lef',
+            shade: '~light~',
+            image: imageLink,
+          }}
+          cases={{
+            tasks: '',
+            image: undefined,
+            view: undefined,
+          }}
+          onClick={() => {
+            if (blockName === 'header') {
+              unfoldLeftbar(pageName, 'click', 'leftbar');
+            }
+          }}
+          onMouseEnter={() => {
+            unfoldHeader(pageName, 'hover', blockName);
+          }}
+          onMouseLeave={() => {
+            setTimeout(() => {
+              squaringHeader(pageName, 'exit', blockName);
+            }, 12500);
           }}
         />
       </section>

@@ -5,7 +5,7 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
-  %foreground {
+  section[class*='foreground'] {
     header[class*='default'] {
       z-index: 2;
       width: 100%;
@@ -21,31 +21,9 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  %midground {
+  figure[class*='midground'] {
   }
-  %background {
-    header {
-      background: Palettes.$indexLand-darkMode;
-    }
-    h1 {
-      // color: red;
-      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-  }
-
-  //--|🠋 Layers 🠋|--\\
-  section[class*='foreground'],
-  figure[class*='midground'],
   div[class*='background'] {
-    &[class*='fore'] {
-      @extend %foreground;
-    }
-    &[class*='mid'] {
-      @extend %midground;
-    }
-    &[class*='back'] {
-      @extend %background;
-    }
   }
 }
 @mixin mobile-portrait {

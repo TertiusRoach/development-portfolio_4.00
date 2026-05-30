@@ -21,6 +21,9 @@ function NavigationComponents({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'components';
 
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg' as string;
+
   return (
     <aside className="default-navigation">
       <section className={`${blockName}-foreground`}>
@@ -30,6 +33,17 @@ function NavigationComponents({ info }: InfoProps) {
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
+          }}
+          style={{
+            color: '(mono)',
+            shade: '~light~',
+            view: undefined,
+            image: undefined,
+          }}
+          cases={{
+            view: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
+            image: [imageLink, imageLink, imageLink, imageLink],
+            tasks: '',
           }}
         />
       </section>

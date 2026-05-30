@@ -1,8 +1,13 @@
 //--|🠊 ArchiveFooter.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../scripts/archive';
 
-import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
+//--|🠋 Components 🠋|--\\
+import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/archive';
+import { unfoldFooter, squaringFooter } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -22,16 +27,38 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
+
   return (
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
         <footer></footer>
-        <ArchiveNavigation
-          //--|🠊 <nav className={`${pageName}-footer_${labelName}`}> 🠈|--\\
+        <NavigationDefault
+          //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
+          }}
+          style={{
+            color: '(mono)',
+            view: 'bot-rig',
+            shade: '~light~',
+            image: imageLink,
+          }}
+          cases={{
+            image: undefined,
+            view: undefined,
+            tasks: '',
+          }}
+          onMouseEnter={() => {
+            unfoldFooter(pageName, 'hover', blockName);
+          }}
+          onMouseLeave={() => {
+            setTimeout(() => {
+              squaringFooter(pageName, 'exit', blockName);
+            }, 12500);
           }}
         />
       </section>

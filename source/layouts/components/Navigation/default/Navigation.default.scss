@@ -1,21 +1,6 @@
 //--|🠊 Navigation.default.scss 🠈|--\\
 
 @mixin desktop-main {
-  ol[class*='hori-X'],
-  ul[class*='vert-Y'] {
-    li.top-lef {
-      grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    li.top-rig {
-      grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    li.bot-rig {
-      grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    li.bot-lef {
-      grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-  }
 }
 @mixin desktop-header {
 }
@@ -44,6 +29,7 @@
 nav[class*='default'] {
   @media screen and (orientation: landscape) {
     ol[class*='hori-X'] {
+      z-index: 1;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
@@ -70,9 +56,22 @@ nav[class*='default'] {
       }
     }
     ul[class*='vert-Y'] {
+      z-index: 0;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
+      // 1/1/4/4
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
+      li.top-lef {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.top-rig {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-rig {
+        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-lef {
+        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
         repeat(2, 8rem) 1fr repeat(2, 8rem) //--|🠈 rows 🠈|--//

@@ -18,7 +18,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
-    pages: Array<string | HTMLElement>;
+    pages: Array<string>;
   };
   info: {
     pageName: string;

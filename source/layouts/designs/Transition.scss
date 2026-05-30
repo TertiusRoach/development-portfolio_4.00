@@ -105,12 +105,6 @@
               transition: filter 1.5s ease-in-out;
             }
           }
-
-          ol,
-          ul,
-          menu {
-            grid-area: 1 / 1 / 3 / 2;
-          }
         }
         div[class*='-'] {
           transition:
@@ -310,11 +304,13 @@
               grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
             }
 
+            /*
             ol,
             ul {
               z-index: 0;
               grid-area: 1 / 1 / 3 / 2;
             }
+            */
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
@@ -454,44 +450,102 @@
   }
   %footer-effects {
     &[class*='expanded'] {
-      //--|🠊 backdrop-filter: blur(24px); 🠈|--\\
+      opacity: 1;
+      /* backdrop-filter: blur(32px); */
+      section[class='footer-foreground'] {
+        div[class*='-'] {
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
     }
     &[class*='unfolded'] {
-      //--|🠊 backdrop-filter: blur(12px); 🠈|--\\
+      opacity: 1;
+      /* backdrop-filter: blur(32px) brightness(0.9) saturate(1.2); */
+      section[class='header-foreground'] {
+        nav ol li,
+        nav ul li {
+          filter: blur(0);
+        }
+      }
+      div[class='footer-background'] {
+        opacity: 0;
+      }
+    }
+    &[class*='collapsed'] {
+      backdrop-filter: blur(0);
+      section[class='footer-foreground'] {
+        nav ol li,
+        nav ul li {
+          /* filter: blur(32px); */
+        }
+      }
+      div[class='footer-background'] {
+        opacity: 0;
+      }
+    }
+    &[class*='squaring'] {
+      /* backdrop-filter: blur(32px); */
       section[class='footer-foreground'] {
         nav ol li,
         nav ul li {
           filter: blur(0);
         }
-        div[class*='-'] {
-          opacity: 0;
-          //--|🠊 filter: blur(12px); 🠈|--\\
-        }
       }
       div[class='footer-background'] {
         opacity: 0;
-        div[class*='-'] {
-        }
       }
     }
   }
   %footer-transition {
-    transition: clip-path 250ms ease-in-out;
-    menu {
-      position: relative;
-      transition: top 0.25s ease-in-out;
-    }
-    section {
-      transition: clip-path 0.5s ease-in-out;
+    &[class*='expanded'],
+    &[class*='collapsed'],
+    &[class*='unfolded'],
+    &[class*='squaring'] {
+      transition:
+        clip-path 500ms ease-in-out,
+        backdrop-filter 1.5s ease-in-out;
+
+      section[class='footer-foreground'],
+      figure[class='footer-midground'],
+      div[class='footer-background'] {
+        transition: opacity 750ms ease-in-out;
+        nav {
+          menu {
+            z-index: 1;
+            button:not(:first-child) {
+              position: relative;
+              @media screen and (orientation: landscape) {
+                transition: top 500ms ease-in-out;
+              }
+              @media screen and (orientation: portrait) {
+                transition: bottom 500ms ease-in-out;
+              }
+            }
+          }
+          ol,
+          ul {
+            z-index: 0;
+            li {
+              transition: filter 1.5s ease-in-out;
+            }
+          }
+        }
+        div[class*='-'] {
+          transition:
+            filter 250ms ease-in-out,
+            opacity 500ms ease-in-out;
+        }
+      }
     }
   }
   %footer-constituents {
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
     @media screen and (orientation: landscape) {
-      //--|🠋 Desktop (Landscape) 🠋|--//
+      //--|🠋 Desktop (Landscape) 🠋|--\\
       &[class*='expanded'] {
         //--|🠊 backdrop-filter: blur(32px); 🠈|--\\
-        clip-path: polygon(0% 0rem, 100% 0rem, 100% 100%, 0% 100%);
+        clip-path: inset(0 0 0 0);
         menu {
           top: 4rem;
         }
@@ -501,7 +555,8 @@
       }
       &[class*='collapsed'] {
         backdrop-filter: blur(0px);
-        clip-path: polygon(0% calc(100% - 0px), 100% calc(100% - 0px), 100% 100%, 0% 100%);
+        // Was: polygon(0% calc(100% - 0px), 100% calc...
+        clip-path: inset(100% 0 0 0);
         menu {
           top: 0rem;
         }
@@ -511,16 +566,17 @@
       }
 
       &[class*='unfolded'] {
-        clip-path: polygon(0% calc(100% - 8rem), 100% calc(100% - 8rem), 100% 100%, 0% 100%);
+        // Was: polygon(0% calc(100% - 8rem)...
+        clip-path: inset(calc(100% - 8rem) 0 0 0);
 
         @media screen and (max-height: 768px) {
-          clip-path: polygon(0% calc(100% - 6rem), 100% calc(100% - 6rem), 100% 100%, 0% 100%);
+          clip-path: inset(calc(100% - 6rem) 0 0 0);
         }
         @media screen and (max-height: 480px) {
-          clip-path: polygon(0% calc(100% - 4rem), 100% calc(100% - 4rem), 100% 100%, 0% 100%);
+          clip-path: inset(calc(100% - 4rem) 0 0 0);
         }
         @media screen and (max-height: 360px) {
-          clip-path: polygon(0% calc(100% - 3rem), 100% calc(100% - 3rem), 100% 100%, 0% 100%);
+          clip-path: inset(calc(100% - 3rem) 0 0 0);
         }
       }
       &[class*='squaring'] {
@@ -537,8 +593,8 @@
           clip-path: inset(calc(100% - 3rem) 0 0 calc(100% - 3rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
 
-        section[class='header-foreground'] {
-          header {
+        section[class='footer-foreground'] {
+          footer {
             clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
             @media screen and (max-height: 768px) {
               //--|🠋 96px for Squares 🠋|--\\
@@ -572,12 +628,6 @@
             @media screen and (max-height: 360px) {
               grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
             }
-
-            ol,
-            ul {
-              z-index: 0;
-              grid-area: 1 / 1 / 3 / 2;
-            }
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
@@ -586,7 +636,6 @@
     @media screen and (orientation: portrait) {
       &[class*='unfolded'] {
         clip-path: polygon(0% calc(100% - 12rem), 100% calc(100% - 12rem), 100% 100%, 0% 100%);
-
         @media screen and (max-width: 768px) {
           clip-path: polygon(0% calc(100% - 10rem), 100% calc(100% - 10rem), 100% 100%, 0% 100%);
         }

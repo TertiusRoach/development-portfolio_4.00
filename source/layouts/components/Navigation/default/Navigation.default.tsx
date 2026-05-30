@@ -18,141 +18,158 @@ interface TheseProps {
     labelName: 'default' | string;
   };
   style: {
+    image: string | undefined;
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
+    view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
   };
+  cases: {
+    image: Array<string> | undefined;
+    view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
+    tasks: '';
+  };
+
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 }
-const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
+function VerticalButtons(
+  info: TheseProps['info'],
+  style: TheseProps['style'],
+  cases: TheseProps['cases'],
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
+) {
+  switch (true) {
+    case cases.view !== undefined:
+      return cases.view.map((path, index) => (
+        <li className={path} key={index}>
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: style.color,
+              shade: style.shade,
+              image: cases.image?.[index] as string,
+              view: path as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef',
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${path}`,
+            }}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onDoubleClick={onDoubleClick}
+          />
+        </li>
+      ));
+    case style.view !== undefined:
+      return (
+        <li className={style.view}>
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              view: style.view,
+              color: style.color,
+              shade: style.shade,
+              image: style.image as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${style.view}`,
+            }}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onDoubleClick={onDoubleClick}
+          />
+        </li>
+      );
+    default:
+      return null;
+  }
+}
+function HorizontalButtons(
+  info: TheseProps['info'],
+  style: TheseProps['style'],
+  cases: TheseProps['cases'],
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
+) {
+  switch (info.blockName) {
+    case 'main':
+      return NavigationMain(info, style);
+    case 'header':
+      return NavigationHeader(info, style);
+    case 'footer':
+      return NavigationFooter(info, style);
+    case 'overlay':
+      return NavigationOverlay(info, style);
+    case 'leftbar':
+      return NavigationLeftbar(info, style);
+    case 'rightbar':
+      return NavigationRightbar(info, style);
+  }
+}
+
+const NavigationDefault: React.FC<TheseProps> = ({
+  info,
+  style,
+  cases,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onDoubleClick,
+}) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg' as string;
-  switch (blockName) {
-    case 'main':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}>
-            <li className="top-lef">
-              <ButtonRouting
-                style={{
-                  image: imageLink,
-                  size: '<h1>',
-                  view: 'top-lef',
-                  color: '(mono)',
-                  shade: '~light~',
-                  type: '{button}',
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${pageName}-${blockName}-${labelName}-navigation`,
-                }}
-              />
-            </li>
-            <li className="top-rig">
-              <ButtonRouting
-                style={{
-                  image: imageLink,
-                  size: '<h1>',
-                  view: 'top-rig',
-                  color: '(mono)',
-                  shade: '~light~',
-                  type: '{button}',
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${pageName}-${blockName}-${labelName}-navigation`,
-                }}
-              />
-            </li>
-
-            <li className="bot-rig">
-              <ButtonRouting
-                style={{
-                  image: imageLink,
-                  size: '<h1>',
-                  view: 'bot-rig',
-                  color: '(mono)',
-                  shade: '~light~',
-                  type: '{button}',
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${pageName}-${blockName}-${labelName}-navigation`,
-                }}
-              />
-            </li>
-
-            <li className="bot-lef">
-              <ButtonRouting
-                style={{
-                  image: imageLink,
-                  size: '<h1>',
-                  view: 'bot-lef',
-                  color: '(mono)',
-                  shade: '~light~',
-                  type: '{button}',
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${pageName}-${blockName}-${labelName}-navigation`,
-                }}
-              />
-            </li>
-          </ul>
-        </nav>
-      );
-    case 'header':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}></ul>
-        </nav>
-      );
-    case 'footer':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}></ul>
-        </nav>
-      );
-    case 'overlay':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}></ul>
-        </nav>
-      );
-    case 'leftbar':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}></ul>
-        </nav>
-      );
-    case 'rightbar':
-      return (
-        <nav className={`${labelName}-${blockName}_navigation-default`}>
-          <ol className={`hori-X-${labelName}`}></ol>
-          <ul className={`vert-Y-${labelName}`}></ul>
-        </nav>
-      );
-  }
-
   return (
     <nav className={`${labelName}-${blockName}_navigation-default`}>
-      <ol className={`hori-X-${labelName}`}></ol>
-      <ul className={`vert-Y-${labelName}`}></ul>
+      <ol className={`hori-X-${blockName}`}>
+        {HorizontalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
+      </ol>
+      <ul className={`vert-Y-${blockName}`}>
+        {VerticalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
+      </ul>
     </nav>
   );
+};
+
+let NavigationMain = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Main> Loaded!');
+  return <></>;
+};
+let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Header> Loaded!');
+  return <></>;
+};
+let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Footer> Loaded!');
+  return <></>;
+};
+let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Overlay> Loaded!');
+  return <></>;
+};
+let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Leftbar> Loaded!');
+  return <></>;
+};
+let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style']) => {
+  // console.log('<Rightbar> Loaded!');
+  return <></>;
 };
 export default NavigationDefault;

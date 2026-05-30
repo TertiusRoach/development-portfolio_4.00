@@ -15,170 +15,6 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
-export function changeNumerals(thisCount: number, numType: 'roman' | 'arabic'): string {
-  return '';
-}
-export function romanNumerals(): Array<string> {
-  return [
-    'O', // 0 (usually left empty)
-    'I',
-    'II',
-    'III',
-    'IV',
-    'V',
-    'VI',
-    'VII',
-    'VIII',
-    'IX',
-    'X',
-    'XI',
-    'XII',
-    'XIII',
-    'XIV',
-    'XV',
-    'XVI',
-    'XVII',
-    'XVIII',
-    'XIX',
-    'XX',
-    'XXI',
-    'XXII',
-    'XXIII',
-    'XXIV',
-    'XXV',
-    'XXVI',
-    'XXVII',
-    'XXVIII',
-    'XXIX',
-    'XXX',
-    'XXXI',
-    'XXXII',
-    'XXXIII',
-    'XXXIV',
-    'XXXV',
-    'XXXVI',
-    'XXXVII',
-    'XXXVIII',
-    'XXXIX',
-    'XL',
-    'XLI',
-    'XLII',
-    'XLIII',
-    'XLIV',
-    'XLV',
-    'XLVI',
-    'XLVII',
-    'XLVIII',
-    'XLIX',
-    'L',
-    'LI',
-    'LII',
-    'LIII',
-    'LIV',
-    'LV',
-    'LVI',
-    'LVII',
-    'LVIII',
-    'LIX',
-    'LX',
-    'LXI',
-    'LXII',
-    'LXIII',
-    'LXIV',
-    'LXV',
-    'LXVI',
-    'LXVII',
-    'LXVIII',
-    'LXIX',
-    'LXX',
-    'LXXI',
-    'LXXII',
-    'LXXIII',
-    'LXXIV',
-    'LXXV',
-    'LXXVI',
-    'LXXVII',
-    'LXXVIII',
-    'LXXIX',
-    'LXXX',
-    'LXXXI',
-    'LXXXII',
-    'LXXXIII',
-    'LXXXIV',
-    'LXXXV',
-    'LXXXVI',
-    'LXXXVII',
-    'LXXXVIII',
-    'LXXXIX',
-    'XC',
-    'XCI',
-    'XCII',
-    'XCIII',
-    'XCIV',
-    'XCV',
-    'XCVI',
-    'XCVII',
-    'XCVIII',
-    'XCIX',
-    'C',
-    'CI',
-    'CII',
-    'CIII',
-    'CIV',
-    'CV',
-    'CVI',
-    'CVII',
-    'CVIII',
-    'CIX',
-    'CX',
-    'CXI',
-    'CXII',
-    'CXIII',
-    'CXIV',
-    'CXV',
-    'CXVI',
-    'CXVII',
-    'CXVIII',
-    'CXIX',
-    'CXX',
-    'CXXI',
-    'CXXII',
-    'CXXIII',
-    'CXXIV',
-    'CXXV',
-    'CXXVI',
-    'CXXVII',
-    'CXXVIII',
-    'CXXIX',
-    'CXXX',
-    'CXXXI',
-    'CXXXII',
-    'CXXXIII',
-    'CXXXIV',
-    'CXXXV',
-    'CXXXVI',
-    'CXXXVII',
-    'CXXXVIII',
-    'CXXXIX',
-    'CXL',
-    'CXLI',
-    'CXLII',
-    'CXLIII',
-    'CXLIV',
-    'CXLV',
-    'CXLVI',
-    'CXLVII',
-    'CXLVIII',
-    'CXLIX',
-    'CL',
-    'CLI',
-    'CLII',
-    'CLIII',
-    'CLIV',
-    'CLV',
-    'CLVI',
-  ];
-}
 
 //--|===|--\\
 export function hideOverlay(pageName: string, blockName: string) {
@@ -367,6 +203,53 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
     }
   }, 125);
 }
+export function unfoldFooter(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  setTimeout(() => {
+    const disableElement: string = 'disabled-footer';
+    const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
+    const leftbarElement: string = `#${pageName}-body aside[class*="leftbar"]`;
+
+    let footerContainer = document.querySelector(locateElement) as HTMLElement;
+    let leftbarContainer = document.querySelector(leftbarElement) as HTMLElement;
+    switch (blockAction) {
+      case 'click':
+        if (!leftbarContainer.classList.contains(disableElement)) {
+          leftbarContainer.classList.add(disableElement);
+
+          if (footerContainer.classList.contains('collapsed') || footerContainer.classList.contains('expanded')) {
+            footerContainer.classList.add('unfolded');
+            footerContainer.classList.remove('collapsed', 'expanded');
+          }
+
+          setTimeout(() => {
+            footerContainer.classList.remove(disableElement);
+          }, 125);
+        }
+
+        console.log(`|🠊 Clicked on <${blockName}> to unfold <footer> 🠈|`);
+        break;
+      case 'hover':
+        if (!footerContainer.classList.contains(disableElement)) {
+          footerContainer.classList.add(disableElement);
+
+          if (footerContainer.classList.contains('collapsed') || footerContainer.classList.contains('squaring')) {
+            footerContainer.classList.add('unfolded');
+            footerContainer.classList.remove('collapsed', 'squaring');
+          }
+
+          setTimeout(() => {
+            footerContainer.classList.remove(disableElement);
+          }, 125);
+          console.log(`|🠊 Hovered on <${blockName}> to unfold <footer> 🠈|`);
+        }
+        break;
+      case 'exit':
+        console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
+        break;
+    }
+  }, 125);
+}
+
 export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-leftbar';
@@ -459,6 +342,48 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
           headerContainer.classList.add('squaring');
           headerContainer.classList.remove('unfolded');
         }
+        console.log(`|🠊 Left <button> in <${blockName}> to unfold <header> 🠈|`);
+        break;
+    }
+  }, 125);
+}
+export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  setTimeout(() => {
+    const disableElement: string = 'disabled-footer';
+    const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
+    const leftbarElement: string = `#${pageName}-body aside[class*="leftbar"]`;
+
+    let footerContainer = document.querySelector(locateElement) as HTMLElement;
+    let leftbarContainer = document.querySelector(leftbarElement) as HTMLElement;
+    switch (blockAction) {
+      case 'click':
+        if (footerContainer.classList.contains('unfolded') || footerContainer.classList.contains('expanded')) {
+          footerContainer.classList.add('squaring');
+          footerContainer.classList.remove('unfolded', 'expanded');
+        }
+        console.log(`|🠊 Clicked on <${blockName}> to square <footer> 🠈|`);
+        break;
+      case 'hover':
+        if (!footerContainer.classList.contains(disableElement)) {
+          footerContainer.classList.add(disableElement);
+
+          if (footerContainer.classList.contains('collapsed') || footerContainer.classList.contains('squaring')) {
+            footerContainer.classList.add('unfolded');
+            footerContainer.classList.remove('collapsed', 'squaring');
+          }
+
+          setTimeout(() => {
+            footerContainer.classList.remove(disableElement);
+          }, 125);
+        }
+        console.log(`|🠊 Hovered on <${blockName}> to square <footer> 🠈|`);
+        break;
+      case 'exit':
+        if (footerContainer.classList.contains('unfolded') && leftbarContainer.classList.contains('collapsed')) {
+          footerContainer.classList.add('squaring');
+          footerContainer.classList.remove('unfolded');
+        }
+        console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
         break;
     }
   }, 125);

@@ -24,10 +24,9 @@ interface TheseProps {
     role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
   };
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
-  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
-
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 
   onBlur?: () => void;
   onFocus?: () => void;
@@ -45,16 +44,16 @@ const ButtonDefault: React.FC<TheseProps> = ({
   info,
   style,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onDoubleClick,
   /*  
   onBlur,  
   onFocus,  
   onMouseUp,  
   onTouchEnd,  
   onMouseDown,  
-  onMouseEnter,
   onTouchStart,  
-  onMouseLeave,  
-  onDoubleClick,  
   onAnimationEnd,  
   onTransitionEnd,  
   onKeyUp,  
@@ -259,6 +258,9 @@ const ButtonDefault: React.FC<TheseProps> = ({
   return (
     <button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onDoubleClick={onDoubleClick}
       id={info.labelName || undefined}
       aria-disabled={style.type === '{disabled}'}
       className={`default-button ${createClass(style as TheseProps['style'])}`}

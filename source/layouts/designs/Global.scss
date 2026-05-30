@@ -12,9 +12,6 @@ html {
       div[class*='background'] {
         &[class*='foreground'] {
           z-index: 2;
-          nav {
-            z-index: 5;
-          }
         }
         &[class*='midground'] {
           z-index: 1;
