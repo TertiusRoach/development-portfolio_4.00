@@ -61,10 +61,6 @@ function VerticalButtons(
               blockName: info.blockName,
               labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${path}`,
             }}
-            onClick={onClick}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            onDoubleClick={onDoubleClick}
           />
         </li>
       ));
@@ -96,28 +92,20 @@ function VerticalButtons(
       return null;
   }
 }
-function HorizontalButtons(
-  info: TheseProps['info'],
-  style: TheseProps['style'],
-  cases: TheseProps['cases'],
-  onClick: TheseProps['onClick'],
-  onMouseEnter: TheseProps['onMouseEnter'],
-  onMouseLeave: TheseProps['onMouseLeave'],
-  onDoubleClick: TheseProps['onDoubleClick'],
-) {
+function HorizontalButtons(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
   switch (info.blockName) {
     case 'main':
-      return NavigationMain(info, style);
+      return NavigationMain(info, style, cases);
     case 'header':
-      return NavigationHeader(info, style);
+      return NavigationHeader(info, style, cases);
     case 'footer':
-      return NavigationFooter(info, style);
+      return NavigationFooter(info, style, cases);
     case 'overlay':
-      return NavigationOverlay(info, style);
+      return NavigationOverlay(info, style, cases);
     case 'leftbar':
-      return NavigationLeftbar(info, style);
+      return NavigationLeftbar(info, style, cases);
     case 'rightbar':
-      return NavigationRightbar(info, style);
+      return NavigationRightbar(info, style, cases);
   }
 }
 
@@ -138,9 +126,7 @@ const NavigationDefault: React.FC<TheseProps> = ({
 
   return (
     <nav className={`${labelName}-${blockName}_navigation-default`}>
-      <ol className={`hori-X-${blockName}`}>
-        {HorizontalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
-      </ol>
+      <ol className={`hori-X-${blockName}`}>{HorizontalButtons(info, style, cases)}</ol>
       <ul className={`vert-Y-${blockName}`}>
         {VerticalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
       </ul>
@@ -148,27 +134,51 @@ const NavigationDefault: React.FC<TheseProps> = ({
   );
 };
 
-let NavigationMain = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Main> Loaded!');
   return <></>;
 };
-let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Header> Loaded!');
   return <></>;
 };
-let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Footer> Loaded!');
   return <></>;
 };
-let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Overlay> Loaded!');
   return <></>;
 };
-let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Leftbar> Loaded!');
   return <></>;
 };
-let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style']) => {
+let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
   // console.log('<Rightbar> Loaded!');
   return <></>;
 };
