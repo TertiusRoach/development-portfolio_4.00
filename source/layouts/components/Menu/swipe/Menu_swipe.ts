@@ -74,24 +74,37 @@ export function markCarousel(
       slideCount = verticalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLDivElement;
 
       if (verticalCarousel.classList[0] === 'carousel-vertical_I') {
+        //--|🠊 Hide TOP Button 🠈|--\\
         nextView.classList.add('highlight');
         nextView.classList.remove('downplay');
 
         prevView.classList.add('downplay');
         prevView.classList.remove('highlight');
+        setTimeout(() => {
+          console.log('Hide TOP Button', showCases);
+        }, 125);
       } else if (slideMark === slideCount.childElementCount) {
+        //--|🠊 Hide BOT Button 🠈|--\\
         nextView.classList.add('downplay');
         nextView.classList.remove('highlight');
 
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
+        setTimeout(() => {
+          console.log('Hide BOT Button', showCases);
+        }, 125);
       } else {
+        //--|🠊 Show TOP & BOT Buttons 🠈|--\\
         nextView.classList.add('highlight');
         nextView.classList.remove('downplay');
 
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
+        setTimeout(() => {
+          console.log('Show TOP & BOT Buttons', showCases);
+        }, 125);
       }
+
       break;
   }
 }
