@@ -18,6 +18,7 @@ interface TheseProps {
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
+    show: number;
     pages: Array<string>;
   };
   info: {
@@ -54,7 +55,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
                 }}
               />
             </div>
@@ -75,7 +76,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
                 }}
               />
             </div>
@@ -130,7 +131,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
               }}
             />
           </li>
@@ -151,7 +152,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                markCarousel(info.pageName, info.blockName, info.labelName, style.axis);
+                markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
               }}
             />
           </li>
@@ -176,7 +177,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   };
 
   useEffect(() => {
-    markCarousel(pageName, blockName, labelName, style.axis);
+    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[style.axis];

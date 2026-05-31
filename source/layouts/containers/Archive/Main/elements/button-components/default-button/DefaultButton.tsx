@@ -7,10 +7,9 @@ import './DefaultButton.scss';
 //--|🠋 Functions 🠋|--\\
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
-import ButtonDefault from '../../../../../../components/Button/default/Button.default';
-import MenuCarousel from '../../../../../../components/Menu/archive/carousel/Menu.carousel';
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
+import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
 
 interface InfoProps {
   info: {
@@ -145,6 +144,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             shade: '~dark~',
           }}
           cases={{
+            show: 1,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
           info={{
@@ -160,6 +160,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             shade: '~light~',
           }}
           cases={{
+            show: 7,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
           info={{

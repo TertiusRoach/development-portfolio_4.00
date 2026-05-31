@@ -2,7 +2,13 @@
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../functions';
 
-export function markCarousel(pageName: string, blockName: string, labelName: string, axisStyle: '[x]' | '[y]') {
+export function markCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  axisStyle: '[x]' | '[y]',
+  showCases: number,
+) {
   /*--|🠋
 
   🠉|--*/
