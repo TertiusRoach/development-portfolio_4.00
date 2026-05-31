@@ -18,7 +18,7 @@ import { animateGrid, defineButton } from './Section_launch';
 import { viewBlock, viewText, axiosError } from '../../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../../Button/archive/default/Button.default';
+import ButtonDefault from '../../../Button/ARCHIVE/default/Button.default';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {
