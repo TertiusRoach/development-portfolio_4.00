@@ -7,6 +7,7 @@ import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
 import { markCarousel, swipeCarousel } from './Menu_swipe';
+import { romanToArabic, arabicToRoman } from '../../functions';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.swipe.scss';
@@ -55,7 +56,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
+                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
                 }}
               />
             </div>
@@ -76,7 +77,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                  markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
+                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
                 }}
               />
             </div>
@@ -131,7 +132,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
               }}
             />
           </li>
@@ -152,7 +153,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
               }}
             />
           </li>
@@ -177,7 +178,60 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   };
 
   useEffect(() => {
-    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
+    /*--|🠋
+
+  🠉|--*/
+    switch (style.axis) {
+      case '[y]':
+        const verticalCarousel = document.querySelector(
+          `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
+        ) as HTMLElement;
+        const verticalElements = document.querySelector(
+          `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"] div[class*="container"]`,
+        ) as HTMLElement;
+        const verticalController = document.querySelectorAll(
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ol[class="vert-Y-swipe"] li`,
+        ) as NodeListOf<HTMLElement>;
+
+        let prevView = Array.from(verticalController).find((li) => li.classList.contains('prev-view')) as HTMLElement;
+        let nextView = Array.from(verticalController).find((li) => li.classList.contains('next-view')) as HTMLElement;
+
+        let slideMark = romanToArabic(verticalCarousel.classList[0].split('_')[1]) as number;
+        let slideCount = verticalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLDivElement;
+
+        let firstChild: string = 'I';
+        let showChild: string = arabicToRoman(cases.show);
+        let lastChild: string = arabicToRoman(verticalElements.childElementCount);
+
+        verticalCarousel.classList.remove(`carousel-vertical_I`);
+        if (`carousel-vertical_${firstChild}` === `carousel-vertical_${showChild}`) {
+          //--|🠊 Hide TOP Button 🠈|--\\
+          nextView.classList.add('highlight');
+          nextView.classList.remove('downplay');
+
+          prevView.classList.add('downplay');
+          prevView.classList.remove('highlight');
+          verticalCarousel.classList.add(`carousel-vertical_${firstChild}`);
+        } else if (`carousel-vertical_${lastChild}` === `carousel-vertical_${showChild}`) {
+          //--|🠊 Hide BOT Button 🠈|--\\
+          prevView.classList.add('highlight');
+          prevView.classList.remove('downplay');
+
+          nextView.classList.add('downplay');
+          nextView.classList.remove('highlight');
+
+          verticalCarousel.classList.add(`carousel-vertical_${lastChild}`);
+          console.log(slideMark, slideCount, verticalCarousel);
+        } else {
+          //--|🠊 Show TOP and BOT Button 🠈|--\\
+          nextView.classList.add('highlight');
+          nextView.classList.remove('downplay');
+
+          prevView.classList.add('highlight');
+          prevView.classList.remove('downplay');
+          verticalCarousel.classList.add(`carousel-vertical_${showChild}`);
+        }
+    }
   }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[style.axis];

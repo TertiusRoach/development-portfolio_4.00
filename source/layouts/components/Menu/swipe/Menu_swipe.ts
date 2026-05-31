@@ -6,8 +6,8 @@ export function markCarousel(
   pageName: string,
   blockName: string,
   labelName: string,
-  axisStyle: '[x]' | '[y]',
   showCases: number,
+  axisStyle: '[x]' | '[y]',
 ) {
   /*--|🠋
 
