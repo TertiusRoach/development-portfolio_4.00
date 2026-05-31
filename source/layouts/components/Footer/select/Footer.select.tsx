@@ -1,4 +1,4 @@
-//--|🠊 Menu.select.tsx 🠈|--\\
+//--|🠊 Footer.select.tsx 🠈|--\\
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
-import { markCarousel, selectCarousel } from './Menu_select';
+import { markCarousel, selectCarousel } from './Footer_select';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.select.scss';
@@ -36,6 +36,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
   /*--|🠋
 
   🠉|--*/
+  /*
   switch (style.axis) {
     case '[x]':
       return <li className="preview-horizontal"></li>;
@@ -70,13 +71,19 @@ function MenuAxis({ info, style, cases }: TheseProps) {
         </li>
       );
   }
+  */
 }
 
-const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
+const FooterSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
+  /*--|🠋
+  
+  🠉|--*/
 
+  return <></>;
+  /*
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
     '[x]': 'ul',
@@ -88,9 +95,6 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
   };
 
   useEffect(() => {
-    /*--|🠋
-    
-    🠉|--*/
 
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
@@ -103,5 +107,6 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
       </ListItem>
     </menu>
   );
+  */
 };
-export default MenuSelect;
+export default FooterSelect;

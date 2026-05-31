@@ -1,4 +1,4 @@
-//--|🠊 Menu_select.ts 🠈|--\\
+//--|🠊 Footer_select.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 import { romanToArabic, arabicToRoman } from '../../functions';
@@ -11,8 +11,6 @@ export function markCarousel(
   showCases: number,
 ) {
   /*--|🠋
-
-  🠉|--*/
   switch (axisStyle) {
     case '[x]':
       break;
@@ -52,6 +50,8 @@ export function markCarousel(
       }
       break;
   }
+
+  🠉|--*/
 }
 
 export function selectCarousel(pageName: string, labelName: string, chainName: string, axisStyle: '[x]' | '[y]'): number {
