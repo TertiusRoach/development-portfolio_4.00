@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import NavigationClocking from '../../../components/Navigation/Overtime/review/clocking/Navigation.clocking';
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
-import MenuClocking from '../../../components/Menu/review/clocking/Menu.clocking';
+import MenuClocking from '../../../components/Menu/ARCHIVE/clocking/Menu.clocking';
 
 interface InfoProps {
   info: {

@@ -4,10 +4,10 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import FormLogin from '../../../components/Form/login/Form.login';
-import MenuLanding from '../../../components/Menu/review/landing/Menu.landing';
+import MenuLanding from '../../../components/Menu/ARCHIVE/landing/Menu.landing';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
-import FigureRotation from '../../../components/Figure/archive/rotation/Figure.rotation';
+import FigureRotation from '../../../components/Figure/ARCHIVE/rotation/Figure.rotation';
 import NavigationLanding from '../../../components/Navigation/Landing/Navigation.landing';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//

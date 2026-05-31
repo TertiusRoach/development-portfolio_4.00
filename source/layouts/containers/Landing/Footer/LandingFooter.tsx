@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import SectionBlocked from '../../../components/Section/Landing/blocked/Section.blocked';
-import MenuLanding from '../../../components/Menu/review/landing/Menu.landing';
+import MenuLanding from '../../../components/Menu/ARCHIVE/landing/Menu.landing';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
