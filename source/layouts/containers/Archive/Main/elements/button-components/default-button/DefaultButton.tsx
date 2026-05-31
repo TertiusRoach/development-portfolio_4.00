@@ -144,7 +144,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             shade: '~dark~',
           }}
           cases={{
-            show: 3,
+            show: 1,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
           info={{
@@ -160,7 +160,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             shade: '~light~',
           }}
           cases={{
-            show: 3,
+            show: 7,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
           info={{

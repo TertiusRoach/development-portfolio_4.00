@@ -90,9 +90,6 @@ export function markCarousel(
 
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
-        setTimeout(() => {
-          console.log('Hide BOT Button', showCases);
-        }, 125);
       } else {
         //--|🠊 Show TOP & BOT Buttons 🠈|--\\
         nextView.classList.add('highlight');
@@ -100,9 +97,6 @@ export function markCarousel(
 
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
-        setTimeout(() => {
-          console.log('Show TOP & BOT Buttons', showCases);
-        }, 125);
       }
 
       break;

@@ -12,7 +12,7 @@ import {
 } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/archive/carousel/Menu.carousel';
+import MenuCarousel from '../../../components/Menu/ARCHIVE/carousel/Menu.carousel';
 import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
@@ -57,6 +57,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               labelName: 'button',
             }}
             cases={{
+              show: 0,
               pages: [
                 '<Default_Button>',
                 '<Routing_Button>',
