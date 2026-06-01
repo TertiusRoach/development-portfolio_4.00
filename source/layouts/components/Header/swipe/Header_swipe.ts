@@ -34,6 +34,60 @@ export function markCarousel(
 
     return () => observer.disconnect();
   };
+
+  switch (axisStyle) {
+    case '[x]':
+      break;
+    case '[y]':
+      const chainBlock: string = stripBrackets(chainName, '<>');
+      const verticalController = document.querySelector(
+        `#${pageName}-${blockName} header[class*="header_swipe"] ol[class*="vert-Y-swipe"] li[class*="showing-vertical"]`,
+      ) as HTMLElement;
+
+      let locateYReference: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
+      loadingElement(locateYReference, (verticalReference) => {
+        let nextView: string = verticalReference.classList[0];
+        let prevView: string = verticalController.classList[0];
+
+        verticalController.classList.replace(prevView, nextView);
+
+        console.log('Swipe to', verticalReference);
+      });
+      break;
+  }
+}
+
+export function loadCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  chainName: string,
+  axisStyle: '[x]' | '[y]',
+) {
+  const loadingElement = (selector: string, callback: (element: HTMLElement) => void): (() => void) => {
+    const existing = document.querySelector<HTMLElement>(selector);
+
+    if (existing) {
+      callback(existing);
+      return () => {};
+    }
+
+    const observer = new MutationObserver(() => {
+      const element = document.querySelector<HTMLElement>(selector);
+
+      if (element) {
+        callback(element);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  };
   /*--|🠋
 
   🠉|--*/
@@ -43,14 +97,22 @@ export function markCarousel(
       break;
     case '[y]':
       const chainBlock: string = stripBrackets(chainName, '<>');
-      const locateYController: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
-      const verticalController = document.querySelector(locateYController);
-      loadingElement(locateYController, (verticalController) => {
+      const verticalController = document.querySelector(
+        `#${pageName}-${blockName} header[class*="header_swipe"] ol[class*="vert-Y-swipe"] li[class*="showing-vertical"]`,
+      ) as HTMLElement;
+
+      let locateYReference: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
+      loadingElement(locateYReference, (verticalReference) => {
         setTimeout(() => {
-          console.log(verticalController);
-          console.log('<HeaderSwipe> Loaded');
-          console.log(pageName, blockName, labelName, stripBrackets(chainName, '<>'), axisStyle);
-        }, 750);
+          let nextView: string = verticalReference.classList[0];
+          let prevView: string = verticalController.classList[0];
+
+          verticalController.classList.replace(prevView, nextView);
+
+          console.log(verticalReference);
+          // Can you add an event listener on verticalReference.
+          // When there's a class change then run markCarousel again.
+        }, 250);
       });
       break;
   }
