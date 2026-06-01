@@ -12,13 +12,13 @@ import {
 } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/ARCHIVE/carousel/Menu.carousel';
+import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
-import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+import HeaderSwipe from '../../../components/Header/swipe/Header.swipe';
 
 interface InfoProps {
   info: {
@@ -35,210 +35,124 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'archive';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
+  const menuStyle = { axis: '[x]', color: '(mono)', shade: '~dark~' } as const;
+
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg';
-  /* let svgPath: Array<string> = ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>']; */
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <header className={`${pageName}-carousels-default_header I`}>
-          <MenuSwipe
-            style={{
-              axis: '[x]',
-              color: '(mono)',
-              shade: '~dark~',
-            }}
-            info={{
-              pageName: pageName as 'components',
-              blockName: blockName as 'header',
-              labelName: 'button',
-            }}
-            cases={{
-              show: 0,
-              pages: [
-                '<Default_Button>',
-                '<Routing_Button>',
-                '<Cleaned_Button>',
-                '<Stretch_Button>',
-                '<Profile_Button>',
-              ] as Array<string>,
-            }}
-          />
-
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Button>', '<Routing_Button>', '<Profile_Button>', '<Stretch_Button>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'button',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Article>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'article',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Aside>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'aside',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Division>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'division',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Figure>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'figure',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Menu>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'menu',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Navigation>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'navigation',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Section>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'section',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Table>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'table',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-          {/* <MenuCarousel
-            style={{
-              axis: '[x]',
-              view: '-top-',
-              color: '(mono)',
-              shade: '~dark~',
-              type: '{scroll}',
-            }}
-            cases={{
-              paths: ['<Default_Time>'] as Array<string>,
-            }}
-            info={{
-              labelName: 'time',
-              blockName: blockName as '<header>',
-              pageName: pageName as '[components]',
-            }}
-          /> */}
-        </header>
+        <HeaderSwipe
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          cases={{
+            axis: '[y]',
+            show: 0,
+            menus: [
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'article', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Article>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'aside', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Aside>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'button', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: [
+                    '<Default_Button>',
+                    '<Routing_Button>',
+                    '<Cleaned_Button>',
+                    '<Stretch_Button>',
+                    '<Profile_Button>',
+                  ] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'division', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Carousel_Division>', '<Squaring_Division>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'figure', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Figure>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'menu', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Select_Menu>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'menu', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Swipe_Menu>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'navigation', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Navigation>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'section', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Section>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'table', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Table>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'time', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Default_Time>'] as Array<string>,
+                }}
+              />,
+            ],
+            chain: '<leftbar>',
+          }}
+        />
 
         <NavigationDefault
           //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\

@@ -44,7 +44,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
         <li className="preview-vertical">
           {cases.pages.map((path, index) => {
             return (
-              <div className={`${path.labelName}-view highlight`} key={index}>
+              <div key={index} className={`${path.labelName}-view highlight`}>
                 <ButtonRouting
                   style={{
                     size: '<h1>',
@@ -91,7 +91,6 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
     /*--|🠋
     
     🠉|--*/
-
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
