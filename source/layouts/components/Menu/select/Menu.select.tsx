@@ -1,5 +1,4 @@
 //--|🠊 Menu.select.tsx 🠈|--\\
-
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -38,10 +37,10 @@ function MenuAxis({ info, style, cases }: TheseProps) {
   🠉|--*/
   switch (style.axis) {
     case '[x]':
-      return <li className="preview-horizontal"></li>;
+      return <li className="showing-horizontal_I"></li>;
     case '[y]':
       return (
-        <li className="preview-vertical">
+        <li className="showing-vertical_I">
           {cases.pages.map((path, index) => {
             return (
               <div key={index} className={`${path.labelName}-view highlight`}>
@@ -60,7 +59,10 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                     labelName: `${path.labelName}-select`,
                   }}
                   onClick={(): void => {
-                    selectCarousel(info.pageName, info.labelName, path.labelName, style.axis);
+                    //--|🠊 This order is mandatory 🠈|--\\
+                    //--|🠋 Step 1: Select Carousel 🠋|--\\
+                    selectCarousel(info.pageName, info.blockName, info.labelName, path.labelName, style.axis);
+                    //--|🠋 Step 2: Mark Carousel 🠋|--\\
                     markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
                   }}
                 />

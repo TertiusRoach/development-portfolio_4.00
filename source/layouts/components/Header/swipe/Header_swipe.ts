@@ -21,9 +21,9 @@ export function markCarousel(
       const chainBlock = stripBrackets(chainName, '<>');
       setTimeout(() => {
         const test = document.querySelector(`#${pageName}-${chainBlock} menu[class*="${chainBlock}"]`);
-        console.log(test);
-        console.log('<HeaderSwipe> Loaded');
-        console.log(pageName, blockName, labelName, stripBrackets(chainName, '<>'), axisStyle);
+        // console.log(test);
+        // console.log('<HeaderSwipe> Loaded');
+        // console.log(pageName, blockName, labelName, stripBrackets(chainName, '<>'), axisStyle);
       }, 125);
       break;
   }

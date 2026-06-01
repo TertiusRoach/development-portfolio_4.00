@@ -21,12 +21,12 @@ export function markCarousel(
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
       ) as HTMLElement;
       const verticalController = document.querySelector(
-        `#${pageName}-${blockName} menu[class*="${labelName}-${blockName}_select-default"] ol[class="vert-Y-select"] li[class*="preview"]`,
+        `#${pageName}-${blockName} menu[class*="${labelName}-${blockName}_select-default"] ol[class="vert-Y-select"] li[class*="showing"]`,
       ) as HTMLElement;
 
       let slideShow: HTMLElement;
-      let slideMark = romanToArabic(verticalCarousel.classList[0].split('_')[1]) as number;
       let slideCount = Array.from(verticalController.childNodes) as HTMLElement[];
+      let slideMark = romanToArabic(verticalCarousel.classList[0].split('_')[1]) as number;
 
       if (!slideCount.some((node) => node.classList.contains('downplay'))) {
         setTimeout(() => {
@@ -38,7 +38,7 @@ export function markCarousel(
           slideShow.classList.add('downplay');
           slideShow.classList.remove('highlight');
 
-          selectCarousel(pageName, labelName, chainName, axisStyle);
+          selectCarousel(pageName, blockName, labelName, chainName, axisStyle);
         }, 125);
       } else {
         slideShow = verticalController.childNodes[slideMark - 1] as HTMLElement;
@@ -54,7 +54,13 @@ export function markCarousel(
   }
 }
 
-export function selectCarousel(pageName: string, labelName: string, chainName: string, axisStyle: '[x]' | '[y]'): number {
+export function selectCarousel(
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  chainName: string,
+  axisStyle: '[x]' | '[y]',
+): number {
   let prevView: string;
   let nextView: string;
   let selectCarousel: string = '';
@@ -66,11 +72,18 @@ export function selectCarousel(pageName: string, labelName: string, chainName: s
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
       ) as HTMLElement;
       const verticalPreview = verticalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLElement;
+      const verticalController = document.querySelector(
+        `#${pageName}-${blockName} menu[class*="${blockName}"] ol[class="vert-Y-select"] li[class*="showing-vertical"]`,
+      ) as HTMLElement;
 
+      // let prevView: string = ;
       for (let i = 0; i < verticalPreview.childElementCount; i++) {
-        let element = verticalPreview.childNodes[i] as HTMLElement;
-        if (element.classList[0].includes(chainName)) {
+        let viewPage = verticalPreview.childNodes[i] as HTMLElement;
+        if (viewPage.classList[0].includes(chainName)) {
           selectCarousel = arabicToRoman(i + 1) as string;
+
+          verticalController.classList.remove(verticalController.classList[0]);
+          verticalController.classList.add(`showing-vertical_${selectCarousel}`);
           break;
         }
       }
