@@ -76,7 +76,6 @@ export function selectCarousel(
         `#${pageName}-${blockName} menu[class*="${blockName}"] ol[class="vert-Y-select"] li[class*="showing-vertical"]`,
       ) as HTMLElement;
 
-      // let prevView: string = ;
       for (let i = 0; i < verticalPreview.childElementCount; i++) {
         let viewPage = verticalPreview.childNodes[i] as HTMLElement;
         if (viewPage.classList[0].includes(chainName)) {

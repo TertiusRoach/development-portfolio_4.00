@@ -10,6 +10,30 @@ export function markCarousel(
   chainName: string,
   axisStyle: '[x]' | '[y]',
 ) {
+  const loadingElement = (selector: string, callback: (element: HTMLElement) => void): (() => void) => {
+    const existing = document.querySelector<HTMLElement>(selector);
+
+    if (existing) {
+      callback(existing);
+      return () => {};
+    }
+
+    const observer = new MutationObserver(() => {
+      const element = document.querySelector<HTMLElement>(selector);
+
+      if (element) {
+        callback(element);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  };
   /*--|🠋
 
   🠉|--*/
@@ -18,13 +42,16 @@ export function markCarousel(
     case '[x]':
       break;
     case '[y]':
-      const chainBlock = stripBrackets(chainName, '<>');
-      setTimeout(() => {
-        const test = document.querySelector(`#${pageName}-${chainBlock} menu[class*="${chainBlock}"]`);
-        // console.log(test);
-        // console.log('<HeaderSwipe> Loaded');
-        // console.log(pageName, blockName, labelName, stripBrackets(chainName, '<>'), axisStyle);
-      }, 125);
+      const chainBlock: string = stripBrackets(chainName, '<>');
+      const locateYController: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
+      const verticalController = document.querySelector(locateYController);
+      loadingElement(locateYController, (verticalController) => {
+        setTimeout(() => {
+          console.log(verticalController);
+          console.log('<HeaderSwipe> Loaded');
+          console.log(pageName, blockName, labelName, stripBrackets(chainName, '<>'), axisStyle);
+        }, 750);
+      });
       break;
   }
 }
