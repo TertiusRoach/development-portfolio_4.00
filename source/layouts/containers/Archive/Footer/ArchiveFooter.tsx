@@ -31,7 +31,16 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
 
   return (
-    <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+    <footer
+      id={`${pageName}-${blockName}`}
+      className={`${labelName}-${blockName} ${stateName}`}
+      onMouseEnter={() => {
+        unfoldFooter(pageName, 'hover', blockName);
+      }}
+      onMouseLeave={() => {
+        squaringFooter(pageName, 'exit', blockName);
+      }}
+    >
       <section className={`${blockName}-foreground`}>
         <footer></footer>
         <NavigationDefault
@@ -52,20 +61,29 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
             view: undefined,
             tasks: '',
           }}
-          onMouseEnter={() => {
-            unfoldFooter(pageName, 'hover', blockName);
-          }}
-          onMouseLeave={() => {
-            setTimeout(() => {
-              squaringFooter(pageName, 'exit', blockName);
-            }, 12500);
-          }}
         />
       </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<ComponentsFooter>`}</h1>
-      </div>
+      <figure className={`${blockName}-midground`}>
+        <article className={`${labelName}-${blockName}_article-update`}>
+          <section>
+            <header>
+              <div>
+                <img src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg" />
+              </div>
+            </header>
+            <footer>
+              <h3>
+                Copied REACT
+                <br />
+                component to
+                <br />
+                clipboard.
+              </h3>
+            </footer>
+          </section>
+        </article>
+      </figure>
+      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ComponentsFooter>`}</h1> */}</div>
     </footer>
   );
 };

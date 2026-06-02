@@ -1,76 +1,76 @@
 //--|🠊 default-button/DefaultFunctions.ts 🠈|--\\
 
-async function copyCode(button: HTMLElement): Promise<string> {
-  let textToCopy: string = '';
+async function copyCode(button: HTMLButtonElement): Promise<string> {
   try {
+    let textToCopy: string = '';
     switch (true) {
       case button.classList[1].includes('one'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewOne(button, '~dark~') as string;
+          textToCopy = copyOne(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewOne(button, '~light~') as string;
+          textToCopy = copyOne(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('two'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewTwo(button, '~dark~') as string;
+          textToCopy = copyTwo(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewTwo(button, '~light~') as string;
+          textToCopy = copyTwo(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('thr'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewThr(button, '~dark~') as string;
+          textToCopy = copyThr(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewThr(button, '~light~') as string;
+          textToCopy = copyThr(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('fou'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewFou(button, '~dark~') as string;
+          textToCopy = copyFou(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewFou(button, '~light~') as string;
+          textToCopy = copyFou(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('fiv'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewFiv(button, '~dark~') as string;
+          textToCopy = copyFiv(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewFiv(button, '~light~') as string;
+          textToCopy = copyFiv(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('six'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewSix(button, '~dark~') as string;
+          textToCopy = copySix(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewSix(button, '~light~') as string;
+          textToCopy = copySix(button, '~light~') as string;
         }
         break;
       case button.classList[1].includes('par'):
         //--|🠊 Separate by Shade 🠈|--\\
         if (button.classList[1].includes('_dar_')) {
-          textToCopy = viewSev(button, '~dark~') as string;
+          textToCopy = copySev(button, '~dark~') as string;
         } else if (button.classList[1].includes('_lig_')) {
-          textToCopy = viewSev(button, '~light~') as string;
+          textToCopy = copySev(button, '~light~') as string;
         }
         break;
     }
+    updateMessage();
     await navigator.clipboard.writeText(textToCopy);
-
-    return 'Code copied to clipboard';
+    return textToCopy as string;
   } catch (err) {
-    console.error('Failed to copy: ', err);
-    return 'Failed to copy code';
+    console.error('|🠊 Failed to copy:', err, ' 🠈|');
+    return '|🠊 Failed to copy code 🠈|';
   }
 }
 
-const viewOne = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   console.log('Successfully copied:', button.classList[1]);
 
   if (shade === '~dark~') {
@@ -333,7 +333,7 @@ const viewOne = (button: HTMLElement, shade: '~dark~' | '~light~') => {
     }
   }
 };
-const viewTwo = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copyTwo = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -594,7 +594,7 @@ const viewTwo = (button: HTMLElement, shade: '~dark~' | '~light~') => {
     }
   }
 };
-const viewThr = (button: HTMLElement, shade: '~dark~' | '~light~'): string | undefined => {
+const copyThr = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -855,7 +855,7 @@ const viewThr = (button: HTMLElement, shade: '~dark~' | '~light~'): string | und
     }
   }
 };
-const viewFou = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copyFou = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -1116,7 +1116,7 @@ const viewFou = (button: HTMLElement, shade: '~dark~' | '~light~') => {
     }
   }
 };
-const viewFiv = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copyFiv = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -1377,7 +1377,7 @@ const viewFiv = (button: HTMLElement, shade: '~dark~' | '~light~') => {
     }
   }
 };
-const viewSix = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copySix = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -1639,7 +1639,7 @@ const viewSix = (button: HTMLElement, shade: '~dark~' | '~light~') => {
     }
   }
 };
-const viewSev = (button: HTMLElement, shade: '~dark~' | '~light~') => {
+const copySev = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
   if (shade === '~dark~') {
     switch (true) {
       case button.classList[1].includes('_top_'):
@@ -1903,4 +1903,16 @@ const viewSev = (button: HTMLElement, shade: '~dark~' | '~light~') => {
   }
 };
 
+let updateMessage = () => {
+  const disableElement: string = 'disabled-footer';
+  const footerElement = document.getElementById('components-footer') as HTMLElement;
+  if (!footerElement.classList.contains(disableElement)) {
+    footerElement.classList.add(disableElement);
+    footerElement.classList.replace('squaring', 'expanded');
+    setTimeout(() => {
+      footerElement.classList.replace('expanded', 'squaring');
+      footerElement.classList.remove(disableElement);
+    }, 3000);
+  }
+};
 export default copyCode;

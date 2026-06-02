@@ -45,6 +45,38 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
+        <NavigationDefault
+          //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            color: '(mono)',
+            view: 'top-lef',
+            shade: '~light~',
+            image: imageLink,
+          }}
+          cases={{
+            tasks: '',
+            image: undefined,
+            view: undefined,
+          }}
+          onClick={() => {
+            if (blockName === 'header') {
+              unfoldLeftbar(pageName, 'click', 'leftbar');
+            }
+          }}
+          onMouseEnter={() => {
+            unfoldHeader(pageName, 'hover', blockName);
+          }}
+          onMouseLeave={() => {
+            setTimeout(() => {
+              squaringHeader(pageName, 'exit', blockName);
+            }, 6250);
+          }}
+        />
         <HeaderSwipe
           info={{
             pageName: pageName,
@@ -143,39 +175,6 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
               />,
             ],
             chain: '<leftbar>',
-          }}
-        />
-
-        <NavigationDefault
-          //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            color: '(mono)',
-            view: 'top-lef',
-            shade: '~light~',
-            image: imageLink,
-          }}
-          cases={{
-            tasks: '',
-            image: undefined,
-            view: undefined,
-          }}
-          onClick={() => {
-            if (blockName === 'header') {
-              unfoldLeftbar(pageName, 'click', 'leftbar');
-            }
-          }}
-          onMouseEnter={() => {
-            unfoldHeader(pageName, 'hover', blockName);
-          }}
-          onMouseLeave={() => {
-            setTimeout(() => {
-              squaringHeader(pageName, 'exit', blockName);
-            }, 12500);
           }}
         />
       </section>

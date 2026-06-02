@@ -51,7 +51,7 @@ export function markCarousel(
 
         verticalController.classList.replace(prevView, nextView);
 
-        console.log('Swipe to', verticalReference);
+        //--|🠊 console.log('Swipe to', verticalReference); 🠈|--\\
       });
       break;
   }

@@ -80,9 +80,6 @@ export function markCarousel(
 
         prevView.classList.add('downplay');
         prevView.classList.remove('highlight');
-        setTimeout(() => {
-          console.log('Hide TOP Button', showCases);
-        }, 125);
       } else if (slideMark === slideCount.childElementCount) {
         //--|🠊 Hide BOT Button 🠈|--\\
         nextView.classList.add('downplay');
