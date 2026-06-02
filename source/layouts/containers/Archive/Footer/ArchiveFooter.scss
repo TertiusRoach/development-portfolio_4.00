@@ -24,9 +24,8 @@
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       section {
         display: inherit; //--|🠊 display: grid; 🠈|--\\
-        background: rgba(black, 0.75);
         grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
+        background: rgba(black, 0.75);
         header,
         footer {
           display: flex;
@@ -126,10 +125,7 @@
     }
   }
   div[class*='background'] {
-    h1 {
-      color: Palettes.$indexLand-darkMode;
-      grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
+    background: rgba(black, 0.25);
   }
 }
 @mixin mobile-portrait {

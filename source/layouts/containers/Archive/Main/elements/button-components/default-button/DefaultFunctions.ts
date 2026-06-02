@@ -1911,8 +1911,10 @@ let updateMessage = () => {
     footerElement.classList.replace('squaring', 'expanded');
     setTimeout(() => {
       footerElement.classList.replace('expanded', 'squaring');
+    }, 1250);
+    setTimeout(() => {
       footerElement.classList.remove(disableElement);
-    }, 3000);
+    }, 1500);
   }
 };
 export default copyCode;
