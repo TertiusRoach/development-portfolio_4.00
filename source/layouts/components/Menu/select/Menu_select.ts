@@ -53,7 +53,6 @@ export function markCarousel(
       break;
   }
 }
-
 export function selectCarousel(
   pageName: string,
   blockName: string,
@@ -61,8 +60,12 @@ export function selectCarousel(
   chainName: string,
   axisStyle: '[x]' | '[y]',
 ): number {
+  /*--|🠋
+
+  🠉|--*/
   let prevView: string;
   let nextView: string;
+  let returnPreview: number = 0;
   let selectCarousel: string = '';
   switch (axisStyle) {
     case '[x]':
@@ -83,6 +86,8 @@ export function selectCarousel(
 
           verticalController.classList.remove(verticalController.classList[0]);
           verticalController.classList.add(`showing-vertical_${selectCarousel}`);
+
+          returnPreview = i + 1;
           break;
         }
       }
@@ -95,53 +100,5 @@ export function selectCarousel(
       }
       break;
   }
-
-  /*--|🠋
-
-  let swipeCarousel;
-  switch (axisStyle) {
-    case '[x]':
-      const horizontalCarousel = document.querySelector(
-        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ul[class="hori-X-axis"] li[class*="carousel-horizontal"]`,
-      ) as HTMLElement;
-      swipeCarousel = swipeWindow(labelName, horizontalCarousel as HTMLElement, buttonAction);
-      break;
-    case '[y]':
-      const verticalCarousel = document.querySelector(
-        `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
-      ) as HTMLElement;
-      swipeCarousel = swipeWindow(labelName, verticalCarousel as HTMLElement, buttonAction);
-      break;
-  }
-  return swipeCarousel as number;
-
-  🠉|--*/
-
-  return 0;
+  return returnPreview as number;
 }
-
-const selectWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction: 'view-prev' | 'view-next') => {
-  /*--|🠋
-
-  const mainIdentifier: string = mainCarousel.classList[0];
-  const mainPosition: string = mainIdentifier.split('_')[1];
-
-  let slideMark: number = romanToArabic(mainCarousel.classList[0].split('_')[1]);
-  let slideCount = mainCarousel.querySelector(`div[class="${labelName}-main_container`) as HTMLDivElement;
-
-  if (buttonAction === 'view-prev' && mainPosition !== 'I') {
-    let mainDestination: number = romanToArabic(mainPosition) - 1;
-    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
-    mainCarousel.classList.add(mainDesignation);
-    mainCarousel.classList.remove(mainIdentifier);
-    return mainDestination as number;
-  } else if (buttonAction === 'view-next' && slideCount.childElementCount !== slideMark) {
-    let mainDestination: number = romanToArabic(mainPosition) + 1;
-    let mainDesignation = `${mainIdentifier.split('_')[0]}_${arabicToRoman(mainDestination)}`;
-    mainCarousel.classList.add(mainDesignation);
-    mainCarousel.classList.remove(mainIdentifier);
-    return mainDestination as number;
-  }
-
-  🠉|--*/
-};

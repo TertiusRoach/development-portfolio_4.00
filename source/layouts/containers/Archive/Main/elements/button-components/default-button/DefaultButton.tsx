@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 
 //--|🠋 Functions 🠋|--\\
+import copyCode from './DefaultFunctions';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
@@ -232,6 +233,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -247,6 +251,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -264,6 +271,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -279,6 +289,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -296,6 +309,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -312,6 +328,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -327,6 +346,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -349,6 +371,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -364,6 +389,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -381,6 +409,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -396,6 +427,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -413,6 +447,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -429,6 +466,9 @@ let ViewOne = ({ info }: InfoProps) => {
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -444,6 +484,9 @@ let ViewOne = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -471,8 +514,10 @@ let ViewTwo = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -491,6 +536,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -507,6 +555,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -525,6 +576,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -541,6 +595,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -559,6 +616,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -575,6 +635,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -598,6 +661,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -614,6 +680,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -632,6 +701,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -648,6 +720,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -666,6 +741,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -683,6 +761,9 @@ let ViewTwo = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -699,6 +780,9 @@ let ViewTwo = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -729,6 +813,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -745,6 +832,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -763,6 +853,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -779,6 +872,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -797,6 +893,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -814,6 +913,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -830,6 +932,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -853,6 +958,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -869,6 +977,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -887,6 +998,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -903,6 +1017,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -921,6 +1038,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -938,6 +1058,9 @@ let ViewThr = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -954,6 +1077,9 @@ let ViewThr = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -984,6 +1110,9 @@ let ViewFou = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1000,6 +1129,9 @@ let ViewFou = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1018,6 +1150,9 @@ let ViewFou = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1034,6 +1169,9 @@ let ViewFou = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1052,6 +1190,9 @@ let ViewFou = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1069,6 +1210,9 @@ let ViewFou = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1085,6 +1229,9 @@ let ViewFou = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1239,6 +1386,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1255,6 +1405,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1273,6 +1426,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1289,6 +1445,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1307,6 +1466,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1324,6 +1486,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1340,6 +1505,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1363,6 +1531,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1379,6 +1550,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1397,6 +1571,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1413,6 +1590,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1431,6 +1611,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1448,6 +1631,9 @@ let ViewFiv = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1464,6 +1650,9 @@ let ViewFiv = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1494,6 +1683,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1510,6 +1702,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1528,6 +1723,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1544,6 +1742,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1562,6 +1763,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1579,6 +1783,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1595,6 +1802,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1618,6 +1828,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1634,6 +1847,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1652,6 +1868,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1668,6 +1887,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1686,6 +1908,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1703,6 +1928,9 @@ let ViewSix = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1719,6 +1947,9 @@ let ViewSix = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1749,6 +1980,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1765,6 +1999,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1783,6 +2020,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1799,6 +2039,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1817,6 +2060,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1834,6 +2080,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1850,6 +2099,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
@@ -1873,6 +2125,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1889,6 +2144,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1907,6 +2165,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1923,6 +2184,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
           <ButtonDefault
@@ -1941,6 +2205,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1958,6 +2225,9 @@ let ViewSev = ({ info }: InfoProps) => {
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
+            }}
           />
           <ButtonDefault
             info={{
@@ -1974,6 +2244,9 @@ let ViewSev = ({ info }: InfoProps) => {
               text: 'Button Here',
 
               image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+            }}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+              copyCode(event.currentTarget as HTMLButtonElement);
             }}
           />
         </section>
