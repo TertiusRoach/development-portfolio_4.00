@@ -212,8 +212,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
 let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -231,8 +230,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -248,8 +246,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -265,8 +262,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -282,8 +278,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -299,8 +294,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -316,8 +310,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -333,8 +326,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
         </section>
@@ -355,8 +347,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -372,8 +363,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -389,8 +379,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -406,8 +395,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -423,8 +411,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -440,8 +427,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
           <ButtonDefault
@@ -457,8 +443,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
             }}
           />
         </section>
@@ -468,8 +453,7 @@ let ViewOne = ({ info }: InfoProps) => {
 let ViewTwo = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -488,7 +472,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -505,7 +489,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -522,7 +506,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -539,7 +523,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -556,7 +540,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -573,7 +557,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -590,7 +574,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
         </section>
@@ -612,7 +596,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -629,7 +613,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -646,7 +630,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -663,7 +647,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -680,7 +664,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -697,7 +681,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
           <ButtonDefault
@@ -714,7 +698,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
             }}
           />
         </section>
@@ -724,8 +708,7 @@ let ViewTwo = ({ info }: InfoProps) => {
 let ViewThr = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -744,7 +727,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -761,7 +744,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -778,7 +761,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -795,7 +778,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -812,7 +795,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -829,7 +812,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -846,7 +829,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
         </section>
@@ -868,7 +851,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -885,7 +868,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -902,7 +885,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -919,7 +902,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -936,7 +919,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -953,7 +936,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
           <ButtonDefault
@@ -970,7 +953,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
             }}
           />
         </section>
@@ -980,8 +963,7 @@ let ViewThr = ({ info }: InfoProps) => {
 let ViewFou = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -1000,7 +982,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1017,7 +999,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1034,7 +1016,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1051,7 +1033,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1068,7 +1050,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1085,7 +1067,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1102,7 +1084,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
         </section>
@@ -1124,7 +1106,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1141,7 +1123,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1158,7 +1140,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1175,7 +1157,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1192,7 +1174,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1209,7 +1191,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1226,7 +1208,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
             }}
           />
         </section>
@@ -1236,8 +1218,7 @@ let ViewFou = ({ info }: InfoProps) => {
 let ViewFiv = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -1256,7 +1237,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1273,7 +1254,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1290,7 +1271,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1307,7 +1288,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1324,7 +1305,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1341,7 +1322,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1358,7 +1339,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
         </section>
@@ -1380,7 +1361,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1397,7 +1378,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1414,7 +1395,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1431,7 +1412,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1448,7 +1429,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1465,7 +1446,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1482,7 +1463,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
             }}
           />
         </section>
@@ -1492,8 +1473,7 @@ let ViewFiv = ({ info }: InfoProps) => {
 let ViewSix = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -1512,7 +1492,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1529,7 +1509,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1546,7 +1526,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1563,7 +1543,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1580,7 +1560,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1597,7 +1577,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1614,7 +1594,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
         </section>
@@ -1636,7 +1616,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1653,7 +1633,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1670,7 +1650,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1687,7 +1667,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1704,7 +1684,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1721,7 +1701,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1738,7 +1718,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
             }}
           />
         </section>
@@ -1748,8 +1728,7 @@ let ViewSix = ({ info }: InfoProps) => {
 let ViewSev = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg';
-
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
   switch (true) {
     case shade.includes('dark'):
       return (
@@ -1768,7 +1747,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1785,7 +1764,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1802,7 +1781,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1819,7 +1798,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1836,7 +1815,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1853,7 +1832,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1870,7 +1849,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
         </section>
@@ -1892,7 +1871,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1909,7 +1888,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1926,7 +1905,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1943,7 +1922,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1960,7 +1939,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1977,7 +1956,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
           <ButtonDefault
@@ -1994,7 +1973,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: link as string,
+              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
             }}
           />
         </section>

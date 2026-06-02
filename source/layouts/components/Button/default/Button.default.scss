@@ -53,13 +53,6 @@ button[class*='default'] {
       z-index: 2;
       background-size: 100% 100%;
       background-repeat: no-repeat;
-      img {
-        height: 100%;
-        display: flex;
-        overflow: hidden;
-        mask-position: center;
-        mask-repeat: no-repeat;
-      }
     }
     &.back {
       z-index: 1;

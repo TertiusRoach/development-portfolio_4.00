@@ -1,6 +1,7 @@
 //--|🠊 default/pipeline/Button_size.scss 🠈|--\\
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
+
   div[class='text'] {
     h1 {
       font-size: 40px;
@@ -105,6 +106,25 @@
       }
     }
   }
+
+  div[class='icon'] {
+    img {
+      width: 100%;
+      height: 100%;
+      //--|🠊 Frame the Icon Mask 🠈|--\\
+      mask-mode: alpha; //--|🠈 PNG/SVG alpha masking 🠈|--\\
+      mask-size: contain; //--|🠈 Fit icon inside box 🠈|--\\
+      -webkit-mask-size: contain;
+
+      mask-repeat: no-repeat; //--|🠈 Stop tiling bleed 🠈|--\\
+      -webkit-mask-repeat: no-repeat;
+
+      mask-position: center; //--|🠈 Center icon 🠈|--\\
+      -webkit-mask-position: center;
+    }
+  }
+  /*
+  */
 }
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
