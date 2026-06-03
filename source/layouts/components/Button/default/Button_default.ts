@@ -3,10 +3,11 @@ import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
   type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
 
   text?: string;
   image?: string | null | undefined;
@@ -66,7 +67,7 @@ export function createLayout(
 }
 export function createColor(
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(red)' | '(green)' | '(blue)' | '(mono)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
 ): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -77,10 +78,13 @@ export function createColor(
 
   const colorMap: Record<string, string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
+    '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
-    '(mono)': 'mon',
+    '(yellow)': 'yel',
+    '(purple)': 'pur',
+    '(turquoise)': 'tur',
   };
 
   const classShade = shadeMap[shade];
