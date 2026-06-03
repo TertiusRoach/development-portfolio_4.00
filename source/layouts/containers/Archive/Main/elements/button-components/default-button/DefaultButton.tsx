@@ -11,6 +11,7 @@ import copyCode from './DefaultFunctions';
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 
 interface InfoProps {
   info: {
@@ -154,6 +155,33 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as '[components]',
           }}
         />
+        <DivisionCarousel
+          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+          style={{
+            axis: '[y]',
+            scope: '<two>',
+          }}
+          cases={{
+            call: defaultDark,
+          }}
+          info={{
+            labelName: 'default-darkside',
+            blockName: info.blockName as '<main>',
+            pageName: info.pageName as '[components]',
+          }}
+        />
+
+        <section className="toggle-color">
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(mono)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~light~', color: '(mono)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+        </section>
+
         <MenuSwipe
           style={{
             axis: '[y]',
@@ -168,22 +196,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             labelName: 'default-lightside',
             blockName: blockName as '<main>',
             pageName: pageName as '[components]',
-          }}
-        />
-
-        <DivisionCarousel
-          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            scope: '<two>',
-          }}
-          cases={{
-            call: defaultDark,
-          }}
-          info={{
-            labelName: 'default-darkside',
-            blockName: info.blockName as '<main>',
-            pageName: info.pageName as '[components]',
           }}
         />
         <DivisionCarousel

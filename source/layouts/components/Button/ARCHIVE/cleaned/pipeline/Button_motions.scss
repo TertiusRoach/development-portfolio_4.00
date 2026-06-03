@@ -44,7 +44,7 @@
       h4:hover,
       h5:hover,
       h6:hover {
-        color: Palettes.$grey-light;
+        color: Palettes.$gray-light;
       }
       &[class*='_text']:hover {
         ~ div[class*='_back'] p,
@@ -55,12 +55,12 @@
         ~ div[class*='_back'] h5,
         ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
-          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-dark, 1));
+          filter: drop-shadow(0 0 4px rgba(Palettes.$gray-dark, 1));
         }
         ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 2px rgba(Palettes.$grey-dark, 1));
+          filter: drop-shadow(0 0 2px rgba(Palettes.$gray-dark, 1));
           img {
-            background: Palettes.$grey-light;
+            background: Palettes.$gray-light;
           }
         }
       }
@@ -73,7 +73,7 @@
       &[class*='_icon']:hover {
         filter: drop-shadow(0 0 4px rgba(black, 1));
         img {
-          background: Palettes.$grey-light;
+          background: Palettes.$gray-light;
         }
       }
     }
@@ -92,7 +92,7 @@
       h4:hover,
       h5:hover,
       h6:hover {
-        color: Palettes.$grey-neon;
+        color: Palettes.$gray-neon;
       }
       &[class*='_text']:hover {
         ~ div[class*='_back'] p,
@@ -108,7 +108,7 @@
         ~ div[class*='_icon'] {
           filter: drop-shadow(0 0 2px rgba(black, 1));
           img {
-            background: Palettes.$grey-neon;
+            background: Palettes.$gray-neon;
           }
         }
       }
@@ -121,7 +121,7 @@
       &[class*='_icon']:hover {
         filter: drop-shadow(0 0 4px rgba(black, 1));
         img {
-          background: Palettes.$grey-neon;
+          background: Palettes.$gray-neon;
         }
       }
     }
@@ -140,7 +140,7 @@
       h4:hover,
       h5:hover,
       h6:hover {
-        color: Palettes.$grey-dark;
+        color: Palettes.$gray-dark;
       }
       &[class*='_text']:hover {
         ~ div[class*='_back'] p,
@@ -151,12 +151,12 @@
         ~ div[class*='_back'] h5,
         ~ div[class*='_back'] h6,
         ~ div[class*='_icon'] img {
-          filter: drop-shadow(0 0 4px rgba(Palettes.$grey-light, 1));
+          filter: drop-shadow(0 0 4px rgba(Palettes.$gray-light, 1));
         }
         ~ div[class*='_icon'] {
-          filter: drop-shadow(0 0 2px rgba(Palettes.$grey-light, 1));
+          filter: drop-shadow(0 0 2px rgba(Palettes.$gray-light, 1));
           img {
-            background: Palettes.$grey-dark;
+            background: Palettes.$gray-dark;
           }
         }
       }
@@ -169,7 +169,7 @@
       &[class*='_icon']:hover {
         filter: drop-shadow(0 0 4px rgba(white, 1));
         img {
-          background: Palettes.$grey-dark;
+          background: Palettes.$gray-dark;
         }
       }
     }

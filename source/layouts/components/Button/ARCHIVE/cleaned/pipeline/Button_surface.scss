@@ -10,38 +10,38 @@
   //--|🠊 display: flex; 🠈|--//
   %dar-mon {
     *[class*='_text'] {
-      color: Palettes.$grey-dark;
+      color: Palettes.$gray-dark;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-dark;
+      background: Palettes.$gray-dark;
     }
     *[class*='_back'] {
       background: none;
-      color: rgba(Palettes.$grey-dark, 0);
+      color: rgba(Palettes.$gray-dark, 0);
     }
   }
   %med-mon {
     *[class*='_text'] {
-      color: Palettes.$grey-medium;
+      color: Palettes.$gray-medium;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-medium;
+      background: Palettes.$gray-medium;
     }
     *[class*='_back'] {
       background: none;
-      color: rgba(Palettes.$grey-medium, 0);
+      color: rgba(Palettes.$gray-medium, 0);
     }
   }
   %lig-mon {
     *[class*='_text'] {
-      color: Palettes.$grey-light;
+      color: Palettes.$gray-light;
     }
     img[class*='_icon'] {
-      background: Palettes.$grey-light;
+      background: Palettes.$gray-light;
     }
     *[class*='_back'] {
       background: none;
-      color: rgba(Palettes.$grey-light, 0);
+      color: rgba(Palettes.$gray-light, 0);
     }
   }
 

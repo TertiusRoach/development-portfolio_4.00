@@ -11,7 +11,7 @@
   %dar_mon {
     *[class*='_text'] {
       span {
-        filter: drop-shadow(0 0 2px rgba(Palettes.$grey-light, 1));
+        filter: drop-shadow(0 0 2px rgba(Palettes.$gray-light, 1));
       }
     }
     &[class*='_icon'] {
@@ -29,17 +29,17 @@
       }
     }
     &[class*='_icon'] {
-      filter: drop-shadow(0 0 4px rgba(Palettes.$grey-neon, 1));
+      filter: drop-shadow(0 0 4px rgba(Palettes.$gray-neon, 1));
     }
     *[class*='_back'] {
       box-shadow: none;
-      //--|🠊 box-shadow: inset 0 0 8px rgba(Palettes.$grey-neon, 0.5); 🠈|--//
+      //--|🠊 box-shadow: inset 0 0 8px rgba(Palettes.$gray-neon, 0.5); 🠈|--//
     }
   }
   %lig-mon {
     *[class*='_text'] {
       span {
-        filter: drop-shadow(0 0 2px rgba(Palettes.$grey-dark, 1));
+        filter: drop-shadow(0 0 2px rgba(Palettes.$gray-dark, 1));
       }
     }
     &[class*='_icon'] {

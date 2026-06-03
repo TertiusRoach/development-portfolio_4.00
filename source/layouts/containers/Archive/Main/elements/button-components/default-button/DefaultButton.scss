@@ -10,6 +10,55 @@
 @mixin desk-grid {
   section[class*='foreground'] {
     display: grid;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr repeat(2, 8rem) 1fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr repeat(2, 6rem) 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr repeat(2, 4rem) 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
+    }
+
+    section[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
+        / 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        //--|🠋 64px (Left & Right) for Design 🠋|--\\
+
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
     div[class*='side-main'] {
       //--|🠊 display: flex; 🠈|--\\
       section[class*='default-main'] {
@@ -37,6 +86,24 @@
             / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
         }
       }
+    }
+  }
+}
+@mixin desk-area {
+  section[class*='foreground'] {
+    menu {
+      &[class*='darkside'] {
+        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    section[class*='toggle'] {
+      background: rgba(darkred, 0.25);
+      grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    div[class*='side-main'] {
       &[class*='dark'] {
         //--|🠊 background: black; 🠈|--\\
         grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -45,63 +112,6 @@
         //--|🠊 background: white; 🠈|--\\
         grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
-    }
-    menu[class*='default-darkside'] {
-      grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    menu[class*='default-lightside'] {
-      grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    //--|🠋 96px (Left & Right) for Design 🠋|--\\
-    grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px 1fr repeat(2, 8rem) 1fr 48px; //--|🠈 columns 🠈|--\\
-
-    @media screen and (max-height: 768px) {
-      //--|🠋 64px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px 1fr repeat(2, 6rem) 1fr 32px; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      //--|🠋 48px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 854px 🠋|--\\
-        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px 1fr repeat(2, 4rem) 1fr 24px; //--|🠈 columns 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      //--|🠋 32px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 640px 🠋|--\\
-        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
-    }
-  }
-}
-@mixin desk-flex {
-  section[class*='foreground'],
-  figure[class*='midground'],
-  div[class*='background'] {
-    height: 100svh;
-    position: absolute;
-    justify-content: center;
-  }
-  section[class*='foreground'] {
-    div[class*='darkside-main_container'],
-    div[class*='lightside-main_container'] {
-      flex-direction: column;
-      //--|🠊 display: flex; 🠈|--\\
-      section[class*='default-main'] {
-        /*
-        // height: 100%;
-        // flex: 0 0 100svh;
-        */
-      }
-    }
-  }
-}
-@mixin desk-area {
-  section[class*='foreground'] {
-    div[class*='side-main'] {
       section[class*='default-main'] {
         button[class*='_top_'] {
           grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -124,6 +134,28 @@
         button[class*='_ico_'] {
           grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
+      }
+    }
+  }
+}
+@mixin desk-flex {
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    height: 100svh;
+    position: absolute;
+    justify-content: center;
+  }
+  section[class*='foreground'] {
+    div[class*='darkside-main_container'],
+    div[class*='lightside-main_container'] {
+      flex-direction: column;
+      //--|🠊 display: flex; 🠈|--\\
+      section[class*='default-main'] {
+        /*
+        // height: 100%;
+        // flex: 0 0 100svh;
+        */
       }
     }
   }
