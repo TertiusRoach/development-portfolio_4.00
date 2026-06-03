@@ -1,6 +1,5 @@
 //--|🠊 default-button/DefaultFunctions.ts 🠈|--\\
-
-async function copyCode(button: HTMLButtonElement): Promise<string> {
+export async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
     console.log('Successfully copied:', button.classList[1]);
 
@@ -1902,6 +1901,35 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
     return '|🠊 Failed to copy code 🠈|';
   }
 }
+export function toggleColors(section: HTMLElement): Promise<string> {
+  const findTint = ([red, green, blue]: Array<boolean>): string => {
+    let tintMap: Record<string, string> = {
+      'true-false-false': 'red',
+      'false-true-false': 'gre',
+      'false-false-true': 'blu',
+      'true-true-false': 'yel',
+      'true-false-true': 'pur',
+      'false-true-true': 'tur',
+    };
+    let key: string = `${red}-${green}-${blue}`;
+    let tint: string = tintMap[key] ?? 'mon';
+
+    updateButtons(tint);
+    return tint;
+  };
+
+  return new Promise((resolve) => {
+    let booleans: Array<boolean> = [];
+    setTimeout(() => {
+      for (let i = 0; i < 3; i++) {
+        const label = section.childNodes[i] as HTMLLabelElement;
+        const input = label.childNodes[0] as HTMLInputElement;
+        booleans.push(input.checked);
+      }
+      resolve(findTint(booleans));
+    }, 125);
+  });
+}
 
 let updateMessage = () => {
   const disableElement: string = 'disabled-footer';
@@ -1917,4 +1945,22 @@ let updateMessage = () => {
     }, 1500);
   }
 };
-export default copyCode;
+let updateButtons = (color: string) => {
+  const wrapperDarkside = document.querySelectorAll(
+    '#components-main .default-darkside-main_container button[class*="default-button"]',
+  ) as NodeListOf<HTMLButtonElement>;
+  const wrapperLightside = document.querySelectorAll(
+    '#components-main .default-lightside-main_container button[class*="default-button"]',
+  ) as NodeListOf<HTMLButtonElement>;
+
+  for (let i = 0; i < 49; i++) {
+    let prevDarkClass = wrapperDarkside[i].classList[1] as string;
+    let prevLightClass = wrapperLightside[i].classList[1] as string;
+
+    let nextDarkClass = `${wrapperDarkside[i].classList[1].split('_')[0]}_${wrapperDarkside[i].classList[1].split('_')[1]}_${wrapperDarkside[i].classList[1].split('_')[2]}_${color}_${wrapperDarkside[i].classList[1].split('_')[4]}`;
+    let nextLightClass = `${wrapperLightside[i].classList[1].split('_')[0]}_${wrapperLightside[i].classList[1].split('_')[1]}_${wrapperLightside[i].classList[1].split('_')[2]}_${color}_${wrapperLightside[i].classList[1].split('_')[4]}`;
+
+    wrapperDarkside[i].classList.replace(prevDarkClass, nextDarkClass);
+    wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
+  }
+};

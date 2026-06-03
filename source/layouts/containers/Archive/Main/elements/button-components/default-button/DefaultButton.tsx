@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 
 //--|🠋 Functions 🠋|--\\
-import copyCode from './DefaultFunctions';
+import { copyCode, toggleColors } from './DefaultFunctions';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
@@ -171,13 +171,22 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           }}
         />
 
-        <section className="toggle-color">
+        <section
+          className="toggle-colors"
+          onClick={(event: React.MouseEvent<HTMLElement>): void => {
+            toggleColors(event.currentTarget as HTMLElement);
+          }}
+        >
           <LabelToggle
-            style={{ type: '{toggle}', shade: '~dark~', color: '(mono)' }}
+            style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
             info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
           />
           <LabelToggle
-            style={{ type: '{toggle}', shade: '~light~', color: '(mono)' }}
+            style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
             info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
           />
         </section>

@@ -104,14 +104,10 @@ export function loadCarousel(
       let locateYReference: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
       loadingElement(locateYReference, (verticalReference) => {
         setTimeout(() => {
+          //--|🠊 console.log(verticalReference); 🠈|--\\
           let nextView: string = verticalReference.classList[0];
           let prevView: string = verticalController.classList[0];
-
           verticalController.classList.replace(prevView, nextView);
-
-          console.log(verticalReference);
-          // Can you add an event listener on verticalReference.
-          // When there's a class change then run markCarousel again.
         }, 250);
       });
       break;

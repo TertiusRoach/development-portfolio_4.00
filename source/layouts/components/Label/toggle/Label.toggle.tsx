@@ -16,24 +16,9 @@ interface TheseProps {
   style: {
     type: '{toggle}';
     shade: '~dark~' | '~medium~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
-
-  onBlur?: () => void;
-  onFocus?: () => void;
   onClick?: () => void;
-  onMouseUp?: () => void;
-  onTouchEnd?: () => void;
-  onMouseDown?: () => void;
-  onTouchStart?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onDoubleClick?: () => void;
-  onAnimationEnd?: () => void;
-  onTransitionEnd?: () => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const LabelToggle: React.FC<TheseProps> = ({ info, style, onClick }) => {
@@ -41,7 +26,7 @@ const LabelToggle: React.FC<TheseProps> = ({ info, style, onClick }) => {
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName, labelName]);
 
   return (
     <label onClick={onClick} className={`${labelName}-${blockName}_label-toggle ${createClass(style.shade, style.color)}`}>

@@ -5,6 +5,7 @@
 @use './pipeline/Button_tint.scss';
 @use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
+
 button[class*='default'] {
   width: 100%;
   height: 100%;

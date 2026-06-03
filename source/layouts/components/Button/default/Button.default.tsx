@@ -28,6 +28,7 @@ interface TheseProps {
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 
+  /*
   onBlur?: () => void;
   onFocus?: () => void;
   onMouseUp?: () => void;
@@ -39,6 +40,7 @@ interface TheseProps {
   onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  */
 }
 const ButtonDefault: React.FC<TheseProps> = ({
   info,
