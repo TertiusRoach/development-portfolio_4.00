@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { copyCode, toggleColors } from './DefaultFunctions';
+import { copyCode, toggleColors, scrollSide } from './DefaultFunctions';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
@@ -169,6 +169,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             blockName: info.blockName as '<main>',
             pageName: info.pageName as '[components]',
           }}
+          onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+            if (event.deltaY < 0) {
+              scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+            } else if (event.deltaY > 0) {
+              scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+            }
+          }}
         />
 
         <section
@@ -220,6 +227,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             labelName: 'default-lightside',
             blockName: info.blockName as '<main>',
             pageName: info.pageName as '[components]',
+          }}
+          onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+            if (event.deltaY < 0) {
+              scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+            } else if (event.deltaY > 0) {
+              scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+            }
           }}
         />
       </section>

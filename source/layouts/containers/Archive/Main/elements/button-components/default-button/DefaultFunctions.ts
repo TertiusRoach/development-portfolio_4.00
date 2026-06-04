@@ -1,4 +1,7 @@
 //--|🠊 default-button/DefaultFunctions.ts 🠈|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { arabicToRoman, romanToArabic } from '../../../../../../components/functions';
 export async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
     console.log('Successfully copied:', button.classList[1]);
@@ -1929,6 +1932,52 @@ export function toggleColors(section: HTMLElement): Promise<string> {
       resolve(findTint(booleans));
     }, 125);
   });
+}
+export function scrollSide(element: HTMLDivElement, action: 'view-prev' | 'view-next') {
+  const carousel = element.querySelector('li') as HTMLElement;
+  const container = carousel.querySelector('div[class*="container"]') as HTMLDivElement;
+  const controller = document.querySelector(`menu[class*="${element.classList[0].split('_')[0]}"]`) as HTMLMenuElement;
+
+  const prevMenu = controller.querySelector('li[class*="prev-view"]') as HTMLElement;
+  const nextMenu = controller.querySelector('li[class*="next-view"]') as HTMLElement;
+
+  let viewPrev: string;
+  let viewNext: string;
+
+  const firstChild = 1 as number;
+  const lastChild = container.childElementCount as number;
+  switch (action) {
+    case 'view-prev':
+      viewPrev = `${carousel.classList[0].split('_')[1]}` as string;
+      viewNext = arabicToRoman(romanToArabic(viewPrev) - 1) as string;
+      if (romanToArabic(viewPrev) !== firstChild) {
+        if (romanToArabic(viewPrev) === firstChild + 1) {
+          prevMenu.classList.replace('highlight', 'downplay');
+        } else {
+          nextMenu.classList.replace('downplay', 'highlight');
+        }
+        carousel.classList.replace(
+          `${carousel.classList[0].split('_')[0]}_${viewPrev}`,
+          `${carousel.classList[0].split('_')[0]}_${viewNext}`,
+        );
+      }
+      break;
+    case 'view-next':
+      viewPrev = `${carousel.classList[0].split('_')[1]}` as string;
+      viewNext = arabicToRoman(romanToArabic(viewPrev) + 1) as string;
+      if (romanToArabic(viewPrev) !== lastChild) {
+        if (romanToArabic(viewPrev) === lastChild - 1) {
+          nextMenu.classList.replace('highlight', 'downplay');
+        } else {
+          prevMenu.classList.replace('downplay', 'highlight');
+        }
+        carousel.classList.replace(
+          `${carousel.classList[0].split('_')[0]}_${viewPrev}`,
+          `${carousel.classList[0].split('_')[0]}_${viewNext}`,
+        );
+      }
+      break;
+  }
 }
 
 let updateMessage = () => {

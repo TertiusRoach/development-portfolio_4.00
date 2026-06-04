@@ -95,7 +95,6 @@ export function markCarousel(
         prevView.classList.add('highlight');
         prevView.classList.remove('downplay');
       }
-
       break;
   }
 }

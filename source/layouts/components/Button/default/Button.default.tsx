@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Button.default.scss';
+
 //--|🠋 Functions 🠋|--\\
 import stripBrackets from '../../functions';
 import { createClass } from './Button_default';
@@ -27,19 +28,19 @@ interface TheseProps {
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
-
   /*
-  onBlur?: () => void;
-  onFocus?: () => void;
-  onMouseUp?: () => void;
-  onTouchEnd?: () => void;
-  onMouseDown?: () => void;
-  onTouchStart?: () => void;
-  onAnimationEnd?: () => void;
-  onTransitionEnd?: () => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onFocus?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onScroll?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onTouchEnd?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onTouchStart?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onAnimationEnd?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onTransitionEnd?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onKeyUp?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onKeyDown?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   */
 }
 function ButtonHandle(style: TheseProps['style']) {
@@ -240,6 +241,7 @@ const ButtonDefault: React.FC<TheseProps> = ({
   /*  
   onBlur,  
   onFocus,  
+  onScroll,
   onMouseUp,  
   onTouchEnd,  
   onMouseDown,  

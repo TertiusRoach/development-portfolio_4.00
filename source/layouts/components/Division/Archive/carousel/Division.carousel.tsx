@@ -14,6 +14,7 @@ interface TheseProps<Names extends PropsInfo> {
   cases: {
     call: React.ComponentType<{ info: Names }>;
   };
+  onWheel?: (event: React.WheelEvent<HTMLDivElement>) => string | number | void;
 }
 interface PropsInfo {
   pageName: string;
@@ -35,14 +36,14 @@ function DivisionAxis<T extends PropsInfo>({ info, style, cases }: TheseProps<T>
   );
 }
 
-const DivisionCarousel = <T extends PropsInfo>({ info, style, cases }: TheseProps<T>) => {
+const DivisionCarousel = <T extends PropsInfo>({ info, style, cases, onWheel }: TheseProps<T>) => {
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[style.axis];
   let axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
   return (
-    <div className={`${info.labelName}-${info.blockName}_carousel-default`}>
+    <div className={`${info.labelName}-${info.blockName}_carousel-default`} onWheel={onWheel}>
       <CallList className={axisClass[style.axis]}>
         <DivisionAxis info={info} style={style} cases={cases} />
       </CallList>
