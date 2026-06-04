@@ -37,7 +37,31 @@ function MenuAxis({ info, style, cases }: TheseProps) {
   🠉|--*/
   switch (style.axis) {
     case '[x]':
-      return <li className="showing-horizontal_I"></li>;
+      return (
+        <li className="showing-horizontal_I">
+          {cases.pages.map((path, index) => {
+            return (
+              <div key={index} className={`${path.labelName}-view highlight`}>
+                <ButtonRouting
+                  style={{
+                    size: '<h1>',
+                    type: '{button}',
+                    view: style.view,
+                    color: style.color,
+                    shade: style.shade,
+                    image: path.imageLink,
+                  }}
+                  info={{
+                    pageName: info.pageName,
+                    blockName: info.blockName,
+                    labelName: `${path.labelName}-select`,
+                  }}
+                />
+              </div>
+            );
+          })}
+        </li>
+      );
     case '[y]':
       return (
         <li className="showing-vertical_I">

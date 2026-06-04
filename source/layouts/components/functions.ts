@@ -21,7 +21,7 @@ function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '
       return thisText.replace(/[--]/g, '');
   }
 }
-export const eventListener = (selector: string, execution: () => void) => {
+export const eventListen = (selector: string, execution: () => void) => {
   let classObserver: MutationObserver | null = null;
   let domObserver: MutationObserver | null = null;
 

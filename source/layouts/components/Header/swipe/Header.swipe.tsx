@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets, { eventListener } from '../../functions';
+import stripBrackets, { eventListen } from '../../functions';
 import { markCarousel, loadCarousel, swipeCarousel } from './Header_swipe';
 
 //--|🠋 Styles 🠋|--\\
@@ -69,7 +69,7 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
     const chainBlock: string = stripBrackets(cases.chain, '<>');
     switch (cases.axis) {
       case '[x]':
-        return eventListener(
+        return eventListen(
           (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
             `ul[class*="hori-X"] li[class*="showing-horizontal"]`) as string,
           () => {
@@ -77,7 +77,7 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
           },
         );
       case '[y]':
-        return eventListener(
+        return eventListen(
           (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
             `ol[class*="vert-Y"] li[class*="showing-vertical"]`) as string,
           () => {

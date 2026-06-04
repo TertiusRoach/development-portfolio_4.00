@@ -4,17 +4,46 @@
   //--|🠋 X-axis 🠋|--\\
   &[class*='cen'] {
     ul[class*='hori-X-select'] {
-    }
+      li[class*='showing-horizontal'] {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 128px; //--|🠈 128px for Squares 🠈|--\\
+        div[class*='view'] {
+          width: 128px;
+          height: 128px;
+        }
+        @media screen and (max-height: 768px) {
+          margin: 0 96px; //--|🠈 96px for Squares 🠈|--\\
+          div[class*='view'] {
+            width: 96px;
+            height: 96px;
+          }
+        }
+        @media screen and (max-height: 480px) {
+          margin: 0 64px; //--|🠈 64px for Squares 🠈|--\\
+          div[class*='view'] {
+            width: 64px;
+            height: 64px;
+          }
+        }
+        @media screen and (max-height: 360px) {
+          margin: 0 48px; //--|🠈 48px for Squares 🠈|--\\
+          div[class*='view'] {
+            width: 48px;
+            height: 48px;
+          }
+        }
 
-    height: 128px; //--|🠈 128px for Squares 🠈|--\\
-    @media screen and (max-height: 768px) {
-      height: 96px; //--|🠈 96px for Squares 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      height: 64px; //--|🠈 64px for Squares 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      height: 48px; //--|🠈 48px for Squares 🠈|--\\
+        div:nth-child(1) {
+          background: rgba(orange, 0.5);
+        }
+        div:nth-child(2) {
+          background: rgba(purple, 0.5);
+        }
+        div:nth-child(3) {
+          background: rgba(green, 0.5);
+        }
+      }
     }
   }
 

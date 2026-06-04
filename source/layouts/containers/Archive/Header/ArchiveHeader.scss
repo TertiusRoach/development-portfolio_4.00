@@ -11,12 +11,7 @@
       width: 100%;
       height: 100%;
       position: absolute;
-      grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      /*
-      menu[class*='swipe'] {
-        grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      */
+      background: rgba(darkred, 0.5);
     }
     nav[class*='default'] {
       z-index: 1;

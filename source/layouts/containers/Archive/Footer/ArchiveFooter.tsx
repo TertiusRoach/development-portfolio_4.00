@@ -3,12 +3,13 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import MenuSelect from '../../../components/Menu/select/Menu.select';
+import FooterSelect from '../../../components/Footer/select/Footer.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/archive';
 import { unfoldFooter, squaringFooter } from '../../../../scripts';
-import FooterSelect from '../../../components/Footer/select/Footer.select';
 
 interface InfoProps {
   info: {
@@ -27,23 +28,26 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
   return (
     <footer
       id={`${pageName}-${blockName}`}
       className={`${labelName}-${blockName} ${stateName}`}
+      /* 
       onMouseEnter={() => {
         unfoldFooter(pageName, 'hover', blockName);
       }}
       onMouseLeave={() => {
         squaringFooter(pageName, 'exit', blockName);
       }}
+      */
     >
       <section className={`${blockName}-foreground`}>
         {/* <FooterSelect */}
-        <footer></footer>
+        <footer className="default"></footer>
+
         <NavigationDefault
           //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
           info={{
