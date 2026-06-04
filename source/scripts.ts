@@ -348,43 +348,41 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
   }, 125);
 }
 export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
-  setTimeout(() => {
-    const disableElement: string = 'disabled-footer';
-    const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
-    const leftbarElement: string = `#${pageName}-body aside[class*="leftbar"]`;
+  const disableElement: string = 'disabled-footer';
+  const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
+  const leftbarElement: string = `#${pageName}-body aside[class*="leftbar"]`;
 
-    let footerContainer = document.querySelector(locateElement) as HTMLElement;
-    let leftbarContainer = document.querySelector(leftbarElement) as HTMLElement;
-    switch (blockAction) {
-      case 'click':
-        if (footerContainer.classList.contains('unfolded') || footerContainer.classList.contains('expanded')) {
-          footerContainer.classList.add('squaring');
-          footerContainer.classList.remove('unfolded', 'expanded');
-        }
-        console.log(`|🠊 Clicked on <${blockName}> to square <footer> 🠈|`);
-        break;
-      case 'hover':
-        if (!footerContainer.classList.contains(disableElement)) {
-          footerContainer.classList.add(disableElement);
+  let footerContainer = document.querySelector(locateElement) as HTMLElement;
+  let leftbarContainer = document.querySelector(leftbarElement) as HTMLElement;
+  switch (blockAction) {
+    case 'click':
+      if (footerContainer.classList.contains('unfolded') || footerContainer.classList.contains('expanded')) {
+        footerContainer.classList.add('squaring');
+        footerContainer.classList.remove('unfolded', 'expanded');
+      }
+      console.log(`|🠊 Clicked on <${blockName}> to square <footer> 🠈|`);
+      break;
+    case 'hover':
+      if (!footerContainer.classList.contains(disableElement)) {
+        footerContainer.classList.add(disableElement);
 
-          if (footerContainer.classList.contains('collapsed') || footerContainer.classList.contains('squaring')) {
-            footerContainer.classList.add('unfolded');
-            footerContainer.classList.remove('collapsed', 'squaring');
-          }
+        if (footerContainer.classList.contains('collapsed') || footerContainer.classList.contains('squaring')) {
+          footerContainer.classList.add('unfolded');
+          footerContainer.classList.remove('collapsed', 'squaring');
+        }
 
-          setTimeout(() => {
-            footerContainer.classList.remove(disableElement);
-          }, 125);
-        }
-        console.log(`|🠊 Hovered on <${blockName}> to square <footer> 🠈|`);
-        break;
-      case 'exit':
-        if (footerContainer.classList.contains('unfolded') && leftbarContainer.classList.contains('collapsed')) {
-          footerContainer.classList.add('squaring');
-          footerContainer.classList.remove('unfolded');
-        }
-        console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
-        break;
-    }
-  }, 125);
+        setTimeout(() => {
+          footerContainer.classList.remove(disableElement);
+        }, 125);
+      }
+      console.log(`|🠊 Hovered on <${blockName}> to square <footer> 🠈|`);
+      break;
+    case 'exit':
+      if (footerContainer.classList.contains('unfolded') && leftbarContainer.classList.contains('collapsed')) {
+        footerContainer.classList.add('squaring');
+        footerContainer.classList.remove('unfolded');
+      }
+      console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
+      break;
+  }
 }

@@ -1,6 +1,8 @@
 //--|🠊 Footer.select.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
+  display: flex;
+  align-items: flex-end;
   /*
   //--|🠋 X-axis 🠋|--\\
   &[class*='cen'] {

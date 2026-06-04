@@ -4,12 +4,12 @@ import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
-import FooterSelect from '../../../components/Footer/select/Footer.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/archive';
 import { unfoldFooter, squaringFooter } from '../../../../scripts';
+import ButtonRouting from '../../../components/Button/routing/Button.routing';
 
 interface InfoProps {
   info: {
@@ -28,25 +28,73 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
   return (
     <footer
       id={`${pageName}-${blockName}`}
       className={`${labelName}-${blockName} ${stateName}`}
-      /* 
       onMouseEnter={() => {
         unfoldFooter(pageName, 'hover', blockName);
       }}
       onMouseLeave={() => {
         squaringFooter(pageName, 'exit', blockName);
       }}
-      */
     >
       <section className={`${blockName}-foreground`}>
-        {/* <FooterSelect */}
-        <footer className="default"></footer>
+        <footer className={`default-${blockName}_select-default`}>
+          <div className="select-application">
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'bot-cen',
+                color: '(mono)',
+                shade: '~light~',
+                type: '{button}',
+                image:
+                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-medium.svg' as string,
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                labelName: `${pageName}-overtime`,
+              }}
+            />
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'bot-cen',
+                color: '(mono)',
+                shade: '~light~',
+                type: '{button}',
+                image:
+                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/log-a-ticket/primary-medium.svg' as string,
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                labelName: `${pageName}-ticketing`,
+              }}
+            />
+            <ButtonRouting
+              style={{
+                size: '<h1>',
+                view: 'bot-cen',
+                color: '(mono)',
+                shade: '~light~',
+                type: '{button}',
+                image:
+                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/find-a-link/primary-medium.svg' as string,
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                labelName: `${pageName}-hyperlink`,
+              }}
+            />
+          </div>
+        </footer>
 
         <NavigationDefault
           //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
@@ -88,7 +136,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
           </section>
         </article>
       </figure>
-      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ComponentsFooter>`}</h1> */}</div>
+      <div className={`${blockName}-background`}></div>
     </footer>
   );
 };

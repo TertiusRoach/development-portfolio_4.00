@@ -10,7 +10,8 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 import { markCarousel, selectCarousel } from './Footer_select';
 
 //--|🠋 Styles 🠋|--\\
-import './Menu.select.scss';
+import './Footer.select.scss';
+import MenuSelect from '../../Menu/select/Menu.select';
 
 interface TheseProps {
   info: {
@@ -19,13 +20,13 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    axis: '[x]' | '[y]';
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-cen' | 'mid-rig' | 'bot-cen' | 'mid-lef' | 'mid-cen';
   };
   cases: {
     show: number;
+    axis: '[x]' | '[y]';
     pages: Array<{ labelName: string; imageLink: string }>;
   };
 
@@ -36,6 +37,17 @@ function MenuAxis({ info, style, cases }: TheseProps) {
   /*--|🠋
 
   🠉|--*/
+  let imageLink =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
+
+  console.log(info, style, cases);
+  return (
+    <>
+      <ul className="hori-X-select">
+        <li className="showing-horizontal_I"></li>
+      </ul>
+    </>
+  );
   /*
   switch (style.axis) {
     case '[x]':
@@ -81,8 +93,39 @@ const FooterSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
   /*--|🠋
   
   🠉|--*/
-
-  return <></>;
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  /*
+  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+    '[x]': 'ul',
+    '[y]': 'ol',
+  };
+  const axisClass: Record<TheseProps['cases']['axis'], string> = {
+    '[x]': 'hori-X-swipe',
+    '[y]': 'vert-Y-swipe',
+  };
+  const axisMenus = {
+    '[x]': (
+      <li className="showing-horizontal_I">
+        {cases.pages.map((pages, index) => (
+          <React.Fragment key={index}>{cases.pages}</React.Fragment>
+        ))}
+      </li>
+    ),
+    '[y]': (
+      <li className="showing-vertical_I">
+        {cases.pages.map((pages, index) => (
+          <React.Fragment key={index}>{pages}</React.Fragment>
+        ))}
+      </li>
+    ),
+  };
+  let ListItem = axisList[cases.axis];
+  */
+  return (
+    <footer className={`${labelName}-${blockName}_select-default`}>
+      {/* <ListItem className={`${axisClass[cases.axis]}`}>{axisMenus[cases.axis]}</ListItem> */}
+    </footer>
+  );
   /*
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {

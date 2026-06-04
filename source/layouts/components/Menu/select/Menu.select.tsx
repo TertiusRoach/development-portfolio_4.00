@@ -25,7 +25,7 @@ interface TheseProps {
   };
   cases: {
     show: number;
-    pages: Array<{ labelName: string; imageLink: string }>;
+    buttons: Array<{ labelName: string; imageLink: string }>;
   };
 
   onClick?: () => void;
@@ -39,7 +39,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
     case '[x]':
       return (
         <li className="showing-horizontal_I">
-          {cases.pages.map((path, index) => {
+          {cases.buttons.map((path, index) => {
             return (
               <div key={index} className={`${path.labelName}-view highlight`}>
                 <ButtonRouting
@@ -65,7 +65,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
     case '[y]':
       return (
         <li className="showing-vertical_I">
-          {cases.pages.map((path, index) => {
+          {cases.buttons.map((path, index) => {
             return (
               <div key={index} className={`${path.labelName}-view highlight`}>
                 <ButtonRouting
@@ -112,7 +112,7 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
     '[x]': 'hori-X-select',
     '[y]': 'vert-Y-select',
   };
-
+  let ListItem = axisList[style.axis];
   useEffect(() => {
     /*--|🠋
     
@@ -120,7 +120,6 @@ const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
-  let ListItem = axisList[style.axis];
   return (
     <menu className={`${labelName}-${blockName}_select-default ${style.view}`}>
       <ListItem className={`${axisClass[style.axis]}`}>

@@ -5,13 +5,33 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
   section[class*='foreground'] {
-    footer[class='default'] {
+    footer[class*='select-default'] {
       z-index: 2;
       width: 100%;
       height: 100%;
+      display: flex;
       position: absolute;
-      //--|===|--\\
-      @include footerSelect();
+      align-items: flex-end;
+      .select-application {
+        width: 100%;
+        display: inherit; //--|🠈 display: flex; 🠈|--\\
+        justify-content: space-around;
+
+        height: 128px;
+        padding: 0 128px;
+        @media screen and (max-height: 768px) {
+          height: 96px;
+          padding: 0 96px;
+        }
+        @media screen and (max-height: 480px) {
+          height: 64px;
+          padding: 0 64px;
+        }
+        @media screen and (max-height: 360px) {
+          height: 48px;
+          padding: 0 48px;
+        }
+      }
     }
     nav[class*='default'] {
       z-index: 1;
@@ -129,28 +149,6 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Layers) 🠋|--\\
-}
-
-@mixin footerSelect {
-  display: flex;
-  align-items: flex-end;
-  ul[class*='hori-X-select'] {
-    width: inherit; //--|🠈 width: 100%; 🠈|--\\
-    li[class*='horizontal'] {
-      menu[class*='select'] {
-        height: 128px; //--|🠈 128px for Squares 🠈|--\\
-        @media screen and (max-height: 768px) {
-          height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        }
-        @media screen and (max-height: 480px) {
-          height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        }
-        @media screen and (max-height: 360px) {
-          height: 48px; //--|🠈 48px for Squares 🠈|--\\
-        }
-      }
-    }
-  }
 }
 footer[id*='components'] {
   @media screen and (orientation: landscape) {

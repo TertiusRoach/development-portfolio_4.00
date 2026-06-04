@@ -42,7 +42,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
           }}
           cases={{
             show: 3,
-            pages: [
+            buttons: [
               {
                 labelName: 'article',
                 imageLink: `${linkString}/article-element.svg`,

@@ -39,7 +39,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg';
   return (
@@ -78,6 +78,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
           }}
         />
         <HeaderSwipe
+          //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
           info={{
             pageName: pageName,
             blockName: blockName,

@@ -4,6 +4,7 @@
   //--|🠋 X-axis 🠋|--\\
   &[class*='cen'] {
     ul[class*='hori-X-select'] {
+      width: inherit; //--|🠈 width: 100%; 🠈|--\\
       li[class*='showing-horizontal'] {
         display: flex;
         justify-content: space-around;
