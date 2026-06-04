@@ -31,7 +31,6 @@ interface TheseProps {
   /*
   onBlur?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onFocus?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
-  onScroll?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onTouchEnd?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
@@ -241,7 +240,6 @@ const ButtonDefault: React.FC<TheseProps> = ({
   /*  
   onBlur,  
   onFocus,  
-  onScroll,
   onMouseUp,  
   onTouchEnd,  
   onMouseDown,  
