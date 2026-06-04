@@ -8,6 +8,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/archive';
 import { unfoldFooter, squaringFooter } from '../../../../scripts';
+import FooterSelect from '../../../components/Footer/select/Footer.select';
 
 interface InfoProps {
   info: {
@@ -29,7 +30,6 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
-
   return (
     <footer
       id={`${pageName}-${blockName}`}
@@ -42,6 +42,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
       }}
     >
       <section className={`${blockName}-foreground`}>
+        {/* <FooterSelect */}
         <footer></footer>
         <NavigationDefault
           //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\

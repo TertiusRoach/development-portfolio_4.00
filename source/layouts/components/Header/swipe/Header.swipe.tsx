@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
+import stripBrackets, { eventListener } from '../../functions';
 import { markCarousel, loadCarousel, swipeCarousel } from './Header_swipe';
 
 //--|🠋 Styles 🠋|--\\
@@ -67,42 +67,25 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
         
     🠉|--*/
     const chainBlock: string = stripBrackets(cases.chain, '<>');
-    const selector: string = `#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ol[class*="vert-Y"] li[class*="showing-vertical"]`;
-
-    let classObserver: MutationObserver | null = null;
-    let domObserver: MutationObserver | null = null;
-
-    const watchClassChanges = (target: HTMLElement) => {
-      classObserver = new MutationObserver(() => {
-        markCarousel(pageName, blockName, labelName, cases.chain, cases.axis);
-      });
-
-      classObserver.observe(target, {
-        attributes: true,
-        attributeFilter: ['class'],
-      });
-    };
-
-    const existing = document.querySelector<HTMLElement>(selector);
-    if (existing) {
-      watchClassChanges(existing);
-    } else {
-      domObserver = new MutationObserver(() => {
-        const found = document.querySelector<HTMLElement>(selector);
-        if (found) {
-          watchClassChanges(found);
-          domObserver?.disconnect();
-        }
-      });
-
-      domObserver.observe(document.body, { childList: true, subtree: true });
+    switch (cases.axis) {
+      case '[x]':
+        return eventListener(
+          (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
+            `ul[class*="hori-X"] li[class*="showing-horizontal"]`) as string,
+          () => {
+            markCarousel(pageName, blockName, labelName, cases.chain, cases.axis);
+          },
+        );
+      case '[y]':
+        return eventListener(
+          (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
+            `ol[class*="vert-Y"] li[class*="showing-vertical"]`) as string,
+          () => {
+            markCarousel(pageName, blockName, labelName, cases.chain, cases.axis);
+          },
+        );
     }
-
-    return () => {
-      classObserver?.disconnect();
-      domObserver?.disconnect();
-    };
-  }, [pageName, blockName, labelName, cases.chain, cases.axis]);
+  }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[cases.axis];
   return (

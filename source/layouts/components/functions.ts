@@ -21,6 +21,46 @@ function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '
       return thisText.replace(/[--]/g, '');
   }
 }
+export const eventListener = (selector: string, execution: () => void) => {
+  let classObserver: MutationObserver | null = null;
+  let domObserver: MutationObserver | null = null;
+
+  const observeElement = (element: HTMLElement): void => {
+    classObserver = new MutationObserver(execution);
+
+    classObserver.observe(element, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  };
+
+  const findElement = (): HTMLElement | null => document.querySelector(selector);
+
+  const element = findElement();
+
+  if (element) {
+    observeElement(element);
+  } else {
+    domObserver = new MutationObserver(() => {
+      const found = findElement();
+
+      if (!found) return;
+
+      observeElement(found);
+      domObserver?.disconnect();
+    });
+
+    domObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  return () => {
+    classObserver?.disconnect();
+    domObserver?.disconnect();
+  };
+};
 export default stripBrackets;
 
 //--|🠋 Create Abbreviations 🠋|--\\
