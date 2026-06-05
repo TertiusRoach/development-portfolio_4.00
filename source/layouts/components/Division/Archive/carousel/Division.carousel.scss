@@ -1,15 +1,5 @@
 //--|🠊 Division.carousel.scss 🠈|--\\
 @mixin desktop-landscape {
-  overflow: hidden;
-  ul[class='hori-X-axis'] {
-    @extend %hori-scope;
-    @extend %hori-stack;
-  }
-  ol[class='vert-Y-axis'] {
-    @extend %vert-stack;
-    @extend %vert-scope;
-  }
-
   %hori-scope {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
@@ -176,6 +166,15 @@
         transform: translateY(-1900svh);
       }
     }
+  }
+  overflow: hidden;
+  ul[class='hori-X-axis'] {
+    @extend %hori-scope;
+    @extend %hori-stack;
+  }
+  ol[class='vert-Y-axis'] {
+    @extend %vert-stack;
+    @extend %vert-scope;
   }
 }
 @mixin mobile-portrait {
