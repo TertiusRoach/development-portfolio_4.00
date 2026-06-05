@@ -160,7 +160,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
           style={{
             axis: '[y]',
-            scope: '<two>',
+            // scope: '<two>',
           }}
           cases={{
             call: defaultDark,
@@ -220,7 +220,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
           style={{
             axis: '[y]',
-            scope: '<two>',
+            // scope: '<two>',
           }}
           cases={{
             call: defaultLight,

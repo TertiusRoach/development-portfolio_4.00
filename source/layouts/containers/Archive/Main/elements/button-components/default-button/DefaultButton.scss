@@ -63,7 +63,7 @@
   }
   %mark-disp {
     display: grid;
-    div {
+    div[class*='default'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       &[class*='container'] {
         section[class*='default-main'] {
@@ -74,6 +74,9 @@
         flex-direction: column;
         //--|🠊 display: flex; 🠈|--\\
       }
+    }
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
     }
   }
   section[class*='foreground'] {
@@ -158,6 +161,5 @@
     }
   }
 }
-
 @mixin mobile-portrait {
 }

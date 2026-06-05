@@ -9,7 +9,7 @@ interface TheseProps<Names extends PropsInfo> {
   info: Names;
   style: {
     axis: '[x]' | '[y]';
-    scope: '<one>' | '<two>' | '<thr>';
+    // scope: '<one>' | '<two>' | '<thr>';
   };
   cases: {
     call: React.ComponentType<{ info: Names }>;
