@@ -98,19 +98,19 @@
     li[class*='vertical'] {
       width: 100%;
       transition: transform 500ms ease-in-out;
+      /*
       div[class*='container'] {
         width: inherit; //--|🠈 width: 100%; 🠈|--\\
         section[class*='main'],
         figure[class*='main'],
-        aside[class*='main'] {
-          /*
-          height: 100%;
-          */
+        aside[class*='main'] {          
+          // height: 100%;          
           ul[class*='car-'] {
             @extend %hori-stack;
           }
         }
       }
+      */
     }
   }
   %vert-stack {

@@ -140,6 +140,12 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
     <aside className="default-button">
       <section className={`${info.blockName}-foreground`}>
         <MenuSwipe
+          //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
+          info={{
+            labelName: 'default-darkside',
+            blockName: blockName as 'main',
+            pageName: pageName as 'components',
+          }}
           style={{
             axis: '[y]',
             color: '(mono)',
@@ -148,11 +154,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           cases={{
             show: 3,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'default-darkside',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
           }}
         />
         <DivisionCarousel
@@ -178,7 +179,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           }}
         />
 
-        <section
+        <div
           className="toggle-colors"
           onClick={(event: React.MouseEvent<HTMLElement>): void => {
             toggleColors(event.currentTarget as HTMLElement);
@@ -196,9 +197,15 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
             info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
           />
-        </section>
+        </div>
 
         <MenuSwipe
+          //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
+          info={{
+            labelName: 'default-lightside',
+            blockName: blockName as 'main',
+            pageName: pageName as 'components',
+          }}
           style={{
             axis: '[y]',
             color: '(mono)',
@@ -207,11 +214,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           cases={{
             show: 3,
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-          info={{
-            labelName: 'default-lightside',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
           }}
         />
         <DivisionCarousel
