@@ -9,6 +9,7 @@ import { stripBrackets } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
 
 interface InfoProps {
   info: {
@@ -23,15 +24,27 @@ function routingDark({ info }: InfoProps) {
     <>
       <ViewOne
         info={{
+          labelName: 'one-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'one-dark',
         }}
       />
     </>
   );
 }
-function routingLight({ info }: InfoProps) {}
+function routingLight({ info }: InfoProps) {
+  return (
+    <>
+      <ViewOne
+        info={{
+          labelName: 'one-light',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+    </>
+  );
+}
 
 const RoutingButton: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
@@ -42,15 +55,25 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
     <aside className="routing-button">
       <section className={`${blockName}-foreground`}>
         <DivisionCarousel
-          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-          }}
+          //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
           cases={{
-            call: routingDark,
+            axis: '[y]',
+            call: routingDark as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'routing-darkside',
+            blockName: blockName as 'main',
+            pageName: pageName as 'components',
+          }}
+        />
+        <DivisionCarousel
+          //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
+          cases={{
+            axis: '[y]',
+            call: routingLight as React.ComponentType<InfoProps>,
+          }}
+          info={{
+            labelName: 'routing-lightside',
             blockName: blockName as 'main',
             pageName: pageName as 'components',
           }}
@@ -65,12 +88,304 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
 let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   switch (true) {
     case shade.includes('dark'):
-      return <section className={`routing-${info.blockName}_${info.labelName}`}></section>;
+      return (
+        <section className={`routing-${info.blockName}_${info.labelName}`}>
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'top-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'top-cen',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-up.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'top-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'mid-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'mid-cen',
+              image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'mid-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'bot-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'bot-cen',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-down.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~dark~',
+              view: 'bot-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+        </section>
+      );
     case shade.includes('light'):
-      return <section className={`routing-${info.blockName}_${info.labelName}`}></section>;
+      return (
+        <section className={`routing-${info.blockName}_${info.labelName}`}>
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'top-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'top-cen',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-down.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'top-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'mid-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'mid-cen',
+              image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'mid-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'bot-lef',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-right.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'bot-cen',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-up.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+          <ButtonRouting
+            style={{
+              size: '<h1>',
+              type: '{button}',
+              color: '(mono)',
+              shade: '~light~',
+              view: 'bot-rig',
+              image:
+                `${link}/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid/arrow-circle-left.svg` as string,
+            }}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: info.labelName,
+            }}
+          />
+        </section>
+      );
   }
 };
 let ViewPar = ({ info }: InfoProps) => {};

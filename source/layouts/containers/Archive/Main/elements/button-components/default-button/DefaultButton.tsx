@@ -158,12 +158,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
         />
         <DivisionCarousel
           //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            // scope: '<two>',
-          }}
           cases={{
-            call: defaultDark,
+            axis: '[y]',
+            call: defaultDark as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'default-darkside',
@@ -218,12 +215,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
         />
         <DivisionCarousel
           //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            // scope: '<two>',
-          }}
           cases={{
-            call: defaultLight,
+            axis: '[y]',
+            call: defaultLight as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'default-lightside',

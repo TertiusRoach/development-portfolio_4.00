@@ -58,12 +58,9 @@ const NavigationElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
-        style={{
-          axis: '[x]',
-          scope: '<one>',
-        }}
         cases={{
-          call: NavigationComponents,
+          axis: '[x]',
+          call: NavigationComponents as React.ComponentType<InfoProps>,
         }}
         info={{
           pageName: info.pageName,

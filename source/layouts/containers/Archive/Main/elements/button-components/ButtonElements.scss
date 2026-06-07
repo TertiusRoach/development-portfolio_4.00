@@ -13,17 +13,35 @@ section[class*='button-main'] {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
+        &[class*='default'] {
+          @include DefaultButton.desktop-landscape;
+        }
+        &[class*='routing'] {
+          @include RoutingButton.desktop-landscape;
+        }
+        &[class*='profile'] {
+          @include ProfileButton.desktop-landscape;
+        }
+        &[class*='stretch'] {
+          @include StretchButton.desktop-landscape;
+        }
       }
-      @include DefaultButton.desktop-landscape;
-      @include RoutingButton.desktop-landscape;
-      @include ProfileButton.desktop-landscape;
-      @include StretchButton.desktop-landscape;
     }
     @media screen and (orientation: portrait) {
-      @include DefaultButton.mobile-portrait;
-      @include RoutingButton.mobile-portrait;
-      @include ProfileButton.mobile-portrait;
-      @include StretchButton.mobile-portrait;
+      aside[class*='button'] {
+        &[class*='default'] {
+          @include DefaultButton.mobile-portrait;
+        }
+        &[class*='routing'] {
+          @include RoutingButton.mobile-portrait;
+        }
+        &[class*='profile'] {
+          @include ProfileButton.mobile-portrait;
+        }
+        &[class*='stretch'] {
+          @include StretchButton.mobile-portrait;
+        }
+      }
     }
   }
 }

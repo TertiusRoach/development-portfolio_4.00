@@ -7,11 +7,8 @@ import React, { useEffect } from 'react';
 
 interface TheseProps<Names extends PropsInfo> {
   info: Names;
-  style: {
-    axis: '[x]' | '[y]';
-    // scope: '<one>' | '<two>' | '<thr>';
-  };
   cases: {
+    axis: '[x]' | '[y]';
     call: React.ComponentType<{ info: Names }>;
   };
   onWheel?: (event: React.WheelEvent<HTMLDivElement>) => string | number | void;
@@ -21,14 +18,14 @@ interface PropsInfo {
   blockName: string;
   labelName: string;
 }
-function DivisionAxis<T extends PropsInfo>({ info, style, cases }: TheseProps<T>) {
+function DivisionAxis<T extends PropsInfo>({ info, cases }: TheseProps<T>) {
   const CallItem = cases.call as React.ComponentType<{ info: T }>;
   let axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'carousel-horizontal',
     '[y]': 'carousel-vertical',
   };
   return (
-    <li className={`${axisClass[style.axis]}_I`}>
+    <li className={`${axisClass[cases.axis]}_I`}>
       <div className={`${info.labelName}-${info.blockName}_container`}>
         <CallItem info={info} />
       </div>
@@ -36,16 +33,16 @@ function DivisionAxis<T extends PropsInfo>({ info, style, cases }: TheseProps<T>
   );
 }
 
-const DivisionCarousel = <T extends PropsInfo>({ info, style, cases, onWheel }: TheseProps<T>) => {
-  const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[style.axis];
+const DivisionCarousel = <T extends PropsInfo>({ info, cases, onWheel }: TheseProps<T>) => {
+  const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
   let axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
   return (
     <div className={`${info.labelName}-${info.blockName}_carousel-default`} onWheel={onWheel}>
-      <CallList className={axisClass[style.axis]}>
-        <DivisionAxis info={info} style={style} cases={cases} />
+      <CallList className={axisClass[cases.axis]}>
+        <DivisionAxis info={info} cases={cases} />
       </CallList>
     </div>
   );

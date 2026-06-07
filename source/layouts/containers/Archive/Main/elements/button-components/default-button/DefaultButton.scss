@@ -26,7 +26,7 @@
           grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
-      &[class*='side-main'] {
+      &[class*='default'] {
         &[class*='darkside'] {
           //--|🠊 background: black; 🠈|--\\
           grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

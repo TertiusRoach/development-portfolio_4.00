@@ -42,11 +42,9 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionCarousel
-        style={{
-          axis: '[x]',
-        }}
         cases={{
-          call: ButtonComponents,
+          axis: '[x]',
+          call: ButtonComponents as React.ComponentType<InfoProps>,
         }}
         info={{
           pageName: info.pageName,

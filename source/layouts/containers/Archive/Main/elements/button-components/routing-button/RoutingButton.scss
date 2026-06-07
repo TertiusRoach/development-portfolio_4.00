@@ -3,18 +3,48 @@
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 <aside className="default-button"> 🠈|--\\
+  //--|🠊 <aside className="routing-button"> 🠈|--\\
   %mark-area {
-    /*
-    menu {
-      &[class*='darkside'] {
-        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      &[class*='lightside'] {
-        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-    }
     div {
+      &[class*='routing'] {
+        &[class*='darkside'] {
+          grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        section[class*='routing'] {
+          button[class*='_tl_'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tc_'] {
+            grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tr_'] {
+            grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_ml_'] {
+            grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_mc_'] {
+            grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_mr_'] {
+            grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bl_'] {
+            grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bc_'] {
+            grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_br_'] {
+            grid-area: 4 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        &[class*='lightside'] {
+          grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+
+      /*
       &[class*='toggle'] {
         grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         label:nth-child(1) {
@@ -27,56 +57,41 @@
           grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
-      &[class*='side-main'] {
-        &[class*='darkside'] {
-          //--|🠊 background: black; 🠈|--\\
-          grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        section[class*='default'] {
-          button[class*='_top_'] {
-            grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_bot_'] {
-            grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_lef_'] {
-            grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_rig_'] {
-            grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_cen_'] {
-            grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_tex_'] {
-            grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_ico_'] {
-            grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-        }
-        &[class*='lightside'] {
-          //--|🠊 background: white; 🠈|--\\
-          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
+      */
+      /*
+    menu {
+      &[class*='darkside'] {
+        //--|🠊 background: rgba(black, .0.25); 🠈|--\\
+        background: rgba(black, 0.25);
+        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        //--|🠊 background: rgba(white, .0.25); 🠈|--\\
+        background: rgba(white, 0.25);
+        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     */
+    }
   }
   %mark-disp {
-    // display: grid;
-    /*
-    div {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    display: grid;
+    div[class*='routing'] {
       &[class*='container'] {
-        section[class*='default-main'] {
+        section[class*='routing-main'] {
           display: grid;
+          height: inherit; //--|🠈 height: 100%; 🠈|--\\
         }
       }
       &[class*='side-main'] {
+        height: 100%;
+        display: flex;
         flex-direction: column;
-        //--|🠊 display: flex; 🠈|--\\
       }
+    }
+    /*
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
     }
     */
   }
@@ -86,52 +101,56 @@
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
       repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px 1fr repeat(2, 8rem) 1fr 48px; //--|🠈 columns 🠈|--\\
+      / 48px 1fr 16rem 1fr 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 64px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
         repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px 1fr repeat(2, 6rem) 1fr 32px; //--|🠈 columns 🠈|--\\
+        / 32px 1fr 12rem 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠋 48px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 854px 🠋|--\\
         repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px 1fr repeat(2, 4rem) 1fr 24px; //--|🠈 columns 🠈|--\\
+        / 24px 1fr 8rem 1fr 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠋 32px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 640px 🠋|--\\
         repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
+        / 16px 1fr 6rem 1fr 16px; //--|🠈 columns 🠈|--\\
     }
     div {
       //--|🠊 display: grid; 🠈|--\\
       &[class*='container'] {
         //--|🠊 display: flex; 🠈|--\\
-        section[class*='default-main'] {
+        section[class*='routing-main'] {
           //--|🠊 display: grid; 🠈|--\\
+          grid-gap: 32px;
           //--|🠋 96px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
-            / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+            1fr repeat(3, 128px) 1fr //--|🠈 rows 🠈|--//
+            / 1fr repeat(3, 128px) 1fr; //--|🠈 columns 🠈|--\\
           @media screen and (max-height: 768px) {
+            grid-gap: 16px;
             //--|🠋 64px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-              / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+              1fr repeat(3, 96px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 96px) 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 480px) {
+            grid-gap: 8px;
             //--|🠋 48px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 854px 🠋|--\\
-              repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-              / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+              1fr repeat(3, 64px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 64px) 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 360px) {
+            grid-gap: 4px;
             //--|🠋 32px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 640px 🠋|--\\
-              repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-              / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
+              1fr repeat(3, 48px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 48px) 1fr; //--|🠈 columns 🠈|--\\
           }
         }
       }

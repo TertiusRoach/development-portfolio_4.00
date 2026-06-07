@@ -23,12 +23,9 @@ const TableElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
-        style={{
-          axis: '[x]',
-          scope: '<one>',
-        }}
         cases={{
-          call: TableComponents,
+          axis: '[x]',
+          call: TableComponents as React.ComponentType<InfoProps>,
         }}
         info={{
           pageName: info.pageName,

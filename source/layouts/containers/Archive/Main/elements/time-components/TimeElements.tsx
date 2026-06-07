@@ -23,12 +23,9 @@ const TimeElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
-        style={{
-          axis: '[x]',
-          scope: '<one>',
-        }}
         cases={{
-          call: TimeComponents,
+          axis: '[x]',
+          call: TimeComponents as React.ComponentType<InfoProps>,
         }}
         info={{
           pageName: info.pageName,

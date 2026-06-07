@@ -155,12 +155,9 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
 
         <DivisionCarousel
           //--|🠊 <div class="elements-main_carousel"/> 🠈|--\\
-          style={{
-            axis: '[y]',
-            scope: '<one>',
-          }}
           cases={{
-            call: ComponentsElements,
+            axis: '[y]',
+            call: ComponentsElements as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'elements',
