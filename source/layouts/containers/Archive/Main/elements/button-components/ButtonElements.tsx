@@ -26,8 +26,8 @@ function ButtonComponents({ info }: InfoProps) {
   const blockName = info.blockName;
   return (
     <>
-      <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
       <DefaultButton info={{ labelName: 'default' as string, pageName: pageName, blockName: blockName }} />
+      <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
       {/* <CleanedButton info={{ labelName: 'cleaned' as string, pageName: pageName, blockName: blockName }} /> */}
       {/* <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} /> */}
       {/* <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} /> */}
