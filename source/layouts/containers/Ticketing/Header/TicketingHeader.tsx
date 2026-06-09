@@ -1,4 +1,5 @@
-//--|🠊 OvertimeHeader.tsx 🠈|--\\
+//--|🠊 TicketingHeader.tsx 🠈|--\\
+/*
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/ticketing';
 import { expandHeader, loadSoftware } from './TicketingFunctions';
@@ -101,3 +102,4 @@ const TicketingHeader: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default TicketingHeader;
+*/

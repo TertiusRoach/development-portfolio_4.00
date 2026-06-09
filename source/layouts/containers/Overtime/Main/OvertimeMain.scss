@@ -1,4 +1,5 @@
 //--|🠊 OvertimeMain.scss 🠈|--\\
+/*
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
@@ -14,11 +15,9 @@
     table[class*='tracking-main'] {
       grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    /*
-    .week-grid {
-      grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
+    // .week-grid {
+    //   grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
   }
   %background {
     z-index: 0;
@@ -96,3 +95,4 @@ main[id*='overtime'] {
     @include mobile-portrait();
   }
 }
+*/

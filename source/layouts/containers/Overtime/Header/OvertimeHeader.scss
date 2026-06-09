@@ -1,4 +1,5 @@
 //--|🠊 OvertimeHeader.scss 🠈|--\\
+/*
 @use 'sass:color';
 @use '../../../designs/Palettes.scss';
 
@@ -98,10 +99,8 @@
         grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
 
-      /*
-      &[class*='nav'] {
-      }
-      */
+      // &[class*='nav'] {
+      // }
     }
   }
 
@@ -161,11 +160,10 @@ header[id*='overtime'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
     //--|🠊 Default Portrait 🠈|--\\
-    /*
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-    }
-    */
+    // section[class*='foreground'],
+    // figure[class*='midground'],
+    // div[class*='background'] {
+    // }
   }
 }
+*/

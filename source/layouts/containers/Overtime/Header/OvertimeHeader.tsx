@@ -1,4 +1,5 @@
 //--|🠊 OvertimeHeader.tsx 🠈|--\\
+/*
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
 import { expandHeader, loadSoftware } from './OvertimeFunctions';
@@ -59,22 +60,22 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}>
-        {/* <DivisionCarousel
-          //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
-          cases={{
-            axis: '[x]',
-            call: [ProfileOvertime],
-          }}
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        /> */}
+        // {/* <DivisionCarousel
+        //   //--|🠊 <div class="profile-header_carousel"/> 🠈|--\\
+        //   cases={{
+        //     axis: '[x]',
+        //     call: [ProfileOvertime],
+        //   }}
+        //   info={{
+        //     pageName: pageName,
+        //     blockName: blockName,
+        //     labelName: labelName,
+        //   }}
+        // /> /}
       </figure>
       <div className={`${blockName}-background`}>
-        {/* <div className="nav-top"></div> */}
-        {/* <div className="nav-bot"></div> */}
+        {/* <div className="nav-top"></div> /}
+        {/* <div className="nav-bot"></div> /}
 
         <div className="nav-lef">
           <span></span>
@@ -87,3 +88,4 @@ const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default OvertimeHeader;
+*/

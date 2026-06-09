@@ -1,17 +1,17 @@
-//--|🠊 archive.tsx 🠈|--\\
+//--|🠊 Hyperlink.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
-const ArchiveMain = lazy(() => import('./Archive/Main/ArchiveMain'));
-const ArchiveHeader = lazy(() => import('./Archive/Header/ArchiveHeader'));
-const ArchiveFooter = lazy(() => import('./Archive/Footer/ArchiveFooter'));
+const HyperlinkMain = lazy(() => import('./Main/HyperlinkMain'));
+const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
+const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
 
-const ArchiveOverlay = lazy(() => import('./Archive/Overlay/ArchiveOverlay'));
-const ArchiveLeftbar = lazy(() => import('./Archive/Leftbar/ArchiveLeftbar'));
-const ArchiveRightbar = lazy(() => import('./Archive/Rightbar/ArchiveRightbar'));
+const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
+const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
+const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
 
-function Archive() {
+function Hyperlink() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);
   const [getFooter, setFooter] = useState(false);
@@ -45,34 +45,34 @@ function Archive() {
     <>
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && (
-          <ArchiveOverlay info={{ pageName: '[components]', blockName: '<overlay>', labelName: '(default)' }} />
+          <HyperlinkOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />
         )}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && (
-          <ArchiveLeftbar info={{ pageName: '[components]', blockName: '<leftbar>', labelName: '(default)' }} />
+          <HyperlinkLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>', labelName: '(default)' }} />
         )}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
         {getRightbar && (
-          <ArchiveRightbar info={{ pageName: '[components]', blockName: '<rightbar>', labelName: '(default)' }} />
+          <HyperlinkRightbar info={{ pageName: '[overtime]', blockName: '<rightbar>', labelName: '(default)' }} />
         )}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <ArchiveHeader info={{ pageName: '[components]', blockName: '<header>', labelName: '(default)' }} />}
+        {getHeader && <HyperlinkHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
-        {getFooter && <ArchiveFooter info={{ pageName: '[components]', blockName: '<footer>', labelName: '(default)' }} />}
+        {getFooter && <HyperlinkFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
 
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <ArchiveMain info={{ pageName: '[components]', blockName: '<main>', labelName: '(default)' }} />}
+        {getMain && <HyperlinkMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
     </>
   );
 }
-export default Archive;
+export default Hyperlink;

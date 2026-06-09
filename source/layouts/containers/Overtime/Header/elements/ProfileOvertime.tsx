@@ -1,4 +1,6 @@
 //--|🠊 ProfileOvertime.tsx 🠈|--\\
+
+/*
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
@@ -48,3 +50,4 @@ const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default ProfileOvertime;
+*/

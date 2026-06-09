@@ -1,4 +1,6 @@
-//--|🠊 HyperlinkOverlay.tsx 🠈|--//
+//--|🠊 HyperlinkOverlay.tsx 🠈|--\\
+
+/*
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -36,10 +38,8 @@ const HyperlinkOverlay: React.FC<InfoProps> = ({ info }) => {
   const stateName: 'visible' | 'hidden' = 'visible';
 
   useEffect(() => {
-    /*
-    let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
-    outputDisplay(sectionElement);
-    */
+    // let sectionElement = document.querySelector('section[class*="login-section"]') as HTMLElement;
+    // outputDisplay(sectionElement);
   }, [pageName, blockName]);
 
   return (
@@ -52,11 +52,12 @@ const HyperlinkOverlay: React.FC<InfoProps> = ({ info }) => {
           />
         </section>
         <section className="selection-section">
-          {/* <HeaderBranding info={info} /> */}
-          {/* <ArticleSelection info={info} /> */}
+          {/* <HeaderBranding info={info} /> /}
+          {/* <ArticleSelection info={info} /> /}
         </section>
       </div>
     </section>
   );
 };
 export default HyperlinkOverlay;
+*/

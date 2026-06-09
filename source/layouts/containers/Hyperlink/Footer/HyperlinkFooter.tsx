@@ -1,5 +1,6 @@
-//--|🠊 HyperlinkFooter.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 HyperlinkFooter.tsx 🠈|--\\
+/*
+//--|🠋 Dependencies 🠋|--\\
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -31,3 +32,4 @@ const HyperlinkFooter: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default HyperlinkFooter;
+*/

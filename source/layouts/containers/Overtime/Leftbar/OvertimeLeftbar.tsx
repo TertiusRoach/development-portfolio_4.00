@@ -1,4 +1,5 @@
 //--|🠊 OvertimeLeftbar.tsx 🠈|--\\
+/*
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠋 Dependencies 🠋|--\\
@@ -35,16 +36,14 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
         />
-        {/*
-        <NavigationClocking
-          //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        />
-        */}
+        // <NavigationClocking
+        //   //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
+        //   info={{
+        //     pageName: pageName,
+        //     blockName: blockName,
+        //     labelName: labelName,
+        //   }}
+        // />
       </section>
       <figure className={`${blockName}-midground`}>
         <TableClocking
@@ -56,17 +55,16 @@ const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
           }}
         />
 
-        {/*
-        <DataWeek
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-          }}
-        />
-        */}
+        // <DataWeek
+        //   info={{
+        //     pageName: pageName,
+        //     blockName: blockName,
+        //   }}
+        // />
       </figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
 };
 export default OvertimeLeftbar;
+*/

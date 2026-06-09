@@ -1,4 +1,6 @@
-//--|🠊 TicketingFooter.tsx 🠈|--//
+//--|🠊 TicketingFooter.tsx 🠈|--\\
+
+/*
 //--|🠋 Dependencies 🠋|--//
 import ReactDOM from 'react-dom/client';
 import axios, { AxiosError } from 'axios';
@@ -31,3 +33,4 @@ const TicketingFooter: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default TicketingFooter;
+*/

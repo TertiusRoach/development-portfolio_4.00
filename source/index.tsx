@@ -11,7 +11,7 @@ import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
-import Archive from './layouts/containers/archive';
+import Archive from './layouts/containers/Archive/Archive';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
@@ -71,24 +71,24 @@ Object.entries(pages).forEach(([id]) => {
     | 'hyperlink'
     | 'landing'
     | 'buttons'
-    | 'components';
+    | 'archive';
 
   switch (pageName) {
-    case 'components':
-      loadPage(`${pageName}-body`, React.createElement(Archive));
+    case 'archive':
+    default:
+      loadPage('components-body', React.createElement(Archive));
       break;
     case 'overtime':
-      loadPage(`${pageName}-body`, React.createElement(Overtime));
+      /* loadPage(`${pageName}-body`, React.createElement(Overtime)); */
       break;
     case 'ticketing':
-      loadPage(`${pageName}-body`, React.createElement(Ticketing));
+      /* loadPage(`${pageName}-body`, React.createElement(Ticketing)); */
       break;
     case 'hyperlink':
-      loadPage(`${pageName}-body`, React.createElement(Hyperlink));
+      /* loadPage(`${pageName}-body`, React.createElement(Hyperlink)); */
       break;
     case 'landing':
-    default:
-      ReactDOM.createRoot(container).render(<Landing />);
+      /* ReactDOM.createRoot(container).render(<Landing />); */
       break;
   }
 });

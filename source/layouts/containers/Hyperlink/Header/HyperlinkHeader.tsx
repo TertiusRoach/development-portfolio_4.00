@@ -1,4 +1,5 @@
-//--|🠊 OvertimeHeader.tsx 🠈|--\\
+//--|🠊 HyperlinkHeader.tsx 🠈|--\\
+/*
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/hyperlink';
 import { expandHeader, loadSoftware } from './HyperlinkFunctions';
@@ -100,3 +101,4 @@ const HyperlinkHeader: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default HyperlinkHeader;
+*/

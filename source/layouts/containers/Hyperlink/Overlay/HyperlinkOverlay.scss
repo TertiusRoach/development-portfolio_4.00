@@ -1,4 +1,5 @@
 //--|🠊 HyperlinkOverlay.scss 🠈|--//
+/*
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
@@ -96,31 +97,29 @@
 
 section[id*='hyperlink'] {
   display: none;
-  /*
-  //--|🠊 display: block; 🠈|--//
-  overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  div[class*='carousel'] {
-    display: flex;
-    @extend %show-section;
-    flex-direction: column;
-    animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
+  // //--|🠊 display: block; 🠈|--//
+  // overflow: hidden; //--|🠈 Hide elements outside the visible area 🠈|--//
+  // grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  // div[class*='carousel'] {
+  //   display: flex;
+  //   @extend %show-section;
+  //   flex-direction: column;
+  //   animation: slide-up 1s ease-in-out forwards; //--|🠈 1s duration, ease-in-out timing function, forwards fill mode 🠈|--//
 
-    section {
-      width: 100vw;
-      height: 100vh;
-    }
+  //   section {
+  //     width: 100vw;
+  //     height: 100vh;
+  //   }
 
-    //--|🠋 Desktop (Landscape) 🠋|--//
-    @media screen and (orientation: landscape) {
-      @include desktop-landscape();
-    }
-    //--|🠋 Mobile (Portrait) 🠋|--//
-    @media screen and (orientation: portrait) {
-      @include mobile-portrait();
-    }
-  }
-  */
+  //   //--|🠋 Desktop (Landscape) 🠋|--//
+  //   @media screen and (orientation: landscape) {
+  //     @include desktop-landscape();
+  //   }
+  //   //--|🠋 Mobile (Portrait) 🠋|--//
+  //   @media screen and (orientation: portrait) {
+  //     @include mobile-portrait();
+  //   }
+  // }
 }
 %show-section {
   animation-delay: 3s; //--|🠈 Wait 3 seconds before starting the animation 🠈|--//
@@ -133,3 +132,4 @@ section[id*='hyperlink'] {
     }
   }
 }
+*/

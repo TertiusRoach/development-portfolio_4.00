@@ -1,4 +1,6 @@
-//--|🠊 OvertimeRightbar.tsx 🠈|--//
+//--|🠊 OvertimeRightbar.tsx 🠈|--\\
+
+/*
 //--|🠋 Frameworks 🠋|--//
 import React, { useState, useEffect } from 'react';
 //--|🠉 Frameworks 🠉|--//
@@ -32,3 +34,4 @@ const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default LandingRightbar;
+*/

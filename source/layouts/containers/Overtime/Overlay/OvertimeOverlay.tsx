@@ -1,4 +1,6 @@
-//--|🠊 OvertimeOverlay.tsx 🠈|--//
+//--|🠊 OvertimeOverlay.tsx 🠈|--\\
+
+/*
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
@@ -64,3 +66,4 @@ function hideBlock(pageName: string, blockName: string) {
     }, 2750);
   }
 }
+*/

@@ -1,4 +1,6 @@
-//--|🠊 OvertimeFooter.tsx 🠈|--//
+//--|🠊 OvertimeFooter.tsx 🠈|--\\
+
+/*
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/overtime';
 //--|🠉 Functions 🠉|--//
@@ -33,3 +35,4 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default OvertimeFooter;
+*/

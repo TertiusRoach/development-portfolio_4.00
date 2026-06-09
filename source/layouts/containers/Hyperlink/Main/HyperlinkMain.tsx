@@ -1,4 +1,5 @@
-//--|🠊 TicketingMain.tsx 🠈|--//
+//--|🠊 HyperlinkMain.tsx 🠈|--\\
+/*
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/hyperlink';
 //--|🠋 Dependencies 🠋|--//
@@ -44,3 +45,4 @@ const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
   );
 };
 export default OvertimeMain;
+*/

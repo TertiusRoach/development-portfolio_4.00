@@ -1,4 +1,5 @@
 //--|🠊 OvertimeLeftbar.scss 🠈|--\\
+/*
 @use '../../../designs/Palettes.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
@@ -7,11 +8,9 @@
     menu[class='clocking-leftbar'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    /*
-    .track-main {
-      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
+    // .track-main {
+    //   grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
   }
   %midground {
     z-index: 1;
@@ -20,38 +19,34 @@
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
-    /*
-    .track-week {
-      grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .week-grid {
-      grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
+    // .track-week {
+    //   grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+    // .week-grid {
+    //   grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
   }
   %background {
     z-index: 0;
-    /*
-    .total-time {
-      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .clock-count {
-      grid-area: 9 / 4 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .leave-breaks {
-      grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .date-string {
-      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .bank-time {
-      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
+    // .total-time {
+    //   grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+    // .clock-count {
+    //   grid-area: 9 / 4 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+    // .leave-breaks {
+    //   grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+    // .date-string {
+    //   grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+    // .bank-time {
+    //   grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
 
-    .overtime-background {
-      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
+    // .overtime-background {
+    //   grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
   }
 
   section[class*='foreground'],
@@ -107,3 +102,4 @@ aside[id*='overtime-leftbar'] {
     @include mobile-portrait();
   }
 }
+*/

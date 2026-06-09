@@ -1,17 +1,17 @@
-//--|🠊 TicketingMain.scss 🠈|--//
+//--|🠊 TicketingMain.scss 🠈|--\\
+
+/*
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   background: rgba(Palettes.$logTicket-medium, 0.5);
-  /*
-  section[class*='fore'] {
-  }
-  figure[class*='mid'] {
-  }
-  div[class*='back'] {
-  }
-  */
+  // section[class*='fore'] {
+  // }
+  // figure[class*='mid'] {
+  // }
+  // div[class*='back'] {
+  // }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--//
@@ -52,3 +52,4 @@ main[id*='ticketing'] {
     @include mobile-portrait();
   }
 }
+*/

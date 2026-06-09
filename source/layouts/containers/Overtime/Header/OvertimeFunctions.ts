@@ -1,4 +1,6 @@
 //--|🠊 Header/OvertimeFunctions.ts 🠈|--\\
+
+/*
 export function expandHeader(pageName: string) {
   const buttonsHeader = document.getElementById(`${pageName}-header`) as HTMLElement;
   if (buttonsHeader.classList.contains('unfolded')) {
@@ -21,3 +23,4 @@ export function loadSoftware(blockAction: 'overtime' | 'ticketing' | 'hyperlink'
     activateBody.classList.remove('asleep');
   }
 }
+*/
