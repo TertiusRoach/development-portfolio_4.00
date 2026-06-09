@@ -25,7 +25,6 @@ export function createClass(style: StyleProps): String {
     return `${classLayout}_${classColor}_def`;
   }
 }
-export default createClass;
 
 //--|🠋 Scoped Functions 🠋|--\\
 
@@ -97,3 +96,4 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
+export default createClass;

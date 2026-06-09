@@ -68,6 +68,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as 'components',
           }}
         />
+
         <div
           className="toggle-colors"
           onClick={(event: React.MouseEvent<HTMLElement>): void => {
@@ -410,6 +411,7 @@ let ViewOne = ({ info }: InfoProps) => {
       );
   }
 };
-let ViewPar = ({ info }: InfoProps) => {};
+let ViewThr = ({ info }: InfoProps) => {};
+let ViewSix = ({ info }: InfoProps) => {};
 
 export default RoutingButton;

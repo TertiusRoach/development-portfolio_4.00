@@ -2002,15 +2002,14 @@ let updateMessage = () => {
   */
 };
 let updateButtons = (color: string) => {
-  /*
   const wrapperDarkside = document.querySelectorAll(
-    '#components-main .default-darkside-main_container button[class*="default-button"]',
+    '#components-main .routing-darkside-main_container button[class*="routing-button"]',
   ) as NodeListOf<HTMLButtonElement>;
   const wrapperLightside = document.querySelectorAll(
-    '#components-main .default-lightside-main_container button[class*="default-button"]',
+    '#components-main .routing-lightside-main_container button[class*="routing-button"]',
   ) as NodeListOf<HTMLButtonElement>;
 
-  for (let i = 0; i < 49; i++) {
+  for (let i = 0; i < 9; i++) {
     let prevDarkClass = wrapperDarkside[i].classList[1] as string;
     let prevLightClass = wrapperLightside[i].classList[1] as string;
 
@@ -2020,5 +2019,4 @@ let updateButtons = (color: string) => {
     wrapperDarkside[i].classList.replace(prevDarkClass, nextDarkClass);
     wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
   }
-  */
 };

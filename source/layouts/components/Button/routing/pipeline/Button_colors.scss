@@ -5,28 +5,25 @@
 
 @mixin desktop-colors {
   //--|🠋 Desktop (Colors) 🠋|--\\
-  &[class*='button'] {
-    @include mon-tint();
-    @include red-tint();
-    @include gre-tint();
-    @include blu-tint();
-    @include yel-tint();
-    @include pur-tint();
-    @include tur-tint();
-    .fore {
-      span {
-        transition: background 250ms ease-in-out;
-      }
-    }
-    .mid {
-      transition: border-color 500ms ease-in-out;
-    }
-    .back {
-      transition: background 750ms ease-in-out;
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include tur-tint();
+  .fore {
+    span {
+      transition: background 250ms ease-in-out;
     }
   }
-
-  &[class*='button']:hover {
+  .mid {
+    transition: border-color 500ms ease-in-out;
+  }
+  .back {
+    transition: background 750ms ease-in-out;
+  }
+  &:hover {
     @include mon-fade();
     @include red-fade();
     @include gre-fade();

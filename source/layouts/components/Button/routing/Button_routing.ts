@@ -14,14 +14,13 @@ interface StyleProps {
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <RoutingButton> 🠈|--\\
-  let classType = createType(style.type);
-  let classVars = createVars(style.image);
+  // let classType = createType(style.type);
+  // let classVars = createVars(style.image);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
   // console.log(`${classType}-button ${classLayout}_${classColor}_${classVars}`);
-  return `${classLayout}_${classColor}_${classVars}`;
+  return `${classLayout}_${classColor}_rou`;
 }
-export default createClass;
 
 //--|🠋 Scoped Functions 🠋|--\\
 export function createLayout(
@@ -58,7 +57,7 @@ export function createLayout(
 }
 export function createColor(
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(red)' | '(green)' | '(blue)' | '(mono)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
 ): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -69,10 +68,13 @@ export function createColor(
 
   const colorMap: Record<string, string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
+    '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
-    '(mono)': 'mon',
+    '(yellow)': 'yel',
+    '(purple)': 'pur',
+    '(turquoise)': 'tur',
   };
 
   const classShade = shadeMap[shade];
@@ -85,22 +87,5 @@ export function createColor(
 
   return `${classShade}_${classColor}`;
 }
-export function createType(type: '{button}' | '{counter}'): String {
-  switch (type) {
-    case '{button}':
-    default:
-      return 'routing';
-    case '{counter}':
-      return 'counter';
-  }
-}
-export function createVars(image: string): String {
-  switch (image.split('.').pop()) {
-    case 'svg':
-      return 'rou';
-    case 'png':
-      return 'por';
-    default:
-      return 'alt';
-  }
-}
+
+export default createClass;

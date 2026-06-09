@@ -1,10 +1,6 @@
-//--|🠊 Button.routing.scss 🠈|--//
-@use 'sass:color';
-@use '../../../designs/Palettes.scss' as Palettes;
-
+//--|🠊 Button.routing.scss 🠈|--\\
 @use './pipeline/Button_colors.scss';
 @use './pipeline/Button_layout.scss';
-@use './pipeline/Button_motion.scss';
 
 button[class*='routing'],
 button[class*='counter'] {
@@ -14,7 +10,7 @@ button[class*='counter'] {
     @include Button_layout.desktop-layout();
     @include Button_colors.desktop-colors();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <RoutingButton> for [MobilePortrait] 🠈|--\\
     @include Button_layout.mobile-layout();
