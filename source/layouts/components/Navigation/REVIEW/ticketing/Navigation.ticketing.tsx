@@ -14,10 +14,10 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../scripts';
+} from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {

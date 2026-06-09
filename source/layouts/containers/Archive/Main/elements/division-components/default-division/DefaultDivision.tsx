@@ -21,10 +21,8 @@ const DefaultDivision: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as 'default';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<DefaultDivision>`}</h1>
-      </section>
+    <aside className="default-division">
+      <section className={`${blockName}-foreground`}>{/* <h1 className="display-1">{`<DefaultDivision>`}</h1> */}</section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
