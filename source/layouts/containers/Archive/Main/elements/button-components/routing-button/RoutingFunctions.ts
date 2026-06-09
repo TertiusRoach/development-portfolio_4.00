@@ -1908,7 +1908,6 @@ export async function copyCode(button: HTMLButtonElement): Promise<string> {
   }
 }
 export function toggleColors(section: HTMLElement): Promise<string> {
-  /*
   const findTint = ([red, green, blue]: Array<boolean>): string => {
     let tintMap: Record<string, string> = {
       'true-false-false': 'red',
@@ -1925,19 +1924,16 @@ export function toggleColors(section: HTMLElement): Promise<string> {
     return tint;
   };
 
-  */
   return new Promise((resolve) => {
-    /*
-   let booleans: Array<boolean> = [];
-   setTimeout(() => {
-     for (let i = 0; i < 3; i++) {
-       const label = section.childNodes[i] as HTMLLabelElement;
-       const input = label.childNodes[0] as HTMLInputElement;
-       booleans.push(input.checked);
-     }
-     resolve(findTint(booleans));
-   }, 125);
-   */
+    let booleans: Array<boolean> = [];
+    setTimeout(() => {
+      for (let i = 0; i < 3; i++) {
+        const label = section.childNodes[i] as HTMLLabelElement;
+        const input = label.childNodes[0] as HTMLInputElement;
+        booleans.push(input.checked);
+      }
+      resolve(findTint(booleans));
+    }, 125);
   });
 }
 export function scrollSide(element: HTMLDivElement, action: 'view-prev' | 'view-next') {

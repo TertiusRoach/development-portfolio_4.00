@@ -5,11 +5,13 @@ import React, { useEffect } from 'react';
 import './RoutingButton.scss';
 
 //--|🠋 Functions 🠋|--\\
+import { toggleColors } from './RoutingFunctions';
 import { stripBrackets } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
+import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
 
 interface InfoProps {
   info: {
@@ -66,6 +68,26 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as 'components',
           }}
         />
+        <div
+          className="toggle-colors"
+          onClick={(event: React.MouseEvent<HTMLElement>): void => {
+            toggleColors(event.currentTarget as HTMLElement);
+          }}
+        >
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+        </div>
+
         <DivisionCarousel
           //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
           cases={{

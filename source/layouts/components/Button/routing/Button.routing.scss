@@ -11,19 +11,13 @@ button[class*='counter'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <RoutingButton> for [DesktopLandscape] 🠈|--\\
-    @include Button_colors.desktop-colors();
     @include Button_layout.desktop-layout();
-    &:hover {
-      @include Button_motion.desktop-motion();
-    }
+    @include Button_colors.desktop-colors();
   }
   //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     //--|🠊 <RoutingButton> for [MobilePortrait] 🠈|--\\
-    @include Button_colors.mobile-colors();
     @include Button_layout.mobile-layout();
-    &:hover {
-      @include Button_motion.mobile-motion();
-    }
+    @include Button_colors.mobile-colors();
   }
 }
