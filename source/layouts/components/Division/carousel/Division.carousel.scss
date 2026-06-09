@@ -1,5 +1,6 @@
 //--|🠊 Division.carousel.scss 🠈|--\\
 @mixin desktop-landscape {
+  //--|🠋 Desktop (Carousel) 🠋|--\\
   %hori-scope {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
@@ -178,6 +179,7 @@
   }
 }
 @mixin mobile-portrait {
+  //--|🠋 Mobile (Carousel) 🠋|--\\
 }
 
 div[class*='carousel'] {

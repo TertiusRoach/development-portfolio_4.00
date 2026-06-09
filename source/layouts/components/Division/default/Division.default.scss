@@ -1,0 +1,85 @@
+//--|🠊 Division.default.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Division) 🠋|--\\
+  background: rgba(red, 0.25);
+  #test-main-block {
+    grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+  #test-head-block {
+    grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+  #test-foot-block {
+    grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+
+  #test-over-block {
+    grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+  #test-left-block {
+    grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+  #test-right-block {
+    grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
+
+  display: grid;
+  //--|🠊 96px (Left & Right) for Design 🠈|--\\
+  grid-template: //--|🠋 Width: 1920px 🠋|--\\
+    8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--//
+    / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--\\
+  @media screen and (max-height: 768px) {
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1366px 🠋|--\\
+      6rem repeat(2, 1fr) 6rem //--|🠈 rows 🠈|--//
+      / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠊 48px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 854px 🠋|--\\
+      4rem repeat(2, 1fr) 4rem //--|🠈 rows 🠈|--//
+      / 24px repeat(3, 1fr) 24px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠊 32px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 640px 🠋|--\\
+      3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--//
+      / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--\\
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Division) 🠋|--\\
+  display: grid;
+  //--|🠊 64px (Left & Right) for Design 🠈|--\\
+  grid-template: //--|🠋 Height: 1920px 🠋|--\\
+    12rem repeat(3, 1fr) 12rem //--|🠈 rows 🠈|--//
+    / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+  @media screen and (max-width: 768px) {
+    //--|🠊 48px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 1366px 🠋|--\\
+      10rem repeat(3, 1fr) 10rem //--|🠈 rows 🠈|--//
+      / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 480px) {
+    //--|🠊 32px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 854px 🠋|--\\
+      6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
+      / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 360px) {
+    //--|🠊 24px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 640px 🠋|--\\
+      4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
+      / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+  }
+}
+
+div[class*='division-default'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
