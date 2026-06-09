@@ -1,43 +1,17 @@
 //--|🠊 scripts.ts 🠈|--\\
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
-  switch (wrapType) {
-    case '[]':
-      return thisText.replace(/[\[\]]/g, '');
-    case '<>':
-      return thisText.replace(/[<>]/g, '');
-    case '()':
-      return thisText.replace(/[()]/g, '');
-    case '{}':
-      return thisText.replace(/[{}]/g, '');
-    case '--':
-      return thisText.replace(/[--]/g, '');
-    case '~~':
-      return thisText.replace(/[~~]/g, '');
-  }
+//--|🠋 Page Views 🠋|--\\
+export function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
+  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
+
+  console.log(activePage.classList[1], sleepingPage.classList[1]);
+
+  activePage.classList.replace('active', 'asleep');
+  sleepingPage.classList.replace('asleep', 'active');
 }
 
-//--|===|--\\
-export function hideOverlay(pageName: string, blockName: string) {
-  setTimeout(() => {
-    const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
-    if (disable.classList.contains('visible')) {
-      disable.classList.add('hidden');
-      disable.classList.remove('visible');
-
-      setTimeout(() => {
-        disable.style.display = 'none';
-      }, 125);
-    }
-
-    console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
-  }, 125);
-}
-export function showOverlay(pageName: string, blockName: string) {
-  setTimeout(() => {
-    console.log(`|🠊 Show: <section id="${pageName}-${blockName}"> 🠈|`);
-  }, 125);
-}
-
+//--|🠋 Block Views 🠋|--\\
+//--|🠊 1. Expand 🠈|--\\
 export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
@@ -110,7 +84,7 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
     }
   }, 125);
 }
-
+//--|🠊 2. Collapse 🠈|--\\
 export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
@@ -157,6 +131,7 @@ export function collapseLeftbar(pageName: string, blockAction: 'click' | 'hover'
   }, 125);
 }
 
+//--|🠊 3. Unfold 🠈|--\\
 export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
@@ -249,7 +224,6 @@ export function unfoldFooter(pageName: string, blockAction: 'click' | 'hover' | 
     }
   }, 125);
 }
-
 export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-leftbar';
@@ -306,6 +280,7 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
   }, 125);
 }
 
+//--|🠊 4. Squaring 🠈|--\\
 export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
@@ -384,5 +359,45 @@ export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' 
       }
       console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
       break;
+  }
+}
+
+//--|🠊 5. Visible & Hidden 🠈|--\\
+export function hideOverlay(pageName: string, blockName: string) {
+  setTimeout(() => {
+    const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
+    if (disable.classList.contains('visible')) {
+      disable.classList.add('hidden');
+      disable.classList.remove('visible');
+
+      setTimeout(() => {
+        disable.style.display = 'none';
+      }, 125);
+    }
+
+    console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
+  }, 125);
+}
+export function showOverlay(pageName: string, blockName: string) {
+  setTimeout(() => {
+    console.log(`|🠊 Show: <section id="${pageName}-${blockName}"> 🠈|`);
+  }, 125);
+}
+
+//--|🠋 Default Functions 🠋|--\\
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
+  switch (wrapType) {
+    case '[]':
+      return thisText.replace(/[\[\]]/g, '');
+    case '<>':
+      return thisText.replace(/[<>]/g, '');
+    case '()':
+      return thisText.replace(/[()]/g, '');
+    case '{}':
+      return thisText.replace(/[{}]/g, '');
+    case '--':
+      return thisText.replace(/[--]/g, '');
+    case '~~':
+      return thisText.replace(/[~~]/g, '');
   }
 }

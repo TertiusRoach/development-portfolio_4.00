@@ -4,8 +4,9 @@
 //--|🠋 div[id*="body"] 🠋|--\\
 @mixin body-transition {
   &[id*='body'] {
-    transition: height 750ms ease-in-out;
-    transition: clip-path 750ms ease-in-out;
+    transition:
+      height 1.5s ease-in-out,
+      clip-path 1.5s ease-in-out;
     &[class*='active'] {
       height: 100svh;
       clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\

@@ -7,6 +7,7 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
+import { togglePages } from '../../../../scripts';
 import { stripBrackets } from '../../../scripts/archive';
 import { unfoldFooter, squaringFooter } from '../../../../scripts';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
@@ -29,8 +30,8 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
-  let imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg';
+  let link =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   return (
     <footer
       id={`${pageName}-${blockName}`}
@@ -49,48 +50,57 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
               style={{
                 size: '<h1>',
                 view: 'bot-cen',
-                color: '(mono)',
+                color: '(green)',
                 shade: '~light~',
                 type: '{button}',
                 image:
-                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-medium.svg' as string,
+                  `${link}/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-medium.svg` as string,
               }}
               info={{
                 pageName: info.pageName,
                 blockName: info.blockName,
                 labelName: `${pageName}-overtime`,
               }}
+              onClick={() => {
+                togglePages(pageName, 'overtime');
+              }}
             />
             <ButtonRouting
               style={{
                 size: '<h1>',
                 view: 'bot-cen',
-                color: '(mono)',
+                color: '(blue)',
                 shade: '~light~',
                 type: '{button}',
                 image:
-                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/log-a-ticket/primary-medium.svg' as string,
+                  `${link}/source/assets/svg-files/archive-images/trinity-apps/log-a-ticket/primary-medium.svg` as string,
               }}
               info={{
                 pageName: info.pageName,
                 blockName: info.blockName,
                 labelName: `${pageName}-ticketing`,
               }}
+              onClick={() => {
+                togglePages(pageName, 'ticketing');
+              }}
             />
             <ButtonRouting
               style={{
                 size: '<h1>',
                 view: 'bot-cen',
-                color: '(mono)',
+                color: '(red)',
                 shade: '~light~',
                 type: '{button}',
                 image:
-                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/trinity-apps/find-a-link/primary-medium.svg' as string,
+                  `${link}/source/assets/svg-files/archive-images/trinity-apps/find-a-link/primary-medium.svg` as string,
               }}
               info={{
                 pageName: info.pageName,
                 blockName: info.blockName,
                 labelName: `${pageName}-hyperlink`,
+              }}
+              onClick={() => {
+                togglePages(pageName, 'hyperlink');
               }}
             />
           </div>
@@ -107,7 +117,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
             color: '(mono)',
             view: 'bot-rig',
             shade: '~light~',
-            image: imageLink,
+            image: `${link}/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg` as string,
           }}
           cases={{
             image: undefined,
