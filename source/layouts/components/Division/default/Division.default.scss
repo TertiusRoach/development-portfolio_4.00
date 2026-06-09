@@ -3,7 +3,6 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Division) 🠋|--\\
-  background: rgba(red, 0.25);
   #test-main-block {
     grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   }
