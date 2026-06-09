@@ -6,10 +6,10 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Navigation_default';
-import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../../../scripts';
+import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../../../Button/routing/Button.routing';
+import ButtonRouting from '../../../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {

@@ -26,7 +26,7 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../scripts';
+} from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import FooterComponents from './extensions/footer-components/FooterComponents';

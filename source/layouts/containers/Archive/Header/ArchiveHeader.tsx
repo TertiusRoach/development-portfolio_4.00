@@ -14,7 +14,7 @@ import {
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
-import ArchiveNavigation from '../../../components/Navigation/Archive/Navigation.archive';
+import ArchiveNavigation from '../../../components/Navigation/REVIEW/archive/Navigation.archive';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -45,6 +45,107 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   return (
     <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
+        <HeaderSwipe
+          //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          cases={{
+            chain: '<leftbar>',
+            menus: [
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'article', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Article_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'aside', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Aside_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'button', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: [
+                    '<Button_Default>',
+                    '<Button_Routing>',
+                    '<Button_Cleaned>',
+                    '<Button_Stretch>',
+                    '<Button_Profile>',
+                  ] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'division', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Division_Default>', '<Division_Carousel>', '<Division_Squaring>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'figure', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Figure_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'menu', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Menu_Select>', '<Menu_Swipe>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'navigation', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Navigation_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'section', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Section_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'table', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Table_Default>'] as Array<string>,
+                }}
+              />,
+              <MenuSwipe
+                style={{ ...menuStyle }}
+                info={{ labelName: 'time', pageName: pageName, blockName: blockName }}
+                cases={{
+                  show: 0,
+                  pages: ['<Time_Default>'] as Array<string>,
+                }}
+              />,
+            ],
+            show: 0,
+            axis: '[y]',
+          }}
+        />
         <NavigationDefault
           //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
           info={{
@@ -75,107 +176,6 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             setTimeout(() => {
               squaringHeader(pageName, 'exit', blockName);
             }, 6250);
-          }}
-        />
-        <HeaderSwipe
-          //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          cases={{
-            axis: '[y]',
-            show: 0,
-            menus: [
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'article', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Article>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'aside', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Aside>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'button', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: [
-                    '<Default_Button>',
-                    '<Routing_Button>',
-                    '<Cleaned_Button>',
-                    '<Stretch_Button>',
-                    '<Profile_Button>',
-                  ] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'division', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Carousel_Division>', '<Squaring_Division>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'figure', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Figure>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'menu', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Select_Menu>', '<Swipe_Menu>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'navigation', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Navigation>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'section', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Section>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'table', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Table>'] as Array<string>,
-                }}
-              />,
-              <MenuSwipe
-                style={{ ...menuStyle }}
-                info={{ labelName: 'time', pageName: pageName, blockName: blockName }}
-                cases={{
-                  show: 0,
-                  pages: ['<Default_Time>'] as Array<string>,
-                }}
-              />,
-            ],
-            chain: '<leftbar>',
           }}
         />
       </section>

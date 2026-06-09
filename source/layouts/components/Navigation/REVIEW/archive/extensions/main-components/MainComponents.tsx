@@ -13,7 +13,7 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../../../scripts';
+} from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 

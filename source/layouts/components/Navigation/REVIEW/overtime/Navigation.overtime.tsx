@@ -5,7 +5,7 @@ import './Navigation.archive.scss';
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_hyperlink';
+import { viewDisplay } from './Navigation_overtime';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -14,24 +14,24 @@ import {
   expandLeftbar,
   collapseHeader,
   expandHeader,
-} from '../../../../scripts';
+} from '../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 interface TheseProps {
   info: {
-    pageName: 'hyperlink';
+    pageName: 'overtime';
     blockName: 'header' | 'main' | 'footer';
     labelName: 'default' | string;
   };
 }
-const NavigationHyperlink: React.FC<TheseProps> = ({ info }) => {
+const NavigationOvertime: React.FC<TheseProps> = ({ info }) => {
   let svgPath: Array<String> = [
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
   ];
 
-  const pageName: string = info.pageName as 'hyperlink';
+  const pageName: string = info.pageName as 'overtime';
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as 'default';
 
@@ -109,4 +109,4 @@ const NavigationHyperlink: React.FC<TheseProps> = ({ info }) => {
     </nav>
   );
 };
-export default NavigationHyperlink;
+export default NavigationOvertime;

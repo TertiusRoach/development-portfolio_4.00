@@ -128,8 +128,9 @@ export function loadCarousel(
 
       slideMark = romanToArabic(horizontalCarousel.classList[0].split('_')[1]) as number;
       slideCount = horizontalCarousel.querySelector(`div[class="${labelName}-main_container"]`) as HTMLDivElement;
-
-      if (horizontalCarousel.classList[0] === 'carousel-horizontal_I') {
+      if (slideCount.childElementCount === 1) {
+        //--|🠊 Do nothing. I might have to rework this code. It's messy. 🠈|--\\
+      } else if (horizontalCarousel.classList[0] === 'carousel-horizontal_I') {
         nextView.classList.add('highlight');
         nextView.classList.remove('downplay');
 

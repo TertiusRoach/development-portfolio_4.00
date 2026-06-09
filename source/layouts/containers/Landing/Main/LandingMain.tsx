@@ -8,7 +8,7 @@ import MenuLanding from '../../../components/Menu/REVIEW/landing/Menu.landing';
 import FormRegister from '../../../components/Form/register/Form.register';
 import FormPassword from '../../../components/Form/password/Form.password';
 import FigureRotation from '../../../components/Figure/ARCHIVE/rotation/Figure.rotation';
-import NavigationLanding from '../../../components/Navigation/Landing/Navigation.landing';
+import NavigationLanding from '../../../components/Navigation/REVIEW/landing/Navigation.landing';
 //--|🠉 Components 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/landing';
