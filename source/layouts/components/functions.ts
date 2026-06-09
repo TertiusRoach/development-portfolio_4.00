@@ -703,6 +703,7 @@ export function romanToArabic(romanNumeral: string): number {
 }
 //--|🠉 Transfer to scripts.ts 🠉|--\\
 
+export const screenSize = () => {};
 export const eventListen = (selector: string, execution: () => void) => {
   let classObserver: MutationObserver | null = null;
   let domObserver: MutationObserver | null = null;

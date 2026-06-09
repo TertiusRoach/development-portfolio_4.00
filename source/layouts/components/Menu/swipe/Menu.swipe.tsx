@@ -6,8 +6,8 @@ import React, { useEffect } from 'react';
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
-import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 import { romanToArabic, arabicToRoman } from '../../functions';
+import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.swipe.scss';
@@ -90,7 +90,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 const [boldText, italText] = viewText.split('_');
                 return (
                   <aside key={index}>
-                    <h3 className="display-3">
+                    <h3 className="display-1">
                       <span>
                         <b>{boldText}</b>
                         <i>{italText}</i>

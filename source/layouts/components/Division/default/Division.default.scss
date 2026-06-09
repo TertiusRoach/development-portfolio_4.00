@@ -1,8 +1,19 @@
 //--|🠊 Division.default.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Division) 🠋|--\\
+  display: grid;
+  button[id*='block'] {
+    &[id*='left'] {
+      padding-left: 1rem;
+    }
+    &[id*='right'] {
+      padding-right: 1rem;
+    }
+    border: 2px dashed Palettes.$gray-medium;
+  }
   #test-main-block {
     grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   }
@@ -23,7 +34,6 @@
     grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   }
 
-  display: grid;
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--//
