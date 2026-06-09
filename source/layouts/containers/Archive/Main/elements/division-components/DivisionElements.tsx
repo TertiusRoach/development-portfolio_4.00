@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './DivisionElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultDivision from './default-division/DefaultDivision';

@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './AsideElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultAside from './default-aside/DefaultAside';

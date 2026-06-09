@@ -13,7 +13,7 @@ const MenuButtons: React.FC<InfoProps> = ({ info }) => {
   const blockName = stripBrackets(info.blockName, '<>') as string;
 
   const handleButtons = (
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string
+    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string,
   ) => {
     switch (blockName) {
       case '<overlay>':

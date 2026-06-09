@@ -10,7 +10,7 @@ import { copyCode, toggleColors, scrollSide } from './DefaultFunctions';
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
-import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 
 interface InfoProps {

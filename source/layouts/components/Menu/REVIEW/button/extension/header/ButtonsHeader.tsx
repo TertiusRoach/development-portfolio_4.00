@@ -26,7 +26,7 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {
     let selectSize = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="size"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="size"] select`,
     ) as HTMLSelectElement | null;
     if (selectSize) {
       viewSize(pageName); //--|🠊 Initial Loading 🠈|--\\
@@ -34,7 +34,7 @@ const MenuHeader: React.FC<InfoProps> = ({ info }) => {
     }
 
     let selectColor = document.querySelector(
-      `#${pageName}-header .${pageName}-menu li[class*="color"] select`
+      `#${pageName}-header .${pageName}-menu li[class*="color"] select`,
     ) as HTMLSelectElement | null;
     if (selectColor) {
       viewSize(pageName); //--|🠊 Initial Loading 🠈|--\\

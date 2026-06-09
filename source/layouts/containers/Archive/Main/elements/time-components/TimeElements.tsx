@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './TimeElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/Archive/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultTime from './default-time/DefaultTime';

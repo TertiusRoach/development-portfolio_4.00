@@ -11,7 +11,7 @@ import { stripBrackets } from '../../../../../../../scripts';
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
-import DivisionCarousel from '../../../../../../components/Division/Archive/carousel/Division.carousel';
+import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
 
 interface InfoProps {
   info: {

@@ -13,7 +13,7 @@ import { labelList } from './Menu_carousel';
 import { loadClass, loadStyle } from './Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
-import selectCarousel from '../../../Division/Archive/carousel/Division_carousel';
+import selectCarousel from '../../../Division/carousel/Division_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

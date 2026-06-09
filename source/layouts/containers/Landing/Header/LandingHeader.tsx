@@ -6,7 +6,7 @@ import { stripBrackets } from '../../../scripts/landing';
 import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
-import MenuLanding from '../../../components/Menu/ARCHIVE/landing/Menu.landing';
+import MenuLanding from '../../../components/Menu/REVIEW/landing/Menu.landing';
 import SectionLaunch from '../../../components/Section/Landing/launch/Section.launch';
 //--|🠉 Components 🠉|--//
 interface InfoProps {

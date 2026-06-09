@@ -1,5 +1,5 @@
 //--|🠊 Division_carousel.ts 🠈|--\\
-import stripBrackets from '../../../functions';
+import stripBrackets from '../../functions';
 
 function previewElement(pageName: string, blockName: string, labelName: string, blockAction: 'next-view' | 'prev-view') {
   // (1) Query safely: allow null
