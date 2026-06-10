@@ -108,7 +108,6 @@ const ViewFoot = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-
 const ViewOver = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
