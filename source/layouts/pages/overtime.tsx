@@ -1,4 +1,5 @@
 //--|🠊 overtime.tsx 🠈|--\\
+/*
 //--|🠋 Dependencies 🠋|--\\
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
@@ -47,10 +48,11 @@ function Overtime() {
         )}
       </Suspense>
 
-      {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>' }} />}
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
 export default Overtime;
+*/

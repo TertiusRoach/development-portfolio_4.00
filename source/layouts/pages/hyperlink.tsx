@@ -1,4 +1,5 @@
-//--|🠊 hyperlink.tsx 🠈|--//
+//--|🠊 hyperlink.tsx 🠈|--\\
+/*
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
@@ -36,10 +37,11 @@ function Hyperlink() {
         {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>' }} />}
       </Suspense>
 
-      {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>' }} />}
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
 export default Hyperlink;
+*/

@@ -1,4 +1,5 @@
-//--|🠊 ticketing.tsx 🠈|--//
+//--|🠊 ticketing.tsx 🠈|--\\
+/*
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
@@ -37,10 +38,11 @@ function Ticketing() {
         {getMain && <TicketingMain info={{ pageName: '[ticketing]', blockName: '<main>' }} />}
       </Suspense>
 
-      {/* <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <TicketingFooter info={{ pageName: '[ticketing]', blockName: '<footer>' }} />}
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
 export default Ticketing;
+*/
