@@ -31,9 +31,11 @@
       figure[class='header-midground'] {
         transform: translateY(0%);
       }
+      /*
       div[class='header-background'] {
         opacity: 1;
       }
+      */
     }
     &[class*='squaring'],
     &[class*='unfolded'],
@@ -43,13 +45,16 @@
       figure[class='header-midground'] {
         transform: translateY(-100%);
       }
+      /*
       div[class='header-background'] {
         opacity: 0;
       }
+      */
     }
   }
   %header-transitions {
     transition: clip-path 500ms ease-in-out;
+    /*
     section[class='header-foreground'] {
     }
     figure[class='header-midground'] {
@@ -58,6 +63,7 @@
     div[class='header-background'] {
       transition: opacity 750ms ease-in-out;
     }
+    */
   }
   %header-constituents {
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
@@ -291,109 +297,19 @@
 
     🠉|--*/
     &[class*='expanded'] {
-      opacity: 1;
-      //--|🠊 backdrop-filter: blur(24px); 🠈|--\\
-      section[class*='foreground'] {
-        div[class*='-'] {
-          opacity: 1;
-          filter: blur(0);
-        }
-      }
     }
-
     &[class*='unfolded'] {
-      //--|🠊 backdrop-filter: blur(12px); 🠈|--\\
-      section[class='header-foreground'] {
-        nav ol li,
-        nav ul li {
-          filter: blur(0);
-        }
-        div[class*='-'] {
-          opacity: 0;
-          //--|🠊 filter: blur(12px); 🠈|--\\
-        }
-      }
-      div[class='header-background'] {
-        opacity: 0;
-        div[class*='-'] {
-        }
-      }
     }
-
     &[class*='collapsed'] {
-      backdrop-filter: blur(0);
-      section[class='header-foreground'] {
-        nav ol li,
-        nav ul li {
-          //--|🠊 filter: blur(24px); 🠈|--\\
-        }
-        div[class*='-'] {
-          opacity: 0;
-          //--|🠊 filter: blur(24px); 🠈|--\\
-        }
-      }
-      div[class='header-background'] {
-        opacity: 0;
-        div[class*='-'] {
-        }
-      }
     }
   }
   %leftbar-transitions {
-    &[class*='unfolded'] {
-    }
-    &[class*='expanded'] {
-      transition: clip-path 0.25s;
-    }
     /*--|🠋
 
     🠉|--*/
-    transition:
-      clip-path 500ms ease-in-out,
-      backdrop-filter 1.5s ease-in-out;
-
-    section[class*='foreground'],
-    figure[class*='midground'],
-    div[class*='background'] {
-      transition: opacity 750ms ease-in-out;
-      nav {
-        menu {
-          z-index: 1;
-          button:not(:first-child) {
-            position: relative;
-            @media screen and (orientation: landscape) {
-              transition: top 500ms ease-in-out;
-            }
-            @media screen and (orientation: portrait) {
-              transition: bottom 500ms ease-in-out;
-            }
-          }
-        }
-        ol,
-        ul {
-          z-index: 0;
-          li {
-            transition: filter 1.5s ease-in-out;
-          }
-        }
-
-        ol,
-        ul,
-        menu {
-          grid-area: 1 / 1 / 3 / 2;
-        }
-      }
-      div[class*='-'] {
-        transition:
-          filter 250ms ease-in-out,
-          opacity 500ms ease-in-out;
-      }
-    }
+    transition: clip-path 500ms ease-in-out;
   }
   %leftbar-constituents {
-    /*--|🠋
-
-    🠉|--*/
     //--|🠊 Definition: Serving as part of a whole 🠈|--\\
     @media screen and (orientation: landscape) {
       &[class*='unfolded'] {
@@ -412,29 +328,10 @@
         }
       }
       &[class*='expanded'] {
-        @extend %menu-constituents;
         clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
       }
       &[class*='collapsed'] {
-        @extend %menu-constituents;
         clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-
-      %menu-constituents {
-        section[class='leftbar-foreground'] {
-          menu[class*='leftbar_carousel'] {
-            transform: translateX(-128px);
-            @media screen and (max-height: 768px) {
-              transform: translateX(-96px);
-            }
-            @media screen and (max-height: 480px) {
-              transform: translateX(-64px);
-            }
-            @media screen and (max-height: 360px) {
-              transform: translateX(-48px);
-            }
-          }
-        }
       }
     }
     @media screen and (orientation: portrait) {
@@ -468,68 +365,29 @@
     @extend %rightbar-constituents;
   }
   %rightbar-effects {
+    /*--|🠋
+
+    🠉|--*/
     &[class*='expanded'] {
-      opacity: 1;
-      //--|🠊 backdrop-filter: blur(24px); 🠈|--\\
-      section[class*='foreground'] {
-        div[class*='-'] {
-          opacity: 1;
-          filter: blur(0);
-        }
-      }
     }
     &[class*='unfolded'] {
-      //--|🠊 backdrop-filter: blur(12px); 🠈|--\\
-      section[class='header-foreground'] {
-        nav ol li,
-        nav ul li {
-          filter: blur(0);
-        }
-        div[class*='-'] {
-          opacity: 0;
-          //--|🠊 filter: blur(12px); 🠈|--\\
-        }
-      }
-      div[class='header-background'] {
-        opacity: 0;
-        div[class*='-'] {
-        }
-      }
     }
     &[class*='collapsed'] {
-      backdrop-filter: blur(0);
-      section[class='header-foreground'] {
-        nav ol li,
-        nav ul li {
-          //--|🠊 filter: blur(24px); 🠈|--\\
-        }
-        div[class*='-'] {
-          opacity: 0;
-          //--|🠊 filter: blur(24px); 🠈|--\\
-        }
-      }
-      div[class='header-background'] {
-        opacity: 0;
-        div[class*='-'] {
-        }
-      }
     }
   }
   %rightbar-transition {
-    //--|🠋 Leftbar & Rightbar 🠋|--//
-    aside {
-      transition: clip-path 0.25s;
-      &[id*='leftbar'],
-      &[id*='rightbar'] {
-        //--|🠊 backdrop-filter: blur(8px); 🠈|--\\
-      }
-    }
+    /*--|🠋
+
+    🠉|--*/
+    transition: clip-path 500ms ease-in-out;
   }
   %rightbar-constituents {
     //--|🠊 Definition: Serving as part of a whole 🠈|--\\
-
     @media screen and (orientation: landscape) {
       &[class*='unfolded'] {
+        /*--|🠋
+
+        🠉|--*/
         clip-path: inset(0% 0% 0% calc(100% - 128px)); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-height: 768px) {
           clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -542,11 +400,10 @@
         }
       }
       &[class*='expanded'] {
-        transition: clip-path 0.25s;
         clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
       }
       &[class*='collapsed'] {
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
       }
     }
     @media screen and (orientation: portrait) {
@@ -577,24 +434,22 @@
 //--|🠋 section[id*="overlay"] 🠋|--\\
 @mixin overlay-transition {
   section[class*='overlay'] {
-    transition:
-      opacity 0.25s ease-in-out,
-      backdrop-filter 0.25s ease-in-out;
-    &[class*='visible'] {
-      opacity: 1;
-      //--|🠊 backdrop-filter: blur(2rem); 🠈|--\\
-    }
     &[class*='hidden'] {
       opacity: 0;
+      visibility: hidden;
+      //--|🠋 Hide Container 🠋|--\\
+      transition:
+        visibility 0ms 1500ms,
+        opacity 500ms ease-in-out;
     }
 
-    *[class*='downplay'] {
-      //--|🠊 filter: blur(4px); 🠈|--\\
-      transition: filter 1s ease-in-out;
-    }
-    *[class*='highlight'] {
-      filter: blur(0px);
-      transition: filter 1s ease-in-out;
+    &[class*='visible'] {
+      opacity: 1;
+      visibility: visible;
+      //--|🠋 Show Container 🠋|--\\
+      transition:
+        visibility 0ms 0ms,
+        opacity 500ms ease-in-out;
     }
   }
 }

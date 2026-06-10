@@ -4,7 +4,6 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Division) 🠋|--\\
-  display: grid;
   button[id*='block'] {
     &[id*='left'] {
       padding-left: 1rem;
@@ -13,27 +12,29 @@
       padding-right: 1rem;
     }
     border: 2px dashed Palettes.$gray-medium;
-  }
-  #test-main-block {
-    grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
-  #test-head-block {
-    grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
-  #test-foot-block {
-    grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+    &#test-main-block {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-head-block {
+      grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-foot-block {
+      grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    &#test-over-block {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-left-block {
+      grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-right-block {
+      grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
 
-  #test-over-block {
-    grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
-  #test-left-block {
-    grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
-  #test-right-block {
-    grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
-
+  display: grid;
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--//

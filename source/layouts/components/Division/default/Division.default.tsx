@@ -2,6 +2,9 @@
 //--|🠋 Styles 🠋|--\\
 import './Division.default.scss';
 
+//--|🠋 Functions 🠋|--\\
+import testBlock from './Division_default';
+
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
@@ -40,6 +43,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           blockName: blockName as string,
           labelName: 'test-main-block',
         }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<main>', info.labelName);
+        }}
       />
 
       <ButtonDefault
@@ -57,6 +63,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           blockName: blockName as string,
           labelName: 'test-head-block',
         }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<header>', info.labelName);
+        }}
       />
       <ButtonDefault
         style={{
@@ -72,6 +81,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           pageName: pageName as string,
           blockName: blockName as string,
           labelName: 'test-foot-block',
+        }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<footer>', info.labelName);
         }}
       />
 
@@ -90,6 +102,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           blockName: blockName as string,
           labelName: 'test-over-block',
         }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<overlay>', info.labelName);
+        }}
       />
       <ButtonDefault
         style={{
@@ -106,6 +121,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           blockName: blockName as string,
           labelName: 'test-left-block',
         }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<leftbar>', info.labelName);
+        }}
       />
       <ButtonDefault
         style={{
@@ -121,6 +139,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           pageName: pageName as string,
           blockName: blockName as string,
           labelName: 'test-right-block',
+        }}
+        onClick={(): void => {
+          testBlock(info.pageName, '<rightbar>', info.labelName);
         }}
       />
     </div>

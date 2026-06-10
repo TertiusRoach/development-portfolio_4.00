@@ -4,7 +4,6 @@ import { hideOverlay } from '../../../../scripts';
 import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\
-import MenuCarousel from '../../../components/Menu/carousel/Menu.carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -21,16 +20,18 @@ interface InfoProps {
   };
 }
 const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'hidden' | 'visible' = 'visible';
+  let stateName: 'hidden' | 'visible' = 'hidden';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
+    /*
     setTimeout(() => {
       hideOverlay(pageName, blockName);
     }, 1500);
+    */
   }, [pageName, blockName]);
 
   return (
