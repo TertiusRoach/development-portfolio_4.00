@@ -1,0 +1,23 @@
+//--|🠊 DivisionElements.scss 🠈|--\\
+@use '../../../../../designs/Palettes.scss';
+
+@use './default-division/DefaultDivision.scss';
+
+section[class*='division-main'] {
+  div.division-main_container {
+    @media screen and (orientation: landscape) {
+      aside[class*='division'] {
+        &[class*='default'] {
+          @include DefaultDivision.desktop-landscape;
+        }
+        &[class*='carousel'] {
+        }
+        &[class*='squaring'] {
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      @include DefaultDivision.mobile-portrait;
+    }
+  }
+}

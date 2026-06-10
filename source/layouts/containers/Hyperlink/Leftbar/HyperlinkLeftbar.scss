@@ -1,0 +1,39 @@
+//--|🠊 ArchiveLeftbar.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Layers) 🠋|--\\
+  section[class*='foreground'] {
+    menu[class*='select'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+  @include Mixins.landscape-grid;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Layers) 🠋|--//
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+  @include Mixins.portrait-grid;
+}
+aside[id*='components'] {
+  @media screen and (orientation: landscape) {
+    &[id*='leftbar'] {
+      @include desktop-landscape();
+    }
+  }
+  @media screen and (orientation: portrait) {
+    &[id*='leftbar'] {
+      @include mobile-portrait();
+    }
+  }
+}

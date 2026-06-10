@@ -1,12 +1,12 @@
-//--|🠊 overtime.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 overtime.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--//
-const OvertimeMain = lazy(() => import('../containers/Main/OvertimeMain/OvertimeMain'));
-const OvertimeHeader = lazy(() => import('../containers/Header/OvertimeHeader/OvertimeHeader'));
-const OvertimeFooter = lazy(() => import('../containers/Footer/OvertimeFooter/OvertimeFooter'));
-const OvertimeLeftbar = lazy(() => import('../containers/Leftbar/OvertimeLeftbar/OvertimeLeftbar'));
+const OvertimeMain = lazy(() => import('../containers/Overtime/Main/OvertimeMain'));
+const OvertimeHeader = lazy(() => import('../containers/Overtime/Header/OvertimeHeader'));
+const OvertimeFooter = lazy(() => import('../containers/Overtime/Footer/OvertimeFooter'));
+const OvertimeLeftbar = lazy(() => import('../containers/Overtime/Leftbar/OvertimeLeftbar'));
 
 function Overtime() {
   const [getMain, setMain] = useState(false);

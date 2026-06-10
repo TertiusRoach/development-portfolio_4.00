@@ -1,8 +1,8 @@
 //--|🠊 styles/ticketing.scss 🠈|--//
 //--|🠋 Containers 🠋|--//
-@use '../containers/Main/TicketingMain/TicketingMain.scss';
-@use '../containers/Header/TicketingHeader/TicketingHeader.scss';
-@use '../containers/Footer/TicketingFooter/TicketingFooter.scss';
+@use '../containers/Ticketing/Main/TicketingMain.scss';
+@use '../containers/Ticketing/Header/TicketingHeader.scss';
+@use '../containers/Ticketing/Footer/TicketingFooter.scss';
 @mixin desktop-landscape {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   header[id*='ticketing'],

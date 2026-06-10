@@ -1,171 +1,185 @@
 //--|🠊 Division.carousel.scss 🠈|--\\
 @mixin desktop-landscape {
-  overflow: hidden;
-  li {
-    transition: transform 500ms ease-in-out;
-  }
-
-  //--|🠊 Vertical Y-axis 🠈|--\\
-  %vert-stack {
-    div {
-      height: 100%;
-      display: block;
-      width: inherit; //--|🠊 width: 100%; 🠈|--\\
-      section {
-        height: 100%;
+  //--|🠋 Desktop (Carousel) 🠋|--\\
+  %hori-scope {
+    //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
+    li[class*='horizontal'] {
+      height: 100svh;
+      transition: transform 500ms ease-in-out;
+      div[class*='container'] {
+        display: flex;
+        height: inherit;
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {
+          height: 100svh;
+        }
       }
     }
-    &.I {
-      transform: translateY(0);
-    }
-    &.II {
-      transform: translateY(-100%);
-    }
-    &.III {
-      transform: translateY(-200%);
-    }
-    &.IV {
-      transform: translateY(-300%);
-    }
-    &.V {
-      transform: translateY(-400%);
-    }
-    &.VI {
-      transform: translateY(-500%);
-    }
-    &.VII {
-      transform: translateY(-600%);
-    }
-    &.VIII {
-      transform: translateY(-700%);
-    }
-    &.IX {
-      transform: translateY(-800%);
-    }
-    &.X {
-      transform: translateY(-900%);
-    }
-    &.XI {
-      transform: translateY(-1000%);
-    }
-    &.XII {
-      transform: translateY(-1100%);
-    }
-    &.XIII {
-      transform: translateY(-1200%);
-    }
-    &.XIV {
-      transform: translateY(-1300%);
-    }
-    &.XV {
-      transform: translateY(-1400%);
-    }
-    &.XVI {
-      transform: translateY(-1500%);
-    }
-    &.XVII {
-      transform: translateY(-1600%);
-    }
-    &.XVIII {
-      transform: translateY(-1700%);
-    }
-    &.XIX {
-      transform: translateY(-1800%);
-    }
-    &.XX {
-      transform: translateY(-1900%);
+  }
+  %hori-stack {
+    li[class*='carousel'] {
+      &[class*='horizontal_I'] {
+        transform: translateX(0);
+      }
+      &[class*='horizontal_II'] {
+        transform: translateX(-100%);
+      }
+      &[class*='horizontal_III'] {
+        transform: translateX(-200%);
+      }
+      &[class*='horizontal_IV'] {
+        transform: translateX(-300%);
+      }
+      &[class*='horizontal_V'] {
+        transform: translateX(-400%);
+      }
+      &[class*='horizontal_VI'] {
+        transform: translateX(-500%);
+      }
+      &[class*='horizontal_VII'] {
+        transform: translateX(-600%);
+      }
+      &[class*='horizontal_VIII'] {
+        transform: translateX(-700%);
+      }
+      &[class*='horizontal_IX'] {
+        transform: translateX(-800%);
+      }
+      &[class*='horizontal_X'] {
+        transform: translateX(-900%);
+      }
+      &[class*='horizontal_XI'] {
+        transform: translateX(-1000%);
+      }
+      &[class*='horizontal_XII'] {
+        transform: translateX(-1100%);
+      }
+      &[class*='horizontal_XIII'] {
+        transform: translateX(-1200%);
+      }
+      &[class*='horizontal_XIV'] {
+        transform: translateX(-1300%);
+      }
+      &[class*='horizontal_XV'] {
+        transform: translateX(-1400%);
+      }
+      &[class*='horizontal_XVI'] {
+        transform: translateX(-1500%);
+      }
+      &[class*='horizontal_XVII'] {
+        transform: translateX(-1600%);
+      }
+      &[class*='horizontal_XVIII'] {
+        transform: translateX(-1700%);
+      }
+      &[class*='horizontal_XIX'] {
+        transform: translateX(-1800%);
+      }
+      &[class*='horizontal_XX'] {
+        transform: translateX(-1900%);
+      }
     }
   }
-  ol {
+
+  %vert-scope {
+    //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
     height: 100%;
     display: flex;
-    li {
+    li[class*='vertical'] {
       width: 100%;
-      display: inherit; //--|🠊 display: flex; 🠈|--\\
-      @extend %vert-stack;
+      transition: transform 500ms ease-in-out;
+      /*
+      div[class*='container'] {
+        width: inherit; //--|🠈 width: 100%; 🠈|--\\
+        section[class*='main'],
+        figure[class*='main'],
+        aside[class*='main'] {          
+          // height: 100%;          
+          ul[class*='car-'] {
+            @extend %hori-stack;
+          }
+        }
+      }
+      */
     }
   }
-
-  //--|🠊 Horizontal X-axis 🠈|--\\
-  %hori-stack {
-    div {
-      display: flex;
-      section,
-      figure,
-      aside {
-        flex: 0 0 100vw;
+  %vert-stack {
+    li[class*='carousel'] {
+      &[class*='vertical_I'] {
+        transform: translateY(0);
+      }
+      &[class*='vertical_II'] {
+        transform: translateY(-100svh);
+      }
+      &[class*='vertical_III'] {
+        transform: translateY(-200svh);
+      }
+      &[class*='vertical_IV'] {
+        transform: translateY(-300svh);
+      }
+      &[class*='vertical_V'] {
+        transform: translateY(-400svh);
+      }
+      &[class*='vertical_VI'] {
+        transform: translateY(-500svh);
+      }
+      &[class*='vertical_VII'] {
+        transform: translateY(-600svh);
+      }
+      &[class*='vertical_VIII'] {
+        transform: translateY(-700svh);
+      }
+      &[class*='vertical_IX'] {
+        transform: translateY(-800svh);
+      }
+      &[class*='vertical_X'] {
+        transform: translateY(-900svh);
+      }
+      &[class*='vertical_XI'] {
+        transform: translateY(-1000svh);
+      }
+      &[class*='vertical_XII'] {
+        transform: translateY(-1100svh);
+      }
+      &[class*='vertical_XIII'] {
+        transform: translateY(-1200svh);
+      }
+      &[class*='vertical_XIV'] {
+        transform: translateY(-1300svh);
+      }
+      &[class*='vertical_XV'] {
+        transform: translateY(-1400svh);
+      }
+      &[class*='vertical_XVI'] {
+        transform: translateY(-1500svh);
+      }
+      &[class*='vertical_XVII'] {
+        transform: translateY(-1600svh);
+      }
+      &[class*='vertical_XVIII'] {
+        transform: translateY(-1700svh);
+      }
+      &[class*='vertical_XIX'] {
+        transform: translateY(-1800svh);
+      }
+      &[class*='vertical_XX'] {
+        transform: translateY(-1900svh);
       }
     }
-
-    &.I {
-      transform: translateX(0);
-    }
-    &.II {
-      transform: translateX(-100%);
-    }
-    &.III {
-      transform: translateX(-200%);
-    }
-    &.IV {
-      transform: translateX(-300%);
-    }
-    &.V {
-      transform: translateX(-400%);
-    }
-    &.VI {
-      transform: translateX(-500%);
-    }
-    &.VII {
-      transform: translateX(-600%);
-    }
-    &.VIII {
-      transform: translateX(-700%);
-    }
-    &.IX {
-      transform: translateX(-800%);
-    }
-    &.X {
-      transform: translateX(-900%);
-    }
-    &.XI {
-      transform: translateX(-1000%);
-    }
-    &.XII {
-      transform: translateX(-1100%);
-    }
-    &.XIII {
-      transform: translateX(-1200%);
-    }
-    &.XIV {
-      transform: translateX(-1300%);
-    }
-    &.XV {
-      transform: translateX(-1400%);
-    }
-    &.XVI {
-      transform: translateX(-1500%);
-    }
-    &.XVII {
-      transform: translateX(-1600%);
-    }
-    &.XVIII {
-      transform: translateX(-1700%);
-    }
-    &.XIX {
-      transform: translateX(-1800%);
-    }
-    &.XX {
-      transform: translateX(-1900%);
-    }
   }
-  ul {
-    li {
-      height: 100svh;
-      @extend %hori-stack;
-    }
+  overflow: hidden;
+  ul[class='hori-X-axis'] {
+    @extend %hori-scope;
+    @extend %hori-stack;
+  }
+  ol[class='vert-Y-axis'] {
+    @extend %vert-stack;
+    @extend %vert-scope;
   }
 }
 @mixin mobile-portrait {
+  //--|🠋 Mobile (Carousel) 🠋|--\\
 }
 
 div[class*='carousel'] {

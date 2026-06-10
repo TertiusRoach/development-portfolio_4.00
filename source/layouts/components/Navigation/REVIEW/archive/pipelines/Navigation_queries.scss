@@ -1,0 +1,12 @@
+//--|🠊 carousel/pipeline/Menu_queries.scss 🠈|--\\
+@use '../addons/scroll-carousel/ScrollCarousel.scss';
+@use '../addons/select-carousel/SelectCarousel.scss';
+
+@mixin desktop-queries {
+  @include ScrollCarousel.desktop-scroll();
+  @include SelectCarousel.desktop-select();
+}
+@mixin mobile-queries {
+  @include ScrollCarousel.mobile-scroll();
+  @include SelectCarousel.mobile-select();
+}

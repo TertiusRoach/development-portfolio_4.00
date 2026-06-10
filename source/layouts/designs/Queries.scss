@@ -1,0 +1,26 @@
+//--|🠊 Queries.scss 🠈|--\\
+@use './Palettes.scss';
+
+@mixin desk-grid {
+}
+@mixin desk-flex {
+}
+
+@mixin mobi-grid {
+}
+@mixin mobi-flex {
+}
+
+body[class='ante-meridien'] {
+  background: Palettes.$indexLand-lightMode;
+}
+body[class='post-meridien'] {
+  background: Palettes.$indexLand-darkMode;
+}
+
+//--|🠋 Display Toggle 🠋|--//
+@mixin dark-mode_post-meridiem {
+}
+
+@mixin light-mode_ante-meridiem {
+}

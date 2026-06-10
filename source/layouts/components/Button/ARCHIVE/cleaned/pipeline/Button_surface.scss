@@ -1,0 +1,60 @@
+//--|🠊 Button_surface.scss 🠈|--//
+@use '../../../../../designs/Palettes.scss' as Palettes;
+@mixin button-surface {
+  //--|🠊 button[class*='cleaned'] 🠈|--//
+  @extend %mono-surface;
+  //--|🠉 display: flex; 🠉|--//
+}
+%mono-surface {
+  //--|🠊 Monochrome 🠈|--//
+  //--|🠊 display: flex; 🠈|--//
+  %dar-mon {
+    *[class*='_text'] {
+      color: Palettes.$gray-dark;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$gray-dark;
+    }
+    *[class*='_back'] {
+      background: none;
+      color: rgba(Palettes.$gray-dark, 0);
+    }
+  }
+  %med-mon {
+    *[class*='_text'] {
+      color: Palettes.$gray-medium;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$gray-medium;
+    }
+    *[class*='_back'] {
+      background: none;
+      color: rgba(Palettes.$gray-medium, 0);
+    }
+  }
+  %lig-mon {
+    *[class*='_text'] {
+      color: Palettes.$gray-light;
+    }
+    img[class*='_icon'] {
+      background: Palettes.$gray-light;
+    }
+    *[class*='_back'] {
+      background: none;
+      color: rgba(Palettes.$gray-light, 0);
+    }
+  }
+
+  div[class*='_mon_'] {
+    //--|🠊 display: grid; 🠈|--//
+    &[class*='dar_mon'] {
+      @extend %dar-mon;
+    }
+    &[class*='med_mon'] {
+      @extend %med-mon;
+    }
+    &[class*='lig_mon'] {
+      @extend %lig-mon;
+    }
+  }
+}

@@ -2,9 +2,9 @@
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
-const HyperlinkMain = lazy(() => import('../containers/Main/HyperlinkMain/HyperlinkMain'));
-const HyperlinkHeader = lazy(() => import('../containers/Header/HyperlinkHeader/HyperlinkHeader'));
-const HyperlinkFooter = lazy(() => import('../containers/Footer/HyperlinkFooter/HyperlinkFooter'));
+const HyperlinkMain = lazy(() => import('../containers/Hyperlink/Main/HyperlinkMain'));
+const HyperlinkHeader = lazy(() => import('../containers/Hyperlink/Header/HyperlinkHeader'));
+const HyperlinkFooter = lazy(() => import('../containers/Hyperlink/Footer/HyperlinkFooter'));
 
 function Hyperlink() {
   const [getMain, setMain] = useState(false);

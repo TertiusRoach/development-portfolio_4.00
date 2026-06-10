@@ -1,0 +1,14 @@
+//--|🠊 Division.carousel.scss 🠈|--\\
+@mixin desktop-landscape {
+}
+@mixin mobile-portrait {
+}
+
+div[class*='carousel'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

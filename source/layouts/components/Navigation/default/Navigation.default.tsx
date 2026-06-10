@@ -1,92 +1,185 @@
 //--|🠊 Navigation.default.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Navigation.default.scss';
+
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
-
-//--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Navigation_default';
-import { unfoldLeftbar, unfoldHeader, expandHeader, collapseHeader, collapseLeftbar } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import ButtonRouting from '../../Button/routing/Button.routing';
 
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
+import './Navigation.default.scss';
+
 interface TheseProps {
   info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
+    pageName: 'components' | 'landing' | 'overtime' | 'ticketing' | 'hyperlink';
+    blockName: 'main' | 'header' | 'footer' | 'overlay' | 'leftbar' | 'rightbar';
+    labelName: 'default' | string;
   };
+  style: {
+    image: string | undefined;
+    shade: '~dark~' | '~light~';
+    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
+  };
+  cases: {
+    image: Array<string> | undefined;
+    view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
+    tasks: '';
+  };
+
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 }
-const NavigationDefault: React.FC<TheseProps> = ({ info }) => {
-  const svgPath: Array<String> = [
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-medium.svg',
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg',
-  ];
-
-  const pageName: string = info.pageName as string;
-  const blockName: string = info.blockName as string;
-  const labelName: string = info.labelName as 'default';
-
-  const [getView, setView] = useState(viewDisplay() as 'top-lef' | 'bot-rig');
-
-  useEffect(() => {
-    //--|🠋 1. Define the media query for landscape 🠈|--\\
-    const mediaQuery = window.matchMedia('(orientation: landscape)');
-    const handleOrientationChange = () => {
-      //--|🠋 2. Create the handler function 🠈|--\\
-      setView(viewDisplay() as 'top-lef' | 'bot-rig'); //--|🠈 Update state by calling viewDisplay again 🠈|--\\
-    };
-    mediaQuery.addEventListener('change', handleOrientationChange); //--|🠈 3. Add the listener 🠈|--\\
-    return () => mediaQuery.removeEventListener('change', handleOrientationChange); //--|🠈 4. Cleanup on unmount 🠈|--\\
-  }, [pageName, blockName]);
-
-  return (
-    <nav className={`browse-${blockName}`}>
-      <ol>
-        <li className="open-head">
+function VerticalButtons(
+  info: TheseProps['info'],
+  style: TheseProps['style'],
+  cases: TheseProps['cases'],
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
+) {
+  switch (true) {
+    case cases.view !== undefined:
+      return cases.view.map((path, index) => (
+        <li className={path} key={index}>
           <ButtonRouting
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}-${blockName}_open-head`,
-            }}
             style={{
               size: '<h1>',
-              color: '(mono)',
-              shade: '~light~',
               type: '{button}',
-              view: viewDisplay() as 'top-lef' | 'bot-rig',
-              image: `${svgPath[0]}`,
+              color: style.color,
+              shade: style.shade,
+              image: cases.image?.[index] as string,
+              view: path as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef',
             }}
-            onMouseEnter={() => {
-              unfoldHeader(pageName, 'hover', blockName);
-              unfoldLeftbar(pageName, 'click', 'leftbar');
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${path}`,
             }}
-            // onMouseEnter={() => unfoldHeader(pageName, 'hover', blockName)}
           />
         </li>
-        {/* <li className="load-tags">
+      ));
+    case style.view !== undefined:
+      return (
+        <li className={style.view}>
           <ButtonRouting
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: `${pageName}-${blockName}_load-tags`,
-            }}
             style={{
               size: '<h1>',
-              color: '(mono)',
-              shade: '~dark~',
               type: '{button}',
-              view: 'bot-rig',
-              image: `${svgPath[1]}`,
+              view: style.view,
+              color: style.color,
+              shade: style.shade,
+              image: style.image as string,
             }}
-            onClick={() => viewBody('components')}
-            // onMouseEnter={() => collapseHeader(pageName, 'hover', blockName)}
+            info={{
+              pageName: info.pageName,
+              blockName: info.blockName,
+              labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${style.view}`,
+            }}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onDoubleClick={onDoubleClick}
           />
-        </li> */}
-      </ol>
+        </li>
+      );
+    default:
+      return null;
+  }
+}
+function HorizontalButtons(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
+  switch (info.blockName) {
+    case 'main':
+      return NavigationMain(info, style, cases);
+    case 'header':
+      return NavigationHeader(info, style, cases);
+    case 'footer':
+      return NavigationFooter(info, style, cases);
+    case 'overlay':
+      return NavigationOverlay(info, style, cases);
+    case 'leftbar':
+      return NavigationLeftbar(info, style, cases);
+    case 'rightbar':
+      return NavigationRightbar(info, style, cases);
+  }
+}
+
+const NavigationDefault: React.FC<TheseProps> = ({
+  info,
+  style,
+  cases,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onDoubleClick,
+}) => {
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as string;
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  return (
+    <nav className={`${labelName}-${blockName}_navigation-default`}>
+      <ol className={`hori-X-${blockName}`}>{HorizontalButtons(info, style, cases)}</ol>
+      <ul className={`vert-Y-${blockName}`}>
+        {VerticalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
+      </ul>
     </nav>
   );
+};
+
+let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Main> Loaded!');
+  return <></>;
+};
+let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Header> Loaded!');
+  return <></>;
+};
+let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Footer> Loaded!');
+  return <></>;
+};
+let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Overlay> Loaded!');
+  return <></>;
+};
+let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Leftbar> Loaded!');
+  return <></>;
+};
+let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+  const pageInfo = info as TheseProps['info'];
+  const pageStyle = style as TheseProps['style'];
+  const pageCases = cases as TheseProps['cases'];
+
+  // console.log('<Rightbar> Loaded!');
+  return <></>;
 };
 export default NavigationDefault;

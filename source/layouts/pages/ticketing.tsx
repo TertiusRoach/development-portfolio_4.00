@@ -2,9 +2,9 @@
 //--|🠋 Dependencies 🠋|--//
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--//
-const TicketingMain = lazy(() => import('../containers/Main/TicketingMain/TicketingMain'));
-const TicketingHeader = lazy(() => import('../containers/Header/TicketingHeader/TicketingHeader'));
-const TicketingFooter = lazy(() => import('../containers/Footer/TicketingFooter/TicketingFooter'));
+const TicketingMain = lazy(() => import('../containers/Ticketing/Main/TicketingMain'));
+const TicketingHeader = lazy(() => import('../containers/Ticketing/Header/TicketingHeader'));
+const TicketingFooter = lazy(() => import('../containers/Ticketing/Footer/TicketingFooter'));
 
 function Ticketing() {
   const [getMain, setMain] = useState(false);

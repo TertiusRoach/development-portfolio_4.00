@@ -1,0 +1,97 @@
+//--|🠊 carousel/addons/select-carousel 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-select {
+  li[class*='_sel'] {
+    @include desk-grid;
+    @include desk-flex;
+  }
+  li {
+    @include Mixins.clip-menu();
+  }
+}
+@mixin desk-grid {
+}
+@mixin desk-flex {
+  //--|🠋 Y-axis 🠋|--\\
+  &[class*='vert_lef'] {
+    height: 100%;
+    overflow-y: auto;
+    ol {
+      height: inherit;
+      li {
+        transition: opacity 250ms ease-in-out;
+        &.downplay {
+          opacity: 0.5;
+        }
+        &.highlight {
+          opacity: 1;
+        }
+      }
+      &[class*='select'] {
+        li:first-child {
+          padding-top: 8rem + 1rem;
+        }
+        li {
+          padding: 1rem 0;
+        }
+        li:last-child {
+          padding-bottom: 8rem + 1rem;
+        }
+        @media screen and (max-height: 768px) {
+          li:first-child {
+            padding-top: 6rem + 0.75rem;
+          }
+          li {
+            padding: 0.75rem 0;
+          }
+          li:last-child {
+            padding-bottom: 6rem + 0.75rem;
+          }
+        }
+        @media screen and (max-height: 480px) {
+          li:first-child {
+            padding-top: 4rem + 0.5rem;
+          }
+          li {
+            padding: 0.5rem 0;
+          }
+          li:last-child {
+            padding-bottom: 4rem + 0.5rem;
+          }
+        }
+        @media screen and (max-height: 360px) {
+          li:first-child {
+            padding-top: 3rem + 0.25rem;
+          }
+          li {
+            padding: 0.25rem 0;
+          }
+          li:last-child {
+            padding-bottom: 3rem + 0.25rem;
+          }
+        }
+      }
+    }
+
+    width: 128px; //--|🠋 128px for Squares 🠋|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 96px for Squares 🠋|--\\
+      width: 96px; //--|🠋 96px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 64px for Squares 🠋|--\\
+      width: 64px; //--|🠋 64px for Squares 🠋|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 48px for Squares 🠋|--\\
+      width: 48px; //--|🠋 48px for Squares 🠋|--\\
+    }
+  }
+
+  //--|🠋 X-axis 🠋|--\\
+}
+//--|===|--\\
+@mixin mobile-select {
+}

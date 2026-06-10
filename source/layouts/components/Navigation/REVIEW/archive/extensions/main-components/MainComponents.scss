@@ -1,0 +1,25 @@
+//--|🠊 MainComponents.scss 🠈|--\\
+@use '../../../../../designs/Mixins.scss';
+@use '../../../../../designs/Palettes.scss';
+//--|===|--\\
+@mixin desktop-scroll {
+  //--|🠋 Desktop Layouts 🠋|--\\
+  @include desk-grid; //--|🠈 Grid 🠈|--\\
+  @include desk-flex; //--|🠈 Flex 🠈|--\\
+}
+@mixin desk-grid {
+}
+@mixin desk-flex {
+}
+
+//--|===|--\\
+@mixin mobile-scroll {
+  //--|🠋 Mobile Layouts 🠋|--\\
+  @include desk-grid; //--|🠈 Grid 🠈|--\\
+  @include desk-flex; //--|🠈 Flex 🠈|--\\
+}
+@mixin mobi-grid {
+}
+@mixin mobi-flex {
+}
+//--|===|--\\

@@ -7,12 +7,12 @@ import { EmailProvider } from '../../modules/context/EmailContext';
 import { PasswordProvider } from '../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Containers 🠋|--//
-const LandingMain = lazy(() => import('../containers/Main/LandingMain/LandingMain'));
-const LandingHeader = lazy(() => import('../containers/Header/LandingHeader/LandingHeader'));
-const LandingFooter = lazy(() => import('../containers/Footer/LandingFooter/LandingFooter'));
-const LandingOverlay = lazy(() => import('../containers/Overlay/LandingOverlay/LandingOverlay'));
-const LandingLeftbar = lazy(() => import('../containers/Leftbar/LandingLeftbar/LandingLeftbar'));
-const LandingRightbar = lazy(() => import('../containers/Rightbar/LandingRightbar/LandingRightbar'));
+const LandingMain = lazy(() => import('../containers/Landing/Main/LandingMain'));
+const LandingHeader = lazy(() => import('../containers/Landing/Header/LandingHeader'));
+const LandingFooter = lazy(() => import('../containers/Landing/Footer/LandingFooter'));
+const LandingOverlay = lazy(() => import('../containers/Landing/Overlay/LandingOverlay'));
+const LandingLeftbar = lazy(() => import('../containers/Landing/Leftbar/LandingLeftbar'));
+const LandingRightbar = lazy(() => import('../containers/Landing/Rightbar/LandingRightbar'));
 //--|🠉 Containers 🠉|--//
 
 function Landing() {

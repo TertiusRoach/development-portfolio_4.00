@@ -13,14 +13,22 @@
       overflow: hidden;
       grid-area: 1 / 1 / 4 / 4;
       span {
+        cursor: pointer;
         grid-area: 2 / 2 / 3 / 3;
       }
       &.fore {
+        z-index: 2;
         span {
           mask-size: contain;
           mask-position: center;
           mask-repeat: no-repeat;
         }
+      }
+      &.mid {
+        z-index: 1;
+      }
+      &.back {
+        z-index: 0;
       }
     }
   }

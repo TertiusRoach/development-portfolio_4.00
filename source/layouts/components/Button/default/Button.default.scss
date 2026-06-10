@@ -7,11 +7,10 @@
 @use './pipeline/Button_corn.scss';
 
 button[class*='default'] {
+  width: 100%;
+  height: 100%;
   display: grid;
-  @extend %button-grid;
-  @extend %button-flex;
-  @extend %button-user;
-
+  background: none;
   @media screen and (orientation: landscape) {
     //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
     @include Button_size.desktop-size();
@@ -30,76 +29,37 @@ button[class*='default'] {
     @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
   }
-}
-%button-user {
-  background: none;
-
-  &[class*='_top_'],
-  &[class*='_bot_'],
-  &[class*='_lef_'],
-  &[class*='_rig_'],
-  &[class*='_cen_'],
-  &[class*='_tex_'],
-  &[class*='_ico_'] {
-    .text,
-    .icon {
-      img,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        cursor: pointer;
-      }
-    }
-    .back {
-      canvas {
-        display: none;
-      }
-    }
-    .downplay & {
-      img,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        cursor: default;
-      }
-    }
-  }
-}
-%button-flex {
-  width: 100%;
-  height: 100%;
-
-  .text {
-    z-index: 3;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  .icon {
-    z-index: 2;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+  div[class='text'],
+  div[class='icon'],
+  div[class='back'] {
+    p,
+    h6,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1,
     img {
-      height: 100%;
-      display: flex;
+      cursor: pointer;
+    }
+    canvas {
+      display: none;
+    }
+    &.text {
+      z-index: 3;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.icon {
+      z-index: 2;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.back {
+      z-index: 1;
       overflow: hidden;
-      mask-position: center;
-      mask-repeat: no-repeat;
     }
   }
-  .back {
-    z-index: 1;
-    overflow: hidden;
-  }
-}
-%button-grid {
   &[class*='_top_'] {
     .text,
     .back {
@@ -124,7 +84,7 @@ button[class*='default'] {
         grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .icon {
-        grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .back {
         grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -144,7 +104,7 @@ button[class*='default'] {
         grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .icon {
-        grid-area: 2 / 4 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 5 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .back {
         grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

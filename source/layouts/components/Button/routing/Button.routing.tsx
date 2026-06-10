@@ -24,11 +24,12 @@ interface TheseProps {
   };
 
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
-  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 
+  /*
   onBlur?: () => void;
   onFocus?: () => void;
   onMouseUp?: () => void;
@@ -40,6 +41,7 @@ interface TheseProps {
   onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  */
 }
 const ButtonRouting: React.FC<TheseProps> = ({
   info,
@@ -47,6 +49,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
+  onDoubleClick,
   /*  
   onBlur,  
   onFocus,  
@@ -77,6 +80,7 @@ const ButtonRouting: React.FC<TheseProps> = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onDoubleClick={onDoubleClick}
       id={info.labelName || undefined}
       className={`routing-button ${createClass(style as TheseProps['style'])}`}
     >

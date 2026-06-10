@@ -1,0 +1,169 @@
+//--|🠊 OvertimeHeader.scss 🠈|--\\
+/*
+@use 'sass:color';
+@use '../../../designs/Palettes.scss';
+
+@use './elements/profile-overtime/ProfileOvertime.scss' as profile;
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  $indexLand-darMed: color.mix(Palettes.$indexLand-dark, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-ligMed: color.mix(Palettes.$indexLand-light, Palettes.$indexLand-medium, $weight: 55%);
+  $indexLand-softLig: color.mix(Palettes.$indexLand-neon, Palettes.$indexLand-light, $weight: 70%);
+  $indexLand-softDar: color.mix(#000000, Palettes.$indexLand-dark, $weight: 60%);
+
+  %foreground {
+    // z-index: 2;
+    nav[class='profile-header'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    menu[class='profile-header'] {
+      grid-area: 2 / 1 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  %midground {
+    // z-index: 1;
+    div[class*='profile-header'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  %background {
+    // z-index: 0;
+    .nav-top {
+      grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      background: black;
+    }
+    .nav-bot {
+      grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      background: black;
+    }
+
+    .nav-lef,
+    .nav-rig {
+      display: flex;
+
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      span {
+        height: 100%;
+        background: darkblue;
+
+        width: 398px;
+        @media screen and (max-height: 768px) {
+          width: 322px;
+        }
+        @media screen and (max-height: 480px) {
+          width: 230px;
+        }
+        @media screen and (max-height: 360px) {
+          width: 140px;
+        }
+      }
+      &[class*='rig'] {
+        justify-content: right;
+        span {
+          background:
+            linear-gradient(
+              180deg,
+              rgba(Palettes.$indexLand-neon, 0.06) 0%,
+              rgba(Palettes.$indexLand-neon, 0) 45%,
+              rgba(#000, 0.3) 100%
+            ),
+            $indexLand-darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$indexLand-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$indexLand-medium, 0.18),
+            0 12px 26px rgba(#000, 0.28);
+
+          // background: black;
+        }
+      }
+      &[class*='lef'] {
+        justify-content: left;
+        span {
+          background:
+            linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $indexLand-ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1),
+            0 10px 22px rgba(#000, 0.18);
+          // background: black;
+        }
+      }
+      .nav-lef,
+      .nav-rig {
+        display: flex;
+        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      // &[class*='nav'] {
+      // }
+    }
+  }
+
+  //--|🠊 Default Landscape 🠈|--\\
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    width: 100%;
+    height: 100%;
+    display: inherit; //--|🠊 display: grid; 🠈|--\\
+    overflow: hidden;
+    position: absolute;
+
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 48px; //--|🠈 columns 🠈|--//
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: //--|🠋 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 480px) {
+      grid-template://--|🠋 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 360px) {
+      grid-template://--|🠋 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 16px; //--|🠈 columns 🠈|--//
+    }
+
+    &[class*='fore'] {
+      @extend %foreground;
+    }
+    &[class*='mid'] {
+      @extend %midground;
+    }
+    &[class*='back'] {
+      @extend %background;
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Elements) 🠋|--\\
+}
+
+header[id*='overtime'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+    @include profile.desktop-landscape;
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+    //--|🠊 Default Portrait 🠈|--\\
+    // section[class*='foreground'],
+    // figure[class*='midground'],
+    // div[class*='background'] {
+    // }
+  }
+}
+*/

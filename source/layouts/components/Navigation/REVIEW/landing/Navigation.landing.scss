@@ -1,0 +1,73 @@
+//--|🠊 Navigation.landing.scss 🠈|--//
+@use '../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 display: grid; 🠈|--//
+  grid-template: 5rem / 5rem 1fr; //--|🠊 rows / columns 🠈|--//
+  button {
+    grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  h6[class*='label'] {
+    margin: 0;
+    display: flex;
+    overflow: visible;
+    font-weight: bold;
+    align-items: center;
+    grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+
+  @media screen and (max-height: 480px) {
+    h6[class*='label'] {
+      display: none;
+    }
+  }
+}
+
+@mixin mobile-portrait {
+  //--|🠊 display: grid; 🠈|--//
+  padding: 1rem 0 0 0.5rem;
+  grid-template: 5rem / 5rem 1fr; //--|🠊 rows / columns 🠈|--//
+  button {
+    grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  h6[class*='label'] {
+    margin: 0;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    grid-area: 1 / 2 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0.5rem 0 0 0.25rem;
+    h6[class*='label'] {
+      display: none;
+    }
+  }
+}
+
+nav[class*='login'],
+nav[class*='register'],
+nav[class*='password'] {
+  display: grid;
+  h6[class*='login'] {
+    color: Palettes.$logTicket-dark;
+    filter: drop-shadow(Palettes.$logTicket-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  }
+  h6[class*='register'] {
+    color: Palettes.$trackDay-dark;
+    filter: drop-shadow(Palettes.$trackDay-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  }
+  h6[class*='password'] {
+    color: Palettes.$findLink-dark;
+    filter: drop-shadow(Palettes.$findLink-light 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--//
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--//
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

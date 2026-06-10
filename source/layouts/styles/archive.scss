@@ -1,0 +1,9 @@
+//--|🠊 styles/archive.scss 🠈|--\\
+//--|🠋 layouts/containers/Archive 🠋|--\\
+@use '../containers/Archive/Main/ArchiveMain.scss';
+@use '../containers/Archive/Header/ArchiveHeader.scss';
+@use '../containers/Archive/Footer/ArchiveFooter.scss';
+
+@use '../containers/Archive/Overlay/ArchiveOverlay.scss';
+@use '../containers/Archive/Leftbar/ArchiveLeftbar.scss';
+@use '../containers/Archive/Rightbar/ArchiveRightbar.scss';

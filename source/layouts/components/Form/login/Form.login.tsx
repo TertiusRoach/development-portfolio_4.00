@@ -17,7 +17,7 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/archive/default/Button.default';
+import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {

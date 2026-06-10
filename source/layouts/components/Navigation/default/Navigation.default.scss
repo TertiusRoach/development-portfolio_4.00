@@ -1,47 +1,136 @@
-//--|🠊 Navigation.profile.scss 🠈|--\\
-@mixin desktop-landscape {
-  display: grid;
-  grid-area: 1 / 1 / 6 / 4;
+//--|🠊 Navigation.default.scss 🠈|--\\
 
-  ol {
-    height: 100%;
-    display: inherit;
-    .close-head {
-      grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    .load-tags {
-      grid-area: 3 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
+@mixin desktop-main {
+}
+@mixin desktop-header {
+}
+@mixin desktop-footer {
+}
+@mixin desktop-overlay {
+}
+@mixin desktop-leftbar {
+}
+@mixin desktop-rightbar {
+}
 
-    grid-template: //--|🠋 1080px 🠋|--\\
+@mixin mobile-main {
+}
+@mixin mobile-header {
+}
+@mixin mobile-footer {
+}
+@mixin mobile-overlay {
+}
+@mixin mobile-leftbar {
+}
+@mixin mobile-rightbar {
+}
+
+nav[class*='default'] {
+  @media screen and (orientation: landscape) {
+    ol[class*='hori-X'] {
+      z-index: 1;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 1 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      //--|🠊 96px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        8rem 1fr 8rem //--|🠈 rows 🠈|--//
+        / repeat(2, 8rem) 1fr repeat(2, 8rem); //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        //--|🠊 64px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          6rem 1fr 6rem //--|🠈 rows 🠈|--//
+          / repeat(2, 6rem) 1fr repeat(2, 6rem); //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          4rem 1fr 4rem //--|🠈 rows 🠈|--//
+          / repeat(2, 4rem) 1fr repeat(2, 4rem); //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          3rem 1fr 3rem //--|🠈 rows 🠈|--//
+          / repeat(2, 3rem) 1fr repeat(2, 3rem); //--|🠈 columns 🠈|--\\
+      }
+    }
+    ul[class*='vert-Y'] {
+      z-index: 0;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      // 1/1/4/4
+      grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      li.top-lef {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.top-rig {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-rig {
+        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-lef {
+        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      //--|🠊 96px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        repeat(2, 8rem) 1fr repeat(2, 8rem) //--|🠈 rows 🠈|--//
+        / 8rem 1fr 8rem; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        //--|🠊 64px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+          / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+          / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+          / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+      }
+    }
+    display: grid;
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
       8rem 1fr 8rem //--|🠈 rows 🠈|--//
-      / 128px 270px 1fr 270px 128px; //--|🠈 columns 🠈|--//
-
+      / 8rem 1fr 8rem; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
-      grid-template: //--|🠋 1366px 🠋|--\\
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
         6rem 1fr 6rem //--|🠈 rows 🠈|--//
-        / 96px 226px 1fr 226px 96px; //--|🠈 columns 🠈|--//
+        / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
-      grid-template: //--|🠋 854px 🠋|--\\
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
         4rem 1fr 4rem //--|🠈 rows 🠈|--//
-        / 64px 166px 1fr 166px 64px; //--|🠈 columns 🠈|--//
+        / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
-      grid-template: //--|🠋 640px 🠋|--\\
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
         3rem 1fr 3rem //--|🠈 rows 🠈|--//
-        / 48px 92px 1fr 92px 48px; //--|🠈 columns 🠈|--//
+        / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
     }
-  }
-}
-@mixin mobile-portrait {
-}
-
-nav[class*='browse-header'] {
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
+    @include desktop-main;
+    @include desktop-header;
+    @include desktop-footer;
+    @include desktop-overlay;
+    @include desktop-leftbar;
+    @include desktop-rightbar;
   }
   @media screen and (orientation: portrait) {
-    @include mobile-portrait();
+    @include mobile-main;
+    @include mobile-header;
+    @include mobile-footer;
+    @include mobile-overlay;
+    @include mobile-leftbar;
+    @include mobile-rightbar;
   }
 }

@@ -7,7 +7,6 @@ $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
-//--|🠋 Index or Landing - Backgrounds 🠋|--\\
 $indexLand-lightMode:
   linear-gradient(180deg, rgba($indexLand-neon, 0.22) 0%, rgba($indexLand-light, 0) 52%, rgba(#000, 0.4) 100%),
   linear-gradient(135deg, rgba($indexLand-neon, 0.14) 0%, rgba($indexLand-light, 0) 45%, rgba($indexLand-light, 0.38) 100%),
@@ -46,34 +45,133 @@ $trackDay-neon: #00ff66; //--|🠈 rgba() 🠈|--\\
 $trackDay-dark: #041a0a; //--|🠈 rgba() 🠈|--\\
 $trackDay-light: #c7ffd7; //--|🠈 rgba() 🠈|--\\
 $trackDay-medium: #1f7a3a; //--|🠈 rgba() 🠈|--\\
-//--|🠋 Track a Day - Parameters 🠋|--\\
-// $tra-location: $red-medium;
-// $tra-logged: $green-medium;
-// $tra-pending: $orange-medium;
-// $trackDay-automatic: $grey-medium;
+
+/*
+$tra-location: $red-medium;
+$tra-logged: $green-medium;
+$tra-pending: $orange-medium;
+$trackDay-automatic: $grey-medium;
+*/
+
+$trackDay-lightMode:
+  linear-gradient(180deg, rgba($trackDay-neon, 0.22) 0%, rgba($trackDay-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($trackDay-neon, 0.14) 0%, rgba($trackDay-light, 0) 45%, rgba($trackDay-light, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($trackDay-dark, 0.1) 0%,
+    rgba($trackDay-neon, 0.1) 34%,
+    rgba($trackDay-light, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($trackDay-light, #fff, 84%) 0%,
+    color.mix($trackDay-light, $trackDay-neon, 70%) 55%,
+    color.mix($trackDay-light, $trackDay-neon, 82%) 100%
+  );
+$trackDay-darkMode:
+  linear-gradient(180deg, rgba($trackDay-medium, 0.22) 0%, rgba($trackDay-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($trackDay-medium, 0.14) 0%, rgba($trackDay-dark, 0) 45%, rgba($trackDay-dark, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($trackDay-light, 0.1) 0%,
+    rgba($trackDay-medium, 0.1) 34%,
+    rgba($trackDay-dark, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($trackDay-dark, #000, 84%) 0%,
+    color.mix($trackDay-dark, $trackDay-medium, 70%) 55%,
+    color.mix($trackDay-dark, $trackDay-medium, 82%) 100%
+  );
 
 //--|🠋 Log a Ticket 🠋|--\\
 $logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
 $logTicket-dark: #070e27; //--|🠈 rgba() 🠈|--\\
 $logTicket-light: #8facec; //--|🠈 rgba() 🠈|--\\
 $logTicket-medium: #1f3584; //--|🠈 rgba() 🠈|--\\
-//--|🠋 Log a Ticket - Parameters 🠋|--\\
-// $log-deleted: $red-neon;
-// $log-assigned: $blue-neon;
-// $log-pending: $orange-neon;
-// $log-resolved: $green-neon;
+
+/*
+$log-deleted: $red-neon;
+$log-assigned: $blue-neon;
+$log-pending: $orange-neon;
+$log-resolved: $green-neon;
+*/
+
+$logTicket-lightMode:
+  linear-gradient(180deg, rgba($logTicket-neon, 0.22) 0%, rgba($logTicket-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($logTicket-neon, 0.14) 0%, rgba($logTicket-light, 0) 45%, rgba($logTicket-light, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($logTicket-dark, 0.1) 0%,
+    rgba($logTicket-neon, 0.1) 34%,
+    rgba($logTicket-light, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($logTicket-light, #fff, 84%) 0%,
+    color.mix($logTicket-light, $logTicket-neon, 70%) 55%,
+    color.mix($logTicket-light, $logTicket-neon, 82%) 100%
+  );
+$logTicket-darkMode:
+  linear-gradient(180deg, rgba($logTicket-medium, 0.22) 0%, rgba($logTicket-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($logTicket-medium, 0.14) 0%, rgba($logTicket-dark, 0) 45%, rgba($logTicket-dark, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($logTicket-light, 0.1) 0%,
+    rgba($logTicket-medium, 0.1) 34%,
+    rgba($logTicket-dark, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($logTicket-dark, #000, 84%) 0%,
+    color.mix($logTicket-dark, $logTicket-medium, 70%) 55%,
+    color.mix($logTicket-dark, $logTicket-medium, 82%) 100%
+  );
 
 //--|🠋 Find a Link 🠋|--\\
 $findLink-neon: #ff2d6d; //--|🠈 rgba() 🠈|--\\
 $findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
 $findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
 $findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
-//--|🠋 Find a Link - Parameters 🠋|--\\
-$grey-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
-$grey-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-$grey-light: #cecebe; //--|🠈 rgba() 🠈|--\\
-$grey-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
+$findLink-lightMode:
+  linear-gradient(180deg, rgba($findLink-neon, 0.22) 0%, rgba($findLink-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($findLink-neon, 0.14) 0%, rgba($findLink-light, 0) 45%, rgba($findLink-light, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($findLink-dark, 0.1) 0%,
+    rgba($findLink-neon, 0.1) 34%,
+    rgba($findLink-light, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($findLink-light, #fff, 84%) 0%,
+    color.mix($findLink-light, $findLink-neon, 70%) 55%,
+    color.mix($findLink-light, $findLink-neon, 82%) 100%
+  );
+$findLink-darkMode:
+  linear-gradient(180deg, rgba($findLink-medium, 0.22) 0%, rgba($findLink-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($findLink-medium, 0.14) 0%, rgba($findLink-dark, 0) 45%, rgba($findLink-dark, 0.38) 100%),
+  radial-gradient(
+    120% 140% at 42% 22%,
+    rgba($findLink-light, 0.1) 0%,
+    rgba($findLink-medium, 0.1) 34%,
+    rgba($findLink-dark, 0) 70%
+  ),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($findLink-dark, #000, 84%) 0%,
+    color.mix($findLink-dark, $findLink-medium, 70%) 55%,
+    color.mix($findLink-dark, $findLink-medium, 82%) 100%
+  );
+
+//--|🠊 background: Palettes.$red-neon; 🠈|--\\
 $red-neon: #ff9090; //--|🠈 rgba() 🠈|--\\
 $red-dark: #290a0a; //--|🠈 rgba() 🠈|--\\
 $red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
@@ -104,10 +202,10 @@ $pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
 $pink-light: #ffd1e6; //--|🠈 rgba() 🠈|--\\
 $pink-medium: #b4236a; //--|🠈 rgba() 🠈|--\\
 
-$yellow-neon: #ffd500; //--|🠈 rgba() 🠈|--\\
-$yellow-dark: #5a3908; //--|🠈 rgba() 🠈|--\\
-$yellow-light: #ddd3ab; //--|🠈 rgba() 🠈|--\\
-$yellow-medium: #cfa603; //--|🠈 rgba() 🠈|--\\
+$yellow-neon: #ffdd55; //--|🠈 rgba() 🠈|--\\
+$yellow-dark: #705010; //--|🠈 rgba() 🠈|--\\
+$yellow-light: #f5e7ad; //--|🠈 rgba() 🠈|--\\
+$yellow-medium: #caa42a; //--|🠈 rgba() 🠈|--\\
 
 $brown-neon: #ff6600; //--|🠈 rgba() 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
@@ -118,3 +216,8 @@ $turquoise-neon: #2de2e6; //--|🠈 rgba() 🠈|--\\
 $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
 $turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
 $turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
+
+$gray-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+$gray-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
+$gray-light: #cecebe; //--|🠈 rgba() 🠈|--\\
+$gray-medium: #737373; //--|🠈 rgba() 🠈|--\\

@@ -261,16 +261,16 @@ This is where the testing surface lives. If something breaks, it usually breaks 
 
 These classes are intentionally simple. They act like a UI contract.
 
-| State Type           | Classes                                  | Alt                      | Purpose                                                                    |
-| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
-| **Operating State**  | `.active` · `.asleep`                    | `.running` · `.disabled` | Indicate whether an app in use or inactive                                 |
-| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
-| **Preview State**    | `.visible` · `.hidden`                   | `.conceal` · `.reveal`   | Used for recording front-end and used on, 'layout/components'              |
-| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
-| **Indexed State**    | `.expanded` · `.collapsed`               | `.unfolded`              | Manage sections that can open and close while staying part of the page     |
-| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
-| **Emphasize State**  | `.highlight` · `.downplay`               |                          | Applied to <DefaultButton> component for testing before production release |
-| -------------------- | ---------------------------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| State Type           | Classes                                  | Alt                       | Purpose                                                                    |
+| -------------------- | ---------------------------------------- | ------------------------- | -------------------------------------------------------------------------- |
+| **Operating State**  | `.active` · `.asleep`                    | `.running` · `.disabled`  | Indicate whether an app in use or inactive                                 |
+| -------------------- | ---------------------------------------- | ------------------------  | -------------------------------------------------------------------------- |
+| **Preview State**    | `.visible` · `.hidden`                   | `.conceal` · `.reveal`    | Used for recording front-end and used on, 'layout/components'              |
+| -------------------- | ---------------------------------------- | ------------------------  | -------------------------------------------------------------------------- |
+| **Indexed State**    | `.expanded` · `.collapsed`               | `.unfolded` · `.squaring` | Manage sections that can open and close while staying part of the page     |
+| -------------------- | ---------------------------------------- | ------------------------  | -------------------------------------------------------------------------- |
+| **Emphasize State**  | `.highlight` · `.downplay`               |                           | Applied to <DefaultButton> component for testing before production release |
+| -------------------- | ---------------------------------------- | ------------------------  | -------------------------------------------------------------------------- |
 
 ## Application Roles
 

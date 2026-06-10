@@ -7,12 +7,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 //--|🠋 Applications 🠋|--\\
-import Buttons from './layouts/pages/buttons';
 import Landing from './layouts/pages/landing';
 import Overtime from './layouts/pages/overtime';
 import Ticketing from './layouts/pages/ticketing';
 import Hyperlink from './layouts/pages/hyperlink';
-import Components from './layouts/pages/components';
+import Archive from './layouts/containers/Archive/Archive';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
@@ -32,23 +31,32 @@ function loadPage(identification: string, container: React.ReactElement) {
     console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
   }
 }
-function themeScheme(colorScheme: 'light' | 'dark') {
+function themeScheme(colorScheme: 'light' | 'dark'): void {
   const element: HTMLBodyElement = document.getElementsByTagName('body')[0];
+  const currentHour = new Date().getHours(); // Gets the hour from 0 to 23
 
-  switch (colorScheme) {
-    case 'light':
-      console.log('|🠊 Theme: <body class="ante-meridiem"> 🠈|');
-      return element.classList.add('ante-meridiem');
-    case 'dark':
-      console.log('|🠊 Theme: <body class="post-meridiem"> 🠈|');
-      return element.classList.add('post-meridiem');
+  // Between 05:00 and 12:59
+  if (currentHour >= 5 && currentHour < 12) {
+    element.classList.remove('post-meridiem');
+    element.classList.add('ante-meridiem');
+    setTimeout(() => {
+      //--|🠊 alert("It's morning people, rise and shine."); 🠈|--\\
+      console.log('|🠊 <body class="ante-meridiem"> 🠈|');
+    }, 240000);
+  }
+  // Between 13:00 and 04:59
+  else {
+    element.classList.remove('ante-meridiem');
+    element.classList.add('post-meridiem');
+    console.log('|🠊 <body class="post-meridiem"> 🠈|');
+    //--|🠊 alert("It's afternoon, log work and wind down."); 🠈|--\\
   }
 }
 //--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
   // 'buttons-body': Buttons,
   'landing-body': Landing,
-  'components-body': Components,
+  'components-body': Archive,
 
   'overtime-body': Overtime,
   'ticketing-body': Ticketing,
@@ -63,27 +71,24 @@ Object.entries(pages).forEach(([id]) => {
     | 'hyperlink'
     | 'landing'
     | 'buttons'
-    | 'components';
+    | 'archive';
 
   switch (pageName) {
-    case 'buttons':
-      loadPage(`${pageName}-body`, React.createElement(Buttons));
-      break;
-    case 'components':
-      loadPage(`${pageName}-body`, React.createElement(Components));
+    case 'archive':
+    default:
+      loadPage('components-body', React.createElement(Archive));
       break;
     case 'overtime':
-      loadPage(`${pageName}-body`, React.createElement(Overtime));
+      /* loadPage(`${pageName}-body`, React.createElement(Overtime)); */
       break;
     case 'ticketing':
-      loadPage(`${pageName}-body`, React.createElement(Ticketing));
+      /* loadPage(`${pageName}-body`, React.createElement(Ticketing)); */
       break;
     case 'hyperlink':
-      loadPage(`${pageName}-body`, React.createElement(Hyperlink));
+      /* loadPage(`${pageName}-body`, React.createElement(Hyperlink)); */
       break;
     case 'landing':
-    default:
-      ReactDOM.createRoot(container).render(<Landing />);
+      /* ReactDOM.createRoot(container).render(<Landing />); */
       break;
   }
 });

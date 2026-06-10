@@ -1,6 +1,13 @@
 //--|🠊 default/pipeline/Button_flex.scss 🠈|--\\
 @mixin desktop-flex {
   //--|🠋 Desktop (Flex) 🠋|--\\
+  & {
+    div[class='icon'] {
+      display: flex;
+      align-items: center;
+      //--|🠊 justify-content: center; 🠈|--\\
+    }
+  }
   &[class*='_top_'],
   &[class*='_bot_'] {
     &[class*='_def'] {
@@ -178,25 +185,11 @@
         }
       }
     }
-    &[class*='_alt'] {
-    }
   }
   &[class*='_lef_'],
   &[class*='_rig_'] {
     &[class*='_def'],
     &[class*='_alt'] {
-      img {
-        margin-top: 4px;
-        @media screen and (max-height: 768px) {
-          margin-top: 3px;
-        }
-        @media screen and (max-height: 480px) {
-          margin-top: 2px;
-        }
-        @media screen and (max-height: 360px) {
-          margin-top: 0;
-        }
-      }
       h1 {
         padding: 4px 16px;
         @media screen and (max-height: 768px) {
@@ -285,106 +278,90 @@
   }
   &[class*='_cen_'] {
     &[class*='_def'] {
-      img {
-        margin-top: 4px;
-        @media screen and (max-height: 768px) {
-          margin-top: 3px;
-        }
-        @media screen and (max-height: 480px) {
-          margin-top: 2px;
-        }
-        @media screen and (max-height: 360px) {
-          margin-top: 1px;
-        }
-      }
       h1 {
-        padding: 12px 16px;
+        padding: 12px 32px;
         @media screen and (max-height: 768px) {
-          padding: 16px 8px;
+          padding: 16px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 10px 4px;
+          padding: 10px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 8px 4px;
         }
       }
       h2 {
-        padding: 14px 16px;
+        padding: 14px 32px;
         @media screen and (max-height: 768px) {
-          padding: 18px 8px;
+          padding: 18px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 12px 4px;
+          padding: 12px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 10px 4px;
         }
       }
       h3 {
-        padding: 20px 16px;
+        padding: 20px 32px;
         @media screen and (max-height: 768px) {
-          padding: 20px 8px;
+          padding: 20px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 14px 4px;
+          padding: 14px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 10px 4px;
         }
       }
       h4 {
-        padding: 22px 16px;
+        padding: 22px 32px;
         @media screen and (max-height: 768px) {
-          padding: 24px 8px;
+          padding: 24px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 14px 4px;
+          padding: 14px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 10px 4px;
         }
       }
       h5 {
-        padding: 26px 16px;
+        padding: 26px 32px;
         @media screen and (max-height: 768px) {
-          padding: 28px 8px;
+          padding: 28px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 16px 4px;
+          padding: 16px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 10px 4px;
         }
       }
       h6 {
-        padding: 26px 16px;
+        padding: 26px 32px;
         @media screen and (max-height: 768px) {
-          padding: 26px 8px;
+          padding: 26px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 16px 4px;
+          padding: 16px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 12px 4px;
         }
       }
       p {
-        padding: 25px 16px;
+        padding: 25px 32px;
         @media screen and (max-height: 768px) {
-          padding: 26px 8px;
+          padding: 26px 16px;
         }
         @media screen and (max-height: 480px) {
-          padding: 16px 4px;
+          padding: 16px 8px;
         }
         @media screen and (max-height: 360px) {
           padding: 12px 4px;
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no image is provided--\\
-      //--Match the _tex_ layout but without the fixed width--\\
     }
   }
   &[class*='_tex_'] {
@@ -392,7 +369,7 @@
       .icon {
         opacity: 0;
         display: none;
-        // background: none;
+        background: none;
       }
       h1 {
         padding: 2px 16px;
@@ -479,118 +456,113 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If the text exceeds a certain number of characters--\\
-      //--This might differ depending on the font size, test it. For funzies--\\
-    }
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
       .text {
         opacity: 0;
         display: none;
+        background: none;
       }
-      &[class*='par_'] {
-        img {
-          margin-top: 6px;
-          @media screen and (max-height: 768px) {
-            margin-top: 3px;
-          }
-          @media screen and (max-height: 480px) {
-            margin-top: 2px;
-          }
-          @media screen and (max-height: 360px) {
-            margin-top: 1px;
-          }
-        }
-      }
+
       &[class*='one_'] {
         img {
-          margin-top: 8px;
+          margin: 0 8px;
           @media screen and (max-height: 768px) {
-            margin-top: 4px;
+            margin: 0 4px;
           }
           @media screen and (max-height: 480px) {
-            margin-top: 3px;
+            margin: 0 3px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 2px;
+            margin-top: 0 2px;
           }
         }
       }
       &[class*='two_'] {
         img {
-          margin-top: 7px;
+          margin: 0 7px;
           @media screen and (max-height: 768px) {
-            margin-top: 5px;
+            margin: 0 5px;
           }
           @media screen and (max-height: 480px) {
-            margin-top: 3px;
+            margin: 0 3px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 1px;
+            margin: 0 1px;
           }
         }
       }
       &[class*='thr_'] {
         img {
-          margin-top: 4px;
+          margin: 0 4px;
           @media screen and (max-height: 768px) {
-            margin-top: 4px;
+            margin: 0 4px;
           }
           @media screen and (max-height: 480px) {
-            margin-top: 2px;
+            margin: 0 2px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 1px;
+            margin: 0 1px;
           }
         }
       }
       &[class*='fou_'] {
         img {
-          margin-top: 4px;
+          margin: 0 4px;
           @media screen and (max-height: 768px) {
-            margin-top: 4px;
+            margin: 0 4px;
           }
           @media screen and (max-height: 480px) {
-            margin-top: 2px;
+            margin: 0 2px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 1px;
+            margin: 0 1px;
           }
         }
       }
       &[class*='fiv_'] {
         img {
-          // margin-top: 6px;
+          margin: 0 6px;
           @media screen and (max-height: 768px) {
-            // margin-top: 4px;
+            margin: 0 4px;
           }
           @media screen and (max-height: 480px) {
-            // margin-top: 2px;
+            margin: 0 2px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 1px;
+            margin: 0 1px;
           }
         }
       }
       &[class*='six_'] {
         img {
-          margin-top: 4px;
+          margin: 0 4px;
           @media screen and (max-height: 768px) {
-            margin-top: 3px;
+            margin: 0 3px;
           }
           @media screen and (max-height: 480px) {
-            margin-top: 2px;
+            margin: 0 2px;
           }
           @media screen and (max-height: 360px) {
-            margin-top: 1px;
+            margin: 0 1px;
           }
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no picture is provided, turn this into a text frame--\\
+      &[class*='par_'] {
+        img {
+          margin: 0 6px;
+          @media screen and (max-height: 768px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-height: 480px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 360px) {
+            margin: 0 1px;
+          }
+        }
+      }
     }
   }
 }
@@ -772,8 +744,6 @@
           }
         }
       }
-    }
-    &[class*='_alt'] {
     }
   }
   &[class*='_lef_'],
@@ -977,17 +947,13 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If no image is provided--\\
-      //--Match the _tex_ layout but without the fixed width--\\
-    }
   }
   &[class*='_tex_'] {
     &[class*='_def'] {
       .icon {
         opacity: 0;
         display: none;
-        // background: none;
+        background: none;
       }
       h1 {
         padding: 2px 16px;
@@ -1074,16 +1040,13 @@
         }
       }
     }
-    &[class*='_alt'] {
-      //--If the text exceeds a certain number of characters--\\
-      //--This might differ depending on the font size, test it. For funzies--\\
-    }
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
       .text {
         opacity: 0;
         display: none;
+        background: none;
       }
 
       &[class*='one_'] {
@@ -1184,9 +1147,6 @@
           }
         }
       }
-    }
-    &[class*='_alt'] {
-      //--If no picture is provided, turn this into a text frame--\\
     }
   }
 }

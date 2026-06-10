@@ -1,0 +1,165 @@
+//--|🠊 DefaultButton.scss 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="default-button"> 🠈|--\\
+  %mark-area {
+    menu {
+      &[class*='darkside'] {
+        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    div {
+      &[class*='toggle'] {
+        grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        label:nth-child(1) {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(2) {
+          grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(3) {
+          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+      &[class*='default'] {
+        &[class*='darkside'] {
+          //--|🠊 background: black; 🠈|--\\
+          grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        section[class*='default'] {
+          button[class*='_top_'] {
+            grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bot_'] {
+            grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_lef_'] {
+            grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_rig_'] {
+            grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_cen_'] {
+            grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tex_'] {
+            grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_ico_'] {
+            grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        &[class*='lightside'] {
+          //--|🠊 background: white; 🠈|--\\
+          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+    }
+  }
+  %mark-disp {
+    display: grid;
+    div[class*='default'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      &[class*='container'] {
+        section[class*='default-main'] {
+          display: grid;
+        }
+      }
+      &[class*='side-main'] {
+        flex-direction: column;
+        //--|🠊 display: flex; 🠈|--\\
+      }
+    }
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    }
+  }
+  section[class*='foreground'] {
+    @extend %mark-area;
+    @extend %mark-disp;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr repeat(2, 8rem) 1fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr repeat(2, 6rem) 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr repeat(2, 4rem) 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
+    }
+    div {
+      //--|🠊 display: grid; 🠈|--\\
+      &[class*='container'] {
+        //--|🠊 display: flex; 🠈|--\\
+        section[class*='default-main'] {
+          //--|🠊 display: grid; 🠈|--\\
+          //--|🠋 96px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 1920px 🠋|--\\
+            repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+            / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+          @media screen and (max-height: 768px) {
+            //--|🠋 64px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 1366px 🠋|--\\
+              repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+              / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+          }
+          @media screen and (max-height: 480px) {
+            //--|🠋 48px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 854px 🠋|--\\
+              repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+              / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+          }
+          @media screen and (max-height: 360px) {
+            //--|🠋 32px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 640px 🠋|--\\
+              repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+              / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
+          }
+        }
+      }
+      &[class*='toggle'] {
+        //--|🠋 96px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 1920px 🠋|--\\
+          8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+        @media screen and (max-height: 768px) {
+          //--|🠋 64px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 1366px 🠋|--\\
+            6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          //--|🠋 48px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 854px 🠋|--\\
+            4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          //--|🠋 32px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 640px 🠋|--\\
+            3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+}

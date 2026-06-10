@@ -1,0 +1,196 @@
+//--|🠊 RoutingButtons.scss 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="routing-button"> 🠈|--\\
+  %mark-area {
+    div {
+      &[class*='routing'] {
+        &[class*='darkside'] {
+          grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        section[class*='routing'] {
+          button[class*='_tl_'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tc_'] {
+            grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tr_'] {
+            grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_ml_'] {
+            grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_mc_'] {
+            grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_mr_'] {
+            grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bl_'] {
+            grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bc_'] {
+            grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_br_'] {
+            grid-area: 4 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        &[class*='lightside'] {
+          grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+
+      &[class*='toggle'] {
+        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        label:nth-child(1) {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(2) {
+          grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(3) {
+          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+      /*
+      menu {
+        &[class*='darkside'] {
+          //--|🠊 background: rgba(black, .0.25); 🠈|--\\
+          background: rgba(black, 0.25);
+          grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        &[class*='lightside'] {
+          //--|🠊 background: rgba(white, .0.25); 🠈|--\\
+          background: rgba(white, 0.25);
+          grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+    */
+    }
+  }
+  %mark-disp {
+    display: grid;
+    div[class*='routing'] {
+      &[class*='container'] {
+        section[class*='routing-main'] {
+          display: grid;
+          height: inherit; //--|🠈 height: 100%; 🠈|--\\
+        }
+      }
+      &[class*='side-main'] {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    }
+  }
+  section[class*='foreground'] {
+    @extend %mark-area;
+    @extend %mark-disp;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 16rem 1fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 12rem 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 8rem 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 6rem 1fr 16px; //--|🠈 columns 🠈|--\\
+    }
+    div {
+      //--|🠊 display: grid; 🠈|--\\
+      &[class*='container'] {
+        //--|🠊 display: flex; 🠈|--\\
+        section[class*='routing-main'] {
+          //--|🠊 display: grid; 🠈|--\\
+          grid-gap: 32px;
+          //--|🠋 96px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 1920px 🠋|--\\
+            1fr repeat(3, 128px) 1fr //--|🠈 rows 🠈|--//
+            / 1fr repeat(3, 128px) 1fr; //--|🠈 columns 🠈|--\\
+          @media screen and (max-height: 768px) {
+            grid-gap: 16px;
+            //--|🠋 64px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 1366px 🠋|--\\
+              1fr repeat(3, 96px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 96px) 1fr; //--|🠈 columns 🠈|--\\
+          }
+          @media screen and (max-height: 480px) {
+            grid-gap: 8px;
+            //--|🠋 48px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 854px 🠋|--\\
+              1fr repeat(3, 64px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 64px) 1fr; //--|🠈 columns 🠈|--\\
+          }
+          @media screen and (max-height: 360px) {
+            grid-gap: 4px;
+            //--|🠋 32px (Left & Right) for Design 🠋|--\\
+            grid-template: //--|🠋 Width: 640px 🠋|--\\
+              1fr repeat(3, 48px) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, 48px) 1fr; //--|🠈 columns 🠈|--\\
+          }
+        }
+      }
+      &[class*='toggle'] {
+        //--|🠋 96px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 1920px 🠋|--\\
+          8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+        @media screen and (max-height: 768px) {
+          //--|🠋 64px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 1366px 🠋|--\\
+            6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          //--|🠋 48px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 854px 🠋|--\\
+            4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          //--|🠋 32px (Left & Right) for Design 🠋|--\\
+          grid-template: //--|🠋 Width: 640px 🠋|--\\
+            3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
+            / 1fr; //--|🠈 columns 🠈|--\\
+        }
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+  /*
+  aside[class*='routing'] {
+    height: inherit; //--|🠈 height: 100%; 🠈|--\\
+
+    //--|🠋 Mobile (Layers) 🠋|--\\
+    section[class*='foreground'] {
+    }
+    figure[class*='midground'] {
+    }
+    div[class*='background'] {
+    }
+
+    @include Mixins.portrait-grid;
+  }
+  */
+}

@@ -1,71 +1,68 @@
-//--|🠊 Mixins.scss 🠈|--//
-@use './Palettes.scss';
-
+//--|🠊 Mixins.scss 🠈|--\\
+//--|🠊 @include Mixins.landscape-grid; 🠈|--\\
 @mixin landscape-grid {
-  display: grid;
+  width: 100vw;
+  flex: 0 0 100vw;
+  min-width: 100vw;
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    width: 100%;
+    height: 100svh;
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+    grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+  }
 
-  //--|🠋 96px (Left & Right) for Design 🠋|--\\
+  display: grid;
+  //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
     / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
   @media screen and (max-height: 768px) {
-    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 1366px 🠋|--\\
       repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
       / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-height: 480px) {
-    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    //--|🠊 48px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 854px 🠋|--\\
       repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
       / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-height: 360px) {
-    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    //--|🠊 32px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 640px 🠋|--\\
       repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
       / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
   }
-
-  section[class*='foreground'],
-  figure[class*='midground'],
-  div[class*='background'] {
-    width: 100%;
-    overflow: hidden;
-    display: inherit; //--|🠈 display: grid; 🠈|--\\
-    grid-template: inherit;
-    grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-  }
 }
+//--|🠊 @include Mixins.portrait-grid; 🠈|--\\
 @mixin portrait-grid {
   display: grid;
-  //--|🠋 64px (Left & Right) for Design 🠋|--\\
+  //--|🠊 64px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Height: 1920px 🠋|--\\
     repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
     / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
   @media screen and (max-width: 768px) {
-    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    //--|🠊 48px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1366px 🠋|--\\
       repeat(2, 5rem) 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--//
       / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-width: 480px) {
-    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    //--|🠊 32px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 854px 🠋|--\\
       repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
       / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-width: 360px) {
-    //--|🠋 24px (Left & Right) for Design 🠋|--\\
+    //--|🠊 24px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 640px 🠋|--\\
       repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
       / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
   }
-}
-
-@mixin landscape-flex {
-}
-@mixin portrait-flex {
 }
 
 //--|🠋 Resolution Testing 🠋|--//
@@ -163,57 +160,45 @@
   }
 }
 
-@mixin clip-menu {
-  //--|🠊 background: Palettes.$red-neon; 🠈|--//
-  //--|🠋 X-axis 🠋|--\\
-  &[class*='_rig_'] {
-    clip-path: inset(0% 0% 0% calc(100% - 128px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% 0% 0% calc(100% - 64px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% 0% 0% calc(100% - 48px)); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
+//--|🠊 @include Mixins.desktop-grid; 🠈|--\\
+@mixin desktop-grid {
+  grid-template: //--|🠋 1920px 🠋|--\\
+    8rem 1fr 8rem //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+  @media screen and (max-height: 768px) {
+    grid-template:  //--|🠋 1366px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
   }
-  &[class*='_bot_'] {
-    clip-path: inset(calc(100% - 128px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(calc(100% - 96px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(calc(100% - 64px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(calc(100% - 48px) 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
+  @media screen and (max-height: 480px) {
+    grid-template:  //--|🠋 854px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
   }
-
-  //--|🠋 Y-axis 🠋|--\\
-  &[class*='_lef_'] {
-    clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% calc(100% - 48px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
+  @media screen and (max-height: 360px) {
+    grid-template: //--|🠋 640px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
   }
-  &[class*='_top_'] {
-    clip-path: inset(0% 0% calc(100% - 128px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    @media screen and (max-height: 768px) {
-      clip-path: inset(0% 0% calc(100% - 96px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      clip-path: inset(0% 0% calc(100% - 64px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      clip-path: inset(0% 0% calc(100% - 48px) 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-    }
+}
+//--|🠊 @include Mixins.mobile-grid; 🠈|--\\
+@mixin mobile-grid {
+  grid-template: //--|🠋 1920px 🠋|--\\
+    12rem 1fr 12rem //--|🠈 rows 🠈|--//
+    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+  @media screen and (max-width: 768px) {
+    grid-template:  //--|🠋 1366px 🠋|--\\
+      10rem 1fr 10rem //--|🠈 rows 🠈|--//
+      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 480px) {
+    grid-template:  //--|🠋 854px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 360px) {
+    grid-template:  //--|🠋 640px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 1.5rem 1fr 1.5rem; //--|🠈 columns 🠈|--\\
   }
 }

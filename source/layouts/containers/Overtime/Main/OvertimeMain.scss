@@ -1,0 +1,98 @@
+//--|🠊 OvertimeMain.scss 🠈|--\\
+/*
+@use '../../../designs/Palettes.scss';
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Elements) 🠋|--\\
+  %foreground {
+    z-index: 2;
+    nav[class='tracking-main'] {
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  %midground {
+    z-index: 1;
+    //--|🠊 The '*' symbol indicates the element has moving properties 🠈|--\\
+    table[class*='tracking-main'] {
+      grid-area: 1 / 1 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    // .week-grid {
+    //   grid-area: 3 / 1 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    // }
+  }
+  %background {
+    z-index: 0;
+    .total-time {
+      grid-area: 9 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .clock-count {
+      grid-area: 9 / 4 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .leave-breaks {
+      grid-area: 3 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .date-string {
+      grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .bank-time {
+      grid-area: 3 / 4 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    .overtime-background {
+      grid-area: 1 / 1 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    //--|🠋 Layer Perimeters 🠋|--\\
+    width: 100%;
+    height: 100%;
+    display: grid;
+    overflow: hidden;
+    position: absolute;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 1080px 🠋|--\\
+      repeat(2, 4rem) repeat(7, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 512px 482px 48px; //--|🠈 columns 🠈|--//
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: repeat(2, 3rem) repeat(7, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 360px 343px 32px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 48px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 480px) {
+      grid-template: repeat(2, 2rem) repeat(7, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 228px 211px 24px; //--|🠈 columns 🠈|--//
+    }
+    //--|🠋 32px (Left & Right) for Design 🠋|--\\
+    @media screen and (max-height: 360px) {
+      grid-template: repeat(2, 1.5rem) repeat(7, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 168px 159px 16px; //--|🠈 columns 🠈|--//
+    }
+
+    &[class*='fore'] {
+      @extend %foreground;
+    }
+    &[class*='mid'] {
+      @extend %midground;
+    }
+    &[class*='back'] {
+      @extend %background;
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Elements) 🠋|--\\
+}
+
+main[id*='overtime'] {
+  position: relative;
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+*/

@@ -1,0 +1,19 @@
+//--|🠊 Navigation.archive.scss 🠈|--\\
+@use './extensions/header-components/HeaderComponents.scss';
+@use './extensions/main-components/MainComponents.scss';
+@use './extensions/footer-components/FooterComponents.scss';
+
+@use './pipeline/Navigation_queries.scss';
+@mixin desktop-landscape {
+}
+@mixin mobile-portrait {
+}
+
+nav[class*='components'] {
+  @media screen and (orientation: landscape) {
+    @include Navigation_queries.desktop-queries();
+  }
+  @media screen and (orientation: portrait) {
+    @include Navigation_queries.mobile-queries();
+  }
+}

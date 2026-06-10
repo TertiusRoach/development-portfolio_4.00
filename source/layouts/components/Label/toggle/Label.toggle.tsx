@@ -16,70 +16,22 @@ interface TheseProps {
   style: {
     type: '{toggle}';
     shade: '~dark~' | '~medium~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
-
-  onBlur?: () => void;
-  onFocus?: () => void;
   onClick?: () => void;
-  onMouseUp?: () => void;
-  onTouchEnd?: () => void;
-  onMouseDown?: () => void;
-  onTouchStart?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onDoubleClick?: () => void;
-  onAnimationEnd?: () => void;
-  onTransitionEnd?: () => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const LabelToggle: React.FC<TheseProps> = ({
-  info,
-  style,
-  onClick,
-  /*  
-  onBlur,  
-  onFocus,  
-  onMouseUp,  
-  onTouchEnd,  
-  onMouseDown,  
-  onTouchStart,  
-  onMouseEnter,  
-  onMouseLeave,  
-  onDoubleClick,  
-  onAnimationEnd,  
-  onTransitionEnd,  
-  onKeyUp,  
-  onKeyDown,  
-  onContextMenu,  
-  */
-}) => {
-  //--|🠊 Identifiers 🠈|--\\
-  const blockName = stripBrackets(info.blockName, '<>') as string;
-  const pageName = stripBrackets(info.pageName, '[]') as string;
+const LabelToggle: React.FC<TheseProps> = ({ info, style, onClick }) => {
+  const pageName = info.pageName as string;
+  const blockName = info.blockName as string;
+  const labelName = info.labelName as string;
 
-  //--|🠊 Render Body 🠈|--\\
-  const handleToggle = (infoStyle: Array<object>) => {
-    return (
-      <>
-        <input className="event" type="checkbox" />
-        <span className="switch"></span>
-      </>
-    );
-  };
-
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {}, [pageName, blockName, labelName]);
 
   return (
-    <label
-      onClick={onClick}
-      id={info.labelName || undefined}
-      className={`toggle-label ${createClass(style.shade, style.color)}`}
-    >
-      {handleToggle([info, style])}
+    <label onClick={onClick} className={`${labelName}-${blockName}_label-toggle ${createClass(style.shade, style.color)}`}>
+      <input className="event" type="checkbox" />
+      <span className="switch"></span>
     </label>
   );
 };
