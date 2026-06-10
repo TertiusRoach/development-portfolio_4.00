@@ -364,19 +364,30 @@ export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' 
 
 //--|🠊 5. Visible & Hidden 🠈|--\\
 export function hideOverlay(pageName: string, blockName: string) {
-  setTimeout(() => {
-    const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
-    if (disable.classList.contains('visible')) {
+  const disableElement: string = 'disabled-overlay';
+  const locateElement: string = `#${pageName}-body section[class*="overlay"]`;
+
+  let overlayContainer = document.querySelector(locateElement) as HTMLElement;
+  if (!overlayContainer.classList.contains(disableElement)) {
+    overlayContainer.classList.add(disableElement);
+    overlayContainer.classList.replace('hidden', 'visible');
+    setTimeout(() => {
+      overlayContainer.classList.remove(disableElement);
+      overlayContainer.classList.replace('visible', 'hidden');
+    }, 1500);
+  }
+
+  /*
+  const disable = document.getElementById(`${pageName}-${blockName}`) as HTMLDivElement;
+  if (disable.classList.contains('visible')) {
+    setTimeout(() => {
       disable.classList.add('hidden');
       disable.classList.remove('visible');
+    }, 125);
+  }
+  */
 
-      setTimeout(() => {
-        disable.style.display = 'none';
-      }, 125);
-    }
-
-    console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
-  }, 125);
+  console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
 }
 export function showOverlay(pageName: string, blockName: string) {
   setTimeout(() => {

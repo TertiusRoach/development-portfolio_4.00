@@ -20,18 +20,16 @@ interface InfoProps {
   };
 }
 const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'hidden' | 'visible' = 'hidden';
+  let stateName: 'hidden' | 'visible' = 'visible';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
-    /*
     setTimeout(() => {
       hideOverlay(pageName, blockName);
-    }, 1500);
-    */
+    }, 3000);
   }, [pageName, blockName]);
 
   return (
