@@ -5,6 +5,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
   section[class*='foreground'] {
+    /*
     footer[class*='default'] {
       z-index: 2;
       grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -13,6 +14,7 @@
       z-index: 1;
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    */
   }
   figure[class*='midground'] {
     article[class*='update'] {
