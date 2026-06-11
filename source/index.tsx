@@ -7,11 +7,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 //--|🠋 Applications 🠋|--\\
-import Landing from './layouts/pages/landing';
-import Overtime from './layouts/pages/overtime';
-import Ticketing from './layouts/pages/ticketing';
-import Hyperlink from './layouts/pages/hyperlink';
 import Archive from './layouts/containers/Archive/Archive';
+import Overtime from './layouts/containers/Overtime/Overtime';
+import Ticketing from './layouts/containers/Ticketing/Ticketing';
+import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
+// import Landing from './layouts/containers/Landing/Landing';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
@@ -54,8 +54,8 @@ function themeScheme(colorScheme: 'light' | 'dark'): void {
 }
 //--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
-  // 'buttons-body': Buttons,
-  'landing-body': Landing,
+  // 'landing-body': Landing,
+
   'components-body': Archive,
 
   'overtime-body': Overtime,
@@ -74,18 +74,17 @@ Object.entries(pages).forEach(([id]) => {
     | 'archive';
 
   switch (pageName) {
-    case 'archive':
     default:
-      loadPage('components-body', React.createElement(Archive));
-      break;
+    case 'archive':
+      return loadPage('components-body', React.createElement(Archive));
     case 'overtime':
-      /* loadPage(`${pageName}-body`, React.createElement(Overtime)); */
+      loadPage(`${pageName}-body`, React.createElement(Overtime));
       break;
     case 'ticketing':
-      /* loadPage(`${pageName}-body`, React.createElement(Ticketing)); */
+      loadPage(`${pageName}-body`, React.createElement(Ticketing));
       break;
     case 'hyperlink':
-      /* loadPage(`${pageName}-body`, React.createElement(Hyperlink)); */
+      loadPage(`${pageName}-body`, React.createElement(Hyperlink));
       break;
     case 'landing':
       /* ReactDOM.createRoot(container).render(<Landing />); */

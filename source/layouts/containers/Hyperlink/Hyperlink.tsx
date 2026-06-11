@@ -4,12 +4,12 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const HyperlinkMain = lazy(() => import('./Main/HyperlinkMain'));
-const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
-const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
+// const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
+// const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
 
-const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
-const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
-const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
+// const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
+// const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
+// const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
 
 function Hyperlink() {
   const [getMain, setMain] = useState(false);
@@ -43,12 +43,17 @@ function Hyperlink() {
 
   return (
     <>
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
+      </Suspense>
+
+      {/*
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && (
           <HyperlinkOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />
         )}
       </Suspense>
-
+      
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && (
           <HyperlinkLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>', labelName: '(default)' }} />
@@ -69,9 +74,7 @@ function Hyperlink() {
         {getFooter && <HyperlinkFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <HyperlinkMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
-      </Suspense>
+ */}
     </>
   );
 }

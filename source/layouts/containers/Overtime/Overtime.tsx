@@ -4,12 +4,14 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const OvertimeMain = lazy(() => import('./Main/OvertimeMain'));
+/*
 const OvertimeHeader = lazy(() => import('./Header/OvertimeHeader'));
 const OvertimeFooter = lazy(() => import('./Footer/OvertimeFooter'));
 
 const OvertimeOverlay = lazy(() => import('./Overlay/OvertimeOverlay'));
 const OvertimeLeftbar = lazy(() => import('./Leftbar/OvertimeLeftbar'));
 const OvertimeRightbar = lazy(() => import('./Rightbar/OvertimeRightbar'));
+*/
 
 function Overtime() {
   const [getMain, setMain] = useState(false);
@@ -22,8 +24,9 @@ function Overtime() {
 
   useEffect(() => {
     //--|🠋 Contains the Asynchronous References 🠋|--\\
-    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
-    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+
+    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
 
     const headerTimer = setTimeout(() => setHeader(true), 250 * 2); //--|🠈 References <Main> block container. 🠈|--\\
     const footerTimer = setTimeout(() => setFooter(true), 250 * 2); //--|🠈 References <Main> block container. 🠈|--\\
@@ -31,9 +34,9 @@ function Overtime() {
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
     return () => {
+      clearTimeout(mainTimer);
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
-      clearTimeout(mainTimer);
 
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
@@ -41,9 +44,14 @@ function Overtime() {
     };
   }, []);
 
+  console.log('[overtime] Entry Point Loaded.');
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
+      </Suspense>
+
+      {/* <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && <OvertimeOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
 
@@ -64,10 +72,7 @@ function Overtime() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
-      </Suspense>
+      */}
     </>
   );
 }

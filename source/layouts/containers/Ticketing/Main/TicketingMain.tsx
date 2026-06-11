@@ -1,4 +1,46 @@
 //--|🠊 TicketingMain.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/overtime';
+
+//--|🠋 Components 🠋|--\\
+import DivisionDefault from '../../../components/Division/default/Division.default';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useState, useEffect } from 'react';
+
+interface InfoProps {
+  info: {
+    pageName: '[ticketing]' | string;
+    blockName: '<main>' | string;
+    labelName: '(default)' | string;
+  };
+}
+
+const HyperlinkMain: React.FC<InfoProps> = ({ info }) => {
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  return (
+    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}>
+        <DivisionDefault
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
+    </main>
+  );
+};
+export default HyperlinkMain;
+
 /*
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/ticketing';

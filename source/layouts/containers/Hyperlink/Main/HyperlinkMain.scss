@@ -1,6 +1,32 @@
-//--|🠊 TicketingMain.scss 🠈|--//
+//--|🠊 HyperlinkMain.scss 🠈|--//
+@use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
+@mixin desktop-landscape {
+  //--|🠋 Desktop: Hyperlink Main 🠋|--\\
+  section[class*='foreground'] {
+    div[class*='default'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+  @include Mixins.landscape-grid;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile: Hyperlink Main 🠋|--\\
+}
+
+main[id*='hyperlink'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
 /*
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
