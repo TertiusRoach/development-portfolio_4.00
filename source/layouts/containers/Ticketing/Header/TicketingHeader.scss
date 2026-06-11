@@ -1,4 +1,29 @@
 //--|🠊 TicketingHeader.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Ticketing <header> 🠋|--\\
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Ticketing <header> 🠋|--\\
+}
+header[id*='ticketing'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+    @include Mixins.landscape-grid;
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+    @include Mixins.portrait-grid;
+  }
+}
 
 /*
 @use 'sass:color';

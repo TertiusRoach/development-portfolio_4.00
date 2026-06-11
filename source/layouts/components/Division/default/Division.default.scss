@@ -14,7 +14,7 @@
     border: 2px dashed Palettes.$gray-medium;
 
     &#test-main-block {
-      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     &#test-head-block {
       grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -24,7 +24,7 @@
     }
 
     &#test-over-block {
-      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     &#test-left-block {
       grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

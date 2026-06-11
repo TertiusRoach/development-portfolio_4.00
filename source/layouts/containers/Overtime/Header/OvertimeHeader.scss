@@ -1,4 +1,30 @@
 //--|🠊 OvertimeHeader.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Overtime <header> 🠋|--\\
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Overtime <header> 🠋|--\\
+}
+header[id*='overtime'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+    @include Mixins.landscape-grid;
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+    @include Mixins.portrait-grid;
+  }
+}
+
 /*
 @use 'sass:color';
 @use '../../../designs/Palettes.scss';

@@ -1,23 +1,10 @@
-//--|🠊 ComponentsHeader.scss 🠈|--\\
+//--|🠊 ArchiveHeader.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
-@use '../../../designs/Mixins.scss';
-
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Layers) 🠋|--\\
+  //--|🠋 Archive <header> 🠋|--\\
   section[class*='foreground'] {
-    /*
-    header[class*='default'] {
-      z-index: 2;
-      grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
-    /*
-    nav[class*='default'] {
-      z-index: 1;
-      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    */
   }
   figure[class*='midground'] {
   }
@@ -25,19 +12,7 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--//
-  section[class*='foreground'],
-  figure[class*='midground'],
-  div[class*='background'] {
-    width: 100%;
-    overflow: hidden;
-    display: inherit; //--|🠈 display: grid; 🠈|--\\
-    grid-template: inherit;
-    grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    h1 {
-      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-  }
+  //--|🠋 Archive <header> 🠋|--\\
 }
 header[id*='components'] {
   @media screen and (orientation: landscape) {
