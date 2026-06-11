@@ -5,33 +5,9 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
   section[class*='foreground'] {
-    footer[class*='select-default'] {
+    footer[class*='default'] {
       z-index: 2;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      position: absolute;
-      align-items: flex-end;
-      .select-application {
-        width: 100%;
-        display: inherit; //--|🠈 display: flex; 🠈|--\\
-        justify-content: space-around;
-
-        height: 128px;
-        padding: 0 128px;
-        @media screen and (max-height: 768px) {
-          height: 96px;
-          padding: 0 96px;
-        }
-        @media screen and (max-height: 480px) {
-          height: 64px;
-          padding: 0 64px;
-        }
-        @media screen and (max-height: 360px) {
-          height: 48px;
-          padding: 0 48px;
-        }
-      }
+      grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     nav[class*='default'] {
       z-index: 1;
