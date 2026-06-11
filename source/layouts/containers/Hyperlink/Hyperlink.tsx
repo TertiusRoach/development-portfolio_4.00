@@ -5,9 +5,9 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 //--|🠋 Containers 🠋|--\\
 const HyperlinkMain = lazy(() => import('./Main/HyperlinkMain'));
 const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
+const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
 
 /*
-const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
 const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
 const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
 const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
@@ -48,9 +48,11 @@ function Hyperlink() {
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
         {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
-
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+        {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
 
       {/*
@@ -74,9 +76,7 @@ function Hyperlink() {
 
 
 
-      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
-        {getFooter && <HyperlinkFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
-      </Suspense>
+
 
  */}
     </>

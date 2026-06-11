@@ -1,30 +1,36 @@
 //--|🠊 HyperlinkFooter.scss 🠈|--\\
-/*
-@mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
 
-  menu {
-    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Layers) 🠋|--\\
+  section[class*='foreground'] {
+    /*
+    footer[class*='default'] {
+      z-index: 2;
+      grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    nav[class*='default'] {
+      z-index: 1;
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    */
   }
-  section {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠋 Mobile (Layers) 🠋|--\\
 }
 footer[id*='hyperlink'] {
-  display: grid;
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    @include Mixins.landscape-grid();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    @include Mixins.portrait-grid();
   }
 }
-*/

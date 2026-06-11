@@ -1,55 +1,36 @@
 //--|🠊 OvertimeFooter.scss 🠈|--\\
-
-/*
+@use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Elements) 🠋|--\\
-  @include desktop-default();
+  //--|🠋 Desktop (Layers) 🠋|--\\
+  section[class*='foreground'] {
+    /*
+    footer[class*='default'] {
+      z-index: 2;
+      grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    nav[class*='default'] {
+      z-index: 1;
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    */
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Elements) 🠋|--//
-  @include mobile-default();
-}
-
-@mixin desktop-default {
-  //--|🠋 Desktop (Landscape) 🠋|--\\
-  grid-template: //--|🠋 1080px 🠋|--//
-    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-height: 768px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 4rem 1fr 4rem;
-  }
-  @media screen and (max-height: 480px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 2rem 1fr 2rem;
-  }
-}
-@mixin mobile-default {
-  //--|🠋 Mobile (Portrait) 🠋|--\\
-  grid-template: //--|🠋 1920px 🠋|--//
-    repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
-    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--//
-
-  @media screen and (max-width: 768px) {
-    grid-template: repeat(2, 5rem) 1fr repeat(2, 5rem) / 3rem 1fr 3rem;
-  }
-  @media screen and (max-width: 480px) {
-    grid-template: repeat(2, 3rem) 1fr repeat(2, 3rem) / 2rem 1fr 2rem;
-  }
-  @media screen and (max-width: 360px) {
-    grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 1.5rem 1fr 1.5rem;
-  }
+  //--|🠋 Mobile (Layers) 🠋|--\\
 }
 footer[id*='overtime'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    @include Mixins.landscape-grid();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    @include Mixins.portrait-grid();
   }
 }
-*/
