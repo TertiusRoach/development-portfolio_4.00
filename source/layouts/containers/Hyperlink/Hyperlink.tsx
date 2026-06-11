@@ -4,12 +4,14 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const HyperlinkMain = lazy(() => import('./Main/HyperlinkMain'));
-// const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
-// const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
+const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
 
-// const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
-// const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
-// const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
+/*
+const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
+const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
+const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
+const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
+*/
 
 function Hyperlink() {
   const [getMain, setMain] = useState(false);
@@ -47,6 +49,10 @@ function Hyperlink() {
         {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
 
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+
       {/*
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && (
@@ -66,9 +72,7 @@ function Hyperlink() {
         )}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <HyperlinkHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
-      </Suspense>
+
 
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <HyperlinkFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}

@@ -4,8 +4,8 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const OvertimeMain = lazy(() => import('./Main/OvertimeMain'));
-/*
 const OvertimeHeader = lazy(() => import('./Header/OvertimeHeader'));
+/*
 const OvertimeFooter = lazy(() => import('./Footer/OvertimeFooter'));
 
 const OvertimeOverlay = lazy(() => import('./Overlay/OvertimeOverlay'));
@@ -51,6 +51,10 @@ function Overtime() {
         {getMain && <OvertimeMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
 
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+
       {/* <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && <OvertimeOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
@@ -65,9 +69,7 @@ function Overtime() {
         )}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
-      </Suspense>
+
 
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}

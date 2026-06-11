@@ -4,12 +4,14 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Containers 🠋|--\\
 const TicketingMain = lazy(() => import('./Main/TicketingMain'));
-// const TicketingHeader = lazy(() => import('./Header/TicketingHeader'));
-// const TicketingFooter = lazy(() => import('./Footer/TicketingFooter'));
+const TicketingHeader = lazy(() => import('./Header/TicketingHeader'));
+/*
+const TicketingFooter = lazy(() => import('./Footer/TicketingFooter'));
 
-// const TicketingOverlay = lazy(() => import('./Overlay/TicketingOverlay'));
-// const TicketingLeftbar = lazy(() => import('./Leftbar/TicketingLeftbar'));
-// const TicketingRightbar = lazy(() => import('./Rightbar/TicketingRightbar'));
+const TicketingOverlay = lazy(() => import('./Overlay/TicketingOverlay'));
+const TicketingLeftbar = lazy(() => import('./Leftbar/TicketingLeftbar'));
+const TicketingRightbar = lazy(() => import('./Rightbar/TicketingRightbar'));
+*/
 
 function Ticketing() {
   const [getMain, setMain] = useState(false);
@@ -47,6 +49,10 @@ function Ticketing() {
         {getMain && <TicketingMain info={{ pageName: '[ticketing]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
 
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <TicketingHeader info={{ pageName: '[ticketing]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+
       {/* <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && (
           <TicketingOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />
@@ -65,9 +71,7 @@ function Ticketing() {
         )}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <TicketingHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
-      </Suspense>
+
 
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <TicketingFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
