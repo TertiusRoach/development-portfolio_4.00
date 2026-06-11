@@ -1,9 +1,5 @@
 //--|🠊 Header.swipe.scss 🠈|--\\
-
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Elements) 🠋|--\\
-  display: flex;
-  align-items: flex-start;
   //--|🠋 X-axis 🠋|--\\
   ul[class*='hori-X-swipe'] {
     li[class*='horizontal'] {
@@ -31,9 +27,19 @@
       @include vertical-swipe();
     }
   }
+
+  height: 128px;
+  @media screen and (max-height: 768px) {
+    height: 96px;
+  }
+  @media screen and (max-height: 480px) {
+    height: 64px;
+  }
+  @media screen and (max-height: 360px) {
+    height: 48px;
+  }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Elements) 🠋|--\\
 }
 
 @mixin vertical-swipe {
