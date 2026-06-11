@@ -21,7 +21,6 @@ const HyperlinkMain: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  console.log('[overtime] <main> Loaded');
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   return (

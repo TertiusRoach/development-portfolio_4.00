@@ -18,25 +18,23 @@ interface TheseProps {
     blockName: string;
     labelName: string;
   };
-
-  onClick?: () => void;
-  onMouseEnter?: () => void;
 }
+
 const FooterApplications: React.FC<TheseProps> = ({ info }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
-  /*--|🠋
+  useEffect(() => {
+    /*--|🠋
   
-  🠉|--*/
-
-  useEffect(() => {}, [pageName, blockName, labelName]);
+    🠉|--*/
+  }, [pageName, blockName, labelName]);
 
   let link =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   return (
-    <footer className={`default-${blockName}_applications-default`}>
+    <footer className={`${labelName}-${blockName}_applications-default`}>
       <div className="select-application">
         <ButtonRouting
           style={{

@@ -37,17 +37,17 @@ function themeScheme(colorScheme: 'light' | 'dark'): void {
 
   // Between 05:00 and 12:59
   if (currentHour >= 5 && currentHour < 12) {
-    element.classList.remove('post-meridiem');
     element.classList.add('ante-meridiem');
+    element.classList.remove('post-meridiem');
     setTimeout(() => {
       //--|🠊 alert("It's morning people, rise and shine."); 🠈|--\\
       console.log('|🠊 <body class="ante-meridiem"> 🠈|');
-    }, 240000);
+    }, 15000);
   }
   // Between 13:00 and 04:59
   else {
-    element.classList.remove('ante-meridiem');
     element.classList.add('post-meridiem');
+    element.classList.remove('ante-meridiem');
     console.log('|🠊 <body class="post-meridiem"> 🠈|');
     //--|🠊 alert("It's afternoon, log work and wind down."); 🠈|--\\
   }

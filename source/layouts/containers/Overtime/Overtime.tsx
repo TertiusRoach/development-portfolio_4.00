@@ -33,6 +33,14 @@ function Overtime() {
 
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
+
+    setTimeout(() => {
+      /*--|🠋
+      
+      🠉|--*/
+      console.log('|🠊 Entry Point: <div id="overtime-body"> 🠈|');
+    }, 60000);
+
     return () => {
       clearTimeout(mainTimer);
       clearTimeout(headerTimer);
@@ -42,9 +50,8 @@ function Overtime() {
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
     };
-  }, []);
+  }, ['[overtime]', '<body>', '(default)']);
 
-  console.log('[overtime] Entry Point Loaded.');
   return (
     <>
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>

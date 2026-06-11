@@ -32,6 +32,14 @@ function Hyperlink() {
 
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
+
+    setTimeout(() => {
+      /*--|🠋
+      
+      🠉|--*/
+      console.log('|🠊 Entry Point: <div id="hyperlink-body"> 🠈|');
+    }, 60000);
+
     return () => {
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
@@ -41,7 +49,7 @@ function Hyperlink() {
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
     };
-  }, []);
+  }, ['[hyperlink]', '<body>', '(default)']);
 
   return (
     <>
