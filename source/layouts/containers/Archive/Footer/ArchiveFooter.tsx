@@ -48,6 +48,10 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
             labelName: labelName,
           }}
+          cases={{
+            axis: '[x]',
+            apps: '{archive}',
+          }}
         />
 
         <NavigationDefault

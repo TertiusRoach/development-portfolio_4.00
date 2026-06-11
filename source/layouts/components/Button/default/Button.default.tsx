@@ -252,8 +252,8 @@ const ButtonDefault: React.FC<TheseProps> = ({
   */
 }) => {
   //--|🠊 Identifiers 🠈|--\\
-  const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
+  const blockName = stripBrackets(info.blockName, '<>') as string;
 
   useEffect(() => {}, [pageName, blockName]);
 

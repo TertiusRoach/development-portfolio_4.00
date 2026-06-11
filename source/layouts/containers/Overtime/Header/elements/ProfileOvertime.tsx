@@ -10,14 +10,14 @@ import SectionCharacters from '../../../../../components/Section/Overtime/charac
 
 interface InfoProps {
   info: {
-    pageName: 'overtime';
-    blockName: 'header';
+    pageName: string;
+    blockName: 'footer';
     labelName: 'profile';
   };
 }
 const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as 'header';
-  const pageName = info.pageName as 'overtime';
+  const pageName = info.pageName as string;
+  const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'profile';
 
   useEffect(() => {}, [pageName, blockName]);
@@ -25,7 +25,7 @@ const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
   return (
     <>
       <SectionCharacters
-        //--|🠊 <section class="profile-header"/> 🠈|--\\
+        //--|🠊 <section class="profile-footer"/> 🠈|--\\
         info={{
           pageName: pageName,
           blockName: blockName,

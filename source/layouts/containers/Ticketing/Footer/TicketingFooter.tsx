@@ -32,6 +32,10 @@ const TicketingFooter: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
             labelName: labelName,
           }}
+          cases={{
+            axis: '[x]',
+            apps: `{${pageName}}` as string,
+          }}
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
