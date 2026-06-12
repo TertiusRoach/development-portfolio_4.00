@@ -2,7 +2,7 @@
 @use '../../../../../designs/Palettes.scss';
 
 @use './loading-article/LoadingArticle.scss';
-// @use './updates-article/UpdatesArticle.scss';
+@use './updates-article/UpdatesArticle.scss';
 
 section[class*='article-main'] {
   div.article-main_container {
@@ -15,7 +15,7 @@ section[class*='article-main'] {
           @include LoadingArticle.desktop-landscape;
         }
         &[class*='updates'] {
-          // @include UpdatesArticle.desktop-landscape;
+          @include UpdatesArticle.desktop-landscape;
         }
       }
     }
@@ -25,7 +25,7 @@ section[class*='article-main'] {
           @include LoadingArticle.mobile-portrait;
         }
         &[class*='updates'] {
-          // @include UpdatesArticle.mobile-portrait;
+          @include UpdatesArticle.mobile-portrait;
         }
       }
     }

@@ -60,7 +60,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'article', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
-                  pages: ['<Article_Loading>', '<Article_Updates>'] as Array<string>,
+                  pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
                 }}
               />,
               <MenuSwipe

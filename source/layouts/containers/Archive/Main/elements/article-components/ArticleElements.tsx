@@ -6,11 +6,12 @@ import React, { useEffect } from 'react';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultArticle from './default-article/DefaultArticle';
+
 import LoadingArticle from './loading-article/LoadingArticle';
 
 //--|🠋 Styles 🠋|--\\
 import './ArticleElements.scss';
+import UpdatesArticle from './updates-article/UpdatesArticle';
 
 interface InfoProps {
   info: {
@@ -45,10 +46,8 @@ function ArticleComponents({ info }: InfoProps) {
 
   return (
     <>
+      <UpdatesArticle info={{ labelName: 'updates' as string, pageName: pageName, blockName: blockName }} />
       <LoadingArticle info={{ labelName: 'loading' as string, pageName: pageName, blockName: blockName }} />
-      {/* <UpdatesArticle info={{ labelName: 'updates' as string, pageName: pageName, blockName: blockName }} /> */}
-
-      {/* <DefaultArticle info={defaultInfo} /> */}
     </>
   );
 }

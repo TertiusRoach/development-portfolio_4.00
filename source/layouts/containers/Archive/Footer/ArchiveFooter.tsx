@@ -42,18 +42,6 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
       }}
     >
       <section className={`${blockName}-foreground`}>
-        <FooterApplications
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          cases={{
-            axis: '[x]',
-            apps: '{archive}',
-          }}
-        />
-
         <NavigationDefault
           //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
           info={{
@@ -71,6 +59,17 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
             image: undefined,
             view: undefined,
             tasks: '',
+          }}
+        />
+        <FooterApplications
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          cases={{
+            axis: '[x]',
+            apps: '{archive}',
           }}
         />
       </section>
