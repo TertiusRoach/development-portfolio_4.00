@@ -32,9 +32,6 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 function MenuAxis({ info, style, cases }: TheseProps) {
-  /*--|🠋
-
-  🠉|--*/
   switch (style.axis) {
     case '[x]':
       return (

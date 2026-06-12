@@ -4,32 +4,46 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Article) 🠋|--\\
-  div[class*='par_lef_dar'] {
-    background: rgba(black, 0.25);
-
-    header[class='logo'] {
-      background: rgba(red, 0.25);
-    }
-    section[class='title'] {
-      background: rgba(green, 0.25);
-      color: white;
+  %view-class {
+    header,
+    section,
+    footer {
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
       h1 {
         font-weight: 600;
-        white-space: wrap;
         text-align: center;
       }
-    }
-    footer[class='description'] {
-      background: rgba(blue, 0.25);
-      color: white;
+      p {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+      }
     }
   }
-
+  %shade-class {
+    &[class='wrapper_dar'] {
+      background: rgba(black, 0.25);
+      .title,
+      .description {
+        color: white;
+      }
+    }
+    &[class='wrapper_lig'] {
+      background: rgba(white, 0.25);
+      .title,
+      .description {
+        color: black;
+      }
+    }
+  }
   div[class*='wrapper'] {
     display: grid;
+    @extend %view-class;
+    @extend %shade-class;
     header[class='logo'] {
-      display: flex;
-      justify-content: center;
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       img {
         width: 150px;
@@ -62,19 +76,119 @@
     footer[class='description'] {
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       p {
-        font-size: 24px;
-        @media screen and (max-height: 768px) {
-          font-size: 20px;
+        &[class*='one_'] {
+          -webkit-line-clamp: 3;
+          //--|🠊 line-clamp: 3; 🠈|--\\
+          font-size: 48px;
+          @media screen and (max-height: 768px) {
+            font-size: 40px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 32px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 24px;
+          }
         }
-        @media screen and (max-height: 480px) {
-          font-size: 16px;
+        &[class*='two_'] {
+          -webkit-line-clamp: 4;
+          //--|🠊 line-clamp: 4; 🠈|--\\
+          font-size: 44px;
+          @media screen and (max-height: 768px) {
+            font-size: 36px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 30px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 22px;
+          }
         }
-        @media screen and (max-height: 360px) {
-          font-size: 12px;
+        &[class*='thr_'] {
+          -webkit-line-clamp: 5;
+          //--|🠊 line-clamp: 5; 🠈|--\\
+          font-size: 40px;
+          @media screen and (max-height: 768px) {
+            font-size: 34px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 26px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 20px;
+          }
+        }
+        &[class*='fou_'] {
+          -webkit-line-clamp: 5;
+          //--|🠊 line-clamp: 5; 🠈|--\\
+          font-size: 36px;
+          @media screen and (max-height: 768px) {
+            font-size: 30px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 24px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 18px;
+          }
+        }
+        &[class*='fiv_'] {
+          -webkit-line-clamp: 6;
+          //--|🠊 line-clamp: 6; 🠈|--\\
+          font-size: 32px;
+          @media screen and (max-height: 768px) {
+            font-size: 26px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 22px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 16px;
+          }
+        }
+        &[class*='six_'] {
+          -webkit-line-clamp: 7;
+          //--|🠊 line-clamp: 7; 🠈|--\\
+          font-size: 28px;
+          @media screen and (max-height: 768px) {
+            font-size: 24px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 18px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 14px;
+          }
+        }
+        &[class*='par_'] {
+          -webkit-line-clamp: 8;
+          //--|🠊 line-clamp: 8; 🠈|--\\
+          font-size: 24px;
+          @media screen and (max-height: 768px) {
+            font-size: 20px;
+          }
+          @media screen and (max-height: 480px) {
+            font-size: 16px;
+          }
+          @media screen and (max-height: 360px) {
+            font-size: 12px;
+          }
+        }
+
+        &[class*='_lef'] {
+          text-align: left;
+        }
+        &[class*='_rig'] {
+          text-align: right;
+        }
+        &[class*='_cen'] {
+          text-align: center;
+        }
+        &[class*='_jus'] {
+          text-align: justify;
         }
       }
     }
-
     width: 448px;
     height: 672px;
     grid-gap: 32px;
