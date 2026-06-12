@@ -20,7 +20,6 @@
       align-items: center;
       justify-content: center;
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      color: rgba(Palettes.$indexLand-medium, 0.25);
     }
   }
   @include Mixins.landscape-grid;

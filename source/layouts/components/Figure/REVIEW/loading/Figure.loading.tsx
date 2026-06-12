@@ -6,9 +6,6 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { viewDisplay } from './Figure_loading';
-import { expandLeftbar, collapseHeader } from '../../../scripts/overtime';
-import { previewElement } from '../../Division/carousel/Division_carousel';
-
 import { scrollTable } from '../../Table/clocking/Table_clocking';
 
 //--|🠋 Components 🠋|--\\
@@ -47,7 +44,6 @@ const FigureLoading = <T extends Info>({ info, cases }: TheseProps<T>) => {
       'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif',
     ],
   };
-  // console.log(svgPath.signature[0]);
 
   return (
     <figure className={`loading-${blockName}`}>

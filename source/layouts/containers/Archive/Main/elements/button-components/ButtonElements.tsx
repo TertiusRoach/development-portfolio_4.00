@@ -2,9 +2,6 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-import './ButtonElements.scss';
-
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
@@ -13,6 +10,9 @@ import DefaultButton from './default-button/DefaultButton';
 import RoutingButton from './routing-button/RoutingButton';
 import ProfileButton from './profile-button/ProfileButton';
 import StretchButton from './stretch-button/StretchButton';
+
+//--|🠋 Styles 🠋|--\\
+import './ButtonElements.scss';
 
 interface InfoProps {
   info: {
@@ -24,6 +24,7 @@ interface InfoProps {
 function ButtonComponents({ info }: InfoProps) {
   const pageName = info.pageName;
   const blockName = info.blockName;
+  const labelName = info.labelName;
   return (
     <>
       <DefaultButton info={{ labelName: 'default' as string, pageName: pageName, blockName: blockName }} />
@@ -38,7 +39,6 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'button';
   const pageName = info.pageName as 'components';
-
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionCarousel

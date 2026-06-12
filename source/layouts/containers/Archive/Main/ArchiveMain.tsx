@@ -22,11 +22,8 @@ import React, { useEffect } from 'react';
 
 interface InfoProps {
   info: {
-    //--|🠋 pageName: Id that represents the application 🠋|--\\
     pageName: '[components]';
-    //--|🠋 blockName: 'Toggles between '/containers' folders. 🠋|--\\
-    blockName: '<footer>' | '<header>' | '<leftbar>' | '<main>' | '<overlay>' | '<rightbar>';
-    //--|🠋 labelName: Class name marker for all components. 🠋|--\\
+    blockName: '<main>';
     labelName: '(default)' | string;
   };
 }
@@ -121,17 +118,8 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        {/* <NavigationComponents
-          //--|🠊 <nav class="browse-main"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        /> */}
-
         <DivisionCarousel
-          //--|🠊 <div class="elements-main_carousel"/> 🠈|--\\
+          //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
             call: ComponentsElements as React.ComponentType<InfoProps>,

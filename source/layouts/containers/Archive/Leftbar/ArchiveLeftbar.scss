@@ -3,7 +3,7 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Layers) 🠋|--\\
+  //--|🠋 Desktop (Leftbar) 🠋|--\\
   section[class*='foreground'] {
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -13,27 +13,23 @@
   }
   div[class*='background'] {
   }
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--//
+  //--|🠋 Mobile (Leftbar) 🠋|--//
   section[class*='foreground'] {
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
   }
-  @include Mixins.portrait-grid;
 }
-aside[id*='components'] {
+aside[id='components-leftbar'] {
   @media screen and (orientation: landscape) {
-    &[id*='leftbar'] {
-      @include desktop-landscape();
-    }
+    @include desktop-landscape();
+    @include Mixins.landscape-grid;
   }
   @media screen and (orientation: portrait) {
-    &[id*='leftbar'] {
-      @include mobile-portrait();
-    }
+    @include mobile-portrait();
+    @include Mixins.portrait-grid;
   }
 }

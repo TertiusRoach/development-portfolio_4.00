@@ -1,15 +1,33 @@
-//--|🠊 AsideElements.scss 🠈|--\\
+//--|🠊 ArticleElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
-@use './default-article/DefaultArticle.scss';
+@use './loading-article/LoadingArticle.scss';
+// @use './updates-article/UpdatesArticle.scss';
 
-section[class*='article'] {
-  div[class*='main_container'] {
+section[class*='article-main'] {
+  div.article-main_container {
     @media screen and (orientation: landscape) {
-      @include DefaultArticle.desktop-landscape;
+      aside[class*='article'] {
+        width: 100vw;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+        &[class*='loading'] {
+          @include LoadingArticle.desktop-landscape;
+        }
+        &[class*='updates'] {
+          // @include UpdatesArticle.desktop-landscape;
+        }
+      }
     }
     @media screen and (orientation: portrait) {
-      @include DefaultArticle.mobile-portrait;
+      aside[class*='article'] {
+        &[class*='loading'] {
+          @include LoadingArticle.mobile-portrait;
+        }
+        &[class*='updates'] {
+          // @include UpdatesArticle.mobile-portrait;
+        }
+      }
     }
   }
 }

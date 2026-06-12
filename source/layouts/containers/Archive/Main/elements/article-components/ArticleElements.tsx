@@ -2,14 +2,15 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-import './ArticleElements.scss';
-
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultArticle from './default-article/DefaultArticle';
+import LoadingArticle from './loading-article/LoadingArticle';
+
+//--|🠋 Styles 🠋|--\\
+import './ArticleElements.scss';
 
 interface InfoProps {
   info: {
@@ -38,15 +39,16 @@ const ArticleElements: React.FC<InfoProps> = ({ info }) => {
 };
 
 function ArticleComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
+  const pageName = info.pageName;
+  const blockName = info.blockName;
+  const labelName = info.labelName;
 
   return (
     <>
-      <DefaultArticle info={defaultInfo} />
+      <LoadingArticle info={{ labelName: 'loading' as string, pageName: pageName, blockName: blockName }} />
+      {/* <UpdatesArticle info={{ labelName: 'updates' as string, pageName: pageName, blockName: blockName }} /> */}
+
+      {/* <DefaultArticle info={defaultInfo} /> */}
     </>
   );
 }

@@ -47,4 +47,5 @@ const DivisionCarousel = <T extends PropsInfo>({ info, cases, onWheel }: ThesePr
     </div>
   );
 };
+
 export default DivisionCarousel;
