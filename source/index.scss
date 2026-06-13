@@ -3,7 +3,8 @@
 @use './layouts/designs/Global.scss';
 @use './layouts/designs/Queries.scss';
 @use './layouts/designs/Palettes.scss';
-@use './layouts/designs/Transition.scss';
+@use './layouts/designs/Transition.scss' as Transition;
+
 //--|🠋 Applications 🠋|--\\
 @use './layouts/styles/archive.scss';
 @use './layouts/styles/landing.scss';

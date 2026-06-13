@@ -431,25 +431,68 @@
     }
   }
 }
+
 //--|🠋 section[id*="overlay"] 🠋|--\\
 @mixin overlay-transition {
   section[class*='overlay'] {
-    &[class*='hidden'] {
-      opacity: 0;
-      visibility: hidden;
-      //--|🠋 Hide Container 🠋|--\\
-      transition:
-        visibility 0ms 1500ms,
-        opacity 500ms ease-in-out;
-    }
-
     &[class*='visible'] {
-      opacity: 1;
-      visibility: visible;
-      //--|🠋 Show Container 🠋|--\\
-      transition:
-        visibility 0ms 0ms,
-        opacity 500ms ease-in-out;
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Visible State 🠋|--\\
+        article[class*='loading'],
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
     }
+    &[class*='loading'] {
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Loading State 🠋|--\\
+        article[class*='loading'] {
+          @extend %overlay-show;
+        }
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+    &[class*='updates'] {
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Updates State 🠋|--\\
+        article[class*='updates'] {
+          @extend %overlay-show;
+        }
+        article[class*='loading'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+    &[class*='hidden'] {
+      @extend %overlay-hide;
+      figure[class='overlay-midground'] {
+        //--|🠋 Hidden State 🠋|--\\
+        article[class*='loading'],
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+  }
+
+  %overlay-hide {
+    opacity: 0;
+    transition:
+      visibility 0ms 250ms,
+      opacity 250ms ease-in-out;
+    visibility: hidden;
+  }
+  %overlay-show {
+    opacity: 1;
+    transition:
+      visibility 0ms 0ms,
+      opacity 500ms ease-in-out;
+    visibility: visible;
   }
 }

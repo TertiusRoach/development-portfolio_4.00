@@ -7,7 +7,8 @@
   section[class*='foreground'] {
   }
   figure[class*='midground'] {
-    article[class*='loading'] {
+    article[class*='loading'],
+    article[class*='updates'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }

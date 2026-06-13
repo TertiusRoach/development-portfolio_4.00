@@ -8,6 +8,7 @@ import ArticleLoading from '../../../components/Article/loading/Article.loading'
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
+import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 interface InfoProps {
   info: {
@@ -17,7 +18,7 @@ interface InfoProps {
   };
 }
 const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'hidden' | 'visible' = 'visible';
+  let stateName: 'visible' | 'loading' | 'updates' | 'hidden' | 'visible' = 'loading';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -44,6 +45,24 @@ const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
           }}
           cases={{
             apps: '{signature}',
+          }}
+        />
+        <ArticleUpdates
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            size: '<h6>',
+            shade: '~dark~',
+            view: '-justify-',
+          }}
+          cases={{
+            image:
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
+            title: 'View a Tag',
+            description: 'Text Here',
           }}
         />
       </figure>
