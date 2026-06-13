@@ -1981,16 +1981,16 @@ export function scrollSide(element: HTMLDivElement, action: 'view-prev' | 'view-
 }
 
 let updateMessage = () => {
-  const disableElement: string = 'disabled-footer';
-  const footerElement = document.getElementById('components-footer') as HTMLElement;
-  if (!footerElement.classList.contains(disableElement)) {
-    footerElement.classList.add(disableElement);
-    footerElement.classList.replace('squaring', 'expanded');
+  const disableElement: string = 'disabled-overlay';
+  const overlayElement = document.getElementById('components-overlay') as HTMLElement;
+  if (!overlayElement.classList.contains(disableElement)) {
+    overlayElement.classList.add(disableElement);
+    overlayElement.classList.replace('hidden', 'visible');
     setTimeout(() => {
-      footerElement.classList.replace('expanded', 'squaring');
+      overlayElement.classList.replace('visible', 'hidden');
     }, 1250);
     setTimeout(() => {
-      footerElement.classList.remove(disableElement);
+      overlayElement.classList.remove(disableElement);
     }, 1500);
   }
 };
