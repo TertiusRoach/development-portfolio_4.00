@@ -20,6 +20,18 @@
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        &[class*='_lef'] {
+          text-align: left;
+        }
+        &[class*='_rig'] {
+          text-align: right;
+        }
+        &[class*='_cen'] {
+          text-align: center;
+        }
+        &[class*='_jus'] {
+          text-align: justify;
+        }
       }
     }
   }
@@ -173,19 +185,6 @@
           @media screen and (max-height: 360px) {
             font-size: 12px;
           }
-        }
-
-        &[class*='_lef'] {
-          text-align: left;
-        }
-        &[class*='_rig'] {
-          text-align: right;
-        }
-        &[class*='_cen'] {
-          text-align: center;
-        }
-        &[class*='_jus'] {
-          text-align: justify;
         }
       }
     }

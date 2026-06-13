@@ -56,7 +56,7 @@ const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
           style={{
             size: '<h6>',
             shade: '~dark~',
-            view: '-justify-',
+            view: '-center-',
           }}
           cases={{
             image:

@@ -73,26 +73,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </section>
-      <figure className={`${blockName}-midground`}>
-        <article className={`${labelName}-${blockName}_article-update`}>
-          <section>
-            <header>
-              <div>
-                <img src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg" />
-              </div>
-            </header>
-            <footer>
-              <h3>
-                Copied REACT
-                <br />
-                component to
-                <br />
-                clipboard.
-              </h3>
-            </footer>
-          </section>
-        </article>
-      </figure>
+      <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </footer>
   );

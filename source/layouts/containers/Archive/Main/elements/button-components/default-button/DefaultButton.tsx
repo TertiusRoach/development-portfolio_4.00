@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './DefaultButton.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { copyCode, toggleColors, scrollSide } from './DefaultFunctions';
+import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
