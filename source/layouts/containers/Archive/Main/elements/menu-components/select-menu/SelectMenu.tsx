@@ -1,8 +1,8 @@
-//--|🠊 DefaultMenu.tsx 🠈|--\\
+//--|🠊 SelectMenu.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './DefaultMenu.scss';
+import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
@@ -16,18 +16,19 @@ interface InfoProps {
     labelName: string;
   };
 }
-const DefaultMenu: React.FC<InfoProps> = ({ info }) => {
+const SelectMenu: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'component';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<DefaultMenu>`}</h1>
-      </section>
+    <aside className="select-menu">
+      <section className={`${blockName}-foreground`}></section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <h1 className="display-1">{`<SelectMenu>`}</h1>
+      </div>
     </aside>
   );
 };
-export default DefaultMenu;
+export default SelectMenu;

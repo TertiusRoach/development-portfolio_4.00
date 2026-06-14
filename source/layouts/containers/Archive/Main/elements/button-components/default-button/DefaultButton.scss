@@ -160,6 +160,16 @@
       }
     }
   }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+    display: flex;
+    justify-content: center;
+    h1 {
+      color: darkred;
+    }
+  }
+  @include Mixins.layering-position;
 }
 @mixin mobile-portrait {
 }
