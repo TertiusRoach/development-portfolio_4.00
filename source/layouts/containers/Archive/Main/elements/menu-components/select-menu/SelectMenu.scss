@@ -4,8 +4,23 @@
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="select-menu"> 🠈|--\\
+  %mark-area {
+    .top-cen {
+      grid-area: 3 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .mid-rig {
+      grid-area: 3 / 5 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .bot-cen {
+      grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .mid-lef {
+      grid-area: 3 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
   section[class*='foreground'] {
     display: grid;
+    @extend %mark-area;
     //--|🠊 96px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
       8rem 0.125fr 128px 1fr 128px 0.125fr 8rem //--|🠈 rows 🠈|--//

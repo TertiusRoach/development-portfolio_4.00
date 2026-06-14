@@ -62,7 +62,6 @@
     }
   }
   %mark-disp {
-    display: grid;
     div[class*='default'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       &[class*='container'] {
@@ -80,6 +79,7 @@
     }
   }
   section[class*='foreground'] {
+    display: grid;
     @extend %mark-area;
     @extend %mark-disp;
     //--|🠋 96px (Left & Right) for Design 🠋|--\\

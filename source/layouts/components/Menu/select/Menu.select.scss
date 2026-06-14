@@ -35,6 +35,7 @@
           }
         }
 
+        /*
         div:nth-child(1) {
           background: rgba(orange, 0.5);
         }
@@ -44,16 +45,19 @@
         div:nth-child(3) {
           background: rgba(green, 0.5);
         }
+        */
       }
     }
   }
 
   //--|🠋 Y-axis 🠋|--\\
   &[class*='mid'] {
+    display: flex;
     overflow-y: auto;
     overflow-x: hidden;
     &[class*='lef'] {
       direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
+      align-items: flex-start;
       ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
         div[class*='view'] {
           position: relative;
@@ -78,6 +82,7 @@
     }
     &[class*='rig'] {
       direction: ltr; //--|🠈 Move Scrollbar to the Right 🠈|--\\
+      align-items: flex-end;
       ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
         div[class*='view'] {
           position: relative;
