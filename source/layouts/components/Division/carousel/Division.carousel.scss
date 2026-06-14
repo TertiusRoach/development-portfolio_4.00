@@ -4,14 +4,11 @@
   %hori-scope {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
-      height: 100svh;
       transition: transform 500ms ease-in-out;
       div[class*='container'] {
         display: flex;
         height: inherit;
-        section[class*='main'],
-        figure[class*='main'],
-        aside[class*='main'] {
+        > * {
           height: 100svh;
         }
       }

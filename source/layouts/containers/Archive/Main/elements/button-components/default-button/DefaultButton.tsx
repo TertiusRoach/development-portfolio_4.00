@@ -134,7 +134,7 @@ function defaultLight({ info }: InfoProps) {
 const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
-  const pageName = info.pageName as 'component';
+  const pageName = info.pageName as 'components';
   return (
     <aside className="default-button">
       <section className={`${info.blockName}-foreground`}>

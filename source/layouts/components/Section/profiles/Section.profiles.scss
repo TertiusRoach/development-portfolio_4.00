@@ -1,0 +1,19 @@
+//--|🠊 Section.profiles.scss 🠈|--\\
+@use '../../../designs/Mixins.scss';
+@use '../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Division) 🠋|--\\
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Division) 🠋|--\\
+}
+
+section[class*='profiles'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

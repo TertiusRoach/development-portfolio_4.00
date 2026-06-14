@@ -9,7 +9,7 @@ import './SectionElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultSection from './default-section/DefaultSection';
+import ProfilesSection from './profiles-section/ProfilesSection';
 
 interface InfoProps {
   info: {
@@ -38,15 +38,12 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
 };
 
 function SectionComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
-
+  const pageName = info.pageName;
+  const blockName = info.blockName;
+  const labelName = info.labelName;
   return (
     <>
-      <DefaultSection info={defaultInfo} />
+      <ProfilesSection info={{ labelName: 'profiles' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }
