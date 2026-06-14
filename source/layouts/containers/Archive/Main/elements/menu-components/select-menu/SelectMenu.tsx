@@ -19,7 +19,7 @@ interface InfoProps {
 }
 const SelectMenu: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'default';
+  const labelName = info.labelName as 'select';
   const pageName = info.pageName as 'component';
 
   useEffect(() => {}, [pageName, blockName, labelName]);

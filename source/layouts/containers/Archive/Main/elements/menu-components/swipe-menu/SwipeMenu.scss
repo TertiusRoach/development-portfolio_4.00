@@ -1,10 +1,19 @@
-//--|🠊 SelectMenu.scss 🠈|--\\
+//--|🠊 SwipeMenu.scss 🠈|--\\
 @use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 <aside className="select-menu"> 🠈|--\\
+  //--|🠊 <aside className="swipe-menu"> 🠈|--\\
   %mark-area {
+    div[class='horizontal'] {
+      background: rgba(darkblue, 0.25);
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    div[class='vertical'] {
+      background: rgba(darkred, 0.25);
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    /*
     .top-cen {
       grid-area: 3 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -17,46 +26,59 @@
     .mid-lef {
       grid-area: 3 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    */
+  }
+  %mark-disp {
+    display: grid;
+    div {
+      display: flex;
+      &[class='horizontal'] {
+        align-items: center;
+      }
+      &[class='vertical'] {
+        justify-content: center;
+      }
+    }
   }
   section[class*='foreground'] {
-    display: grid;
     @extend %mark-area;
+    @extend %mark-disp;
     //--|🠊 96px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      8rem 0.125fr 128px 1fr 128px 0.125fr 8rem //--|🠈 rows 🠈|--//
-      / 48px 0.125fr 128px 1fr 128px 0.125fr 48px; //--|🠈 columns 🠈|--\\
+      8rem 1fr 8rem //--|🠈 rows 🠈|--//
+      / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        6rem 0.125fr 96px 1fr 96px 0.125fr 6rem //--|🠈 rows 🠈|--//
-        / 32px 0.125fr 96px 1fr 96px 0.125fr 32px; //--|🠈 columns 🠈|--\\
+        6rem 1fr 6rem //--|🠈 rows 🠈|--//
+        / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠊 48px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 854px 🠋|--\\
-        4rem 0.125fr 64px 1fr 64px 0.125fr 4rem //--|🠈 rows 🠈|--//
-        / 24px 0.125fr 64px 1fr 64px 0.125fr 24px; //--|🠈 columns 🠈|--\\
+        4rem 1fr 4rem //--|🠈 rows 🠈|--//
+        / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠊 32px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 640px 🠋|--\\
-        3rem 0.125fr 48px 1fr 48px 0.125fr 3rem //--|🠈 rows 🠈|--//
-        / 16px 0.125fr 48px 1fr 48px 0.125fr 16px; //--|🠈 columns 🠈|--\\
+        3rem 1fr 3rem //--|🠈 rows 🠈|--//
+        / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
     }
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
-    display: flex;
-    justify-content: center;
     h1 {
-      color: darkred;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  @include Mixins.layering-position;
 }
 @mixin mobile-portrait {
-  //--|🠊 <aside className="select-menu"> 🠈|--\\
+  //--|🠊 <aside className="swipe-menu"> 🠈|--\\
   section[class*='foreground'] {
   }
   figure[class*='midground'] {
