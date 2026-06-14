@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠉 Dependencies 🠉|--//
 //--|🠋 Components 🠋|--//
 import MenuLanding from '../../../components/Menu/REVIEW/landing/Menu.landing';
-import SectionLaunch from '../../../components/Section/Landing/launch/Section.launch';
+import SectionLaunch from '../../../components/Section/REVIEW/launch/Section.launch';
 //--|🠉 Components 🠉|--//
 interface InfoProps {
   info: {

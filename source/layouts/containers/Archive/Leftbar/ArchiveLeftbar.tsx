@@ -41,7 +41,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
             shade: '~light~',
           }}
           cases={{
-            show: 6,
+            show: 8,
             buttons: [
               {
                 labelName: 'article',
