@@ -1,6 +1,6 @@
-//--|🠊 Section.characters.tsx 🠈|--\\
+//--|🠊 Aside.characters.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Section.characters.scss';
+import './Aside.characters.scss';
 
 //--|🠋 Functions 🠋|--\\
 
@@ -17,16 +17,16 @@ interface TheseProps {
   };
 }
 
-const SectionProfiles: React.FC<TheseProps> = ({ info }) => {
+const AsideProfiles: React.FC<TheseProps> = ({ info }) => {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  return <section className={`${info.labelName}-${info.blockName}_characters-default`}></section>;
+  return <aside className={`${info.labelName}-${info.blockName}_characters-default`}></aside>;
 };
-export default SectionProfiles;
+export default AsideProfiles;
 
 //--|🠊 ProfileOvertime.tsx 🠈|--\\
 
