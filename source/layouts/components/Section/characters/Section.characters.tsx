@@ -1,6 +1,6 @@
-//--|🠊 Section.profiles.tsx 🠈|--\\
+//--|🠊 Section.characters.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Section.profiles.scss';
+import './Section.characters.scss';
 
 //--|🠋 Functions 🠋|--\\
 
@@ -24,6 +24,6 @@ const SectionProfiles: React.FC<TheseProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  return <section className={`${info.labelName}-${info.blockName}_section-default`}></section>;
+  return <section className={`${info.labelName}-${info.blockName}_characters-default`}></section>;
 };
 export default SectionProfiles;

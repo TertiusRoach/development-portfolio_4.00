@@ -6,7 +6,7 @@ import './ProfilesSection.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import SectionProfiles from '../../../../../../components/Section/profiles/Section.profiles';
+import SectionProfiles from '../../../../../../components/Section/characters/Section.characters';
 
 //--|🠋 Components 🠋|--\\
 

@@ -1,4 +1,4 @@
-//--|🠊 Division_default.ts 🠈|--\\
+//--|🠊 Division_characters.ts 🠈|--\\
 //--|🠋 Styles 🠋|--\\
 import * as Palettes from '../../../designs/Palettes.scss';
 

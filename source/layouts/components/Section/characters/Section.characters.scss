@@ -1,4 +1,4 @@
-//--|🠊 Section.profiles.scss 🠈|--\\
+//--|🠊 Section.characters.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
@@ -9,7 +9,7 @@
   //--|🠋 Mobile (Division) 🠋|--\\
 }
 
-section[class*='profiles'] {
+section[class*='characters'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
