@@ -20,7 +20,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-function defaultDark({ info }: InfoProps) {
+function ButtonsDarkside({ info }: InfoProps) {
   return (
     <>
       <ViewOne
@@ -75,7 +75,7 @@ function defaultDark({ info }: InfoProps) {
     </>
   );
 }
-function defaultLight({ info }: InfoProps) {
+function ButtonsLightside({ info }: InfoProps) {
   return (
     <>
       <ViewOne
@@ -146,12 +146,12 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as 'components',
           }}
           style={{
-            axis: '[y]',
             color: '(mono)',
             shade: '~dark~',
           }}
           cases={{
             show: 3,
+            axis: '[y]',
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
         />
@@ -159,7 +159,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
-            call: defaultDark as React.ComponentType<InfoProps>,
+            call: ButtonsDarkside as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'default-darkside',
@@ -203,12 +203,12 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             pageName: pageName as 'components',
           }}
           style={{
-            axis: '[y]',
             color: '(mono)',
             shade: '~light~',
           }}
           cases={{
             show: 3,
+            axis: '[y]',
             pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
           }}
         />
@@ -216,7 +216,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
           //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
-            call: defaultLight as React.ComponentType<InfoProps>,
+            call: ButtonsLightside as React.ComponentType<InfoProps>,
           }}
           info={{
             labelName: 'default-lightside',

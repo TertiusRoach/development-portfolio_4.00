@@ -1,7 +1,7 @@
 //--|🠊 SectionElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
-@use './profiles-section/ProfilesSection.scss';
+@use './characters-section/CharactersSection.scss';
 
 section[class*='section-main'] {
   div.section-main_container {
@@ -10,8 +10,8 @@ section[class*='section-main'] {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
-        &[class*='profiles'] {
-          @include ProfilesSection.desktop-landscape;
+        &[class*='characters'] {
+          @include CharactersSection.desktop-landscape;
         }
       }
     }
@@ -20,8 +20,8 @@ section[class*='section-main'] {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
-        &[class*='profiles'] {
-          @include ProfilesSection.mobile-portrait;
+        &[class*='characters'] {
+          @include CharactersSection.mobile-portrait;
         }
       }
     }

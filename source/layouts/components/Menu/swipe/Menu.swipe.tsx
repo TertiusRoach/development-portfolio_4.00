@@ -13,19 +13,19 @@ import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 import './Menu.swipe.scss';
 
 interface TheseProps {
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
   style: {
-    axis: '[x]' | '[y]';
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
   };
   cases: {
     show: number;
+    axis: '[x]' | '[y]';
     pages: Array<string>;
-  };
-  info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
   };
 
   onClick?: () => void;
@@ -34,7 +34,7 @@ interface TheseProps {
 function MenuAxis({ info, style, cases }: TheseProps) {
   const directory: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid';
-  switch (style.axis) {
+  switch (cases.axis) {
     case '[x]':
       return (
         <>
@@ -55,8 +55,8 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   /* labelName: info.labelName, */
                 }}
                 onClick={(): void => {
-                  swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
+                  swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
+                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
                 }}
               />
             </div>
@@ -76,8 +76,8 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   /* labelName: info.labelName, */
                 }}
                 onClick={(): void => {
-                  swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
+                  swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
+                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
                 }}
               />
             </div>
@@ -131,8 +131,8 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                swipeCarousel(info.pageName, info.labelName, style.axis, 'view-prev');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
+                swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
               }}
             />
           </li>
@@ -152,8 +152,8 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                swipeCarousel(info.pageName, info.labelName, style.axis, 'view-next');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, style.axis);
+                swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
               }}
             />
           </li>
@@ -161,7 +161,6 @@ function MenuAxis({ info, style, cases }: TheseProps) {
       );
   }
 }
-
 const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -172,7 +171,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
     '[x]': 'ul',
     '[y]': 'ol',
   };
-  const axisClass: Record<TheseProps['style']['axis'], string> = {
+  const axisClass: Record<TheseProps['cases']['axis'], string> = {
     '[x]': 'hori-X-swipe',
     '[y]': 'vert-Y-swipe',
   };
@@ -181,13 +180,13 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
     /*--|🠋
 
     🠉|--*/
-    loadCarousel(pageName, blockName, labelName, cases.show, style.axis);
+    loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
   }, [pageName, blockName, labelName]);
 
-  let ListItem = axisList[style.axis];
+  let ListItem = axisList[cases.axis];
   return (
     <menu className={`${labelName}-${blockName}_swipe-default`}>
-      <ListItem className={axisClass[style.axis]}>
+      <ListItem className={axisClass[cases.axis]}>
         <MenuAxis info={info} style={style} cases={cases} />
       </ListItem>
     </menu>

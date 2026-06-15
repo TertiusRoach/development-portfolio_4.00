@@ -9,7 +9,7 @@ import './SectionElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import ProfilesSection from './profiles-section/ProfilesSection';
+import CharactersSection from './characters-section/CharactersSection';
 
 interface InfoProps {
   info: {
@@ -43,7 +43,7 @@ function SectionComponents({ info }: InfoProps) {
   const labelName = info.labelName;
   return (
     <>
-      <ProfilesSection info={{ labelName: 'profiles' as string, pageName: pageName, blockName: blockName }} />
+      <CharactersSection info={{ labelName: 'profiles' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }

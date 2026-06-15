@@ -1,26 +1,23 @@
 //--|🠊 Division.carousel.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 import './Division.carousel.scss';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-interface TheseProps<Names extends PropsInfo> {
-  info: Names;
+interface TheseProps {
+  info: InfoProps;
   cases: {
     axis: '[x]' | '[y]';
-    call: React.ComponentType<{ info: Names }>;
+    call: React.ComponentType<{ info: InfoProps }>;
   };
   onWheel?: (event: React.WheelEvent<HTMLDivElement>) => string | number | void;
 }
-interface PropsInfo {
-  pageName: string;
-  blockName: string;
-  labelName: string;
-}
-function DivisionAxis<T extends PropsInfo>({ info, cases }: TheseProps<T>) {
-  const CallItem = cases.call as React.ComponentType<{ info: T }>;
-  let axisClass: Record<'[x]' | '[y]', string> = {
+
+function DivisionAxis({ info, cases }: TheseProps) {
+  const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
+  const axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'carousel-horizontal',
     '[y]': 'carousel-vertical',
   };
@@ -32,10 +29,9 @@ function DivisionAxis<T extends PropsInfo>({ info, cases }: TheseProps<T>) {
     </li>
   );
 }
-
-const DivisionCarousel = <T extends PropsInfo>({ info, cases, onWheel }: TheseProps<T>) => {
+const DivisionCarousel = ({ info, cases, onWheel }: TheseProps) => {
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
-  let axisClass: Record<'[x]' | '[y]', string> = {
+  const axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
@@ -49,3 +45,8 @@ const DivisionCarousel = <T extends PropsInfo>({ info, cases, onWheel }: ThesePr
 };
 
 export default DivisionCarousel;
+type InfoProps = {
+  pageName: string;
+  blockName: string;
+  labelName: string;
+};

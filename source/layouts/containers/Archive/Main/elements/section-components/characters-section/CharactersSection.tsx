@@ -1,8 +1,8 @@
-//--|🠊 ProfilesSection.tsx 🠈|--\\
+//--|🠊 CharactersSection.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './ProfilesSection.scss';
+import './CharactersSection.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
@@ -17,12 +17,12 @@ interface InfoProps {
     labelName: string;
   };
 }
-const ProfilesSection: React.FC<InfoProps> = ({ info }) => {
+const CharactersSection: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
   return (
-    <aside className="profiles-section">
+    <aside className="characters-section">
       <section className={`${blockName}-foreground`}>
         <SectionProfiles
           info={{
@@ -34,9 +34,9 @@ const ProfilesSection: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<ProfilesSection>`}</h1>
+        <h1 className="display-1">{`<CharactersSection>`}</h1>
       </div>
     </aside>
   );
 };
-export default ProfilesSection;
+export default CharactersSection;

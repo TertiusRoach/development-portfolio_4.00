@@ -31,20 +31,22 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
       <section className={`${blockName}-foreground`}>
         <div className="horizontal">
           <MenuSwipe
-            style={{ axis: '[x]', color: '(mono)', shade: '~dark~' }}
+            style={{ color: '(mono)', shade: '~dark~' }}
             info={{ labelName: labelName, pageName: pageName, blockName: blockName }}
             cases={{
               show: 0,
+              axis: '[x]',
               pages: ['<Menu_Swipe>'] as Array<string>,
             }}
           />
         </div>
         <div className="vertical">
           <MenuSwipe
-            style={{ axis: '[y]', color: '(mono)', shade: '~dark~' }}
+            style={{ color: '(mono)', shade: '~dark~' }}
             info={{ labelName: labelName, pageName: pageName, blockName: blockName }}
             cases={{
               show: 0,
+              axis: '[y]',
               pages: ['<Menu_Swipe>'] as Array<string>,
             }}
           />

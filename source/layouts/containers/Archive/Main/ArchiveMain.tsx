@@ -132,9 +132,7 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<ComponentsMain>`}</h1>
-      </div>
+      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ComponentsMain>`}</h1> */}</div>
     </main>
   );
 };

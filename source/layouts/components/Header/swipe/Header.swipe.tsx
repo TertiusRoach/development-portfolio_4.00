@@ -29,9 +29,6 @@ interface TheseProps {
 }
 
 const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
-  /*--|🠋
-  
-  🠉|--*/
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -66,20 +63,25 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
     /*--|🠋
         
     🠉|--*/
+    let selector: string;
     const chainBlock: string = stripBrackets(cases.chain, '<>');
     switch (cases.axis) {
       case '[x]':
+        selector = (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
+          `ul[class*="hori-X"] li[class*="showing-horizontal"]`) as string;
         return eventListen(
-          (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
-            `ul[class*="hori-X"] li[class*="showing-horizontal"]`) as string,
+          selector as string,
+
           () => {
             markCarousel(pageName, blockName, labelName, cases.chain, cases.axis);
           },
         );
       case '[y]':
+        selector = (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
+          `ol[class*="vert-Y"] li[class*="showing-vertical"]`) as string;
         return eventListen(
-          (`#${pageName}-${chainBlock} menu[class*="${chainBlock}"] ` +
-            `ol[class*="vert-Y"] li[class*="showing-vertical"]`) as string,
+          selector as string,
+
           () => {
             markCarousel(pageName, blockName, labelName, cases.chain, cases.axis);
           },

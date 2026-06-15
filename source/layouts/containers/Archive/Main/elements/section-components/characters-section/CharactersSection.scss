@@ -1,4 +1,4 @@
-//--|🠊 ProfilesSection.scss 🠈|--\\
+//--|🠊 CharactersSection.scss 🠈|--\\
 @use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
 
@@ -21,7 +21,6 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {

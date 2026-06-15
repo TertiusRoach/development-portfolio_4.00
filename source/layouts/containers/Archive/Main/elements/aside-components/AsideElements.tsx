@@ -9,7 +9,7 @@ import './AsideElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultAside from './default-aside/DefaultAside';
+import CharactersAside from './characters-aside/CharactersAside';
 
 interface InfoProps {
   info: {
@@ -46,7 +46,7 @@ function AsideComponents({ info }: InfoProps) {
 
   return (
     <>
-      <DefaultAside info={defaultInfo} />
+      <CharactersAside info={defaultInfo} />
     </>
   );
 }

@@ -3,10 +3,71 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Division) 🠋|--\\
+  //--|🠋 Desktop (Aside) 🠋|--\\
+  display: grid;
+
+  div[class='characters'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    grid-template: repeat(4, auto) 1fr //--|🠈 rows 🠈|--//
+      / repeat(3, auto); //--|🠈 columns 🠈|--\\
+    button {
+      padding-top: 4px;
+      padding-bottom: 4px;
+      &:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(2) {
+        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(3) {
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(4) {
+        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(5) {
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(6) {
+        grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(7) {
+        grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(8) {
+        grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &:nth-child(9) {
+        grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+  }
+  width: 398px;
+  grid-template: //--|🠋 Width: 1920px 🠋|--\\
+    64px 1fr 64px //--|🠈 rows 🠈|--//
+    / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+  @media screen and (max-height: 768px) {
+    width: 321px;
+    grid-template: //--|🠋 Width: 1366px 🠋|--\\
+      48px 1fr 48px //--|🠈 rows 🠈|--//
+      / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    width: 230px;
+    grid-template: //--|🠋 Width: 854px 🠋|--\\
+      32px 1fr 32px //--|🠈 rows 🠈|--//
+      / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    width: 139px;
+    grid-template: //--|🠋 Width: 640px 🠋|--\\
+      24px 1fr 24px //--|🠈 rows 🠈|--//
+      / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
+  }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Division) 🠋|--\\
+  //--|🠋 Mobile (Aside) 🠋|--\\
 }
 
 aside[class*='characters'] {
