@@ -18,7 +18,16 @@ interface InfoProps {
     labelName: string;
   };
 }
-
+function SectionComponents({ info }: InfoProps) {
+  const pageName = info.pageName;
+  const blockName = info.blockName;
+  const labelName = info.labelName;
+  return (
+    <>
+      <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+}
 const SectionElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
@@ -37,14 +46,4 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
   );
 };
 
-function SectionComponents({ info }: InfoProps) {
-  const pageName = info.pageName;
-  const blockName = info.blockName;
-  const labelName = info.labelName;
-  return (
-    <>
-      <CharactersSection info={{ labelName: 'profiles' as string, pageName: pageName, blockName: blockName }} />
-    </>
-  );
-}
 export default SectionElements;

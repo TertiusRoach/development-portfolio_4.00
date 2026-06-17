@@ -5,7 +5,6 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Aside) 🠋|--\\
   display: grid;
-
   div[class='characters'] {
     display: inherit; //--|🠈 display: grid; 🠈|--\\
     grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

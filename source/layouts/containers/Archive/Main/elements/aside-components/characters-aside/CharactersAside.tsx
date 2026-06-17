@@ -45,14 +45,15 @@ const CharactersAside: React.FC<InfoProps> = ({ info }) => {
           }}
           style={{
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
           }}
           cases={{ area: '[right]' }}
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<CharactersAside>`}</h1>
+        <section className="left-side"></section>
+        <section className="right-side"></section>
       </div>
     </aside>
   );
