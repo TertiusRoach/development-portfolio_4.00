@@ -40,13 +40,13 @@ function AsideArea({ info, style, cases }: TheseProps) {
     'seamus-odonnell',
     'hammad-dean',
     'tasneem-kemp',
-    'danish-copeland',
     'elliot-crane',
-    'zuberi-thorne',
-    'aelin-darrow',
-    'victor-langston',
-    'nyra-solari',
     'sipho-dlamini',
+    'zuberi-thorne',
+    'nyra-solari',
+    'victor-langston',
+    'danish-copeland',
+    'aelin-darrow',
     'radomize-character',
   ];
   let imageLink: string =
