@@ -23,7 +23,6 @@ function NavigationComponents({ info }: InfoProps) {
 
   let imageLink =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg' as string;
-
   return (
     <aside className="default-navigation">
       <section className={`${blockName}-foreground`}>
@@ -49,7 +48,7 @@ function NavigationComponents({ info }: InfoProps) {
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<DefaultNavigation>`}</h1>
+        <canvas></canvas>
       </div>
     </aside>
   );

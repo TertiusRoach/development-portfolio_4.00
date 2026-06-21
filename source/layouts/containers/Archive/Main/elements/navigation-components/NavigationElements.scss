@@ -1,11 +1,21 @@
 //--|🠊 NavigationElements.scss 🠈|--\\
 @use '../../../../../designs/Mixins.scss';
-@use '../../../../../designs/Palettes.scss';
+@use '../../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   section[class*='foreground'] {
     //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
     nav[class*='default'] {
+      padding: 64px;
+      @media screen and (max-height: 768px) {
+        padding: 48px;
+      }
+      @media screen and (max-height: 480px) {
+        padding: 32px;
+      }
+      @media screen and (max-height: 360px) {
+        padding: 24px;
+      }
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
@@ -13,6 +23,38 @@
     //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
   }
   div[class*='background'] {
+    display: grid;
+
+    canvas {
+      background: Palettes.$indexLand-darkMode;
+      border: 2px dashed Palettes.$gray-medium;
+      grid-area: 2/2/5/2;
+      height: 100%;
+      width: 100%;
+    }
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
+    }
+
     //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
   }
   @include Mixins.landscape-grid;

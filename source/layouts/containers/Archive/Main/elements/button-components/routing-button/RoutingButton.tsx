@@ -103,7 +103,10 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <section className="left-side"></section>
+        <section className="right-side"></section>
+      </div>
     </aside>
   );
 };

@@ -236,7 +236,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       <div className={`${info.blockName}-background`}>
         <section className="left-side"></section>
         <section className="right-side"></section>
-        {/* <h1 className="display-1">{`<DefaultButton>`}</h1> */}
       </div>
     </aside>
   );
