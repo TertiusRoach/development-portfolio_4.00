@@ -21,6 +21,9 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
+
+  console.log(`source/layouts/containers/Archive/Main/Elements/section-components`);
+
   return (
     <aside className="characters-section">
       <section className={`${blockName}-foreground`}>
@@ -33,9 +36,7 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<CharactersSection>`}</h1>
-      </div>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 };

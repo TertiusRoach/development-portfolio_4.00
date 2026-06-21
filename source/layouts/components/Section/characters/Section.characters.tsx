@@ -24,60 +24,32 @@ const SectionProfiles: React.FC<TheseProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  return <section className={`${info.labelName}-${info.blockName}_characters-default`}></section>;
-};
-export default SectionProfiles;
-
-//--|🠊 ProfileOvertime.tsx 🠈|--\\
-
-/*
-import React, { useEffect, useState } from 'react';
-
-//--|🠋 Components 🠋|--\\
-import SectionCharacters from '../../../../../components/Section/Overtime/characters/Section.characters';
-
-//--|🠋 Functions 🠋|--\\
-
-interface InfoProps {
-  info: {
-    pageName: string;
-    blockName: 'footer';
-    labelName: 'profile';
-  };
-}
-const ProfileOvertime: React.FC<InfoProps> = ({ info }) => {
-  const pageName = info.pageName as string;
-  const blockName = info.blockName as 'footer';
-  const labelName = info.labelName as 'profile';
-
-  useEffect(() => {}, [pageName, blockName]);
-
   return (
-    <>
-      <SectionCharacters
-        //--|🠊 <section class="profile-footer"/> 🠈|--\\
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-        cases={{
-          user: 'jane-lester',
-        }}
-      />
-      <SectionCharacters
-        //--|🠊 <section class="profile-header"/> 🠈|--\\
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-        cases={{
-          user: 'hammad-dean',
-        }}
-      />
-    </>
+    <section className={`${info.labelName}-${info.blockName}_characters-default`}>
+      <header>
+        <img src="" alt="" />
+        <h1 className="full-name">full-name</h1>
+        <p className="country">South Africa</p>
+      </header>
+      <div>
+        <span className="vocation">
+          <h6>Vocation</h6>
+          <p>Establishes or Freelancing</p>
+        </span>
+        <span className="position">
+          <h6>Position</h6>
+          <p>Employee or Manager</p>
+        </span>
+        <span className="occupation">
+          <h6>Occupation</h6>
+          <p>Specialist or Technician</p>
+        </span>
+      </div>
+      <footer>
+        <h3>Department</h3>
+        <p className="description"></p>
+      </footer>
+    </section>
   );
 };
-export default ProfileOvertime;
-*/
+export default SectionProfiles;
