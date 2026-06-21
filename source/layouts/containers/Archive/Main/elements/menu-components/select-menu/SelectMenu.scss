@@ -1,0 +1,66 @@
+//--|🠊 SelectMenu.scss 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="select-menu"> 🠈|--\\
+  %mark-area {
+    .top-cen {
+      grid-area: 3 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .mid-rig {
+      grid-area: 3 / 5 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .bot-cen {
+      grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    .mid-lef {
+      grid-area: 3 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  section[class*='foreground'] {
+    display: grid;
+    @extend %mark-area;
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      8rem 0.125fr 128px 1fr 128px 0.125fr 8rem //--|🠈 rows 🠈|--//
+      / 48px 0.125fr 128px 1fr 128px 0.125fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        6rem 0.125fr 96px 1fr 96px 0.125fr 6rem //--|🠈 rows 🠈|--//
+        / 32px 0.125fr 96px 1fr 96px 0.125fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        4rem 0.125fr 64px 1fr 64px 0.125fr 4rem //--|🠈 rows 🠈|--//
+        / 24px 0.125fr 64px 1fr 64px 0.125fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        3rem 0.125fr 48px 1fr 48px 0.125fr 3rem //--|🠈 rows 🠈|--//
+        / 16px 0.125fr 48px 1fr 48px 0.125fr 16px; //--|🠈 columns 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+    display: flex;
+    justify-content: center;
+    h1 {
+      color: darkred;
+    }
+  }
+  @include Mixins.layering-position;
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="select-menu"> 🠈|--\\
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+}

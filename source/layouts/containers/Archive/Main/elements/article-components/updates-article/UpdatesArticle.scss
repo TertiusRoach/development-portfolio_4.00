@@ -1,0 +1,28 @@
+//--|🠊 UpdatesArticle.scss 🠈|--\\
+@use '../../../../../../designs/Mixins.scss';
+@use '../../../../../../designs/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="updates-article"> 🠈|--\\
+  section[class*='foreground'] {
+    article[class*='updates'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
+  }
+  @include Mixins.landscape-grid;
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="updates-article"> 🠈|--\\
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+  @include Mixins.portrait-grid;
+}

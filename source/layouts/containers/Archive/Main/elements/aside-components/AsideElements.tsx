@@ -9,7 +9,7 @@ import './AsideElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultAside from './default-aside/DefaultAside';
+import CharactersAside from './characters-aside/CharactersAside';
 
 interface InfoProps {
   info: {
@@ -18,7 +18,16 @@ interface InfoProps {
     labelName: string;
   };
 }
-
+function AsideComponents({ info }: InfoProps) {
+  const pageName = info.pageName;
+  const blockName = info.blockName;
+  const labelName = info.labelName;
+  return (
+    <>
+      <CharactersAside info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+}
 const AsideElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
@@ -37,17 +46,4 @@ const AsideElements: React.FC<InfoProps> = ({ info }) => {
   );
 };
 
-function AsideComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
-
-  return (
-    <>
-      <DefaultAside info={defaultInfo} />
-    </>
-  );
-}
 export default AsideElements;

@@ -1,8 +1,34 @@
 //--|🠊 OvertimeMain.scss 🠈|--\\
-/*
+@use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
+
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Elements) 🠋|--\\
+  //--|🠋 Desktop: Overtime Main 🠋|--\\
+  section[class*='foreground'] {
+    div[class*='default'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+  }
+  @include Mixins.landscape-grid;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Elements) 🠋|--\\
+}
+
+main[id*='overtime'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
+
+/*
   %foreground {
     z-index: 2;
     nav[class='tracking-main'] {
@@ -81,18 +107,4 @@
       @extend %background;
     }
   }
-}
-@mixin mobile-portrait {
-  //--|🠋 Mobile (Elements) 🠋|--\\
-}
-
-main[id*='overtime'] {
-  position: relative;
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-}
-*/
+  */

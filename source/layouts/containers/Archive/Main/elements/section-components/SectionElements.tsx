@@ -9,7 +9,7 @@ import './SectionElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultSection from './default-section/DefaultSection';
+import CharactersSection from './characters-section/CharactersSection';
 
 interface InfoProps {
   info: {
@@ -18,7 +18,16 @@ interface InfoProps {
     labelName: string;
   };
 }
-
+function SectionComponents({ info }: InfoProps) {
+  const pageName = info.pageName;
+  const blockName = info.blockName;
+  const labelName = info.labelName;
+  return (
+    <>
+      <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+}
 const SectionElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
@@ -37,17 +46,4 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
   );
 };
 
-function SectionComponents({ info }: InfoProps) {
-  let defaultInfo = {
-    pageName: info.pageName,
-    blockName: info.blockName,
-    labelName: 'default' as string,
-  };
-
-  return (
-    <>
-      <DefaultSection info={defaultInfo} />
-    </>
-  );
-}
 export default SectionElements;

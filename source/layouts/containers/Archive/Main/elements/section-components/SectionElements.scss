@@ -1,15 +1,29 @@
 //--|🠊 SectionElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
-@use './default-section/DefaultSection.scss';
+@use './characters-section/CharactersSection.scss';
 
-section[class*='section'] {
-  div[class*='main_container'] {
+section[class*='section-main'] {
+  div.section-main_container {
     @media screen and (orientation: landscape) {
-      @include DefaultSection.desktop-landscape;
+      aside[class*='section'] {
+        width: 100vw;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+        &[class*='characters'] {
+          @include CharactersSection.desktop-landscape;
+        }
+      }
     }
     @media screen and (orientation: portrait) {
-      @include DefaultSection.mobile-portrait;
+      aside[class*='section'] {
+        width: 100vw;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+        &[class*='characters'] {
+          @include CharactersSection.mobile-portrait;
+        }
+      }
     }
   }
 }

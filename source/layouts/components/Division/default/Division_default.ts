@@ -176,7 +176,7 @@ let emphasizeBackground = (
   element: HTMLDivElement,
   color: '(green)' | '(red)' | '(blue)' | '(orange)' | '(purple)' | '(yellow)',
 ) => {
-  element.style.opacity = '0.25';
+  element.style.opacity = '0.5';
   element.style.transition = 'background 250ms ease-in-out';
   setTimeout(() => {
     switch (color) {

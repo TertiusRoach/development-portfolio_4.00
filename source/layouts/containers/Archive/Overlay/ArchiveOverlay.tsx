@@ -4,23 +4,21 @@ import { hideOverlay } from '../../../../scripts';
 import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\
+import ArticleLoading from '../../../components/Article/loading/Article.loading';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import FigureLoading from '../../../components/Figure/loading/Figure.loading';
+import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 interface InfoProps {
   info: {
-    //--|🠋 pageName: Id that represents the application 🠋|--\\
     pageName: '[components]';
-    //--|🠋 blockName: 'Toggles between '/containers' folders. 🠋|--\\
-    blockName: '<footer>' | '<header>' | '<leftbar>' | '<main>' | '<overlay>' | '<rightbar>';
-    //--|🠋 labelName: Class name marker for all components. 🠋|--\\
+    blockName: '<overlay>';
     labelName: '(default)' | string;
   };
 }
 const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'hidden' | 'visible' = 'visible';
+  let stateName: 'visible' | 'loading' | 'updates' | 'hidden' | 'visible' = 'loading';
 
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -34,23 +32,41 @@ const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
-      <section className={`${blockName}-foreground`}>
-        <FigureLoading
-          style={{
-            shade: '~lig~',
-          }}
-          cases={{
-            logo: 'signature',
-          }}
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}>
+        <ArticleLoading
           info={{
             pageName: pageName,
             blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            shade: '~light~',
+          }}
+          cases={{
+            apps: '{signature}',
           }}
         />
-        {/* <h1 className="display-1">{`<ComponentsOverlay>`}</h1> */}
-      </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+        <ArticleUpdates
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            size: '<h6>',
+            shade: '~dark~',
+            view: '-center-',
+          }}
+          cases={{
+            image:
+              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
+            title: 'View a Tag',
+            description: 'Text Here',
+          }}
+        />
+      </figure>
+      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ComponentsOverlay>`}</h1> */}</div>
     </section>
   );
 };

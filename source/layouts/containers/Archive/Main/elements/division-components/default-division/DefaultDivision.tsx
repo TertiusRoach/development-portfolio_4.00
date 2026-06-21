@@ -20,15 +20,16 @@ interface InfoProps {
 const DefaultDivision: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
 
   return (
     <aside className="default-division">
       <section className={`${blockName}-foreground`}>
         <DivisionDefault
           info={{
-            pageName: info.pageName,
-            blockName: info.blockName,
-            labelName: info.labelName,
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
           }}
         />
       </section>

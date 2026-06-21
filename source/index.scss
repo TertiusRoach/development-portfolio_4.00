@@ -1,9 +1,11 @@
 //--|🠊 index.scss (Entry Point) 🠈|--\\
 //--|🠋 Designs 🠋|--\\
-@use './layouts/designs/Global.scss';
-@use './layouts/designs/Queries.scss';
-@use './layouts/designs/Palettes.scss';
-@use './layouts/designs/Transition.scss';
+@use './layouts/designs/Global.scss' as Global;
+@use './layouts/designs/Mixins.scss' as Mixins;
+@use './layouts/designs/Queries.scss' as Queries;
+@use './layouts/designs/Palettes.scss' as Palettes;
+@use './layouts/designs/Transition.scss' as Transition;
+
 //--|🠋 Applications 🠋|--\\
 @use './layouts/styles/archive.scss';
 @use './layouts/styles/landing.scss';

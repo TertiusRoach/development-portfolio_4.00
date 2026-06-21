@@ -7,11 +7,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 //--|🠋 Applications 🠋|--\\
-import Landing from './layouts/pages/landing';
-import Overtime from './layouts/pages/overtime';
-import Ticketing from './layouts/pages/ticketing';
-import Hyperlink from './layouts/pages/hyperlink';
 import Archive from './layouts/containers/Archive/Archive';
+import Overtime from './layouts/containers/Overtime/Overtime';
+import Ticketing from './layouts/containers/Ticketing/Ticketing';
+import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
+// import Landing from './layouts/containers/Landing/Landing';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
@@ -37,25 +37,25 @@ function themeScheme(colorScheme: 'light' | 'dark'): void {
 
   // Between 05:00 and 12:59
   if (currentHour >= 5 && currentHour < 12) {
-    element.classList.remove('post-meridiem');
     element.classList.add('ante-meridiem');
+    element.classList.remove('post-meridiem');
     setTimeout(() => {
       //--|🠊 alert("It's morning people, rise and shine."); 🠈|--\\
       console.log('|🠊 <body class="ante-meridiem"> 🠈|');
-    }, 240000);
+    }, 15000);
   }
   // Between 13:00 and 04:59
   else {
-    element.classList.remove('ante-meridiem');
     element.classList.add('post-meridiem');
+    element.classList.remove('ante-meridiem');
     console.log('|🠊 <body class="post-meridiem"> 🠈|');
     //--|🠊 alert("It's afternoon, log work and wind down."); 🠈|--\\
   }
 }
 //--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
-  // 'buttons-body': Buttons,
-  'landing-body': Landing,
+  // 'landing-body': Landing,
+
   'components-body': Archive,
 
   'overtime-body': Overtime,
@@ -74,18 +74,17 @@ Object.entries(pages).forEach(([id]) => {
     | 'archive';
 
   switch (pageName) {
-    case 'archive':
     default:
-      loadPage('components-body', React.createElement(Archive));
-      break;
+    case 'archive':
+      return loadPage('components-body', React.createElement(Archive));
     case 'overtime':
-      /* loadPage(`${pageName}-body`, React.createElement(Overtime)); */
+      loadPage(`${pageName}-body`, React.createElement(Overtime));
       break;
     case 'ticketing':
-      /* loadPage(`${pageName}-body`, React.createElement(Ticketing)); */
+      loadPage(`${pageName}-body`, React.createElement(Ticketing));
       break;
     case 'hyperlink':
-      /* loadPage(`${pageName}-body`, React.createElement(Hyperlink)); */
+      loadPage(`${pageName}-body`, React.createElement(Hyperlink));
       break;
     case 'landing':
       /* ReactDOM.createRoot(container).render(<Landing />); */

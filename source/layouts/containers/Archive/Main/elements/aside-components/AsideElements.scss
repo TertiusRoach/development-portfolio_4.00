@@ -1,15 +1,15 @@
 //--|🠊 AsideElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
-@use './default-aside/DefaultAside.scss';
+@use './characters-aside/CharactersAside.scss';
 
 section[class*='aside'] {
   div[class*='main_container'] {
     @media screen and (orientation: landscape) {
-      @include DefaultAside.desktop-landscape;
+      @include CharactersAside.desktop-landscape;
     }
     @media screen and (orientation: portrait) {
-      @include DefaultAside.mobile-portrait;
+      @include CharactersAside.mobile-portrait;
     }
   }
 }

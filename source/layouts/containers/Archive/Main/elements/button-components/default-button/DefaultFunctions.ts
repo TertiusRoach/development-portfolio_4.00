@@ -1,8 +1,8 @@
 //--|🠊 default-button/DefaultFunctions.ts 🠈|--\\
-
 //--|🠋 Functions 🠋|--\\
 import { arabicToRoman, romanToArabic } from '../../../../../../components/functions';
-export async function copyCode(button: HTMLButtonElement): Promise<string> {
+
+async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
     console.log('Successfully copied:', button.classList[1]);
 
@@ -1904,7 +1904,8 @@ export async function copyCode(button: HTMLButtonElement): Promise<string> {
     return '|🠊 Failed to copy code 🠈|';
   }
 }
-export function toggleColors(section: HTMLElement): Promise<string> {
+
+export const toggleColors = (section: HTMLElement): Promise<string> => {
   const findTint = ([red, green, blue]: Array<boolean>): string => {
     let tintMap: Record<string, string> = {
       'true-false-false': 'red',
@@ -1932,8 +1933,8 @@ export function toggleColors(section: HTMLElement): Promise<string> {
       resolve(findTint(booleans));
     }, 125);
   });
-}
-export function scrollSide(element: HTMLDivElement, action: 'view-prev' | 'view-next') {
+};
+export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-next') => {
   const carousel = element.querySelector('li') as HTMLElement;
   const container = carousel.querySelector('div[class*="container"]') as HTMLDivElement;
   const controller = document.querySelector(`menu[class*="${element.classList[0].split('_')[0]}"]`) as HTMLMenuElement;
@@ -1978,20 +1979,22 @@ export function scrollSide(element: HTMLDivElement, action: 'view-prev' | 'view-
       }
       break;
   }
-}
+};
 
 let updateMessage = () => {
-  const disableElement: string = 'disabled-footer';
-  const footerElement = document.getElementById('components-footer') as HTMLElement;
-  if (!footerElement.classList.contains(disableElement)) {
-    footerElement.classList.add(disableElement);
-    footerElement.classList.replace('squaring', 'expanded');
+  const disableElement: string = 'disabled-overlay';
+  const overlayElement = document.getElementById('components-overlay') as HTMLElement;
+  const overlayDescription = overlayElement.querySelector('article[class*="updates"] .description p') as HTMLElement;
+  if (!overlayElement.classList.contains(disableElement)) {
+    overlayElement.classList.add(disableElement);
+    overlayElement.classList.replace('hidden', 'updates');
     setTimeout(() => {
-      footerElement.classList.replace('expanded', 'squaring');
-    }, 1250);
-    setTimeout(() => {
-      footerElement.classList.remove(disableElement);
+      overlayElement.classList.replace('updates', 'hidden');
+      setTimeout(() => {
+        overlayElement.classList.remove(disableElement);
+      }, 250);
     }, 1500);
+    overlayDescription.textContent = 'Copied component to clipboard. Press Ctrl + V to paste code.';
   }
 };
 let updateButtons = (color: string) => {
@@ -2013,3 +2016,5 @@ let updateButtons = (color: string) => {
     wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
   }
 };
+
+export default copyCode;

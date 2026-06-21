@@ -1,4 +1,59 @@
 //--|🠊 OvertimeHeader.tsx 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../scripts/archive';
+
+//--|🠋 Components 🠋|--\\
+import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+
+interface InfoProps {
+  info: {
+    pageName: '[overtime]';
+    blockName: '<header>';
+    labelName: '(default)' | string;
+  };
+}
+const OvertimeHeader: React.FC<InfoProps> = ({ info }) => {
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
+  let link =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7';
+  return (
+    <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+      <section className={`${blockName}-foreground`}>
+        <NavigationDefault
+          //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            color: '(green)',
+            view: 'top-lef',
+            shade: '~light~',
+            image: `${link}/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-medium.svg`,
+          }}
+          cases={{
+            tasks: '',
+            view: undefined,
+            image: undefined,
+          }}
+        />
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
+    </header>
+  );
+};
+export default OvertimeHeader;
 /*
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';

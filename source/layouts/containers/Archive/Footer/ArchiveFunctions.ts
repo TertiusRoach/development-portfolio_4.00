@@ -1,4 +1,5 @@
-//--|🠊 Footer/ComponentsFunctions.ts 🠈|--\\
+//--|🠊 Footer/ArchiveFunctions.ts 🠈|--\\
+
 /*
 import * as React from 'react';
 export function controlPreview(

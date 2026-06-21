@@ -35,7 +35,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
   const labelName = stripBrackets(info.labelName, '()') as 'archive';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  const menuStyle = { axis: '[x]', color: '(mono)', shade: '~dark~' } as const;
+  const menuStyle = { color: '(mono)', shade: '~dark~' } as const;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
@@ -60,7 +60,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'article', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
-                  pages: ['<Article_Default>'] as Array<string>,
+                  axis: '[x]',
+                  pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
                 }}
               />,
               <MenuSwipe
@@ -68,7 +69,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'aside', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
-                  pages: ['<Aside_Default>'] as Array<string>,
+                  axis: '[x]',
+                  pages: ['<Aside_Characters>'] as Array<string>,
                 }}
               />,
               <MenuSwipe
@@ -76,6 +78,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'button', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: [
                     '<Button_Default>',
                     '<Button_Routing>',
@@ -90,6 +93,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'division', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Division_Default>', '<Division_Carousel>', '<Division_Squaring>'] as Array<string>,
                 }}
               />,
@@ -98,6 +102,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'figure', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Figure_Default>'] as Array<string>,
                 }}
               />,
@@ -106,6 +111,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'menu', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Menu_Select>', '<Menu_Swipe>'] as Array<string>,
                 }}
               />,
@@ -114,6 +120,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'navigation', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Navigation_Default>'] as Array<string>,
                 }}
               />,
@@ -122,7 +129,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'section', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
-                  pages: ['<Section_Default>'] as Array<string>,
+                  axis: '[x]',
+                  pages: ['<Section_Characters>'] as Array<string>,
                 }}
               />,
               <MenuSwipe
@@ -130,6 +138,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'table', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Table_Default>'] as Array<string>,
                 }}
               />,
@@ -138,6 +147,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 info={{ labelName: 'time', pageName: pageName, blockName: blockName }}
                 cases={{
                   show: 0,
+                  axis: '[x]',
                   pages: ['<Time_Default>'] as Array<string>,
                 }}
               />,
@@ -181,7 +191,11 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<ComponentsHeader>`}</h1>
+        <header>
+          <div className="top-header"></div>
+          <div className="bot-header"></div>
+        </header>
+        {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </div>
     </header>
   );

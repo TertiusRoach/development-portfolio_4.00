@@ -1,6 +1,7 @@
 //--|🠊 Mixins.scss 🠈|--\\
-//--|🠊 @include Mixins.landscape-grid; 🠈|--\\
+//--|🠋 @include Mixins.landscape-grid; 🠋|--\\
 @mixin landscape-grid {
+  //--|🠊 Default grid for foreground, midground and background. 🠈|--\\
   width: 100vw;
   flex: 0 0 100vw;
   min-width: 100vw;
@@ -38,8 +39,9 @@
       / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
   }
 }
-//--|🠊 @include Mixins.portrait-grid; 🠈|--\\
+//--|🠋 @include Mixins.portrait-grid; 🠋|--\\
 @mixin portrait-grid {
+  //--|🠊 Default grid for foreground, midground and background. 🠈|--\\
   display: grid;
   //--|🠊 64px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Height: 1920px 🠋|--\\
@@ -64,9 +66,66 @@
       / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
   }
 }
+//--|===|--\\
+//--|🠋 @include Mixins.desktop-grid; 🠋|--\\
+@mixin desktop-grid {
+  //--|🠊 Simple grid for foreground, midground and background. 🠈|--\\
+  grid-template: //--|🠋 1920px 🠋|--\\
+    8rem 1fr 8rem //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+  @media screen and (max-height: 768px) {
+    grid-template:  //--|🠋 1366px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    grid-template:  //--|🠋 854px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    grid-template: //--|🠋 640px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
+  }
+}
+//--|🠋 @include Mixins.mobile-grid; 🠋|--\\
+@mixin mobile-grid {
+  //--|🠊 Simple grid for foreground, midground and background. 🠈|--\\
+  grid-template: //--|🠋 1920px 🠋|--\\
+    12rem 1fr 12rem //--|🠈 rows 🠈|--//
+    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+  @media screen and (max-width: 768px) {
+    grid-template:  //--|🠋 1366px 🠋|--\\
+      10rem 1fr 10rem //--|🠈 rows 🠈|--//
+      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 480px) {
+    grid-template:  //--|🠋 854px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-width: 360px) {
+    grid-template:  //--|🠋 640px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 1.5rem 1fr 1.5rem; //--|🠈 columns 🠈|--\\
+  }
+}
 
-//--|🠋 Resolution Testing 🠋|--//
+//--|===|--\\
+//--|🠋 @include Mixins.layering-position; 🠋|--\\
+@mixin layering-position {
+  //--|🠊 Stacks elements on top of one another. 🠈|--\\
+  position: relative;
+  section[class*='foreground'],
+  figure[class*='midground'],
+  div[class*='background'] {
+    position: absolute;
+  }
+}
+//--|🠋 @include Mixins.display-testing; 🠋|--\\
 @mixin display-testing {
+  //--|🠊 Import this to test resolution layouts. 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     & {
@@ -157,48 +216,5 @@
     }
     //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
     //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
-  }
-}
-
-//--|🠊 @include Mixins.desktop-grid; 🠈|--\\
-@mixin desktop-grid {
-  grid-template: //--|🠋 1920px 🠋|--\\
-    8rem 1fr 8rem //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
-  @media screen and (max-height: 768px) {
-    grid-template:  //--|🠋 1366px 🠋|--\\
-      6rem 1fr 6rem //--|🠈 rows 🠈|--//
-      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-height: 480px) {
-    grid-template:  //--|🠋 854px 🠋|--\\
-      4rem 1fr 4rem //--|🠈 rows 🠈|--//
-      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: //--|🠋 640px 🠋|--\\
-      3rem 1fr 3rem //--|🠈 rows 🠈|--//
-      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
-  }
-}
-//--|🠊 @include Mixins.mobile-grid; 🠈|--\\
-@mixin mobile-grid {
-  grid-template: //--|🠋 1920px 🠋|--\\
-    12rem 1fr 12rem //--|🠈 rows 🠈|--//
-    / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
-  @media screen and (max-width: 768px) {
-    grid-template:  //--|🠋 1366px 🠋|--\\
-      10rem 1fr 10rem //--|🠈 rows 🠈|--//
-      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-width: 480px) {
-    grid-template:  //--|🠋 854px 🠋|--\\
-      6rem 1fr 6rem //--|🠈 rows 🠈|--//
-      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-width: 360px) {
-    grid-template:  //--|🠋 640px 🠋|--\\
-      4rem 1fr 4rem //--|🠈 rows 🠈|--//
-      / 1.5rem 1fr 1.5rem; //--|🠈 columns 🠈|--\\
   }
 }

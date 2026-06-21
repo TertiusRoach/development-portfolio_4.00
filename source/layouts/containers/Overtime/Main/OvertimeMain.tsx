@@ -1,12 +1,46 @@
 //--|🠊 OvertimeMain.tsx 🠈|--\\
-
-/*
-//--|🠋 Dependencies 🠋|--\\
-import React, { useState, useEffect } from 'react';
-
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../scripts/overtime';
 
+//--|🠋 Components 🠋|--\\
+import DivisionDefault from '../../../components/Division/default/Division.default';
+
+//--|🠋 Dependencies 🠋|--\\
+import React, { useState, useEffect } from 'react';
+
+interface InfoProps {
+  info: {
+    pageName: '[overtime]' | string;
+    blockName: '<main>' | string;
+    labelName: '(default)' | string;
+  };
+}
+
+const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  return (
+    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}>
+        <DivisionDefault
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+        />
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
+    </main>
+  );
+};
+export default OvertimeMain;
+/*
 //--|🠋 Components 🠋|--\\
 import TableClocking from '../../../components/Table/clocking/Table.clocking';
 import NavigationTracking from '../../../components/Navigation/Overtime/review/tracking/Navigation.tracking';

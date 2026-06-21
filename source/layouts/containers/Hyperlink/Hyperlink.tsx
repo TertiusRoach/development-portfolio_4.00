@@ -7,9 +7,11 @@ const HyperlinkMain = lazy(() => import('./Main/HyperlinkMain'));
 const HyperlinkHeader = lazy(() => import('./Header/HyperlinkHeader'));
 const HyperlinkFooter = lazy(() => import('./Footer/HyperlinkFooter'));
 
+/*
 const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
 const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
 const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
+*/
 
 function Hyperlink() {
   const [getMain, setMain] = useState(false);
@@ -30,6 +32,14 @@ function Hyperlink() {
 
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
+
+    setTimeout(() => {
+      /*--|🠋
+      
+      🠉|--*/
+      console.log('|🠊 Entry Point: <div id="hyperlink-body"> 🠈|');
+    }, 60000);
+
     return () => {
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
@@ -39,16 +49,27 @@ function Hyperlink() {
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
     };
-  }, []);
+  }, ['[hyperlink]', '<body>', '(default)']);
 
   return (
     <>
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+        {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
+        {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>', labelName: '(default)' }} />}
+      </Suspense>
+
+      {/*
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && (
           <HyperlinkOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />
         )}
       </Suspense>
-
+      
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && (
           <HyperlinkLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>', labelName: '(default)' }} />
@@ -61,17 +82,11 @@ function Hyperlink() {
         )}
       </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
-        {getHeader && <HyperlinkHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
-      </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
-        {getFooter && <HyperlinkFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
-      </Suspense>
 
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <HyperlinkMain info={{ pageName: '[overtime]', blockName: '<main>', labelName: '(default)' }} />}
-      </Suspense>
+
+
+ */}
     </>
   );
 }

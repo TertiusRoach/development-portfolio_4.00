@@ -24,7 +24,9 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
-  const link: string =
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  let link: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   return (
     <div className={`${info.labelName}-${info.blockName}_division-default`}>
