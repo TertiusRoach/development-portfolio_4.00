@@ -17,7 +17,7 @@ interface TheseProps {
   };
 }
 
-const SectionProfiles: React.FC<TheseProps> = ({ info }) => {
+const SectionCharacters: React.FC<TheseProps> = ({ info }) => {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -52,4 +52,4 @@ const SectionProfiles: React.FC<TheseProps> = ({ info }) => {
     </section>
   );
 };
-export default SectionProfiles;
+export default SectionCharacters;

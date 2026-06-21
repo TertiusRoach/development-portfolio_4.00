@@ -6,7 +6,7 @@ import './CharactersSection.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import SectionProfiles from '../../../../../../components/Section/characters/Section.characters';
+import SectionCharacters from '../../../../../../components/Section/characters/Section.characters';
 
 //--|🠋 Components 🠋|--\\
 
@@ -27,7 +27,7 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className="characters-section">
       <section className={`${blockName}-foreground`}>
-        <SectionProfiles
+        <SectionCharacters
           info={{
             pageName: pageName,
             blockName: blockName,
