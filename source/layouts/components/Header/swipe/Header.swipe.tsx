@@ -42,22 +42,6 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
     '[x]': 'hori-X-swipe',
     '[y]': 'vert-Y-swipe',
   };
-  const axisMenus = {
-    '[x]': (
-      <li className="showing-horizontal_I">
-        {cases.menus.map((menu, index) => (
-          <React.Fragment key={index}>{menu}</React.Fragment>
-        ))}
-      </li>
-    ),
-    '[y]': (
-      <li className="showing-vertical_I">
-        {cases.menus.map((menu, index) => (
-          <React.Fragment key={index}>{menu}</React.Fragment>
-        ))}
-      </li>
-    ),
-  };
 
   useEffect(() => {
     /*--|🠋
@@ -90,6 +74,23 @@ const HeaderSwipe: React.FC<TheseProps> = ({ info, cases }) => {
   }, [pageName, blockName, labelName]);
 
   let ListItem = axisList[cases.axis];
+  const axisMenus: Record<TheseProps['cases']['axis'], JSX.Element> = {
+    '[x]': (
+      <li className="showing-horizontal_I">
+        {cases.menus.map((menu, index) => (
+          <React.Fragment key={index}>{menu}</React.Fragment>
+        ))}
+      </li>
+    ),
+    '[y]': (
+      <li className="showing-vertical_I">
+        {cases.menus.map((menu, index) => (
+          <React.Fragment key={index}>{menu}</React.Fragment>
+        ))}
+      </li>
+    ),
+  };
+
   return (
     <header className={`${labelName}-${blockName}_swipe-default`}>
       <ListItem className={`${axisClass[cases.axis]}`}>{axisMenus[cases.axis]}</ListItem>

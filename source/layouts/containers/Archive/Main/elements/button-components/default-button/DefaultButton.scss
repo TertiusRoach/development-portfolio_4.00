@@ -4,81 +4,7 @@
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="default-button"> 🠈|--\\
-  %mark-area {
-    menu {
-      &[class*='darkside'] {
-        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      &[class*='lightside'] {
-        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-    }
-    div {
-      &[class*='toggle'] {
-        grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        label:nth-child(1) {
-          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        label:nth-child(2) {
-          grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        label:nth-child(3) {
-          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-      }
-      &[class*='default'] {
-        &[class*='darkside'] {
-          //--|🠊 background: black; 🠈|--\\
-          grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        section[class*='default'] {
-          button[class*='_top_'] {
-            grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_bot_'] {
-            grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_lef_'] {
-            grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_rig_'] {
-            grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_cen_'] {
-            grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_tex_'] {
-            grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_ico_'] {
-            grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-        }
-        &[class*='lightside'] {
-          //--|🠊 background: white; 🠈|--\\
-          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-      }
-    }
-  }
-  %mark-disp {
-    display: grid;
-    div[class*='default'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      &[class*='container'] {
-        section[class*='default-main'] {
-          display: grid;
-        }
-      }
-      &[class*='side-main'] {
-        flex-direction: column;
-        //--|🠊 display: flex; 🠈|--\\
-      }
-    }
-    div[class*='toggle'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-    }
-  }
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
   section[class*='foreground'] {
     @extend %mark-area;
     @extend %mark-disp;
@@ -166,17 +92,17 @@
     display: grid;
     grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
     grid-template-rows: 1fr;
+
     .left-side {
       grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
       background: Palettes.$indexLand-darkMode;
-      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.5));
+      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
     }
     .right-side {
       grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
       background: Palettes.$indexLand-lightMode;
-      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.5));
+      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
     }
-
     grid-template-columns: 1fr 256px 1fr; //--|🠈 Width: 1920px 🠈|--\\
     @media screen and (max-height: 768px) {
       grid-template-columns: 1fr 192px 1fr; //--|🠈 Width: 1366px 🠈|--\\
@@ -187,13 +113,81 @@
     @media screen and (max-height: 360px) {
       grid-template-columns: 1fr 96px 1fr; //--|🠈 Width: 640px 🠈|--\\
     }
-    /*
-    display: flex;
-    justify-content: center;
-    h1 {
-      color: darkred;
+  }
+  %mark-area {
+    menu {
+      &[class*='darkside'] {
+        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
-    */
+    div {
+      &[class*='toggle'] {
+        grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        label:nth-child(1) {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(2) {
+          grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        label:nth-child(3) {
+          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+      &[class*='default'] {
+        &[class*='darkside'] {
+          //--|🠊 background: black; 🠈|--\\
+          grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        section[class*='default'] {
+          button[class*='_top_'] {
+            grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_bot_'] {
+            grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_lef_'] {
+            grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_rig_'] {
+            grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_cen_'] {
+            grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_tex_'] {
+            grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[class*='_ico_'] {
+            grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        &[class*='lightside'] {
+          //--|🠊 background: white; 🠈|--\\
+          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+    }
+  }
+  %mark-disp {
+    display: grid;
+    div[class*='default'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      &[class*='container'] {
+        section[class*='default-main'] {
+          display: grid;
+        }
+      }
+      &[class*='side-main'] {
+        flex-direction: column;
+        //--|🠊 display: flex; 🠈|--\\
+      }
+    }
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    }
   }
   @include Mixins.layering-position;
 }

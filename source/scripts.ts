@@ -84,6 +84,7 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
     }
   }, 125);
 }
+
 //--|🠊 2. Collapse 🠈|--\\
 export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
   setTimeout(() => {

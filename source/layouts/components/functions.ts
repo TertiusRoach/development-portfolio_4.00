@@ -23,6 +23,70 @@ function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '
       return thisText.replace(/[--]/g, '');
   }
 }
+type Orientation = 'landscape' | 'portrait';
+type ScreenSize =
+  | string
+  | 'display-1'
+  | 'display-2'
+  | 'display-3'
+  | 'display-4'
+  | 'display-5'
+  | 'display-6'
+  | [string, string];
+
+export function setDis(): ScreenSize {
+  const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+  switch (orientation) {
+    //--|🠊 Landscape Orientation 🠈|--\\
+    case 'landscape': {
+      if (window.innerHeight <= 360) {
+        //--|🠈 Width: 640px 🠈|--\\
+        return 'display-6';
+      } else if (window.innerHeight <= 480) {
+        //--|🠈 Width: 854px 🠈|--\\
+        return 'display-4';
+      } else if (window.innerHeight <= 768) {
+        //--|🠈 Width: 1366px 🠈|--\\
+        return 'display-3';
+      } else {
+        //--|🠈 Width: 1920px 🠈|--\\
+        return 'display-1';
+      }
+    }
+    //--|🠊 Portrait Orientation 🠈|--\\
+    case 'portrait': {
+      //--|🠈 Placeholder for portrait screen sizes 🠈|--\\
+      return 'display-3';
+    }
+  }
+}
+
+export function getRes(): ScreenSize {
+  const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+  switch (orientation) {
+    //--|🠊 Landscape Orientation 🠈|--\\
+    case 'landscape': {
+      if (window.innerHeight <= 360) {
+        //--|🠈 Width: 640px 🠈|--\\
+        return ['640x360', 'low-desk'];
+      } else if (window.innerHeight <= 480) {
+        //--|🠈 Width: 854px 🠈|--\\
+        return ['854x480', 'misc-desk'];
+      } else if (window.innerHeight <= 768) {
+        //--|🠈 Width: 1366px 🠈|--\\
+        return ['1366x768', 'test-desk'];
+      } else {
+        //--|🠈 Width: 1920px 🠈|--\\
+        return ['1920x1080', 'high-desk'];
+      }
+    }
+    //--|🠊 Portrait Orientation 🠈|--\\
+    case 'portrait': {
+      //--|🠈 Placeholder for portrait screen sizes 🠈|--\\
+      return ['????x????', '????-port'];
+    }
+  }
+}
 export function arabicToRoman(arabicNumeral: number): string {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\

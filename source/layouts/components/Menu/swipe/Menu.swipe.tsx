@@ -1,16 +1,16 @@
 //--|🠊 Menu.swipe.tsx 🠈|--\\
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Styles 🠋|--\\
+import './Menu.swipe.scss';
+
+//--|🠋 Functions 🠋|--\\
+import { setDis } from '../../functions';
+import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-//--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../functions';
-import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
-
-//--|🠋 Styles 🠋|--\\
-import './Menu.swipe.scss';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 interface TheseProps {
   info: {
@@ -34,6 +34,7 @@ interface TheseProps {
 function MenuAxis({ info, style, cases }: TheseProps) {
   const directory: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/5.13.0/solid';
+
   switch (cases.axis) {
     case '[x]':
       return (
@@ -85,12 +86,12 @@ function MenuAxis({ info, style, cases }: TheseProps) {
           <li className="showing-horizontal_I">
             {cases.pages.map((path, index) => {
               const viewText = String(path);
-
               if (viewText.includes('_')) {
+                let bootstrap = setDis(null) as string;
                 const [boldText, italText] = viewText.split('_');
                 return (
                   <aside key={index}>
-                    <h3 className="display-1">
+                    <h3 className={bootstrap}>
                       <span>
                         <b>{boldText}</b>
                         <i>{italText}</i>
