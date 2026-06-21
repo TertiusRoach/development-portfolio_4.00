@@ -234,7 +234,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${info.blockName}-midground`}></figure>
       <div className={`${info.blockName}-background`}>
-        <h1 className="display-1">{`<DefaultButton>`}</h1>
+        <section className="left-side"></section>
+        <section className="right-side"></section>
+        {/* <h1 className="display-1">{`<DefaultButton>`}</h1> */}
       </div>
     </aside>
   );

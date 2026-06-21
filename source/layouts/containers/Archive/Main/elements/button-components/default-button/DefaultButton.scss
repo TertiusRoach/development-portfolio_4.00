@@ -163,11 +163,37 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    display: grid;
+    grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
+    grid-template-rows: 1fr;
+    .left-side {
+      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.5));
+    }
+    .right-side {
+      grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.5));
+    }
+
+    grid-template-columns: 1fr 256px 1fr; //--|🠈 Width: 1920px 🠈|--\\
+    @media screen and (max-height: 768px) {
+      grid-template-columns: 1fr 192px 1fr; //--|🠈 Width: 1366px 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      grid-template-columns: 1fr 128px 1fr; //--|🠈 Width: 854px 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      grid-template-columns: 1fr 96px 1fr; //--|🠈 Width: 640px 🠈|--\\
+    }
+    /*
     display: flex;
     justify-content: center;
     h1 {
       color: darkred;
     }
+    */
   }
   @include Mixins.layering-position;
 }
