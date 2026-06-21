@@ -87,7 +87,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
             {cases.pages.map((path, index) => {
               const viewText = String(path);
               if (viewText.includes('_')) {
-                let bootstrap = setDis(null) as string;
+                let bootstrap = setDis() as string;
                 const [boldText, italText] = viewText.split('_');
                 return (
                   <aside key={index}>
