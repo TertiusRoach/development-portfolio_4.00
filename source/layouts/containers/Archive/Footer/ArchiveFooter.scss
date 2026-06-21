@@ -17,6 +17,7 @@
     */
   }
   figure[class*='midground'] {
+    /*
     article[class*='update'] {
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       section {
@@ -120,9 +121,15 @@
           / 1fr 165px 1fr; //--|🠈 columns 🠈|--\\
       }
     }
+    */
   }
   div[class*='background'] {
-    background: rgba(black, 0.25);
+    footer {
+      // background: red;
+      grid-area: 5 / 1 / 6 / 4;
+      background: Palettes.$indexLand-darkMode;
+      filter: drop-shadow(0 -1.5rem 1.5rem rgba(Palettes.$indexLand-dark, 0.75));
+    }
   }
 }
 @mixin mobile-portrait {

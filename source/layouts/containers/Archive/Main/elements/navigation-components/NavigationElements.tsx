@@ -46,10 +46,10 @@ function NavigationComponents({ info }: InfoProps) {
           }}
         />
       </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
+      <figure className={`${blockName}-midground`}>
         <canvas></canvas>
-      </div>
+      </figure>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 }

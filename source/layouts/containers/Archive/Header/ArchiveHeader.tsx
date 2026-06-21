@@ -191,7 +191,11 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<ComponentsHeader>`}</h1>
+        <header>
+          <div className="top-header"></div>
+          <div className="bot-header"></div>
+        </header>
+        {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
       </div>
     </header>
   );

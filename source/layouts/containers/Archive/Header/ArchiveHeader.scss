@@ -1,6 +1,6 @@
 //--|🠊 ArchiveHeader.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
+@use '../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠋 Archive <header> 🠋|--\\
@@ -9,6 +9,11 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    header {
+      grid-area: 1 / 1 / 2 / 4;
+      background: Palettes.$indexLand-lightMode;
+      filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75));
+    }
   }
 }
 @mixin mobile-portrait {

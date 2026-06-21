@@ -96,27 +96,26 @@
     grid-row: 1 / 2;
     section[class*='side'] {
       &.left-side {
-        grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         background: Palettes.$indexLand-darkMode;
         filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
       }
       &.right-side {
-        grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 8 / 3 / 9; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         background: Palettes.$indexLand-lightMode;
         filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
       }
     }
 
-    grid-template: 1fr repeat(3, 128px) 1fr/1fr repeat(3, 128px) 1fr; //--|🠈 Width: 1920px 🠈|--\\
-
+    grid-template: 1fr 512px 1fr/ 48px 1fr 512px 1fr repeat(2, 128px) 1fr 512px 1fr 48px; //--|🠈 Width: 1920px 🠈|--\\
     @media screen and (max-height: 768px) {
-      grid-template: 1fr repeat(3, 96px) 1fr/1fr repeat(3, 96px) 1fr; //--|🠈 Width: 1366px 🠈|--\\
+      grid-template: 1fr 352px 1fr / 32px 1fr 352px 1fr repeat(2, 96px) 1fr 352px 1fr 32px; //--|🠈 Width: 1366px 🠈|--\\
     }
     @media screen and (max-height: 480px) {
-      grid-template: repeat(2, 2rem) 1fr repeat(2, 2rem) / 24px 1fr 8rem 1fr 24px; //--|🠈 Width: 854px 🠈|--\\
+      grid-template: 1fr 224px 1fr / 24px 1fr 224px 1fr repeat(2, 64px) 1fr 224px 1fr 24px; //--|🠈 Width: 854px 🠈|--\\
     }
     @media screen and (max-height: 360px) {
-      grid-template: repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) / 16px 1fr 6rem 1fr 16px; //--|🠈 Width: 640px 🠈|--\\
+      grid-template: 1fr 160px 1fr / 16px 1fr 160px 1fr repeat(2, 48px) 1fr 160px 1fr 16px; //--|🠈 Width: 640px 🠈|--\\
     }
   }
   %mark-area {

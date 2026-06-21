@@ -31,39 +31,57 @@
       figure[class='header-midground'] {
         transform: translateY(0%);
       }
-      /*
       div[class='header-background'] {
         opacity: 1;
       }
-      */
     }
+    &[class*='unfolded'] {
+      section[class='header-foreground'] {
+      }
+      figure[class='header-midground'] {
+        transform: translateY(-100%);
+      }
+      div[class='header-background'] {
+        opacity: 1;
+      }
+    }
+
     &[class*='squaring'],
-    &[class*='unfolded'],
     &[class*='collapsed'] {
       section[class='header-foreground'] {
       }
       figure[class='header-midground'] {
         transform: translateY(-100%);
       }
-      /*
       div[class='header-background'] {
         opacity: 0;
       }
-      */
     }
   }
   %header-transitions {
     transition: clip-path 500ms ease-in-out;
-    /*
-    section[class='header-foreground'] {
+    &[class*='squaring'],
+    &[class*='collapsed'] {
+      section[class='header-foreground'] {
+      }
+      figure[class='header-midground'] {
+      }
+      div[class='header-background'] {
+        transition: opacity 250ms ease-out;
+      }
     }
-    figure[class='header-midground'] {
-      transition: transform 500ms ease-in-out;
-    }
+
+    &[class*='expanded'],
+    &[class*='unfolded'],
     div[class='header-background'] {
-      transition: opacity 750ms ease-in-out;
+      section[class='header-foreground'] {
+      }
+      figure[class='header-midground'] {
+      }
+      div[class='header-background'] {
+        transition: opacity 750ms ease-in;
+      }
     }
-    */
   }
   %header-constituents {
     //--|🠊 Definition: Serving as part of a whole 🠈|--//
@@ -202,8 +220,18 @@
         opacity: 1;
       }
     }
+    &[class*='unfolded'] {
+      section[class='footer-foreground'] {
+      }
+      figure[class='footer-midground'] {
+        transform: translateY(-100%);
+      }
+      div[class='footer-background'] {
+        opacity: 1;
+      }
+    }
+
     &[class*='squaring'],
-    &[class*='unfolded'],
     &[class*='collapsed'] {
       section[class='footer-foreground'] {
       }
@@ -217,13 +245,27 @@
   }
   %footer-transition {
     transition: clip-path 500ms ease-in-out;
-    section[class='footer-foreground'] {
+    &[class*='squaring'],
+    &[class*='collapsed'] {
+      section[class='footer-foreground'] {
+      }
+      figure[class='header-midground'] {
+      }
+      div[class='footer-background'] {
+        transition: opacity 250ms ease-out;
+      }
     }
-    figure[class='footer-midground'] {
-      transition: transform 500ms ease-in-out;
-    }
+
+    &[class*='expanded'],
+    &[class*='unfolded'],
     div[class='footer-background'] {
-      transition: opacity 750ms ease-in-out;
+      section[class='footer-foreground'] {
+      }
+      figure[class='footer-midground'] {
+      }
+      div[class='footer-background'] {
+        transition: opacity 750ms ease-in;
+      }
     }
   }
   %footer-constituents {

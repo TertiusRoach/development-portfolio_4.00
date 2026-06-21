@@ -52,7 +52,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
           style={{
             color: '(mono)',
             view: 'bot-rig',
-            shade: '~light~',
+            shade: '~dark~',
             image: `${link}/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg` as string,
           }}
           cases={{
@@ -74,7 +74,9 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
+      <div className={`${blockName}-background`}>
+        <footer></footer>
+      </div>
     </footer>
   );
 };
