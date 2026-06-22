@@ -47,7 +47,7 @@ const SectionCharacters: React.FC<TheseProps> = ({ info }) => {
       </div>
       <footer className="description">
         <h3>Department</h3>
-        <p className="description"></p>
+        <p className="description">LOREMIPSUM!</p>
       </footer>
     </section>
   );
