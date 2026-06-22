@@ -26,12 +26,12 @@ const SectionCharacters: React.FC<TheseProps> = ({ info }) => {
 
   return (
     <section className={`${info.labelName}-${info.blockName}_characters-default`}>
-      <header>
+      <header className="information">
         <img src="" alt="" />
         <h1 className="full-name">full-name</h1>
         <p className="country">South Africa</p>
       </header>
-      <div>
+      <div className="permissions">
         <span className="vocation">
           <h6>Vocation</h6>
           <p>Establishes or Freelancing</p>
@@ -45,7 +45,7 @@ const SectionCharacters: React.FC<TheseProps> = ({ info }) => {
           <p>Specialist or Technician</p>
         </span>
       </div>
-      <footer>
+      <footer className="description">
         <h3>Department</h3>
         <p className="description"></p>
       </footer>
