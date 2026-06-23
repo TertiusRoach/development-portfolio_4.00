@@ -2,7 +2,7 @@
 
 function loadImage(shade: '~dark~' | '~light~', apps: '{signature}' | '{tralogfin}'): string {
   const gifLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.4/source/assets/gif-files';
 
   const gifPath: Record<'{signature}' | '{tralogfin}', [string, string]> = {
     '{signature}': [
@@ -10,8 +10,8 @@ function loadImage(shade: '~dark~' | '~light~', apps: '{signature}' | '{tralogfi
       `${gifLink}/signature/1280x720%2C%2015fps/signature-light.gif`,
     ],
     '{tralogfin}': [
-      `${gifLink}/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif`,
-      `${gifLink}/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif`,
+      `${gifLink}/trinity-apps/3840x2160%2C 25fps/3840x2160%2C 25fps_black.gif`,
+      `${gifLink}/trinity-apps/3840x2160%2C 25fps/3840x2160%2C 25fps_white.gif`,
     ],
   };
 

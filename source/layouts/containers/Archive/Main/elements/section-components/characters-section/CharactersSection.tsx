@@ -21,8 +21,6 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
-
-  console.log(`source/layouts/containers/Archive/Main/Elements/section-components`);
   return (
     <aside className="characters-section">
       <section className={`${blockName}-foreground`}>
@@ -33,8 +31,6 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
           cases={{
-            // profile: 18 as number,
-
             profile: (Math.floor(Math.random() * 18) + 1) as number,
           }}
         />

@@ -50,7 +50,7 @@ function AsideArea({ info, style, cases }: TheseProps) {
     'radomize-character',
   ];
   let imageLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/profile-pictures/tralogfin-characters/original';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/';
   switch (cases.area) {
     case '[left]':
       return (
