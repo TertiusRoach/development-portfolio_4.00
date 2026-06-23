@@ -1,5 +1,7 @@
 //--|🠊 Section_characters.ts 🠈|--\\
 //--|🠋 Styles 🠋|--\\
+
+//--|🠋 Types 🠋|--\\
 export type CharacterReferences = {
   key: [
     number,
@@ -44,7 +46,8 @@ export type CharacterReferences = {
     | 'Nyra Solari'
     | 'Victor Langston'
     | 'Danish Copeland'
-    | 'Aelin Darrow';
+    | 'Aelin Darrow'
+    | [string, string, string];
   country: string;
   department: [boolean, string];
   description: string;
@@ -55,6 +58,7 @@ export type CharacterReferences = {
     { occupation: 'Specialist' | 'Technician' | boolean | string },
   ];
 };
+
 export const returnProfiles = (pageName: 'components', blockName: 'main'): Array<CharacterReferences | HTMLElement> => {
   //--|🠋 HTML Element (always last) 🠋|--\\
   let element: HTMLElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
