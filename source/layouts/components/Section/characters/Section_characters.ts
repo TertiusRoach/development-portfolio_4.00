@@ -205,7 +205,8 @@ const demonstration: Array<CharacterReferences> = [
     fullName: 'Hammad Dean',
     department: [true, 'Technical'],
     country: 'United Arab Emirates',
-    description: `Hammad is the "Firefighter-in-Chief." He's a brilliant but burnt-out HoD who has accepted his role as the human shield for the entire department. He personally handles every critical failure because delegating would take too long to explain. He embodies the failure of Effort Economy. Coffee, a 1-hour window of uninterrupted work, elegant code written by others. Meetings that could have been emails, Jane's "urgent" weekend requests, the word "innovation." Unflappable under pressure, phenomenal diagnostic skills, loyalty (to his team, not the company). Terrible delegation, chronic exhaustion, struggles to enforce his team's boundaries. To prevent the entire infrastructure from collapsing long enough to secure his next, better job.`,
+    description: `Hammad is the "Firefighter-in-Chief."He's a brilliant but burnt-out HoD who has accepted his role as the human shield for the entire department. He personally handles every critical failure because delegating would take too long to explain. He embodies the failure of Effort Economy.
+    \nCoffee, a 1-hour window of uninterrupted work, elegant code written by others. Meetings that could have been emails, Jane's "urgent" weekend requests, the word "innovation." Unflappable under pressure, phenomenal diagnostic skills, loyalty (to his team, not the company). Terrible delegation, chronic exhaustion, struggles to enforce his team's boundaries. To prevent the entire infrastructure from collapsing long enough to secure his next, better job.`,
     profile:
       'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/hammad-dean.png',
     permissions: [{ vocation: 'Established' }, { position: 'Manager' }, { occupation: 'Technician' }],
@@ -342,16 +343,18 @@ const demonstration: Array<CharacterReferences> = [
   {
     fullName: 'Randomize Character',
     department: [true, 'Coordination'],
-    country: 'United Kingdom',
-    description: `There's 18 characters. Mix and match their personalities to create a fun ludo narrative.`,
+    country: 'IP Protocol',
+    description: `There's 18 characters. A workforce simulation where each character represents a distinct survival strategy under pressure-exploitation, rebellion, retreat, apathy, or rigid order.
+    \nThe company runs not on alignment but on friction: visionaries break systems, technicians patch them, administrators document the fallout, and coordinators reframe it as intent. Stability is temporary, efficiency accidental, loyalty conditional.
+    \nThe system persists only through the fragile balance of these opposing approaches. Mix and match their personalities to create a fun ludo narrative.`,
     profile:
       'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/radomize-character.png',
     permissions: [
       {
-        vocation: 'Overtime: Established or Freelancer',
+        vocation: `Established\nFreelancer`,
       },
-      { position: 'Ticketing: Manager or Employee' },
-      { occupation: 'Hyperlink: Specialist or Technician' },
+      { position: 'Manager\nEmployee' },
+      { occupation: 'Specialist\nTechnician' },
     ],
     key: [0, 'randomize'],
   },
