@@ -166,9 +166,15 @@
           p {
             color: white;
             font-weight: 400;
-
             font-size: 14px;
             line-height: 14px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 8;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
             @media screen and (max-height: 768px) {
               font-size: 10px;
               line-height: 10px;

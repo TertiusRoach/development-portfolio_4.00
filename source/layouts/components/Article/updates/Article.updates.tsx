@@ -36,8 +36,6 @@ const ArticleUpdates: React.FC<TheseProps> = ({ info, style, cases }) => {
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
-  let link =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7';
   const shadeClass: Record<TheseProps['style']['shade'], string> = {
     '~dark~': 'dar',
     '~light~': 'lig',

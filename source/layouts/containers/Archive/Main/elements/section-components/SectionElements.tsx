@@ -21,9 +21,7 @@ interface InfoProps {
 function SectionComponents({ info }: InfoProps) {
   const pageName = info.pageName;
   const blockName = info.blockName;
-  const labelName = info.labelName;
-
-  console.log(labelName);
+  const labelName = info.labelName as 'section';
   return (
     <>
       <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
