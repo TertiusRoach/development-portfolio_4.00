@@ -7,7 +7,9 @@
   div[class='wrapper'] {
     display: grid;
     grid-area: 4 / 3 / 5 / 4;
+    grid-template-columns: 1fr;
     background: rgba(black, 0.25);
+
     header,
     section,
     footer {
@@ -20,6 +22,7 @@
           width: 100%;
           height: 100%;
           display: flex;
+          font-weight: 400;
           align-items: center;
           justify-content: center;
           grid-area: 1 / 1 / 4 / 2;
@@ -52,10 +55,11 @@
           }
         }
         h1[class='full-name'] {
+          font-weight: 800;
           text-align: left;
           align-self: center;
           grid-area: 1 / 2 / 3 / 3;
-          color: Palettes.$indexLand-light;
+          color: Palettes.$indexLand-neon;
 
           font-size: 28px;
           @media screen and (max-height: 768px) {
@@ -72,7 +76,7 @@
           text-align: center;
           align-self: center;
           grid-area: 3 / 2 / 4 / 3;
-          color: Palettes.$indexLand-neon;
+          color: Palettes.$indexLand-light;
           font-size: 24px;
           @media screen and (max-height: 768px) {
             font-size: 16px;
@@ -128,21 +132,107 @@
         }
       }
       &[class='description'] {
-        display: none;
+        display: grid;
+        div[class*='department'] {
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          grid-area: 1 / 1 / 2 / 4;
+          h3 {
+            font-weight: 800;
+            text-align: left;
+            align-self: center;
+            color: Palettes.$indexLand-medium;
 
-        background: rgba(darkblue, 0.25);
+            font-size: 32px;
+            padding: 16px 0;
+            @media screen and (max-height: 768px) {
+              font-size: 24px;
+              padding: 8px 0;
+            }
+            @media screen and (max-height: 480px) {
+              font-size: 20px;
+              padding: 4px 0;
+            }
+            @media screen and (max-height: 360px) {
+              font-size: 14px;
+              padding: 4px 0;
+            }
+          }
+        }
+        div[class*='description'] {
+          display: flex;
+          grid-area: 2 / 1 / 3 / 4;
+          p {
+            color: white;
+            font-weight: 400;
+
+            font-size: 14px;
+            line-height: 14px;
+            @media screen and (max-height: 768px) {
+              font-size: 10px;
+              line-height: 10px;
+            }
+            @media screen and (max-height: 480px) {
+              font-size: 8px;
+              line-height: 8px;
+            }
+            @media screen and (max-height: 360px) {
+              font-size: 6px;
+              line-height: 6px;
+            }
+          }
+        }
+        div[class='department'],
+        div[class='description'] {
+          padding: 0 32px;
+          @media screen and (max-height: 768px) {
+            padding: 0 16px;
+          }
+          @media screen and (max-height: 480px) {
+            padding: 0 8px;
+          }
+          @media screen and (max-height: 360px) {
+            padding: 0 8px;
+          }
+        }
+
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+        grid-template: 64px 1fr / 32px 1fr 32px;
+        background: rgba(Palettes.$indexLand-dark, 0.75);
+        @media screen and (max-height: 768px) {
+          border-bottom-left-radius: 16px;
+          border-bottom-right-radius: 16px;
+          grid-template: 32px 1fr / 16px 1fr 16px;
+        }
+        @media screen and (max-height: 480px) {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+          grid-template: 24px 1fr / 8px 1fr 8px;
+        }
+        @media screen and (max-height: 360px) {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+          grid-template: 16px 1fr / 8px 1fr 8px;
+        }
+      }
+      &[class='description'] {
       }
     }
 
-    grid-template-columns: 1fr;
+    border-radius: 32px;
     grid-template-rows: 214px 64px 394px; //--|🠈 Width: 1920px 🠈|--\\
     @media screen and (max-height: 768px) {
+      border-radius: 24px;
       grid-template-rows: 107px 36px 273px; //--|🠈 Width: 1366px 🠈|--\\
     }
     @media screen and (max-height: 480px) {
+      border-radius: 16px;
       grid-template-rows: 66px 36px 210px; //--|🠈 Width: 854px 🠈|--\\
     }
     @media screen and (max-height: 360px) {
+      border-radius: 8px;
       grid-template-rows: 66px 20px 154px; //--|🠈 Width: 640px 🠈|--\\
     }
   }
