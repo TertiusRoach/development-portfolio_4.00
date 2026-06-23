@@ -1,20 +1,10 @@
-# **[Tra](https://docs.google.com/spreadsheets/d/1jOIurYeQ35Wca4VcsSZ5h1qp0LUPok5WbzI3hjFhzak/edit?gid=0#gid=0)[Log](https://docs.google.com/spreadsheets/d/1DhICUSo1Yh6UU1BN-rcXAzEdyUKjdcM_bu9thgOzngY/edit?gid=0#gid=0)[Fin](https://docs.google.com/spreadsheets/d/1OYBoeSTg3O0M1subaR3_sYkzcAKJjV9OE4Ks19639Pk/edit?gid=0#gid=0)** [Demonstration](https://drive.google.com/drive/u/3/folders/13w880Vx_4PHTMCb6CpzUfrhlmO-chIpI)
+## **[Tra](https://docs.google.com/spreadsheets/d/1jOIurYeQ35Wca4VcsSZ5h1qp0LUPok5WbzI3hjFhzak/edit?gid=0#gid=0)[Log](https://docs.google.com/spreadsheets/d/1DhICUSo1Yh6UU1BN-rcXAzEdyUKjdcM_bu9thgOzngY/edit?gid=0#gid=0)[Fin](https://docs.google.com/spreadsheets/d/1OYBoeSTg3O0M1subaR3_sYkzcAKJjV9OE4Ks19639Pk/edit?gid=0#gid=0)**
 
-The company is less an organization than a pressure cooker of competing survival strategies. Jane Lester’s empire thrives not on sustainable growth, but on manufactured crises and charisma-fueled expansion. Every department reflects a different philosophy of Effort Economy—some burning themselves out to hold the line (Hammad, Elliot), some retreating into protective silos (Voss, Seamus), others freelancing from within (Dimitri, Sipho, Malik), and a few clinging to outdated ideals of order and routine (Dale, Victor, Conrad).
+A workforce simulation where each character represents a distinct survival strategy under pressure—exploitation, rebellion, retreat, apathy, or rigid order. The company runs not on alignment but on friction: visionaries break systems, technicians patch them, administrators document the fallout, and coordinators reframe it as intent. Stability is temporary, efficiency accidental, loyalty conditional. The system persists only through the fragile balance of these opposing approaches.
 
-What emerges is a living paradox: a company that functions precisely because everyone refuses to function in the same way. Efficiency is accidental, stability is temporary, and loyalty is conditional. Each character embodies a coping mechanism for chaos—ranging from ruthless exploitation, to quiet rebellion, to weaponized apathy.
+Ready to transfer back to coding whenever you are.
 
-The ultimate truth? The company is not a workplace but a battlefield of worldviews. Its survival depends on the fragile equilibrium between visionaries who break systems, technicians who patch them, administrators who document the wreckage, and coordinators who pretend it was all part of the plan.
-
-In the end, the company itself becomes the protagonist—an ever-growing organism feeding on ambition, exhaustion, and compromise. Success is not measured in profit, but in how long the machine can keep spinning before its parts finally revolt, rust, or escape.
-
----
-
-## **Character Lore**
-
----
-
-### **01.** Jane Lester
+## **01.** Jane Lester
 
 ![jane-lester](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/jane-lester.png)
 
@@ -34,27 +24,25 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **02.** Hammad Dean
+## **02.** Malik Tremaine Carter
 
-![hammad-dean](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/hammad-dean.png)
+![malik-tremaine-carter](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/malik-tremaine-carter.png)
 
-> Hammad is the "Firefighter-in-Chief." He's a brilliant but burnt-out HoD who has accepted his role as the human shield for the entire department. He personally handles every critical failure because delegating would take too long to explain. He embodies the failure of Effort Economy. Coffee, a 1-hour window of uninterrupted work, elegant code written by others. Meetings that could have been emails, Jane's "urgent" weekend requests, the word "innovation." Unflappable under pressure, phenomenal diagnostic skills, loyalty (to his team, not the company). Terrible delegation, chronic exhaustion, struggles to enforce his team's boundaries. To prevent the entire infrastructure from collapsing long enough to secure his next, better job.
+> Malik is a contract data analyst whose job is to track KPIs across departments and generate the reports Aelin uses. He is the invisible hand behind the metrics, possessing a level of insight into the company's real inefficiencies that no one else has. He is a freelancing technician who provides Effort Economy by automating his own reporting process, allowing him to spend his on-site time focusing on personal skill development. Clean data sets, elegant pivot tables, the feeling of being the only one who knows the truth. Inaccurate data from Operations, being asked to "spin" the numbers, attending meetings he is not required to speak in. Expert in data visualization, highly efficient automation skills, ruthlessly objective. Poor at presenting bad news, can be overly critical of others' data integrity, sees people as variables. To accumulate a portfolio of high-level strategic data projects to secure a future role as a top-tier independent consultant.
 
-    Country: United Arab Emirates
+    Country: Canada
 
-**Department: Technical**
+**Department: Coordination**
 
-Head of Department: **True**
+Head of Department: **False**
 
-OvertimeVocation: `.established`
+OvertimeVocation: `.freelancing`
 
-TicketingPosition: `.manager`
+TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
 
----
-
-### **03.** Dimitri Lewis
+## **03.** Dimitri Lewis
 
 ![dimitri-lewis](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/dimitri-lewis.png)
 
@@ -72,9 +60,7 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
 
----
-
-### **04.** Dale Sutton
+## **04.** Dale Sutton
 
 ![dale-sutton](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/dale-sutton.png)
 
@@ -94,7 +80,7 @@ HyperlinkOccupation: `.technician`
 
 ---
 
-### **05.** Dr. Alaric Voss
+## **05.** Dr. Alaric Voss
 
 ![alaric-voss](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/alaric-voss.png)
 
@@ -112,9 +98,7 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.specialist`
 
----
-
-### **06.** Conrad Guy
+## **06.** Conrad Guy
 
 ![conrad-guy](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/conrad-guy.png)
 
@@ -134,7 +118,7 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **07.** Daniel Meyers
+## **07.** Daniel Meyers
 
 ![daniel-meyers](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/daniel-meyers.png)
 
@@ -152,9 +136,7 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
 
----
-
-### **08.** Ms. Kady Deacon
+## **08.** Ms. Kady Deacon
 
 ![kady-deacon](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/kady-deacon.png)
 
@@ -174,7 +156,7 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **09.** Seamus O'Donnell
+## **09.** Seamus O'Donnell
 
 ![seamus-odonnell](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/seamus-odonnell.png)
 
@@ -192,29 +174,25 @@ TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.specialist`
 
----
+## **10.** Hammad Dean
 
-### **10.** Sipho Dlamini
+![hammad-dean](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/hammad-dean.png)
 
-![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/sipho-dlamini.png)
+> Hammad is the "Firefighter-in-Chief." He's a brilliant but burnt-out HoD who has accepted his role as the human shield for the entire department. He personally handles every critical failure because delegating would take too long to explain. He embodies the failure of Effort Economy. Coffee, a 1-hour window of uninterrupted work, elegant code written by others. Meetings that could have been emails, Jane's "urgent" weekend requests, the word "innovation." Unflappable under pressure, phenomenal diagnostic skills, loyalty (to his team, not the company). Terrible delegation, chronic exhaustion, struggles to enforce his team's boundaries. To prevent the entire infrastructure from collapsing long enough to secure his next, better job.
 
-> Sipho is the skilled, low-key technician who keeps his head down and his side projects flourishing. He uses the Maintenance shop as a base for his weekend appliance repair side business. Like the "you" character in our earlier discussion, he's a master of the quick, invisible fix. His Effort Economy is absolute; he never gives the company more than the bare minimum required to keep his full-time job. Simple, elegant mechanical solutions, the predictability of machinery, working alone. Any task requiring a uniform or paperwork, unnecessary small talk with management. Exceptional mechanical and electrical aptitude, highly efficient time management, an uncanny ability to source rare parts. Not a team player, highly suspicious of new initiatives, will never go "above and beyond" for the company. To build his independent financial future using the company's salary and resources as his primary tool.
+    Country: United Arab Emirates
 
-    Country:  South Africa
+**Department: Technical**
 
-**Department: Maintenance**
+Head of Department: **True**
 
-Head of Department: **False**
+OvertimeVocation: `.established`
 
-OvertimeVocation: `.freelancing`
-
-TicketingPosition: `.employee`
+TicketingPosition: `.manager`
 
 HyperlinkOccupation: `.technician`
 
----
-
-### **11.** Tasneem Kemp
+## **11.** Tasneem Kemp
 
 ![tasneem-kemp](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/tasneem-kemp.png)
 
@@ -232,29 +210,7 @@ TicketingPosition: `.employee`
 
 HyperlinkOccupation: `.technician`
 
----
-
-### **12.** Danish Copeland
-
-![danish-copeland](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/danish-copeland.png)
-
-> Danish is the company's primary legal shield and the face of its forced positivity. He is a cynical, high-stakes mediator who spends most of his time managing the fallout from Jane's impulsive decisions. He is legally bound to uphold the company's exploitation while maintaining the illusion of fairness and empathy. He personifies the conflict between Ethical Geometry and legal reality. Bulletproof legal contracts, confidential settlements, training workshops with high energy. Legal cases, emotional employees, anyone who uses the word "wellness" seriously. Masterful manipulator of policy language, charismatic public speaker, excellent negotiator. Deeply cynical, completely divorced from the reality of employee stress, prone to offering vague "growth opportunities" instead of raises. To protect the company's assets (including its human capital) from lawsuits and internal revolt, ensuring the core machine keeps turning.
-
-    Country: Australia
-
-**Department: Human Resources**
-
-Head of Department: **True**
-
-OvertimeVocation: `.established`
-
-TicketingPosition: `.manager`
-
-HyperlinkOccupation: `.specialist`
-
----
-
-### **13.** Elliot Crane
+## **12.** Elliot Crane
 
 ![elliot-crane](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/elliot-crane.png)
 
@@ -274,7 +230,25 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **14.** Zuberi Thorne
+## **13.** Sipho Dlamini
+
+![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/sipho-dlamini.png)
+
+> Sipho is the skilled, low-key technician who keeps his head down and his side projects flourishing. He uses the Maintenance shop as a base for his weekend appliance repair side business. Like the "you" character in our earlier discussion, he's a master of the quick, invisible fix. His Effort Economy is absolute; he never gives the company more than the bare minimum required to keep his full-time job. Simple, elegant mechanical solutions, the predictability of machinery, working alone. Any task requiring a uniform or paperwork, unnecessary small talk with management. Exceptional mechanical and electrical aptitude, highly efficient time management, an uncanny ability to source rare parts. Not a team player, highly suspicious of new initiatives, will never go "above and beyond" for the company. To build his independent financial future using the company's salary and resources as his primary tool.
+
+    Country:  South Africa
+
+**Department: Maintenance**
+
+Head of Department: **False**
+
+OvertimeVocation: `.freelancing`
+
+TicketingPosition: `.employee`
+
+HyperlinkOccupation: `.technician`
+
+## **14.** Zuberi Thorne
 
 ![zuberi-thorne](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/zuberi-thorne.png)
 
@@ -294,7 +268,7 @@ HyperlinkOccupation: `.technician`
 
 ---
 
-### **15.** Nyra Solari
+## **15.** Nyra Solari
 
 ![nyra-solari](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/nyra-solari.png)
 
@@ -314,7 +288,7 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **16.** Victor Langston
+## **16.** Victor Langston
 
 ![victor-langston](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/victor-langston.png)
 
@@ -334,7 +308,27 @@ HyperlinkOccupation: `.technician`
 
 ---
 
-### **17.** Aelin Darrow
+## **17.** Danish Copeland
+
+![danish-copeland](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/danish-copeland.png)
+
+> Danish is the company's primary legal shield and the face of its forced positivity. He is a cynical, high-stakes mediator who spends most of his time managing the fallout from Jane's impulsive decisions. He is legally bound to uphold the company's exploitation while maintaining the illusion of fairness and empathy. He personifies the conflict between Ethical Geometry and legal reality. Bulletproof legal contracts, confidential settlements, training workshops with high energy. Legal cases, emotional employees, anyone who uses the word "wellness" seriously. Masterful manipulator of policy language, charismatic public speaker, excellent negotiator. Deeply cynical, completely divorced from the reality of employee stress, prone to offering vague "growth opportunities" instead of raises. To protect the company's assets (including its human capital) from lawsuits and internal revolt, ensuring the core machine keeps turning.
+
+    Country: Australia
+
+**Department: Human Resources**
+
+Head of Department: **True**
+
+OvertimeVocation: `.established`
+
+TicketingPosition: `.manager`
+
+HyperlinkOccupation: `.specialist`
+
+---
+
+## **18.** Aelin Darrow
 
 ![aelin-darrow](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/aelin-darrow.png)
 
@@ -354,31 +348,7 @@ HyperlinkOccupation: `.specialist`
 
 ---
 
-### **18.** Malik Tremaine Carter
-
-![malik-tremaine-carter](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.02/source/assets/png-files/tralogfin-demonstration/original/malik-tremaine-carter.png)
-
-> Malik is a contract data analyst whose job is to track KPIs across departments and generate the reports Aelin uses. He is the invisible hand behind the metrics, possessing a level of insight into the company's real inefficiencies that no one else has. He is a freelancing technician who provides Effort Economy by automating his own reporting process, allowing him to spend his on-site time focusing on personal skill development. Clean data sets, elegant pivot tables, the feeling of being the only one who knows the truth. Inaccurate data from Operations, being asked to "spin" the numbers, attending meetings he is not required to speak in. Expert in data visualization, highly efficient automation skills, ruthlessly objective. Poor at presenting bad news, can be overly critical of others' data integrity, sees people as variables. To accumulate a portfolio of high-level strategic data projects to secure a future role as a top-tier independent consultant.
-
-    Country: Canada
-
-**Department: Coordination**
-
-Head of Department: **False**
-
-OvertimeVocation: `.freelancing`
-
-TicketingPosition: `.employee`
-
-HyperlinkOccupation: `.technician`
-
----
-
----
-
-## **Departments**
-
----
+# **Departments**
 
 ### Owner / CEO / Founder
 
@@ -387,16 +357,12 @@ HyperlinkOccupation: `.technician`
     Oversees profitability, sustainability, and high-level decision-making.
     Having achieved foundational goals, now steers purpose toward legacy, innovation, and impact.
 
----
-
 ### Technical Department
 
     Develop, maintain, and troubleshoot software, hardware, and digital infrastructure.
     Ensure cybersecurity and data integrity across all systems.
     Support other departments with tech solutions and automation tools.
     Research and implement emerging technologies to improve efficiency.
-
----
 
 ### Admin Department
 
@@ -405,16 +371,12 @@ HyperlinkOccupation: `.technician`
     Maintain records, reports, and compliance documentation.
     Serve as the organizational backbone for day-to-day operations.
 
----
-
 ### Maintenance Department
 
     Ensure physical infrastructure is safe, functional, and well-maintained.
     Conduct routine inspections and repairs of equipment and facilities.
     Coordinate with Technical and Operational departments for system upkeep.
     Respond to emergencies and minimize downtime.
-
----
 
 ### Human Resources Department
 
@@ -423,8 +385,6 @@ HyperlinkOccupation: `.technician`
     Uphold workplace policies, ethics, and legal compliance.
     Foster a positive and inclusive work culture.
 
----
-
 ### Operational Department
 
     Execute core business functions and service delivery.
@@ -432,50 +392,11 @@ HyperlinkOccupation: `.technician`
     Coordinate with other departments to meet strategic goals.
     Adapt processes to meet client or market demands.
 
----
-
 ### Coordination Department
 
     Act as the central hub for interdepartmental communication and alignment.
     Identify inefficiencies and streamline cross-functional workflows.
     Monitor KPIs across departments and report to leadership.
     Ensure strategic cohesion between technical, human, and operational systems.
-
----
-
----
-
-## **Thesis**
-
-### Track a Day
-
-![track-a-day](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/track-a-day/primary-light.svg)
-Frustrated with spreadsheets and done with guesswork?
-Track your time, and let the numbers speak for itself.
-
-> What's your vocation?
-> `.freelancing` & `.established`
-
-### Log a Ticket
-
-![log-a-ticket](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/log-a-ticket/primary-light.svg)
-No one likes tickets, unless it's easy,
-with rewarding perks for the competitive.
-
-> What's your position?
-> `.manager` & `.employee`
-
-### Find a Link
-
-![find-a-link](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d725d00dd988f685c1c524f496e3d0797887e09/source/assets/svg-files/trinity-apps/find-a-link/primary-light.svg)
-Instantly access the links you need from,
-Spreadsheets, websites, schedules, or docs.
-
-> What's your occupation?
-> `.specialist` & `.technician`
-
-## Pick a Page
-
-Company Comparisons because it's an interesting thought experiment: The '&' icon looks like a dog scratching its anus.
 
 ---
