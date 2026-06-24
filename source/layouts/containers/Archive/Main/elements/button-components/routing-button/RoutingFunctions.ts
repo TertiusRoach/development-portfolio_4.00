@@ -1,7 +1,7 @@
 //--|🠊 routing-button/RoutingFunctions.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { arabicToRoman, romanToArabic } from '../../../../../../components/functions';
+import { arabicToRoman, romanToArabic } from '../../../../../../components/components';
 export async function copyCode(button: HTMLButtonElement): Promise<string> {
   /*
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {

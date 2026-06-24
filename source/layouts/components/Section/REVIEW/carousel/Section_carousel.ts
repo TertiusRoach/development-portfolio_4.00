@@ -1,2 +1,2 @@
 //--|🠊 Section_carousel.ts 🠈|--\\
-import stripBrackets from '../../../functions';
+import stripBrackets from '../../../components';

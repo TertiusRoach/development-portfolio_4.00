@@ -1,7 +1,7 @@
 //--|🠊 Menu_select.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../functions';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 export function markCarousel(
   pageName: string,

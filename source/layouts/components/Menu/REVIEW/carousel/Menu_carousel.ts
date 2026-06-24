@@ -1,7 +1,7 @@
 //--|🠊 Menu_carousel.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic } from '../../../functions';
-import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../../functions';
+import { romanToArabic } from '../../../components';
+import { abbrAxis, abbrType, abbrView, abbrShade, abbrColor } from '../../../components';
 
 function markMenu(pageName: string, blockName: string) {
   /*--|🠋

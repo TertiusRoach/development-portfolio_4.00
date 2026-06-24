@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import './Button.default.scss';
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../functions';
 import { createClass } from './Button_default';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 interface TheseProps {
   info: {

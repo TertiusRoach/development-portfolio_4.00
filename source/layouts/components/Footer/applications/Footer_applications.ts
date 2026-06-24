@@ -1,7 +1,7 @@
 //--|🠊 Footer_applications.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../functions';
+import { romanToArabic, arabicToRoman } from '../../components';
 
 export function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
   const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;

@@ -1,7 +1,7 @@
 //--|🠊 Select_carousel.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../../../../functions';
+import { romanToArabic, arabicToRoman } from '../../../../../components';
 
 function selectCarousel(pageName: string, blockName: string, eventName: React.MouseEvent<HTMLElement>): Array<HTMLElement> {
   /*--|🠋

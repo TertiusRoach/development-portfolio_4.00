@@ -5,8 +5,9 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets, { eventListen } from '../../functions';
+import eventListen from '../../components';
 import { markCarousel, loadCarousel, swipeCarousel } from './Header_swipe';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
 import './Header.swipe.scss';

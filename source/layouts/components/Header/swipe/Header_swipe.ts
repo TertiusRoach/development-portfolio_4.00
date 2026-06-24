@@ -1,7 +1,6 @@
 //--|🠊 Header_swipe.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
-import { romanToArabic, arabicToRoman } from '../../functions';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 export function markCarousel(
   pageName: string,

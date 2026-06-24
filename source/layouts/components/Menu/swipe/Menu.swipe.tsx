@@ -3,7 +3,7 @@
 import './Menu.swipe.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { setDis } from '../../functions';
+import { setDis } from '../../components';
 import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\

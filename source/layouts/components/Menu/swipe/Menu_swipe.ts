@@ -1,6 +1,6 @@
 //--|🠊 Menu_swipe.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../functions';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 //--|🠊 Messy Code: Rework it for better maintainability. 🠈|--\\
 export function markCarousel(

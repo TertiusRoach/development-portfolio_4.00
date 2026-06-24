@@ -3,7 +3,7 @@
 import * as Palettes from '../../../designs/Palettes.scss';
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../functions';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 function testBlock(
   pageName: string,

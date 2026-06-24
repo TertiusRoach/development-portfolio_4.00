@@ -3,7 +3,7 @@
 import './Article.updates.scss';
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../functions';
+import stripBrackets from '../../components';
 
 //--|🠋 Components 🠋|--\\
 

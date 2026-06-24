@@ -1,6 +1,6 @@
 //--|🠊 ArchiveOverlay.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { hideOverlay } from '../../../../scripts';
+import { hideOverlay } from '../../containers';
 import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\

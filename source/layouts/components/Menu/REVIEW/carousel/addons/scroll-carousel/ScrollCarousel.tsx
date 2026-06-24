@@ -1,7 +1,7 @@
 //--|🠊 ScrollCarousel.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { scrollHorizontal } from './Scroll_carousel';
-import { arabicToRoman } from '../../../../../functions';
+import { arabicToRoman } from '../../../../../components';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../../../../Button/default/Button.default';

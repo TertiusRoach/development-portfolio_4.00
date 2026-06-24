@@ -1,7 +1,7 @@
 //--|🠊 Scroll_carousel.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { romanToArabic, arabicToRoman } from '../../../../../functions';
+import { romanToArabic, arabicToRoman } from '../../../../../components';
 
 export function scrollHorizontal(
   pageName: string,

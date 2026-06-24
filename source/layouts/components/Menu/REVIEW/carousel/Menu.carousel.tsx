@@ -8,7 +8,7 @@ import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 
 //--|🠋 Functions 🠋|--\\
 import markMenu from './Menu_carousel';
-import stripBrackets from '../../../functions';
+import stripBrackets from '../../../components';
 import { labelList } from './Menu_carousel';
 import { loadClass, loadStyle } from './Menu_carousel';
 

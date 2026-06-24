@@ -12,7 +12,7 @@ import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';

@@ -9,7 +9,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 //--|🠋 Functions 🠋|--\\
 import { togglePages } from '../../../../scripts';
 import { stripBrackets } from '../../../scripts/archive';
-import { unfoldFooter, squaringFooter } from '../../../../scripts';
+import { unfoldFooter, squaringFooter } from '../../containers';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 

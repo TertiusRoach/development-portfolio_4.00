@@ -6,7 +6,7 @@ import './RoutingButton.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './RoutingFunctions';
-import { stripBrackets } from '../../../../../../../scripts';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';

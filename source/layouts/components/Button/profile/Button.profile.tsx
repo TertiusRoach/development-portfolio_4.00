@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './Button.profile.scss';
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../functions';
 import { createClass } from './Button_profile';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 interface TheseProps {
   info: {

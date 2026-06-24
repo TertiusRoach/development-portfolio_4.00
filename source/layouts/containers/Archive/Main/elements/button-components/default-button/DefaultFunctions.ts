@@ -1,6 +1,6 @@
 //--|🠊 default-button/DefaultFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { arabicToRoman, romanToArabic } from '../../../../../../components/functions';
+import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../../../../scripts';
 
 async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {

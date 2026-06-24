@@ -5,7 +5,7 @@ import './Time.date-string.scss';
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../functions';
+import stripBrackets from '../../components';
 
 interface TheseProps {
   info: {
