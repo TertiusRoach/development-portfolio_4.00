@@ -27,12 +27,24 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile: Components Main 🠋|--\\
   //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
-  display: none !important;
+
   section[class*='foreground'] {
+    div[class*='elements-main'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    nav[class*='browse'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   @include Mixins.portrait-grid;
 }

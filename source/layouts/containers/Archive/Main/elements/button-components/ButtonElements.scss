@@ -28,6 +28,10 @@ section[class*='button-main'] {
       }
     }
     @media screen and (orientation: portrait) {
+      width: 100vw;
+      flex: 0 0 100vw;
+      min-width: 100vw;
+      background: red;
       aside[class*='button'] {
         &[class*='default'] {
           @include DefaultButton.mobile-portrait;
