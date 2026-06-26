@@ -26,6 +26,8 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile: Components Main 🠋|--\\
+  //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
+  display: none !important;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

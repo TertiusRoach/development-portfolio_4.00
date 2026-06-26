@@ -17,7 +17,9 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Archive <header> 🠋|--\\
+  //--|🠋 Desktop: Components Header 🠋|--\\
+  //--|🠊 <header id="components-header" class="default-header"> 🠈|--\\
+  display: none !important;
 }
 header[id*='components'] {
   @media screen and (orientation: landscape) {

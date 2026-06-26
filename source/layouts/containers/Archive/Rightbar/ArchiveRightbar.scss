@@ -13,6 +13,8 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Rightbar) 🠋|--//
+  //--|🠊 <aside id="components-rightbar" class="default-rightbar"> 🠈|--\\
+  display: none;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

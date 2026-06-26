@@ -15,7 +15,9 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Leftbar) 🠋|--//
+  //--|🠋 Mobile (Leftbar) 🠋|--\\
+  //--|🠊 <aside id="components-leftbar" class="default-leftbar"> 🠈|--\\
+  display: none !important;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

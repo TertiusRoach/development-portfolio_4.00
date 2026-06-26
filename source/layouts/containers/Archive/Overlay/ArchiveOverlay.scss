@@ -18,6 +18,9 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Overlay) 🠋|--\\
+  //--|🠊 <section id="components-overlay" class="default-overlay"> 🠈|--\\
+  display: none !important;
+
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

@@ -134,6 +134,8 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Layers) 🠋|--\\
+  //--|🠊 <footer id="components-footer" class="default-footer"> 🠈|--\\
+  display: none !important;
 }
 footer[id*='components'] {
   @media screen and (orientation: landscape) {
