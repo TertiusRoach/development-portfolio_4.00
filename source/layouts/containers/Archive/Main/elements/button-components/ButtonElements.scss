@@ -27,13 +27,12 @@ section[class*='button-main'] {
         }
       }
       @media screen and (orientation: portrait) {
-        // width: 100vw;
-        // flex: 0 0 100vw;
+        width: 100vw;
+        flex: 0 0 100vw;
         min-width: 100vw;
         // background: rgba(darkred, 0.25);
 
         &[class*='default'] {
-          // background: rgba(darkred, 0.25);
           @include DefaultButton.mobile-portrait;
         }
         &[class*='routing'] {

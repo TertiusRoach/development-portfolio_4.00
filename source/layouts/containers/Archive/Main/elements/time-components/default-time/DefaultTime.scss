@@ -21,6 +21,7 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Layers) 🠋|--\\
+  display: none !important;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

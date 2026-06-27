@@ -1,6 +1,6 @@
 //--|🠊 DefaultButton.scss 🠈|--\\
-@use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
+@use '../../../../../../designs/Mixins.scss' as Mixins;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="default-button"> 🠈|--\\
@@ -194,31 +194,30 @@
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-button"> 🠈|--\\
   // mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
-  display: none !important;
+  // display: none !important;
   section[class*='foreground'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
-    //--|🠋 96px (Left & Right) for Design 🠋|--\\
-    grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px 1fr repeat(2, 8rem) 1fr 48px; //--|🠈 columns 🠈|--\\
-    @media screen and (max-height: 768px) {
-      //--|🠋 64px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px 1fr repeat(2, 6rem) 1fr 32px; //--|🠈 columns 🠈|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      repeat(3, 6rem) repeat(2, 1fr) repeat(3, 6rem) //--|🠈 rows 🠈|--//
+      / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 768px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        repeat(3, 5rem) repeat(2, 1fr) repeat(3, 5rem) //--|🠈 rows 🠈|--//
+        / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
     }
-    @media screen and (max-height: 480px) {
-      //--|🠋 48px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 854px 🠋|--\\
-        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px 1fr repeat(2, 4rem) 1fr 24px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 480px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        repeat(3, 3rem) repeat(2, 1fr) repeat(3, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
     }
-    @media screen and (max-height: 360px) {
-      //--|🠋 32px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 640px 🠋|--\\
-        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 360px) {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        repeat(3, 2rem) repeat(2, 1fr) repeat(3, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
     div {
       //--|🠊 display: grid; 🠈|--\\
@@ -275,8 +274,6 @@
         }
       }
     }
-    /*
-    */
   }
 
   figure[class*='midground'] {
@@ -321,9 +318,9 @@
         grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-
     div {
       &[class*='toggle'] {
+        display: none !important;
         background: rgba(darkgreen, 0.25);
         grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         label:nth-child(1) {
@@ -339,8 +336,14 @@
       &[class*='default'] {
         // background: rgba(purple, 0.25);
         &[class*='darkside'] {
+          display: none !important;
           //--|🠊 background: black; 🠈|--\\
           grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        &[class*='lightside'] {
+          display: none !important;
+          //--|🠊 background: white; 🠈|--\\
+          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
         section[class*='default'] {
           button {
@@ -368,15 +371,13 @@
             grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
         }
-        &[class*='lightside'] {
-          //--|🠊 background: white; 🠈|--\\
-          grid-area: 1 / 5 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
       }
     }
   }
   %mark-disp-mobi {
+    width: 100%;
     display: grid;
+    height: 100svh;
     div[class*='default'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       &[class*='container'] {
