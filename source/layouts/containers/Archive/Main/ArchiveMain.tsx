@@ -22,9 +22,9 @@ import React, { useEffect } from 'react';
 
 interface InfoProps {
   info: {
-    pageName: '[components]';
-    blockName: '<main>';
+    blockName: '<main>' | string;
     labelName: '(default)' | string;
+    pageName: '[components]' | string;
   };
 }
 
@@ -32,6 +32,7 @@ function ComponentsElements({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
+
   return (
     <>
       <ArticleElements
@@ -132,7 +133,7 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ComponentsMain>`}</h1> */}</div>
+      <div className={`${blockName}-background`}></div>
     </main>
   );
 };

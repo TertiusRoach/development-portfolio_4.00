@@ -7,7 +7,11 @@ import './Division.carousel.scss';
 import React, { useEffect } from 'react';
 
 interface TheseProps {
-  info: InfoProps;
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
   cases: {
     axis: '[x]' | '[y]';
     call: React.ComponentType<{ info: InfoProps }>;
