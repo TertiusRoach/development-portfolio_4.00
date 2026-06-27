@@ -4,6 +4,7 @@ bin
 6.5.1
 build
 *.txt
+.hidden
 secret.*
 *secret.*
 node_modules
