@@ -5,11 +5,13 @@
 
 section[class*='figure'] {
   div[class*='main_container'] {
-    @media screen and (orientation: landscape) {
-      @include DefaultFigure.desktop-landscape;
-    }
-    @media screen and (orientation: portrait) {
-      @include DefaultFigure.mobile-portrait;
+    aside[class*='default'] {
+      @media screen and (orientation: landscape) {
+        @include DefaultFigure.desktop-landscape;
+      }
+      @media screen and (orientation: portrait) {
+        @include DefaultFigure.mobile-portrait;
+      }
     }
   }
 }

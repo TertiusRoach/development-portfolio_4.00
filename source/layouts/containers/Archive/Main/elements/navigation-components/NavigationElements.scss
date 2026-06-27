@@ -57,8 +57,8 @@
   }
   @include Mixins.landscape-grid;
 }
-
 @mixin mobile-portrait {
+  display: none !important;
   @include Mixins.portrait-grid;
 }
 

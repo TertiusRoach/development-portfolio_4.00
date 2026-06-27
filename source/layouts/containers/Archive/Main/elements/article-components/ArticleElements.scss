@@ -6,8 +6,8 @@
 
 section[class*='article-main'] {
   div.article-main_container {
-    @media screen and (orientation: landscape) {
-      aside[class*='article'] {
+    aside[class*='article'] {
+      @media screen and (orientation: landscape) {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
@@ -18,14 +18,10 @@ section[class*='article-main'] {
           @include UpdatesArticle.desktop-landscape;
         }
       }
-    }
-    @media screen and (orientation: portrait) {
-      display: none !important;
-      width: 100vw;
-      flex: 0 0 100vw;
-      min-width: 100vw;
-
-      aside[class*='article'] {
+      @media screen and (orientation: portrait) {
+        width: 100vw;
+        flex: 0 0 100vw;
+        min-width: 100vw;
         &[class*='loading'] {
           @include LoadingArticle.mobile-portrait;
         }

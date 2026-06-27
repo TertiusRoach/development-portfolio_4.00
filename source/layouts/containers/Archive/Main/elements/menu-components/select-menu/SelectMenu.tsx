@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import stripBrackets from '../../../../../../../scripts';
 import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Components 🠋|--\\

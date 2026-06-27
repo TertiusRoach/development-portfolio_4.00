@@ -6,8 +6,8 @@
 
 section[class*='menu-main'] {
   div.menu-main_container {
-    @media screen and (orientation: landscape) {
-      aside[class*='menu'] {
+    aside[class*='menu'] {
+      @media screen and (orientation: landscape) {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
@@ -18,9 +18,7 @@ section[class*='menu-main'] {
           @include SwipeMenu.desktop-landscape;
         }
       }
-    }
-    @media screen and (orientation: portrait) {
-      aside[class*='menu'] {
+      @media screen and (orientation: portrait) {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;

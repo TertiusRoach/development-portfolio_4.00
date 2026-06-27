@@ -24,7 +24,8 @@
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--\\
+  //--|🠊 <aside className="profiles-section"> 🠈|--\\
+  display: none !important;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

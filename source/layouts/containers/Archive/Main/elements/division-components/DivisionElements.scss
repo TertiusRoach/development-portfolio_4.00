@@ -17,6 +17,7 @@ section[class*='division-main'] {
       }
     }
     @media screen and (orientation: portrait) {
+      display: none !important;
       @include DefaultDivision.mobile-portrait;
     }
   }

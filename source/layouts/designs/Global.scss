@@ -12,7 +12,6 @@ html {
         padding: 0;
         border: none;
         box-sizing: border-box;
-
         h1,
         h2,
         h3,
@@ -31,6 +30,20 @@ html {
           white-space: pre-line;
           font-family: 'Source Sans 3', arial;
         }
+        ul,
+        ol {
+          padding: 0;
+          list-style: none;
+        }
+        pre {
+          margin: 0;
+        }
+        menu {
+          list-style: none;
+        }
+        time {
+          cursor: default;
+        }
         button {
           h1,
           h2,
@@ -41,27 +54,10 @@ html {
             white-space: nowrap;
             text-overflow: ellipsis;
           }
-        }
-        menu {
-          list-style: none;
-        }
-        time {
-          cursor: default;
-        }
-        button {
           outline: none;
         }
         select {
           cursor: pointer;
-        }
-
-        ul,
-        ol {
-          padding: 0;
-          list-style: none;
-        }
-        pre {
-          margin: 0;
         }
       }
       > * {

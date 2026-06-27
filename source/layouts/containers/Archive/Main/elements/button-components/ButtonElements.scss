@@ -8,8 +8,8 @@
 
 section[class*='button-main'] {
   div.button-main_container {
-    @media screen and (orientation: landscape) {
-      aside[class*='button'] {
+    aside[class*='button'] {
+      @media screen and (orientation: landscape) {
         width: 100vw;
         flex: 0 0 100vw;
         min-width: 100vw;
@@ -26,23 +26,26 @@ section[class*='button-main'] {
           @include StretchButton.desktop-landscape;
         }
       }
-    }
-    @media screen and (orientation: portrait) {
-      width: 100vw;
-      flex: 0 0 100vw;
-      min-width: 100vw;
-      background: red;
-      aside[class*='button'] {
+      @media screen and (orientation: portrait) {
+        // width: 100vw;
+        // flex: 0 0 100vw;
+        min-width: 100vw;
+        // background: rgba(darkred, 0.25);
+
         &[class*='default'] {
+          // background: rgba(darkred, 0.25);
           @include DefaultButton.mobile-portrait;
         }
         &[class*='routing'] {
+          display: none !important;
           @include RoutingButton.mobile-portrait;
         }
         &[class*='profile'] {
+          display: none !important;
           @include ProfileButton.mobile-portrait;
         }
         &[class*='stretch'] {
+          display: none !important;
           @include StretchButton.mobile-portrait;
         }
       }

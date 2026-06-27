@@ -22,7 +22,6 @@
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile: Components Main 🠋|--\\
@@ -46,13 +45,14 @@
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  @include Mixins.portrait-grid;
 }
 main[id*='components'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    @include Mixins.landscape-grid;
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    @include Mixins.portrait-grid;
   }
 }
