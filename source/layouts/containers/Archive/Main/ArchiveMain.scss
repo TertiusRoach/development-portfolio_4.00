@@ -26,7 +26,6 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile: Components Main 🠋|--\\
   //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
-
   section[class*='foreground'] {
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

@@ -152,7 +152,6 @@
       }
     }
   }
-
   ul[class='hori-X-axis'] {
     @extend %hori-scope-desk;
     @extend %hori-stack-desk;
@@ -170,10 +169,11 @@
       transition: transform 500ms ease-in-out;
       div[class*='container'] {
         display: flex;
-        height: inherit;
+        /* height: inherit;
         > * {
           width: 100svh;
         }
+        */
       }
     }
   }
