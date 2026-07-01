@@ -207,8 +207,17 @@
         //--|🠊 display: flex; 🠈|--\\
         section[class*='default-main'] {
           //--|🠊 display: grid; 🠈|--\\
-          background: rgba(darkred, 0.25);
-          height: 768px;
+          height: 100%;
+
+          &:nth-child(1) {
+            background: rgba(darkred, 0.25);
+          }
+          &:nth-child(2) {
+            background: rgba(darkblue, 0.25);
+          }
+          &:nth-child(3) {
+            background: rgba(darkgreen, 0.25);
+          }
           /*
           //--|🠋 96px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 1920px 🠋|--\\

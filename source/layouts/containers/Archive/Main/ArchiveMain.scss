@@ -1,6 +1,6 @@
 //--|🠊 ArchiveMain.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
+@use '../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop: Components Main 🠋|--\\
@@ -29,6 +29,36 @@
   section[class*='foreground'] {
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      section[class*='article'] {
+        background: rgba(Palettes.$red-dark, 0.75);
+      }
+      section[class*='aside'] {
+        background: rgba(Palettes.$green-dark, 0.75);
+      }
+      section[class*='button'] {
+        background: rgba(Palettes.$blue-dark, 0.75);
+      }
+      section:nth-child(4) {
+        background: rgba(Palettes.$purple-dark, 0.75);
+      }
+      section:nth-child(5) {
+        background: rgba(Palettes.$orange-dark, 0.75);
+      }
+      section:nth-child(6) {
+        background: rgba(Palettes.$pink-dark, 0.75);
+      }
+      section:nth-child(7) {
+        background: rgba(Palettes.$yellow-dark, 0.75);
+      }
+      section:nth-child(8) {
+        background: rgba(Palettes.$brown-dark, 0.75);
+      }
+      section:nth-child(9) {
+        background: rgba(Palettes.$turquoise-dark, 0.75);
+      }
+      section:nth-child(10) {
+        background: rgba(Palettes.$gray-dark, 0.75);
+      }
     }
     nav[class*='browse'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

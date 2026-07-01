@@ -1,16 +1,16 @@
 //--|🠊 ArticleElements.scss 🠈|--\\
-@use '../../../../../designs/Palettes.scss';
-
 @use './loading-article/LoadingArticle.scss';
 @use './updates-article/UpdatesArticle.scss';
+
+@use '../../../../../designs/Palettes.scss' as Palettes;
 
 section[class*='article-main'] {
   div.article-main_container {
     aside[class*='article'] {
+      width: 100vw;
+      flex: 0 0 100vw;
+      min-width: 100vw;
       @media screen and (orientation: landscape) {
-        width: 100vw;
-        flex: 0 0 100vw;
-        min-width: 100vw;
         &[class*='loading'] {
           @include LoadingArticle.desktop-landscape;
         }
@@ -19,9 +19,6 @@ section[class*='article-main'] {
         }
       }
       @media screen and (orientation: portrait) {
-        width: 100vw;
-        flex: 0 0 100vw;
-        min-width: 100vw;
         &[class*='loading'] {
           @include LoadingArticle.mobile-portrait;
         }

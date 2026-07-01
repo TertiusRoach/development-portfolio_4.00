@@ -169,11 +169,6 @@
       transition: transform 500ms ease-in-out;
       div[class*='container'] {
         display: flex;
-        /* height: inherit;
-        > * {
-          width: 100svh;
-        }
-        */
       }
     }
   }

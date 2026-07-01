@@ -1,15 +1,27 @@
 //--|🠊 AsideElements.scss 🠈|--\\
-@use '../../../../../designs/Palettes.scss';
-
 @use './characters-aside/CharactersAside.scss';
 
+@use '../../../../../designs/Palettes.scss' as Palettes;
+
 section[class*='aside'] {
-  div[class*='main_container'] {
-    @media screen and (orientation: landscape) {
-      @include CharactersAside.desktop-landscape;
-    }
-    @media screen and (orientation: portrait) {
-      @include CharactersAside.mobile-portrait;
+  div.aside-main_container {
+    aside[class*='aside'] {
+      width: 100vw;
+      height: 100svh;
+      /*
+      flex: 0 0 100vw;
+      min-width: 100vw;
+      */
+      @media screen and (orientation: landscape) {
+        &[class*='characters'] {
+          @include CharactersAside.desktop-landscape;
+        }
+      }
+      @media screen and (orientation: portrait) {
+        &[class*='characters'] {
+          @include CharactersAside.mobile-portrait;
+        }
+      }
     }
   }
 }
