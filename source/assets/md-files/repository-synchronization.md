@@ -1,20 +1,20 @@
-# Git/GitHub Repository Synchronization Guide
+# Git/GitHub Release & Branch Management Guide
 
-## Generated with [DeepSeek](https://www.deepseek.com/en/)
+## Maintained by [TertiusRoach](https://github.com/TertiusRoach)
 
 <div align="center">
 
-![Platform](https://img.shields.io/badge/Platform-Linux%20Mint%20XFCE-87CF3E?style=for-the-badge&logo=linux&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Ubuntu%20Studio%20%7C%20Windows%2011-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-2.x+-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-Workflow-181717?style=for-the-badge&logo=github&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS%20Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![License](https://img.shields.io/badge/License-Documentation-blue?style=for-the-badge)
+![Node](https://img.shields.io/badge/Node.js-NVM-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
-### A Safe, Repeatable Workflow for Repository Management
+### A Safe, Repeatable Workflow for Solo Development & Release Engineering
 
-_Master the Fork → Clone → Branch → Sync workflow with confidence_
+_Master the Archive → Merge → Tag → Branch cycle with confidence_
 
-[Getting Started](#getting-started) • [Owner Guide](#guide-for-repository-owners) • [Contributor Guide](#guide-for-sponsors--contributors) • [References](#references)
+[Machine Setup](#-machine-setup) • [Release Cycle](#-release-cycle-sop) • [Tag Management](#-tag-management) • [Multi-Device Sync](#-multi-device-synchronization) • [Emergency Operations](#-emergency-operations) • [Edge Cases](#-industry-edge-cases) • [Ticketing](#-github-issues--ticketing)
 
 </div>
 
@@ -22,117 +22,58 @@ _Master the Fork → Clone → Branch → Sync workflow with confidence_
 
 ## 📑 Table of Contents
 
-- [Overview](#overview)
-  - [Workflow Philosophy](#workflow-philosophy)
-  - [Safety Goals](#safety-goals)
-- [Getting Started](#getting-started)
-  - [Required Tools](#required-tools)
-  - [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Guide for Repository Owners](#guide-for-repository-owners)
-  - [1. Install and Verify Git](#1-install-and-verify-git-on-linux-mint-xfce)
-  - [2. Configure Git Identity](#2-configure-git-identity-username--email)
-  - [3. GitHub Authentication](#3-github-authentication-on-linux-mint-xfce-detailed)
-    - [3.1 Password Policy](#31-passwords-are-not-used-for-command-line-git-access-anymore)
-    - [3.2 HTTPS vs SSH](#32-choose-one-https-vs-ssh)
-    - [3.3 Personal Access Token (PAT)](#33-personal-access-token-pat-for-https)
-    - [3.4 SSH Keys](#34-ssh-keys-recommended-for-frequent-terminal-work)
-    - [3.5 Passkeys Clarification](#35-passkeys-important-clarification)
-  - [4. Create a Safe Fork Arrangement](#4-create-a-safe-fork-arrangement-owner-pattern)
-  - [5. Fork the Canonical Repo](#5-fork-the-canonical-repo-on-github-web)
-  - [6. Clone Your Fork Locally](#6-clone-your-fork-locally-from-visual-studio-code-terminal)
-  - [7. Add Upstream Remote](#7-add-the-canonical-repo-as-upstream-critical)
-  - [8. Disable Upstream Pushing](#8-hard-safety-guard-disable-pushing-to-upstream)
-  - [9. Configure Safe Git Defaults](#9-hard-safety-guard-set-safe-defaults-in-git)
-  - [10. Safe Syncing Routine](#10-safe-syncing-routine-fork--sync-without-touching-main-history)
-  - [11. Create Work Branches](#11-create-a-new-work-branch-safely-example-421)
-  - [12. Commit and Push](#12-commit-and-push-only-your-work-branch)
-  - [13. Open Pull Requests](#13-open-a-pull-request-to-the-canonical-repo-web)
-  - [14. Extra Protection: Pre-Commit Hook](#14-extra-never-commit-to-main-local-guard-optional-but-powerful)
-  - [15. Recovery Patterns](#15-if-you-accidentally-changed-main-safe-recovery-patterns)
-- [Guide for Sponsors / Contributors](#guide-for-sponsors--contributors)
-  - [0. Required Tools](#0-what-youll-use-apps--shortcuts-1)
-  - [1. Install and Verify Git](#1-install-and-verify-git-on-linux-mint-xfce-1)
-  - [2. Configure Git Identity](#2-configure-git-identity-1)
-  - [3. GitHub Authentication](#3-github-authentication-on-linux-mint-xfce-1)
-  - [4. Fork the Repository](#4-fork-the-repository-on-github-web)
-  - [5. Clone Your Fork](#5-clone-your-fork-locally-terminal)
-  - [6. Add Upstream and Disable Push](#6-add-upstream-the-owners-canonical-repo--disable-upstream-push)
-  - [7. Sync Before Branching](#7-sync-safely-fork--sync-before-you-branch)
-  - [8. Create Feature Branch](#8-create-your-feature-branch-example-421-and-switch-to-it)
-  - [9. Work and Commit](#9-work-commit-and-push-only-your-feature-branch)
-  - [10. Open Pull Request](#10-open-a-pull-request-web)
-  - [11. Safety Checklist](#11-contributor-safety-checklist-do-this-every-time)
-- [References](#references-primary)
-- [License](#license)
+- [Machine Setup](#-machine-setup)
+  - [1. Install Git](#1-install-git)
+  - [2. Configure Git Identity](#2-configure-git-identity)
+  - [3. SSH Authentication](#3-ssh-authentication)
+  - [4. Install Node.js via NVM](#4-install-nodejs-via-nvm)
+  - [5. Clone Your Repository](#5-clone-your-repository)
+- [Release Cycle (SOP)](#-release-cycle-sop)
+  - [1. Confirm Starting Position](#1-confirm-starting-position)
+  - [2. Tag the Current Commit](#2-tag-the-current-commit)
+  - [3. Promote to Main](#3-promote-to-main)
+  - [4. Cleanup and Initialize Next Branch](#4-cleanup-and-initialize-next-branch)
+- [Tag Management](#-tag-management)
+  - [Rename a Tag](#rename-a-tag)
+  - [Deprecate a Branch](#deprecate-a-branch)
+- [Multi-Device Synchronization](#-multi-device-synchronization)
+  - [Standard Sync](#standard-sync)
+  - [Hard Sync](#hard-sync-overwrite)
+  - [Work Laptop Setup](#work-laptop-setup)
+- [Emergency Operations](#-emergency-operations)
+  - [Force Push](#force-push)
+  - [Force Pull](#force-pull)
+  - [Diverged Branches](#diverged-branches)
+- [Industry Edge Cases](#-industry-edge-cases)
+  - [Case A: Rejected Push](#case-a-rejected-push)
+  - [Case B: Detached HEAD](#case-b-detached-head-state)
+  - [Case C: Stashing Work in Progress](#case-c-stashing-work-in-progress)
+  - [Case D: Wrong Shell in VS Code](#case-d-vs-code-terminal-showing-sh-instead-of-bash)
+- [GitHub Issues & Ticketing](#-github-issues--ticketing)
+  - [Ticket Structure](#ticket-structure)
+  - [Linking Tickets to Branches](#linking-tickets-to-branches)
+- [Project Status Log](#-project-status-log)
+- [References](#-references)
 
 ---
 
-## 🎯 Overview
+## 🖥 Machine Setup
 
-### Workflow Philosophy
-
-This guide establishes a **safe, repeatable** [Git](https://git-scm.com/) + [GitHub](https://github.com/) workflow on [Linux Mint](https://linuxmint.com/) [XFCE](https://xfce.org/) using the [Visual Studio Code](https://code.visualstudio.com/) integrated terminal.
-
-**Your required workflow is:**
-
-```
-Fork → Clone → Branch → Sync
-```
-
-### Safety Goals
-
-> **🔒 Primary Safety Objective**  
-> The latest branch (typically `main`) is **never accidentally modified**, and you **never push to the wrong remote**.
-
-This guide implements multiple layers of protection:
-
-- ✅ Disabled upstream push URLs
-- ✅ Fast-forward only merges
-- ✅ Branch-specific push defaults
-- ✅ Pre-commit hooks for protected branches
-- ✅ Explicit verification steps
+> **💡 Who is this for?**
+> Any new machine — Ubuntu Studio, Windows 11, or a work laptop — that needs to connect to and sync with your GitHub repository for the first time.
 
 ---
 
-## 🚀 Getting Started
-
-### Required Tools
-
-<details>
-<summary><strong>📦 Applications</strong></summary>
-
-| Application            | Purpose                           | Link                                                        |
-| ---------------------- | --------------------------------- | ----------------------------------------------------------- |
-| **Visual Studio Code** | Editor + Integrated Terminal      | [code.visualstudio.com](https://code.visualstudio.com/)     |
-| **Firefox**            | Web Browser for GitHub Operations | [mozilla.org/firefox](https://www.mozilla.org/firefox/)     |
-| **Thunar**             | File Manager (Optional)           | [XFCE Thunar Docs](https://docs.xfce.org/xfce/thunar/start) |
-
-</details>
-
-### Keyboard Shortcuts
-
-| Action                        | Shortcut                                          |
-| ----------------------------- | ------------------------------------------------- |
-| **Open VS Code Terminal**     | <kbd>Ctrl</kbd> + <kbd>`</kbd>                    |
-| **Open Command Palette**      | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> |
-| **Open Source Control Panel** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> |
-
----
-
-## 📘 Guide for Repository Owners
-
-> **💡 Who is this for?**  
-> Repository owners who maintain the canonical repository and want to contribute safely through a fork-based workflow.
-
----
-
-### 1. Install and Verify Git on Linux Mint XFCE
-
-Open the [Visual Studio Code](https://code.visualstudio.com/) terminal and run:
+### 1. Install Git
 
 ```bash
 sudo apt update
 sudo apt install -y git
+```
+
+**Verify the installation:**
+
+```bash
 git --version
 which git
 ```
@@ -147,134 +88,69 @@ git version 2.xx.x
 
 </details>
 
-> **💡 Tip**  
-> If you want the newest stable Git for Ubuntu-based distros, follow the upstream PPA approach (optional and advanced) as documented in many Linux guides.
+> **💡 Note**
+> If `sudo` is unavailable (restricted shell environments like `sh-5.3$`), Git may already be pre-installed. Run `git --version` to confirm before attempting any install commands.
 
 ---
 
-### 2. Configure Git Identity (username + email)
+### 2. Configure Git Identity
 
-This config controls what name/email appears on commits.
+This controls what name and email appear on every commit you make. Without this, Git will refuse to commit.
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+git config --global user.name "TertiusRoach"
+git config --global user.email "tertius.roach@gmail.com"
 git config --global init.defaultBranch main
+git config --global core.editor "code --wait"
 ```
 
 **Verify your configuration:**
 
 ```bash
-git config --global --list
+git config --list
 ```
 
-> 📚 **Reference:** [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+> **🔒 Why this matters**
+> Every commit is permanently stamped with this identity. If you skip this step, Git will either refuse to commit or use a system default that does not match your GitHub account, causing authentication confusion.
 
 ---
 
-### 3. GitHub Authentication on Linux Mint XFCE (detailed)
+### 3. SSH Authentication
 
-> **⚠️ Important: Three Distinct Concepts**  
-> People often mix these up:
->
-> 1. **Browser sign-in to GitHub** (where passkeys may apply)
-> 2. **Git operations over HTTPS** (uses tokens, not passwords)
-> 3. **Git operations over SSH** (uses key pairs)
+GitHub no longer accepts account passwords for terminal Git operations. SSH key pairs are the recommended authentication method — set once per machine, then push and pull without typing credentials again.
 
----
-
-#### 3.1 Passwords are not used for command-line Git access anymore
-
-For GitHub over HTTPS, you **do not use your account password** in the terminal. You use a **Personal Access Token (PAT)** (or an OAuth-based helper).
-
-> 📚 **Reference:** [GitHub Docs — Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
----
-
-#### 3.2 Choose one: HTTPS vs SSH
-
-<table>
-<tr>
-<th>🌐 Use HTTPS if:</th>
-<th>🔑 Use SSH if:</th>
-</tr>
-<tr>
-<td>
-• You want the simplest clone URL<br>
-• You're in networks where SSH ports might be blocked<br>
-• You're comfortable using a Personal Access Token (PAT)
-</td>
-<td>
-• You want "set once, then push/pull without typing credentials"<br>
-• You're comfortable managing an OpenSSH key on each machine
-</td>
-</tr>
-</table>
-
-> 📚 **References:**
->
-> - [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
-> - [GitHub Docs — Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-
----
-
-#### 3.3 Personal Access Token (PAT) (for HTTPS)
-
-<details>
-<summary><strong>🔐 What credentials you need</strong></summary>
-
-- Your **GitHub username**
-- A **Personal Access Token (PAT)** (treat it like a password)
-
-</details>
-
-<details>
-<summary><strong>✅ Best practices</strong></summary>
-
-1. Prefer **fine-grained tokens** when possible (least privilege)
-2. Set an **expiration date**
-3. Store it in a **secure credential store** (not plain text)
-
-</details>
-
-> 📚 **Reference:** [GitHub Docs — Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
----
-
-#### 3.4 SSH keys (recommended for frequent terminal work)
-
-<details>
-<summary><strong>🔐 What credentials you need</strong></summary>
-
-- A **private key file** on your laptop (keep it secret)
-- A **public key** added to your GitHub account
-
-</details>
-
-**Generate and add an SSH key (Linux):**
+**Step 1 — Generate your SSH key:**
 
 ```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "tertius.roach@gmail.com"
+```
+
+When prompted for a file location, press `Enter` to accept the default (`~/.ssh/id_ed25519`). You may set a passphrase or leave it empty.
+
+**Step 2 — Start the SSH agent and register your key:**
+
+```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-**Add the public key to your GitHub account:**
+**Step 3 — Copy your public key:**
 
-1. **Copy your public key:**
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
 
-   ```bash
-   cat ~/.ssh/id_ed25519.pub
-   ```
+Copy the entire output. It starts with `ssh-ed25519` and ends with your email address.
 
-2. **Paste into GitHub settings** (web interface)
+**Step 4 — Add the key to GitHub:**
 
-> 📚 **References:**
->
-> - [GitHub Docs — Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-> - [GitHub Docs — Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+1. Go to [github.com/settings/keys](https://github.com/settings/keys)
+2. Click **New SSH key**
+3. Give it a title (e.g., `Ubuntu Studio Desktop`)
+4. Paste the copied key
+5. Click **Add SSH key**
 
-**Test your SSH connection:**
+**Step 5 — Test the connection:**
 
 ```bash
 ssh -T git@github.com
@@ -284,590 +160,592 @@ ssh -T git@github.com
 <summary><strong>✅ Expected Output</strong></summary>
 
 ```
-Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+Hi TertiusRoach! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 </details>
 
----
-
-#### 3.5 Passkeys (important clarification)
-
-> **⚠️ Critical Understanding**  
-> A **passkeys login** is for signing in to GitHub in your **browser**. It does **not** automatically authenticate command-line Git pushes/pulls.
->
-> For terminal auth, you still use:
->
-> - **HTTPS** + Personal Access Token (PAT), or
-> - **SSH keys**
-
-> 📚 **Reference:** [GitHub Docs — About passkeys](https://docs.github.com/en/authentication/authenticating-with-a-passkey/about-passkeys)
+> **⚠️ Common Mistake**
+> If GitHub returns "Key is invalid", you likely copied the **private key** (`id_ed25519`) instead of the **public key** (`id_ed25519.pub`). The public key file always ends in `.pub`. Never share the private key file with anyone.
 
 ---
 
-### 4. Create a "safe" fork arrangement (Owner pattern)
+### 4. Install Node.js via NVM
 
-Because you are the **Repository Owner**, the safest pattern is:
+NVM (Node Version Manager) is the industry standard for managing Node.js versions. It installs Node without requiring `sudo` and allows switching versions per project.
 
-| Repository Type      | Purpose                                                                        |
-| -------------------- | ------------------------------------------------------------------------------ |
-| **Canonical repo**   | Your official project repo (the one everyone targets with PRs)                 |
-| **Development fork** | A separate repo you push branches to, so your canonical `main` stays protected |
-
-> **💡 Implementation Strategy**  
-> On GitHub, a "fork" typically lives under a different account or an organization. If you can't fork into the same account, create a fork in an organization you control.
-
-**Goal:** You work in the fork; you merge PRs into the canonical repo.
-
----
-
-### 5. Fork the canonical repo on GitHub (web)
-
-1. Open the **canonical repository** in a browser ([Firefox](https://www.mozilla.org/firefox/))
-2. Click **Fork**
-3. Choose the destination (your org or dev account)
-
-> **⚠️ Note:** This step is web-only (no terminal command)
-
----
-
-### 6. Clone your fork locally (from Visual Studio Code terminal)
-
-**Pick a workspace folder:**
+**Step 1 — Install NVM:**
 
 ```bash
-mkdir -p ~/Develop
-cd ~/Develop
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 ```
 
-<details>
-<summary><strong>Option A: Clone via SSH</strong> (recommended once keys are set)</summary>
+**Step 2 — Load NVM into the current terminal session:**
 
 ```bash
-git clone git@github.com:YOUR-USERNAME/YOUR-FORK-REPO.git
-cd YOUR-FORK-REPO
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 ```
 
-</details>
-
-<details>
-<summary><strong>Option B: Clone via HTTPS</strong></summary>
+**Step 3 — Install the LTS version of Node and set it as default:**
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-FORK-REPO.git
-cd YOUR-FORK-REPO
+nvm install --lts
+nvm use --lts
+nvm alias default node
 ```
 
-</details>
-
----
-
-### 7. Add the canonical repo as upstream (critical)
-
-Inside your cloned repo:
+**Step 4 — Make NVM load automatically on every new terminal:**
 
 ```bash
-git remote -v
-```
-
-**Add the canonical repo as upstream** (replace with your canonical URL):
-
-```bash
-git remote add upstream https://github.com/OWNER/CANONICAL-REPO.git
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 **Verify:**
 
 ```bash
-git remote -v
+node --version
+npm --version
+```
+
+> **⚠️ VS Code Terminal Issue**
+> If VS Code shows `sh-5.3$` instead of a `bash` prompt, NVM and npm will not be found because `sh` does not load your `.bashrc`. Fix this by pressing `Ctrl + Shift + P` → **Terminal: Select Default Profile** → select **bash**. Then close and reopen the terminal.
+
+---
+
+### 5. Clone Your Repository
+
+Navigate to your preferred workspace folder and clone using SSH:
+
+```bash
+cd ~
+mkdir Projects
+cd Projects
+git clone git@github.com:TertiusRoach/development-portfolio_4.00.git
+cd development-portfolio_4.00
+```
+
+**Sync to the active development branch:**
+
+```bash
+git fetch --all --prune
+git checkout 4.5
+git pull origin 4.5
+```
+
+> **💡 Why `fetch --all --prune` first?**
+> This updates your local machine's knowledge of all remote branches before you try to check one out. Without it, Git may not know the branch exists yet.
+
+---
+
+## 🔄 Release Cycle (SOP)
+
+> **💡 When to use this**
+> Execute this full sequence when a development branch is feature-complete, tested, and ready to be promoted to production (`main`). This is the single most important workflow to memorize.
+
+**The sequence is always:**
+
+```
+Confirm → Tag → Merge to Main → Cleanup → New Branch
+```
+
+---
+
+### 1. Confirm Starting Position
+
+Before touching anything, verify you are on the correct branch and that there are no uncommitted changes floating around.
+
+```bash
+git status
 ```
 
 <details>
-<summary><strong>✅ Expected output shape</strong></summary>
+<summary><strong>✅ Expected Output (clean state)</strong></summary>
 
 ```
-origin    ... (fetch)
-origin    ... (push)
-upstream  ... (fetch)
-upstream  ... (push) ← we will disable this next
+On branch 4.5
+nothing to commit, working tree clean
 ```
 
 </details>
 
----
-
-### 8. Hard safety guard: disable pushing to upstream
-
-> **🔒 Security Measure**  
-> This is the single best "oops-proofing" step for the terminal
-
-```bash
-git remote set-url --push upstream DISABLED
-git remote -v
-```
-
-<details>
-<summary><strong>✅ Expected output shape</strong></summary>
-
-```
-upstream  https://github.com/OWNER/CANONICAL-REPO.git (fetch)
-upstream  DISABLED (push)
-```
-
-</details>
-
-**This prevents accidentally pushing to the canonical repo from your laptop.**
+> **⚠️ If you see uncommitted changes**
+> Do not proceed. Either commit them (`git add . && git commit -m "message"`) or stash them (`git stash`) before continuing. Merging with a dirty working tree causes unnecessary conflicts.
 
 ---
 
-### 9. Hard safety guard: set "safe defaults" in Git
+### 2. Tag the Current Commit
 
-These settings reduce common foot-guns:
+A tag is a permanent, immutable milestone. Unlike branches, tags do not move when new commits are added. This is your recovery point — regardless of what happens to any branch afterward, this tag always points to this exact state of the code.
+
+**Create an annotated tag:**
 
 ```bash
-git config --global fetch.prune true
-git config --global pull.ff only
-git config --global push.default current
-git config --global push.autoSetupRemote true
+git tag -a v4.5 -m "Stable Release 4.5: Description of what changed"
 ```
 
-<details>
-<summary><strong>📖 What they do</strong></summary>
+**Push the tag to GitHub:**
 
-| Setting                | Purpose                                                     |
-| ---------------------- | ----------------------------------------------------------- |
-| `fetch.prune`          | Cleans up deleted remote branches locally                   |
-| `pull.ff only`         | Prevents accidental merge commits when syncing `main`       |
-| `push.default current` | `git push` pushes only your current branch (not everything) |
-| `push.autoSetupRemote` | First push auto-links branch to origin                      |
+```bash
+git push origin v4.5
+```
 
-</details>
+> **💡 Annotated vs Lightweight Tags**
+> Always use annotated tags (`-a`). They store the tagger name, date, and message. Lightweight tags are just a pointer with no metadata — useless for release documentation.
 
-> 📚 **Reference:** [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+> **🔒 Why tag before merging?**
+> Tagging on the development branch (before the merge) ensures the tag points to the exact commit that was tested and approved. After a merge, the commit graph changes and the reference becomes less precise.
 
 ---
 
-### 10. Safe syncing routine (Fork → Sync) WITHOUT touching main history
+### 3. Promote to Main
 
-This is the owner's **"sync fork from upstream safely"** loop.
-
-#### 10.1 Fetch updates from upstream
-
-```bash
-git fetch upstream --prune
-```
-
-#### 10.2 Update your local main safely (fast-forward only)
+This is the production merge. The `--no-ff` flag (no fast-forward) forces Git to create a merge commit even if it could fast-forward. This groups all branch commits together in history, making it easy to identify and revert a specific release as a single unit.
 
 ```bash
 git checkout main
-git merge --ff-only upstream/main
+git pull origin main
+git reset --hard 4.5
+git push origin main --force
 ```
 
-> **⚠️ Warning**  
-> If this fails with "not possible to fast-forward", **STOP** and investigate—this means your local `main` diverged (often from an accidental commit).
+> **💡 Why `reset --hard` instead of `merge`?**
+> When branches have diverged (which happens when working across multiple machines), `merge` will fail or create a messy history. `reset --hard` forces `main` to become an exact copy of your trusted development branch — clean, predictable, and safe when you are the sole developer.
 
-#### 10.3 Update your fork's main safely
-
-```bash
-git push origin main
-```
-
-> **⚠️ Warning**  
-> If this is rejected, **STOP** (it means your fork `main` diverged). **Do not force push.**
+> **⚠️ Warning**
+> `--force` overwrites the remote `main` branch permanently. Only use this when you are certain your local development branch is the correct, most complete version. If in doubt, run `git log --oneline -10` on both branches to compare before proceeding.
 
 ---
 
-### 11. Create a new work branch safely (example: 4.2.1)
+### 4. Cleanup and Initialize Next Branch
 
-Always branch from the updated local `main`:
+Remove the old branch to prevent code drift and confusion, then start the next development cycle.
+
+**Switch back to your development branch:**
 
 ```bash
-git checkout main
-git status
-git pull --ff-only
-git checkout -b 4.2.1
-git branch --show-current
+git checkout 4.5
+```
+
+**Delete the old branch locally and remotely (adjust version number as needed):**
+
+```bash
+git branch -d 4.4
+git push origin --delete 4.4
+```
+
+**Create the next branch and push it:**
+
+```bash
+git checkout -b 4.6
+git push -u origin 4.6
 ```
 
 <details>
-<summary><strong>✅ Expected output</strong></summary>
+<summary><strong>⚠️ If `git branch -d` refuses</strong></summary>
 
+Git may refuse `-d` if it thinks the branch is not fully merged (common when the merge happened via `reset --hard` instead of `merge`). Force the deletion with:
+
+```bash
+git branch -D 4.4
 ```
-4.2.1
-```
+
+The `-D` flag bypasses the merge check. This is safe here because you have already tagged and pushed the code to `main`.
 
 </details>
 
-**Safeguard check** (run this before every commit):
+---
+
+## 🏷 Tag Management
+
+### Rename a Tag
+
+Git tags are immutable — they cannot be renamed directly. The correct process is to create a new tag pointing to the exact same commit, push it, then delete the old one.
+
+> **💡 When to use this**
+> Use this for naming convention corrections only (e.g., `v4.3` → `v4.03`). The commit history and code are not affected in any way.
+
+**Step 1 — Create the new tag pointing to the same commit as the old one:**
 
 ```bash
-git status
-git branch --show-current
+git tag v4.03 v4.3
+```
+
+**Step 2 — Push the new tag to GitHub:**
+
+```bash
+git push origin v4.03
+```
+
+**Step 3 — Delete the old tag from GitHub:**
+
+```bash
+git push origin --delete v4.3
+```
+
+**Step 4 — Delete the old tag from your local machine:**
+
+```bash
+git tag -d v4.3
+```
+
+> **⚠️ Warning**
+> Deleting a pushed tag rewrites public history on GitHub. Only do this for naming corrections on your own private repository. Never delete tags on a shared or public repository without notifying all collaborators.
+
+---
+
+### Deprecate a Branch
+
+When a branch is finished but needs to remain visible on GitHub for reference — for example, to leave a copy accessible on a work laptop or for an external party — rename it instead of deleting it. This preserves the code while making it clear the branch is no longer active.
+
+**Step 1 — Rename the branch locally:**
+
+```bash
+git branch -m 4.4 4.4_deprecated
+```
+
+**Step 2 — Push the renamed branch to GitHub:**
+
+```bash
+git push origin 4.4_deprecated
+```
+
+**Step 3 — Delete the old remote branch name:**
+
+```bash
+git push origin --delete 4.4
+```
+
+**Step 4 — Set the local branch to track the renamed remote:**
+
+```bash
+git branch --set-upstream-to=origin/4.4_deprecated 4.4_deprecated
+```
+
+> **💡 What happens to other machines?**
+> Any machine that was tracking `origin/4.4` will lose its upstream reference after Step 3. The local branch and files remain intact on those machines — they simply cannot push to the old remote name anymore. Those machines need to be manually updated. See [Work Laptop Setup](#work-laptop-setup).
+
+---
+
+## 🔁 Multi-Device Synchronization
+
+> **💡 Mental Model**
+>
+> - `fetch` = update your machine's knowledge of what exists on GitHub
+> - `checkout` = switch to a branch
+> - `pull` = download the latest files from GitHub into your current branch
+> - `push` = upload your local commits to GitHub
+
+---
+
+### Standard Sync
+
+Use this on any machine that is behind the remote. It updates the local branch map, removes references to deleted remote branches, and pulls the latest files.
+
+```bash
+git fetch --all --prune
+git checkout 4.5
+git pull origin 4.5
+```
+
+> **💡 Why `--prune`?**
+> Without `--prune`, deleted remote branches (like `4.4` after it is removed) continue to appear in your local branch list as ghost references. `--prune` cleans those up automatically.
+
+---
+
+### Hard Sync (Overwrite)
+
+Use this when your local state is broken, corrupted, or has diverged and you want to force it to exactly match GitHub.
+
+> **⚠️ Warning: This destroys all local uncommitted changes permanently. There is no undo.**
+
+```bash
+git fetch origin
+git reset --hard origin/4.5
 ```
 
 ---
 
-### 12. Commit and push ONLY your work branch
+### Work Laptop Setup
 
-**Stage + commit:**
+Run this sequence on the work laptop when you are ready to move it from an old branch (e.g., `4.4_deprecated`) to the active development branch (`4.5`).
 
-```bash
-git add -A
-git commit -m "Describe the change clearly"
-```
-
-**Push to your fork** (`origin`) **and set upstream tracking:**
+**Step 1 — Update the machine's knowledge of all remote branches:**
 
 ```bash
-git push -u origin HEAD
+git fetch --all --prune
 ```
 
-> **💡 Why this works**  
-> This ensures you never push to `upstream`, and you never push `main`.
+**Step 2 — Switch to the active branch:**
+
+```bash
+git checkout 4.5
+```
+
+**Step 3 — Pull the latest files:**
+
+```bash
+git pull origin 4.5
+```
+
+**Step 4 — Set the branch to always pull from `origin/4.5`:**
+
+```bash
+git branch --set-upstream-to=origin/4.5 4.5
+```
+
+**Step 5 — Remove the old deprecated branch locally (optional but recommended):**
+
+```bash
+git branch -D 4.4
+```
+
+> **💡 Note**
+> The `4.4_deprecated` branch still exists on GitHub. The work laptop's local `4.4` branch is separate from it. Deleting the local `4.4` in Step 5 does not affect GitHub or any other machine.
 
 ---
 
-### 13. Open a Pull Request to the canonical repo (web)
+## 🚨 Emergency Operations
 
-In GitHub (browser):
+### Force Push
 
-1. Go to your **fork**
-2. Click **Compare & pull request**
-3. **Confirm:**
-   - **Base repository:** canonical repo
-   - **Base branch:** `main`
-   - **Head repository:** your fork
-   - **Compare branch:** `4.2.1`
-4. **Create the PR**
-
-> **✅ Success**  
-> This preserves the rule: **canonical `main` changes only via PR merge**.
-
----
-
-### 14. Extra "never commit to main" local guard (optional but powerful)
-
-You can add a **local Git hook** to block commits on `main`.
-
-**Create this file:**
+Use this when the remote branch needs to exactly match your local version and a standard push is being rejected.
 
 ```bash
-cat > .git/hooks/pre-commit <<'EOF'
-#!/bin/sh
-branch="$(git branch --show-current 2>/dev/null)"
-if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-  echo "ERROR: Refusing to commit on protected branch: $branch"
-  echo "Create a branch: git checkout -b 4.2.1"
-  exit 1
-fi
-EOF
-chmod +x .git/hooks/pre-commit
+git push origin <branch_name> --force
 ```
 
-> **✅ Result**  
-> Now commits on `main` / `master` fail locally.
+> **⚠️ Use with caution.**
+> This permanently overwrites the remote branch history. Any commits on the remote that are not in your local version will be lost forever. Always confirm you are pushing to the correct branch before running this.
 
 ---
 
-### 15. If you accidentally changed main (safe recovery patterns)
+### Force Pull
+
+Use this when your local branch is broken and you want to discard all local changes and match the remote exactly.
+
+```bash
+git fetch origin
+git reset --hard origin/<branch_name>
+```
+
+> **⚠️ Warning**
+> All uncommitted local changes are permanently destroyed. If you have work you want to keep, stash it first: `git stash`.
+
+---
+
+### Diverged Branches
+
+**Symptom:** VS Code shows _"Can't push refs to remote. Try running Pull first"_ and a standard pull also fails.
+
+**Cause:** Your local branch and the remote branch have different commit histories that cannot be automatically reconciled. This commonly happens when working across multiple machines.
+
+**Fix — Force `main` to match your trusted development branch:**
+
+```bash
+git checkout main
+git reset --hard <your_trusted_branch>
+git push origin main --force
+git checkout <your_trusted_branch>
+```
+
+> **💡 Why this works**
+> `reset --hard` replaces the entire local `main` history with your trusted branch's history. The `--force` push then overwrites GitHub to match. This is the correct and safe approach when you are the sole developer and you know which branch contains the correct code.
+
+---
+
+## 🛠 Industry Edge Cases
+
+### Case A: Rejected Push
+
+**Error:** `Updates were rejected because the tip of your current branch is behind its remote counterpart`
+
+**Cause:** Another machine pushed commits to this branch while you were working locally. Your local version is now behind.
+
+**Fix — Pull with rebase to place your commits on top:**
+
+```bash
+git pull origin <branch_name> --rebase
+```
+
+> **💡 Why rebase instead of merge?**
+> A standard `git pull` creates a merge commit that clutters the history with "Merge branch X into X" noise. `--rebase` replays your local commits on top of the remote commits, keeping the history linear and clean.
+
+---
+
+### Case B: Detached HEAD State
+
+**Symptom:** Terminal shows `HEAD detached at <commit_hash>` instead of a branch name.
+
+**Cause:** You checked out a specific commit hash or tag directly instead of a named branch. Any commits made in this state are not attached to any branch and will be lost when you switch away.
 
 <details>
-<summary><strong>Case A: You edited files on main but did NOT commit</strong></summary>
+<summary><strong>Option A — Save your current state to a new branch (recommended)</strong></summary>
 
 ```bash
-git status
-git stash push -u -m "move accidental main work to branch"
-git checkout -b 4.2.1
+git checkout -b temp-rescue-branch
+```
+
+This attaches the detached HEAD to a named branch, making your work safe.
+
+</details>
+
+<details>
+<summary><strong>Option B — Abandon and return to a named branch</strong></summary>
+
+```bash
+git checkout main
+```
+
+Only use this if you have no uncommitted changes worth keeping.
+
+</details>
+
+---
+
+### Case C: Stashing Work in Progress
+
+Use this when you need to switch branches urgently but are not ready to commit your current work.
+
+**Stash your current changes:**
+
+```bash
+git stash
+```
+
+**Switch to the other branch and do what you need:**
+
+```bash
+git checkout <other_branch>
+git pull origin <other_branch>
+```
+
+**Return to your original branch and restore your work:**
+
+```bash
+git checkout <original_branch>
 git stash pop
 ```
 
-</details>
-
-<details>
-<summary><strong>Case B: You committed on main locally (but did NOT push)</strong></summary>
-
-1. **Create a rescue branch at the commit:**
-
-   ```bash
-   git checkout main
-   git branch 4.2.1
-   ```
-
-2. **Reset main back to upstream** (destructive—double check first):
-
-   ```bash
-   git fetch upstream --prune
-   git reset --hard upstream/main
-   ```
-
-3. **Then continue working on `4.2.1`**
-
-</details>
+> **💡 Tip**
+> You can name your stash for easier identification: `git stash push -m "WIP: overtime page skeleton"`. List all stashes with `git stash list`.
 
 ---
 
-## 🤝 Guide for Sponsors / Contributors
+### Case D: VS Code Terminal Showing `sh` Instead of `bash`
 
-> **💡 Who is this for?**  
-> External collaborators contributing via a fork and PR to the owner's canonical repo.
+**Symptom:** Terminal prompt shows `sh-5.3$` and commands like `npm`, `nvm`, or `node` return `command not found`.
 
----
+**Cause:** VS Code is using `sh` (a minimal POSIX shell) as the default terminal profile instead of `bash`. The `sh` shell does not load your `.bashrc`, so NVM and npm are invisible to it.
 
-### 0. What you'll use (apps + shortcuts)
+**Fix (permanent):**
 
-**Apps:**
+1. Press `Ctrl + Shift + P`
+2. Type **Terminal: Select Default Profile**
+3. Select **bash**
+4. Kill the current terminal (`Ctrl + Shift + \``) and open a new one (`Ctrl + \``)
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Git](https://git-scm.com/)
-- GitHub via browser (e.g., [Firefox](https://www.mozilla.org/firefox/))
+**Alternative fix via VS Code settings:**
 
-**Keyboard shortcuts:**
-
-- **Open VS Code Terminal:** <kbd>Ctrl</kbd> + <kbd>`</kbd>
-- **Open VS Code Source Control:** <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>
-
----
-
-### 1. Install and verify Git on Linux Mint XFCE
-
-```bash
-sudo apt update
-sudo apt install -y git
-git --version
-```
-
-> 📚 **Reference:** [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+1. Press `Ctrl + ,` to open Settings
+2. Search for `terminal.integrated.defaultProfile.linux`
+3. Set the value to `bash`
 
 ---
 
-### 2. Configure Git identity
+## 🎫 GitHub Issues & Ticketing
 
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-git config --global init.defaultBranch main
-```
-
-**Verify:**
-
-```bash
-git config --global --list
-```
-
-> 📚 **Reference:** [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+GitHub Issues is the built-in ticketing system for tracking bugs, features, and tasks. Used correctly, it creates a permanent, searchable link between your code and the reason it was written — essential when juggling a full-time job alongside development.
 
 ---
 
-### 3. GitHub authentication on Linux Mint XFCE
+### Ticket Structure
 
-You will authenticate either with:
+A professional ticket uses Markdown headings, backtick-wrapped component names, and interactive task checklists. Copy and adapt this template for every new ticket.
 
-1. **HTTPS** + Personal Access Token (PAT), or
-2. **SSH keys**
+```markdown
+### Subtask Context
 
-> 📚 **References:**
->
-> - [GitHub Docs — Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-> - [GitHub Docs — Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-> - [GitHub Docs — Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+Brief description of what this ticket accomplishes and why it is needed at this stage of development.
 
-> **⚠️ Important clarification about passkeys**
->
-> - **Passkeys** help you sign into GitHub in a **browser**
-> - Terminal Git still needs **HTTPS+PAT** or **SSH**
+### Acceptance Criteria (Tasks)
 
-> 📚 **Reference:** [GitHub Docs — About passkeys](https://docs.github.com/en/authentication/authenticating-with-a-passkey/about-passkeys)
+- [ ] Scaffold `<ComponentName>` and link it to the parent view.
+- [ ] Add `.className` to the correct wrapper element.
+- [ ] Verify the component renders without console errors.
+- [ ] Link all sub-components into the parent view.
+
+### Technical Notes
+
+- Focus on structure and layout first. Ignore styling until the skeleton renders cleanly.
+- Reference the Grid and Flexbox structure established in the previous branch.
+- Refining and polish will be done when the project is fully ready for release.
+```
+
+**Before submitting, fill in the sidebar:**
+
+| Field         | What to set                                                                 |
+| :------------ | :-------------------------------------------------------------------------- |
+| **Assignees** | Assign yourself                                                             |
+| **Labels**    | `enhancement`, `frontend`, `high-priority` (create custom labels as needed) |
+| **Milestone** | The relevant version milestone (e.g., `v4.5 — Desktop Foundations`)         |
+| **Project**   | Your Kanban board (e.g., `Core App Development`)                            |
 
 ---
 
-### 4. Fork the repository on GitHub (web)
+### Linking Tickets to Branches
 
-1. Open the **owner's repo** in your browser ([Firefox](https://www.mozilla.org/firefox/))
-2. Click **Fork**
-3. Fork into **your account**
+Once a ticket is created, GitHub assigns it a number (e.g., `#5`). Create a dedicated branch for that ticket so the work is traceable:
+
+```bash
+git checkout -b feature/issue-5-overtime-skeleton
+git push -u origin feature/issue-5-overtime-skeleton
+```
+
+When committing, reference the issue number in your commit message. GitHub will automatically close the ticket when this branch is merged into `main`:
+
+```bash
+git commit -m "Fixes #5: Scaffold Overtime page skeleton and link sub-components"
+```
+
+> **💡 Why this matters**
+> Six months from now, when you are debugging a regression, you will be able to look at any commit and immediately know which ticket it belongs to, what the acceptance criteria were, and what the technical reasoning was. This is the difference between a professional codebase and a personal project.
 
 ---
 
-### 5. Clone your fork locally (terminal)
+## 📂 Project Status Log
 
-```bash
-mkdir -p ~/Develop
-cd ~/Develop
-```
-
-**Clone (choose one):**
-
-<details>
-<summary><strong>SSH</strong></summary>
-
-```bash
-git clone git@github.com:YOUR-USERNAME/YOUR-FORK-REPO.git
-cd YOUR-FORK-REPO
-```
-
-</details>
-
-<details>
-<summary><strong>HTTPS</strong></summary>
-
-```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-FORK-REPO.git
-cd YOUR-FORK-REPO
-```
-
-</details>
+| Version   | Status      | Focus Area                            | Archive Reference |
+| :-------- | :---------- | :------------------------------------ | :---------------- |
+| **v4.02** | ✅ Released | Desktop UI, Testing, Refactoring      | `tag: v4.02`      |
+| **v4.03** | ✅ Released | Desktop Stable (renamed from v4.3)    | `tag: v4.03`      |
+| **v4.04** | ✅ Released | Synced, Cleaned, Most Complete Build  | `tag: v4.04`      |
+| **v4.5**  | 🚧 Active   | Folder Structure, Mobile Optimization | _Current HEAD_    |
 
 ---
 
-### 6. Add upstream (the owner's canonical repo) + disable upstream push
+## 📚 References
 
-**Add upstream:**
-
-```bash
-git remote add upstream https://github.com/OWNER/CANONICAL-REPO.git
-git remote -v
-```
-
-**Disable pushing to upstream** (critical safeguard):
-
-```bash
-git remote set-url --push upstream DISABLED
-git remote -v
-```
-
----
-
-### 7. Sync safely (Fork → Sync) BEFORE you branch
-
-**Fetch upstream:**
-
-```bash
-git fetch upstream --prune
-```
-
-**Update your local main safely:**
-
-```bash
-git checkout main
-git merge --ff-only upstream/main
-```
-
-**Update your fork main safely:**
-
-```bash
-git push origin main
-```
-
-> **⚠️ Warning**  
-> If any of these fail with "non-fast-forward" or "diverged", **STOP** and ask the repository owner what the preferred sync strategy is. **Do not force push.**
-
----
-
-### 8. Create your feature branch (example: 4.2.1) and switch to it
-
-```bash
-git checkout -b 4.2.1
-git branch --show-current
-```
-
-<details>
-<summary><strong>✅ Expected output</strong></summary>
-
-```
-4.2.1
-```
-
-</details>
-
----
-
-### 9. Work, commit, and push ONLY your feature branch
-
-**Pre-flight checks before committing:**
-
-```bash
-git status
-git branch --show-current
-```
-
-**Commit:**
-
-```bash
-git add -A
-git commit -m "Your change description"
-```
-
-**Push to your fork:**
-
-```bash
-git push -u origin HEAD
-```
-
----
-
-### 10. Open a Pull Request (web)
-
-On GitHub in your browser ([Firefox](https://www.mozilla.org/firefox/)):
-
-1. Go to your **fork repo page**
-2. Click **Compare & pull request**
-3. Confirm **base** is the owner's **canonical repo main**
-4. **Submit the PR**
-
----
-
-### 11. Contributor safety checklist (do this every time)
-
-**Before you commit:**
-
-```bash
-git branch --show-current  # → must NOT be main / master
-git status                 # → understand what will be committed
-```
-
-**Before you push:**
-
-```bash
-git remote -v              # → confirm origin is your fork
-```
-
-Push only with:
-
-```bash
-git push -u origin HEAD    # explicit and safe
-```
-
-> **💡 Optional Enhancement**  
-> Add `.git/hooks/pre-commit` hook to refuse commits on protected branches (same as owner section)
-
----
-
-## 📚 References (Primary)
-
-| Topic                      | Documentation Link                                                                                                                                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Git Setup**              | [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)                                                                                                                 |
-| **Personal Access Tokens** | [GitHub Docs — Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)                                |
-| **SSH Connection**         | [GitHub Docs — Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)                                                                                   |
-| **Generate SSH Key**       | [GitHub Docs — Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) |
-| **Add SSH Key to GitHub**  | [GitHub Docs — Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)                         |
-| **Passkeys**               | [GitHub Docs — About passkeys](https://docs.github.com/en/authentication/authenticating-with-a-passkey/about-passkeys)                                                                                   |
-
----
-
-## 📄 License
-
-This documentation is provided as-is for educational and reference purposes.
+| Topic                      | Link                                                                                                                                                                      |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Git Setup**              | [GitHub Docs — Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)                                                                                  |
+| **SSH Keys**               | [GitHub Docs — Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)                                                    |
+| **Generate SSH Key**       | [GitHub Docs — Generating a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) |
+| **Add SSH Key to GitHub**  | [GitHub Docs — Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) |
+| **Personal Access Tokens** | [GitHub Docs — Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) |
+| **GitHub Issues**          | [GitHub Docs — About Issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)                                                               |
+| **Git Tags**               | [Git Docs — Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)                                                                                                   |
+| **NVM**                    | [NVM GitHub Repository](https://github.com/nvm-sh/nvm)                                                                                                                    |
+| **Git Stash**              | [Git Docs — Stashing](https://git-scm.com/docs/git-stash)                                                                                                                 |
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for the Git/GitHub Community**
+**Built and maintained by [TertiusRoach](https://github.com/TertiusRoach)**
 
-⭐ Star this guide if you found it helpful! ⭐
-
-_Last Updated: January 2026_
+_Last Updated: July 2026_
 
 </div>
