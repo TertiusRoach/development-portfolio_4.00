@@ -4,9 +4,10 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
-  /*
   section[class*='foreground'] {
+    background: red;
   }
+  /*
   figure[class*='midground'] {
   }
   */
@@ -21,14 +22,14 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Layers) 🠋|--\\
   //--|🠊 <footer id="components-footer" class="default-footer"> 🠈|--\\
-  /*
   section[class*='foreground'] {
+    background: red;
   }
+  /*
   figure[class*='midground'] {
   }
   */
   div[class*='background'] {
-    background: red;
     footer {
       grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Palettes.$indexLand-darkMode;

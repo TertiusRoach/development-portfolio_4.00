@@ -19,7 +19,7 @@ interface InfoProps {
   };
 }
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -86,7 +86,27 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
     case 'portrait':
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
-          <section className={`${blockName}-foreground`}></section>
+          <section className={`${blockName}-foreground`}>
+            <NavigationDefault
+              //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+                view: 'bot-rig',
+                shade: '~light~',
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
+              }}
+              cases={{
+                tasks: '',
+                image: undefined,
+                view: undefined,
+              }}
+            />
+          </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>
             <footer></footer>
