@@ -57,18 +57,6 @@ nav[class*='default'] {
       z-index: 0;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      li.top-lef {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.top-rig {
-        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.bot-rig {
-        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.bot-lef {
-        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
         repeat(2, 8rem) 1fr repeat(2, 8rem) //--|🠈 rows 🠈|--//
@@ -90,6 +78,19 @@ nav[class*='default'] {
         grid-template: //--|🠋 Width: 640px 🠋|--\\
           repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
           / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+      }
+
+      li.top-lef {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.top-rig {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-rig {
+        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-lef {
+        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }
@@ -117,54 +118,44 @@ nav[class*='default'] {
         4rem 1fr 4rem //--|🠈 rows 🠈|--//
         / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
     }
-
     ol[class*='hori-X'] {
       z-index: 1;
+      background: darkgreen;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
         12rem 1fr 12rem //--|🠈 rows 🠈|--//
-        / repeat(2, 12rem) 1fr repeat(2, 12rem); //--|🠈 columns 🠈|--\\
+        / repeat(2, 6rem) 1fr repeat(2, 6rem); //--|🠈 columns 🠈|--\\
       @media screen and (max-width: 768px) {
         //--|🠊 48px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 1366px 🠋|--\\
           10rem 1fr 10rem //--|🠈 rows 🠈|--//
-          / repeat(2, 10rem) 1fr repeat(2, 10rem); //--|🠈 columns 🠈|--\\
+          / repeat(2, 5rem) 1fr repeat(2, 5rem); //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 480px) {
         //--|🠊 32px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 854px 🠋|--\\
           6rem 1fr 6rem //--|🠈 rows 🠈|--//
-          / repeat(2, 6rem) 1fr repeat(2, 6rem); //--|🠈 columns 🠈|--\\
+          / repeat(2, 3rem) 1fr repeat(2, 3rem); //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 360px) {
         //--|🠊 24px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 640px 🠋|--\\
           4rem 1fr 4rem //--|🠈 rows 🠈|--//
-          / repeat(2, 4rem) 1fr repeat(2, 4rem); //--|🠈 columns 🠈|--\\
+          / repeat(2, 2rem) 1fr repeat(2, 2rem); //--|🠈 columns 🠈|--\\
       }
     }
     ul[class*='vert-Y'] {
       z-index: 0;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      li.top-lef {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.top-rig {
-        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.bot-rig {
-        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      li.bot-lef {
-        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
+      background: darkblue;
+
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
-        12rem 1fr 12rem //--|🠈 rows 🠈|--//
-        / repeat(2, 12rem) 1fr repeat(2, 12rem); //--|🠈 columns 🠈|--\\
+        repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
+        / 12rem 1fr 12rem; //--|🠈 columns 🠈|--\\
       @media screen and (max-width: 768px) {
         //--|🠊 48px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 1366px 🠋|--\\
@@ -182,6 +173,19 @@ nav[class*='default'] {
         grid-template: //--|🠋 Height: 640px 🠋|--\\
           repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
           / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+      }
+
+      li.top-lef {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.top-rig {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-rig {
+        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      li.bot-lef {
+        grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }

@@ -5,12 +5,18 @@
   @include desk-flex; //--|🠈 Desktop (Flex) 🠈|--\\
   @include desk-edge; //--|🠈 Desktop (Edge) 🠈|--\\
 }
+@mixin mobile-layout {
+  @include mobi-grid; //--|🠈 Mobile (Grid) 🠈|--\\
+  @include mobi-flex; //--|🠈 Mobile (Flex) 🠈|--\\
+  @include mobi-edge; //--|🠈 Mobile (Edge) 🠈|--\\
+}
+//--|===|--\\
 @mixin desk-grid {
   display: grid;
   &[class*='routing'] {
     div {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
       overflow: hidden;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 1 / 4 / 4;
       span {
         cursor: pointer;
@@ -32,7 +38,6 @@
       }
     }
   }
-
   &[class*='one_'] {
     .fore {
       grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
@@ -48,6 +53,49 @@
     }
   }
 }
+@mixin mobi-grid {
+  display: grid;
+  &[class*='routing'] {
+    div {
+      overflow: hidden;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 1 / 1 / 4 / 4;
+      span {
+        cursor: pointer;
+        grid-area: 2 / 2 / 3 / 3;
+      }
+      &.fore {
+        z-index: 2;
+        span {
+          mask-size: contain;
+          mask-position: center;
+          mask-repeat: no-repeat;
+        }
+      }
+      &.mid {
+        z-index: 1;
+      }
+      &.back {
+        z-index: 0;
+      }
+    }
+  }
+  &[class*='one_'] {
+    .fore {
+      grid-template: 1fr auto 1fr / 1fr 144px 1fr; //--|🠊 rows / cols 🠈|--\\
+      @media screen and (max-width: 768px) {
+        grid-template: 1fr auto 1fr / 1fr 120px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 480px) {
+        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+    }
+  }
+}
+//--|===|--\\
 @mixin desk-flex {
   &[class*='one_'] {
     width: 128px;
@@ -92,12 +140,60 @@
   &[class*='par_'] {
   }
 }
-@mixin desk-edge {
-  .fore,
-  .mid,
-  .back {
-    border-radius: inherit;
+@mixin mobi-flex {
+  .fore {
+    span {
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
   }
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='one_'] {
+    width: 192px;
+    height: 192px;
+    .fore {
+      span {
+        width: 144px;
+        height: 144px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 160px;
+      height: 160px;
+      .fore {
+        span {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px;
+      height: 96px;
+      .fore {
+        span {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px;
+      height: 64px;
+      .fore {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+  &[class*='par_'] {
+  }
+}
+//--|===|--\\
+@mixin desk-edge {
   //--|🠊 <Top> 🠈|--\\
   &[class*='_tl_'] {
     border-bottom-right-radius: 64px;
@@ -312,89 +408,14 @@
       border-top-left-radius: 24px;
     }
   }
-}
 
-//--|===|--\\
-@mixin mobile-layout {
-  @include mobi-grid; //--|🠈 Mobile (Grid) 🠈|--\\
-  @include mobi-flex; //--|🠈 Mobile (Flex) 🠈|--\\
-  @include mobi-edge; //--|🠈 Mobile (Edge) 🠈|--\\
-}
-@mixin mobi-grid {
-  &[class*='routing'] {
-    div {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      overflow: hidden;
-      grid-area: 1 / 1 / 4 / 4;
-      span {
-        grid-area: 2 / 2 / 3 / 3;
-      }
-      &.fore {
-        span {
-          mask-size: contain;
-          mask-position: center;
-          mask-repeat: no-repeat;
-        }
-      }
-    }
-  }
-}
-@mixin mobi-flex {
-  .fore {
-    span {
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-    }
-  }
-  //--|🠋 Mobile (Size) 🠋|--\\
-  &[class*='one_'] {
-    width: 192px;
-    height: 192px;
-    .fore {
-      span {
-        width: 144px;
-        height: 144px;
-      }
-    }
-    @media screen and (max-width: 768px) {
-      width: 160px;
-      height: 160px;
-      .fore {
-        span {
-          width: 120px;
-          height: 120px;
-        }
-      }
-    }
-    @media screen and (max-width: 480px) {
-      width: 96px;
-      height: 96px;
-      .fore {
-        span {
-          width: 72px;
-          height: 72px;
-        }
-      }
-    }
-    @media screen and (max-width: 360px) {
-      width: 64px;
-      height: 64px;
-      .fore {
-        span {
-          width: 48px;
-          height: 48px;
-        }
-      }
-    }
-  }
-}
-@mixin mobi-edge {
   .fore,
   .mid,
   .back {
     border-radius: inherit;
   }
+}
+@mixin mobi-edge {
   //--|🠊 <Top> 🠈|--\\
   &[class*='_tl_'] {
     border-bottom-right-radius: 96px;
@@ -609,6 +630,10 @@
       border-top-left-radius: 32px;
     }
   }
-}
 
-//--|===|--\\
+  .fore,
+  .mid,
+  .back {
+    border-radius: inherit;
+  }
+}

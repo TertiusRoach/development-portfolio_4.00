@@ -35,6 +35,33 @@
 }
 @mixin mobile-colors {
   //--|🠋 Mobile (Colors) 🠋|--\\
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include tur-tint();
+  .fore {
+    span {
+      transition: background 250ms ease-in-out;
+    }
+  }
+  .mid {
+    transition: border-color 500ms ease-in-out;
+  }
+  .back {
+    transition: background 750ms ease-in-out;
+  }
+  &:hover {
+    @include mon-fade();
+    @include red-fade();
+    @include gre-fade();
+    @include blu-fade();
+    @include yel-fade();
+    @include pur-fade();
+    @include tur-fade();
+  }
 }
 
 @mixin mon-tint {
