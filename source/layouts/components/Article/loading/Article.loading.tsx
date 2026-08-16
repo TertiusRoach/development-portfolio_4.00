@@ -4,7 +4,9 @@ import './Article.loading.scss';
 
 //--|🠋 Functions 🠋|--\\
 import loadImage from './Article_loading';
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
+import loadAsset from '../../../scripts/archive';
+
+import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 
@@ -32,6 +34,8 @@ const ArticleLoading: React.FC<TheseProps> = ({ info, style, cases }) => {
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
+
+  loadAsset('-gif-', '/signature/1280x720%2C%2015fps/signature-light.gif');
 
   return (
     <article className={`${info.labelName}-${info.blockName}_loading-default`}>

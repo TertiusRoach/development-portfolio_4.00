@@ -18,8 +18,6 @@ interface InfoProps {
   };
 }
 const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'visible' | 'loading' | 'updates' | 'hidden' | 'visible' = 'loading';
-
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
@@ -29,6 +27,8 @@ const ArchiveOverlay: React.FC<InfoProps> = ({ info }) => {
       hideOverlay(pageName, blockName);
     }, 3000);
   }, [pageName, blockName]);
+
+  let stateName: 'visible' | 'loading' | 'updates' | 'hidden' | 'visible' = 'loading';
 
   return (
     <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>

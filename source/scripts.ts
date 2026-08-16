@@ -1,32 +1,5 @@
 //--|🠊 scripts.ts 🠈|--\\
-//--|🠋 Page Views 🠋|--\\
-function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
-  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
-
-  console.log(activePage.classList[1], sleepingPage.classList[1]);
-
-  activePage.classList.replace('active', 'asleep');
-  sleepingPage.classList.replace('asleep', 'active');
-}
-
-//--|🠋 Default Functions 🠋|--\\
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
-  switch (wrapType) {
-    case '[]':
-      return thisText.replace(/[\[\]]/g, '');
-    case '<>':
-      return thisText.replace(/[<>]/g, '');
-    case '()':
-      return thisText.replace(/[()]/g, '');
-    case '{}':
-      return thisText.replace(/[{}]/g, '');
-    case '--':
-      return thisText.replace(/[--]/g, '');
-    case '~~':
-      return thisText.replace(/[~~]/g, '');
-  }
-}
+//--|🠋 Utility Functions 🠋|--\\
 export function arabicToRoman(arabicNumeral: number): string {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
@@ -705,5 +678,39 @@ export function romanToArabic(romanNumeral: string): number {
       return 0;
   }
 }
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
+  switch (wrapType) {
+    case '[]':
+      //--|🠊 Associated with [pageName] 🠈|--\\
+      return thisText.replace(/[\[\]]/g, '');
+    case '<>':
+      //--|🠊 Associated with <blockName> 🠈|--\\
+      //--|🠊 Associated with <style.size> 🠈|--\\
+      return thisText.replace(/[<>]/g, '');
+    case '()':
+      //--|🠊 Associated with (labelName) 🠈|--\\
+      //--|🠊 Associated with (style.color), (style.role) 🠈|--\\
+      return thisText.replace(/[()]/g, '');
+    case '{}':
+      //--|🠊 Associated with {style.type} 🠈|--\\
+      return thisText.replace(/[{}]/g, '');
+    case '--':
+      //--|🠊 Associated with -style.view- 🠈|--\\
+      return thisText.replace(/[--]/g, '');
+    case '~~':
+      //--|🠊 Associated with ~style.shade~ 🠈|--\\
+      return thisText.replace(/[~~]/g, '');
+  }
+}
 
+//--|🠋 View Pages 🠋|--\\
+function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
+  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
+
+  console.log(activePage.classList[1], sleepingPage.classList[1]);
+
+  activePage.classList.replace('active', 'asleep');
+  sleepingPage.classList.replace('asleep', 'active');
+}
 export default togglePages;
