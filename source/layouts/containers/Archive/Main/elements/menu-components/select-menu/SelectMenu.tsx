@@ -1,10 +1,12 @@
 //--|🠊 SelectMenu.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
 import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
+import loadAsset from '../../../../../../scripts/archive';
 import { stripBrackets } from '../../../../../../../scripts';
 import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
@@ -24,20 +26,18 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c4b15354f49365eb0328a4036df8612eff1e8b64';
   let view: Array<{ labelName: string; imageLink: string }> = [
     {
       labelName: 'overtime',
-      imageLink: `${link}/source/assets/svg-files/archive-images/trinity-apps/track-a-day/primary-medium.svg` as string,
+      imageLink: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
     },
     {
       labelName: 'ticketing',
-      imageLink: `${link}/source/assets/svg-files/archive-images/trinity-apps/log-a-ticket/primary-medium.svg` as string,
+      imageLink: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium') as string,
     },
     {
       labelName: 'hyperlink',
-      imageLink: `${link}/source/assets/svg-files/archive-images/trinity-apps/find-a-link/primary-medium.svg` as string,
+      imageLink: loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium') as string,
     },
   ];
   return (

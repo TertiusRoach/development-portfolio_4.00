@@ -57,8 +57,6 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="select-menu"> 🠈|--\\
-  display: none !important;
-
   %mark-area-mobi {
     .top-cen {
       grid-area: 3 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

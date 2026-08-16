@@ -4,8 +4,12 @@
 @use './default-table/DefaultTable.scss';
 
 section[class*='table'] {
-  div[class*='main_container'] {
+  div.table-main_container {
     aside[class*='default'] {
+      width: 100vw;
+      height: 100svh;
+      flex: 0 0 100vw;
+      min-width: 100vw;
       @media screen and (orientation: landscape) {
         @include DefaultTable.desktop-landscape;
       }

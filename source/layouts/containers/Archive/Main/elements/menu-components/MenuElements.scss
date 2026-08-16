@@ -7,10 +7,11 @@
 section[class*='menu-main'] {
   div.menu-main_container {
     aside[class*='menu'] {
+      width: 100vw;
+      height: 100svh;
+      flex: 0 0 100vw;
+      min-width: 100vw;
       @media screen and (orientation: landscape) {
-        width: 100vw;
-        flex: 0 0 100vw;
-        min-width: 100vw;
         &[class*='select'] {
           @include SelectMenu.desktop-landscape;
         }
@@ -19,9 +20,6 @@ section[class*='menu-main'] {
         }
       }
       @media screen and (orientation: portrait) {
-        width: 100vw;
-        flex: 0 0 100vw;
-        min-width: 100vw;
         &[class*='select'] {
           @include SelectMenu.mobile-portrait;
         }
