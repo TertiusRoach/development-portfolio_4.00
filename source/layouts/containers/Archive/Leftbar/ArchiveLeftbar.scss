@@ -17,8 +17,10 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Leftbar) 🠋|--\\
   //--|🠊 <aside id="components-leftbar" class="default-leftbar"> 🠈|--\\
-  display: none !important;
   section[class*='foreground'] {
+    menu[class*='select'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }

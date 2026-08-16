@@ -43,6 +43,20 @@
     display: flex;
     overflow-y: auto;
     overflow-x: hidden;
+    width: 128px; //--|🠈 128px for Squares 🠈|--\\
+    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+    @media screen and (max-height: 768px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px; //--|🠈 48px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+    }
     &[class*='lef'] {
       direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
       align-items: flex-start;
@@ -108,20 +122,6 @@
           }
         }
       }
-    }
-    width: 128px; //--|🠈 128px for Squares 🠈|--\\
-    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-    @media screen and (max-height: 768px) {
-      width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-    }
-    @media screen and (max-height: 480px) {
-      width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-    }
-    @media screen and (max-height: 360px) {
-      width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
     }
   }
 }
@@ -134,30 +134,30 @@
       li[class*='showing-horizontal'] {
         display: flex;
         justify-content: space-around;
-        margin: 0 128px; //--|🠈 128px for Squares 🠈|--\\
+        margin: 0 192px; //--|🠈 192px for Squares 🠈|--\\
         div[class*='view'] {
-          width: 128px;
-          height: 128px;
+          width: 192px;
+          height: 192px;
         }
-        @media screen and (max-height: 768px) {
+        @media screen and (max-width: 768px) {
+          margin: 0 160px; //--|🠈 160px for Squares 🠈|--\\
+          div[class*='view'] {
+            width: 160px;
+            height: 160px;
+          }
+        }
+        @media screen and (max-width: 480px) {
           margin: 0 96px; //--|🠈 96px for Squares 🠈|--\\
           div[class*='view'] {
             width: 96px;
             height: 96px;
           }
         }
-        @media screen and (max-height: 480px) {
+        @media screen and (max-width: 360px) {
           margin: 0 64px; //--|🠈 64px for Squares 🠈|--\\
           div[class*='view'] {
             width: 64px;
             height: 64px;
-          }
-        }
-        @media screen and (max-height: 360px) {
-          margin: 0 48px; //--|🠈 48px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 48px;
-            height: 48px;
           }
         }
       }
@@ -169,6 +169,20 @@
     display: flex;
     overflow-y: auto;
     overflow-x: hidden;
+    width: 192px; //--|🠈 192px for Squares 🠈|--\\
+    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+    @media screen and (max-width: 768px) {
+      width: 160px; //--|🠈 160px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+    }
     &[class*='lef'] {
       direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
       align-items: flex-start;
@@ -177,15 +191,15 @@
           position: relative;
           transition: left 250ms ease-in-out;
           &[class*='downplay'] {
-            left: -128px;
-            @media screen and (max-height: 768px) {
+            left: -192px;
+            @media screen and (max-width: 768px) {
+              left: -160px;
+            }
+            @media screen and (max-width: 480px) {
               left: -96px;
             }
-            @media screen and (max-height: 480px) {
+            @media screen and (max-width: 360px) {
               left: -64px;
-            }
-            @media screen and (max-height: 360px) {
-              left: -48px;
             }
           }
           &[class*='highlight'] {
@@ -202,15 +216,15 @@
           position: relative;
           transition: right 250ms ease-in-out;
           &[class*='downplay'] {
-            right: -128px;
-            @media screen and (max-height: 768px) {
+            right: -192px;
+            @media screen and (max-width: 768px) {
+              right: -160px;
+            }
+            @media screen and (max-width: 480px) {
               right: -96px;
             }
-            @media screen and (max-height: 480px) {
+            @media screen and (max-width: 360px) {
               right: -64px;
-            }
-            @media screen and (max-height: 360px) {
-              right: -48px;
             }
           }
           &[class*='highlight'] {
@@ -234,20 +248,6 @@
           }
         }
       }
-    }
-    width: 128px; //--|🠈 128px for Squares 🠈|--\\
-    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-    @media screen and (max-height: 768px) {
-      width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-    }
-    @media screen and (max-height: 480px) {
-      width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-    }
-    @media screen and (max-height: 360px) {
-      width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
     }
   }
 }
