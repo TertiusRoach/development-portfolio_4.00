@@ -18,8 +18,11 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="updates-article"> 🠈|--\\
-  display: none !important;
+  // display: none !important;
   section[class*='foreground'] {
+    article[class*='updates'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }
