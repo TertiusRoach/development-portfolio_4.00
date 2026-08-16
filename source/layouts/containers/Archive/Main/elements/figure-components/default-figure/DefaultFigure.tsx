@@ -21,7 +21,7 @@ const DefaultFigure: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as 'default';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
+    <aside className="default-figure">
       <section className={`${blockName}-foreground`}>
         <h1 className="display-1">{`<DefaultFigure>`}</h1>
       </section>

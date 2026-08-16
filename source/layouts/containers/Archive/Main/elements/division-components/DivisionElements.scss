@@ -5,8 +5,12 @@
 
 section[class*='division-main'] {
   div.division-main_container {
-    @media screen and (orientation: landscape) {
-      aside[class*='division'] {
+    aside[class*='division'] {
+      width: 100vw;
+      height: 100svh;
+      flex: 0 0 100vw;
+      min-width: 100vw;
+      @media screen and (orientation: landscape) {
         &[class*='default'] {
           @include DefaultDivision.desktop-landscape;
         }
@@ -15,10 +19,15 @@ section[class*='division-main'] {
         &[class*='squaring'] {
         }
       }
-    }
-    @media screen and (orientation: portrait) {
-      // display: none !important;
-      @include DefaultDivision.mobile-portrait;
+      @media screen and (orientation: portrait) {
+        &[class*='default'] {
+          @include DefaultDivision.mobile-portrait;
+        }
+        &[class*='carousel'] {
+        }
+        &[class*='squaring'] {
+        }
+      }
     }
   }
 }

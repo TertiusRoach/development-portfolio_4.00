@@ -21,7 +21,6 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-figure"> 🠈|--\\
-  display: none !important;
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

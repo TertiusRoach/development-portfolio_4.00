@@ -4,13 +4,21 @@
 @use './default-figure/DefaultFigure.scss';
 
 section[class*='figure'] {
-  div[class*='main_container'] {
-    aside[class*='default'] {
+  div.figure-main_container {
+    aside[class*='figure'] {
+      width: 100vw;
+      height: 100svh;
+      flex: 0 0 100vw;
+      min-width: 100vw;
       @media screen and (orientation: landscape) {
-        @include DefaultFigure.desktop-landscape;
+        &[class*='default'] {
+          @include DefaultFigure.desktop-landscape;
+        }
       }
       @media screen and (orientation: portrait) {
-        @include DefaultFigure.mobile-portrait;
+        &[class*='default'] {
+          @include DefaultFigure.mobile-portrait;
+        }
       }
     }
   }
