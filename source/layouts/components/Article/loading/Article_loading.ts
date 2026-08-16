@@ -1,25 +1,19 @@
 //--|🠊 Article_loading.ts 🠈|--\\
+import loadAsset from '../../../scripts/archive';
 
-function loadImage(shade: '~dark~' | '~light~', apps: '{signature}' | '{tralogfin}'): string {
-  const gifLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files';
-
-  const gifPath: Record<'{signature}' | '{tralogfin}', [string, string]> = {
-    '{signature}': [
-      `${gifLink}/signature/1280x720%2C%2015fps/signature-dark.gif`,
-      `${gifLink}/signature/1280x720%2C%2015fps/signature-light.gif`,
-    ],
-    '{tralogfin}': [
-      `${gifLink}/trinity-apps/3840x2160%2C 25fps/3840x2160%2C 25fps_black.gif`,
-      `${gifLink}/trinity-apps/3840x2160%2C 25fps/3840x2160%2C 25fps_white.gif`,
-    ],
+function loadShade(apps: '{signature}' | '{tralogfin}', shade: '~dark~' | '~light~'): string {
+  const typeName = '-gif-';
+  const pathName = {
+    '{signature}': {
+      '~dark~': '/signature/1280x720%2C%2015fps/signature-dark',
+      '~light~': '/signature/1280x720%2C%2015fps/signature-light',
+    },
+    '{tralogfin}': {
+      '~dark~': '/trinity-apps/1280x720%2C 15fps/1280x720%2C 15fps_black',
+      '~light~': '/trinity-apps/1280x720%2C 15fps/1280x720%2C 15fps_white',
+    },
   };
 
-  const shadeImage: Record<'~dark~' | '~light~', 0 | 1> = {
-    '~dark~': 0,
-    '~light~': 1,
-  };
-
-  return gifPath[apps][shadeImage[shade]] as string;
+  return loadAsset(typeName, pathName[apps][shade]) as string;
 }
-export default loadImage;
+export default loadShade;

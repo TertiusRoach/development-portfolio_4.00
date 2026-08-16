@@ -3,9 +3,7 @@
 import './Article.loading.scss';
 
 //--|🠋 Functions 🠋|--\\
-import loadImage from './Article_loading';
-import loadAsset from '../../../scripts/archive';
-
+import loadShade from './Article_loading';
 import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
@@ -19,7 +17,6 @@ interface TheseProps {
     blockName: string;
     labelName: string;
   };
-
   style: {
     shade: '~dark~' | '~light~';
   };
@@ -35,13 +32,11 @@ const ArticleLoading: React.FC<TheseProps> = ({ info, style, cases }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  loadAsset('-gif-', '/signature/1280x720%2C%2015fps/signature-light.gif');
-
   return (
     <article className={`${info.labelName}-${info.blockName}_loading-default`}>
       <img
         alt="article-loading"
-        src={loadImage(style.shade, cases.apps)}
+        src={loadShade(cases.apps, style.shade)}
         className={`${stripBrackets(style.shade, '~~')}`}
       />
     </article>
