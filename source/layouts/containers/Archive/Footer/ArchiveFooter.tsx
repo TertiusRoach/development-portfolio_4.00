@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 
@@ -89,7 +88,9 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
           <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}></div>
+          <div className={`${blockName}-background`}>
+            <footer></footer>
+          </div>
         </footer>
       );
   }
