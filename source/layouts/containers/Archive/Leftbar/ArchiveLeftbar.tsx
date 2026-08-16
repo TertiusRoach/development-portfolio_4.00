@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
+import loadAsset from '../../../scripts/archive';
 import { stripBrackets } from '../../../../scripts';
 
 interface InfoProps {
@@ -23,8 +24,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
   useEffect(() => {}, [pageName, blockName]);
 
   let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
-  let linkString: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page';
+
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
@@ -34,44 +34,43 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
             buttons: [
               {
                 labelName: 'article',
-                imageLink: `${linkString}/article-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/article-element') as string,
               },
               {
                 labelName: 'aside',
-                imageLink: `${linkString}/aside-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/aside-element') as string,
               },
               {
                 labelName: 'button',
-                imageLink: `${linkString}/button-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/button-element') as string,
               },
               {
                 labelName: 'division',
-                imageLink: `${linkString}/division-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/division-element') as string,
               },
-
               {
                 labelName: 'figure',
-                imageLink: `${linkString}/figure-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/figure-element') as string,
               },
               {
                 labelName: 'menu',
-                imageLink: `${linkString}/menu-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/menu-element') as string,
               },
               {
                 labelName: 'navigation',
-                imageLink: `${linkString}/navigation-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/navigation-element') as string,
               },
               {
                 labelName: 'section',
-                imageLink: `${linkString}/section-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/section-element') as string,
               },
               {
                 labelName: 'table',
-                imageLink: `${linkString}/table-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/table-element') as string,
               },
               {
                 labelName: 'time',
-                imageLink: `${linkString}/time-element.svg`,
+                imageLink: loadAsset('-svg-', '/project-pages/components-page/time-element') as string,
               },
             ] as Array<{ labelName: string; imageLink: string }>,
           }}
