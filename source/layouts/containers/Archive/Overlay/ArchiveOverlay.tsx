@@ -5,10 +5,10 @@ import { stripBrackets } from '../../../scripts/archive';
 
 //--|🠋 Components 🠋|--\\
 import ArticleLoading from '../../../components/Article/loading/Article.loading';
+import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 interface InfoProps {
   info: {

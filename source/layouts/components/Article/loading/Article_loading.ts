@@ -2,7 +2,7 @@
 
 function loadImage(shade: '~dark~' | '~light~', apps: '{signature}' | '{tralogfin}'): string {
   const gifLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/4.4/source/assets/gif-files';
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files';
 
   const gifPath: Record<'{signature}' | '{tralogfin}', [string, string]> = {
     '{signature}': [

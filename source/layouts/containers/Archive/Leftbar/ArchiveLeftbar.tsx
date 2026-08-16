@@ -22,7 +22,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
   let linkString: string =
     'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/24b7280176ac0d27acb6367eaddac0d187c9afef/source/assets/svg-files/project-pages/components-page';
   return (
