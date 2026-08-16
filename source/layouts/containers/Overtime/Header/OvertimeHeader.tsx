@@ -1,6 +1,6 @@
 //--|🠊 OvertimeHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';

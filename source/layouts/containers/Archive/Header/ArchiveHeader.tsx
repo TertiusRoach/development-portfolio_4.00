@@ -1,6 +1,6 @@
 //--|🠊 ArchiveHeader.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 import {
   unfoldHeader,
   unfoldLeftbar,

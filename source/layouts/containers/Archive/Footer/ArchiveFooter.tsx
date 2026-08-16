@@ -7,8 +7,8 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { togglePages } from '../../../../scripts';
-import { stripBrackets } from '../../../scripts/archive';
+import togglePages, { stripBrackets } from '../../../../scripts';
+// import  from '../../../scripts/archive';
 import { unfoldFooter, squaringFooter } from '../../containers';
 import ButtonRouting from '../../../components/Button/routing/Button.routing';
 import FooterApplications from '../../../components/Footer/applications/Footer.applications';

@@ -1,6 +1,6 @@
 //--|🠊 scripts.ts 🠈|--\\
 //--|🠋 Page Views 🠋|--\\
-export function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
+function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
   const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
   const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
 
@@ -11,7 +11,7 @@ export function togglePages(pageName: string, viewAction: 'overtime' | 'ticketin
 }
 
 //--|🠋 Default Functions 🠋|--\\
-function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
+export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
     case '[]':
       return thisText.replace(/[\[\]]/g, '');
@@ -706,4 +706,4 @@ export function romanToArabic(romanNumeral: string): number {
   }
 }
 
-export default stripBrackets;
+export default togglePages;

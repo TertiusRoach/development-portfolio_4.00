@@ -1,6 +1,6 @@
 //--|🠊 ArchiveRightbar.tsx 🠈|--\\
 import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 
 interface InfoProps {
   info: {

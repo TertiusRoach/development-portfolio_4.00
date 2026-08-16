@@ -1,5 +1,5 @@
 //--|🠊 source/layouts/components/functions.ts 🠈|--\\
-import stripBrackets, { arabicToRoman, romanToArabic } from '../../scripts';
+import { stripBrackets, arabicToRoman, romanToArabic } from '../../scripts';
 //--|🠋 Listeners 🠋|--\\
 function eventListen(selector: string, execution: () => void) {
   //--|🠊 Selector helps find the HTMLElement 🠈|--\\

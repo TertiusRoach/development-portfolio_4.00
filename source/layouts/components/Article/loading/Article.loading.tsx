@@ -4,7 +4,7 @@ import './Article.loading.scss';
 
 //--|🠋 Functions 🠋|--\\
 import loadImage from './Article_loading';
-import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
+import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 

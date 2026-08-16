@@ -1,7 +1,7 @@
 //--|🠊 ArchiveOverlay.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { hideOverlay } from '../../containers';
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import ArticleLoading from '../../../components/Article/loading/Article.loading';

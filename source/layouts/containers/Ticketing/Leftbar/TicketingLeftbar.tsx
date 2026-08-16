@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 
 interface InfoProps {
   info: {

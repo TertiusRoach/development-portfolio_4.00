@@ -1,4 +1,6 @@
-//--|🠊 components.ts 🠈|--\\
+//--|🠊 archive.ts 🠈|--\\
+
+/*
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
   switch (wrapType) {
     case '[]':
@@ -21,3 +23,4 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[--]/g, '');
   }
 }
+*/

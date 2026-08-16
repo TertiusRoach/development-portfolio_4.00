@@ -5,7 +5,7 @@ import './Button.default.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Button_default';
-import stripBrackets, { arabicToRoman, romanToArabic } from '../../../../scripts';
+import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
 
 interface TheseProps {
   info: {

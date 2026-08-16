@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 
 interface InfoProps {
   info: {
