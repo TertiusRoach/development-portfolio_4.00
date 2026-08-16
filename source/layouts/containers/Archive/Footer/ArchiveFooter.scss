@@ -4,10 +4,10 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Layers) 🠋|--\\
+  /*
   section[class*='foreground'] {
     background: red;
   }
-  /*
   figure[class*='midground'] {
   }
   */
@@ -22,10 +22,10 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Layers) 🠋|--\\
   //--|🠊 <footer id="components-footer" class="default-footer"> 🠈|--\\
+  /*
   section[class*='foreground'] {
     background: red;
   }
-  /*
   figure[class*='midground'] {
   }
   */

@@ -120,7 +120,7 @@ nav[class*='default'] {
     }
     ol[class*='hori-X'] {
       z-index: 1;
-      background: darkgreen;
+      background: rgba(darkgreen, 0.25);
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
@@ -150,7 +150,7 @@ nav[class*='default'] {
       z-index: 0;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: darkblue;
+      background: rgba(darkblue, 0.25);
 
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
