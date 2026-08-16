@@ -1,17 +1,16 @@
 //--|🠊 ArchiveFooter.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
-import togglePages, { stripBrackets } from '../../../../scripts';
-// import  from '../../../scripts/archive';
+import loadAsset from '../../../scripts/archive';
+import { stripBrackets, checkScreen } from '../../../../scripts';
 import { unfoldFooter, squaringFooter } from '../../containers';
-import ButtonRouting from '../../../components/Button/routing/Button.routing';
-import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 
 interface InfoProps {
   info: {
@@ -21,63 +20,78 @@ interface InfoProps {
   };
 }
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
-  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
+  let blockName = stripBrackets(info.blockName, '<>') as 'footer';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  let pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
-  let link =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
-  return (
-    <footer
-      id={`${pageName}-${blockName}`}
-      className={`${labelName}-${blockName} ${stateName}`}
-      onMouseEnter={() => {
-        unfoldFooter(pageName, 'hover', blockName);
-      }}
-      onMouseLeave={() => {
-        squaringFooter(pageName, 'exit', blockName);
-      }}
-    >
-      <section className={`${blockName}-foreground`}>
-        <NavigationDefault
-          //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  switch (getOrientation) {
+    case 'landscape':
+      return (
+        <footer
+          id={`${pageName}-${blockName}`}
+          className={`${labelName}-${blockName} ${stateName}`}
+          onMouseEnter={() => {
+            unfoldFooter(pageName, 'hover', blockName);
           }}
-          style={{
-            color: '(mono)',
-            view: 'bot-rig',
-            shade: '~dark~',
-            image: `${link}/source/assets/svg-files/archive-images/trinity-apps/tralogfin/trinity-apps.svg` as string,
+          onMouseLeave={() => {
+            squaringFooter(pageName, 'exit', blockName);
           }}
-          cases={{
-            image: undefined,
-            view: undefined,
-            tasks: '',
-          }}
-        />
-        <FooterApplications
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          cases={{
-            axis: '[x]',
-            apps: '{archive}',
-          }}
-        />
-      </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <footer></footer>
-      </div>
-    </footer>
-  );
+        >
+          <section className={`${blockName}-foreground`}>
+            <NavigationDefault
+              //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+                view: 'bot-rig',
+                shade: '~dark~',
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
+              }}
+              cases={{
+                image: undefined,
+                view: undefined,
+                tasks: '',
+              }}
+            />
+            <FooterApplications
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              cases={{
+                axis: '[x]',
+                apps: '{archive}',
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
+            <footer></footer>
+          </div>
+        </footer>
+      );
+    case 'portrait':
+      return (
+        <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+          <section className={`${blockName}-foreground`}></section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}></div>
+        </footer>
+      );
+  }
 };
 export default ArchiveFooter;

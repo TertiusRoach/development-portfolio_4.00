@@ -1,11 +1,39 @@
 //--|🠊 scripts.ts 🠈|--\\
+
+//--|🠋 View Pages 🠋|--\\
+export type Orientation = 'landscape' | 'portrait';
+export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
+  const mediaQuery = window.matchMedia('(orientation: landscape)');
+
+  const handleOrientationChange = (event: MediaQueryListEvent): void => {
+    onChange(event.matches ? 'landscape' : 'portrait');
+  };
+
+  //--|🠋 Subscribe to orientation changes 🠋|--\\
+  mediaQuery.addEventListener('change', handleOrientationChange);
+
+  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
+  return (): void => {
+    mediaQuery.removeEventListener('change', handleOrientationChange);
+  };
+}
+function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
+  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
+
+  console.log(activePage.classList[1], sleepingPage.classList[1]);
+
+  activePage.classList.replace('active', 'asleep');
+  sleepingPage.classList.replace('asleep', 'active');
+}
+export default togglePages;
+
 //--|🠋 Utility Functions 🠋|--\\
 export function arabicToRoman(arabicNumeral: number): string {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
     case 0:
       return 'O';
-
     case 1:
       return 'I';
     case 2:
@@ -26,7 +54,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'IX';
     case 10:
       return 'X';
-
     case 11:
       return 'XI';
     case 12:
@@ -47,7 +74,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'XIX';
     case 20:
       return 'XX';
-
     case 21:
       return 'XXI';
     case 22:
@@ -68,7 +94,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'XXIX';
     case 30:
       return 'XXX';
-
     case 31:
       return 'XXXI';
     case 32:
@@ -89,7 +114,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'XXXIX';
     case 40:
       return 'XL';
-
     case 41:
       return 'XLI';
     case 42:
@@ -110,7 +134,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'XLIX';
     case 50:
       return 'L';
-
     case 51:
       return 'LI';
     case 52:
@@ -131,7 +154,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'LIX';
     case 60:
       return 'LX';
-
     case 61:
       return 'LXI';
     case 62:
@@ -152,7 +174,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'LXIX';
     case 70:
       return 'LXX';
-
     case 71:
       return 'LXXI';
     case 72:
@@ -173,7 +194,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'LXXIX';
     case 80:
       return 'LXXX';
-
     case 81:
       return 'LXXXI';
     case 82:
@@ -194,7 +214,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'LXXXIX';
     case 90:
       return 'XC';
-
     case 91:
       return 'XCI';
     case 92:
@@ -215,7 +234,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'XCIX';
     case 100:
       return 'C';
-
     case 101:
       return 'CI';
     case 102:
@@ -236,7 +254,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'CIX';
     case 110:
       return 'CX';
-
     case 111:
       return 'CXI';
     case 112:
@@ -257,7 +274,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'CXIX';
     case 120:
       return 'CXX';
-
     case 121:
       return 'CXXI';
     case 122:
@@ -278,7 +294,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'CXXIX';
     case 130:
       return 'CXXX';
-
     case 131:
       return 'CXXXI';
     case 132:
@@ -299,7 +314,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'CXXXIX';
     case 140:
       return 'CXL';
-
     case 141:
       return 'CXLI';
     case 142:
@@ -320,7 +334,6 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'CXLIX';
     case 150:
       return 'CL';
-
     case 151:
       return 'CLI';
     case 152:
@@ -702,15 +715,3 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
-
-//--|🠋 View Pages 🠋|--\\
-function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
-  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
-
-  console.log(activePage.classList[1], sleepingPage.classList[1]);
-
-  activePage.classList.replace('active', 'asleep');
-  sleepingPage.classList.replace('asleep', 'active');
-}
-export default togglePages;
