@@ -169,6 +169,11 @@
       transition: transform 500ms ease-in-out;
       div[class*='container'] {
         display: flex;
+        /*
+        > * {
+          height: 100svh;
+        }
+        */
       }
     }
   }

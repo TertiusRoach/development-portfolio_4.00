@@ -99,17 +99,17 @@
     &:checked + .switch::after {
       transform: translateX(42px);
     }
-    @media screen and (max-height: 768px) {
+    @media screen and (max-width: 768px) {
       &:checked + .switch::after {
         transform: translateX(38px);
       }
     }
-    @media screen and (max-height: 480px) {
+    @media screen and (max-width: 480px) {
       &:checked + .switch::after {
         transform: translateX(23px);
       }
     }
-    @media screen and (max-height: 360px) {
+    @media screen and (max-width: 360px) {
       &:checked + .switch::after {
         transform: translateX(15px);
       }
@@ -142,7 +142,7 @@
       width: 37px;
       height: 37px;
     }
-    @media screen and (max-height: 768px) {
+    @media screen and (max-width: 768px) {
       width: 78px;
       height: 40px;
       border-radius: 20px;
@@ -153,7 +153,7 @@
         height: 34px;
       }
     }
-    @media screen and (max-height: 480px) {
+    @media screen and (max-width: 480px) {
       width: 47px;
       height: 24px;
       border-radius: 12px;
@@ -164,7 +164,7 @@
         height: 20px;
       }
     }
-    @media screen and (max-height: 360px) {
+    @media screen and (max-width: 360px) {
       width: 32px;
       height: 16px;
       border-radius: 8px;

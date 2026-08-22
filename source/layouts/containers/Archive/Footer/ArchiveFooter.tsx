@@ -19,7 +19,7 @@ interface InfoProps {
   };
 }
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
+  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\

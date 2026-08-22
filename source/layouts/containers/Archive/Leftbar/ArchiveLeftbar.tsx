@@ -23,7 +23,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName]);
 
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'unfolded';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
 
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
