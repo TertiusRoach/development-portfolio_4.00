@@ -361,6 +361,7 @@
     }
     div {
       &[class*='toggle'] {
+        z-index: 1;
         grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         label:nth-child(1) {
           grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -373,6 +374,7 @@
         }
       }
       &[class*='default'] {
+        z-index: 0;
         overflow: hidden;
         grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         &[class*='darkside'] {
@@ -381,32 +383,37 @@
           clip-path: inset(calc(-50%) 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
         }
         section[class*='default'] {
-          button {
-            display: none !important;
-          }
-          /*
+          // button {
+          //   display: none !important;
+          // }
           button[class*='_top_'] {
-            grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+            // display: none !important;
+            grid-area: 2 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_bot_'] {
+            display: none !important;
             grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_lef_'] {
+            display: none !important;
             grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_rig_'] {
+            display: none !important;
             grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_cen_'] {
+            display: none !important;
             grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_tex_'] {
+            display: none !important;
             grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
           button[class*='_ico_'] {
+            display: none !important;
             grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
-          */
         }
         &[class*='lightside'] {
           //--|🠊 background: rgba(white, 0.25); 🠈|--\\
@@ -420,7 +427,7 @@
     display: grid;
     div[class*='default'] {
       &[class*='container'] {
-        // display: inherit; //--|🠈 display: grid; 🠈|--\\
+        //--|🠊 display: flex; 🠈|--\\
         section[class*='default-main'] {
           display: grid;
           height: 100svh;
@@ -428,7 +435,6 @@
       }
       &[class*='side-main'] {
         flex-direction: column;
-        //--|🠊 display: flex; 🠈|--\\
       }
     }
     div[class*='toggle'] {

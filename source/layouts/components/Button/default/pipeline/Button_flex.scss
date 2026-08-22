@@ -568,6 +568,13 @@
 }
 @mixin mobile-flex {
   //--|🠋 Mobile (Flex) 🠋|--\\
+  & {
+    div[class='icon'] {
+      display: flex;
+      align-items: center;
+      //--|🠊 justify-content: center; 🠈|--\\
+    }
+  }
   &[class*='_top_'],
   &[class*='_bot_'] {
     &[class*='_def'] {

@@ -50,10 +50,46 @@
 }
 @mixin mobile-move {
   //--|🠋 Mobile (Move) 🠋|--\\
-  &[class*='default']:hover {
-    @include mon-color();
-    //--|🠊 &[class*='default']:focus-visible 🠈|--\\
+  $move-time: 750ms;
+  $move-curve: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform $move-time $move-curve;
+  .text {
+    transition:
+      color $move-time $move-curve,
+      box-shadow $move-time $move-curve,
+      background $move-time $move-curve;
+    * {
+      transition: color $move-time $move-curve;
+    }
   }
+  .icon {
+    transition:
+      filter $move-time $move-curve,
+      background $move-time $move-curve;
+    img {
+      transition:
+        box-shadow $move-time $move-curve,
+        background $move-time $move-curve;
+    }
+  }
+  .back {
+    transition:
+      box-shadow $move-time $move-curve,
+      background $move-time $move-curve;
+  }
+
+  //--|🠊 Glitch Prevention 🠈|--\\
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, filter;
+
+  @include mon-color();
+  @include red-color();
+  @include gre-color();
+  @include blu-color();
+  @include yel-color();
+  @include pur-color();
+  @include tur-color();
 }
 
 @mixin mon-color {

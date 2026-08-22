@@ -40,11 +40,37 @@
 }
 @mixin mobile-tint {
   //--|🠋 Mobile (Tint) 🠋|--\\
-  &[class*='button'] {
-    @include mon-color();
+  @include mon-color();
+  @include red-color();
+  @include gre-color();
+  @include blu-color();
+  @include yel-color();
+  @include pur-color();
+  @include tur-color();
+
+  //--|🠊 Edge Cases 🠈|--\\
+  &[class*='_def'] {
+    .text {
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0),
+        inset 0 -1px 0 rgba(#000, 0);
+    }
+    .icon {
+      color: rgba(gray, 0);
+    }
+  }
+  &[class*='_alt'] {
     &[aria-disabled='true'] {
       opacity: 0.25;
       filter: blur(8px);
+    }
+    &[class*='_lef_'],
+    &[class*='_rig_'] {
+      .icon {
+        img {
+          background: none;
+        }
+      }
     }
   }
 }
