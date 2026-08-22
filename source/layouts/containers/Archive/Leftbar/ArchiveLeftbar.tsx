@@ -30,7 +30,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
       <section className={`${blockName}-foreground`}>
         <MenuSelect
           cases={{
-            show: 1,
+            show: 3,
             buttons: [
               {
                 labelName: 'article',
