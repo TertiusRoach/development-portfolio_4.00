@@ -194,10 +194,6 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-button"> 🠈|--\\
-  /*
-  mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
-  display: none !important;
-  */
   section[class*='foreground'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
@@ -359,66 +355,71 @@
         grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    div {
-      &[class*='toggle'] {
-        z-index: 1;
-        grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        label:nth-child(1) {
-          grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    div[class*='toggle'] {
+      z-index: 1;
+      grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      label:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(2) {
+        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(3) {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    div[class*='carousel'] {
+      z-index: 0;
+      overflow: hidden;
+      grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      &[class*='darkside'] {
+        //--|🠊 background: rgba(black, 0.25); 🠈|--\\
+        clip-path: inset(0 0 50% 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        button[class*='_top_'] {
+          grid-area: 3 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
-        label:nth-child(2) {
-          grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        button[class*='_bot_'] {
+          grid-area: 8 / 2 / 13 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
-        label:nth-child(3) {
-          grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        button[class*='_lef_'] {
+          grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_rig_'] {
+          grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_cen_'] {
+          grid-area: 7 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_tex_'] {
+          grid-area: 9 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_ico_'] {
+          grid-area: 11 / 3 / 13 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
-      &[class*='default'] {
-        z-index: 0;
-        overflow: hidden;
-        grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        &[class*='darkside'] {
-          //--|🠊 background: rgba(black, 0.25); 🠈|--\\
-          background: rgba(black, 0.25);
-          clip-path: inset(calc(-50%) 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      &[class*='lightside'] {
+        //--|🠊 background: rgba(white, 0.25); 🠈|--\\
+        clip-path: inset(50% 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        button[class*='_top_'] {
+          grid-area: 5 / 2 / 10 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
-        section[class*='default'] {
-          // button {
-          //   display: none !important;
-          // }
-          button[class*='_top_'] {
-            // display: none !important;
-            grid-area: 2 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_bot_'] {
-            display: none !important;
-            grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_lef_'] {
-            display: none !important;
-            grid-area: 5 / 2 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_rig_'] {
-            display: none !important;
-            grid-area: 6 / 2 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_cen_'] {
-            display: none !important;
-            grid-area: 7 / 2 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_tex_'] {
-            display: none !important;
-            grid-area: 8 / 2 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          button[class*='_ico_'] {
-            display: none !important;
-            grid-area: 9 / 2 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
+        button[class*='_bot_'] {
+          grid-area: 10 / 2 / 15 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
-        &[class*='lightside'] {
-          //--|🠊 background: rgba(white, 0.25); 🠈|--\\
-          background: rgba(white, 0.25);
-          clip-path: inset(calc(50%) 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        button[class*='_lef_'] {
+          grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_rig_'] {
+          grid-area: 7 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_cen_'] {
+          grid-area: 9 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_tex_'] {
+          grid-area: 11 / 3 / 13 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        button[class*='_ico_'] {
+          grid-area: 13 / 3 / 15 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
     }

@@ -133,31 +133,30 @@
     }
     h2 {
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 775;
     }
     h3 {
       font-size: 28px;
-      font-weight: 600;
+      font-weight: 750;
     }
     h4 {
       font-size: 24px;
-      font-weight: 500;
+      font-weight: 725;
     }
     h5 {
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 700;
     }
     h6 {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 675;
     }
     p {
       font-size: 14px;
-      font-weight: 200;
-
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-weight: 650;
     }
+
+    max-width: 32rem;
     @media screen and (max-width: 768px) {
       max-width: 22rem;
       h1 {

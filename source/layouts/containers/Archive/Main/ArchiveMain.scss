@@ -38,25 +38,25 @@
       section[class*='button'] {
         background: rgba(Palettes.$blue-dark, 0.75);
       }
-      section:nth-child(4) {
+      section[class*='division'] {
         background: rgba(Palettes.$purple-dark, 0.75);
       }
-      section:nth-child(5) {
+      section[class*='figure'] {
         background: rgba(Palettes.$orange-dark, 0.75);
       }
-      section:nth-child(6) {
+      section[class*='menu'] {
         background: rgba(Palettes.$pink-dark, 0.75);
       }
-      section:nth-child(7) {
+      section[class*='navigation'] {
         background: rgba(Palettes.$yellow-dark, 0.75);
       }
-      section:nth-child(8) {
+      section[class*='section'] {
         background: rgba(Palettes.$brown-dark, 0.75);
       }
-      section:nth-child(9) {
+      section[class*='table'] {
         background: rgba(Palettes.$turquoise-dark, 0.75);
       }
-      section:nth-child(10) {
+      section[class*='time'] {
         background: rgba(Palettes.$gray-dark, 0.75);
       }
     }
