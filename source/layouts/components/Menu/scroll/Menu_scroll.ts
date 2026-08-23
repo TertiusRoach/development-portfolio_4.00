@@ -1,4 +1,4 @@
-//--|🠊 Menu_swipe.ts 🠈|--\\
+//--|🠊 Menu_scroll.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { arabicToRoman, romanToArabic } from '../../../../scripts';
 
@@ -26,10 +26,10 @@ export function markCarousel(
       ) as HTMLElement;
       if (horizontalCarousel !== null) {
         const horizontalPreview = document.querySelectorAll(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="preview"] div[class*="view"]`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ul[class="hori-X-scroll"] li[class*="preview"] div[class*="view"]`,
         ) as NodeListOf<HTMLElement>;
         const horizontalShowing = document.querySelector(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="showing"]`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ul[class="hori-X-scroll"] li[class*="showing"]`,
         ) as HTMLElement;
 
         prevView = Array.from(horizontalPreview).find((div) => div.classList.contains('prev-view')) as HTMLElement;
@@ -68,7 +68,7 @@ export function markCarousel(
       ) as HTMLElement;
       if (verticalCarousel !== null) {
         const verticalController = document.querySelectorAll(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ol[class="vert-Y-swipe"] li`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ol[class="vert-Y-scroll"] li`,
         ) as NodeListOf<HTMLElement>;
 
         prevView = Array.from(verticalController).find((li) => li.classList.contains('prev-view')) as HTMLElement;
@@ -126,7 +126,7 @@ export function loadCarousel(
       ) as HTMLElement | null;
       if (horizontalCarousel !== null) {
         const horizontalPreview = document.querySelectorAll(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="preview"] div[class*="view"]`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ul[class="hori-X-scroll"] li[class*="preview"] div[class*="view"]`,
         ) as NodeListOf<HTMLElement>;
 
         prevView = Array.from(horizontalPreview).find((div) => div.classList.contains('prev-view')) as HTMLElement;
@@ -156,7 +156,7 @@ export function loadCarousel(
           prevView.classList.remove('downplay');
         }
         const horizontalShowing = document.querySelector(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ul[class="hori-X-swipe"] li[class*="showing"]`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ul[class="hori-X-scroll"] li[class*="showing"]`,
         ) as HTMLElement;
 
         horizontalShowing.classList.remove(horizontalShowing.classList[0]);
@@ -172,7 +172,7 @@ export function loadCarousel(
           `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"] div[class*="container"]`,
         ) as HTMLElement;
         const verticalController = document.querySelectorAll(
-          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_swipe-default"] ol[class="vert-Y-swipe"] li`,
+          `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"] ol[class="vert-Y-scroll"] li`,
         ) as NodeListOf<HTMLElement>;
 
         prevView = Array.from(verticalController).find((li) => li.classList.contains('prev-view')) as HTMLElement;
@@ -216,7 +216,7 @@ export function loadCarousel(
       }
   }
 }
-export function swipeCarousel(
+export function scrollCarousel(
   pageName: string,
   labelName: string,
   axisStyle: '[x]' | '[y]',
@@ -225,14 +225,14 @@ export function swipeCarousel(
   /*--|🠋
 
   🠉|--*/
-  let swipeCarousel;
+  let scrollCarousel;
   switch (axisStyle) {
     case '[x]':
       const horizontalCarousel = document.querySelector(
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ul[class="hori-X-axis"] li[class*="carousel-horizontal"]`,
       ) as HTMLElement;
       if (horizontalCarousel !== null) {
-        swipeCarousel = swipeWindow(labelName, horizontalCarousel as HTMLElement, buttonAction);
+        scrollCarousel = scrollWindow(labelName, horizontalCarousel as HTMLElement, buttonAction);
       }
       break;
     case '[y]':
@@ -240,14 +240,14 @@ export function swipeCarousel(
         `#${pageName}-main div[class="${labelName}-main_carousel-default"] ol[class="vert-Y-axis"] li[class*="carousel-vertical"]`,
       ) as HTMLElement;
       if (verticalCarousel !== null) {
-        swipeCarousel = swipeWindow(labelName, verticalCarousel as HTMLElement, buttonAction);
+        scrollCarousel = scrollWindow(labelName, verticalCarousel as HTMLElement, buttonAction);
       }
       break;
   }
-  return swipeCarousel as number;
+  return scrollCarousel as number;
 }
 
-const swipeWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction: 'view-prev' | 'view-next') => {
+const scrollWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction: 'view-prev' | 'view-next') => {
   const mainIdentifier: string = mainCarousel.classList[0];
   const mainPosition: string = mainIdentifier.split('_')[1];
 

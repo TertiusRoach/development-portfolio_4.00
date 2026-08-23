@@ -345,14 +345,14 @@
   //--|===|--\\
   %mark-area-mobi {
     menu {
-      display: none;
+      z-index: 2;
       &[class*='darkside'] {
-        background: rgba(darkred, 0.25);
-        grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        // background: rgba(darkred, 0.25);
+        grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='lightside'] {
-        background: rgba(darkblue, 0.25);
-        grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        // background: rgba(darkblue, 0.25);
+        grid-area: 6 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     div[class*='toggle'] {

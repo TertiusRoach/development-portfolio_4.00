@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
+import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
@@ -257,8 +258,8 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       return (
         <aside className="default-button">
           <section className={`${info.blockName}-foreground`}>
-            <MenuSwipe
-              //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
+            <MenuScroll
+              //--|🠊 <menu class="default-darkside-main_scroll-default"/> 🠈|--\\
               info={{
                 labelName: 'default-darkside',
                 blockName: blockName as 'main',
@@ -314,8 +315,8 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               />
             </div>
 
-            <MenuSwipe
-              //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
+            <MenuScroll
+              //--|🠊 <menu class="default-lightside-main_scroll-default"/> 🠈|--\\
               info={{
                 labelName: 'default-lightside',
                 blockName: blockName as 'main',
@@ -327,14 +328,14 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 show: 1,
-                axis: '[y]',
+                axis: '[x]',
                 pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
               }}
             />
             <DivisionCarousel
               //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
               cases={{
-                axis: '[y]',
+                axis: '[x]',
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{

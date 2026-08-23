@@ -1,47 +1,7 @@
 //--|🠊 source/layouts/components/functions.ts 🠈|--\\
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../scripts';
-//--|🠋 Listeners 🠋|--\\
-function eventListen(selector: string, execution: () => void) {
-  //--|🠊 Selector helps find the HTMLElement 🠈|--\\
-  //--|🠊 Execution launches the function on tag change 🠈|--\\
-  let classObserver: MutationObserver | null = null;
-  let domObserver: MutationObserver | null = null;
 
-  const observeElement = (element: HTMLElement): void => {
-    classObserver = new MutationObserver(execution);
-
-    classObserver.observe(element, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-  };
-
-  const findElement = (): HTMLElement | null => document.querySelector(selector);
-  const element = findElement();
-
-  if (element) {
-    observeElement(element);
-  } else {
-    domObserver = new MutationObserver(() => {
-      const found = findElement();
-
-      if (!found) return;
-
-      observeElement(found);
-      domObserver?.disconnect();
-    });
-    domObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  }
-  return () => {
-    classObserver?.disconnect();
-    domObserver?.disconnect();
-  };
-}
-
-//--|🠋 Orientations 🠋|--\\
+//--|🠋 Confirm Resolution 🠋|--\\
 type Orientation = 'landscape' | 'portrait';
 type Bootstrap =
   | string
@@ -53,7 +13,7 @@ type Bootstrap =
   | 'display-6'
   | [string, string];
 
-export const setDis = (): Bootstrap => {
+export const previewBootstrap = (): Bootstrap => {
   const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
   switch (orientation) {
     //--|🠊 Landscape Orientation 🠈|--\\
@@ -134,4 +94,44 @@ export let abbrColor = (color: '(red)' | '(green)' | '(blue)' | '(mono)'): strin
   return `${classColor}`;
 };
 
+//--|🠋 Chain Tags 🠋|--\\
+function eventListen(selector: string, execution: () => void) {
+  //--|🠊 Selector helps find the HTMLElement 🠈|--\\
+  //--|🠊 Execution launches the function on tag change 🠈|--\\
+  let classObserver: MutationObserver | null = null;
+  let domObserver: MutationObserver | null = null;
+
+  const observeElement = (element: HTMLElement): void => {
+    classObserver = new MutationObserver(execution);
+
+    classObserver.observe(element, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  };
+
+  const findElement = (): HTMLElement | null => document.querySelector(selector);
+  const element = findElement();
+
+  if (element) {
+    observeElement(element);
+  } else {
+    domObserver = new MutationObserver(() => {
+      const found = findElement();
+
+      if (!found) return;
+
+      observeElement(found);
+      domObserver?.disconnect();
+    });
+    domObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  }
+  return () => {
+    classObserver?.disconnect();
+    domObserver?.disconnect();
+  };
+}
 export default eventListen; //--|🠈 Allows components to be linked 🠈|--\\

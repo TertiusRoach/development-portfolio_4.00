@@ -1,14 +1,12 @@
-//--|🠊 Menu.swipe.scss 🠈|--\\
-
+//--|🠊 Menu.scroll.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-
-  &:has(ul[class='hori-X-swipe']) {
+  &:has(ul[class='hori-X-scroll']) {
     width: 100%;
-    ul[class='hori-X-swipe'] {
+    ul[class='hori-X-scroll'] {
       position: relative;
       //--|🠋 X-axis 🠋|--\\
-      %flex-size {
+      %flex-size-desk {
         height: 128px; //--|🠈 128px for Squares 🠈|--\\
         margin: 0 128px;
         @media screen and (max-height: 768px) {
@@ -24,7 +22,7 @@
           margin: 0 48px;
         }
       }
-      %flex-view {
+      %flex-view-desk {
         transition: transform 500ms ease-in-out;
         &[class*='horizontal_I'] {
           transform: translateX(0);
@@ -87,7 +85,7 @@
           transform: translateX(-1900%);
         }
       }
-      %grid-size {
+      %grid-size-desk {
         height: 128px; //--|🠈 128px for Squares 🠈|--\\
         grid-template: 128px //--|🠈 rows 🠈|--//
           / 128px 1fr 128px; //--|🠈 columns 🠈|--\\
@@ -110,7 +108,7 @@
       li[class*='preview'] {
         z-index: 1;
         display: grid;
-        @extend %grid-size;
+        @extend %grid-size-desk;
         div[class*='view'] {
           z-index: 1;
           &[class*='prev'] {
@@ -124,8 +122,8 @@
       li[class*='showing'] {
         z-index: 0;
         display: flex;
-        @extend %flex-size;
-        @extend %flex-view;
+        @extend %flex-size-desk;
+        @extend %flex-view-desk;
         aside {
           z-index: 0;
           flex: 0 0 100%;
@@ -160,8 +158,8 @@
       height: 48px;
     }
   }
-  &:has(ol[class='vert-Y-swipe']) {
-    ol[class='vert-Y-swipe'] {
+  &:has(ol[class='vert-Y-scroll']) {
+    ol[class='vert-Y-scroll'] {
       li[class*='showing'] {
         grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -197,11 +195,58 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
-  &:has(ul[class='hori-X-swipe']) {
-  }
-  &:has(ol[class='vert-Y-swipe']) {
-    background: rgba(darkgreen, 0.25);
+  &:has(ul[class='hori-X-scroll']) {
+    ul[class='hori-X-scroll'] {
+      %flex-size-mobi {
+      }
+      %flex-view-mobi {
+      }
+      %grid-size-mobi {
+        background: rgba(darkgreen, 0.25);
+        height: 192px; //--|🠈192px for Squares 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
+          / 192px 1fr 192px; //--|🠈 columns 🠈|--\\
+        @media screen and (max-width: 768px) {
+          height: 160px; //--|🠈 160px for Squares 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
+            / 160px 1fr 160px; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          height: 96px; //--|🠈 96px for Squares 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
+            /96px 1fr 96px; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          height: 64px; //--|🠈 64px for Squares 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
+            / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+        }
+      }
+      li[class*='preview'] {
+        z-index: 1;
+        display: grid;
+        @extend %grid-size-mobi;
+      }
+      li[class*='showing'] {
+        display: none;
+      }
+      li[class*='horizontal'] {
+        // display: none;
+      }
+    }
 
+    height: 192px;
+    @media screen and (max-width: 768px) {
+      height: 160px;
+    }
+    @media screen and (max-width: 480px) {
+      height: 96px;
+    }
+    @media screen and (max-width: 360px) {
+      height: 64px;
+    }
+  }
+  &:has(ol[class='vert-Y-scroll']) {
     @media screen and (max-width: 768px) {
     }
     @media screen and (max-width: 480px) {
@@ -211,14 +256,14 @@
   }
 }
 
-menu[class*='swipe'] {
+menu[class*='scroll'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-  *[class*='swipe'] {
+  *[class*='scroll'] {
     [class*='highlight'],
     [class*='downplay'] {
       transition:

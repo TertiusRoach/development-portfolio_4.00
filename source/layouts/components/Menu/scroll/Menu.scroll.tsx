@@ -1,17 +1,17 @@
-//--|🠊 Menu.swipe.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Menu.swipe.scss';
+//--|🠊 Menu.scroll.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
 import { previewBootstrap } from '../../components';
-import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
+import { loadCarousel, markCarousel, scrollCarousel } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Styles 🠋|--\\
+import './Menu.scroll.scss';
 
 interface TheseProps {
   info: {
@@ -46,7 +46,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   type: '{button}',
                   color: style.color,
                   shade: style.shade,
-                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-left'),
+                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
                 }}
                 info={{
                   pageName: info.pageName,
@@ -54,7 +54,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   /* labelName: info.labelName, */
                 }}
                 onClick={(): void => {
-                  swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
+                  scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
                   markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
                 }}
               />
@@ -67,7 +67,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   type: '{button}',
                   color: style.color,
                   shade: style.shade,
-                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-right'),
+                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
                 }}
                 info={{
                   pageName: info.pageName,
@@ -75,7 +75,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                   /* labelName: info.labelName, */
                 }}
                 onClick={(): void => {
-                  swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
+                  scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
                   markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
                 }}
               />
@@ -122,7 +122,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 type: '{button}',
                 color: style.color,
                 shade: style.shade,
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-left'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
               }}
               info={{
                 pageName: info.pageName,
@@ -130,7 +130,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
+                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
                 markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
               }}
             />
@@ -143,7 +143,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 type: '{button}',
                 color: style.color,
                 shade: style.shade,
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-right'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
               }}
               info={{
                 pageName: info.pageName,
@@ -151,7 +151,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
+                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
                 markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
               }}
             />
@@ -160,7 +160,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
       );
   }
 }
-const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
+const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -171,8 +171,8 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
     '[y]': 'ol',
   };
   const axisClass: Record<TheseProps['cases']['axis'], string> = {
-    '[x]': 'hori-X-swipe',
-    '[y]': 'vert-Y-swipe',
+    '[x]': 'hori-X-scroll',
+    '[y]': 'vert-Y-scroll',
   };
 
   useEffect(() => {
@@ -184,11 +184,11 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
 
   let ListItem = axisList[cases.axis];
   return (
-    <menu className={`${labelName}-${blockName}_swipe-default`}>
+    <menu className={`${labelName}-${blockName}_scroll-default`}>
       <ListItem className={axisClass[cases.axis]}>
         <MenuAxis info={info} style={style} cases={cases} />
       </ListItem>
     </menu>
   );
 };
-export default MenuSwipe;
+export default MenuScroll;
