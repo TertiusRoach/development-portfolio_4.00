@@ -10,6 +10,7 @@ import DivisionCarousel from '../../../../../../components/Division/carousel/Div
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../../../../scripts/archive';
+import { checkScreen } from '../../../../../../../scripts';
 import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
 
 //--|🠋 Styles 🠋|--\\
@@ -137,118 +138,227 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-  const axisCase: Record<'landscape' | 'portrait', string> = {
-    landscape: '[y]',
-    portrait: '[x]',
-  };
 
   let blockName = info.blockName as 'main';
   let labelName = info.labelName as 'default';
   let pageName = info.pageName as 'components';
-  return (
-    <aside className="default-button">
-      <section className={`${info.blockName}-foreground`}>
-        <MenuSwipe
-          //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
-          info={{
-            labelName: 'default-darkside',
-            blockName: blockName as 'main',
-            pageName: pageName as 'components',
-          }}
-          style={{
-            color: '(mono)',
-            shade: '~dark~',
-          }}
-          cases={{
-            show: 1,
-            axis: '[y]',
-            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-        />
-        <DivisionCarousel
-          //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
-          cases={{
-            axis: '[y]',
-            call: ButtonsDarkside as React.ComponentType<InfoProps>,
-          }}
-          info={{
-            labelName: 'default-darkside',
-            blockName: info.blockName as '<main>',
-            pageName: info.pageName as '[components]',
-          }}
-          onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-            if (event.deltaY < 0) {
-              scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
-            } else if (event.deltaY > 0) {
-              scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
-            }
-          }}
-        />
 
-        <div
-          className="toggle-colors"
-          onClick={(event: React.MouseEvent<HTMLElement>): void => {
-            toggleColors(event.currentTarget as HTMLElement);
-          }}
-        >
-          <LabelToggle
-            style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-          />
-          <LabelToggle
-            style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-          />
-          <LabelToggle
-            style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-          />
-        </div>
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
-        <MenuSwipe
-          //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
-          info={{
-            labelName: 'default-lightside',
-            blockName: blockName as 'main',
-            pageName: pageName as 'components',
-          }}
-          style={{
-            color: '(mono)',
-            shade: '~light~',
-          }}
-          cases={{
-            show: 1,
-            axis: '[y]',
-            pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
-          }}
-        />
-        <DivisionCarousel
-          //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
-          cases={{
-            axis: '[y]',
-            call: ButtonsLightside as React.ComponentType<InfoProps>,
-          }}
-          info={{
-            labelName: 'default-lightside',
-            blockName: info.blockName as '<main>',
-            pageName: info.pageName as '[components]',
-          }}
-          onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-            if (event.deltaY < 0) {
-              scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
-            } else if (event.deltaY > 0) {
-              scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
-            }
-          }}
-        />
-      </section>
-      <figure className={`${info.blockName}-midground`}></figure>
-      <div className={`${info.blockName}-background`}>
-        <section className="left-side"></section>
-        <section className="right-side"></section>
-      </div>
-    </aside>
-  );
+  switch (getOrientation) {
+    case 'landscape':
+      return (
+        <aside className="default-button">
+          <section className={`${info.blockName}-foreground`}>
+            <MenuSwipe
+              //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+              cases={{
+                show: 1,
+                axis: '[y]',
+                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+              cases={{
+                axis: '[y]',
+                call: ButtonsDarkside as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'default-darkside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+              }}
+            />
+
+            <div
+              className="toggle-colors"
+              onClick={(event: React.MouseEvent<HTMLElement>): void => {
+                toggleColors(event.currentTarget as HTMLElement);
+              }}
+            >
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+            </div>
+
+            <MenuSwipe
+              //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                color: '(mono)',
+                shade: '~light~',
+              }}
+              cases={{
+                show: 1,
+                axis: '[y]',
+                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
+              cases={{
+                axis: '[y]',
+                call: ButtonsLightside as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'default-lightside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+              }}
+            />
+          </section>
+          <figure className={`${info.blockName}-midground`}></figure>
+          <div className={`${info.blockName}-background`}>
+            <section className="left-side"></section>
+            <section className="right-side"></section>
+          </div>
+        </aside>
+      );
+    case 'portrait':
+      return (
+        <aside className="default-button">
+          <section className={`${info.blockName}-foreground`}>
+            <MenuSwipe
+              //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+              cases={{
+                show: 1,
+                axis: '[x]',
+                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+              cases={{
+                axis: '[y]',
+                call: ButtonsDarkside as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'default-darkside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+              }}
+            />
+
+            <div
+              className="toggle-colors"
+              onClick={(event: React.MouseEvent<HTMLElement>): void => {
+                toggleColors(event.currentTarget as HTMLElement);
+              }}
+            >
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+            </div>
+
+            <MenuSwipe
+              //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                color: '(mono)',
+                shade: '~light~',
+              }}
+              cases={{
+                show: 1,
+                axis: '[y]',
+                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
+              cases={{
+                axis: '[y]',
+                call: ButtonsLightside as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'default-lightside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+              }}
+            />
+          </section>
+          <figure className={`${info.blockName}-midground`}></figure>
+          <div className={`${info.blockName}-background`}>
+            <section className="left-side"></section>
+            <section className="right-side"></section>
+          </div>
+        </aside>
+      );
+  }
 };
 
 let ViewOne = ({ info }: InfoProps) => {
