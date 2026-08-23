@@ -1,17 +1,19 @@
 //--|🠊 DefaultButton.tsx 🠈|--\\
-import React, { useEffect } from 'react';
-
-//--|🠋 Styles 🠋|--\\
-import './DefaultButton.scss';
-
-//--|🠋 Functions 🠋|--\\
-import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
+import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
-import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
+
+//--|🠋 Functions 🠋|--\\
+import loadAsset from '../../../../../../scripts/archive';
+import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
+
+//--|🠋 Styles 🠋|--\\
+import './DefaultButton.scss';
 
 interface InfoProps {
   info: {
@@ -132,9 +134,17 @@ function ButtonsLightside({ info }: InfoProps) {
 }
 
 const DefaultButton: React.FC<InfoProps> = ({ info }) => {
-  const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'default';
-  const pageName = info.pageName as 'components';
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const axisCase: Record<'landscape' | 'portrait', string> = {
+    landscape: '[y]',
+    portrait: '[x]',
+  };
+
+  let blockName = info.blockName as 'main';
+  let labelName = info.labelName as 'default';
+  let pageName = info.pageName as 'components';
   return (
     <aside className="default-button">
       <section className={`${info.blockName}-foreground`}>
@@ -242,11 +252,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
 };
 
 let ViewOne = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconOne = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h1') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -262,7 +270,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -281,7 +289,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -300,7 +308,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -319,7 +327,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -338,7 +346,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -357,7 +365,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -376,7 +384,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -384,7 +392,7 @@ let ViewOne = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -400,7 +408,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -419,7 +427,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -438,7 +446,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -457,7 +465,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -476,7 +484,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -495,7 +503,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -514,7 +522,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h1.svg` as string,
+              image: iconOne as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -525,11 +533,9 @@ let ViewOne = ({ info }: InfoProps) => {
   }
 };
 let ViewTwo = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconTwo = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h2') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -545,7 +551,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               color: '(mono)',
               type: '{button}',
               text: 'Button Here',
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -565,7 +571,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -585,7 +591,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -605,7 +611,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -625,7 +631,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -645,7 +651,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -665,7 +671,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -673,7 +679,7 @@ let ViewTwo = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -690,7 +696,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -710,7 +716,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -730,7 +736,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -750,7 +756,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -770,7 +776,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -790,7 +796,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -810,7 +816,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h2.svg` as string,
+              image: iconTwo as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -821,11 +827,9 @@ let ViewTwo = ({ info }: InfoProps) => {
   }
 };
 let ViewThr = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconThr = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h3') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -842,7 +846,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -862,7 +866,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -882,7 +886,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -902,7 +906,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -922,7 +926,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -942,7 +946,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -962,7 +966,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -970,7 +974,7 @@ let ViewThr = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -987,7 +991,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1007,7 +1011,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1027,7 +1031,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1047,7 +1051,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1067,7 +1071,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1087,7 +1091,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1107,7 +1111,7 @@ let ViewThr = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h3.svg` as string,
+              image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1118,11 +1122,9 @@ let ViewThr = ({ info }: InfoProps) => {
   }
 };
 let ViewFou = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconFou = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h4') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1139,7 +1141,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1159,7 +1161,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1179,7 +1181,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1199,7 +1201,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1219,7 +1221,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1239,7 +1241,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1259,7 +1261,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1267,7 +1269,7 @@ let ViewFou = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1284,7 +1286,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1301,7 +1303,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1318,7 +1320,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1335,7 +1337,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1352,7 +1354,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1369,7 +1371,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
           <ButtonDefault
@@ -1386,7 +1388,7 @@ let ViewFou = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h4.svg` as string,
+              image: iconFou as string,
             }}
           />
         </section>
@@ -1394,11 +1396,9 @@ let ViewFou = ({ info }: InfoProps) => {
   }
 };
 let ViewFiv = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconFiv = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h5') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1415,7 +1415,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1435,7 +1435,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1455,7 +1455,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1475,7 +1475,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1495,7 +1495,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1515,7 +1515,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1535,7 +1535,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1543,7 +1543,7 @@ let ViewFiv = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1560,7 +1560,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1580,7 +1580,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1600,7 +1600,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1620,7 +1620,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1640,7 +1640,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1660,7 +1660,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1680,7 +1680,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h5.svg` as string,
+              image: iconFiv as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1691,11 +1691,9 @@ let ViewFiv = ({ info }: InfoProps) => {
   }
 };
 let ViewSix = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconSix = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h6') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1712,7 +1710,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1732,7 +1730,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1752,7 +1750,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1772,7 +1770,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1792,7 +1790,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1812,7 +1810,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1832,7 +1830,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1840,7 +1838,7 @@ let ViewSix = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -1857,7 +1855,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1877,7 +1875,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1897,7 +1895,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1917,7 +1915,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1937,7 +1935,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1957,7 +1955,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1977,7 +1975,7 @@ let ViewSix = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/h6.svg` as string,
+              image: iconSix as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -1988,11 +1986,9 @@ let ViewSix = ({ info }: InfoProps) => {
   }
 };
 let ViewSev = ({ info }: InfoProps) => {
-  const shade: string = info.labelName;
-  const link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/2c4d27d5169382dad6a2bf4443d81cbe5e4423af';
+  const iconPar = loadAsset('-svg-', '/project-pages/components-page/default-buttons/p') as string;
   switch (true) {
-    case shade.includes('dark'):
+    case info.labelName.includes('dark'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -2009,7 +2005,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2029,7 +2025,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2049,7 +2045,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2069,7 +2065,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2089,7 +2085,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2109,7 +2105,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2129,7 +2125,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2137,7 +2133,7 @@ let ViewSev = ({ info }: InfoProps) => {
           />
         </section>
       );
-    case shade.includes('light'):
+    case info.labelName.includes('light'):
       return (
         <section className={`default-${info.blockName}_${info.labelName}`}>
           <ButtonDefault
@@ -2154,7 +2150,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2174,7 +2170,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2194,7 +2190,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2214,7 +2210,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2234,7 +2230,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2254,7 +2250,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);
@@ -2274,7 +2270,7 @@ let ViewSev = ({ info }: InfoProps) => {
               type: '{button}',
               text: 'Button Here',
 
-              image: `${link}/source/assets/svg-files/project-pages/components-page/default-buttons/p.svg` as string,
+              image: iconPar as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
               copyCode(event.currentTarget as HTMLButtonElement);

@@ -52,13 +52,8 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
           <section className={`${blockName}-foreground`}>
             <HeaderSwipe
               //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: labelName,
-              }}
               cases={{
-                chain: '<leftbar>',
+                show: 3,
                 menus: [
                   <MenuSwipe
                     style={{ ...menuStyle }}
@@ -157,8 +152,13 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                     }}
                   />,
                 ],
-                show: 0,
                 axis: '[y]',
+                chain: '<leftbar>',
+              }}
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
             />
             <NavigationDefault

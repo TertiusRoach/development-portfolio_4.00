@@ -1,33 +1,5 @@
 //--|🠊 scripts.ts 🠈|--\\
 
-//--|🠋 View Pages 🠋|--\\
-export type Orientation = 'landscape' | 'portrait';
-export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
-  const mediaQuery = window.matchMedia('(orientation: landscape)');
-
-  const handleOrientationChange = (event: MediaQueryListEvent): void => {
-    onChange(event.matches ? 'landscape' : 'portrait');
-  };
-
-  //--|🠋 Subscribe to orientation changes 🠋|--\\
-  mediaQuery.addEventListener('change', handleOrientationChange);
-
-  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
-  return (): void => {
-    mediaQuery.removeEventListener('change', handleOrientationChange);
-  };
-}
-function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
-  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
-
-  console.log(activePage.classList[1], sleepingPage.classList[1]);
-
-  activePage.classList.replace('active', 'asleep');
-  sleepingPage.classList.replace('asleep', 'active');
-}
-export default togglePages;
-
 //--|🠋 Utility Functions 🠋|--\\
 export function arabicToRoman(arabicNumeral: number): string {
   switch (arabicNumeral) {
@@ -715,3 +687,33 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
+
+//--|🠋 Confirm Rotation 🠋|--\\
+export type Orientation = 'landscape' | 'portrait';
+export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
+  const mediaQuery = window.matchMedia('(orientation: landscape)');
+
+  const handleOrientationChange = (event: MediaQueryListEvent): void => {
+    onChange(event.matches ? 'landscape' : 'portrait');
+  };
+
+  //--|🠋 Subscribe to orientation changes 🠋|--\\
+  mediaQuery.addEventListener('change', handleOrientationChange);
+
+  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
+  return (): void => {
+    mediaQuery.removeEventListener('change', handleOrientationChange);
+  };
+}
+
+//--|🠋 View Pages 🠋|--\\
+function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
+  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
+
+  console.log(activePage.classList[1], sleepingPage.classList[1]);
+
+  activePage.classList.replace('active', 'asleep');
+  sleepingPage.classList.replace('asleep', 'active');
+}
+export default togglePages;
