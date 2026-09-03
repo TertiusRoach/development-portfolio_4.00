@@ -153,7 +153,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
       return (
         <aside className="default-button">
           <section className={`${info.blockName}-foreground`}>
-            <MenuSwipe
+            <MenuScroll
               //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
               info={{
                 labelName: 'default-darkside',
@@ -161,6 +161,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
+                view: '-def-',
                 color: '(mono)',
                 shade: '~dark~',
               }}
@@ -210,7 +211,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               />
             </div>
 
-            <MenuSwipe
+            <MenuScroll
               //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
               info={{
                 labelName: 'default-lightside',
@@ -218,6 +219,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
+                view: '-def-',
                 color: '(mono)',
                 shade: '~light~',
               }}
@@ -266,6 +268,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
+                view: '-def-',
                 color: '(mono)',
                 shade: '~dark~',
               }}
@@ -323,6 +326,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
+                view: '-def-',
                 color: '(mono)',
                 shade: '~light~',
               }}

@@ -1,7 +1,7 @@
 //--|🠊 Menu.scroll.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
-  &:has(ul[class='hori-X-scroll']) {
+  &:has(ul[class='vert-X-scroll']) {
     width: 100%;
     ul[class='hori-X-scroll'] {
       position: relative;
@@ -195,64 +195,137 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
-  &:has(ul[class='hori-X-scroll']) {
-    ul[class='hori-X-scroll'] {
-      %flex-size-mobi {
+  ul[class*='vert-X-scroll'] {
+    %vert-x-view {
+      grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
+
+      //--|🠊 Left 🠈|--\\
+      &[class*='vertical-lef'] {
+        //--|🠊 192px for Squares 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
+          / 192px 192px 1fr; //--|🠈 columns 🠈|--\\
+        @media screen and (max-width: 768px) {
+          //--|🠊 160px for Squares 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
+            / 160px 160px 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          //--|🠊 96px for Squares 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
+            / 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          //--|🠊 64px for Squares 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
+            / 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+        }
+        .prev-view {
+          grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+        }
+        .next-view {
+          grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+        }
       }
-      %flex-view-mobi {
+
+      //--|🠊 Right 🠈|--\\
+      &[class*='vertical-rig'] {
+        //--|🠊 192px for Squares 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
+          / 1fr 192px 192px; //--|🠈 columns 🠈|--\\
+        @media screen and (max-width: 768px) {
+          //--|🠊 160px for Squares 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
+            / 1fr 160px 160px; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          //--|🠊 96px for Squares 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
+            / 1fr 96px 96px; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          //--|🠊 64px for Squares 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
+            / 1fr 64px 64px; //--|🠈 columns 🠈|--\\
+        }
+
+        .prev-view {
+          grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+        }
+        .next-view {
+          grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+        }
       }
-      %grid-size-mobi {
-        background: rgba(darkgreen, 0.25);
-        height: 192px; //--|🠈192px for Squares 🠈|--\\
+
+      //--|🠊 Center 🠈|--\\
+      &[class*='vertical-cen'] {
+        //--|🠊 192px for Squares 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
+          / 1fr 192px 192px 1fr; //--|🠈 columns 🠈|--\\
+        @media screen and (max-width: 768px) {
+          //--|🠊 160px for Squares 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
+            / 1fr 160px 160px 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          //--|🠊 96px for Squares 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
+            / 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          //--|🠊 64px for Squares 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
+            / 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+        }
+
+        .prev-view {
+          grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+        }
+        .next-view {
+          grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+        }
+      }
+
+      //--|🠊 Default 🠈|--\\
+      &[class*='vertical-def'] {
+        //--|🠊 192px for Squares 🠈|--\\
         grid-template: 192px //--|🠈 rows 🠈|--//
           / 192px 1fr 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
-          height: 160px; //--|🠈 160px for Squares 🠈|--\\
+          //--|🠊 160px for Squares 🠈|--\\
           grid-template: 160px //--|🠈 rows 🠈|--//
             / 160px 1fr 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
-          height: 96px; //--|🠈 96px for Squares 🠈|--\\
+          //--|🠊 96px for Squares 🠈|--\\
           grid-template: 96px //--|🠈 rows 🠈|--//
-            /96px 1fr 96px; //--|🠈 columns 🠈|--\\
+            / 96px 1fr 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
-          height: 64px; //--|🠈 64px for Squares 🠈|--\\
+          //--|🠊 64px for Squares 🠈|--\\
           grid-template: 64px //--|🠈 rows 🠈|--//
             / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
         }
-      }
-      li[class*='preview'] {
-        z-index: 1;
-        display: grid;
-        @extend %grid-size-mobi;
-      }
-      li[class*='showing'] {
-        display: none;
-      }
-      li[class*='horizontal'] {
-        // display: none;
-      }
-    }
 
-    height: 192px;
-    @media screen and (max-width: 768px) {
-      height: 160px;
+        .prev-view {
+          grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+        }
+        .next-view {
+          grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+        }
+      }
     }
-    @media screen and (max-width: 480px) {
-      height: 96px;
+    li[class*='preview'] {
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      @extend %vert-x-view;
     }
-    @media screen and (max-width: 360px) {
-      height: 64px;
+    li[class*='showing'] {
+      display: none;
     }
   }
-  &:has(ol[class='vert-Y-scroll']) {
-    @media screen and (max-width: 768px) {
-    }
-    @media screen and (max-width: 480px) {
-    }
-    @media screen and (max-width: 360px) {
-    }
+
+  ol[class*='vert-Y-scroll'] {
   }
 }
 
@@ -262,6 +335,32 @@ menu[class*='scroll'] {
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    & {
+      ul[class='vert-X-scroll'] {
+        height: 192px; //--|🠈 192px for Squares 🠈|--\\
+        @media screen and (max-width: 768px) {
+          height: 160px; //--|🠈 160px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          height: 96px; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          height: 64px; //--|🠈 64px for Squares 🠈|--\\
+        }
+      }
+      ol[class='vert-Y-scroll'] {
+        width: 192px; //--|🠈 192px for Squares 🠈|--\\
+        @media screen and (max-width: 768px) {
+          width: 160px; //--|🠈 160px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          width: 96px; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          width: 64px; //--|🠈 64px for Squares 🠈|--\\
+        }
+      }
+    }
   }
   *[class*='scroll'] {
     [class*='highlight'],

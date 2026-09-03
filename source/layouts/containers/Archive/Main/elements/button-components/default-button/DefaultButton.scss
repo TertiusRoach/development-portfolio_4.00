@@ -251,18 +251,6 @@
                 / 24px 1fr 2fr 24px; //--|🠈 columns 🠈|--\\
             }
           }
-
-          /*
-          &:nth-child(1) {
-            background: rgba(darkred, 0.25);
-          }
-          &:nth-child(2) {
-            background: rgba(darkblue, 0.25);
-          }
-          &:nth-child(3) {
-            background: rgba(darkgreen, 0.25);
-          }
-          */
         }
       }
       &[class*='toggle'] {
@@ -290,26 +278,40 @@
         }
       }
     }
+
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
       repeat(2, 6rem) 1fr 12rem 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
       / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    menu {
+      padding: 0 128px;
+    }
     @media screen and (max-width: 768px) {
       //--|🠊 48px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
         repeat(2, 5rem) 1fr 10rem 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--//
         / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+      menu {
+        padding: 0 112px;
+      }
     }
     @media screen and (max-width: 480px) {
       //--|🠊 32px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 854px 🠋|--\\
         repeat(2, 3rem) 1fr 6rem 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
         / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+      menu {
+        padding: 0 64px;
+      }
     }
     @media screen and (max-width: 360px) {
       //--|🠊 24px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 640px 🠋|--\\
         repeat(2, 2rem) 1fr 4rem 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+      menu {
+        padding: 0 40px;
+      }
     }
   }
   figure[class*='midground'] {
@@ -347,11 +349,9 @@
     menu {
       z-index: 2;
       &[class*='darkside'] {
-        // background: rgba(darkred, 0.25);
         grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='lightside'] {
-        // background: rgba(darkblue, 0.25);
         grid-area: 6 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
@@ -427,15 +427,15 @@
   %mark-disp-mobi {
     display: grid;
     div[class*='default'] {
+      //--|🠊 display: flex; 🠈|--\\
+      &[class*='side-main'] {
+        flex-direction: column;
+      }
       &[class*='container'] {
-        //--|🠊 display: flex; 🠈|--\\
         section[class*='default-main'] {
           display: grid;
           height: 100svh;
         }
-      }
-      &[class*='side-main'] {
-        flex-direction: column;
       }
     }
     div[class*='toggle'] {

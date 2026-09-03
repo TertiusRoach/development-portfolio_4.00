@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
+import { stripBrackets } from '../../../../scripts';
 import { previewBootstrap } from '../../components';
 import { loadCarousel, markCarousel, scrollCarousel } from './Menu_scroll';
 
@@ -22,6 +23,7 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   };
   cases: {
     show: number;
@@ -32,13 +34,120 @@ interface TheseProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
 }
+
+const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
+  let pageName: string = info.pageName as string;
+  let blockName: string = info.blockName as string;
+  let labelName: string = info.labelName as string;
+
+  useEffect(() => {
+    /*--|🠋
+    loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
+    🠉|--*/
+  }, [pageName, blockName, labelName]);
+
+  const stateView = 'highlight' as string;
+  const ListStyle: React.ElementType = axisList[cases.axis];
+
+  return (
+    <menu className={`${labelName}-${blockName}_scroll-default`}>
+      <ListStyle className={axisStyle[cases.axis]}>
+        <li className={`preview-vertical-${stripBrackets(style.view, '--')}`}>
+          <div className={`prev-view ${stateView}`}>
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-icon-',
+                type: '{button}',
+                color: style.color,
+                shade: style.shade,
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                /* labelName: info.labelName, */
+              }}
+              onClick={(): void => {
+                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
+              }}
+            />
+          </div>
+          <div className={`next-view ${stateView}`}>
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-icon-',
+                type: '{button}',
+                color: style.color,
+                shade: style.shade,
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                /* labelName: info.labelName, */
+              }}
+              onClick={(): void => {
+                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
+                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
+              }}
+            />
+          </div>
+        </li>
+        <li className="showing-vertical_I">
+          {cases.pages.map((path, index) => {
+            const viewText = String(path);
+            if (viewText.includes('_')) {
+              let bootstrap = previewBootstrap() as string;
+              const [boldText, italText] = viewText.split('_');
+              return (
+                <aside key={index}>
+                  <h3 className={bootstrap}>
+                    <span>
+                      <b>{boldText}</b>
+                      <i>{italText}</i>
+                    </span>
+                  </h3>
+                </aside>
+              );
+            } else {
+              return (
+                <aside key={index}>
+                  <h1>
+                    <span>{viewText}</span>
+                  </h1>
+                </aside>
+              );
+            }
+          })}
+        </li>
+        {/* <MenuAxis info={info} style={style} cases={cases} /> */}
+      </ListStyle>
+    </menu>
+  );
+};
+
+export default MenuScroll;
+
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+let axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+let axisStyle: Record<TheseProps['cases']['axis'], string> = {
+  '[x]': 'vert-X-scroll',
+  '[y]': 'vert-Y-scroll',
+};
+
 function MenuAxis({ info, style, cases }: TheseProps) {
   switch (cases.axis) {
     case '[x]':
       return (
         <>
-          <li className="preview-horizontal">
-            <div className="prev-view downplay">
+          <li className="preview-vertical">
+            <div className="prev-view highlight">
               <ButtonDefault
                 style={{
                   size: '<h3>',
@@ -59,7 +168,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 }}
               />
             </div>
-            <div className="next-view downplay">
+            <div className="next-view highlight">
               <ButtonDefault
                 style={{
                   size: '<h3>',
@@ -81,7 +190,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               />
             </div>
           </li>
-          <li className="showing-horizontal_I">
+          <li className="showing-vertical_I">
             {cases.pages.map((path, index) => {
               const viewText = String(path);
               if (viewText.includes('_')) {
@@ -160,35 +269,3 @@ function MenuAxis({ info, style, cases }: TheseProps) {
       );
   }
 }
-const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
-  const pageName: string = info.pageName as string;
-  const blockName: string = info.blockName as string;
-  const labelName: string = info.labelName as string;
-
-  //--|🠊 Checks [x] or [y] axis 🠈|--\\
-  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-    '[x]': 'ul',
-    '[y]': 'ol',
-  };
-  const axisClass: Record<TheseProps['cases']['axis'], string> = {
-    '[x]': 'hori-X-scroll',
-    '[y]': 'vert-Y-scroll',
-  };
-
-  useEffect(() => {
-    /*--|🠋
-
-    🠉|--*/
-    loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
-  }, [pageName, blockName, labelName]);
-
-  let ListItem = axisList[cases.axis];
-  return (
-    <menu className={`${labelName}-${blockName}_scroll-default`}>
-      <ListItem className={axisClass[cases.axis]}>
-        <MenuAxis info={info} style={style} cases={cases} />
-      </ListItem>
-    </menu>
-  );
-};
-export default MenuScroll;
