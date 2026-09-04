@@ -46,7 +46,7 @@ const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
     🠉|--*/
   }, [pageName, blockName, labelName]);
 
-  const stateView = 'highlight' as string;
+  const stateView = 'highlight' as 'downplay' | 'highlight';
   const ListStyle: React.ElementType = axisList[cases.axis];
 
   return (
