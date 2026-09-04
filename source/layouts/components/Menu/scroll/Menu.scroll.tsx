@@ -3,16 +3,26 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
+import { revealButtons, viewPrev, viewNext } from './Menu_scroll';
 import loadAsset from '../../../scripts/archive';
 import { stripBrackets } from '../../../../scripts';
 import { previewBootstrap } from '../../components';
-import { loadCarousel, markCarousel, scrollCarousel } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.scroll.scss';
+
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+  '[x]': 'vert-X-scroll',
+  '[y]': 'vert-Y-scroll',
+};
 
 interface TheseProps {
   info: {
@@ -34,21 +44,22 @@ interface TheseProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
 }
-
-const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
-  let pageName: string = info.pageName as string;
-  let blockName: string = info.blockName as string;
-  let labelName: string = info.labelName as string;
+function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as string;
 
   useEffect(() => {
     /*--|🠋
     loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
     🠉|--*/
+    setTimeout(() => {
+      revealButtons(pageName, blockName, labelName);
+    }, 1500);
   }, [pageName, blockName, labelName]);
 
-  const stateView = 'highlight' as 'downplay' | 'highlight';
-  const ListStyle: React.ElementType = axisList[cases.axis];
-
+  let stateView = 'downplay' as 'downplay' | 'highlight';
+  let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_scroll-default`}>
       <ListStyle className={axisStyle[cases.axis]}>
@@ -69,8 +80,7 @@ const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
+                viewPrev(pageName, blockName, labelName);
               }}
             />
           </div>
@@ -90,8 +100,7 @@ const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
+                viewNext(pageName, blockName, labelName);
               }}
             />
           </div>
@@ -123,149 +132,9 @@ const MenuScroll: React.FC<TheseProps> = ({ info, style, cases }) => {
             }
           })}
         </li>
-        {/* <MenuAxis info={info} style={style} cases={cases} /> */}
       </ListStyle>
     </menu>
   );
-};
+}
 
 export default MenuScroll;
-
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-let axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-let axisStyle: Record<TheseProps['cases']['axis'], string> = {
-  '[x]': 'vert-X-scroll',
-  '[y]': 'vert-Y-scroll',
-};
-
-function MenuAxis({ info, style, cases }: TheseProps) {
-  switch (cases.axis) {
-    case '[x]':
-      return (
-        <>
-          <li className="preview-vertical">
-            <div className="prev-view highlight">
-              <ButtonDefault
-                style={{
-                  size: '<h3>',
-                  view: '-icon-',
-                  type: '{button}',
-                  color: style.color,
-                  shade: style.shade,
-                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  /* labelName: info.labelName, */
-                }}
-                onClick={(): void => {
-                  scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
-                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
-                }}
-              />
-            </div>
-            <div className="next-view highlight">
-              <ButtonDefault
-                style={{
-                  size: '<h3>',
-                  view: '-icon-',
-                  type: '{button}',
-                  color: style.color,
-                  shade: style.shade,
-                  image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
-                }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  /* labelName: info.labelName, */
-                }}
-                onClick={(): void => {
-                  scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
-                  markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
-                }}
-              />
-            </div>
-          </li>
-          <li className="showing-vertical_I">
-            {cases.pages.map((path, index) => {
-              const viewText = String(path);
-              if (viewText.includes('_')) {
-                let bootstrap = previewBootstrap() as string;
-                const [boldText, italText] = viewText.split('_');
-                return (
-                  <aside key={index}>
-                    <h3 className={bootstrap}>
-                      <span>
-                        <b>{boldText}</b>
-                        <i>{italText}</i>
-                      </span>
-                    </h3>
-                  </aside>
-                );
-              } else {
-                return (
-                  <aside key={index}>
-                    <h1>
-                      <span>{viewText}</span>
-                    </h1>
-                  </aside>
-                );
-              }
-            })}
-          </li>
-        </>
-      );
-    case '[y]':
-      return (
-        <>
-          <li className="showing_I"></li>
-          <li className="prev-view">
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-icon-',
-                type: '{button}',
-                color: style.color,
-                shade: style.shade,
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
-              }}
-              info={{
-                pageName: info.pageName,
-                blockName: info.blockName,
-                /* labelName: info.labelName, */
-              }}
-              onClick={(): void => {
-                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
-              }}
-            />
-          </li>
-          <li className="next-view">
-            <ButtonDefault
-              style={{
-                size: '<h3>',
-                view: '-icon-',
-                type: '{button}',
-                color: style.color,
-                shade: style.shade,
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
-              }}
-              info={{
-                pageName: info.pageName,
-                blockName: info.blockName,
-                /* labelName: info.labelName, */
-              }}
-              onClick={(): void => {
-                scrollCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
-                markCarousel(info.pageName, info.blockName, info.labelName, cases.show, cases.axis);
-              }}
-            />
-          </li>
-        </>
-      );
-  }
-}

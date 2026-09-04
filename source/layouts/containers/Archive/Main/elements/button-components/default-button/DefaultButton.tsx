@@ -139,15 +139,16 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = info.blockName as 'main';
-  let labelName = info.labelName as 'default';
-  let pageName = info.pageName as 'components';
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
 
   useEffect(() => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let casesShow = 3 as number;
+  let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;
   switch (getOrientation) {
     case 'landscape':
       return (
@@ -166,9 +167,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 shade: '~dark~',
               }}
               cases={{
-                show: 1,
                 axis: '[y]',
-                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+                show: casesShow as number,
+                pages: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -183,11 +184,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: info.pageName as '[components]',
               }}
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
+                */
               }}
             />
 
@@ -224,9 +227,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 shade: '~light~',
               }}
               cases={{
-                show: 1,
                 axis: '[y]',
-                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+                show: casesShow as number,
+                pages: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -241,11 +244,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: info.pageName as '[components]',
               }}
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
+                */
               }}
             />
           </section>
@@ -273,9 +278,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 shade: '~dark~',
               }}
               cases={{
-                show: 1,
                 axis: '[x]',
-                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+                show: casesShow as number,
+                pages: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -290,11 +295,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: info.pageName as '[components]',
               }}
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
+                */
               }}
             />
 
@@ -331,9 +338,9 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 shade: '~light~',
               }}
               cases={{
-                show: 1,
                 axis: '[x]',
-                pages: ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>,
+                show: casesShow as number,
+                pages: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -348,11 +355,13 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: info.pageName as '[components]',
               }}
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
+                */
               }}
             />
           </section>

@@ -1,7 +1,51 @@
 //--|🠊 Menu_scroll.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { arabicToRoman, romanToArabic } from '../../../../scripts';
+/*--|🠋
 
+🠉|--*/
+export function viewPrev(pageName: string, blockName: string, labelName: string): void {
+  console.log('View Previous Slide');
+}
+export function viewNext(pageName: string, blockName: string, labelName: string): void {
+  console.log('View Next Slide');
+}
+export function revealButtons(pageName: string, blockName: string, labelName: string): void {
+  const container = findTags(pageName, blockName, labelName).container as HTMLDivElement;
+  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
+
+  let carouselChildren: number = container.childElementCount;
+  let carouselPosition: number = romanToArabic(`${container.parentElement?.classList[0].split('_')[1]}`);
+
+  var viewPrev = controller.querySelector('li[class*="preview-vertical"] div[class*="prev-view"]') as HTMLDivElement;
+  var viewNext = controller.querySelector('li[class*="preview-vertical"] div[class*="next-view"]') as HTMLDivElement;
+
+  switch (carouselPosition) {
+    case 1:
+      viewNext.classList.add('highlight');
+      viewNext.classList.remove('downplay');
+
+      viewPrev.classList.add('downplay');
+      viewPrev.classList.remove('highlight');
+      break;
+    default:
+      viewNext.classList.add('highlight');
+      viewNext.classList.remove('downplay');
+
+      viewPrev.classList.add('highlight');
+      viewPrev.classList.remove('downplay');
+      break;
+    case carouselChildren:
+      viewPrev.classList.add('highlight');
+      viewPrev.classList.remove('downplay');
+
+      viewNext.classList.add('downplay');
+      viewNext.classList.remove('highlight');
+      break;
+  }
+}
+
+/*
 //--|🠊 Messy Code: Rework it for better maintainability. 🠈|--\\
 export function markCarousel(
   pageName: string,
@@ -10,9 +54,6 @@ export function markCarousel(
   showCases: number,
   axisStyle: '[x]' | '[y]',
 ) {
-  /*--|🠋
-
-  🠉|--*/
   let prevView: HTMLElement;
   let nextView: HTMLElement;
 
@@ -222,9 +263,7 @@ export function scrollCarousel(
   axisStyle: '[x]' | '[y]',
   buttonAction: 'view-prev' | 'view-next',
 ): number {
-  /*--|🠋
 
-  🠉|--*/
   let scrollCarousel;
   switch (axisStyle) {
     case '[x]':
@@ -267,4 +306,25 @@ const scrollWindow = (labelName: string, mainCarousel: HTMLElement, buttonAction
     mainCarousel.classList.remove(mainIdentifier);
     return mainDestination as number;
   }
+};
+
+  console.log(pageName, blockName, labelName);
+  console.log(
+    'Controller:',
+    document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
+  );
+  console.log(
+    'Carousel:',
+    document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+  );
+*/
+interface ChainedElements {
+  container: HTMLDivElement | null;
+  controller: HTMLMenuElement | null;
+}
+const findTags = (pageName: string, blockName: string, labelName: string): ChainedElements => {
+  return {
+    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+    controller: document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
+  };
 };
