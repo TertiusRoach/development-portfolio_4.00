@@ -3,27 +3,16 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { revealButtons, viewPrev, viewNext } from './Menu_scroll';
 import loadAsset from '../../../scripts/archive';
 import { stripBrackets } from '../../../../scripts';
 import { previewBootstrap } from '../../components';
+import { revealButtons, viewPrev, viewNext } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.scroll.scss';
-
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisStyle: Record<TheseProps['cases']['axis'], string> = {
-  '[x]': 'vert-X-scroll',
-  '[y]': 'vert-Y-scroll',
-};
-
 interface TheseProps {
   info: {
     pageName: string;
@@ -36,7 +25,6 @@ interface TheseProps {
     view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   };
   cases: {
-    show: number;
     axis: '[x]' | '[y]';
     pages: Array<string>;
   };
@@ -44,6 +32,17 @@ interface TheseProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
 }
+
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+  '[x]': 'vert-X-scroll',
+  '[y]': 'vert-Y-scroll',
+};
+
 function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;

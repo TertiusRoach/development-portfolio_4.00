@@ -6,6 +6,9 @@ import './Division.carousel.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
+//--|🠋 Functions 🠋|--\\
+import { arabicToRoman } from '../../../../scripts';
+
 interface TheseProps {
   info: {
     pageName: string;
@@ -13,20 +16,29 @@ interface TheseProps {
     labelName: string;
   };
   cases: {
+    show: number;
     axis: '[x]' | '[y]';
     call: React.ComponentType<{ info: InfoProps }>;
   };
   onWheel?: (event: React.WheelEvent<HTMLDivElement>) => string | number | void;
 }
+type InfoProps = {
+  pageName: string;
+  blockName: string;
+  labelName: string;
+};
+
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisClass: Record<'[x]' | '[y]', string> = {
+  '[x]': 'carousel-horizontal',
+  '[y]': 'carousel-vertical',
+};
 
 function DivisionAxis({ info, cases }: TheseProps) {
   const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
-  const axisClass: Record<'[x]' | '[y]', string> = {
-    '[x]': 'carousel-horizontal',
-    '[y]': 'carousel-vertical',
-  };
+
   return (
-    <li className={`${axisClass[cases.axis]}_I`}>
+    <li className={`${axisClass[cases.axis]}_${arabicToRoman(cases.show)}`}>
       <div className={`${info.labelName}-${info.blockName}_container`}>
         <CallItem info={info} />
       </div>
@@ -49,8 +61,3 @@ const DivisionCarousel = ({ info, cases, onWheel }: TheseProps) => {
 };
 
 export default DivisionCarousel;
-type InfoProps = {
-  pageName: string;
-  blockName: string;
-  labelName: string;
-};

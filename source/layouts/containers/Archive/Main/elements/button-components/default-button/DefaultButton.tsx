@@ -147,7 +147,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let casesShow = 3 as number;
+  let casesShow = 7 as number;
   let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;
   switch (getOrientation) {
     case 'landscape':
@@ -168,7 +168,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
                 pages: casesPages as Array<string>,
               }}
             />
@@ -176,6 +175,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
+                show: casesShow as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -228,7 +228,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
                 pages: casesPages as Array<string>,
               }}
             />
@@ -236,6 +235,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
+                show: casesShow as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -279,7 +279,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[x]',
-                show: casesShow as number,
                 pages: casesPages as Array<string>,
               }}
             />
@@ -287,6 +286,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
+                show: casesShow as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -339,7 +339,6 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[x]',
-                show: casesShow as number,
                 pages: casesPages as Array<string>,
               }}
             />
@@ -347,6 +346,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
               //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
               cases={{
                 axis: '[x]',
+                show: casesShow as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{
