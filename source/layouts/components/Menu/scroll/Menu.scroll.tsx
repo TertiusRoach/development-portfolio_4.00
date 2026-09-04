@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import loadAsset from '../../../scripts/archive';
 import { previewBootstrap } from '../../components';
 import { stripBrackets } from '../../../../scripts';
-import { revealButtons, viewPrev, viewNext } from './Menu_scroll';
+import { revealButtons, previewControl, reloadButtons } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -49,28 +49,13 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const labelName: string = info.labelName as string;
 
   useEffect(() => {
+    /*--|🠋
+
+    🠉|--*/
+    reloadButtons(pageName, blockName, labelName);
     setTimeout(() => {
       revealButtons(pageName, blockName, labelName);
     }, 1500);
-    /*--|🠋
-    
-    🠉|--*/
-    let timeout: ReturnType<typeof setTimeout>;
-
-    const handleResize = (): void => {
-      clearTimeout(timeout);
-
-      timeout = setTimeout(() => {
-        revealButtons(pageName, blockName, labelName);
-      }, 1500);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener('resize', handleResize);
-    };
   }, [pageName, blockName, labelName]);
 
   let stateView = 'downplay' as 'downplay' | 'highlight';
@@ -95,7 +80,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                viewPrev(pageName, blockName, labelName);
+                previewControl('view-prev', pageName, blockName, labelName);
               }}
             />
           </div>
@@ -115,7 +100,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                viewNext(pageName, blockName, labelName);
+                previewControl('view-next', pageName, blockName, labelName);
               }}
             />
           </div>
