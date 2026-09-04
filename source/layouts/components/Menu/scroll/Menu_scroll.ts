@@ -5,17 +5,47 @@ import { arabicToRoman, romanToArabic } from '../../../../scripts';
 
 🠉|--*/
 export function viewPrev(pageName: string, blockName: string, labelName: string): void {
-  console.log('View Previous Slide');
+  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
+  const emphasisBlocker: string = controller.querySelector('div[class*="prev-view"')?.classList[1] as
+    | 'highlight'
+    | 'downplay';
+  if (emphasisBlocker === 'highlight') {
+    const container = findTags(pageName, blockName, labelName).container as HTMLDivElement;
+    const convertCurrent = romanToArabic(`${container.parentElement?.classList[0].split('_')[1]}`) as number;
+
+    var prevSlide = container.parentElement?.classList[0] as string;
+    var nextSlide = `${container.parentElement?.classList[0].split('_')[0]}_${arabicToRoman(convertCurrent - 1)}` as string;
+
+    container.parentElement?.classList.add(nextSlide);
+    container.parentElement?.classList.remove(prevSlide);
+
+    revealButtons(pageName, blockName, labelName);
+  }
 }
 export function viewNext(pageName: string, blockName: string, labelName: string): void {
-  console.log('View Next Slide');
+  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
+  const emphasisBlocker: string = controller.querySelector('div[class*="next-view"')?.classList[1] as
+    | 'highlight'
+    | 'downplay';
+  if (emphasisBlocker === 'highlight') {
+    const container = findTags(pageName, blockName, labelName).container as HTMLDivElement;
+    const convertCurrent = romanToArabic(`${container.parentElement?.classList[0].split('_')[1]}`) as number;
+
+    var prevSlide = container.parentElement?.classList[0] as string;
+    var nextSlide = `${container.parentElement?.classList[0].split('_')[0]}_${arabicToRoman(convertCurrent + 1)}` as string;
+
+    container.parentElement?.classList.add(nextSlide);
+    container.parentElement?.classList.remove(prevSlide);
+
+    revealButtons(pageName, blockName, labelName);
+  }
 }
 export function revealButtons(pageName: string, blockName: string, labelName: string): void {
   const container = findTags(pageName, blockName, labelName).container as HTMLDivElement;
   const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
 
   let carouselChildren: number = container.childElementCount;
-  let carouselPosition: number = romanToArabic(`${container.parentElement?.classList[0].split('_')[1]}`);
+  let carouselPosition: number = romanToArabic(container.parentElement?.classList[0].split('_')[1] as string);
 
   var viewPrev = controller.querySelector('li[class*="preview-vertical"] div[class*="prev-view"]') as HTMLDivElement;
   var viewNext = controller.querySelector('li[class*="preview-vertical"] div[class*="next-view"]') as HTMLDivElement;

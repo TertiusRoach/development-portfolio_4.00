@@ -1,11 +1,11 @@
 //--|🠊 Menu.scroll.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
-import { stripBrackets } from '../../../../scripts';
 import { previewBootstrap } from '../../components';
+import { stripBrackets } from '../../../../scripts';
 import { revealButtons, viewPrev, viewNext } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
@@ -49,10 +49,10 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const labelName: string = info.labelName as string;
 
   useEffect(() => {
-    /*--|🠋
-    loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
-    🠉|--*/
     setTimeout(() => {
+      /*--|🠋
+  
+      🠉|--*/
       revealButtons(pageName, blockName, labelName);
     }, 1500);
   }, [pageName, blockName, labelName]);

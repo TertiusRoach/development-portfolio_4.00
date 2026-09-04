@@ -147,7 +147,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let casesShow = 7 as number;
+  let casesShow = 3 as number;
   let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;
   switch (getOrientation) {
     case 'landscape':
@@ -273,7 +273,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
-                view: '-def-',
+                view: '-cen-',
                 color: '(mono)',
                 shade: '~dark~',
               }}
@@ -333,7 +333,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 pageName: pageName as 'components',
               }}
               style={{
-                view: '-def-',
+                view: '-cen-',
                 color: '(mono)',
                 shade: '~light~',
               }}
@@ -345,7 +345,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
             <DivisionCarousel
               //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
               cases={{
-                axis: '[x]',
+                axis: '[y]',
                 show: casesShow as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
@@ -361,7 +361,7 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
-                */
+                 */
               }}
             />
           </section>
