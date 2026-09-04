@@ -50,11 +50,27 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
 
   useEffect(() => {
     setTimeout(() => {
-      /*--|🠋
-  
-      🠉|--*/
       revealButtons(pageName, blockName, labelName);
     }, 1500);
+    /*--|🠋
+    
+    🠉|--*/
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const handleResize = (): void => {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        revealButtons(pageName, blockName, labelName);
+      }, 1500);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [pageName, blockName, labelName]);
 
   let stateView = 'downplay' as 'downplay' | 'highlight';
