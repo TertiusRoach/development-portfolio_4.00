@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import loadAsset from '../../../scripts/archive';
 import { previewBootstrap } from '../../components';
 import { stripBrackets } from '../../../../scripts';
-import { revealButtons, previewControl, reloadButtons } from './Menu_scroll';
+import previewControl, { revealButtons, reloadButtons, revealTitles } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -54,6 +54,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
     🠉|--*/
     reloadButtons(pageName, blockName, labelName);
     setTimeout(() => {
+      revealTitles(pageName, blockName, labelName);
       revealButtons(pageName, blockName, labelName);
     }, 1500);
   }, [pageName, blockName, labelName]);
@@ -107,10 +108,10 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
         </li>
         <li className="showing-vertical_I">
           {cases.pages.map((path, index) => {
-            const viewText = String(path);
-            if (viewText.includes('_')) {
-              let bootstrap = previewBootstrap() as string;
-              const [boldText, italText] = viewText.split('_');
+            const showingSection = String(path);
+            const bootstrap = previewBootstrap() as string;
+            if (showingSection.includes('_')) {
+              const [boldText, italText] = showingSection.split('_');
               return (
                 <aside key={index}>
                   <h3 className={bootstrap}>
@@ -123,9 +124,9 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
               );
             } else {
               return (
-                <aside key={index}>
+                <aside className={bootstrap} key={index}>
                   <h1>
-                    <span>{viewText}</span>
+                    <span>{showingSection}</span>
                   </h1>
                 </aside>
               );
