@@ -36,7 +36,7 @@ function themeScheme(colorScheme: 'light' | 'dark'): void {
   const currentHour = new Date().getHours(); // Gets the hour from 0 to 23
 
   // Between 05:00 and 12:59
-  if (currentHour >= 5 && currentHour < 12) {
+  if (currentHour >= 5 && currentHour < 17) {
     element.classList.add('ante-meridiem');
     element.classList.remove('post-meridiem');
     setTimeout(() => {

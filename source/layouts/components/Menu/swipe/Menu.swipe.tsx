@@ -4,7 +4,7 @@ import './Menu.swipe.scss';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
-import { previewBootstrap } from '../../components';
+import { showingBootstrap } from '../../components';
 import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\
@@ -85,7 +85,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
             {cases.pages.map((path, index) => {
               const viewText = String(path);
               if (viewText.includes('_')) {
-                let bootstrap = previewBootstrap() as string;
+                let bootstrap = showingBootstrap() as string;
                 const [boldText, italText] = viewText.split('_');
                 return (
                   <aside key={index}>

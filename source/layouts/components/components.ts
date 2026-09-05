@@ -3,40 +3,19 @@ import { stripBrackets, arabicToRoman, romanToArabic } from '../../scripts';
 
 //--|🠋 Confirm Resolution 🠋|--\\
 type Orientation = 'landscape' | 'portrait';
-type Bootstrap =
-  | string
-  | 'display-1'
-  | 'display-2'
-  | 'display-3'
-  | 'display-4'
-  | 'display-5'
-  | 'display-6'
-  | [string, string];
 
-export const previewBootstrap = (): Bootstrap => {
+export const showingBootstrap = (): string => {
   const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
-  switch (orientation) {
-    //--|🠊 Landscape Orientation 🠈|--\\
-    case 'landscape': {
-      if (window.innerHeight <= 360) {
-        //--|🠈 Width: 640px 🠈|--\\
-        return 'display-6';
-      } else if (window.innerHeight <= 480) {
-        //--|🠈 Width: 854px 🠈|--\\
-        return 'display-4';
-      } else if (window.innerHeight <= 768) {
-        //--|🠈 Width: 1366px 🠈|--\\
-        return 'display-3';
-      } else {
-        //--|🠈 Width: 1920px 🠈|--\\
-        return 'display-1';
-      }
-    }
-    //--|🠊 Portrait Orientation 🠈|--\\
-    case 'portrait': {
-      //--|🠈 Placeholder for portrait screen sizes 🠈|--\\
-      return 'display-3';
-    }
+  let size = orientation === 'landscape' ? window.innerHeight : window.innerWidth;
+  switch (true) {
+    case size <= 360:
+      return 'display-6'; //--|🠈 640px 🠈|--\\
+    case size <= 480:
+      return 'display-4'; //--|🠈 854px 🠈|--\\
+    case size <= 768:
+      return 'display-3'; //--|🠈 1366px 🠈|--\\
+    default:
+      return 'display-1'; //--|🠈 1920px 🠈|--\\
   }
 };
 

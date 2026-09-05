@@ -1,19 +1,6 @@
 //--|🠊 Menu.scroll.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
-
-  //--| Todo |--\\
-  ul[class='vert-X-scroll'] {
-    %buttons-x-desktop {
-    }
-    li[class*='preview'] {
-      @extend %buttons-x-desktop;
-    }
-    li[class*='showing'] {
-      display: none;
-    }
-  }
-
   ol[class='vert-Y-scroll'] {
     height: 100%;
     overflow: hidden;
@@ -140,6 +127,9 @@
         height: inherit; //--|🠈 height: 100%; 🠈|--\\
         align-items: center;
         justify-content: center;
+        h3 {
+          display: none;
+        }
 
         width: 128px; //--|🠈 128px for Squares 🠈|--\\
         @media screen and (max-height: 768px) {
@@ -159,6 +149,17 @@
     li[class*='showing'] {
       @extend %titles-y-desktop;
       @include desktop-y-showing();
+    }
+  }
+  //--| Todo |--\\
+  ul[class='vert-X-scroll'] {
+    %buttons-x-desktop {
+    }
+    li[class*='preview'] {
+      @extend %buttons-x-desktop;
+    }
+    li[class*='showing'] {
+      display: none;
     }
   }
 }

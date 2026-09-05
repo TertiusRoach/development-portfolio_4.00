@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
-import { previewBootstrap } from '../../components';
+import { showingBootstrap } from '../../components';
 import { stripBrackets } from '../../../../scripts';
-import previewControl, { revealButtons, reloadButtons, revealTitles } from './Menu_scroll';
+import reloadElements, { modifyingController, previewButtons, showingTitles } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -52,11 +52,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
     /*--|🠋
 
     🠉|--*/
-    reloadButtons(pageName, blockName, labelName);
-    setTimeout(() => {
-      revealTitles(pageName, blockName, labelName);
-      revealButtons(pageName, blockName, labelName);
-    }, 1500);
+    reloadElements(pageName, blockName, labelName);
+    modifyingController(pageName, blockName, labelName);
   }, [pageName, blockName, labelName]);
 
   let stateView = 'downplay' as 'downplay' | 'highlight';
@@ -81,7 +78,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                previewControl('view-prev', pageName, blockName, labelName);
+                showingTitles('show-prev', pageName, blockName, labelName);
+                previewButtons('view-prev', pageName, blockName, labelName);
               }}
             />
           </div>
@@ -101,7 +99,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                previewControl('view-next', pageName, blockName, labelName);
+                showingTitles('show-next', pageName, blockName, labelName);
+                previewButtons('view-next', pageName, blockName, labelName);
               }}
             />
           </div>
@@ -109,12 +108,11 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
         <li className="showing-vertical_I">
           {cases.pages.map((path, index) => {
             const showingSection = String(path);
-            const bootstrap = previewBootstrap() as string;
             if (showingSection.includes('_')) {
-              const [boldText, italText] = showingSection.split('_');
+              let [boldText, italText] = showingSection.split('_');
               return (
-                <aside key={index}>
-                  <h3 className={bootstrap}>
+                <aside className="downplay" key={index}>
+                  <h3 className="display-0">
                     <span>
                       <b>{boldText}</b>
                       <i>{italText}</i>
@@ -124,10 +122,10 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
               );
             } else {
               return (
-                <aside className={bootstrap} key={index}>
-                  <h1>
+                <aside className="downplay" key={index}>
+                  <h3 className="display-0">
                     <span>{showingSection}</span>
-                  </h1>
+                  </h3>
                 </aside>
               );
             }
