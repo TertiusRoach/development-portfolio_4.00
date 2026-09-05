@@ -4,10 +4,9 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
-import { showingBootstrap } from '../../components';
-import { stripBrackets } from '../../../../scripts';
+import { abbrView, abbrShade, abbrColor } from '../../components';
+import { stripBrackets, showingBootstrap } from '../../../../scripts';
 import reloadElements, { modifyingController, previewButtons, showingTitles } from './Menu_scroll';
-
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
@@ -60,7 +59,9 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_scroll-default`}>
-      <ListStyle className={axisStyle[cases.axis]}>
+      <ListStyle
+        className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}
+      >
         <li className={`preview-vertical-${stripBrackets(style.view, '--')}`}>
           <div className={`prev-view ${stateView}`}>
             <ButtonDefault

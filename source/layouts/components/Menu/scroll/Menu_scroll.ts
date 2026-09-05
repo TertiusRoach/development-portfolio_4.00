@@ -1,11 +1,38 @@
 //--|🠊 Menu_scroll.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { showingBootstrap } from '../../components';
-import { arabicToRoman, romanToArabic } from '../../../../scripts';
+import { arabicToRoman, romanToArabic, showingBootstrap } from '../../../../scripts';
 
-/*--|🠋
+//--|🠋 Functions & Elements 🠋|--\\
+interface ChainedElements {
+  container: HTMLDivElement | null;
+  controller: HTMLMenuElement | null;
+}
+function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
+  return {
+    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+    controller: document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
+  };
+}
+function reloadElements(pageName: string, blockName: string, labelName: string) {
+  let timeout: ReturnType<typeof setTimeout>;
+  const handleResize = (): void => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      revealTitles(pageName, blockName, labelName);
+      revealButtons(pageName, blockName, labelName);
+    }, 125);
+  };
 
-🠉|--*/
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    clearTimeout(timeout);
+    window.removeEventListener('resize', handleResize);
+  };
+}
+export default reloadElements;
+
+//--|🠋 Configures Headings 🠋|--\\
 export const showingTitles = (
   showTask: 'show-prev' | 'show-next',
   pageName: string,
@@ -50,6 +77,7 @@ let showNext = (pageName: string, blockName: string, labelName: string): void =>
   }
 };
 
+//--|🠋 Configures Buttons 🠋|--\\
 export const previewButtons = (
   viewTask: 'view-prev' | 'view-next',
   pageName: string,
@@ -100,7 +128,11 @@ let viewNext = (pageName: string, blockName: string, labelName: string): void =>
   }
 };
 
+//--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
+  /*--|🠋
+
+  🠉|--*/
   setTimeout(() => {
     revealTitles(pageName, blockName, labelName);
     revealButtons(pageName, blockName, labelName);
@@ -182,32 +214,3 @@ let revealTitles = (pageName: string, blockName: string, labelName: string): voi
 
   revealActiveTitle(container, controller);
 };
-
-interface ChainedElements {
-  container: HTMLDivElement | null;
-  controller: HTMLMenuElement | null;
-}
-function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
-  return {
-    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
-    controller: document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
-  };
-}
-function reloadElements(pageName: string, blockName: string, labelName: string) {
-  let timeout: ReturnType<typeof setTimeout>;
-  const handleResize = (): void => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      revealTitles(pageName, blockName, labelName);
-      revealButtons(pageName, blockName, labelName);
-    }, 125);
-  };
-
-  window.addEventListener('resize', handleResize);
-
-  return () => {
-    clearTimeout(timeout);
-    window.removeEventListener('resize', handleResize);
-  };
-}
-export default reloadElements;

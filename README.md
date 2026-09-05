@@ -360,19 +360,6 @@ Primary containers live under `source/layouts/containers/` and use the following
 
 ---
 
-## Development Environment
-
-### VSCode Tips
-
-| Action                    | Shortcut           | Description                                      |
-| ------------------------- | ------------------ | ------------------------------------------------ |
-| **Collapse Folders**      | `Ctrl + Shift + P` | Collapse all folders in Explorer                 |
-| **Collapse Sections**     | `Ctrl + K + 0`     | Collapse all code sections (caret in root scope) |
-| **Open Settings**         | `Ctrl + ,`         | Access VSCode settings                           |
-| **See Props & Callbacks** | `Ctrl + SpaceBar`  | IntelliSense autocomplete                        |
-| **Open Run & Debug**      | `Ctrl + Shift + D` | Launch debugger                                  |
-| **Stop Terminal Server**  | `Ctrl + C`         | Stop running server process                      |
-
 ### Folder Structure
 
 > This layout is modular on purpose. It is optimized for forward momentum and predictable scaling, not for matching a single framework template. The naming is descriptive, the separation is strict, and the intent is obvious when you scan the tree.

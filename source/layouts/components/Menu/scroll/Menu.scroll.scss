@@ -1,7 +1,7 @@
 //--|🠊 Menu.scroll.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
-  ol[class='vert-Y-scroll'] {
+  ol[class*='vert-Y-scroll'] {
     height: 100%;
     overflow: hidden;
     %buttons-y-desktop {
@@ -152,7 +152,7 @@
     }
   }
   //--| Todo |--\\
-  ul[class='vert-X-scroll'] {
+  ul[class*='vert-X-scroll'] {
     %buttons-x-desktop {
     }
     li[class*='preview'] {
@@ -228,7 +228,7 @@
 
 @mixin mobile-portrait {
   //--|🠊 Mobile (Elements) 🠈|--\\
-  ul[class='vert-X-scroll'] {
+  ul[class*='vert-X-scroll'] {
     width: 100%;
     overflow: hidden;
     %buttons-x-mobile {
@@ -378,7 +378,7 @@
   }
 
   //--| Todo |--\\
-  ol[class='vert-Y-scroll'] {
+  ol[class*='vert-Y-scroll'] {
     %buttons-y-mobile {
     }
     li[class*='preview'] {
@@ -642,7 +642,7 @@
 menu[class*='scroll'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    ul[class='vert-X-scroll'] {
+    ul[class*='vert-X-scroll'] {
       height: 128px; //--|🠈 128px for Squares 🠈|--\\
       @media screen and (max-height: 768px) {
         height: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -654,7 +654,7 @@ menu[class*='scroll'] {
         height: 48px; //--|🠈 48px for Squares 🠈|--\\
       }
     }
-    ol[class='vert-Y-scroll'] {
+    ol[class*='vert-Y-scroll'] {
       width: 128px; //--|🠈 128px for Squares 🠈|--\\
       @media screen and (max-height: 768px) {
         width: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -669,7 +669,7 @@ menu[class*='scroll'] {
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    ul[class='vert-X-scroll'] {
+    ul[class*='vert-X-scroll'] {
       height: 192px; //--|🠈 192px for Squares 🠈|--\\
       @media screen and (max-width: 768px) {
         height: 160px; //--|🠈 160px for Squares 🠈|--\\
@@ -681,7 +681,7 @@ menu[class*='scroll'] {
         height: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
     }
-    ol[class='vert-Y-scroll'] {
+    ol[class*='vert-Y-scroll'] {
       width: 192px; //--|🠈 192px for Squares 🠈|--\\
       @media screen and (max-width: 768px) {
         width: 160px; //--|🠈 160px for Squares 🠈|--\\
@@ -714,8 +714,8 @@ menu[class*='scroll'] {
     }
   }
   //--|🠊 Superimpose Positioning 🠈|--\\
-  ul[class='vert-X-scroll'],
-  ol[class='vert-Y-scroll'] {
+  ul[class*='vert-X-scroll'],
+  ol[class*='vert-Y-scroll'] {
     position: relative;
     li[class*='preview'],
     li[class*='showing'] {

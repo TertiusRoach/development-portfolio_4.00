@@ -687,9 +687,24 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
+export function showingBootstrap(): string {
+  const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+  let size = orientation === 'landscape' ? window.innerHeight : window.innerWidth;
+  switch (true) {
+    default:
+      //--|🠊 case size >= 1080: 🠈|--\\
+      return 'display-1'; //--|🠈 1920px 🠈|--\\
+    case size <= 768:
+      return 'display-3'; //--|🠈 1366px 🠈|--\\
+    case size <= 480:
+      return 'display-4'; //--|🠈 854px 🠈|--\\
+    case size <= 360:
+      return 'display-6'; //--|🠈 640px 🠈|--\\
+  }
+}
 
 //--|🠋 Confirm Rotation 🠋|--\\
-export type Orientation = 'landscape' | 'portrait';
+type Orientation = 'landscape' | 'portrait';
 export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
   const mediaQuery = window.matchMedia('(orientation: landscape)');
 

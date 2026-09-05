@@ -26,12 +26,11 @@ export function createClass(style: StyleProps): String {
   }
 }
 
-//--|🠋 Scoped Functions 🠋|--\\
-
-export function createLayout(
+//--|🠋 Generate Abbreviations 🠋|--\\
+const createLayout = (
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
-): string {
+): string => {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
@@ -63,11 +62,11 @@ export function createLayout(
   }
 
   return `${classSize}_${classView}`;
-}
-export function createColor(
+};
+const createColor = (
   shade: '~dark~' | '~medium~' | '~light~',
   color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
-): string {
+): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
@@ -95,5 +94,5 @@ export function createColor(
   }
 
   return `${classShade}_${classColor}`;
-}
+};
 export default createClass;

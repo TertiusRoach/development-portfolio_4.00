@@ -1,23 +1,5 @@
 //--|🠊 source/layouts/components/functions.ts 🠈|--\\
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../scripts';
-
-//--|🠋 Confirm Resolution 🠋|--\\
-type Orientation = 'landscape' | 'portrait';
-
-export const showingBootstrap = (): string => {
-  const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
-  let size = orientation === 'landscape' ? window.innerHeight : window.innerWidth;
-  switch (true) {
-    case size <= 360:
-      return 'display-6'; //--|🠈 640px 🠈|--\\
-    case size <= 480:
-      return 'display-4'; //--|🠈 854px 🠈|--\\
-    case size <= 768:
-      return 'display-3'; //--|🠈 1366px 🠈|--\\
-    default:
-      return 'display-1'; //--|🠈 1920px 🠈|--\\
-  }
-};
+import { stripBrackets } from '../../scripts';
 
 //--|🠋 Abbreviations 🠋|--\\
 export let abbrAxis = (axis: '[x]' | '[y]'): string => {
@@ -31,18 +13,19 @@ export let abbrAxis = (axis: '[x]' | '[y]'): string => {
 
   return `${classAxis}`;
 };
-export let abbrType = (type: '{select}' | '{scroll}'): string => {
+export let abbrType = (type: '{select}' | '{scroll}' | '{swipe}'): string => {
   const typeMap: Record<string, string> = {
     //--|🠊 Map of types to abbreviations 🠈|--\\
     '{select}': 'sel',
     '{scroll}': 'scr',
+    '{swipe}': 'swi',
   };
 
   const classType = typeMap[type];
 
   return `${classType}`;
 };
-export let abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-'): string => {
+export let abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '-mid-' | '-def-'): string => {
   const classView = stripBrackets(view, '--');
 
   return `${classView}`;
@@ -51,20 +34,38 @@ export let abbrShade = (shade: '~dark~' | '~medium~' | '~light~'): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map of types to abbreviations 🠈|--\\
     '~dark~': 'dar',
-    '~medium~': 'med',
     '~light~': 'lig',
+    '~medium~': 'med',
   };
 
   const classShade = shadeMap[shade];
 
   return `${classShade}`;
 };
-export let abbrColor = (color: '(red)' | '(green)' | '(blue)' | '(mono)'): string => {
+export let abbrColor = (
+  color:
+    | '(red)'
+    | '(green)'
+    | '(blue)'
+    | '(purple)'
+    | '(orange)'
+    | '(pink)'
+    | '(brown)'
+    | '(turquoise)'
+    | '(gray)'
+    | '(mono)',
+): string => {
   const colorMap: Record<string, string> = {
     //--|🠊 Map of types to abbreviations 🠈|--\\
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
+    '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
+    '(turquoise)': 'tur',
+    '(gray)': 'gra',
     '(mono)': 'mon',
   };
 

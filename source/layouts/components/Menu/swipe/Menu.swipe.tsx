@@ -4,7 +4,7 @@ import './Menu.swipe.scss';
 
 //--|🠋 Functions 🠋|--\\
 import loadAsset from '../../../scripts/archive';
-import { showingBootstrap } from '../../components';
+import { showingBootstrap } from '../.././../../scripts';
 import { loadCarousel, markCarousel, swipeCarousel } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\
