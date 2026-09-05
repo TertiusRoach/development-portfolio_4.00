@@ -1,8 +1,22 @@
 //--|🠊 Menu.scroll.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
+
+  //--| Todo |--\\
+  ul[class='vert-X-scroll'] {
+    %buttons-x-desktop {
+    }
+    li[class*='preview'] {
+      @extend %buttons-x-desktop;
+    }
+    li[class*='showing'] {
+      display: none;
+    }
+  }
+
   ol[class='vert-Y-scroll'] {
     height: 100%;
+    overflow: hidden;
     %buttons-y-desktop {
       z-index: 1;
       display: grid;
@@ -118,26 +132,99 @@
         }
       }
     }
+    %titles-y-desktop {
+      z-index: 0;
+      height: inherit; //--|🠈 height: 100%; 🠈|--\\
+      aside {
+        display: flex;
+        height: inherit; //--|🠈 height: 100%; 🠈|--\\
+        align-items: center;
+        justify-content: center;
+
+        width: 128px; //--|🠈 128px for Squares 🠈|--\\
+        @media screen and (max-height: 768px) {
+          width: 96px; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          width: 64px; //--|🠈 64px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          width: 48px; //--|🠈 48px for Squares 🠈|--\\
+        }
+      }
+    }
     li[class*='preview'] {
       @extend %buttons-y-desktop;
     }
     li[class*='showing'] {
-      display: none;
-    }
-  }
-
-  //--| Todo |--\\
-  ul[class='vert-X-scroll'] {
-    %buttons-x-desktop {
-    }
-    li[class*='preview'] {
-      @extend %buttons-x-desktop;
-    }
-    li[class*='showing'] {
-      display: none;
+      @extend %titles-y-desktop;
+      @include desktop-y-showing();
     }
   }
 }
+@mixin desktop-y-showing {
+  &[class*='vertical_I'] {
+    transform: translateY(calc(-100% * 0));
+  }
+  &[class*='vertical_II'] {
+    transform: translateY(calc(-100% * 1));
+  }
+  &[class*='vertical_III'] {
+    transform: translateY(calc(-100% * 2));
+  }
+  &[class*='vertical_IV'] {
+    transform: translateY(calc(-100% * 3));
+  }
+  &[class*='vertical_V'] {
+    transform: translateY(calc(-100% * 4));
+  }
+  &[class*='vertical_VI'] {
+    transform: translateY(calc(-100% * 5));
+  }
+  &[class*='vertical_VII'] {
+    transform: translateY(calc(-100% * 6));
+  }
+  &[class*='vertical_VIII'] {
+    transform: translateY(calc(-100% * 7));
+  }
+  &[class*='vertical_IX'] {
+    transform: translateY(calc(-100% * 8));
+  }
+  &[class*='vertical_X'] {
+    transform: translateY(calc(-100% * 9));
+  }
+  &[class*='vertical_XI'] {
+    transform: translateY(calc(-100% * 10));
+  }
+  &[class*='vertical_XII'] {
+    transform: translateY(calc(-100% * 11));
+  }
+  &[class*='vertical_XIII'] {
+    transform: translateY(calc(-100% * 12));
+  }
+  &[class*='vertical_XIV'] {
+    transform: translateY(calc(-100% * 13));
+  }
+  &[class*='vertical_XV'] {
+    transform: translateY(calc(-100% * 14));
+  }
+  &[class*='vertical_XVI'] {
+    transform: translateY(calc(-100% * 15));
+  }
+  &[class*='vertical_XVII'] {
+    transform: translateY(calc(-100% * 16));
+  }
+  &[class*='vertical_XVIII'] {
+    transform: translateY(calc(-100% * 17));
+  }
+  &[class*='vertical_XIX'] {
+    transform: translateY(calc(-100% * 18));
+  }
+  &[class*='vertical_XX'] {
+    transform: translateY(calc(-100% * 19));
+  }
+}
+
 @mixin mobile-portrait {
   //--|🠊 Mobile (Elements) 🠈|--\\
   ul[class='vert-X-scroll'] {
@@ -279,7 +366,7 @@
         }
       }
     }
-    @extend %superimpose-positioning;
+
     li[class*='preview'] {
       @extend %buttons-x-mobile;
     }
@@ -288,13 +375,7 @@
       @include mobile-x-showing();
     }
   }
-  %superimpose-positioning {
-    position: relative;
-    li[class*='preview'],
-    li[class*='showing'] {
-      position: absolute;
-    }
-  }
+
   //--| Todo |--\\
   ol[class='vert-Y-scroll'] {
     %buttons-y-mobile {
@@ -629,6 +710,15 @@ menu[class*='scroll'] {
           cursor: default;
         }
       }
+    }
+  }
+  //--|🠊 Superimpose Positioning 🠈|--\\
+  ul[class='vert-X-scroll'],
+  ol[class='vert-Y-scroll'] {
+    position: relative;
+    li[class*='preview'],
+    li[class*='showing'] {
+      position: absolute;
     }
   }
 }
