@@ -24,6 +24,7 @@ const TableElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: TableComponents as React.ComponentType<InfoProps>,
         }}

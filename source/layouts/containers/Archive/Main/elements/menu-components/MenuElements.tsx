@@ -36,6 +36,7 @@ const MenuElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: MenuComponents as React.ComponentType<InfoProps>,
         }}

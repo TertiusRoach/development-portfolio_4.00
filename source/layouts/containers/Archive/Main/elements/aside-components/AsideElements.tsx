@@ -33,6 +33,7 @@ const AsideElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: AsideComponents as React.ComponentType<InfoProps>,
         }}

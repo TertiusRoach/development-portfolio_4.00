@@ -24,6 +24,7 @@ const FigureElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: FigureComponents as React.ComponentType<InfoProps>,
         }}

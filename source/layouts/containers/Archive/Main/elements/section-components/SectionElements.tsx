@@ -33,6 +33,7 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: SectionComponents as React.ComponentType<InfoProps>,
         }}
