@@ -713,9 +713,9 @@ menu[class*='scroll'] {
       }
     }
   }
-  //--|🠊 Superimpose Positioning 🠈|--\\
   ul[class*='vert-X-scroll'],
   ol[class*='vert-Y-scroll'] {
+    //--|🠊 Superimpose Positioning 🠈|--\\
     position: relative;
     li[class*='preview'],
     li[class*='showing'] {

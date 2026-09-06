@@ -1,5 +1,6 @@
-//--|🠊 swipe-menu/SwipeFunctions.ts 🠈|--\\
+//--|🠊 scroll-menu/ScrollFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+/*
 export function togglePreview() {
   const controller = document.querySelector('#components-main menu.swipe-main_swipe-default') as HTMLMenuElement;
   const prevView = controller.querySelector('div[class*="prev-view"]') as HTMLDivElement;
@@ -7,3 +8,4 @@ export function togglePreview() {
   prevView.classList.replace('downplay', 'highlight');
   nextView.classList.replace('downplay', 'highlight');
 }
+*/
