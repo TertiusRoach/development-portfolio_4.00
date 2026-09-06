@@ -1,6 +1,7 @@
 //--|🠊 MenuElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
+@use './scroll-menu/ScrollMenu.scss';
 @use './swipe-menu/SwipeMenu.scss';
 @use './select-menu/SelectMenu.scss';
 
@@ -12,19 +13,25 @@ section[class*='menu-main'] {
       flex: 0 0 100vw;
       min-width: 100vw;
       @media screen and (orientation: landscape) {
-        &[class*='select'] {
-          @include SelectMenu.desktop-landscape;
+        &[class*='scroll'] {
+          @include ScrollMenu.desktop-landscape;
         }
         &[class*='swipe'] {
           @include SwipeMenu.desktop-landscape;
         }
+        &[class*='select'] {
+          @include SelectMenu.desktop-landscape;
+        }
       }
       @media screen and (orientation: portrait) {
-        &[class*='select'] {
-          @include SelectMenu.mobile-portrait;
+        &[class*='scroll'] {
+          @include ScrollMenu.mobile-portrait;
         }
         &[class*='swipe'] {
           @include SwipeMenu.mobile-portrait;
+        }
+        &[class*='select'] {
+          @include SelectMenu.mobile-portrait;
         }
       }
     }

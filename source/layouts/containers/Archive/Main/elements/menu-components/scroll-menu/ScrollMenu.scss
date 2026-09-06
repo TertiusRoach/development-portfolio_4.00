@@ -3,7 +3,39 @@
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
+  //--|🠊 Desktop (Elements) 🠈|--\\
   //--|🠊 <aside className="scroll-menu"> 🠈|--\\
+  display: grid;
+
+  //--|🠊 96px (Left & Right) for Design 🠈|--\\
+  grid-template: //--|🠋 Width: 1920px 🠋|--\\
+    8rem 1fr 8rem //--|🠈 rows 🠈|--//
+    / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+  @media screen and (max-height: 768px) {
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    /*
+    grid-template: //--|🠋 Width: 1366px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+    */
+  }
+  @media screen and (max-height: 480px) {
+    //--|🠊 48px (Left & Right) for Design 🠈|--\\
+    /*
+    grid-template: //--|🠋 Width: 854px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+    */
+  }
+  @media screen and (max-height: 360px) {
+    //--|🠊 32px (Left & Right) for Design 🠈|--\\
+    /*
+    grid-template: //--|🠋 Width: 640px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
+    */
+  }
+
   /*
   %mark-area {
     div[class='horizontal'] {
