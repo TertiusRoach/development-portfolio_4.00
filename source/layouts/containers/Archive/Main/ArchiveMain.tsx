@@ -122,7 +122,7 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
         <DivisionCarousel
           //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
           cases={{
-            show: 3,
+            show: 6,
             axis: '[y]',
             call: ComponentsElements as React.ComponentType<InfoProps>,
           }}

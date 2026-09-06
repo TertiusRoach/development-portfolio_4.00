@@ -16,9 +16,9 @@ import './ButtonElements.scss';
 
 interface InfoProps {
   info: {
-    blockName: 'main';
-    pageName: 'components';
-    labelName: 'button' | string;
+    pageName: string | 'components';
+    blockName: string | 'main';
+    labelName: string | 'default' | 'routing';
   };
 }
 function ButtonComponents({ info }: InfoProps) {
@@ -43,6 +43,7 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${labelName}-${blockName}`}>
       <DivisionCarousel
         cases={{
+          show: 1,
           axis: '[x]',
           call: ButtonComponents as React.ComponentType<InfoProps>,
         }}

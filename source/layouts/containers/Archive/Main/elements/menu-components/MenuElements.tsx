@@ -9,14 +9,15 @@ import DivisionCarousel from '../../../../../components/Division/carousel/Divisi
 
 //--|🠋 Styles 🠋|--\\
 import './MenuElements.scss';
-import SelectMenu from './select-menu/SelectMenu';
 import SwipeMenu from './swipe-menu/SwipeMenu';
+import ScrollMenu from './scroll-menu/ScrollMenu';
+import SelectMenu from './select-menu/SelectMenu';
 
 interface InfoProps {
   info: {
-    pageName: string;
-    blockName: string;
-    labelName: string;
+    pageName: string | 'components';
+    blockName: string | 'main';
+    labelName: string | 'scroll' | 'swipe' | 'select';
   };
 }
 function MenuComponents({ info }: InfoProps) {
@@ -26,8 +27,9 @@ function MenuComponents({ info }: InfoProps) {
 
   return (
     <>
-      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
+      <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
       <SwipeMenu info={{ labelName: 'swipe' as string, pageName: pageName, blockName: blockName }} />
+      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }

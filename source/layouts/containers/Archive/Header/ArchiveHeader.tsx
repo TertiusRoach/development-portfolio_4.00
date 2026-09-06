@@ -53,7 +53,6 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
             <HeaderSwipe
               //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
               cases={{
-                show: 3,
                 menus: [
                   <MenuSwipe
                     style={{ ...menuStyle }}

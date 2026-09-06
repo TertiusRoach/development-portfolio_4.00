@@ -24,7 +24,6 @@ interface TheseProps {
     view: 'top-cen' | 'mid-rig' | 'bot-cen' | 'mid-lef' | 'mid-cen';
   };
   cases: {
-    show: number;
     buttons: Array<{ labelName: string; imageLink: string }>;
   };
 
@@ -84,7 +83,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                     //--|🠋 Step 1: Select Carousel 🠋|--\\
                     selectCarousel(info.pageName, info.blockName, info.labelName, path.labelName, style.axis);
                     //--|🠋 Step 2: Mark Carousel 🠋|--\\
-                    markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
+                    // markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
                   }}
                 />
               </div>
@@ -94,27 +93,26 @@ function MenuAxis({ info, style, cases }: TheseProps) {
       );
   }
 }
-
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisClass: Record<TheseProps['style']['axis'], string> = {
+  '[x]': 'hori-X-select',
+  '[y]': 'vert-Y-select',
+};
 const MenuSelect: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
-  //--|🠊 Checks [x] or [y] axis 🠈|--\\
-  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-    '[x]': 'ul',
-    '[y]': 'ol',
-  };
-  const axisClass: Record<TheseProps['style']['axis'], string> = {
-    '[x]': 'hori-X-select',
-    '[y]': 'vert-Y-select',
-  };
   let ListItem = axisList[style.axis];
   useEffect(() => {
     /*--|🠋
     
     🠉|--*/
-    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
+    // markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
   return (

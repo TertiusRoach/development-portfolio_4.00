@@ -19,7 +19,6 @@ interface TheseProps {
     labelName: string;
   };
   cases: {
-    show: number;
     axis: '[x]' | '[y]';
     menus: Array<React.ReactNode>;
     chain: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>';
