@@ -5,10 +5,10 @@ import React, { useEffect } from 'react';
 import './ScrollMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
-// import { togglePreview } from './ScrollFunctions';
-import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
+import { overridePreview } from './ScrollFunctions';
 
 //--|🠋 Components 🠋|--\\
+import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 
 interface InfoProps {
   info: {
@@ -23,7 +23,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   useEffect(() => {
-    // togglePreview();
+    overridePreview();
   }, [pageName, blockName, labelName]);
 
   let casesPages = ['<MenuScroll>', '<MenuScroll>', '<MenuScroll>'] as Array<string>;
