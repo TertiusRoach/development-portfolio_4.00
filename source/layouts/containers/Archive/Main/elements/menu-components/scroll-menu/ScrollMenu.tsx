@@ -19,7 +19,7 @@ interface InfoProps {
 }
 const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'swipe';
+  const labelName = info.labelName as 'scroll';
   const pageName = info.pageName as 'component';
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-left',
             }}
             style={{
               view: '-lef-',
@@ -51,7 +51,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-right',
             }}
             style={{
               view: '-rig-',
@@ -67,7 +67,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-center',
             }}
             style={{
               view: '-cen-',
@@ -83,7 +83,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-horizontal',
             }}
             style={{
               view: '-def-',
@@ -101,7 +101,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-top',
             }}
             style={{
               view: '-top-',
@@ -117,7 +117,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-bottom',
             }}
             style={{
               view: '-bot-',
@@ -133,7 +133,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-middle',
             }}
             style={{
               view: '-mid-',
@@ -149,7 +149,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
-              labelName: labelName as 'swipe',
+              labelName: 'standard-vertical',
             }}
             style={{
               view: '-def-',

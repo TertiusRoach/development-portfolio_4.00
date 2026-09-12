@@ -324,12 +324,13 @@ export function arabicToRoman(arabicNumeral: number): string {
       return 'O';
   }
 }
-export function romanToArabic(romanNumeral: string): number {
+export function romanToArabic(romanNumeral: string | undefined): number {
   switch (romanNumeral) {
     //--|🠊 Map of Roman Strings to Number 🠈|--\\
+    default:
     case 'O':
+    case 'N':
       return 0;
-
     case 'I':
       return 1;
     case 'II':
@@ -657,10 +658,6 @@ export function romanToArabic(romanNumeral: string): number {
       return 155;
     case 'CLVI':
       return 156;
-
-    // Fallback Number
-    default:
-      return 0;
   }
 }
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {

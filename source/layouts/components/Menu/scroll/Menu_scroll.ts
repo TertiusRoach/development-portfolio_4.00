@@ -1,18 +1,116 @@
 //--|🠊 Menu_scroll.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { arabicToRoman, romanToArabic, showingBootstrap } from '../../../../scripts';
+//--|🠋 Default Starting Point 🠋|--\\
+export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
+  /*--|🠋
+
+  🠉|--*/
+  setTimeout(() => {
+    revealTitles(pageName, blockName, labelName);
+    revealButtons(pageName, blockName, labelName);
+  }, 1500);
+};
+let revealTitles = (pageName: string, blockName: string, labelName: string): void => {
+  //--|🠋 Step 1: Scroll Visible Window 🠋|--\\
+  const revealActiveTitle = (container: HTMLDivElement, controller: HTMLMenuElement) => {
+    //--|🠊 Reveal Active Title 🠈|--\\
+    let carouselPosition = container.parentElement?.classList[0].split('_')[1] as string;
+    let controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
+
+    var viewPrev: string = controllerShowing.classList[0];
+    var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${carouselPosition}`;
+
+    controllerShowing.classList.replace(viewPrev, viewNext);
+    assignBootstrapClasses(container, controller);
+  };
+  //--|🠋 Step 2: Scale Bootstrap Display 🠋|--\\
+  const assignBootstrapClasses = (container: HTMLDivElement, controller: HTMLMenuElement) => {
+    //--|🠊 Assign Bootstrap Classes 🠈|--\\
+    const controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
+    let controllerBootstrap = controllerShowing.querySelectorAll('aside h3[class*="display"]') as NodeListOf<HTMLElement>;
+    for (let i = 0; i < controllerBootstrap.length; i++) {
+      var element = controllerBootstrap[i] as HTMLElement;
+      var prevClass = element.classList[0] as string;
+      var nextClass = showingBootstrap() as string;
+      element.classList.replace(prevClass, nextClass);
+    }
+    emphasizeDefaultParameters(container, controller);
+  };
+  //--|🠋 Step 3: Mark Active Title 🠋|--\\
+  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement) => {
+    //--|🠊 Emphasize Default Parameters 🠈|--\\
+    const carouselPosition = container.parentElement?.classList[0].split('_')[1] as string;
+    const controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
+    if (!controllerShowing.querySelector('.highlight')) {
+      let viewTitle = controllerShowing.children[romanToArabic(carouselPosition) - 1] as HTMLElement;
+      viewTitle.classList.replace('downplay', 'highlight');
+    }
+  };
+
+  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
+  const container = findTags(pageName, blockName, labelName).container as HTMLDivElement | null;
+  if (container) {
+    revealActiveTitle(container, controller);
+  } else {
+    let controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
+
+    var viewPrev: string = controllerShowing.classList[0];
+
+    var testOne = controllerShowing.childNodes[0] as HTMLElement;
+    var testTwo = controllerShowing.childNodes[1] as HTMLElement;
+    var testThr = controllerShowing.childNodes[2] as HTMLElement;
+
+    testOne.classList.replace('downplay', 'highlight');
+    testTwo.classList.replace('downplay', 'highlight');
+    testThr.classList.replace('downplay', 'highlight');
+    // console.log(, viewPrev);
+    // var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${carouselPosition}`;
+  }
+};
+let revealButtons = (pageName: string, blockName: string, labelName: string): void => {
+  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
+  const viewPrev = controller.querySelector('li[class*="preview-vertical"] div[class*="prev-view"]') as HTMLDivElement;
+  const viewNext = controller.querySelector('li[class*="preview-vertical"] div[class*="next-view"]') as HTMLDivElement;
+
+  let container = findTags(pageName, blockName, labelName).container as HTMLDivElement | null;
+  if (container) {
+    let carouselChildren: number = container.childElementCount;
+    let carouselPosition: number = romanToArabic(container.parentElement?.classList[0].split('_')[1] as string);
+    switch (carouselPosition) {
+      case 1:
+        viewNext.classList.add('highlight');
+        viewNext.classList.remove('downplay');
+
+        viewPrev.classList.add('downplay');
+        viewPrev.classList.remove('highlight');
+        return revealTitles(pageName, blockName, labelName);
+      default:
+        viewNext.classList.add('highlight');
+        viewNext.classList.remove('downplay');
+
+        viewPrev.classList.add('highlight');
+        viewPrev.classList.remove('downplay');
+        break;
+      case carouselChildren:
+        viewPrev.classList.add('highlight');
+        viewPrev.classList.remove('downplay');
+
+        viewNext.classList.add('downplay');
+        viewNext.classList.remove('highlight');
+        break;
+    }
+  } else {
+    viewNext.classList.replace('downplay', 'highlight');
+    viewPrev.classList.replace('downplay', 'highlight');
+    /*
+    console.log(controller, container);
+    console.log(viewPrev, viewNext);
+    */
+  }
+};
 
 //--|🠋 Functions & Elements 🠋|--\\
-interface ChainedElements {
-  container: HTMLDivElement | null;
-  controller: HTMLMenuElement | null;
-}
-function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
-  return {
-    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
-    controller: document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
-  };
-}
 function reloadElements(pageName: string, blockName: string, labelName: string) {
   let timeout: ReturnType<typeof setTimeout>;
   const handleResize = (): void => {
@@ -31,6 +129,17 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
   };
 }
 export default reloadElements;
+
+interface ChainedElements {
+  container: HTMLDivElement | null;
+  controller: HTMLMenuElement | null;
+}
+function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
+  return {
+    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+    controller: document.querySelector(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_scroll-default"]`),
+  };
+}
 
 //--|🠋 Configures Headings 🠋|--\\
 export const showingTitles = (
@@ -125,95 +234,5 @@ let viewNext = (pageName: string, blockName: string, labelName: string): void =>
     container.parentElement?.classList.remove(prevSlide);
 
     revealButtons(pageName, blockName, labelName);
-  }
-};
-
-//--|🠋 Default Starting Point 🠋|--\\
-export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
-  /*--|🠋
-
-  🠉|--*/
-  setTimeout(() => {
-    revealTitles(pageName, blockName, labelName);
-    revealButtons(pageName, blockName, labelName);
-  }, 1500);
-};
-let revealButtons = (pageName: string, blockName: string, labelName: string): void => {
-  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const container = findTags(pageName, blockName, labelName).container as HTMLDivElement | null;
-  if (container) {
-    let carouselChildren: number = container.childElementCount;
-    let carouselPosition: number = romanToArabic(container.parentElement?.classList[0].split('_')[1] as string);
-
-    var viewPrev = controller.querySelector('li[class*="preview-vertical"] div[class*="prev-view"]') as HTMLDivElement;
-    var viewNext = controller.querySelector('li[class*="preview-vertical"] div[class*="next-view"]') as HTMLDivElement;
-
-    revealTitles(pageName, blockName, labelName);
-    switch (carouselPosition) {
-      case 1:
-        viewNext.classList.add('highlight');
-        viewNext.classList.remove('downplay');
-
-        viewPrev.classList.add('downplay');
-        viewPrev.classList.remove('highlight');
-        break;
-      default:
-        viewNext.classList.add('highlight');
-        viewNext.classList.remove('downplay');
-
-        viewPrev.classList.add('highlight');
-        viewPrev.classList.remove('downplay');
-        break;
-      case carouselChildren:
-        viewPrev.classList.add('highlight');
-        viewPrev.classList.remove('downplay');
-
-        viewNext.classList.add('downplay');
-        viewNext.classList.remove('highlight');
-        break;
-    }
-  }
-};
-let revealTitles = (pageName: string, blockName: string, labelName: string): void => {
-  //--|🠋 Step 1: Scroll Visible Window 🠋|--\\
-  const revealActiveTitle = (container: HTMLDivElement, controller: HTMLMenuElement) => {
-    //--|🠊 Reveal Active Title 🠈|--\\
-    let carouselPosition = container.parentElement?.classList[0].split('_')[1] as string | null;
-    let controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
-
-    var viewPrev: string = controllerShowing.classList[0];
-    var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${carouselPosition}`;
-
-    controllerShowing.classList.replace(viewPrev, viewNext);
-    assignBootstrapClasses(container, controller);
-  };
-  //--|🠋 Step 2: Scale Bootstrap Display 🠋|--\\
-  const assignBootstrapClasses = (container: HTMLDivElement, controller: HTMLMenuElement) => {
-    //--|🠊 Assign Bootstrap Classes 🠈|--\\
-    const controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
-    let controllerBootstrap = controllerShowing.querySelectorAll('aside h3[class*="display"]') as NodeListOf<HTMLElement>;
-    for (let i = 0; i < controllerBootstrap.length; i++) {
-      var element = controllerBootstrap[i] as HTMLElement;
-      var prevClass = element.classList[0] as string;
-      var nextClass = showingBootstrap() as string;
-      element.classList.replace(prevClass, nextClass);
-    }
-    emphasizeDefaultParameters(container, controller);
-  };
-  //--|🠋 Step 3: Mark Active Title 🠋|--\\
-  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement) => {
-    //--|🠊 Emphasize Default Parameters 🠈|--\\
-    const carouselPosition = container.parentElement?.classList[0].split('_')[1] as string;
-    const controllerShowing = controller.querySelector('li[class*="showing-vertical"]') as HTMLLIElement;
-    if (!controllerShowing.querySelector('.highlight')) {
-      let viewTitle = controllerShowing.children[romanToArabic(carouselPosition) - 1] as HTMLElement;
-      viewTitle.classList.replace('downplay', 'highlight');
-    }
-  };
-
-  const controller = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const container = findTags(pageName, blockName, labelName).container as HTMLDivElement | null;
-  if (container) {
-    revealActiveTitle(container, controller);
   }
 };

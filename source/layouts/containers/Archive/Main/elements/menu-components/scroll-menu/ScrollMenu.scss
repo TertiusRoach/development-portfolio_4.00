@@ -17,22 +17,22 @@
     $low-desk-hori-rows: 1fr $low-desk 1fr $low-desk 1fr $low-desk 1fr $low-desk 1fr;
 
     //--|🠋 Width: 1920px 🠋|--\\
-    grid-template-columns: $high-desk 1fr; //--|🠈 columns 🠈|--\\
     grid-template-rows: $high-desk-hori-rows; //--|🠈 rows 🠈|--\\
+    grid-template-columns: $high-desk 1fr; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 Width: 1366px 🠋|--\\
-      grid-template-rows: $test-desk 1fr; //--|🠈 columns 🠈|--\\
-      grid-template-columns: $test-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-rows: $test-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-columns: $test-desk 1fr; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠋 Width: 854px 🠋|--\\
-      grid-template-rows: $misc-desk 1fr; //--|🠈 columns 🠈|--\\
-      grid-template-columns: $misc-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-rows: $misc-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-columns: $misc-desk 1fr; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠋 Width: 640px 🠋|--\\
-      grid-template-rows: $low-desk 1fr; //--|🠈 columns 🠈|--\\
-      grid-template-columns: $low-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-rows: $low-desk-hori-rows; //--|🠈 rows 🠈|--\\
+      grid-template-columns: $low-desk 1fr; //--|🠈 columns 🠈|--\\
     }
 
     //--|🠊 display: grid; 🠈|--\\
@@ -47,19 +47,16 @@
     //--|🠊 Right Menu - [x] 🠈|--\\
     menu:nth-child(2) {
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
       background: rgba(yellow, 0.125);
     }
     //--|🠊 Center Menu - [x] 🠈|--\\
     menu:nth-child(3) {
       grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
       background: rgba(orange, 0.125);
     }
     //--|🠊 Default Menu - [x] 🠈|--\\
     menu:nth-child(4) {
       grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
       background: rgba(yellow, 0.125);
     }
   }
