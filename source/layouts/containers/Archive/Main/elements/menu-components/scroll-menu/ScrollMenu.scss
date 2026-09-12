@@ -152,28 +152,21 @@
 
         //--|🠊 Left Menu - [x] 🠈|--\\
         menu:nth-child(1) {
-          // display: none;
           grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
           background: rgba(orange, 0.125);
         }
         //--|🠊 Right Menu - [x] 🠈|--\\
         menu:nth-child(2) {
-          // display: none;
           grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
           background: rgba(yellow, 0.125);
         }
         //--|🠊 Center Menu - [x] 🠈|--\\
         menu:nth-child(3) {
-          // display: none;
           grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
           background: rgba(orange, 0.125);
         }
         //--|🠊 Default Menu - [x] 🠈|--\\
         menu:nth-child(4) {
-          // display: none;
           grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           background: rgba(yellow, 0.125);
         }
