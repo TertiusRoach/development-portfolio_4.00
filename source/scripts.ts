@@ -684,24 +684,35 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
-export function showingBootstrap(): string {
-  const orientation: Orientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
-  let size = orientation === 'landscape' ? window.innerHeight : window.innerWidth;
-  switch (true) {
-    default:
-      //--|🠊 case size >= 1080: 🠈|--\\
-      return 'display-1'; //--|🠈 1920px 🠈|--\\
-    case size <= 768:
-      return 'display-3'; //--|🠈 1366px 🠈|--\\
-    case size <= 480:
-      return 'display-4'; //--|🠈 854px 🠈|--\\
-    case size <= 360:
-      return 'display-6'; //--|🠈 640px 🠈|--\\
-  }
-}
 
 //--|🠋 Confirm Rotation 🠋|--\\
 type Orientation = 'landscape' | 'portrait';
+export function showingBootstrap(): string {
+  let windowScreen: number = 0;
+  let displayText: string = 'display-0';
+  const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
+  const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
+  if (desktop === true) {
+    windowScreen = window.innerHeight as number;
+  } else if (mobile === true) {
+    windowScreen = window.innerWidth as number;
+  }
+  switch (true) {
+    case windowScreen >= 1080:
+      displayText = 'display-1'; //--|🠈 1920px 🠈|--\\
+      break;
+    case windowScreen >= 768:
+      displayText = 'display-3'; //--|🠈 1366px 🠈|--\\
+      break;
+    case windowScreen >= 480:
+      displayText = 'display-4'; //--|🠈 854px 🠈|--\\
+      break;
+    case windowScreen >= 360:
+      displayText = 'display-6'; //--|🠈 640px 🠈|--\\
+      break;
+  }
+  return displayText as string;
+}
 export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
   const mediaQuery = window.matchMedia('(orientation: landscape)');
 

@@ -151,8 +151,6 @@
       @include desktop-y-showing();
     }
   }
-  %parent-x-desktop {
-  }
   ul[class*='vert-X-scroll'] {
     overflow: hidden;
     %buttons-x-desktop {
@@ -276,38 +274,28 @@
       z-index: 0;
       aside {
         display: flex;
-        // display: none;
-
         align-items: center;
-        justify-content: center;
-
+        &:nth-child(1) {
+          background: rgba(red, 0.25);
+        }
+        &:nth-child(2) {
+          background: rgba(green, 0.25);
+        }
+        &:nth-child(3) {
+          background: rgba(blue, 0.25);
+        }
         height: 128px; //--|🠈 128px for Squares 🠈|--\\
-        @media screen and (max-width: 768px) {
+        @media screen and (max-height: 768px) {
           height: 96px; //--|🠈 96px for Squares 🠈|--\\
         }
-        @media screen and (max-width: 480px) {
+        @media screen and (max-height: 480px) {
           height: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
-        @media screen and (max-width: 360px) {
+        @media screen and (max-height: 360px) {
           height: 48px; //--|🠈 48px for Squares 🠈|--\\
         }
       }
-
-      aside:nth-child(1) {
-        background: rgba(red, 0.25);
-      }
-      aside:nth-child(2) {
-        background: rgba(green, 0.25);
-      }
-      aside:nth-child(3) {
-        background: rgba(blue, 0.25);
-      }
-      /*
-      
-        display: grid;
-      */
     }
-
     li[class*='preview'] {
       @extend %buttons-x-desktop;
     }
@@ -315,7 +303,6 @@
       @extend %titles-x-desktop;
       @include desktop-x-showing();
     }
-    @extend %parent-x-desktop;
   }
 }
 @mixin mobile-portrait {
@@ -606,7 +593,7 @@
       transform: translateY(calc(-128px * 19));
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-height: 768px) {
     &[class*='vertical_I'] {
       transform: translateY(calc(-96px * 0));
     }
@@ -668,7 +655,7 @@
       transform: translateY(calc(-96px * 19));
     }
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-height: 480px) {
     &[class*='vertical_I'] {
       transform: translateY(calc(-64px * 0));
     }
@@ -730,7 +717,7 @@
       transform: translateY(calc(-64px * 19));
     }
   }
-  @media screen and (max-width: 360px) {
+  @media screen and (max-height: 360px) {
     &[class*='vertical_I'] {
       transform: translateY(calc(-48px * 0));
     }
@@ -1059,14 +1046,25 @@ menu[class*='scroll'] {
       }
       &[class*='def_'] li[class*='showing'] {
         padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: center;
+        }
       }
       &[class*='lef_'] li[class*='showing'] {
         padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-start;
+        }
       }
       &[class*='rig_'] li[class*='showing'] {
         padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-end;
+        }
       }
-
       @media screen and (max-height: 768px) {
         height: 96px; //--|🠈 96px for Squares 🠈|--\\
         &[class*='lef_'] li[class*='showing'] {
