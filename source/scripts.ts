@@ -694,23 +694,38 @@ export function showingBootstrap(): string {
   const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
   if (desktop === true) {
     windowScreen = window.innerHeight as number;
+    switch (true) {
+      case windowScreen >= 1080:
+        displayText = 'display-1'; //--|🠈 1920px 🠈|--\\
+        break;
+      case windowScreen >= 768:
+        displayText = 'display-3'; //--|🠈 1366px 🠈|--\\
+        break;
+      case windowScreen >= 480:
+        displayText = 'display-4'; //--|🠈 854px 🠈|--\\
+        break;
+      case windowScreen >= 360:
+        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
+        break;
+    }
   } else if (mobile === true) {
     windowScreen = window.innerWidth as number;
+    switch (true) {
+      case windowScreen >= 1080:
+        displayText = 'display-3'; //--|🠈 1920px 🠈|--\\
+        break;
+      case windowScreen >= 768:
+        displayText = 'display-4'; //--|🠈 1366px 🠈|--\\
+        break;
+      case windowScreen >= 480:
+        displayText = 'display-5'; //--|🠈 854px 🠈|--\\
+        break;
+      case windowScreen >= 360:
+        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
+        break;
+    }
   }
-  switch (true) {
-    case windowScreen >= 1080:
-      displayText = 'display-1'; //--|🠈 1920px 🠈|--\\
-      break;
-    case windowScreen >= 768:
-      displayText = 'display-3'; //--|🠈 1366px 🠈|--\\
-      break;
-    case windowScreen >= 480:
-      displayText = 'display-4'; //--|🠈 854px 🠈|--\\
-      break;
-    case windowScreen >= 360:
-      displayText = 'display-6'; //--|🠈 640px 🠈|--\\
-      break;
-  }
+
   return displayText as string;
 }
 export function checkScreen(onChange: (orientation: Orientation) => void): () => void {

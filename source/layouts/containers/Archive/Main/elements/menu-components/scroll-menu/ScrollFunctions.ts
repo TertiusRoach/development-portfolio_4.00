@@ -1,6 +1,6 @@
 //--|🠊 scroll-menu/ScrollFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-export function overridePreview(): void {
+export function functionHolder(): void {
   // console.log('Override Preview');
 }
 /*

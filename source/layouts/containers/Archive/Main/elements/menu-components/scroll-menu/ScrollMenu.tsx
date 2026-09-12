@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './ScrollMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
-import { overridePreview } from './ScrollFunctions';
+import { functionHolder } from './ScrollFunctions';
 
 //--|🠋 Components 🠋|--\\
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
@@ -23,7 +23,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'component';
 
   useEffect(() => {
-    overridePreview();
+    functionHolder();
   }, [pageName, blockName, labelName]);
 
   let casesPages = ['<MenuScroll>', '<MenuScroll>', '<MenuScroll>'] as Array<string>;
