@@ -27,9 +27,10 @@ function MenuComponents({ info }: InfoProps) {
 
   return (
     <>
-      <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
       <SwipeMenu info={{ labelName: 'swipe' as string, pageName: pageName, blockName: blockName }} />
-      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
+      <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
+
+      {/* <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} /> */}
     </>
   );
 }

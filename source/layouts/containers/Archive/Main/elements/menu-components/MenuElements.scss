@@ -20,10 +20,12 @@ section[class*='menu-main'] {
         &[class*='swipe'] {
           @include SwipeMenu.desktop-landscape;
         }
+        //--|===|--\\
         &[class*='select'] {
           @include SelectMenu.desktop-landscape;
         }
       }
+
       @media screen and (orientation: portrait) {
         //--|🠊 <aside className="scroll-menu"> 🠈|--\\
         &[class*='scroll'] {
@@ -32,6 +34,7 @@ section[class*='menu-main'] {
         &[class*='swipe'] {
           @include SwipeMenu.mobile-portrait;
         }
+        //--|===|--\\
         &[class*='select'] {
           @include SelectMenu.mobile-portrait;
         }
