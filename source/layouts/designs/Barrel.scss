@@ -1,13 +1,16 @@
 //--|🠊 Barrel.scss 🠈|--\\
 
 //--|🠋 <Article> 🠋|--\\
-@use '../components/Article/loading/Article.loading.scss' as LoadingArticle;
-@use '../components/Article/updates/Article.updates.scss' as UpdatesArticle;
+@use '../components/Article/loading/Article.loading.scss' as ArticleLoading;
+@use '../components/Article/updates/Article.updates.scss' as ArticleUpdates;
 
 //--|🠋 <Aside> 🠋|--\\
-@use '../components/Aside/characters/Aside.characters.scss' as CharactersAside;
+@use '../components/Aside/characters/Aside.characters.scss' as AsideCharacters;
 
 //--|🠋 <Button> 🠋|--\\
+@use '../components/Button/default/Button.default.scss' as ButtonDefault;
+@use '../components/Button/profile/Button.profile.scss' as ButtonProfile;
+@use '../components/Button/routing/Button.routing.scss' as ButtonRouting;
 
 //--|🠋 <Division> 🠋|--\\
 @use '../components/Division/default/Division.default.scss' as DefaultDivision;

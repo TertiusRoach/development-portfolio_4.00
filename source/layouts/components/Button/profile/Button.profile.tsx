@@ -1,7 +1,8 @@
 //--|🠊 Button.profile.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
-import './Button.profile.scss';
+// import './Button.profile.scss';
+
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Button_profile';
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';

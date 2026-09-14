@@ -1,7 +1,8 @@
 //--|🠊 Button.default.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
-import './Button.routing.scss';
+// import './Button.routing.scss';
+
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Button_routing';
 import { stripBrackets } from '../../../../scripts';

@@ -1,7 +1,7 @@
 //--|🠊 Button.default.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
-import './Button.default.scss';
+// import './Button.default.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Button_default';

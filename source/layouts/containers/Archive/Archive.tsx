@@ -2,7 +2,7 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
-//--|🠋 Containers 🠋|--\\
+//--|🠋 Containers (*.tsx) 🠋|--\\
 const ArchiveMain = lazy(() => import('./Main/ArchiveMain'));
 const ArchiveHeader = lazy(() => import('./Header/ArchiveHeader'));
 const ArchiveFooter = lazy(() => import('./Footer/ArchiveFooter'));
@@ -10,6 +10,15 @@ const ArchiveFooter = lazy(() => import('./Footer/ArchiveFooter'));
 const ArchiveOverlay = lazy(() => import('./Overlay/ArchiveOverlay'));
 const ArchiveLeftbar = lazy(() => import('./Leftbar/ArchiveLeftbar'));
 const ArchiveRightbar = lazy(() => import('./Rightbar/ArchiveRightbar'));
+
+//--|🠋 Styles (*.scss) 🠋|--\\
+import './Main/ArchiveMain.scss';
+import './Header/ArchiveHeader.scss';
+import './Footer/ArchiveFooter.scss';
+
+import './Overlay/ArchiveOverlay.scss';
+import './Leftbar/ArchiveLeftbar.scss';
+import './Rightbar/ArchiveRightbar.scss';
 
 function Archive() {
   const [getMain, setMain] = useState(false);
