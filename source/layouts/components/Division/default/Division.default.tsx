@@ -1,6 +1,4 @@
 //--|🠊 Division.default.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-// import './Division.default.scss';
 
 //--|🠋 Functions 🠋|--\\
 import testBlock from './Division_default';
