@@ -30,7 +30,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
     <aside className="swipe-menu">
       <section className={`${blockName}-foreground`}>
         <div className="hori-swipe">
-          {/* <MenuSwipe
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -45,8 +45,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -61,8 +61,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -77,8 +77,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -93,10 +93,10 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
+          />
         </div>
         <div className="vert-swipe">
-          {/* <MenuSwipe
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -111,8 +111,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[y]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -127,8 +127,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[y]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -143,8 +143,8 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[y]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
-          {/* <MenuSwipe
+          />
+          <MenuSwipe
             info={{
               pageName: pageName as 'components',
               blockName: blockName as 'main',
@@ -159,7 +159,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[y]',
               pages: casesPages as Array<string>,
             }}
-          /> */}
+          />
         </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>

@@ -1,7 +1,21 @@
 //--|🠊 scripts.ts 🠈|--\\
-
 //--|🠋 Utility Functions 🠋|--\\
+export function loadAsset(type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string {
+  //--|🠊 Finds path for file extension 🠈|--\\
+  const assetSource: string =
+    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
 
+  //--|🠊 Build URL string 🠈|--\\
+  let filePath: Record<'-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', [string, string]> = {
+    '-gif-': [`${assetSource}/gif-files`, '.gif'],
+    '-ico-': [`${assetSource}/ico-files`, '.ico'],
+    '-jpg-': [`${assetSource}/jpg-files`, '.jpg'],
+    '-pdf-': [`${assetSource}/pdf-files`, '.pdf'],
+    '-png-': [`${assetSource}/png-files`, '.png'],
+    '-svg-': [`${assetSource}/svg-files`, '.svg'],
+  };
+  return (filePath[type][0] + path + filePath[type][1]) as string;
+}
 export function arabicToRoman(arabicNumeral: number): string {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
@@ -685,24 +699,8 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       return thisText.replace(/[~~]/g, '');
   }
 }
-export function loadAsset(type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string {
-  //--|🠊 Finds path for file extension 🠈|--\\
-  const assetSource: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
 
-  //--|🠊 Build URL string 🠈|--\\
-  let filePath: Record<'-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', [string, string]> = {
-    '-gif-': [`${assetSource}/gif-files`, '.gif'],
-    '-ico-': [`${assetSource}/ico-files`, '.ico'],
-    '-jpg-': [`${assetSource}/jpg-files`, '.jpg'],
-    '-pdf-': [`${assetSource}/pdf-files`, '.pdf'],
-    '-png-': [`${assetSource}/png-files`, '.png'],
-    '-svg-': [`${assetSource}/svg-files`, '.svg'],
-  };
-  return (filePath[type][0] + path + filePath[type][1]) as string;
-}
-
-//--|🠋 Confirm Rotation 🠋|--\\
+//--|🠋 Resolution Functions 🠋|--\\
 type Orientation = 'landscape' | 'portrait';
 export function showingBootstrap(): string {
   let windowScreen: number = 0;
@@ -761,7 +759,7 @@ export function checkScreen(onChange: (orientation: Orientation) => void): () =>
   };
 }
 
-//--|🠋 View Pages 🠋|--\\
+//--|🠋 Container Functions 🠋|--\\
 function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
   const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
   const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
@@ -771,4 +769,5 @@ function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'h
   activePage.classList.replace('active', 'asleep');
   sleepingPage.classList.replace('asleep', 'active');
 }
+
 export default togglePages;
