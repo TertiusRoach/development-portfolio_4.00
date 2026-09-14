@@ -1,0 +1,26 @@
+//--|🠊 Barrel.scss 🠈|--\\
+
+//--|🠋 <Article> 🠋|--\\
+@use '../components/Article/loading/Article.loading.scss' as LoadingArticle;
+@use '../components/Article/updates/Article.updates.scss' as UpdatesArticle;
+
+//--|🠋 <Aside> 🠋|--\\
+@use '../components/Aside/characters/Aside.characters.scss' as CharactersAside;
+
+//--|🠋 <Button> 🠋|--\\
+
+//--|🠋 <Division> 🠋|--\\
+@use '../components/Division/default/Division.default.scss' as DefaultDivision;
+@use '../components/Division/carousel/Division.carousel.scss' as CarouselDivision;
+
+//--|🠋 <Figure> 🠋|--\\
+
+//--|🠋 <Menu> 🠋|--\\
+
+//--|🠋 <Navigation> 🠋|--\\
+
+//--|🠋 <Section> 🠋|--\\
+
+//--|🠋 <Table> 🠋|--\\
+
+//--|🠋 <Time> 🠋|--\\

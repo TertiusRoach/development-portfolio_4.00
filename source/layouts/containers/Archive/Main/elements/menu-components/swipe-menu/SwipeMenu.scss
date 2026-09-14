@@ -3,6 +3,7 @@
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
+  /*
   //--|🠊 <aside className="swipe-menu"> 🠈|--\\
   %mark-area {
     div[class='horizontal'] {
@@ -13,7 +14,6 @@
       background: rgba(darkred, 0.25);
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    /*
     .top-cen {
       grid-area: 3 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -26,7 +26,6 @@
     .mid-lef {
       grid-area: 3 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    */
   }
   %mark-disp {
     display: grid;
@@ -76,8 +75,10 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
+  */
 }
 @mixin mobile-portrait {
+  /*
   //--|🠊 <aside className="swipe-menu"> 🠈|--\\
   display: none !important;
   section[class*='foreground'] {
@@ -86,4 +87,5 @@
   }
   div[class*='background'] {
   }
+  */
 }

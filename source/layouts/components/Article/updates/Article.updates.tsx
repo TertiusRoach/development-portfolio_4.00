@@ -1,6 +1,6 @@
 //--|🠊 Article.updates.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
-import './Article.updates.scss';
+// import './Article.updates.scss';
 
 //--|🠋 Functions 🠋|--\\
 import stripBrackets from '../../components';

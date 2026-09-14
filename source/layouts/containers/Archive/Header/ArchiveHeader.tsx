@@ -3,13 +3,12 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+// import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
 import HeaderSwipe from '../../../components/Header/swipe/Header.swipe';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../scripts/archive';
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 import {
   unfoldHeader,
   unfoldLeftbar,
@@ -50,7 +49,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
       return (
         <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
-            <HeaderSwipe
+            {/* <HeaderSwipe
               //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
               cases={{
                 menus: [
@@ -159,7 +158,7 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 blockName: blockName,
                 labelName: labelName,
               }}
-            />
+            /> */}
             <NavigationDefault
               //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
               info={{

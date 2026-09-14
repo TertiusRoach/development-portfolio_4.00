@@ -1,7 +1,7 @@
 //--|🠊 Division.carousel.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
 //--|🠋 Styles 🠋|--\\
-import './Division.carousel.scss';
+// import './Division.carousel.scss';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

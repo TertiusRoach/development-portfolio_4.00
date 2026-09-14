@@ -7,8 +7,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import FooterApplications from '../../../components/Footer/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../scripts/archive';
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 import { unfoldFooter, squaringFooter } from '../../containers';
 
 interface InfoProps {

@@ -1,4 +1,144 @@
 //--|🠊 Menu.swipe.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect, useState } from 'react';
+
+//--|🠋 Functions 🠋|--\\
+import { abbrView, abbrShade, abbrColor } from '../../components';
+import { stripBrackets, loadAsset } from '../../../../scripts';
+import reloadElements, { modifyingController, previewButtons, showingTitles } from './Menu_swipe';
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
+
+//--|🠋 Styles 🠋|--\\
+import './Menu.swipe.scss';
+interface TheseProps {
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
+  style: {
+    shade: '~dark~' | '~light~';
+    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
+  };
+  cases: {
+    axis: '[x]' | '[y]';
+    pages: Array<string>;
+  };
+
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+}
+
+function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as string;
+
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+    '[x]': 'ul',
+    '[y]': 'ol',
+  };
+  const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+    '[x]': 'hori-X-swipe',
+    '[y]': 'hori-Y-swipe',
+  };
+
+  useEffect(() => {
+    /*--|🠋
+
+    🠉|--*/
+    reloadElements(pageName, blockName, labelName);
+    modifyingController(pageName, blockName, labelName);
+  }, [pageName, blockName, labelName]);
+
+  let stateView = 'downplay' as 'downplay' | 'highlight';
+  let ListStyle = axisList[cases.axis] as React.ElementType;
+  return (
+    <menu className={`${labelName}-${blockName}_swipe-default`}>
+      <ListStyle
+        className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}
+      >
+        <li className={`preview-vertical-${stripBrackets(style.view, '--')}`}>
+          <div className={`prev-view ${stateView}`}>
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-icon-',
+                type: '{button}',
+                color: style.color,
+                shade: style.shade,
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                /* labelName: info.labelName, */
+              }}
+              onClick={(): void => {
+                showingTitles('show-prev', pageName, blockName, labelName);
+                previewButtons('view-prev', pageName, blockName, labelName);
+              }}
+            />
+          </div>
+          <div className={`next-view ${stateView}`}>
+            <ButtonDefault
+              style={{
+                size: '<h3>',
+                view: '-icon-',
+                type: '{button}',
+                color: style.color,
+                shade: style.shade,
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
+              }}
+              info={{
+                pageName: info.pageName,
+                blockName: info.blockName,
+                /* labelName: info.labelName, */
+              }}
+              onClick={(): void => {
+                showingTitles('show-next', pageName, blockName, labelName);
+                previewButtons('view-next', pageName, blockName, labelName);
+              }}
+            />
+          </div>
+        </li>
+        <li className="showing-vertical_I">
+          {cases.pages.map((path, index) => {
+            const showingSection = String(path);
+            if (showingSection.includes('_')) {
+              let [boldText, italText] = showingSection.split('_');
+              return (
+                <aside className="downplay" key={index}>
+                  <h3 className="display-0">
+                    <span>
+                      <b>{boldText}</b>
+                      <i>{italText}</i>
+                    </span>
+                  </h3>
+                </aside>
+              );
+            } else {
+              return (
+                <aside className="downplay" key={index}>
+                  <h3 className="display-0">
+                    <span>{showingSection}</span>
+                  </h3>
+                </aside>
+              );
+            }
+          })}
+        </li>
+      </ListStyle>
+    </menu>
+  );
+}
+
+export default MenuSwipe;
+
+/*
 //--|🠋 Styles 🠋|--\\
 import './Menu.swipe.scss';
 
@@ -51,7 +191,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  /* labelName: info.labelName, */
+                  labelName: info.labelName,
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
@@ -72,7 +212,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  /* labelName: info.labelName, */
+                  labelName: info.labelName,
                 }}
                 onClick={(): void => {
                   swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
@@ -127,7 +267,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               info={{
                 pageName: info.pageName,
                 blockName: info.blockName,
-                /* labelName: info.labelName, */
+                labelName: info.labelName,
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-prev');
@@ -148,7 +288,7 @@ function MenuAxis({ info, style, cases }: TheseProps) {
               info={{
                 pageName: info.pageName,
                 blockName: info.blockName,
-                /* labelName: info.labelName, */
+                labelName: info.labelName,
               }}
               onClick={(): void => {
                 swipeCarousel(info.pageName, info.labelName, cases.axis, 'view-next');
@@ -176,9 +316,7 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   };
 
   useEffect(() => {
-    /*--|🠋
 
-    🠉|--*/
     loadCarousel(pageName, blockName, labelName, cases.show, cases.axis);
   }, [pageName, blockName, labelName]);
 
@@ -192,3 +330,4 @@ const MenuSwipe: React.FC<TheseProps> = ({ info, style, cases }) => {
   );
 };
 export default MenuSwipe;
+*/

@@ -3,6 +3,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
 
+  /*
   &:has(ul[class='hori-X-swipe']) {
     width: 100%;
     ul[class='hori-X-swipe'] {
@@ -194,9 +195,11 @@
       }
     }
   }
+  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
+  /*
   &:has(ul[class='hori-X-swipe']) {
   }
   &:has(ol[class='vert-Y-swipe']) {
@@ -209,6 +212,7 @@
     @media screen and (max-width: 360px) {
     }
   }
+  */
 }
 
 menu[class*='swipe'] {

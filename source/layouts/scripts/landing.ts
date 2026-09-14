@@ -1,6 +1,7 @@
 //--|🠊 landing.ts 🠈|--\\
-import axios from 'axios';
 
+/*
+import axios from 'axios';
 export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()'): string {
   switch (wrapType) {
     case '[]': //--|🠊 pageName 🠈|--//
@@ -163,3 +164,4 @@ export function retrieveEndpoint(
   const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--//
   return `${BASE_URL}/users/${route}`;
 }
+*/

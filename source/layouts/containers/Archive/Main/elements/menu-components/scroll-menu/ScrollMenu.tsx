@@ -164,7 +164,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
         </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>{/* <h1 className="display-1">{`<ScrollMenu>`}</h1> */}</div>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 };

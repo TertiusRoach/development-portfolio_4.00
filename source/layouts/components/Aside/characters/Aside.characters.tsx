@@ -1,7 +1,8 @@
 //--|🠊 Aside.characters.tsx 🠈|--\\
 //--|🠋 Styles 🠋|--\\
 import ButtonProfile from '../../Button/profile/Button.profile';
-import './Aside.characters.scss';
+
+// import './Aside.characters.scss';
 
 //--|🠋 Functions 🠋|--\\
 

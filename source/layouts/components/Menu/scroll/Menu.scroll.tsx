@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../scripts/archive';
+import { stripBrackets, loadAsset } from '../../../../scripts';
 import { abbrView, abbrShade, abbrColor } from '../../components';
-import { stripBrackets, showingBootstrap } from '../../../../scripts';
 import reloadElements, { modifyingController, previewButtons, showingTitles } from './Menu_scroll';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -32,20 +31,20 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisStyle: Record<TheseProps['cases']['axis'], string> = {
-  '[x]': 'vert-X-scroll',
-  '[y]': 'vert-Y-scroll',
-};
-
 function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
+
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+    '[x]': 'ul',
+    '[y]': 'ol',
+  };
+  const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+    '[x]': 'vert-X-scroll',
+    '[y]': 'vert-Y-scroll',
+  };
 
   useEffect(() => {
     /*--|🠋

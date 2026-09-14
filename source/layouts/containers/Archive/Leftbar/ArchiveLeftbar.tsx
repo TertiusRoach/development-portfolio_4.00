@@ -6,8 +6,7 @@ import React, { useEffect } from 'react';
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../scripts/archive';
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -30,7 +29,6 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
       <section className={`${blockName}-foreground`}>
         <MenuSelect
           cases={{
-            show: 3,
             buttons: [
               {
                 labelName: 'article',

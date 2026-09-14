@@ -10,8 +10,7 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../../../../scripts/archive';
-import { checkScreen } from '../../../../../../../scripts';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
 import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
 
 //--|🠋 Styles 🠋|--\\

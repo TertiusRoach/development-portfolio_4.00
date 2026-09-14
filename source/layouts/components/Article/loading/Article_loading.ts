@@ -1,5 +1,5 @@
 //--|🠊 Article_loading.ts 🠈|--\\
-import loadAsset from '../../../scripts/archive';
+import loadAsset from '../../../../scripts';
 
 function loadShade(apps: '{signature}' | '{tralogfin}', shade: '~dark~' | '~light~'): string {
   const typeName = '-gif-';
@@ -14,6 +14,7 @@ function loadShade(apps: '{signature}' | '{tralogfin}', shade: '~dark~' | '~ligh
     },
   };
 
-  return loadAsset(typeName, pathName[apps][shade]) as string;
+  // return loadAsset(typeName, pathName[apps][shade]) as string;
+  return '';
 }
 export default loadShade;

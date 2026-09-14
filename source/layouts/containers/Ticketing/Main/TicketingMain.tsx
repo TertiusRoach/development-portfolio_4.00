@@ -1,6 +1,6 @@
 //--|🠊 TicketingMain.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/overtime';
+import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import DivisionDefault from '../../../components/Division/default/Division.default';
