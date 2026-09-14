@@ -9,8 +9,6 @@ import reloadElements, { modifyingController, previewButtons, showingTitles } fr
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-//--|🠋 Styles 🠋|--\\
-import './Menu.scroll.scss';
 interface TheseProps {
   info: {
     pageName: string;
@@ -31,20 +29,20 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+  '[x]': 'vert-X-scroll',
+  '[y]': 'vert-Y-scroll',
+};
+
 function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
-
-  //--|🠊 Checks [x] or [y] axis 🠈|--\\
-  const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-    '[x]': 'ul',
-    '[y]': 'ol',
-  };
-  const axisStyle: Record<TheseProps['cases']['axis'], string> = {
-    '[x]': 'vert-X-scroll',
-    '[y]': 'vert-Y-scroll',
-  };
 
   useEffect(() => {
     /*--|🠋
@@ -78,8 +76,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                showingTitles('show-prev', pageName, blockName, labelName);
-                previewButtons('view-prev', pageName, blockName, labelName);
+                showingTitles('show-prev', pageName, blockName, labelName, 'vertical');
+                previewButtons('view-prev', pageName, blockName, labelName, 'vertical');
               }}
             />
           </div>
@@ -99,8 +97,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                showingTitles('show-next', pageName, blockName, labelName);
-                previewButtons('view-next', pageName, blockName, labelName);
+                showingTitles('show-next', pageName, blockName, labelName, 'vertical');
+                previewButtons('view-next', pageName, blockName, labelName, 'vertical');
               }}
             />
           </div>

@@ -8,6 +8,7 @@ import './ScrollMenu.scss';
 import { functionHolder } from './ScrollFunctions';
 
 //--|🠋 Components 🠋|--\\
+import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 
 interface InfoProps {

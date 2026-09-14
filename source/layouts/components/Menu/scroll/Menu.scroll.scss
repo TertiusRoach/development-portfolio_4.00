@@ -5,6 +5,7 @@
     overflow: hidden;
     %buttons-x-desktop {
       z-index: 1;
+      width: 100%;
       display: grid;
       height: inherit; //--|🠈 height: @media; 🠈|--\\
       grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
@@ -122,6 +123,7 @@
     }
     %titles-x-desktop {
       z-index: 0;
+      width: 100%;
       aside {
         display: flex;
         align-items: center;
@@ -426,6 +428,7 @@
     }
     %titles-x-mobile {
       z-index: 0;
+      width: 100%;
       aside {
         display: flex;
         align-items: center;
@@ -608,7 +611,6 @@
     }
   }
 }
-
 //--|===|--\\
 @mixin desktop-y-showing {
   &[class*='vertical_I'] {
@@ -922,7 +924,6 @@
     }
   }
 }
-
 @mixin mobile-x-showing {
   & {
     &[class*='vertical_I'] {
@@ -1235,7 +1236,6 @@
     transform: translateY(calc(-100% * 19));
   }
 }
-
 menu[class*='scroll'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -1474,8 +1474,7 @@ menu[class*='scroll'] {
   }
   ul[class*='vert-X-scroll'],
   ol[class*='vert-Y-scroll'] {
-    //--|🠊 Superimpose Positioning 🠈|--\\
-    position: relative;
+    position: relative; //--|🠊 Superimpose Positioning 🠈|--\\
     li[class*='preview'],
     li[class*='showing'] {
       position: absolute;

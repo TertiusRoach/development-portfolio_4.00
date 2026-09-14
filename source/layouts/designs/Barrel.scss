@@ -13,12 +13,14 @@
 @use '../components/Button/routing/Button.routing.scss' as ButtonRouting;
 
 //--|🠋 <Division> 🠋|--\\
-@use '../components/Division/default/Division.default.scss' as DefaultDivision;
-@use '../components/Division/carousel/Division.carousel.scss' as CarouselDivision;
+@use '../components/Division/default/Division.default.scss' as DivisionDefault;
+@use '../components/Division/carousel/Division.carousel.scss' as DivisionCarousel;
 
 //--|🠋 <Figure> 🠋|--\\
 
 //--|🠋 <Menu> 🠋|--\\
+@use '../components/Menu/swipe/Menu.swipe.scss' as MenuSwipe;
+@use '../components/Menu/scroll/Menu.scroll.scss' as MenuScroll;
 
 //--|🠋 <Navigation> 🠋|--\\
 
