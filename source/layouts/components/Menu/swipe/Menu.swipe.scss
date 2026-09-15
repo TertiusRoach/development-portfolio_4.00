@@ -2,6 +2,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\
   ul[class*='hori-X-swipe'] {
+    // height: 100%;
     overflow-x: hidden;
     %buttons-x-desktop {
       z-index: 1;
@@ -123,11 +124,13 @@
     }
     %titles-x-desktop {
       z-index: 0;
+      width: 100%;
       display: flex;
+      height: inherit; //--|🠈 height: @media; 🠈|--\\
       flex-direction: row;
-
       aside {
-        display: inherit; //--|🠊 display: flex; 🠈|--\\
+        flex: 0 0 100%;
+        display: inherit; //--|🠈 display: flex; 🠈|--\\
         align-items: center;
         &:nth-child(1) {
           background: rgba(red, 0.25);
@@ -677,255 +680,21 @@
   }
 }
 @mixin desktop-x-showing {
-  & {
-    &[class*='horizontal_I'] {
-      transform: translateY(calc(-128px * 0));
-    }
-    &[class*='horizontal_II'] {
-      transform: translateY(calc(-128px * 1));
-    }
-    &[class*='horizontal_III'] {
-      transform: translateY(calc(-128px * 2));
-    }
-    &[class*='horizontal_IV'] {
-      transform: translateY(calc(-128px * 3));
-    }
-    &[class*='horizontal_V'] {
-      transform: translateY(calc(-128px * 4));
-    }
-    &[class*='horizontal_VI'] {
-      transform: translateY(calc(-128px * 5));
-    }
-    &[class*='horizontal_VII'] {
-      transform: translateY(calc(-128px * 6));
-    }
-    &[class*='horizontal_VIII'] {
-      transform: translateY(calc(-128px * 7));
-    }
-    &[class*='horizontal_IX'] {
-      transform: translateY(calc(-128px * 8));
-    }
-    &[class*='horizontal_X'] {
-      transform: translateY(calc(-128px * 9));
-    }
-    &[class*='horizontal_XI'] {
-      transform: translateY(calc(-128px * 10));
-    }
-    &[class*='horizontal_XII'] {
-      transform: translateY(calc(-128px * 11));
-    }
-    &[class*='horizontal_XIII'] {
-      transform: translateY(calc(-128px * 12));
-    }
-    &[class*='horizontal_XIV'] {
-      transform: translateY(calc(-128px * 13));
-    }
-    &[class*='horizontal_XV'] {
-      transform: translateY(calc(-128px * 14));
-    }
-    &[class*='horizontal_XVI'] {
-      transform: translateY(calc(-128px * 15));
-    }
-    &[class*='horizontal_XVII'] {
-      transform: translateY(calc(-128px * 16));
-    }
-    &[class*='horizontal_XVIII'] {
-      transform: translateY(calc(-128px * 17));
-    }
-    &[class*='horizontal_XIX'] {
-      transform: translateY(calc(-128px * 18));
-    }
-    &[class*='horizontal_XX'] {
-      transform: translateY(calc(-128px * 19));
-    }
+  &[class*='horizontal_I'] {
+    transform: translateX(calc(-100% * 0));
   }
+  &[class*='horizontal_II'] {
+    transform: translateX(calc(-100% * 1));
+  }
+  &[class*='horizontal_III'] {
+    transform: translateX(calc(-100% * 2));
+  }
+
   @media screen and (max-height: 768px) {
-    &[class*='horizontal_I'] {
-      transform: translateY(calc(-96px * 0));
-    }
-    /*
-    &[class*='horizontal_II'] {
-      transform: translateY(calc(-96px * 1));
-    }
-    &[class*='horizontal_III'] {
-      transform: translateY(calc(-96px * 2));
-    }
-    &[class*='horizontal_IV'] {
-      transform: translateY(calc(-96px * 3));
-    }
-    &[class*='horizontal_V'] {
-      transform: translateY(calc(-96px * 4));
-    }
-    &[class*='horizontal_VI'] {
-      transform: translateY(calc(-96px * 5));
-    }
-    &[class*='horizontal_VII'] {
-      transform: translateY(calc(-96px * 6));
-    }
-    &[class*='horizontal_VIII'] {
-      transform: translateY(calc(-96px * 7));
-    }
-    &[class*='horizontal_IX'] {
-      transform: translateY(calc(-96px * 8));
-    }
-    &[class*='horizontal_X'] {
-      transform: translateY(calc(-96px * 9));
-    }
-    &[class*='horizontal_XI'] {
-      transform: translateY(calc(-96px * 10));
-    }
-    &[class*='horizontal_XII'] {
-      transform: translateY(calc(-96px * 11));
-    }
-    &[class*='horizontal_XIII'] {
-      transform: translateY(calc(-96px * 12));
-    }
-    &[class*='horizontal_XIV'] {
-      transform: translateY(calc(-96px * 13));
-    }
-    &[class*='horizontal_XV'] {
-      transform: translateY(calc(-96px * 14));
-    }
-    &[class*='horizontal_XVI'] {
-      transform: translateY(calc(-96px * 15));
-    }
-    &[class*='horizontal_XVII'] {
-      transform: translateY(calc(-96px * 16));
-    }
-    &[class*='horizontal_XVIII'] {
-      transform: translateY(calc(-96px * 17));
-    }
-    &[class*='horizontal_XIX'] {
-      transform: translateY(calc(-96px * 18));
-    }
-    &[class*='horizontal_XX'] {
-      transform: translateY(calc(-96px * 19));
-    }
-    */
   }
   @media screen and (max-height: 480px) {
-    &[class*='horizontal_I'] {
-      transform: translateY(calc(-64px * 0));
-    }
-    &[class*='horizontal_II'] {
-      transform: translateY(calc(-64px * 1));
-    }
-    &[class*='horizontal_III'] {
-      transform: translateY(calc(-64px * 2));
-    }
-    &[class*='horizontal_IV'] {
-      transform: translateY(calc(-64px * 3));
-    }
-    &[class*='horizontal_V'] {
-      transform: translateY(calc(-64px * 4));
-    }
-    &[class*='horizontal_VI'] {
-      transform: translateY(calc(-64px * 5));
-    }
-    &[class*='horizontal_VII'] {
-      transform: translateY(calc(-64px * 6));
-    }
-    &[class*='horizontal_VIII'] {
-      transform: translateY(calc(-64px * 7));
-    }
-    &[class*='horizontal_IX'] {
-      transform: translateY(calc(-64px * 8));
-    }
-    &[class*='horizontal_X'] {
-      transform: translateY(calc(-64px * 9));
-    }
-    &[class*='horizontal_XI'] {
-      transform: translateY(calc(-64px * 10));
-    }
-    &[class*='horizontal_XII'] {
-      transform: translateY(calc(-64px * 11));
-    }
-    &[class*='horizontal_XIII'] {
-      transform: translateY(calc(-64px * 12));
-    }
-    &[class*='horizontal_XIV'] {
-      transform: translateY(calc(-64px * 13));
-    }
-    &[class*='horizontal_XV'] {
-      transform: translateY(calc(-64px * 14));
-    }
-    &[class*='horizontal_XVI'] {
-      transform: translateY(calc(-64px * 15));
-    }
-    &[class*='horizontal_XVII'] {
-      transform: translateY(calc(-64px * 16));
-    }
-    &[class*='horizontal_XVIII'] {
-      transform: translateY(calc(-64px * 17));
-    }
-    &[class*='horizontal_XIX'] {
-      transform: translateY(calc(-64px * 18));
-    }
-    &[class*='horizontal_XX'] {
-      transform: translateY(calc(-64px * 19));
-    }
   }
   @media screen and (max-height: 360px) {
-    &[class*='horizontal_I'] {
-      transform: translateY(calc(-48px * 0));
-    }
-    &[class*='horizontal_II'] {
-      transform: translateY(calc(-48px * 1));
-    }
-    &[class*='horizontal_III'] {
-      transform: translateY(calc(-48px * 2));
-    }
-    &[class*='horizontal_IV'] {
-      transform: translateY(calc(-48px * 3));
-    }
-    &[class*='horizontal_V'] {
-      transform: translateY(calc(-48px * 4));
-    }
-    &[class*='horizontal_VI'] {
-      transform: translateY(calc(-48px * 5));
-    }
-    &[class*='horizontal_VII'] {
-      transform: translateY(calc(-48px * 6));
-    }
-    &[class*='horizontal_VIII'] {
-      transform: translateY(calc(-48px * 7));
-    }
-    &[class*='horizontal_IX'] {
-      transform: translateY(calc(-48px * 8));
-    }
-    &[class*='horizontal_X'] {
-      transform: translateY(calc(-48px * 9));
-    }
-    &[class*='horizontal_XI'] {
-      transform: translateY(calc(-48px * 10));
-    }
-    &[class*='horizontal_XII'] {
-      transform: translateY(calc(-48px * 11));
-    }
-    &[class*='horizontal_XIII'] {
-      transform: translateY(calc(-48px * 12));
-    }
-    &[class*='horizontal_XIV'] {
-      transform: translateY(calc(-48px * 13));
-    }
-    &[class*='horizontal_XV'] {
-      transform: translateY(calc(-48px * 14));
-    }
-    &[class*='horizontal_XVI'] {
-      transform: translateY(calc(-48px * 15));
-    }
-    &[class*='horizontal_XVII'] {
-      transform: translateY(calc(-48px * 16));
-    }
-    &[class*='horizontal_XVIII'] {
-      transform: translateY(calc(-48px * 17));
-    }
-    &[class*='horizontal_XIX'] {
-      transform: translateY(calc(-48px * 18));
-    }
-    &[class*='horizontal_XX'] {
-      transform: translateY(calc(-48px * 19));
-    }
   }
 }
 @mixin mobile-x-showing {
@@ -1245,94 +1014,56 @@ menu[class*='swipe'] {
     @include desktop-landscape();
     ul[class*='hori-X-swipe'] {
       height: 128px; //--|🠈 128px for Squares 🠈|--\\
-      &[class*='-X-'] {
-        li[class*='showing'] {
-          aside {
-            height: 128px; //--|🠈 128px for Squares 🠈|--\\
-          }
+      &[class*='lef_'] li[class*='showing'] {
+        aside {
+          justify-content: flex-start;
+          //--|🠊 display: flex; 🠈|--\\
+          padding-left: calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
         }
-        &[class*='cen_'] li[class*='showing'] {
-          aside h3 {
-            display: none;
-          }
+      }
+      &[class*='rig_'] li[class*='showing'] {
+        aside {
+          justify-content: flex-end;
+          //--|🠊 display: flex; 🠈|--\\
+          padding-right: calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
         }
-        &[class*='def_'] li[class*='showing'] {
-          padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
-          aside {
-            justify-content: center;
-            //--|🠊 display: flex; 🠈|--\\
-          }
+      }
+      &[class*='cen_'] li[class*='showing'] {
+        h3 {
+          display: none;
         }
-        &[class*='lef_'] li[class*='showing'] {
-          // padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-start;
-          }
-        }
-        &[class*='rig_'] li[class*='showing'] {
-          padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-end;
-          }
+      }
+      &[class*='def_'] li[class*='showing'] {
+        aside {
+          justify-content: center;
+          //--|🠊 display: flex; 🠈|--\\
         }
       }
       @media screen and (max-height: 768px) {
         height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 96px; //--|🠈 96px for Squares 🠈|--\\
-            }
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            // padding: 0 0 0 calc(96px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(96px * 2) 0 0;
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 96px;
-          }
+        &[class*='lef_'] li[class*='showing']aside {
+          padding-left: calc(96px * 2);
+        }
+        &[class*='rig_'] li[class*='showing']aside {
+          padding-right: calc(96px * 2);
         }
       }
       @media screen and (max-height: 480px) {
         height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 64px; //--|🠈 64px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 64px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(64px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(64px * 2) 0 0;
-          }
+        &[class*='lef_'] li[class*='showing']aside {
+          padding-left: calc(64px * 2);
+        }
+        &[class*='rig_'] li[class*='showing']aside {
+          padding-right: calc(64px * 2);
         }
       }
       @media screen and (max-height: 360px) {
         height: 48px; //--|🠈 48px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 48px; //--|🠈 48px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 48px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(48px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(48px * 2) 0 0;
-          }
+        &[class*='lef_'] li[class*='showing']aside {
+          padding-left: calc(48px * 2);
+        }
+        &[class*='rig_'] li[class*='showing']aside {
+          padding-right: calc(48px * 2);
         }
       }
     }
