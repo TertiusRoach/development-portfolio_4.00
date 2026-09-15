@@ -27,7 +27,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
     functionHolder();
   }, [pageName, blockName, labelName]);
 
-  let casesPages = ['<MenuSwipe>', '<MenuSwipeEXTENDING THIS TO TEST ELLIPSES>', '<MenuSwipe>'] as Array<string>;
+  let casesPages = ['<MenuSwipe>', '<MenuSwipe>', '<MenuSwipe>'] as Array<string>;
   return (
     <aside className="swipe-menu">
       <section className={`${blockName}-foreground`}>
