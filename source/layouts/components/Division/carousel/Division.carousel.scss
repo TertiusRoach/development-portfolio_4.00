@@ -78,6 +78,10 @@
       }
     }
   }
+  ul[class='hori-X-axis'] {
+    @extend %hori-scope-desk;
+    @extend %hori-stack-desk;
+  }
 
   %vert-scope-desk {
     //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
@@ -151,10 +155,6 @@
         transform: translateY(-1900svh);
       }
     }
-  }
-  ul[class='hori-X-axis'] {
-    @extend %hori-scope-desk;
-    @extend %hori-stack-desk;
   }
   ol[class='vert-Y-axis'] {
     @extend %vert-stack-desk;
@@ -241,6 +241,10 @@
       }
     }
   }
+  ul[class='hori-X-axis'] {
+    @extend %hori-scope-mobi;
+    @extend %hori-stack-mobi;
+  }
 
   %vert-scope-mobi {
     //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
@@ -314,11 +318,6 @@
         transform: translateY(-1900svh);
       }
     }
-  }
-
-  ul[class='hori-X-axis'] {
-    @extend %hori-scope-mobi;
-    @extend %hori-stack-mobi;
   }
   ol[class='vert-Y-axis'] {
     @extend %vert-stack-mobi;

@@ -2,7 +2,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\
   ul[class*='hori-X-swipe'] {
-    overflow: hidden;
+    overflow-x: hidden;
     %buttons-x-desktop {
       z-index: 1;
       width: 100%;
@@ -123,16 +123,12 @@
     }
     %titles-x-desktop {
       z-index: 0;
-      width: 100%;
+      display: flex;
+      flex-direction: row;
+
       aside {
-        display: flex;
+        display: inherit; //--|🠊 display: flex; 🠈|--\\
         align-items: center;
-        h3 span {
-          display: block;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        /*
         &:nth-child(1) {
           background: rgba(red, 0.25);
         }
@@ -142,7 +138,13 @@
         &:nth-child(3) {
           background: rgba(blue, 0.25);
         }
-        */
+
+        h3 span {
+          display: block;
+          overflow-x: hidden;
+
+          text-overflow: ellipsis;
+        }
       }
     }
     li[class*='preview'] {
@@ -155,7 +157,7 @@
   }
   ol[class*='hori-Y-swipe'] {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     %buttons-y-desktop {
       z-index: 1;
       display: grid;
@@ -308,7 +310,7 @@
   //--|🠋 Mobile (Elements) 🠋|--\\
   ul[class*='hori-X-swipe'] {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     %buttons-x-mobile {
       z-index: 1;
       display: grid;
@@ -435,7 +437,7 @@
         justify-content: center;
         h3 span {
           display: block;
-          overflow: hidden;
+          overflow-x: hidden;
           text-overflow: ellipsis;
         }
         /*
@@ -462,7 +464,7 @@
   }
   ol[class*='hori-Y-swipe'] {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     %buttons-y-mobile {
       z-index: 1;
       display: grid;
@@ -741,6 +743,7 @@
     &[class*='horizontal_I'] {
       transform: translateY(calc(-96px * 0));
     }
+    /*
     &[class*='horizontal_II'] {
       transform: translateY(calc(-96px * 1));
     }
@@ -798,6 +801,7 @@
     &[class*='horizontal_XX'] {
       transform: translateY(calc(-96px * 19));
     }
+    */
   }
   @media screen and (max-height: 480px) {
     &[class*='horizontal_I'] {
@@ -1260,7 +1264,7 @@ menu[class*='swipe'] {
           }
         }
         &[class*='lef_'] li[class*='showing'] {
-          padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+          // padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
           aside {
             //--|🠊 display: flex; 🠈|--\\
             justify-content: flex-start;
@@ -1283,7 +1287,7 @@ menu[class*='swipe'] {
             }
           }
           &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(96px * 2);
+            // padding: 0 0 0 calc(96px * 2);
           }
           &[class*='rig_'] li[class*='showing'] {
             padding: 0 calc(96px * 2) 0 0;
@@ -1464,8 +1468,10 @@ menu[class*='swipe'] {
         filter: blur(0px);
       }
       &[class*='downplay'] {
+        /*
         opacity: 0;
         filter: blur(24px);
+        */
         * {
           cursor: default;
         }

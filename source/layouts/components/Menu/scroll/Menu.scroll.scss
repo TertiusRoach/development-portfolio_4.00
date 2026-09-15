@@ -2,7 +2,7 @@
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
   ul[class*='vert-X-scroll'] {
-    overflow: hidden;
+    overflow-y: hidden;
     %buttons-x-desktop {
       z-index: 1;
       width: 100%;
@@ -124,12 +124,14 @@
     %titles-x-desktop {
       z-index: 0;
       width: 100%;
+      display: flex;
+      flex-direction: column;
       aside {
         display: flex;
         align-items: center;
         h3 span {
           display: block;
-          overflow: hidden;
+          overflow-y: hidden;
           text-overflow: ellipsis;
         }
         /*
@@ -155,7 +157,7 @@
   }
   ol[class*='vert-Y-scroll'] {
     height: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
     %buttons-y-desktop {
       z-index: 1;
       display: grid;
@@ -308,7 +310,7 @@
   //--|🠊 Mobile (Elements) 🠈|--\\
   ul[class*='vert-X-scroll'] {
     width: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
     %buttons-x-mobile {
       z-index: 1;
       display: grid;
@@ -435,20 +437,9 @@
         justify-content: center;
         h3 span {
           display: block;
-          overflow: hidden;
+          overflow-y: hidden;
           text-overflow: ellipsis;
         }
-        /*
-        &:nth-child(1) {
-          background: rgba(red, 0.25);
-        }
-        &:nth-child(2) {
-          background: rgba(green, 0.25);
-        }
-        &:nth-child(3) {
-          background: rgba(blue, 0.25);
-        }
-        */
       }
     }
 
@@ -462,7 +453,7 @@
   }
   ol[class*='vert-Y-scroll'] {
     height: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
     %buttons-y-mobile {
       z-index: 1;
       display: grid;
