@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import FooterApplications from '../../../components/Footer/applications/Footer.applications';
+import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';

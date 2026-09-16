@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-// import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
-import HeaderSwipe from '../../../components/Header/swipe/Header.swipe';
+import HeaderSwipe from '../../../components/Header/REVIEW/swipe/Header.swipe';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -29,8 +28,8 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
+const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
 const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\

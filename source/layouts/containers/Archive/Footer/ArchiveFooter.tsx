@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
-import FooterApplications from '../../../components/Footer/applications/Footer.applications';
+import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
@@ -17,8 +17,8 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
+const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
 const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
-  const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'squaring';
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -64,7 +64,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
                 tasks: '',
               }}
             />
-            <FooterApplications
+            {/* <FooterApplications
               info={{
                 pageName: pageName,
                 blockName: blockName,
@@ -74,7 +74,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
                 axis: '[x]',
                 apps: '{archive}',
               }}
-            />
+            /> */}
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>

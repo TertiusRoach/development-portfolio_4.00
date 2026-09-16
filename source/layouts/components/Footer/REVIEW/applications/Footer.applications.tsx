@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import ButtonRouting from '../../Button/routing/Button.routing';
+import ButtonRouting from '../../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import { togglePages } from './Footer_applications';
