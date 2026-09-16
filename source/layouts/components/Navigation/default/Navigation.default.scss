@@ -1,5 +1,4 @@
 //--|🠊 Navigation.default.scss 🠈|--\\
-
 nav[class*='default'] {
   @media screen and (orientation: landscape) {
     display: grid;
@@ -120,7 +119,6 @@ nav[class*='default'] {
     }
     ol[class*='hori-X'] {
       z-index: 1;
-      background: rgba(darkgreen, 0.25);
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
@@ -150,8 +148,6 @@ nav[class*='default'] {
       z-index: 0;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: rgba(darkblue, 0.25);
-
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
         repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
@@ -190,44 +186,3 @@ nav[class*='default'] {
     }
   }
 }
-
-/*
-@mixin desktop-main {
-}
-@mixin desktop-header {
-}
-@mixin desktop-footer {
-}
-@mixin desktop-overlay {
-}
-@mixin desktop-leftbar {
-}
-@mixin desktop-rightbar {
-}
-    @include desktop-main;
-    @include desktop-header;
-    @include desktop-footer;
-    @include desktop-overlay;
-    @include desktop-leftbar;
-    @include desktop-rightbar;
-
-@mixin mobile-main {
-}
-@mixin mobile-header {
-}
-@mixin mobile-footer {
-}
-@mixin mobile-overlay {
-}
-@mixin mobile-leftbar {
-}
-@mixin mobile-rightbar {
-}
-
-    @include mobile-main;
-    @include mobile-header;
-    @include mobile-footer;
-    @include mobile-overlay;
-    @include mobile-leftbar;
-    @include mobile-rightbar;
-*/

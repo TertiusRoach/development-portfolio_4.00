@@ -3,23 +3,30 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Rightbar) 🠋|--\\
+  //--|🠊 Desktop <Rightbar> 🠈|--\\
   section[class*='foreground'] {
+    menu[class*='select'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    background: rgba(red, 0.25);
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Rightbar) 🠋|--//
-  //--|🠊 <aside id="components-rightbar" class="default-rightbar"> 🠈|--\\
-  display: none !important;
+  //--|🠊 Mobile <Rightbar> 🠈|--\\
   section[class*='foreground'] {
+    padding-left: calc(100% - 96px);
+    menu[class*='select'] {
+      grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    background: rgba(blue, 0.25);
   }
 }
 aside[id='components-rightbar'] {

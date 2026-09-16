@@ -28,8 +28,8 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
-const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
+
+function ArchiveHeader({ info }: InfoProps): JSX.Element {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -42,13 +42,95 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  var menuStyle = { color: '(mono)', shade: '~dark~' } as const;
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
+      stateName = 'unfolded';
       return (
         <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
-            {/* <HeaderSwipe
+            <NavigationDefault
+              //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+                view: 'top-lef',
+                shade: '~light~',
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
+              }}
+              cases={{
+                tasks: '',
+                image: undefined,
+                view: undefined,
+              }}
+              onClick={() => {
+                if (blockName === 'header') {
+                  unfoldLeftbar(pageName, 'click', 'leftbar');
+                }
+              }}
+              onMouseEnter={() => {
+                unfoldHeader(pageName, 'hover', blockName);
+              }}
+              onMouseLeave={() => {
+                setTimeout(() => {
+                  squaringHeader(pageName, 'exit', blockName);
+                }, 6250);
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
+            <header>
+              <div className="top-header"></div>
+              <div className="bot-header"></div>
+            </header>
+          </div>
+        </header>
+      );
+    case 'portrait':
+      stateName = 'unfolded';
+      return (
+        <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+          <section className={`${blockName}-foreground`}>
+            <NavigationDefault
+              //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+                view: 'top-lef',
+                shade: '~dark~',
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
+              }}
+              cases={{
+                image: undefined,
+                view: undefined,
+                tasks: '',
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
+            <header>
+              <div className="top-header"></div>
+              <div className="bot-header"></div>
+            </header>
+          </div>
+        </header>
+      );
+  }
+}
+export default ArchiveHeader;
+
+// var menuStyle = { color: '(mono)', shade: '~dark~' } as const;
+/* <HeaderSwipe
               //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
               cases={{
                 menus: [
@@ -157,58 +239,4 @@ const ArchiveHeader: React.FC<InfoProps> = ({ info }) => {
                 blockName: blockName,
                 labelName: labelName,
               }}
-            /> */}
-            <NavigationDefault
-              //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: labelName,
-              }}
-              style={{
-                color: '(mono)',
-                view: 'top-lef',
-                shade: '~light~',
-                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
-              }}
-              cases={{
-                tasks: '',
-                image: undefined,
-                view: undefined,
-              }}
-              onClick={() => {
-                if (blockName === 'header') {
-                  unfoldLeftbar(pageName, 'click', 'leftbar');
-                }
-              }}
-              onMouseEnter={() => {
-                unfoldHeader(pageName, 'hover', blockName);
-              }}
-              onMouseLeave={() => {
-                setTimeout(() => {
-                  squaringHeader(pageName, 'exit', blockName);
-                }, 6250);
-              }}
-            />
-          </section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}>
-            <header>
-              <div className="top-header"></div>
-              <div className="bot-header"></div>
-            </header>
-            {/* <h1 className="display-1">{`<ComponentsHeader>`}</h1> */}
-          </div>
-        </header>
-      );
-    case 'portrait':
-      return (
-        <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
-          <section className={`${blockName}-foreground`}></section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}></div>
-        </header>
-      );
-  }
-};
-export default ArchiveHeader;
+            /> */

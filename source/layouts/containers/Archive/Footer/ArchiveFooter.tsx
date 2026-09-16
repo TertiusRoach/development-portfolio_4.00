@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
-import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 import { unfoldFooter, squaringFooter } from '../../containers';
+import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -17,8 +16,7 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-const stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring' = 'unfolded';
-const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
+function ArchiveFooter({ info }: InfoProps): JSX.Element {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -31,8 +29,10 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
+      stateName = 'unfolded';
       return (
         <footer
           id={`${pageName}-${blockName}`}
@@ -64,17 +64,6 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
                 tasks: '',
               }}
             />
-            {/* <FooterApplications
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: labelName,
-              }}
-              cases={{
-                axis: '[x]',
-                apps: '{archive}',
-              }}
-            /> */}
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>
@@ -83,6 +72,7 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
         </footer>
       );
     case 'portrait':
+      stateName = 'unfolded';
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
@@ -113,5 +103,20 @@ const ArchiveFooter: React.FC<InfoProps> = ({ info }) => {
         </footer>
       );
   }
-};
+}
 export default ArchiveFooter;
+
+/*
+import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
+
+<FooterApplications
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              cases={{
+                axis: '[x]',
+                apps: '{archive}',
+              }}
+            /> */
