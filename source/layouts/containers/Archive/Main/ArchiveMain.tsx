@@ -116,14 +116,15 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
+  let startingPreview: number = 3;
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
         <DivisionCarousel
           //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
           cases={{
-            show: 6,
             axis: '[y]',
+            show: startingPreview as number,
             call: ComponentsElements as React.ComponentType<InfoProps>,
           }}
           info={{

@@ -7,13 +7,10 @@ import SelectCarousel from './addons/select-carousel/SelectCarousel';
 import ScrollCarousel from './addons/scroll-carousel/ScrollCarousel';
 
 //--|🠋 Functions 🠋|--\\
-import markMenu from './Menu_carousel';
 import stripBrackets from '../../../components';
-import { labelList } from './Menu_carousel';
-import { loadClass, loadStyle } from './Menu_carousel';
+import { loadClass, labelList } from './Menu_carousel';
 
 //--|🠋 Components 🠋|--\\
-import selectCarousel from '../../../Division/carousel/Division_carousel';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';

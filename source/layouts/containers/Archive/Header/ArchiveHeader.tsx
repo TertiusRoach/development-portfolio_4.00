@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import HeaderSwipe from '../../../components/Header/REVIEW/swipe/Header.swipe';
+import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+import DivisionConveyor from '../../../components/Division/conveyor/Division.conveyor';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -20,12 +21,9 @@ import {
 
 interface InfoProps {
   info: {
-    //--|🠋 pageName: Id that represents the application 🠋|--\\
-    pageName: '[components]';
-    //--|🠋 blockName: 'Toggles between '/containers' folders. 🠋|--\\
-    blockName: '<footer>' | '<header>' | '<leftbar>' | '<main>' | '<overlay>' | '<rightbar>';
-    //--|🠋 labelName: Class name marker for all components. 🠋|--\\
+    blockName: '<header>' | string;
     labelName: '(default)' | string;
+    pageName: '[components]' | string;
   };
 }
 
@@ -35,7 +33,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'header';
-  let labelName = stripBrackets(info.labelName, '()') as 'archive';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
   let pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
@@ -49,6 +47,18 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
       return (
         <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
+            <DivisionConveyor
+              //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
+              cases={{
+                axis: '[x]',
+                call: ComponentsElements as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                blockName: 'main',
+                labelName: 'elements',
+                pageName: pageName as 'components',
+              }}
+            />
             <NavigationDefault
               //--|🠊 <nav class="default-header_navigation-default"/> 🠈|--\\
               info={{
@@ -129,6 +139,34 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
 }
 export default ArchiveHeader;
 
+const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
+  const blockName = 'main';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
+
+  return (
+    <>
+      <MenuSwipe
+        info={{
+          labelName: 'article',
+          blockName: blockName as 'main',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
+        }}
+      />
+    </>
+  );
+};
+
+// import HeaderSwipe from '../../../components/Header/REVIEW/swipe/Header.swipe';
 // var menuStyle = { color: '(mono)', shade: '~dark~' } as const;
 /* <HeaderSwipe
               //--|🠊 <header class="default-header_swipe-default"/> 🠈|--\\
