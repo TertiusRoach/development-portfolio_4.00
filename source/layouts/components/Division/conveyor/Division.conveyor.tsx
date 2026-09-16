@@ -34,12 +34,6 @@ function DivisionAxis({ info, cases }: TheseProps) {
   let carousel = document.querySelector(
     `#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_carousel-default`,
   );
-  // let test = findTags(info.pageName, info.blockName, info.labelName);
-  // console.log(test.carousel, test.container);
-  console.log(carousel);
-  /*
-  console.log(info.pageName, info.blockName, info.labelName);
-  */
   return (
     <li className={`${childrenAxis[cases.axis]}_I`}>
       <div className={`${info.labelName}-${info.blockName}_container`}>
