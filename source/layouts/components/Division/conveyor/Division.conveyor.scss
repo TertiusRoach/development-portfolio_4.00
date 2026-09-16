@@ -1,6 +1,7 @@
 //--|🠊 Division.conveyor.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Carousel) 🠋|--\\
+  /*
   %hori-scope-desk {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
@@ -160,20 +161,20 @@
     @extend %vert-stack-desk;
     @extend %vert-scope-desk;
   }
+  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Carousel) 🠋|--\\
+  /*
   %hori-scope-mobi {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
       transition: transform 500ms ease-in-out;
       div[class*='container'] {
         display: flex;
-        /*
-        > * {
-          height: 100svh;
-        }
-        */
+        // > * {
+        //   height: 100svh;
+        // }
       }
     }
   }
@@ -323,6 +324,7 @@
     @extend %vert-stack-mobi;
     @extend %vert-scope-mobi;
   }
+  */
 }
 
 div[class*='conveyor'] {

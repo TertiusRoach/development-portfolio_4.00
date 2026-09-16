@@ -142,7 +142,7 @@ export default ArchiveHeader;
 const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = 'main';
   const labelName = info.labelName as 'default';
-  const pageName = info.pageName as 'components';
+  const pageName = 'elements';
 
   return (
     <>
@@ -150,7 +150,7 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
         info={{
           labelName: 'article',
           blockName: blockName as 'main',
-          pageName: pageName as 'components',
+          pageName: pageName as 'elements',
         }}
         style={{
           view: '-def-',

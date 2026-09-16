@@ -74,8 +74,6 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
       viewTitle.classList.replace('downplay', 'highlight');
     }
   };
-
-  // let menuAxis: string = 'horizontal';
   if (!container) {
     return revealActiveTitle(container as null, controller, 'missing', menuAxis);
   } else {
@@ -156,10 +154,13 @@ interface ChainedElements {
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType: string = 'swipe';
   return {
-    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+    controller: document.querySelector(`menu[class="${labelName}-${blockName}_${menuType}-default"]`),
+    /*
     controller: document.querySelector(
       `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_${menuType}-default"]`,
     ),
+    */
+    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
   };
 }
 

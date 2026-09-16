@@ -31,9 +31,9 @@ function DivisionAxis({ info, cases }: TheseProps) {
     '[y]': 'carousel-vertical',
   };
 
-  /*
   let test = findTags(info.pageName, info.blockName, info.labelName);
   console.log(test.carousel, test.container);
+  /*
   console.log(info.pageName, info.blockName, info.labelName);
   console.log(
     document.querySelector(`#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_carousel-default`),
@@ -41,7 +41,9 @@ function DivisionAxis({ info, cases }: TheseProps) {
   */
   return (
     <li className={`${childrenAxis[cases.axis]}_I`}>
-      <div className={`${info.labelName}-${info.blockName}_container`}>{/* <CallItem info={info} /> */}</div>
+      <div className={`${info.labelName}-${info.blockName}_container`}>
+        <CallItem info={info} />
+      </div>
     </li>
   );
 }
