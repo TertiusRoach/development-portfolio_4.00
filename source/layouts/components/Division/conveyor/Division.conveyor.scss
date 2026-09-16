@@ -1,4 +1,4 @@
-//--|🠊 Division.carousel.scss 🠈|--\\
+//--|🠊 Division.conveyor.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Carousel) 🠋|--\\
   %hori-scope-desk {
@@ -325,7 +325,7 @@
   }
 }
 
-div[class*='carousel'] {
+div[class*='conveyor'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

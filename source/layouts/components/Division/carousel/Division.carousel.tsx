@@ -25,17 +25,15 @@ type InfoProps = {
   labelName: string;
 };
 
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisClass: Record<'[x]' | '[y]', string> = {
-  '[x]': 'carousel-horizontal',
-  '[y]': 'carousel-vertical',
-};
-
 function DivisionAxis({ info, cases }: TheseProps) {
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
-
+  const childrenAxis: Record<'[x]' | '[y]', string> = {
+    '[x]': 'carousel-horizontal',
+    '[y]': 'carousel-vertical',
+  };
   return (
-    <li className={`${axisClass[cases.axis]}_${arabicToRoman(cases.show)}`}>
+    <li className={`${childrenAxis[cases.axis]}_${arabicToRoman(cases.show)}`}>
       <div className={`${info.labelName}-${info.blockName}_container`}>
         <CallItem info={info} />
       </div>
@@ -43,14 +41,15 @@ function DivisionAxis({ info, cases }: TheseProps) {
   );
 }
 const DivisionCarousel = ({ info, cases, onWheel }: TheseProps) => {
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
-  const axisClass: Record<'[x]' | '[y]', string> = {
+  const parentAxis: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
   return (
     <div className={`${info.labelName}-${info.blockName}_carousel-default`} onWheel={onWheel}>
-      <CallList className={axisClass[cases.axis]}>
+      <CallList className={parentAxis[cases.axis]}>
         <DivisionAxis info={info} cases={cases} />
       </CallList>
     </div>
