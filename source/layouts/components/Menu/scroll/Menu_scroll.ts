@@ -156,7 +156,7 @@ interface ChainedElements {
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType: string = 'scroll';
   return {
-    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
+    container: document.querySelector(`#${pageName}-main div[class="${labelName}-${blockName}_container"]`),
     controller: document.querySelector(
       `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_${menuType}-default"]`,
     ),

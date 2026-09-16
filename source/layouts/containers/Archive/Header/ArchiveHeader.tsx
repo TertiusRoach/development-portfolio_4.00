@@ -51,11 +51,11 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[x]',
-                call: ComponentsElements as React.ComponentType<InfoProps>,
+                call: MenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
-                blockName: 'main',
-                labelName: 'elements',
+                blockName: blockName as 'header',
+                labelName: labelName as 'default',
                 pageName: pageName as 'components',
               }}
             />
@@ -139,18 +139,17 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
 }
 export default ArchiveHeader;
 
-const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
-  const blockName = 'main';
+const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
-  const pageName = 'elements';
-
+  const pageName = info.pageName as 'components';
   return (
     <>
       <MenuSwipe
         info={{
           labelName: 'article',
-          blockName: blockName as 'main',
-          pageName: pageName as 'elements',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
         }}
         style={{
           view: '-def-',

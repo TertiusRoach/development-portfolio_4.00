@@ -153,13 +153,11 @@ interface ChainedElements {
 }
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType: string = 'swipe';
+  console.log(`#${pageName}-${blockName} menu[class="${labelName}-${blockName}_${menuType}-default"]`);
   return {
-    controller: document.querySelector(`menu[class="${labelName}-${blockName}_${menuType}-default"]`),
-    /*
     controller: document.querySelector(
       `#${pageName}-${blockName} menu[class="${labelName}-${blockName}_${menuType}-default"]`,
     ),
-    */
     container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
   };
 }

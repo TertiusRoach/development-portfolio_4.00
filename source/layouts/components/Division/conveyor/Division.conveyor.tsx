@@ -31,13 +31,14 @@ function DivisionAxis({ info, cases }: TheseProps) {
     '[y]': 'carousel-vertical',
   };
 
-  let test = findTags(info.pageName, info.blockName, info.labelName);
-  console.log(test.carousel, test.container);
+  let carousel = document.querySelector(
+    `#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_carousel-default`,
+  );
+  // let test = findTags(info.pageName, info.blockName, info.labelName);
+  // console.log(test.carousel, test.container);
+  console.log(carousel);
   /*
   console.log(info.pageName, info.blockName, info.labelName);
-  console.log(
-    document.querySelector(`#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_carousel-default`),
-  );
   */
   return (
     <li className={`${childrenAxis[cases.axis]}_I`}>
