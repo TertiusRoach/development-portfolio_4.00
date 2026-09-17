@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Functions 🠋|--\\
 import { abbrView, abbrShade, abbrColor } from '../../components';
 import { stripBrackets, loadAsset } from '../../../../scripts';
-import reloadElements, { modifyingController, previewButtons, showingTitles } from './Menu_swipe';
+import reloadElements, { modifyingController, previewButtons, swipingCarousel } from './Menu_swipe';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
@@ -76,7 +76,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                showingTitles('show-prev', pageName, blockName, labelName, 'horizontal');
+                swipingCarousel('show-prev', pageName, blockName, labelName, 'horizontal');
                 previewButtons('view-prev', pageName, blockName, labelName, 'horizontal');
               }}
             />
@@ -97,7 +97,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                showingTitles('show-next', pageName, blockName, labelName, 'horizontal');
+                swipingCarousel('show-next', pageName, blockName, labelName, 'horizontal');
                 previewButtons('view-next', pageName, blockName, labelName, 'horizontal');
               }}
             />

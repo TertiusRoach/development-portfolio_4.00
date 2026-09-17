@@ -587,12 +587,56 @@
   &[class*='horizontal_III'] {
     transform: translateX(calc(-100% * 2));
   }
-
-  @media screen and (max-height: 768px) {
+  &[class*='horizontal_IV'] {
+    transform: translateX(calc(-100% * 3));
   }
-  @media screen and (max-height: 480px) {
+  &[class*='horizontal_V'] {
+    transform: translateX(calc(-100% * 4));
   }
-  @media screen and (max-height: 360px) {
+  &[class*='horizontal_VI'] {
+    transform: translateX(calc(-100% * 5));
+  }
+  &[class*='horizontal_VII'] {
+    transform: translateX(calc(-100% * 6));
+  }
+  &[class*='horizontal_VIII'] {
+    transform: translateX(calc(-100% * 7));
+  }
+  &[class*='horizontal_IX'] {
+    transform: translateX(calc(-100% * 8));
+  }
+  &[class*='horizontal_X'] {
+    transform: translateX(calc(-100% * 9));
+  }
+  &[class*='horizontal_XI'] {
+    transform: translateX(calc(-100% * 10));
+  }
+  &[class*='horizontal_XII'] {
+    transform: translateX(calc(-100% * 11));
+  }
+  &[class*='horizontal_XIII'] {
+    transform: translateX(calc(-100% * 12));
+  }
+  &[class*='horizontal_XIV'] {
+    transform: translateX(calc(-100% * 13));
+  }
+  &[class*='horizontal_XV'] {
+    transform: translateX(calc(-100% * 14));
+  }
+  &[class*='horizontal_XVI'] {
+    transform: translateX(calc(-100% * 15));
+  }
+  &[class*='horizontal_XVII'] {
+    transform: translateX(calc(-100% * 16));
+  }
+  &[class*='horizontal_XVIII'] {
+    transform: translateX(calc(-100% * 17));
+  }
+  &[class*='horizontal_XIX'] {
+    transform: translateX(calc(-100% * 18));
+  }
+  &[class*='horizontal_XX'] {
+    transform: translateX(calc(-100% * 19));
   }
 }
 //--|===|--\\
@@ -1401,8 +1445,8 @@ menu[class*='swipe'] {
     [class*='highlight'],
     [class*='downplay'] {
       transition:
-        opacity 1500ms ease-in-out,
-        filter 750ms ease-in-out;
+        opacity 500ms ease-in-out,
+        filter 250ms ease-in-out;
       &[class*='highlight'] {
         opacity: 1;
         filter: blur(0px);
@@ -1422,6 +1466,7 @@ menu[class*='swipe'] {
     li[class*='preview'],
     li[class*='showing'] {
       position: absolute;
+      transition: transform 250ms ease-in-out;
     }
   }
 }
