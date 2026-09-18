@@ -6,8 +6,8 @@ import React, { useEffect } from 'react';
 import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
-import loadAsset from '../../../../../../scripts/archive';
-import { stripBrackets } from '../../../../../../../scripts';
+import { functionHolder } from './SelectFunctions';
+import { stripBrackets, loadAsset } from '../../../../../../../scripts';
 import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Components 🠋|--\\
@@ -24,9 +24,10 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as 'select';
   const pageName = info.pageName as 'component';
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
-
-  let view: Array<{ labelName: string; imageLink: string }> = [
+  useEffect(() => {
+    functionHolder();
+  }, [pageName, blockName, labelName]);
+  let casesPages: Array<{ labelName: string; imageLink: string }> = [
     {
       labelName: 'overtime',
       imageLink: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
@@ -43,7 +44,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className="select-menu">
       <section className={`${blockName}-foreground`}>
-        <MenuSelect
+        {/* <MenuSelect
           info={{
             labelName: 'menu' as string,
             blockName: blockName as 'main',
@@ -59,8 +60,8 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             show: 0,
             buttons: view as Array<{ labelName: string; imageLink: string }>,
           }}
-        />
-        <MenuSelect
+        /> */}
+        {/* <MenuSelect
           info={{
             labelName: 'menu' as string,
             blockName: blockName as 'main',
@@ -76,8 +77,8 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             show: 0,
             buttons: view as Array<{ labelName: string; imageLink: string }>,
           }}
-        />
-        <MenuSelect
+        /> */}
+        {/* <MenuSelect
           info={{
             labelName: 'menu' as string,
             blockName: blockName as 'main',
@@ -93,8 +94,8 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             show: 0,
             buttons: view as Array<{ labelName: string; imageLink: string }>,
           }}
-        />
-        <MenuSelect
+        /> */}
+        {/* <MenuSelect
           info={{
             labelName: 'menu' as string,
             blockName: blockName as 'main',
@@ -110,12 +111,10 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             show: 0,
             buttons: view as Array<{ labelName: string; imageLink: string }>,
           }}
-        />
+        /> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <h1 className="display-1">{`<SelectMenu>`}</h1>
-      </div>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 };

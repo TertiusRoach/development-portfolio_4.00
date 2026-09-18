@@ -72,7 +72,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
         </footer>
       );
     case 'portrait':
-      stateName = 'expanded';
+      stateName = 'unfolded';
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>

@@ -21,6 +21,7 @@
   //--|🠋 Mobile <Footer> 🠋|--\\
   section[class*='foreground'] {
     div[class*='conveyor'] {
+      z-index: 1;
       background: rgba(darkblue, 0.5);
       grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
@@ -34,6 +35,9 @@
       @media screen and (max-width: 360px) {
         margin-right: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
+    }
+    nav[class*='navigation'] {
+      z-index: 0;
     }
   }
   figure[class*='midground'] {

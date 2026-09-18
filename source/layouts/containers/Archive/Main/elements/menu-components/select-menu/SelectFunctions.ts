@@ -1,5 +1,8 @@
 //--|🠊 select-menu/SelectFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+
+export function functionHolder(): void {}
+
 /*
 import { arabicToRoman, romanToArabic } from '../../../../../../components/functions';
 

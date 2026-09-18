@@ -29,8 +29,7 @@ function MenuComponents({ info }: InfoProps) {
     <>
       <SwipeMenu info={{ labelName: 'swipe' as string, pageName: pageName, blockName: blockName }} />
       <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
-
-      {/* <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} /> */}
+      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }
@@ -39,7 +38,7 @@ const MenuElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
-          show: 1,
+          show: 3,
           axis: '[x]',
           call: MenuComponents as React.ComponentType<InfoProps>,
         }}

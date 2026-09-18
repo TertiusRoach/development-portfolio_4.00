@@ -8,9 +8,6 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 //--|🠋 Functions 🠋|--\\
 import { markCarousel, selectCarousel } from './Menu_select';
 
-//--|🠋 Styles 🠋|--\\
-import './Menu.select.scss';
-
 interface TheseProps {
   info: {
     pageName: string;

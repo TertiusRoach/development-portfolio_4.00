@@ -18,10 +18,20 @@
 @mixin mobile-portrait {
   //--|🠊 Mobile <Rightbar> 🠈|--\\
   section[class*='foreground'] {
-    padding-left: calc(100% - 96px);
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+
+    /*
+    @media screen and (max-width: 768px) {
+
+    }
+    @media screen and (max-width: 480px) {
+      padding-left: calc(100% - 96px);
+    }
+    @media screen and (max-width: 360px) {
+    }
+    */
   }
   figure[class*='midground'] {
   }

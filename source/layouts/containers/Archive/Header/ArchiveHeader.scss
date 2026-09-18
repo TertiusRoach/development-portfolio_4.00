@@ -6,6 +6,7 @@
   //--|🠊 Desktop <Header> 🠈|--\\
   section[class*='foreground'] {
     div[class*='conveyor'] {
+      z-index: 1;
       background: rgba(darkred, 0.5);
       grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
@@ -19,6 +20,9 @@
       @media screen and (max-height: 360px) {
         margin-left: 48px; //--|🠈 48px for Squares 🠈|--\\
       }
+    }
+    nav[class*='navigation'] {
+      z-index: 0;
     }
   }
   figure[class*='midground'] {
