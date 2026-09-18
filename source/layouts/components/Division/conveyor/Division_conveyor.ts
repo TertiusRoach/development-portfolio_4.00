@@ -2,11 +2,11 @@
 
 import reloadElements from '../../Menu/swipe/Menu_swipe';
 
-function findSpot(pageName: string, blockName: string, labelName: string): void {
+function findSpot(carousel: HTMLLIElement, conveyor: HTMLLIElement): void {
+  /*
   const carousel = document.querySelector(`#${pageName}-main .${labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
   const conveyor = document.querySelector(`#${pageName}-${blockName} .${labelName}-${blockName}_conveyor-default li[class*="conveyor"]`) as HTMLLIElement;
-
-  console.log('CHANGED!!!!!!');
+  */
   let prevView: string = conveyor.classList[0];
   let nextView: string = `${conveyor.classList[0].split('_')[0]}_${carousel.classList[0].split('_')[1]}`;
 
@@ -15,19 +15,14 @@ function findSpot(pageName: string, blockName: string, labelName: string): void 
 
 //--|🠋 Functions & Elements 🠋|--\\
 function listenEvent(pageName: string, blockName: string, labelName: string): void {
-  const carousel = document.querySelector<HTMLLIElement>(`#${pageName}-main .${labelName}-main_carousel-default li[class*="carousel"]`);
-  const conveyor = document.querySelector<HTMLLIElement>(`#${pageName}-${blockName} .${labelName}-${blockName}_conveyor-default li[class*="conveyor"]`);
-
+  const carousel = findTags(pageName, blockName, labelName).carousel as HTMLLIElement;
+  const conveyor = findTags(pageName, blockName, labelName).conveyor as HTMLLIElement;
   if (!carousel || !conveyor) {
     return;
   }
 
-  let position = carousel.classList[0].split('_')[1];
-
   const observer = new MutationObserver(() => {
-    position = carousel.classList[0].split('_')[1];
-
-    findSpot(pageName, blockName, labelName);
+    findSpot(carousel, conveyor);
   });
 
   observer.observe(carousel, {
@@ -35,4 +30,25 @@ function listenEvent(pageName: string, blockName: string, labelName: string): vo
     attributeFilter: ['class'],
   });
 }
+
+//--|🠋 Configures Buttons & Elements 🠋|--\\
+interface ChainedElements {
+  carousel: HTMLLIElement;
+  conveyor: HTMLLIElement;
+}
+function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
+  const menuType = 'swipe';
+  const container = `${pageName}-${blockName}`;
+
+  const carousel = document.querySelector(`#${pageName}-main .${labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
+  const conveyor = (document.querySelector(`#${container} .${labelName}-${blockName}_conveyor-default li[class*="conveyor"]`) ??
+    document.querySelector(`#${pageName}-header .${labelName}-header_conveyor-default li[class*="conveyor"]`) ??
+    document.querySelector(`#${pageName}-header .${labelName}-header_conveyor-default li[class*="conveyor"]`)) as HTMLLIElement;
+
+  return {
+    carousel,
+    conveyor,
+  };
+}
+
 export default listenEvent;
