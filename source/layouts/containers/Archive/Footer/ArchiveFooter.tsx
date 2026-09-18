@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+import DivisionConveyor from '../../../components/Division/conveyor/Division.conveyor';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -11,9 +13,9 @@ import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[components]';
-    blockName: '<footer>';
+    blockName: '<footer>' | string;
     labelName: '(default)' | string;
+    pageName: '[components]' | string;
   };
 }
 function ArchiveFooter({ info }: InfoProps): JSX.Element {
@@ -76,6 +78,18 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
+            <DivisionConveyor
+              //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
+              cases={{
+                axis: '[x]',
+                call: MenuSwipes as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                blockName: blockName as 'header',
+                labelName: labelName as 'default',
+                pageName: pageName as 'components',
+              }}
+            />
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
               info={{
@@ -106,6 +120,184 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
 }
 export default ArchiveFooter;
 
+const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'footer';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
+  return (
+    <>
+      <MenuSwipe
+        info={{
+          labelName: 'article',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'aside',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Aside_Characters>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'button',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Button_Default>, <Button_Routing>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'division',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Division_Default>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'figure',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Figure_Default>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'menu',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Menu_Swipe>', '<Menu_Scroll>', '<Menu_Select>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'navigation',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Navigation_Default>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'section',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Section_Default>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'table',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Table_Default>'] as Array<string>,
+        }}
+      />
+
+      <MenuSwipe
+        info={{
+          labelName: 'time',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: '-def-',
+          color: '(mono)',
+          shade: '~dark~',
+        }}
+        cases={{
+          axis: '[x]',
+          pages: ['<Time_Default>'] as Array<string>,
+        }}
+      />
+    </>
+  );
+};
 /*
 import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 

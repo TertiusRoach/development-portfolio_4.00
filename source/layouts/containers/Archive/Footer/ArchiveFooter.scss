@@ -3,13 +3,11 @@
 @use '../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Layers) 🠋|--\\
-  /*
+  //--|🠋 Desktop <Footer> 🠋|--\\
   section[class*='foreground'] {
   }
   figure[class*='midground'] {
   }
-  */
   div[class*='background'] {
     footer {
       grid-area: 5 / 1 / 6 / 4;
@@ -20,13 +18,26 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--\\
-  /*
+  //--|🠋 Mobile <Footer> 🠋|--\\
   section[class*='foreground'] {
+    div[class*='conveyor'] {
+      background: rgba(darkblue, 0.5);
+      grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+      margin-right: 192px; //--|🠈 192px for Squares 🠈|--\\
+      @media screen and (max-width: 768px) {
+        margin-right: 160px; //--|🠈 160px for Squares 🠈|--\\
+      }
+      @media screen and (max-width: 480px) {
+        margin-right: 96px; //--|🠈 96px for Squares 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        margin-right: 64px; //--|🠈 64px for Squares 🠈|--\\
+      }
+    }
   }
   figure[class*='midground'] {
   }
-  */
   div[class*='background'] {
     footer {
       grid-area: 5 / 1 / 6 / 4;
