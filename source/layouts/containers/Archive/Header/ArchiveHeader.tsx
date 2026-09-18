@@ -9,15 +9,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
-import {
-  unfoldHeader,
-  unfoldLeftbar,
-  squaringHeader,
-  collapseLeftbar,
-  expandLeftbar,
-  collapseHeader,
-  expandHeader,
-} from '../../containers';
+import { unfoldHeader, unfoldLeftbar, squaringHeader, collapseLeftbar, expandLeftbar, collapseHeader, expandHeader } from '../../containers';
 
 interface InfoProps {
   info: {
@@ -27,9 +19,7 @@ interface InfoProps {
   };
 }
 function ArchiveHeader({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
-    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
-  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'header';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -42,19 +32,19 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
-      stateName = 'unfolded';
+      stateName = 'expanded';
       return (
         <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
-                axis: '[x]',
+                axis: '[y]',
                 call: MenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
+                labelName: 'elements',
                 blockName: blockName as 'header',
-                labelName: labelName as 'default',
                 pageName: pageName as 'components',
               }}
             />
@@ -191,7 +181,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Button_Default>, <Button_Routing>'] as Array<string>,
+          pages: ['<Button_Default>', '<Button_Routing>'] as Array<string>,
         }}
       />
 

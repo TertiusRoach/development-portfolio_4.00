@@ -19,9 +19,7 @@ interface InfoProps {
   };
 }
 function ArchiveFooter({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
-    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
-  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'footer';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -74,19 +72,19 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
         </footer>
       );
     case 'portrait':
-      stateName = 'unfolded';
+      stateName = 'expanded';
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
-                axis: '[x]',
+                axis: '[y]',
                 call: MenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
+                labelName: 'elements',
                 blockName: blockName as 'header',
-                labelName: labelName as 'default',
                 pageName: pageName as 'components',
               }}
             />
@@ -142,7 +140,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'aside',
@@ -159,7 +156,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Aside_Characters>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'button',
@@ -173,10 +169,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Button_Default>, <Button_Routing>'] as Array<string>,
+          pages: ['<Button_Default>', '<Button_Routing>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'division',
@@ -193,7 +188,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Division_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'figure',
@@ -210,7 +204,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Figure_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'menu',
@@ -227,7 +220,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Menu_Swipe>', '<Menu_Scroll>', '<Menu_Select>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'navigation',
@@ -244,7 +236,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Navigation_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'section',
@@ -261,7 +252,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Section_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'table',
@@ -278,7 +268,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Table_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'time',

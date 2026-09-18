@@ -3,8 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { findTags } from './Division_conveyor';
-import { arabicToRoman } from '../../../../scripts';
+import { findSpot } from './Division_conveyor';
 
 interface TheseProps {
   info: {
@@ -23,38 +22,14 @@ type InfoProps = {
   blockName: string;
   labelName: string;
 };
-function DivisionAxis({ info, cases }: TheseProps) {
-  //--|🠊 Checks [x] or [y] axis 🠈|--\\
-  const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
-  const childrenAxis: Record<'[x]' | '[y]', string> = {
-    '[x]': 'carousel-horizontal',
-    '[y]': 'carousel-vertical',
-  };
 
-  let carousel = document.querySelector(
-    `#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_carousel-default`,
-  );
-  return (
-    <li className={`${childrenAxis[cases.axis]}_I`}>
-      <div className={`${info.labelName}-${info.blockName}_container`}>
-        <CallItem info={info} />
-      </div>
-    </li>
-  );
-}
-const DivisionConveyor = ({ info, cases }: TheseProps) => {
+function DivisionConveyor({ info, cases }: TheseProps) {
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
   const axisClass: Record<'[x]' | '[y]', string> = {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
-  /*
-  //--|🠊 Checks [x] or [y] axis 🠈|--\\
-  const axisClass: Record<'[x]' | '[y]', string> = {
-    '[x]': 'carousel-horizontal',
-    '[y]': 'carousel-vertical',
-  };
-  */
   return (
     <div className={`${info.labelName}-${info.blockName}_conveyor-default`}>
       <CallList className={axisClass[cases.axis]}>
@@ -62,6 +37,25 @@ const DivisionConveyor = ({ info, cases }: TheseProps) => {
       </CallList>
     </div>
   );
-};
+}
+const DivisionAxis = ({ info, cases }: TheseProps) => {
+  //--|🠊 Checks [x] or [y] axis 🠈|--\\
+  const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
+  const childrenAxis: Record<'[x]' | '[y]', string> = {
+    '[x]': 'conveyor-horizontal',
+    '[y]': 'conveyor-vertical',
+  };
 
+  let carousel = document.querySelector(`#${info.pageName}-main .${info.labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
+  let conveyor = document.querySelector(`#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_conveyor-default li[class*="conveyor"]`) as HTMLLIElement;
+  let position = carousel.classList[0].split('_')[1] as string;
+
+  return (
+    <li className={`${childrenAxis[cases.axis]}_${carousel.classList[0].split('_')[1]}`}>
+      <div className={`${info.labelName}-${info.blockName}_container`}>
+        <CallItem info={info} />
+      </div>
+    </li>
+  );
+};
 export default DivisionConveyor;

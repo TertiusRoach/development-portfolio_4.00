@@ -1,6 +1,6 @@
 //--|🠊 Menu.swipe.scss 🠈|--\\
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Elements) 🠋|--\
+  //--|🠋 Desktop (Swipe) 🠋|--\
   ul[class*='hori-X-swipe'] {
     overflow-x: hidden;
 
@@ -641,7 +641,7 @@
 }
 //--|===|--\\
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Elements) 🠋|--\\
+  //--|🠋 Mobile (Swipe) 🠋|--\\
   ul[class*='hori-X-swipe'] {
     overflow-x: hidden;
 

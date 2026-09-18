@@ -16,19 +16,12 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
 
   //--|🠋 Step 1: Swipe Visible Window 🠋|--\\
-  const revealActiveTitle = (
-    container: HTMLDivElement | null,
-    controller: HTMLMenuElement,
-    carousel: 'present' | 'missing',
-    orientation: 'vertical',
-  ) => {
+  const revealActiveTitle = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'vertical') => {
     //--|🠊 Reveal Active Title 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
     switch (carousel) {
       case 'present':
-        let carouselPosition = container
-          ?.querySelector(`li[class*="carousel-${menuAxis}"]`)
-          ?.classList[0].split('_')[1] as string;
+        let carouselPosition = container?.querySelector(`li[class*="carousel-${menuAxis}"]`)?.classList[0].split('_')[1] as string;
 
         var viewPrev: string = controllerShowing.classList[0];
         var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${carouselPosition}`;
@@ -46,12 +39,7 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   };
 
   //--|🠋 Step 2: Scale Bootstrap Display 🠋|--\\
-  const assignBootstrapClasses = (
-    container: HTMLDivElement | null,
-    controller: HTMLMenuElement,
-    carousel: 'present' | 'missing',
-    orientation: 'vertical',
-  ) => {
+  const assignBootstrapClasses = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'vertical') => {
     //--|🠊 Assign Bootstrap Classes 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
     let controllerBootstrap = controllerShowing.querySelectorAll('aside h3[class*="display"]') as NodeListOf<HTMLElement>;
@@ -67,12 +55,7 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   };
 
   //--|🠋 Step 3: Mark Active Title 🠋|--\\
-  const emphasizeDefaultParameters = (
-    container: HTMLDivElement,
-    controller: HTMLMenuElement,
-    carousel: 'present' | 'missing',
-    orientation: 'vertical',
-  ) => {
+  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'vertical') => {
     //--|🠊 Emphasize Default Parameters 🠈|--\\
     const showingCarousel = container.querySelector(`li[class*="carousel-${orientation}"]`) as HTMLLIElement;
     const showingController = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
@@ -105,12 +88,7 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
   const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
 
   //--|🠋 Step 1: Find Position 🠋|--\\
-  const retrievePositions = (
-    container: HTMLDivElement | null,
-    controller: HTMLMenuElement,
-    carousel: 'present' | 'missing',
-    orientation: 'vertical',
-  ) => {
+  const retrievePositions = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'vertical') => {
     let minimum: number = 0;
     let current: number = 1;
     let maximum: number = 2;
@@ -136,12 +114,8 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
   };
   //--|🠋 Step 2: Toggle Preview 🠋|--\\
   const assignPreview = (controller: HTMLMenuElement, positions: Array<number>, orientation: 'vertical') => {
-    const viewPrev = controller.querySelector(
-      `li[class*="preview-${orientation}"] div[class*="prev-view"]`,
-    ) as HTMLDivElement;
-    const viewNext = controller.querySelector(
-      `li[class*="preview-${orientation}"] div[class*="next-view"]`,
-    ) as HTMLDivElement;
+    const viewPrev = controller.querySelector(`li[class*="preview-${orientation}"] div[class*="prev-view"]`) as HTMLDivElement;
+    const viewNext = controller.querySelector(`li[class*="preview-${orientation}"] div[class*="next-view"]`) as HTMLDivElement;
     switch (positions[1]) {
       case positions[0]:
         viewPrev.classList.replace('highlight', 'downplay');
@@ -186,13 +160,7 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
 export default reloadElements;
 
 //--|🠋 Configures Headings 🠋|--\\
-export const scrollingCarousel = (
-  showTask: 'show-prev' | 'show-next',
-  pageName: string,
-  blockName: string,
-  labelName: string,
-  menuAxis: 'vertical',
-): void => {
+export const scrollingCarousel = (showTask: 'show-prev' | 'show-next', pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   switch (showTask) {
     case 'show-prev':
       return showPrev(pageName, blockName, labelName, menuAxis);
@@ -225,14 +193,8 @@ let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis
         let prevSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]);
         let nextSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]) - 1;
 
-        showingControl.classList.replace(
-          `showing-${menuAxis}_${arabicToRoman(prevTitle)}`,
-          `showing-${menuAxis}_${arabicToRoman(nextTitle)}`,
-        );
-        showingCarousel.classList.replace(
-          `carousel-${menuAxis}_${arabicToRoman(prevSlide)}`,
-          `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`,
-        );
+        showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
+        showingCarousel.classList.replace(`carousel-${menuAxis}_${arabicToRoman(prevSlide)}`, `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -248,10 +210,7 @@ let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis
         prevShow = showingControl.children[prevTitle - 1] as HTMLElement;
         nextShow = showingControl.children[nextTitle - 1] as HTMLElement;
 
-        showingControl.classList.replace(
-          `showing-${menuAxis}_${arabicToRoman(prevTitle)}`,
-          `showing-${menuAxis}_${arabicToRoman(nextTitle)}`,
-        );
+        showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -285,14 +244,8 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
         let prevSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]);
         let nextSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]) + 1;
 
-        showingControl.classList.replace(
-          `showing-${menuAxis}_${arabicToRoman(prevTitle)}`,
-          `showing-${menuAxis}_${arabicToRoman(nextTitle)}`,
-        );
-        showingCarousel.classList.replace(
-          `carousel-${menuAxis}_${arabicToRoman(prevSlide)}`,
-          `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`,
-        );
+        showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
+        showingCarousel.classList.replace(`carousel-${menuAxis}_${arabicToRoman(prevSlide)}`, `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -306,10 +259,7 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
         prevShow = showingControl.children[prevTitle - 1] as HTMLElement;
         nextShow = showingControl.children[nextTitle - 1] as HTMLElement;
 
-        showingControl.classList.replace(
-          `showing-${menuAxis}_${arabicToRoman(prevTitle)}`,
-          `showing-${menuAxis}_${arabicToRoman(nextTitle)}`,
-        );
+        showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -329,24 +279,19 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
   const menuType = 'scroll';
   const container = `${pageName}-${blockName}`;
 
-  const carousel =
-    document.querySelector<HTMLDivElement>(`#${container} div[class="${labelName}-${blockName}_carousel-default"]`) ??
-    document.querySelector<HTMLDivElement>(`#${pageName}-main div[class="${labelName}-main_carousel-default"]`);
+  let controller = (document.querySelector(`#${container} menu[class="${labelName}-${blockName}_${menuType}-default"]`) ??
+    document.querySelector(`#${pageName}-header menu[class="${labelName}-header_${menuType}-default"]`) ??
+    document.querySelector(`#${pageName}-footer menu[class="${labelName}-footer_${menuType}-default"]`)) as HTMLMenuElement;
+
+  let carousel = (document.querySelector(`#${container} div[class="${labelName}-${blockName}_carousel-default"]`) ??
+    document.querySelector(`#${pageName}-main div[class="${labelName}-main_carousel-default"]`)) as HTMLDivElement | null;
 
   return {
-    controller: document.querySelector(
-      `#${container} menu[class="${labelName}-${blockName}_${menuType}-default"]`,
-    ) as HTMLMenuElement,
     carousel,
+    controller,
   };
 }
-export const previewButtons = (
-  viewTask: 'view-prev' | 'view-next',
-  pageName: string,
-  blockName: string,
-  labelName: string,
-  menuAxis: 'vertical',
-): void => {
+export const previewButtons = (viewTask: 'view-prev' | 'view-next', pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   let emphasisBlocker: string;
   switch (viewTask) {

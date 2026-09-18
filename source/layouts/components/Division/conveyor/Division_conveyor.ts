@@ -1,11 +1,9 @@
 //--|🠊 Division_conveyor.ts 🠈|--\\
-interface ChainedElements {
-  carousel: HTMLDivElement | null;
-  container: HTMLDivElement | null;
-}
-export function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
-  return {
-    carousel: document.querySelector(`#${pageName}-${blockName} .${labelName}-${blockName}_carousel-default`),
-    container: document.querySelector(`#${pageName}-${blockName} div[class="${labelName}-${blockName}_container"]`),
-  };
+
+export function findSpot(pageName: string, blockName: string, labelName: string) {
+  setTimeout(() => {
+    const carousel = document.querySelector(`#${pageName}-main .${labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
+    const conveyor = document.querySelector(`#${pageName}-${blockName} .${labelName}-${blockName}_conveyor-default li[class*="conveyor"]`) as HTMLLIElement;
+    return carousel.classList[0].split('_')[1] as string;
+  }, 125);
 }
