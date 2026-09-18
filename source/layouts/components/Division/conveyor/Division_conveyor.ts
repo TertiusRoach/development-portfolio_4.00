@@ -37,13 +37,11 @@ interface ChainedElements {
   conveyor: HTMLLIElement;
 }
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
-  const menuType = 'swipe';
   const container = `${pageName}-${blockName}`;
-
   const carousel = document.querySelector(`#${pageName}-main .${labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
   const conveyor = (document.querySelector(`#${container} .${labelName}-${blockName}_conveyor-default li[class*="conveyor"]`) ??
     document.querySelector(`#${pageName}-header .${labelName}-header_conveyor-default li[class*="conveyor"]`) ??
-    document.querySelector(`#${pageName}-header .${labelName}-header_conveyor-default li[class*="conveyor"]`)) as HTMLLIElement;
+    document.querySelector(`#${pageName}-footer .${labelName}-footer_conveyor-default li[class*="conveyor"]`)) as HTMLLIElement;
 
   return {
     carousel,

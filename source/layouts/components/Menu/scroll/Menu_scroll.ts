@@ -114,21 +114,27 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
   };
   //--|🠋 Step 2: Toggle Preview 🠋|--\\
   const assignPreview = (controller: HTMLMenuElement, positions: Array<number>, orientation: 'vertical') => {
+    const controlChildren = controller.querySelector(`li[class*="showing-${orientation}"]`)?.childElementCount as number;
     const viewPrev = controller.querySelector(`li[class*="preview-${orientation}"] div[class*="prev-view"]`) as HTMLDivElement;
     const viewNext = controller.querySelector(`li[class*="preview-${orientation}"] div[class*="next-view"]`) as HTMLDivElement;
-    switch (positions[1]) {
-      case positions[0]:
-        viewPrev.classList.replace('highlight', 'downplay');
-        viewNext.classList.replace('downplay', 'highlight');
-        break;
-      default:
-        viewPrev.classList.replace('downplay', 'highlight');
-        viewNext.classList.replace('downplay', 'highlight');
-        break;
-      case positions[2]:
-        viewPrev.classList.replace('downplay', 'highlight');
-        viewNext.classList.replace('highlight', 'downplay');
-        break;
+
+    if (controlChildren === 1) {
+      return;
+    } else {
+      switch (positions[1]) {
+        case positions[0]:
+          viewPrev.classList.replace('highlight', 'downplay');
+          viewNext.classList.replace('downplay', 'highlight');
+          break;
+        default:
+          viewPrev.classList.replace('downplay', 'highlight');
+          viewNext.classList.replace('downplay', 'highlight');
+          break;
+        case positions[2]:
+          viewPrev.classList.replace('downplay', 'highlight');
+          viewNext.classList.replace('highlight', 'downplay');
+          break;
+      }
     }
   };
 
