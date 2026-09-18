@@ -56,9 +56,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_swipe-default`}>
-      <ListStyle
-        className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}
-      >
+      <ListStyle className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}>
         <li className={`preview-horizontal-${stripBrackets(style.view, '--')}`}>
           <div className={`prev-view ${stateView}`}>
             <ButtonDefault

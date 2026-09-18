@@ -548,4 +548,10 @@ div[class*='conveyor'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  ul[class*='hori-X-axis'],
+  ol[class*='vert-Y-axis'] {
+    li {
+      transition: transform 500ms ease-in-out;
+    }
+  }
 }

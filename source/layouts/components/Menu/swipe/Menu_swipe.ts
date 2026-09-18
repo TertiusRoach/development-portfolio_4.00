@@ -157,7 +157,6 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
     window.removeEventListener('resize', handleResize);
   };
 }
-export default reloadElements;
 
 //--|🠋 Configures Headings 🠋|--\\
 export const swipingCarousel = (showTask: 'show-prev' | 'show-next', pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
@@ -325,3 +324,5 @@ export const previewButtons = (viewTask: 'view-prev' | 'view-next', pageName: st
     }
   }
 };
+
+export default reloadElements;

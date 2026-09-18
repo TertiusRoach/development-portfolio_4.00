@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { findSpot } from './Division_conveyor';
+import listenEvent from './Division_conveyor';
 
 interface TheseProps {
   info: {
@@ -30,6 +30,15 @@ function DivisionConveyor({ info, cases }: TheseProps) {
     '[x]': 'hori-X-axis',
     '[y]': 'vert-Y-axis',
   };
+
+  let pageName: string = info.pageName as string;
+  let blockName: string = info.blockName as string;
+  let labelName: string = info.labelName as string;
+
+  useEffect(() => {
+    listenEvent(pageName, blockName, labelName);
+  }, [pageName, blockName, labelName]);
+
   return (
     <div className={`${info.labelName}-${info.blockName}_conveyor-default`}>
       <CallList className={axisClass[cases.axis]}>
