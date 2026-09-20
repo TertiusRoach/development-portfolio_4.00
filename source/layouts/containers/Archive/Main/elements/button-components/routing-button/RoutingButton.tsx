@@ -1,14 +1,16 @@
 //--|🠊 RoutingButton.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Styles 🠋|--\\
 import './RoutingButton.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './RoutingFunctions';
-import { loadAsset, stripBrackets, arabicToRoman, romanToArabic } from '../../../../../../../scripts';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
+import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
 import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
@@ -20,53 +22,225 @@ interface InfoProps {
     labelName: string;
   };
 }
-
-function routingDark({ info }: InfoProps) {
-  return (
-    <>
-      {/* <ViewOne
-        info={{
-          labelName: 'one-dark',
-          pageName: info.pageName,
-          blockName: info.blockName,
-        }}
-      /> */}
-      {/* <ViewFou
-        info={{
-          labelName: 'fou-dark',
-          pageName: info.pageName,
-          blockName: info.blockName,
-        }}
-      /> */}
-    </>
-  );
-}
-function routingLight({ info }: InfoProps) {
-  return (
-    <>
-      {/* <ViewOne
-        info={{
-          labelName: 'one-light',
-          pageName: info.pageName,
-          blockName: info.blockName,
-        }}
-      /> */}
-      {/* <ViewFou
-        info={{
-          labelName: 'fou-light',
-          pageName: info.pageName,
-          blockName: info.blockName,
-        }}
-      /> */}
-    </>
-  );
-}
-
 const RoutingButton: React.FC<InfoProps> = ({ info }) => {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'routing';
   const pageName = info.pageName as 'component';
 
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  let casesShow = 1 as number;
+  let casesPages = ['<h1>', , '<h4>', '<p>'] as Array<string>;
+  switch (getOrientation) {
+    case 'landscape':
+      return (
+        <aside className="routing-button">
+          <section className={`${info.blockName}-foreground`}>
+            <MenuScroll
+              //--|🠊 <menu class="routing-darkside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              cases={{
+                axis: '[y]',
+                pages: casesPages as Array<string>,
+              }}
+              style={{
+                view: '-def-',
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-darkside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              cases={{
+                axis: '[y]',
+                show: casesShow as number,
+                call: ButtonsDarkside as React.ComponentType<InfoProps>,
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+                */
+              }}
+            />
+
+            <div
+              className="toggle-colors"
+              onClick={(event: React.MouseEvent<HTMLElement>): void => {
+                toggleColors(event.currentTarget as HTMLElement);
+              }}
+            >
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+            </div>
+
+            <MenuScroll
+              //--|🠊 <menu class="routing-lightside-main_scroll-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              cases={{
+                axis: '[y]',
+                pages: casesPages as Array<string>,
+              }}
+              style={{
+                view: '-def-',
+                color: '(mono)',
+                shade: '~light~',
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-lightside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              cases={{
+                axis: '[y]',
+                show: casesShow as number,
+                call: ButtonsLightside as React.ComponentType<InfoProps>,
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+                */
+              }}
+            />
+          </section>
+          <figure className={`${info.blockName}-midground`}></figure>
+          <div className={`${info.blockName}-background`}>
+            <section className="left-side"></section>
+            <section className="right-side"></section>
+          </div>
+        </aside>
+      );
+    case 'portrait':
+      return (
+        <aside className="routing-button">
+          <section className={`${info.blockName}-foreground`}>
+            <MenuScroll
+              //--|🠊 <menu class="routing-darkside-main_scroll-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              cases={{
+                axis: '[x]',
+                pages: casesPages as Array<string>,
+              }}
+              style={{
+                view: '-cen-',
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-darkside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              cases={{
+                axis: '[y]',
+                show: casesShow as number,
+                call: ButtonsDarkside as React.ComponentType<InfoProps>,
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+                */
+              }}
+            />
+
+            <div
+              className="toggle-colors"
+              onClick={(event: React.MouseEvent<HTMLElement>): void => {
+                toggleColors(event.currentTarget as HTMLElement);
+              }}
+            >
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+            </div>
+
+            <MenuScroll
+              //--|🠊 <menu class="routing-lightside-main_scroll-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              cases={{
+                axis: '[x]',
+                pages: casesPages as Array<string>,
+              }}
+              style={{
+                view: '-cen-',
+                color: '(mono)',
+                shade: '~light~',
+              }}
+            />
+            <DivisionCarousel
+              //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
+              info={{
+                labelName: 'routing-lightside',
+                blockName: info.blockName as '<main>',
+                pageName: info.pageName as '[components]',
+              }}
+              cases={{
+                axis: '[y]',
+                show: casesShow as number,
+                call: ButtonsLightside as React.ComponentType<InfoProps>,
+              }}
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
+                /*
+                if (event.deltaY < 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
+                } else if (event.deltaY > 0) {
+                  scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
+                }
+                 */
+              }}
+            />
+          </section>
+          <figure className={`${info.blockName}-midground`}></figure>
+          <div className={`${info.blockName}-background`}>
+            <section className="left-side"></section>
+            <section className="right-side"></section>
+          </div>
+        </aside>
+      );
+  }
+  /*
   let casesShow = 1 as number;
   let casesPages = ['<h1>', '<h4>', '<p>'] as Array<string>;
   return (
@@ -118,7 +292,62 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
       </div>
     </aside>
   );
+  */
 };
+function ButtonsDarkside({ info }: InfoProps) {
+  return (
+    <>
+      <ViewOne
+        info={{
+          labelName: 'one-dark',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+      <ViewFou
+        info={{
+          labelName: 'fou-dark',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+      <ViewPar
+        info={{
+          labelName: 'par-dark',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+    </>
+  );
+}
+function ButtonsLightside({ info }: InfoProps) {
+  return (
+    <>
+      <ViewOne
+        info={{
+          labelName: 'one-light',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+      <ViewFou
+        info={{
+          labelName: 'fou-light',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+      <ViewPar
+        info={{
+          labelName: 'par-light',
+          pageName: info.pageName,
+          blockName: info.blockName,
+        }}
+      />
+    </>
+  );
+}
 
 let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
@@ -126,7 +355,7 @@ let ViewOne = ({ info }: InfoProps) => {
     case shade.includes('dark'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -140,8 +369,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -155,8 +384,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -170,8 +399,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -185,8 +414,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -200,8 +429,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -215,8 +444,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -230,8 +459,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -245,8 +474,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -260,13 +489,13 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
     case shade.includes('light'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -280,8 +509,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -295,8 +524,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -310,8 +539,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -325,8 +554,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -340,8 +569,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -355,8 +584,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -370,8 +599,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -385,8 +614,8 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -400,7 +629,7 @@ let ViewOne = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
   }
@@ -411,7 +640,7 @@ let ViewFou = ({ info }: InfoProps) => {
     case shade.includes('dark'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -425,8 +654,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -440,8 +669,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -455,8 +684,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -470,8 +699,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -485,8 +714,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -500,8 +729,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -515,8 +744,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -530,8 +759,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -545,13 +774,13 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
     case shade.includes('light'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -565,8 +794,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -580,8 +809,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -595,8 +824,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -610,8 +839,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -625,8 +854,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -640,8 +869,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -655,8 +884,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -670,8 +899,8 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<h1>',
               type: '{button}',
@@ -685,7 +914,7 @@ let ViewFou = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
   }
@@ -696,7 +925,7 @@ let ViewPar = ({ info }: InfoProps) => {
     case shade.includes('dark'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -710,8 +939,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -725,8 +954,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -740,8 +969,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -755,8 +984,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -770,8 +999,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -785,8 +1014,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -800,8 +1029,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -815,8 +1044,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -830,13 +1059,13 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
     case shade.includes('light'):
       return (
         <section className={`routing-${info.blockName}_${info.labelName}`}>
-          <ButtonRouting
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -850,8 +1079,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -865,8 +1094,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -880,8 +1109,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -895,8 +1124,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -910,8 +1139,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -925,8 +1154,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -940,8 +1169,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -955,8 +1184,8 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
-          <ButtonRouting
+          /> */}
+          {/* <ButtonRouting
             style={{
               size: '<p>',
               type: '{button}',
@@ -970,7 +1199,7 @@ let ViewPar = ({ info }: InfoProps) => {
               blockName: info.blockName,
               labelName: info.labelName,
             }}
-          />
+          /> */}
         </section>
       );
   }
