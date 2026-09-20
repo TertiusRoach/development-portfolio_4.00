@@ -116,7 +116,7 @@ const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 6;
+  let startingPreview: number = 3;
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
