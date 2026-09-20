@@ -1,9 +1,9 @@
 //--|🠊 Button_routing.ts 🠈|--\\
-import { stripBrackets } from '../../../scripts/buttons';
+import { stripBrackets } from '../../../../scripts';
 
 interface StyleProps {
   image: string;
-  size: '<h1>' | '<p>';
+  size: '<h1>' | '<h4>' | '<p>';
   shade: '~dark~' | '~medium~' | '~light~';
   color: '(red)' | '(green)' | '(blue)' | '(mono)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
@@ -14,17 +14,15 @@ interface StyleProps {
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <RoutingButton> 🠈|--\\
-  // let classType = createType(style.type);
-  // let classVars = createVars(style.image);
   let classColor = createColor(style.shade, style.color);
   let classLayout = createLayout(style.size, style.view);
-  // console.log(`${classType}-button ${classLayout}_${classColor}_${classVars}`);
+
   return `${classLayout}_${classColor}_rou`;
 }
 
 //--|🠋 Scoped Functions 🠋|--\\
 export function createLayout(
-  size: '<h1>' | '<p>',
+  size: '<h1>' | '<h4>' | '<p>',
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig',
 ): string {
   const sizeMap: Record<string, string> = {
@@ -55,10 +53,7 @@ export function createLayout(
 
   return `${classSize}_${classView}`;
 }
-export function createColor(
-  shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
-): string {
+export function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)'): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
