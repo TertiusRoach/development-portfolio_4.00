@@ -32,7 +32,6 @@ section[class*='button-main'] {
           @include DefaultButton.mobile-portrait;
         }
         &[class*='routing'] {
-          display: none !important;
           @include RoutingButton.mobile-portrait;
         }
         &[class*='profile'] {

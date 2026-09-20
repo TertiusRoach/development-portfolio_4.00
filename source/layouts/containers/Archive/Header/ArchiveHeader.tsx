@@ -91,7 +91,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
         </header>
       );
     case 'portrait':
-      stateName = 'unfolded';
+      stateName = 'squaring';
       return (
         <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
