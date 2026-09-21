@@ -278,15 +278,15 @@
           grid-template-columns: $high-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           @media screen and (max-width: 768px) {
             grid-template-rows: 1fr $test-mobi; //--|🠈 rows 🠈|--\\
-            grid-template-columns: $test-mobi 1fr $test-mobi 1fr $test-mobi 1fr $test-mobi; //--|🠈 columns 🠈|--\\
+            grid-template-columns: $test-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 480px) {
             grid-template-rows: 1fr $misc-mobi; //--|🠈 rows 🠈|--\\
-            grid-template-columns: $misc-mobi 1fr $misc-mobi 1fr $misc-mobi 1fr $misc-mobi; //--|🠈 columns 🠈|--\\
+            grid-template-columns: $misc-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 360px) {
             grid-template-rows: 1fr $tiny-mobi; //--|🠈 rows 🠈|--\\
-            grid-template-columns: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi; //--|🠈 columns 🠈|--\\
+            grid-template-columns: $tiny-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
         }
 

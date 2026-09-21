@@ -116,8 +116,6 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       );
   }
 }
-export default ArchiveFooter;
-
 const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'default';
@@ -217,7 +215,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Menu_Swipe>', '<Menu_Scroll>', '<Menu_Select>'] as Array<string>,
+          pages: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -287,6 +285,8 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
     </>
   );
 };
+export default ArchiveFooter;
+
 /*
 import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 

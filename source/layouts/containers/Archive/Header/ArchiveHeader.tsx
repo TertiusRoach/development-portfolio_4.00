@@ -126,8 +126,6 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
       );
   }
 }
-export default ArchiveHeader;
-
 const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
@@ -150,7 +148,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'aside',
@@ -167,7 +164,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Aside_Characters>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'button',
@@ -184,7 +180,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Button_Default>', '<Button_Routing>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'division',
@@ -201,7 +196,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Division_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'figure',
@@ -218,7 +212,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Figure_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'menu',
@@ -232,10 +225,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Menu_Swipe>', '<Menu_Scroll>', '<Menu_Select>'] as Array<string>,
+          pages: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'navigation',
@@ -252,7 +244,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Navigation_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'section',
@@ -269,7 +260,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Section_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'table',
@@ -286,7 +276,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pages: ['<Table_Default>'] as Array<string>,
         }}
       />
-
       <MenuSwipe
         info={{
           labelName: 'time',
@@ -306,3 +295,4 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
     </>
   );
 };
+export default ArchiveHeader;
