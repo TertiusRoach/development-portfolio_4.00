@@ -19,9 +19,7 @@ interface InfoProps {
 }
 
 function ArchiveRightbar({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
-    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
-  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let pageName = stripBrackets(info.pageName, '[]') as 'components';
   let blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
@@ -43,7 +41,7 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
         </aside>
       );
     case 'portrait':
-      stateName = 'unfolded';
+      stateName = 'collapsed';
       return (
         <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>

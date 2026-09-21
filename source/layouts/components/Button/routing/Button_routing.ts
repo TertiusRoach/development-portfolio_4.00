@@ -28,6 +28,7 @@ export function createLayout(
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
+    '<h4>': 'fou',
     '<p>': 'par',
   };
   const classSize = sizeMap[size];
