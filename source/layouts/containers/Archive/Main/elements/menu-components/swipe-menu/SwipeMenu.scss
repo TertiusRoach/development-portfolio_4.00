@@ -13,6 +13,7 @@
       $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
       $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
       $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+
       &.hori-swipe {
         //--|🠊 display: grid; 🠈|--\\
         background: rgba(darkred, 0.25);
@@ -39,12 +40,12 @@
           background: rgba(yellow, 0.125);
         }
 
-        $high-desk-hori-rows: 1fr $high-desk 1fr $high-desk 1fr $high-desk 1fr $high-desk 1fr;
-        $test-desk-hori-rows: 1fr $test-desk 1fr $test-desk 1fr $test-desk 1fr $test-desk 1fr;
-        $misc-desk-hori-rows: 1fr $misc-desk 1fr $misc-desk 1fr $misc-desk 1fr $misc-desk 1fr;
-        $tiny-desk-hori-rows: 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr;
-
         & {
+          $high-desk-hori-rows: 1fr $high-desk 1fr $high-desk 1fr $high-desk 1fr $high-desk 1fr;
+          $test-desk-hori-rows: 1fr $test-desk 1fr $test-desk 1fr $test-desk 1fr $test-desk 1fr;
+          $misc-desk-hori-rows: 1fr $misc-desk 1fr $misc-desk 1fr $misc-desk 1fr $misc-desk 1fr;
+          $tiny-desk-hori-rows: 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr;
+
           //--|🠋 Width: 1920px 🠋|--\\
           grid-template-rows: $high-desk-hori-rows; //--|🠈 rows 🠈|--\\
           grid-template-columns: $high-desk 1fr; //--|🠈 columns 🠈|--\\
@@ -63,6 +64,19 @@
             grid-template-rows: $tiny-desk-hori-rows; //--|🠈 rows 🠈|--\\
             grid-template-columns: $tiny-desk 1fr; //--|🠈 columns 🠈|--\\
           }
+        }
+
+        #copy-hori-lef {
+          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-rig {
+          grid-area: 6 / 1 / 7 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-cen {
+          grid-area: 8 / 1 / 9 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-mid {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
       &.vert-swipe {
@@ -110,6 +124,24 @@
             grid-template-rows: $tiny-desk 1fr; //--|🠈 columns 🠈|--\\
             grid-template-columns: repeat(4, $tiny-desk); //--|🠈 rows 🠈|--\\
           }
+        }
+
+        #copy-vert-top {
+          grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-bot {
+          grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-mid {
+          grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-cen {
+          grid-area: 1 / 4 / 2 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+      button[id*='copy'] {
+        .icon {
+          padding: 4px;
         }
       }
     }
@@ -196,6 +228,19 @@
             grid-template-rows: repeat(4, $tiny-mobi); //--|🠈 rows 🠈|--\\
           }
         }
+
+        #copy-hori-lef {
+          grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-rig {
+          grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-cen {
+          grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-hori-mid {
+          grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
       }
       &.vert-swipe {
         //--|🠊 display: grid; 🠈|--\\
@@ -223,12 +268,12 @@
           background: rgba(turquoise, 0.125);
         }
 
-        $high-mobi-vert-cols: $high-mobi 1fr $high-mobi 1fr $high-mobi 1fr $high-mobi;
-        $test-mobi-vert-cols: $test-mobi 1fr $test-mobi 1fr $test-mobi 1fr $test-mobi;
-        $misc-mobi-vert-cols: $misc-mobi 1fr $misc-mobi 1fr $misc-mobi 1fr $misc-mobi;
-        $tiny-mobi-vert-cols: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi;
-
         & {
+          $high-mobi-vert-cols: $high-mobi 1fr $high-mobi 1fr $high-mobi 1fr $high-mobi;
+          $test-mobi-vert-cols: $test-mobi 1fr $test-mobi 1fr $test-mobi 1fr $test-mobi;
+          $misc-mobi-vert-cols: $misc-mobi 1fr $misc-mobi 1fr $misc-mobi 1fr $misc-mobi;
+          $tiny-mobi-vert-cols: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi;
+
           grid-template-rows: 1fr $high-mobi; //--|🠈 rows 🠈|--\\
           grid-template-columns: $high-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           @media screen and (max-width: 768px) {
@@ -243,6 +288,24 @@
             grid-template-rows: 1fr $tiny-mobi; //--|🠈 rows 🠈|--\\
             grid-template-columns: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi; //--|🠈 columns 🠈|--\\
           }
+        }
+
+        #copy-vert-top {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-bot {
+          grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-mid {
+          grid-area: 2 / 5 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+        #copy-vert-cen {
+          grid-area: 2 / 7 / 3 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
+      }
+      button[id*='copy'] {
+        .icon {
+          padding: 4px;
         }
       }
     }

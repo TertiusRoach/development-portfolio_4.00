@@ -6,10 +6,12 @@ import './ScrollMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './ScrollFunctions';
+import { loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
+import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 
 interface InfoProps {
   info: {
@@ -28,6 +30,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName, labelName]);
 
   let casesPages = ['<MenuScroll>', '<MenuScroll>', '<MenuScroll>'] as Array<string>;
+  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
   return (
     <aside className="scroll-menu">
       <section className={`${blockName}-foreground`}>
@@ -96,6 +99,67 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
               pages: casesPages as Array<string>,
             }}
           />
+
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-hori-lef',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-hori-rig',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-hori-cen',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-hori-mid',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
         </div>
         <div className="vert-scroll">
           <MenuScroll
@@ -160,6 +224,67 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             cases={{
               axis: '[y]',
               pages: casesPages as Array<string>,
+            }}
+          />
+
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-vert-top',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-vert-bot',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-vert-mid',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
+            }}
+          />
+          <ButtonDefault
+            info={{
+              pageName: pageName as 'components',
+              blockName: blockName as 'main',
+              labelName: 'copy-vert-cen',
+            }}
+            style={{
+              size: '<h5>',
+              view: '-icon-',
+              shade: '~dark~',
+              color: '(mono)',
+              type: '{button}',
+              image: copyImage,
             }}
           />
         </div>

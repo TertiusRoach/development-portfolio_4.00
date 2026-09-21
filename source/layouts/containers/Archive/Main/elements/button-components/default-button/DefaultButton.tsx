@@ -23,118 +23,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-function ButtonsDarkside({ info }: InfoProps) {
-  return (
-    <>
-      <ViewOne
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'one-dark',
-        }}
-      />
-      <ViewTwo
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'two-dark',
-        }}
-      />
-      <ViewThr
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'thr-dark',
-        }}
-      />
-      <ViewFou
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'fou-dark',
-        }}
-      />
-      <ViewFiv
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'fiv-dark',
-        }}
-      />
-      <ViewSix
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'six-dark',
-        }}
-      />
-      <ViewSev
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'sev-dark',
-        }}
-      />
-    </>
-  );
-}
-function ButtonsLightside({ info }: InfoProps) {
-  return (
-    <>
-      <ViewOne
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'one-light',
-        }}
-      />
-      <ViewTwo
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'two-light',
-        }}
-      />
-      <ViewThr
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'thr-light',
-        }}
-      />
-      <ViewFou
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'fou-light',
-        }}
-      />
-      <ViewFiv
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'fiv-light',
-        }}
-      />
-      <ViewSix
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'six-light',
-        }}
-      />
-      <ViewSev
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: 'sev-light',
-        }}
-      />
-    </>
-  );
-}
-
-const DefaultButton: React.FC<InfoProps> = ({ info }) => {
+function DefaultButton({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
@@ -352,6 +241,117 @@ const DefaultButton: React.FC<InfoProps> = ({ info }) => {
         </aside>
       );
   }
+}
+
+const ButtonsDarkside: React.FC<InfoProps> = ({ info }) => {
+  return (
+    <>
+      <ViewOne
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'one-dark',
+        }}
+      />
+      <ViewTwo
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'two-dark',
+        }}
+      />
+      <ViewThr
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'thr-dark',
+        }}
+      />
+      <ViewFou
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'fou-dark',
+        }}
+      />
+      <ViewFiv
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'fiv-dark',
+        }}
+      />
+      <ViewSix
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'six-dark',
+        }}
+      />
+      <ViewSev
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'sev-dark',
+        }}
+      />
+    </>
+  );
+};
+const ButtonsLightside: React.FC<InfoProps> = ({ info }) => {
+  return (
+    <>
+      <ViewOne
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'one-light',
+        }}
+      />
+      <ViewTwo
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'two-light',
+        }}
+      />
+      <ViewThr
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'thr-light',
+        }}
+      />
+      <ViewFou
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'fou-light',
+        }}
+      />
+      <ViewFiv
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'fiv-light',
+        }}
+      />
+      <ViewSix
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'six-light',
+        }}
+      />
+      <ViewSev
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: 'sev-light',
+        }}
+      />
+    </>
+  );
 };
 
 let ViewOne = ({ info }: InfoProps) => {
