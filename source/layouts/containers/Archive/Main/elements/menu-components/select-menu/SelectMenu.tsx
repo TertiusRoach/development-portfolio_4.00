@@ -8,7 +8,7 @@ import './SelectMenu.scss';
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SelectFunctions';
 import { loadAsset } from '../../../../../../../scripts';
-import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
+// import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Components 🠋|--\\
 
@@ -49,7 +49,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
     <aside className="select-menu">
       <section className={`${blockName}-foreground`}>
         <div className="hori-select">
-          <MenuSelect
+          {/* <MenuSelect
             info={{
               labelName: 'menu' as string,
               blockName: blockName as 'main',
@@ -64,7 +64,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             cases={{
               buttons: casesPages as Array<{ labelName: string; imageLink: string; styleSize: '<h1>' | '<h4>' | '<p>' }>,
             }}
-          />
+          /> */}
         </div>
         <div className="vert-select"></div>
       </section>

@@ -100,7 +100,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
               <div key={index} className={`${path.labelName}-view highlight`}>
                 <ButtonRouting
                   style={{
-                    size: cases.buttons as '<h1>' | '<h4>' | '<p>',
+                    size: '<h1>',
                     type: '{button}',
                     view: 'bot-cen',
                     color: style.color,

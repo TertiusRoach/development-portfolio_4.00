@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSelect from '../../../components/Menu/select/Menu.select';
+// import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
@@ -28,7 +28,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <MenuSelect
+        {/* <MenuSelect
           info={{
             labelName: 'elements',
             blockName: blockName as 'leftbar',
@@ -86,7 +86,7 @@ const ArchiveLeftbar: React.FC<InfoProps> = ({ info }) => {
               },
             ] as Array<{ labelName: string; imageLink: string }>,
           }}
-        />
+        /> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSelect from '../../../components/Menu/select/Menu.select';
+// import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
@@ -34,7 +34,7 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
       return (
         <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
-            <MenuSelect
+            {/* <MenuSelect
               cases={{
                 buttons: [
                   {
@@ -90,7 +90,7 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
                 view: 'mid-lef',
                 shade: '~light~',
               }}
-            />
+            /> */}
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>
