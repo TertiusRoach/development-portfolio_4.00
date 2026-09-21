@@ -28,7 +28,38 @@ interface InfoProps {
   };
 }
 
-function ComponentsElements({ info }: InfoProps) {
+function ArchiveMain({ info }: InfoProps) {
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  let startingPreview: number = 6;
+  return (
+    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}>
+        <DivisionCarousel
+          //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
+          cases={{
+            axis: '[y]',
+            show: startingPreview as number,
+            call: ComponentsElements as React.ComponentType<InfoProps>,
+          }}
+          info={{
+            labelName: 'elements',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[components]',
+          }}
+        />
+      </section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
+    </main>
+  );
+}
+
+const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -107,36 +138,6 @@ function ComponentsElements({ info }: InfoProps) {
       />
     </>
   );
-}
-
-const ArchiveMain: React.FC<InfoProps> = ({ info }) => {
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
-
-  useEffect(() => {}, [pageName, blockName, labelName]);
-
-  let startingPreview: number = 3;
-  return (
-    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}>
-        <DivisionCarousel
-          //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
-          cases={{
-            axis: '[y]',
-            show: startingPreview as number,
-            call: ComponentsElements as React.ComponentType<InfoProps>,
-          }}
-          info={{
-            labelName: 'elements',
-            blockName: blockName as '<main>',
-            pageName: pageName as '[components]',
-          }}
-        />
-      </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
-    </main>
-  );
 };
+
 export default ArchiveMain;

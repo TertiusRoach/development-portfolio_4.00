@@ -38,7 +38,6 @@ const axisStyle: Record<TheseProps['cases']['axis'], string> = {
   '[x]': 'hori-X-swipe',
   '[y]': 'hori-Y-swipe',
 };
-
 function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -110,8 +109,8 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 <aside className="downplay" key={index}>
                   <h3 className="display-0">
                     <span>
-                      <b>{boldText}</b>
-                      <i>{italText}</i>
+                      <b>{`\u00A0${boldText}`}</b>
+                      <i>{`${italText}\u00A0`}</i>
                     </span>
                   </h3>
                 </aside>
@@ -120,7 +119,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
               return (
                 <aside className="downplay" key={index}>
                   <h3 className="display-0">
-                    <span>{showingSection}</span>
+                    <span>{`\u00A0${showingSection}\u00A0`}</span>
                   </h3>
                 </aside>
               );

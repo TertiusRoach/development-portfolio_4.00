@@ -59,9 +59,9 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
-                image: undefined,
-                view: undefined,
                 tasks: '',
+                view: undefined,
+                image: undefined,
               }}
             />
           </section>
@@ -72,7 +72,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
         </footer>
       );
     case 'portrait':
-      stateName = 'squaring';
+      stateName = 'unfolded';
       return (
         <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>

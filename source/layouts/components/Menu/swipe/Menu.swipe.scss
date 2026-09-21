@@ -1,6 +1,9 @@
 //--|🠊 Menu.swipe.scss 🠈|--\\
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Swipe) 🠋|--\
+  //--|🠋 Desktop (Swipe) 🠋|--\\
+  $bold-weight: 650;
+  $italic-weight: 250;
+  $default-weight: 450;
   ul[class*='hori-X-swipe'] {
     overflow-x: hidden;
 
@@ -142,6 +145,14 @@
           overflow-x: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          font-weight: $default-weight;
+          b {
+            font-weight: $bold-weight;
+          }
+          i {
+            font-style: italic;
+            font-weight: $italic-weight;
+          }
         }
 
         /*
@@ -642,6 +653,9 @@
 //--|===|--\\
 @mixin mobile-portrait {
   //--|🠋 Mobile (Swipe) 🠋|--\\
+  $bold-weight: 650;
+  $italic-weight: 250;
+  $default-weight: 450;
   ul[class*='hori-X-swipe'] {
     overflow-x: hidden;
 
@@ -783,6 +797,14 @@
           overflow-x: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          font-weight: $default-weight;
+          b {
+            font-weight: $bold-weight;
+          }
+          i {
+            font-style: italic;
+            font-weight: $italic-weight;
+          }
         }
         /*
         &:nth-child(1) {
@@ -1279,7 +1301,6 @@
     }
   }
 }
-
 menu[class*='swipe'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

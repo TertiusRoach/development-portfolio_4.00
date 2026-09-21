@@ -7,7 +7,7 @@ import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SelectFunctions';
-import { stripBrackets, loadAsset } from '../../../../../../../scripts';
+import { loadAsset } from '../../../../../../../scripts';
 import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Components 🠋|--\\

@@ -38,7 +38,6 @@ const axisStyle: Record<TheseProps['cases']['axis'], string> = {
   '[x]': 'vert-X-scroll',
   '[y]': 'vert-Y-scroll',
 };
-
 function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -56,9 +55,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_scroll-default`}>
-      <ListStyle
-        className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}
-      >
+      <ListStyle className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}>
         <li className={`preview-vertical-${stripBrackets(style.view, '--')}`}>
           <div className={`prev-view ${stateView}`}>
             <ButtonDefault
@@ -112,8 +109,8 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 <aside className="downplay" key={index}>
                   <h3 className="display-0">
                     <span>
-                      <b>{boldText}</b>
-                      <i>{italText}</i>
+                      <b>{`\u00A0${boldText}`}</b>
+                      <i>{`${italText}\u00A0`}</i>
                     </span>
                   </h3>
                 </aside>
@@ -122,7 +119,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
               return (
                 <aside className="downplay" key={index}>
                   <h3 className="display-0">
-                    <span>{showingSection}</span>
+                    <span>{`\u00A0${showingSection}\u00A0`}</span>
                   </h3>
                 </aside>
               );
