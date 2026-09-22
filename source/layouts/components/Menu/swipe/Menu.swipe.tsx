@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { abbrView, abbrShade, abbrColor } from '../../components';
 import { stripBrackets, loadAsset } from '../../../../scripts';
+import { abbrView, abbrShade, abbrColor } from '../../components';
 import reloadElements, { modifyingController, previewButtons, swipingCarousel } from './Menu_swipe';
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -22,7 +22,7 @@ interface TheseProps {
   };
   cases: {
     axis: '[x]' | '[y]';
-    pages: Array<string>;
+    titles: Array<string>;
   };
 
   onClick?: () => void;
@@ -101,7 +101,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
           </div>
         </li>
         <li className="showing-horizontal_I">
-          {cases.pages.map((path, index) => {
+          {cases.titles.map((path, index) => {
             const showingSection = String(path);
             if (showingSection.includes('_')) {
               let [boldText, italText] = showingSection.split('_');

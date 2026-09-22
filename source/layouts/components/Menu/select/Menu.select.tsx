@@ -7,6 +7,7 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import { markCarousel, selectCarousel } from './Menu_select';
+import { abbrView, abbrShade, abbrColor } from '../../components';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.select.scss';
@@ -18,112 +19,123 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    axis: '[x]' | '[y]';
     shade: '~dark~' | '~light~';
+    image: string | Array<string>;
+    align: '-top-' | '-rig-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    view: '-lef-' | '-cen-' | '-rig-' | '-top-' | '-mid-' | '-bot-';
+    size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
+    view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
   };
   cases: {
-    buttons: Array<{ labelName: string; imageLink: string; styleSize: '<h1>' | '<h4>' | '<p>' }>;
+    pages: number;
+    axis: '[x]' | '[y]';
+    /* pages: Array<string>; */
   };
 
   onClick?: () => void;
   onMouseEnter?: () => void;
+
+  /*
+  style: {
+    image: string;
+    size: '<h1>' | '<h4>' | '<p>';
+    shade: '~dark~' | '~medium~' | '~light~';
+    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
+
+    type: '{button}' | '{counter}';
+    role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
+  };
+
+  */
 }
+
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
+  '[x]': ['hori-X-select', 'horizontal'],
+  '[y]': ['vert-Y-select', 'vertical'],
+};
 
 function MenuSelect({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
-  let ListItem = axisList[style.axis];
   useEffect(() => {
     /*--|🠋
-    
+    reloadElements(pageName, blockName, labelName);
+    modifyingController(pageName, blockName, labelName);
+
+    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
     🠉|--*/
-    // markCarousel(pageName, blockName, labelName, style.axis, cases.show);
   }, [pageName, blockName, labelName]);
 
+  let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
-    <menu className={`${labelName}-${blockName}_select-default ${style.view}`}>
-      <ListItem className={`${axisClass[style.axis]}`}>
-        <MenuAxis info={info} style={style} cases={cases} />
-      </ListItem>
+    <menu className={`${labelName}-${blockName}_select-default`}>
+      <ListStyle className={`${axisClass[cases.axis][0]} ${abbrView(style.align)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}>
+        <li className={`preview-${axisClass[cases.axis][1]}_I`}>
+          <MenuAxis info={info} style={style} cases={cases} />
+        </li>
+      </ListStyle>
     </menu>
   );
 }
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisClass: Record<TheseProps['style']['axis'], string> = {
-  '[x]': 'hori-X-select',
-  '[y]': 'vert-Y-select',
-};
+
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
-  // console.log(cases.buttons);
-  // view: 'top-cen' | 'mid-rig' | 'bot-cen' | 'mid-lef' | 'mid-cen';
-  switch (style.axis) {
-    case '[x]':
+  // console.log(viewClass[style.view]);
+  switch (typeof style.image) {
+    case 'object':
       return (
-        <li className="showing-horizontal_I">
-          {cases.buttons.map((path, index) => {
-            return (
-              <div key={index} className={`${path.labelName}-view highlight`}>
-                <ButtonRouting
-                  style={{
-                    size: '<h1>',
-                    type: '{button}',
-                    view: 'bot-cen',
-                    color: style.color,
-                    shade: style.shade,
-                    image: path.imageLink,
-                  }}
-                  info={{
-                    pageName: info.pageName,
-                    blockName: info.blockName,
-                    labelName: `${path.labelName}-select`,
-                  }}
-                />
-              </div>
-            );
-          })}
-        </li>
+        <>
+          {Array.from({ length: cases.pages }, (_, index) => (
+            <div key={index} className={`${info.labelName}-view highlight`}>
+              <ButtonRouting
+                style={{
+                  type: '{button}',
+                  color: style.color,
+                  shade: style.shade,
+                  image: style.image[index] as string,
+                  size: style.size[index] as '<h1>' | '<h4>' | '<p>',
+                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
+                }}
+                info={{
+                  pageName: info.pageName,
+                  blockName: info.blockName,
+                  labelName: `${info.labelName}-select`,
+                }}
+              />
+            </div>
+          ))}
+        </>
       );
-    case '[y]':
-      console.log(cases.buttons[0]);
+    case 'string':
       return (
-        <li className="showing-vertical_I">
-          {cases.buttons.map((path, index) => {
-            return (
-              <div key={index} className={`${path.labelName}-view highlight`}>
-                <ButtonRouting
-                  style={{
-                    size: '<h1>',
-                    type: '{button}',
-                    view: 'bot-cen',
-                    color: style.color,
-                    shade: style.shade,
-                    image: path.imageLink,
-                  }}
-                  info={{
-                    pageName: info.pageName,
-                    blockName: info.blockName,
-                    labelName: `${path.labelName}-select`,
-                  }}
-                  onClick={(): void => {
-                    //--|🠊 This order is mandatory 🠈|--\\
-                    //--|🠋 Step 1: Select Carousel 🠋|--\\
-                    selectCarousel(info.pageName, info.blockName, info.labelName, path.labelName, style.axis);
-                    //--|🠋 Step 2: Mark Carousel 🠋|--\\
-                    // markCarousel(info.pageName, info.blockName, info.labelName, style.axis, cases.show);
-                  }}
-                />
-              </div>
-            );
-          })}
-        </li>
+        <>
+          {Array.from({ length: cases.pages }, (_, index) => (
+            <div key={index} className={`${info.labelName}-view highlight`}>
+              <ButtonRouting
+                style={{
+                  type: '{button}',
+                  color: style.color,
+                  shade: style.shade,
+                  image: style.image as string,
+                  size: style.size as '<h1>' | '<h4>' | '<p>',
+                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
+                }}
+                info={{
+                  pageName: info.pageName,
+                  blockName: info.blockName,
+                  labelName: `${info.labelName}-select`,
+                }}
+              />
+            </div>
+          ))}
+        </>
       );
   }
 };

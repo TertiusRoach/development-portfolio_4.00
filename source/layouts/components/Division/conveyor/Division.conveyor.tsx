@@ -56,8 +56,10 @@ const DivisionAxis = ({ info, cases }: TheseProps) => {
   };
 
   let carousel = document.querySelector(`#${info.pageName}-main .${info.labelName}-main_carousel-default li[class*="carousel"]`) as HTMLLIElement;
+  /*
   let conveyor = document.querySelector(`#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_conveyor-default li[class*="conveyor"]`) as HTMLLIElement;
   let position = carousel.classList[0].split('_')[1] as string;
+  */
 
   return (
     <li className={`${childrenAxis[cases.axis]}_${carousel.classList[0].split('_')[1]}`}>

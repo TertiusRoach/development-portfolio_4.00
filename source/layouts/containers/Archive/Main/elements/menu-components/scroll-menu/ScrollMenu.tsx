@@ -37,9 +37,9 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
         <div className="hori-scroll">
           <MenuScroll
             info={{
-              pageName: pageName as 'components',
-              blockName: blockName as 'main',
               labelName: 'standard-left',
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
             }}
             style={{
               view: '-lef-',
@@ -48,7 +48,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -64,7 +64,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -80,7 +80,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -96,7 +96,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
 
@@ -175,7 +175,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -191,7 +191,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -207,7 +207,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuScroll
@@ -223,7 +223,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
 

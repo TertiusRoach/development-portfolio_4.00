@@ -18,11 +18,20 @@
         background: rgba(darkred, 0.25);
         grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
+        //--|🠊 Left Menu - [x] 🠈|--\\
+        menu:nth-child(1) {
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          background: rgba(orange, 0.125);
+        }
+        //--|🠊 Middle Menu - [x] 🠈|--\\
+
+        //--|🠊 Right Menu - [x] 🠈|--\\
+
         & {
-          $high-desk-hori-rows: 1fr $high-desk 1fr $high-desk 1fr $high-desk 1fr;
-          $test-desk-hori-rows: 1fr $test-desk 1fr $test-desk 1fr $test-desk 1fr;
-          $misc-desk-hori-rows: 1fr $misc-desk 1fr $misc-desk 1fr $misc-desk 1fr;
-          $tiny-desk-hori-rows: 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr;
+          $high-desk-hori-rows: 1fr calc($high-desk * 1.25) 1fr calc($high-desk * 1.25) 1fr calc($high-desk * 1.25) 1fr;
+          $test-desk-hori-rows: 1fr calc($test-desk * 1.25) 1fr calc($test-desk * 1.25) 1fr calc($test-desk * 1.25) 1fr;
+          $misc-desk-hori-rows: 1fr calc($misc-desk * 1.25) 1fr calc($misc-desk * 1.25) 1fr calc($misc-desk * 1.25) 1fr;
+          $tiny-desk-hori-rows: 1fr calc($tiny-desk * 1.25) 1fr calc($tiny-desk * 1.25) 1fr calc($tiny-desk * 1.25) 1fr;
 
           grid-template://--|🠋 Width: 1920px 🠋|--\\
             $high-desk-hori-rows //--|🠈 rows 🠈|--//
@@ -49,6 +58,13 @@
         background: rgba(darkblue, 0.25);
         grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
+        //--|🠊 Top Menu - [y] 🠈|--\\
+        menu:nth-child(1) {
+          grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          background: rgba(darkgreen, 0.125);
+        }
+        //--|🠊 Center Menu - [y] 🠈|--\\
+        //--|🠊 Bottom Menu - [y] 🠈|--\\
         & {
           grid-gap: 0 48px; //--|🠋 Width: 1920px 🠋|--\\
           grid-template-rows: 1fr; //--|🠈 rows 🠈|--\\

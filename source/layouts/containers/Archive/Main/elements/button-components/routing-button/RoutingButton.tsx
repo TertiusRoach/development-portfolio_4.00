@@ -48,7 +48,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[y]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
               style={{
                 view: '-def-',
@@ -99,7 +99,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[y]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
               style={{
                 view: '-def-',
@@ -150,7 +150,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[x]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
               style={{
                 view: '-cen-',
@@ -201,7 +201,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
               cases={{
                 axis: '[x]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
               style={{
                 view: '-cen-',

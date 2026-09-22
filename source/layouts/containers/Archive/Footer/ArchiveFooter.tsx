@@ -135,7 +135,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
+          titles: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -151,7 +151,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Aside_Characters>'] as Array<string>,
+          titles: ['<Aside_Characters>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -167,7 +167,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Button_Default>', '<Button_Routing>'] as Array<string>,
+          titles: ['<Button_Default>', '<Button_Routing>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -183,7 +183,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Division_Default>'] as Array<string>,
+          titles: ['<Division_Default>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -199,7 +199,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Figure_Default>'] as Array<string>,
+          titles: ['<Figure_Default>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -215,7 +215,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
+          titles: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -231,7 +231,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Navigation_Default>'] as Array<string>,
+          titles: ['<Navigation_Default>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -247,7 +247,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Section_Default>'] as Array<string>,
+          titles: ['<Section_Default>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -263,7 +263,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Table_Default>'] as Array<string>,
+          titles: ['<Table_Default>'] as Array<string>,
         }}
       />
       <MenuSwipe
@@ -279,7 +279,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          pages: ['<Time_Default>'] as Array<string>,
+          titles: ['<Time_Default>'] as Array<string>,
         }}
       />
     </>

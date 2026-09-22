@@ -22,7 +22,7 @@ interface TheseProps {
   };
   cases: {
     axis: '[x]' | '[y]';
-    pages: Array<string>;
+    titles: Array<string>;
   };
 
   onClick?: () => void;
@@ -101,7 +101,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
           </div>
         </li>
         <li className="showing-vertical_I">
-          {cases.pages.map((path, index) => {
+          {cases.titles.map((path, index) => {
             const showingSection = String(path);
             if (showingSection.includes('_')) {
               let [boldText, italText] = showingSection.split('_');

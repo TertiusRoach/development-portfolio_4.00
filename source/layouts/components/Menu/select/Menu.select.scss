@@ -2,6 +2,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   //--|🠋 X-axis 🠋|--\\
+  /*
   &[class*='cen'] {
     ul[class*='hori-X-select'] {
       width: inherit; //--|🠈 width: 100%; 🠈|--\\
@@ -37,8 +38,10 @@
       }
     }
   }
+  */
 
   //--|🠋 Y-axis 🠋|--\\
+  /*
   &[class*='mid'] {
     display: flex;
     overflow-y: auto;
@@ -124,6 +127,7 @@
       }
     }
   }
+  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\

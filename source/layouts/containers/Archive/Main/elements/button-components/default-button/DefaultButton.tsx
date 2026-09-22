@@ -54,7 +54,7 @@ function DefaultButton({ info }: InfoProps) {
               }}
               cases={{
                 axis: '[y]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -105,7 +105,7 @@ function DefaultButton({ info }: InfoProps) {
               }}
               cases={{
                 axis: '[y]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -156,7 +156,7 @@ function DefaultButton({ info }: InfoProps) {
               }}
               cases={{
                 axis: '[x]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel
@@ -207,7 +207,7 @@ function DefaultButton({ info }: InfoProps) {
               }}
               cases={{
                 axis: '[x]',
-                pages: casesPages as Array<string>,
+                titles: casesPages as Array<string>,
               }}
             />
             <DivisionCarousel

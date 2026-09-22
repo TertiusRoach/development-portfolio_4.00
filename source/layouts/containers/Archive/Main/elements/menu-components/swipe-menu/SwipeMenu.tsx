@@ -48,7 +48,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -64,7 +64,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -80,7 +80,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -96,7 +96,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[x]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
 
@@ -175,7 +175,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -191,7 +191,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -207,7 +207,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
           <MenuSwipe
@@ -223,7 +223,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               axis: '[y]',
-              pages: casesPages as Array<string>,
+              titles: casesPages as Array<string>,
             }}
           />
 
