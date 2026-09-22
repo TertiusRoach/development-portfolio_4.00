@@ -21,7 +21,7 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     image: string | Array<string>;
-    align: '-top-' | '-rig-' | '-bot-' | '-lef-';
+    align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
     view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';

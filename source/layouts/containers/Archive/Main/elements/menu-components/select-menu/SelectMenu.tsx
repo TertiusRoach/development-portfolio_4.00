@@ -70,8 +70,135 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
             }}
           />
+          <MenuSelect
+            info={{
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
+              labelName: 'standard-left' as string,
+            }}
+            style={{
+              align: '-mid-',
+              view: 'mid-cen',
+              color: '(mono)',
+              shade: '~dark~',
+
+              image: casesPages.styleImage as Array<string>,
+              size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
+
+              /*
+              size: '<h4>',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              */
+            }}
+            cases={{
+              pages: 3,
+              axis: '[x]',
+            }}
+          />
+
+          <MenuSelect
+            info={{
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
+              labelName: 'standard-left' as string,
+            }}
+            style={{
+              align: '-rig-',
+              view: 'top-cen',
+              color: '(mono)',
+              shade: '~dark~',
+
+              image: casesPages.styleImage as Array<string>,
+              size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
+
+              /*
+              size: '<h4>',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              */
+            }}
+            cases={{
+              pages: 3,
+              axis: '[x]',
+            }}
+          />
         </div>
-        <div className="vert-select"></div>
+        <div className="vert-select">
+          <MenuSelect
+            info={{
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
+              labelName: 'standard-left' as string,
+            }}
+            style={{
+              align: '-lef-',
+              view: 'mid-lef',
+              color: '(mono)',
+              shade: '~dark~',
+
+              image: casesPages.styleImage as Array<string>,
+              size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
+
+              /*
+              size: '<h4>',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              */
+            }}
+            cases={{
+              pages: 3,
+              axis: '[y]',
+            }}
+          />
+          <MenuSelect
+            info={{
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
+              labelName: 'standard-left' as string,
+            }}
+            style={{
+              align: '-cen-',
+              view: 'mid-cen',
+              color: '(mono)',
+              shade: '~dark~',
+
+              image: casesPages.styleImage as Array<string>,
+              size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
+
+              /*
+              size: '<h4>',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              */
+            }}
+            cases={{
+              pages: 3,
+              axis: '[y]',
+            }}
+          />
+          <MenuSelect
+            info={{
+              blockName: blockName as 'main',
+              pageName: pageName as 'components',
+              labelName: 'standard-left' as string,
+            }}
+            style={{
+              align: '-bot-',
+              view: 'mid-rig',
+              color: '(mono)',
+              shade: '~dark~',
+
+              image: casesPages.styleImage as Array<string>,
+              size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
+
+              /*
+              size: '<h4>',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              */
+            }}
+            cases={{
+              pages: 3,
+              axis: '[y]',
+            }}
+          />
+        </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

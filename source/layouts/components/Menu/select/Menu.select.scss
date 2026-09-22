@@ -1,6 +1,21 @@
 //--|🠊 Menu.select.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
+  ul[class*='hori-X-select'] {
+    //--|🠊 display: flex; 🠈|--\\
+    li[class*='horizontal'] {
+      display: inherit; //--|🠈 display: flex; 🠈|--\\
+      flex-direction: row;
+    }
+  }
+  ol[class*='vert-Y-select'] {
+    //--|🠊 display: flex; 🠈|--\\
+    li[class*='vertical'] {
+      display: inherit; //--|🠈 display: flex; 🠈|--\\
+      flex-direction: column;
+    }
+  }
+
   //--|🠋 X-axis 🠋|--\\
   /*
   &[class*='cen'] {
@@ -262,5 +277,26 @@ menu[class*='select'] {
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+  *[class*='select'] {
+    display: flex;
+    &[class*='top'] {
+      justify-content: flex-start;
+      li[class*='preview'] {
+        align-items: flex-end;
+      }
+    }
+    &[class*='rig'] {
+      li[class*='preview'] {
+        align-items: flex-end;
+      }
+      // justify-content: flex-start;
+    }
+    &[class*='bot'] {
+      justify-content: flex-start;
+    }
+    &[class*='lef'] {
+      justify-content: flex-start;
+    }
   }
 }
