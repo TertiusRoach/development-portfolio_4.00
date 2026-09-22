@@ -21,10 +21,10 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     image: string | Array<string>;
-    align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
     color: '(red)' | '(green)' | '(blue)' | '(mono)';
     size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
     view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
+    align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
   };
   cases: {
     pages: number;
@@ -73,6 +73,9 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
     🠉|--*/
   }, [pageName, blockName, labelName]);
+
+  console.log('Align', style.align);
+  console.log('Align', style.align);
 
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (

@@ -74,7 +74,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               blockName: blockName as 'main',
               pageName: pageName as 'components',
-              labelName: 'standard-left' as string,
+              labelName: 'standard-middle' as string,
             }}
             style={{
               align: '-mid-',
@@ -100,7 +100,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               blockName: blockName as 'main',
               pageName: pageName as 'components',
-              labelName: 'standard-left' as string,
+              labelName: 'standard-right' as string,
             }}
             style={{
               align: '-rig-',
@@ -127,10 +127,10 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               blockName: blockName as 'main',
               pageName: pageName as 'components',
-              labelName: 'standard-left' as string,
+              labelName: 'standard-top' as string,
             }}
             style={{
-              align: '-lef-',
+              align: '-top-',
               view: 'mid-lef',
               color: '(mono)',
               shade: '~dark~',
@@ -152,7 +152,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               blockName: blockName as 'main',
               pageName: pageName as 'components',
-              labelName: 'standard-left' as string,
+              labelName: 'standard-center' as string,
             }}
             style={{
               align: '-cen-',
@@ -177,7 +177,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
             info={{
               blockName: blockName as 'main',
               pageName: pageName as 'components',
-              labelName: 'standard-left' as string,
+              labelName: 'standard-bottom' as string,
             }}
             style={{
               align: '-bot-',
