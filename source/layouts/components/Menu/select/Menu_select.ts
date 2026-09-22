@@ -1,8 +1,32 @@
 //--|🠊 Menu_select.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
+import { abbrView, abbrShade, abbrColor } from '../../components';
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
+/*--|🠋
 
+🠉|--*/
+interface StyleProps {
+  shade: '~dark~' | '~light~';
+  image: string | Array<string>;
+  color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
+  view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
+  align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
+}
+export function createClass(axis: '[x]' | '[y]', style: StyleProps): string {
+  //--|🠊 Class Build for <MenuSelect> 🠈|--\\
+  const viewClass: Record<StyleProps['view'], Record<'[x]' | '[y]', string>> = {
+    'bot-cen': { '[x]': `bot_${stripBrackets(style.align, '--')}`, '[y]': `rig_${stripBrackets(style.align, '--')}` },
+    'top-cen': { '[x]': `top_${stripBrackets(style.align, '--')}`, '[y]': `lef_${stripBrackets(style.align, '--')}` },
+    'mid-cen': { '[x]': `${stripBrackets(style.align, '--')}_cen`, '[y]': `${stripBrackets(style.align, '--')}_mid` },
+    'mid-lef': { '[x]': `top_${stripBrackets(style.align, '--')}`, '[y]': `lef_${stripBrackets(style.align, '--')}` },
+    'mid-rig': { '[x]': `bot_${stripBrackets(style.align, '--')}`, '[y]': `rig_${stripBrackets(style.align, '--')}` },
+  };
+
+  return `${viewClass[style.view][axis]}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
+}
+/*
 export function markCarousel(
   pageName: string,
   blockName: string,
@@ -10,9 +34,7 @@ export function markCarousel(
   axisStyle: '[x]' | '[y]',
   showCases: number,
 ) {
-  /*--|🠋
 
-  🠉|--*/
   switch (axisStyle) {
     case '[x]':
       break;
@@ -61,9 +83,6 @@ export function selectCarousel(
   chainName: string,
   axisStyle: '[x]' | '[y]',
 ): number {
-  /*--|🠋
-
-  🠉|--*/
   let prevView: string;
   let nextView: string;
   let returnPreview: number = 0;
@@ -105,3 +124,4 @@ export function selectCarousel(
   }
   return returnPreview as number;
 }
+*/

@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
-import { markCarousel, selectCarousel } from './Menu_select';
+import { createClass } from './Menu_select';
 import { abbrView, abbrShade, abbrColor } from '../../components';
 
 //--|🠋 Styles 🠋|--\\
@@ -74,13 +74,11 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     🠉|--*/
   }, [pageName, blockName, labelName]);
 
-  console.log('Align', style.align);
-  console.log('Align', style.align);
-
+  // console.log(`${cases.axis}:`, createClass(cases.axis, style));
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_select-default`}>
-      <ListStyle className={`${axisClass[cases.axis][0]} ${abbrView(style.align)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}>
+      <ListStyle className={`${axisClass[cases.axis][0]} ${createClass(cases.axis, style)}`}>
         <li className={`preview-${axisClass[cases.axis][1]}_I`}>
           <MenuAxis info={info} style={style} cases={cases} />
         </li>
@@ -90,13 +88,14 @@ function MenuSelect({ info, style, cases }: TheseProps) {
 }
 
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
-  // console.log(viewClass[style.view]);
+  let stateView = 'downplay' as 'downplay' | 'highlight';
+  let axisView = axisClass[cases.axis][0].split('-')[0] as 'hori' | 'vert';
   switch (typeof style.image) {
     case 'object':
       return (
         <>
           {Array.from({ length: cases.pages }, (_, index) => (
-            <div key={index} className={`${info.labelName}-view highlight`}>
+            <div key={index} className={`${axisView}-view ${stateView}`}>
               <ButtonRouting
                 style={{
                   type: '{button}',
@@ -120,7 +119,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
       return (
         <>
           {Array.from({ length: cases.pages }, (_, index) => (
-            <div key={index} className={`${info.labelName}-view highlight`}>
+            <div key={index} className={`${axisView}-view ${stateView}`}>
               <ButtonRouting
                 style={{
                   type: '{button}',

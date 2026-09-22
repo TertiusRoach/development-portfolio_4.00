@@ -2,17 +2,164 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
   ul[class*='hori-X-select'] {
-    //--|🠊 display: flex; 🠈|--\\
+    height: 100%;
+    display: flex;
     li[class*='horizontal'] {
       display: inherit; //--|🠈 display: flex; 🠈|--\\
       flex-direction: row;
+      justify-content: space-around;
+      div.hori-view {
+        display: grid;
+
+        padding: 0 16px;
+        @media screen and (max-height: 768px) {
+          padding: 0 12px;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 0 8px;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &[class*='bot_lef'] {
+      justify-content: flex-start;
+      li {
+        align-items: end;
+      }
+    }
+    &[class*='bot_cen'] {
+      justify-content: center;
+      li {
+        align-items: end;
+      }
+    }
+    &[class*='bot_rig'] {
+      justify-content: flex-end;
+      li {
+        align-items: end;
+      }
+    }
+
+    &[class*='mid_cen'] {
+      li {
+        width: 100%;
+        align-items: center;
+        div.hori-view {
+          //--|🠊 display: grid; 🠈|--\\
+          justify-content: space-around;
+        }
+      }
+    }
+
+    &[class*='top_lef'] {
+      justify-content: flex-start;
+      li {
+        align-items: start;
+      }
+    }
+    &[class*='top_cen'] {
+      justify-content: center;
+      li {
+        align-items: start;
+      }
+    }
+    &[class*='top_rig'] {
+      justify-content: flex-end;
+      li {
+        align-items: start;
+      }
     }
   }
   ol[class*='vert-Y-select'] {
-    //--|🠊 display: flex; 🠈|--\\
+    height: 100%;
+    display: flex;
+
     li[class*='vertical'] {
       display: inherit; //--|🠈 display: flex; 🠈|--\\
       flex-direction: column;
+      div.vert-view {
+        display: grid;
+
+        padding: 16px 0;
+        @media screen and (max-height: 768px) {
+          padding: 12px 0;
+        }
+        @media screen and (max-height: 480px) {
+          padding: 8px 0;
+        }
+        @media screen and (max-height: 360px) {
+          padding: 4px 0;
+        }
+      }
+    }
+
+    &[class*='lef_top'] {
+      li {
+        justify-content: flex-start;
+        div.vert-view {
+          justify-items: start;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='lef_cen'] {
+      li {
+        justify-content: center;
+        div.vert-view {
+          justify-items: start;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='lef_bot'] {
+      li {
+        justify-content: flex-end;
+        div.vert-view {
+          justify-items: start;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+
+    &[class*='cen_mid'] {
+      li {
+        justify-content: space-around;
+        div.vert-view {
+          justify-items: center;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+
+    &[class*='rig_top'] {
+      li {
+        justify-content: flex-start;
+        div.vert-view {
+          justify-items: end;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='rig_cen'] {
+      li {
+        justify-content: center;
+        div.vert-view {
+          justify-items: end;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='rig_bot'] {
+      li {
+        justify-content: flex-end;
+        div.vert-view {
+          justify-items: end;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
     }
   }
 
@@ -278,6 +425,7 @@ menu[class*='select'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+  /*
   *[class*='select'] {
     display: flex;
     &[class*='top'] {
@@ -299,4 +447,5 @@ menu[class*='select'] {
       justify-content: flex-start;
     }
   }
+  */
 }
