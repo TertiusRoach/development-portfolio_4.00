@@ -59,7 +59,6 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
 
               image: casesPages.styleImage as Array<string>,
               size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
-
               /*
               size: '<h4>',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
