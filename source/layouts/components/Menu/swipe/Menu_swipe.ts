@@ -1,6 +1,8 @@
 //--|🠊 Menu_swipe.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { abbrView, abbrShade, abbrColor } from '../../components';
 import { arabicToRoman, romanToArabic, showingBootstrap } from '../../../../scripts';
+
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
   /*--|🠋
@@ -280,6 +282,11 @@ interface ChainedElements {
 
   carousel: HTMLDivElement | null;
 }
+interface StyleProps {
+  shade: '~dark~' | '~light~';
+  color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
+}
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType = 'swipe';
   const container = `${pageName}-${blockName}`;
@@ -295,6 +302,10 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
     carousel,
     controller,
   };
+}
+export function createClass(style: StyleProps): string {
+  //--|🠊 Class Build for <MenuSwipe> 🠈|--\\
+  return `${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
 }
 
 export const previewButtons = (viewTask: 'view-prev' | 'view-next', pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {

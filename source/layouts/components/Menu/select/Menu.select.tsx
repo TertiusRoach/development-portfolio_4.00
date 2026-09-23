@@ -6,8 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
-import { createClass } from './Menu_select';
-import { abbrView, abbrShade, abbrColor } from '../../components';
+import reloadElements, { modifyingController, previewButtons, selectingCarousel, createClass } from './Menu_select';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.select.scss';
@@ -58,7 +57,6 @@ const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
   '[x]': ['hori-X-select', 'horizontal'],
   '[y]': ['vert-Y-select', 'vertical'],
 };
-
 function MenuSelect({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -66,14 +64,13 @@ function MenuSelect({ info, style, cases }: TheseProps) {
 
   useEffect(() => {
     /*--|🠋
-    reloadElements(pageName, blockName, labelName);
-    modifyingController(pageName, blockName, labelName);
-
+    
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
     🠉|--*/
+    reloadElements(pageName, blockName, labelName);
+    modifyingController(pageName, blockName, labelName, cases.axis);
   }, [pageName, blockName, labelName]);
 
-  // console.log(`${cases.axis}:`, createClass(cases.axis, style));
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_select-default`}>
@@ -87,6 +84,17 @@ function MenuSelect({ info, style, cases }: TheseProps) {
 }
 
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
+  let styleSize: Array<'<h1>' | '<h4>' | '<p>'> = ['<h1>', '<h4>', '<p>'];
+
+  if (typeof style.size === 'object') {
+    styleSize = style.size as Array<'<h1>' | '<h4>' | '<p>'>;
+  } else if (typeof style.size === 'string') {
+    styleSize = [] as Array<'<h1>' | '<h4>' | '<p>'>;
+    for (let i = 0; i < cases.pages; i++) {
+      styleSize.push(style.size);
+    }
+  }
+
   let stateView = 'downplay' as 'downplay' | 'highlight';
   let axisView = axisClass[cases.axis][0].split('-')[0] as 'hori' | 'vert';
   switch (typeof style.image) {
@@ -101,7 +109,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   color: style.color,
                   shade: style.shade,
                   image: style.image[index] as string,
-                  size: style.size[index] as '<h1>' | '<h4>' | '<p>',
+                  size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 info={{
@@ -125,7 +133,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   color: style.color,
                   shade: style.shade,
                   image: style.image as string,
-                  size: style.size as '<h1>' | '<h4>' | '<p>',
+                  size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 info={{

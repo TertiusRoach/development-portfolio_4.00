@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, loadAsset } from '../../../../scripts';
-import { abbrView, abbrShade, abbrColor } from '../../components';
-import reloadElements, { modifyingController, previewButtons, scrollingCarousel } from './Menu_scroll';
+import reloadElements, { modifyingController, previewButtons, scrollingCarousel, createClass } from './Menu_scroll';
+
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
@@ -55,7 +55,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
   let ListStyle = axisList[cases.axis] as React.ElementType;
   return (
     <menu className={`${labelName}-${blockName}_scroll-default`}>
-      <ListStyle className={`${axisStyle[cases.axis]} ${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`}>
+      <ListStyle className={`${axisStyle[cases.axis]} ${createClass(style)}`}>
         <li className={`preview-vertical-${stripBrackets(style.view, '--')}`}>
           <div className={`prev-view ${stateView}`}>
             <ButtonDefault

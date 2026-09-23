@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-// import MenuSelect from '../../../components/Menu/select/Menu.select';
+import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
@@ -30,10 +30,36 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
-      stateName = 'collapsed';
+      stateName = 'unfolded';
       return (
         <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
+            <MenuSelect
+              info={{
+                blockName: blockName as 'main',
+                labelName: 'elements' as string,
+                pageName: pageName as 'components',
+              }}
+              style={{
+                size: '<h1>',
+                align: '-lef-',
+                view: 'bot-cen',
+                color: '(mono)',
+                shade: '~dark~',
+                image: [
+                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
+                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                ],
+              }}
+              cases={{
+                pages: 3,
+                axis: '[y]',
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
             {/* <MenuSelect
               cases={{
                 buttons: [
@@ -91,9 +117,7 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
                 shade: '~light~',
               }}
             /> */}
-          </section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}></div>
+          </div>
         </aside>
       );
     case 'portrait':

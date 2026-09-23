@@ -40,7 +40,6 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
     ],
   };
   let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
-
   return (
     <aside className="select-menu">
       <section className={`${blockName}-foreground`}>
@@ -94,7 +93,6 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
               axis: '[x]',
             }}
           />
-
           <MenuSelect
             info={{
               blockName: blockName as 'main',

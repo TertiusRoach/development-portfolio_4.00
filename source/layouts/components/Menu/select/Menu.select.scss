@@ -303,15 +303,15 @@
       div.hori-view {
         display: grid;
 
-        padding: 0 16px;
+        padding: 0 8px;
         @media screen and (max-height: 768px) {
-          padding: 0 12px;
+          padding: 0 6px;
         }
         @media screen and (max-height: 480px) {
-          padding: 0 8px;
+          padding: 0 4px;
         }
         @media screen and (max-height: 360px) {
-          padding: 0 4px;
+          padding: 0 2px;
         }
       }
     }
@@ -374,15 +374,15 @@
       div.vert-view {
         display: grid;
 
-        padding: 16px 0;
+        padding: 8px 0;
         @media screen and (max-height: 768px) {
-          padding: 12px 0;
+          padding: 6px 0;
         }
         @media screen and (max-height: 480px) {
-          padding: 8px 0;
+          padding: 4px 0;
         }
         @media screen and (max-height: 360px) {
-          padding: 4px 0;
+          padding: 2px 0;
         }
       }
     }
