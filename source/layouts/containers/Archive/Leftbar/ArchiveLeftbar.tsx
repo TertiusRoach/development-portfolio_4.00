@@ -41,7 +41,7 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
                 pageName: pageName as 'components',
               }}
               style={{
-                size: '<h1>',
+                size: ['<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>'],
                 align: '-top-',
                 view: 'mid-lef',
                 color: '(mono)',
