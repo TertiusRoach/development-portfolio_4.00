@@ -29,7 +29,6 @@ interface TheseProps {
   cases: {
     pages: number;
     axis: '[x]' | '[y]';
-    /* pages: Array<string>; */
   };
 
   onClick?: () => void;
