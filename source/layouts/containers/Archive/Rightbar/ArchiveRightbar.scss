@@ -7,6 +7,9 @@
   section[class*='foreground'] {
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      li {
+        // margin-left: calc(100% - 96px);
+      }
     }
   }
   figure[class*='midground'] {
@@ -21,17 +24,6 @@
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-
-    /*
-    @media screen and (max-width: 768px) {
-
-    }
-    @media screen and (max-width: 480px) {
-      padding-left: calc(100% - 96px);
-    }
-    @media screen and (max-width: 360px) {
-    }
-    */
   }
   figure[class*='midground'] {
   }

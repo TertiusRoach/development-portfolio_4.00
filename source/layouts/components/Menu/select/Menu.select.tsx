@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../../scripts';
 import reloadElements, { modifyingController, previewButtons, selectingCarousel, createClass } from './Menu_select';
 
 //--|🠋 Styles 🠋|--\\
@@ -28,6 +29,7 @@ interface TheseProps {
   cases: {
     pages: number;
     axis: '[x]' | '[y]';
+    mark?: Array<string> | undefined;
   };
 
   onClick?: () => void;
@@ -66,14 +68,15 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     /*--|🠋
     
     markCarousel(pageName, blockName, labelName, style.axis, cases.show);
-    🠉|--*/
     reloadElements(pageName, blockName, labelName);
     modifyingController(pageName, blockName, labelName, cases.axis);
+    🠉|--*/
   }, [pageName, blockName, labelName]);
 
   let ListStyle = axisList[cases.axis] as React.ElementType;
+  // let overFlow: string = `${axisClass[cases.axis][0].split('-')[0]}-${createClass(cases.axis, style).split('_')[0]}`;
   return (
-    <menu className={`${labelName}-${blockName}_select-default`}>
+    <menu className={`${labelName}-${blockName}_select-${axisClass[cases.axis][1]}`}>
       <ListStyle className={`${axisClass[cases.axis][0]} ${createClass(cases.axis, style)}`}>
         <li className={`preview-${axisClass[cases.axis][1]}_I`}>
           <MenuAxis info={info} style={style} cases={cases} />
@@ -84,15 +87,18 @@ function MenuSelect({ info, style, cases }: TheseProps) {
 }
 
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
-  let styleSize: Array<'<h1>' | '<h4>' | '<p>'> = ['<h1>', '<h4>', '<p>'];
+  let casesMark: Array<string>;
+  if (typeof cases.mark === 'object') {
+    casesMark = cases.mark;
+  } else {
+    casesMark = Array.from({ length: cases.pages }, () => info.labelName);
+  }
 
+  let styleSize: Array<'<h1>' | '<h4>' | '<p>'>;
   if (typeof style.size === 'object') {
-    styleSize = style.size as Array<'<h1>' | '<h4>' | '<p>'>;
-  } else if (typeof style.size === 'string') {
-    styleSize = [] as Array<'<h1>' | '<h4>' | '<p>'>;
-    for (let i = 0; i < cases.pages; i++) {
-      styleSize.push(style.size);
-    }
+    styleSize = style.size;
+  } else {
+    styleSize = Array.from({ length: cases.pages }, () => style.size as '<h1>' | '<h4>' | '<p>');
   }
 
   let stateView = 'downplay' as 'downplay' | 'highlight';
@@ -115,7 +121,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  labelName: `${info.labelName}-select`,
+                  labelName: `${casesMark[index]}-select`,
                 }}
               />
             </div>
@@ -139,7 +145,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  labelName: `${info.labelName}-select`,
+                  labelName: `${casesMark[index]}-select`,
                 }}
               />
             </div>

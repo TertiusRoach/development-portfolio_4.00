@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-// import MenuSelect from '../../../components/Menu/select/Menu.select';
+import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
@@ -41,67 +41,41 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
         </aside>
       );
     case 'portrait':
-      stateName = 'collapsed';
+      stateName = 'expanded';
       return (
         <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
-            {/* <MenuSelect
-              cases={{
-                buttons: [
-                  {
-                    labelName: 'article',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/article-element') as string,
-                  },
-                  {
-                    labelName: 'aside',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/aside-element') as string,
-                  },
-                  {
-                    labelName: 'button',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/button-element') as string,
-                  },
-                  {
-                    labelName: 'division',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/division-element') as string,
-                  },
-                  {
-                    labelName: 'figure',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/figure-element') as string,
-                  },
-                  {
-                    labelName: 'menu',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/menu-element') as string,
-                  },
-                  {
-                    labelName: 'navigation',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/navigation-element') as string,
-                  },
-                  {
-                    labelName: 'section',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/section-element') as string,
-                  },
-                  {
-                    labelName: 'table',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/table-element') as string,
-                  },
-                  {
-                    labelName: 'time',
-                    imageLink: loadAsset('-svg-', '/project-pages/components-page/time-element') as string,
-                  },
-                ] as Array<{ labelName: string; imageLink: string }>,
-              }}
+            <MenuSelect
               info={{
+                blockName: blockName as 'main',
                 labelName: 'elements' as string,
-                blockName: blockName as 'rightbar',
                 pageName: pageName as 'components',
               }}
               style={{
-                axis: '[y]',
-                color: '(mono)',
+                size: ['<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>'],
+                align: '-bot-',
                 view: 'mid-rig',
-                shade: '~light~',
+                color: '(mono)',
+                shade: '~dark~',
+                image: [
+                  loadAsset('-svg-', '/project-pages/components-page/article-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/aside-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/button-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/division-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/figure-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/menu-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/navigation-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/section-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/table-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/time-element'),
+                ],
               }}
-            /> */}
+              cases={{
+                pages: 10,
+                axis: '[y]',
+                mark: ['article', 'aside', 'button', 'division', 'figure', 'menu', 'navigation', 'section', 'table', 'time'] as Array<string>,
+              }}
+            />
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>

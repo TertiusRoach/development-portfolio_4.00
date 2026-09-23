@@ -1,6 +1,11 @@
 //--|🠊 Menu.select.scss 🠈|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+
   ul[class*='hori-X-select'] {
     height: 100%;
     display: flex;
@@ -73,6 +78,7 @@
       }
     }
   }
+
   ol[class*='vert-Y-select'] {
     height: 100%;
     display: flex;
@@ -92,6 +98,19 @@
         }
         @media screen and (max-height: 360px) {
           padding: 4px 0;
+        }
+      }
+      &[class*='lef'],
+      &[class*='rig'] {
+        width: $high-desk; //--|🠈 128px for Squares 🠈|--\\
+        @media screen and (max-height: 768px) {
+          width: $test-desk; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          width: $misc-desk; //--|🠈 64px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          width: $tiny-desk; //--|🠈 48px for Squares 🠈|--\\
         }
       }
     }
@@ -124,9 +143,29 @@
       }
     }
 
+    &[class*='bot_mid'] {
+      li {
+        width: 100%;
+        justify-content: flex-end;
+        div.vert-view {
+          justify-items: center;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
     &[class*='cen_mid'] {
       li {
         justify-content: space-around;
+        div.vert-view {
+          justify-items: center;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='top_mid'] {
+      li {
+        width: 100%;
+        justify-content: flex-start;
         div.vert-view {
           justify-items: center;
           //--|🠊 display: grid; 🠈|--\\
@@ -162,6 +201,47 @@
       }
     }
   }
+
+  /*
+    &[class*='hori'] {
+  }
+
+  &[class*='vertical'] {
+
+  /*
+
+    li[class*='rig'] {
+      
+    }
+
+    
+    overflow-x: hidden;
+    direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
+    direction: ltr; //--|🠈 Move Scrollbar to the Right 🠈|--\\
+    */
+  /*
+    overflow-y: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+
+    @media screen and (max-height: 768px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px; //--|🠈 48px for Squares 🠈|--\\
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+    }
+    
+    overflow-x: hidden;
+    
+    
+    
+  }
+  */
 
   //--|🠋 X-axis 🠋|--\\
   /*
@@ -293,6 +373,11 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+
   ul[class*='hori-X-select'] {
     height: 100%;
     display: flex;
@@ -385,6 +470,19 @@
           padding: 2px 0;
         }
       }
+      &[class*='lef'],
+      &[class*='rig'] {
+        width: $high-mobi; //--|🠈 192px for Squares 🠈|--\\
+        @media screen and (max-width: 768px) {
+          width: $test-mobi; //--|🠈 160px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          width: $misc-mobi; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          width: $tiny-mobi; //--|🠈 64px for Squares 🠈|--\\
+        }
+      }
     }
 
     &[class*='lef_top'] {
@@ -415,9 +513,29 @@
       }
     }
 
+    &[class*='bot_mid'] {
+      li {
+        width: 100%;
+        justify-content: flex-end;
+        div.vert-view {
+          justify-items: center;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
     &[class*='cen_mid'] {
       li {
         justify-content: space-around;
+        div.vert-view {
+          justify-items: center;
+          //--|🠊 display: grid; 🠈|--\\
+        }
+      }
+    }
+    &[class*='top_mid'] {
+      li {
+        width: 100%;
+        justify-content: flex-start;
         div.vert-view {
           justify-items: center;
           //--|🠊 display: grid; 🠈|--\\
@@ -446,9 +564,21 @@
     &[class*='rig_bot'] {
       li {
         justify-content: flex-end;
+
         div.vert-view {
           justify-items: end;
           //--|🠊 display: grid; 🠈|--\\
+        }
+
+        margin-left: calc(100% - 192px);
+        @media screen and (max-width: 768px) {
+          margin-left: calc(100% - 160px);
+        }
+        @media screen and (max-width: 480px) {
+          margin-left: calc(100% - 96px);
+        }
+        @media screen and (max-width: 360px) {
+          margin-left: calc(100% - 64px);
         }
       }
     }
@@ -587,27 +717,24 @@ menu[class*='select'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
+
   /*
-  *[class*='select'] {
-    display: flex;
-    &[class*='top'] {
-      justify-content: flex-start;
-      li[class*='preview'] {
-        align-items: flex-end;
-      }
-    }
-    &[class*='rig'] {
-      li[class*='preview'] {
-        align-items: flex-end;
-      }
-      // justify-content: flex-start;
-    }
-    &[class*='bot'] {
-      justify-content: flex-start;
-    }
-    &[class*='lef'] {
-      justify-content: flex-start;
-    }
-  }
-  */
+        @at-root menu[class*='select']:has([class*='lef_top']) {
+          direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
+          overflow-y: auto;
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+          @media screen and (max-height: 768px) {
+            width: 96px; //--|🠈 96px for Squares 🠈|--\\
+            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+          }
+          @media screen and (max-height: 480px) {
+            width: 64px; //--|🠈 64px for Squares 🠈|--\\
+            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+          }
+          @media screen and (max-height: 360px) {
+            width: 48px; //--|🠈 48px for Squares 🠈|--\\
+            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+          }
+        }
+        */
 }

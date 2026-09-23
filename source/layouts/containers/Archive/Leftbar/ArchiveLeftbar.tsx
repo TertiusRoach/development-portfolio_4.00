@@ -42,19 +42,27 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
               }}
               style={{
                 size: '<h1>',
-                align: '-lef-',
-                view: 'bot-cen',
+                align: '-top-',
+                view: 'mid-lef',
                 color: '(mono)',
                 shade: '~dark~',
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                  loadAsset('-svg-', '/project-pages/components-page/article-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/aside-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/button-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/division-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/figure-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/menu-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/navigation-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/section-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/table-element'),
+                  loadAsset('-svg-', '/project-pages/components-page/time-element'),
                 ],
               }}
               cases={{
-                pages: 3,
+                pages: 10,
                 axis: '[y]',
+                mark: ['article', 'aside', 'button', 'division', 'figure', 'menu', 'navigation', 'section', 'table', 'time'] as Array<string>,
               }}
             />
           </section>
