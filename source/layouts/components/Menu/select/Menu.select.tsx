@@ -7,7 +7,7 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
-import reloadElements, { modifyingController, previewButtons, selectingCarousel, createClass } from './Menu_select';
+import reloadElements, { modifyControl, selectCarousel, createClass } from './Menu_select';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.select.scss';
@@ -66,17 +66,15 @@ function MenuSelect({ info, style, cases }: TheseProps) {
 
   useEffect(() => {
     /*--|🠋
-    
-    markCarousel(pageName, blockName, labelName, style.axis, cases.show);
-    reloadElements(pageName, blockName, labelName);
-    modifyingController(pageName, blockName, labelName, cases.axis);
+
     🠉|--*/
+    reloadElements(pageName, blockName, labelName);
+    modifyControl(pageName, blockName, labelName, cases.axis);
   }, [pageName, blockName, labelName]);
 
   let ListStyle = axisList[cases.axis] as React.ElementType;
-  // let overFlow: string = `${axisClass[cases.axis][0].split('-')[0]}-${createClass(cases.axis, style).split('_')[0]}`;
   return (
-    <menu className={`${labelName}-${blockName}_select-${axisClass[cases.axis][1]}`}>
+    <menu className={`${labelName}-${blockName}_select-default`}>
       <ListStyle className={`${axisClass[cases.axis][0]} ${createClass(cases.axis, style)}`}>
         <li className={`preview-${axisClass[cases.axis][1]}_I`}>
           <MenuAxis info={info} style={style} cases={cases} />
@@ -110,6 +108,11 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
           {Array.from({ length: cases.pages }, (_, index) => (
             <div key={index} className={`${axisView}-view ${stateView}`}>
               <ButtonRouting
+                info={{
+                  pageName: info.pageName,
+                  blockName: info.blockName,
+                  labelName: `${casesMark[index]}-select`,
+                }}
                 style={{
                   type: '{button}',
                   color: style.color,
@@ -118,10 +121,9 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${casesMark[index]}-select`,
+                onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+                  /* previewButtons(pageName, blockName, labelName, cases.axis); */
+                  selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                 }}
               />
             </div>
@@ -134,6 +136,11 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
           {Array.from({ length: cases.pages }, (_, index) => (
             <div key={index} className={`${axisView}-view ${stateView}`}>
               <ButtonRouting
+                info={{
+                  pageName: info.pageName,
+                  blockName: info.blockName,
+                  labelName: `${casesMark[index]}-select`,
+                }}
                 style={{
                   type: '{button}',
                   color: style.color,
@@ -142,10 +149,9 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
-                info={{
-                  pageName: info.pageName,
-                  blockName: info.blockName,
-                  labelName: `${casesMark[index]}-select`,
+                onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
+                  /* previewButtons(pageName, blockName, labelName, cases.axis); */
+                  selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                 }}
               />
             </div>

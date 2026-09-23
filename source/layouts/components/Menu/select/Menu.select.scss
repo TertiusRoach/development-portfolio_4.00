@@ -11,10 +11,16 @@
     display: flex;
     li[class*='horizontal'] {
       display: inherit; //--|🠈 display: flex; 🠈|--\\
+      overflow-y: hidden;
       flex-direction: row;
       justify-content: space-around;
       div.hori-view {
         display: grid;
+        position: relative;
+        transition:
+          top 250ms ease-in-out,
+          bottom 250ms ease-in-out;
+
         padding: 0 16px;
         @media screen and (max-height: 768px) {
           padding: 0 12px;
@@ -76,6 +82,41 @@
         align-items: start;
       }
     }
+    //--|===|--\\
+    &[class*='top'] {
+      div.highlight {
+        bottom: $high-desk;
+        @media screen and (max-height: 768px) {
+          bottom: $test-desk;
+        }
+        @media screen and (max-height: 480px) {
+          bottom: $misc-desk;
+        }
+        @media screen and (max-height: 360px) {
+          bottom: $tiny-desk;
+        }
+      }
+      div.downplay {
+        bottom: 0px;
+      }
+    }
+    &[class*='bot'] {
+      div.highlight {
+        top: $high-desk;
+        @media screen and (max-height: 768px) {
+          top: $test-desk;
+        }
+        @media screen and (max-height: 480px) {
+          top: $misc-desk;
+        }
+        @media screen and (max-height: 360px) {
+          top: $tiny-desk;
+        }
+      }
+      div.downplay {
+        top: 0px;
+      }
+    }
   }
   ol[class*='vert-Y-select'] {
     height: 100%;
@@ -87,6 +128,10 @@
       flex-direction: column;
       div.vert-view {
         display: grid;
+        position: relative;
+        transition:
+          left 250ms ease-in-out,
+          right 250ms ease-in-out;
 
         padding: 16px 0;
         @media screen and (max-height: 768px) {
@@ -242,7 +287,41 @@
         }
       }
     }
-
+    //--|===|--\\
+    &[class*='lef'] {
+      div.highlight {
+        right: $high-desk;
+        @media screen and (max-height: 768px) {
+          right: $test-desk;
+        }
+        @media screen and (max-height: 480px) {
+          right: $misc-desk;
+        }
+        @media screen and (max-height: 360px) {
+          right: $tiny-desk;
+        }
+      }
+      div.downplay {
+        right: 0px;
+      }
+    }
+    &[class*='rig'] {
+      div.highlight {
+        left: $high-desk;
+        @media screen and (max-height: 768px) {
+          left: $test-desk;
+        }
+        @media screen and (max-height: 480px) {
+          left: $misc-desk;
+        }
+        @media screen and (max-height: 360px) {
+          left: $tiny-desk;
+        }
+      }
+      div.downplay {
+        left: 0px;
+      }
+    }
     //--|===|--\\
     @at-root menu[class*='select']:has([class*='lef_top']) {
       overflow-y: auto;
@@ -294,19 +373,24 @@
     display: flex;
     li[class*='horizontal'] {
       display: inherit; //--|🠈 display: flex; 🠈|--\\
+      overflow-y: hidden;
       flex-direction: row;
       justify-content: space-around;
       div.hori-view {
         display: grid;
+        position: relative;
+        transition:
+          top 250ms ease-in-out,
+          bottom 250ms ease-in-out;
 
         padding: 0 8px;
-        @media screen and (max-height: 768px) {
+        @media screen and (max-width: 768px) {
           padding: 0 6px;
         }
-        @media screen and (max-height: 480px) {
+        @media screen and (max-width: 480px) {
           padding: 0 4px;
         }
-        @media screen and (max-height: 360px) {
+        @media screen and (max-width: 360px) {
           padding: 0 2px;
         }
       }
@@ -360,6 +444,41 @@
         align-items: start;
       }
     }
+    //--|===|--\\
+    &[class*='top'] {
+      div.highlight {
+        bottom: $high-mobi;
+        @media screen and (max-width: 768px) {
+          bottom: $test-mobi;
+        }
+        @media screen and (max-width: 480px) {
+          bottom: $misc-mobi;
+        }
+        @media screen and (max-width: 360px) {
+          bottom: $tiny-mobi;
+        }
+      }
+      div.downplay {
+        bottom: 0px;
+      }
+    }
+    &[class*='bot'] {
+      div.highlight {
+        top: $high-mobi;
+        @media screen and (max-width: 768px) {
+          top: $test-mobi;
+        }
+        @media screen and (max-width: 480px) {
+          top: $misc-mobi;
+        }
+        @media screen and (max-width: 360px) {
+          top: $tiny-mobi;
+        }
+      }
+      div.downplay {
+        top: 0px;
+      }
+    }
   }
   ol[class*='vert-Y-select'] {
     height: 100%;
@@ -370,15 +489,19 @@
       flex-direction: column;
       div.vert-view {
         display: grid;
+        position: relative;
+        transition:
+          left 250ms ease-in-out,
+          right 250ms ease-in-out;
 
         padding: 8px 0;
-        @media screen and (max-height: 768px) {
+        @media screen and (max-width: 768px) {
           padding: 6px 0;
         }
-        @media screen and (max-height: 480px) {
+        @media screen and (max-width: 480px) {
           padding: 4px 0;
         }
-        @media screen and (max-height: 360px) {
+        @media screen and (max-width: 360px) {
           padding: 2px 0;
         }
       }
@@ -525,7 +648,41 @@
         }
       }
     }
-
+    //--|===|--\\
+    &[class*='lef'] {
+      div.downplay {
+        right: 0px;
+      }
+      div.highlight {
+        right: $high-mobi;
+        @media screen and (max-width: 768px) {
+          right: $test-mobi;
+        }
+        @media screen and (max-width: 480px) {
+          right: $misc-mobi;
+        }
+        @media screen and (max-width: 360px) {
+          right: $tiny-mobi;
+        }
+      }
+    }
+    &[class*='rig'] {
+      div.downplay {
+        left: 0px;
+      }
+      div.highlight {
+        left: $high-mobi;
+        @media screen and (max-width: 768px) {
+          left: $test-mobi;
+        }
+        @media screen and (max-width: 480px) {
+          left: $misc-mobi;
+        }
+        @media screen and (max-width: 360px) {
+          left: $tiny-mobi;
+        }
+      }
+    }
     //--|===|--\\
     @at-root menu[class*='select']:has([class*='lef_top']) {
       overflow-y: auto;
