@@ -15,7 +15,6 @@
       justify-content: space-around;
       div.hori-view {
         display: grid;
-
         padding: 0 16px;
         @media screen and (max-height: 768px) {
           padding: 0 12px;
@@ -78,12 +77,12 @@
       }
     }
   }
-
   ol[class*='vert-Y-select'] {
     height: 100%;
     display: flex;
 
     li[class*='vertical'] {
+      width: 100%;
       display: inherit; //--|🠈 display: flex; 🠈|--\\
       flex-direction: column;
       div.vert-view {
@@ -122,6 +121,16 @@
           justify-items: start;
           //--|🠊 display: grid; 🠈|--\\
         }
+        margin-right: calc(100% - $high-desk);
+        @media screen and (max-height: 768px) {
+          margin-right: calc(100% - $test-desk);
+        }
+        @media screen and (max-height: 480px) {
+          margin-right: calc(100% - $misc-desk);
+        }
+        @media screen and (max-height: 360px) {
+          margin-right: calc(100% - $tiny-desk);
+        }
       }
     }
     &[class*='lef_cen'] {
@@ -139,6 +148,16 @@
         div.vert-view {
           justify-items: start;
           //--|🠊 display: grid; 🠈|--\\
+        }
+        margin-right: calc(100% - $high-desk);
+        @media screen and (max-height: 768px) {
+          margin-right: calc(100% - $test-desk);
+        }
+        @media screen and (max-height: 480px) {
+          margin-right: calc(100% - $misc-desk);
+        }
+        @media screen and (max-height: 360px) {
+          margin-right: calc(100% - $tiny-desk);
         }
       }
     }
@@ -180,6 +199,16 @@
           justify-items: end;
           //--|🠊 display: grid; 🠈|--\\
         }
+        margin-left: calc(100% - $high-desk);
+        @media screen and (max-height: 768px) {
+          margin-left: calc(100% - $test-desk);
+        }
+        @media screen and (max-height: 480px) {
+          margin-left: calc(100% - $misc-desk);
+        }
+        @media screen and (max-height: 360px) {
+          margin-left: calc(100% - $tiny-desk);
+        }
       }
     }
     &[class*='rig_cen'] {
@@ -193,183 +222,65 @@
     }
     &[class*='rig_bot'] {
       li {
-        justify-content: flex-end;
+        justify-content: flex-start;
         div.vert-view {
           justify-items: end;
           //--|🠊 display: grid; 🠈|--\\
         }
-      }
-    }
-  }
-
-  /*
-    &[class*='hori'] {
-  }
-
-  &[class*='vertical'] {
-
-  /*
-
-    li[class*='rig'] {
-      
-    }
-
-    
-    overflow-x: hidden;
-    direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
-    direction: ltr; //--|🠈 Move Scrollbar to the Right 🠈|--\\
-    */
-  /*
-    overflow-y: hidden;
-    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-
-    @media screen and (max-height: 768px) {
-      width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-    }
-    @media screen and (max-height: 480px) {
-      width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-    }
-    @media screen and (max-height: 360px) {
-      width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-    }
-    
-    overflow-x: hidden;
-    
-    
-    
-  }
-  */
-
-  //--|🠋 X-axis 🠋|--\\
-  /*
-  &[class*='cen'] {
-    ul[class*='hori-X-select'] {
-      width: inherit; //--|🠈 width: 100%; 🠈|--\\
-      li[class*='showing-horizontal'] {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 128px; //--|🠈 128px for Squares 🠈|--\\
-        div[class*='view'] {
-          width: 128px;
-          height: 128px;
+        &:first-child {
+          margin-top: auto;
         }
+        margin-left: calc(100% - $high-desk);
         @media screen and (max-height: 768px) {
-          margin: 0 96px; //--|🠈 96px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 96px;
-            height: 96px;
-          }
+          margin-left: calc(100% - $test-desk);
         }
         @media screen and (max-height: 480px) {
-          margin: 0 64px; //--|🠈 64px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 64px;
-            height: 64px;
-          }
+          margin-left: calc(100% - $misc-desk);
         }
         @media screen and (max-height: 360px) {
-          margin: 0 48px; //--|🠈 48px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 48px;
-            height: 48px;
-          }
+          margin-left: calc(100% - $tiny-desk);
         }
       }
     }
-  }
-  */
 
-  //--|🠋 Y-axis 🠋|--\\
-  /*
-  &[class*='mid'] {
-    display: flex;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 128px; //--|🠈 128px for Squares 🠈|--\\
-    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-    @media screen and (max-height: 768px) {
-      width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-    }
-    @media screen and (max-height: 480px) {
-      width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-    }
-    @media screen and (max-height: 360px) {
-      width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-    }
-    &[class*='lef'] {
-      direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
-      align-items: flex-start;
-      ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
-        div[class*='view'] {
-          position: relative;
-          transition: left 250ms ease-in-out;
-          &[class*='downplay'] {
-            left: -128px;
-            @media screen and (max-height: 768px) {
-              left: -96px;
-            }
-            @media screen and (max-height: 480px) {
-              left: -64px;
-            }
-            @media screen and (max-height: 360px) {
-              left: -48px;
-            }
-          }
-          &[class*='highlight'] {
-            left: 0px;
-          }
-        }
+    //--|===|--\\
+    @at-root menu[class*='select']:has([class*='lef_top']) {
+      overflow-y: auto;
+      scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
+      -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
+      &::-webkit-scrollbar {
+        display: none; //--|🠈 Chrome/Safari 🠈|--\\
+      }
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+      @media screen and (max-height: 768px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+      }
+      @media screen and (max-height: 480px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+      }
+      @media screen and (max-height: 360px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
       }
     }
-    &[class*='rig'] {
-      direction: ltr; //--|🠈 Move Scrollbar to the Right 🠈|--\\
-      align-items: flex-end;
-      ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
-        div[class*='view'] {
-          position: relative;
-          transition: right 250ms ease-in-out;
-          &[class*='downplay'] {
-            right: -128px;
-            @media screen and (max-height: 768px) {
-              right: -96px;
-            }
-            @media screen and (max-height: 480px) {
-              right: -64px;
-            }
-            @media screen and (max-height: 360px) {
-              right: -48px;
-            }
-          }
-          &[class*='highlight'] {
-            right: 0px;
-          }
-        }
+    @at-root menu[class*='select']:has([class*='rig_bot']) {
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
       }
-    }
-    ol[class*='vert-Y-select'] {
-      li[class*='showing-vertical'] {
-        div[class*='view'] {
-          padding: 1rem 0;
-          @media screen and (max-height: 768px) {
-            padding: 0.75rem 0;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 0.5rem 0;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 0.25rem 0;
-          }
-        }
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+      @media screen and (max-height: 768px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+      }
+      @media screen and (max-height: 480px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+      }
+      @media screen and (max-height: 360px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
       }
     }
   }
-  */
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Elements) 🠋|--\\
@@ -454,6 +365,7 @@
     height: 100%;
     display: flex;
     li[class*='vertical'] {
+      width: 100%;
       display: inherit; //--|🠈 display: flex; 🠈|--\\
       flex-direction: column;
       div.vert-view {
@@ -493,6 +405,16 @@
           //--|🠊 display: grid; 🠈|--\\
         }
       }
+      margin-right: calc(100% - $high-mobi);
+      @media screen and (max-width: 768px) {
+        margin-right: calc(100% - $test-mobi);
+      }
+      @media screen and (max-width: 480px) {
+        margin-right: calc(100% - $misc-mobi);
+      }
+      @media screen and (max-width: 360px) {
+        margin-right: calc(100% - $tiny-mobi);
+      }
     }
     &[class*='lef_cen'] {
       li {
@@ -510,6 +432,16 @@
           justify-items: start;
           //--|🠊 display: grid; 🠈|--\\
         }
+      }
+      margin-right: calc(100% - $high-mobi);
+      @media screen and (max-width: 768px) {
+        margin-right: calc(100% - $test-mobi);
+      }
+      @media screen and (max-width: 480px) {
+        margin-right: calc(100% - $misc-mobi);
+      }
+      @media screen and (max-width: 360px) {
+        margin-right: calc(100% - $tiny-mobi);
       }
     }
 
@@ -551,6 +483,16 @@
           //--|🠊 display: grid; 🠈|--\\
         }
       }
+      margin-left: calc(100% - $high-mobi);
+      @media screen and (max-width: 768px) {
+        margin-left: calc(100% - $test-mobi);
+      }
+      @media screen and (max-width: 480px) {
+        margin-left: calc(100% - $misc-mobi);
+      }
+      @media screen and (max-width: 360px) {
+        margin-left: calc(100% - $tiny-mobi);
+      }
     }
     &[class*='rig_cen'] {
       li {
@@ -563,151 +505,65 @@
     }
     &[class*='rig_bot'] {
       li {
-        justify-content: flex-end;
-
+        justify-content: flex-start;
         div.vert-view {
           justify-items: end;
           //--|🠊 display: grid; 🠈|--\\
         }
-
-        margin-left: calc(100% - 192px);
+        &:first-child {
+          margin-top: auto;
+        }
+        margin-left: calc(100% - $high-mobi);
         @media screen and (max-width: 768px) {
-          margin-left: calc(100% - 160px);
+          margin-left: calc(100% - $test-mobi);
         }
         @media screen and (max-width: 480px) {
-          margin-left: calc(100% - 96px);
+          margin-left: calc(100% - $misc-mobi);
         }
         @media screen and (max-width: 360px) {
-          margin-left: calc(100% - 64px);
+          margin-left: calc(100% - $tiny-mobi);
         }
       }
     }
-  }
-  /*
-  //--|🠋 X-axis 🠋|--\\
-  &[class*='cen'] {
-    ul[class*='hori-X-select'] {
-      width: inherit; //--|🠈 width: 100%; 🠈|--\\
-      li[class*='showing-horizontal'] {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 192px; //--|🠈 192px for Squares 🠈|--\\
-        div[class*='view'] {
-          width: 192px;
-          height: 192px;
-        }
-        @media screen and (max-width: 768px) {
-          margin: 0 160px; //--|🠈 160px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 160px;
-            height: 160px;
-          }
-        }
-        @media screen and (max-width: 480px) {
-          margin: 0 96px; //--|🠈 96px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 96px;
-            height: 96px;
-          }
-        }
-        @media screen and (max-width: 360px) {
-          margin: 0 64px; //--|🠈 64px for Squares 🠈|--\\
-          div[class*='view'] {
-            width: 64px;
-            height: 64px;
-          }
-        }
-      }
-    }
-  }
 
-  //--|🠋 Y-axis 🠋|--\\
-  &[class*='mid'] {
-    display: flex;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 192px; //--|🠈 192px for Squares 🠈|--\\
-    mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-    @media screen and (max-width: 768px) {
-      width: 160px; //--|🠈 160px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-    }
-    @media screen and (max-width: 480px) {
-      width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-    }
-    @media screen and (max-width: 360px) {
-      width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-    }
-    &[class*='lef'] {
-      direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
-      align-items: flex-start;
-      ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
-        div[class*='view'] {
-          position: relative;
-          transition: left 250ms ease-in-out;
-          &[class*='downplay'] {
-            left: -192px;
-            @media screen and (max-width: 768px) {
-              left: -160px;
-            }
-            @media screen and (max-width: 480px) {
-              left: -96px;
-            }
-            @media screen and (max-width: 360px) {
-              left: -64px;
-            }
-          }
-          &[class*='highlight'] {
-            left: 0px;
-          }
-        }
+    //--|===|--\\
+    @at-root menu[class*='select']:has([class*='lef_top']) {
+      overflow-y: auto;
+      scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
+      -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
+      &::-webkit-scrollbar {
+        display: none; //--|🠈 Chrome/Safari 🠈|--\\
+      }
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+      @media screen and (max-width: 768px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+      }
+      @media screen and (max-width: 480px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+      }
+      @media screen and (max-width: 360px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
       }
     }
-    &[class*='rig'] {
-      direction: ltr; //--|🠈 Move Scrollbar to the Right 🠈|--\\
-      align-items: flex-end;
-      ol[class*='vert-Y-select'] li[class*='showing-vertical'] {
-        div[class*='view'] {
-          position: relative;
-          transition: right 250ms ease-in-out;
-          &[class*='downplay'] {
-            right: -192px;
-            @media screen and (max-width: 768px) {
-              right: -160px;
-            }
-            @media screen and (max-width: 480px) {
-              right: -96px;
-            }
-            @media screen and (max-width: 360px) {
-              right: -64px;
-            }
-          }
-          &[class*='highlight'] {
-            right: 0px;
-          }
-        }
+    @at-root menu[class*='select']:has([class*='rig_bot']) {
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
       }
-    }
-    ol[class*='vert-Y-select'] {
-      li[class*='showing-vertical'] {
-        div[class*='view'] {
-          padding: 1rem 0;
-          @media screen and (max-height: 768px) {
-            padding: 0.75rem 0;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 0.5rem 0;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 0.25rem 0;
-          }
-        }
+      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+      @media screen and (max-width: 768px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+      }
+      @media screen and (max-width: 480px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+      }
+      @media screen and (max-width: 360px) {
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
       }
     }
   }
-  */
 }
 
 menu[class*='select'] {
@@ -717,24 +573,4 @@ menu[class*='select'] {
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-
-  /*
-        @at-root menu[class*='select']:has([class*='lef_top']) {
-          direction: rtl; //--|🠈 Move Scrollbar to the Left 🠈|--\\
-          overflow-y: auto;
-          mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-          @media screen and (max-height: 768px) {
-            width: 96px; //--|🠈 96px for Squares 🠈|--\\
-            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-          }
-          @media screen and (max-height: 480px) {
-            width: 64px; //--|🠈 64px for Squares 🠈|--\\
-            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-          }
-          @media screen and (max-height: 360px) {
-            width: 48px; //--|🠈 48px for Squares 🠈|--\\
-            mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-          }
-        }
-        */
 }

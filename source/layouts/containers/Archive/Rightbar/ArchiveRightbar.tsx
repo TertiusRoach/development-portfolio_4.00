@@ -41,7 +41,7 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
         </aside>
       );
     case 'portrait':
-      stateName = 'expanded';
+      stateName = 'unfolded';
       return (
         <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
@@ -52,11 +52,11 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
                 pageName: pageName as 'components',
               }}
               style={{
-                size: ['<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>', '<h4>', '<p>', '<h1>'],
+                size: '<h4>',
                 align: '-bot-',
                 view: 'mid-rig',
                 color: '(mono)',
-                shade: '~dark~',
+                shade: '~light~',
                 image: [
                   loadAsset('-svg-', '/project-pages/components-page/article-element'),
                   loadAsset('-svg-', '/project-pages/components-page/aside-element'),

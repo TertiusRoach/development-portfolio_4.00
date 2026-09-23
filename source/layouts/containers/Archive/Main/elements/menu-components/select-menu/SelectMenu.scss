@@ -8,6 +8,7 @@
   section[class*='main-fore'] {
     display: grid;
     div[class*='select'] {
+      overflow: hidden;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
       $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\

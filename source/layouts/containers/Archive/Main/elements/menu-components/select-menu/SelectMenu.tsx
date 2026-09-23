@@ -29,14 +29,23 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName, labelName]);
 
   const casesPages: {
+    stylePages: number;
     styleSize: Array<'<h1>' | '<h4>' | '<p>'>;
     styleImage: Array<string>;
   } = {
+    stylePages: 3,
     styleSize: ['<h1>', '<h4>', '<p>'],
     styleImage: [
       loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
       loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
       loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
     ],
   };
   let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
@@ -78,15 +87,10 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
               align: '-mid-',
               view: 'mid-cen',
               color: '(mono)',
-              shade: '~dark~',
+              shade: '~light~',
 
               image: casesPages.styleImage as Array<string>,
               size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
-
-              /*
-              size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
-              */
             }}
             cases={{
               pages: 3,
@@ -130,19 +134,14 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
               align: '-top-',
               view: 'mid-lef',
               color: '(mono)',
-              shade: '~dark~',
+              shade: '~light~',
 
               image: casesPages.styleImage as Array<string>,
               size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
-
-              /*
-              size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
-              */
             }}
             cases={{
-              pages: 3,
               axis: '[y]',
+              pages: casesPages.stylePages as number,
             }}
           />
           <MenuSelect
@@ -180,19 +179,14 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
               align: '-bot-',
               view: 'mid-rig',
               color: '(mono)',
-              shade: '~dark~',
+              shade: '~light~',
 
               image: casesPages.styleImage as Array<string>,
               size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
-
-              /*
-              size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
-              */
             }}
             cases={{
-              pages: 3,
               axis: '[y]',
+              pages: casesPages.stylePages as number,
             }}
           />
         </div>
