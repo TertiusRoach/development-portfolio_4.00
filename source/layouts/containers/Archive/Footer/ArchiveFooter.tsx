@@ -66,7 +66,14 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
     case 'portrait':
       stateName = 'unfolded';
       return (
-        <footer id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+        <footer
+          id={`${pageName}-${blockName}`}
+          className={`${blurName} ${labelName}-${blockName} ${stateName}`}
+          onMouseEnter={(event) => {
+            blockViews(event.currentTarget, pageName, 'footer', 'unfold');
+            blockViews(event.currentTarget, pageName, 'rightbar', 'unfold');
+          }}
+        >
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\

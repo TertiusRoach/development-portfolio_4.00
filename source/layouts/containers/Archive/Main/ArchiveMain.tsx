@@ -7,7 +7,7 @@ import DivisionCarousel from '../../../components/Division/carousel/Division.car
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 //--|🠋 Elements 🠋|--\\
 import MenuElements from './elements/menu-components/MenuElements';
@@ -36,7 +36,9 @@ function ArchiveMain({ info }: InfoProps) {
   let labelName = stripBrackets(info.labelName, '()') as 'default';
   let pageName = stripBrackets(info.pageName, '[]') as 'components';
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   let startingPreview: number = 1;
   let blurName: string = 'obnubilate';
@@ -49,14 +51,10 @@ function ArchiveMain({ info }: InfoProps) {
           case 'landscape':
             blockViews(event.currentTarget, pageName, 'header', 'squaring');
             blockViews(event.currentTarget, pageName, 'leftbar', 'collapsed');
-            /*
-             */
             break;
           case 'portrait':
-            /*
             blockViews(event.currentTarget, pageName, 'footer', 'squaring');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'squaring');
-            */
+            blockViews(event.currentTarget, pageName, 'rightbar', 'collapsed');
             break;
         }
       }}
