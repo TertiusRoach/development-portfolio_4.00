@@ -35,8 +35,8 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       &[class*='header'],
       &[class*='footer'] {
         transition:
-          filter 1250ms ease-in-out,
-          opacity 750ms ease-in-out,
+          filter 1750ms ease-in-out,
+          opacity 1250ms ease-in-out,
           clip-path 500ms ease-in-out;
 
         &.obnubilate {
@@ -54,6 +54,74 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       height: 0svh;
       clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
+  }
+}
+//--|🠋 section[id*="overlay"] 🠋|--\\
+@mixin overlay-transition {
+  section[class*='overlay'] {
+    &[class*='visible'] {
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Visible State 🠋|--\\
+        article[class*='loading'],
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+    &[class*='loading'] {
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Loading State 🠋|--\\
+        article[class*='loading'] {
+          @extend %overlay-show;
+        }
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+    &[class*='updates'] {
+      @extend %overlay-show;
+      figure[class='overlay-midground'] {
+        //--|🠋 Updates State 🠋|--\\
+        article[class*='updates'] {
+          @extend %overlay-show;
+        }
+        article[class*='loading'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+    &[class*='hidden'] {
+      @extend %overlay-hide;
+      figure[class='overlay-midground'] {
+        //--|🠋 Hidden State 🠋|--\\
+        article[class*='loading'],
+        article[class*='updates'] {
+          @extend %overlay-hide;
+        }
+      }
+    }
+  }
+
+  %overlay-hide {
+    opacity: 0;
+    filter: blur(32px);
+    visibility: hidden;
+    transition:
+      visibility 0ms 750ms,
+      filter 500ms ease-in-out,
+      opacity 500ms ease-in-out;
+  }
+  %overlay-show {
+    opacity: 1;
+    filter: blur(0px);
+    visibility: visible;
+    transition:
+      visibility 0ms 0ms,
+      filter 500ms ease-in-out,
+      opacity 500ms ease-in-out;
   }
 }
 //--|🠋 header[id*="header"] 🠋|--\\
@@ -406,70 +474,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
 }
-//--|🠋 section[id*="overlay"] 🠋|--\\
-@mixin overlay-transition {
-  section[class*='overlay'] {
-    &[class*='visible'] {
-      @extend %overlay-show;
-      figure[class='overlay-midground'] {
-        //--|🠋 Visible State 🠋|--\\
-        article[class*='loading'],
-        article[class*='updates'] {
-          @extend %overlay-hide;
-        }
-      }
-    }
-    &[class*='loading'] {
-      @extend %overlay-show;
-      figure[class='overlay-midground'] {
-        //--|🠋 Loading State 🠋|--\\
-        article[class*='loading'] {
-          @extend %overlay-show;
-        }
-        article[class*='updates'] {
-          @extend %overlay-hide;
-        }
-      }
-    }
-    &[class*='updates'] {
-      @extend %overlay-show;
-      figure[class='overlay-midground'] {
-        //--|🠋 Updates State 🠋|--\\
-        article[class*='updates'] {
-          @extend %overlay-show;
-        }
-        article[class*='loading'] {
-          @extend %overlay-hide;
-        }
-      }
-    }
-    &[class*='hidden'] {
-      @extend %overlay-hide;
-      figure[class='overlay-midground'] {
-        //--|🠋 Hidden State 🠋|--\\
-        article[class*='loading'],
-        article[class*='updates'] {
-          @extend %overlay-hide;
-        }
-      }
-    }
-  }
 
-  %overlay-hide {
-    opacity: 0;
-    transition:
-      visibility 0ms 250ms,
-      opacity 250ms ease-in-out;
-    visibility: hidden;
-  }
-  %overlay-show {
-    opacity: 1;
-    transition:
-      visibility 0ms 0ms,
-      opacity 500ms ease-in-out;
-    visibility: visible;
-  }
-}
 //--|🠋 aside[id*="bar"] 🠋|--\\
 @mixin sidebar-transition {
   aside[id*='leftbar'] {

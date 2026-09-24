@@ -20,7 +20,7 @@ export const modifyControl = (pageName: string, blockName: string, labelName: st
 
   setTimeout(() => {
     revealButtons(pageName, blockName, labelName, axisType);
-  }, 1500);
+  }, 1250);
 };
 let revealButtons = (pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal' | 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;

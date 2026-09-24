@@ -35,7 +35,14 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
     case 'landscape':
       stateName = 'unfolded';
       return (
-        <header id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+        <header
+          id={`${pageName}-${blockName}`}
+          className={`${blurName} ${labelName}-${blockName} ${stateName}`}
+          onMouseEnter={(event) => {
+            blockViews(event.currentTarget, pageName, 'header', 'unfold');
+            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+          }}
+        >
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\

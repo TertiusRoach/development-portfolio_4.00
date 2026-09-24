@@ -1,113 +1,190 @@
 //--|🠊 layouts/containers 🠈|--\\
 //--|🠋 Select Function 🠋|--\\
 type BlockName = 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
-type AlterAction = 'expand' | 'collapse' | 'unfold' | 'squaring' | 'loading' | 'update';
+type AlterAction = 'expand' | 'collapsed' | 'unfold' | 'squaring' | 'loading' | 'update';
+
+function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockName, alterAction: AlterAction) {
+  const lockedElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  const toggleSafety: boolean = lockedElement.classList.contains(`locked-${blockName}`) as true | false;
+  const selectElement = thisItem.classList[0].split('-')[1] as 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
+
+  if (toggleSafety || selectElement === 'main') return;
+
+  lockedElement.classList.add(`locked-${blockName}`);
+  blockHandlers[blockName]?.[alterAction]?.(pageName);
+  setTimeout(() => {
+    lockedElement.classList.remove(`locked-${blockName}`);
+  }, 1500);
+}
+
+/*
+function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockName, alterAction: AlterAction) {
+  const lockedElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  const toggleSafety: boolean = lockedElement.classList.contains(`locked-${blockName}`) as true | false;
+  const selectElement: string = thisItem.classList[0].split('-')[1] as 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
+  if (!toggleSafety && selectElement !== 'main') {
+    lockedElement.classList.add(`locked-${blockName}`);
+    blockHandlers[blockName]?.[alterAction]?.(pageName);
+    setTimeout(() => {
+      lockedElement.classList.remove(`locked-${blockName}`);
+    }, 1500);
+  } else {
+    
+    switch (blockName) {
+      case 'header':
+        if (alterAction === 'expand') {
+          expandHeader(pageName, blockName);
+        } else if (alterAction === 'collapsed') {
+          collapseHeader(pageName, blockName);
+        } else if (alterAction === 'unfold') {
+          unfoldHeader(pageName, blockName);
+        } else if (alterAction === 'squaring') {
+          squaringHeader(pageName, blockName);
+        }
+        break;
+      case 'footer':
+        if (alterAction === 'expand') {
+        } else if (alterAction === 'collapsed') {
+        } else if (alterAction === 'unfold') {
+        } else if (alterAction === 'squaring') {
+        }
+        break;
+      case 'leftbar':
+        if (alterAction === 'expand') {
+        } else if (alterAction === 'collapsed') {
+        } else if (alterAction === 'unfold') {
+        } else if (alterAction === 'squaring') {
+        }
+        break;
+      case 'rightbar':
+        if (alterAction === 'expand') {
+        } else if (alterAction === 'collapsed') {
+        } else if (alterAction === 'unfold') {
+        } else if (alterAction === 'squaring') {
+        }
+        break;
+    }
+    
+  }
+}
+*/
+
+//--|🠊 Expand Functions 🠈|--\\
+let expandHeader = (pageName: string, blockName: 'header') => {
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+};
+let expandFooter = (pageName: string, blockName: 'footer') => {
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+};
+let expandLeftbar = (pageName: string, blockName: 'leftbar') => {
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+};
+let expandRightbar = (pageName: string, blockName: 'rightbar') => {
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+};
+let expandOverlay = (pageName: string, blockName: 'overlay') => {
+  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\`);
+};
+
+//--|🠊 Collapse Functions 🠈|--\\
+let collapseHeader = (pageName: string, blockName: 'header') => {
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+};
+let collapseFooter = (pageName: string, blockName: 'footer') => {
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+};
+let collapseLeftbar = (pageName: string, blockName: 'leftbar') => {
+  let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  leftbarElement.classList.replace(leftbarElement.classList[1], 'collapsed');
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+};
+let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+};
+let collapseOverlay = (pageName: string, blockName: 'overlay') => {
+  console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\`);
+};
+
+//--|🠊 Unfold Functions 🠈|--\\
+let unfoldHeader = (pageName: string, blockName: 'header') => {
+  let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  headerElement.classList.replace(headerElement.classList[1], 'unfolded');
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+};
+let unfoldFooter = (pageName: string, blockName: 'footer') => {
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+};
+let unfoldLeftbar = (pageName: string, blockName: 'leftbar') => {
+  let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  leftbarElement.classList.replace(leftbarElement.classList[1], 'unfolded');
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+};
+let unfoldRightbar = (pageName: string, blockName: 'rightbar') => {
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+};
+
+//--|🠊 Squaring Functions 🠈|--\\
+let squaringHeader = (pageName: string, blockName: 'header') => {
+  let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  headerElement.classList.replace(headerElement.classList[1], 'squaring');
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+};
+let squaringFooter = (pageName: string, blockName: 'footer') => {
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+};
+let squaringLeftbar = (pageName: string, blockName: 'leftbar') => {
+  let footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  footerElement.classList.replace(footerElement.classList[1], 'squaring');
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+};
+let squaringRightbar = (pageName: string, blockName: 'rightbar') => {
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+};
+
+//--|🠊 Update & Loading Overlay 🠈|--\\
+let updateOverlay = (pageName: string, blockName: 'overlay') => {
+  console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\`);
+};
+let loadingOverlay = (pageName: string, blockName: 'overlay') => {
+  console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\`);
+};
+
 type Handler = (pageName: string) => void;
 
 const blockHandlers: Partial<Record<BlockName, Partial<Record<AlterAction, Handler>>>> = {
-  overlay: {
-    expand: (pageName) => showOverlay(pageName, 'overlay'),
-    collapse: (pageName) => hideOverlay(pageName, 'overlay'),
-    update: (pageName) => updateOverlay(pageName, 'overlay'),
-    loading: (pageName) => loadingOverlay(pageName, 'overlay'),
-  },
   header: {
     expand: (pageName) => expandHeader(pageName, 'header'),
-    collapse: (pageName) => collapseHeader(pageName, 'header'),
+    collapsed: (pageName) => collapseHeader(pageName, 'header'),
     unfold: (pageName) => unfoldHeader(pageName, 'header'),
     squaring: (pageName) => squaringHeader(pageName, 'header'),
   },
   footer: {
     expand: (pageName) => expandFooter(pageName, 'footer'),
-    collapse: (pageName) => collapseFooter(pageName, 'footer'),
+    collapsed: (pageName) => collapseFooter(pageName, 'footer'),
     unfold: (pageName) => unfoldFooter(pageName, 'footer'),
     squaring: (pageName) => squaringFooter(pageName, 'footer'),
   },
+  overlay: {
+    expand: (pageName) => expandOverlay(pageName, 'overlay'),
+    collapsed: (pageName) => collapseOverlay(pageName, 'overlay'),
+    update: (pageName) => updateOverlay(pageName, 'overlay'),
+    loading: (pageName) => loadingOverlay(pageName, 'overlay'),
+  },
   leftbar: {
     expand: (pageName) => expandLeftbar(pageName, 'leftbar'),
-    collapse: (pageName) => collapseLeftbar(pageName, 'leftbar'),
+    collapsed: (pageName) => collapseLeftbar(pageName, 'leftbar'),
     unfold: (pageName) => unfoldLeftbar(pageName, 'leftbar'),
     squaring: (pageName) => squaringLeftbar(pageName, 'leftbar'),
   },
   rightbar: {
     expand: (pageName) => expandRightbar(pageName, 'rightbar'),
-    collapse: (pageName) => collapseRightbar(pageName, 'rightbar'),
+    collapsed: (pageName) => collapseRightbar(pageName, 'rightbar'),
     unfold: (pageName) => unfoldRightbar(pageName, 'rightbar'),
     squaring: (pageName) => squaringRightbar(pageName, 'rightbar'),
   },
 };
-function blockViews(pageName: string, blockName: BlockName, alterAction: AlterAction) {
-  blockHandlers[blockName]?.[alterAction]?.(pageName);
-}
-
-//--|🠊 Expand Functions 🠈|--\\
-const showOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\`);
-};
-const expandHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
-};
-const expandFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
-};
-const expandLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
-};
-const expandRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
-};
-
-//--|🠊 Collapse Functions 🠈|--\\
-const hideOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\`);
-};
-const collapseHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
-};
-const collapseFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
-};
-const collapseLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
-};
-const collapseRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
-};
-
-//--|🠊 Unfold & Update Functions 🠈|--\\
-const updateOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\`);
-};
-const unfoldHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
-};
-const unfoldFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
-};
-const unfoldLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
-};
-const unfoldRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
-};
-
-//--|🠊 Squaring & Loading Functions 🠈|--\\
-const loadingOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\`);
-};
-const squaringHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
-};
-const squaringFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
-};
-const squaringLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
-};
-const squaringRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
-};
-
 export default blockViews;
 
 /*

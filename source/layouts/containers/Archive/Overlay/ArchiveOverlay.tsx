@@ -28,20 +28,6 @@ function ArchiveOverlay({ info }: InfoProps): JSX.Element {
 
   useEffect(() => {
     return checkScreen(setOrientation);
-    // return checkScreen(setOrientation);
-    /*
-    setTimeout(() => {
-      return blockViews(pageName, blockName as 'overlay', 'collapse');
-    }, 3000);
-    setTimeout(() => {
-      switch (getOrientation) {
-        case 'landscape':
-          // return blockViews(pageName, 'header', 'squaring');
-        case 'portrait':
-          // return blockViews(pageName, 'footer', 'squaring');
-      }
-    }, 2500);
-    */
   }, [pageName, blockName, labelName]);
 
   let stateName: 'visible' | 'loading' | 'updates' | 'hidden' | 'visible';
