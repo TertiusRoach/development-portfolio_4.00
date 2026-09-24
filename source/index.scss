@@ -48,11 +48,13 @@
   }
 }
 %transitions {
-  @include Transition.body-transition();
-  @include Transition.header-transition();
-  @include Transition.footer-transition();
   @include Transition.overlay-transition();
+  @include Transition.body-transition();
   @include Transition.sidebar-transition();
+  //--|===|--\\
+  @include Transition.header-transition();
+  @include Transition.main-transition();
+  @include Transition.footer-transition();
 }
 body {
   div[id*='body'] {

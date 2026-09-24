@@ -1,4 +1,13 @@
 //--|🠊 ArchiveMain.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect, useState } from 'react';
+
+//--|🠋 Components 🠋|--\\
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
+
 //--|🠋 Elements 🠋|--\\
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
@@ -11,15 +20,6 @@ import SectionElements from './elements/section-components/SectionElements';
 import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
-
-//--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
-
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
-
 interface InfoProps {
   info: {
     blockName: '<main>' | string;
@@ -29,15 +29,20 @@ interface InfoProps {
 }
 
 function ArchiveMain({ info }: InfoProps) {
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
+  let blockName = stripBrackets(info.blockName, '<>') as 'main';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  let pageName = stripBrackets(info.pageName, '[]') as 'components';
+
+  useEffect(() => {
+    /* return checkScreen(setOrientation); */
+  }, [pageName, blockName, labelName]);
 
   let startingPreview: number = 1;
+  let blurName: string = 'obnubilate';
   return (
-    <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+    <main id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
         <DivisionCarousel
           //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\

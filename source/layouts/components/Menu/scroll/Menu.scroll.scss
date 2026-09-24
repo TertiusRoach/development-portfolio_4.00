@@ -310,68 +310,6 @@
     }
   }
 }
-@mixin desktop-y-showing {
-  &[class*='vertical_I'] {
-    transform: translateY(calc(-100% * 0));
-  }
-  &[class*='vertical_II'] {
-    transform: translateY(calc(-100% * 1));
-  }
-  &[class*='vertical_III'] {
-    transform: translateY(calc(-100% * 2));
-  }
-  &[class*='vertical_IV'] {
-    transform: translateY(calc(-100% * 3));
-  }
-  &[class*='vertical_V'] {
-    transform: translateY(calc(-100% * 4));
-  }
-  &[class*='vertical_VI'] {
-    transform: translateY(calc(-100% * 5));
-  }
-  &[class*='vertical_VII'] {
-    transform: translateY(calc(-100% * 6));
-  }
-  &[class*='vertical_VIII'] {
-    transform: translateY(calc(-100% * 7));
-  }
-  &[class*='vertical_IX'] {
-    transform: translateY(calc(-100% * 8));
-  }
-  &[class*='vertical_X'] {
-    transform: translateY(calc(-100% * 9));
-  }
-  &[class*='vertical_XI'] {
-    transform: translateY(calc(-100% * 10));
-  }
-  &[class*='vertical_XII'] {
-    transform: translateY(calc(-100% * 11));
-  }
-  &[class*='vertical_XIII'] {
-    transform: translateY(calc(-100% * 12));
-  }
-  &[class*='vertical_XIV'] {
-    transform: translateY(calc(-100% * 13));
-  }
-  &[class*='vertical_XV'] {
-    transform: translateY(calc(-100% * 14));
-  }
-  &[class*='vertical_XVI'] {
-    transform: translateY(calc(-100% * 15));
-  }
-  &[class*='vertical_XVII'] {
-    transform: translateY(calc(-100% * 16));
-  }
-  &[class*='vertical_XVIII'] {
-    transform: translateY(calc(-100% * 17));
-  }
-  &[class*='vertical_XIX'] {
-    transform: translateY(calc(-100% * 18));
-  }
-  &[class*='vertical_XX'] {
-    transform: translateY(calc(-100% * 19));
-  }
-}
 @mixin desktop-x-showing {
   & {
     &[class*='vertical_I'] {
@@ -620,6 +558,68 @@
     &[class*='vertical_XX'] {
       transform: translateY(calc(-48px * 19));
     }
+  }
+}
+@mixin desktop-y-showing {
+  &[class*='vertical_I'] {
+    transform: translateY(calc(-100% * 0));
+  }
+  &[class*='vertical_II'] {
+    transform: translateY(calc(-100% * 1));
+  }
+  &[class*='vertical_III'] {
+    transform: translateY(calc(-100% * 2));
+  }
+  &[class*='vertical_IV'] {
+    transform: translateY(calc(-100% * 3));
+  }
+  &[class*='vertical_V'] {
+    transform: translateY(calc(-100% * 4));
+  }
+  &[class*='vertical_VI'] {
+    transform: translateY(calc(-100% * 5));
+  }
+  &[class*='vertical_VII'] {
+    transform: translateY(calc(-100% * 6));
+  }
+  &[class*='vertical_VIII'] {
+    transform: translateY(calc(-100% * 7));
+  }
+  &[class*='vertical_IX'] {
+    transform: translateY(calc(-100% * 8));
+  }
+  &[class*='vertical_X'] {
+    transform: translateY(calc(-100% * 9));
+  }
+  &[class*='vertical_XI'] {
+    transform: translateY(calc(-100% * 10));
+  }
+  &[class*='vertical_XII'] {
+    transform: translateY(calc(-100% * 11));
+  }
+  &[class*='vertical_XIII'] {
+    transform: translateY(calc(-100% * 12));
+  }
+  &[class*='vertical_XIV'] {
+    transform: translateY(calc(-100% * 13));
+  }
+  &[class*='vertical_XV'] {
+    transform: translateY(calc(-100% * 14));
+  }
+  &[class*='vertical_XVI'] {
+    transform: translateY(calc(-100% * 15));
+  }
+  &[class*='vertical_XVII'] {
+    transform: translateY(calc(-100% * 16));
+  }
+  &[class*='vertical_XVIII'] {
+    transform: translateY(calc(-100% * 17));
+  }
+  &[class*='vertical_XIX'] {
+    transform: translateY(calc(-100% * 18));
+  }
+  &[class*='vertical_XX'] {
+    transform: translateY(calc(-100% * 19));
   }
 }
 //--|===|--\\

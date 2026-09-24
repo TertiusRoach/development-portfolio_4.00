@@ -29,12 +29,13 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
     return checkScreen(setOrientation);
   }, [pageName, blockName]);
 
+  let blurName: string = 'obnubilate';
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
       stateName = 'collapsed';
       return (
-        <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+        <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>
@@ -43,7 +44,7 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
     case 'portrait':
       stateName = 'unfolded';
       return (
-        <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+        <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <MenuSelect
               info={{

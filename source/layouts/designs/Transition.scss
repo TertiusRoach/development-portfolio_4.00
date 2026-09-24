@@ -1,10 +1,51 @@
 //--|🠊 Transition.scss 🠈|--\\
+//--|🠋 <Desktop> 🠋|--\\
+$high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+$test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+$misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+$tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+
+//--|🠋 <Mobile> 🠋|--\\
+$high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+$test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+$misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+$tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+
 //--|🠋 div[id*="body"] 🠋|--\\
 @mixin body-transition {
   &[id*='body'] {
     transition:
       height 1.5s ease-in-out,
       clip-path 1.5s ease-in-out;
+    main[class*='main'],
+    aside[class*='bar'],
+    header[class*='header'],
+    footer[class*='footer'] {
+      opacity: 1;
+      filter: blur(0);
+      &[class*='main'] {
+        transition: filter 3000ms ease-in-out;
+        &.obnubilate {
+          filter: blur(32px);
+        }
+      }
+
+      &[class*='left'],
+      &[class*='right'],
+      &[class*='header'],
+      &[class*='footer'] {
+        transition:
+          filter 1250ms ease-in-out,
+          opacity 750ms ease-in-out,
+          clip-path 500ms ease-in-out;
+
+        &.obnubilate {
+          opacity: 0;
+          filter: blur(8px);
+        }
+      }
+    }
+
     &[class*='active'] {
       height: 100svh;
       clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -19,113 +60,32 @@
 @mixin header-transition {
   header {
     @extend %header-effects;
-    @extend %header-transitions;
-    @extend %header-constituents;
+    @extend %header-children;
+    @extend %header-clipping;
   }
   %header-effects {
-    &[class*='expanded'] {
-      section[class='header-foreground'] {
-      }
-      figure[class='header-midground'] {
-        transform: translateY(0%);
-      }
-      div[class='header-background'] {
-        opacity: 1;
-      }
-    }
+    &[class*='expanded'],
     &[class*='unfolded'] {
-      section[class='header-foreground'] {
-      }
-      figure[class='header-midground'] {
-        transform: translateY(-100%);
-      }
+      /*
       div[class='header-background'] {
         opacity: 1;
       }
+      */
     }
-
+    //--|===|--\\
     &[class*='squaring'],
     &[class*='collapsed'] {
-      section[class='header-foreground'] {
-      }
-      figure[class='header-midground'] {
-        transform: translateY(-100%);
-      }
+      /*
       div[class='header-background'] {
         opacity: 0;
       }
+      */
     }
   }
-  %header-transitions {
-    transition: clip-path 500ms ease-in-out;
-    &[class*='squaring'],
-    &[class*='collapsed'] {
-      section[class='header-foreground'] {
-      }
-      figure[class='header-midground'] {
-      }
-      div[class='header-background'] {
-        transition: opacity 250ms ease-out;
-      }
-    }
-
-    &[class*='expanded'],
-    &[class*='unfolded'],
-    div[class='header-background'] {
-      section[class='header-foreground'] {
-      }
-      figure[class='header-midground'] {
-      }
-      div[class='header-background'] {
-        transition: opacity 750ms ease-in;
-      }
-    }
-  }
-  %header-constituents {
-    //--|🠊 Definition: Serving as part of a whole 🠈|--//
-    @media screen and (orientation: landscape) {
-      &[class*='expanded'] {
-        clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--//
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--//
-        }
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--//
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--//
-        }
-      }
-
-      &[class*='unfolded'] {
-        clip-path: inset(0 0 calc(100% - 8rem) 0);
-        @media screen and (max-height: 768px) {
-          clip-path: inset(0 0 calc(100% - 6rem) 0);
-        }
-        @media screen and (max-height: 480px) {
-          clip-path: inset(0 0 calc(100% - 4rem) 0);
-        }
-        @media screen and (max-height: 360px) {
-          clip-path: inset(0 0 calc(100% - 3rem) 0);
-        }
-
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
-        }
-      }
-      &[class*='squaring'] {
-        transition: clip-path 500ms ease-in-out;
-        clip-path: inset(0 calc(100% - 8rem) calc(100% - 8rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        @media screen and (max-height: 768px) {
-          clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 480px) {
-          clip-path: inset(0 calc(100% - 4rem) calc(100% - 4rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 360px) {
-          clip-path: inset(0 calc(100% - 3rem) calc(100% - 3rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-
+  %header-children {
+    *[class*='ground']:first-child {
+      @media screen and (orientation: landscape) {
+        //--|🠊 max-height 🠈|--\\
         section[class='header-foreground'] {
           header {
             //--|🠋 128px for Squares 🠋|--\\
@@ -162,19 +122,10 @@
             @media screen and (max-height: 360px) {
               grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
             }
-
-            /*
-            ol,
-            ul {
-              z-index: 0;
-              grid-area: 1 / 1 / 3 / 2;
-            }
-            */
           }
           //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
         }
-      }
-      *[class*='ground']:first-child {
+        /*
         header {
           //--|🠋 128px for Squares 🠋|--\\
           padding: 0 128px;
@@ -195,100 +146,12 @@
             clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
           }
         }
-      }
-    }
-    @media screen and (orientation: portrait) {
-      &[class*='expanded'] {
-        clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--//
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--//
-        }
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--//
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--//
-        }
+        */
       }
 
-      &[class*='unfolded'] {
-        clip-path: inset(0 0 calc(100% - 12rem) 0);
-        @media screen and (max-width: 768px) {
-          clip-path: inset(0 0 calc(100% - 10rem) 0);
-        }
-        @media screen and (max-width: 480px) {
-          clip-path: inset(0 0 calc(100% - 6rem) 0);
-        }
-        @media screen and (max-width: 360px) {
-          clip-path: inset(0 0 calc(100% - 4rem) 0);
-        }
-
-        section[class='header-foreground'] {
-          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
-        }
-      }
-      &[class*='squaring'] {
-        transition: clip-path 500ms ease-in-out;
-        clip-path: inset(0 calc(100% - 12rem) calc(100% - 12rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        @media screen and (max-width: 768px) {
-          clip-path: inset(0 calc(100% - 10rem) calc(100% - 10rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 480px) {
-          clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 360px) {
-          clip-path: inset(0 calc(100% - 4rem) calc(100% - 4rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-
-        section[class='header-foreground'] {
-          header {
-            //--|🠋 192px for Squares 🠋|--\\
-            clip-path: inset(0% 192px 0% 192px); //--|🠈 top / right / bottom / left 🠈|--\\
-            @media screen and (max-width: 768px) {
-              //--|🠋 160px for Squares 🠋|--\\
-              clip-path: inset(0% 160px 0% 160px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-            @media screen and (max-width: 480px) {
-              //--|🠋 96px for Squares 🠋|--\\
-              clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-            @media screen and (max-width: 360px) {
-              //--|🠋 64px for Squares 🠋|--\\
-              clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-          }
-          nav {
-            menu {
-              z-index: 1;
-              grid-area: 1 / 1 / 3 / 2;
-              button:not(:first-child) {
-                top: 0;
-                position: relative;
-              }
-            }
-            grid-template-rows: repeat(2, 96px); //--|🠈 rows 🠈|--\\
-            @media screen and (max-width: 768px) {
-              grid-template-rows: repeat(2, 80px); //--|🠈 rows 🠈|--\\
-            }
-            @media screen and (max-width: 480px) {
-              grid-template-rows: repeat(2, 48px); //--|🠈 rows 🠈|--\\
-            }
-            @media screen and (max-width: 360px) {
-              grid-template-rows: repeat(2, 32px); //--|🠈 rows 🠈|--\\
-            }
-
-            /*
-            ol,
-            ul {
-              z-index: 0;
-              grid-area: 1 / 1 / 3 / 2;
-            }
-            */
-          }
-          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
-        }
-      }
-      *[class*='ground']:first-child {
+      @media screen and (orientation: portrait) {
+        //--|🠊 max-width 🠈|--\\
+        /*
         header {
           //--|🠋 192px for Squares 🠋|--\\
           padding: 0 192px;
@@ -309,7 +172,72 @@
             clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
           }
         }
+        */
       }
+    }
+  }
+  %header-clipping {
+    @media screen and (orientation: landscape) {
+      //--|🠊 max-height 🠈|--\\
+      &[class*='unfolded'] {
+        clip-path: inset(0 0 calc(100% - 8rem) 0);
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0 0 calc(100% - 6rem) 0);
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0 0 calc(100% - 4rem) 0);
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0 0 calc(100% - 3rem) 0);
+        }
+      }
+      &[class*='squaring'] {
+        clip-path: inset(0 calc(100% - 8rem) calc(100% - 8rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0 calc(100% - 4rem) calc(100% - 4rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0 calc(100% - 3rem) calc(100% - 3rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 max-width 🠈|--\\
+      &[class*='unfolded'] {
+        clip-path: inset(0 0 calc(100% - 12rem) 0);
+        @media screen and (max-width: 768px) {
+          clip-path: inset(0 0 calc(100% - 10rem) 0);
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(0 0 calc(100% - 6rem) 0);
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(0 0 calc(100% - 4rem) 0);
+        }
+      }
+      &[class*='squaring'] {
+        transition: clip-path 500ms ease-in-out;
+        clip-path: inset(0 calc(100% - 12rem) calc(100% - 12rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-width: 768px) {
+          clip-path: inset(0 calc(100% - 10rem) calc(100% - 10rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(0 calc(100% - 6rem) calc(100% - 6rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(0 calc(100% - 4rem) calc(100% - 4rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Constituents: Serving as part of a whole 🠈|--//
+    &[class*='expanded'] {
+      clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+    }
+    &[class*='collapsed'] {
+      clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
   }
 }
@@ -318,73 +246,77 @@
   //--|🠋 Footer 🠋|--//
   footer {
     @extend %footer-effects;
-    @extend %footer-transition;
-    @extend %footer-constituents;
+    @extend %footer-children;
+    @extend %footer-clipping;
   }
   %footer-effects {
-    &[class*='expanded'] {
-      section[class='footer-foreground'] {
-      }
-      figure[class='footer-midground'] {
-        transform: translateY(0%);
-      }
-      div[class='footer-background'] {
-        opacity: 1;
-      }
-    }
+    &[class*='expanded'],
     &[class*='unfolded'] {
-      section[class='footer-foreground'] {
-      }
-      figure[class='footer-midground'] {
-        transform: translateY(-100%);
-      }
+      /*
       div[class='footer-background'] {
         opacity: 1;
       }
+      */
     }
-
+    //--|===|--\\
     &[class*='squaring'],
     &[class*='collapsed'] {
-      section[class='footer-foreground'] {
-      }
-      figure[class='footer-midground'] {
-        transform: translateY(100%);
-      }
+      /*
       div[class='footer-background'] {
         opacity: 0;
       }
+      */
     }
   }
-  %footer-transition {
-    transition: clip-path 500ms ease-in-out;
-    &[class*='squaring'],
-    &[class*='collapsed'] {
-      section[class='footer-foreground'] {
+  %footer-children {
+    *[class*='ground']:first-child {
+      @media screen and (orientation: landscape) {
+        //--|🠊 max-height 🠈|--\\
+        /*
+        footer {
+          //--|🠋 128px for Squares 🠋|--\\
+          clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
+          @media screen and (max-height: 768px) {
+            //--|🠋 96px for Squares 🠋|--\\
+            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+          @media screen and (max-height: 480px) {
+            //--|🠋 64px for Squares 🠋|--\\
+            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+          @media screen and (max-height: 360px) {
+            //--|🠋 48px for Squares 🠋|--\\
+            clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+        }
+        */
       }
-      figure[class='header-midground'] {
-      }
-      div[class='footer-background'] {
-        transition: opacity 250ms ease-out;
-      }
-    }
-
-    &[class*='expanded'],
-    &[class*='unfolded'],
-    div[class='footer-background'] {
-      section[class='footer-foreground'] {
-      }
-      figure[class='footer-midground'] {
-      }
-      div[class='footer-background'] {
-        transition: opacity 750ms ease-in;
+      @media screen and (orientation: portrait) {
+        //--|🠊 max-width 🠈|--\\
+        /*
+        footer {
+          //--|🠋 192px for Squares 🠋|--\\
+          clip-path: inset(0% 192px 0% 192px); //--|🠈 top / right / bottom / left 🠈|--\\
+          @media screen and (max-width: 768px) {
+            //--|🠋 160px for Squares 🠋|--\\
+            clip-path: inset(0% 160px 0% 160px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+          @media screen and (max-width: 480px) {
+            //--|🠋 96px for Squares 🠋|--\\
+            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+          @media screen and (max-width: 360px) {
+            //--|🠋 64px for Squares 🠋|--\\
+            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
+          }
+        }
+        */
       }
     }
   }
-  %footer-constituents {
-    //--|🠊 Definition: Serving as part of a whole 🠈|--\\
-    //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--//
+  %footer-clipping {
     @media screen and (orientation: landscape) {
-      //--|🠋 Desktop (Landscape) 🠋|--\\
+      //--|🠊 max-height 🠈|--\\
       &[class*='unfolded'] {
         clip-path: inset(calc(100% - 8rem) 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-height: 768px) {
@@ -409,26 +341,9 @@
           clip-path: inset(calc(100% - 3rem) 0 0 calc(100% - 3rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
-      *[class*='ground']:first-child {
-        footer {
-          //--|🠋 128px for Squares 🠋|--\\
-          clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-height: 768px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            //--|🠋 48px for Squares 🠋|--\\
-            clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-      }
     }
     @media screen and (orientation: portrait) {
+      //--|🠊 max-width 🠈|--\\
       &[class*='unfolded'] {
         clip-path: inset(calc(100% - 12rem) 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-width: 768px) {
@@ -453,178 +368,44 @@
           clip-path: inset(calc(100% - 4rem) 0 0 calc(100% - 4rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         }
       }
-      *[class*='ground']:first-child {
-        footer {
-          //--|🠋 192px for Squares 🠋|--\\
-          clip-path: inset(0% 192px 0% 192px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-width: 768px) {
-            //--|🠋 160px for Squares 🠋|--\\
-            clip-path: inset(0% 160px 0% 160px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 480px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 360px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-      }
     }
+    //--|🠊 Definition: Serving as part of a whole 🠈|--\\
     &[class*='expanded'] {
       clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
     &[class*='collapsed'] {
-      clip-path: inset(100% 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
   }
 }
-//--|🠋 aside[id*="bar"] 🠋|--\\
-@mixin sidebar-transition {
-  aside[id*='leftbar'] {
-    @extend %leftbar-effects;
-    @extend %leftbar-transitions;
-    @extend %leftbar-constituents;
+//--|🠋 main[id*="main"] 🠋|--\\
+@mixin main-transition {
+  main {
+    @extend %main-effects;
+    @extend %main-transitions;
+    @extend %main-constituents;
   }
-  %leftbar-effects {
-    /*--|🠋
-
-    🠉|--*/
-    &[class*='expanded'] {
-    }
-    &[class*='unfolded'] {
-    }
-    &[class*='collapsed'] {
+  %main-effects {
+    &[class*='main'] {
+      filter: blur(0);
+      &.obnubilate {
+        filter: blur(16px);
+      }
     }
   }
-  %leftbar-transitions {
-    /*--|🠋
-
-    🠉|--*/
-    transition: clip-path 500ms ease-in-out;
+  %main-transitions {
+    transition: filter calc(3000ms - 125ms) ease-in-out;
   }
-  %leftbar-constituents {
-    //--|🠊 Definition: Serving as part of a whole 🠈|--\\
+  %main-constituents {
+    //--|🠊 Definition: Serving as part of a whole 🠈|--//
     @media screen and (orientation: landscape) {
-      &[class*='unfolded'] {
-        /*--|🠋
-
-        🠉|--*/
-        clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        @media screen and (max-height: 768px) {
-          clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 480px) {
-          clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 360px) {
-          clip-path: inset(0% calc(100% - 48px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-      }
-      &[class*='expanded'] {
-        clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
+      //--|🠊 max-height 🠈|--\\
     }
     @media screen and (orientation: portrait) {
-      &[class*='unfolded'] {
-        clip-path: inset(0% calc(100% - 192px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        background: rgba(darkred, 0.25);
-
-        @media screen and (max-width: 768px) {
-          clip-path: inset(0% calc(100% - 160px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 480px) {
-          clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 360px) {
-          clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-      }
-      &[class*='expanded'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-  }
-
-  aside[id*='rightbar'] {
-    @extend %rightbar-effects;
-    @extend %rightbar-transition;
-    @extend %rightbar-constituents;
-  }
-  %rightbar-effects {
-    /*--|🠋
-
-    🠉|--*/
-    &[class*='expanded'] {
-    }
-    &[class*='unfolded'] {
-    }
-    &[class*='collapsed'] {
-    }
-  }
-  %rightbar-transition {
-    /*--|🠋
-
-    🠉|--*/
-    transition: clip-path 500ms ease-in-out;
-  }
-  %rightbar-constituents {
-    //--|🠊 Definition: Serving as part of a whole 🠈|--\\
-    @media screen and (orientation: landscape) {
-      &[class*='unfolded'] {
-        /*--|🠋
-
-        🠉|--*/
-        clip-path: inset(0% 0% 0% calc(100% - 128px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        @media screen and (max-height: 768px) {
-          clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 480px) {
-          clip-path: inset(0% 0% 0% calc(100% - 64px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-height: 360px) {
-          clip-path: inset(0% 0% 0% calc(100% - 48px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-      }
-      &[class*='expanded'] {
-        clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0% 0% 0% 100%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-    }
-    @media screen and (orientation: portrait) {
-      &[class*='unfolded'] {
-        clip-path: inset(0% 0% 0% calc(100% - 192px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        @media screen and (max-width: 768px) {
-          clip-path: inset(0% 0% 0% calc(100% - 160px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 480px) {
-          clip-path: inset(0% 0% 0% calc(100% - 96px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-        @media screen and (max-width: 360px) {
-          clip-path: inset(0% 0% 0% calc(100% - 64px)); //--|🠈 top / right / bottom / left 🠈|--\\
-        }
-      }
-      &[class*='expanded'] {
-        transition: clip-path 0.25s;
-        clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
-      &[class*='collapsed'] {
-        clip-path: inset(0% 100% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
-      }
+      //--|🠊 max-width 🠈|--\\
     }
   }
 }
-
 //--|🠋 section[id*="overlay"] 🠋|--\\
 @mixin overlay-transition {
   section[class*='overlay'] {
@@ -687,5 +468,165 @@
       visibility 0ms 0ms,
       opacity 500ms ease-in-out;
     visibility: visible;
+  }
+}
+//--|🠋 aside[id*="bar"] 🠋|--\\
+@mixin sidebar-transition {
+  aside[id*='leftbar'] {
+    @extend %leftbar-effects;
+    @extend %leftbar-clipping;
+  }
+  %leftbar-effects {
+    /*--|🠋
+
+    🠉|--*/
+    &[class*='expanded'] {
+    }
+    &[class*='unfolded'] {
+    }
+    &[class*='collapsed'] {
+    }
+  }
+  %leftbar-clipping {
+    //--|🠊 Constituents: Serving as part of a whole 🠈|--\\
+    &[class*='expanded'] {
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+    }
+    @media screen and (orientation: landscape) {
+      //--|🠊 max-height 🠈|--\\
+      &[class*='unfolded'] {
+        /*--|🠋
+
+        🠉|--*/
+        clip-path: inset(0% calc(100% - 128px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0% calc(100% - 48px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+      &[class*='collapsed'] {
+        clip-path: inset(0% calc(100% - $high-desk) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0% calc(100% - $test-desk) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0% calc(100% - $misc-desk) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0% calc(100% - $tiny-desk) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 max-width 🠈|--\\
+      &[class*='unfolded'] {
+        clip-path: inset(0% calc(100% - 192px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-width: 768px) {
+          clip-path: inset(0% calc(100% - 160px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(0% calc(100% - 96px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(0% calc(100% - 64px) 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+      &[class*='collapsed'] {
+        clip-path: inset(0% calc(100% - $high-mobi) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-width: 768px) {
+          clip-path: inset(0% calc(100% - $test-mobi) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(0% calc(100% - $misc-mobi) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(0% calc(100% - $tiny-mobi) 100% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
+  }
+
+  aside[id*='rightbar'] {
+    @extend %rightbar-effects;
+    @extend %rightbar-clipping;
+  }
+  %rightbar-effects {
+    /*--|🠋
+
+    🠉|--*/
+    &[class*='expanded'] {
+    }
+    &[class*='unfolded'] {
+    }
+    &[class*='collapsed'] {
+    }
+  }
+  %rightbar-clipping {
+    //--|🠊 Constituents: Serving as part of a whole 🠈|--\\
+    &[class*='expanded'] {
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+    }
+    @media screen and (orientation: landscape) {
+      //--|🠊 max-height 🠈|--\\
+      &[class*='unfolded'] {
+        /*--|🠋
+
+        🠉|--*/
+        clip-path: inset(0% 0% 0% calc(100% - $high-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-height: 768px) {
+          clip-path: inset(0% 0% 0% calc(100% - $test-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(0% 0% 0% calc(100% - $misc-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(0% 0% 0% calc(100% - $tiny-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+      &[class*='collapsed'] {
+        clip-path: inset(100% 0% 0% calc(100% - $high-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-height: 768px) {
+          clip-path: inset(100% 0% 0% calc(100% - $test-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 480px) {
+          clip-path: inset(100% 0% 0% calc(100% - $misc-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-height: 360px) {
+          clip-path: inset(100% 0% 0% calc(100% - $tiny-desk)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 max-width 🠈|--\\
+      &[class*='unfolded'] {
+        clip-path: inset(0% 0% 0% calc(100% - $high-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-width: 768px) {
+          clip-path: inset(0% 0% 0% calc(100% - $test-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(0% 0% 0% calc(100% - $misc-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(0% 0% 0% calc(100% - $tiny-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+      &[class*='collapsed'] {
+        clip-path: inset(100% 0% 0% calc(100% - $high-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        @media screen and (max-width: 768px) {
+          clip-path: inset(100% 0% 0% calc(100% - $test-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 480px) {
+          clip-path: inset(100% 0% 0% calc(100% - $misc-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+        @media screen and (max-width: 360px) {
+          clip-path: inset(100% 0% 0% calc(100% - $tiny-mobi)); //--|🠈 top / right / bottom / left 🠈|--\\
+        }
+      }
+    }
   }
 }

@@ -8,7 +8,7 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { unfoldFooter, squaringFooter } from '../../containers';
+import blockViews from '../../containers';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
@@ -29,23 +29,13 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let blurName: string = 'obnubilate';
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
       stateName = 'squaring';
       return (
-        <footer
-          id={`${pageName}-${blockName}`}
-          className={`${labelName}-${blockName} ${stateName}`}
-          /*
-          onMouseEnter={() => {
-            unfoldFooter(pageName, 'hover', blockName);
-          }}
-          onMouseLeave={() => {
-            squaringFooter(pageName, 'exit', blockName);
-          }}
-          */
-        >
+        <footer id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
@@ -76,7 +66,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
     case 'portrait':
       stateName = 'unfolded';
       return (
-        <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+        <footer id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\

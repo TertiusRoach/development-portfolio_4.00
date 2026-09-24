@@ -8,8 +8,8 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
+import blockViews from '../../containers';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
-import { unfoldHeader, unfoldLeftbar, squaringHeader, collapseLeftbar, expandLeftbar, collapseHeader, expandHeader } from '../../containers';
 
 interface InfoProps {
   info: {
@@ -29,12 +29,13 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let blurName: string = 'obnubilate';
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
       stateName = 'unfolded';
       return (
-        <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+        <header id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
@@ -66,13 +67,6 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 image: undefined,
                 view: undefined,
               }}
-              onClick={() => {}}
-              onMouseEnter={() => {
-                /*
-                unfoldHeader(pageName);
-                */
-              }}
-              onMouseLeave={() => {}}
             />
           </section>
           <figure className={`${blockName}-midground`}></figure>
@@ -87,7 +81,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
     case 'portrait':
       stateName = 'squaring';
       return (
-        <header id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
+        <header id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}>
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
