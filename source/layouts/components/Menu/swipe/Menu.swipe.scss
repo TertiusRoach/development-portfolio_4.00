@@ -1,4 +1,6 @@
 //--|🠊 Menu.swipe.scss 🠈|--\\
+@use '../../../../layouts/designs/Palettes.scss' as Palettes;
+
 @mixin desktop-landscape {
   //--|🠋 Desktop (Swipe) 🠋|--\\
   $bold-weight: 650;
@@ -1462,32 +1464,41 @@ menu[class*='swipe'] {
       }
     }
   }
-  *[class*='swipe'] {
-    [class*='highlight'],
-    [class*='downplay'] {
-      transition:
-        opacity 500ms ease-in-out,
-        filter 250ms ease-in-out;
-      &[class*='highlight'] {
-        opacity: 1;
-        filter: blur(0px);
-      }
-      &[class*='downplay'] {
-        opacity: 0;
-        filter: blur(24px);
-        * {
-          cursor: default;
+  //--|===|--\\
+  &[class*='swipe'] {
+    ul[class*='hori-X-swipe'],
+    ol[class*='hori-Y-swipe'] {
+      position: relative; //--|🠊 Superimpose Positioning 🠈|--\\
+      li[class*='preview'],
+      li[class*='showing'] {
+        position: absolute;
+        transition: transform 250ms ease-in-out;
+        *[class*='highlight'],
+        *[class*='downplay'] {
+          transition:
+            opacity 500ms ease-in-out,
+            filter 250ms ease-in-out;
+          &[class*='highlight'] {
+            opacity: 1;
+            filter: blur(0px);
+          }
+          &[class*='downplay'] {
+            opacity: 0;
+            filter: blur(24px);
+            * {
+              cursor: default;
+            }
+          }
         }
       }
     }
-  }
-  ul[class*='hori-X-swipe'],
-  ol[class*='hori-Y-swipe'] {
-    position: relative; //--|🠊 Superimpose Positioning 🠈|--\\
-    li[class*='preview'],
-    li[class*='showing'] {
-      position: absolute;
-      transition: transform 250ms ease-in-out;
+    *[class*='_mon'] {
+      &[class*='lig_'] h3[class*='display'] {
+        color: Palettes.$indexLand-light;
+      }
+      &[class*='dar_'] h3[class*='display'] {
+        color: Palettes.$indexLand-dark;
+      }
     }
   }
 }

@@ -44,7 +44,7 @@ const ScrollMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               view: '-lef-',
               color: '(mono)',
-              shade: '~dark~',
+              shade: '~light~',
             }}
             cases={{
               axis: '[x]',

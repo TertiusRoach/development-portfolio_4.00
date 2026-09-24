@@ -1,6 +1,4 @@
 //--|🠊 Transition.scss 🠈|--\\
-@use './Palettes.scss';
-
 //--|🠋 div[id*="body"] 🠋|--\\
 @mixin body-transition {
   &[id*='body'] {
