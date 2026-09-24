@@ -66,19 +66,13 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 image: undefined,
                 view: undefined,
               }}
-              onClick={() => {
-                if (blockName === 'header') {
-                  unfoldLeftbar(pageName, 'click', 'leftbar');
-                }
-              }}
+              onClick={() => {}}
               onMouseEnter={() => {
-                unfoldHeader(pageName, 'hover', blockName);
+                /*
+                unfoldHeader(pageName);
+                */
               }}
-              onMouseLeave={() => {
-                setTimeout(() => {
-                  squaringHeader(pageName, 'exit', blockName);
-                }, 6250);
-              }}
+              onMouseLeave={() => {}}
             />
           </section>
           <figure className={`${blockName}-midground`}></figure>
@@ -130,6 +124,10 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
+
+  let styleShade = '~light~' as '~dark~' | '~light~';
+  let styleColor = '(mono)' as '(red)' | '(green)' | '(blue)' | '(mono)';
+  let styleView = 'def' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   return (
     <>
       <MenuSwipe
@@ -139,9 +137,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -155,9 +153,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -171,9 +169,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -187,9 +185,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -203,9 +201,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -219,9 +217,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -235,9 +233,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -251,9 +249,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -267,9 +265,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',
@@ -283,9 +281,9 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName as 'components',
         }}
         style={{
-          view: '-def-',
-          color: '(mono)',
-          shade: '~dark~',
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
         }}
         cases={{
           axis: '[x]',

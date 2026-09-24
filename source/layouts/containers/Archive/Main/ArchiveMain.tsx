@@ -35,7 +35,7 @@ function ArchiveMain({ info }: InfoProps) {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 6;
+  let startingPreview: number = 1;
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>

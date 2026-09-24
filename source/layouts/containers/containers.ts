@@ -1,7 +1,139 @@
 //--|🠊 layouts/containers 🠈|--\\
 //--|🠋 Block Views 🠋|--\\
-//--|🠊 1. Expand 🠈|--\\
-export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+const blockViews = (
+  pageName: string,
+  blockName: 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar',
+  alterAction: 'expand' | 'collapse' | 'unfold' | 'squaring' | 'loading' | 'update',
+) => {
+  switch (blockName) {
+    case 'overlay':
+      if (alterAction === 'expand') {
+        showOverlay(pageName);
+      } else if (alterAction === 'collapse') {
+        hideOverlay(pageName);
+      } else if (alterAction === 'loading') {
+        loadingOverlay(pageName);
+      } else if (alterAction === 'update') {
+        updateOverlay(pageName);
+      }
+      break;
+    case 'header':
+      if (alterAction === 'expand') {
+      } else if (alterAction === 'collapse') {
+      } else if (alterAction === 'unfold') {
+      } else if (alterAction === 'squaring') {
+      } else if (alterAction === 'loading') {
+      } else if (alterAction === 'update') {
+      }
+      break;
+    case 'footer':
+      if (alterAction === 'expand') {
+      } else if (alterAction === 'collapse') {
+      } else if (alterAction === 'unfold') {
+      } else if (alterAction === 'squaring') {
+      } else if (alterAction === 'loading') {
+      } else if (alterAction === 'update') {
+      }
+      break;
+    case 'leftbar':
+      if (alterAction === 'expand') {
+      } else if (alterAction === 'collapse') {
+      } else if (alterAction === 'unfold') {
+      } else if (alterAction === 'squaring') {
+      } else if (alterAction === 'loading') {
+      } else if (alterAction === 'update') {
+      }
+      break;
+    case 'rightbar':
+      if (alterAction === 'expand') {
+      } else if (alterAction === 'collapse') {
+      } else if (alterAction === 'unfold') {
+      } else if (alterAction === 'squaring') {
+      } else if (alterAction === 'loading') {
+      } else if (alterAction === 'update') {
+      }
+      break;
+  }
+};
+
+//--|🠊 Expand Functions 🠈|--\\
+let showOverlay = (pageName: string) => {
+  console.log(`//--|🠊 Visible: #${pageName}-overlay 🠈|--\\`);
+};
+let expandHeader = (pageName: string) => {
+  console.log(`//--|🠊 Expand: #${pageName}-header 🠈|--\\`);
+};
+let expandFooter = (pageName: string) => {
+  console.log(`//--|🠊 Expand: #${pageName}-footer 🠈|--\\`);
+};
+let expandLeftbar = (pageName: string) => {
+  console.log(`//--|🠊 Expand: #${pageName}-leftbar 🠈|--\\`);
+};
+let expandRightbar = (pageName: string) => {
+  console.log(`//--|🠊 Expand: #${pageName}-rightbar 🠈|--\\`);
+};
+
+//--|🠊 Collapse Functions 🠈|--\\
+let hideOverlay = (pageName: string) => {
+  console.log(`//--|🠊 Hidden: #${pageName}-overlay 🠈|--\\`);
+};
+let collapseHeader = (pageName: string) => {
+  console.log(`//--|🠊 Collapse: #${pageName}-header 🠈|--\\`);
+};
+let collapseFooter = (pageName: string) => {
+  console.log(`//--|🠊 Collapse: #${pageName}-footer 🠈|--\\`);
+};
+let collapseLeftbar = (pageName: string) => {
+  console.log(`//--|🠊 Collapse: #${pageName}-leftbar 🠈|--\\`);
+};
+let collapseRightbar = (pageName: string) => {
+  console.log(`//--|🠊 Collapse: #${pageName}-rightbar 🠈|--\\`);
+};
+
+//--|🠊 Unfold & Update Functions 🠈|--\\
+let updateOverlay = (pageName: string) => {
+  console.log(`//--|🠊 Update: #${pageName}-overlay 🠈|--\\`);
+};
+let unfoldHeader = (pageName: string) => {
+  console.log(`//--|🠊 Unfold: #${pageName}-header 🠈|--\\`);
+};
+let unfoldFooter = (pageName: string) => {
+  console.log(`//--|🠊 Unfold: #${pageName}-footer 🠈|--\\`);
+};
+let unfoldLeftbar = (pageName: string) => {
+  console.log(`//--|🠊 Unfold: #${pageName}-leftbar 🠈|--\\`);
+};
+let unfoldRightbar = (pageName: string) => {
+  console.log(`//--|🠊 Unfold: #${pageName}-rightbar 🠈|--\\`);
+};
+
+//--|🠊 Squaring & Loading Functions 🠈|--\\
+let loadingOverlay = (pageName: string) => {
+  console.log(`//--|🠊 Loading: #${pageName}-overlay 🠈|--\\`);
+};
+let squaringHeader = (pageName: string) => {
+  console.log(`//--|🠊 Squaring: #${pageName}-header 🠈|--\\`);
+};
+let squaringFooter = (pageName: string) => {
+  console.log(`//--|🠊 Squaring: #${pageName}-footer 🠈|--\\`);
+};
+let squaringLeftbar = (pageName: string) => {
+  console.log(`//--|🠊 Squaring: #${pageName}-leftbar 🠈|--\\`);
+};
+let squaringRightbar = (pageName: string) => {
+  console.log(`//--|🠊 Squaring: #${pageName}-rightbar 🠈|--\\`);
+};
+
+//--|🠊 Overlay Functions 🠈|--\\
+
+export default blockViews;
+
+/*
+  setTimeout(() => {
+    console.log(`|🠊 Show: <section id="${pageName}-${blockName}"> 🠈|`);
+  }, 125);
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
     const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -42,8 +174,8 @@ export function expandHeader(pageName: string, blockAction: 'click' | 'hover' | 
         break;
     }
   }, 125);
-}
-export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   const disableElement: string = 'disabled-leftbar';
   const locateElement: string = `#${pageName}-body aside[class*="leftbar"]`;
   setTimeout(() => {
@@ -72,10 +204,8 @@ export function expandLeftbar(pageName: string, blockAction: 'click' | 'hover' |
         break;
     }
   }, 125);
-}
-
-//--|🠊 2. Collapse 🠈|--\\
-export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
     const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -110,8 +240,8 @@ export function collapseHeader(pageName: string, blockAction: 'click' | 'hover' 
         break;
     }
   }, 125);
-}
-export function collapseLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   setTimeout(() => {
     const leftbarContainer = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
     if (leftbarContainer.classList.contains('unfolded')) {
@@ -119,10 +249,23 @@ export function collapseLeftbar(pageName: string, blockAction: 'click' | 'hover'
       leftbarContainer.classList.remove('unfolded');
     }
   }, 125);
-}
-
-//--|🠊 3. Unfold 🠈|--\\
-export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
+  let disableOverlay = 'disabled-overlay' as string;
+  let locateOverlay: string = `#${pageName}-body section[class*="${blockName}"]`;
+  const overlayContainer = document.querySelector(locateOverlay) as HTMLElement;
+  if (!overlayContainer.classList.contains(disableOverlay)) {
+    overlayContainer.classList.add(disableOverlay);
+    //--|🠋 Hide Overlay 🠋|--\\
+    let stateName: string = overlayContainer.classList[1];
+    setTimeout(() => {
+      overlayContainer.classList.remove(disableOverlay);
+      overlayContainer.classList.replace(stateName, 'hidden');
+      console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
+    }, 1500);
+  }
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
     const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -167,8 +310,8 @@ export function unfoldHeader(pageName: string, blockAction: 'click' | 'hover' | 
         break;
     }
   }, 125);
-}
-export function unfoldFooter(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-footer';
     const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
@@ -213,8 +356,8 @@ export function unfoldFooter(pageName: string, blockAction: 'click' | 'hover' | 
         break;
     }
   }, 125);
-}
-export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-leftbar';
     const locateElement: string = `#${pageName}-body aside[class*="leftbar"]`;
@@ -268,10 +411,8 @@ export function unfoldLeftbar(pageName: string, blockAction: 'click' | 'hover' |
         break;
     }
   }, 125);
-}
-
-//--|🠊 4. Squaring 🠈|--\\
-export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   setTimeout(() => {
     const disableElement: string = 'disabled-header';
     const locateElement: string = `#${pageName}-body header[class*="header"]`;
@@ -311,8 +452,8 @@ export function squaringHeader(pageName: string, blockAction: 'click' | 'hover' 
         break;
     }
   }, 125);
-}
-export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' | 'exit', blockName?: string) {
+  */
+/*
   const disableElement: string = 'disabled-footer';
   const locateElement: string = `#${pageName}-body footer[class*="footer"]`;
   const leftbarElement: string = `#${pageName}-body aside[class*="leftbar"]`;
@@ -350,26 +491,4 @@ export function squaringFooter(pageName: string, blockAction: 'click' | 'hover' 
       console.log(`|🠊 Left <button> in <${blockName}> to unfold <footer> 🠈|`);
       break;
   }
-}
-
-//--|🠊 5. Visible & Hidden 🠈|--\\
-export function hideOverlay(pageName: string, blockName: string) {
-  let disableOverlay = 'disabled-overlay' as string;
-  let locateOverlay: string = `#${pageName}-body section[class*="${blockName}"]`;
-  const overlayContainer = document.querySelector(locateOverlay) as HTMLElement;
-  if (!overlayContainer.classList.contains(disableOverlay)) {
-    overlayContainer.classList.add(disableOverlay);
-    //--|🠋 Hide Overlay 🠋|--\\
-    let stateName: string = overlayContainer.classList[1];
-    setTimeout(() => {
-      overlayContainer.classList.remove(disableOverlay);
-      overlayContainer.classList.replace(stateName, 'hidden');
-      console.log(`|🠊 Hide: <section id="${pageName}-${blockName}"> 🠈|`);
-    }, 1500);
-  }
-}
-export function showOverlay(pageName: string, blockName: string) {
-  setTimeout(() => {
-    console.log(`|🠊 Show: <section id="${pageName}-${blockName}"> 🠈|`);
-  }, 125);
-}
+  */
