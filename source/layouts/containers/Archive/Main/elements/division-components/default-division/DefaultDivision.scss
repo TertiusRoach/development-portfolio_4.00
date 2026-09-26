@@ -3,7 +3,7 @@
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Layers) 🠋|--\\
+  //--|🠊 <aside className="default-division"> 🠈|--\\
   section[class*='foreground'] {
     div[class*='default'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -28,7 +28,7 @@
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--\\
+  //--|🠊 <aside className="default-division"> 🠈|--\\
   section[class*='foreground'] {
   }
   figure[class*='midground'] {

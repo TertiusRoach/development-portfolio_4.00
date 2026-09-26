@@ -31,7 +31,26 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
           cases={{
-            profile: (Math.floor(Math.random() * 18) + 1) as number,
+            characters: [
+              'jane',
+              'malik',
+              'dimitri',
+              'dale',
+              'alaric',
+              'conrad',
+              'daniel',
+              'kady',
+              'seamus',
+              'hammad',
+              'tasneem',
+              'elliot',
+              'sipho',
+              'zuberi',
+              'nyra',
+              'victor',
+              'danish',
+              'aelin',
+            ],
           }}
         />
       </section>

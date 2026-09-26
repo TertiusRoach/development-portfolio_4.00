@@ -40,7 +40,7 @@ function ArchiveMain({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 1;
+  let startingPreview: number = 8;
   let blurName: string = 'obnubilate';
   return (
     <main
