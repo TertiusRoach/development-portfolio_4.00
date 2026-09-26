@@ -4,6 +4,7 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Characters) 🠋|--\\
+  height: 100%;
   display: grid;
   div[class='wrap-card'] {
     display: inherit; //--|🠈 display: grid; 🠈|--\\
@@ -16,6 +17,27 @@
         grid-area: 1 / 1 / 2 / 2;
         //--|🠊 display: grid; 🠈|--\\
         grid-template: repeat(2, 1fr) / repeat(2, auto) 1fr;
+        h1[class='full-name'] {
+          line-clamp: 2;
+          overflow: hidden;
+          text-align: left;
+          font-weight: 800;
+          padding-top: 8px;
+          line-height: 0.75;
+          align-self: flex-end;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          grid-area: 1 / 2 / 2 / 3;
+          -webkit-box-orient: vertical;
+          color: Palettes.$indexLand-neon;
+        }
+        p[class='country'] {
+          text-align: right;
+          align-self: flex-start;
+          grid-area: 2 / 2 / 3 / 3;
+          color: Palettes.$indexLand-light;
+        }
         div[class='profile'] {
           width: 100%;
           height: 100%;
@@ -28,19 +50,6 @@
             padding: 0px;
             border-radius: 50%;
           }
-        }
-        h1[class='full-name'] {
-          font-weight: 800;
-          text-align: left;
-          align-self: flex-end;
-          grid-area: 1 / 2 / 2 / 3;
-          color: Palettes.$indexLand-neon;
-        }
-        p[class='country'] {
-          text-align: right;
-          align-self: flex-start;
-          grid-area: 2 / 2 / 3 / 3;
-          color: Palettes.$indexLand-light;
         }
       }
       &[class*='permissions'] {
@@ -98,7 +107,6 @@
       }
     }
   }
-  @include desktop-queries();
 }
 @mixin desktop-queries {
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
@@ -111,6 +119,13 @@
     *[class*='card'] {
       //--|🠊 display: grid; 🠈|--\\
       &[class*='information'] {
+        h1[class='full-name'] {
+          font-size: 28px;
+          max-width: 202px;
+        }
+        p[class='country'] {
+          font-size: 24px;
+        }
         div[class='profile'] {
           img {
             width: 150px;
@@ -118,12 +133,6 @@
             height: 150px;
             border: 6px solid Palettes.$indexLand-medium;
           }
-        }
-        h1[class='full-name'] {
-          font-size: 28px;
-        }
-        p[class='country'] {
-          font-size: 24px;
         }
       }
       &[class*='permissions'] {
@@ -162,6 +171,13 @@
       *[class*='card'] {
         //--|🠊 display: grid; 🠈|--\\
         &[class*='information'] {
+          h1[class='full-name'] {
+            font-size: 24px;
+            max-width: 162px;
+          }
+          p[class='country'] {
+            font-size: 16px;
+          }
           div[class='profile'] {
             img {
               width: 75px;
@@ -169,12 +185,6 @@
               height: 75px;
               border: 4px solid Palettes.$indexLand-medium;
             }
-          }
-          h1[class='full-name'] {
-            font-size: 24px;
-          }
-          p[class='country'] {
-            font-size: 16px;
           }
         }
         &[class*='permissions'] {
@@ -213,6 +223,13 @@
       *[class*='card'] {
         //--|🠊 display: grid; 🠈|--\\
         &[class*='information'] {
+          h1[class='full-name'] {
+            font-size: 16px;
+            max-width: 132px;
+          }
+          p[class='country'] {
+            font-size: 14px;
+          }
           div[class='profile'] {
             img {
               width: 50px;
@@ -220,12 +237,6 @@
               height: 50px;
               border: 2px solid Palettes.$indexLand-medium;
             }
-          }
-          h1[class='full-name'] {
-            font-size: 16px;
-          }
-          p[class='country'] {
-            font-size: 14px;
           }
         }
         &[class*='permissions'] {
@@ -264,6 +275,13 @@
       *[class*='card'] {
         //--|🠊 display: grid; 🠈|--\\
         &[class*='information'] {
+          h1[class='full-name'] {
+            font-size: 12px;
+            max-width: 91px;
+          }
+          p[class='country'] {
+            font-size: 8px;
+          }
           div[class='profile'] {
             img {
               width: 50px;
@@ -271,12 +289,6 @@
               height: 50px;
               border: 2px solid Palettes.$indexLand-medium;
             }
-          }
-          h1[class='full-name'] {
-            font-size: 12px;
-          }
-          p[class='country'] {
-            font-size: 8px;
           }
         }
         &[class*='permissions'] {
@@ -308,8 +320,8 @@
 //--|===|--\\
 @mixin mobile-portrait {
   //--|🠋 Mobile (Characters) 🠋|--\\
+  height: 100%;
   display: grid;
-
   div[class='wrap-card'] {
     display: inherit; //--|🠈 display: grid; 🠈|--\\
     grid-area: 4 / 3 / 5 / 4;
@@ -321,6 +333,27 @@
         grid-area: 1 / 1 / 2 / 2;
         //--|🠊 display: grid; 🠈|--\\
         grid-template: repeat(2, 1fr) / repeat(2, auto) 1fr;
+        h1[class='full-name'] {
+          line-clamp: 2;
+          overflow: hidden;
+          text-align: left;
+          font-weight: 800;
+          padding-top: 8px;
+          line-height: 0.75;
+          align-self: flex-end;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          grid-area: 1 / 2 / 2 / 3;
+          -webkit-box-orient: vertical;
+          color: Palettes.$indexLand-neon;
+        }
+        p[class='country'] {
+          text-align: right;
+          align-self: flex-start;
+          grid-area: 2 / 2 / 3 / 3;
+          color: Palettes.$indexLand-light;
+        }
         div[class='profile'] {
           width: 100%;
           height: 100%;
@@ -333,19 +366,6 @@
             padding: 0px;
             border-radius: 50%;
           }
-        }
-        h1[class='full-name'] {
-          font-weight: 800;
-          text-align: left;
-          align-self: flex-end;
-          grid-area: 1 / 2 / 2 / 3;
-          color: Palettes.$indexLand-neon;
-        }
-        p[class='country'] {
-          text-align: right;
-          align-self: flex-start;
-          grid-area: 2 / 2 / 3 / 3;
-          color: Palettes.$indexLand-light;
         }
       }
       &[class*='permissions'] {
@@ -403,7 +423,6 @@
       }
     }
   }
-  @include mobile-queries();
 }
 @mixin mobile-queries {
   //--|🠊 64px (Left & Right) for Design 🠈|--\\
@@ -426,6 +445,7 @@
         }
         h1[class='full-name'] {
           font-size: 28px;
+          max-width: 202px;
         }
         p[class='country'] {
           font-size: 24px;
@@ -477,6 +497,7 @@
           }
           h1[class='full-name'] {
             font-size: 24px;
+            max-width: 162px;
           }
           p[class='country'] {
             font-size: 16px;
@@ -528,6 +549,7 @@
           }
           h1[class='full-name'] {
             font-size: 16px;
+            max-width: 132px;
           }
           p[class='country'] {
             font-size: 14px;
@@ -579,6 +601,7 @@
           }
           h1[class='full-name'] {
             font-size: 12px;
+            max-width: 91px;
           }
           p[class='country'] {
             font-size: 8px;
@@ -610,11 +633,13 @@
     }
   }
 }
-section[class*='characters'] {
+section[class*='characters-default'] {
   @media screen and (orientation: landscape) {
+    @include desktop-queries();
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
+    @include mobile-queries();
     @include mobile-portrait();
   }
 }
