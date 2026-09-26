@@ -37,6 +37,7 @@ interface TheseProps {
           | 'victor'
           | 'danish'
           | 'aelin'
+          | 'random'
         >;
   };
 }

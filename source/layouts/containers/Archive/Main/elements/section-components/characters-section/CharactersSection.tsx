@@ -50,6 +50,7 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
               'victor',
               'danish',
               'aelin',
+              'random',
             ],
           }}
         />
