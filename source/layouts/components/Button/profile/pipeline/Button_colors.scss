@@ -1,26 +1,381 @@
 //--|🠊 profile/pipeline/Button_colors.scss 🠈|--\\
 //--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
+@use 'sass:color';
+@use '../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-colors {
-  //--|🠋 Desktop (Colors) 🠋|--\\
-  background: none;
-  &[class*='_dar_'] {
-    .fore {
-      border-color: rgba(black, 1);
-    }
-    .back {
-      background: rgba(black, 0.5);
-    }
-  }
-  &[class*='_lig_'] {
-    .fore {
-      border-color: rgba(white, 1);
-    }
-    .back {
-      background: rgba(white, 0.5);
-    }
-  }
+  //--|🠋 Desktop (Portraits) 🠋|--\\
+  @include mon-tint();
 }
 @mixin mobile-colors {
-  //--|🠋 Mobile (Colors) 🠋|--\\
+  //--|🠋 Mobile (Portraits) 🠋|--\\
 }
+
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+  &[class*='dar_mon'] {
+    div[class='fore'] {
+      border-color: rgba(Palettes.$gray-light, 0.75);
+    }
+    div[class='icon'] {
+      filter: drop-shadow(0 0 16px rgba(black, 0.75));
+    }
+    div[class='back'] {
+      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow:
+        inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18),
+        0 12px 26px rgba(#000, 0.28);
+    }
+  }
+  &[class*='lig_mon'] {
+    div[class='fore'] {
+      border-color: rgba(Palettes.$gray-dark, 0.5);
+    }
+    div[class='icon'] {
+      filter: drop-shadow(0 0 8px rgba(white, 0.5));
+    }
+    div[class='back'] {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow:
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1),
+        0 10px 22px rgba(#000, 0.18);
+    }
+  }
+}
+
+/*
+@mixin red-tint {
+  // $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  // &[class*='dar_red'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$red-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$red-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_red'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$red-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$red-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+}
+@mixin gre-tint {
+  // $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+  // &[class*='dar_gre'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$green-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$green-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_gre'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$green-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$green-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+  
+}
+@mixin blu-tint {
+  // $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+  // &[class*='dar_blu'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$blue-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$blue-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_blu'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$blue-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$blue-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+}
+@mixin yel-tint {
+  // $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+  // &[class*='dar_yel'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$yellow-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$yellow-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_yel'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$yellow-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$yellow-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+}
+@mixin pur-tint {
+  // $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+  // &[class*='dar_pur'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$purple-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$purple-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_pur'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$purple-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$purple-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+}
+@mixin tur-tint {
+  // $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  // $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  // $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  // $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+  // &[class*='dar_tur'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$turquoise-light, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     border-color: rgba(Palettes.$turquoise-light, 1);
+  //     filter: drop-shadow(0 0 16px rgba(white, 0.25));
+  //   }
+  //   div[class='back'] {
+  //     background:
+  //       linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+  //       inset 0 -1px 0 rgba(#000, 0.35),
+  //       inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18),
+  //       0 12px 26px rgba(#000, 0.28);
+  //   }
+  // }
+  // &[class*='lig_tur'] {
+  //   div[class='fore'] {
+  //     span {
+  //       background: rgba(Palettes.$turquoise-dark, 1);
+  //       img {
+  //         opacity: 0;
+  //         pointer-events: none;
+  //         background: transparent;
+  //       }
+  //     }
+  //   }
+  //   div[class='mid'] {
+  //     filter: drop-shadow(0 0 8px rgba(black, 0.75));
+  //     border-color: rgba(Palettes.$turquoise-dark, 0.75);
+  //   }
+  //   div[class='back'] {
+  //     background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  //     box-shadow:
+  //       inset 0 1px 0 rgba(#fff, 0.22),
+  //       inset 0 -1px 0 rgba(#000, 0.25),
+  //       inset 0 0 0 1px rgba(#000, 0.1),
+  //       0 10px 22px rgba(#000, 0.18);
+  //   }
+  // }
+}
+*/

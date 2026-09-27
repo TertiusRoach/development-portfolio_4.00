@@ -8,16 +8,12 @@ button[class*='profile'] {
     //--|🠊 <ProfileButton> for [DesktopLandscape] 🠈|--\\
     @include Button_colors.desktop-colors();
     @include Button_layout.desktop-layout();
-    &:hover {
-      @include Button_motion.desktop-motion();
-    }
+    @include Button_motion.desktop-motion();
   }
   @media screen and (orientation: portrait) {
     //--|🠊 <ProfileButton> for [MobilePortrait] 🠈|--\\
     @include Button_colors.mobile-colors();
     @include Button_layout.mobile-layout();
-    &:hover {
-      @include Button_motion.mobile-motion();
-    }
+    @include Button_motion.mobile-motion();
   }
 }
