@@ -26,6 +26,17 @@
   */
 }
 @mixin mobile-motion {
+  @include mon-fade();
+  .fore {
+    cursor: pointer;
+    transition: border-color 750ms ease-in-out;
+  }
+  .icon {
+    transition: filter 250ms ease-in-out;
+  }
+  .back {
+    transition: background 500ms ease-in-out;
+  }
 }
 
 @mixin mon-fade {

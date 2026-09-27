@@ -9,6 +9,7 @@
 }
 @mixin mobile-colors {
   //--|🠋 Mobile (Portraits) 🠋|--\\
+  @include mon-tint();
 }
 
 @mixin mon-tint {
