@@ -1,5 +1,4 @@
 //--|🠊 Button_default.ts 🠈|--\\
-import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
   shade: '~dark~' | '~medium~' | '~light~';

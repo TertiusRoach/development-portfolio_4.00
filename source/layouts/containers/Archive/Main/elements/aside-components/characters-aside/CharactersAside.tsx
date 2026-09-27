@@ -31,10 +31,10 @@ const CharactersAside: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
           style={{
+            view: '-left-',
             color: '(mono)',
-            shade: '~light~',
+            shade: '~dark~',
           }}
-          cases={{ area: '[left]' }}
         />
         <AsideCharacters
           info={{
@@ -43,10 +43,10 @@ const CharactersAside: React.FC<InfoProps> = ({ info }) => {
             labelName: labelName,
           }}
           style={{
+            view: '-right-',
             color: '(mono)',
-            shade: '~dark~',
+            shade: '~light~',
           }}
-          cases={{ area: '[right]' }}
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>

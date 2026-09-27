@@ -30,7 +30,9 @@ interface InfoProps {
 }
 
 function ArchiveMain({ info }: InfoProps) {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'main';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -40,7 +42,7 @@ function ArchiveMain({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 8;
+  let startingPreview: number = 2;
   let blurName: string = 'obnubilate';
   return (
     <main
