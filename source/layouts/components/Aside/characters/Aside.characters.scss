@@ -123,9 +123,6 @@
     }
   }
   &::before {
-    content: '';
-    height: 100%;
-    position: absolute;
   }
   //--|===|--\\
   //--|🠊 Style View 🠈|--\\
@@ -166,6 +163,10 @@
     }
   }
   &::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    //--|===|--\\
     width: 138px;
   }
   @media screen and (max-width: 768px) {
