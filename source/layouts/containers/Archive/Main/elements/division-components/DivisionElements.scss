@@ -16,6 +16,8 @@ section[class*='division-main'] {
         }
         &[class*='carousel'] {
         }
+        &[class*='conveyor'] {
+        }
         &[class*='squaring'] {
         }
       }
@@ -24,6 +26,8 @@ section[class*='division-main'] {
           @include DefaultDivision.mobile-portrait;
         }
         &[class*='carousel'] {
+        }
+        &[class*='conveyor'] {
         }
         &[class*='squaring'] {
         }

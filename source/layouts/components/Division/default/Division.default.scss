@@ -3,7 +3,8 @@
 @use '../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Division) 🠋|--\\
+  //--|🠋 Desktop (Default) 🠋|--\\
+
   button[id*='block'] {
     &[id*='left'] {
       padding-left: 1rem;
@@ -11,7 +12,6 @@
     &[id*='right'] {
       padding-right: 1rem;
     }
-    border: 2px dashed Palettes.$gray-medium;
 
     &#test-main-block {
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -32,6 +32,8 @@
     &#test-right-block {
       grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+
+    border: 2px dashed Palettes.$gray-medium;
   }
 
   display: grid;
@@ -57,31 +59,89 @@
       3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--//
       / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--\\
   }
+
+  background: rgba(darkred, 0.25);
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile (Division) 🠋|--\\
+  //--|🠋 Mobile (Default) 🠋|--\\
+
+  button[id*='block'] {
+    &#test-main-block {
+      grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-head-block {
+      grid-area: 1 / 1 / 2 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-foot-block {
+      grid-area: 5 / 1 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    &#test-over-block {
+      grid-area: 4 / 2 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-left-block {
+      grid-area: 3 / 1 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    &#test-right-block {
+      grid-area: 3 / 3 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    border: 2px dashed Palettes.$gray-medium;
+  }
   display: grid;
   //--|🠊 64px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Height: 1920px 🠋|--\\
-    12rem repeat(3, 1fr) 12rem //--|🠈 rows 🠈|--//
-    / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
+    / 64px repeat(2, 1fr) 64px; //--|🠈 columns 🠈|--\\
+  button[id*='block'] {
+    &[id*='left'] {
+      padding-left: 4rem;
+    }
+    &[id*='right'] {
+      padding-right: 4rem;
+    }
+  }
   @media screen and (max-width: 768px) {
     //--|🠊 48px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1366px 🠋|--\\
-      10rem repeat(3, 1fr) 10rem //--|🠈 rows 🠈|--//
-      / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+      repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--//
+      / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+    button[id*='block'] {
+      &[id*='left'] {
+        padding-left: 3rem;
+      }
+      &[id*='right'] {
+        padding-right: 3rem;
+      }
+    }
   }
   @media screen and (max-width: 480px) {
     //--|🠊 32px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 854px 🠋|--\\
-      6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
-      / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+    button[id*='block'] {
+      &[id*='left'] {
+        padding-left: 2rem;
+      }
+      &[id*='right'] {
+        padding-right: 2rem;
+      }
+    }
   }
   @media screen and (max-width: 360px) {
     //--|🠊 24px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 640px 🠋|--\\
-      4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
-      / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+    button[id*='block'] {
+      &[id*='left'] {
+        padding-left: 1.5rem;
+      }
+      &[id*='right'] {
+        padding-right: 1.5rem;
+      }
+    }
   }
 }
 
