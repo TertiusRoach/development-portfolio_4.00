@@ -158,7 +158,7 @@
         }
       }
     }
-
+    //--|===|--\\
     &[class*='lef_top'] {
       li {
         justify-content: flex-start;
@@ -323,40 +323,25 @@
       }
     }
     //--|===|--\\
-    @at-root menu[class*='select']:has([class*='lef_top']) {
-      overflow-y: auto;
-      scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
-      -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
-      &::-webkit-scrollbar {
-        display: none; //--|🠈 Chrome/Safari 🠈|--\\
-      }
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-      @media screen and (max-height: 768px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-      }
-      @media screen and (max-height: 480px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-      }
-      @media screen and (max-height: 360px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-      }
-    }
-    @at-root menu[class*='select']:has([class*='rig_bot']) {
-      overflow-y: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-      @media screen and (max-height: 768px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-      }
-      @media screen and (max-height: 480px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-      }
-      @media screen and (max-height: 360px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+    @at-root {
+      menu[class*='select']:has([class*='lef_top']),
+      menu[class*='select']:has([class*='rig_bot']) {
+        overflow-y: auto;
+        scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
+        -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
+        &::-webkit-scrollbar {
+          display: none; //--|🠈 Chrome/Safari 🠈|--\\
+        }
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+        @media screen and (max-height: 768px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+        }
+        @media screen and (max-height: 480px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+        }
+        @media screen and (max-height: 360px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+        }
       }
     }
   }
@@ -519,7 +504,7 @@
         }
       }
     }
-
+    //--|===|--\\
     &[class*='lef_top'] {
       li {
         justify-content: flex-start;
@@ -684,40 +669,25 @@
       }
     }
     //--|===|--\\
-    @at-root menu[class*='select']:has([class*='lef_top']) {
-      overflow-y: auto;
-      scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
-      -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
-      &::-webkit-scrollbar {
-        display: none; //--|🠈 Chrome/Safari 🠈|--\\
-      }
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-      @media screen and (max-width: 768px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-      }
-      @media screen and (max-width: 480px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-      }
-      @media screen and (max-width: 360px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
-      }
-    }
-    @at-root menu[class*='select']:has([class*='rig_bot']) {
-      overflow-y: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
-      @media screen and (max-width: 768px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
-      }
-      @media screen and (max-width: 480px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
-      }
-      @media screen and (max-width: 360px) {
-        mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+    @at-root {
+      menu[class*='select']:has([class*='lef_top']),
+      menu[class*='select']:has([class*='rig_bot']) {
+        overflow-y: auto;
+        scrollbar-width: none; //--|🠈 Firefox 🠈|--\\
+        -ms-overflow-style: none; //--|🠈 IE/Edge 🠈|--\\
+        &::-webkit-scrollbar {
+          display: none; //--|🠈 Chrome/Safari 🠈|--\\
+        }
+        mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
+        @media screen and (max-width: 768px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+        }
+        @media screen and (max-width: 480px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
+        }
+        @media screen and (max-width: 360px) {
+          mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
+        }
       }
     }
   }
