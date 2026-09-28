@@ -59,8 +59,6 @@
       3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--//
       / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--\\
   }
-
-  background: rgba(darkred, 0.25);
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Default) 🠋|--\\
