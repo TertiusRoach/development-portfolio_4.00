@@ -3,9 +3,11 @@
 @use '../../../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
     nav[class*='default'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      //--|===|--\\
       padding: 64px;
       @media screen and (max-height: 768px) {
         padding: 48px;
@@ -16,18 +18,17 @@
       @media screen and (max-height: 360px) {
         padding: 24px;
       }
-      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
     //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
     display: grid;
     canvas {
+      width: 100%;
+      height: 100%;
+      grid-area: 2 / 2 / 5 / 2;
       background: Palettes.$indexLand-darkMode;
       border: 2px dashed Palettes.$gray-medium;
-      grid-area: 2 / 2 / 5 / 2;
-      height: 100%;
-      width: 100%;
     }
     //--|🠊 96px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
@@ -52,12 +53,60 @@
         / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
-  div[class*='background'] {
-    //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
-  }
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
+  section[class*='main-fore'] {
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
+    nav[class*='default'] {
+      // grid-area-row: 2 /;
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      //--|===|--\\
+      padding: 96px;
+      @media screen and (max-width: 768px) {
+        padding: 80px;
+      }
+      @media screen and (max-width: 480px) {
+        padding: 48px;
+      }
+      @media screen and (max-width: 360px) {
+        padding: 32px;
+      }
+    }
+  }
+  figure[class*='main-mid'] {
+    //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
+    display: grid;
+    canvas {
+      width: 100%;
+      height: 100%;
+      grid-area: 2 / 2 / 5 / 2;
+      background: Palettes.$indexLand-darkMode;
+      border: 2px dashed Palettes.$gray-medium;
+    }
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 768px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        repeat(2, 5rem) 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+  }
   @include Mixins.portrait-grid;
 }
 
