@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../components/Menu/swipe/Menu.swipe';
+import MenuSelect from '../../../components/Menu/select/Menu.select';
 import DivisionConveyor from '../../../components/Division/conveyor/Division.conveyor';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
@@ -116,6 +117,30 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 image: undefined,
                 view: undefined,
                 tasks: '',
+              }}
+            />
+            <MenuSelect
+              info={{
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+                labelName: 'component-applications' as string,
+              }}
+              style={{
+                align: '-mid-',
+                view: 'top-cen',
+                color: '(mono)',
+                shade: '~dark~',
+
+                image: [
+                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
+                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                ] as Array<string>,
+                size: '<h4>',
+              }}
+              cases={{
+                pages: 3,
+                axis: '[x]',
               }}
             />
           </section>

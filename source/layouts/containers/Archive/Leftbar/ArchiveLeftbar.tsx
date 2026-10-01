@@ -18,7 +18,9 @@ interface InfoProps {
 }
 
 function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -73,7 +75,7 @@ function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
         </aside>
       );
     case 'portrait':
-      stateName = 'collapsed';
+      stateName = 'unfolded';
       return (
         <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
