@@ -1,2 +1,0 @@
-//--|🠉 pageName: [buttons] 🠉|--//
-//--|🠊 ButtonsFooter.tsx 🠈|--//
