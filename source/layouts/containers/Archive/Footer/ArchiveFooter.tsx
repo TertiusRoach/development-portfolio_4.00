@@ -19,7 +19,9 @@ interface InfoProps {
   };
 }
 function ArchiveFooter({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'footer';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -33,9 +35,16 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
-      stateName = 'squaring';
+      stateName = 'unfolded';
       return (
-        <footer id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+        <footer
+          id={`${pageName}-${blockName}`}
+          className={`${blurName} ${labelName}-${blockName} ${stateName}`}
+          onMouseEnter={(event) => {
+            blockViews(event.currentTarget, pageName, 'footer', 'unfold');
+            blockViews(event.currentTarget, pageName, 'rightbar', 'unfold');
+          }}
+        >
           <section className={`${blockName}-foreground`}>
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\

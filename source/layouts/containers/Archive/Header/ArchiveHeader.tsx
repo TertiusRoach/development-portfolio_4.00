@@ -19,7 +19,9 @@ interface InfoProps {
   };
 }
 function ArchiveHeader({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'header';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
@@ -86,9 +88,16 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
         </header>
       );
     case 'portrait':
-      stateName = 'squaring';
+      stateName = 'unfolded';
       return (
-        <header id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+        <header
+          id={`${pageName}-${blockName}`}
+          className={`${blurName} ${labelName}-${blockName} ${stateName}`}
+          onMouseEnter={(event) => {
+            blockViews(event.currentTarget, pageName, 'header', 'unfold');
+            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+          }}
+        >
           <section className={`${blockName}-foreground`}>
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\

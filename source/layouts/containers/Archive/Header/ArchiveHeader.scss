@@ -45,7 +45,7 @@
   div[class*='background'] {
     header {
       grid-area: 1 / 1 / 2 / 4;
-      background: rgba(blue, 0.25);
+      background: rgba(green, 0.25);
       //--|🠊 background: Palettes.$indexLand-lightMode; 🠈|--\\
       //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75)); 🠈|--\\
     }

@@ -49,16 +49,12 @@ function ArchiveMain({ info }: InfoProps) {
       id={`${pageName}-${blockName}`}
       className={`${blurName} ${labelName}-${blockName}`}
       onMouseEnter={(event) => {
-        switch (getOrientation) {
-          case 'landscape':
-            blockViews(event.currentTarget, pageName, 'header', 'squaring');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'collapsed');
-            break;
-          case 'portrait':
-            blockViews(event.currentTarget, pageName, 'footer', 'squaring');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'collapsed');
-            break;
-        }
+        //--|🠊 Revert to Default 🠈|--\\
+        blockViews(event.currentTarget, pageName, 'header', 'squaring');
+        blockViews(event.currentTarget, pageName, 'footer', 'squaring');
+
+        blockViews(event.currentTarget, pageName, 'leftbar', 'collapsed');
+        blockViews(event.currentTarget, pageName, 'rightbar', 'collapsed');
       }}
     >
       <section className={`${blockName}-foreground`}>
