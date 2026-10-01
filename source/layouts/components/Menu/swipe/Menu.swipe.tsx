@@ -29,15 +29,6 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisStyle: Record<TheseProps['cases']['axis'], string> = {
-  '[x]': 'hori-X-swipe',
-  '[y]': 'hori-Y-swipe',
-};
 function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -130,5 +121,13 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
     </menu>
   );
 }
-
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisStyle: Record<TheseProps['cases']['axis'], string> = {
+  '[x]': 'hori-X-swipe',
+  '[y]': 'hori-Y-swipe',
+};
 export default MenuSwipe;

@@ -27,7 +27,12 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
   const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
 
   //--|🠋 Step 1: Select Active Button 🠋|--\\
-  const revealActiveTitle = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'horizontal' | 'vertical') => {
+  const revealActiveTitle = (
+    container: HTMLDivElement | null,
+    controller: HTMLMenuElement,
+    carousel: 'present' | 'missing',
+    orientation: 'horizontal' | 'vertical',
+  ) => {
     //--|🠊 Reveal Active Title 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="preview-${orientation}"]`) as HTMLLIElement;
     if (carousel === 'present') {
@@ -149,6 +154,8 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
   const container = `${pageName}-${blockName}`;
 
   let controller = (document.querySelector(`#${container} menu[class="${labelName}-${blockName}_${menuType}-default"]`) ??
+    document.querySelector(`#${pageName}-header menu[class="${labelName}-header_${menuType}-default"]`) ??
+    document.querySelector(`#${pageName}-footer menu[class="${labelName}-footer_${menuType}-default"]`) ??
     document.querySelector(`#${pageName}-leftbar menu[class="${labelName}-leftbar_${menuType}-default"]`) ??
     document.querySelector(`#${pageName}-rightbar menu[class="${labelName}-rightbar_${menuType}-default"]`)) as HTMLMenuElement;
 
