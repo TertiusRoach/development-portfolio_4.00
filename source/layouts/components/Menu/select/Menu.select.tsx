@@ -21,9 +21,9 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     image: string | Array<string>;
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
     size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
     view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
+    color: Array<string> | '(mono)' | '(red)' | '(green)' | '(blue)';
     align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
   };
   cases: {
@@ -50,15 +50,6 @@ interface TheseProps {
   */
 }
 
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
-  '[x]': ['hori-X-select', 'horizontal'],
-  '[y]': ['vert-Y-select', 'vertical'],
-};
 function MenuSelect({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
@@ -83,7 +74,15 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     </menu>
   );
 }
-
+//--|🠊 Checks [x] or [y] axis 🠈|--\\
+const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+};
+const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
+  '[x]': ['hori-X-select', 'horizontal'],
+  '[y]': ['vert-Y-select', 'vertical'],
+};
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
   let casesMark: Array<string>;
   if (typeof cases.mark === 'object') {
@@ -97,6 +96,13 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
     styleSize = style.size;
   } else {
     styleSize = Array.from({ length: cases.pages }, () => style.size as '<h1>' | '<h4>' | '<p>');
+  }
+
+  let styleColor: Array<string>;
+  if (typeof style.color === 'object') {
+    styleColor = style.color;
+  } else {
+    styleColor = Array.from({ length: cases.pages }, () => style.color as '(mono)' | '(red)' | '(green)' | '(blue)');
   }
 
   let stateView = 'downplay' as 'downplay' | 'highlight';
@@ -115,14 +121,13 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 }}
                 style={{
                   type: '{button}',
-                  color: style.color,
-                  shade: style.shade,
                   image: style.image[index] as string,
+                  shade: style.shade as '~dark~' | '~light~',
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
+                  color: styleColor[index] as '(mono)' | '(red)' | '(green)' | '(blue)',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
-                  /* previewButtons(pageName, blockName, labelName, cases.axis); */
                   selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                 }}
               />
@@ -143,14 +148,13 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 }}
                 style={{
                   type: '{button}',
-                  color: style.color,
-                  shade: style.shade,
                   image: style.image as string,
+                  shade: style.shade as '~dark~' | '~light~',
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
+                  color: styleColor[index] as '(mono)' | '(red)' | '(green)' | '(blue)',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
-                  /* previewButtons(pageName, blockName, labelName, cases.axis); */
                   selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                 }}
               />

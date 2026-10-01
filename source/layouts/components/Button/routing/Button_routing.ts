@@ -54,7 +54,10 @@ export function createLayout(
 
   return `${classSize}_${classView}`;
 }
-export function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)'): string {
+export function createColor(
+  shade: '~dark~' | '~medium~' | '~light~',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',

@@ -143,9 +143,9 @@ interface ChainedElements {
 interface StyleProps {
   shade: '~dark~' | '~light~';
   image: string | Array<string>;
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
   size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
   view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
+  color: Array<string> | '(mono)' | '(red)' | '(green)' | '(blue)';
   align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
 }
 
@@ -177,5 +177,6 @@ export function createClass(axis: '[x]' | '[y]', style: StyleProps): string {
     'mid-rig': { '[x]': `bot_${stripBrackets(style.align, '--')}`, '[y]': `rig_${stripBrackets(style.align, '--')}` },
   };
 
-  return `${viewClass[style.view][axis]}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
+  return `${viewClass[style.view][axis]}_${abbrShade(style.shade)}_mon`;
+  // return `${viewClass[style.view][axis]}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
 }

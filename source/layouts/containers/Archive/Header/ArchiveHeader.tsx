@@ -123,13 +123,13 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               info={{
                 blockName: blockName as 'main',
                 pageName: pageName as 'components',
-                labelName: 'component-applications' as string,
+                labelName: `${pageName}-applications` as string,
               }}
               style={{
                 align: '-mid-',
                 view: 'top-cen',
-                color: '(mono)',
                 shade: '~dark~',
+                color: ['(green)', '(blue)', '(red)'],
 
                 image: [
                   loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
