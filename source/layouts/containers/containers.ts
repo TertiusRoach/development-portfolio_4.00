@@ -1,4 +1,4 @@
-//--|🠊 layouts/containers 🠈|--\\
+//--|🠊 layouts/containers 🠈|--\\\\
 //--|🠋 Select Function 🠋|--\\
 type BlockName = 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
 type AlterAction = 'expand' | 'collapsed' | 'unfold' | 'squaring' | 'loading' | 'update';
@@ -24,94 +24,94 @@ function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockNam
   */
 }
 
-//--|🠊 Expand Functions 🠈|--\\
+//--|🠊 Expand Functions 🠈|--\\\\
 let expandHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let expandFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let expandLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let expandRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let expandOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Collapse Functions 🠈|--\\
+//--|🠊 Collapse Functions 🠈|--\\\\
 let collapseHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let collapseFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let collapseLeftbar = (pageName: string, blockName: 'leftbar') => {
   let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'collapsed');
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
   let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'collapsed');
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let collapseOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Unfold Functions 🠈|--\\
+//--|🠊 Unfold Functions 🠈|--\\\\
 let unfoldHeader = (pageName: string, blockName: 'header') => {
   let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'unfolded');
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\\\`);
 };
 let unfoldFooter = (pageName: string, blockName: 'footer') => {
   let footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'unfolded');
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let unfoldLeftbar = (pageName: string, blockName: 'leftbar') => {
   let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'unfolded');
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let unfoldRightbar = (pageName: string, blockName: 'rightbar') => {
   let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'unfolded');
-  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Squaring Functions 🠈|--\\
+//--|🠊 Squaring Functions 🠈|--\\\\
 let squaringHeader = (pageName: string, blockName: 'header') => {
   let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'squaring');
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let squaringFooter = (pageName: string, blockName: 'footer') => {
   let footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'squaring');
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let squaringLeftbar = (pageName: string, blockName: 'leftbar') => {
   let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'squaring');
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let squaringRightbar = (pageName: string, blockName: 'rightbar') => {
   let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'squaring');
-  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Update & Loading Overlay 🠈|--\\
+//--|🠊 Update & Loading Overlay 🠈|--\\\\
 let updateOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 let loadingOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\`);
+  console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
 type Handler = (pageName: string) => void;

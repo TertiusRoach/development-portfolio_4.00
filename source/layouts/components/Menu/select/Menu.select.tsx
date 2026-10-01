@@ -124,9 +124,10 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   type: '{button}',
                   image: style.image[index] as string,
                   shade: style.shade as '~dark~' | '~light~',
+                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
+                  //--|===|--\\
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   color: styleColor[index] as '(mono)' | '(red)' | '(green)' | '(blue)',
-                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
                   if (cases.task === undefined) {
@@ -155,9 +156,10 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   type: '{button}',
                   image: style.image as string,
                   shade: style.shade as '~dark~' | '~light~',
+                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
+                  //--|===|--\\
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
                   color: styleColor[index] as '(mono)' | '(red)' | '(green)' | '(blue)',
-                  view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
                   if (cases.task === undefined) {
