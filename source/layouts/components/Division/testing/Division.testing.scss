@@ -1,4 +1,4 @@
-//--|🠊 Division.default.scss 🠈|--\\
+//--|🠊 Division.testing.scss 🠈|--\\
 @use '../../../designs/Mixins.scss';
 @use '../../../designs/Palettes.scss';
 
@@ -143,7 +143,7 @@
   }
 }
 
-div[class*='division-default'] {
+div[class*='testing'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

@@ -1,12 +1,12 @@
-//--|🠊 DefaultDivision.tsx 🠈|--\\
+//--|🠊 TestingDivision.tsx 🠈|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './DefaultDivision.scss';
+import './TestingDivision.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import DivisionDefault from '../../../../../../components/Division/default/Division.default';
+import DivisionTesting from '../../../../../../components/Division/testing/Division.testing';
 
 //--|🠋 Components 🠋|--\\
 
@@ -17,15 +17,15 @@ interface InfoProps {
     pageName: string;
   };
 }
-const DefaultDivision: React.FC<InfoProps> = ({ info }) => {
+const TestingDivision: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'default';
+  const labelName = info.labelName as 'testing';
   const pageName = info.pageName as 'components';
 
   return (
-    <aside className="default-division">
+    <aside className="testing-division">
       <section className={`${blockName}-foreground`}>
-        <DivisionDefault
+        <DivisionTesting
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -33,11 +33,9 @@ const DefaultDivision: React.FC<InfoProps> = ({ info }) => {
           }}
         />
       </section>
-      <figure className={`${blockName}-midground`}>
-        <h1 className="display-1">{`<DefaultDivision>`}</h1>
-      </figure>
+      <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
 };
-export default DefaultDivision;
+export default TestingDivision;

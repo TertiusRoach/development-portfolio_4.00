@@ -9,7 +9,7 @@ import './DivisionElements.scss';
 import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultDivision from './default-division/DefaultDivision';
+import TestingDivision from './testing-division/TestingDivision';
 
 interface InfoProps {
   info: {
@@ -46,7 +46,7 @@ function DivisionComponents({ info }: InfoProps) {
 
   return (
     <>
-      <DefaultDivision info={defaultInfo} />
+      <TestingDivision info={defaultInfo} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-//--|🠊 Division.default.tsx 🠈|--\\
+//--|🠊 Division.testing.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
-import testBlock from './Division_default';
+import testBlock from './Division_testing';
 import { loadAsset } from '../../../../scripts';
 
 interface TheseProps {
@@ -17,16 +17,15 @@ interface TheseProps {
   };
 }
 
-const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
+const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let link: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   return (
-    <div className={`${info.labelName}-${info.blockName}_division-default`}>
+    <div className={`${info.labelName}-${info.blockName}_division-testing`}>
       <ButtonDefault
         style={{
           size: '<h3>',
@@ -146,4 +145,4 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
     </div>
   );
 };
-export default DivisionDefault;
+export default DivisionTesting;

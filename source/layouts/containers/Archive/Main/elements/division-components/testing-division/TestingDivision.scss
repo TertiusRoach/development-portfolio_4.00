@@ -1,20 +1,20 @@
-//--|🠊 DefaultDivision.scss 🠈|--\\
+//--|🠊 TestingDivision.scss 🠈|--\\
 @use '../../../../../../designs/Mixins.scss';
 @use '../../../../../../designs/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 <aside className="default-division"> 🠈|--\\
+  //--|🠊 <aside className="testing-division"> 🠈|--\\
   section[class*='main-fore'] {
-    div[class*='default'] {
+    div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
-  //--|🠊 <aside className="default-division"> 🠈|--\\
+  //--|🠊 <aside className="testing-division"> 🠈|--\\
   section[class*='main-fore'] {
-    div[class*='default'] {
+    div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }

@@ -1,7 +1,7 @@
 //--|🠊 DivisionElements.scss 🠈|--\\
 @use '../../../../../designs/Palettes.scss';
 
-@use './default-division/DefaultDivision.scss';
+@use './testing-division/TestingDivision.scss';
 
 section[class*='division-main'] {
   div.division-main_container {
@@ -11,8 +11,8 @@ section[class*='division-main'] {
       flex: 0 0 100vw;
       min-width: 100vw;
       @media screen and (orientation: landscape) {
-        &[class*='default'] {
-          @include DefaultDivision.desktop-landscape;
+        &[class*='testing'] {
+          @include TestingDivision.desktop-landscape;
         }
         &[class*='carousel'] {
         }
@@ -22,8 +22,8 @@ section[class*='division-main'] {
         }
       }
       @media screen and (orientation: portrait) {
-        &[class*='default'] {
-          @include DefaultDivision.mobile-portrait;
+        &[class*='testing'] {
+          @include TestingDivision.mobile-portrait;
         }
         &[class*='carousel'] {
         }

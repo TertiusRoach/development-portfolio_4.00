@@ -3,7 +3,7 @@
 import { stripBrackets } from '../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import DivisionDefault from '../../../components/Division/default/Division.default';
+import DivisionTesting from '../../../components/Division/testing/Division.testing';
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
@@ -26,7 +26,7 @@ const HyperlinkMain: React.FC<InfoProps> = ({ info }) => {
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <DivisionDefault
+        <DivisionTesting
           info={{
             pageName: pageName,
             blockName: blockName,
