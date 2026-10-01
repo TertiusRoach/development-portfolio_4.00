@@ -1,42 +1,39 @@
-//--|🠊 Division_default.ts 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import * as Palettes from '../../../designs/Palettes.scss';
-
+//--|🠊 Division_testing.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
+import { stripBrackets } from '../../../../scripts';
 
 function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>', labelName: string) {
   let wrapperElement = document.querySelector(`#${pageName}-${stripBrackets(blockName, '<>')}`) as HTMLElement;
   switch (blockName) {
     case '<main>':
-      ViewMain(wrapperElement);
+      viewMain(wrapperElement);
       break;
     case '<header>':
-      ViewHead(wrapperElement);
+      viewHead(wrapperElement);
       break;
     case '<footer>':
-      ViewFoot(wrapperElement);
+      viewFoot(wrapperElement);
       break;
     case '<overlay>':
-      ViewOver(wrapperElement);
+      viewOver(wrapperElement);
       break;
     case '<leftbar>':
-      ViewLeft(wrapperElement);
+      viewLeft(wrapperElement);
       break;
     case '<rightbar>':
-      ViewRight(wrapperElement);
+      viewRight(wrapperElement);
       break;
   }
 }
 
-const ViewMain = (wrapper: HTMLElement) => {
+const viewMain = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
   let foreground = wrapper.childNodes[0] as HTMLElement; //--|🠈 <section class="foreground"> 🠈|--\\
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'disabled-main';
+  const disableElement: string = 'locked-main';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(background, '(green)');
@@ -45,14 +42,14 @@ const ViewMain = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-const ViewHead = (wrapper: HTMLElement) => {
+const viewHead = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
   let foreground = wrapper.childNodes[0] as HTMLElement; //--|🠈 <section class="foreground"> 🠈|--\\
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'disabled-header';
+  const disableElement: string = 'locked-header';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('squaring', 'unfolded');
@@ -75,14 +72,14 @@ const ViewHead = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-const ViewFoot = (wrapper: HTMLElement) => {
+const viewFoot = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
   let foreground = wrapper.childNodes[0] as HTMLElement; //--|🠈 <section class="foreground"> 🠈|--\\
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'disabled-footer';
+  const disableElement: string = 'locked-footer';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('squaring', 'unfolded');
@@ -104,14 +101,14 @@ const ViewFoot = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-const ViewOver = (wrapper: HTMLElement) => {
+const viewOver = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
   let foreground = wrapper.childNodes[0] as HTMLElement; //--|🠈 <section class="foreground"> 🠈|--\\
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'disabled-overlay';
+  const disableElement: string = 'locked-overlay';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('hidden', 'visible');
@@ -122,8 +119,8 @@ const ViewOver = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-const ViewLeft = (wrapper: HTMLElement) => {
-  const disableElement: string = 'disabled-leftbar';
+const viewLeft = (wrapper: HTMLElement) => {
+  const disableElement: string = 'locked-leftbar';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(wrapper.childNodes[2] as HTMLDivElement, '(purple)');
@@ -142,13 +139,14 @@ const ViewLeft = (wrapper: HTMLElement) => {
     }, 3000);
   }
 };
-const ViewRight = (wrapper: HTMLElement) => {
+const viewRight = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\
   //--|🠊 It's meant to keep the project scalable 🠈|--\\
   let foreground = wrapper.childNodes[0] as HTMLElement; //--|🠈 <section class="foreground"> 🠈|--\\
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
-  const disableElement: string = 'disabled-rightbar';
+
+  const disableElement: string = 'locked-rightbar';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(background as HTMLDivElement, '(yellow)');
@@ -195,4 +193,5 @@ let emphasizeBackground = (element: HTMLDivElement, color: '(green)' | '(red)' |
     }, 500);
   }, 2000);
 };
+
 export default testBlock;
