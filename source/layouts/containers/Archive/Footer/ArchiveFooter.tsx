@@ -10,6 +10,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
+import { loadPage } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
@@ -87,6 +88,8 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               cases={{
                 pages: 3,
                 axis: '[x]',
+                link: undefined,
+                task: [() => loadPage('overtime'), () => loadPage('ticketing'), () => loadPage('hyperlink')],
               }}
             />
           </section>

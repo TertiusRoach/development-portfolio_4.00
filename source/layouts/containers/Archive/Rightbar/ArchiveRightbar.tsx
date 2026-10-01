@@ -76,7 +76,7 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
               cases={{
                 pages: 10,
                 axis: '[y]',
-                mark: ['article', 'aside', 'button', 'division', 'figure', 'menu', 'navigation', 'section', 'table', 'time'] as Array<string>,
+                link: ['article', 'aside', 'button', 'division', 'figure', 'menu', 'navigation', 'section', 'table', 'time'] as Array<string>,
               }}
             />
           </section>

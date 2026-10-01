@@ -29,7 +29,8 @@ interface TheseProps {
   cases: {
     pages: number;
     axis: '[x]' | '[y]';
-    mark?: Array<string> | undefined;
+    link?: Array<string> | undefined;
+    task?: Array<() => void> | undefined;
   };
 
   onClick?: () => void;
@@ -84,11 +85,11 @@ const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
   '[y]': ['vert-Y-select', 'vertical'],
 };
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
-  let casesMark: Array<string>;
-  if (typeof cases.mark === 'object') {
-    casesMark = cases.mark;
+  let casesLink: Array<string>;
+  if (typeof cases.link === 'object') {
+    casesLink = cases.link;
   } else {
-    casesMark = Array.from({ length: cases.pages }, () => info.labelName);
+    casesLink = Array.from({ length: cases.pages }, () => info.labelName);
   }
 
   let styleSize: Array<'<h1>' | '<h4>' | '<p>'>;
@@ -117,7 +118,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  labelName: `${casesMark[index]}-select`,
+                  labelName: `${casesLink[index]}-select`,
                 }}
                 style={{
                   type: '{button}',
@@ -128,7 +129,11 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
-                  selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                  if (cases.task === undefined) {
+                    selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                  } else {
+                    cases.task[index]();
+                  }
                 }}
               />
             </div>
@@ -144,7 +149,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 info={{
                   pageName: info.pageName,
                   blockName: info.blockName,
-                  labelName: `${casesMark[index]}-select`,
+                  labelName: `${casesLink[index]}-select`,
                 }}
                 style={{
                   type: '{button}',
@@ -155,7 +160,11 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
-                  selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                  if (cases.task === undefined) {
+                    selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                  } else {
+                    cases.task[index]();
+                  }
                 }}
               />
             </div>

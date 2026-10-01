@@ -141,6 +141,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               cases={{
                 pages: 3,
                 axis: '[x]',
+                link: undefined,
               }}
             />
           </section>
