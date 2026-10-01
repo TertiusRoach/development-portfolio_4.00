@@ -5,11 +5,7 @@ import * as Palettes from '../../../designs/Palettes.scss';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
 
-function testBlock(
-  pageName: string,
-  blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>',
-  labelName: string,
-) {
+function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>', labelName: string) {
   let wrapperElement = document.querySelector(`#${pageName}-${stripBrackets(blockName, '<>')}`) as HTMLElement;
   switch (blockName) {
     case '<main>':
@@ -172,10 +168,7 @@ const ViewRight = (wrapper: HTMLElement) => {
   }
 };
 
-let emphasizeBackground = (
-  element: HTMLDivElement,
-  color: '(green)' | '(red)' | '(blue)' | '(orange)' | '(purple)' | '(yellow)',
-) => {
+let emphasizeBackground = (element: HTMLDivElement, color: '(green)' | '(red)' | '(blue)' | '(orange)' | '(purple)' | '(yellow)') => {
   element.style.opacity = '0.5';
   element.style.transition = 'background 250ms ease-in-out';
   setTimeout(() => {

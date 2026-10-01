@@ -1,13 +1,13 @@
 //--|🠊 Division.default.tsx 🠈|--\\
-
-//--|🠋 Functions 🠋|--\\
-import testBlock from './Division_default';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
+import testBlock from './Division_default';
+import { loadAsset } from '../../../../scripts';
 
 interface TheseProps {
   info: {
@@ -24,8 +24,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let link: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
+  let link: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1';
   return (
     <div className={`${info.labelName}-${info.blockName}_division-default`}>
       <ButtonDefault
@@ -36,7 +35,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Main>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/house.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/house') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -56,7 +55,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Header>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/head-side.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/head-side') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -75,7 +74,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Footer>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/shoe-prints.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/shoe-prints') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -95,7 +94,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Overlay>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/layer-group.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/layer-group') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -114,7 +113,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Leftbar>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/left-to-line.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/left-to-line') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -133,7 +132,7 @@ const DivisionDefault: React.FC<TheseProps> = ({ info }) => {
           color: '(mono)',
           type: '{button}',
           text: '<Rightbar>',
-          image: `${link}/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/right-to-line.svg` as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/right-to-line') as string,
         }}
         info={{
           pageName: pageName as string,

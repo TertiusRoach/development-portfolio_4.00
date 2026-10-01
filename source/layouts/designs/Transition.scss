@@ -442,7 +442,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
     &[class*='collapsed'] {
-      clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      clip-path: inset(100% 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
   }
 }
