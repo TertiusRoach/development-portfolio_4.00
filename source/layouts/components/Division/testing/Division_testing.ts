@@ -2,7 +2,7 @@
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
 
-function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>', labelName: string) {
+function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>') {
   let wrapperElement = document.querySelector(`#${pageName}-${stripBrackets(blockName, '<>')}`) as HTMLElement;
   switch (blockName) {
     case '<main>':

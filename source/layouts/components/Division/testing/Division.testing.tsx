@@ -42,7 +42,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-main-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<main>', info.labelName);
+          testBlock(info.pageName, '<main>');
         }}
       />
 
@@ -62,7 +62,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-head-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<header>', info.labelName);
+          testBlock(info.pageName, '<header>');
         }}
       />
       <ButtonDefault
@@ -81,7 +81,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-foot-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<footer>', info.labelName);
+          testBlock(info.pageName, '<footer>');
         }}
       />
 
@@ -101,7 +101,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-over-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<overlay>', info.labelName);
+          testBlock(info.pageName, '<overlay>');
         }}
       />
       <ButtonDefault
@@ -120,7 +120,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-left-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<leftbar>', info.labelName);
+          testBlock(info.pageName, '<leftbar>');
         }}
       />
       <ButtonDefault
@@ -139,7 +139,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info }) => {
           labelName: 'test-right-block',
         }}
         onClick={(): void => {
-          testBlock(info.pageName, '<rightbar>', info.labelName);
+          testBlock(info.pageName, '<rightbar>');
         }}
       />
     </div>

@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
+// import FooterApplications from '../../../components/Footer/REVIEW/applications/Footer.applications';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
@@ -26,7 +26,7 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
   return (
     <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
       <section className={`${blockName}-foreground`}>
-        <FooterApplications
+        {/* <FooterApplications
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -36,7 +36,7 @@ const OvertimeFooter: React.FC<InfoProps> = ({ info }) => {
             axis: '[x]',
             apps: `{${pageName}}` as string,
           }}
-        />
+        /> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
