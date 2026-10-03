@@ -6,10 +6,6 @@
 section[class*='division-main'] {
   div.division-main_container {
     aside[class*='division'] {
-      width: 100vw;
-      height: 100svh;
-      flex: 0 0 100vw;
-      min-width: 100vw;
       @media screen and (orientation: landscape) {
         &[class*='testing'] {
           @include TestingDivision.desktop-landscape;

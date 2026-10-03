@@ -17,54 +17,50 @@ body {
       }
     }
     main {
+      aside[class*='menu'],
+      aside[class*='time'],
+      aside[class*='table'],
+      aside[class*='aside'],
+      aside[class*='button'],
+      aside[class*='figure'],
+      aside[class*='article'],
+      aside[class*='section'],
+      aside[class*='division'],
+      aside[class*='navigation'] {
+        width: 100vw;
+        height: 100svh;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+      }
+
       @media screen and (orientation: landscape) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.landscape-grid;
-        aside[class*='article'] {
+        aside[class*='time'],
+        aside[class*='table'],
+        aside[class*='figure'],
+        aside[class*='article'],
+        aside[class*='division'],
+        aside[class*='navigation'] {
           @include Mixins.landscape-grid;
         }
         aside[class*='button'] {
           @include Mixins.layering-position;
-        }
-        aside[class*='division'] {
-          @include Mixins.landscape-grid;
-        }
-        aside[class*='figure'] {
-          @include Mixins.landscape-grid;
-        }
-        aside[class*='navigation'] {
-          @include Mixins.landscape-grid;
-        }
-        aside[class*='table'] {
-          @include Mixins.landscape-grid;
-        }
-        aside[class*='time'] {
-          @include Mixins.landscape-grid;
         }
       }
       @media screen and (orientation: portrait) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.portrait-grid;
-        aside[class*='article'] {
+        aside[class*='time'],
+        aside[class*='table'],
+        aside[class*='figure'],
+        aside[class*='article'],
+        aside[class*='division'],
+        aside[class*='navigation'] {
           @include Mixins.portrait-grid;
         }
         aside[class*='button'] {
           @include Mixins.layering-position;
-        }
-        aside[class*='division'] {
-          @include Mixins.portrait-grid;
-        }
-        aside[class*='figure'] {
-          @include Mixins.portrait-grid;
-        }
-        aside[class*='navigation'] {
-          @include Mixins.portrait-grid;
-        }
-        aside[class*='table'] {
-          @include Mixins.portrait-grid;
-        }
-        aside[class*='time'] {
-          @include Mixins.portrait-grid;
         }
       }
     }
