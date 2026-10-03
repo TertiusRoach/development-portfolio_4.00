@@ -14,7 +14,6 @@
   div[class*='background'] {
     //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
   }
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="updates-article"> 🠈|--\\
@@ -28,5 +27,4 @@
   }
   div[class*='background'] {
   }
-  @include Mixins.portrait-grid;
 }

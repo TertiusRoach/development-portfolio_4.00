@@ -21,7 +21,7 @@ const DefaultTime: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as 'default';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
+    <aside className="default-time">
       <section className={`${blockName}-foreground`}>
         <h1 className="display-1">{`<DefaultTime>`}</h1>
       </section>

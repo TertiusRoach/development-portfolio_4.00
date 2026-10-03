@@ -21,7 +21,7 @@ const DefaultTable: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as 'default';
 
   return (
-    <aside className={`${labelName}-${blockName}`}>
+    <aside className="default-table">
       <section className={`${blockName}-foreground`}>
         <h1 className="display-1">{`<DefaultTable>`}</h1>
       </section>

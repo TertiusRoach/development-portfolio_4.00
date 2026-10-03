@@ -1,1 +1,347 @@
 //--|🠊 Skeleton.scss 🠈|--\\
+@use './Barrel.scss' as Barrel;
+@use './Global.scss' as Global;
+@use './Mixins.scss' as Mixins;
+@use './Queries.scss' as Queries;
+@use './Palettes.scss' as Palettes;
+@use './Transition.scss' as Transition;
+
+body {
+  div[id='components-body'] {
+    header {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+      }
+    }
+    main {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+        @include Mixins.landscape-grid;
+        aside[class*='article'] {
+          @include Mixins.landscape-grid;
+        }
+        aside[class*='button'] {
+          @include Mixins.layering-position;
+        }
+        aside[class*='division'] {
+          @include Mixins.landscape-grid;
+        }
+        aside[class*='figure'] {
+          @include Mixins.landscape-grid;
+        }
+        aside[class*='navigation'] {
+          @include Mixins.landscape-grid;
+        }
+        aside[class*='table'] {
+          @include Mixins.landscape-grid;
+        }
+        aside[class*='time'] {
+          @include Mixins.landscape-grid;
+        }
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+        @include Mixins.portrait-grid;
+        aside[class*='article'] {
+          @include Mixins.portrait-grid;
+        }
+        aside[class*='button'] {
+          @include Mixins.layering-position;
+        }
+        aside[class*='division'] {
+          @include Mixins.portrait-grid;
+        }
+        aside[class*='figure'] {
+          @include Mixins.portrait-grid;
+        }
+        aside[class*='navigation'] {
+          @include Mixins.portrait-grid;
+        }
+        aside[class*='table'] {
+          @include Mixins.portrait-grid;
+        }
+        aside[class*='time'] {
+          @include Mixins.portrait-grid;
+        }
+      }
+    }
+    footer {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+      }
+    }
+    aside[id*='leftbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+      }
+    }
+    section[id*='overlay'] {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+      }
+    }
+    aside[id*='rightbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+      }
+    }
+  }
+  div[id='overtime-body'] {
+    header {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+    main {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+    footer {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+    aside[id*='leftbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+    section[id*='overlay'] {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+    aside[id*='rightbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+      }
+    }
+  }
+  div[id='ticketing-body'] {
+    header {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+    main {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+    footer {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+    aside[id*='leftbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+    section[id*='overlay'] {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+    aside[id*='rightbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+      }
+    }
+  }
+  div[id='hyperlink-body'] {
+    header {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+    main {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+    footer {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+    aside[id*='leftbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+    section[id*='overlay'] {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+    aside[id*='rightbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+      }
+    }
+  }
+  div[id='landing-body'] {
+    header {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+    main {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+    footer {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+    aside[id*='leftbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+    section[id*='overlay'] {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+    aside[id*='rightbar'] {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+      }
+    }
+  }
+  //--|===|--\\
+  %composition {
+    @at-root body[class*='ante-meridiem'] {
+      background: Palettes.$indexLand-lightMode;
+    }
+    @at-root body[class*='post-meridiem'] {
+      background: Palettes.$indexLand-darkMode;
+    }
+  }
+  %positioning {
+    section[class*='overlay'] {
+      z-index: 10;
+    }
+    header[class*='header'] {
+      z-index: 6;
+    }
+    footer[class*='footer'] {
+      z-index: 9;
+    }
+    aside[class*='leftbar'] {
+      z-index: 5;
+    }
+    aside[class*='rightbar'] {
+      z-index: 4;
+    }
+    main[class*='main'] {
+      z-index: 0;
+    }
+  }
+  %transitions {
+    @include Transition.overlay-transition();
+    @include Transition.body-transition();
+    @include Transition.sidebar-transition();
+    //--|===|--\\
+    @include Transition.header-transition();
+    @include Transition.main-transition();
+    @include Transition.footer-transition();
+  }
+  div[class*='body'] {
+    @extend %composition;
+    @extend %positioning;
+    @extend %transitions;
+  }
+}

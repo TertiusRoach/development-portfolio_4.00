@@ -1,13 +1,6 @@
 //--|🠊 index.scss (Entry Point) 🠈|--\\
-
 //--|🠋 Designs 🠋|--\\
-@use './layouts/designs/Barrel.scss' as Barrel;
-@use './layouts/designs/Global.scss' as Global;
-@use './layouts/designs/Mixins.scss' as Mixins;
-@use './layouts/designs/Queries.scss' as Queries;
-@use './layouts/designs/Palettes.scss' as Palettes;
 @use './layouts/designs/Skeleton.scss' as Skeleton;
-@use './layouts/designs/Transition.scss' as Transition;
 
 //--|🠋 Framework 🠋|--\\
 @use './utilities/vendors/bootstrap/5.3.3/css/bootstrap.css' as Bootstrap;
@@ -18,48 +11,3 @@
 @use './layouts/styles/overtime.scss';
 @use './layouts/styles/ticketing.scss';
 @use './layouts/styles/hyperlink.scss';
-
-%composition {
-  @at-root body[class*='ante-meridiem'] {
-    background: Palettes.$indexLand-lightMode;
-  }
-  @at-root body[class*='post-meridiem'] {
-    background: Palettes.$indexLand-darkMode;
-  }
-}
-%positioning {
-  section[class*='overlay'] {
-    z-index: 10;
-  }
-  header[class*='header'] {
-    z-index: 6;
-  }
-  footer[class*='footer'] {
-    z-index: 9;
-  }
-  aside[class*='leftbar'] {
-    z-index: 5;
-  }
-  aside[class*='rightbar'] {
-    z-index: 4;
-  }
-  main[class*='main'] {
-    z-index: 0;
-  }
-}
-%transitions {
-  @include Transition.overlay-transition();
-  @include Transition.body-transition();
-  @include Transition.sidebar-transition();
-  //--|===|--\\
-  @include Transition.header-transition();
-  @include Transition.main-transition();
-  @include Transition.footer-transition();
-}
-body {
-  div[id*='body'] {
-    @extend %composition;
-    @extend %positioning;
-    @extend %transitions;
-  }
-}

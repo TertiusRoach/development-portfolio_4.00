@@ -53,7 +53,6 @@
         / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
   section[class*='main-fore'] {
@@ -107,7 +106,6 @@
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
   }
-  @include Mixins.portrait-grid;
 }
 
 section[class*='navigation'] {

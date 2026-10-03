@@ -16,8 +16,6 @@
   }
   div[class*='background'] {
   }
-
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-figure"> 🠈|--\\
@@ -27,6 +25,4 @@
   }
   div[class*='background'] {
   }
-
-  @include Mixins.portrait-grid;
 }
