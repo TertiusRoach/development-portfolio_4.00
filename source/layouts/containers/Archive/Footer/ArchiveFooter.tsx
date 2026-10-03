@@ -10,7 +10,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { functionHolder } from './ArchiveFunctions';
+import { lockBlock } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -118,18 +118,6 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
           }}
         >
           <section className={`${blockName}-foreground`}>
-            <DivisionConveyor
-              //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
-              cases={{
-                axis: '[y]',
-                call: FooterMenus as React.ComponentType<InfoProps>,
-              }}
-              info={{
-                labelName: 'elements',
-                blockName: blockName as 'header',
-                pageName: pageName as 'components',
-              }}
-            />
             <NavigationDefault
               //--|🠊 <nav class="default-footer_navigation-default"/> 🠈|--\\
               info={{
@@ -146,6 +134,28 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               cases={{
                 view: undefined,
                 image: undefined,
+                tasks: {
+                  onClick: (view) => {
+                    switch (view) {
+                      case 'bot-rig':
+                        lockBlock(pageName, 'footer');
+                        lockBlock(pageName, 'rightbar');
+                        break;
+                    }
+                  },
+                },
+              }}
+            />
+            <DivisionConveyor
+              //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
+              cases={{
+                axis: '[y]',
+                call: FooterMenus as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'elements',
+                blockName: blockName as 'header',
+                pageName: pageName as 'components',
               }}
             />
           </section>

@@ -17,22 +17,6 @@ body {
       }
     }
     main {
-      aside[class*='menu'],
-      aside[class*='time'],
-      aside[class*='table'],
-      aside[class*='aside'],
-      aside[class*='button'],
-      aside[class*='figure'],
-      aside[class*='article'],
-      aside[class*='section'],
-      aside[class*='division'],
-      aside[class*='navigation'] {
-        width: 100vw;
-        height: 100svh;
-        flex: 0 0 100vw;
-        min-width: 100vw;
-      }
-
       @media screen and (orientation: landscape) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.landscape-grid;
@@ -62,6 +46,21 @@ body {
         aside[class*='button'] {
           @include Mixins.layering-position;
         }
+      }
+      aside[class*='menu'],
+      aside[class*='time'],
+      aside[class*='table'],
+      aside[class*='aside'],
+      aside[class*='button'],
+      aside[class*='figure'],
+      aside[class*='article'],
+      aside[class*='section'],
+      aside[class*='division'],
+      aside[class*='navigation'] {
+        width: 100vw;
+        height: 100svh;
+        flex: 0 0 100vw;
+        min-width: 100vw;
       }
     }
     footer {

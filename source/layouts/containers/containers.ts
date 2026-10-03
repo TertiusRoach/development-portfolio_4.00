@@ -5,23 +5,26 @@ type AlterAction = 'expand' | 'collapsed' | 'unfold' | 'squaring' | 'loading' | 
 
 function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockName, alterAction: AlterAction) {
   const lockedElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  const toggleSafety = lockedElement.classList.contains(`locked-${blockName}`);
+  const toggleLocked: boolean = lockedElement.classList.contains(`locked-${blockName}`) as true | false;
+  const toggleFrozen: boolean = lockedElement.classList.contains(`frozen-${blockName}`) as true | false;
   const selectElement = thisItem.classList[0].split('-')[1] as 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
 
-  if (selectElement === 'main') {
-    return blockHandlers[blockName]?.[alterAction]?.(pageName);
+  console.log(toggleFrozen);
+  switch (toggleFrozen) {
+    case false:
+      if (selectElement === 'main') {
+        return blockHandlers[blockName]?.[alterAction]?.(pageName);
+      }
+
+      if (toggleLocked) return;
+
+      lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
+      blockHandlers[blockName]?.[alterAction]?.(pageName);
+      setTimeout(() => {
+        lockedElement.classList.remove(`locked-${blockName}`);
+      }, 1500);
+      break;
   }
-
-  if (toggleSafety) return;
-
-  lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
-  blockHandlers[blockName]?.[alterAction]?.(pageName);
-  setTimeout(() => {
-    lockedElement.classList.remove(`locked-${blockName}`);
-  }, 125);
-  /*
-  lockedElement.classList.add(`locked-${blockName}`);
-  */
 }
 
 //--|🠊 Expand Functions 🠈|--\\\\
