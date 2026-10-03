@@ -1,5 +1,5 @@
 //--|🠊 scripts.ts 🠈|--\\
-//--|🠋 Utility Functions 🠋|--\\
+//--|🠋 Utilities & Navigation 🠋|--\\
 export function loadAsset(type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string {
   //--|🠊 Finds path for file extension 🠈|--\\
   const assetSource: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
@@ -15,7 +15,76 @@ export function loadAsset(type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' 
   };
   return (filePath[type][0] + path + filePath[type][1]) as string;
 }
-export function arabicToRoman(arabicNumeral: number): string {
+export function loadPages(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'components' | 'landing'): void {
+  const prevPage = document.querySelector(`.active`) as HTMLDivElement;
+  const nextPage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+
+  // console.log(prevPage.classList[1], nextPage.classList[1]);
+  prevPage.classList.replace('active', 'asleep');
+  nextPage.classList.replace('asleep', 'active');
+}
+
+//--|🠋 Resolution & Refreshing 🠋|--\\
+type Orientation = 'landscape' | 'portrait';
+export function showingBootstrap(): string {
+  let windowScreen: number = 0;
+  let displayText: string = 'display-0';
+  const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
+  const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
+  if (desktop === true) {
+    windowScreen = window.innerHeight as number;
+    switch (true) {
+      case windowScreen >= 1080:
+        displayText = 'display-1'; //--|🠈 1920px 🠈|--\\
+        break;
+      case windowScreen >= 768:
+        displayText = 'display-3'; //--|🠈 1366px 🠈|--\\
+        break;
+      case windowScreen >= 480:
+        displayText = 'display-4'; //--|🠈 854px 🠈|--\\
+        break;
+      case windowScreen >= 360:
+        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
+        break;
+    }
+  } else if (mobile === true) {
+    windowScreen = window.innerWidth as number;
+    switch (true) {
+      case windowScreen >= 1080:
+        displayText = 'display-3'; //--|🠈 1920px 🠈|--\\
+        break;
+      case windowScreen >= 768:
+        displayText = 'display-4'; //--|🠈 1366px 🠈|--\\
+        break;
+      case windowScreen >= 480:
+        displayText = 'display-5'; //--|🠈 854px 🠈|--\\
+        break;
+      case windowScreen >= 360:
+        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
+        break;
+    }
+  }
+
+  return displayText as string;
+}
+export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
+  const mediaQuery = window.matchMedia('(orientation: landscape)');
+
+  const handleOrientationChange = (event: MediaQueryListEvent): void => {
+    onChange(event.matches ? 'landscape' : 'portrait');
+  };
+
+  //--|🠋 Subscribe to orientation changes 🠋|--\\
+  mediaQuery.addEventListener('change', handleOrientationChange);
+
+  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
+  return (): void => {
+    mediaQuery.removeEventListener('change', handleOrientationChange);
+  };
+}
+
+//--|🠋 Conversion Functions 🠋|--\\
+export const arabicToRoman = (arabicNumeral: number): string => {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
     case 0:
@@ -337,8 +406,8 @@ export function arabicToRoman(arabicNumeral: number): string {
     default:
       return 'O';
   }
-}
-export function romanToArabic(romanNumeral: string | undefined): number {
+};
+export const romanToArabic = (romanNumeral: string | undefined): number => {
   switch (romanNumeral) {
     //--|🠊 Map of Roman Strings to Number 🠈|--\\
     default:
@@ -673,8 +742,8 @@ export function romanToArabic(romanNumeral: string | undefined): number {
     case 'CLVI':
       return 156;
   }
-}
-export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string {
+};
+export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
   switch (wrapType) {
     case '[]':
       //--|🠊 Associated with [pageName] 🠈|--\\
@@ -697,76 +766,4 @@ export function stripBrackets(thisText: string, wrapType: '[]' | '<>' | '()' | '
       //--|🠊 Associated with ~style.shade~ 🠈|--\\
       return thisText.replace(/[~~]/g, '');
   }
-}
-
-//--|🠋 Resolution Functions 🠋|--\\
-type Orientation = 'landscape' | 'portrait';
-export function showingBootstrap(): string {
-  let windowScreen: number = 0;
-  let displayText: string = 'display-0';
-  const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
-  const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
-  if (desktop === true) {
-    windowScreen = window.innerHeight as number;
-    switch (true) {
-      case windowScreen >= 1080:
-        displayText = 'display-1'; //--|🠈 1920px 🠈|--\\
-        break;
-      case windowScreen >= 768:
-        displayText = 'display-3'; //--|🠈 1366px 🠈|--\\
-        break;
-      case windowScreen >= 480:
-        displayText = 'display-4'; //--|🠈 854px 🠈|--\\
-        break;
-      case windowScreen >= 360:
-        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
-        break;
-    }
-  } else if (mobile === true) {
-    windowScreen = window.innerWidth as number;
-    switch (true) {
-      case windowScreen >= 1080:
-        displayText = 'display-3'; //--|🠈 1920px 🠈|--\\
-        break;
-      case windowScreen >= 768:
-        displayText = 'display-4'; //--|🠈 1366px 🠈|--\\
-        break;
-      case windowScreen >= 480:
-        displayText = 'display-5'; //--|🠈 854px 🠈|--\\
-        break;
-      case windowScreen >= 360:
-        displayText = 'display-6'; //--|🠈 640px 🠈|--\\
-        break;
-    }
-  }
-
-  return displayText as string;
-}
-export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
-  const mediaQuery = window.matchMedia('(orientation: landscape)');
-
-  const handleOrientationChange = (event: MediaQueryListEvent): void => {
-    onChange(event.matches ? 'landscape' : 'portrait');
-  };
-
-  //--|🠋 Subscribe to orientation changes 🠋|--\\
-  mediaQuery.addEventListener('change', handleOrientationChange);
-
-  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
-  return (): void => {
-    mediaQuery.removeEventListener('change', handleOrientationChange);
-  };
-}
-
-//--|🠋 Container Functions 🠋|--\\
-function togglePages(pageName: string, viewAction: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'archive') {
-  const activePage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-  const sleepingPage = document.querySelector(`#${viewAction}-body`) as HTMLDivElement;
-
-  console.log(activePage.classList[1], sleepingPage.classList[1]);
-
-  activePage.classList.replace('active', 'asleep');
-  sleepingPage.classList.replace('asleep', 'active');
-}
-
-export default togglePages;
+};
