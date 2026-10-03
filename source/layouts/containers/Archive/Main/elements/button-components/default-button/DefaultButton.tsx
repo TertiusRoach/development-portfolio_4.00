@@ -24,7 +24,9 @@ interface InfoProps {
   };
 }
 function DefaultButton({ info }: InfoProps) {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -86,9 +88,18 @@ function DefaultButton({ info }: InfoProps) {
                 toggleColors(event.currentTarget as HTMLElement);
               }}
             >
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
             </div>
 
             <MenuScroll
@@ -188,9 +199,18 @@ function DefaultButton({ info }: InfoProps) {
                 toggleColors(event.currentTarget as HTMLElement);
               }}
             >
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
             </div>
 
             <MenuScroll
@@ -235,8 +255,8 @@ function DefaultButton({ info }: InfoProps) {
           </section>
           <figure className={`${info.blockName}-midground`}></figure>
           <div className={`${info.blockName}-background`}>
-            <section className="left-side"></section>
-            <section className="right-side"></section>
+            <section className="top-stack"></section>
+            <section className="bot-stack"></section>
           </div>
         </aside>
       );

@@ -4,7 +4,10 @@
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="default-button"> 🠈|--\\
-  mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='foreground'] {
     @extend %mark-area-desk;
     @extend %mark-disp-desk;
@@ -39,24 +42,24 @@
         }
       }
       &[class*='toggle'] {
-        //--|🠋 96px (Left & Right) for Design 🠋|--\\
+        margin: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
         grid-template: //--|🠋 Width: 1920px 🠋|--\\
           8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
           / 1fr; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
-          //--|🠋 64px (Left & Right) for Design 🠋|--\\
+          margin: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 1366px 🠋|--\\
             6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
             / 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
-          //--|🠋 48px (Left & Right) for Design 🠋|--\\
+          margin: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 854px 🠋|--\\
             4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
             / 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
-          //--|🠋 32px (Left & Right) for Design 🠋|--\\
+          margin: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 640px 🠋|--\\
             3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
             / 1fr; //--|🠈 columns 🠈|--\\
@@ -103,20 +106,22 @@
       background: Palettes.$indexLand-lightMode;
       filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
     }
-    grid-template-columns: 1fr 256px 1fr; //--|🠈 Width: 1920px 🠈|--\\
+    grid-template-columns: 1fr calc($high-desk * 2) 1fr; //--|🠈 Width: 1920px 🠈|--\\
     @media screen and (max-height: 768px) {
-      grid-template-columns: 1fr 192px 1fr; //--|🠈 Width: 1366px 🠈|--\\
+      grid-template-columns: 1fr calc($test-desk * 2) 1fr; //--|🠈 Width: 1366px 🠈|--\\
     }
     @media screen and (max-height: 480px) {
-      grid-template-columns: 1fr 128px 1fr; //--|🠈 Width: 854px 🠈|--\\
+      grid-template-columns: 1fr calc($misc-desk * 2) 1fr; //--|🠈 Width: 854px 🠈|--\\
     }
     @media screen and (max-height: 360px) {
-      grid-template-columns: 1fr 96px 1fr; //--|🠈 Width: 640px 🠈|--\\
+      grid-template-columns: 1fr calc($tiny-desk * 2) 1fr; //--|🠈 Width: 640px 🠈|--\\
     }
   }
   //--|===|--\\
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
   %mark-area-desk {
     menu {
+      z-index: 0;
       &[class*='darkside'] {
         grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -126,6 +131,7 @@
     }
     div {
       &[class*='toggle'] {
+        z-index: 1;
         grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         label:nth-child(1) {
           grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -193,6 +199,10 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-button"> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='foreground'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
@@ -316,32 +326,32 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
-    /*
     display: grid;
-    grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
-    grid-template-rows: 1fr;
+    grid-column: 1 / 2; //--|🠈 col-start col-end 🠈|--\\
+    grid-template-columns: 1fr;
 
-    .left-side {
-      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
-      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
+    grid-template-rows: 1fr calc($high-mobi / 2) 1fr; //--|🠈 Height: 1920px 🠈|--\\
+    @media screen and (max-width: 768px) {
+      grid-template-rows: 1fr calc($test-mobi / 2) 1fr; //--|🠈 Height: 1366px 🠈|--\\
     }
-    .right-side {
-      grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
-      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
+    @media screen and (max-width: 480px) {
+      grid-template-rows: 1fr calc($misc-mobi / 2) 1fr; //--|🠈 Height: 854px 🠈|--\\
     }
-    grid-template-columns: 1fr 256px 1fr; //--|🠈 Width: 1920px 🠈|--\\
-    @media screen and (max-height: 768px) {
-      grid-template-columns: 1fr 192px 1fr; //--|🠈 Width: 1366px 🠈|--\\
+    @media screen and (max-width: 360px) {
+      grid-template-rows: 1fr calc($tiny-mobi / 2) 1fr; //--|🠈 Height: 640px 🠈|--\\
     }
-    @media screen and (max-height: 480px) {
-      grid-template-columns: 1fr 128px 1fr; //--|🠈 Width: 854px 🠈|--\\
+
+    section[class*='stack'] {
+      mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
+      &.top-stack {
+        grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
+        background: Palettes.$indexLand-darkMode;
+      }
+      &.bot-stack {
+        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+        background: Palettes.$indexLand-lightMode;
+      }
     }
-    @media screen and (max-height: 360px) {
-      grid-template-columns: 1fr 96px 1fr; //--|🠈 Width: 640px 🠈|--\\
-    }
-    */
   }
   //--|===|--\\
   %mark-area-mobi {
