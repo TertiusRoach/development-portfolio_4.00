@@ -19,7 +19,6 @@ export function loadPages(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'co
   const prevPage = document.querySelector(`.active`) as HTMLDivElement;
   const nextPage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
 
-  // console.log(prevPage.classList[1], nextPage.classList[1]);
   prevPage.classList.replace('active', 'asleep');
   nextPage.classList.replace('asleep', 'active');
 }

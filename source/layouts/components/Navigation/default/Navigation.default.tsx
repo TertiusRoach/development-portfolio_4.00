@@ -24,25 +24,86 @@ interface TheseProps {
     view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
   };
   cases: {
+    tasks?: {
+      onClick?: (view: string) => void;
+      onMouseEnter?: (view: string) => void;
+      onMouseLeave?: (view: string) => void;
+      onDoubleClick?: (view: string) => void;
+    };
     image: Array<string> | undefined;
     view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
-    tasks: '';
   };
-
+  //--|===|--\\
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 }
-function VerticalButtons(
+
+function NavigationDefault({ info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
+  const pageName: string = info.pageName as string;
+  const blockName: string = info.blockName as string;
+  const labelName: string = info.labelName as string;
+
+  useEffect(() => {}, [pageName, blockName, labelName]);
+
+  let handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    cases.tasks?.onClick?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    onClick?.(event);
+  };
+  let handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    cases.tasks?.onMouseEnter?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    onMouseEnter?.(event);
+  };
+  let handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    cases.tasks?.onMouseLeave?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    onMouseLeave?.(event);
+  };
+  let handleDoubleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    cases.tasks?.onDoubleClick?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    onDoubleClick?.(event);
+  };
+
+  return (
+    <nav className={`${labelName}-${blockName}_navigation-default`}>
+      <ol className={`hori-X-${blockName}`}>
+        {HorizontalButtons(
+          info,
+          style,
+          cases,
+          //--|===|--\\
+          handleClick,
+          handleMouseEnter,
+          handleMouseLeave,
+          handleDoubleClick,
+        )}
+      </ol>
+      <ul className={`vert-Y-${blockName}`}>
+        {VerticalButtons(
+          info,
+          style,
+          cases,
+          //--|===|--\\
+          handleClick,
+          handleMouseEnter,
+          handleMouseLeave,
+          handleDoubleClick,
+        )}
+      </ul>
+    </nav>
+  );
+}
+
+const VerticalButtons = (
   info: TheseProps['info'],
   style: TheseProps['style'],
   cases: TheseProps['cases'],
+  //--|===|--\\
   onClick: TheseProps['onClick'],
   onMouseEnter: TheseProps['onMouseEnter'],
   onMouseLeave: TheseProps['onMouseLeave'],
   onDoubleClick: TheseProps['onDoubleClick'],
-) {
+) => {
   switch (true) {
     case cases.view !== undefined:
       return cases.view.map((path, index) => (
@@ -61,6 +122,11 @@ function VerticalButtons(
               blockName: info.blockName,
               labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${path}`,
             }}
+            //--|===|--\\
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onDoubleClick={onDoubleClick}
           />
         </li>
       ));
@@ -81,6 +147,7 @@ function VerticalButtons(
               blockName: info.blockName,
               labelName: `${info.pageName}-${info.blockName}-${info.labelName}-navigation_${style.view}`,
             }}
+            //--|===|--\\
             onClick={onClick}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
@@ -91,8 +158,17 @@ function VerticalButtons(
     default:
       return null;
   }
-}
-function HorizontalButtons(info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) {
+};
+const HorizontalButtons = (
+  info: TheseProps['info'],
+  style: TheseProps['style'],
+  cases: TheseProps['cases'],
+  //--|===|--\\
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
+) => {
   switch (info.blockName) {
     case 'main':
       return NavigationMain(info, style, cases);
@@ -107,34 +183,9 @@ function HorizontalButtons(info: TheseProps['info'], style: TheseProps['style'],
     case 'rightbar':
       return NavigationRightbar(info, style, cases);
   }
-}
-
-const NavigationDefault: React.FC<TheseProps> = ({
-  info,
-  style,
-  cases,
-  onClick,
-  onMouseEnter,
-  onMouseLeave,
-  onDoubleClick,
-}) => {
-  const pageName: string = info.pageName as string;
-  const blockName: string = info.blockName as string;
-  const labelName: string = info.labelName as string;
-
-  useEffect(() => {}, [pageName, blockName, labelName]);
-
-  return (
-    <nav className={`${labelName}-${blockName}_navigation-default`}>
-      <ol className={`hori-X-${blockName}`}>{HorizontalButtons(info, style, cases)}</ol>
-      <ul className={`vert-Y-${blockName}`}>
-        {VerticalButtons(info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick)}
-      </ul>
-    </nav>
-  );
 };
 
-let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -142,7 +193,7 @@ let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], case
   // console.log('<Main> Loaded!');
   return <></>;
 };
-let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -150,7 +201,7 @@ let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], ca
   // console.log('<Header> Loaded!');
   return <></>;
 };
-let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -158,7 +209,7 @@ let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], ca
   // console.log('<Footer> Loaded!');
   return <></>;
 };
-let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -166,7 +217,7 @@ let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], c
   // console.log('<Overlay> Loaded!');
   return <></>;
 };
-let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -174,7 +225,7 @@ let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], c
   // console.log('<Leftbar> Loaded!');
   return <></>;
 };
-let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+var NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];

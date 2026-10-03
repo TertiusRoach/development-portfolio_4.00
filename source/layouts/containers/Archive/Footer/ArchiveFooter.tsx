@@ -62,9 +62,16 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
-                tasks: '',
                 view: undefined,
                 image: undefined,
+                tasks: {
+                  onClick: (view) => {
+                    switch (view) {
+                      case 'bot-rig':
+                        return loadPages('landing');
+                    }
+                  },
+                },
               }}
             />
             <MenuSelect
@@ -115,7 +122,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: MenuSwipes as React.ComponentType<InfoProps>,
+                call: FooterMenus as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -137,9 +144,8 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
               }}
               cases={{
-                tasks: '',
-                image: undefined,
                 view: undefined,
+                image: undefined,
               }}
             />
           </section>
@@ -151,7 +157,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
+const FooterMenus: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';

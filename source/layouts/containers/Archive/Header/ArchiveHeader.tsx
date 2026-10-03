@@ -52,7 +52,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: MenuSwipes as React.ComponentType<InfoProps>,
+                call: HeaderMenus as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -74,9 +74,8 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
               }}
               cases={{
-                tasks: '',
-                image: undefined,
                 view: undefined,
+                image: undefined,
               }}
             />
           </section>
@@ -115,9 +114,16 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
-                image: undefined,
                 view: undefined,
-                tasks: '',
+                image: undefined,
+                tasks: {
+                  onClick: (view) => {
+                    switch (view) {
+                      case 'top-lef':
+                        return loadPages('landing');
+                    }
+                  },
+                },
               }}
             />
             <MenuSelect
@@ -158,7 +164,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
+const HeaderMenus: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';

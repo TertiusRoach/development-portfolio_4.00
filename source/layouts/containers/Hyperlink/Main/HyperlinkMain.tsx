@@ -1,12 +1,12 @@
 //--|🠊 HyperlinkMain.tsx 🠈|--\\
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import DivisionTesting from '../../../components/Division/testing/Division.testing';
 
-//--|🠋 Dependencies 🠋|--\\
-import React, { useState, useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -16,75 +16,34 @@ interface InfoProps {
   };
 }
 
-const HyperlinkMain: React.FC<InfoProps> = ({ info }) => {
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
+function HyperlinkMain({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
+  let blockName = stripBrackets(info.blockName, '<>') as 'main';
+  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
+
+  useEffect(() => {
+    //--|🟥🔴🟥|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
       <section className={`${blockName}-foreground`}>
-        <DivisionTesting
+        {/* <DivisionTesting
           info={{
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
           }}
-        />
+        /> */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </main>
   );
-};
-export default HyperlinkMain;
-
-/*
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/hyperlink';
-//--|🠋 Dependencies 🠋|--//
-import React, { useState, useEffect } from 'react';
-//--|🠋 Components 🠋|--//
-import ButtonDefault from '../../../components/Button/default/Button.default';
-
-interface InfoProps {
-  info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
-  };
 }
-
-const OvertimeMain: React.FC<InfoProps> = ({ info }) => {
-  const labelName = 'report' as string;
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
-
-  useEffect(() => {}, [pageName, blockName]);
-
-  let svgPath: Array<String> = ['', '', ''];
-
-  return (
-    <main id={`${pageName}-${blockName}`} className={`default-${blockName}`} style={{ zIndex: 0 }}>
-      <section className={`${blockName}-foreground`}>
-        <header className="default-header"></header>
-        <nav className="default-navigation"></nav>
-        <div className="default-division"></div>
-      </section>
-      <figure className={`${blockName}-midground`}>
-        <aside className="left-side downplay"></aside>
-        <aside className="right-side downplay"></aside>
-      </figure>
-      <div className={`${blockName}-background`}>
-        <header></header>
-        <aside className="left-side downplay"></aside>
-        <aside className="right-side downplay"></aside>
-        <footer></footer>
-      </div>
-    </main>
-  );
-};
-export default OvertimeMain;
-*/
+export default HyperlinkMain;

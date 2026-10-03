@@ -35,20 +35,6 @@ interface TheseProps {
 
   onClick?: () => void;
   onMouseEnter?: () => void;
-
-  /*
-  style: {
-    image: string;
-    size: '<h1>' | '<h4>' | '<p>';
-    shade: '~dark~' | '~medium~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
-    view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
-
-    type: '{button}' | '{counter}';
-    role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
-  };
-
-  */
 }
 
 function MenuSelect({ info, style, cases }: TheseProps) {
@@ -75,15 +61,6 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     </menu>
   );
 }
-//--|🠊 Checks [x] or [y] axis 🠈|--\\
-const axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
-  '[x]': 'ul',
-  '[y]': 'ol',
-};
-const axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
-  '[x]': ['hori-X-select', 'horizontal'],
-  '[y]': ['vert-Y-select', 'vertical'],
-};
 const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
   let casesLink: Array<string>;
   if (typeof cases.link === 'object') {
@@ -175,5 +152,13 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
       );
   }
 };
+let axisList: Record<'[x]' | '[y]', 'ul' | 'ol'> = {
+  '[x]': 'ul',
+  '[y]': 'ol',
+}; //--|🠈 Wraps with <ul> or <ol> element 🠈|--\\
+let axisClass: Record<TheseProps['cases']['axis'], Array<string>> = {
+  '[x]': ['hori-X-select', 'horizontal'],
+  '[y]': ['vert-Y-select', 'vertical'],
+}; //--|🠈 Marks [x] or [y] axis 🠈|--\\
 
 export default MenuSelect;
