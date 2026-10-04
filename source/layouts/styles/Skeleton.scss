@@ -142,7 +142,8 @@ body {
             z-index: 1;
             grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           }
-          nav[class*='default'] {
+          nav[class*='header'],
+          nav[class*='footer'] {
             z-index: 0;
             height: 100svh;
             grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

@@ -33,7 +33,7 @@ const viewMain = (wrapper: HTMLElement) => {
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'locked-main';
+  const disableElement: string = 'frozen-main';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(background, '(green)');
@@ -49,27 +49,26 @@ const viewHead = (wrapper: HTMLElement) => {
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'locked-header';
+  const disableElement: string = 'frozen-header';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('squaring', 'unfolded');
     emphasizeBackground(background as HTMLDivElement, '(red)');
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'expanded');
-    }, 500);
+    }, 750 * 1);
     setTimeout(() => {
       wrapper.classList.replace('expanded', 'collapsed');
-    }, 1000);
+    }, 750 * 2);
     setTimeout(() => {
       wrapper.classList.replace('collapsed', 'unfolded');
-    }, 1500);
+    }, 750 * 3);
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'squaring');
-    }, 2000);
-
+    }, 750 * 4);
     setTimeout(() => {
       wrapper.classList.remove(disableElement);
-    }, 3000);
+    }, 750 * 5);
   }
 };
 const viewFoot = (wrapper: HTMLElement) => {
@@ -79,26 +78,26 @@ const viewFoot = (wrapper: HTMLElement) => {
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'locked-footer';
+  const disableElement: string = 'frozen-footer';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('squaring', 'unfolded');
     emphasizeBackground(background as HTMLDivElement, '(blue)');
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'expanded');
-    }, 500);
+    }, 750 * 1);
     setTimeout(() => {
       wrapper.classList.replace('expanded', 'collapsed');
-    }, 1000);
+    }, 750 * 2);
     setTimeout(() => {
       wrapper.classList.replace('collapsed', 'unfolded');
-    }, 1500);
+    }, 750 * 3);
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'squaring');
-    }, 2000);
+    }, 750 * 4);
     setTimeout(() => {
       wrapper.classList.remove(disableElement);
-    }, 3000);
+    }, 750 * 5);
   }
 };
 const viewOver = (wrapper: HTMLElement) => {
@@ -108,7 +107,7 @@ const viewOver = (wrapper: HTMLElement) => {
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'locked-overlay';
+  const disableElement: string = 'frozen-overlay';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     wrapper.classList.replace('hidden', 'visible');
@@ -120,23 +119,23 @@ const viewOver = (wrapper: HTMLElement) => {
   }
 };
 const viewLeft = (wrapper: HTMLElement) => {
-  const disableElement: string = 'locked-leftbar';
+  const disableElement: string = 'frozen-leftbar';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(wrapper.childNodes[2] as HTMLDivElement, '(purple)');
     wrapper.classList.replace('collapsed', 'unfolded');
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'expanded');
-    }, 500);
+    }, 750 * 2);
     setTimeout(() => {
       wrapper.classList.replace('expanded', 'unfolded');
-    }, 1000);
+    }, 750 * 3);
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'collapsed');
-    }, 1500);
+    }, 750 * 4);
     setTimeout(() => {
       wrapper.classList.remove(disableElement);
-    }, 3000);
+    }, 750 * 5);
   }
 };
 const viewRight = (wrapper: HTMLElement) => {
@@ -146,23 +145,23 @@ const viewRight = (wrapper: HTMLElement) => {
   let midground = wrapper.childNodes[1] as HTMLElement; //--|🠈 <figure class="midground"> 🠈|--\\
   let background = wrapper.childNodes[2] as HTMLDivElement; //--|🠈 <div class="background"> 🠈|--\\
 
-  const disableElement: string = 'locked-rightbar';
+  const disableElement: string = 'frozen-rightbar';
   if (!wrapper.classList.contains(disableElement)) {
     wrapper.classList.add(disableElement);
     emphasizeBackground(background as HTMLDivElement, '(yellow)');
     wrapper.classList.replace('collapsed', 'unfolded');
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'expanded');
-    }, 500);
+    }, 750 * 2);
     setTimeout(() => {
       wrapper.classList.replace('expanded', 'unfolded');
-    }, 1000);
+    }, 750 * 3);
     setTimeout(() => {
       wrapper.classList.replace('unfolded', 'collapsed');
-    }, 1500);
+    }, 750 * 4);
     setTimeout(() => {
       wrapper.classList.remove(disableElement);
-    }, 3000);
+    }, 750 * 5);
   }
 };
 
@@ -170,28 +169,26 @@ let emphasizeBackground = (element: HTMLDivElement, color: '(green)' | '(red)' |
   element.style.opacity = '0.5';
   element.style.transition = 'background 250ms ease-in-out';
   setTimeout(() => {
-    switch (color) {
-      case '(green)':
-        return (element.style.background = '#63ff9c');
-      case '(red)':
-        return (element.style.background = '#ff9090');
-      case '(blue)':
-        return (element.style.background = '#7dc0ff');
-      case '(orange)':
-        return (element.style.background = '#ff9900');
-      case '(purple)':
-        return (element.style.background = '#c98fff');
-      case '(yellow)':
-        return (element.style.background = '#ffdd55');
-    }
-  }, 125);
-  setTimeout(() => {
     element.style.background = '';
     setTimeout(() => {
       element.style.opacity = '';
       element.style.transition = '';
-    }, 500);
-  }, 2000);
+    }, 750 * 1);
+  }, 750 * 5);
+  switch (color) {
+    case '(green)':
+      return (element.style.background = '#63ff9c');
+    case '(red)':
+      return (element.style.background = '#ff9090');
+    case '(blue)':
+      return (element.style.background = '#7dc0ff');
+    case '(orange)':
+      return (element.style.background = '#ff9900');
+    case '(purple)':
+      return (element.style.background = '#c98fff');
+    case '(yellow)':
+      return (element.style.background = '#ffdd55');
+  }
 };
 
 export default testBlock;
