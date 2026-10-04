@@ -1,5 +1,4 @@
 //--|🠊 ComponentsOverlay.scss 🠈|--\\
-@use '../../../styles/Mixins.scss' as Mixins;
 @use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
@@ -44,10 +43,8 @@
 section[id='components-overlay'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    @include Mixins.landscape-grid;
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    @include Mixins.portrait-grid;
   }
 }

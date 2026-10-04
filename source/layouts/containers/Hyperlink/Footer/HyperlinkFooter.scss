@@ -1,5 +1,4 @@
 //--|🠊 HyperlinkFooter.scss 🠈|--\\
-@use '../../../styles/Mixins.scss';
 @use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
@@ -27,10 +26,8 @@
 footer[id*='hyperlink'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    @include Mixins.landscape-grid();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    @include Mixins.portrait-grid();
   }
 }

@@ -1,5 +1,4 @@
 //--|🠊 ComponentsRightbar.scss 🠈|--\\
-@use '../../../styles/Mixins.scss';
 @use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
@@ -28,10 +27,8 @@
 aside[id='components-rightbar'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    @include Mixins.landscape-grid;
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    @include Mixins.portrait-grid;
   }
 }

@@ -1,5 +1,4 @@
 //--|🠊 ArchiveLeftbar.scss 🠈|--\\
-@use '../../../styles/Mixins.scss';
 @use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
@@ -13,7 +12,6 @@
   }
   div[class*='background'] {
   }
-  @include Mixins.landscape-grid;
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Leftbar) 🠋|--\\
@@ -23,7 +21,6 @@
   }
   div[class*='background'] {
   }
-  @include Mixins.portrait-grid;
 }
 aside[id*='components'] {
   @media screen and (orientation: landscape) {

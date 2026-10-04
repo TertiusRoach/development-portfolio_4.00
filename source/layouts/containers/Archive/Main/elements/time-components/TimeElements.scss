@@ -1,7 +1,6 @@
 //--|🠊 TimeElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
-
 @use './default-time/DefaultTime.scss';
+@use '../../../../../styles/Palettes.scss';
 
 section[class*='time'] {
   div.time-main_container {
