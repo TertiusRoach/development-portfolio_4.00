@@ -1,1 +1,2 @@
-//--|🠊 Leftbar/ComponentsFunctions.ts 🠈|--\\
+//--|🠊 Leftbar/HyperlinkFunctions.ts 🠈|--\\
+export function functionHolder(): void {}

@@ -30,6 +30,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
   let pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
+    //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 

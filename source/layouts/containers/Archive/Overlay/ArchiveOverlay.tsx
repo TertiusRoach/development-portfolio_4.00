@@ -20,13 +20,16 @@ interface InfoProps {
 }
 
 function ArchiveOverlay({ info }: InfoProps): JSX.Element {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
   let blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
   let pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
+    //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 

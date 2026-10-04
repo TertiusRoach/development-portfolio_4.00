@@ -1,35 +1,39 @@
-//--|🠊 LandingFooter.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
+//--|🠊 LandingMain.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import SectionBlocked from '../../../components/Section/REVIEW/blocked/Section.blocked';
-import MenuLanding from '../../../components/Menu/REVIEW/landing/Menu.landing';
-//--|🠉 Components 🠉|--//
+
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: '[landing]' | string;
+    blockName: '<footer>' | string;
+    labelName: '(default)' | string;
   };
 }
-const LandingFooter: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
+function LandingFooter({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let blockName = stripBrackets(info.blockName, '<>') as 'footer';
+  let pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🟪|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
-    <footer className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 1 }}>
-      <MenuLanding info={info} />
-      <SectionBlocked info={info} />
+    <footer id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </footer>
   );
-};
+}
 export default LandingFooter;

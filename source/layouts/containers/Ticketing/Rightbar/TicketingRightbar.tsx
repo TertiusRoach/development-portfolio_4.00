@@ -1,34 +1,39 @@
-//--|🠊 ArchiveRightbar.tsx 🠈|--\\
-import React, { useEffect } from 'react';
-import { stripBrackets } from '../../../../scripts';
+//--|🠊 TicketingRightbar.tsx 🠈|--//
+//--|🠋 Dependencies 🠋|--//
+import React, { useState, useEffect } from 'react';
+
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    //--|🠋 pageName: Id that represents the application 🠋|--\\
-    pageName: '[components]';
-    //--|🠋 blockName: 'Toggles between '/containers' folders. 🠋|--\\
-    blockName: '<footer>' | '<header>' | '<leftbar>' | '<main>' | '<overlay>' | '<rightbar>';
-    //--|🠋 labelName: Class name marker for all components. 🠋|--\\
+    pageName: '[ticketing]' | string;
+    blockName: '<rightbar>' | string;
     labelName: '(default)' | string;
   };
 }
-const ArchiveRightbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'unfolded' | 'collapsed' = 'collapsed';
+function TicketingRightbar({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
-  const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
-  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  let blockName = stripBrackets(info.blockName, '<>') as 'ticketing';
+  let pageName = stripBrackets(info.pageName, '[]') as 'rightbar';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🟦|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
-      <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<ComponentsRightbar>`}</h1>
-      </section>
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
-export default ArchiveRightbar;
+}
+export default TicketingRightbar;

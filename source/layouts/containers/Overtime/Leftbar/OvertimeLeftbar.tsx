@@ -1,70 +1,39 @@
-//--|🠊 OvertimeLeftbar.tsx 🠈|--\\
-/*
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/overtime';
-//--|🠋 Dependencies 🠋|--\\
+//--|🠊 OvertimeLeftbar.tsx 🠈|--//
+//--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
+
 //--|🠋 Components 🠋|--\\
-import NavigationClocking from '../../../components/Navigation/Overtime/review/clocking/Navigation.clocking';
-import TableClocking from '../../../components/Table/clocking/Table.clocking';
-import MenuClocking from '../../../components/Menu/ARCHIVE/clocking/Menu.clocking';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    labelName: '(default)' | '(tracking)' | '(clocking)' | '(request)' | '(profile)' | '(message)' | string;
-    roleName?: '{established}' | '{freelancing}' | '{manager}' | '{employee}' | '{specialist}' | '{technician}' | string;
+    pageName: '[overtime]' | string;
+    blockName: '<leftbar>' | string;
+    labelName: '(default)' | string;
   };
 }
+function OvertimeLeftbar({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-const OvertimeLeftbar: React.FC<InfoProps> = ({ info }) => {
-  let stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
-  const labelName = stripBrackets(info.labelName, '()') as 'clocking';
+  useEffect(() => {
+    //--|🟩|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
-    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`} style={{ zIndex: 0 }}>
-      <section className={`${blockName}-foreground`}>
-        <MenuClocking
-          //--|🠊 <menu class="clocking-leftbar" /> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        />
-        // <NavigationClocking
-        //   //--|🠊 <nav class="clocking-leftbar" /> 🠈|--\\
-        //   info={{
-        //     pageName: pageName,
-        //     blockName: blockName,
-        //     labelName: labelName,
-        //   }}
-        // />
-      </section>
-      <figure className={`${blockName}-midground`}>
-        <TableClocking
-          //--|🠊 <table class="clocking-leftbar" /> 🠈|--\\
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        />
-
-        // <DataWeek
-        //   info={{
-        //     pageName: pageName,
-        //     blockName: blockName,
-        //   }}
-        // />
-      </figure>
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default OvertimeLeftbar;
-*/

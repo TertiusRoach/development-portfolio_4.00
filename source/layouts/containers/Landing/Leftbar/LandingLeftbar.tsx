@@ -1,34 +1,39 @@
 //--|🠊 LandingLeftbar.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Frameworks 🠋|--//
+//--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
-//--|🠉 Frameworks 🠉|--//
-//--|🠋 Components 🠋|--//
-import FormVerify from '../../../components/Form/verify/Form.verify';
-//--|🠉 Components 🠉|--//
+
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: '[landing]' | string;
+    blockName: '<leftbar>' | string;
+    labelName: '(default)' | string;
   };
 }
-const LandingLeftbar: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+function LandingLeftbar({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  let pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🟪|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
-    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
-      <h4 className="verify-label display-4">Verify</h4>
-      <FormVerify info={info} />
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default LandingLeftbar;

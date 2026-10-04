@@ -1,34 +1,39 @@
 //--|🠊 LandingRightbar.tsx 🠈|--//
-//--|🠋 Frameworks 🠋|--//
+//--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
-//--|🠉 Frameworks 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Components 🠋|--//
-import FormReset from '../../../components/Form/reset/Form.reset';
-//--|🠉 Components 🠉|--//
+
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: '[landing]' | string;
+    blockName: '<rightbar>' | string;
+    labelName: '(default)' | string;
   };
 }
-const LandingRightbar: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+function LandingRightbar({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  const stateName: 'expanded' | 'collapsed' = 'collapsed';
+  let blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+  let pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
-  useEffect(() => {}, [pageName, blockName]);
+  useEffect(() => {
+    //--|🟪|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
   return (
-    <aside className={`default-${blockName} collapsed`} id={`${pageName}-${blockName}`} style={{ zIndex: 2 }}>
-      <h4 className="reset-label display-4">Reset</h4>
-      <FormReset info={info} />
+    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default LandingRightbar;

@@ -34,11 +34,20 @@ function Archive() {
     const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
     const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
 
-    const headerTimer = setTimeout(() => setHeader(true), 250 * 2); //--|🠈 References <Main> block container. 🠈|--\\
-    const footerTimer = setTimeout(() => setFooter(true), 250 * 2); //--|🠈 References <Main> block container. 🠈|--\\
+    //--|🠋 References <Main> block container 🠋|--\\
+    const headerTimer = setTimeout(() => setHeader(true), 250 * 2);
+    const footerTimer = setTimeout(() => setFooter(true), 250 * 2);
 
-    const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
-    const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3); //--|🠈 References <Main> block container. 🠈|--\\
+    const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3);
+    const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3);
+
+    setTimeout(() => {
+      /*--|🠋
+      
+      🠉|--*/
+      console.log('|🠊 Entry Point: <div id="components-body"> 🠈|');
+    }, 60000);
+
     return () => {
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
@@ -52,34 +61,24 @@ function Archive() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
-        {getOverlay && (
-          <ArchiveOverlay info={{ pageName: '[components]', blockName: '<overlay>', labelName: '(default)' }} />
-        )}
-      </Suspense>
-
-      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
-        {getLeftbar && (
-          <ArchiveLeftbar info={{ pageName: '[components]', blockName: '<leftbar>', labelName: '(default)' }} />
-        )}
-      </Suspense>
-
-      <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
-        {getRightbar && (
-          <ArchiveRightbar info={{ pageName: '[components]', blockName: '<rightbar>', labelName: '(default)' }} />
-        )}
-      </Suspense>
-
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <ArchiveHeader info={{ pageName: '[components]', blockName: '<header>', labelName: '(default)' }} />}
       </Suspense>
-
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <ArchiveMain info={{ pageName: '[components]', blockName: '<main>', labelName: '(default)' }} />}
+      </Suspense>
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <ArchiveFooter info={{ pageName: '[components]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <ArchiveMain info={{ pageName: '[components]', blockName: '<main>', labelName: '(default)' }} />}
+      //--|🟨|--\\
+      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
+        {getLeftbar && <ArchiveLeftbar info={{ pageName: '[components]', blockName: '<leftbar>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
+        {getOverlay && <ArchiveOverlay info={{ pageName: '[components]', blockName: '<overlay>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
+        {getRightbar && <ArchiveRightbar info={{ pageName: '[components]', blockName: '<rightbar>', labelName: '(default)' }} />}
       </Suspense>
     </>
   );

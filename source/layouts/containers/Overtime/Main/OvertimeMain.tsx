@@ -1,9 +1,8 @@
-//--|🠊 OvertimeMain.tsx 🠈|--\\
-//--|🠋 Dependencies 🠋|--\\
+//--|🠊 OvertimeMain.tsx 🠈|--//
+//--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionTesting from '../../../components/Division/testing/Division.testing';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen } from '../../../../scripts';
@@ -15,7 +14,6 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-
 function OvertimeMain({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
@@ -26,21 +24,13 @@ function OvertimeMain({ info }: InfoProps) {
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    //--|🟩🟢🟩|--\\
+    //--|🟩|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
   return (
     <main id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}>
-        {/* <DivisionTesting
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-        /> */}
-      </section>
+      <section className={`${blockName}-foreground`}></section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </main>

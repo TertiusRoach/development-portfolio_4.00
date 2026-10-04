@@ -1,1 +1,2 @@
 //--|🠊 Main/TicketingFunctions.ts 🠈|--\\
+export function functionHolder(): void {}

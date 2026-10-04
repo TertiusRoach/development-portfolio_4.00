@@ -28,6 +28,7 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
+    //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName]);
 

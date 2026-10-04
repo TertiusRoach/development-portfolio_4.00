@@ -1,69 +1,39 @@
-//--|🠊 OvertimeOverlay.tsx 🠈|--\\
-
-/*
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/overtime';
-//--|🠉 Functions 🠉|--//
+//--|🠊 OvertimeOverlay.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Components 🠋|--//
-import ButtonStretch from '../../../components/Button/archive/stretch/Button.stretch';
-import ButtonGrade from '../../../components/Button/archive/grade/Button.grade';
-// import DivisionLoading from '../../../components/Division/loading/Division.loading';
-import ArticleSelection from '../../../components/Article/archive/selection/Article.selection';
-// import DivisionSelection from '../../../components/Division/selection/Division.selection';
-//--|🠉 Components 🠉|--//
-//--|🠋 Functions 🠋|--//
-import HeaderBranding from '../../../components/Header/branding/Header.branding';
-import ArticleVocation from '../../../components/Article/archive/vocation/Article.vocation';
-//--|🠉 Functions 🠉|--//
+
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: '[overtime]' | string;
+    blockName: '<overlay>' | string;
+    labelName: '(default)' | string;
   };
 }
-const OvertimeOverlay: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
+function OvertimeOverlay({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  const stateType: string = 'visible' as 'visible' | 'hidden';
+  let blockName = stripBrackets(info.blockName, '<>') as 'overlay';
+  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    hideBlock(pageName, blockName);
-  }, [pageName, blockName]);
+    //--|🟩|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
 
-  let imageLink: string =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/079e1e37e24da759c2cf7910c8659593bc74c8e5/source/assets/svg-files/trinity-apps/rebrand/track-day/track-day-light.svg';
   return (
-    <section style={{ zIndex: 5 }} id={`${pageName}-${blockName}`} className={`default-${blockName} ${stateType}`}>
-      <div className="overtime-carousel" style={{ zIndex: 0 }}>
-        <section className="loading-section">
-          <img src={imageLink} alt="track-day" />
-        </section>
-
-        <section className="vocation-section">
-          <ArticleVocation info={info} />
-        </section>
-      </div>
+    <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
+      <section className={`${blockName}-foreground`}></section>
+      <figure className={`${blockName}-midground`}></figure>
+      <div className={`${blockName}-background`}></div>
     </section>
   );
-};
-export default OvertimeOverlay;
-
-function hideBlock(pageName: string, blockName: string) {
-  let container = document.getElementById(`${pageName}-${blockName}`) as HTMLElement;
-  if (container.classList.contains('visible')) {
-    setTimeout(() => {
-      container.classList.add('hidden');
-      container.classList.remove('visible');
-    }, 2500);
-    setTimeout(() => {
-      container.style.display = 'none';
-    }, 2750);
-  }
 }
-*/
+export default OvertimeOverlay;
