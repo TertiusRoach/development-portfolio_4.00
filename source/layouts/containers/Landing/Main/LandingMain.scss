@@ -11,19 +11,17 @@
       }
     }
   }
-  figure[class*='main-mid'] {
-  }
-  div[class*='main-back'] {
-  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile: landing Main 🠋|--\\
   //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
-  }
-  figure[class*='main-mid'] {
-  }
-  div[class*='main-back'] {
+    div[class*='testing'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      button[id*='block'] {
+        border: 2px dashed Palettes.$purple-medium;
+      }
+    }
   }
 }
 
