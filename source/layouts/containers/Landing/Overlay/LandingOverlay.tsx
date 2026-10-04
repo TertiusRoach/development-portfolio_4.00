@@ -9,7 +9,7 @@ import ArticleUpdates from '../../../components/Article/updates/Article.updates'
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
 import obnubilateContainers from './LandingFunctions';
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -51,7 +51,7 @@ function LandingOverlay({ info }: InfoProps) {
                 shade: '~light~',
               }}
               cases={{
-                apps: '{signature}',
+                apps: '{tralogfin}',
               }}
             />
             <ArticleUpdates
@@ -93,7 +93,7 @@ function LandingOverlay({ info }: InfoProps) {
                 shade: '~light~',
               }}
               cases={{
-                apps: '{signature}',
+                apps: '{tralogfin}',
               }}
             />
             <ArticleUpdates
@@ -108,8 +108,7 @@ function LandingOverlay({ info }: InfoProps) {
                 view: '-center-',
               }}
               cases={{
-                image:
-                  'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-light'),
                 title: 'View a Tag',
                 description: 'Text Here',
               }}

@@ -14,9 +14,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 //--|🠋 div[id*="body"] 🠋|--\\
 @mixin body-transition {
   &[id*='body'] {
-    transition:
-      height 1.5s ease-in-out,
-      clip-path 1.5s ease-in-out;
     main[class*='main'],
     aside[class*='bar'],
     header[class*='header'],
@@ -24,7 +21,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       opacity: 1;
       filter: blur(0);
       &[class*='main'] {
-        transition: filter 3000ms ease-in-out;
+        transition: filter 3s ease-in-out;
         &.obnubilate {
           filter: blur(32px);
         }
@@ -46,13 +43,24 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
     }
 
+    transition:
+      height 500ms ease-in-out,
+      filter 1.5s ease-in-out,
+      opacity 750ms ease-in-out,
+      clip-path 1.5s ease-in-out;
     &[class*='active'] {
+      opacity: 1;
       height: 100svh;
-      clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      filter: blur(0px);
+      transition-delay: 0ms, 1s, 1s, 0ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
+      clip-path: inset(0% 0% 0% 0% round 0px); //--|🠈 top / right / bottom / left 🠈|--\\
     }
     &[class*='asleep'] {
+      opacity: 0;
       height: 0svh;
-      clip-path: inset(0 0 100% 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      filter: blur(32px);
+      transition-delay: 500ms, 0ms, 0ms, 500ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
+      clip-path: inset(33.33% 100% 33.33% 100% round 64px); //--|🠈 top / right / bottom / left 🠈|--\\
     }
   }
 }

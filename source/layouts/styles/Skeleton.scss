@@ -25,16 +25,39 @@ body {
     }
   }
   %colouring {
-    @at-root body[class*='ante-meridiem'] {
-      background: Palettes.$indexLand-lightMode;
-    }
-    @at-root body[class*='post-meridiem'] {
-      background: Palettes.$indexLand-darkMode;
+    @at-root body[class*='meridiem'] {
+      &::before {
+        inset: 0;
+        content: '';
+        position: fixed;
+        animation: overlay-fade 1.5s ease-in-out 1.5s both;
+      }
+      &[class*='ante'] {
+        background: Palettes.$indexLand-lightMode;
+        &::before {
+          background: white;
+        }
+      }
+      &[class*='post'] {
+        background: Palettes.$indexLand-darkMode;
+        &::before {
+          background: black;
+        }
+      }
+      @keyframes overlay-fade {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
     }
   }
   %transition {
-    @include Transition.overlay-transition();
     @include Transition.body-transition();
+    //--|===|--\\
+    @include Transition.overlay-transition();
     @include Transition.sidebar-transition();
     //--|===|--\\
     @include Transition.header-transition();

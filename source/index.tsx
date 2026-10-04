@@ -16,7 +16,7 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
   themeScheme('light');
-  viewBody('components');
+  viewBody('landing');
 }, 250);
 
 function loadPage(identification: string, container: React.ReactElement) {
