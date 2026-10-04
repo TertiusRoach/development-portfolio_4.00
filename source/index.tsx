@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client';
 
 //--|🠋 Applications 🠋|--\\
 import Archive from './layouts/containers/Archive/Archive';
+import Landing from './layouts/containers/Landing/Landing';
 import Overtime from './layouts/containers/Overtime/Overtime';
 import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
@@ -53,24 +54,16 @@ function themeScheme(colorScheme: 'light' | 'dark'): void {
 }
 //--|🠋 Component Mapping 🠋|--\\
 const pages: { [key: string]: React.ElementType } = {
-  // 'landing-body': Landing,
-
-  'components-body': Archive,
-
-  'overtime-body': Overtime,
-  'ticketing-body': Ticketing,
   'hyperlink-body': Hyperlink,
+  'ticketing-body': Ticketing,
+  'components-body': Archive,
+  'overtime-body': Overtime,
+  'landing-body': Landing,
 };
 Object.entries(pages).forEach(([id]) => {
   //--|🠋 Render Components 🠋|--\\
   const container = document.getElementById(id) as HTMLDivElement;
-  const pageName: string = container.id.split('-')[0] as
-    | 'overtime'
-    | 'ticketing'
-    | 'hyperlink'
-    | 'landing'
-    | 'buttons'
-    | 'archive';
+  const pageName: string = container.id.split('-')[0] as 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'buttons' | 'archive';
 
   switch (pageName) {
     default:
@@ -86,7 +79,7 @@ Object.entries(pages).forEach(([id]) => {
       loadPage(`${pageName}-body`, React.createElement(Hyperlink));
       break;
     case 'landing':
-      /* ReactDOM.createRoot(container).render(<Landing />); */
+      loadPage(`${pageName}-body`, React.createElement(Landing));
       break;
   }
 });

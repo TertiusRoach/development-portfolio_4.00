@@ -1,43 +1,66 @@
 //--|🠊 LandingFooter.scss 🠈|--//
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  //--|🠋 Desktop <Footer> 🠋|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
-  menu[class*='landing'] {
-    grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  section[class*='blocked'] {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
+  section[class*='foreground'] {
+    menu[class*='select'] {
+      grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: rgba(darkgreen, 0.5);
 
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
+      margin-right: $high-desk;
+      @media screen and (max-height: 768px) {
+        margin-right: $test-desk;
+      }
+      @media screen and (max-height: 480px) {
+        margin-right: $misc-desk;
+      }
+      @media screen and (max-height: 360px) {
+        margin-right: $tiny-desk;
+      }
+    }
   }
-  @media screen and (max-height: 480px) {
+  figure[class*='midground'] {
   }
-  @media screen and (max-height: 360px) {
+  div[class*='background'] {
+    footer {
+      grid-area: 5 / 1 / 6 / 4;
+      background: rgba(green, 0.25);
+      //--|🠊 background: Palettes.$indexLand-darkMode; 🠈|--\\
+      //--|🠊 filter: drop-shadow(0 -1.5rem 1.5rem rgba(Palettes.$indexLand-dark, 0.75)); 🠈|--\\
+    }
   }
 }
 @mixin mobile-portrait {
-  display: none;
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠋 Mobile <Footer> 🠋|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
+  section[class*='foreground'] {
+    nav[class*='navigation'] {
+      z-index: 0;
+    }
   }
-  @media screen and (max-width: 480px) {
+  figure[class*='midground'] {
   }
-  @media screen and (max-width: 360px) {
+  div[class*='background'] {
+    footer {
+      grid-area: 5 / 1 / 6 / 4;
+      background: rgba(blue, 0.25);
+      //--|🠊 background: Palettes.$indexLand-darkMode; 🠈|--\\
+      //--|🠊 filter: drop-shadow(0 -1.5rem 1.5rem rgba(Palettes.$indexLand-dark, 0.75)); 🠈|--\\
+    }
   }
 }
 footer[id*='landing'] {
-  display: grid;
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

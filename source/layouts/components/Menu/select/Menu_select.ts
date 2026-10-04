@@ -65,11 +65,8 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
       }
     }
   };
-  if (carousel) {
-    return revealActiveTitle(carousel, control, 'present', menuAxis);
-  } else {
-    return revealActiveTitle(carousel as null, control, 'missing', menuAxis);
-  }
+  if (control === null) return;
+  return carousel ? revealActiveTitle(carousel, control, 'present', menuAxis) : revealActiveTitle(null, control, 'missing', menuAxis);
 };
 
 //--|🠋 Functions & Elements 🠋|--\\

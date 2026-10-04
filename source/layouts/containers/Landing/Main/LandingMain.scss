@@ -2,121 +2,35 @@
 @use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠊 display: block; 🠈|--//
-  div[class*='carousel'] {
-    z-index: 0;
-    section {
-      div[class*='container'] {
-        height: 100%;
-        display: grid;
-        min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-        grid-template: 4rem 1fr 40rem 1fr 4rem / 6rem 1fr 25rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
-
-        nav {
-          z-index: 3;
-          grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        }
-        form[class*='login'],
-        form[class*='register'],
-        form[class*='password'] {
-          z-index: 1;
-          grid-area: 3 / 3 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        }
-        figure[class*='rotation'] {
-          z-index: 0;
-          grid-area: 1 / 1 / 6 / 6; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        }
+  //--|🠋 Desktop: Landing Main 🠋|--\\
+  section[class*='main-fore'] {
+    div[class*='testing'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      button[id*='block'] {
+        border: 2px dashed Palettes.$purple-medium;
       }
     }
   }
-
-  menu[class*='landing'] {
-    z-index: 1;
-    grid-area: 1 / 1 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  figure[class*='main-mid'] {
   }
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-    div[class*='carousel'] {
-      section {
-        div[class*='container'] {
-          grid-template: 4rem 1fr 26rem 1fr 4rem / 3rem 0.5fr 1fr 0.5fr 3rem; //--|🠊 rows / columns 🠈|--//
-          nav {
-            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          }
-          form {
-            grid-area: 2 / 3 / 5 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          }
-        }
-      }
-    }
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
-    div[class*='carousel'] {
-      section {
-        div[class*='container'] {
-          grid-template: 2rem 1fr 18.5rem 1fr 2rem / 3rem 0.33fr 1fr 0.33fr 3rem; //--|🠊 rows / columns 🠈|--//
-          nav {
-            grid-area: 2 / 2 / 4 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-          }
-        }
-      }
-    }
+  div[class*='main-back'] {
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: flex; 🠈|--//
-  div[class*='container'] {
-    height: 100%;
-    display: grid;
-    min-width: 100vw; //--|🠊 Each section takes up the full screen width 🠈|--//
-    grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-
-    nav {
-      z-index: 1;
-      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    form[class*='form'] {
-      z-index: 2;
-      grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
-    figure[class*='rotation'] {
-      z-index: 0;
-      grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
+  //--|🠋 Mobile: landing Main 🠋|--\\
+  //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
+  section[class*='main-fore'] {
   }
-
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
+  figure[class*='main-mid'] {
   }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
+  div[class*='main-back'] {
   }
 }
 
 main[id*='landing'] {
-  display: grid;
-  overflow: hidden; //--|🠊 Hide elements outside the visible area 🠈|--//
-  grid-template: inherit; //--|🠊 64px 1fr 64px / 96px 1fr 96px; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  div[class*='carousel'] {
-    display: flex;
-    grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    transform: translateX(-100vw);
-    transition: transform 0.5s ease-in-out;
-    section {
-      display: block;
-    }
-  }
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

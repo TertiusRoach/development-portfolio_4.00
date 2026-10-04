@@ -31,8 +31,6 @@
     &#test-right-block {
       grid-area: 2 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-
-    border: 2px dashed Palettes.$gray-medium;
   }
 
   display: grid;

@@ -1,42 +1,60 @@
 //--|🠊 LandingHeader.scss 🠈|--//
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem; //--|🠊 rows / columns 🠈|--//
+  //--|🠊 Desktop <Header> 🠈|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
-  menu[class*='landing'] {
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  section[class*='foreground'] {
+    nav[class*='navigation'] {
+      z-index: 0;
+    }
   }
-  section[class*='launch'] {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
+  figure[class*='midground'] {
   }
-
-  //--|🠋 Desktop (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-  }
-  @media screen and (max-height: 360px) {
+  div[class*='background'] {
+    header {
+      grid-area: 1 / 1 / 2 / 4;
+      background: rgba(red, 0.25);
+      //--|🠊 background: Palettes.$indexLand-lightMode; 🠈|--\\
+      //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75)); 🠈|--\\
+    }
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-  grid-area: 1 / 1 / 4 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-  grid-template: 6rem 1fr 6rem / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
+  //--|🠊 Mobile <Header> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  menu[class*='branding'] {
-    grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
-  section[class*='launch'] {
-    grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--//
-  }
+  section[class*='foreground'] {
+    menu[class*='select'] {
+      grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: rgba(darkgreen, 0.5);
 
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
+      margin-left: $high-mobi;
+      @media screen and (max-width: 768px) {
+        margin-left: $test-mobi;
+      }
+      @media screen and (max-width: 480px) {
+        margin-left: $misc-mobi;
+      }
+      @media screen and (max-width: 360px) {
+        margin-left: $tiny-mobi;
+      }
+    }
   }
-  @media screen and (max-width: 480px) {
+  figure[class*='midground'] {
   }
-  @media screen and (max-width: 360px) {
+  div[class*='background'] {
+    header {
+      grid-area: 1 / 1 / 2 / 4;
+      background: rgba(green, 0.25);
+      //--|🠊 background: Palettes.$indexLand-lightMode; 🠈|--\\
+      //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75)); 🠈|--\\
+    }
   }
 }
 

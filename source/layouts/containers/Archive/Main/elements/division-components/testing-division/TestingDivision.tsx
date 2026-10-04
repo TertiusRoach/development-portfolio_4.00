@@ -31,6 +31,10 @@ const TestingDivision: React.FC<InfoProps> = ({ info }) => {
             blockName: blockName,
             labelName: labelName,
           }}
+          style={{
+            shade: '~dark~',
+            color: '(mono)',
+          }}
         />
       </section>
       <figure className={`${blockName}-midground`}></figure>
