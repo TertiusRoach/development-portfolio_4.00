@@ -1,8 +1,6 @@
 //--|🠊 Skeleton.scss 🠈|--\\
-@use './Barrel.scss' as Barrel;
-@use './Global.scss' as Global;
+//--|🠋 Designs 🠋|--\\
 @use './Mixins.scss' as Mixins;
-@use './Queries.scss' as Queries;
 @use './Palettes.scss' as Palettes;
 @use './Transition.scss' as Transition;
 
@@ -17,6 +15,21 @@ body {
       }
     }
     main {
+      aside[class*='menu'],
+      aside[class*='time'],
+      aside[class*='table'],
+      aside[class*='aside'],
+      aside[class*='button'],
+      aside[class*='figure'],
+      aside[class*='article'],
+      aside[class*='section'],
+      aside[class*='division'],
+      aside[class*='navigation'] {
+        width: 100vw;
+        height: 100svh;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+      }
       @media screen and (orientation: landscape) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.landscape-grid;
@@ -46,21 +59,6 @@ body {
         aside[class*='button'] {
           @include Mixins.layering-position;
         }
-      }
-      aside[class*='menu'],
-      aside[class*='time'],
-      aside[class*='table'],
-      aside[class*='aside'],
-      aside[class*='button'],
-      aside[class*='figure'],
-      aside[class*='article'],
-      aside[class*='section'],
-      aside[class*='division'],
-      aside[class*='navigation'] {
-        width: 100vw;
-        height: 100svh;
-        flex: 0 0 100vw;
-        min-width: 100vw;
       }
     }
     footer {
@@ -296,16 +294,9 @@ body {
       }
     }
   }
+
   //--|===|--\\
-  %composition {
-    @at-root body[class*='ante-meridiem'] {
-      background: Palettes.$indexLand-lightMode;
-    }
-    @at-root body[class*='post-meridiem'] {
-      background: Palettes.$indexLand-darkMode;
-    }
-  }
-  %positioning {
+  %position {
     section[class*='overlay'] {
       z-index: 10;
     }
@@ -325,7 +316,15 @@ body {
       z-index: 0;
     }
   }
-  %transitions {
+  %colouring {
+    @at-root body[class*='ante-meridiem'] {
+      background: Palettes.$indexLand-lightMode;
+    }
+    @at-root body[class*='post-meridiem'] {
+      background: Palettes.$indexLand-darkMode;
+    }
+  }
+  %transition {
     @include Transition.overlay-transition();
     @include Transition.body-transition();
     @include Transition.sidebar-transition();
@@ -335,8 +334,14 @@ body {
     @include Transition.footer-transition();
   }
   div[class*='body'] {
-    @extend %composition;
-    @extend %positioning;
-    @extend %transitions;
+    @extend %position;
+    @extend %colouring;
+    @extend %transition;
+    @media screen and (orientation: landscape) {
+      @include Mixins.landscape-grid;
+    }
+    @media screen and (orientation: portrait) {
+      @include Mixins.portrait-grid;
+    }
   }
 }

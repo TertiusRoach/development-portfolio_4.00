@@ -1,7 +1,7 @@
 //--|🠊 profile/pipeline/Button_colors.scss 🠈|--\\
 //--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
 @use 'sass:color';
-@use '../../../../designs/Palettes.scss' as Palettes;
+@use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-colors {
   //--|🠋 Desktop (Portraits) 🠋|--\\

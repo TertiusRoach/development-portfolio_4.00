@@ -2,7 +2,7 @@
 @use './loading-article/LoadingArticle.scss';
 @use './updates-article/UpdatesArticle.scss';
 
-@use '../../../../../designs/Palettes.scss' as Palettes;
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
 section[class*='article-main'] {
   div.article-main_container {

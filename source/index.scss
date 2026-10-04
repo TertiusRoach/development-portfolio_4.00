@@ -1,13 +1,8 @@
 //--|🠊 index.scss (Entry Point) 🠈|--\\
 //--|🠋 Designs 🠋|--\\
-@use './layouts/designs/Skeleton.scss' as Skeleton;
+@use './layouts/styles/Global.scss' as Global;
+@use './layouts/styles/Barrel.scss' as Barrel;
+@use './layouts/styles/Skeleton.scss' as Skeleton;
 
 //--|🠋 Framework 🠋|--\\
 @use './utilities/vendors/bootstrap/5.3.3/css/bootstrap.css' as Bootstrap;
-
-//--|🠋 Applications 🠋|--\\
-@use './layouts/styles/archive.scss';
-@use './layouts/styles/landing.scss';
-@use './layouts/styles/overtime.scss';
-@use './layouts/styles/ticketing.scss';
-@use './layouts/styles/hyperlink.scss';

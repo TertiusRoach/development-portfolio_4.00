@@ -1,7 +1,7 @@
 //--|🠊 AsideElements.scss 🠈|--\\
 @use './characters-aside/CharactersAside.scss';
 
-@use '../../../../../designs/Palettes.scss' as Palettes;
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
 section[class*='aside'] {
   div.aside-main_container {

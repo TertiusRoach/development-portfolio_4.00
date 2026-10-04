@@ -1,6 +1,6 @@
 //--|🠊 NavigationElements.scss 🠈|--\\
-@use '../../../../../designs/Mixins.scss';
-@use '../../../../../designs/Palettes.scss' as Palettes;
+@use '../../../../../styles/Mixins.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   section[class*='main-fore'] {

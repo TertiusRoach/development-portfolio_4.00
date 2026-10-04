@@ -1,6 +1,6 @@
 //--|🠊 TicketingMain.scss 🠈|--\\
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
+@use '../../../styles/Mixins.scss';
+@use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop: Ticketing Main 🠋|--\\
@@ -28,7 +28,7 @@ main[id*='ticketing'] {
   }
 }
 /*
-@use '../../../designs/Palettes.scss';
+@use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Elements) 🠋|--\\

@@ -1,6 +1,6 @@
 //--|🠊 OvertimeHeader.scss 🠈|--\\
-@use '../../../designs/Mixins.scss';
-@use '../../../designs/Palettes.scss';
+@use '../../../styles/Mixins.scss';
+@use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
   //--|🠋 Overtime <header> 🠋|--\\
@@ -27,7 +27,7 @@ header[id*='overtime'] {
 
 /*
 @use 'sass:color';
-@use '../../../designs/Palettes.scss';
+@use '../../../styles/Palettes.scss';
 
 @use './elements/profile-overtime/ProfileOvertime.scss' as profile;
 
