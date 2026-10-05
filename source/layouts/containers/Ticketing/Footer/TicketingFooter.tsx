@@ -125,10 +125,10 @@ function TicketingFooter({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
+                color: '(blue)',
                 view: 'bot-rig',
-                shade: '~light~',
-                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
+                shade: '~dark~',
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium') as string,
               }}
               cases={{
                 view: undefined,

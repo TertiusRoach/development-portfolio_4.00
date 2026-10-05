@@ -106,10 +106,10 @@ function TicketingHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(blue)',
+                color: '(mono)',
                 view: 'top-lef',
                 shade: '~light~',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium') as string,
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
                 view: undefined,

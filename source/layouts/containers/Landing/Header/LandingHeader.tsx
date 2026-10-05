@@ -56,9 +56,9 @@ function LandingHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
                 view: 'top-lef',
                 shade: '~light~',
+                color: '(purple)',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
@@ -108,8 +108,8 @@ function LandingHeader({ info }: InfoProps) {
               style={{
                 color: '(mono)',
                 view: 'top-lef',
-                shade: '~dark~',
-                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
+                shade: '~light~',
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
                 view: undefined,

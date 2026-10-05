@@ -57,9 +57,9 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
                 view: 'bot-rig',
                 shade: '~dark~',
+                color: '(purple)',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
@@ -129,7 +129,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               style={{
                 color: '(mono)',
                 view: 'bot-rig',
-                shade: '~light~',
+                shade: '~dark~',
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
               }}
               cases={{

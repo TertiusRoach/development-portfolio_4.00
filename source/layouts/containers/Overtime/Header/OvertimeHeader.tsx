@@ -106,10 +106,10 @@ function OvertimeHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(green)',
+                color: '(mono)',
                 view: 'top-lef',
-                shade: '~dark~',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
+                shade: '~light~',
+                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
                 view: undefined,

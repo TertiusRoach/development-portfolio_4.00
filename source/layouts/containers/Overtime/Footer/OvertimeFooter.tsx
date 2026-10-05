@@ -126,8 +126,8 @@ function OvertimeFooter({ info }: InfoProps) {
               }}
               style={{
                 color: '(green)',
-                view: 'top-lef',
-                shade: '~light~',
+                view: 'bot-rig',
+                shade: '~dark~',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
               }}
               cases={{

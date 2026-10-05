@@ -15,7 +15,7 @@ interface TheseProps {
     image: string;
     size: '<h1>' | '<h4>' | '<p>';
     shade: '~dark~' | '~medium~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
     view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
     type: '{button}' | '{counter}';

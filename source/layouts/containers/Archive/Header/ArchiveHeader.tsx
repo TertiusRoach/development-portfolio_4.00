@@ -119,9 +119,9 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
+                color: '(purple)',
                 view: 'top-lef',
-                shade: '~dark~',
+                shade: '~light~',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{

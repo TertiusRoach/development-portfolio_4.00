@@ -125,9 +125,9 @@ function LandingFooter({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
+                color: '(purple)',
                 view: 'bot-rig',
-                shade: '~light~',
+                shade: '~dark~',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{

@@ -20,8 +20,8 @@ interface TheseProps {
   style: {
     image: string | undefined;
     shade: '~dark~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
     view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
   cases: {
     tasks?: {
