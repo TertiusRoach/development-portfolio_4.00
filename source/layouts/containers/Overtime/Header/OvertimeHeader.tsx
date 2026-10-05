@@ -106,10 +106,10 @@ function OvertimeHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
+                color: '(green)',
                 view: 'top-lef',
                 shade: '~dark~',
-                image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
               }}
               cases={{
                 view: undefined,
@@ -134,10 +134,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 align: '-mid-',
                 view: 'top-cen',
                 shade: '~dark~',
-                color: ['(green)', '(blue)', '(red)'],
-
+                color: ['(mono)', '(blue)', '(red)'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
                   loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
                   loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
                 ] as Array<string>,
@@ -147,7 +146,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 pages: 3,
                 axis: '[x]',
                 link: undefined,
-                task: [() => loadPages('overtime'), () => loadPages('ticketing'), () => loadPages('hyperlink')],
+                task: [() => loadPages('landing'), () => loadPages('ticketing'), () => loadPages('hyperlink')],
               }}
             />
           </section>

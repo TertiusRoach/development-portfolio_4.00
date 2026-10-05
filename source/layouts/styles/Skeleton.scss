@@ -126,13 +126,34 @@ body {
       }
     }
     &[id='ticketing-body'] {
-      //--|🟦|--\\
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+        @include Mixins.portrait-grid;
+      }
     }
     &[id='hyperlink-body'] {
-      //--|🟪|--\\
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+        @include Mixins.portrait-grid;
+      }
     }
     &[id='landing-body'] {
-      //--|🟥|--\\
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+        @include Mixins.portrait-grid;
+      }
     }
     //--|===|--\\
     > * {

@@ -125,10 +125,10 @@ function OvertimeFooter({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(mono)',
-                view: 'bot-rig',
+                color: '(green)',
+                view: 'top-lef',
                 shade: '~light~',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
               }}
               cases={{
                 view: undefined,

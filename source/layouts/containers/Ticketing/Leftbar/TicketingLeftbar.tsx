@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import blockViews from '../../containers';
+import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -19,8 +21,8 @@ function TicketingLeftbar({ info }: InfoProps) {
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  let blockName = stripBrackets(info.blockName, '<>') as 'ticketing';
-  let pageName = stripBrackets(info.pageName, '[]') as 'leftbar';
+  let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  let pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
@@ -28,12 +30,27 @@ function TicketingLeftbar({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  return (
-    <aside id={`${pageName}-${blockName}`} className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}></section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
-    </aside>
-  );
+  let blurName: string = 'obnubilate';
+  let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
+  switch (getOrientation) {
+    case 'landscape':
+      stateName = 'unfolded';
+      return (
+        <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+          <section className={`${blockName}-foreground`}></section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}></div>
+        </aside>
+      );
+    case 'portrait':
+      stateName = 'unfolded';
+      return (
+        <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
+          <section className={`${blockName}-foreground`}></section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}></div>
+        </aside>
+      );
+  }
 }
 export default TicketingLeftbar;

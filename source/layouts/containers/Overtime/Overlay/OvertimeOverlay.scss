@@ -40,7 +40,7 @@
   }
 }
 
-section[id*='overtime'] {
+section[id='overtime-overlay'] {
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

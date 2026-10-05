@@ -1,8 +1,18 @@
-//--|🠊 ArchiveLeftbar.scss 🠈|--\\
+//--|🠊 TicketingLeftbar.scss 🠈|--\\
 @use '../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
-  //--|🠋 Desktop (Layers) 🠋|--\\
+  //--|🠊 Desktop <Leftbar> 🠈|--\\
+  section[class*='foreground'] {
+  }
+  figure[class*='midground'] {
+  }
+  div[class*='background'] {
+    background: rgba(red, 0.25);
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 Mobile <Leftbar> 🠈|--\\
   section[class*='foreground'] {
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -11,26 +21,14 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    background: rgba(green, 0.25);
   }
 }
-@mixin mobile-portrait {
-  //--|🠋 Mobile (Layers) 🠋|--//
-  section[class*='foreground'] {
-  }
-  figure[class*='midground'] {
-  }
-  div[class*='background'] {
-  }
-}
-aside[id*='components'] {
+aside[id='ticketing-leftbar'] {
   @media screen and (orientation: landscape) {
-    &[id*='leftbar'] {
-      @include desktop-landscape();
-    }
+    @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
-    &[id*='leftbar'] {
-      @include mobile-portrait();
-    }
+    @include mobile-portrait();
   }
 }
