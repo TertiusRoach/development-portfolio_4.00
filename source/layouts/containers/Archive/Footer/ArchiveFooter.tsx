@@ -59,7 +59,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               style={{
                 view: 'bot-rig',
                 shade: '~dark~',
-                color: '(purple)',
+                color: '(mono)',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{

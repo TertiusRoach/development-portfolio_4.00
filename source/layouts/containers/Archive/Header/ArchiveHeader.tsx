@@ -119,7 +119,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 labelName: labelName,
               }}
               style={{
-                color: '(purple)',
+                color: '(mono)',
                 view: 'top-lef',
                 shade: '~light~',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,

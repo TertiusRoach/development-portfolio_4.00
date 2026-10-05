@@ -125,7 +125,7 @@ function LandingFooter({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(purple)',
+                color: '(mono)',
                 view: 'bot-rig',
                 shade: '~dark~',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,

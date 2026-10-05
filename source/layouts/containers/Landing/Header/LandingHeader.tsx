@@ -58,7 +58,7 @@ function LandingHeader({ info }: InfoProps) {
               style={{
                 view: 'top-lef',
                 shade: '~light~',
-                color: '(purple)',
+                color: '(mono)',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
               }}
               cases={{
