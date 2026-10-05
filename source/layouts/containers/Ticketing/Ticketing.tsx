@@ -11,6 +11,15 @@ const TicketingOverlay = lazy(() => import('./Overlay/TicketingOverlay'));
 const TicketingLeftbar = lazy(() => import('./Leftbar/TicketingLeftbar'));
 const TicketingRightbar = lazy(() => import('./Rightbar/TicketingRightbar'));
 
+//--|🠋 Styles (*.scss) 🠋|--\\
+import './Main/TicketingMain.scss';
+import './Header/TicketingHeader.scss';
+import './Footer/TicketingFooter.scss';
+
+import './Overlay/TicketingOverlay.scss';
+import './Leftbar/TicketingLeftbar.scss';
+import './Rightbar/TicketingRightbar.scss';
+
 function Ticketing() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);

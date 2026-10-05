@@ -116,7 +116,14 @@ body {
       }
     }
     &[id='overtime-body'] {
-      //--|🟩|--\\
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+        @include Mixins.portrait-grid;
+      }
     }
     &[id='ticketing-body'] {
       //--|🟦|--\\

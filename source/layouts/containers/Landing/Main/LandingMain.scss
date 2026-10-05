@@ -3,6 +3,7 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop: Landing Main 🠋|--\\
+  //--|🠊 <main id="landing-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -13,8 +14,8 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠋 Mobile: landing Main 🠋|--\\
-  //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
+  //--|🠋 Mobile: Landing Main 🠋|--\\
+  //--|🠊 <main id="landing-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

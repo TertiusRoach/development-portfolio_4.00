@@ -11,6 +11,15 @@ const OvertimeOverlay = lazy(() => import('./Overlay/OvertimeOverlay'));
 const OvertimeLeftbar = lazy(() => import('./Leftbar/OvertimeLeftbar'));
 const OvertimeRightbar = lazy(() => import('./Rightbar/OvertimeRightbar'));
 
+//--|🠋 Styles (*.scss) 🠋|--\\
+import './Main/OvertimeMain.scss';
+import './Header/OvertimeHeader.scss';
+import './Footer/OvertimeFooter.scss';
+
+import './Overlay/OvertimeOverlay.scss';
+import './Leftbar/OvertimeLeftbar.scss';
+import './Rightbar/OvertimeRightbar.scss';
+
 function Overtime() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);
