@@ -1,29 +1,38 @@
 //--|🠊 Overlay.ts 🠈|--\\
 //--|🠋 Disable Overlay 🠋|--\\
 async function obnubilateContainers(pageName: string, blockName: string) {
-  const targetElement = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
-  if (targetElement) {
-    //--|🠊 Wait until all five containers exist on the page 🠈|--\\
-    const [mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
-      asynchObserve(`#${pageName}-main`),
-      asynchObserve(`#${pageName}-header`),
-      asynchObserve(`#${pageName}-footer`),
-      asynchObserve(`#${pageName}-leftbar`),
-      asynchObserve(`#${pageName}-rightbar`),
-    ]);
+  if (transitioning.has(pageName)) return; //--|🠈 This page is already mid-transition 🠈|--\\
+  transitioning.add(pageName);
+  //--|===|--\\
+  try {
+    const targetElement = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
+    if (targetElement) {
+      //--|🠊 Wait until all five containers exist on the page 🠈|--\\
+      const [mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
+        asynchObserve(`#${pageName}-main`),
+        asynchObserve(`#${pageName}-header`),
+        asynchObserve(`#${pageName}-footer`),
+        asynchObserve(`#${pageName}-leftbar`),
+        asynchObserve(`#${pageName}-rightbar`),
+      ]);
 
-    let overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-    setTimeout(() => {
-      overlayContainer.classList.replace(overlayContainer.classList[1], 'hidden');
-    }, 2750);
+      let overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+      setTimeout(() => {
+        overlayContainer.classList.replace(overlayContainer.classList[1], 'hidden');
+      }, 2750);
 
-    mutateObserve(blockName);
-    shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
-    clearBlur(mainBlock, headBlock, footBlock, leftBlock, rightBlock);
+      mutateObserve(blockName);
+      shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
+      clearBlur(mainBlock, headBlock, footBlock, leftBlock, rightBlock);
+    }
+  } finally {
+    transitioning.delete(pageName);
   }
 }
 
 //--|🠋 Element Observers 🠋|--\\
+const transitioning = new Set<string>();
+const watchedBodies = new WeakSet<HTMLDivElement>();
 const asynchObserve = (selector: string, timeout = 6000): Promise<HTMLElement> => {
   return new Promise((resolve, reject) => {
     const existing = document.querySelector<HTMLElement>(selector);
@@ -50,20 +59,21 @@ const asynchObserve = (selector: string, timeout = 6000): Promise<HTMLElement> =
   });
 };
 const mutateObserve = (blockName: string) => {
-  const unusedElement = document.querySelectorAll(`div[id*="body"].asleep`) as NodeListOf<HTMLDivElement>;
-  unusedElement.forEach((element) => {
+  const unusedElements = document.querySelectorAll<HTMLDivElement>('div[id*="body"].asleep');
+  unusedElements.forEach((element) => {
+    if (watchedBodies.has(element)) return; //--|🠈 Already watched — skip 🠈|--\\
+    watchedBodies.add(element);
+
     const observer = new MutationObserver(() => {
-      //--|🠊 Check whether this particular block has become active 🠈|--\\
       if (element.classList.contains('active')) {
-        const newPageName = element.id.replace('-body', ''); //--|🠈 Get the page name from the element's ID 🠈|--\\
-        observer.disconnect(); //--|🠈 Stop watching this element now that it has become active 🠈|--\\
-        obnubilateContainers(newPageName, blockName); //--|🠈 Run your existing function again for the newly active page 🠈|--\\
+        observer.disconnect(); //--|🠈 Stop watching once active 🠈|--\\
+        watchedBodies.delete(element); //--|🠈 Free the slot so it can be re-watched if it sleeps again 🠈|--\\
+        const newPageName = element.id.replace('-body', '');
+        obnubilateContainers(newPageName, blockName);
       }
     });
-    observer.observe(element, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
+
+    observer.observe(element, { attributes: true, attributeFilter: ['class'] });
   });
 };
 
