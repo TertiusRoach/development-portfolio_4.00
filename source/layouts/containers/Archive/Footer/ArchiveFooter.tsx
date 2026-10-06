@@ -151,7 +151,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: FooterMenus as React.ComponentType<InfoProps>,
+                call: PortraitMenus as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -168,12 +168,12 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const FooterMenus: React.FC<InfoProps> = ({ info }) => {
+const PortraitMenus: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
-  let styleShade = '~light~' as '~dark~' | '~light~';
+  let styleShade = '~dark~' as '~dark~' | '~light~';
   let styleColor = '(mono)' as '(red)' | '(green)' | '(blue)' | '(mono)';
   let styleView = 'def' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   return (

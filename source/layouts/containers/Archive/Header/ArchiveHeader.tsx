@@ -81,7 +81,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: HeaderMenus as React.ComponentType<InfoProps>,
+                call: DesktopMenus as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -146,7 +146,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               style={{
                 align: '-mid-',
                 view: 'top-cen',
-                shade: '~dark~',
+                shade: '~light~',
                 color: ['(green)', '(blue)', '(red)'],
 
                 image: [
@@ -175,7 +175,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const HeaderMenus: React.FC<InfoProps> = ({ info }) => {
+const DesktopMenus: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
