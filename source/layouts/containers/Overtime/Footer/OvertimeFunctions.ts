@@ -1,4 +1,5 @@
 //--|🠊 Footer/OvertimeFunctions.ts 🠈|--\\
+/*
 export function lockBlock(pageName: 'overtime', blockName: 'footer' | 'rightbar'): void {
   const selectElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   if (selectElement.className.includes('locked')) {
@@ -14,3 +15,4 @@ export function lockBlock(pageName: 'overtime', blockName: 'footer' | 'rightbar'
     }
   }
 }
+*/

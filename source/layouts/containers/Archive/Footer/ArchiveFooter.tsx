@@ -10,7 +10,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { lockBlock } from './ArchiveFunctions';
+import { lockBlock } from '../../../scripts/Footer';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -151,7 +151,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: PortraitMenus as React.ComponentType<InfoProps>,
+                call: PortMenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -168,7 +168,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const PortraitMenus: React.FC<InfoProps> = ({ info }) => {
+const PortMenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';

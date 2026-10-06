@@ -10,7 +10,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { lockBlock } from './ArchiveFunctions';
+import { lockBlock } from '../../../scripts/Header';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -81,7 +81,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: DesktopMenus as React.ComponentType<InfoProps>,
+                call: DeskMenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -175,7 +175,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const DesktopMenus: React.FC<InfoProps> = ({ info }) => {
+const DeskMenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'header';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';

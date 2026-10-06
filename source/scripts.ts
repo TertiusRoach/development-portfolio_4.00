@@ -1,27 +1,4 @@
 //--|🠊 scripts.ts 🠈|--\\
-//--|🠋 Utilities & Navigation 🠋|--\\
-export function loadAsset(type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string {
-  //--|🠊 Finds path for file extension 🠈|--\\
-  const assetSource: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
-
-  //--|🠊 Build URL string 🠈|--\\
-  let filePath: Record<'-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', [string, string]> = {
-    '-gif-': [`${assetSource}/gif-files`, '.gif'],
-    '-ico-': [`${assetSource}/ico-files`, '.ico'],
-    '-jpg-': [`${assetSource}/jpg-files`, '.jpg'],
-    '-pdf-': [`${assetSource}/pdf-files`, '.pdf'],
-    '-png-': [`${assetSource}/png-files`, '.png'],
-    '-svg-': [`${assetSource}/svg-files`, '.svg'],
-  };
-  return (filePath[type][0] + path + filePath[type][1]) as string;
-}
-export function loadPages(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'components' | 'landing'): void {
-  const prevPage = document.querySelector(`.active`) as HTMLDivElement;
-  const nextPage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
-
-  prevPage.classList.replace('active', 'asleep');
-  nextPage.classList.replace('asleep', 'active');
-}
 
 //--|🠋 Resolution & Refreshing 🠋|--\\
 type Orientation = 'landscape' | 'portrait';
@@ -67,23 +44,52 @@ export function showingBootstrap(): string {
   return displayText as string;
 }
 export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
-  const mediaQuery = window.matchMedia('(orientation: landscape)');
-
-  const handleOrientationChange = (event: MediaQueryListEvent): void => {
-    onChange(event.matches ? 'landscape' : 'portrait');
+  //--|🠋 Runs whenever the screen switches between portrait and landscape 🠋|--\\
+  const orientChange = (event: MediaQueryListEvent): void => {
+    defaultReset(); //--|🠈 Reset anything that depends on the previous orientation 🠈|--\\
+    onChange(event.matches ? 'landscape' : 'portrait'); //--|🠈 Tell React which orientation the screen is now in 🠈|--\\
   };
 
-  //--|🠋 Subscribe to orientation changes 🠋|--\\
-  mediaQuery.addEventListener('change', handleOrientationChange);
+  let mediaQuery = window.matchMedia('(orientation: landscape)'); //--|🠈 Create a media query that tells us whether the screen is currently landscape 🠈|--\\
+  mediaQuery.addEventListener('change', orientChange); //--|🠈 Listen for the screen changing between landscape and portrait 🠈|--\\
 
-  //--|🠋 Return the cleanup function for React to run on unmount/re-run 🠋|--\\
   return (): void => {
-    mediaQuery.removeEventListener('change', handleOrientationChange);
+    mediaQuery.removeEventListener('change', orientChange); //--|🠈 Remove the listener when React no longer needs this check 🠈|--\\
   };
 }
 
+//--|🠋 Utilities & Navigation 🠋|--\\
+export const loadAsset = (type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string => {
+  //--|🠊 Finds path for file extension 🠈|--\\
+  const assetSource: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
+
+  //--|🠊 Build URL string 🠈|--\\
+  let filePath: Record<'-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', [string, string]> = {
+    '-gif-': [`${assetSource}/gif-files`, '.gif'],
+    '-ico-': [`${assetSource}/ico-files`, '.ico'],
+    '-jpg-': [`${assetSource}/jpg-files`, '.jpg'],
+    '-pdf-': [`${assetSource}/pdf-files`, '.pdf'],
+    '-png-': [`${assetSource}/png-files`, '.png'],
+    '-svg-': [`${assetSource}/svg-files`, '.svg'],
+  };
+  return (filePath[type][0] + path + filePath[type][1]) as string;
+};
+export const loadPages = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'components' | 'landing'): void => {
+  const prevPage = document.querySelector(`.active`) as HTMLDivElement;
+  const nextPage = document.querySelector(`#${pageName}-body`) as HTMLDivElement;
+
+  prevPage.classList.replace('active', 'asleep');
+  nextPage.classList.replace('asleep', 'active');
+};
+const defaultReset = () => {
+  let frozenElements: NodeListOf<HTMLElement> = document.querySelectorAll('[class*="frozen"]');
+  for (let i = 0; i < frozenElements.length; i++) {
+    frozenElements[i].classList.remove(frozenElements[i].classList[0]);
+  }
+};
+
 //--|🠋 Conversion Functions 🠋|--\\
-export const arabicToRoman = (arabicNumeral: number): string => {
+export let arabicToRoman = (arabicNumeral: number): string => {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
     case 0:
@@ -406,7 +412,7 @@ export const arabicToRoman = (arabicNumeral: number): string => {
       return 'O';
   }
 };
-export const romanToArabic = (romanNumeral: string | undefined): number => {
+export let romanToArabic = (romanNumeral: string | undefined): number => {
   switch (romanNumeral) {
     //--|🠊 Map of Roman Strings to Number 🠈|--\\
     default:
@@ -742,7 +748,7 @@ export const romanToArabic = (romanNumeral: string | undefined): number => {
       return 156;
   }
 };
-export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
+export let stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
   switch (wrapType) {
     case '[]':
       //--|🠊 Associated with [pageName] 🠈|--\\

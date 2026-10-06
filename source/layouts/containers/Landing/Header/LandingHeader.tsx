@@ -9,7 +9,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { lockBlock } from './LandingFunctions';
+import { lockBlock } from '../../../scripts/Header';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {

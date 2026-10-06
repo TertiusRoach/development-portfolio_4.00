@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
+import { revertBlocks } from '../../../scripts/Main';
 import { stripBrackets, checkScreen } from '../../../../scripts';
 
 //--|🠋 Elements 🠋|--\\
@@ -50,12 +50,7 @@ function ArchiveMain({ info }: InfoProps) {
       id={`${pageName}-${blockName}`}
       className={`${blurName} ${labelName}-${blockName}`}
       onMouseEnter={(event) => {
-        //--|🠊 Revert to Default 🠈|--\\
-        blockViews(event.currentTarget, pageName, 'header', 'squaring');
-        blockViews(event.currentTarget, pageName, 'footer', 'squaring');
-
-        blockViews(event.currentTarget, pageName, 'leftbar', 'collapsed');
-        blockViews(event.currentTarget, pageName, 'rightbar', 'collapsed');
+        revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
     >
       <section className={`${blockName}-foreground`}>

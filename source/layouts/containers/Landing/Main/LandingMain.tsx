@@ -9,7 +9,7 @@ import FormPassword from '../../../components/Form/password/Form.password';
 import DivisionTesting from '../../../components/Division/testing/Division.testing';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
+import { revertBlocks } from '../../../scripts/Main';
 import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
@@ -39,12 +39,7 @@ function LandingMain({ info }: InfoProps) {
       id={`${pageName}-${blockName}`}
       className={`${blurName} ${labelName}-${blockName}`}
       onMouseEnter={(event) => {
-        //--|🠊 Revert to Default 🠈|--\\
-        blockViews(event.currentTarget, pageName, 'header', 'squaring');
-        blockViews(event.currentTarget, pageName, 'footer', 'squaring');
-
-        blockViews(event.currentTarget, pageName, 'leftbar', 'collapsed');
-        blockViews(event.currentTarget, pageName, 'rightbar', 'collapsed');
+        revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
     >
       <section className={`${blockName}-foreground`}>
