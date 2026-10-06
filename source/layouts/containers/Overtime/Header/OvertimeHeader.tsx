@@ -133,7 +133,7 @@ function OvertimeHeader({ info }: InfoProps) {
               style={{
                 align: '-mid-',
                 view: 'top-cen',
-                shade: '~dark~',
+                shade: '~light~',
                 color: ['(mono)', '(blue)', '(red)'],
                 image: [
                   loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),

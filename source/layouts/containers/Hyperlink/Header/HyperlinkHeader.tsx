@@ -133,7 +133,7 @@ function HyperlinkHeader({ info }: InfoProps) {
               style={{
                 align: '-mid-',
                 view: 'top-cen',
-                shade: '~dark~',
+                shade: '~light~',
                 color: ['(green)', '(blue)', '(mono)'],
 
                 image: [
