@@ -16,7 +16,7 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
   themeScheme('light');
-  viewBody('hyperlink');
+  viewBody('landing');
 }, 250);
 
 function loadPage(identification: string, container: React.ReactElement) {
@@ -63,11 +63,12 @@ const pages: { [key: string]: React.ElementType } = {
 Object.entries(pages).forEach(([id]) => {
   //--|🠋 Render Components 🠋|--\\
   const container = document.getElementById(id) as HTMLDivElement;
-  const pageName: string = container.id.split('-')[0] as 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'buttons' | 'archive';
+  const pageName: string = container.id.split('-')[0] as 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components' | 'archive';
 
   switch (pageName) {
     default:
     case 'archive':
+    case 'components':
       return loadPage('components-body', React.createElement(Archive));
     case 'overtime':
       loadPage(`${pageName}-body`, React.createElement(Overtime));
@@ -84,8 +85,12 @@ Object.entries(pages).forEach(([id]) => {
   }
 });
 
-export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components') {
-  const enable = document.querySelector(`#${pageName}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components' | 'archive') {
+  let viewBody = pageName as string;
+  if (pageName === 'archive') {
+    viewBody = 'components' as string;
+  }
+  const enable = document.querySelector(`#${viewBody}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
   const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
 
   if (disable !== null) {
