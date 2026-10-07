@@ -197,8 +197,7 @@
   }
 
   @media screen and (max-aspect-ratio: 15.99/9) {
-    //--|🠈 Mobile Layout below 16:9 🠈|--\\
-    @include desktop-tablet();
+    @include desktop-tablet(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
   }
 }
 @mixin mobile-portrait {

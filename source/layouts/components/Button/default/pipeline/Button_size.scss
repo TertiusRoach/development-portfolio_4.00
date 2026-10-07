@@ -121,6 +121,10 @@
       -webkit-mask-position: center;
     }
   }
+
+  @media screen and (max-aspect-ratio: 15.99/9) {
+    @include desk-tablet-size(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
+  }
 }
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
@@ -243,5 +247,31 @@
       mask-position: center; //--|🠈 Center icon 🠈|--\\
       -webkit-mask-position: center;
     }
+  }
+
+  @media screen and (min-aspect-ratio: 9/15.99) {
+    @include mobi-tablet-size(); //--|🠈 Mobile Layout below 9:16 🠈|--\\
+  }
+}
+@mixin desk-tablet-size {
+  @media screen and (max-width: 1920px) {
+    background: red;
+  }
+  @media screen and (max-width: 1366px) {
+    background: green;
+  }
+  @media screen and (max-width: 854px) {
+    background: blue;
+  }
+}
+@mixin mobi-tablet-size {
+  @media screen and (max-height: 1920px) {
+    background: red;
+  }
+  @media screen and (max-height: 1366px) {
+    background: green;
+  }
+  @media screen and (max-height: 854px) {
+    background: blue;
   }
 }
