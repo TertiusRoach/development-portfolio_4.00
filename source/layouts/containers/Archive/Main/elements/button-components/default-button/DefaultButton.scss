@@ -200,6 +200,18 @@
     @include desktop-tablet(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
   }
 }
+@mixin desktop-tablet {
+  @media screen and (max-width: 1920px) {
+    background: red;
+  }
+  @media screen and (max-width: 1366px) {
+    background: green;
+  }
+  @media screen and (max-width: 854px) {
+    background: blue;
+  }
+}
+//--|===|--\\
 @mixin mobile-portrait {
   //--|🠊 <aside className="default-button"> 🠈|--\\
   $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
@@ -457,18 +469,6 @@
 
   @media screen and (min-aspect-ratio: 9/15.99) {
     @include mobile-tablet(); //--|🠈 Mobile Layout below 9:16 🠈|--\\
-  }
-}
-
-@mixin desktop-tablet {
-  @media screen and (max-width: 1920px) {
-    background: red;
-  }
-  @media screen and (max-width: 1366px) {
-    background: green;
-  }
-  @media screen and (max-width: 854px) {
-    background: blue;
   }
 }
 @mixin mobile-tablet {

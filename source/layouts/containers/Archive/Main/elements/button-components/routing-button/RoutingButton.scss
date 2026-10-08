@@ -592,56 +592,10 @@
       &[class*='darkside'] {
         //--|🠊 background: rgba(black, 0.25); 🠈|--\\
         clip-path: inset(0 0 50% 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        /*
-        button[class*='_top_'] {
-          grid-area: 3 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_bot_'] {
-          grid-area: 8 / 2 / 13 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_lef_'] {
-          grid-area: 3 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_rig_'] {
-          grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_cen_'] {
-          grid-area: 7 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_tex_'] {
-          grid-area: 9 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_ico_'] {
-          grid-area: 11 / 3 / 13 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        */
       }
       &[class*='lightside'] {
         //--|🠊 background: rgba(white, 0.25); 🠈|--\\
         clip-path: inset(50% 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
-        /*
-        button[class*='_top_'] {
-          grid-area: 5 / 2 / 10 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_bot_'] {
-          grid-area: 10 / 2 / 15 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_lef_'] {
-          grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_rig_'] {
-          grid-area: 7 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_cen_'] {
-          grid-area: 9 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_tex_'] {
-          grid-area: 11 / 3 / 13 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        button[class*='_ico_'] {
-          grid-area: 13 / 3 / 15 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-        */
       }
     }
   }
