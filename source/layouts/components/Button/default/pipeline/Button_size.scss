@@ -126,6 +126,124 @@
     @include desk-tablet-size(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
   }
 }
+@mixin desk-tablet-size {
+  //--|🠋 Tablet (Size) 🠋|--\\
+  div[class='text'] {
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: 775;
+    }
+    h3 {
+      font-size: 28px;
+      font-weight: 750;
+    }
+    h4 {
+      font-size: 24px;
+      font-weight: 725;
+    }
+    h5 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    h6 {
+      font-size: 16px;
+      font-weight: 675;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    max-width: 32rem;
+    @media screen and (max-width: 1920px) {
+      max-width: 22rem;
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      h5 {
+        font-size: 16px;
+      }
+      h6 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+    @media screen and (max-width: 1366px) {
+      max-width: 14rem;
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+      }
+      h5 {
+        font-size: 14px;
+      }
+      h6 {
+        font-size: 12px;
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+    @media screen and (max-width: 854px) {
+      max-width: 10rem;
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 12px;
+      }
+      h4 {
+        font-size: 12px;
+      }
+      h5 {
+        font-size: 10px;
+      }
+      h6 {
+        font-size: 10px;
+      }
+      p {
+        font-size: 8px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1920px) {
+    background: red;
+  }
+  @media screen and (max-width: 1366px) {
+    background: green;
+  }
+  @media screen and (max-width: 854px) {
+    background: blue;
+  }
+}
+//--|===|--\\
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
   div[class='text'] {
@@ -253,25 +371,110 @@
     @include mobi-tablet-size(); //--|🠈 Mobile Layout below 9:16 🠈|--\\
   }
 }
-@mixin desk-tablet-size {
-  @media screen and (max-width: 1920px) {
-    background: red;
-  }
-  @media screen and (max-width: 1366px) {
-    background: green;
-  }
-  @media screen and (max-width: 854px) {
-    background: blue;
-  }
-}
 @mixin mobi-tablet-size {
-  @media screen and (max-height: 1920px) {
-    background: red;
-  }
-  @media screen and (max-height: 1366px) {
-    background: green;
-  }
-  @media screen and (max-height: 854px) {
-    background: blue;
+  //--|🠋 Tablet (Size) 🠋|--\\
+  div[class='text'] {
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: 775;
+    }
+    h3 {
+      font-size: 28px;
+      font-weight: 750;
+    }
+    h4 {
+      font-size: 24px;
+      font-weight: 725;
+    }
+    h5 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    h6 {
+      font-size: 16px;
+      font-weight: 675;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    max-width: 32rem;
+    @media screen and (max-height: 1920px) {
+      max-width: 22rem;
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      h5 {
+        font-size: 16px;
+      }
+      h6 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+    @media screen and (max-height: 1366px) {
+      max-width: 14rem;
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 16px;
+      }
+      h5 {
+        font-size: 14px;
+      }
+      h6 {
+        font-size: 12px;
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+    @media screen and (max-height: 854px) {
+      max-width: 10rem;
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 12px;
+      }
+      h4 {
+        font-size: 12px;
+      }
+      h5 {
+        font-size: 10px;
+      }
+      h6 {
+        font-size: 10px;
+      }
+      p {
+        font-size: 8px;
+      }
+    }
   }
 }

@@ -570,6 +570,556 @@
     @include desk-tablet-flex(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
   }
 }
+@mixin desk-tablet-flex {
+  //--|🠋 Tablet (Flex) 🠋|--\\
+  &[class*='_top_'],
+  &[class*='_bot_'] {
+    &[class*='_def'] {
+      &[class*='one_'] {
+        h1 {
+          padding: 4px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 4px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 2px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 0 4px;
+          }
+        }
+        img {
+          margin: 4px;
+        }
+      }
+      &[class*='two_'] {
+        h2 {
+          padding: 6px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 6px;
+          @media screen and (max-width: 1920px) {
+            margin: 5px 6px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 4px 6px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 3px 6px;
+          }
+        }
+      }
+      &[class*='thr_'] {
+        h3 {
+          padding: 6px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 8px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 8px;
+          @media screen and (max-width: 1920px) {
+            margin: 4px 8px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 3px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 2px 8px;
+          }
+        }
+      }
+      &[class*='fou_'] {
+        h4 {
+          padding: 6px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 10px;
+          @media screen and (max-width: 1920px) {
+            margin: 6px 10px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 4px 10px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 2px 10px;
+          }
+        }
+      }
+      &[class*='fiv_'] {
+        h5 {
+          padding: 6px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 7px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 4px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 4px 4px;
+          }
+        }
+        img {
+          margin: 12px;
+          @media screen and (max-width: 1920px) {
+            margin: 6px 12px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 3px 12px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 12px;
+          }
+        }
+      }
+      &[class*='six_'] {
+        h6 {
+          padding: 6px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 4px 14px;
+          @media screen and (max-width: 1920px) {
+            margin: 4px 14px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 2px 14px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 14px;
+          }
+        }
+      }
+      &[class*='par_'] {
+        p {
+          padding: 4px 16px;
+          @media screen and (max-width: 1920px) {
+            padding: 4px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            padding: 2px 8px;
+          }
+          @media screen and (max-width: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 2px 16px;
+          @media screen and (max-width: 1920px) {
+            margin: 2px 16px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 12px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 2px 6px;
+          }
+        }
+      }
+    }
+  }
+  &[class*='_lef_'],
+  &[class*='_rig_'] {
+    &[class*='_def'],
+    &[class*='_alt'] {
+      h1 {
+        padding: 4px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 0 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 0 4px;
+        }
+      }
+      h2 {
+        padding: 10px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 2px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      h3 {
+        padding: 12px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 8px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 5px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h4 {
+        padding: 14px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 8px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 5px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h5 {
+        padding: 16px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 6px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h6 {
+        padding: 18px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 11px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 7px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 4px 4px;
+        }
+      }
+      p {
+        padding: 16px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 7px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 4px 4px;
+        }
+      }
+    }
+  }
+  &[class*='_cen_'] {
+    &[class*='_def'] {
+      h1 {
+        padding: 12px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 16px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 10px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 8px 4px;
+        }
+      }
+      h2 {
+        padding: 14px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 18px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      h3 {
+        padding: 20px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 20px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 14px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      h4 {
+        padding: 22px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 24px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 14px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      h5 {
+        padding: 26px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 28px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 16px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      h6 {
+        padding: 26px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 26px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 16px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 12px 4px;
+        }
+      }
+      p {
+        padding: 25px 32px;
+        @media screen and (max-width: 1920px) {
+          padding: 26px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 16px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 12px 4px;
+        }
+      }
+    }
+  }
+  &[class*='_tex_'] {
+    &[class*='_def'] {
+      h1 {
+        padding: 2px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 4px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 2px 4px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 0 4px;
+        }
+      }
+      h2 {
+        padding: 6px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 6px 8px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h3 {
+        padding: 6px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h4 {
+        padding: 6px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h5 {
+        padding: 8px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 8px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      h6 {
+        padding: 8px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 8px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      p {
+        padding: 5px 16px;
+        @media screen and (max-width: 1920px) {
+          padding: 5px 16px;
+        }
+        @media screen and (max-width: 1366px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-width: 854px) {
+          padding: 0 4px;
+        }
+      }
+    }
+  }
+  &[class*='_ico_'] {
+    &[class*='_def'] {
+      &[class*='one_'] {
+        img {
+          margin: 0 8px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 2px;
+          }
+        }
+      }
+      &[class*='two_'] {
+        img {
+          margin: 0 7px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 5px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='thr_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='fou_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='fiv_'] {
+        img {
+          margin: 0 6px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='six_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='par_'] {
+        img {
+          margin: 0 6px;
+          @media screen and (max-width: 1920px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-width: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-width: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+    }
+  }
+}
+//--|===|--\\
 @mixin mobile-flex {
   //--|🠋 Mobile (Flex) 🠋|--\\
   & {
@@ -1165,26 +1715,576 @@
     @include mobi-tablet-flex(); //--|🠈 Mobile Layout below 9:16 🠈|--\\
   }
 }
-
-@mixin desk-tablet-flex {
-  @media screen and (max-width: 1920px) {
-    background: red;
-  }
-  @media screen and (max-width: 1366px) {
-    background: green;
-  }
-  @media screen and (max-width: 854px) {
-    background: blue;
-  }
-}
 @mixin mobi-tablet-flex {
-  @media screen and (max-height: 1920px) {
-    background: red;
+  //--|🠋 Tablet (Flex) 🠋|--\\
+  &[class*='_top_'],
+  &[class*='_bot_'] {
+    &[class*='_def'] {
+      &[class*='one_'] {
+        h1 {
+          padding: 4px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 4px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 2px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 0 4px;
+          }
+        }
+        img {
+          margin: 4px;
+        }
+      }
+      &[class*='two_'] {
+        h2 {
+          padding: 6px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 6px;
+          @media screen and (max-height: 1920px) {
+            margin: 5px 6px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 4px 6px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 3px 6px;
+          }
+        }
+      }
+      &[class*='thr_'] {
+        h3 {
+          padding: 6px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 8px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 8px;
+          @media screen and (max-height: 1920px) {
+            margin: 4px 8px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 3px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 2px 8px;
+          }
+        }
+      }
+      &[class*='fou_'] {
+        h4 {
+          padding: 6px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 10px;
+          @media screen and (max-height: 1920px) {
+            margin: 6px 10px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 4px 10px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 2px 10px;
+          }
+        }
+      }
+      &[class*='fiv_'] {
+        h5 {
+          padding: 6px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 7px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 4px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 4px 4px;
+          }
+        }
+        img {
+          margin: 12px;
+          @media screen and (max-height: 1920px) {
+            margin: 6px 12px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 3px 12px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 12px;
+          }
+        }
+      }
+      &[class*='six_'] {
+        h6 {
+          padding: 6px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 6px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 3px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 4px 14px;
+          @media screen and (max-height: 1920px) {
+            margin: 4px 14px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 2px 14px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 14px;
+          }
+        }
+      }
+      &[class*='par_'] {
+        p {
+          padding: 4px 16px;
+          @media screen and (max-height: 1920px) {
+            padding: 4px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            padding: 2px 8px;
+          }
+          @media screen and (max-height: 854px) {
+            padding: 1px 4px;
+          }
+        }
+        img {
+          margin: 2px 16px;
+          @media screen and (max-height: 1920px) {
+            margin: 2px 16px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 12px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 2px 6px;
+          }
+        }
+      }
+    }
   }
-  @media screen and (max-height: 1366px) {
-    background: green;
+  &[class*='_lef_'],
+  &[class*='_rig_'] {
+    &[class*='_def'],
+    &[class*='_alt'] {
+      img {
+        margin-top: 4px;
+        @media screen and (max-height: 1920px) {
+          margin-top: 3px;
+        }
+        @media screen and (max-height: 1366px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 854px) {
+          margin-top: 0;
+        }
+      }
+      h1 {
+        padding: 4px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 0 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 0 4px;
+        }
+      }
+      h2 {
+        padding: 10px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 2px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      h3 {
+        padding: 12px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 8px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 5px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h4 {
+        padding: 14px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 8px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 5px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h5 {
+        padding: 16px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 6px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 3px 4px;
+        }
+      }
+      h6 {
+        padding: 18px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 11px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 7px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 4px 4px;
+        }
+      }
+      p {
+        padding: 16px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 7px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 4px 4px;
+        }
+      }
+    }
   }
-  @media screen and (max-height: 854px) {
-    background: blue;
+  &[class*='_cen_'] {
+    &[class*='_def'] {
+      img {
+        margin-top: 4px;
+        @media screen and (max-height: 1920px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 1366px) {
+          margin-top: 2px;
+        }
+        @media screen and (max-height: 854px) {
+          margin-top: 1px;
+        }
+      }
+      h1 {
+        padding: 12px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 12px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 6px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 6px 4px;
+        }
+      }
+      h2 {
+        padding: 16px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 16px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 8px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 6px 4px;
+        }
+      }
+      h3 {
+        padding: 20px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 18px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 10px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 9px 4px;
+        }
+      }
+      h4 {
+        padding: 22px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 20px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 10px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 8px 4px;
+        }
+      }
+      h5 {
+        padding: 26px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 24px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 12px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      h6 {
+        padding: 26px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 24px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 14px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 10px 4px;
+        }
+      }
+      p {
+        padding: 25px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 24px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 12px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 10px 4px;
+        }
+      }
+    }
+  }
+  &[class*='_tex_'] {
+    &[class*='_def'] {
+      h1 {
+        padding: 2px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 4px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 2px 4px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 0 4px;
+        }
+      }
+      h2 {
+        padding: 6px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 6px 8px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h3 {
+        padding: 6px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h4 {
+        padding: 6px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 6px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 3px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 1px 4px;
+        }
+      }
+      h5 {
+        padding: 8px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 8px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      h6 {
+        padding: 8px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 8px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 4px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 2px 4px;
+        }
+      }
+      p {
+        padding: 5px 16px;
+        @media screen and (max-height: 1920px) {
+          padding: 5px 16px;
+        }
+        @media screen and (max-height: 1366px) {
+          padding: 2px 8px;
+        }
+        @media screen and (max-height: 854px) {
+          padding: 0 4px;
+        }
+      }
+    }
+  }
+  &[class*='_ico_'] {
+    &[class*='_def'] {
+      &[class*='one_'] {
+        img {
+          margin: 0 8px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 2px;
+          }
+        }
+      }
+      &[class*='two_'] {
+        img {
+          margin: 0 7px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 5px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='thr_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='fou_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='fiv_'] {
+        img {
+          margin: 0 6px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 4px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='six_'] {
+        img {
+          margin: 0 4px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+      &[class*='par_'] {
+        img {
+          margin: 0 6px;
+          @media screen and (max-height: 1920px) {
+            margin: 0 3px;
+          }
+          @media screen and (max-height: 1366px) {
+            margin: 0 2px;
+          }
+          @media screen and (max-height: 854px) {
+            margin: 0 1px;
+          }
+        }
+      }
+    }
   }
 }
