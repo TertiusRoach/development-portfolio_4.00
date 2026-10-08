@@ -2812,12 +2812,7 @@
   }
   @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
-    $high-mobi: calc(100% - 64px);
-    $test-mobi: calc(100% - 48px);
-    $misc-mobi: calc(100% - 32px);
-    $tiny-mobi: calc(100% - 24px);
-
-    //--|🠊 <Top> 🠈|--\\
+    //--|🠊 <one-top> 🠈|--\\
     &[class*='one_tl'] {
       border-bottom-right-radius: 96px;
       .mid {
@@ -2884,7 +2879,7 @@
         border-bottom-left-radius: 32px;
       }
     }
-    //--|🠊 <Mid> 🠈|--\\
+    //--|🠊 <one-mid> 🠈|--\\
     &[class*='one_ml'] {
       border-top-right-radius: 48px;
       border-bottom-right-radius: 48px;
@@ -2955,7 +2950,7 @@
         border-bottom-left-radius: 16px;
       }
     }
-    //--|🠊 <Bot> 🠈|--\\
+    //--|🠊 <one-bot> 🠈|--\\
     &[class*='one_bl'] {
       border-top-right-radius: 96px;
       .mid {
