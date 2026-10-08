@@ -78,7 +78,9 @@ nav[class*='default'] {
           repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
           / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
       }
-
+      li {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+      }
       li.top-lef {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -170,7 +172,9 @@ nav[class*='default'] {
           repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
           / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
       }
-
+      li {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+      }
       li.top-lef {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }

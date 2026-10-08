@@ -2812,6 +2812,11 @@
   }
   @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
+    $high-mobi: calc(100% - 64px);
+    $test-mobi: calc(100% - 48px);
+    $misc-mobi: calc(100% - 32px);
+    $tiny-mobi: calc(100% - 24px);
+
     //--|🠊 <Top> 🠈|--\\
     &[class*='one_tl'] {
       border-bottom-right-radius: 96px;
