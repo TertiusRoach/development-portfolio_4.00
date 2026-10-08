@@ -23,7 +23,9 @@ interface InfoProps {
   };
 }
 const RoutingButton: React.FC<InfoProps> = ({ info }) => {
-  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait'); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'routing';
   const pageName = info.pageName as 'component';
@@ -85,9 +87,18 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
                 toggleColors(event.currentTarget as HTMLElement);
               }}
             >
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
             </div>
 
             <MenuScroll
@@ -187,9 +198,18 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
                 toggleColors(event.currentTarget as HTMLElement);
               }}
             >
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-              <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
             </div>
 
             <MenuScroll

@@ -1772,7 +1772,7 @@
 }
 //--|===|--\\
 @mixin tabl-grid {
-  @media screen and (max-aspect-ratio: 15.99/9) {
+  @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     &[class*='one_'] {
       .fore {
@@ -1817,7 +1817,7 @@
       }
     }
   }
-  @media screen and (min-aspect-ratio: 9/15.99) {
+  @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     &[class*='one_'] {
       .fore {
@@ -1864,7 +1864,7 @@
   }
 }
 @mixin tabl-flex {
-  @media screen and (max-aspect-ratio: 15.99/9) {
+  @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     &[class*='one_'] {
       width: 128px;
@@ -1993,7 +1993,7 @@
       }
     }
   }
-  @media screen and (min-aspect-ratio: 9/15.99) {
+  @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     &[class*='one_'] {
       width: 192px;
@@ -2124,7 +2124,7 @@
   }
 }
 @mixin tabl-edge {
-  @media screen and (max-aspect-ratio: 15.99/9) {
+  @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     //--|🠊 <one-top> 🠈|--\\
     &[class*='one_tl'] {
@@ -2783,7 +2783,7 @@
       }
     }
   }
-  @media screen and (min-aspect-ratio: 9/15.99) {
+  @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     //--|🠊 <Top> 🠈|--\\
     &[class*='one_tl'] {
