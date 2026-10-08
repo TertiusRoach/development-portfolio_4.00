@@ -45,83 +45,96 @@
         section[class*='one'] {
           //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
 
-          $high-one: 128px;
-          $test-one: 96px;
-          $misc-one: 64px;
-          $tiny-one: 48px;
+          grid-template: 1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+            / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
 
-          grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
-            / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
-          @media screen and (max-height: 768px) {
-            grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              1fr repeat(3, $test-one) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $test-one) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            grid-template: //--|🠋 Width: 854px 🠋|--\\
-              1fr repeat(3, $misc-one) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $misc-one) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            grid-template: //--|🠋 Width: 640px 🠋|--\\
-              1fr repeat(3, $tiny-one) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $tiny-one) 1fr; //--|🠈 columns 🠈|--\\
-          }
+          /*
+            $high-one: 128px;
+            $test-one: 96px;
+            $misc-one: 64px;
+            $tiny-one: 48px;
+  
+            grid-template: //--|🠋 Width: 1920px 🠋|--\\
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
+            @media screen and (max-height: 768px) {
+              grid-template: //--|🠋 Width: 1366px 🠋|--\\
+                1fr repeat(3, $test-one) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $test-one) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              grid-template: //--|🠋 Width: 854px 🠋|--\\
+                1fr repeat(3, $misc-one) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $misc-one) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              grid-template: //--|🠋 Width: 640px 🠋|--\\
+                1fr repeat(3, $tiny-one) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $tiny-one) 1fr; //--|🠈 columns 🠈|--\\
+            }
+          */
         }
         section[class*='fou'] {
           //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
 
-          $high-fou: 84px;
-          $test-fou: 64px;
-          $misc-fou: 42px;
-          $tiny-fou: 32px;
-
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            1fr repeat(3, $high-fou) 1fr //--|🠈 rows 🠈|--//
-            / 1fr repeat(3, $high-fou) 1fr; //--|🠈 columns 🠈|--\\
-          @media screen and (max-height: 768px) {
-            grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              1fr repeat(3, $test-fou) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $test-fou) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            grid-template: //--|🠋 Width: 854px 🠋|--\\
-              1fr repeat(3, $misc-fou) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $misc-fou) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            grid-template: //--|🠋 Width: 640px 🠋|--\\
-              1fr repeat(3, $tiny-fou) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $tiny-fou) 1fr; //--|🠈 columns 🠈|--\\
-          }
+            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+            / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
+          /*
+            $high-fou: 84px;
+            $test-fou: 64px;
+            $misc-fou: 42px;
+            $tiny-fou: 32px;
+            grid-template: //--|🠋 Width: 1920px 🠋|--\\
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
+            @media screen and (max-height: 768px) {
+              grid-template: //--|🠋 Width: 1366px 🠋|--\\
+                1fr repeat(3, $test-fou) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $test-fou) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              grid-template: //--|🠋 Width: 854px 🠋|--\\
+                1fr repeat(3, $misc-fou) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $misc-fou) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              grid-template: //--|🠋 Width: 640px 🠋|--\\
+                1fr repeat(3, $tiny-fou) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $tiny-fou) 1fr; //--|🠈 columns 🠈|--\\
+            }
+          */
         }
         section[class*='par'] {
           //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
 
-          $high-par: 64px;
-          $test-par: 48px;
-          $misc-par: 32px;
-          $tiny-par: 24px;
-
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            1fr repeat(3, $high-par) 1fr //--|🠈 rows 🠈|--//
-            / 1fr repeat(3, $high-par) 1fr; //--|🠈 columns 🠈|--\\
-          @media screen and (max-height: 768px) {
-            grid-template: //--|🠋 Width: 1366px 🠋|--\\
-              1fr repeat(3, $test-par) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $test-par) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            grid-template: //--|🠋 Width: 854px 🠋|--\\
-              1fr repeat(3, $misc-par) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $misc-par) 1fr; //--|🠈 columns 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            grid-template: //--|🠋 Width: 640px 🠋|--\\
-              1fr repeat(3, $tiny-par) 1fr //--|🠈 rows 🠈|--//
-              / 1fr repeat(3, $tiny-par) 1fr; //--|🠈 columns 🠈|--\\
-          }
+            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+            / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
+          /*
+            $high-par: 64px;
+            $test-par: 48px;
+            $misc-par: 32px;
+            $tiny-par: 24px;
+            grid-template: //--|🠋 Width: 1920px 🠋|--\\
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
+            @media screen and (max-height: 768px) {
+              grid-template: //--|🠋 Width: 1366px 🠋|--\\
+                1fr repeat(3, $test-par) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $test-par) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 480px) {
+              grid-template: //--|🠋 Width: 854px 🠋|--\\
+                1fr repeat(3, $misc-par) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $misc-par) 1fr; //--|🠈 columns 🠈|--\\
+            }
+            @media screen and (max-height: 360px) {
+              grid-template: //--|🠋 Width: 640px 🠋|--\\
+                1fr repeat(3, $tiny-par) 1fr //--|🠈 rows 🠈|--//
+                / 1fr repeat(3, $tiny-par) 1fr; //--|🠈 columns 🠈|--\\
+            }
+          */
         }
         section[class*='routing'] {
           display: grid;
@@ -271,28 +284,28 @@
 
             &[class*='one'] {
               //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
-
+              //--|🠊 64px (Left & Right) for Design 🠈|--\\
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, $high-one) 1fr 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-one) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, $test-one) 1fr 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-one) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, $misc-one) 1fr 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-one) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, $tiny-one) 1fr 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-one) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
             &[class*='fou'] {
@@ -300,25 +313,25 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, $high-fou) 1fr 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-fou) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, $test-fou) 1fr 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-fou) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, $misc-fou) 1fr 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-fou) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, $tiny-fou) 1fr 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-fou) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
             &[class*='par'] {
@@ -326,25 +339,25 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, $high-par) 1fr 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-par) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, $test-par) 1fr 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-par) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, $misc-par) 1fr 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-par) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, $tiny-par) 1fr 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-par) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
           }
@@ -382,25 +395,25 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, $high-one) 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-one) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, $test-one) 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-one) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, $misc-one) 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-one) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, $tiny-one) 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-one) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
             &[class*='fou'] {
@@ -408,52 +421,51 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, $high-fou) 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-fou) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, $test-fou) 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-fou) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, $misc-fou) 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-fou) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, $tiny-fou) 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-fou) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
-
             &[class*='par'] {
               //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, $high-par) 12rem //--|🠈 rows 🠈|--//
-                / 64px 1fr repeat(3, $high-par) 1fr 64px; //--|🠈 columns 🠈|--\\
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, $test-par) 10rem //--|🠈 rows 🠈|--//
-                  / 48px 1fr repeat(3, $test-par) 1fr 48px; //--|🠈 columns 🠈|--\\
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, $misc-par) 6rem //--|🠈 rows 🠈|--//
-                  / 32px 1fr repeat(3, $misc-par) 1fr 32px; //--|🠈 columns 🠈|--\\
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, $tiny-par) 4rem //--|🠈 rows 🠈|--//
-                  / 24px 1fr repeat(3, $tiny-par) 1fr 24px; //--|🠈 columns 🠈|--\\
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
           }

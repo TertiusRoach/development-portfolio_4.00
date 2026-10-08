@@ -1113,8 +1113,9 @@
     border-radius: inherit;
   }
 
-  //--|🠊 <Top> 🠈|--\\
+  //--|🠊 <one-top> 🠈|--\\
   &[class*='one_tl'] {
+    margin: 0 auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-right-radius: 96px;
     .mid {
       border-right: 4px solid;
@@ -1135,6 +1136,7 @@
     }
   }
   &[class*='one_tc'] {
+    margin: 0 auto auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 48px;
     border-bottom-right-radius: 48px;
     .mid {
@@ -1161,6 +1163,7 @@
     }
   }
   &[class*='one_tr'] {
+    margin: 0 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 96px;
     .mid {
       border-left: 4px solid;
@@ -1180,8 +1183,9 @@
       border-bottom-left-radius: 32px;
     }
   }
-  //--|🠊 <Mid> 🠈|--\\
+  //--|🠊 <one-mid> 🠈|--\\
   &[class*='one_ml'] {
+    margin: auto auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 48px;
     border-bottom-right-radius: 48px;
     .mid {
@@ -1208,6 +1212,7 @@
     }
   }
   &[class*='one_mc'] {
+    margin: auto;
     border-radius: 48px;
     .mid {
       border: 4px solid;
@@ -1226,6 +1231,7 @@
     }
   }
   &[class*='one_mr'] {
+    margin: auto 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 48px;
     border-bottom-left-radius: 48px;
     .mid {
@@ -1251,8 +1257,9 @@
       border-bottom-left-radius: 16px;
     }
   }
-  //--|🠊 <Bot> 🠈|--\\
+  //--|🠊 <one-bot> 🠈|--\\
   &[class*='one_bl'] {
+    margin: auto auto 0 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 96px;
     .mid {
       border-top: 4px solid;
@@ -1273,6 +1280,7 @@
     }
   }
   &[class*='one_bc'] {
+    margin: auto auto 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 48px;
     border-top-right-radius: 48px;
     .mid {
@@ -1299,6 +1307,7 @@
     }
   }
   &[class*='one_br'] {
+    margin: auto 0 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 96px;
     .mid {
       border-left: 4px solid;
@@ -1321,6 +1330,7 @@
 
   //--|🠊 <fou-top> 🠈|--\\
   &[class*='fou_tl'] {
+    margin: 0 auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-right-radius: 64px;
     .mid {
       border-right: 3px solid;
@@ -1345,6 +1355,7 @@
     }
   }
   &[class*='fou_tc'] {
+    margin: 0 auto auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
     .mid {
@@ -1376,6 +1387,7 @@
     }
   }
   &[class*='fou_tr'] {
+    margin: 0 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 64px;
     .mid {
       border-left: 3px solid;
@@ -1401,6 +1413,7 @@
   }
   //--|🠊 <fou-mid> 🠈|--\\
   &[class*='fou_ml'] {
+    margin: auto auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 32px;
     border-bottom-right-radius: 32px;
     .mid {
@@ -1432,6 +1445,7 @@
     }
   }
   &[class*='fou_mc'] {
+    margin: auto;
     border-radius: 32px;
     .mid {
       border: 3px solid;
@@ -1453,6 +1467,7 @@
     }
   }
   &[class*='fou_mr'] {
+    margin: auto 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 32px;
     border-bottom-left-radius: 32px;
     .mid {
@@ -1485,6 +1500,7 @@
   }
   //--|🠊 <fou-bot> 🠈|--\\
   &[class*='fou_bl'] {
+    margin: auto auto 0 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 64px;
     .mid {
       border-top: 3px solid;
@@ -1509,6 +1525,7 @@
     }
   }
   &[class*='fou_bc'] {
+    margin: auto auto 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     .mid {
@@ -1540,6 +1557,7 @@
     }
   }
   &[class*='fou_br'] {
+    margin: auto 0 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 64px;
     .mid {
       border-left: 3px solid;
@@ -1566,6 +1584,7 @@
 
   //--|🠊 <par-top> 🠈|--\\
   &[class*='par_tl'] {
+    margin: 0 auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-right-radius: 48px;
     .mid {
       border-right: 2px solid;
@@ -1586,6 +1605,7 @@
     }
   }
   &[class*='par_tc'] {
+    margin: 0 auto auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     .mid {
@@ -1612,6 +1632,7 @@
     }
   }
   &[class*='par_tr'] {
+    margin: 0 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-bottom-left-radius: 48px;
     .mid {
       border-left: 2px solid;
@@ -1633,6 +1654,7 @@
   }
   //--|🠊 <par-mid> 🠈|--\\
   &[class*='par_ml'] {
+    margin: auto auto auto 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
     .mid {
@@ -1659,6 +1681,7 @@
     }
   }
   &[class*='par_mc'] {
+    margin: auto;
     border-radius: 24px;
     .mid {
       border: 2px solid;
@@ -1677,6 +1700,7 @@
     }
   }
   &[class*='par_mr'] {
+    margin: auto 0 auto auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
     .mid {
@@ -1704,6 +1728,7 @@
   }
   //--|🠊 <par-bot> 🠈|--\\
   &[class*='par_bl'] {
+    margin: auto auto 0 0; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-right-radius: 48px;
     .mid {
       border-top: 2px solid;
@@ -1724,6 +1749,7 @@
     }
   }
   &[class*='par_bc'] {
+    margin: auto auto 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     .mid {
@@ -1750,6 +1776,7 @@
     }
   }
   &[class*='par_br'] {
+    margin: auto 0 0 auto; //--|🠈 top / right / bottom / left 🠈|--\\
     border-top-left-radius: 48px;
     .mid {
       border-left: 2px solid;
