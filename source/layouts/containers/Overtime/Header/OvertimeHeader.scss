@@ -16,6 +16,7 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    background: rgba(darkred, 0.75);
     header {
       grid-area: 1 / 1 / 2 / 4;
       background: rgba(red, 0.25);

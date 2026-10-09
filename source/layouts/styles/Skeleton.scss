@@ -8,12 +8,7 @@ body {
     section[class*='overlay'] {
       z-index: 10;
     }
-    header[class*='header'] {
-      z-index: 6;
-    }
-    footer[class*='footer'] {
-      z-index: 9;
-    }
+
     aside[class*='leftbar'] {
       z-index: 5;
     }
@@ -22,6 +17,22 @@ body {
     }
     main[class*='main'] {
       z-index: 0;
+    }
+    @media screen and (orientation: landscape) {
+      header[class*='header'] {
+        z-index: 6;
+      }
+      footer[class*='footer'] {
+        z-index: 9;
+      }
+    }
+    @media screen and (orientation: portrait) {
+      header[class*='header'] {
+        z-index: 9;
+      }
+      footer[class*='footer'] {
+        z-index: 6;
+      }
     }
   }
   %colouring {

@@ -106,14 +106,16 @@ function OvertimeFooter({ info }: InfoProps) {
         </footer>
       );
     case 'portrait':
-      stateName = 'unfolded';
+      stateName = 'expanded';
       return (
         <footer
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            if (Array.from(event.currentTarget.classList).pop() !== 'expanded') {
+              blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
+              blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            }
           }}
         >
           <section className={`${blockName}-foreground`}>

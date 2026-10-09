@@ -1,27 +1,29 @@
-//--|🠊 layouts/containers 🠈|--\\\\
-//--|🠋 Select Function 🠋|--\\
-type BlockName = 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
-type AlterAction = 'expanded' | 'collapsed' | 'unfolded' | 'squaring' | 'loading' | 'update';
+//--|🠊 layouts/containers 🠈|--\\
 
-function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockName, alterAction: AlterAction) {
+//--|🠋 Type Definitions 🠋|--\\
+type Handler = (pageName: string) => void;
+type blockName = 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
+type alterAction = 'expanded' | 'collapsed' | 'unfolded' | 'squaring' | 'loading' | 'update';
+//--|🠋 Select Function 🠋|--\\
+function blockViews(thisItem: HTMLElement, pageName: string, blockName: blockName, alterAction: alterAction) {
   const lockedElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   const selectElement = thisItem.classList[0].split('-')[1] as 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
-
-  let toggleLocked: boolean = lockedElement.classList.contains(`locked-${blockName}`) as true | false;
-  let toggleFrozen: boolean = lockedElement.classList.contains(`frozen-${blockName}`) as true | false;
+  //--|===|--\\
+  const toggleLocked: boolean = lockedElement.classList.contains(`locked-${blockName}`) as true | false;
+  const toggleFrozen: boolean = lockedElement.classList.contains(`frozen-${blockName}`) as true | false;
   switch (toggleFrozen) {
     case false:
       if (selectElement === 'main') {
         return blockHandlers[blockName]?.[alterAction]?.(pageName);
+      } else {
+        if (toggleLocked) return;
+        //--|===|--\\
+        blockHandlers[blockName]?.[alterAction]?.(pageName);
+        lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
+        setTimeout(() => {
+          lockedElement.classList.remove(`locked-${blockName}`);
+        }, 1500);
       }
-
-      if (toggleLocked) return;
-
-      lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
-      blockHandlers[blockName]?.[alterAction]?.(pageName);
-      setTimeout(() => {
-        lockedElement.classList.remove(`locked-${blockName}`);
-      }, 1500);
       break;
   }
 }
@@ -59,9 +61,6 @@ let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
   let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'collapsed');
   /* console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let collapseOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
 //--|🠊 3. Unfolded Functions 🠈|--\\\\
@@ -108,17 +107,24 @@ let squaringRightbar = (pageName: string, blockName: 'rightbar') => {
   /* console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
-//--|🠊 Update & Loading Overlay 🠈|--\\\\
+//--|🠊 Update & Loading Overlay 🠈|--\\
+let hidingOverlay = (pageName: string, blockName: 'overlay') => {
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'hidden');
+  /* console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`); */
+};
 let updateOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\\\`);
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'update');
+  /* console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 let loadingOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\\\`);
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'loading');
+  /* console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
-type Handler = (pageName: string) => void;
-
-const blockHandlers: Partial<Record<BlockName, Partial<Record<AlterAction, Handler>>>> = {
+const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handler>>>> = {
   header: {
     expanded: (pageName) => expandHeader(pageName, 'header'),
     collapsed: (pageName) => collapseHeader(pageName, 'header'),
@@ -133,7 +139,7 @@ const blockHandlers: Partial<Record<BlockName, Partial<Record<AlterAction, Handl
   },
   overlay: {
     expanded: (pageName) => expandOverlay(pageName, 'overlay'),
-    collapsed: (pageName) => collapseOverlay(pageName, 'overlay'),
+    collapsed: (pageName) => hidingOverlay(pageName, 'overlay'),
     update: (pageName) => updateOverlay(pageName, 'overlay'),
     loading: (pageName) => loadingOverlay(pageName, 'overlay'),
   },
