@@ -14,7 +14,11 @@ function blockViews(thisItem: HTMLElement, pageName: string, blockName: blockNam
   switch (toggleFrozen) {
     case false:
       if (selectElement === 'main') {
-        return blockHandlers[blockName]?.[alterAction]?.(pageName);
+        let lockBody = document.querySelector(`#${pageName}-${blockName}`)?.parentElement as HTMLDivElement;
+        switch (!lockBody.className.includes('locked-body')) {
+          case true:
+            return blockHandlers[blockName]?.[alterAction]?.(pageName);
+        }
       } else {
         if (toggleLocked) return;
         //--|===|--\\

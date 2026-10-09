@@ -81,8 +81,16 @@ export const loadPages = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'co
   prevPage.classList.replace('active', 'asleep');
   nextPage.classList.replace('asleep', 'active');
 };
+
 const defaultReset = () => {
+  let lockedElements = document.querySelector('div[class*="body"].active') as HTMLDivElement;
   let frozenElements: NodeListOf<HTMLElement> = document.querySelectorAll('[class*="frozen"]');
+  if (!lockedElements.classList.contains('locked-body')) {
+    lockedElements.className = `locked-body ${lockedElements.className}`;
+    setTimeout(() => {
+      lockedElements.classList.remove('locked-body');
+    }, 3000);
+  }
   for (let i = 0; i < frozenElements.length; i++) {
     frozenElements[i].classList.remove(frozenElements[i].classList[0]);
   }

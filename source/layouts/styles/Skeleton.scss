@@ -18,6 +18,7 @@ body {
     main[class*='main'] {
       z-index: 0;
     }
+    //--|===|--\\
     @media screen and (orientation: landscape) {
       header[class*='header'] {
         z-index: 6;
