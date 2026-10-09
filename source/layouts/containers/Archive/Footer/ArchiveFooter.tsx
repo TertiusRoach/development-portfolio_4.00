@@ -9,9 +9,8 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
+import { unfoldFooters } from './ArchiveFunctions';
 import { lockBlock } from '../../../scripts/Footer';
-import obnubilateContainers from '../../../scripts/Overlay';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -45,8 +44,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            unfoldFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -115,8 +113,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            unfoldFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>

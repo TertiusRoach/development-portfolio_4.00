@@ -7,8 +7,8 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
 import { lockBlock } from '../../../scripts/Footer';
+import { unfoldFooters } from './TicketingFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -42,8 +42,7 @@ function TicketingFooter({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            unfoldFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -112,8 +111,7 @@ function TicketingFooter({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
+            unfoldFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>

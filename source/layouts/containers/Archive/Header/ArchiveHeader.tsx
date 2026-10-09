@@ -9,7 +9,7 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
+import { unfoldHeaders } from './ArchiveFunctions';
 import { lockBlock } from '../../../scripts/Header';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
@@ -44,8 +44,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
+            unfoldHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -106,8 +105,7 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
+            unfoldHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>

@@ -4,12 +4,11 @@ import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
-import DivisionConveyor from '../../../components/Division/conveyor/Division.conveyor';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
 import { lockBlock } from '../../../scripts/Header';
+import { unfoldHeaders } from './TicketingFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -43,8 +42,7 @@ function TicketingHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
+            unfoldHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -93,8 +91,7 @@ function TicketingHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
+            unfoldHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>
