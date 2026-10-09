@@ -45,7 +45,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       type: '{button}',
                       shade: style.shade,
                       color: style.color,
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/jane-lester'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/jane-lester'),
                     }}
                   />
                   <ButtonProfile
@@ -55,7 +55,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/malik-tremaine-carter'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/malik-tremaine-carter'),
                     }}
                   />
                   <ButtonProfile
@@ -65,7 +65,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/dimitri-lewis'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/dimitri-lewis'),
                     }}
                   />
                   <ButtonProfile
@@ -75,7 +75,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/dale-sutton'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/dale-sutton'),
                     }}
                   />
                   <ButtonProfile
@@ -85,7 +85,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/alaric-voss'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/alaric-voss'),
                     }}
                   />
                   <ButtonProfile
@@ -95,7 +95,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/conrad-guy'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/conrad-guy'),
                     }}
                   />
                   <ButtonProfile
@@ -105,7 +105,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/daniel-meyers'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/daniel-meyers'),
                     }}
                   />
                   <ButtonProfile
@@ -115,7 +115,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/kady-deacon'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/kady-deacon'),
                     }}
                   />
                   <ButtonProfile
@@ -125,7 +125,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/seamus-odonnell'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/seamus-odonnell'),
                     }}
                   />
                 </>
@@ -140,7 +140,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       type: '{button}',
                       shade: style.shade,
                       color: style.color,
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/hammad-dean'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/hammad-dean'),
                     }}
                   />
                   <ButtonProfile
@@ -150,7 +150,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/tasneem-kemp'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/tasneem-kemp'),
                     }}
                   />
                   <ButtonProfile
@@ -160,7 +160,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/elliot-crane'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/elliot-crane'),
                     }}
                   />
                   <ButtonProfile
@@ -170,7 +170,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/sipho-dlamini'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/sipho-dlamini'),
                     }}
                   />
                   <ButtonProfile
@@ -180,7 +180,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/zuberi-thorne'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/zuberi-thorne'),
                     }}
                   />
                   <ButtonProfile
@@ -190,7 +190,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/nyra-solari'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/nyra-solari'),
                     }}
                   />
                   <ButtonProfile
@@ -200,7 +200,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/victor-langston'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/victor-langston'),
                     }}
                   />
                   <ButtonProfile
@@ -210,7 +210,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/danish-copeland'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/danish-copeland'),
                     }}
                   />
                   <ButtonProfile
@@ -220,7 +220,7 @@ function AsideCharacters({ info, style }: TheseProps) {
                       shade: style.shade,
                       color: style.color,
                       type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/tralogfin-application/demonstration/original/aelin-darrow'),
+                      image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
                     }}
                   />
                 </>
