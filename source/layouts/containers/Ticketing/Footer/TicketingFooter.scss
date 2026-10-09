@@ -50,6 +50,7 @@
   figure[class*='midground'] {
   }
   div[class*='background'] {
+    background: rgba(darkblue, 0.75);
     footer {
       grid-area: 5 / 1 / 6 / 4;
       background: rgba(blue, 0.25);

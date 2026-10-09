@@ -36,7 +36,7 @@ function HyperlinkHeader({ info }: InfoProps) {
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':
-      stateName = 'unfolded';
+      stateName = 'expanded';
       return (
         <header
           id={`${pageName}-${blockName}`}

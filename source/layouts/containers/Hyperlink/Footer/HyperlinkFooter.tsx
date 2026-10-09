@@ -105,7 +105,7 @@ function HyperlinkFooter({ info }: InfoProps) {
         </footer>
       );
     case 'portrait':
-      stateName = 'unfolded';
+      stateName = 'expanded';
       return (
         <footer
           id={`${pageName}-${blockName}`}
