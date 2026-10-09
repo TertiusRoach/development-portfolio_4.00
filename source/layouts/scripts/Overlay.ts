@@ -1,37 +1,39 @@
 //--|🠊 Overlay.ts 🠈|--\\
+import blockViews from '../containers/containers';
+
 //--|🠋 Disable Overlay 🠋|--\\
 const transitioning = new Set<string>();
 const watchedBodies = new WeakSet<HTMLDivElement>();
 async function obnubilateContainers(pageName: string, blockName: string) {
-  if (transitioning.has(pageName)) {
-    return; //--|🠈 This page is already mid-transition 🠈|--\\
-  } else {
-    transitioning.add(pageName);
-    try {
-      const targetElement = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
-      if (targetElement) {
-        //--|🠊 Wait until all five containers exist on the page 🠈|--\\
-        const [mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
-          asynchObserve(`#${pageName}-main`),
-          asynchObserve(`#${pageName}-header`),
-          asynchObserve(`#${pageName}-footer`),
-          asynchObserve(`#${pageName}-leftbar`),
-          asynchObserve(`#${pageName}-rightbar`),
-        ]);
+  const bodyContainer = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
+  const overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  switch (!transitioning.has(pageName)) {
+    case true:
+      try {
+        observeOverlay('overlay'); //--|🠈 Observe <Overlay> to avoid stacking 🠈|--\\
+        transitioning.add(pageName);
+        if (bodyContainer) {
+          //--|🠋 Wait until all five containers exist on the page 🠋|--\\
+          let [mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
+            asynchObserve(`#${pageName}-main`),
+            asynchObserve(`#${pageName}-header`),
+            asynchObserve(`#${pageName}-footer`),
+            asynchObserve(`#${pageName}-leftbar`),
+            asynchObserve(`#${pageName}-rightbar`),
+          ]);
+          setTimeout(() => {
+            clearBlur(mainBlock, headBlock, footBlock, leftBlock, rightBlock);
+          }, 250);
 
-        console.log(blockName);
-        mutateObserve(blockName); //--|🠈 Wait until all five containers exist on the page 🠈|--\\
-        shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
-        clearBlur(mainBlock, headBlock, footBlock, leftBlock, rightBlock);
-
-        let overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-        setTimeout(() => {
-          overlayContainer.classList.replace(overlayContainer.classList[1], 'hidden');
-        }, 2750);
+          setTimeout(() => {
+            shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
+            overlayContainer.classList.replace(overlayContainer.classList[1], 'hidden');
+          }, 2750);
+        }
+      } finally {
+        transitioning.delete(pageName);
       }
-    } finally {
-      transitioning.delete(pageName);
-    }
+      break;
   }
 }
 
@@ -61,7 +63,7 @@ const asynchObserve = (selector: string, timeout = 6000): Promise<HTMLElement> =
     }, timeout);
   });
 };
-const mutateObserve = (blockName: string) => {
+const observeOverlay = (blockName: 'overlay') => {
   const unusedElements = document.querySelectorAll<HTMLDivElement>('div[id*="body"].asleep');
   unusedElements.forEach((element) => {
     if (watchedBodies.has(element)) return; //--|🠈 Skip already watched applications 🠈|--\\
@@ -89,26 +91,23 @@ let clearBlur = async (
   rightbarContainer: HTMLElement,
 ) => {
   //--|🠋 Sharpen Containers 🠋|--\\
-  setTimeout(() => {
-    mainContainer.classList.remove('obnubilate');
-    [headerContainer, footerContainer, leftbarContainer, rightbarContainer].forEach((el) => el.classList.remove('obnubilate'));
-  }, 125);
+  mainContainer.classList.remove('obnubilate');
+  [headerContainer, footerContainer, leftbarContainer, rightbarContainer].forEach((el) => el.classList.remove('obnubilate'));
 };
 let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, leftbarContainer: HTMLElement, rightbarContainer: HTMLElement) => {
-  const headClass = [...headerContainer.classList] as Array<string>;
-  const footClass = [...footerContainer.classList] as Array<string>;
-  const leftClass = [...leftbarContainer.classList] as Array<string>;
-  const rightClass = [...rightbarContainer.classList] as Array<string>;
+  const targets = [
+    { container: headerContainer, blockName: 'header', alterAction: 'squaring' },
+    { container: footerContainer, blockName: 'footer', alterAction: 'squaring' },
+    { container: leftbarContainer, blockName: 'leftbar', alterAction: 'collapsed' },
+    { container: rightbarContainer, blockName: 'rightbar', alterAction: 'collapsed' },
+  ] as const;
 
-  let headState = headClass[headClass.length - 1] as 'unfolded';
-  let footState = footClass[footClass.length - 1] as 'unfolded';
-  let leftState = leftClass[leftClass.length - 1] as 'unfolded';
-  let rightState = rightClass[rightClass.length - 1] as 'unfolded';
-  setTimeout(() => {
-    headerContainer.classList.replace(headState, 'squaring');
-    footerContainer.classList.replace(footState, 'squaring');
-    leftbarContainer.classList.replace(leftState, 'collapsed');
-    rightbarContainer.classList.replace(rightState, 'collapsed');
-  }, 2250);
+  targets.forEach(({ container, blockName, alterAction }) => {
+    const pageName = container.parentElement?.id.split('-')[0] as string;
+    if (container.classList.item(container.classList.length - 1) === 'unfolded') {
+      blockViews(container, pageName, blockName, alterAction);
+    }
+  });
 };
+
 export default obnubilateContainers;

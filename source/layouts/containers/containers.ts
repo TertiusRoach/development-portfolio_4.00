@@ -1,7 +1,7 @@
 //--|🠊 layouts/containers 🠈|--\\\\
 //--|🠋 Select Function 🠋|--\\
 type BlockName = 'overlay' | 'header' | 'footer' | 'leftbar' | 'rightbar' | 'main';
-type AlterAction = 'expand' | 'collapsed' | 'unfold' | 'squaring' | 'loading' | 'update';
+type AlterAction = 'expanded' | 'collapsed' | 'unfolded' | 'squaring' | 'loading' | 'update';
 
 function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockName, alterAction: AlterAction) {
   const lockedElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
@@ -26,7 +26,7 @@ function blockViews(thisItem: HTMLElement, pageName: string, blockName: BlockNam
   }
 }
 
-//--|🠊 Expand Functions 🠈|--\\\\
+//--|🠊 1. Expanded Functions 🠈|--\\
 let expandHeader = (pageName: string, blockName: 'header') => {
   console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
 };
@@ -43,7 +43,7 @@ let expandOverlay = (pageName: string, blockName: 'overlay') => {
   console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Collapse Functions 🠈|--\\\\
+//--|🠊 2. Collapsed Functions 🠈|--\\
 let collapseHeader = (pageName: string, blockName: 'header') => {
   console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
@@ -64,7 +64,7 @@ let collapseOverlay = (pageName: string, blockName: 'overlay') => {
   console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 Unfold Functions 🠈|--\\\\
+//--|🠊 3. Unfolded Functions 🠈|--\\\\
 let unfoldHeader = (pageName: string, blockName: 'header') => {
   let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'unfolded');
@@ -86,7 +86,7 @@ let unfoldRightbar = (pageName: string, blockName: 'rightbar') => {
   /* console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
-//--|🠊 Squaring Functions 🠈|--\\\\
+//--|🠊 4. Squaring Functions 🠈|--\\
 let squaringHeader = (pageName: string, blockName: 'header') => {
   let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'squaring');
@@ -120,33 +120,33 @@ type Handler = (pageName: string) => void;
 
 const blockHandlers: Partial<Record<BlockName, Partial<Record<AlterAction, Handler>>>> = {
   header: {
-    expand: (pageName) => expandHeader(pageName, 'header'),
+    expanded: (pageName) => expandHeader(pageName, 'header'),
     collapsed: (pageName) => collapseHeader(pageName, 'header'),
-    unfold: (pageName) => unfoldHeader(pageName, 'header'),
+    unfolded: (pageName) => unfoldHeader(pageName, 'header'),
     squaring: (pageName) => squaringHeader(pageName, 'header'),
   },
   footer: {
-    expand: (pageName) => expandFooter(pageName, 'footer'),
+    expanded: (pageName) => expandFooter(pageName, 'footer'),
     collapsed: (pageName) => collapseFooter(pageName, 'footer'),
-    unfold: (pageName) => unfoldFooter(pageName, 'footer'),
+    unfolded: (pageName) => unfoldFooter(pageName, 'footer'),
     squaring: (pageName) => squaringFooter(pageName, 'footer'),
   },
   overlay: {
-    expand: (pageName) => expandOverlay(pageName, 'overlay'),
+    expanded: (pageName) => expandOverlay(pageName, 'overlay'),
     collapsed: (pageName) => collapseOverlay(pageName, 'overlay'),
     update: (pageName) => updateOverlay(pageName, 'overlay'),
     loading: (pageName) => loadingOverlay(pageName, 'overlay'),
   },
   leftbar: {
-    expand: (pageName) => expandLeftbar(pageName, 'leftbar'),
+    expanded: (pageName) => expandLeftbar(pageName, 'leftbar'),
     collapsed: (pageName) => collapseLeftbar(pageName, 'leftbar'),
-    unfold: (pageName) => unfoldLeftbar(pageName, 'leftbar'),
+    unfolded: (pageName) => unfoldLeftbar(pageName, 'leftbar'),
     squaring: (pageName) => squaringLeftbar(pageName, 'leftbar'),
   },
   rightbar: {
-    expand: (pageName) => expandRightbar(pageName, 'rightbar'),
+    expanded: (pageName) => expandRightbar(pageName, 'rightbar'),
     collapsed: (pageName) => collapseRightbar(pageName, 'rightbar'),
-    unfold: (pageName) => unfoldRightbar(pageName, 'rightbar'),
+    unfolded: (pageName) => unfoldRightbar(pageName, 'rightbar'),
     squaring: (pageName) => squaringRightbar(pageName, 'rightbar'),
   },
 };

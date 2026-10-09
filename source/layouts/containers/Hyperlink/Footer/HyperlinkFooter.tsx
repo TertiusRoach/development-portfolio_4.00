@@ -42,8 +42,8 @@ function HyperlinkFooter({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfold');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfold');
+            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
+            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -112,8 +112,8 @@ function HyperlinkFooter({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'footer', 'unfold');
-            blockViews(event.currentTarget, pageName, 'rightbar', 'unfold');
+            blockViews(event.currentTarget, pageName, 'footer', 'unfolded');
+            blockViews(event.currentTarget, pageName, 'rightbar', 'unfolded');
           }}
         >
           <section className={`${blockName}-foreground`}>

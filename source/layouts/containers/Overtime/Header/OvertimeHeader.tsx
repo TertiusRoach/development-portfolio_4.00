@@ -43,8 +43,10 @@ function OvertimeHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfold');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+            if (Array.from(event.currentTarget.classList).pop() !== 'expanded') {
+              blockViews(event.currentTarget, pageName, 'header', 'unfolded');
+              blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
+            }
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -87,14 +89,14 @@ function OvertimeHeader({ info }: InfoProps) {
         </header>
       );
     case 'portrait':
-      stateName = 'expanded';
+      stateName = 'unfolded';
       return (
         <header
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfold');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
+            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
           }}
         >
           <section className={`${blockName}-foreground`}>

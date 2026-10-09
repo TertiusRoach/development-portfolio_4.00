@@ -43,8 +43,8 @@ function LandingHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfold');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
+            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -93,8 +93,8 @@ function LandingHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
-            blockViews(event.currentTarget, pageName, 'header', 'unfold');
-            blockViews(event.currentTarget, pageName, 'leftbar', 'unfold');
+            blockViews(event.currentTarget, pageName, 'header', 'unfolded');
+            blockViews(event.currentTarget, pageName, 'leftbar', 'unfolded');
           }}
         >
           <section className={`${blockName}-foreground`}>
