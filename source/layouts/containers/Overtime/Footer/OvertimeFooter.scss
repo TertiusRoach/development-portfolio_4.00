@@ -1,5 +1,5 @@
 //--|🠊 OvertimeFooter.scss 🠈|--\\
-@use '../../../styles/Palettes.scss';
+@use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop <Footer> 🠋|--\\
@@ -46,6 +46,36 @@
   section[class*='foreground'] {
     nav[class*='navigation'] {
       z-index: 0;
+    }
+    div[class*='characters-demonstration'] {
+      z-index: 1;
+      grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      display: grid;
+      aside:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      aside:nth-child(2) {
+        grid-area: 1 / 4 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      grid-template: //--|🠋 Height: 1920px 🠋|--\\
+        1fr //--|🠈 rows 🠈|--//
+        / 64px auto 1fr auto 64px; //--|🠈 columns 🠈|--\\
+      @media screen and (max-width: 768px) {
+        grid-template: //--|🠋 Height: 1366px 🠋|--\\
+          1fr //--|🠈 rows 🠈|--//
+          / 48px auto 1fr auto 48px; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 480px) {
+        grid-template: //--|🠋 Height: 854px 🠋|--\\
+          1fr //--|🠈 rows 🠈|--//
+          / 32px auto 1fr auto 32px; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        grid-template: //--|🠋 Height: 640px 🠋|--\\
+          1fr //--|🠈 rows 🠈|--//
+          / 24px auto 1fr auto 24px; //--|🠈 columns 🠈|--\\
+      }
     }
   }
   figure[class*='midground'] {

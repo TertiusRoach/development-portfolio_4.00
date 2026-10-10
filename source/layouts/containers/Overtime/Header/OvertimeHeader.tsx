@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
+import AsideCharacters from '../../../components/Aside/characters/Aside.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -68,6 +69,32 @@ function OvertimeHeader({ info }: InfoProps) {
                 },
               }}
             />
+            <div className={`default-${blockName}_characters-demonstration`}>
+              <AsideCharacters
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: labelName,
+                }}
+                style={{
+                  view: '-left-',
+                  color: '(mono)',
+                  shade: '~dark~',
+                }}
+              />
+              <AsideCharacters
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: labelName,
+                }}
+                style={{
+                  view: '-right-',
+                  color: '(mono)',
+                  shade: '~light~',
+                }}
+              />
+            </div>
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>
