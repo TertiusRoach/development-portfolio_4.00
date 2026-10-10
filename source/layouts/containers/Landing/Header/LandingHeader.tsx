@@ -8,7 +8,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import { unfoldHeaders } from './LandingFunctions';
-import { lockBlock } from '../../../scripts/Header';
+import { freezeToggle } from '../../../scripts/Header';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -66,8 +66,8 @@ function LandingHeader({ info }: InfoProps) {
                   onClick: (view) => {
                     switch (view) {
                       case 'top-lef':
-                        lockBlock(pageName, 'header');
-                        lockBlock(pageName, 'leftbar');
+                        freezeToggle(pageName, 'header');
+                        freezeToggle(pageName, 'leftbar');
                         break;
                     }
                   },

@@ -7,8 +7,7 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { unfoldFooters } from './HyperlinkFunctions';
-import { lockBlock } from '../../../scripts/Footer';
+import { unfoldFooters, squareFooters, freezeFooters } from './HyperlinkFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -43,6 +42,9 @@ function HyperlinkFooter({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldFooters(event.currentTarget);
+          }}
+          onMouseLeave={(event) => {
+            squareFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -132,13 +134,8 @@ function HyperlinkFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view) => {
-                    switch (view) {
-                      case 'bot-rig':
-                        lockBlock(pageName, 'footer');
-                        lockBlock(pageName, 'rightbar');
-                        break;
-                    }
+                  onClick: () => {
+                    freezeFooters(pageName, 'bot-rig');
                   },
                 },
               }}

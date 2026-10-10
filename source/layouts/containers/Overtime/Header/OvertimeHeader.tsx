@@ -7,8 +7,7 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { unfoldHeaders } from './OvertimeFunctions';
-import { lockBlock } from '../../../scripts/Header';
+import { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -63,13 +62,8 @@ function OvertimeHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view) => {
-                    switch (view) {
-                      case 'top-lef':
-                        lockBlock(pageName, 'header');
-                        lockBlock(pageName, 'leftbar');
-                        break;
-                    }
+                  onClick: () => {
+                    freezeHeaders(pageName, 'top-lef');
                   },
                 },
               }}
@@ -92,6 +86,9 @@ function OvertimeHeader({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldHeaders(event.currentTarget as HTMLElement);
+          }}
+          onMouseLeave={(event) => {
+            squareHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>

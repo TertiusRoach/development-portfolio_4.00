@@ -7,9 +7,7 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
-import { lockBlock } from '../../../scripts/Footer';
-import { unfoldFooters } from './OvertimeFunctions';
+import { unfoldFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -44,6 +42,9 @@ function OvertimeFooter({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldFooters(event.currentTarget);
+          }}
+          onMouseLeave={(event) => {
+            squareFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -133,13 +134,8 @@ function OvertimeFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view) => {
-                    switch (view) {
-                      case 'bot-rig':
-                        lockBlock(pageName, 'footer');
-                        lockBlock(pageName, 'rightbar');
-                        break;
-                    }
+                  onClick: () => {
+                    freezeFooters(pageName, 'bot-rig');
                   },
                 },
               }}

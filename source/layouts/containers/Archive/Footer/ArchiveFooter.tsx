@@ -10,7 +10,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import { unfoldFooters } from './ArchiveFunctions';
-import { lockBlock } from '../../../scripts/Footer';
+import { freezeToggle } from '../../../scripts/Footer';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -137,8 +137,8 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
                   onClick: (view) => {
                     switch (view) {
                       case 'bot-rig':
-                        lockBlock(pageName, 'footer');
-                        lockBlock(pageName, 'rightbar');
+                        freezeToggle(pageName, 'footer');
+                        freezeToggle(pageName, 'rightbar');
                         break;
                     }
                   },

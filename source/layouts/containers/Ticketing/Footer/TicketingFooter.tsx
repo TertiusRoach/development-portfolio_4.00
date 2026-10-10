@@ -7,8 +7,7 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { lockBlock } from '../../../scripts/Footer';
-import { unfoldFooters } from './TicketingFunctions';
+import { unfoldFooters, squareFooters, freezeFooters } from './TicketingFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -43,6 +42,9 @@ function TicketingFooter({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldFooters(event.currentTarget);
+          }}
+          onMouseLeave={(event) => {
+            squareFooters(event.currentTarget);
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -132,13 +134,8 @@ function TicketingFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view) => {
-                    switch (view) {
-                      case 'bot-rig':
-                        lockBlock(pageName, 'footer');
-                        lockBlock(pageName, 'rightbar');
-                        break;
-                    }
+                  onClick: () => {
+                    freezeFooters(pageName, 'bot-rig');
                   },
                 },
               }}

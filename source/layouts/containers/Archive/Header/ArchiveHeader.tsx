@@ -9,8 +9,7 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { unfoldHeaders } from './ArchiveFunctions';
-import { lockBlock } from '../../../scripts/Header';
+import { freezeHeaders, unfoldHeaders, squareHeaders } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -65,13 +64,8 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view) => {
-                    switch (view) {
-                      case 'top-lef':
-                        lockBlock(pageName, 'header');
-                        lockBlock(pageName, 'leftbar');
-                        break;
-                    }
+                  onClick: () => {
+                    freezeHeaders(pageName, 'top-lef');
                   },
                 },
               }}
@@ -106,6 +100,9 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldHeaders(event.currentTarget as HTMLElement);
+          }}
+          onMouseLeave={(event) => {
+            squareHeaders(event.currentTarget as HTMLElement);
           }}
         >
           <section className={`${blockName}-foreground`}>
