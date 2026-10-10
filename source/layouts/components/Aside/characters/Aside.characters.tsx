@@ -29,7 +29,6 @@ function AsideCharacters({ info, style }: TheseProps) {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  createClass(style);
   return (
     <aside className={`${info.labelName}-${info.blockName}_characters-default ${createClass(style)}`}>
       <div className="characters">

@@ -54,9 +54,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(green)',
                 view: 'top-lef',
                 shade: '~light~',
+                color: '(green)',
                 image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
               }}
               cases={{
@@ -78,7 +78,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-left-',
-                  color: '(mono)',
+                  color: '(green)',
                   shade: '~dark~',
                 }}
               />
@@ -90,7 +90,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-right-',
-                  color: '(mono)',
+                  color: '(green)',
                   shade: '~light~',
                 }}
               />

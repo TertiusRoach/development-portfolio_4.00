@@ -4,7 +4,6 @@
 @use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin routing-colors {
-  //--|🠋 Desktop (Colors) 🠋|--\\
   @include mon-tint();
   @include red-tint();
   @include gre-tint();

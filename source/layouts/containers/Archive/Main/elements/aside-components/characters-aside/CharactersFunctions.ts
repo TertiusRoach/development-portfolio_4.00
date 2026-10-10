@@ -29,16 +29,27 @@ export const toggleColors = (section: HTMLElement): Promise<string> => {
   });
 };
 let updateAside = (color: string) => {
-  console.log('Update colors for <aside>');
   const asideElements = document.querySelectorAll(
     '#components-main aside[class="characters-aside"] aside[class*="characters-default"]',
-  ) as NodeListOf<HTMLButtonElement>;
-
+  ) as NodeListOf<HTMLElement>;
   for (let i = 0; i < asideElements.length; i++) {
     let aside = asideElements[i];
 
     let prevClass = aside.classList[1] as string;
-    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}`;
+    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}` as string;
+
     asideElements[i].classList.replace(prevClass, nextClass);
+  }
+  //--|===|--\\
+  const buttonElements = document.querySelectorAll(
+    '#components-main aside[class="characters-aside"] aside[class*="characters-default"] button',
+  ) as NodeListOf<HTMLButtonElement>;
+  for (let i = 0; i < buttonElements.length; i++) {
+    let button = buttonElements[i] as HTMLButtonElement;
+
+    let prevClass = button.classList[1] as string;
+    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}_${prevClass.split('_').pop()}` as string;
+
+    buttonElements[i].classList.replace(prevClass, nextClass);
   }
 };
