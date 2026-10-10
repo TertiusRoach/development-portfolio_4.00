@@ -3,12 +3,52 @@
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="characters-aside"> 🠈|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
     display: grid;
-    aside:nth-child(1) {
+    aside[class*='_dar_'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    aside:nth-child(2) {
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      label:nth-child(1) {
+        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(2) {
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(3) {
+        grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      margin: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
+        / 1fr; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 768px) {
+        margin: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 480px) {
+        margin: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 360px) {
+        margin: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
+          / 1fr; //--|🠈 columns 🠈|--\\
+      }
+    }
+    aside[class*='_lig_'] {
       grid-area: 1 / 4 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 

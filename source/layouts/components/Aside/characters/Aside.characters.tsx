@@ -18,7 +18,7 @@ interface TheseProps {
   style: {
     view: '-left-' | '-right-';
     shade: '~dark~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
 }
 

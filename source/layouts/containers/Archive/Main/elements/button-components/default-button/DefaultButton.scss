@@ -7,7 +7,7 @@
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     @extend %mark-area-desk;
     @extend %mark-disp-desk;
     div {
@@ -88,9 +88,9 @@
         / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
     display: grid;
     grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
     grid-template-rows: 1fr;
@@ -218,7 +218,7 @@
   $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
     div {
@@ -338,9 +338,9 @@
       }
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
     display: grid;
     grid-column: 1 / 2; //--|🠈 col-start col-end 🠈|--\\
     grid-template-columns: 1fr;

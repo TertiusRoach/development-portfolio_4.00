@@ -15,7 +15,7 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
-  viewBody('overtime');
+  viewBody('archive');
   themeScheme('light');
 }, 250);
 

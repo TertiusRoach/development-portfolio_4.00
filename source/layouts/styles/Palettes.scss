@@ -49,13 +49,23 @@ $trackDay-lightMode:
   linear-gradient(135deg, rgba($trackDay-neon, 0.14) 0%, rgba($trackDay-light, 0) 45%, rgba($trackDay-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($trackDay-dark, 0.1) 0%, rgba($trackDay-neon, 0.1) 34%, rgba($trackDay-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
-  linear-gradient(135deg, color.mix($trackDay-light, #fff, 84%) 0%, color.mix($trackDay-light, $trackDay-neon, 70%) 55%, color.mix($trackDay-light, $trackDay-neon, 82%) 100%);
+  linear-gradient(
+    135deg,
+    color.mix($trackDay-light, #fff, 84%) 0%,
+    color.mix($trackDay-light, $trackDay-neon, 70%) 55%,
+    color.mix($trackDay-light, $trackDay-neon, 82%) 100%
+  );
 $trackDay-darkMode:
   linear-gradient(180deg, rgba($trackDay-medium, 0.22) 0%, rgba($trackDay-dark, 0) 52%, rgba(#000, 0.4) 100%),
   linear-gradient(135deg, rgba($trackDay-medium, 0.14) 0%, rgba($trackDay-dark, 0) 45%, rgba($trackDay-dark, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($trackDay-light, 0.1) 0%, rgba($trackDay-medium, 0.1) 34%, rgba($trackDay-dark, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
-  linear-gradient(135deg, color.mix($trackDay-dark, #000, 84%) 0%, color.mix($trackDay-dark, $trackDay-medium, 70%) 55%, color.mix($trackDay-dark, $trackDay-medium, 82%) 100%);
+  linear-gradient(
+    135deg,
+    color.mix($trackDay-dark, #000, 84%) 0%,
+    color.mix($trackDay-dark, $trackDay-medium, 70%) 55%,
+    color.mix($trackDay-dark, $trackDay-medium, 82%) 100%
+  );
 
 //--|🠋 Log a Ticket 🠋|--\\
 $logTicket-neon: #132eff; //--|🠈 rgba() 🠈|--\\
@@ -104,61 +114,281 @@ $findLink-lightMode:
   linear-gradient(135deg, rgba($findLink-neon, 0.14) 0%, rgba($findLink-light, 0) 45%, rgba($findLink-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($findLink-dark, 0.1) 0%, rgba($findLink-neon, 0.1) 34%, rgba($findLink-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
-  linear-gradient(135deg, color.mix($findLink-light, #fff, 84%) 0%, color.mix($findLink-light, $findLink-neon, 70%) 55%, color.mix($findLink-light, $findLink-neon, 82%) 100%);
+  linear-gradient(
+    135deg,
+    color.mix($findLink-light, #fff, 84%) 0%,
+    color.mix($findLink-light, $findLink-neon, 70%) 55%,
+    color.mix($findLink-light, $findLink-neon, 82%) 100%
+  );
 $findLink-darkMode:
   linear-gradient(180deg, rgba($findLink-medium, 0.22) 0%, rgba($findLink-dark, 0) 52%, rgba(#000, 0.4) 100%),
   linear-gradient(135deg, rgba($findLink-medium, 0.14) 0%, rgba($findLink-dark, 0) 45%, rgba($findLink-dark, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($findLink-light, 0.1) 0%, rgba($findLink-medium, 0.1) 34%, rgba($findLink-dark, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
-  linear-gradient(135deg, color.mix($findLink-dark, #000, 84%) 0%, color.mix($findLink-dark, $findLink-medium, 70%) 55%, color.mix($findLink-dark, $findLink-medium, 82%) 100%);
+  linear-gradient(
+    135deg,
+    color.mix($findLink-dark, #000, 84%) 0%,
+    color.mix($findLink-dark, $findLink-medium, 70%) 55%,
+    color.mix($findLink-dark, $findLink-medium, 82%) 100%
+  );
 
 //--|🠊 background: Palettes.$red-neon; 🠈|--\\
 $red-neon: #ff9090; //--|🠈 rgba() 🠈|--\\
 $red-dark: #290a0a; //--|🠈 rgba() 🠈|--\\
 $red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
 $red-medium: #ab2424; //--|🠈 rgba() 🠈|--\\
+$red-lightMode:
+  linear-gradient(180deg, rgba($red-neon, 0.22) 0%, rgba($red-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($red-neon, 0.14) 0%, rgba($red-light, 0) 45%, rgba($red-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($red-dark, 0.1) 0%, rgba($red-neon, 0.1) 34%, rgba($red-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(135deg, color.mix($red-light, #fff, 84%) 0%, color.mix($red-light, $red-neon, 70%) 55%, color.mix($red-light, $red-neon, 82%) 100%);
+$red-darkMode:
+  linear-gradient(180deg, rgba($red-medium, 0.22) 0%, rgba($red-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($red-medium, 0.14) 0%, rgba($red-dark, 0) 45%, rgba($red-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($red-light, 0.1) 0%, rgba($red-medium, 0.1) 34%, rgba($red-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(135deg, color.mix($red-dark, #000, 84%) 0%, color.mix($red-dark, $red-medium, 70%) 55%, color.mix($red-dark, $red-medium, 82%) 100%);
 
 $green-neon: #63ff9c; //--|🠈 rgba() 🠈|--\\
 $green-dark: #062112; //--|🠈 rgba() 🠈|--\\
 $green-light: #cffae0; //--|🠈 rgba() 🠈|--\\
 $green-medium: #079707; //--|🠈 rgba() 🠈|--\\
+$green-lightMode:
+  linear-gradient(180deg, rgba($green-neon, 0.22) 0%, rgba($green-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($green-neon, 0.14) 0%, rgba($green-light, 0) 45%, rgba($green-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($green-dark, 0.1) 0%, rgba($green-neon, 0.1) 34%, rgba($green-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($green-light, #fff, 84%) 0%,
+    color.mix($green-light, $green-neon, 70%) 55%,
+    color.mix($green-light, $green-neon, 82%) 100%
+  );
+$green-darkMode:
+  linear-gradient(180deg, rgba($green-medium, 0.22) 0%, rgba($green-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($green-medium, 0.14) 0%, rgba($green-dark, 0) 45%, rgba($green-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($green-light, 0.1) 0%, rgba($green-medium, 0.1) 34%, rgba($green-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($green-dark, #000, 84%) 0%,
+    color.mix($green-dark, $green-medium, 70%) 55%,
+    color.mix($green-dark, $green-medium, 82%) 100%
+  );
 
 $blue-neon: #7dc0ff; //--|🠈 rgba() 🠈|--\\
 $blue-dark: #07122d; //--|🠈 rgba() 🠈|--\\
 $blue-light: #d6e6ff; //--|🠈 rgba() 🠈|--\\
 $blue-medium: #0d56a6; //--|🠈 rgba() 🠈|--\\
+$blue-lightMode:
+  linear-gradient(180deg, rgba($blue-neon, 0.22) 0%, rgba($blue-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($blue-neon, 0.14) 0%, rgba($blue-light, 0) 45%, rgba($blue-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($blue-dark, 0.1) 0%, rgba($blue-neon, 0.1) 34%, rgba($blue-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($blue-light, #fff, 84%) 0%,
+    color.mix($blue-light, $blue-neon, 70%) 55%,
+    color.mix($blue-light, $blue-neon, 82%) 100%
+  );
+$blue-darkMode:
+  linear-gradient(180deg, rgba($blue-medium, 0.22) 0%, rgba($blue-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($blue-medium, 0.14) 0%, rgba($blue-dark, 0) 45%, rgba($blue-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($blue-light, 0.1) 0%, rgba($blue-medium, 0.1) 34%, rgba($blue-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($blue-dark, #000, 84%) 0%,
+    color.mix($blue-dark, $blue-medium, 70%) 55%,
+    color.mix($blue-dark, $blue-medium, 82%) 100%
+  );
 
 $purple-neon: #c98fff; //--|🠈 rgba() 🠈|--\\
 $purple-dark: #140a2a; //--|🠈 rgba() 🠈|--\\
 $purple-light: #eadcff; //--|🠈 rgba() 🠈|--\\
 $purple-medium: #68179d; //--|🠈 rgba() 🠈|--\\
+$purple-lightMode:
+  linear-gradient(180deg, rgba($purple-neon, 0.22) 0%, rgba($purple-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($purple-neon, 0.14) 0%, rgba($purple-light, 0) 45%, rgba($purple-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($purple-dark, 0.1) 0%, rgba($purple-neon, 0.1) 34%, rgba($purple-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($purple-light, #fff, 84%) 0%,
+    color.mix($purple-light, $purple-neon, 70%) 55%,
+    color.mix($purple-light, $purple-neon, 82%) 100%
+  );
+$purple-darkMode:
+  linear-gradient(180deg, rgba($purple-medium, 0.22) 0%, rgba($purple-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($purple-medium, 0.14) 0%, rgba($purple-dark, 0) 45%, rgba($purple-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($purple-light, 0.1) 0%, rgba($purple-medium, 0.1) 34%, rgba($purple-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($purple-dark, #000, 84%) 0%,
+    color.mix($purple-dark, $purple-medium, 70%) 55%,
+    color.mix($purple-dark, $purple-medium, 82%) 100%
+  );
 
 $orange-neon: #ff9900; //--|🠈 rgba() 🠈|--\\
 $orange-dark: #421500; //--|🠈 rgba() 🠈|--\\
 $orange-light: #ffe2c2; //--|🠈 rgba() 🠈|--\\
 $orange-medium: #d97e00; //--|🠈 rgba() 🠈|--\\
+$orange-lightMode:
+  linear-gradient(180deg, rgba($orange-neon, 0.22) 0%, rgba($orange-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($orange-neon, 0.14) 0%, rgba($orange-light, 0) 45%, rgba($orange-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($orange-dark, 0.1) 0%, rgba($orange-neon, 0.1) 34%, rgba($orange-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($orange-light, #fff, 84%) 0%,
+    color.mix($orange-light, $orange-neon, 70%) 55%,
+    color.mix($orange-light, $orange-neon, 82%) 100%
+  );
+$orange-darkMode:
+  linear-gradient(180deg, rgba($orange-medium, 0.22) 0%, rgba($orange-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($orange-medium, 0.14) 0%, rgba($orange-dark, 0) 45%, rgba($orange-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($orange-light, 0.1) 0%, rgba($orange-medium, 0.1) 34%, rgba($orange-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($orange-dark, #000, 84%) 0%,
+    color.mix($orange-dark, $orange-medium, 70%) 55%,
+    color.mix($orange-dark, $orange-medium, 82%) 100%
+  );
 
 $pink-neon: #ff00c8; //--|🠈 rgba() 🠈|--\\
 $pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
 $pink-light: #ffd1e6; //--|🠈 rgba() 🠈|--\\
 $pink-medium: #b4236a; //--|🠈 rgba() 🠈|--\\
+$pink-lightMode:
+  linear-gradient(180deg, rgba($pink-neon, 0.22) 0%, rgba($pink-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($pink-neon, 0.14) 0%, rgba($pink-light, 0) 45%, rgba($pink-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($pink-dark, 0.1) 0%, rgba($pink-neon, 0.1) 34%, rgba($pink-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($pink-light, #fff, 84%) 0%,
+    color.mix($pink-light, $pink-neon, 70%) 55%,
+    color.mix($pink-light, $pink-neon, 82%) 100%
+  );
+$pink-darkMode:
+  linear-gradient(180deg, rgba($pink-medium, 0.22) 0%, rgba($pink-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($pink-medium, 0.14) 0%, rgba($pink-dark, 0) 45%, rgba($pink-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($pink-light, 0.1) 0%, rgba($pink-medium, 0.1) 34%, rgba($pink-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($pink-dark, #000, 84%) 0%,
+    color.mix($pink-dark, $pink-medium, 70%) 55%,
+    color.mix($pink-dark, $pink-medium, 82%) 100%
+  );
 
 $yellow-neon: #ffdd55; //--|🠈 rgba() 🠈|--\\
 $yellow-dark: #705010; //--|🠈 rgba() 🠈|--\\
 $yellow-light: #f5e7ad; //--|🠈 rgba() 🠈|--\\
 $yellow-medium: #caa42a; //--|🠈 rgba() 🠈|--\\
+$yellow-lightMode:
+  linear-gradient(180deg, rgba($yellow-neon, 0.22) 0%, rgba($yellow-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($yellow-neon, 0.14) 0%, rgba($yellow-light, 0) 45%, rgba($yellow-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($yellow-dark, 0.1) 0%, rgba($yellow-neon, 0.1) 34%, rgba($yellow-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($yellow-light, #fff, 84%) 0%,
+    color.mix($yellow-light, $yellow-neon, 70%) 55%,
+    color.mix($yellow-light, $yellow-neon, 82%) 100%
+  );
+$yellow-darkMode:
+  linear-gradient(180deg, rgba($yellow-medium, 0.22) 0%, rgba($yellow-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($yellow-medium, 0.14) 0%, rgba($yellow-dark, 0) 45%, rgba($yellow-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($yellow-light, 0.1) 0%, rgba($yellow-medium, 0.1) 34%, rgba($yellow-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($yellow-dark, #000, 84%) 0%,
+    color.mix($yellow-dark, $yellow-medium, 70%) 55%,
+    color.mix($yellow-dark, $yellow-medium, 82%) 100%
+  );
 
 $brown-neon: #ff6600; //--|🠈 rgba() 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
 $brown-light: #f3d7c2; //--|🠈 rgba() 🠈|--\\
 $brown-medium: #8a461e; //--|🠈 rgba() 🠈|--\\
+$brown-lightMode:
+  linear-gradient(180deg, rgba($brown-neon, 0.22) 0%, rgba($brown-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($brown-neon, 0.14) 0%, rgba($brown-light, 0) 45%, rgba($brown-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($brown-dark, 0.1) 0%, rgba($brown-neon, 0.1) 34%, rgba($brown-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($brown-light, #fff, 84%) 0%,
+    color.mix($brown-light, $brown-neon, 70%) 55%,
+    color.mix($brown-light, $brown-neon, 82%) 100%
+  );
+$brown-darkMode:
+  linear-gradient(180deg, rgba($brown-medium, 0.22) 0%, rgba($brown-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($brown-medium, 0.14) 0%, rgba($brown-dark, 0) 45%, rgba($brown-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($brown-light, 0.1) 0%, rgba($brown-medium, 0.1) 34%, rgba($brown-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($brown-dark, #000, 84%) 0%,
+    color.mix($brown-dark, $brown-medium, 70%) 55%,
+    color.mix($brown-dark, $brown-medium, 82%) 100%
+  );
 
 $turquoise-neon: #2de2e6; //--|🠈 rgba() 🠈|--\\
 $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
 $turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
 $turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
+$turquoise-lightMode:
+  linear-gradient(180deg, rgba($turquoise-neon, 0.22) 0%, rgba($turquoise-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($turquoise-neon, 0.14) 0%, rgba($turquoise-light, 0) 45%, rgba($turquoise-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($turquoise-dark, 0.1) 0%, rgba($turquoise-neon, 0.1) 34%, rgba($turquoise-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($turquoise-light, #fff, 84%) 0%,
+    color.mix($turquoise-light, $turquoise-neon, 70%) 55%,
+    color.mix($turquoise-light, $turquoise-neon, 82%) 100%
+  );
+$turquoise-darkMode:
+  linear-gradient(180deg, rgba($turquoise-medium, 0.22) 0%, rgba($turquoise-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($turquoise-medium, 0.14) 0%, rgba($turquoise-dark, 0) 45%, rgba($turquoise-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($turquoise-light, 0.1) 0%, rgba($turquoise-medium, 0.1) 34%, rgba($turquoise-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($turquoise-dark, #000, 84%) 0%,
+    color.mix($turquoise-dark, $turquoise-medium, 70%) 55%,
+    color.mix($turquoise-dark, $turquoise-medium, 82%) 100%
+  );
 
 $gray-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
 $gray-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $gray-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $gray-medium: #737373; //--|🠈 rgba() 🠈|--\\
+$gray-lightMode:
+  linear-gradient(180deg, rgba($gray-neon, 0.22) 0%, rgba($gray-light, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($gray-neon, 0.14) 0%, rgba($gray-light, 0) 45%, rgba($gray-light, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($gray-dark, 0.1) 0%, rgba($gray-neon, 0.1) 34%, rgba($gray-light, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($gray-light, #fff, 84%) 0%,
+    color.mix($gray-light, $gray-neon, 70%) 55%,
+    color.mix($gray-light, $gray-neon, 82%) 100%
+  );
+$gray-darkMode:
+  linear-gradient(180deg, rgba($gray-medium, 0.22) 0%, rgba($gray-dark, 0) 52%, rgba(#000, 0.4) 100%),
+  linear-gradient(135deg, rgba($gray-medium, 0.14) 0%, rgba($gray-dark, 0) 45%, rgba($gray-dark, 0.38) 100%),
+  radial-gradient(120% 140% at 42% 22%, rgba($gray-light, 0.1) 0%, rgba($gray-medium, 0.1) 34%, rgba($gray-dark, 0) 70%),
+  radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
+  linear-gradient(
+    135deg,
+    color.mix($gray-dark, #000, 84%) 0%,
+    color.mix($gray-dark, $gray-medium, 70%) 55%,
+    color.mix($gray-dark, $gray-medium, 82%) 100%
+  );

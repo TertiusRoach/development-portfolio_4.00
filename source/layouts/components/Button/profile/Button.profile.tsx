@@ -15,8 +15,8 @@ interface TheseProps {
     image: string;
     size: '<h1>' | '<p>';
     shade: '~dark~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
   onClick?: () => void;
 }

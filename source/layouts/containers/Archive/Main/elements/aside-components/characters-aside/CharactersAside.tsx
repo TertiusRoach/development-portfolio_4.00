@@ -9,6 +9,10 @@ import { stripBrackets } from '../../../../../../../scripts';
 import AsideCharacters from '../../../../../../components/Aside/characters/Aside.characters';
 
 //--|🠋 Components 🠋|--\\
+import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
+
+//--|🠋 Functions 🠋|--\\
+import { toggleColors } from './CharactersFunctions';
 
 interface InfoProps {
   info: {
@@ -36,6 +40,25 @@ const CharactersAside: React.FC<InfoProps> = ({ info }) => {
             shade: '~dark~',
           }}
         />
+        <div
+          className="toggle-colors"
+          onClick={(event: React.MouseEvent<HTMLElement>): void => {
+            toggleColors(event.currentTarget as HTMLElement);
+          }}
+        >
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+          <LabelToggle
+            style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+            info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+          />
+        </div>
         <AsideCharacters
           info={{
             pageName: pageName,

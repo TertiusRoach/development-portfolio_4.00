@@ -1,18 +1,18 @@
 //--|🠊 Button_profile.ts 🠈|--\\
-import { stripBrackets } from '../../../scripts/buttons';
 
 interface StyleProps {
   image: string;
   size: '<h1>' | '<p>';
   shade: '~dark~' | '~light~';
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
   type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
 }
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
   //--|🠊 Class Build for <ProfileButton> 🠈|--\\
   let classLayout = createLayout(style.size);
   let classColor = createColor(style.shade, style.color);
+
   return `${classLayout}_${classColor}_pro`;
 }
 export default createClass;
@@ -34,7 +34,10 @@ function createLayout(size: '<h1>' | '<p>'): string {
 
   return `${classSize}`;
 }
-function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(red)' | '(green)' | '(blue)' | '(mono)'): string {
+function createColor(
+  shade: '~dark~' | '~medium~' | '~light~',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
@@ -44,10 +47,13 @@ function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(red)' | 
 
   const colorMap: Record<string, string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
+    '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
-    '(mono)': 'mon',
+    '(yellow)': 'yel',
+    '(purple)': 'pur',
+    '(turquoise)': 'tur',
   };
 
   const classShade = shadeMap[shade];
@@ -55,7 +61,7 @@ function createColor(shade: '~dark~' | '~medium~' | '~light~', color: '(red)' | 
 
   if (!classShade || !classColor) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid shade (${shade}) or color (${color}) provided to createColor()`);
+    throw new Error(`|🠊 Error: Invalid shade (${shade}) or color (${color}) 🠈|`);
   }
 
   return `${classShade}_${classColor}`;

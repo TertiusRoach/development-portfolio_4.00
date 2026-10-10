@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
@@ -11,7 +10,7 @@ import DivisionCarousel from '../../../../../../components/Division/carousel/Div
 
 //--|🠋 Functions 🠋|--\\
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
-import copyCode, { toggleColors, scrollSide } from './DefaultFunctions';
+import copyCode, { toggleColors } from './DefaultFunctions';
 
 //--|🠋 Styles 🠋|--\\
 import './DefaultButton.scss';

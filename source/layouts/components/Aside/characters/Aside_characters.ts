@@ -6,7 +6,7 @@ import { loadAsset } from '../../../../scripts';
 type StyleProps = {
   view: '-left-' | '-right-';
   shade: '~dark~' | '~light~';
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
 };
 
 export function createClass(style: StyleProps): string {

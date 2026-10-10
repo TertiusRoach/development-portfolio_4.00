@@ -75,12 +75,70 @@
   &[class*='rig_'] {
     margin-left: auto;
   }
-  //--|🠊 Style Shade 🠈|--\\
+  //--|🠊 Style Color & Shade 🠈|--\\
   &[class*='_dar_'] {
-    background: Palettes.$indexLand-darkMode;
+    &[class*='_mon'] {
+      background: Palettes.$gray-darkMode;
+    }
+    &[class*='_red'] {
+      background: Palettes.$red-darkMode;
+    }
+    &[class*='_gre'] {
+      background: Palettes.$green-darkMode;
+    }
+    &[class*='_blu'] {
+      background: Palettes.$blue-darkMode;
+    }
+    &[class*='_pur'] {
+      background: Palettes.$purple-darkMode;
+    }
+    &[class*='_ora'] {
+      background: Palettes.$orange-darkMode;
+    }
+    &[class*='_pin'] {
+      background: Palettes.$pink-darkMode;
+    }
+    &[class*='_yel'] {
+      background: Palettes.$yellow-darkMode;
+    }
+    &[class*='_bro'] {
+      background: Palettes.$brown-darkMode;
+    }
+    &[class*='_tur'] {
+      background: Palettes.$turquoise-darkMode;
+    }
   }
   &[class*='_lig_'] {
-    background: Palettes.$indexLand-lightMode;
+    &[class*='_mon'] {
+      background: Palettes.$gray-lightMode;
+    }
+    &[class*='_red'] {
+      background: Palettes.$red-lightMode;
+    }
+    &[class*='_gre'] {
+      background: Palettes.$green-lightMode;
+    }
+    &[class*='_blu'] {
+      background: Palettes.$blue-lightMode;
+    }
+    &[class*='_pur'] {
+      background: Palettes.$purple-lightMode;
+    }
+    &[class*='_ora'] {
+      background: Palettes.$orange-lightMode;
+    }
+    &[class*='_pin'] {
+      background: Palettes.$pink-lightMode;
+    }
+    &[class*='_yel'] {
+      background: Palettes.$yellow-lightMode;
+    }
+    &[class*='_bro'] {
+      background: Palettes.$brown-lightMode;
+    }
+    &[class*='_tur'] {
+      background: Palettes.$turquoise-lightMode;
+    }
   }
 }
 @mixin mobile-portrait {
