@@ -14,7 +14,7 @@
     }
     div[class*='toggle'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
-      grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       label:nth-child(1) {
         grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
