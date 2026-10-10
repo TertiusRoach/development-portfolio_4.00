@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 import AsideCharacters from '../../../components/Aside/characters/Aside.characters';
+import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -15,7 +17,7 @@ interface InfoProps {
   info: {
     pageName: '[overtime]' | string;
     blockName: '<header>' | string;
-    labelName: '(default)' | string;
+    labelName: '(default)' | '(demonstration)' | '(application)' | string;
   };
 }
 function OvertimeHeader({ info }: InfoProps) {
@@ -69,6 +71,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 },
               }}
             />
+
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
@@ -96,7 +99,21 @@ function OvertimeHeader({ info }: InfoProps) {
               />
             </div>
           </section>
-          <figure className={`${blockName}-midground`}></figure>
+          <figure className={`${blockName}-midground`}>
+            <DivisionCarousel
+              //--|🠊 <div class="demonstration-header_carousel-default"/> 🠈|--\\
+              cases={{
+                axis: '[x]',
+                show: 1 as number,
+                call: OvertimeCharacters as React.ComponentType<InfoProps>,
+              }}
+              info={{
+                labelName: 'demonstration',
+                blockName: blockName as '<header>',
+                pageName: pageName as '[overtime]',
+              }}
+            />
+          </figure>
           <div className={`${blockName}-background`}>
             <header>
               <div className="top-header"></div>
@@ -182,4 +199,203 @@ function OvertimeHeader({ info }: InfoProps) {
       );
   }
 }
+const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
+  const pageName = info.pageName as 'overtime';
+  const blockName = info.blockName as 'header';
+  const labelName = info.labelName as 'demonstration';
+  return (
+    <>
+      <SectionCharacters
+        cases={{
+          characters: 'random',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'jane',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'malik',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'dimitri',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'dale',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'alaric',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'conrad',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'daniel',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'kady',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'seamus',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'hammad',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'tasneem',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'elliot',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'sipho',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'zuberi',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'nyra',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'victor',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'danish',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+      <SectionCharacters
+        cases={{
+          characters: 'aelin',
+        }}
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
+        }}
+      />
+    </>
+  );
+};
 export default OvertimeHeader;

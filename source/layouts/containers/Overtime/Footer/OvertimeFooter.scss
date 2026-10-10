@@ -8,7 +8,7 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
-  section[class*='foreground'] {
+  section[class*='footer-fore'] {
     menu[class*='select'] {
       grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: rgba(darkgreen, 0.5);
@@ -25,9 +25,9 @@
       }
     }
   }
-  figure[class*='midground'] {
+  figure[class*='footer-mid'] {
   }
-  div[class*='background'] {
+  div[class*='footer-back'] {
     footer {
       grid-area: 5 / 1 / 6 / 4;
       background: rgba(green, 0.25);
@@ -43,7 +43,7 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  section[class*='foreground'] {
+  section[class*='footer-fore'] {
     nav[class*='navigation'] {
       z-index: 0;
     }
@@ -78,9 +78,12 @@
       }
     }
   }
-  figure[class*='midground'] {
+  figure[class*='footer-mid'] {
+    div[class*='demonstration'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
-  div[class*='background'] {
+  div[class*='footer-back'] {
     background: rgba(darkblue, 0.75);
     footer {
       grid-area: 5 / 1 / 6 / 4;

@@ -17,7 +17,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const CharactersSection: React.FC<InfoProps> = ({ info }) => {
+function CharactersSection({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -59,5 +59,5 @@ const CharactersSection: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default CharactersSection;

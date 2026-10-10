@@ -3,7 +3,7 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop: Components Main 🠋|--\\
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       /*
@@ -40,15 +40,15 @@
       */
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
   }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile: Components Main 🠋|--\\
   //--|🠊 <main id="components-main" class="default-main"> 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       /*
@@ -85,9 +85,9 @@
       */
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
   }
 }
 main[id*='components'] {

@@ -12,7 +12,7 @@
     nav[class*='navigation'] {
       z-index: 0;
     }
-    div[class*='characters-demonstration'] {
+    div[class*='demonstration'] {
       z-index: 1;
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
@@ -45,6 +45,9 @@
     }
   }
   figure[class*='header-mid'] {
+    div[class*='demonstration'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   div[class*='header-back'] {
     background: rgba(darkred, 0.75);

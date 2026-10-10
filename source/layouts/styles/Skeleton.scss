@@ -3,21 +3,182 @@
 @use './Mixins.scss' as Mixins;
 @use './Palettes.scss' as Palettes;
 @use './Transition.scss' as Transition;
+
 body {
-  %position {
-    section[class*='overlay'] {
-      z-index: 10;
+  div[class*='body'] {
+    &[id='components-body'] {
+      //--|🟨|--\\
+      main[id*='components'] {
+        aside[class*='menu'],
+        aside[class*='time'],
+        aside[class*='table'],
+        aside[class*='aside'],
+        aside[class*='button'],
+        aside[class*='figure'],
+        aside[class*='article'],
+        aside[class*='section'],
+        aside[class*='division'],
+        aside[class*='navigation'] {
+          width: 100vw;
+          height: 100svh;
+          flex: 0 0 100vw;
+          min-width: 100vw;
+        }
+        @media screen and (orientation: landscape) {
+          //--|🟨| Archive |🟨|--\\
+
+          aside[class*='time'],
+          aside[class*='table'],
+          aside[class*='figure'],
+          aside[class*='article'],
+          aside[class*='division'],
+          aside[class*='navigation'] {
+            @include Mixins.landscape-grid;
+          }
+          aside[class*='button'] {
+            @include Mixins.layering-position;
+          }
+          @include Mixins.landscape-grid;
+        }
+        @media screen and (orientation: portrait) {
+          //--|🟨| Archive |🟨|--\\
+          aside[class*='time'],
+          aside[class*='table'],
+          aside[class*='figure'],
+          aside[class*='article'],
+          aside[class*='division'],
+          aside[class*='navigation'] {
+            @include Mixins.portrait-grid;
+          }
+          aside[class*='button'] {
+            @include Mixins.layering-position;
+          }
+          @include Mixins.portrait-grid;
+        }
+      }
+    }
+    &[id='overtime-body'] {
+      @media screen and (orientation: landscape) {
+        //--|🟩| Overtime |🟩|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟩| Overtime |🟩|--\\
+        @include Mixins.portrait-grid;
+      }
+    }
+    &[id='ticketing-body'] {
+      @media screen and (orientation: landscape) {
+        //--|🟦| Ticketing |🟦|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟦| Ticketing |🟦|--\\
+        @include Mixins.portrait-grid;
+      }
+    }
+    &[id='hyperlink-body'] {
+      @media screen and (orientation: landscape) {
+        //--|🟥| Hyperlink |🟥|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟥| Hyperlink |🟥|--\\
+        @include Mixins.portrait-grid;
+      }
+    }
+    &[id='landing-body'] {
+      @media screen and (orientation: landscape) {
+        //--|🟪| Landing |🟪|--\\
+        @include Mixins.landscape-grid;
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟪| Landing |🟪|--\\
+        @include Mixins.portrait-grid;
+      }
+    }
+    //--|===|--\\
+
+    > * {
+      height: 100svh;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      //--|🠊 All direct children inherit the parent grid coordinates 🠈|--\\
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      section[class*='foreground'],
+      figure[class*='midground'],
+      div[class*='background'] {
+        &[class*='foreground'] {
+          z-index: 2;
+          header[class*='default'] {
+            z-index: 1;
+            grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          nav[class*='header'],
+          nav[class*='footer'] {
+            z-index: 0;
+            height: 100svh;
+            grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          footer[class*='default'] {
+            z-index: 1;
+            grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        &[class*='midground'] {
+          z-index: 1;
+        }
+        &[class*='background'] {
+          z-index: 0;
+        }
+      }
+      @media screen and (orientation: landscape) {
+        @include Mixins.landscape-grid();
+      }
+      @media screen and (orientation: portrait) {
+        @include Mixins.portrait-grid();
+      }
     }
 
-    aside[class*='leftbar'] {
-      z-index: 5;
+    //--|🠊 display: grid; 🠈|--\\
+    @media screen and (orientation: landscape) {
+      @include Mixins.landscape-grid;
     }
-    aside[class*='rightbar'] {
-      z-index: 4;
+    @media screen and (orientation: portrait) {
+      @include Mixins.portrait-grid;
     }
+
+    @extend %position;
+    @extend %colouring;
+    @extend %transition;
+  }
+  %position {
     main[class*='main'] {
       z-index: 0;
     }
+    header[class*='header'],
+    footer[class*='footer'] {
+      figure {
+        section[class*='default'] {
+          width: 100vw;
+          height: 100svh;
+          flex: 0 0 100vw;
+          min-width: 100vw;
+        }
+      }
+    }
+
+    section[class*='overlay'] {
+      z-index: 10;
+    }
+    aside[class*='bar'] {
+      &[class*='leftbar'] {
+        z-index: 5;
+      }
+      &[class*='rightbar'] {
+        z-index: 4;
+      }
+    }
+
     //--|===|--\\
     @media screen and (orientation: landscape) {
       header[class*='header'] {
@@ -75,147 +236,5 @@ body {
     @include Transition.header-transition();
     @include Transition.main-transition();
     @include Transition.footer-transition();
-  }
-  div[class*='body'] {
-    &[id='components-body'] {
-      //--|🟨|--\\
-      main[id*='components'] {
-        aside[class*='menu'],
-        aside[class*='time'],
-        aside[class*='table'],
-        aside[class*='aside'],
-        aside[class*='button'],
-        aside[class*='figure'],
-        aside[class*='article'],
-        aside[class*='section'],
-        aside[class*='division'],
-        aside[class*='navigation'] {
-          width: 100vw;
-          height: 100svh;
-          flex: 0 0 100vw;
-          min-width: 100vw;
-        }
-        @media screen and (orientation: landscape) {
-          //--|🟨| Archive |🟨|--\\
-          @include Mixins.landscape-grid;
-          aside[class*='time'],
-          aside[class*='table'],
-          aside[class*='figure'],
-          aside[class*='article'],
-          aside[class*='division'],
-          aside[class*='navigation'] {
-            @include Mixins.landscape-grid;
-          }
-          aside[class*='button'] {
-            @include Mixins.layering-position;
-          }
-        }
-        @media screen and (orientation: portrait) {
-          //--|🟨| Archive |🟨|--\\
-          @include Mixins.portrait-grid;
-          aside[class*='time'],
-          aside[class*='table'],
-          aside[class*='figure'],
-          aside[class*='article'],
-          aside[class*='division'],
-          aside[class*='navigation'] {
-            @include Mixins.portrait-grid;
-          }
-          aside[class*='button'] {
-            @include Mixins.layering-position;
-          }
-        }
-      }
-    }
-    &[id='overtime-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟩| Overtime |🟩|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟩| Overtime |🟩|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='ticketing-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟦| Ticketing |🟦|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟦| Ticketing |🟦|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='hyperlink-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟥| Hyperlink |🟥|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟥| Hyperlink |🟥|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='landing-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟪| Landing |🟪|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟪| Landing |🟪|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    //--|===|--\\
-    > * {
-      height: 100svh;
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      //--|🠊 All direct children inherit the parent grid coordinates 🠈|--\\
-      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      section[class*='foreground'],
-      figure[class*='midground'],
-      div[class*='background'] {
-        &[class*='foreground'] {
-          z-index: 2;
-          header[class*='default'] {
-            z-index: 1;
-            grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          nav[class*='header'],
-          nav[class*='footer'] {
-            z-index: 0;
-            height: 100svh;
-            grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-          footer[class*='default'] {
-            z-index: 1;
-            grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          }
-        }
-        &[class*='midground'] {
-          z-index: 1;
-        }
-        &[class*='background'] {
-          z-index: 0;
-        }
-      }
-      @media screen and (orientation: landscape) {
-        @include Mixins.landscape-grid();
-      }
-      @media screen and (orientation: portrait) {
-        @include Mixins.portrait-grid();
-      }
-    }
-    @extend %position;
-    @extend %colouring;
-    @extend %transition;
-    //--|🠊 display: grid; 🠈|--\\
-    @media screen and (orientation: landscape) {
-      @include Mixins.landscape-grid;
-    }
-    @media screen and (orientation: portrait) {
-      @include Mixins.portrait-grid;
-    }
   }
 }
