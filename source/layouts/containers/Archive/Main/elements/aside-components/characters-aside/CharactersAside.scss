@@ -74,12 +74,42 @@
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="characters-aside"> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+
   section[class*='main-fore'] {
     display: grid;
-    aside:nth-child(1) {
+    aside[class*='_dar_'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    aside:nth-child(2) {
+    div[class*='toggle'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\\
+      grid-template-columns: 1fr;
+      label:nth-child(1) {
+        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(2) {
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(3) {
+        grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      grid-template-rows: $high-mobi repeat(3, 1fr) $high-mobi; //--|🠈 Height: 1920px 🠈|--\\
+      @media screen and (max-width: 768px) {
+        grid-template-rows: $test-mobi repeat(3, 1fr) $test-mobi; //--|🠈 Height: 1366px 🠈|--\\
+      }
+      @media screen and (max-width: 480px) {
+        grid-template-rows: $misc-mobi repeat(3, 1fr) $misc-mobi; //--|🠈 Height: 854px 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        grid-template-rows: $tiny-mobi repeat(3, 1fr) $tiny-mobi; //--|🠈 Height: 640px 🠈|--\\
+      }
+    }
+    aside[class*='_lig_'] {
       grid-area: 1 / 4 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 

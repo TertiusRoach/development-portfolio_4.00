@@ -286,11 +286,70 @@
     height: 100%;
     position: absolute;
   }
-  &[class*='_dar_']::before {
-    background: Palettes.$indexLand-darkMode;
+  //--|🠊 Style Color & Shade 🠈|--\\
+  &[class*='_dar_'] {
+    &[class*='_mon']::before {
+      background: Palettes.$gray-darkMode;
+    }
+    &[class*='_red']::before {
+      background: Palettes.$red-darkMode;
+    }
+    &[class*='_gre']::before {
+      background: Palettes.$green-darkMode;
+    }
+    &[class*='_blu']::before {
+      background: Palettes.$blue-darkMode;
+    }
+    &[class*='_pur']::before {
+      background: Palettes.$purple-darkMode;
+    }
+    &[class*='_ora']::before {
+      background: Palettes.$orange-darkMode;
+    }
+    &[class*='_pin']::before {
+      background: Palettes.$pink-darkMode;
+    }
+    &[class*='_yel']::before {
+      background: Palettes.$yellow-darkMode;
+    }
+    &[class*='_bro']::before {
+      background: Palettes.$brown-darkMode;
+    }
+    &[class*='_tur']::before {
+      background: Palettes.$turquoise-darkMode;
+    }
   }
-  &[class*='_lig_']::before {
-    background: Palettes.$indexLand-lightMode;
+  &[class*='_lig_'] {
+    &[class*='_mon']::before {
+      background: Palettes.$gray-lightMode;
+    }
+    &[class*='_red']::before {
+      background: Palettes.$red-lightMode;
+    }
+    &[class*='_gre']::before {
+      background: Palettes.$green-lightMode;
+    }
+    &[class*='_blu']::before {
+      background: Palettes.$blue-lightMode;
+    }
+    &[class*='_pur']::before {
+      background: Palettes.$purple-lightMode;
+    }
+    &[class*='_ora']::before {
+      background: Palettes.$orange-lightMode;
+    }
+    &[class*='_pin']::before {
+      background: Palettes.$pink-lightMode;
+    }
+    &[class*='_yel']::before {
+      background: Palettes.$yellow-lightMode;
+    }
+    &[class*='_bro']::before {
+      background: Palettes.$brown-lightMode;
+    }
+    &[class*='_tur']::before {
+      background: Palettes.$turquoise-lightMode;
+    }
   }
 }
 
