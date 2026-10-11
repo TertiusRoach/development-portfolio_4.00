@@ -2,7 +2,12 @@
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Header';
 
-export default function designateCharacter(inputAction: 'enter' | 'click', thisItem: HTMLButtonElement, pageName: string, blockName: string): void {
+export default function designateCharacter(
+  inputAction: 'enter' | 'click',
+  thisItem: HTMLButtonElement,
+  pageName: 'overtime',
+  blockName: 'header',
+): void {
   switch (inputAction) {
     case 'enter':
       return previewProfile(thisItem, pageName, blockName);
