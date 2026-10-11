@@ -18,9 +18,10 @@ interface TheseProps {
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ButtonProfile: React.FC<TheseProps> = ({ info, style, onClick }) => {
+const ButtonProfile: React.FC<TheseProps> = ({ info, style, onClick, onMouseEnter }) => {
   //--|🠊 Identifiers 🠈|--\\
   const blockName = stripBrackets(info.blockName, '<>') as string;
   const pageName = stripBrackets(info.pageName, '[]') as string;
@@ -30,6 +31,7 @@ const ButtonProfile: React.FC<TheseProps> = ({ info, style, onClick }) => {
   return (
     <button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
       id={info.labelName || undefined}
       aria-disabled={style.type === '{disabled}'}
       className={`profile-button ${createClass(style as TheseProps['style'])}`}

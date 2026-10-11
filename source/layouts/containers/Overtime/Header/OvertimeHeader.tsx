@@ -10,8 +10,8 @@ import SectionCharacters from '../../../components/Section/characters/Section.ch
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 
 interface InfoProps {
   info: {
@@ -71,7 +71,6 @@ function OvertimeHeader({ info }: InfoProps) {
                 },
               }}
             />
-
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
@@ -84,6 +83,12 @@ function OvertimeHeader({ info }: InfoProps) {
                   color: '(green)',
                   shade: '~dark~',
                 }}
+                cases={{
+                  task: [
+                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                  ],
+                }}
               />
               <AsideCharacters
                 info={{
@@ -95,6 +100,12 @@ function OvertimeHeader({ info }: InfoProps) {
                   view: '-right-',
                   color: '(green)',
                   shade: '~light~',
+                }}
+                cases={{
+                  task: [
+                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                  ],
                 }}
               />
             </div>
@@ -327,7 +338,7 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
       />
       <SectionCharacters
         cases={{
-          characters: 'elliot',
+          characters: 'sipho',
         }}
         info={{
           pageName: pageName,
@@ -337,7 +348,7 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
       />
       <SectionCharacters
         cases={{
-          characters: 'sipho',
+          characters: 'elliot',
         }}
         info={{
           pageName: pageName,

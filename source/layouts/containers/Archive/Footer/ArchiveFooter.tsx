@@ -149,7 +149,7 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                call: PortMenuSwipes as React.ComponentType<InfoProps>,
+                call: MenuSwipes as React.ComponentType<InfoProps>,
               }}
               info={{
                 labelName: 'elements',
@@ -166,7 +166,8 @@ function ArchiveFooter({ info }: InfoProps): JSX.Element {
       );
   }
 }
-const PortMenuSwipes: React.FC<InfoProps> = ({ info }) => {
+//--|🠊 Portrait Previews 🠈|--\\
+const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'footer';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';

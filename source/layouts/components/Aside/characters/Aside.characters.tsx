@@ -20,9 +20,15 @@ interface TheseProps {
     shade: '~dark~' | '~light~';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
+  cases?: {
+    task: Array<(event: React.MouseEvent<HTMLButtonElement>) => void>;
+  };
+
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function AsideCharacters({ info, style }: TheseProps) {
+function AsideCharacters({ info, style, cases, onClick, onMouseEnter }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -30,202 +36,78 @@ function AsideCharacters({ info, style }: TheseProps) {
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   return (
-    <aside className={`${info.labelName}-${info.blockName}_characters-default ${createClass(style)}`}>
+    <aside className={`${labelName}-${blockName}_characters-default ${createClass(style)}`}>
       <div className="characters">
-        {((pageName: string) => {
+        {(() => {
           switch (style.view) {
-            case '-left-':
+            case '-left-': {
+              let leftProfiles = [
+                'jane-lester',
+                'malik-tremaine-carter',
+                'dimitri-lewis',
+                'dale-sutton',
+                'alaric-voss',
+                'conrad-guy',
+                'daniel-meyers',
+                'kady-deacon',
+                'seamus-odonnell',
+              ];
+
               return (
                 <>
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<h1>',
-                      type: '{button}',
-                      shade: style.shade,
-                      color: style.color,
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/jane-lester'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/malik-tremaine-carter'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/dimitri-lewis'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/dale-sutton'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/alaric-voss'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/conrad-guy'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/daniel-meyers'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/kady-deacon'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/seamus-odonnell'),
-                    }}
-                  />
+                  {leftProfiles.map((profile, index) => (
+                    <ButtonProfile
+                      key={profile}
+                      info={{ pageName: info.pageName, blockName: info.blockName }}
+                      style={{
+                        size: index === 0 ? '<h1>' : '<p>',
+                        type: '{button}',
+                        shade: style.shade,
+                        color: style.color,
+                        image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
+                      }}
+                      onClick={(event) => cases?.task[1](event)}
+                      onMouseEnter={(event) => cases?.task[0](event)}
+                    />
+                  ))}
                 </>
               );
-            case '-right-':
+            }
+            case '-right-': {
+              const rightProfiles = [
+                'hammad-dean',
+                'tasneem-kemp',
+                'elliot-crane',
+                'sipho-dlamini',
+                'zuberi-thorne',
+                'nyra-solari',
+                'victor-langston',
+                'danish-copeland',
+                'aelin-darrow',
+              ];
+
               return (
                 <>
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<h1>',
-                      type: '{button}',
-                      shade: style.shade,
-                      color: style.color,
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/hammad-dean'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/tasneem-kemp'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/elliot-crane'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/sipho-dlamini'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/zuberi-thorne'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/nyra-solari'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/victor-langston'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/danish-copeland'),
-                    }}
-                  />
-                  <ButtonProfile
-                    info={{ pageName: info.pageName, blockName: info.blockName }}
-                    style={{
-                      size: '<p>',
-                      shade: style.shade,
-                      color: style.color,
-                      type: '{button}',
-                      image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
-                    }}
-                  />
+                  {rightProfiles.map((profile, index) => (
+                    <ButtonProfile
+                      key={profile}
+                      info={{ pageName: info.pageName, blockName: info.blockName }}
+                      style={{
+                        size: index === 0 ? '<h1>' : '<p>',
+                        type: '{button}',
+                        shade: style.shade,
+                        color: style.color,
+                        image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
+                      }}
+                      onClick={(event) => cases?.task[1](event)}
+                      onMouseEnter={(event) => cases?.task[0](event)}
+                    />
+                  ))}
                 </>
               );
+            }
           }
-        })(pageName)}
+        })()}
       </div>
     </aside>
   );
