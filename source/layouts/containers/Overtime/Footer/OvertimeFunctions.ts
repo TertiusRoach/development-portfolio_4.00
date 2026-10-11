@@ -7,25 +7,36 @@ export default function designateCharacter(
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
   blockName: 'footer',
+  labelName: 'demo-left' | 'demo-right',
 ): void {
   switch (inputAction) {
     case 'enter':
-      return previewProfile(thisItem, pageName, blockName);
+      return previewProfile(thisItem, pageName, blockName, labelName);
     case 'click':
       return selectProfile(thisItem, pageName, blockName);
   }
 }
-const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName: string): void => {
+const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName: string, labelName: 'demo-left' | 'demo-right'): void => {
+  const orientation: string = 'vertical';
   const character = thisItem.querySelector('.icon img') as HTMLImageElement;
-  const carousel = document.querySelector(
-    `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="carousel-vertical"]`,
-  ) as HTMLLIElement;
 
-  let prevSlide = carousel.className as string;
+  const selectedContainer = document.querySelector(
+    `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName}"]`,
+  ) as HTMLDivElement;
+  const oppositeContainer = document.querySelector(
+    `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName === 'demo-left' ? 'demo-right' : 'demo-left'}"]`,
+  ) as HTMLDivElement;
+
+  let prevReset = oppositeContainer.parentElement?.className as string;
+  let prevSlide = selectedContainer.parentElement?.className as string;
+
   let characterProfile = character.src.split('/').pop()?.split('.')[0] as string;
+
+  let nextReset = 'sweeping-vertical_O' as string;
   let nextSlide = `${prevSlide.split('_')[0]}_${sequencedCharacters(characterProfile)}` as string;
 
-  carousel.classList.replace(prevSlide, nextSlide);
+  oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
+  selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
 };
 const selectProfile = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
@@ -34,43 +45,34 @@ let sequencedCharacters = (profile: string): string => {
   switch (profile) {
     default:
     case 'randomize-character':
-      return 'I';
+      return 'O';
     case 'jane-lester':
-      return 'II';
-    case 'malik-tremaine-carter':
-      return 'III';
-    case 'dimitri-lewis':
-      return 'IV';
-    case 'dale-sutton':
-      return 'V';
-    case 'alaric-voss':
-      return 'VI';
-    case 'conrad-guy':
-      return 'VII';
-    case 'daniel-meyers':
-      return 'VIII';
-    case 'kady-deacon':
-      return 'IX';
-    case 'seamus-odonnell':
-      return 'X';
     case 'hammad-dean':
-      return 'XI';
+      return 'I';
+    case 'malik-tremaine-carter':
     case 'tasneem-kemp':
-      return 'XII';
+      return 'II';
+    case 'dimitri-lewis':
     case 'elliot-crane':
-      return 'XIII';
+      return 'III';
+    case 'dale-sutton':
     case 'sipho-dlamini':
-      return 'XIV';
+      return 'IV';
+    case 'alaric-voss':
     case 'zuberi-thorne':
-      return 'XV';
+      return 'V';
+    case 'conrad-guy':
     case 'nyra-solari':
-      return 'XVI';
+      return 'VI';
+    case 'daniel-meyers':
     case 'victor-langston':
-      return 'XVII';
+      return 'VII';
+    case 'kady-deacon':
     case 'danish-copeland':
-      return 'XVIII';
+      return 'VIII';
+    case 'seamus-odonnell':
     case 'aelin-darrow':
-      return 'XIX';
+      return 'IX';
   }
 };
 //--|===|--\\

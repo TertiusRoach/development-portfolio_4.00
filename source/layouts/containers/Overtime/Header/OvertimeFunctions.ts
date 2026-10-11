@@ -7,7 +7,7 @@ export default function designateCharacter(
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
   blockName: 'header',
-  labelName: string,
+  labelName: 'demo-left' | 'demo-right',
 ): void {
   switch (inputAction) {
     case 'enter':
@@ -19,6 +19,7 @@ export default function designateCharacter(
 const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName: string, labelName: 'demo-left' | 'demo-right'): void => {
   const orientation: string = 'horizontal';
   const character = thisItem.querySelector('.icon img') as HTMLImageElement;
+
   const selectedContainer = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName}"]`,
   ) as HTMLDivElement;
