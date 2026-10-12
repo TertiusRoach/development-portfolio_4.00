@@ -18,8 +18,6 @@ export default function designateCharacter(
 }
 //--|===|--\\
 const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName: string, labelName: 'demo-left' | 'demo-right'): void => {
-  console.log();
-
   const orientation: string = 'horizontal';
   const character = thisItem.querySelector('.icon img') as HTMLImageElement;
 
@@ -29,6 +27,9 @@ const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName
   const oppositeContainer = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName === 'demo-left' ? 'demo-right' : 'demo-left'}"]`,
   ) as HTMLDivElement;
+  const demonstration = document.querySelector(
+    `#${pageName}-${blockName} figure[class=${blockName}-midground] section[class*="demonstration"]`,
+  ) as HTMLElement;
 
   let prevReset = oppositeContainer.parentElement?.className as string;
   let prevSlide = selectedContainer.parentElement?.className as string;
@@ -45,6 +46,9 @@ const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName
 
   oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
   selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
+
+  demonstration.style.opacity = '0';
+  demonstration.style.transition = 'opacity 500ms';
 };
 const selectProfile = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');

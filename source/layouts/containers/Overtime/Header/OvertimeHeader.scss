@@ -59,7 +59,8 @@
     }
   }
   figure[class*='header-mid'] {
-    div[class*='demo'] {
+    div[class*='demo'],
+    section[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
