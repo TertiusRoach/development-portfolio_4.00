@@ -632,6 +632,7 @@
     }
   }
 }
+
 section[class*='characters-default'] {
   @media screen and (orientation: landscape) {
     @include desktop-queries();

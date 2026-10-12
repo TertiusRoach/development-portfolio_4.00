@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, loadAsset } from '../../../../scripts';
-
 import reloadElements, { modifyingController, previewButtons, swipingCarousel, createClass } from './Menu_swipe';
+
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 

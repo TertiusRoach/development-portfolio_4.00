@@ -1,0 +1,22 @@
+//--|🠊 Menu.toggle.scss 🠈|--\\
+@use '../../../../layouts/styles/Palettes.scss' as Palettes;
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Toggle) 🠋|--\\
+  display: flex;
+  justify-content: space-between;
+}
+
+//--|===|--\\
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Toggle) 🠋|--\\
+}
+
+menu[class*='toggle'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}

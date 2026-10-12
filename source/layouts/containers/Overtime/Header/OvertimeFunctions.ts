@@ -37,6 +37,11 @@ const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName
 
   oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
   selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
+
+  const randomize = document.querySelector(`#${pageName}-${blockName} figure div[class*="randomize-character"]`) as HTMLDivElement;
+
+  randomize.classList.replace('highlight', 'downplay');
+  console.log();
 };
 const selectProfile = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
@@ -74,6 +79,10 @@ let sequencedCharacters = (profile: string): string => {
     case 'aelin-darrow':
       return 'IX';
   }
+};
+
+export let randomizeCharacter = (vocation: 'established' | 'freelancing') => {
+  console.log(vocation);
 };
 //--|===|--\\
 export function freezeHeaders(pageName: 'overtime', styleView: 'top-lef') {

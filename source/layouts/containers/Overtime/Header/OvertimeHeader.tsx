@@ -6,15 +6,16 @@ import React, { useState, useEffect } from 'react';
 import MenuSelect from '../../../components/Menu/select/Menu.select';
 import AsideCharacters from '../../../components/Aside/characters/Aside.characters';
 //--|===|--\\
+import MenuToggle from '../../../components/Menu/toggle/Menu.toggle';
 import DivisionSweeping from '../../../components/Division/sweeping/Division.sweeping';
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+
 //--|===|--\\
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
-import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
+import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders, randomizeCharacter } from './OvertimeFunctions';
 
 interface InfoProps {
   info: {
@@ -74,6 +75,27 @@ function OvertimeHeader({ info }: InfoProps) {
                 },
               }}
             />
+            <MenuToggle
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                size: '<h3>',
+                color: '(mono)',
+                shade: '~light~',
+                view: ['-left-', '-right-'],
+                text: ['Established', 'Freelancing'],
+                image: [
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/briefcase'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/messages-dollar'),
+                ],
+              }}
+              cases={{
+                task: [() => randomizeCharacter('established'), () => randomizeCharacter('established')],
+              }}
+            />
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
@@ -129,18 +151,18 @@ function OvertimeHeader({ info }: InfoProps) {
               }}
             />
 
-            {/*
-            <SectionCharacters
-              cases={{
-                characters: 'random',
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: labelName,
-              }}
-            />
-            */}
+            <div className={`default-${blockName}_randomize-character highlight`}>
+              <SectionCharacters
+                cases={{
+                  characters: 'random',
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: labelName,
+                }}
+              />
+            </div>
 
             <DivisionSweeping
               //--|🠊 <div class="demo-right-header_sweeping-default"/> 🠈|--\\
