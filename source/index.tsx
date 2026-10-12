@@ -15,7 +15,7 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
-  viewBody('overtime');
+  viewBody('components');
   themeScheme('light');
 }, 250);
 
@@ -33,7 +33,7 @@ function loadPage(identification: string, container: React.ReactElement) {
 }
 function themeScheme(colorScheme: 'light' | 'dark'): void {
   const element: HTMLBodyElement = document.getElementsByTagName('body')[0];
-  const currentHour = new Date().getHours(); // Gets the hour from 0 to 23
+  const currentHour = new Date().getHours(); //--|🠊 Gets the hour from 0 to 23 🠈|--\\
 
   // Between 05:00 and 12:59
   if (currentHour >= 5 && currentHour < 17) {

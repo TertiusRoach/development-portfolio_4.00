@@ -306,7 +306,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         cases={{
           axis: '[x]',
-          titles: ['<Section_Default>'] as Array<string>,
+          titles: ['<Section_Characters>', '<Section_Demonstration>'] as Array<string>,
         }}
       />
       <MenuSwipe

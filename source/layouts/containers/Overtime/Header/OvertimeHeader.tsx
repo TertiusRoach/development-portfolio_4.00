@@ -15,7 +15,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
-import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders, randomizeCharacter } from './OvertimeFunctions';
+import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 
 interface InfoProps {
   info: {
@@ -93,7 +93,10 @@ function OvertimeHeader({ info }: InfoProps) {
                 ],
               }}
               cases={{
-                task: [() => randomizeCharacter('established'), () => randomizeCharacter('established')],
+                task: [
+                  (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                ],
               }}
             />
             <div className={`default-${blockName}_characters-demonstration`}>
@@ -150,19 +153,6 @@ function OvertimeHeader({ info }: InfoProps) {
                 call: OvertimeCharacters as React.ComponentType<InfoProps>,
               }}
             />
-
-            <div className={`default-${blockName}_randomize-character highlight`}>
-              <SectionCharacters
-                cases={{
-                  characters: 'random',
-                }}
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: labelName,
-                }}
-              />
-            </div>
 
             <DivisionSweeping
               //--|🠊 <div class="demo-right-header_sweeping-default"/> 🠈|--\\
@@ -362,6 +352,16 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               labelName: labelName,
             }}
           />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
         </>
       );
     case 'demo-right':
@@ -450,6 +450,16 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
           <SectionCharacters
             cases={{
               characters: 'aelin',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
             }}
             info={{
               pageName: pageName,

@@ -40,7 +40,29 @@ interface TheseProps {
   onKeyDown?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
   */
 }
-function ButtonHandle(style: TheseProps['style']) {
+
+function ButtonDefault({ info, style, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
+  //--|🠊 Identifiers 🠈|--\\
+  const pageName = stripBrackets(info.pageName, '[]') as string;
+  const blockName = stripBrackets(info.blockName, '<>') as string;
+
+  useEffect(() => {}, [pageName, blockName]);
+
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onDoubleClick={onDoubleClick}
+      id={info.labelName || undefined}
+      aria-disabled={style.type === '{disabled}'}
+      className={`default-button ${createClass(style as TheseProps['style'])}`}
+    >
+      {ButtonHandle(style)}
+    </button>
+  );
+}
+const ButtonHandle = (style: TheseProps['style']) => {
   //--|🠊 Render Body 🠈|--\\
   switch (style.size) {
     case '<h1>':
@@ -227,47 +249,6 @@ function ButtonHandle(style: TheseProps['style']) {
         </>
       );
   }
-}
-const ButtonDefault: React.FC<TheseProps> = ({
-  info,
-  style,
-  onClick,
-  onMouseEnter,
-  onMouseLeave,
-  onDoubleClick,
-  /*  
-  onBlur,  
-  onFocus,  
-  onMouseUp,  
-  onTouchEnd,  
-  onMouseDown,  
-  onTouchStart,  
-  onAnimationEnd,  
-  onTransitionEnd,  
-  onKeyUp,  
-  onKeyDown,  
-  onContextMenu,  
-  */
-}) => {
-  //--|🠊 Identifiers 🠈|--\\
-  const pageName = stripBrackets(info.pageName, '[]') as string;
-  const blockName = stripBrackets(info.blockName, '<>') as string;
-
-  useEffect(() => {}, [pageName, blockName]);
-
-  return (
-    <button
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onDoubleClick={onDoubleClick}
-      id={info.labelName || undefined}
-      aria-disabled={style.type === '{disabled}'}
-      className={`default-button ${createClass(style as TheseProps['style'])}`}
-    >
-      {ButtonHandle(style)}
-    </button>
-  );
 };
 
 export default ButtonDefault;

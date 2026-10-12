@@ -20,11 +20,11 @@ interface TheseProps {
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
   cases: {
-    task: Array<() => void>;
+    task: Array<(event: React.MouseEvent<HTMLButtonElement>) => void>;
   };
 
-  onClick?: () => void;
-  onMouseEnter?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
@@ -56,8 +56,8 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             image: style.image[0] as string,
             view: style.view[0] as '-left-' | '-right-' | '-center-' | '-text-',
           }}
-          onClick={(): void => cases.task?.[0]?.()}
-          onMouseEnter={(): void => cases.task?.[0]?.()}
+          onClick={(event) => cases.task[0](event)}
+          onMouseEnter={(event) => cases.task[0](event)}
         />
       </li>
       <li>
@@ -76,8 +76,8 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             image: style.image[1] as string,
             view: style.view[1] as '-left-' | '-right-' | '-center-' | '-text-',
           }}
-          onClick={() => cases.task[1]()}
-          onMouseEnter={() => cases.task[1]()}
+          onClick={(event) => cases.task[1](event)}
+          onMouseEnter={(event) => cases.task[1](event)}
         />
       </li>
     </menu>

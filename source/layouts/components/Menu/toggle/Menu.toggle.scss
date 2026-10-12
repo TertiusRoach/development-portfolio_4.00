@@ -3,8 +3,6 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Toggle) 🠋|--\\
-  display: flex;
-  justify-content: space-between;
 }
 
 //--|===|--\\
@@ -13,6 +11,9 @@
 }
 
 menu[class*='toggle'] {
+  display: flex;
+  justify-content: space-between;
+
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

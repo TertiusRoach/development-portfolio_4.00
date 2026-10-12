@@ -43,7 +43,7 @@ function ArchiveMain({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 2;
+  let startingPreview: number = 8;
   let blurName: string = 'obnubilate';
   return (
     <main
@@ -73,7 +73,6 @@ function ArchiveMain({ info }: InfoProps) {
     </main>
   );
 }
-
 const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
@@ -154,5 +153,4 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
     </>
   );
 };
-
 export default ArchiveMain;

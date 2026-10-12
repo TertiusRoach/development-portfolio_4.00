@@ -1,0 +1,19 @@
+//--|🠊 CharactersSection.scss 🠈|--\\
+@use '../../../../../../styles/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="demonstration-section"> 🠈|--\\
+  section[class*='foreground'] {
+    section[class*='demonstration'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="demonstration-section"> 🠈|--\\
+  section[class*='foreground'] {
+    section[class*='demonstration'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+}

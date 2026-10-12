@@ -1,0 +1,44 @@
+//--|🠊 Section_demonstration.ts 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { loadAsset } from '../../../../scripts';
+//--|🠋 Demonstration Information 🠋|--\\
+export interface DemonstrationSelection {
+  appName: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin';
+  branding: string;
+  description: string;
+}
+function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin' | string): {
+  appName: string;
+  branding: string;
+  description: string;
+} {
+  switch (selectInfo) {
+    case 'track-a-day':
+      return {
+        appName: 'Track a Day',
+        branding: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+        description: `Tracking your time shouldn't be a complex process. It shouldn't be as convoluted as a traditional clocking system. Especially when you have actual work to attend to. This tool cuts out the friction to make logging effortless.`,
+      };
+    case 'log-a-ticket':
+      return {
+        appName: 'Log a Ticket',
+        branding: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
+        description: `A ticketing system built to keep the user experience frictionless. Problems differ, but the steps to solve them shouldn't be bogged down by red tape. Start with pending, claim your task, finish the job, and watch your numbers go up.`,
+      };
+    case 'find-a-link':
+      return {
+        appName: 'Find a Link',
+        branding: loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+        description: `Instantly access all essential resources on a single page. It brings professional and personal links together into one seamless hub disguised as a single document. Designed to tame information overload, whether it’s spreadsheets, policies, reports, approvals, or bookmarks.`,
+      };
+    default:
+    case 'tralogfin':
+      return {
+        appName: 'TraLogFin',
+        branding: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
+        description: `Three applications working in tandem to solve specific roadblocks. Track a Day logs overtime to keep records transparent and stress-free. Log a Ticket cuts through the noise with clear statuses for every request. Find a Link is your ultimate launchpad the moment you sit down to work.`,
+      };
+  }
+}
+
+export default returnInfo;

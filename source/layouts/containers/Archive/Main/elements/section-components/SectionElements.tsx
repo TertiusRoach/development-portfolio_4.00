@@ -10,6 +10,7 @@ import DivisionCarousel from '../../../../../components/Division/carousel/Divisi
 
 //--|🠋 Elements 🠋|--\\
 import CharactersSection from './characters-section/CharactersSection';
+import DemonstrationSection from './demonstration-section/DemonstrationSection';
 
 interface InfoProps {
   info: {
@@ -25,6 +26,7 @@ function SectionComponents({ info }: InfoProps) {
   return (
     <>
       <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+      <DemonstrationSection info={{ labelName: 'demonstration' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }
@@ -33,7 +35,7 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionCarousel
         cases={{
-          show: 1,
+          show: 2,
           axis: '[x]',
           call: SectionComponents as React.ComponentType<InfoProps>,
         }}
