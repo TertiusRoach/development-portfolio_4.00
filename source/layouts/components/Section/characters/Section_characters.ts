@@ -98,7 +98,17 @@ export interface CharacterSelection {
     occupation: 'Specialist' | 'Technician' | string;
   };
 }
-const cardInfo: Array<CharacterSelection> = [
+const permissionRandomize = (authorization: 'vocation' | 'position' | 'occupation'): string => {
+  switch (authorization) {
+    case 'vocation':
+      return Math.random() < 0.5 ? 'Established' : 'Freelancer';
+    case 'position':
+      return Math.random() < 0.5 ? 'Manager' : 'Employee';
+    case 'occupation':
+      return Math.random() < 0.5 ? 'Specialist' : 'Technician';
+  }
+};
+let cardInfo: Array<CharacterSelection> = [
   {
     fullName: 'Jane Lester',
     department: { HoD: true, bureau: 'Owner/CEO' },
@@ -251,15 +261,18 @@ const cardInfo: Array<CharacterSelection> = [
   },
   {
     fullName: 'Randomize Character',
-    department: { HoD: true, bureau: 'Coordination' },
+    department: { HoD: true, bureau: 'Randomize' },
     country: 'IP Protocol',
-    description: `There's 18 characters. A workforce simulation where each character represents a distinct survival strategy under pressure-exploitation, rebellion, retreat, apathy, or rigid order.
-    \nThe company runs not on alignment but on friction: visionaries break systems, technicians patch them, administrators document the fallout, and coordinators reframe it as intent. Stability is temporary, efficiency accidental, loyalty conditional.
-    \nThe system persists only through the fragile balance of these opposing approaches. Mix and match their personalities to create a fun ludo narrative.`,
+    description: `Eighteen randomized characters designed to stress-test the application under peak human chaos. Each represents a distinct workplace survival strategy: When pressure builds, they retreat, rebel, or succumb to apathy against rigid order.
+                  Jane and Hammad head rival operations, proving that while corporate philosophies differ, procedural friction remains universal. Here, stability is temporary, efficiency is accidental, and loyalty exists only among the naive.
+                  As executives double-cross and departments clash, only one force prevents total collapse: TraLogFin. By tracking overtime, filtering ticket noise, and organizing vital links, it keeps a fragile balance across opposing agendas.
+                  Mix and match personalities to drive your own chaotic ludonarrative.`,
     profile: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
-
-    permissions: { vocation: `Established\nFreelancer`, position: 'Manager\nEmployee', occupation: 'Specialist\nTechnician' },
+    permissions: {
+      vocation: permissionRandomize('vocation'),
+      position: permissionRandomize('position'),
+      occupation: permissionRandomize('occupation'),
+    },
   },
 ];
-
 export default returnProfile;

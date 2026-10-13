@@ -90,8 +90,18 @@ let clearBlur = async (
   leftbarContainer: HTMLElement,
   rightbarContainer: HTMLElement,
 ) => {
+  //--|🠋 Confirm Orientation 🠋|--\\
+  const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
+  const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
+
   //--|🠋 Sharpen Containers 🠋|--\\
-  mainContainer.classList.remove('obnubilate');
+  if (desktop && !headerContainer.className.includes('expanded')) {
+    mainContainer.classList.remove('obnubilate');
+  } else if (mobile && !footerContainer.className.includes('expanded')) {
+    mainContainer.classList.remove('obnubilate');
+  }
+
+  // mainContainer.classList.remove('obnubilate');
   [headerContainer, footerContainer, leftbarContainer, rightbarContainer].forEach((el) => el.classList.remove('obnubilate'));
 };
 let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, leftbarContainer: HTMLElement, rightbarContainer: HTMLElement) => {

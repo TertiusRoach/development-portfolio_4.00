@@ -3,11 +3,102 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Toggle) 🠋|--\\
+  li {
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    height: 8rem;
+    &:nth-child(1) button {
+      padding-left: 48px;
+    }
+    &:nth-child(2) button {
+      padding-right: 48px;
+    }
+  }
+  @media screen and (max-height: 768px) {
+    li {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      height: 6rem;
+      &:nth-child(1) button {
+        padding-left: 32px;
+      }
+      &:nth-child(2) button {
+        padding-right: 32px;
+      }
+    }
+  }
+  @media screen and (max-height: 480px) {
+    li {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      height: 4rem;
+      &:nth-child(1) button {
+        padding-left: 24px;
+      }
+      &:nth-child(2) button {
+        padding-right: 24px;
+      }
+    }
+  }
+  @media screen and (max-height: 360px) {
+    li {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      height: 3rem;
+      &:nth-child(1) button {
+        padding-left: 16px;
+      }
+      &:nth-child(2) button {
+        padding-right: 16px;
+      }
+    }
+  }
 }
-
 //--|===|--\\
 @mixin mobile-portrait {
   //--|🠋 Mobile (Toggle) 🠋|--\\
+  li {
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    height: 12rem;
+    &:nth-child(1) button {
+      padding-left: 32px;
+    }
+    &:nth-child(2) button {
+      padding-right: 32px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    li {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      height: 10rem;
+      &:nth-child(1) button {
+        padding-left: 24px;
+      }
+      &:nth-child(2) button {
+        padding-right: 24px;
+      }
+    }
+  }
+  @media screen and (max-width: 480px) {
+    li {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      height: 6rem;
+      &:nth-child(1) button {
+        padding-left: 16px;
+      }
+      &:nth-child(2) button {
+        padding-right: 16px;
+      }
+    }
+  }
+  @media screen and (max-width: 360px) {
+    li {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      height: 4rem;
+      &:nth-child(1) button {
+        padding-left: 12px;
+      }
+      &:nth-child(2) button {
+        padding-right: 12px;
+      }
+    }
+  }
 }
 
 menu[class*='toggle'] {

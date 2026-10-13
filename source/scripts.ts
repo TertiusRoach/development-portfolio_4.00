@@ -58,7 +58,7 @@ export function checkScreen(onChange: (orientation: Orientation) => void): () =>
   };
 }
 
-//--|🠋 Utilities & Navigation 🠋|--\\
+//--|🠋 Utilities, Conversions & Navigation Functions 🠋|--\\
 export const loadAsset = (type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string => {
   //--|🠊 Finds path for file extension 🠈|--\\
   const assetSource: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
@@ -81,23 +81,7 @@ export const loadPages = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'co
   prevPage.classList.replace('active', 'asleep');
   nextPage.classList.replace('asleep', 'active');
 };
-
-const defaultReset = () => {
-  let lockedElements = document.querySelector('div[class*="body"].active') as HTMLDivElement;
-  let frozenElements: NodeListOf<HTMLElement> = document.querySelectorAll('[class*="frozen"]');
-  if (!lockedElements.classList.contains('locked-body')) {
-    lockedElements.className = `locked-body ${lockedElements.className}`;
-    setTimeout(() => {
-      lockedElements.classList.remove('locked-body');
-    }, 3000);
-  }
-  for (let i = 0; i < frozenElements.length; i++) {
-    frozenElements[i].classList.remove(frozenElements[i].classList[0]);
-  }
-};
-
-//--|🠋 Conversion Functions 🠋|--\\
-export let arabicToRoman = (arabicNumeral: number): string => {
+export const arabicToRoman = (arabicNumeral: number): string => {
   switch (arabicNumeral) {
     //--|🠊 Map of Numbers to Roman Numerals 🠈|--\\
     case 0:
@@ -420,7 +404,7 @@ export let arabicToRoman = (arabicNumeral: number): string => {
       return 'O';
   }
 };
-export let romanToArabic = (romanNumeral: string | undefined): number => {
+export const romanToArabic = (romanNumeral: string | undefined): number => {
   switch (romanNumeral) {
     //--|🠊 Map of Roman Strings to Number 🠈|--\\
     default:
@@ -756,7 +740,7 @@ export let romanToArabic = (romanNumeral: string | undefined): number => {
       return 156;
   }
 };
-export let stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
+export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
   switch (wrapType) {
     case '[]':
       //--|🠊 Associated with [pageName] 🠈|--\\
@@ -778,5 +762,20 @@ export let stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}
     case '~~':
       //--|🠊 Associated with ~style.shade~ 🠈|--\\
       return thisText.replace(/[~~]/g, '');
+  }
+};
+
+//--|🠋 Reverting Functions 🠋|--\\
+let defaultReset = () => {
+  let lockedElements = document.querySelector('div[class*="body"].active') as HTMLDivElement;
+  let frozenElements: NodeListOf<HTMLElement> = document.querySelectorAll('[class*="frozen"]');
+  if (!lockedElements.classList.contains('locked-body')) {
+    lockedElements.className = `locked-body ${lockedElements.className}`;
+    setTimeout(() => {
+      lockedElements.classList.remove('locked-body');
+    }, 3000);
+  }
+  for (let i = 0; i < frozenElements.length; i++) {
+    frozenElements[i].classList.remove(frozenElements[i].classList[0]);
   }
 };

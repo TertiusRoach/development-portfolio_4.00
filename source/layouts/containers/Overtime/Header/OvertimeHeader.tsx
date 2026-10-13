@@ -13,7 +13,7 @@ import SectionDemonstration from '../../../components/Section/demonstration/Sect
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
-import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
+import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 
 interface InfoProps {
   info: {
@@ -73,6 +73,48 @@ function OvertimeHeader({ info }: InfoProps) {
                 },
               }}
             />
+
+            <div className={`default-${blockName}_characters-demonstration`}>
+              <AsideCharacters
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: labelName,
+                }}
+                style={{
+                  view: '-left-',
+                  color: '(green)',
+                  shade: '~dark~',
+                }}
+                cases={{
+                  task: [
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  ],
+                }}
+              />
+              <AsideCharacters
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: labelName,
+                }}
+                style={{
+                  view: '-right-',
+                  color: '(green)',
+                  shade: '~light~',
+                }}
+                cases={{
+                  task: [
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  ],
+                }}
+              />
+            </div>
+
             <MenuToggle
               info={{
                 pageName: pageName,
@@ -92,49 +134,11 @@ function OvertimeHeader({ info }: InfoProps) {
               }}
               cases={{
                 task: [
-                  (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                 ],
               }}
             />
-            <div className={`default-${blockName}_characters-demonstration`}>
-              <AsideCharacters
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: labelName,
-                }}
-                style={{
-                  view: '-left-',
-                  color: '(green)',
-                  shade: '~dark~',
-                }}
-                cases={{
-                  task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  ],
-                }}
-              />
-              <AsideCharacters
-                info={{
-                  pageName: pageName,
-                  blockName: blockName,
-                  labelName: labelName,
-                }}
-                style={{
-                  view: '-right-',
-                  color: '(green)',
-                  shade: '~light~',
-                }}
-                cases={{
-                  task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
-                  ],
-                }}
-              />
-            </div>
           </section>
           <figure className={`${blockName}-midground`}>
             <DivisionSweeping

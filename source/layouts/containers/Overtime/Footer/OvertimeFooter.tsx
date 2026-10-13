@@ -4,15 +4,16 @@ import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
+import MenuToggle from '../../../components/Menu/toggle/Menu.toggle';
 import AsideCharacters from '../../../components/Aside/characters/Aside.characters';
 import DivisionSweeping from '../../../components/Division/sweeping/Division.sweeping';
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
+import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
-import designateCharacter, { unfoldFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
+import previewProfile, { unfoldFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
 
 interface InfoProps {
   info: {
@@ -144,6 +145,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 },
               }}
             />
+
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
@@ -158,8 +160,9 @@ function OvertimeFooter({ info }: InfoProps) {
                 }}
                 cases={{
                   task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
                   ],
                 }}
               />
@@ -176,12 +179,38 @@ function OvertimeFooter({ info }: InfoProps) {
                 }}
                 cases={{
                   task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   ],
                 }}
               />
             </div>
+
+            <MenuToggle
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                size: '<h3>',
+                color: '(mono)',
+                shade: '~light~',
+                view: ['-left-', '-right-'],
+                text: ['Established', 'Freelancing'],
+                image: [
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/briefcase'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/messages-dollar'),
+                ],
+              }}
+              cases={{
+                task: [
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                ],
+              }}
+            />
           </section>
           <figure className={`${blockName}-midground`}>
             <DivisionSweeping
@@ -199,18 +228,16 @@ function OvertimeFooter({ info }: InfoProps) {
               }}
             />
 
-            {/*
-            <SectionCharacters
-              cases={{
-                characters: 'random',
-              }}
+            <SectionDemonstration
               info={{
                 pageName: pageName,
                 blockName: blockName,
                 labelName: labelName,
               }}
+              cases={{
+                apps: 'track-a-day',
+              }}
             />
-            */}
 
             <DivisionSweeping
               //--|🠊 <div class="demo-right-header_sweeping-default"/> 🠈|--\\
@@ -332,6 +359,16 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               labelName: labelName,
             }}
           />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
         </>
       );
     case 'demo-right':
@@ -420,6 +457,16 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
           <SectionCharacters
             cases={{
               characters: 'aelin',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
             }}
             info={{
               pageName: pageName,

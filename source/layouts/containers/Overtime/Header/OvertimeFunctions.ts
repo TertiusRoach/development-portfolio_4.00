@@ -2,22 +2,13 @@
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Header';
 
-export default function designateCharacter(
-  inputAction: 'enter' | 'click',
+export default function previewProfile(
+  inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
   blockName: 'header',
   labelName: 'demo-left' | 'demo-right',
 ): void {
-  switch (inputAction) {
-    case 'enter':
-      return previewProfile(thisItem, pageName, blockName, labelName);
-    case 'click':
-      return selectProfile(thisItem, pageName, blockName);
-  }
-}
-//--|===|--\\
-const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName: string, labelName: 'demo-left' | 'demo-right'): void => {
   const orientation: string = 'horizontal';
   const character = thisItem.querySelector('.icon img') as HTMLImageElement;
 
@@ -27,7 +18,7 @@ const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName
   const oppositeContainer = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName === 'demo-left' ? 'demo-right' : 'demo-left'}"]`,
   ) as HTMLDivElement;
-  const demonstration = document.querySelector(
+  const demoCard = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] section[class*="demonstration"]`,
   ) as HTMLElement;
 
@@ -41,19 +32,33 @@ const previewProfile = (thisItem: HTMLButtonElement, pageName: string, blockName
     characterProfile = 'randomize-character';
   }
 
-  let nextReset = 'sweeping-horizontal_O' as string;
-  let nextSlide = `${prevSlide.split('_')[0]}_${sequencedCharacters(characterProfile)}` as string;
+  let nextReset = `sweeping-${orientation}_O` as string;
+  let nextSlide = `${prevSlide.split('_')[0]}_${sequencedDemonstration(characterProfile)}` as string;
 
-  oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
-  selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
+  switch (inputAction) {
+    case 'enter':
+      demoCard.style.opacity = '0';
+      demoCard.style.filter = 'blur(8px)';
+      demoCard.style.transition = 'filter 250ms, opacity 750ms';
 
-  demonstration.style.opacity = '0';
-  demonstration.style.transition = 'opacity 500ms';
-};
-const selectProfile = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
+      oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
+      selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
+      break;
+    case 'click':
+      return selectCharacter(thisItem, pageName, blockName);
+    case 'leave':
+      demoCard.style.opacity = '1';
+      demoCard.style.filter = 'blur(0)';
+      demoCard.style.transition = 'filter 750ms, opacity 250ms';
+
+      selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
+      break;
+  }
+}
+const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
-let sequencedCharacters = (profile: string): string => {
+let sequencedDemonstration = (profile: string): string => {
   switch (profile) {
     case 'jane-lester':
     case 'hammad-dean':

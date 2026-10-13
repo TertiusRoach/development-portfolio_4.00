@@ -26,9 +26,10 @@ interface TheseProps {
 
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-function AsideCharacters({ info, style, cases, onClick, onMouseEnter }: TheseProps) {
+function AsideCharacters({ info, style, cases, onClick, onMouseEnter, onMouseLeave }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -36,7 +37,7 @@ function AsideCharacters({ info, style, cases, onClick, onMouseEnter }: ThesePro
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   return (
-    <aside className={`${labelName}-${blockName}_characters-default ${createClass(style)}`}>
+    <aside className={`${labelName}-${blockName}_characters-default ${createClass(style)}`} onMouseLeave={(event) => cases?.task[2](event)}>
       <div className="characters">
         {(() => {
           switch (style.view) {
