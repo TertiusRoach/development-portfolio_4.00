@@ -6,7 +6,7 @@ export default function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
-  blockName: 'header',
+  blockName: 'footer',
   labelName: 'demo-left' | 'demo-right',
 ): void {
   const orientation: string = 'vertical';
