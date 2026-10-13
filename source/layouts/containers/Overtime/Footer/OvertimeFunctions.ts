@@ -93,7 +93,6 @@ let sequencedDemonstration = (profile: string): string => {
   }
 };
 //--|===|--\\
-//--|===|--\\
 export function unfoldFooters(thisItem: HTMLElement) {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'overtime', 'footer', 'unfolded');

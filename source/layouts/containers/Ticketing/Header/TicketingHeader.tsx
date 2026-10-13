@@ -4,14 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuSelect from '../../../components/Menu/select/Menu.select';
+import MenuToggle from '../../../components/Menu/toggle/Menu.toggle';
 import AsideCharacters from '../../../components/Aside/characters/Aside.characters';
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+import DivisionSweeping from '../../../components/Division/sweeping/Division.sweeping';
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
-
+import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
-import designateCharacter, { unfoldHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';
+import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';
 
 interface InfoProps {
   info: {
@@ -71,6 +72,7 @@ function TicketingHeader({ info }: InfoProps) {
                 },
               }}
             />
+
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
@@ -85,8 +87,9 @@ function TicketingHeader({ info }: InfoProps) {
                 }}
                 cases={{
                   task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
                   ],
                 }}
               />
@@ -103,25 +106,78 @@ function TicketingHeader({ info }: InfoProps) {
                 }}
                 cases={{
                   task: [
-                    (event) => designateCharacter('enter', event.currentTarget as HTMLButtonElement, pageName, blockName),
-                    (event) => designateCharacter('click', event.currentTarget as HTMLButtonElement, pageName, blockName),
+                    (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                    (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   ],
                 }}
               />
             </div>
+
+            <MenuToggle
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                size: '<h3>',
+                color: '(mono)',
+                shade: '~light~',
+                view: ['-left-', '-right-'],
+                text: ['Manager', 'Employee'],
+                image: [
+                  loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-tie'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/user-helmet-safety'),
+                ],
+              }}
+              cases={{
+                task: [
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                ],
+              }}
+            />
           </section>
           <figure className={`${blockName}-midground`}>
-            <DivisionCarousel
-              //--|🠊 <div class="demonstration-header_carousel-default"/> 🠈|--\\
-              cases={{
-                axis: '[x]',
-                show: 1 as number,
-                call: TicketingCharacters as React.ComponentType<InfoProps>,
-              }}
+            <DivisionSweeping
+              //--|🠊 <div class="demon-left-header_sweeping-default"/> 🠈|--\\
               info={{
-                labelName: 'demonstration',
+                labelName: 'demo-left',
                 blockName: blockName as '<header>',
                 pageName: pageName as '[ticketing]',
+              }}
+              cases={{
+                axis: '[x]',
+                view: '-lef-',
+                show: 0 as number,
+                call: TicketingCharacters as React.ComponentType<InfoProps>,
+              }}
+            />
+
+            <SectionDemonstration
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              cases={{
+                apps: 'log-a-ticket',
+              }}
+            />
+
+            <DivisionSweeping
+              //--|🠊 <div class="demo-right-header_sweeping-default"/> 🠈|--\\
+              info={{
+                labelName: 'demo-right',
+                blockName: blockName as '<header>',
+                pageName: pageName as '[ticketing]',
+              }}
+              cases={{
+                axis: '[x]',
+                view: '-rig-',
+                show: 0 as number,
+                call: TicketingCharacters as React.ComponentType<InfoProps>,
               }}
             />
           </figure>
@@ -212,202 +268,220 @@ function TicketingHeader({ info }: InfoProps) {
   }
 }
 const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
+  const labelName = info.labelName as string;
   const pageName = info.pageName as 'ticketing';
   const blockName = info.blockName as 'header';
-  const labelName = info.labelName as 'demonstration';
-  return (
-    <>
-      <SectionCharacters
-        cases={{
-          characters: 'random',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'jane',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'malik',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'dimitri',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'dale',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'alaric',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'conrad',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'daniel',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'kady',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'seamus',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'hammad',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'tasneem',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'sipho',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'elliot',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'zuberi',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'nyra',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'victor',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'danish',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-      <SectionCharacters
-        cases={{
-          characters: 'aelin',
-        }}
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: labelName,
-        }}
-      />
-    </>
-  );
+  switch (labelName) {
+    case 'demo-left':
+      return (
+        <>
+          <SectionCharacters
+            cases={{
+              characters: 'jane',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'malik',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'dimitri',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'dale',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'alaric',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'conrad',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'daniel',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'kady',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'seamus',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+        </>
+      );
+    case 'demo-right':
+      return (
+        <>
+          <SectionCharacters
+            cases={{
+              characters: 'hammad',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'tasneem',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'sipho',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'elliot',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'zuberi',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'nyra',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'victor',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'danish',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'aelin',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'random',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+          />
+        </>
+      );
+  }
 };
 export default TicketingHeader;

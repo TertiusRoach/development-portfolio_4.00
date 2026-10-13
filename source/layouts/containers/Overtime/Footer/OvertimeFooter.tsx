@@ -214,10 +214,10 @@ function OvertimeFooter({ info }: InfoProps) {
           </section>
           <figure className={`${blockName}-midground`}>
             <DivisionSweeping
-              //--|🠊 <div class="demon-left-header_sweeping-default"/> 🠈|--\\
+              //--|🠊 <div class="demon-left-footer_sweeping-default"/> 🠈|--\\
               info={{
                 labelName: 'demo-left',
-                blockName: blockName as '<header>',
+                blockName: blockName as '<footer>',
                 pageName: pageName as '[overtime]',
               }}
               cases={{
@@ -240,10 +240,10 @@ function OvertimeFooter({ info }: InfoProps) {
             />
 
             <DivisionSweeping
-              //--|🠊 <div class="demo-right-header_sweeping-default"/> 🠈|--\\
+              //--|🠊 <div class="demo-right-footer_sweeping-default"/> 🠈|--\\
               info={{
                 labelName: 'demo-right',
-                blockName: blockName as '<header>',
+                blockName: blockName as '<footer>',
                 pageName: pageName as '[overtime]',
               }}
               cases={{
