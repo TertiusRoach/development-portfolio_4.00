@@ -15,7 +15,7 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 
 //--|🠋 Functions 🠋|--\\
 setTimeout(() => {
-  viewBody('ticketing');
+  viewBody('hyperlink');
   themeScheme('light');
 }, 250);
 

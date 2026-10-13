@@ -47,7 +47,7 @@
     nav[class*='navigation'] {
       z-index: 0;
     }
-    div[class*='characters-demonstration'] {
+    div[class*='demonstration'] {
       z-index: 1;
       grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       display: grid;
@@ -77,9 +77,15 @@
           / 24px auto 1fr auto 24px; //--|🠈 columns 🠈|--\\
       }
     }
+    menu[class*='toggle'] {
+      z-index: 2;
+      margin-top: auto;
+      grid-area: 1 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
   }
   figure[class*='footer-mid'] {
-    div[class*='demonstration'] {
+    div[class*='demo'],
+    section[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }

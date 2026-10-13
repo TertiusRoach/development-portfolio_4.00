@@ -10,6 +10,7 @@ import DivisionSweeping from '../../../components/Division/sweeping/Division.swe
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
+
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';

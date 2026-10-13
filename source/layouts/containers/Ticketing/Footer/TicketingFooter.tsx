@@ -145,6 +145,7 @@ function TicketingFooter({ info }: InfoProps) {
                 },
               }}
             />
+
             <div className={`default-${blockName}_characters-demonstration`}>
               <AsideCharacters
                 info={{
