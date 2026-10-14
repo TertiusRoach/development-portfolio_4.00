@@ -12,47 +12,55 @@ import Landing from './layouts/containers/Landing/Landing';
 import Overtime from './layouts/containers/Overtime/Overtime';
 import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
-
-//--|🠋 Functions 🠋|--\\
+//--|🠋 Entry Point 🠋|--\\
 setTimeout(() => {
   viewBody('hyperlink');
   themeScheme('light');
 }, 250);
 
-function loadPage(identification: string, container: React.ReactElement) {
+//--|🠋 Functions 🠋|--\\
+const themeScheme = (colorScheme: 'light' | 'dark'): void => {
+  const element = document.getElementsByTagName('body')[0];
+  const currentHour = new Date().getHours();
+
+  if (currentHour >= 5 && currentHour < 17) {
+    element.classList.add('ante-meridiem');
+    element.classList.remove('post-meridiem');
+  } else {
+    element.classList.add('post-meridiem');
+    element.classList.remove('ante-meridiem');
+  }
+};
+const loadPage = (identification: string, container: React.ReactElement) => {
   const element = document.getElementById(identification) as HTMLDivElement;
+
   if (!element) {
     console.error(`Can't find #${identification}`);
     return;
   }
+
   if (element.innerHTML === '') {
     ReactDOM.createRoot(element).render(<React.StrictMode>{container}</React.StrictMode>);
   } else {
     console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
   }
-}
-function themeScheme(colorScheme: 'light' | 'dark'): void {
-  const element: HTMLBodyElement = document.getElementsByTagName('body')[0];
-  const currentHour = new Date().getHours(); //--|🠊 Gets the hour from 0 to 23 🠈|--\\
+};
+const viewBody = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components' | 'archive') => {
+  let viewBody = pageName as string;
+  if (pageName === 'archive') {
+    viewBody = 'components' as string;
+  }
+  const enable = document.querySelector(`#${viewBody}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
+  const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
 
-  // Between 05:00 and 12:59
-  if (currentHour >= 5 && currentHour < 17) {
-    element.classList.add('ante-meridiem');
-    element.classList.remove('post-meridiem');
-    setTimeout(() => {
-      //--|🠊 alert("It's morning people, rise and shine."); 🠈|--\\
-      console.log('|🠊 <body class="ante-meridiem"> 🠈|');
-    }, 15000);
+  if (disable !== null) {
+    disable.classList.add('asleep');
+    disable.classList.remove('active');
   }
-  // Between 13:00 and 04:59
-  else {
-    element.classList.add('post-meridiem');
-    element.classList.remove('ante-meridiem');
-    console.log('|🠊 <body class="post-meridiem"> 🠈|');
-    //--|🠊 alert("It's afternoon, log work and wind down."); 🠈|--\\
-  }
-}
-//--|🠋 Component Mapping 🠋|--\\
+  enable.classList.add('active');
+  enable.classList.remove('asleep');
+  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
+};
 const pages: { [key: string]: React.ElementType } = {
   'hyperlink-body': Hyperlink,
   'ticketing-body': Ticketing,
@@ -84,20 +92,3 @@ Object.entries(pages).forEach(([id]) => {
       break;
   }
 });
-
-export function viewBody(pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components' | 'archive') {
-  let viewBody = pageName as string;
-  if (pageName === 'archive') {
-    viewBody = 'components' as string;
-  }
-  const enable = document.querySelector(`#${viewBody}-body`) as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-  const disable = document.querySelector('body .active') as HTMLDivElement; //--|🠈 Select the new view element using its dynamic ID 🠈|--\\
-
-  if (disable !== null) {
-    disable.classList.add('asleep');
-    disable.classList.remove('active');
-  }
-  enable.classList.add('active');
-  enable.classList.remove('asleep');
-  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
-}
