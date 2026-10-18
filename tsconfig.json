@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    // "moduleResolution": "Node",
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,7 +11,10 @@
     "strictNullChecks": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noEmit": true
   },
   "include": ["source/", "source/layouts/pages/*", "source/layouts/styles/*"],
   "exclude": ["node_modules/"]

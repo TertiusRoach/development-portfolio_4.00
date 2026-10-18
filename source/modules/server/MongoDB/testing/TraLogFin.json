@@ -1,0 +1,20 @@
+{
+  "PickPage": [
+    {
+      "_id": "jane-lester",
+      "name": "Jane Lester",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Specialist",
+      "organization": "Voidspire Systems",
+      "bureau": "Executive Governance",
+      "paid": true,
+      "headOfDepartment": true,
+      "country": "United States",
+      "status": "Enabled"
+    }
+  ],
+  "TrackTime": [],
+  "DefineDuties": [],
+  "ArchiveAnchors": []
+}
