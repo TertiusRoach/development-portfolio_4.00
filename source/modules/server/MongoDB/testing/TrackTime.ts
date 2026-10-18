@@ -24,19 +24,20 @@ export default function TrackTime(): Database {
   return workingData;
 }
 //--|===|--\\
-export function resetDatabase(): Database {
-  workingData = structuredClone(baseline) as Database;
-  return workingData;
-}
-export function addEntry(entry: Omit<TimeEntry, 'clientId' | 'synced'>): TimeEntry {
+
+export const addEntry = (entry: Omit<TimeEntry, 'clientId' | 'synced'>): TimeEntry => {
   const newEntry: TimeEntry = { ...entry, clientId: crypto.randomUUID(), synced: false };
   workingData.TrackTime.push(newEntry);
   return newEntry;
-}
-export function removeEntry(clientId: string): void {
+};
+export const removeEntry = (clientId: string): void => {
   workingData.TrackTime = workingData.TrackTime.filter((entry) => entry.clientId !== clientId);
-}
-export function updateEntry(clientId: string, changes: Partial<TimeEntry>): void {
+};
+export const updateEntry = (clientId: string, changes: Partial<TimeEntry>): void => {
   const found = workingData.TrackTime.find((entry) => entry.clientId === clientId);
   if (found) Object.assign(found, changes, { synced: false });
-}
+};
+export const resetEntries = (): Database => {
+  workingData = structuredClone(baseline) as Database;
+  return workingData;
+};
