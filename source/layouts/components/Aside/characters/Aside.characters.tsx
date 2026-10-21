@@ -21,7 +21,11 @@ interface TheseProps {
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
   cases?: {
-    task: Array<(event: React.MouseEvent<HTMLButtonElement>) => void>;
+    task: [
+      (event: React.MouseEvent<HTMLButtonElement>) => void,
+      (event: React.MouseEvent<HTMLButtonElement>) => void,
+      (event: React.MouseEvent<HTMLElement>) => void,
+    ];
   };
 
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -29,7 +33,7 @@ interface TheseProps {
   onMouseLeave?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-function AsideCharacters({ info, style, cases, onClick, onMouseEnter, onMouseLeave }: TheseProps) {
+function AsideCharacters({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -61,10 +65,11 @@ function AsideCharacters({ info, style, cases, onClick, onMouseEnter, onMouseLea
                       key={profile}
                       info={{ pageName: info.pageName, blockName: info.blockName }}
                       style={{
-                        size: index === 0 ? '<h1>' : '<p>',
+                        view: '-square-',
                         type: '{button}',
                         shade: style.shade,
                         color: style.color,
+                        size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
                       }}
                       onClick={(event) => cases?.task[1](event)}
@@ -94,10 +99,11 @@ function AsideCharacters({ info, style, cases, onClick, onMouseEnter, onMouseLea
                       key={profile}
                       info={{ pageName: info.pageName, blockName: info.blockName }}
                       style={{
-                        size: index === 0 ? '<h1>' : '<p>',
+                        view: '-square-',
                         type: '{button}',
                         shade: style.shade,
                         color: style.color,
+                        size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
                       }}
                       onClick={(event) => cases?.task[1](event)}

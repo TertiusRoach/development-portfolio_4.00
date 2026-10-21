@@ -15,9 +15,12 @@ interface TheseProps {
     image: string;
     size: '<h1>' | '<p>';
     shade: '~dark~' | '~light~';
+    view: '-square-' | '-circle-';
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
+  // square
+  // circle
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
