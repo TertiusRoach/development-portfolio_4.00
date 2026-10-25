@@ -9,8 +9,8 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
 
 //--|🠋 Functions 🠋|--\\
-import { checkScreen, loadAsset } from '../../../../../../../scripts';
 import copyCode, { toggleColors } from './DefaultFunctions';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
 import './DefaultButton.scss';
@@ -40,7 +40,7 @@ function DefaultButton({ info }: InfoProps) {
     case 'landscape':
       return (
         <aside className="default-button">
-          <section className={`${info.blockName}-foreground`}>
+          <section className={`${blockName}-foreground`}>
             <MenuScroll
               //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
               info={{
@@ -141,8 +141,8 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${info.blockName}-midground`}></figure>
-          <div className={`${info.blockName}-background`}>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
             <section className="left-side"></section>
             <section className="right-side"></section>
           </div>
@@ -151,7 +151,7 @@ function DefaultButton({ info }: InfoProps) {
     case 'portrait':
       return (
         <aside className="default-button">
-          <section className={`${info.blockName}-foreground`}>
+          <section className={`${blockName}-foreground`}>
             <MenuScroll
               //--|🠊 <menu class="default-darkside-main_scroll-default"/> 🠈|--\\
               info={{
@@ -252,8 +252,8 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${info.blockName}-midground`}></figure>
-          <div className={`${info.blockName}-background`}>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
             <section className="top-stack"></section>
             <section className="bot-stack"></section>
           </div>

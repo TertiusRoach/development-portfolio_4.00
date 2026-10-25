@@ -2,8 +2,8 @@
 
 interface StyleProps {
   image: string;
-  size: '<h1>' | '<p>';
   shade: '~dark~' | '~light~';
+  size: '<h1>' | '<h4>' | '<p>';
   type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
   color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
 }
@@ -18,11 +18,12 @@ export function createClass(style: StyleProps): String {
 export default createClass;
 
 //--|🠋 Scoped Functions 🠋|--\\
-function createLayout(size: '<h1>' | '<p>'): string {
+function createLayout(size: '<h1>' | '<h4>' | '<p>'): string {
   const sizeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
-    '<h1>': 'big',
-    '<p>': 'sma',
+    '<h1>': 'one',
+    '<h4>': 'fou',
+    '<p>': 'par',
   };
 
   const classSize = sizeMap[size];
@@ -35,7 +36,7 @@ function createLayout(size: '<h1>' | '<p>'): string {
   return `${classSize}`;
 }
 function createColor(
-  shade: '~dark~' | '~medium~' | '~light~',
+  shade: '~dark~' | '~light~',
   color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
 ): string {
   const shadeMap: Record<string, string> = {

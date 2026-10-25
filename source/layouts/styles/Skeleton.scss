@@ -6,99 +6,6 @@
 
 body {
   div[class*='body'] {
-    &[id='components-body'] {
-      //--|🟨|--\\
-      main[id*='components'] {
-        aside[class*='menu'],
-        aside[class*='time'],
-        aside[class*='table'],
-        aside[class*='aside'],
-        aside[class*='button'],
-        aside[class*='figure'],
-        aside[class*='article'],
-        aside[class*='section'],
-        aside[class*='division'],
-        aside[class*='navigation'] {
-          width: 100vw;
-          height: 100svh;
-          flex: 0 0 100vw;
-          min-width: 100vw;
-        }
-        @media screen and (orientation: landscape) {
-          //--|🟨| Archive |🟨|--\\
-
-          aside[class*='time'],
-          aside[class*='table'],
-          aside[class*='figure'],
-          aside[class*='article'],
-          aside[class*='division'],
-          aside[class*='navigation'] {
-            @include Mixins.landscape-grid;
-          }
-          aside[class*='button'] {
-            @include Mixins.layering-position;
-          }
-          @include Mixins.landscape-grid;
-        }
-        @media screen and (orientation: portrait) {
-          //--|🟨| Archive |🟨|--\\
-          aside[class*='time'],
-          aside[class*='table'],
-          aside[class*='figure'],
-          aside[class*='article'],
-          aside[class*='division'],
-          aside[class*='navigation'] {
-            @include Mixins.portrait-grid;
-          }
-          aside[class*='button'] {
-            @include Mixins.layering-position;
-          }
-          @include Mixins.portrait-grid;
-        }
-      }
-    }
-    &[id='overtime-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟩| Overtime |🟩|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟩| Overtime |🟩|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='ticketing-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟦| Ticketing |🟦|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟦| Ticketing |🟦|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='hyperlink-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟥| Hyperlink |🟥|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟥| Hyperlink |🟥|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    &[id='landing-body'] {
-      @media screen and (orientation: landscape) {
-        //--|🟪| Landing |🟪|--\\
-        @include Mixins.landscape-grid;
-      }
-      @media screen and (orientation: portrait) {
-        //--|🟪| Landing |🟪|--\\
-        @include Mixins.portrait-grid;
-      }
-    }
-    //--|===|--\\
-
     > * {
       height: 100svh;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
@@ -236,5 +143,99 @@ body {
     @include Transition.header-transition();
     @include Transition.main-transition();
     @include Transition.footer-transition();
+  }
+
+  //--|===|--\\
+  div[id='landing-body'] {
+    @media screen and (orientation: landscape) {
+      //--|🟪| Landing |🟪|--\\
+      @include Mixins.landscape-grid;
+    }
+    @media screen and (orientation: portrait) {
+      //--|🟪| Landing |🟪|--\\
+      @include Mixins.portrait-grid;
+    }
+  }
+  div[id='overtime-body'] {
+    @media screen and (orientation: landscape) {
+      //--|🟩| Overtime |🟩|--\\
+      @include Mixins.landscape-grid;
+    }
+    @media screen and (orientation: portrait) {
+      //--|🟩| Overtime |🟩|--\\
+      @include Mixins.portrait-grid;
+    }
+  }
+  div[id='ticketing-body'] {
+    @media screen and (orientation: landscape) {
+      //--|🟦| Ticketing |🟦|--\\
+      @include Mixins.landscape-grid;
+    }
+    @media screen and (orientation: portrait) {
+      //--|🟦| Ticketing |🟦|--\\
+      @include Mixins.portrait-grid;
+    }
+  }
+  div[id='hyperlink-body'] {
+    @media screen and (orientation: landscape) {
+      //--|🟥| Hyperlink |🟥|--\\
+      @include Mixins.landscape-grid;
+    }
+    @media screen and (orientation: portrait) {
+      //--|🟥| Hyperlink |🟥|--\\
+      @include Mixins.portrait-grid;
+    }
+  }
+  div[id='components-body'] {
+    //--|🟨|--\\
+    main[id*='components'] {
+      aside[class*='menu'],
+      aside[class*='time'],
+      aside[class*='table'],
+      aside[class*='aside'],
+      aside[class*='button'],
+      aside[class*='figure'],
+      aside[class*='article'],
+      aside[class*='section'],
+      aside[class*='division'],
+      aside[class*='navigation'] {
+        width: 100vw;
+        height: 100svh;
+        flex: 0 0 100vw;
+        min-width: 100vw;
+      }
+      @media screen and (orientation: landscape) {
+        //--|🟨| Archive |🟨|--\\
+        @include Mixins.landscape-grid;
+        aside[class*='time'],
+        aside[class*='table'],
+        aside[class*='figure'],
+        aside[class*='article'],
+        aside[class*='division'],
+        aside[class*='navigation'] {
+          @include Mixins.landscape-grid;
+        }
+        //--|===|--\\
+        aside[class*='button'] {
+          @include Mixins.layering-position;
+        }
+      }
+      @media screen and (orientation: portrait) {
+        //--|🟨| Archive |🟨|--\\
+        @include Mixins.portrait-grid;
+        aside[class*='time'],
+        aside[class*='table'],
+        aside[class*='figure'],
+        aside[class*='article'],
+        aside[class*='division'],
+        aside[class*='navigation'] {
+          @include Mixins.portrait-grid;
+        }
+        //--|===|--\\
+        aside[class*='button'] {
+          @include Mixins.layering-position;
+        }
+      }
+    }
   }
 }

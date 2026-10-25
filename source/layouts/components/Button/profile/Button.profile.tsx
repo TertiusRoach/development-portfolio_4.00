@@ -13,8 +13,8 @@ interface TheseProps {
   };
   style: {
     image: string;
-    size: '<h1>' | '<p>';
     shade: '~dark~' | '~light~';
+    size: '<h1>' | '<h4>' | '<p>';
     view: '-square-' | '-circle-';
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';

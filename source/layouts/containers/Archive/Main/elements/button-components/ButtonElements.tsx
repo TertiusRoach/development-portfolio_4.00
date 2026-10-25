@@ -28,10 +28,10 @@ function ButtonComponents({ info }: InfoProps) {
   return (
     <>
       <DefaultButton info={{ labelName: 'default' as string, pageName: pageName, blockName: blockName }} />
+      <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
+      <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} />
       {/* <CleanedButton info={{ labelName: 'cleaned' as string, pageName: pageName, blockName: blockName }} /> */}
       {/* <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} /> */}
-      <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
-      {/* <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} /> */}
     </>
   );
 }
@@ -43,7 +43,7 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
     <section className={`${labelName}-${blockName}`}>
       <DivisionCarousel
         cases={{
-          show: 1,
+          show: 3,
           axis: '[x]',
           call: ButtonComponents as React.ComponentType<InfoProps>,
         }}

@@ -4,7 +4,7 @@
 @mixin desktop-landscape {
   //--|🠊 <aside className="routing-button"> 🠈|--\\
   overflow-y: hidden;
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     display: grid;
     $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
     $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -222,15 +222,15 @@
         / 16px 1fr repeat(2, $tiny-desk) 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
   }
 }
 @mixin mobile-portrait {
   //--|🠊 <aside className="routing-button"> 🠈|--\\
   overflow-y: hidden;
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
     div {
@@ -543,9 +543,9 @@
       }
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
     /*
     display: grid;
     grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\

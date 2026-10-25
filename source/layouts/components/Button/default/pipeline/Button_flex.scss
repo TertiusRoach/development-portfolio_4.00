@@ -569,6 +569,38 @@
   @media screen and (max-aspect-ratio: 15.99/9) {
     @include desk-tablet-flex(); //--|🠈 Desktop Layout below 16:9 🠈|--\\
   }
+
+  div[class='text'],
+  div[class='icon'],
+  div[class='back'] {
+    p,
+    h6,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1,
+    img {
+      cursor: pointer;
+    }
+    canvas {
+      display: none;
+    }
+    &.text {
+      z-index: 3;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.icon {
+      z-index: 2;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.back {
+      z-index: 1;
+      overflow: hidden;
+    }
+  }
 }
 @mixin desk-tablet-flex {
   //--|🠋 Tablet (Flex) 🠋|--\\
@@ -1713,6 +1745,38 @@
 
   @media screen and (min-aspect-ratio: 9/15.99) {
     @include mobi-tablet-flex(); //--|🠈 Mobile Layout below 9:16 🠈|--\\
+  }
+
+  div[class='text'],
+  div[class='icon'],
+  div[class='back'] {
+    p,
+    h6,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1,
+    img {
+      cursor: pointer;
+    }
+    canvas {
+      display: none;
+    }
+    &.text {
+      z-index: 3;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.icon {
+      z-index: 2;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    &.back {
+      z-index: 1;
+      overflow: hidden;
+    }
   }
 }
 @mixin mobi-tablet-flex {

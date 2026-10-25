@@ -2,35 +2,75 @@
 @use '../../../../../../styles/Palettes.scss';
 
 @mixin desktop-landscape {
-  aside[class*='profile'] {
-    // height: inherit; //--|🠈 height: 100%; 🠈|--\\
-
-    //--|🠋 Desktop (Layers) 🠋|--\\
-    section[class*='foreground'] {
-      // background: rgba(darkgreen, 0.5);
-      h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
+  section[class*='main-fore'] {
+    @extend %desk-grid; //--|🠈 display: grid; 🠈|--\\
+    button[class*='one_dar'] {
+      grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    figure[class*='midground'] {
+  }
+  figure[class*='main-mid'] {
+  }
+  div[class*='main-back'] {
+  }
+  //--|===|--\\
+  %desk-grid {
+    display: grid;
+    //--|🠋 96px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) repeat(3, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px repeat(4, 1fr) 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      //--|🠋 64px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) repeat(3, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px repeat(4, 1fr) 32px; //--|🠈 columns 🠈|--\\
     }
-    div[class*='background'] {
+    @media screen and (max-height: 480px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) repeat(3, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px repeat(4, 1fr) 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) repeat(3, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px repeat(4, 1fr) 16px; //--|🠈 columns 🠈|--\\
     }
   }
 }
 @mixin mobile-portrait {
-  aside[class*='profile'] {
-    height: inherit; //--|🠈 height: 100%; 🠈|--\\
-
-    //--|🠋 Mobile (Layers) 🠋|--\\
-    section[class*='foreground'] {
+  section[class*='main-fore'] {
+    @extend %mobi-grid; //--|🠈 display: grid; 🠈|--\\
+  }
+  figure[class*='main-mid'] {
+  }
+  div[class*='main-back'] {
+  }
+  //--|===|--\\
+  %mobi-grid {
+    display: grid;
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      repeat(2, 6rem) repeat(4, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 64px repeat(3, 1fr) 64px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 768px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        repeat(2, 5rem) repeat(4, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--\\
     }
-    figure[class*='midground'] {
+    @media screen and (max-width: 480px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--\\
     }
-    div[class*='background'] {
+    @media screen and (max-width: 360px) {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px repeat(3, 1fr) 24px; //--|🠈 columns 🠈|--\\
     }
   }
 }

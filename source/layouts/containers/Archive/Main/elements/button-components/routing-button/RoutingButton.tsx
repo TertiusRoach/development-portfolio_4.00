@@ -40,7 +40,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
     case 'landscape':
       return (
         <aside className="routing-button">
-          <section className={`${info.blockName}-foreground`}>
+          <section className={`${blockName}-foreground`}>
             <MenuScroll
               //--|🠊 <menu class="routing-darkside-main_swipe-default"/> 🠈|--\\
               info={{
@@ -141,8 +141,8 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
             />
           </section>
-          <figure className={`${info.blockName}-midground`}></figure>
-          <div className={`${info.blockName}-background`}>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
             <section className="left-side"></section>
             <section className="right-side"></section>
           </div>
@@ -151,7 +151,7 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
     case 'portrait':
       return (
         <aside className="routing-button">
-          <section className={`${info.blockName}-foreground`}>
+          <section className={`${blockName}-foreground`}>
             <MenuScroll
               //--|🠊 <menu class="routing-darkside-main_scroll-default"/> 🠈|--\\
               info={{
@@ -252,67 +252,14 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
               }}
             />
           </section>
-          <figure className={`${info.blockName}-midground`}></figure>
-          <div className={`${info.blockName}-background`}>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>
             <section className="left-side"></section>
             <section className="right-side"></section>
           </div>
         </aside>
       );
   }
-  /*
-  let casesShow = 1 as number;
-  let casesPages = ['<h1>', '<h4>', '<p>'] as Array<string>;
-  return (
-    <aside className="routing-button">
-      <section className={`${blockName}-foreground`}>
-        <DivisionCarousel
-          //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
-          cases={{
-            axis: '[y]',
-            show: casesShow,
-            call: routingDark as React.ComponentType<InfoProps>,
-          }}
-          info={{
-            labelName: 'routing-darkside',
-            blockName: blockName as 'main',
-            pageName: pageName as 'components',
-          }}
-        />
-
-        <div
-          className="toggle-colors"
-          onClick={(event: React.MouseEvent<HTMLElement>): void => {
-            toggleColors(event.currentTarget as HTMLElement);
-          }}
-        >
-          <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-          <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-          <LabelToggle style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-        </div>
-
-        <DivisionCarousel
-          //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
-          cases={{
-            axis: '[y]',
-            show: casesShow,
-            call: routingLight as React.ComponentType<InfoProps>,
-          }}
-          info={{
-            labelName: 'routing-lightside',
-            blockName: blockName as 'main',
-            pageName: pageName as 'components',
-          }}
-        />
-      </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <section className="left-side"></section>
-        <section className="right-side"></section>
-      </div>
-    </aside>
-  );
-  */
 };
 function ButtonsDarkside({ info }: InfoProps) {
   return (

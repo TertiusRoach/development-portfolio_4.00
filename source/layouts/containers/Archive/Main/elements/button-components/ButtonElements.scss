@@ -31,11 +31,9 @@ section[class*='button-main'] {
           @include RoutingButton.mobile-portrait;
         }
         &[class*='profile'] {
-          display: none !important;
           @include ProfileButton.mobile-portrait;
         }
         &[class*='stretch'] {
-          display: none !important;
           @include StretchButton.mobile-portrait;
         }
       }
