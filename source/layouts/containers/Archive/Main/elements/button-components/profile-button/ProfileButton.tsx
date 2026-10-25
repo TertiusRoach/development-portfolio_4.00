@@ -46,7 +46,7 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
-            {/* <ButtonProfile
+            <ButtonProfile
               info={{ pageName: info.pageName, blockName: info.blockName }}
               style={{
                 size: '<h4>',
@@ -56,8 +56,8 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
                 type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
-            /> */}
-            {/* <ButtonProfile
+            />
+            <ButtonProfile
               info={{ pageName: info.pageName, blockName: info.blockName }}
               style={{
                 size: '<p>',
@@ -67,7 +67,7 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
                 type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
-            /> */}
+            />
 
             {/* <ButtonProfile
               info={{ pageName: info.pageName, blockName: info.blockName }}
@@ -116,14 +116,5 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
         </aside>
       );
   }
-  /*
-  return (
-    <section className={`${labelName}-${blockName}`}>
-      <section className={`${blockName}-foreground`}></section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
-    </section>
-  );
-  */
 };
 export default ProfileButton;

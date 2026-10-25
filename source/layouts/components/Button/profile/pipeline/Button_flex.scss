@@ -1,6 +1,24 @@
 //--|🠊 profile/pipeline/Button_flex.scss 🠈|--\\
 @mixin desktop-flex {
   //--|🠋 Desktop (Flex) 🠋|--\\
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  .fore,
+  .icon,
+  .back {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    &[class='icon'] img {
+      width: inherit;
+      height: inherit;
+    }
+  }
+
   /*
   & {
     div[class='icon'] {

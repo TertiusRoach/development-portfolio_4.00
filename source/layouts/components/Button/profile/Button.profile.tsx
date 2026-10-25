@@ -19,8 +19,7 @@ interface TheseProps {
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
   };
-  // square
-  // circle
+
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

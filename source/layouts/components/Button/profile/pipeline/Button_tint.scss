@@ -4,6 +4,17 @@
 
 @mixin desktop-tint {
   //--|🠋 Desktop (Tint) 🠋|--\\
+  .fore {
+    background: rgba(darkred, 0.25);
+  }
+
+  .icon {
+    background: rgba(darkgreen, 0.25);
+  }
+
+  .back {
+    background: rgba(darkblue, 0.25);
+  }
   /*
   @include mon-color();
   @include red-color();

@@ -4,8 +4,14 @@
 @mixin desktop-landscape {
   section[class*='main-fore'] {
     @extend %desk-grid; //--|🠈 display: grid; 🠈|--\\
-    button[class*='one_dar'] {
+    button[class*='one_squ_dar'] {
       grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_squ_dar'] {
+      grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_squ_dar'] {
+      grid-area: 5 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   figure[class*='main-mid'] {
