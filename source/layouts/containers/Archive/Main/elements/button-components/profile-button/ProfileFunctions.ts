@@ -1,5 +1,4 @@
 //--|🠊 profile-button/ProfileFunctions.ts 🠈|--\\
-
 //--|🠋 Functions 🠋|--\\
 export function toggleColors(section: HTMLElement): Promise<string> {
   const findTint = ([red, green, blue]: Array<boolean>): string => {
@@ -18,11 +17,12 @@ export function toggleColors(section: HTMLElement): Promise<string> {
     return tint;
   };
   const updateButtons = (color: string) => {
-    const wrapperButtons = document.querySelectorAll('#components-main .profile-button button[class*="profile-button"]') as NodeListOf<HTMLButtonElement>;
+    const wrapperButtons = document.querySelectorAll(
+      '#components-main .profile-button button[class*="profile-button"]',
+    ) as NodeListOf<HTMLButtonElement>;
 
     for (let i = 0; i < 12; i++) {
       let prevClass = wrapperButtons[i].classList[1] as string;
-
       let nextClass = `${wrapperButtons[i].classList[1].split('_')[0]}_${wrapperButtons[i].classList[1].split('_')[1]}_${wrapperButtons[i].classList[1].split('_')[2]}_${color}_${wrapperButtons[i].classList[1].split('_')[4]}`;
 
       wrapperButtons[i].classList.replace(prevClass, nextClass);
