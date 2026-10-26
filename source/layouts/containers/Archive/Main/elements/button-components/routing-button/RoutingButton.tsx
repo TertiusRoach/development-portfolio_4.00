@@ -22,7 +22,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const RoutingButton: React.FC<InfoProps> = ({ info }) => {
+function RoutingButton({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -260,8 +260,8 @@ const RoutingButton: React.FC<InfoProps> = ({ info }) => {
         </aside>
       );
   }
-};
-function ButtonsDarkside({ info }: InfoProps) {
+}
+const ButtonsDarkside = ({ info }: InfoProps) => {
   return (
     <>
       <ViewOne
@@ -287,8 +287,8 @@ function ButtonsDarkside({ info }: InfoProps) {
       />
     </>
   );
-}
-function ButtonsLightside({ info }: InfoProps) {
+};
+const ButtonsLightside = ({ info }: InfoProps) => {
   return (
     <>
       <ViewOne
@@ -314,7 +314,7 @@ function ButtonsLightside({ info }: InfoProps) {
       />
     </>
   );
-}
+};
 
 let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;

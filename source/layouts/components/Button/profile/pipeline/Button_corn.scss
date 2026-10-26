@@ -1,9 +1,7 @@
 //--|🠊 profile/pipeline/Button_corn.scss 🠈|--\\
 @mixin desktop-corn {
   //--|🠋 Desktop (Corners) 🠋|--\\
-  &[class*='one_'],
-  &[class*='fou_'],
-  &[class*='par_'] {
+  &[class*='_squ_'] {
     .fore,
     .icon,
     .back {
@@ -19,12 +17,17 @@
       }
     }
   }
+  &[class*='_cir_'] {
+    .fore,
+    .icon img,
+    .back span {
+      border-radius: 50%;
+    }
+  }
 }
 @mixin mobile-corn {
   //--|🠋 Mobile (Corners) 🠋|--\\
-  &[class*='one_'],
-  &[class*='fou_'],
-  &[class*='par_'] {
+  &[class*='_squ_'] {
     .fore,
     .icon,
     .back {
@@ -40,25 +43,57 @@
       }
     }
   }
+  &[class*='_cir_'] {
+    .fore,
+    .icon img,
+    .back span {
+      border-radius: 50%;
+    }
+  }
 }
 @mixin tablet-corn {
   //--|🠋 Tablet (Corners) 🠋|--\\
-  &[class*='one_'],
-  &[class*='fou_'],
-  &[class*='par_'] {
+  &[class*='_squ_'] {
+    @media screen and (orientation: landscape) {
+      .fore,
+      .icon,
+      .back {
+        //--|🠊 Desktop 🠈|--\\
+        border-radius: 8px;
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px;
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px;
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 3px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      .fore,
+      .icon,
+      .back {
+        //--|🠊 Mobile 🠈|--\\
+        border-radius: 8px;
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px;
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px;
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+  &[class*='_cir_'] {
     .fore,
-    .icon,
-    .back {
-      border-radius: 8px;
-      @media screen and (max-width: 1920px) {
-        border-radius: 6px;
-      }
-      @media screen and (max-width: 1366px) {
-        border-radius: 4px;
-      }
-      @media screen and (max-width: 854px) {
-        border-radius: 3px;
-      }
+    .icon img,
+    .back span {
+      border-radius: 50%;
     }
   }
 }

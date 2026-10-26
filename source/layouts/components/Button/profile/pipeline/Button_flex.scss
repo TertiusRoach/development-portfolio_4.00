@@ -13,14 +13,15 @@
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    &[class='icon'] img {
-      width: inherit;
-      height: inherit;
-    }
+    &[class='fore'] span,
     &[class='back'] span {
       width: 100%;
       height: 100%;
       display: flex;
+    }
+    &[class='icon'] img {
+      width: inherit;
+      height: inherit;
     }
   }
 }
