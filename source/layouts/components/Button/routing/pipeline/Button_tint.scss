@@ -13,14 +13,16 @@
   @include tur-tint();
   .fore {
     span {
-      transition: background 250ms ease-in-out;
+      transition: background 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
   }
   .mid {
-    transition: border-color 500ms ease-in-out;
+    transition:
+      border-color 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   .back {
-    transition: background 750ms ease-in-out;
+    transition: background 750ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   &:hover {
     @include mon-fade();
@@ -97,7 +99,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$gray-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -185,7 +186,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$red-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -273,7 +273,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$green-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -361,7 +360,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$blue-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -449,7 +447,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$yellow-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -537,7 +534,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$purple-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {
@@ -627,7 +623,6 @@
     }
     .mid {
       border-color: rgba(Palettes.$turquoise-dark, 0.75);
-      transition: border-color 750ms ease-in-out;
       filter: drop-shadow(0 0 8px rgba(black, 0.75));
     }
     .back {

@@ -6,7 +6,7 @@
 @use './pipeline/Button_corn.scss';
 
 button[class*='routing'] {
-  @include Button_grid.routing-grid();
+  @include Button_grid.routing-gridbox();
   @include Button_tint.routing-colors();
 
   @media screen and (orientation: landscape) {

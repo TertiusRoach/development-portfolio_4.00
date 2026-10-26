@@ -3,30 +3,33 @@
 @use './pipeline/Button_flex.scss';
 @use './pipeline/Button_size.scss';
 @use './pipeline/Button_tint.scss';
-@use './pipeline/Button_move.scss';
 @use './pipeline/Button_corn.scss';
 
 button[class*='default'] {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  background: none;
+  @include Button_tint.default-colors();
+  @include Button_grid.default-gridbox();
+  @include Button_flex.default-flexbox();
+
   @media screen and (orientation: landscape) {
-    //--|🠋 <DefaultButton> for [DesktopLandscape] 🠈|--\\
+    //--|🠊 <DefaultButton> for [DesktopLandscape] 🠈|--\\
     @include Button_size.desktop-size();
     @include Button_grid.desktop-grid();
     @include Button_flex.desktop-flex();
-    @include Button_tint.desktop-tint();
-    @include Button_move.desktop-move();
     @include Button_corn.desktop-corn();
   }
   @media screen and (orientation: portrait) {
-    //--|🠋 <DefaultButton> for [MobilePortrait] 🠈|--\\
+    //--|🠊 <DefaultButton> for [MobilePortrait] 🠈|--\\
     @include Button_size.mobile-size();
     @include Button_grid.mobile-grid();
     @include Button_flex.mobile-flex();
-    @include Button_tint.mobile-tint();
-    @include Button_move.mobile-move();
     @include Button_corn.mobile-corn();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    //--|🠊 <DefaultButton> for [TabletSquaring] 🠈|--\\
+    @include Button_size.tablet-size();
+    @include Button_grid.tablet-grid();
+    @include Button_flex.tablet-flex();
+    @include Button_corn.tablet-corn();
   }
 }
