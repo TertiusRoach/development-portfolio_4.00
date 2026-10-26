@@ -7,6 +7,7 @@ import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle'
 import ButtonProfile from '../../../../../../components/Button/profile/Button.profile';
 
 //--|🠋 Functions 🠋|--\\
+import { toggleColors } from './ProfileFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
@@ -106,7 +107,7 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
             <div
               className="toggle-colors"
               onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                // toggleColors(event.currentTarget as HTMLElement);
+                toggleColors(event.currentTarget as HTMLElement);
               }}
             >
               <LabelToggle
