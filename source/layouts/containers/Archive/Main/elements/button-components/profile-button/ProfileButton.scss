@@ -5,26 +5,6 @@
   section[class*='main-fore'] {
     @extend %desk-grid; //--|🠈 display: grid; 🠈|--\\
 
-    button[class*='one_squ_dar'] {
-      grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='fou_squ_dar'] {
-      grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='par_squ_dar'] {
-      grid-area: 5 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-
-    button[class*='one_cir_dar'] {
-      grid-area: 2 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='fou_cir_dar'] {
-      grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='par_cir_dar'] {
-      grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-
     div[class*='colors'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 2 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -54,26 +34,6 @@
       @media screen and (max-height: 360px) {
         margin: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
-    }
-
-    button[class*='one_squ_lig'] {
-      grid-area: 2 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='fou_squ_lig'] {
-      grid-area: 4 / 5 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='par_squ_lig'] {
-      grid-area: 5 / 5 / 7 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-
-    button[class*='one_cir_lig'] {
-      grid-area: 2 / 6 / 4 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='fou_cir_lig'] {
-      grid-area: 4 / 6 / 5 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-    }
-    button[class*='par_cir_lig'] {
-      grid-area: 5 / 6 / 7 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   figure[class*='main-mid'] {
@@ -108,6 +68,46 @@
       grid-template: //--|🠋 Width: 640px 🠋|--\\
         repeat(2, 1.5rem) repeat(3, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
         / 16px repeat(2, 1fr) $tiny-desk repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
+    }
+
+    //--| Dark Side |--\\
+    button[class*='one_squ_dar'] {
+      grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_squ_dar'] {
+      grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_squ_dar'] {
+      grid-area: 5 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='one_cir_dar'] {
+      grid-area: 2 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_cir_dar'] {
+      grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_cir_dar'] {
+      grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    //--| Light Side |--\\
+    button[class*='one_squ_lig'] {
+      grid-area: 2 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_squ_lig'] {
+      grid-area: 4 / 5 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_squ_lig'] {
+      grid-area: 5 / 5 / 7 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='one_cir_lig'] {
+      grid-area: 2 / 6 / 4 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_cir_lig'] {
+      grid-area: 4 / 6 / 5 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_cir_lig'] {
+      grid-area: 5 / 6 / 7 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
 }
