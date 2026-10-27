@@ -20,7 +20,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const ProfileButton: React.FC<InfoProps> = ({ info }) => {
+function ProfileButton({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
@@ -198,11 +198,165 @@ const ProfileButton: React.FC<InfoProps> = ({ info }) => {
     case 'portrait':
       return (
         <aside className="profile-button">
-          <section className={`${blockName}-foreground`}></section>
+          <section className={`${blockName}-foreground`}>
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h1>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h4>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<p>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h1>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h4>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<p>',
+                color: '(mono)',
+                shade: '~light~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+
+            <div
+              className="toggle-colors"
+              onClick={(event: React.MouseEvent<HTMLElement>): void => {
+                toggleColors(event.currentTarget as HTMLElement);
+              }}
+            >
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+              <LabelToggle
+                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
+                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+              />
+            </div>
+
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h1>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h4>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<p>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-square-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h1>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<h4>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+            <ButtonProfile
+              info={{ pageName: info.pageName, blockName: info.blockName }}
+              style={{
+                size: '<p>',
+                color: '(mono)',
+                shade: '~dark~',
+                view: '-circle-',
+                type: '{button}',
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+              }}
+            />
+          </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>
         </aside>
       );
   }
-};
+}
 export default ProfileButton;

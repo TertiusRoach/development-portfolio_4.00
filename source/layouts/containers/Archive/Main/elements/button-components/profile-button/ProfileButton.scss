@@ -3,27 +3,23 @@
 
 @mixin desktop-landscape {
   section[class*='main-fore'] {
-    @extend %desk-grid; //--|🠈 display: grid; 🠈|--\\
+    @extend %desk-flex;
+    @extend %desk-grid;
+  }
+  figure[class*='main-mid'] {
+  }
+  div[class*='main-back'] {
+  }
+  //--|===|--\\
+  $high-desk: 128px; //--|🠈 8rem for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 6rem for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 4rem for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 3rem for Squares 🠈|--\\
 
+  %desk-flex {
+    //--|🠊 display: grid; 🠈|--\\
     div[class*='colors'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      grid-area: 2 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(3, 1fr) / 1fr; //--|🠈 rows / cols 🠈|--\\
-      label:nth-child(1) {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(2) {
-        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(3) {
-        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-
-      $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
-      $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
-      $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
-      $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
-
+      //--|🠊 display: grid; 🠈|--\\
       margin: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
       @media screen and (max-height: 768px) {
         margin: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
@@ -36,38 +32,29 @@
       }
     }
   }
-  figure[class*='main-mid'] {
-  }
-  div[class*='main-back'] {
-  }
-  //--|===|--\\
-  $high-desk: calc(128px * 2); //--|🠈 128px for Squares 🠈|--\\
-  $test-desk: calc(96px * 2); //--|🠈 96px for Squares 🠈|--\\
-  $misc-desk: calc(64px * 2); //--|🠈 64px for Squares 🠈|--\\
-  $tiny-desk: calc(48px * 2); //--|🠈 48px for Squares 🠈|--\\
   %desk-grid {
     display: grid;
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
       repeat(2, 4rem) repeat(3, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
-      / 48px repeat(2, 1fr) $high-desk repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+      / 48px repeat(2, 1fr) calc($high-desk * 2) repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 64px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
         repeat(2, 3rem) repeat(3, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px repeat(2, 1fr) $test-desk repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+        / 32px repeat(2, 1fr) calc($test-desk * 2) repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠋 48px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 854px 🠋|--\\
         repeat(2, 2rem) repeat(3, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px repeat(2, 1fr) $misc-desk repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+        / 24px repeat(2, 1fr) calc($misc-desk * 2) repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠋 32px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 640px 🠋|--\\
         repeat(2, 1.5rem) repeat(3, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-        / 16px repeat(2, 1fr) $tiny-desk repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
+        / 16px repeat(2, 1fr) calc($tiny-desk * 2) repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
     }
 
     //--| Dark Side |--\\
@@ -88,6 +75,21 @@
     }
     button[class*='par_cir_dar'] {
       grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    div[class*='colors'] {
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 2 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-template: repeat(3, 1fr) / 1fr; //--|🠈 rows / cols 🠈|--\\
+      label:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(2) {
+        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(3) {
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
     }
 
     //--| Light Side |--\\
@@ -113,6 +115,7 @@
 }
 @mixin mobile-portrait {
   section[class*='main-fore'] {
+    @extend %mobi-flex;
     @extend %mobi-grid; //--|🠈 display: grid; 🠈|--\\
   }
   figure[class*='main-mid'] {
@@ -120,29 +123,141 @@
   div[class*='main-back'] {
   }
   //--|===|--\\
+  $high-mobi: 192px; //--|🠈 12rem for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 10rem for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 6rem for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 4rem for Squares 🠈|--\\
+  %mobi-flex {
+    //--|🠊 display: grid; 🠈|--\\
+    div[class*='colors'] {
+      //--|🠊 display: grid; 🠈|--\\
+      margin: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+      @media screen and (max-width: 768px) {
+        margin: 0 48px; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+      }
+      @media screen and (max-width: 480px) {
+        margin: 0 32px; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        margin: 0 24px; //--|🠈 24px (Left & Right) for Design 🠈|--\\
+      }
+    }
+  }
   %mobi-grid {
     display: grid;
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
-      repeat(2, 6rem) repeat(4, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      6rem repeat(2, 1fr) $high-mobi repeat(2, 1fr) 6rem //--|🠈 rows 🠈|--//
       / 64px repeat(3, 1fr) 64px; //--|🠈 columns 🠈|--\\
     @media screen and (max-width: 768px) {
       //--|🠊 48px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
-        repeat(2, 5rem) repeat(4, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        5rem repeat(2, 1fr) $test-mobi repeat(2, 1fr) 5rem //--|🠈 rows 🠈|--//
         / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 480px) {
       //--|🠊 32px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 854px 🠋|--\\
-        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        3rem repeat(2, 1fr) $misc-mobi repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--//
         / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 360px) {
       //--|🠊 24px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 640px 🠋|--\\
-        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        2rem repeat(2, 1fr) $tiny-mobi repeat(2, 1fr) 2rem //--|🠈 rows 🠈|--//
         / 24px repeat(3, 1fr) 24px; //--|🠈 columns 🠈|--\\
     }
+
+    //--| Dark Side |--\\
+    button[class*='one_squ_lig'] {
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_squ_lig'] {
+      grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_squ_lig'] {
+      grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='one_cir_lig'] {
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_cir_lig'] {
+      grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_cir_lig'] {
+      grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    div[class*='colors'] {
+      z-index: 1;
+      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      label:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(2) {
+        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      label:nth-child(3) {
+        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+
+    button[class*='one_squ_dar'] {
+      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_squ_dar'] {
+      grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_squ_dar'] {
+      grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='one_cir_dar'] {
+      grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='fou_cir_dar'] {
+      grid-area: 6 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    button[class*='par_cir_dar'] {
+      grid-area: 6 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    /*
+    div[class*='routing'] {
+      //--|🠊 display: flex; 🠈|--\\
+      &[class*='side-main'] {
+        flex-direction: column;
+      }
+      &[class*='container'] {
+        section[class*='routing-main'] {
+          display: grid;
+          height: 100svh;
+        }
+      }
+    }
+
+    menu {
+      z-index: 2;
+      &[class*='darkside'] {
+        grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        grid-area: 6 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+    }
+    div[class*='carousel'] {
+      z-index: 0;
+      overflow: hidden;
+      grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      &[class*='darkside'] {
+        //--|🠊 background: rgba(black, 0.25); 🠈|--\\
+        clip-path: inset(0 0 50% 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      }
+      &[class*='lightside'] {
+        //--|🠊 background: rgba(white, 0.25); 🠈|--\\
+        clip-path: inset(50% 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
+      }
+    }
+    */
   }
 }

@@ -261,6 +261,7 @@ function RoutingButton({ info }: InfoProps) {
       );
   }
 }
+//--|===|--\\
 const ButtonsDarkside = ({ info }: InfoProps) => {
   return (
     <>
@@ -315,7 +316,7 @@ const ButtonsLightside = ({ info }: InfoProps) => {
     </>
   );
 };
-
+//--|===|--\\
 let ViewOne = ({ info }: InfoProps) => {
   const shade: string = info.labelName;
   switch (true) {
