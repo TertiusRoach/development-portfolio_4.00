@@ -619,7 +619,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin mobile-grid {
   //--|🠋 Mobile (Grid) 🠋|--\\
   &[class*='_top_'] {
@@ -1153,7 +1152,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin tablet-grid {
   //--|🠋 Tablet (Grid) 🠋|--\\
   @media screen and (orientation: landscape) {

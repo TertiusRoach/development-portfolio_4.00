@@ -14,16 +14,19 @@
   @include yel-tint();
   @include pur-tint();
   @include tur-tint();
-
   //--|🠋 Crossfade Layers 🠋|--\\
-  //--|🠊 Why: A browser can't fade one gradient into another, it snaps. It can fade opacity. 🠈|--\\
-  //--|🠊 How: ::before holds the resting gradient, ::after the hovered one (Set in *-tint). 🠈|--\\
-  //--|🠊 How: On hover ::before fades out while ::after fades in, so the gradients blend. 🠈|--\\
-  //--|🠊 Fix: Both layers need a background, one layer alone stacks both gradients at the end. 🠈|--\\
-  //--|🠊 Note: Inset shadows live on the layers too, a layer would otherwise cover the element's own inset shadow. 🠈|--\\
   .text,
   .icon,
   .back {
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the hovered one (Set in *-tint). How: On hover ::before
+      fades out while ::after fades in, so the gradients blend.
+      Fix: Both layers need a background, one layer alone stacks both
+      gradients at the end. Note: Inset shadows live on the layers too,
+      a layer would otherwise cover the element's own inset shadow.
+    🠉|--*/
     position: relative; //--|🠈 Anchors the layers, no offsets so the grid stays the same 🠈|--\\
     &::before,
     &::after {
@@ -104,13 +107,15 @@
     }
   }
 
-  //--|🠊 Glitch Prevention: Disabled, transform never changes & GPU layers on every <button> cost memory 🠈|--\\
-  //--|🠊 Re-enable if a flicker or 1px wobble shows up at the end of a hover 🠈|--\\
-  //--|🠊 transform: translateZ(0); 🠈|--\\
-  //--|🠊 backface-visibility: hidden; 🠈|--\\
-  //--|🠊 will-change: transform, filter; 🠈|--\\
-
   &:hover {
+    /*--|🠋
+    Glitch Prevention: Disabled, transform never changes & GPU layers
+    on every <button> cost memory
+    Re-enable if a flicker or 1px wobble shows up at the end of a hover
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    🠉|-- */
     .text,
     .icon,
     .back {

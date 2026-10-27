@@ -122,7 +122,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
   div[class='text'] {
@@ -246,7 +245,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin tablet-size {
   //--|🠋 Tablet (Size) 🠋|--\\
   @media screen and (orientation: landscape) {

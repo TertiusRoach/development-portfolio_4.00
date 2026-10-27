@@ -598,7 +598,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin mobile-flex {
   //--|🠋 Mobile (Flex) 🠋|--\\
   &[class*='_top_'],
@@ -1183,7 +1182,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin tablet-flex {
   //--|🠋 Tablet (Flex) 🠋|--\\
   @media screen and (orientation: landscape) {

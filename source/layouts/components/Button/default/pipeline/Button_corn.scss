@@ -153,7 +153,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin mobile-corn {
   //--|🠋 Mobile (Corners) 🠋|--\\
   &[class*='_lef_'] {
@@ -308,7 +307,6 @@
     }
   }
 }
-//--|===|--\\
 @mixin tablet-corn {
   //--|🠋 Tablet (Corners) 🠋|--\\
   @media screen and (orientation: landscape) {
