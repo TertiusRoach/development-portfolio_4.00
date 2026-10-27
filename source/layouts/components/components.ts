@@ -1,4 +1,4 @@
-//--|🠊 source/layouts/components/functions.ts 🠈|--\\
+//--|🠊 source/layouts/components/components.ts 🠈|--\\
 import { stripBrackets } from '../../scripts';
 
 //--|🠋 Abbreviations 🠋|--\\

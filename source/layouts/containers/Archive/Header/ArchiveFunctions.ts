@@ -1,4 +1,4 @@
-//--|🠊 Header/ComponentsFunctions.ts 🠈|--\\
+//--|🠊 Header/ArchiveFunctions.ts 🠈|--\\
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Header';
 export function unfoldHeaders(thisItem: HTMLElement) {

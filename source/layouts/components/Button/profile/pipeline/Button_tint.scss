@@ -15,9 +15,6 @@
   .fore {
     transition: border-color 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .icon {
-    transition: filter 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
   .back {
     span {
       transition: background 750ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -45,17 +42,13 @@
     div[class='fore'] {
       border-color: Palettes.$gray-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
       }
     }
   }
@@ -63,17 +56,13 @@
     div[class='fore'] {
       border-color: Palettes.$gray-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -84,9 +73,6 @@
     .fore {
       border-color: Palettes.$gray-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$gray-medium, 1);
@@ -96,9 +82,6 @@
   &[class*='lig_mon']:hover {
     .fore {
       border-color: Palettes.$gray-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -118,17 +101,13 @@
     div[class='fore'] {
       border-color: Palettes.$red-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
       }
     }
   }
@@ -136,17 +115,13 @@
     div[class='fore'] {
       border-color: Palettes.$red-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -157,9 +132,6 @@
     .fore {
       border-color: Palettes.$red-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$red-medium, 1);
@@ -169,9 +141,6 @@
   &[class*='lig_red']:hover {
     .fore {
       border-color: Palettes.$red-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -191,17 +160,13 @@
     div[class='fore'] {
       border-color: Palettes.$green-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
       }
     }
   }
@@ -209,17 +174,13 @@
     div[class='fore'] {
       border-color: Palettes.$green-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -230,9 +191,6 @@
     .fore {
       border-color: Palettes.$green-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$green-medium, 1);
@@ -242,9 +200,6 @@
   &[class*='lig_gre']:hover {
     .fore {
       border-color: Palettes.$green-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -264,17 +219,13 @@
     div[class='fore'] {
       border-color: Palettes.$blue-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
       }
     }
   }
@@ -282,17 +233,13 @@
     div[class='fore'] {
       border-color: Palettes.$blue-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -303,9 +250,6 @@
     .fore {
       border-color: Palettes.$blue-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$blue-medium, 1);
@@ -315,9 +259,6 @@
   &[class*='lig_blu']:hover {
     .fore {
       border-color: Palettes.$blue-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -337,17 +278,13 @@
     div[class='fore'] {
       border-color: Palettes.$yellow-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
       }
     }
   }
@@ -355,17 +292,13 @@
     div[class='fore'] {
       border-color: Palettes.$yellow-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -376,9 +309,6 @@
     .fore {
       border-color: Palettes.$yellow-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$yellow-medium, 1);
@@ -388,9 +318,6 @@
   &[class*='lig_yel']:hover {
     .fore {
       border-color: Palettes.$yellow-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -410,17 +337,13 @@
     div[class='fore'] {
       border-color: Palettes.$purple-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
       }
     }
   }
@@ -428,17 +351,13 @@
     div[class='fore'] {
       border-color: Palettes.$purple-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -449,9 +368,6 @@
     .fore {
       border-color: Palettes.$purple-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$purple-medium, 1);
@@ -461,9 +377,6 @@
   &[class*='lig_pur']:hover {
     .fore {
       border-color: Palettes.$purple-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {
@@ -483,9 +396,6 @@
     div[class='fore'] {
       border-color: Palettes.$turquoise-dark;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 16px rgba(white, 0.25));
-    }
     div[class='back'] {
       span {
         background:
@@ -493,8 +403,7 @@
         box-shadow:
           inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
           inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18),
-          0 12px 26px rgba(#000, 0.28);
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
       }
     }
   }
@@ -502,17 +411,13 @@
     div[class='fore'] {
       border-color: Palettes.$turquoise-light;
     }
-    div[class='icon'] {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     div[class='back'] {
       span {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
           inset 0 1px 0 rgba(#fff, 0.22),
           inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1),
-          0 10px 22px rgba(#000, 0.18);
+          inset 0 0 0 1px rgba(#000, 0.1);
       }
     }
   }
@@ -523,9 +428,6 @@
     .fore {
       border-color: Palettes.$turquoise-light;
     }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(black, 0.75));
-    }
     .back {
       span {
         background: rgba(Palettes.$turquoise-medium, 1);
@@ -535,9 +437,6 @@
   &[class*='lig_tur']:hover {
     .fore {
       border-color: Palettes.$turquoise-dark;
-    }
-    .icon {
-      filter: drop-shadow(0 0 8px rgba(white, 0.75));
     }
     .back {
       span {

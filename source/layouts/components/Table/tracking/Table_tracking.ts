@@ -1,4 +1,4 @@
-//--|🠊 Table_track-week.ts 🠈|--\\
+//--|🠊 Table_tracking.ts 🠈|--\\
 export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   // (1) Query safely: allow null
   const tableWeek = document.querySelector('#overtime-main .tracking-main') as HTMLTableElement | null;

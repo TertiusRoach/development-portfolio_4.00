@@ -1,4 +1,4 @@
-//--|🠊 Form_verify.ts 🠈|--//
+//--|🠊 Form_reset.ts 🠈|--//
 export function defineButton(
   button: 'close' | 'reset' | 'observe' | 'generate',
   info: { blockName: string; pageName: string }

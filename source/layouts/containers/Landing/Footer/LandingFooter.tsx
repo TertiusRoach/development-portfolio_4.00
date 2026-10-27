@@ -1,4 +1,4 @@
-//--|🠊 LandingMain.tsx 🠈|--//
+//--|🠊 LandingFooter.tsx 🠈|--//
 //--|🠋 Dependencies 🠋|--//
 import React, { useState, useEffect } from 'react';
 

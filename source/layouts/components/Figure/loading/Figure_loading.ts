@@ -1,4 +1,4 @@
-//--|🠊 Navigation_characters.ts 🠈|--\\
+//--|🠊 Figure_loading.ts 🠈|--\\
 
 export function viewDisplay() {
   //--|🠊 Check if the window exists. 🠈|--\\
