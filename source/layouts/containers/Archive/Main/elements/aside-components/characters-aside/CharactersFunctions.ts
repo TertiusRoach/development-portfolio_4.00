@@ -48,7 +48,7 @@ let updateAside = (color: string) => {
     let button = buttonElements[i] as HTMLButtonElement;
 
     let prevClass = button.classList[1] as string;
-    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}_${prevClass.split('_').pop()}` as string;
+    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${prevClass.split('_')[2]}_${color}_${prevClass.split('_').pop()}` as string;
 
     buttonElements[i].classList.replace(prevClass, nextClass);
   }
