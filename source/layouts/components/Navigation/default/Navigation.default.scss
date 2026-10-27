@@ -1,4 +1,153 @@
 //--|🠊 Navigation.default.scss 🠈|--\\
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Navigation) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      8rem 1fr 8rem //--|🠈 rows 🠈|--//
+      / 8rem 1fr 8rem; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 1920px) {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        6rem 1fr 6rem //--|🠈 rows 🠈|--//
+        / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 1366px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        4rem 1fr 4rem //--|🠈 rows 🠈|--//
+        / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 854px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        3rem 1fr 3rem //--|🠈 rows 🠈|--//
+        / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+    }
+    ol[class*='hori-X'] {
+      //--|🠊 96px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        8rem 1fr 8rem //--|🠈 rows 🠈|--//
+        / repeat(2, 8rem) 1fr repeat(2, 8rem); //--|🠈 columns 🠈|--\\
+      @media screen and (max-width: 1920px) {
+        //--|🠊 64px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          6rem 1fr 6rem //--|🠈 rows 🠈|--//
+          / repeat(2, 6rem) 1fr repeat(2, 6rem); //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          4rem 1fr 4rem //--|🠈 rows 🠈|--//
+          / repeat(2, 4rem) 1fr repeat(2, 4rem); //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          3rem 1fr 3rem //--|🠈 rows 🠈|--//
+          / repeat(2, 3rem) 1fr repeat(2, 3rem); //--|🠈 columns 🠈|--\\
+      }
+    }
+    ul[class*='vert-Y'] {
+      //--|🠊 96px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        repeat(2, 8rem) 1fr repeat(2, 8rem) //--|🠈 rows 🠈|--//
+        / 8rem 1fr 8rem; //--|🠈 columns 🠈|--\\
+      @media screen and (max-width: 1920px) {
+        //--|🠊 64px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+          / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+          / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+          / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+      }
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      12rem 1fr 12rem //--|🠈 rows 🠈|--//
+      / 12rem 1fr 12rem; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 1920px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        10rem 1fr 10rem //--|🠈 rows 🠈|--//
+        / 10rem 1fr 10rem; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 1366px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        6rem 1fr 6rem //--|🠈 rows 🠈|--//
+        / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 854px) {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        4rem 1fr 4rem //--|🠈 rows 🠈|--//
+        / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+    }
+    ol[class*='hori-X'] {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1920px 🠋|--\\
+        repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
+        / 12rem 1fr 12rem; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 1920px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 1366px 🠋|--\\
+          repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--//
+          / 10rem 1fr 10rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 854px 🠋|--\\
+          repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+          / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        //--|🠊 24px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 640px 🠋|--\\
+          repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+          / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+      }
+    }
+    ul[class*='vert-Y'] {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1920px 🠋|--\\
+        repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
+        / 12rem 1fr 12rem; //--|🠈 columns 🠈|--\\
+      @media screen and (max-height: 1920px) {
+        //--|🠊 48px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 1366px 🠋|--\\
+          repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--//
+          / 10rem 1fr 10rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        //--|🠊 32px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 854px 🠋|--\\
+          repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+          / 6rem 1fr 6rem; //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        //--|🠊 24px (Left & Right) for Design 🠈|--\\
+        grid-template: //--|🠋 Height: 640px 🠋|--\\
+          repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+          / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+      }
+    }
+  }
+}
 nav[class*='default'] {
   @media screen and (orientation: landscape) {
     display: grid;
@@ -188,5 +337,9 @@ nav[class*='default'] {
         grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
   }
 }
