@@ -294,7 +294,69 @@ components/Button/default/
     └── Button_corn.scss        # Corner radii
 ```
 
-Each pipeline file exports a `desktop-*` and a `mobile-*` mixin. The component's `.scss` file includes them under `(orientation: landscape)` and `(orientation: portrait)` respectively.
+Each pipeline file exports a `desktop-*`, a `mobile-*` and a `tablet-*` mixin. The component's `.scss` file includes them as described in [Scaling Pattern](#scaling-pattern).
+
+## Scaling Pattern
+
+> **Rule:** every component scales through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so it fits every screen size. Readability and maintainability come before fewer lines. Repeating values is fine; clever shortcuts are not.
+
+| Mixin              | Applied under                                                    | Breakpoints                                                                  |
+| ------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `desktop-landscape` | `(orientation: landscape)`                                      | `max-height`: 768px · 480px · 360px                                          |
+| `mobile-portrait`   | `(orientation: portrait)`                                       | `max-width`: 768px · 480px · 360px                                           |
+| `tablet-squaring`   | `(max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99)`   | Landscape `max-width` / Portrait `max-height`: 1920px · 1366px · 854px       |
+
+Near-square screens (tablets, split windows) do not fit the desktop or mobile breakpoints well, so `tablet-squaring` measures the long side instead and steps down one size earlier. It reuses the exact values from the other two mixins, which are measured against the `styles/Mixins.scss` skeleton. It is included last, so it overrides both orientations.
+
+The component's root selector includes all three:
+
+```scss
+aside[class*='characters-default'] {
+  display: grid;
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}
+```
+
+Inside each mixin, styles are grouped into `flex`, `grid` and `tint` placeholders (`%desk-*`, `%mobi-*`, `%tabl-*`). Each tablet placeholder splits into a Desktop and a Mobile branch:
+
+```scss
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Characters) 🠋|--\\
+  %tabl-flex {
+    @at-root aside[class*='characters-default'] {
+      @media screen and (orientation: landscape) {
+        //--|🠊 Desktop 🠈|--\\
+        @media screen and (max-width: 1920px) {}
+        @media screen and (max-width: 1366px) {}
+        @media screen and (max-width: 854px) {}
+      }
+      @media screen and (orientation: portrait) {
+        //--|🠊 Mobile 🠈|--\\
+        @media screen and (max-height: 1920px) {}
+        @media screen and (max-height: 1366px) {}
+        @media screen and (max-height: 854px) {}
+      }
+    }
+  }
+  %tabl-grid { /* same shape */ }
+  %tabl-tint { /* same shape */ }
+  //--|===|--\\
+  @extend %tabl-flex;
+  @extend %tabl-grid;
+  @extend %tabl-tint;
+}
+```
+
+Components with a `pipeline/` folder follow the same rule per file: `Button_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`, and `Button.profile.scss` includes them in the same three blocks.
 
 ## Bracket Syntax
 
