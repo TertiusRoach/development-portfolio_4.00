@@ -1,78 +1,122 @@
-# [Containers](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/layouts/CONTAINERS.md)
+# Containers
 
-## Uses `pageName` as its identifier.
+Every application page is built from the same six containers. Each one has one job, and it does that same job in every app, so muscle memory carries over: the left bar is always where you act, the footer always where you're told what happened. Memorisation and habits are critical, for the user and for development.
 
-Layouts is the folder that contains all my front-end based code. To separate concerns, this project employs a strategy by tagging all the main blocks with the following criteria `<element class="${labelName}-${blockName}">`. It's refined to orchestrate user attention and establish a clear hierarchy where the entry point resides in **source/pages/** and calls the structure from the **source/layout/containers/** folder. The layout will relate to the roleName which will be applied as a className to the parent container labelled `<div class id="${pageName}-body" class="${roleName} active/asleep">`. The criteria that affects the user experience will be based on those factors. Memorization and habits are critical when it comes to the user experience and development flow. This means that each block needs to have a guiding principle.
-
-1. **Initial entry layer:** `<section id="${pageName}-overlay">`
-
-> This is the first view a user encounters. It’s used to select which page/module to preview in the demo before entering the main experience.
-
-2. **Primary workspace:** `<main id="${pageName}-main">`
-
-> This is the main view shown after the overlay. It renders the selected page and updates its criteria/state based on the dataset and the user’s interactions
-
-3. **Action and guidance panel:** `<aside id="${pageName}-leftbar">`
-
-> A supporting container that presents the required actions, steps, or controls a user needs in order to use the software effectively.
-
-4. **Context and loop reinforcement panel:** `<aside id="${pageName}-rightbar">`
-
-> A companion container that mirrors the left bar’s supporting role, but focuses on connecting the user’s actions to the application’s goal/feedback loop (status, outcomes, next steps, etc.).
-
-5. **Controls and configuration surface:** `<header id="${pageName}-header">`
-
-> Contains page-level settings and feature toggles that let the user customize behavior and adjust how the page operates.
-
-6. **Status and guidance messaging:** `<footer id="${pageName}-footer">`
-
-> Reserved for short, end-of-action messages shown after the user logs or completes something. It provides confirmation, status updates, and next-step guidance (e.g., success/error states, reminders, or brief instructions) without interrupting the primary workflow.
+Which page a user sees is decided by their toggle, as mapped in [TOGGLES.md](TOGGLES.md). What they're allowed to do inside it is decided by [GUIDELINES.md](GUIDELINES.md).
 
 ---
 
-# [Overtime](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/track-a-day.pdf)
+## Naming
 
-## 🏢 Established or 🧭 Freelancing
+Three names build every ID and class:
 
-### Uniform Containers
+| Name        | Identifies             | Example                  | Becomes                       |
+| ----------- | ---------------------- | ------------------------ | ----------------------------- |
+| `pageName`  | The application        | `[overtime]`             | `<div id="overtime-body">`    |
+| `blockName` | The container          | `<leftbar>`              | `<aside id="overtime-leftbar">` |
+| `labelName` | The role-specific view | `(clocking)`             | `class="clocking-leftbar"`    |
+
+The container's class is always `${labelName}-${blockName}`, followed by its current state (for example `class="clocking-leftbar expanded"`). The page's body carries the role as a class too: `<div id="${pageName}-body" class="${roleName} active">`.
+
+Each page lives in `source/layouts/containers/${PageName}/`, where `${PageName}.tsx` lazy-loads the six blocks. Every container is still labelled `(default)` in the code; the labels on this page are the plan they're being built towards.
+
+---
+
+## The Six Containers
+
+1. **Entry layer:** `<section id="${pageName}-overlay">`
+
+   > The first thing a user sees. It's where they pick which page or role to preview before entering the main experience, and where focused flows (like logging a ticket) appear on top of everything else.
+
+2. **Primary workspace:** `<main id="${pageName}-main">`
+
+   > The main view after the overlay. It renders the selected page and updates with the dataset and the user's actions.
+
+3. **Action and guidance panel:** `<aside id="${pageName}-leftbar">`
+
+   > Presents the actions, steps and controls a user needs to use the software effectively.
+
+4. **Context and feedback panel:** `<aside id="${pageName}-rightbar">`
+
+   > Mirrors the left bar, but connects the user's actions to the application's goal: status, outcomes and what comes next.
+
+5. **Controls and configuration:** `<header id="${pageName}-header">`
+
+   > Page-level settings and feature toggles that let the user shape how the page behaves.
+
+6. **Status messages:** `<footer id="${pageName}-footer">`
+
+   > Short messages shown after the user logs or completes something: confirmations, status updates and next steps, without interrupting the work.
+
+---
+
+## Shared by Every App
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<div class="default-body">`        | **.active** or **.asleep**      |
 | `<section class="default-overlay">` | **.highlight** or **.downplay** |
+
+| Container                          | States                                           |
+| ---------------------------------- | ------------------------------------------------ |
+| `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
+
+> **Messages.** One short line after you act, then it gets out of the way. Clocked in, request sent, link saved. It never stacks up a pile of popups.
+
+The tables below list each app's own containers. `<main>` has no state toggles; the side bars switch between **.expanded** and **.collapsed**; the header also has **.unfolded**.
+
+---
+
+## Track a Day
+
+_Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../assets/pdf-files/archive-documents/logical-structure/track-a-day.pdf)_
 
 ### Established
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<main class="approve-main">`        | No state toggles                                 |
-| `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
-| `<aside class="request-rightbar">`   | **.expanded** or **.collapsed**                  |
-| `<header class="clockboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
+
+> **Your day.** One clock-in, one clock-out, and everything that's still waiting for approval. Hours past your workday go to your HoD as overtime. Nothing slips through unseen.
 
 ### Freelancing
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<main class="report-main">`         | No state toggles                                 |
+
+> **Your solutions.** Every job you've delivered, with the price you agreed before you started. Add the time you were there, pick the company, and the invoice is ready. You get paid for the work, not the hours.
+
+### Both Vocations
+
+| Container                            | States                                           |
+| ------------------------------------ | ------------------------------------------------ |
 | `<aside class="clocking-leftbar">`   | **.expanded** or **.collapsed**                  |
 | `<aside class="request-rightbar">`   | **.expanded** or **.collapsed**                  |
 | `<header class="clockboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
+
+> **Clocking.** Opens the moment you clock in or out. Add a second shift, fix last week, or fill in next week. Your day, the way it actually happened.
+
+> **Requests.** Everything you've sent and where it stands. Pending, approved, rejected or expired, with your ghost hours counted over two years. No chasing anyone for an answer.
+
+> **Clockboard.** Your hours at a glance and the settings behind them. Set your default working hours once. The board does the rest.
+
+### Clocking Logic
+
+These rules come from the original planning and keep the record fair without making the user babysit it. When a rule is unclear, it leans toward the employee.
+
+1. **Forgot to log a past day:** the default working hours from the profile fill it in.
+2. **Clocked in during the morning but forgot to clock out:** the default clock-out time is used.
+3. **First opened the app in the afternoon without clocking in:** the current time becomes the clock-in time.
+4. **Both times already logged for today:** the left bar opens, because the user most likely wants a second shift or to change another week.
 
 ---
 
-# [Ticketing](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/log-a-ticket.pdf)
+## Log a Ticket
 
-## 📋 Manager or 📦 Employee
+_Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../assets/pdf-files/archive-documents/logical-structure/log-a-ticket.pdf)_
 
-### Uniform Containers
-
-| Container                           | States                          |
-| ----------------------------------- | ------------------------------- |
-| `<div class="default-body">`        | **.active** or **.asleep**      |
-| `<section class="default-overlay">` | **.highlight** or **.downplay** |
+> **Note:** these descriptions are placeholders. Log a Ticket will be rebuilt from my original jQuery ticketing system, which already has a complete claim-to-score loop. Its descriptions will be rewritten from that code. Until then, the rules below stand.
 
 ### Manager
 
@@ -80,31 +124,25 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ----------------------------- | ---------------- |
 | `<main class="tickets-main">` | No state toggles |
 
-> Primary workspace (manager view). This is where the manager’s ticket logging screen is rendered. When the user clicks “Log Ticket” in the `<header>`, a ticket form/dialog is displayed in the `<section class="default-overlay">` container on top of the rest of the page (so the logging flow stays focused and can be completed quickly). Edge case: if the user is not authorized (non-manager), the log UI should not open and a clear message should be shown (e.g., via the footer message system). Also handle “cancel/close with unsaved changes” gracefully.
+> Primary workspace (manager view). This is where the manager's ticket logging screen is rendered. When the user clicks "Log Ticket" in the `<header>`, a ticket form/dialog is displayed in the `<section class="default-overlay">` container on top of the rest of the page (so the logging flow stays focused and can be completed quickly). Edge case: if the user is not authorized (non-manager), the log UI should not open and a clear message should be shown (e.g., via the footer message system). Also handle "cancel/close with unsaved changes" gracefully.
 
 | Container                           | States                          |
 | ----------------------------------- | ------------------------------- |
 | `<aside class="completed-leftbar">` | **.expanded** or **.collapsed** |
 
-> Completed tickets panel. Shows tickets that were logged by managers and completed by employees, so managers can review outcomes and confirm throughput at a glance. Edge case: empty state (no completed tickets yet) should be informative rather than blank; long lists should remain usable (scrolling, grouping, or basic filtering) so the panel doesn’t become noise.
+> Completed tickets panel. Shows tickets that were logged by managers and completed by employees, so managers can review outcomes and confirm throughput at a glance. Edge case: empty state (no completed tickets yet) should be informative rather than blank; long lists should remain usable (scrolling, grouping, or basic filtering) so the panel doesn't become noise.
 
 | Container                            | States                          |
 | ------------------------------------ | ------------------------------- |
 | `<aside class="employees-rightbar">` | **.expanded** or **.collapsed** |
 
-> Employee-side feature access (manager scope). This panel mirrors the employee-facing tools and views, but with broader navigation: managers can browse across departments, not just a single department tied to one user. Edge case: if department metadata is missing or the manager has no assigned departments, fall back to a safe default (e.g., “All” or “Unassigned”) and explain what’s happening instead of breaking navigation.
+> Employee-side feature access (manager scope). This panel mirrors the employee-facing tools and views, but with broader navigation: managers can browse across the whole company, not just their own work. Edge case: if the manager has nobody to browse yet, explain what's happening instead of breaking navigation.
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> Scoreboard + accountability hook. This header is the “engagement surface”: it makes progress visible, keeps the system competitive in a friendly way, and reinforces accountability through transparent scoring. 1 completed ticket = 1 point. Edge case: ties, zero-activity days, or sudden score changes (e.g., a ticket reversed/deleted) should be communicated clearly so the scoreboard feels fair and trusted.
-
-| Container                          | States                                           |
-| ---------------------------------- | ------------------------------------------------ |
-| `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
-
-> Status + guidance messages. A persistent feedback channel for confirmations, warnings, and next-step prompts (e.g., “Ticket logged”, “Permission denied”, “Network error—try again”). This keeps the UI responsive without forcing popups for every event. Edge case: multiple events firing quickly (batch actions, rapid clicks, retries) should not spam the user—messages should queue, deduplicate, or summarize when appropriate.
+> Scoreboard + accountability hook. This header is the "engagement surface": it makes progress visible, keeps the system competitive in a friendly way, and reinforces accountability through transparent scoring. 1 completed ticket = 1 point. Edge case: ties, zero-activity days, or sudden score changes (e.g., a ticket reversed/deleted) should be communicated clearly so the scoreboard feels fair and trusted.
 
 ### Employee
 
@@ -112,13 +150,13 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ---------------------------- | ---------------- |
 | `<main class="logged-main">` | No state toggles |
 
-> Primary workspace (employee view). Displays all pending tickets that have not been claimed. This is the “starting line” where employees pick work for the day and establish purpose through clear, available tasks. Edge case: if there are no pending tickets, show a positive empty state (e.g., “All caught up”) and optionally point to alternate actions (check colleagues, review claimed, etc.).
+> Primary workspace (employee view). Displays all pending tickets that have not been claimed. This is the "starting line" where employees pick work for the day and establish purpose through clear, available tasks. Edge case: if there are no pending tickets, show a positive empty state (e.g., "All caught up") and optionally point to alternate actions (check colleagues, review claimed, etc.).
 
 | Container                         | States                          |
 | --------------------------------- | ------------------------------- |
 | `<aside class="claimed-leftbar">` | **.expanded** or **.collapsed** |
 
-> Claimed/assigned work panel. Shows tickets currently claimed by (or assigned to) the employee—this is where the “work in progress → completion → scoring” loop actually lives. Edge case: tickets can become stale (reassigned, resolved elsewhere, or deleted). The panel should handle conflicts cleanly (refresh state, show what changed, and avoid silently dropping items).
+> Claimed/assigned work panel. Shows tickets currently claimed by (or assigned to) the employee. This is where the "work in progress → completion → scoring" loop actually lives.
 
 | Container                             | States                          |
 | ------------------------------------- | ------------------------------- |
@@ -130,28 +168,15 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | ------------------------------------ | ------------------------------------------------ |
 | `<header class="scoreboard-header">` | **.expanded** or **.collapsed** or **.unfolded** |
 
-> Shared transparency scoreboard. Visible to everyone, showing clear system-wide states (pending, assigned, deleted, resolved). The primary “score” is the resolved count to reinforce completion. Edge case: if certain states are restricted (e.g., deleted reasons, sensitive tickets), keep transparency by showing totals without exposing sensitive details.
-
-| Container                          | States                                           |
-| ---------------------------------- | ------------------------------------------------ |
-| `<footer class="messages-footer">` | **.expanded** or **.collapsed** or **.unfolded** |
-
-> Status + guidance messages (employee). Same role as in the manager view: confirms actions (claimed, unclaimed, resolved), surfaces errors, and provides next-step guidance without disrupting flow. Edge case: offline/slow network should degrade gracefully (clear retry messaging, “pending sync” indicator if applicable, and no misleading success confirmations).
+> Shared transparency scoreboard. Visible to everyone, showing clear system-wide states (pending, assigned, deleted, resolved). The primary "score" is the resolved count to reinforce completion. Edge case: if certain states are restricted (e.g., deleted reasons, sensitive tickets), keep transparency by showing totals without exposing sensitive details.
 
 ---
 
-# [Hyperlink](https://github.com/TertiusRoach/development-portfolio_4.00/blob/4.3/source/assets/pdf-files/logical-structure/find-a-link.pdf)
+## Find a Link
 
-## 🔍 Specialist or 🔧 Technician
+_Toggle: **Occupation**. Original planning: [find-a-link.pdf](../../assets/pdf-files/archive-documents/logical-structure/find-a-link.pdf)_
 
-### Uniform Containers
-
-| Container                           | States                          |
-| ----------------------------------- | ------------------------------- |
-| `<div class="default-body">`        | **.active** or **.asleep**      |
-| `<section class="default-overlay">` | **.highlight** or **.downplay** |
-
-### Specialist
+Specialists and Technicians get the same page with the same containers. Occupation only decides where it opens: Technicians start on the company's links, Specialists on their own bookmarks.
 
 | Container                            | States                                           |
 | ------------------------------------ | ------------------------------------------------ |
@@ -159,16 +184,11 @@ Layouts is the folder that contains all my front-end based code. To separate con
 | `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
 | `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
 | `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
 
-### Technician
+> **Resources.** Every link you need on one page. Spreadsheets, policies, reports and schedules, the moment you sit down. Company links appear once you're clocked in, so you only ever see the company you're working for.
 
-| Container                            | States                                           |
-| ------------------------------------ | ------------------------------------------------ |
-| `<main class="resources-main">`      | No state toggles                                 |
-| `<aside class="modify-leftbar">`     | **.expanded** or **.collapsed**                  |
-| `<aside class="bookmarks-rightbar">` | **.expanded** or **.collapsed**                  |
-| `<header class="discovery-header">`  | **.expanded** or **.collapsed** or **.unfolded** |
-| `<footer class="messages-footer">`   | **.expanded** or **.collapsed** or **.unfolded** |
+> **Modify.** Add, change or remove links. What you can publish depends on your role, and the owner signs off on the rest. Nothing changes behind anyone's back.
 
----
+> **Bookmarks.** Your own links, private to you. They follow you between companies and never need a clock-in. Nobody else sees them, not even the owner.
+
+> **Discovery.** Type and find. One search across company links and your bookmarks. It only ever shows what you're allowed to see.

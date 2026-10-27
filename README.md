@@ -1,3 +1,5 @@
+<a id="readme-top"></a>
+
 ## **TLF** [{Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
 
 Track a Day, Log a Ticket, Find a Link: three applications inspired by the gaps I kept running into across corporate environments, from film production and education institutes to government departments and the events industry. Together they fill one specific need: an office suite that is easy to use and genuinely helpful. It solves workplace chaos while daring to improve the politics that come with the territory. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half-remembered URLs ever again.
@@ -10,70 +12,90 @@ Where it is going is simple and ambitious at the same time. TraLogFin is becomin
 
 ---
 
-# Documentation
-
 <details>
   <summary><strong>Table of Contents</strong></summary>
 
-- [Terminal Commands](#terminal-commands)
-- [Installation Guide](#installation-guide)
-  - [Quick Start](#quick-start)
-  - [Full Installation](#full-installation)
-  - [Installation Breakdown](#installation-breakdown)
-- [Front-end Development](#front-end-development)
-  - [TraLogFin Application](#tralogfin-application)
-  - [State Management](#state-management-orchestrating-visibility)
-  - [Application Roles](#application-roles)
-- [Component Anatomy](#component-anatomy)
-  - [File Pattern](#file-pattern)
-  - [Bracket Syntax](#bracket-syntax)
-  - [Testing Environment](#testing-environment)
-- [Back-end Development](#back-end-development)
-- [CSS & HTML Vocabulary](#css--html-vocabulary)
-  - [Determining Element Responsibilities](#determining-element-responsibilities)
-  - [Layout Container Breakdown](#layout-container-breakdown)
-- [Development Environment](#development-environment)
-  - [VSCode Tips](#vscode-tips)
-  - [Folder Structure](#folder-structure)
-  - [Repository Synchronization](#repository-synchronization)
-- [Documentation Standards](#documentation-standards)
-  - [Comment Flags](#comment-flags)
-  - [Git Workflow](#git-workflow)
+1. [About The Project](#about-the-project)
+   - [The Applications](#the-applications)
+   - [Built With](#built-with)
+2. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Quick Start](#quick-start)
+   - [Back End](#back-end)
+3. [Usage](#usage)
+   - [Terminal Commands](#terminal-commands)
+   - [Application Flow](#application-flow)
+   - [Testing](#testing)
+4. [How It Works](#how-it-works)
+   - [Pages and Containers](#pages-and-containers)
+   - [Components](#components)
+   - [Company Comparisons](#company-comparisons)
+5. [Project Structure](#project-structure)
+6. [Documentation](#documentation)
+7. [Roadmap](#roadmap)
+8. [Contributing](#contributing)
+9. [License](#license)
+10. [Contact](#contact)
+11. [Acknowledgments](#acknowledgments)
 
 </details>
 
 ---
 
-## Terminal Commands
+## About The Project
 
-Open [Visual Studio Code](https://code.visualstudio.com/) and press **Ctrl + `** to open the integrated terminal panel. This step requires [Node.js](https://nodejs.org/en), so make sure you have completed the [Quick Start](#quick-start) section and that **npm** is available in your system's PATH before proceeding. Once the terminal is open, enter the following commands into the **Terminal** tab to work with the development environment built on [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [SASS](https://sass-lang.com/) and [HTML](https://www.w3schools.com/html/).
+TraLogFin is a fully remote office suite for two kinds of company: the ones that burn people out, and the ones that are trying not to. Every rule in it is written to tilt slightly toward the worker. When something is unclear, the employee gets the benefit of the doubt, because the people doing the work are the ones who need protecting.
 
-### Development Workflow
+It's tested with a cast of 18 characters across two rival companies, each one built to break a specific rule. Meet them in **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)**.
+
+### The Applications
+
+Each application asks one question. The answer becomes a `roleName` class on `<div id="${pageName}-body">` and decides which page opens. What the user may actually do there is decided by **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)**.
+
+| Application      | Container    | Dataset          | The question            | Options                         |
+| ---------------- | ------------ | ---------------- | ----------------------- | ------------------------------- |
+| **Track a Day**  | `Overtime/`  | `TrackTime`      | What's your vocation?   | `.established` · `.freelancing` |
+| **Log a Ticket** | `Ticketing/` | `DefineDuties`   | What's your position?   | `.manager` · `.employee`        |
+| **Find a Link**  | `Hyperlink/` | `ArchiveAnchors` | What's your occupation? | `.specialist` · `.technician`   |
+| **Pick a Page**  | `Landing/`   | `PickPage`       | Who are you?            | One of the characters           |
+
+- **Track a Day:** frustrated with spreadsheets and done with guesswork? Track time cleanly and let the totals speak.
+- **Log a Ticket:** ticketing should feel like momentum, not admin. Quick capture, clear ownership, visible progress.
+- **Find a Link:** a fast index for the links a team actually uses. Spreadsheets, schedules, docs and dashboards.
+- **Pick a Page:** the character roster that feeds the other three. It adapts to `.landscape`, `.portrait` and `.square` screens. Excel and Google Sheets integrations (`.microsoft` · `.google`) are planned.
+
+The full map from toggle to page is in **[TOGGLES.md](source/utilities/document/TOGGLES.md)**.
+
+### Built With
+
+[![React][React-badge]][React-url]
+[![TypeScript][TypeScript-badge]][TypeScript-url]
+[![Sass][Sass-badge]][Sass-url]
+[![Webpack][Webpack-badge]][Webpack-url]
+[![Node.js][Node-badge]][Node-url]
+[![Express][Express-badge]][Express-url]
+[![MongoDB][MongoDB-badge]][MongoDB-url]
+
+Designed in Figma first, then built by hand.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/document/GITHUB.md#2-machine-setup)**.
+
+Check that Node is ready:
 
 ```bash
-# Launch front end (webpack-dev-server on http://localhost:8080)
-npm run app
-
-# Launch back end (from source/modules/server/MongoDB/REVIEW, serves http://localhost:3000)
-nodemon landing
-
-# Compile project into public/
-npm run deploy
-
-# Close the development server (frees port 8080)
-npm run stop
-
-# Switch GitHub branches
-git checkout 4.6
+node --version
+npm --version
 ```
 
-> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code also runs it automatically when you open the folder, through the task in `.vscode/tasks.json`.
-
-## Installation Guide
-
 ### Quick Start
-
-> **Prerequisites:** Install [Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en) (on Linux, through [NVM](https://github.com/nvm-sh/nvm)).
 
 Click the green `<> Code` button at the top right of the repository, copy the URL, and clone it from the terminal:
 
@@ -84,14 +106,12 @@ npm install
 npm run app
 ```
 
-`npm install` reads `package.json` and installs every package listed below in one go.
-
-### Full Installation
+`npm install` reads `package.json` and installs everything in one go. The app opens on `http://localhost:8080`.
 
 <details>
 <summary><strong>Complete Package List</strong></summary>
 
-These are the packages declared in `package.json`. You only need to install them manually when rebuilding the project from scratch.
+These are the packages declared in `package.json`. You only need to install them one by one when rebuilding the project from scratch.
 
 ```bash
 npm install -g nodemon
@@ -146,9 +166,38 @@ npm install --save-dev @babel/core @babel/preset-env
 
 </details>
 
-### Installation Breakdown
+### Back End
 
-#### Application Flow
+The front end runs on its own. To work on the server, you also need MongoDB, a secrets file (`build/.env`) and a Mailtrap test inbox. Everything, for every operating system, is in **[MODULES.md](source/utilities/document/MODULES.md)**.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## Usage
+
+### Terminal Commands
+
+Open VS Code and press **Ctrl + `** to open the terminal. Then:
+
+```bash
+# Launch the front end (webpack-dev-server on http://localhost:8080)
+npm run app
+
+# Launch the back end (http://localhost:3000)
+cd source/modules/server/MongoDB/REVIEW
+npx nodemon landing
+
+# Compile the project into public/
+npm run deploy
+
+# Close the development server (frees port 8080)
+npm run stop
+```
+
+> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs it automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/document/EDITOR.md)**.
+
+### Application Flow
 
 ```
 source/index.html                         # <div id="${pageName}-body"> mount points
@@ -164,249 +213,56 @@ source/layouts/components/${Element}/${variant}/${Element}.${variant}.tsx → pi
 
 **[View the Entry Point](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/index.tsx)**
 
-#### Step 1: Verify Node.js
+### Testing
 
-```bash
-node --version
-npm --version
-```
+The **Archive** page (`#components-body`) is the testing surface for components. Every component gets a test harness under `containers/Archive/Main/elements/`, which renders the real component with toggles for its props. To view a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`.
 
-#### Step 2: Clone the Repository
+The application rules are tested with the characters in **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)**: each one lists the rules it exists to break.
 
-```bash
-git clone https://github.com/TertiusRoach/development-portfolio_4.00.git
-```
-
-#### Step 3: Install Dependencies
-
-```bash
-npm install
-npm install -g nodemon
-```
-
-#### Step 4: Add the Environment File
-
-Webpack and the back end both read secrets from `build/.env`. The `build/` folder is ignored by Git, so create it locally:
-
-```bash
-mkdir build
-touch build/.env
-```
-
-#### Step 5: Launch
-
-```bash
-npm run app
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
-# Front-end Development
+## How It Works
 
-This is the contract between data and display. The database and role selection determine what the front end renders, how it renders it, and which visual states are active. The full container contract lives in **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**, and the application rules live in **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)**.
+### Pages and Containers
 
-## [TraLogFin Application](source/assets/md-files/application-characters.md)
+Every page is identified by its `pageName`, every container by its `blockName`, and every role-specific view by its `labelName`. Together they build predictable IDs and classes, such as `#overtime-leftbar` and `.clocking-leftbar`. The `${blockName}` keywords aren't decoration: they're how the codebase stays stable when styles grow and features multiply.
 
-This is where the testing surface lives. If something breaks, it usually breaks here first, which is the point. It also carries a lot of the storytelling: a cast of characters whose personalities drive the demo data. I originally planned to log three years of data for the demo, but realized that is unnecessary. Four weeks, one month, is enough to play around with the maths.
+Each page lives in `source/layouts/containers/${PageName}/` and is mounted into `<div id="${pageName}-body" class="default-body active|asleep">`. Inside it, six blocks load in a fixed order: the Overlay first, then Main, then the blocks that reference Main.
 
-## State Management: Orchestrating Visibility
+| Page          | Container    | Mount Point        | Application       |
+| ------------- | ------------ | ------------------ | ----------------- |
+| **Landing**   | `Landing/`   | `#landing-body`    | Pick a Page       |
+| **Overtime**  | `Overtime/`  | `#overtime-body`   | Track a Day       |
+| **Ticketing** | `Ticketing/` | `#ticketing-body`  | Log a Ticket      |
+| **Hyperlink** | `Hyperlink/` | `#hyperlink-body`  | Find a Link       |
+| **Archive**   | `Archive/`   | `#components-body` | Component testing |
 
-These classes are intentionally simple. They act like a UI contract.
+| Container    | HTML Tag    | ID Pattern             | Job                                |
+| ------------ | ----------- | ---------------------- | ---------------------------------- |
+| **Overlay**  | `<section>` | `${pageName}-overlay`  | Entry layer, focused flows on top  |
+| **Main**     | `<main>`    | `${pageName}-main`     | The primary workspace              |
+| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Actions and guidance               |
+| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Context and feedback               |
+| **Header**   | `<header>`  | `${pageName}-header`   | Controls and configuration         |
+| **Footer**   | `<footer>`  | `${pageName}-footer`   | Short status messages              |
 
-| State Type          | Classes                                       | Alt                       | Purpose                                                                 |
-| ------------------- | --------------------------------------------- | ------------------------- | ----------------------------------------------------------------------- |
-| **Operating State** | `.active` · `.asleep`                         | `.running` · `.disabled`  | Indicate whether a page (`#${pageName}-body`) is in use or inactive     |
-| **Preview State**   | `.visible` · `.hidden`                        | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`               |
-| **Indexed State**   | `.expanded` · `.collapsed`                    | `.unfolded` · `.squaring` | Manage blocks that open and close while staying part of the page        |
-| **Emphasize State** | `.highlight` · `.downplay`                    |                           | Draw attention to, or away from, a `<ButtonDefault>` during testing     |
-| **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                         | Block repeat clicks while a container animates, or freeze it entirely   |
-| **Daytime State**   | `.ante-meridiem` · `.post-meridiem`           |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM      |
+What each container does in each application is in **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**. The state classes they switch between (`.active`, `.expanded`, `.locked-${blockName}`…) are in the **[RULEBOOK](source/utilities/document/RULEBOOK.md#state-classes)**.
 
-> **Note:** `.running` and `.conceal` are reserved names. They are not used in the code yet.
+### Components
 
-## Application Roles
+Components are the building blocks in `source/layouts/components/`. Every one follows the same pattern, so once you can read one, you can read them all:
 
-Each application asks one question. The answer becomes a `roleName` class on `<div id="${pageName}-body">` and drives what the user sees.
+- **One folder per variant,** with a `.tsx` for markup, a `.scss` for styles and a `.ts` for `createClass()`. Larger components split their styles into a `pipeline/` (size, grid, flex, tint, move, corners).
+- **Bracket syntax** shows each prop's type at a glance: `'[overtime]'`, `'<main>'`, `'-left-'`, `'~dark~'`, `'(blue)'`, `'{button}'`.
+- **Every component scales** through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so it fits phones, tablets and desktops alike.
+- **Ten colours** from `styles/Palettes.scss`, each in a dark and a light shade.
+- **Comment flags** (`//--|🠊 … 🠈|--\\`) make the structure of every file readable at a glance.
 
-| Application      | Container    | Dataset          | Role Question           | Options                         |
-| ---------------- | ------------ | ---------------- | ----------------------- | ------------------------------- |
-| **Track a Day**  | `Overtime/`  | `TrackTime`      | What's your vocation?   | `.established` · `.freelancing` |
-| **Log a Ticket** | `Ticketing/` | `DefineDuties`   | What's your position?   | `.manager` · `.employee`        |
-| **Find a Link**  | `Hyperlink/` | `ArchiveAnchors` | What's your occupation? | `.specialist` · `.technician`   |
-| **Pick a Page**  | `Landing/`   | `PickPage`       | Who are you?            | One of the characters           |
+All of it, with examples, is in the **[RULEBOOK](source/utilities/document/RULEBOOK.md)**.
 
-### Track a Day
-
-Frustrated with spreadsheets and done with guesswork? Track time cleanly and let the totals speak.
-
-| Configuration             | Options                         |
-| ------------------------- | ------------------------------- |
-| **What's your vocation?** | `.freelancing` · `.established` |
-
-### Log a Ticket
-
-Ticketing should feel like momentum, not admin. The goal is quick capture, clear ownership, and visible progress.
-
-| Configuration             | Options                  |
-| ------------------------- | ------------------------ |
-| **What's your position?** | `.manager` · `.employee` |
-
-### Find a Link
-
-A fast index for the links a team actually uses. Think spreadsheets, schedules, docs and dashboards.
-
-| Configuration               | Options                       |
-| --------------------------- | ----------------------------- |
-| **What's your occupation?** | `.specialist` · `.technician` |
-
-### Pick a Page
-
-The character roster that feeds the other three applications. Every character carries a `vocation`, `position` and `occupation`, plus their company details (`organization`, `bureau`, `paid`, `headOfDepartment`, `country` and `status`).
-
-| Configuration             | Options                                   |
-| ------------------------- | ----------------------------------------- |
-| **Layout Resolutions**    | `.landscape` · `.portrait` · `.square`    |
-| **Consider Technologies** | `.microsoft` (Excel) · `.google` (Sheets) |
-
-> **Note:** `.microsoft` and `.google` are planned and not yet in the code.
-
----
-
-# Component Anatomy
-
-Components are the semantic building blocks inside `source/layouts/components/`. Every component follows the same pattern, so once you can read one, you can read them all.
-
-## File Pattern
-
-Using `<ButtonDefault>` as the reference:
-
-```
-components/Button/default/
-├── Button.default.tsx          # Markup and props
-├── Button.default.scss         # Imports the pipeline and applies it per orientation
-├── Button_default.ts           # createClass() turns props into class abbreviations
-└── pipeline/
-    ├── Button_size.scss        # Font and element sizing
-    ├── Button_grid.scss        # Grid placement (top, bottom, left, right, center)
-    ├── Button_flex.scss        # Flex alignment
-    ├── Button_tint.scss        # Colors and shades, from styles/Palettes.scss
-    ├── Button_move.scss        # Hover, press and transition states
-    └── Button_corn.scss        # Corner radii
-```
-
-Each pipeline file exports a `desktop-*`, a `mobile-*` and a `tablet-*` mixin. The component's `.scss` file includes them as described in [Scaling Pattern](#scaling-pattern).
-
-## Scaling Pattern
-
-> **Rule:** every component scales through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so it fits every screen size. Readability and maintainability come before fewer lines. Repeating values is fine; clever shortcuts are not.
-
-| Mixin              | Applied under                                                    | Breakpoints                                                                  |
-| ------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `desktop-landscape` | `(orientation: landscape)`                                      | `max-height`: 768px · 480px · 360px                                          |
-| `mobile-portrait`   | `(orientation: portrait)`                                       | `max-width`: 768px · 480px · 360px                                           |
-| `tablet-squaring`   | `(max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99)`   | Landscape `max-width` / Portrait `max-height`: 1920px · 1366px · 854px       |
-
-Near-square screens (tablets, split windows) do not fit the desktop or mobile breakpoints well, so `tablet-squaring` measures the long side instead and steps down one size earlier. It reuses the exact values from the other two mixins, which are measured against the `styles/Mixins.scss` skeleton. It is included last, so it overrides both orientations.
-
-The component's root selector includes all three:
-
-```scss
-aside[class*='characters-default'] {
-  display: grid;
-  @media screen and (orientation: landscape) {
-    @include desktop-landscape();
-  }
-  @media screen and (orientation: portrait) {
-    @include mobile-portrait();
-  }
-  //--|🠋 Tablet (Squaring) 🠋|--\\
-  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
-    @include tablet-squaring();
-  }
-}
-```
-
-Inside each mixin, styles are grouped into `flex`, `grid` and `tint` placeholders (`%desk-*`, `%mobi-*`, `%tabl-*`). Each tablet placeholder splits into a Desktop and a Mobile branch:
-
-```scss
-@mixin tablet-squaring {
-  //--|🠋 Tablet (Characters) 🠋|--\\
-  %tabl-flex {
-    @at-root aside[class*='characters-default'] {
-      @media screen and (orientation: landscape) {
-        //--|🠊 Desktop 🠈|--\\
-        @media screen and (max-width: 1920px) {}
-        @media screen and (max-width: 1366px) {}
-        @media screen and (max-width: 854px) {}
-      }
-      @media screen and (orientation: portrait) {
-        //--|🠊 Mobile 🠈|--\\
-        @media screen and (max-height: 1920px) {}
-        @media screen and (max-height: 1366px) {}
-        @media screen and (max-height: 854px) {}
-      }
-    }
-  }
-  %tabl-grid { /* same shape */ }
-  %tabl-tint { /* same shape */ }
-  //--|===|--\\
-  @extend %tabl-flex;
-  @extend %tabl-grid;
-  @extend %tabl-tint;
-}
-```
-
-Components with a `pipeline/` folder follow the same rule per file: `Button_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`, and `Button.profile.scss` includes them in the same three blocks.
-
-## Bracket Syntax
-
-Props are written with brackets that show their type at a glance. `stripBrackets()` in `source/scripts.ts` removes them, and `createClass()` converts style props into short class names.
-
-| Wrapper    | Prop           | Example                  | Becomes      |
-| ---------- | -------------- | ------------------------ | ------------ |
-| `[ ]`      | `pageName`     | `'[components]'`         | `components` |
-| `< >`      | `blockName`    | `'<main>'`               | `main`       |
-| `< >`      | `style.size`   | `'<h1>'` … `'<p>'`       | `one` … `par` |
-| `- -`      | `style.view`   | `'-top-'` · `'-left-'`   | `top` · `lef` |
-| `~ ~`      | `style.shade`  | `'~dark~'` · `'~light~'` | `dar` · `lig` |
-| `( )`      | `style.color`  | `'(blue)'` · `'(mono)'`  | `blu` · `mon` |
-| `( )`      | `style.role`   | `'(manager)'`            | `manager`    |
-| `{ }`      | `style.type`   | `'{button}'` · `'{submit}'` | `button` · `submit` |
-
-For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `class="default-button thr_lef_dar_blu_def"`. Without an image, the suffix is `_alt`.
-
-## Testing Environment
-
-The **Archive** page (`#components-body`) is the testing surface for components. Every component gets a test harness under `containers/Archive/Main/elements/${element}-components/${variant}-${element}/`, which renders the real component with toggles for its props. For example, `ProfileButton.tsx` tests `<ButtonProfile>`.
-
-To view a different page during development, change the `viewBody('archive')` call at the top of `source/index.tsx`.
-
----
-
-# Back-end Development
-
-This project uses a [MongoDB](https://en.wikipedia.org/wiki/MongoDB)-backed server module to support an office application suite that tracks overtime, logs tickets, and stores links. Local database setup, including MongoDB Community Server and Mailtrap, is documented in **[MODULES.md](source/utilities/document/MODULES.md)**. For a video walkthrough, see the [MongoDB tutorial playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA).
-
-| Folder                         | Purpose                                                                         |
-| ------------------------------ | ------------------------------------------------------------------------------- |
-| `server/MongoDB/REVIEW/`       | Express server (`landing.js`, port 3000) and per-application routes under review |
-| `server/MongoDB/online/`       | Dataset modules for the hosted database                                         |
-| `server/MongoDB/offline/`      | Dataset modules for a local database                                            |
-| `server/MongoDB/testing/`      | Typed dataset modules seeded from `TraLogFin.json` for front-end testing        |
-| `modules/routes/`              | Front-end route stubs for each application (empty for now)                     |
-| `modules/context/`             | React context for email and password state                                      |
-
-> **Note:** For demonstration purposes, `roleName` represents the user's selected company position and drives behavior and visibility.
-
----
-
-## CSS & HTML Vocabulary
-
-### Determining Element Responsibilities
-
-Every page is identified by its `pageName`, every container by its `blockName`, and every component by its `labelName`. Together they build predictable IDs and classes, such as `#overtime-leftbar`.
-
-#### Company Comparisons
+### Company Comparisons
 
 > Company comparisons, because it's an interesting thought experiment: the `&` icon looks like a dog scratching its anus.
 
@@ -416,57 +272,13 @@ Every page is identified by its `pageName`, every container by its `blockName`, 
 | **Productivity Suites** | `.microsoft` · `.google`               |
 | **Fitness Chains**      | `.planet-fitness` · `.anytime-fitness` |
 
-### Layout Container Breakdown
-
-This project uses a predictable layout container system to prevent CSS collisions and keep page structure readable at a glance.
-
-Each page lives in `source/layouts/containers/${PageName}/` and is mounted into `<div id="${pageName}-body" class="default-body active|asleep">`. Inside it, six blocks are loaded in a fixed order: the Overlay first, then Main, then the blocks that reference Main.
-
-#### Container Architecture
-
-| Container    | HTML Tag    | ID Pattern             | Purpose                            |
-| ------------ | ----------- | ---------------------- | ---------------------------------- |
-| **Overlay**  | `<section>` | `${pageName}-overlay`  | Top layer UI, modals, focus states |
-| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Left sidebar navigation zone       |
-| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Right sidebar utility zone         |
-| **Header**   | `<header>`  | `${pageName}-header`   | Top layout zone for identity       |
-| **Main**     | `<main>`    | `${pageName}-main`     | Primary content area               |
-| **Footer**   | `<footer>`  | `${pageName}-footer`   | Bottom layout zone                 |
-
-#### Pages
-
-| Page          | Container    | Mount Point          | Application        |
-| ------------- | ------------ | -------------------- | ------------------ |
-| **Landing**   | `Landing/`   | `#landing-body`      | Pick a Page        |
-| **Overtime**  | `Overtime/`  | `#overtime-body`     | Track a Day        |
-| **Ticketing** | `Ticketing/` | `#ticketing-body`    | Log a Ticket       |
-| **Hyperlink** | `Hyperlink/` | `#hyperlink-body`    | Find a Link        |
-| **Archive**   | `Archive/`   | `#components-body`   | Component testing  |
-
-> **Important:** The `${blockName}` keywords are not decoration. They are how the codebase stays stable when styles grow and features multiply.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
-## Development Environment
-
-### VSCode Tips
-
-| Action                    | Shortcut           | Description                                      |
-| ------------------------- | ------------------ | ------------------------------------------------ |
-| **Open Terminal**         | ``Ctrl + ` ``      | Toggle the integrated terminal                   |
-| **Collapse Sections**     | `Ctrl + K + 0`     | Collapse all code sections (caret in root scope) |
-| **Open Settings**         | `Ctrl + ,`         | Access VSCode settings                           |
-| **See Props & Callbacks** | `Ctrl + Space`     | IntelliSense autocomplete                        |
-| **Open Run & Debug**      | `Ctrl + Shift + D` | Launch **Run Application** (Webpack + Chrome)    |
-| **Stop Terminal Server**  | `Ctrl + C`         | Stop the running server process                  |
-
-> **Tip:** To hide deprecated folders from the Explorer, follow **[COMPONENTS.md](source/utilities/document/COMPONENTS.md)**.
-
-### Folder Structure
+## Project Structure
 
 > This layout is modular on purpose. It is optimized for forward momentum and predictable scaling, not for matching a single framework template. The naming is descriptive, the separation is strict, and the intent is obvious when you scan the tree.
-
-#### Reference Tree
 
 ```
 root/
@@ -484,7 +296,6 @@ root/
 │   │   ├── gif-files/
 │   │   ├── ico-files/
 │   │   ├── jpg-files/
-│   │   ├── md-files/
 │   │   ├── mp3-files/
 │   │   ├── mp4-files/
 │   │   ├── ods-files/
@@ -530,7 +341,7 @@ root/
 │   │   ├── routes/
 │   │   └── server/
 │   ├── utilities/
-│   │   ├── document/
+│   │   ├── document/                # All project documentation
 │   │   ├── vendors/
 │   │   ├── ~flex-setup/
 │   │   └── ~grid-setup/
@@ -540,31 +351,33 @@ root/
 │   ├── scripts.ts
 │   └── types.d.ts
 ├── .gitignore
+├── CLAUDE.md                        # Working rules for AI assistants
 ├── README.md
 ├── package.json
 ├── tsconfig.json
 └── webpack.config.js
 ```
 
-#### Directory Descriptions
+<details>
+<summary><strong>Directory Descriptions</strong></summary>
 
-##### `public/`
+#### `public/`
 
 Compiled output and static entry points. This is the browser-facing product, generated by `npm run deploy`. If it is in `public/`, it is assumed safe to ship. Do not edit it by hand; Webpack wipes it on every build.
 
-##### `source/`
+#### `source/`
 
 All authored code and assets. This is the only place you should be editing during development.
 
-| File          | Purpose                                                              |
-| ------------- | -------------------------------------------------------------------- |
-| `index.html`  | HTML shell with one `<div id="${pageName}-body">` per page           |
-| `index.tsx`   | Entry point: renders every page and activates one with `viewBody()`  |
-| `index.scss`  | Root stylesheet                                                      |
+| File          | Purpose                                                                     |
+| ------------- | --------------------------------------------------------------------------- |
+| `index.html`  | HTML shell with one `<div id="${pageName}-body">` per page                  |
+| `index.tsx`   | Entry point: renders every page and activates one with `viewBody()`         |
+| `index.scss`  | Root stylesheet                                                             |
 | `scripts.ts`  | Shared helpers such as `stripBrackets()`, `checkScreen()` and `loadAsset()` |
-| `types.d.ts`  | Global type declarations                                             |
+| `types.d.ts`  | Global type declarations                                                    |
 
-##### `source/assets/`
+#### `source/assets/`
 
 Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse.
 
@@ -573,12 +386,11 @@ Typed asset storage. Keeping formats separated avoids build edge cases and reduc
 | `gif-files/` | Animated media used for UI accents or demos             |
 | `ico-files/` | Icon formats for browser and OS surfaces                |
 | `jpg-files/` | Photos and compressed imagery                           |
-| `md-files/`  | Markdown content used as authored text or internal docs |
 | `mp3-files/` | Audio assets                                            |
 | `mp4-files/` | Video assets                                            |
 | `ods-files/` | Spreadsheets that plan each application's dataset       |
 | `odt-files/` | Written planning documents and character descriptions   |
-| `pdf-files/` | Portable documents used for reference or downloads      |
+| `pdf-files/` | Portable documents: character sheets, original planning |
 | `png-files/` | Lossless graphics and UI images                         |
 | `psd-files/` | Photoshop source files kept for design iteration        |
 | `svg-files/` | Vector assets, icons, logos, themeable graphics         |
@@ -587,134 +399,165 @@ Typed asset storage. Keeping formats separated avoids build edge cases and reduc
 | `xcf-files/` | GIMP source files                                       |
 | `zip-files/` | Archived bundles and imports                            |
 
-##### `source/layouts/`
+#### `source/layouts/`
 
 The UI system. This is where the application becomes readable. The split between components and containers is intentional: small semantic primitives first, then page scaffolding that composes them.
 
-###### **Components** — Atomic Semantic Building Blocks
+**Components:** atomic semantic building blocks.
 
-| Component     | Variants                                            |
-| ------------- | --------------------------------------------------- |
-| `Article/`    | `loading` · `updates`                               |
-| `Aside/`      | `characters`                                        |
-| `Button/`     | `default` · `profile` · `routing`                   |
-| `Division/`   | `carousel` · `conveyor` · `sweeping` · `testing`    |
-| `Fieldset/`   | `code`                                              |
-| `Figure/`     | `default` · `loading` · `rotation`                  |
+| Component     | Variants                                               |
+| ------------- | ------------------------------------------------------ |
+| `Article/`    | `loading` · `updates`                                  |
+| `Aside/`      | `characters`                                           |
+| `Button/`     | `default` · `profile` · `routing`                      |
+| `Division/`   | `carousel` · `conveyor` · `sweeping` · `testing`       |
+| `Fieldset/`   | `code`                                                 |
+| `Figure/`     | `default` · `loading` · `rotation`                     |
 | `Form/`       | `login` · `password` · `register` · `reset` · `verify` |
-| `Label/`      | `toggle`                                            |
-| `List/`       | `countdown` · `scrolling`                           |
-| `Menu/`       | `scroll` · `select` · `swipe` · `toggle`            |
-| `Navigation/` | `default`                                           |
-| `Section/`    | `characters` · `demonstration`                      |
-| `Span/`       | `scrolling`                                         |
-| `Table/`      | `clocking` · `tracking`                             |
-| `Time/`       | `clock` · `date`                                    |
+| `Label/`      | `toggle`                                               |
+| `List/`       | `countdown` · `scrolling`                              |
+| `Menu/`       | `scroll` · `select` · `swipe` · `toggle`               |
+| `Navigation/` | `default`                                              |
+| `Section/`    | `characters` · `demonstration`                         |
+| `Span/`       | `scrolling`                                            |
+| `Table/`      | `clocking` · `tracking`                                |
+| `Time/`       | `clock` · `date`                                       |
 
 `components.ts` holds the shared abbreviation helpers (`abbrAxis`, `abbrType`, `abbrView`, `abbrShade`, `abbrColor`).
 
-###### **Containers** — Page Level Layout Zones
+**Containers:** page-level layout zones. Each page folder holds a `${PageName}.tsx` that lazy-loads its six blocks, and each block folder holds a `.tsx`, a `.scss` and a `${PageName}Functions.ts`.
 
-Each page folder holds a `${PageName}.tsx` that lazy-loads its six blocks, and each block folder holds a `.tsx`, a `.scss` and a `${PageName}Functions.ts`.
-
-| Container    | Purpose                                                   |
-| ------------ | --------------------------------------------------------- |
-| `Archive/`   | Component testing page and its test harnesses             |
-| `Hyperlink/` | Find a Link                                               |
-| `Landing/`   | Pick a Page, the entry experience                         |
-| `Overtime/`  | Track a Day                                               |
-| `Ticketing/` | Log a Ticket                                              |
+| Container       | Purpose                                                             |
+| --------------- | ------------------------------------------------------------------- |
+| `Archive/`      | Component testing page and its test harnesses                       |
+| `Hyperlink/`    | Find a Link                                                         |
+| `Landing/`      | Pick a Page, the entry experience                                   |
+| `Overtime/`     | Track a Day                                                         |
+| `Ticketing/`    | Log a Ticket                                                        |
 | `containers.ts` | `blockViews()` and the expand and collapse handlers for every block |
 
-###### **Other Layout Directories**
+**Other layout directories:**
 
-| Directory  | Purpose                                                                              |
-| ---------- | ------------------------------------------------------------------------------------ |
-| `scripts/` | One script per block (`Header.ts`, `Main.ts`, `Overlay.ts`…)                         |
+| Directory  | Purpose                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| `scripts/` | One script per block (`Header.ts`, `Main.ts`, `Overlay.ts`…)                              |
 | `styles/`  | Shared styling system: `Palettes`, `Mixins`, `Global`, `Skeleton`, `Transition`, `Barrel` |
-| `tools/`   | Layout helpers: `conversions.ts`, `navigation.ts`, `utilities.ts`                    |
+| `tools/`   | Layout helpers: `conversions.ts`, `navigation.ts`, `utilities.ts`                         |
 
-##### `source/modules/`
+#### `source/modules/`
 
-Application logic and infrastructure that supports the UI. See [Back-end Development](#back-end-development).
+Application logic and infrastructure that supports the UI. Setup is in [MODULES.md](source/utilities/document/MODULES.md), and how data travels is in [TABLE.md](source/utilities/document/TABLE.md).
 
-| Module     | Purpose                                              |
-| ---------- | ---------------------------------------------------- |
-| `context/` | Shared state, providers, and app-wide context wiring |
-| `routes/`  | Routing definitions per application                  |
-| `server/`  | Back-end code, MongoDB wiring, server entry points   |
+| Folder                    | Purpose                                                                          |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| `server/MongoDB/REVIEW/`  | Express server (`landing.js`, port 3000) and per-application routes under review |
+| `server/MongoDB/online/`  | Dataset modules for the hosted database                                          |
+| `server/MongoDB/offline/` | Dataset modules for a local database                                             |
+| `server/MongoDB/testing/` | Typed dataset modules seeded from `TraLogFin.json` for front-end testing         |
+| `routes/`                 | Front-end route stubs for each application (empty for now)                       |
+| `context/`                | React context for email and password state                                       |
 
-##### `source/utilities/`
+#### `source/utilities/`
 
 Reusable utilities, references and internal documentation.
 
-| Utility        | Purpose                                                   |
-| -------------- | --------------------------------------------------------- |
-| `document/`    | Internal docs: containers, guidelines, tables, colouring, Git |
-| `vendors/`     | Third-party vendor code kept separate from authored logic |
-| `~flex-setup/` | Flexbox reference and layout patterns                     |
-| `~grid-setup/` | Grid reference and layout patterns                        |
+| Utility        | Purpose                                                                                |
+| -------------- | -------------------------------------------------------------------------------------- |
+| `document/`    | All project documentation (see [Documentation](#documentation))                        |
+| `vendors/`     | Third-party vendor code kept separate from authored logic                              |
+| `~flex-setup/` | Flexbox reference and layout patterns                                                  |
+| `~grid-setup/` | Grid reference and layout patterns                                                     |
 
-##### `.vscode/`
+#### `.vscode/`
 
-Editor configuration for consistent debugging and project workflows.
+Editor configuration for consistent debugging and project workflows. What each file does is in [EDITOR.md](source/utilities/document/EDITOR.md#what-vscode-does).
 
-### Repository Synchronization
+</details>
 
-Open **[repository-synchronization.md](source/assets/md-files/repository-synchronization.md)** for the full workflow: machine setup, the release cycle, tag management, and keeping multiple devices in sync. Follow it top to bottom and you'll end up with one source of truth and a predictable, low-drama branch state.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
-## Documentation Standards
+## Documentation
 
-### Comment Flags
+Everything lives in **`source/utilities/document/`**. If you're unsure about anything, start with the **RULEBOOK**.
 
-Arrows mark comments so the structure of a file reads at a glance. They wrap every comment as `//--| … |--\\` in TypeScript and SCSS, and `<!--| … |-->` in HTML.
+| Document                                                       | What it answers                                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **[RULEBOOK.md](source/utilities/document/RULEBOOK.md)**       | How code is written: philosophy, naming, components, scaling, colours, comments |
+| **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)**   | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
+| **[TOGGLES.md](source/utilities/document/TOGGLES.md)**         | Which page each toggle opens                                                    |
+| **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**   | The six containers and what they do in each application                         |
+| **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)**   | The 18 test characters, their psychology and the rules they test                |
+| **[TABLE.md](source/utilities/document/TABLE.md)**             | Tables, ISO weeks, how data travels, MongoDB-to-MySQL rules, offline storage     |
+| **[MODULES.md](source/utilities/document/MODULES.md)**         | Database, secrets, test emails and server setup on any OS                       |
+| **[GITHUB.md](source/utilities/document/GITHUB.md)**           | Machine setup, releases, tags, syncing machines, fixing Git trouble             |
+| **[EDITOR.md](source/utilities/document/EDITOR.md)**           | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                    |
+| **[REFERENCE.md](source/utilities/document/REFERENCE.md)**     | The template this README follows                                                |
 
-| Flag                                            | Unicode | Usage                                   | Example                                |
-| ----------------------------------------------- | ------- | --------------------------------------- | -------------------------------------- |
-| [🠊](https://www.compart.com/en/unicode/U+1F80A) | U+1F80A | Opens a file title or a note            | `//--\|🠊 Button.default.tsx 🠈\|--\\`   |
-| [🠋](https://www.compart.com/en/unicode/U+1F80B) | U+1F80B | Section heading for the code below it   | `//--\|🠋 Functions 🠋\|--\\`            |
-| [🠈](https://www.compart.com/en/unicode/U+1F808) | U+1F808 | Points back at the code on its left     | `//--\|🠈 Must Load First 🠈\|--\\`      |
-| [🠉](https://www.compart.com/en/unicode/U+1F809) | U+1F809 | Closes a block comment opened with 🠋   | `/*--\|🠋 … 🠉\|--*/`                     |
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Git Workflow
+---
 
-> **Goal:** Tag the release, promote it to `main`, archive the history, and open the next version branch.
+## Roadmap
 
-Version branches are named after the release (`4.5`, `4.6`), tags are zero-padded (`v4.05`), and retired branches are kept as `${version}-archive`. The commands below summarise the release cycle; the full version, with safety checks, is in **[repository-synchronization.md](source/assets/md-files/repository-synchronization.md)**.
+- [x] Desktop layout
+- [x] Mobile layout matching desktop
+- [x] Tablet scaling (`tablet-squaring`)
+- [x] Application rules, characters and documentation
+- [ ] All ten colours on every component that has colour
+- [ ] Smooth fades between colours
+- [ ] Log a Ticket, rebuilt from my original jQuery ticketing system
+- [ ] Offline mode with IndexedDB
+- [ ] A data layer that can switch from MongoDB to MySQL
+- [ ] Unpaid-solutions record for freelancers
 
-**Step 1:** Make sure the working tree is clean
+The full list of decisions waiting to be built is in the [RULEBOOK](source/utilities/document/RULEBOOK.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/document/GITHUB.md#10-status-log).
 
-```bash
-git checkout 4.6
-git status
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Step 2:** Tag the current commit
+---
 
-```bash
-git tag -a v4.06 -m "Stable Release 4.06: Description of what changed"
-git push origin v4.06
-```
+## Contributing
 
-**Step 3:** Promote the version branch to `main`
+Contributions are welcome, as long as they keep the project readable. Before you change anything:
 
-```bash
-git checkout main
-git pull origin main
-git reset --hard 4.6
-git push origin main --force
-```
+1. **Read the [RULEBOOK](source/utilities/document/RULEBOOK.md).** Readability beats brevity, match what's already there, one step at a time.
+2. **Check [GUIDELINES.md](source/utilities/document/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
+3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/document/GITHUB.md#3-release-cycle).
+4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
 
-> **Warning:** `--force` overwrites the remote `main` permanently. Compare both branches with `git log --oneline -10` before you run it.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Step 4:** Open the next version branch
+---
 
-```bash
-git checkout -b 4.7
-git push -u origin 4.7
-```
+## License
+
+Distributed under the ISC License, as declared in `package.json`.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## Contact
+
+**Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach)
+
+Project link: [github.com/TertiusRoach/development-portfolio_4.00](https://github.com/TertiusRoach/development-portfolio_4.00)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## Acknowledgments
+
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template), the structure this README follows
+- [Shields.io](https://shields.io), for the badges
+- [Compart](https://www.compart.com/en/unicode/), for the Unicode arrows behind the comment flags
+- [MongoDB tutorial playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA), for the database groundwork
+- [Mailtrap](https://mailtrap.io), for catching every test email
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -725,9 +568,24 @@ git push -u origin 4.7
 _Good software should protect users from the worst day they are having, not amplify it._
 
 ![Status](https://img.shields.io/badge/status-active-success.svg)
-![Version](https://img.shields.io/badge/version-4.6-blue.svg)
+![Version](https://img.shields.io/badge/version-4.7-blue.svg)
 ![License](https://img.shields.io/badge/license-ISC-blue.svg)
 
 </div>
 
----
+<!--| Badge links |-->
+
+[React-badge]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://react.dev/
+[TypeScript-badge]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[Sass-badge]: https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white
+[Sass-url]: https://sass-lang.com/
+[Webpack-badge]: https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black
+[Webpack-url]: https://webpack.js.org/
+[Node-badge]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
+[Node-url]: https://nodejs.org/
+[Express-badge]: https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+[MongoDB-badge]: https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/

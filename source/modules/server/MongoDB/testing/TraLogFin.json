@@ -6,12 +6,301 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Specialist",
-      "organization": "Voidspire Systems",
+      "organizations": [
+        "Voidspire Systems"
+      ],
       "bureau": "Executive Governance",
       "paid": true,
       "headOfDepartment": true,
       "country": "United States",
       "status": "Enabled"
+    },
+    {
+      "_id": "malik-tremaine-carter",
+      "name": "Malik Tremaine Carter",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Specialist",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Service Coordination & Technical Delivery",
+      "paid": false,
+      "headOfDepartment": true,
+      "country": "Canada",
+      "status": "Enabled"
+    },
+    {
+      "_id": "dimitri-lewis",
+      "name": "Dimitri Lewis",
+      "vocation": "Freelancing",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Voidspire Systems",
+        "Silverveil Logistics"
+      ],
+      "bureau": "Applied Research & Prototyping",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Greece",
+      "status": "Enabled"
+    },
+    {
+      "_id": "dale-sutton",
+      "name": "Dale Sutton",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Network Infrastructure",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Germany",
+      "status": "Enabled"
+    },
+    {
+      "_id": "alaric-voss",
+      "name": "Dr. Alaric Voss",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Cybersecurity & Compliance",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "South Africa",
+      "status": "Pending"
+    },
+    {
+      "_id": "conrad-guy",
+      "name": "Conrad Guy",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Specialist",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Systems Operations Management",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "United Kingdom",
+      "status": "Enabled"
+    },
+    {
+      "_id": "daniel-meyers",
+      "name": "Daniel Meyers",
+      "vocation": "Freelancing",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Voidspire Systems",
+        "Silverveil Logistics"
+      ],
+      "bureau": "Technical Documentation & Knowledge Services",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Ireland",
+      "status": "Pending"
+    },
+    {
+      "_id": "kady-deacon",
+      "name": "Ms. Kady Deacon",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Software Quality Assurance",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Australia",
+      "status": "Blocked"
+    },
+    {
+      "_id": "seamus-odonnell",
+      "name": "Seamus O'Donnell",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Voidspire Systems"
+      ],
+      "bureau": "Platform Reliability & Maintenance",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Japan",
+      "status": "Deleted"
+    },
+    {
+      "_id": "hammad-dean",
+      "name": "Hammad Dean",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Technician",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Logistics Executive Office",
+      "paid": true,
+      "headOfDepartment": true,
+      "country": "United Arab Emirates",
+      "status": "Enabled"
+    },
+    {
+      "_id": "tasneem-kemp",
+      "name": "Tasneem Kemp",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Technician",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Fleet Technology & Maintenance",
+      "paid": false,
+      "headOfDepartment": true,
+      "country": "India",
+      "status": "Enabled"
+    },
+    {
+      "_id": "elliot-crane",
+      "name": "Elliot Crane",
+      "vocation": "Established",
+      "position": "Manager",
+      "occupation": "Specialist",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Operational Systems Management",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Singapore",
+      "status": "Enabled"
+    },
+    {
+      "_id": "sipho-dlamini",
+      "name": "Sipho Dlamini",
+      "vocation": "Freelancing",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Voidspire Systems",
+        "Silverveil Logistics"
+      ],
+      "bureau": "Cross-Company Infrastructure Support",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Kenya",
+      "status": "Blocked"
+    },
+    {
+      "_id": "zuberi-thorne",
+      "name": "Zuberi Thorne",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Data Integration & API Services",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Brazil",
+      "status": "Enabled"
+    },
+    {
+      "_id": "nyra-solari",
+      "name": "Nyra Solari",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Application Architecture",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "China",
+      "status": "Deleted"
+    },
+    {
+      "_id": "victor-langston",
+      "name": "Victor Langston",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Endpoint Services",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Netherlands",
+      "status": "Pending"
+    },
+    {
+      "_id": "danish-copeland",
+      "name": "Danish Copeland",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Human Resources Systems",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "Sweden",
+      "status": "Blocked"
+    },
+    {
+      "_id": "aelin-darrow",
+      "name": "Aelin Darrow",
+      "vocation": "Established",
+      "position": "Employee",
+      "occupation": "Specialist",
+      "organizations": [
+        "Silverveil Logistics"
+      ],
+      "bureau": "Workflow Automation",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": "New Zealand",
+      "status": "Deleted"
+    },
+    {
+      "_id": "randomize-character",
+      "name": "Randomize Character",
+      "vocation": "Freelancing",
+      "position": "Employee",
+      "occupation": "Technician",
+      "organizations": [],
+      "bureau": "Randomize",
+      "paid": false,
+      "headOfDepartment": false,
+      "country": null,
+      "status": "Enabled",
+      "email": "randomize-character@example.com",
+      "passwordHash": null,
+      "role": "user",
+      "firstName": "Randomize",
+      "lastName": "Character",
+      "activationCode": null,
+      "activationAttempts": 0,
+      "activationCodeExpiresAt": null,
+      "passwordCode": null,
+      "passwordChangeRequests": 0,
+      "passwordCodeExpiresAt": null,
+      "restrictionExpiresAt": null,
+      "userIP": null,
+      "lastLogin": null,
+      "updatedAt": null,
+      "createdAt": null
     }
   ],
   "TrackTime": [],
