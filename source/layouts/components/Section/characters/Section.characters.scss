@@ -1,4 +1,5 @@
 //--|🠊 Section.characters.scss 🠈|--\\
+@use 'sass:color';
 @use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
@@ -22,6 +23,7 @@
           text-align: left;
           font-weight: 800;
           padding-top: 8px;
+          padding-bottom: 0.15em; //--|🠈 Room for descenders (p, g, y), overflow: hidden would clip them 🠈|--\\
           line-height: 0.75;
           align-self: flex-end;
           display: -webkit-box;
@@ -347,6 +349,7 @@
           text-align: left;
           font-weight: 800;
           padding-top: 8px;
+          padding-bottom: 0.15em; //--|🠈 Room for descenders (p, g, y), overflow: hidden would clip them 🠈|--\\
           line-height: 0.75;
           align-self: flex-end;
           display: -webkit-box;
@@ -1090,8 +1093,1233 @@
     }
   }
 }
+//--|===|--\\
+@mixin characters-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+
+  //--|🠋 Background Layer 🠋|--\\
+  div[class='wrap-card'] {
+    /*--|🠋
+      Why: A gradient can't take an alpha like rgba(black, 0.75) can.
+      How: ::before holds the gradient (Set in *-tint) and fades as a
+      whole, so the text and portrait above it stay fully opaque.
+    🠉|--*/
+    position: relative; //--|🠈 Anchors the layer 🠈|--\\
+    isolation: isolate; //--|🠈 Keeps the layer behind the content, not behind the page 🠈|--\\
+    &::before {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      opacity: 0.5; //--|🠈 Between the original rgba(black, 0.25) and <SectionDemonstration>'s 0.75 🠈|--\\
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the card's corners 🠈|--\\
+    }
+  }
+}
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$gray-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$gray-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$gray-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$gray-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$gray-medium;
+          background: rgba(Palettes.$gray-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$gray-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$gray-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$gray-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$gray-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$gray-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$gray-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$gray-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$gray-medium;
+          background: rgba(Palettes.$gray-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$gray-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$gray-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$gray-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_red'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$red-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$red-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$red-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$red-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$red-medium;
+          background: rgba(Palettes.$red-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$red-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$red-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$red-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_red'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$red-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$red-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$red-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$red-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$red-medium;
+          background: rgba(Palettes.$red-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$red-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$red-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$red-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$green-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$green-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$green-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$green-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$green-medium;
+          background: rgba(Palettes.$green-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$green-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$green-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$green-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$green-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$green-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$green-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$green-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$green-medium;
+          background: rgba(Palettes.$green-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$green-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$green-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$green-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$blue-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$blue-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$blue-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$blue-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$blue-medium;
+          background: rgba(Palettes.$blue-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$blue-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$blue-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$blue-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$blue-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$blue-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$blue-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$blue-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$blue-medium;
+          background: rgba(Palettes.$blue-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$blue-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$blue-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$blue-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$yellow-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$yellow-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$yellow-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$yellow-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$yellow-medium;
+          background: rgba(Palettes.$yellow-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$yellow-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$yellow-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$yellow-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$yellow-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$yellow-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$yellow-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$yellow-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$yellow-medium;
+          background: rgba(Palettes.$yellow-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$yellow-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$yellow-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$yellow-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$purple-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$purple-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$purple-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$purple-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$purple-medium;
+          background: rgba(Palettes.$purple-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$purple-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$purple-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$purple-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$purple-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$purple-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$purple-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$purple-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$purple-medium;
+          background: rgba(Palettes.$purple-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$purple-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$purple-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$purple-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$orange-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$orange-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$orange-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$orange-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$orange-medium;
+          background: rgba(Palettes.$orange-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$orange-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$orange-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$orange-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$orange-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$orange-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$orange-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$orange-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$orange-medium;
+          background: rgba(Palettes.$orange-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$orange-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$orange-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$orange-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$pink-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$pink-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$pink-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$pink-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$pink-medium;
+          background: rgba(Palettes.$pink-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$pink-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$pink-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$pink-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$pink-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$pink-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$pink-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$pink-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$pink-medium;
+          background: rgba(Palettes.$pink-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$pink-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$pink-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$pink-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$brown-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$brown-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$brown-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$brown-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$brown-medium;
+          background: rgba(Palettes.$brown-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$brown-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$brown-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$brown-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$brown-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$brown-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$brown-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$brown-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$brown-medium;
+          background: rgba(Palettes.$brown-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$brown-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$brown-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$brown-dark;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%); //--|🠈 Same as <ButtonProfile> 🠈|--\\
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$turquoise-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$turquoise-dark; //--|🠈 Same as the profile ring 🠈|--\\
+            //--|🠊 Outline: Same halo as <ButtonDefault>, keeps the dark name readable on the see-through header 🠈|--\\
+            text-shadow:
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+          p[class='country'] {
+            color: Palettes.$turquoise-light;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$turquoise-dark;
+            background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+            box-shadow:
+              inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+              inset 0 -1px 0 rgba(#000, 0.35),
+              inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$turquoise-medium;
+          background: rgba(Palettes.$turquoise-dark, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: Palettes.$turquoise-light;
+            }
+            p {
+              color: $neoLig;
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$turquoise-dark, 0.75);
+          div[class*='department'] h3 {
+            color: $neoLig;
+          }
+          div[class*='description'] p {
+            color: Palettes.$turquoise-light;
+          }
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    div[class='wrap-card'] {
+      background: none;
+      &::before {
+        background: Palettes.$turquoise-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      *[class*='card'] {
+        &[class*='information'] {
+          h1[class='full-name'] {
+            color: Palettes.$turquoise-light; //--|🠈 Same as the profile ring 🠈|--\\
+            text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Pure black drop shadow, so the light name stands out 🠈|--\\
+          }
+          p[class='country'] {
+            color: Palettes.$turquoise-dark;
+          }
+          div[class='profile'] img {
+            //--|🠊 Same frame & backdrop as <ButtonProfile> 🠈|--\\
+            border-color: Palettes.$turquoise-light;
+            background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+            box-shadow:
+              inset 0 1px 0 rgba(#fff, 0.22),
+              inset 0 -1px 0 rgba(#000, 0.25),
+              inset 0 0 0 1px rgba(#000, 0.1);
+          }
+        }
+        &[class*='permissions'] {
+          border-color: Palettes.$turquoise-medium;
+          background: rgba(Palettes.$turquoise-light, 0.25);
+          div[class*='auth'] {
+            h6 {
+              color: $blaDar; //--|🠈 The name's previous colour 🠈|--\\
+            }
+            p {
+              color: $ligMed; //--|🠈 A step darker than the ~dark~ shade's $neoLig, so it reads on the light strip 🠈|--\\
+              text-shadow: 0.04em 0.04em 0.08em #000; //--|🠈 Same drop shadow as the name 🠈|--\\
+            }
+          }
+        }
+        &[class*='description'] {
+          background: rgba(Palettes.$turquoise-light, 0.75);
+          div[class*='department'] h3 {
+            color: Palettes.$turquoise-medium;
+          }
+          div[class*='description'] p {
+            color: Palettes.$turquoise-dark;
+          }
+        }
+      }
+    }
+  }
+}
 
 section[class*='characters-default'] {
+  @include characters-colors();
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

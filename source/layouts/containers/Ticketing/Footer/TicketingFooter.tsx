@@ -196,7 +196,7 @@ function TicketingFooter({ info }: InfoProps) {
               style={{
                 size: '<h3>',
                 color: '(mono)',
-                shade: '~light~',
+                shade: ['~dark~', '~light~'],
                 view: ['-left-', '-right-'],
                 text: ['Manager', 'Employee'],
                 image: [
@@ -233,6 +233,10 @@ function TicketingFooter({ info }: InfoProps) {
                 pageName: pageName,
                 blockName: blockName,
                 labelName: labelName,
+              }}
+              style={{
+                shade: '~dark~',
+                color: '(blue)',
               }}
               cases={{
                 apps: 'log-a-ticket',
@@ -278,6 +282,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -287,6 +295,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -298,6 +310,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -307,6 +323,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -318,6 +338,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -327,6 +351,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -338,6 +366,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -347,6 +379,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -358,6 +394,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -367,6 +407,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
             }}
           />
         </>
@@ -383,6 +427,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -393,15 +441,9 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
-          />
-          <SectionCharacters
-            cases={{
-              characters: 'sipho',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
+            style={{
+              shade: '~light~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -413,6 +455,24 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'sipho',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -422,6 +482,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -433,6 +497,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -442,6 +510,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
             }}
           />
           <SectionCharacters
@@ -453,6 +525,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -463,6 +539,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -472,6 +552,10 @@ const TicketingCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
             }}
           />
         </>

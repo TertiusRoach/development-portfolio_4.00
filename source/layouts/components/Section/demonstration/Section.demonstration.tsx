@@ -1,7 +1,7 @@
 //--|🠊 Section.demonstration.tsx 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import returnInfo from './Section_demonstration';
+import returnInfo, { createClass } from './Section_demonstration';
 
 //--|🠋 Components 🠋|--\\
 
@@ -14,12 +14,16 @@ interface TheseProps {
     blockName: string;
     labelName: string;
   };
+  style: {
+    shade: '~dark~' | '~light~';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+  };
   cases: {
     apps: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | Array<string>;
   };
 }
 
-const SectionDemonstration: React.FC<TheseProps> = ({ info, cases }) => {
+const SectionDemonstration: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -34,7 +38,7 @@ const SectionDemonstration: React.FC<TheseProps> = ({ info, cases }) => {
   }
 
   return (
-    <section className={`${info.labelName}-${info.blockName}_demonstration-default`}>
+    <section className={`${info.labelName}-${info.blockName}_demonstration-default ${createClass(style)}`}>
       <div className="wrap-card">
         <span className="branding">
           <img

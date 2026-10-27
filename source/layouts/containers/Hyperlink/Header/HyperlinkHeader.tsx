@@ -124,7 +124,7 @@ function HyperlinkHeader({ info }: InfoProps) {
               style={{
                 size: '<h3>',
                 color: '(mono)',
-                shade: '~light~',
+                shade: ['~dark~', '~light~'],
                 view: ['-left-', '-right-'],
                 text: ['Specialist', 'Technician'],
                 image: [
@@ -161,6 +161,10 @@ function HyperlinkHeader({ info }: InfoProps) {
                 pageName: pageName,
                 blockName: blockName,
                 labelName: labelName,
+              }}
+              style={{
+                shade: '~dark~',
+                color: '(red)',
               }}
               cases={{
                 apps: 'find-a-link',
@@ -285,6 +289,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -294,6 +302,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -305,6 +317,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -314,6 +330,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -325,6 +345,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -334,6 +358,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -345,6 +373,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -354,6 +386,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -365,6 +401,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -374,6 +414,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
             }}
           />
         </>
@@ -390,6 +434,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -400,15 +448,9 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
-          />
-          <SectionCharacters
-            cases={{
-              characters: 'sipho',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
+            style={{
+              shade: '~light~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -420,6 +462,24 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'sipho',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -429,6 +489,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -440,6 +504,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -449,6 +517,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
             }}
           />
           <SectionCharacters
@@ -460,6 +532,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -470,6 +546,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -479,6 +559,10 @@ const HyperlinkCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
             }}
           />
         </>

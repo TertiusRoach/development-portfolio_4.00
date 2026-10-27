@@ -1,4 +1,5 @@
 //--|🠊 Section.demonstration.scss 🠈|--\\
+@use 'sass:color';
 @use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
@@ -370,8 +371,501 @@
     }
   }
 }
+//--|===|--\\
+@mixin demonstration-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+
+  //--|🠋 Background Layer 🠋|--\\
+  div[class*='wrap'] {
+    /*--|🠋
+      Why: A gradient can't take an alpha like rgba(black, 0.75) can.
+      How: ::before holds the gradient (Set in *-tint) and fades as a
+      whole, so the text and logo above it stay fully opaque.
+    🠉|--*/
+    position: relative; //--|🠈 Anchors the layer 🠈|--\\
+    isolation: isolate; //--|🠈 Keeps the layer behind the content, not behind the page 🠈|--\\
+    &::before {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      opacity: 0.75; //--|🠈 Same see-through as the original rgba(black, 0.75) 🠈|--\\
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the card's corners 🠈|--\\
+    }
+  }
+
+  //--|🠊 Edge Cases 🠈|--\\
+  div[class*='wrap'] {
+    span[class='branding'] img {
+      //--|🠊 Hides the alt text: <img> has no src (only a mask), so it would print the app's name inside the mask 🠈|--\\
+      color: rgba(gray, 0);
+    }
+  }
+}
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    div[class*='wrap'] {
+      color: Palettes.$gray-light;
+      background: none;
+      &::before {
+        background: Palettes.$gray-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$gray-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    div[class*='wrap'] {
+      color: Palettes.$gray-dark;
+      background: none;
+      &::before {
+        background: Palettes.$gray-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$gray-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_red'] {
+    div[class*='wrap'] {
+      color: Palettes.$red-light;
+      background: none;
+      &::before {
+        background: Palettes.$red-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$red-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_red'] {
+    div[class*='wrap'] {
+      color: Palettes.$red-dark;
+      background: none;
+      &::before {
+        background: Palettes.$red-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$red-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    div[class*='wrap'] {
+      color: Palettes.$green-light;
+      background: none;
+      &::before {
+        background: Palettes.$green-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$green-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    div[class*='wrap'] {
+      color: Palettes.$green-dark;
+      background: none;
+      &::before {
+        background: Palettes.$green-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$green-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    div[class*='wrap'] {
+      color: Palettes.$blue-light;
+      background: none;
+      &::before {
+        background: Palettes.$blue-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$blue-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    div[class*='wrap'] {
+      color: Palettes.$blue-dark;
+      background: none;
+      &::before {
+        background: Palettes.$blue-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$blue-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    div[class*='wrap'] {
+      color: Palettes.$yellow-light;
+      background: none;
+      &::before {
+        background: Palettes.$yellow-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$yellow-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    div[class*='wrap'] {
+      color: Palettes.$yellow-dark;
+      background: none;
+      &::before {
+        background: Palettes.$yellow-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$yellow-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    div[class*='wrap'] {
+      color: Palettes.$purple-light;
+      background: none;
+      &::before {
+        background: Palettes.$purple-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$purple-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    div[class*='wrap'] {
+      color: Palettes.$purple-dark;
+      background: none;
+      &::before {
+        background: Palettes.$purple-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$purple-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    div[class*='wrap'] {
+      color: Palettes.$orange-light;
+      background: none;
+      &::before {
+        background: Palettes.$orange-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$orange-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    div[class*='wrap'] {
+      color: Palettes.$orange-dark;
+      background: none;
+      &::before {
+        background: Palettes.$orange-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$orange-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    div[class*='wrap'] {
+      color: Palettes.$pink-light;
+      background: none;
+      &::before {
+        background: Palettes.$pink-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$pink-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    div[class*='wrap'] {
+      color: Palettes.$pink-dark;
+      background: none;
+      &::before {
+        background: Palettes.$pink-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$pink-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    div[class*='wrap'] {
+      color: Palettes.$brown-light;
+      background: none;
+      &::before {
+        background: Palettes.$brown-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$brown-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    div[class*='wrap'] {
+      color: Palettes.$brown-dark;
+      background: none;
+      &::before {
+        background: Palettes.$brown-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$brown-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    div[class*='wrap'] {
+      color: Palettes.$turquoise-light;
+      background: none;
+      &::before {
+        background: Palettes.$turquoise-darkMode;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      span[class='branding'] img {
+        background: Palettes.$turquoise-neon;
+      }
+      h1 {
+        color: $neoLig;
+      }
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    div[class*='wrap'] {
+      color: Palettes.$turquoise-dark;
+      background: none;
+      &::before {
+        background: Palettes.$turquoise-lightMode;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='branding'] img {
+        background: Palettes.$turquoise-medium;
+      }
+      h1 {
+        color: $blaDar;
+      }
+    }
+  }
+}
 
 section[class*='demonstration-default'] {
+  @include demonstration-colors();
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

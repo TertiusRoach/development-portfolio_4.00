@@ -196,7 +196,7 @@ function OvertimeFooter({ info }: InfoProps) {
               style={{
                 size: '<h3>',
                 color: '(mono)',
-                shade: '~light~',
+                shade: ['~dark~', '~light~'],
                 view: ['-left-', '-right-'],
                 text: ['Established', 'Freelancing'],
                 image: [
@@ -233,6 +233,10 @@ function OvertimeFooter({ info }: InfoProps) {
                 pageName: pageName,
                 blockName: blockName,
                 labelName: labelName,
+              }}
+              style={{
+                shade: '~dark~',
+                color: '(green)',
               }}
               cases={{
                 apps: 'track-a-day',
@@ -278,6 +282,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -287,6 +295,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -298,6 +310,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -307,6 +323,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -318,6 +338,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -327,6 +351,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -338,6 +366,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -347,6 +379,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -358,6 +394,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -367,6 +407,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
             }}
           />
         </>
@@ -383,6 +427,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -393,15 +441,9 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
-          />
-          <SectionCharacters
-            cases={{
-              characters: 'sipho',
-            }}
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
+            style={{
+              shade: '~light~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -413,6 +455,24 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
+          />
+          <SectionCharacters
+            cases={{
+              characters: 'sipho',
+            }}
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -422,6 +482,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -433,6 +497,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -442,6 +510,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
             }}
           />
           <SectionCharacters
@@ -453,6 +525,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -463,6 +539,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               blockName: blockName,
               labelName: labelName,
             }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+            }}
           />
           <SectionCharacters
             cases={{
@@ -472,6 +552,10 @@ const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
               pageName: pageName,
               blockName: blockName,
               labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
             }}
           />
         </>

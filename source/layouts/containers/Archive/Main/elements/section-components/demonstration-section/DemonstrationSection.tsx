@@ -21,6 +21,8 @@ function DemonstrationSection({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'components';
   const labelName = info.labelName as 'demonstration';
+  //--|🠊 Random shade, so both are tested; the [components] page shows in mono 🠈|--\\
+  const shades = ['~dark~', '~light~'] as const;
   return (
     <aside className="demonstration-section">
       <section className={`${blockName}-foreground`}>
@@ -29,6 +31,10 @@ function DemonstrationSection({ info }: InfoProps) {
             pageName: pageName,
             blockName: blockName,
             labelName: labelName,
+          }}
+          style={{
+            shade: shades[Math.floor(Math.random() * shades.length)],
+            color: '(mono)',
           }}
           cases={{
             apps: ['track-a-day', 'log-a-ticket', 'find-a-link', 'tralogfin'],

@@ -1,7 +1,7 @@
 //--|🠊 Section.characters.tsx 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import returnProfile from './Section_characters';
+import returnProfile, { createClass } from './Section_characters';
 import type { CharacterSelection } from './Section_characters';
 
 //--|🠋 Components 🠋|--\\
@@ -14,6 +14,10 @@ interface TheseProps {
     pageName: string;
     blockName: string;
     labelName: string;
+  };
+  style: {
+    shade: '~dark~' | '~light~';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   cases: {
     characters:
@@ -42,7 +46,7 @@ interface TheseProps {
   };
 }
 
-const SectionCharacters: React.FC<TheseProps> = ({ info, cases }) => {
+const SectionCharacters: React.FC<TheseProps> = ({ info, style, cases }) => {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -59,7 +63,7 @@ const SectionCharacters: React.FC<TheseProps> = ({ info, cases }) => {
   }
 
   return (
-    <section className={`${info.labelName}-${info.blockName}_characters-default`}>
+    <section className={`${info.labelName}-${info.blockName}_characters-default ${createClass(style)}`}>
       <div className="wrap-card">
         <header className="card-information">
           <div className="profile">
