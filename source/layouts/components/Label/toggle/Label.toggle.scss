@@ -671,6 +671,255 @@
     }
   }
 }
+@mixin ora-color {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  &[class*='dar_ora'] {
+    input[class='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+    }
+    span[class='switch'] {
+      filter: drop-shadow(0 0 2px rgba(white, 1));
+      &::after {
+        filter: drop-shadow(0 0 4px black);
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$orange-light, 0) 0%,
+          rgba(Palettes.$orange-light, 0.28) 55%,
+          rgba(Palettes.$orange-light, 0.58) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
+          inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
+          inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+    }
+  }
+  &[class*='lig_ora'] {
+    input[class*='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-light, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+    }
+    span[class*='switch'] {
+      filter: drop-shadow(0 0 2px rgba(black, 1));
+      &::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$orange-dark, 0) 0%,
+          rgba(Palettes.$orange-dark, 0.3) 55%,
+          rgba(Palettes.$orange-dark, 0.64) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.1),
+          inset 0 -14px 26px rgba(#000, 0.18),
+          inset 0 0 0 1px rgba(#000, 0.06);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+    }
+  }
+}
+@mixin pin-color {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  &[class*='dar_pin'] {
+    input[class='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+    }
+    span[class='switch'] {
+      filter: drop-shadow(0 0 2px rgba(white, 1));
+      &::after {
+        filter: drop-shadow(0 0 4px black);
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$pink-light, 0) 0%,
+          rgba(Palettes.$pink-light, 0.28) 55%,
+          rgba(Palettes.$pink-light, 0.58) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
+          inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
+          inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+    }
+  }
+  &[class*='lig_pin'] {
+    input[class*='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-light, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+    }
+    span[class*='switch'] {
+      filter: drop-shadow(0 0 2px rgba(black, 1));
+      &::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$pink-dark, 0) 0%,
+          rgba(Palettes.$pink-dark, 0.3) 55%,
+          rgba(Palettes.$pink-dark, 0.64) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.1),
+          inset 0 -14px 26px rgba(#000, 0.18),
+          inset 0 0 0 1px rgba(#000, 0.06);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+    }
+  }
+}
+@mixin bro-color {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  &[class*='dar_bro'] {
+    input[class='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+    }
+    span[class='switch'] {
+      filter: drop-shadow(0 0 2px rgba(white, 1));
+      &::after {
+        filter: drop-shadow(0 0 4px black);
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$brown-light, 0) 0%,
+          rgba(Palettes.$brown-light, 0.28) 55%,
+          rgba(Palettes.$brown-light, 0.58) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
+          inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
+          inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+      }
+    }
+  }
+  &[class*='lig_bro'] {
+    input[class*='event'] {
+      &:not(:checked) + .switch {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1),
+          0 10px 22px rgba(#000, 0.18);
+      }
+      &:checked + .switch {
+        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-light, 0.18),
+          0 12px 26px rgba(#000, 0.28);
+      }
+    }
+    span[class*='switch'] {
+      filter: drop-shadow(0 0 2px rgba(black, 1));
+      &::after {
+        filter: drop-shadow(0 0 2px rgba(white, 1));
+        background: linear-gradient(
+          180deg,
+          rgba(Palettes.$brown-dark, 0) 0%,
+          rgba(Palettes.$brown-dark, 0.3) 55%,
+          rgba(Palettes.$brown-dark, 0.64) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.1),
+          inset 0 -14px 26px rgba(#000, 0.18),
+          inset 0 0 0 1px rgba(#000, 0.06);
+      }
+      &:hover::after {
+        filter: drop-shadow(0 0 2px rgba(black, 1));
+      }
+    }
+  }
+}
 @mixin tur-color {
   $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
@@ -763,6 +1012,9 @@ label[class*='toggle'] {
   @include blu-color();
   @include yel-color();
   @include pur-color();
+  @include ora-color();
+  @include pin-color();
+  @include bro-color();
   @include tur-color();
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

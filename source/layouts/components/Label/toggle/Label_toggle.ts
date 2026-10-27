@@ -1,7 +1,7 @@
 //--|🠊 Label_toggle.ts 🠈|--\\
 export function createClass(
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
 ): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
@@ -17,6 +17,9 @@ export function createClass(
     '(blue)': 'blu',
     '(yellow)': 'yel',
     '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
 

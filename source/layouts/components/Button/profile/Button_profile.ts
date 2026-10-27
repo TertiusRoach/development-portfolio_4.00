@@ -6,7 +6,7 @@ interface StyleProps {
   size: '<h1>' | '<h4>' | '<p>';
   view: '-square-' | '-circle-';
   type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
 }
 //--|🠋 Functions 🠋|--\\
 export function createClass(style: StyleProps): String {
@@ -43,7 +43,7 @@ const createLayout = (size: '<h1>' | '<h4>' | '<p>', view: '-square-' | '-circle
 };
 const createColor = (
   shade: '~dark~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
 ): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -60,6 +60,9 @@ const createColor = (
     '(blue)': 'blu',
     '(yellow)': 'yel',
     '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
 

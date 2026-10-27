@@ -16,7 +16,7 @@ interface TheseProps {
   style: {
     type: '{toggle}';
     shade: '~dark~' | '~medium~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   onClick?: () => void;
 }

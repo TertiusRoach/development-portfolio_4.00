@@ -17,7 +17,7 @@ interface TheseProps {
     size: '<h1>' | '<h4>' | '<p>';
     view: '-square-' | '-circle-';
     type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
 
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

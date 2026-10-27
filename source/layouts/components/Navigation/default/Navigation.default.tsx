@@ -21,7 +21,7 @@ interface TheseProps {
     image: string | undefined;
     shade: '~dark~' | '~light~';
     view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   cases: {
     tasks?: {

@@ -217,7 +217,7 @@ The reference implementation is `source/layouts/components/Aside/characters/Asid
 
 ### The Ten Colours
 
-`styles/Palettes.scss` holds every colour. Wherever colours are listed (types, maps, mixins), use the palette's order:
+`styles/Palettes.scss` holds every colour, in this order. New colour lists follow it. The existing component lists (types, maps, mixins) still use their older order, `mon · red · gre · blu · yel · pur · ora · pin · bro · tur`. Keep that order inside those files until they're reordered in a step of their own.
 
 | #  | Colour    | In `.tsx`       | Class   | In `.scss`              |
 | -- | --------- | --------------- | ------- | ----------------------- |

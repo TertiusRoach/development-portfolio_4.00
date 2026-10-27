@@ -50,9 +50,9 @@ export let abbrColor = (
     | '(purple)'
     | '(orange)'
     | '(pink)'
+    | '(yellow)'
     | '(brown)'
     | '(turquoise)'
-    | '(gray)'
     | '(mono)',
 ): string => {
   const colorMap: Record<string, string> = {
@@ -63,9 +63,9 @@ export let abbrColor = (
     '(purple)': 'pur',
     '(orange)': 'ora',
     '(pink)': 'pin',
+    '(yellow)': 'yel',
     '(brown)': 'bro',
     '(turquoise)': 'tur',
-    '(gray)': 'gra',
     '(mono)': 'mon',
   };
 

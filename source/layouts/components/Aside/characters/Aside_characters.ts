@@ -6,7 +6,7 @@ import { loadAsset } from '../../../../scripts';
 type StyleProps = {
   view: '-left-' | '-right-';
   shade: '~dark~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
 };
 
 export function createClass(style: StyleProps): string {
@@ -24,6 +24,9 @@ export function createClass(style: StyleProps): string {
     '(blue)': 'blu',
     '(yellow)': 'yel',
     '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
   const shadeMap: Record<string, string> = {

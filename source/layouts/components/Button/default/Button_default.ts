@@ -6,7 +6,7 @@ interface StyleProps {
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
 
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
 
   text?: string;
   image?: string | null | undefined;
@@ -64,7 +64,7 @@ const createLayout = (
 };
 const createColor = (
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
 ): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -81,6 +81,9 @@ const createColor = (
     '(blue)': 'blu',
     '(yellow)': 'yel',
     '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
 

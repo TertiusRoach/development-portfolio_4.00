@@ -5,7 +5,7 @@ interface StyleProps {
   image: string;
   size: '<h1>' | '<h4>' | '<p>';
   shade: '~dark~' | '~medium~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
 
   type: '{button}' | '{counter}';
@@ -56,7 +56,7 @@ export function createLayout(
 }
 export function createColor(
   shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
 ): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
@@ -73,6 +73,9 @@ export function createColor(
     '(blue)': 'blu',
     '(yellow)': 'yel',
     '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
 

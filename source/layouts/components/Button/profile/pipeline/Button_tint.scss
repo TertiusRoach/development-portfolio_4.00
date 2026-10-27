@@ -11,6 +11,9 @@
   @include blu-tint();
   @include yel-tint();
   @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
   @include tur-tint();
   .fore {
     transition: border-color 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -28,6 +31,9 @@
     @include blu-fade();
     @include yel-fade();
     @include pur-fade();
+    @include ora-fade();
+    @include pin-fade();
+    @include bro-fade();
     @include tur-fade();
   }
 }
@@ -381,6 +387,183 @@
     .back {
       span {
         background: rgba(Palettes.$purple-medium, 1);
+      }
+    }
+  }
+}
+
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  &[class*='dar_ora'] {
+    div[class='fore'] {
+      border-color: Palettes.$orange-dark;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+    }
+  }
+  &[class*='lig_ora'] {
+    div[class='fore'] {
+      border-color: Palettes.$orange-light;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+    }
+  }
+}
+@mixin ora-fade {
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  &[class*='dar_ora']:hover {
+    .fore {
+      border-color: Palettes.$orange-light;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$orange-medium, 1);
+      }
+    }
+  }
+  &[class*='lig_ora']:hover {
+    .fore {
+      border-color: Palettes.$orange-dark;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$orange-medium, 1);
+      }
+    }
+  }
+}
+
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  &[class*='dar_pin'] {
+    div[class='fore'] {
+      border-color: Palettes.$pink-dark;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+    }
+  }
+  &[class*='lig_pin'] {
+    div[class='fore'] {
+      border-color: Palettes.$pink-light;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+    }
+  }
+}
+@mixin pin-fade {
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  &[class*='dar_pin']:hover {
+    .fore {
+      border-color: Palettes.$pink-light;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$pink-medium, 1);
+      }
+    }
+  }
+  &[class*='lig_pin']:hover {
+    .fore {
+      border-color: Palettes.$pink-dark;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$pink-medium, 1);
+      }
+    }
+  }
+}
+
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  &[class*='dar_bro'] {
+    div[class='fore'] {
+      border-color: Palettes.$brown-dark;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow:
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+    }
+  }
+  &[class*='lig_bro'] {
+    div[class='fore'] {
+      border-color: Palettes.$brown-light;
+    }
+    div[class='back'] {
+      span {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow:
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+    }
+  }
+}
+@mixin bro-fade {
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  &[class*='dar_bro']:hover {
+    .fore {
+      border-color: Palettes.$brown-light;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$brown-medium, 1);
+      }
+    }
+  }
+  &[class*='lig_bro']:hover {
+    .fore {
+      border-color: Palettes.$brown-dark;
+    }
+    .back {
+      span {
+        background: rgba(Palettes.$brown-medium, 1);
       }
     }
   }

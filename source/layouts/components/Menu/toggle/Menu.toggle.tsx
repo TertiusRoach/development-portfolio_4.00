@@ -17,7 +17,7 @@ interface TheseProps {
     shade: '~dark~' | '~light~';
     view: Array<'-left-' | '-right-' | '-center-' | '-text-'>;
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   cases: {
     task: Array<(event: React.MouseEvent<HTMLButtonElement>) => void>;
@@ -50,7 +50,7 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             type: '{button}',
             shade: style.shade as '~dark~' | '~light~',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
             //--|===|--\\
             text: style.text[0] as string,
             image: style.image[0] as string,
@@ -70,7 +70,7 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             type: '{button}',
             shade: style.shade as '~dark~' | '~light~',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(turquoise)',
+            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
             //--|===|--\\
             text: style.text[1] as string,
             image: style.image[1] as string,
