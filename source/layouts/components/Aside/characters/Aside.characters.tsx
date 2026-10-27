@@ -80,7 +80,7 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
               );
             }
             case '-right-': {
-              const rightProfiles = [
+              let rightProfiles = [
                 'hammad-dean',
                 'tasneem-kemp',
                 'elliot-crane',

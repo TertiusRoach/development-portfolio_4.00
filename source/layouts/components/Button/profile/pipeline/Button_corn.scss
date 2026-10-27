@@ -5,15 +5,18 @@
     .fore,
     .icon,
     .back {
-      border-radius: 8px;
-      @media screen and (max-height: 768px) {
-        border-radius: 6px;
-      }
-      @media screen and (max-height: 480px) {
-        border-radius: 4px;
-      }
-      @media screen and (max-height: 360px) {
-        border-radius: 3px;
+      &,
+      img {
+        border-radius: 8px;
+        @media screen and (max-height: 768px) {
+          border-radius: 6px;
+        }
+        @media screen and (max-height: 480px) {
+          border-radius: 4px;
+        }
+        @media screen and (max-height: 360px) {
+          border-radius: 3px;
+        }
       }
     }
   }
@@ -31,15 +34,18 @@
     .fore,
     .icon,
     .back {
-      border-radius: 8px;
-      @media screen and (max-width: 768px) {
-        border-radius: 6px;
-      }
-      @media screen and (max-width: 480px) {
-        border-radius: 4px;
-      }
-      @media screen and (max-width: 360px) {
-        border-radius: 3px;
+      &,
+      img {
+        border-radius: 8px;
+        @media screen and (max-width: 768px) {
+          border-radius: 6px;
+        }
+        @media screen and (max-width: 480px) {
+          border-radius: 4px;
+        }
+        @media screen and (max-width: 360px) {
+          border-radius: 3px;
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 //--|🠊 profile/pipeline/Button_flex.scss 🠈|--\\
 
 @mixin profile-flexbox {
+  /*
   display: flex;
   position: relative;
   align-items: center;
@@ -24,6 +25,7 @@
       height: inherit;
     }
   }
+  */
 }
 
 @mixin desktop-flex {

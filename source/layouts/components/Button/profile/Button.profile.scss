@@ -7,6 +7,7 @@
 
 button[class*='profile'] {
   @include Button_tint.profile-colors();
+  @include Button_grid.profile-gridbox();
   @include Button_flex.profile-flexbox();
 
   @media screen and (orientation: landscape) {
