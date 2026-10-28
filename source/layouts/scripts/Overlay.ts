@@ -1,4 +1,5 @@
 //--|🠊 layouts/scripts/Overlay.ts 🠈|--\\
+//--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
 
 //--|🠋 Disable Overlay 🠋|--\\

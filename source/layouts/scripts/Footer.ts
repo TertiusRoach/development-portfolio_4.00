@@ -1,4 +1,5 @@
 //--|🠊 layouts/scripts/Footer.ts 🠈|--\\
+//--|🠊 Front-end Functions 🠈|--\\
 export function freezeToggle(pageName: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | 'components', blockName: 'footer' | 'rightbar'): void {
   const selectElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   if (selectElement.className.includes('locked')) {
