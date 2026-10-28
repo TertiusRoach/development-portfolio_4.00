@@ -3,7 +3,6 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Default) 🠋|--\\
-
   button[id*='block'] {
     &[id*='left'] {
       padding-left: 1rem;
@@ -59,7 +58,6 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Default) 🠋|--\\
-
   button[id*='block'] {
     &#test-main-block {
       grid-area: 2 / 2 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
