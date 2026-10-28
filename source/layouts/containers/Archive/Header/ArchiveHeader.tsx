@@ -181,7 +181,12 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
   let styleView = 'def' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   return (
     <>
+      {/*--|🠊 <Article> 🠈|--*/}
       <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
+        }}
         info={{
           labelName: 'article',
           blockName: blockName as 'header',
@@ -192,12 +197,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Aside> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Article_Updates>', '<Article_Loading>'] as Array<string>,
+          titles: ['<Aside_Characters>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'aside',
           blockName: blockName as 'header',
@@ -208,12 +214,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Button> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Aside_Characters>'] as Array<string>,
+          titles: ['<Button_Default>', '<Button_Routing>', '<Button_Profile>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'button',
           blockName: blockName as 'header',
@@ -224,12 +231,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Division> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Button_Default>', '<Button_Routing>', '<Button_Profile>'] as Array<string>,
+          titles: ['<Division_Testing>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'division',
           blockName: blockName as 'header',
@@ -240,12 +248,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Figure> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Division_Testing>'] as Array<string>,
+          titles: ['<Figure_Default>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'figure',
           blockName: blockName as 'header',
@@ -256,12 +265,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Menu> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Figure_Default>'] as Array<string>,
+          titles: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'menu',
           blockName: blockName as 'header',
@@ -272,12 +282,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Navigation> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Menu_Swipe>', '<Menu_Select>', '<Menu_Scroll>'] as Array<string>,
+          titles: ['<Navigation_Default>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'navigation',
           blockName: blockName as 'header',
@@ -288,12 +299,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Section> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Navigation_Default>'] as Array<string>,
+          titles: ['<Section_Characters>', '<Section_Demonstration>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'section',
           blockName: blockName as 'header',
@@ -304,12 +316,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Table> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Section_Characters>', '<Section_Demonstration>'] as Array<string>,
+          titles: ['<Table_Default>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'table',
           blockName: blockName as 'header',
@@ -320,12 +333,13 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           color: styleColor,
           shade: styleShade,
         }}
+      />
+      {/*--|🠊 <Time> 🠈|--*/}
+      <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Table_Default>'] as Array<string>,
+          titles: ['<Time_Default>'] as Array<string>,
         }}
-      />
-      <MenuSwipe
         info={{
           labelName: 'time',
           blockName: blockName as 'header',
@@ -335,10 +349,6 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           view: styleView,
           color: styleColor,
           shade: styleShade,
-        }}
-        cases={{
-          axis: '[x]',
-          titles: ['<Time_Default>'] as Array<string>,
         }}
       />
     </>
