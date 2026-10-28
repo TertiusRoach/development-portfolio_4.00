@@ -4,7 +4,7 @@
 @use './characters-section/CharactersSection.scss';
 
 section[class*='section-main'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.section-main_container {
       aside[class*='section'] {
         @media screen and (orientation: landscape) {

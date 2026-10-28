@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultButton from './default-button/DefaultButton';
@@ -41,7 +41,7 @@ const ButtonElements: React.FC<InfoProps> = ({ info }) => {
   const pageName = info.pageName as 'components';
   return (
     <section className={`${labelName}-${blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 1,
           axis: '[x]',

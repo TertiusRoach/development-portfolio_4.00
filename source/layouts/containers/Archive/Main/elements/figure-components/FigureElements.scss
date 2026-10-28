@@ -4,7 +4,7 @@
 @use './default-figure/DefaultFigure.scss';
 
 section[class*='figure'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.figure-main_container {
       aside[class*='figure'] {
         @media screen and (orientation: landscape) {

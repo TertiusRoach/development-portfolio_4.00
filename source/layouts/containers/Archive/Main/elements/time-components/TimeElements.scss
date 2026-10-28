@@ -3,7 +3,7 @@
 @use '../../../../../styles/Palettes.scss';
 
 section[class*='time'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.time-main_container {
       aside[class*='default'] {
         @media screen and (orientation: landscape) {

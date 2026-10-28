@@ -13,7 +13,7 @@ import { checkScreen, loadAsset } from '../../../../../../../scripts';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
-import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 interface InfoProps {
   info: {
@@ -58,8 +58,8 @@ function RoutingButton({ info }: InfoProps) {
                 shade: '~dark~',
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="routing-darkside-main_fullscreen-default"/> 🠈|--\\
               info={{
                 labelName: 'routing-darkside',
                 blockName: info.blockName as '<main>',
@@ -118,8 +118,8 @@ function RoutingButton({ info }: InfoProps) {
                 shade: '~light~',
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="routing-lightside-main_fullscreen-default"/> 🠈|--\\
               info={{
                 labelName: 'routing-lightside',
                 blockName: info.blockName as '<main>',
@@ -169,8 +169,8 @@ function RoutingButton({ info }: InfoProps) {
                 shade: '~dark~',
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="routing-darkside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="routing-darkside-main_fullscreen-default"/> 🠈|--\\
               info={{
                 labelName: 'routing-darkside',
                 blockName: info.blockName as '<main>',
@@ -229,8 +229,8 @@ function RoutingButton({ info }: InfoProps) {
                 shade: '~light~',
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="routing-lightside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="routing-lightside-main_fullscreen-default"/> 🠈|--\\
               info={{
                 labelName: 'routing-lightside',
                 blockName: info.blockName as '<main>',

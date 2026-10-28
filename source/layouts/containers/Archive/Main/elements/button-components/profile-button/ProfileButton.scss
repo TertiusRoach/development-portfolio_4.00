@@ -245,7 +245,7 @@
         grid-area: 6 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    div[class*='carousel'] {
+    div[class*='fullscreen'] {
       z-index: 0;
       overflow: hidden;
       grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

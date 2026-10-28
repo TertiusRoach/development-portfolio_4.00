@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, loadAsset } from '../../../../scripts';
-import reloadElements, { modifyingController, previewButtons, scrollingCarousel, createClass } from './Menu_scroll';
+import reloadElements, { modifyingController, previewButtons, scrollingFullscreen, createClass } from './Menu_scroll';
 
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
@@ -64,7 +64,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                scrollingCarousel('show-prev', pageName, blockName, labelName, 'vertical');
+                scrollingFullscreen('show-prev', pageName, blockName, labelName, 'vertical');
                 previewButtons('view-prev', pageName, blockName, labelName, 'vertical');
               }}
             />
@@ -85,7 +85,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 /* labelName: info.labelName, */
               }}
               onClick={(): void => {
-                scrollingCarousel('show-next', pageName, blockName, labelName, 'vertical');
+                scrollingFullscreen('show-next', pageName, blockName, labelName, 'vertical');
                 previewButtons('view-next', pageName, blockName, labelName, 'vertical');
               }}
             />

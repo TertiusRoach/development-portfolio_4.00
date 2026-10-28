@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './TableElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultTable from './default-table/DefaultTable';
@@ -22,7 +22,7 @@ interface InfoProps {
 const TableElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 1,
           axis: '[x]',

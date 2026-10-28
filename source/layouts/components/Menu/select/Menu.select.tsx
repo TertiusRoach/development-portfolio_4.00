@@ -7,7 +7,7 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
-import reloadElements, { modifyControl, selectCarousel, createClass } from './Menu_select';
+import reloadElements, { modifyControl, selectFullscreen, createClass } from './Menu_select';
 
 //--|🠋 Styles 🠋|--\\
 import './Menu.select.scss';
@@ -108,7 +108,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
                   if (cases.task === undefined) {
-                    selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                    selectFullscreen(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                   } else {
                     cases.task[index]();
                   }
@@ -140,7 +140,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 }}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
                   if (cases.task === undefined) {
-                    selectCarousel(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
+                    selectFullscreen(event.currentTarget.parentElement as HTMLDivElement, info.pageName, info.blockName, info.labelName, cases.axis);
                   } else {
                     cases.task[index]();
                   }

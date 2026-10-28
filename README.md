@@ -410,7 +410,7 @@ The UI system. This is where the application becomes readable. The split between
 | `Article/`    | `loading` · `updates`                                  |
 | `Aside/`      | `characters`                                           |
 | `Button/`     | `default` · `profile` · `routing`                      |
-| `Division/`   | `carousel` · `conveyor` · `sweeping` · `testing`       |
+| `Division/`   | `conveyor` · `fullscreen` · `sweeping` · `testing`     |
 | `Fieldset/`   | `code`                                                 |
 | `Figure/`     | `default` · `loading` · `rotation`                     |
 | `Form/`       | `login` · `password` · `register` · `reset` · `verify` |

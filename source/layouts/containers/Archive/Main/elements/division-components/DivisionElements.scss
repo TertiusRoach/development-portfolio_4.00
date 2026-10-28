@@ -5,7 +5,7 @@
 @use './placeholder-division/PlaceholderDivision.scss';
 
 section[class*='division-main'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.division-main_container {
       aside[class*='division'] {
         @media screen and (orientation: landscape) {
@@ -17,7 +17,7 @@ section[class*='division-main'] {
           }
 
           /*
-          &[class*='carousel'] {
+          &[class*='fullscreen'] {
           }
           &[class*='conveyor'] {
           }
@@ -34,7 +34,7 @@ section[class*='division-main'] {
           }
 
           /*
-          &[class*='carousel'] {
+          &[class*='fullscreen'] {
           }
           &[class*='conveyor'] {
           }

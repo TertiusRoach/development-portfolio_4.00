@@ -1939,8 +1939,8 @@ export const toggleColors = (section: HTMLElement): Promise<string> => {
   });
 };
 export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-next') => {
-  const carousel = element.querySelector('li') as HTMLElement;
-  const container = carousel.querySelector('div[class*="container"]') as HTMLDivElement;
+  const fullscreen = element.querySelector('li') as HTMLElement;
+  const container = fullscreen.querySelector('div[class*="container"]') as HTMLDivElement;
   const controller = document.querySelector(`menu[class*="${element.classList[0].split('_')[0]}"]`) as HTMLMenuElement;
 
   const prevMenu = controller.querySelector('li[class*="prev-view"]') as HTMLElement;
@@ -1953,7 +1953,7 @@ export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-
   const lastChild = container.childElementCount as number;
   switch (action) {
     case 'view-prev':
-      viewPrev = `${carousel.classList[0].split('_')[1]}` as string;
+      viewPrev = `${fullscreen.classList[0].split('_')[1]}` as string;
       viewNext = arabicToRoman(romanToArabic(viewPrev) - 1) as string;
       if (romanToArabic(viewPrev) !== firstChild) {
         if (romanToArabic(viewPrev) === firstChild + 1) {
@@ -1961,14 +1961,14 @@ export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-
         } else {
           nextMenu.classList.replace('downplay', 'highlight');
         }
-        carousel.classList.replace(
-          `${carousel.classList[0].split('_')[0]}_${viewPrev}`,
-          `${carousel.classList[0].split('_')[0]}_${viewNext}`,
+        fullscreen.classList.replace(
+          `${fullscreen.classList[0].split('_')[0]}_${viewPrev}`,
+          `${fullscreen.classList[0].split('_')[0]}_${viewNext}`,
         );
       }
       break;
     case 'view-next':
-      viewPrev = `${carousel.classList[0].split('_')[1]}` as string;
+      viewPrev = `${fullscreen.classList[0].split('_')[1]}` as string;
       viewNext = arabicToRoman(romanToArabic(viewPrev) + 1) as string;
       if (romanToArabic(viewPrev) !== lastChild) {
         if (romanToArabic(viewPrev) === lastChild - 1) {
@@ -1976,9 +1976,9 @@ export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-
         } else {
           prevMenu.classList.replace('downplay', 'highlight');
         }
-        carousel.classList.replace(
-          `${carousel.classList[0].split('_')[0]}_${viewPrev}`,
-          `${carousel.classList[0].split('_')[0]}_${viewNext}`,
+        fullscreen.classList.replace(
+          `${fullscreen.classList[0].split('_')[0]}_${viewPrev}`,
+          `${fullscreen.classList[0].split('_')[0]}_${viewNext}`,
         );
       }
       break;

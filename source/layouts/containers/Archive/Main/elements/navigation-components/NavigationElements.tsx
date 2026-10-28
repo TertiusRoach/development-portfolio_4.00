@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './NavigationElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 import NavigationDefault from '../../../../../components/Navigation/default/Navigation.default';
 
 interface InfoProps {
@@ -56,7 +56,7 @@ function NavigationComponents({ info }: InfoProps) {
 const NavigationElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 1,
           axis: '[x]',

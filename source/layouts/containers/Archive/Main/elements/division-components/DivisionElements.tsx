@@ -10,7 +10,7 @@ import TestingDivision from './testing-division/TestingDivision';
 import PlaceholderDivision from './placeholder-division/PlaceholderDivision';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 interface InfoProps {
   info: {
@@ -23,7 +23,7 @@ interface InfoProps {
 const DivisionElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 1,
           axis: '[x]',

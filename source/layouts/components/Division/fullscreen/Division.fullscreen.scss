@@ -1,4 +1,4 @@
-//--|🠊 Division.carousel.scss 🠈|--\\
+//--|🠊 Division.fullscreen.scss 🠈|--\\
 %hori-scope {
   //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
   li[class*='horizontal'] {
@@ -10,7 +10,7 @@
       }
     }
     > div[class*='container'] {
-      //--|🠊 Own container only, never a nested carousel 🠈|--\\
+      //--|🠊 Own container only, never a nested fullscreen 🠈|--\\
       flex-direction: row; //--|🠈 flexbox: slides side by side 🠈|--\\
       grid-auto-flow: column; //--|🠈 gridbox: slides side by side 🠈|--\\
       grid-auto-columns: 100%; //--|🠈 gridbox: one slide per view 🠈|--\\
@@ -18,7 +18,7 @@
   }
 }
 %hori-stack {
-  li[class*='carousel'] {
+  li[class*='fullscreen'] {
     &[class*='horizontal_I'] {
       transform: translateX(0);
     }
@@ -89,14 +89,14 @@
     width: 100%;
     transition: transform 500ms ease-in-out;
     > div[class*='container'] {
-      //--|🠊 Own container only, never a nested carousel 🠈|--\\
+      //--|🠊 Own container only, never a nested fullscreen 🠈|--\\
       flex-direction: column; //--|🠈 flexbox: slides stacked 🠈|--\\
       grid-auto-flow: row; //--|🠈 gridbox: slides stacked 🠈|--\\
     }
   }
 }
 %vert-stack {
-  li[class*='carousel'] {
+  li[class*='fullscreen'] {
     &[class*='vertical_I'] {
       transform: translateY(0);
     }
@@ -160,8 +160,8 @@
   }
 }
 
-div[class*='carousel'] {
-  //--|🠋 Shared (Carousel) 🠋|--\\
+div[class*='fullscreen'] {
+  //--|🠋 Shared (Fullscreen) 🠋|--\\
   ul[class='hori-X-axis'] {
     @extend %hori-scope;
     @extend %hori-stack;

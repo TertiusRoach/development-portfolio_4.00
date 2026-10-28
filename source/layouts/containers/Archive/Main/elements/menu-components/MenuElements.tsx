@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 
@@ -36,7 +36,7 @@ function MenuComponents({ info }: InfoProps) {
 const MenuElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 1,
           axis: '[x]',

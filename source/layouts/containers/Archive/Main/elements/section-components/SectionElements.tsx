@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import './SectionElements.scss';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import CharactersSection from './characters-section/CharactersSection';
@@ -33,7 +33,7 @@ function SectionComponents({ info }: InfoProps) {
 const SectionElements: React.FC<InfoProps> = ({ info }) => {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionCarousel
+      <DivisionFullscreen
         cases={{
           show: 2,
           axis: '[x]',

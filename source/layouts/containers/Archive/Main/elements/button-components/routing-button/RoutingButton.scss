@@ -36,7 +36,7 @@
         margin: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
     }
-    div[class*='carousel'] {
+    div[class*='fullscreen'] {
       z-index: 0;
 
       div[class*='container'] {
@@ -232,7 +232,7 @@
   section[class*='main-fore'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
-    div[class*='carousel'] {
+    div[class*='fullscreen'] {
       //--|🠊 display: grid; 🠈|--\\
       div[class*='container'] {
         //--|🠊 display: flex; 🠈|--\\
@@ -596,7 +596,7 @@
         grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    div[class*='carousel'] {
+    div[class*='fullscreen'] {
       z-index: 0;
       overflow: hidden;
       grid-area: 1 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -612,7 +612,7 @@
   }
   %mark-disp-mobi {
     display: grid;
-    div[class*='carousel'] {
+    div[class*='fullscreen'] {
       //--|🠊 display: flex; 🠈|--\\
       &[class*='side-main'] {
         flex-direction: column;

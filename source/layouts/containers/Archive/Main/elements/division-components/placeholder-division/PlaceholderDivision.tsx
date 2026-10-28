@@ -8,7 +8,7 @@ import './PlaceholderDivision.scss';
 import { stripBrackets } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder';
 
 interface InfoProps {
@@ -27,8 +27,8 @@ function PlaceholderDivision({ info }: InfoProps) {
   return (
     <aside className="placeholder-division">
       <section className={`${blockName}-foreground`}>
-        <DivisionCarousel
-          //--|🠊 <div class="placeholders-main_carousel-default"/> 🠈|--\\
+        <DivisionFullscreen
+          //--|🠊 <div class="placeholders-main_fullscreen-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
             show: 1 as number,

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
-import DivisionCarousel from '../../../../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
 import copyCode, { toggleColors } from './DefaultFunctions';
@@ -58,8 +58,8 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
                 show: casesShow as number,
@@ -118,8 +118,8 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
                 show: casesShow as number,
@@ -169,8 +169,8 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="darkside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
                 show: casesShow as number,
@@ -229,8 +229,8 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <DivisionCarousel
-              //--|🠊 <div class="lightside-main_carousel-default"/> 🠈|--\\
+            <DivisionFullscreen
+              //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
                 show: casesShow as number,

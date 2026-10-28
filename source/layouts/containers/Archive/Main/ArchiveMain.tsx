@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../components/Division/carousel/Division.carousel';
+import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
 import { revertBlocks } from '../../../scripts/Main';
@@ -54,8 +54,8 @@ function ArchiveMain({ info }: InfoProps) {
       }}
     >
       <section className={`${blockName}-foreground`}>
-        <DivisionCarousel
-          //--|🠊 <div class="elements-main_carousel-default"/> 🠈|--\\
+        <DivisionFullscreen
+          //--|🠊 <div class="elements-main_fullscreen-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
             show: startingPreview as number,

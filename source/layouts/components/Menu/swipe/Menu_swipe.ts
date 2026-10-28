@@ -15,18 +15,18 @@ export const modifyingController = (pageName: string, blockName: string, labelNa
 };
 let revealTitles = (pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
+  const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
 
   //--|🠋 Step 1: Swipe Visible Window 🠋|--\\
-  const revealActiveTitle = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'horizontal') => {
+  const revealActiveTitle = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'horizontal') => {
     //--|🠊 Reveal Active Title 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
-    switch (carousel) {
+    switch (fullscreen) {
       case 'present':
-        let carouselPosition = container?.querySelector(`li[class*="carousel-${menuAxis}"]`)?.classList[0].split('_')[1] as string;
+        let fullscreenPosition = container?.querySelector(`li[class*="fullscreen-${menuAxis}"]`)?.classList[0].split('_')[1] as string;
 
         var viewPrev: string = controllerShowing.classList[0];
-        var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${carouselPosition}`;
+        var viewNext: string = `${controllerShowing.classList[0].split('_')[0]}_${fullscreenPosition}`;
 
         controllerShowing.classList.replace(viewPrev, viewNext);
         break;
@@ -37,11 +37,11 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
         controllerShowing.classList.replace(`showing-${orientation}_I`, `showing-${orientation}_II`);
         break;
     }
-    assignBootstrapClasses(container, controller, carousel, orientation);
+    assignBootstrapClasses(container, controller, fullscreen, orientation);
   };
 
   //--|🠋 Step 2: Scale Bootstrap Display 🠋|--\\
-  const assignBootstrapClasses = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'horizontal') => {
+  const assignBootstrapClasses = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'horizontal') => {
     //--|🠊 Assign Bootstrap Classes 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
     let controllerBootstrap = controllerShowing.querySelectorAll('aside h3[class*="display"]') as NodeListOf<HTMLElement>;
@@ -52,20 +52,20 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
       element.classList.replace(prevClass, nextClass);
     }
     if (container) {
-      return emphasizeDefaultParameters(container, controller, carousel, orientation);
+      return emphasizeDefaultParameters(container, controller, fullscreen, orientation);
     }
   };
 
   //--|🠋 Step 3: Mark Active Title 🠋|--\\
-  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'horizontal') => {
+  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'horizontal') => {
     //--|🠊 Emphasize Default Parameters 🠈|--\\
-    const showingCarousel = container.querySelector(`li[class*="carousel-${orientation}"]`) as HTMLLIElement;
+    const showingFullscreen = container.querySelector(`li[class*="fullscreen-${orientation}"]`) as HTMLLIElement;
     const showingController = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
-    switch (carousel) {
+    switch (fullscreen) {
       case 'present':
-        let carouselPosition = (romanToArabic(showingCarousel.classList[0].split('_')[1]) - 1) as number;
+        let fullscreenPosition = (romanToArabic(showingFullscreen.classList[0].split('_')[1]) - 1) as number;
         if (showingController.querySelector('.downplay')) {
-          var viewTitle = showingController.children[carouselPosition] as HTMLElement;
+          var viewTitle = showingController.children[fullscreenPosition] as HTMLElement;
           viewTitle.classList.replace('downplay', 'highlight');
         }
         break;
@@ -79,29 +79,29 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
     }
   };
 
-  if (carousel) {
-    return revealActiveTitle(carousel, control, 'present', menuAxis);
+  if (fullscreen) {
+    return revealActiveTitle(fullscreen, control, 'present', menuAxis);
   } else {
-    return revealActiveTitle(carousel as null, control, 'missing', menuAxis);
+    return revealActiveTitle(fullscreen as null, control, 'missing', menuAxis);
   }
 };
 let revealButtons = (pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
+  const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
 
   //--|🠋 Step 1: Find Position 🠋|--\\
-  const retrievePositions = (container: HTMLDivElement | null, controller: HTMLMenuElement, carousel: 'present' | 'missing', orientation: 'horizontal') => {
+  const retrievePositions = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'horizontal') => {
     let minimum: number = 0;
     let current: number = 1;
     let maximum: number = 2;
 
-    switch (carousel) {
+    switch (fullscreen) {
       case 'present':
-        const showingCarousel = container?.querySelector(`li[class*="carousel-${orientation}"]`) as HTMLLIElement;
+        const showingFullscreen = container?.querySelector(`li[class*="fullscreen-${orientation}"]`) as HTMLLIElement;
 
         minimum = 1 as number;
-        current = romanToArabic(showingCarousel.classList[0].split('_')[1]) as number;
-        maximum = showingCarousel.querySelector(`div[class*="${labelName}"`)?.childElementCount as number;
+        current = romanToArabic(showingFullscreen.classList[0].split('_')[1]) as number;
+        maximum = showingFullscreen.querySelector(`div[class*="${labelName}"`)?.childElementCount as number;
         break;
       case 'missing':
         const showingController = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
@@ -140,10 +140,10 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
     }
   };
 
-  if (carousel) {
-    return retrievePositions(carousel as HTMLDivElement, control, 'present', menuAxis);
+  if (fullscreen) {
+    return retrievePositions(fullscreen as HTMLDivElement, control, 'present', menuAxis);
   } else {
-    return retrievePositions(carousel as null, control, 'missing', menuAxis);
+    return retrievePositions(fullscreen as null, control, 'missing', menuAxis);
   }
 };
 
@@ -167,7 +167,7 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
 }
 
 //--|🠋 Configures Headings 🠋|--\\
-export const swipingCarousel = (showTask: 'show-prev' | 'show-next', pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
+export const swipingFullscreen = (showTask: 'show-prev' | 'show-next', pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
   switch (showTask) {
     case 'show-prev':
       return showPrev(pageName, blockName, labelName, menuAxis);
@@ -177,16 +177,16 @@ export const swipingCarousel = (showTask: 'show-prev' | 'show-next', pageName: s
 };
 let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
+  const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
   const emphasisBlocker: string = control.querySelector('div[class*="prev-view"')?.classList[1] as 'highlight' | 'downplay';
   if (emphasisBlocker === 'highlight') {
     let showingControl: HTMLLIElement;
-    let showingCarousel: HTMLLIElement;
+    let showingFullscreen: HTMLLIElement;
     let prevShow: HTMLElement;
     let nextShow: HTMLElement;
     let prevTitle: number;
     let nextTitle: number;
-    switch (!carousel) {
+    switch (!fullscreen) {
       default:
       case false:
         showingControl = control.querySelector(`li[class*="showing-${menuAxis}"]`) as HTMLLIElement;
@@ -196,18 +196,18 @@ let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis
         prevShow = showingControl.children[prevTitle - 1] as HTMLElement;
         nextShow = showingControl.children[nextTitle - 1] as HTMLElement;
 
-        showingCarousel = carousel?.querySelector(`li[class*="carousel-${menuAxis}"]`) as HTMLLIElement;
-        let prevSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]);
-        let nextSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]) - 1;
+        showingFullscreen = fullscreen?.querySelector(`li[class*="fullscreen-${menuAxis}"]`) as HTMLLIElement;
+        let prevSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]);
+        let nextSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]) - 1;
 
         showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
-        showingCarousel.classList.replace(`carousel-${menuAxis}_${arabicToRoman(prevSlide)}`, `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`);
+        showingFullscreen.classList.replace(`fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`, `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
 
         revealButtons(pageName, blockName, labelName, menuAxis);
-        //--|🠊 console.log('Present Carousel'); 🠈|--\\
+        //--|🠊 console.log('Present Fullscreen'); 🠈|--\\
         break;
       case true:
         showingControl = control.querySelector(`li[class*="showing-${menuAxis}"]`) as HTMLLIElement;
@@ -221,23 +221,23 @@ let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
-        //--|🠊 console.log('Missing Carousel'); 🠈|--\\
+        //--|🠊 console.log('Missing Fullscreen'); 🠈|--\\
         break;
     }
   }
 };
 let showNext = (pageName: string, blockName: string, labelName: string, menuAxis: 'horizontal'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
-  const carousel = findTags(pageName, blockName, labelName).carousel as HTMLDivElement | null;
+  const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
   const emphasisBlocker: string = control.querySelector('div[class*="next-view"')?.classList[1] as 'highlight' | 'downplay';
   if (emphasisBlocker === 'highlight') {
     let showingControl: HTMLLIElement;
-    let showingCarousel: HTMLLIElement;
+    let showingFullscreen: HTMLLIElement;
     let prevShow: HTMLElement;
     let nextShow: HTMLElement;
     let prevTitle: number;
     let nextTitle: number;
-    switch (!carousel) {
+    switch (!fullscreen) {
       default:
       case false:
         showingControl = control.querySelector(`li[class*="showing-${menuAxis}"]`) as HTMLLIElement;
@@ -247,16 +247,16 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
         prevShow = showingControl.children[prevTitle - 1] as HTMLElement;
         nextShow = showingControl.children[nextTitle - 1] as HTMLElement;
 
-        showingCarousel = carousel?.querySelector(`li[class*="carousel-${menuAxis}"]`) as HTMLLIElement;
-        let prevSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]);
-        let nextSlide: number = romanToArabic(showingCarousel.classList[0].split('_')[1]) + 1;
+        showingFullscreen = fullscreen?.querySelector(`li[class*="fullscreen-${menuAxis}"]`) as HTMLLIElement;
+        let prevSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]);
+        let nextSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]) + 1;
 
         showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
-        showingCarousel.classList.replace(`carousel-${menuAxis}_${arabicToRoman(prevSlide)}`, `carousel-${menuAxis}_${arabicToRoman(nextSlide)}`);
+        showingFullscreen.classList.replace(`fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`, `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`);
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
-        //--|🠊 console.log('Present Carousel'); 🠈|--\\
+        //--|🠊 console.log('Present Fullscreen'); 🠈|--\\
         break;
       case true:
         showingControl = control.querySelector(`li[class*="showing-${menuAxis}"]`) as HTMLLIElement;
@@ -270,7 +270,7 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
-        //--|🠊 console.log('Missing Carousel'); 🠈|--\\
+        //--|🠊 console.log('Missing Fullscreen'); 🠈|--\\
         break;
     }
   }
@@ -280,7 +280,7 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
 interface ChainedElements {
   controller: HTMLMenuElement;
 
-  carousel: HTMLDivElement | null;
+  fullscreen: HTMLDivElement | null;
 }
 interface StyleProps {
   shade: '~dark~' | '~light~';
@@ -295,11 +295,11 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
     document.querySelector(`#${pageName}-header menu[class="${labelName}-header_${menuType}-default"]`) ??
     document.querySelector(`#${pageName}-footer menu[class="${labelName}-footer_${menuType}-default"]`)) as HTMLMenuElement;
 
-  let carousel = (document.querySelector(`#${container} div[class="${labelName}-${blockName}_carousel-default"]`) ??
-    document.querySelector(`#${pageName}-main div[class="${labelName}-main_carousel-default"]`)) as HTMLDivElement | null;
+  let fullscreen = (document.querySelector(`#${container} div[class="${labelName}-${blockName}_fullscreen-default"]`) ??
+    document.querySelector(`#${pageName}-main div[class="${labelName}-main_fullscreen-default"]`)) as HTMLDivElement | null;
 
   return {
-    carousel,
+    fullscreen,
     controller,
   };
 }

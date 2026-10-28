@@ -4,7 +4,7 @@
 @use './default-table/DefaultTable.scss';
 
 section[class*='table'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.table-main_container {
       aside[class*='table'] {
         @media screen and (orientation: landscape) {

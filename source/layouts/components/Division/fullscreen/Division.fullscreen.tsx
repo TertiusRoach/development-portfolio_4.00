@@ -1,4 +1,4 @@
-//--|🠊 Division.carousel.tsx 🠈|--\\
+//--|🠊 Division.fullscreen.tsx 🠈|--\\
 
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
@@ -24,7 +24,7 @@ type InfoProps = {
   blockName: string;
   labelName: string;
 };
-function DivisionCarousel({ info, cases, onWheel }: TheseProps) {
+function DivisionFullscreen({ info, cases, onWheel }: TheseProps) {
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
   const parentAxis: Record<'[x]' | '[y]', string> = {
@@ -32,7 +32,7 @@ function DivisionCarousel({ info, cases, onWheel }: TheseProps) {
     '[y]': 'vert-Y-axis',
   };
   return (
-    <div className={`${info.labelName}-${info.blockName}_carousel-default`} onWheel={onWheel}>
+    <div className={`${info.labelName}-${info.blockName}_fullscreen-default`} onWheel={onWheel}>
       <CallList className={parentAxis[cases.axis]}>
         <DivisionAxis info={info} cases={cases} />
       </CallList>
@@ -43,8 +43,8 @@ const DivisionAxis = ({ info, cases }: TheseProps) => {
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallItem = cases.call as React.ComponentType<{ info: InfoProps }>;
   const childrenAxis: Record<'[x]' | '[y]', string> = {
-    '[x]': 'carousel-horizontal',
-    '[y]': 'carousel-vertical',
+    '[x]': 'fullscreen-horizontal',
+    '[y]': 'fullscreen-vertical',
   };
   return (
     <li className={`${childrenAxis[cases.axis]}_${arabicToRoman(cases.show)}`}>
@@ -55,4 +55,4 @@ const DivisionAxis = ({ info, cases }: TheseProps) => {
   );
 };
 
-export default DivisionCarousel;
+export default DivisionFullscreen;

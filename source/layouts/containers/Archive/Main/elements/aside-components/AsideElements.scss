@@ -4,7 +4,7 @@
 @use '../../../../../styles/Palettes.scss' as Palettes;
 
 section[class*='aside'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.aside-main_container {
       aside[class*='aside'] {
         @media screen and (orientation: landscape) {

@@ -6,7 +6,7 @@
 @use './select-menu/SelectMenu.scss';
 
 section[class*='menu-main'] {
-  div[class*='carousel'] {
+  div[class*='fullscreen'] {
     div.menu-main_container {
       aside[class*='menu'] {
         @media screen and (orientation: landscape) {
