@@ -4,16 +4,18 @@
 @use './characters-section/CharactersSection.scss';
 
 section[class*='section-main'] {
-  div.section-main_container {
-    aside[class*='section'] {
-      @media screen and (orientation: landscape) {
-        &[class*='characters'] {
-          @include CharactersSection.desktop-landscape;
+  div[class*='carousel'] {
+    div.section-main_container {
+      aside[class*='section'] {
+        @media screen and (orientation: landscape) {
+          &[class*='characters'] {
+            @include CharactersSection.desktop-landscape;
+          }
         }
-      }
-      @media screen and (orientation: portrait) {
-        &[class*='characters'] {
-          @include CharactersSection.mobile-portrait;
+        @media screen and (orientation: portrait) {
+          &[class*='characters'] {
+            @include CharactersSection.mobile-portrait;
+          }
         }
       }
     }

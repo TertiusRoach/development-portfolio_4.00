@@ -232,9 +232,9 @@
   section[class*='main-fore'] {
     @extend %mark-area-mobi;
     @extend %mark-disp-mobi;
-    div {
+    div[class*='carousel'] {
       //--|🠊 display: grid; 🠈|--\\
-      &[class*='container'] {
+      div[class*='container'] {
         //--|🠊 display: flex; 🠈|--\\
         section[class*='routing-main'] {
           //--|🠊 display: grid; 🠈|--\\
@@ -481,29 +481,29 @@
           }
         }
       }
-      &[class*='toggle'] {
-        //--|🠋 96px (Left & Right) for Design 🠋|--\\
-        grid-template: //--|🠋 Width: 1920px 🠋|--\\
-          12rem //--|🠈 rows 🠈|--//
+    }
+    div[class*='toggle'] {
+      //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Width: 1920px 🠋|--\\
+        12rem //--|🠈 rows 🠈|--//
+        / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+      @media screen and (max-width: 768px) {
+        //--|🠋 64px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 1366px 🠋|--\\
+          10rem //--|🠈 rows 🠈|--//
           / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-        @media screen and (max-width: 768px) {
-          //--|🠋 64px (Left & Right) for Design 🠋|--\\
-          grid-template: //--|🠋 Width: 1366px 🠋|--\\
-            10rem //--|🠈 rows 🠈|--//
-            / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-        }
-        @media screen and (max-width: 480px) {
-          //--|🠋 48px (Left & Right) for Design 🠋|--\\
-          grid-template: //--|🠋 Width: 854px 🠋|--\\
-            6rem //--|🠈 rows 🠈|--//
-            / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-        }
-        @media screen and (max-width: 360px) {
-          //--|🠋 32px (Left & Right) for Design 🠋|--\\
-          grid-template: //--|🠋 Width: 640px 🠋|--\\
-            4rem //--|🠈 rows 🠈|--//
-            / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
-        }
+      }
+      @media screen and (max-width: 480px) {
+        //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 854px 🠋|--\\
+          6rem //--|🠈 rows 🠈|--//
+          / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
+      }
+      @media screen and (max-width: 360px) {
+        //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        grid-template: //--|🠋 Width: 640px 🠋|--\\
+          4rem //--|🠈 rows 🠈|--//
+          / repeat(3, 1fr); //--|🠈 columns 🠈|--\\
       }
     }
 
@@ -612,12 +612,15 @@
   }
   %mark-disp-mobi {
     display: grid;
-    div[class*='routing'] {
+    div[class*='carousel'] {
       //--|🠊 display: flex; 🠈|--\\
       &[class*='side-main'] {
         flex-direction: column;
       }
-      &[class*='container'] {
+      div[class*='container'] {
+        &[class*='side-main'] {
+          flex-direction: column;
+        }
         section[class*='routing-main'] {
           display: grid;
           height: 100svh;

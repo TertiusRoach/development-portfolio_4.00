@@ -3,13 +3,15 @@
 @use '../../../../../styles/Palettes.scss';
 
 section[class*='time'] {
-  div.time-main_container {
-    aside[class*='default'] {
-      @media screen and (orientation: landscape) {
-        @include DefaultTime.desktop-landscape;
-      }
-      @media screen and (orientation: portrait) {
-        @include DefaultTime.mobile-portrait;
+  div[class*='carousel'] {
+    div.time-main_container {
+      aside[class*='default'] {
+        @media screen and (orientation: landscape) {
+          @include DefaultTime.desktop-landscape;
+        }
+        @media screen and (orientation: portrait) {
+          @include DefaultTime.mobile-portrait;
+        }
       }
     }
   }

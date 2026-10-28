@@ -6,33 +6,35 @@
 @use './select-menu/SelectMenu.scss';
 
 section[class*='menu-main'] {
-  div.menu-main_container {
-    aside[class*='menu'] {
-      @media screen and (orientation: landscape) {
-        //--|🠊 <aside className="scroll-menu"> 🠈|--\\
-        &[class*='scroll'] {
-          @include ScrollMenu.desktop-landscape;
+  div[class*='carousel'] {
+    div.menu-main_container {
+      aside[class*='menu'] {
+        @media screen and (orientation: landscape) {
+          //--|🠊 <aside className="scroll-menu"> 🠈|--\\
+          &[class*='scroll'] {
+            @include ScrollMenu.desktop-landscape;
+          }
+          &[class*='swipe'] {
+            @include SwipeMenu.desktop-landscape;
+          }
+          //--|===|--\\
+          &[class*='select'] {
+            @include SelectMenu.desktop-landscape;
+          }
         }
-        &[class*='swipe'] {
-          @include SwipeMenu.desktop-landscape;
-        }
-        //--|===|--\\
-        &[class*='select'] {
-          @include SelectMenu.desktop-landscape;
-        }
-      }
 
-      @media screen and (orientation: portrait) {
-        //--|🠊 <aside className="scroll-menu"> 🠈|--\\
-        &[class*='scroll'] {
-          @include ScrollMenu.mobile-portrait;
-        }
-        &[class*='swipe'] {
-          @include SwipeMenu.mobile-portrait;
-        }
-        //--|===|--\\
-        &[class*='select'] {
-          @include SelectMenu.mobile-portrait;
+        @media screen and (orientation: portrait) {
+          //--|🠊 <aside className="scroll-menu"> 🠈|--\\
+          &[class*='scroll'] {
+            @include ScrollMenu.mobile-portrait;
+          }
+          &[class*='swipe'] {
+            @include SwipeMenu.mobile-portrait;
+          }
+          //--|===|--\\
+          &[class*='select'] {
+            @include SelectMenu.mobile-portrait;
+          }
         }
       }
     }

@@ -108,13 +108,15 @@
 }
 
 section[class*='navigation'] {
-  div.navigation-main_container {
-    aside[class*='navigation'] {
-      @media screen and (orientation: landscape) {
-        @include desktop-landscape();
-      }
-      @media screen and (orientation: portrait) {
-        @include mobile-portrait();
+  div[class*='carousel'] {
+    div.navigation-main_container {
+      aside[class*='navigation'] {
+        @media screen and (orientation: landscape) {
+          @include desktop-landscape();
+        }
+        @media screen and (orientation: portrait) {
+          @include mobile-portrait();
+        }
       }
     }
   }

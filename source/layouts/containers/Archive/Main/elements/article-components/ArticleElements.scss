@@ -5,22 +5,24 @@
 @use '../../../../../styles/Palettes.scss' as Palettes;
 
 section[class*='article-main'] {
-  div.article-main_container {
-    aside[class*='article'] {
-      @media screen and (orientation: landscape) {
-        &[class*='loading'] {
-          @include LoadingArticle.desktop-landscape;
+  div[class*='carousel'] {
+    div.article-main_container {
+      aside[class*='article'] {
+        @media screen and (orientation: landscape) {
+          &[class*='loading'] {
+            @include LoadingArticle.desktop-landscape;
+          }
+          &[class*='updates'] {
+            @include UpdatesArticle.desktop-landscape;
+          }
         }
-        &[class*='updates'] {
-          @include UpdatesArticle.desktop-landscape;
-        }
-      }
-      @media screen and (orientation: portrait) {
-        &[class*='loading'] {
-          @include LoadingArticle.mobile-portrait;
-        }
-        &[class*='updates'] {
-          @include UpdatesArticle.mobile-portrait;
+        @media screen and (orientation: portrait) {
+          &[class*='loading'] {
+            @include LoadingArticle.mobile-portrait;
+          }
+          &[class*='updates'] {
+            @include UpdatesArticle.mobile-portrait;
+          }
         }
       }
     }

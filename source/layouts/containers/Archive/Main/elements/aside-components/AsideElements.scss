@@ -4,16 +4,18 @@
 @use '../../../../../styles/Palettes.scss' as Palettes;
 
 section[class*='aside'] {
-  div.aside-main_container {
-    aside[class*='aside'] {
-      @media screen and (orientation: landscape) {
-        &[class*='characters'] {
-          @include CharactersAside.desktop-landscape;
+  div[class*='carousel'] {
+    div.aside-main_container {
+      aside[class*='aside'] {
+        @media screen and (orientation: landscape) {
+          &[class*='characters'] {
+            @include CharactersAside.desktop-landscape;
+          }
         }
-      }
-      @media screen and (orientation: portrait) {
-        &[class*='characters'] {
-          @include CharactersAside.mobile-portrait;
+        @media screen and (orientation: portrait) {
+          &[class*='characters'] {
+            @include CharactersAside.mobile-portrait;
+          }
         }
       }
     }

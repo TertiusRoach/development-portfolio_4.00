@@ -7,34 +7,36 @@
 @use './stretch-button/StretchButton.scss';
 
 section[class*='button-main'] {
-  div.button-main_container {
-    aside[class*='button'] {
-      @media screen and (orientation: landscape) {
-        &[class*='default'] {
-          @include DefaultButton.desktop-landscape;
+  div[class*='carousel'] {
+    div.button-main_container {
+      aside[class*='button'] {
+        @media screen and (orientation: landscape) {
+          &[class*='default'] {
+            @include DefaultButton.desktop-landscape;
+          }
+          &[class*='routing'] {
+            @include RoutingButton.desktop-landscape;
+          }
+          &[class*='profile'] {
+            @include ProfileButton.desktop-landscape;
+          }
+          &[class*='stretch'] {
+            @include StretchButton.desktop-landscape;
+          }
         }
-        &[class*='routing'] {
-          @include RoutingButton.desktop-landscape;
-        }
-        &[class*='profile'] {
-          @include ProfileButton.desktop-landscape;
-        }
-        &[class*='stretch'] {
-          @include StretchButton.desktop-landscape;
-        }
-      }
-      @media screen and (orientation: portrait) {
-        &[class*='default'] {
-          @include DefaultButton.mobile-portrait;
-        }
-        &[class*='routing'] {
-          @include RoutingButton.mobile-portrait;
-        }
-        &[class*='profile'] {
-          @include ProfileButton.mobile-portrait;
-        }
-        &[class*='stretch'] {
-          @include StretchButton.mobile-portrait;
+        @media screen and (orientation: portrait) {
+          &[class*='default'] {
+            @include DefaultButton.mobile-portrait;
+          }
+          &[class*='routing'] {
+            @include RoutingButton.mobile-portrait;
+          }
+          &[class*='profile'] {
+            @include ProfileButton.mobile-portrait;
+          }
+          &[class*='stretch'] {
+            @include StretchButton.mobile-portrait;
+          }
         }
       }
     }
