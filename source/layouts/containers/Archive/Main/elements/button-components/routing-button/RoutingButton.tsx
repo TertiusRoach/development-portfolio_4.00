@@ -329,8 +329,7 @@ let ViewOne = ({ info }: InfoProps) => {
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
-              image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
-              // image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
             info={{
               pageName: info.pageName,
@@ -864,7 +863,8 @@ let ViewPar = ({ info }: InfoProps) => {
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
+              image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
+              // image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
             info={{
               pageName: info.pageName,

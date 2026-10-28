@@ -44,8 +44,7 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
-                // image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
