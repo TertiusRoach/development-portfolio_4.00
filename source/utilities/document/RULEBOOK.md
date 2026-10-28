@@ -138,6 +138,19 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
 - **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](TABLE.md#5-how-data-reaches-a-table).
 
+### Declaration Order
+
+Every `.tsx` file in `components/` and `containers/` declares its functions by how deep they sit in the call chain, so the keyword tells you where you are:
+
+| Keyword    | Depth  | Role                                                                     |
+| ---------- | ------ | ------------------------------------------------------------------------ |
+| `function` | First  | The main function, the one the file is named after and exports           |
+| `const`    | Second | Called by the `function`                                                 |
+| `let`      | Third  | Called by a `const`                                                      |
+| `var`      | Fourth | Called by a `let`. Best avoided; no file has needed to go this deep yet  |
+
+`<DivisionConveyor>` is the reference: `function DivisionConveyor` renders `const DivisionAxis`. Older files are being moved to this order as they're refactored.
+
 ---
 
 ## 5. Bracket Syntax
@@ -165,10 +178,10 @@ For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `cla
 
 | Group      | Components                                                                                                                                     | Scaling                                       |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<nav>` · `<span>` · `<table>` · `<time>` · lists | Always all three mixins                       |
-| Structural | `<section>` · `<div>`                                                                                                                          | All three mixins, or one merged set (below)   |
+| Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<span>` · `<table>` · `<time>` · lists   | Always all three mixins                       |
+| Structural | `<section>` · `<div>` · `<nav>`                                                                                                                | All three mixins, or one merged set (below)   |
 
-**Merging `<section>` and `<div>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. Add `tablet-squaring` only when near-square screens need different values. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
+**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. Add `tablet-squaring` only when near-square screens need different values. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
 Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
