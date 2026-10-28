@@ -45,7 +45,7 @@ function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' |
       };
   }
 }
-export function createClass(style: StyleProps): string {
+export const createClass = (style: StyleProps): string => {
   //--|🠊 Class Build for <SectionDemonstration> 🠈|--\\
   const colorMap: Record<string, string> = {
     //--|🠊 Color Abbr 🠈|--\\
@@ -67,7 +67,15 @@ export function createClass(style: StyleProps): string {
     '~light~': 'lig',
   };
   return `${shadeMap[style.shade]}_${colorMap[style.color]}`;
-}
-export function randomApps(selectApps: string | Array<string>) {}
+};
+export const randomApps = (selectApps: string | Array<string>): string => {
+  if (typeof selectApps === 'string') {
+    return selectApps as 'track-a-day' | 'log-a-ticket' | 'find-a-link';
+  } else if (typeof selectApps === 'object') {
+    return selectApps[Math.floor(Math.random() * selectApps.length)] as 'track-a-day' | 'log-a-ticket' | 'find-a-link';
+  } else {
+    return 'tralogfin';
+  }
+};
 
 export default returnInfo;

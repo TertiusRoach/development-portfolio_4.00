@@ -1,7 +1,7 @@
 //--|🠊 Section.demonstration.tsx 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import returnInfo, { createClass } from './Section_demonstration';
+import returnInfo, { createClass, randomApps } from './Section_demonstration';
 
 //--|🠋 Components 🠋|--\\
 
@@ -30,13 +30,7 @@ const SectionDemonstration: React.FC<TheseProps> = ({ info, style, cases }) => {
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  let casesApps: string | Array<string> = 'tralogfin';
-  if (typeof cases.apps === 'string') {
-    casesApps = cases.apps as 'track-a-day' | 'log-a-ticket' | 'find-a-link';
-  } else if (typeof cases.apps === 'object') {
-    casesApps = cases.apps[Math.floor(Math.random() * cases.apps.length)] as 'track-a-day' | 'log-a-ticket' | 'find-a-link';
-  }
-
+  let casesApps = randomApps(cases.apps);
   return (
     <section className={`${info.labelName}-${info.blockName}_demonstration-default ${createClass(style)}`}>
       <div className="wrap-card">
