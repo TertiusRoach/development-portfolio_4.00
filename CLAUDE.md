@@ -20,7 +20,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 2. **One step at a time.** Small, scoped changes. No broad refactors, no "while I'm here" cleanups.
 3. **Match the existing code exactly:** naming, comment flags (`//--|🠊 … 🠈|--\\`), file layout and order. No new patterns or abstractions.
 4. **Readability beats brevity.** Repetition is fine; clever shortcuts are not.
-5. **Every component scales through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** See RULEBOOK.md, Scaling Pattern.
+5. **Visible components scale through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** `<section>` and `<div>` may merge into one set of rules when every orientation behaves the same. See RULEBOOK.md, Scaling Pattern.
 6. **No inline styles.** Use SASS and state classes; never `element.style.*` or a `style="…"` attribute unless truly necessary. See RULEBOOK.md, No Inline Styles.
 7. **Don't "fix" deliberate design.** Check RULEBOOK.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
 8. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.

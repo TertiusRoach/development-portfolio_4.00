@@ -161,7 +161,16 @@ For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `cla
 
 ## 6. Scaling Pattern
 
-> **Rule:** every component scales through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so it fits every screen size. Repeating values is fine; clever shortcuts are not.
+> **Rule:** visible components scale through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so they fit every screen size. Structural components may merge into one set of rules when every orientation behaves the same. Repeating values is fine; clever shortcuts are not.
+
+| Group      | Components                                                                                                                                     | Scaling                                       |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<nav>` · `<span>` · `<table>` · `<time>` · lists | Always all three mixins                       |
+| Structural | `<section>` · `<div>`                                                                                                                          | All three mixins, or one merged set (below)   |
+
+**Merging `<section>` and `<div>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. Add `tablet-squaring` only when near-square screens need different values. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
+
+Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
 | Mixin               | Applied under                                                  | Breakpoints                                                            |
 | ------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
