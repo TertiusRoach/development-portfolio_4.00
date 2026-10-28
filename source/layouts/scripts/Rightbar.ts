@@ -1,1 +1,1 @@
-//--|🠊 Rightbar.ts 🠈|--\\
+//--|🠊 layouts/scripts/Rightbar.ts 🠈|--\\

@@ -1,4 +1,4 @@
-//--|🠊 Main.ts 🠈|--\\
+//--|🠊 layouts/scripts/Main.ts 🠈|--\\
 import blockViews from '../containers/containers';
 export function revertBlocks(thisItem: HTMLElement, pageName: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | 'components'): void {
   blockViews(thisItem, pageName, 'header', 'squaring');
