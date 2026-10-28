@@ -2,6 +2,7 @@
 @use '../../../../../styles/Palettes.scss';
 
 @use './testing-division/TestingDivision.scss';
+@use './placeholder-division/PlaceholderDivision.scss';
 
 section[class*='division-main'] {
   div.division-main_container {
@@ -10,23 +11,35 @@ section[class*='division-main'] {
         &[class*='testing'] {
           @include TestingDivision.desktop-landscape;
         }
+        &[class*='placeholder'] {
+          @include PlaceholderDivision.desktop-landscape;
+        }
+
+        /*
         &[class*='carousel'] {
         }
         &[class*='conveyor'] {
         }
         &[class*='squaring'] {
         }
+        */
       }
       @media screen and (orientation: portrait) {
         &[class*='testing'] {
           @include TestingDivision.mobile-portrait;
         }
+        &[class*='placeholder'] {
+          @include PlaceholderDivision.mobile-portrait;
+        }
+
+        /*
         &[class*='carousel'] {
         }
         &[class*='conveyor'] {
         }
         &[class*='squaring'] {
         }
+        */
       }
     }
   }

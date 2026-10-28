@@ -5,11 +5,12 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 import './DivisionElements.scss';
 
-//--|🠋 Components 🠋|--\\
-import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
-
 //--|🠋 Elements 🠋|--\\
 import TestingDivision from './testing-division/TestingDivision';
+import PlaceholderDivision from './placeholder-division/PlaceholderDivision';
+
+//--|🠋 Components 🠋|--\\
+import DivisionCarousel from '../../../../../components/Division/carousel/Division.carousel';
 
 interface InfoProps {
   info: {
@@ -46,6 +47,7 @@ function DivisionComponents({ info }: InfoProps) {
 
   return (
     <>
+      <PlaceholderDivision info={defaultInfo} />
       <TestingDivision info={defaultInfo} />
     </>
   );

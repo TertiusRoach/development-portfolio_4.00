@@ -267,51 +267,51 @@ const ButtonsDarkside: React.FC<InfoProps> = ({ info }) => {
     <>
       <ViewOne
         info={{
+          labelName: 'one-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'one-dark',
         }}
       />
       <ViewTwo
         info={{
+          labelName: 'two-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'two-dark',
         }}
       />
       <ViewThr
         info={{
+          labelName: 'thr-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'thr-dark',
         }}
       />
       <ViewFou
         info={{
+          labelName: 'fou-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'fou-dark',
         }}
       />
       <ViewFiv
         info={{
+          labelName: 'fiv-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'fiv-dark',
         }}
       />
       <ViewSix
         info={{
+          labelName: 'six-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'six-dark',
         }}
       />
       <ViewSev
         info={{
+          labelName: 'sev-dark',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'sev-dark',
         }}
       />
     </>
@@ -322,51 +322,51 @@ const ButtonsLightside: React.FC<InfoProps> = ({ info }) => {
     <>
       <ViewOne
         info={{
+          labelName: 'one-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'one-light',
         }}
       />
       <ViewTwo
         info={{
+          labelName: 'two-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'two-light',
         }}
       />
       <ViewThr
         info={{
+          labelName: 'thr-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'thr-light',
         }}
       />
       <ViewFou
         info={{
+          labelName: 'fou-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'fou-light',
         }}
       />
       <ViewFiv
         info={{
+          labelName: 'fiv-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'fiv-light',
         }}
       />
       <ViewSix
         info={{
+          labelName: 'six-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'six-light',
         }}
       />
       <ViewSev
         info={{
+          labelName: 'sev-light',
           pageName: info.pageName,
           blockName: info.blockName,
-          labelName: 'sev-light',
         }}
       />
     </>

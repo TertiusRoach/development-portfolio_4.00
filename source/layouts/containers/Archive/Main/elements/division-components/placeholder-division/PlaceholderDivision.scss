@@ -1,0 +1,36 @@
+//--|🠊 PlaceholderDivision.scss 🠈|--\\
+@use '../../../../../../styles/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="placeholder-division"> 🠈|--\\
+  section[class*='main-fore'] {
+    div[class*='carousel'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      // background: rgba(darkred, 0.25);
+      div[class*='container'] {
+        display: grid;
+
+        div[class*='top-view'] {
+          background: rgba(darkgreen, 0.25);
+        }
+        div[class*='bot-view'] {
+          background: rgba(purple, 0.25);
+        }
+      }
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="placeholder-division"> 🠈|--\\
+  section[class*='main-fore'] {
+    div[class*='placeholder'] {
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: rgba(darkblue, 0.25);
+      /*
+      button[id*='block'] {
+        border: 2px dashed Palettes.$gray-medium;
+      }
+      */
+    }
+  }
+}

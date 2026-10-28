@@ -12,14 +12,14 @@ import DivisionTesting from '../../../../../../components/Division/testing/Divis
 
 interface InfoProps {
   info: {
+    pageName: string;
     blockName: string;
     labelName: string;
-    pageName: string;
   };
 }
-const TestingDivision: React.FC<InfoProps> = ({ info }) => {
+function TestingDivision({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'testing';
+  const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
   return (
@@ -41,5 +41,5 @@ const TestingDivision: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default TestingDivision;
