@@ -47,7 +47,6 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             blockName: info.blockName,
           }}
           style={{
-            type: '{button}',
             shade: style.shade[0] as '~dark~' | '~light~',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
             color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
@@ -67,7 +66,6 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             blockName: info.blockName,
           }}
           style={{
-            type: '{button}',
             shade: style.shade[1] as '~dark~' | '~light~',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
             color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',

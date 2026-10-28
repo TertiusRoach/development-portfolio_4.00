@@ -13,19 +13,19 @@
     animation-name: fadeOut;
     animation-duration: 240s;
     animation-fill-mode: forwards;
-    &[class*='top-right'] {
+    &[class*='top-rig'] {
       z-index: 3;
       animation-delay: 0s;
     }
-    &[class*='bot-right'] {
+    &[class*='bot-rig'] {
       z-index: 2;
       animation-delay: 240s;
     }
-    &[class*='bot-left'] {
+    &[class*='bot-lef'] {
       z-index: 1;
       animation-delay: 480s;
     }
-    &[class*='top-left'] {
+    &[class*='top-lef'] {
       z-index: 0;
       animation-delay: 720s;
     }
@@ -65,19 +65,19 @@
     animation-name: fadeOut;
     animation-duration: 240s;
     animation-fill-mode: forwards;
-    &[class*='top-right'] {
+    &[class*='top-rig'] {
       z-index: 3;
       animation-delay: 0s;
     }
-    &[class*='bot-right'] {
+    &[class*='bot-rig'] {
       z-index: 2;
       animation-delay: 240s;
     }
-    &[class*='bot-left'] {
+    &[class*='bot-lef'] {
       z-index: 1;
       animation-delay: 480s;
     }
-    &[class*='top-left'] {
+    &[class*='top-lef'] {
       z-index: 0;
       animation-delay: 720s;
     }
@@ -123,61 +123,61 @@ figure[class*='rotation'] {
 %fade-view {
   &[class*='track-a-day'] {
     background: radial-gradient(circle, white, Palettes.$trackDay-light 95%);
-    svg[class*='top-right'] {
+    svg[class*='top-rig'] {
       background: linear-gradient(45deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
     }
-    svg[class*='bot-right'] {
+    svg[class*='bot-rig'] {
       background: linear-gradient(135deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
     }
-    svg[class*='bot-left'] {
+    svg[class*='bot-lef'] {
       background: linear-gradient(225deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
     }
-    svg[class*='top-left'] {
+    svg[class*='top-lef'] {
       background: linear-gradient(315deg, white 0%, Palettes.$trackDay-light 75%, Palettes.$trackDay-dark 100%);
     }
   }
   &[class*='find-a-link'] {
     background: radial-gradient(circle, white, Palettes.$findLink-light 95%);
-    svg[class*='top-right'] {
+    svg[class*='top-rig'] {
       background: linear-gradient(45deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
     }
-    svg[class*='bot-right'] {
+    svg[class*='bot-rig'] {
       background: linear-gradient(135deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
     }
-    svg[class*='bot-left'] {
+    svg[class*='bot-lef'] {
       background: linear-gradient(225deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
     }
-    svg[class*='top-left'] {
+    svg[class*='top-lef'] {
       background: linear-gradient(315deg, white 0%, Palettes.$findLink-light 75%, Palettes.$findLink-dark 100%);
     }
   }
   &[class*='log-a-ticket'] {
     background: radial-gradient(circle, white, Palettes.$logTicket-light 95%);
-    svg[class*='top-right'] {
+    svg[class*='top-rig'] {
       background: linear-gradient(45deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
     }
-    svg[class*='bot-right'] {
+    svg[class*='bot-rig'] {
       background: linear-gradient(135deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
     }
-    svg[class*='bot-left'] {
+    svg[class*='bot-lef'] {
       background: linear-gradient(225deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
     }
-    svg[class*='top-left'] {
+    svg[class*='top-lef'] {
       background: linear-gradient(315deg, white 0%, Palettes.$logTicket-light 75%, Palettes.$logTicket-dark 100%);
     }
   }
   &[class*='test-a-fade'] {
     background: black;
-    svg[class*='top-right'] {
+    svg[class*='top-rig'] {
       background: darkred;
     }
-    svg[class*='bot-right'] {
+    svg[class*='bot-rig'] {
       background: darkgreen;
     }
-    svg[class*='bot-left'] {
+    svg[class*='bot-lef'] {
       background: darkblue;
     }
-    svg[class*='top-left'] {
+    svg[class*='top-lef'] {
       background: white;
     }
   }

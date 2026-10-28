@@ -111,7 +111,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -126,7 +125,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -141,7 +139,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -156,7 +153,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -238,7 +234,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -253,7 +248,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -268,7 +262,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />
@@ -283,7 +276,6 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               image: copyImage,
             }}
           />

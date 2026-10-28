@@ -1,7 +1,41 @@
 //--|🠊 routing/pipeline/Button_flex.scss 🠈|--\\
+
+@mixin routing-flexbox {
+  //--|🠋 Global (Flex) 🠋|--\\
+  /*--|🠋
+    <ButtonRouting> is laid out by Button_grid.scss and has no text, so it
+    needs no flex rules. <ButtonDefault> uses this file for the padding
+    around its text and icon.
+  🠉|--*/
+}
+//--|===|--\\
 @mixin desktop-flex {
+  //--|🠋 Desktop (Flex) 🠋|--\\
+  /*--|🠋
+    <ButtonRouting> is laid out by Button_grid.scss and has no text, so it
+    needs no flex rules. <ButtonDefault> uses this file for the padding
+    around its text and icon.
+  🠉|--*/
 }
 @mixin mobile-flex {
+  //--|🠋 Mobile (Flex) 🠋|--\\
+  /*--|🠋
+    <ButtonRouting> is laid out by Button_grid.scss and has no text, so it
+    needs no flex rules. <ButtonDefault> uses this file for the padding
+    around its text and icon.
+  🠉|--*/
 }
 @mixin tablet-flex {
+  //--|🠋 Tablet (Flex) 🠋|--\\
+  /*--|🠋
+    <ButtonRouting> is laid out by Button_grid.scss and has no text, so it
+    needs no flex rules. <ButtonDefault> uses this file for the padding
+    around its text and icon.
+  🠉|--*/
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+  }
 }

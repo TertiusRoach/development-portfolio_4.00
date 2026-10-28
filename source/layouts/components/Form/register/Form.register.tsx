@@ -18,7 +18,7 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
+/* import ButtonDefault from '../../Button/default/Button.default'; */
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -169,6 +169,7 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           onChange={(event) => setPassword(event.target.value)}
         />
 
+        {/*
         <ButtonDefault
           text={''}
           type="button"
@@ -178,34 +179,43 @@ const FormRegister: React.FC<InfoProps> = ({ info }) => {
           }}
           style={defineButton('generate', { pageName, blockName })}
         />
+        */}
+        {/*
         <ButtonDefault
           text={''}
           type="button"
           onClick={() => viewPass('register')}
           style={defineButton('observe', { pageName, blockName })}
         />
+        */}
       </div>
       <div className="register-footer">
         <menu className="register-action">
+          {/*
           <ButtonDefault
             type="submit"
             text={submit ? 'Registering...' : 'Register'}
             style={defineButton('register', { pageName, blockName })}
           />
+          */}
         </menu>
         <nav id="register-buttons">
+          {/*
           <ButtonDefault
             type="button"
             text={'Access Account'}
             onClick={() => viewBlock('login')}
             style={defineButton('login', { pageName, blockName })}
           />
+          */}
+          {/*
           <ButtonDefault
             type="button"
             text={'Reset Password'}
             onClick={() => viewBlock('password')}
             style={defineButton('password', { pageName, blockName })}
           />
+          */}
         </nav>
       </div>
     </form>

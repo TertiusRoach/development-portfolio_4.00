@@ -98,7 +98,6 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   labelName: `${casesLink[index]}-select`,
                 }}
                 style={{
-                  type: '{button}',
                   image: style.image[index] as string,
                   shade: style.shade as '~dark~' | '~light~',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
@@ -130,7 +129,6 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                   labelName: `${casesLink[index]}-select`,
                 }}
                 style={{
-                  type: '{button}',
                   image: style.image as string,
                   shade: style.shade as '~dark~' | '~light~',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',

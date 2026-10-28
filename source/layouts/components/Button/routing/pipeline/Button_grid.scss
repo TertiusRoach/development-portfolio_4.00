@@ -1,6 +1,7 @@
 //--|🠊 routing/pipeline/Button_grid.scss 🠈|--\\
 
 @mixin routing-gridbox {
+  //--|🠋 Global (Grid) 🠋|--\\
   display: grid;
   div {
     overflow: hidden;
@@ -9,65 +10,98 @@
     span {
       cursor: pointer;
       grid-area: 2 / 2 / 3 / 3;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; //--|🠈 .png & .jpg fill the square (_alt) 🠈|--\\
+      }
     }
-    &.fore {
-      z-index: 2;
+    &[class='fore'] {
+      z-index: 2; //--|🠈 The frame sits on top, so its border & corners overlap the picture 🠈|--\\
+      pointer-events: none; //--|🠈 Clicks & the cursor fall through to the picture 🠈|--\\
+      border-width: 0; //--|🠈 Button_corn.scss sets the width per side 🠈|--\\
+      border-style: solid; //--|🠈 No colour here: Button_tint.scss owns it 🠈|--\\
+    }
+    &[class='icon'] {
+      z-index: 1;
       span {
         mask-size: contain;
         mask-position: center;
         mask-repeat: no-repeat;
       }
     }
-    &.mid {
-      z-index: 1;
-    }
-    &.back {
+    &[class='back'] {
       z-index: 0;
     }
   }
+  &[class*='_alt'] {
+    div[class='icon'] {
+      span {
+        grid-area: 1 / 1 / -1 / -1; //--|🠈 The picture covers the entire square 🠈|--\\
+      }
+    }
+  }
 }
-
+//--|===|--\\
 @mixin desktop-grid {
   //--|🠋 Desktop (Grid) 🠋|--\\
   &[class*='one_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-height: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 36px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 36px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
   &[class*='fou_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 63px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-height: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 63px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 25px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 25px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
   &[class*='par_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-height: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-height: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 18px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 18px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
@@ -75,44 +109,62 @@
 @mixin mobile-grid {
   //--|🠋 Mobile (Grid) 🠋|--\\
   &[class*='one_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 144px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-width: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 120px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 144px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 120px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
   &[class*='fou_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-width: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 80px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 80px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
   &[class*='par_'] {
-    .fore {
-      grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
-      @media screen and (max-width: 768px) {
-        grid-template: 1fr auto 1fr / 1fr 61px 1fr; //--|🠊 rows / cols 🠈|--\\
+    div[class='icon'] {
+      grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 768px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 61px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 480px) {
-        grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
-      @media screen and (max-width: 360px) {
-        grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠊 rows / cols 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠈 rows / cols 🠈|--\\
       }
     }
   }
@@ -122,44 +174,62 @@
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     &[class*='one_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-width: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 36px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 36px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }
     &[class*='fou_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 63px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-width: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 63px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 25px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 25px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }
     &[class*='par_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-width: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-width: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 18px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 18px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }
@@ -167,44 +237,62 @@
   @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     &[class*='one_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 144px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-height: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 120px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 144px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 120px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }
     &[class*='fou_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-height: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 80px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 96px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 80px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 48px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 32px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }
     &[class*='par_'] {
-      .fore {
-        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠊 rows / cols 🠈|--\\
-        @media screen and (max-height: 1920px) {
-          grid-template: 1fr auto 1fr / 1fr 61px 1fr; //--|🠊 rows / cols 🠈|--\\
+      div[class='icon'] {
+        grid-template: 1fr auto 1fr / 1fr 72px 1fr; //--|🠈 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 61px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 1366px) {
-          grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 37px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
-        @media screen and (max-height: 854px) {
-          grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠊 rows / cols 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        div[class='icon'] {
+          grid-template: 1fr auto 1fr / 1fr 24px 1fr; //--|🠈 rows / cols 🠈|--\\
         }
       }
     }

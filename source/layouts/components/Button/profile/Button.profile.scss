@@ -1,32 +1,38 @@
 //--|🠊 Button.profile.scss 🠈|--\\
-@use './pipeline/Button_grid.scss';
 @use './pipeline/Button_flex.scss';
+@use './pipeline/Button_grid.scss';
 @use './pipeline/Button_size.scss';
 @use './pipeline/Button_tint.scss';
 @use './pipeline/Button_corn.scss';
 
 button[class*='profile'] {
-  @include Button_tint.profile-colors();
-  @include Button_grid.profile-gridbox();
   @include Button_flex.profile-flexbox();
+  @include Button_grid.profile-gridbox();
+  @include Button_tint.profile-colors();
 
   @media screen and (orientation: landscape) {
-    //--|🠊 <ProfileButton> for [DesktopLandscape] 🠈|--\\
-    @include Button_size.desktop-size();
-    @include Button_corn.desktop-corn();
+    //--|🠊 <ButtonProfile> for [DesktopLandscape] 🠈|--\\
     @include Button_flex.desktop-flex();
+    @include Button_grid.desktop-grid();
+    @include Button_size.desktop-size();
+    @include Button_tint.desktop-tint();
+    @include Button_corn.desktop-corn();
   }
   @media screen and (orientation: portrait) {
-    //--|🠊 <ProfileButton> for [MobilePortrait] 🠈|--\\
-    @include Button_size.mobile-size();
-    @include Button_corn.mobile-corn();
+    //--|🠊 <ButtonProfile> for [MobilePortrait] 🠈|--\\
     @include Button_flex.mobile-flex();
+    @include Button_grid.mobile-grid();
+    @include Button_size.mobile-size();
+    @include Button_tint.mobile-tint();
+    @include Button_corn.mobile-corn();
   }
   //--|🠋 Tablet (Squaring) 🠋|--\\
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
-    //--|🠊 <ProfileButton> for [TabletSquaring] 🠈|--\\
-    @include Button_size.tablet-size();
-    @include Button_corn.tablet-corn();
+    //--|🠊 <ButtonProfile> for [TabletSquaring] 🠈|--\\
     @include Button_flex.tablet-flex();
+    @include Button_grid.tablet-grid();
+    @include Button_size.tablet-size();
+    @include Button_tint.tablet-tint();
+    @include Button_corn.tablet-corn();
   }
 }

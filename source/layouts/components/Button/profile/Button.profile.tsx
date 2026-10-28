@@ -1,53 +1,65 @@
 //--|🠊 Button.profile.tsx 🠈|--\\
-import React, { useEffect } from 'react';
+import React from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { createClass } from './Button_profile';
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
+import createClass, { StyleProps } from './Button_profile';
 
 interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
     labelName?: string;
+    labelAria?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
   };
-  style: {
-    image: string;
-    shade: '~dark~' | '~light~';
-    size: '<h1>' | '<h4>' | '<p>';
-    view: '-square-' | '-circle-';
-    type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
-  };
-
+  style: StyleProps;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /*
+  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+
+  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onTouchEnd?: (event: React.TouchEvent<HTMLButtonElement>) => void;
+  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onTouchStart?: (event: React.TouchEvent<HTMLButtonElement>) => void;
+  onContextMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onAnimationEnd?: (event: React.AnimationEvent<HTMLButtonElement>) => void;
+  onTransitionEnd?: (event: React.TransitionEvent<HTMLButtonElement>) => void;
+  */
 }
-const ButtonProfile: React.FC<TheseProps> = ({ info, style, onClick, onMouseEnter }) => {
-  //--|🠊 Identifiers 🠈|--\\
-  const blockName = stripBrackets(info.blockName, '<>') as string;
-  const pageName = stripBrackets(info.pageName, '[]') as string;
 
-  useEffect(() => {}, [pageName, blockName]);
-
+export function ButtonProfile({ info, style, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
+  let styleImage: boolean = /\.(png|jpe?g)$/i.test(style.image ?? ''); //--|🠈 .png & .jpg show the picture itself, .svg becomes a tinted silhouette 🠈|--\\
   return (
     <button
+      id={info.labelName || undefined}
+      className={`profile-button ${createClass(style)}`}
+      //--|===|--\\
       onClick={onClick}
       onMouseEnter={onMouseEnter}
-      id={info.labelName || undefined}
-      aria-disabled={style.type === '{disabled}'}
-      className={`profile-button ${createClass(style as TheseProps['style'])}`}
+      onMouseLeave={onMouseLeave}
+      onDoubleClick={onDoubleClick}
+      //--|===|--\\
+      aria-label={info.labelAria}
     >
       <div className="fore">
         <span></span>
       </div>
       <div className="icon">
-        <img src={style.image} alt="icon" />
+        <img
+          alt={style.image ? 'icon' : ''}
+          src={styleImage ? (style.image as string) : undefined}
+          style={style.image && !styleImage ? { maskImage: `url(${style.image})`, WebkitMaskImage: `url(${style.image})` } : undefined}
+        ></img>
       </div>
       <div className="back">
         <span></span>
       </div>
     </button>
   );
-};
+}
 export default ButtonProfile;

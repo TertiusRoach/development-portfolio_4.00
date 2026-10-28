@@ -326,11 +326,11 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
+              image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
+              // image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
             info={{
               pageName: info.pageName,
@@ -341,7 +341,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-cen',
@@ -356,7 +355,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-rig',
@@ -371,7 +369,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-lef',
@@ -386,7 +383,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-cen',
@@ -401,7 +397,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-rig',
@@ -416,7 +411,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-lef',
@@ -431,7 +425,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-cen',
@@ -446,7 +439,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-rig',
@@ -466,7 +458,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-lef',
@@ -481,7 +472,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-cen',
@@ -496,7 +486,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-rig',
@@ -511,7 +500,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-lef',
@@ -526,7 +514,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-cen',
@@ -541,7 +528,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-rig',
@@ -556,7 +542,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-lef',
@@ -571,7 +556,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-cen',
@@ -586,7 +570,6 @@ let ViewOne = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-rig',
@@ -611,7 +594,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
@@ -626,7 +608,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-cen',
@@ -641,7 +622,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-rig',
@@ -656,7 +636,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-lef',
@@ -671,7 +650,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-cen',
@@ -686,7 +664,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-rig',
@@ -701,7 +678,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-lef',
@@ -716,7 +692,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-cen',
@@ -731,7 +706,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-rig',
@@ -751,7 +725,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-lef',
@@ -766,7 +739,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-cen',
@@ -781,7 +753,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-rig',
@@ -796,7 +767,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-lef',
@@ -811,7 +781,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-cen',
@@ -826,7 +795,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-rig',
@@ -841,7 +809,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-lef',
@@ -856,7 +823,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-cen',
@@ -871,7 +837,6 @@ let ViewFou = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<h4>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-rig',
@@ -896,7 +861,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
@@ -911,7 +875,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-cen',
@@ -926,7 +889,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'top-rig',
@@ -941,7 +903,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-lef',
@@ -956,7 +917,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-cen',
@@ -971,7 +931,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'mid-rig',
@@ -986,7 +945,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-lef',
@@ -1001,7 +959,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-cen',
@@ -1016,7 +973,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~dark~',
               view: 'bot-rig',
@@ -1036,7 +992,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-lef',
@@ -1051,7 +1006,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-cen',
@@ -1066,7 +1020,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'top-rig',
@@ -1081,7 +1034,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-lef',
@@ -1096,7 +1048,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-cen',
@@ -1111,7 +1062,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'mid-rig',
@@ -1126,7 +1076,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-lef',
@@ -1141,7 +1090,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-cen',
@@ -1156,7 +1104,6 @@ let ViewPar = ({ info }: InfoProps) => {
           <ButtonRouting
             style={{
               size: '<p>',
-              type: '{button}',
               color: '(mono)',
               shade: '~light~',
               view: 'bot-rig',

@@ -1,22 +1,20 @@
 //--|🠊 Button_default.ts 🠈|--\\
+import { stripBrackets } from '../../../../scripts';
 
-interface StyleProps {
-  shade: '~dark~' | '~medium~' | '~light~';
-  type: '{button}' | '{disabled}' | '{submit}' | '{reset}';
+export interface StyleProps {
+  shade: '~dark~' | '~light~';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
-
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
 
   text?: string;
-  image?: string | null | undefined;
-  role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
+  image?: string | null;
 }
 //--|🠋 Functions 🠋|--\\
-export function createClass(style: StyleProps): String {
-  //--|🠊 Class Build for <DefaultButton> 🠈|--\\
-  let classColor = createColor(style.shade, style.color);
-  let classLayout = createLayout(style.size, style.view);
+function createClass(style: StyleProps): string {
+  //--|🠊 Class Build for <ButtonDefault> 🠈|--\\
+  const classColor = createColor(style.shade, style.color);
+  const classLayout = createLayout(style.size, style.view);
 
   if (style.image == null) {
     return `${classLayout}_${classColor}_alt`;
@@ -26,11 +24,8 @@ export function createClass(style: StyleProps): String {
 }
 
 //--|🠋 Generate Abbreviations 🠋|--\\
-const createLayout = (
-  size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-  view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-',
-): string => {
-  const sizeMap: Record<string, string> = {
+const createLayout = (size: StyleProps['size'], view: StyleProps['view']): string => {
+  const sizeMap: Record<StyleProps['size'], string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
     '<h2>': 'two',
@@ -41,7 +36,7 @@ const createLayout = (
     '<p>': 'par',
   };
 
-  const viewMap: Record<string, string> = {
+  const viewMap: Record<StyleProps['view'], string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
     '-top-': 'top',
     '-bottom-': 'bot',
@@ -57,32 +52,28 @@ const createLayout = (
 
   if (!classSize || !classView) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid size (${size}) or view (${view}) provided to createLayout()`);
+    throw new Error(`|🠊 Error: Invalid <${stripBrackets(size, '<>')}> or -${stripBrackets(view, '--')}- 🠈|`);
   }
 
   return `${classSize}_${classView}`;
 };
-const createColor = (
-  shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
-): string => {
-  const shadeMap: Record<string, string> = {
+const createColor = (shade: StyleProps['shade'], color: StyleProps['color']): string => {
+  const shadeMap: Record<StyleProps['shade'], string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
-    '~medium~': 'med',
     '~light~': 'lig',
   };
 
-  const colorMap: Record<string, string> = {
+  const colorMap: Record<StyleProps['color'], string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
     '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
-    '(yellow)': 'yel',
     '(purple)': 'pur',
     '(orange)': 'ora',
     '(pink)': 'pin',
+    '(yellow)': 'yel',
     '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
@@ -92,7 +83,7 @@ const createColor = (
 
   if (!classShade || !classColor) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid shade (${shade}) or color (${color}) provided to createColor()`);
+    throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stripBrackets(color, '()')}) 🠈|`);
   }
 
   return `${classShade}_${classColor}`;

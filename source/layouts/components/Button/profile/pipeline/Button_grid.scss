@@ -1,12 +1,13 @@
 //--|🠊 profile/pipeline/Button_grid.scss 🠈|--\\
 
 @mixin profile-gridbox {
+  //--|🠋 Global (Grid) 🠋|--\\
   display: grid;
   place-items: center;
 
-  .fore,
-  .icon,
-  .back {
+  div[class='fore'],
+  div[class='icon'],
+  div[class='back'] {
     grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     &[class='fore'] span,
     &[class='back'] span {
@@ -15,15 +16,50 @@
       display: flex;
     }
     &[class='icon'] img {
+      display: block; //--|🠈 Without a src (.svg mask) an inline <img> ignores its width and height 🠈|--\\
       width: inherit;
       height: inherit;
+      //--|🠊 Frame the Icon Mask (_alt: .svg silhouette) 🠈|--\\
+      mask-mode: alpha; //--|🠈 PNG/SVG alpha masking 🠈|--\\
+      mask-size: contain; //--|🠈 Fit icon inside box 🠈|--\\
+      -webkit-mask-size: contain;
+
+      mask-repeat: no-repeat; //--|🠈 Stop tiling bleed 🠈|--\\
+      -webkit-mask-repeat: no-repeat;
+
+      mask-position: center; //--|🠈 Center icon 🠈|--\\
+      -webkit-mask-position: center;
     }
   }
 }
-
+//--|===|--\\
 @mixin desktop-grid {
+  //--|🠋 Desktop (Grid) 🠋|--\\
+  /*--|🠋
+    <ButtonProfile> stacks .fore, .icon and .back in one grid cell
+    (profile-gridbox), so nothing moves between screens; Button_size.scss
+    scales the cell. <ButtonDefault> and <ButtonRouting> place their layers here.
+  🠉|--*/
 }
 @mixin mobile-grid {
+  //--|🠋 Mobile (Grid) 🠋|--\\
+  /*--|🠋
+    <ButtonProfile> stacks .fore, .icon and .back in one grid cell
+    (profile-gridbox), so nothing moves between screens; Button_size.scss
+    scales the cell. <ButtonDefault> and <ButtonRouting> place their layers here.
+  🠉|--*/
 }
 @mixin tablet-grid {
+  //--|🠋 Tablet (Grid) 🠋|--\\
+  /*--|🠋
+    <ButtonProfile> stacks .fore, .icon and .back in one grid cell
+    (profile-gridbox), so nothing moves between screens; Button_size.scss
+    scales the cell. <ButtonDefault> and <ButtonRouting> place their layers here.
+  🠉|--*/
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+  }
 }

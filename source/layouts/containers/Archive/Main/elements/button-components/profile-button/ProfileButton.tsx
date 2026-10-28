@@ -44,8 +44,8 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
+                // image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -55,7 +55,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -66,7 +65,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -77,7 +75,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -88,7 +85,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -99,7 +95,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -131,7 +126,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -142,7 +136,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -153,7 +146,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -164,7 +156,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -175,7 +166,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -186,7 +176,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -206,7 +195,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -217,7 +205,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -228,7 +215,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -239,7 +225,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -250,7 +235,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -261,7 +245,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~light~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -293,7 +276,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -304,7 +286,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -315,7 +296,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-square-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -326,7 +306,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -337,7 +316,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />
@@ -348,7 +326,6 @@ function ProfileButton({ info }: InfoProps) {
                 color: '(mono)',
                 shade: '~dark~',
                 view: '-circle-',
-                type: '{button}',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
             />

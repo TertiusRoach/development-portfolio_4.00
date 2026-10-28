@@ -111,7 +111,6 @@ const VerticalButtons = (
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               color: style.color,
               shade: style.shade,
               image: cases.image?.[index] as string,
@@ -136,7 +135,6 @@ const VerticalButtons = (
           <ButtonRouting
             style={{
               size: '<h1>',
-              type: '{button}',
               view: style.view,
               color: style.color,
               shade: style.shade,

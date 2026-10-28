@@ -1,39 +1,39 @@
 //--|🠊 Button_routing.ts 🠈|--\\
 import { stripBrackets } from '../../../../scripts';
 
-interface StyleProps {
-  image: string;
+export interface StyleProps {
+  shade: '~dark~' | '~light~';
   size: '<h1>' | '<h4>' | '<p>';
-  shade: '~dark~' | '~medium~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
 
-  type: '{button}' | '{counter}';
-  role?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)';
+  image?: string | null;
 }
 //--|🠋 Functions 🠋|--\\
-export function createClass(style: StyleProps): String {
-  //--|🠊 Class Build for <RoutingButton> 🠈|--\\
-  let classColor = createColor(style.shade, style.color);
-  let classLayout = createLayout(style.size, style.view);
+function createClass(style: StyleProps): string {
+  //--|🠊 Class Build for <ButtonRouting> 🠈|--\\
+  const classColor = createColor(style.shade, style.color);
+  const classLayout = createLayout(style.size, style.view);
 
-  return `${classLayout}_${classColor}_rou`;
+  if (style.image == null) {
+    return `${classLayout}_${classColor}_alt`;
+  } else if (/\.(png|jpe?g)$/i.test(style.image)) {
+    return `${classLayout}_${classColor}_alt`; //--|🠈 .png & .jpg show the picture itself 🠈|--\\
+  } else {
+    return `${classLayout}_${classColor}_rou`;
+  }
 }
 
-//--|🠋 Scoped Functions 🠋|--\\
-export function createLayout(
-  size: '<h1>' | '<h4>' | '<p>',
-  view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig',
-): string {
-  const sizeMap: Record<string, string> = {
+//--|🠋 Generate Abbreviations 🠋|--\\
+const createLayout = (size: StyleProps['size'], view: StyleProps['view']): string => {
+  const sizeMap: Record<StyleProps['size'], string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
     '<h4>': 'fou',
     '<p>': 'par',
   };
-  const classSize = sizeMap[size];
 
-  const viewMap: Record<string, string> = {
+  const viewMap: Record<StyleProps['view'], string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
     'top-lef': 'tl',
     'top-cen': 'tc',
@@ -45,36 +45,34 @@ export function createLayout(
     'bot-cen': 'bc',
     'bot-rig': 'br',
   };
+
+  const classSize = sizeMap[size];
   const classView = viewMap[view];
 
   if (!classSize || !classView) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid size (${size}) or view (${view}) provided to createLayout()`);
+    throw new Error(`|🠊 Error: Invalid <${stripBrackets(size, '<>')}> or -${stripBrackets(view, '--')}- 🠈|`);
   }
 
   return `${classSize}_${classView}`;
-}
-export function createColor(
-  shade: '~dark~' | '~medium~' | '~light~',
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
-): string {
-  const shadeMap: Record<string, string> = {
+};
+const createColor = (shade: StyleProps['shade'], color: StyleProps['color']): string => {
+  const shadeMap: Record<StyleProps['shade'], string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
-    '~medium~': 'med',
     '~light~': 'lig',
   };
 
-  const colorMap: Record<string, string> = {
+  const colorMap: Record<StyleProps['color'], string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
     '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
-    '(yellow)': 'yel',
     '(purple)': 'pur',
     '(orange)': 'ora',
     '(pink)': 'pin',
+    '(yellow)': 'yel',
     '(brown)': 'bro',
     '(turquoise)': 'tur',
   };
@@ -84,10 +82,9 @@ export function createColor(
 
   if (!classShade || !classColor) {
     //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`Invalid shade (${shade}) or color (${color}) provided to createColor()`);
+    throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stripBrackets(color, '()')}) 🠈|`);
   }
 
   return `${classShade}_${classColor}`;
-}
-
+};
 export default createClass;

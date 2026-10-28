@@ -18,7 +18,7 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
+/* import ButtonDefault from '../../Button/default/Button.default'; */
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -132,25 +132,31 @@ const FormPassword: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="password-footer">
         <menu className="password-action">
+          {/*
           <ButtonDefault
             type="submit"
             text={submit ? 'Changing...' : 'Change'}
             style={defineButton('password', { pageName, blockName })}
           />
+          */}
         </menu>
         <nav id="password-buttons">
+          {/*
           <ButtonDefault
             type="button"
             text={'Enter Account'}
             onClick={() => viewBlock('login')}
             style={defineButton('login', { pageName, blockName })}
           />
+          */}
+          {/*
           <ButtonDefault
             type="button"
             text={'Create Account'}
             onClick={() => viewBlock('register')}
             style={defineButton('register', { pageName, blockName })}
           />
+          */}
         </nav>
       </div>
     </form>

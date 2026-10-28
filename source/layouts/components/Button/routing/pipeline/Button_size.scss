@@ -4,126 +4,128 @@
   &[class*='one_'] {
     width: 128px;
     height: 128px;
-    .fore {
+    div[class='icon'] {
       span {
         width: 96px;
         height: 96px;
       }
     }
-  }
-  &[class*='fou_'] {
-    width: 84px;
-    height: 84px;
-    .fore {
-      span {
-        width: 63px;
-        height: 63px;
-      }
-    }
-  }
-  &[class*='par_'] {
-    width: 64px;
-    height: 64px;
-    .fore {
-      span {
-        width: 48px;
-        height: 48px;
-      }
-    }
-  }
-  @media screen and (max-height: 768px) {
-    &[class*='one_'] {
+    @media screen and (max-height: 768px) {
       width: 96px;
       height: 96px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 72px;
           height: 72px;
         }
       }
     }
-    &[class*='fou_'] {
+    @media screen and (max-height: 480px) {
       width: 64px;
       height: 64px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 48px;
           height: 48px;
         }
       }
     }
-    &[class*='par_'] {
+    @media screen and (max-height: 360px) {
       width: 48px;
       height: 48px;
-      .fore {
-        span {
-          width: 37px;
-          height: 37px;
-        }
-      }
-    }
-  }
-  @media screen and (max-height: 480px) {
-    &[class*='one_'] {
-      width: 64px;
-      height: 64px;
-      .fore {
-        span {
-          width: 48px;
-          height: 48px;
-        }
-      }
-    }
-    &[class*='fou_'] {
-      width: 42px;
-      height: 42px;
-      .fore {
-        span {
-          width: 32px;
-          height: 32px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      width: 32px;
-      height: 32px;
-      .fore {
-        span {
-          width: 24px;
-          height: 24px;
-        }
-      }
-    }
-  }
-  @media screen and (max-height: 360px) {
-    &[class*='one_'] {
-      width: 48px;
-      height: 48px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 36px;
           height: 36px;
         }
       }
     }
-    &[class*='fou_'] {
+  }
+  &[class*='fou_'] {
+    width: 84px;
+    height: 84px;
+    div[class='icon'] {
+      span {
+        width: 63px;
+        height: 63px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      width: 64px;
+      height: 64px;
+      div[class='icon'] {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      width: 42px;
+      height: 42px;
+      div[class='icon'] {
+        span {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
       width: 32px;
       height: 32px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 25px;
           height: 25px;
         }
       }
     }
-    &[class*='par_'] {
+  }
+  &[class*='par_'] {
+    width: 64px;
+    height: 64px;
+    div[class='icon'] {
+      span {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      width: 48px;
+      height: 48px;
+      div[class='icon'] {
+        span {
+          width: 37px;
+          height: 37px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      width: 32px;
+      height: 32px;
+      div[class='icon'] {
+        span {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
       width: 24px;
       height: 24px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 18px;
           height: 18px;
         }
+      }
+    }
+  }
+  &[class*='_alt'] {
+    div[class='icon'] {
+      span {
+        width: 100%; //--|🠈 The picture covers the entire square, not the centre cell 🠈|--\\
+        height: 100%;
       }
     }
   }
@@ -133,126 +135,128 @@
   &[class*='one_'] {
     width: 192px;
     height: 192px;
-    .fore {
+    div[class='icon'] {
       span {
         width: 144px;
         height: 144px;
       }
     }
-  }
-  &[class*='fou_'] {
-    width: 128px;
-    height: 128px;
-    .fore {
-      span {
-        width: 96px;
-        height: 96px;
-      }
-    }
-  }
-  &[class*='par_'] {
-    width: 96px;
-    height: 96px;
-    .fore {
-      span {
-        width: 72px;
-        height: 72px;
-      }
-    }
-  }
-  @media screen and (max-width: 768px) {
-    &[class*='one_'] {
+    @media screen and (max-width: 768px) {
       width: 160px;
       height: 160px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 120px;
           height: 120px;
         }
       }
     }
-    &[class*='fou_'] {
-      width: 106px;
-      height: 106px;
-      .fore {
-        span {
-          width: 80px;
-          height: 80px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      width: 80px;
-      height: 80px;
-      .fore {
-        span {
-          width: 61px;
-          height: 61px;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 480px) {
-    &[class*='one_'] {
+    @media screen and (max-width: 480px) {
       width: 96px;
       height: 96px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 72px;
           height: 72px;
         }
       }
     }
-    &[class*='fou_'] {
+    @media screen and (max-width: 360px) {
       width: 64px;
       height: 64px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 48px;
           height: 48px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      width: 48px;
-      height: 48px;
-      .fore {
-        span {
-          width: 37px;
-          height: 37px;
         }
       }
     }
   }
-  @media screen and (max-width: 360px) {
-    &[class*='one_'] {
+  &[class*='fou_'] {
+    width: 128px;
+    height: 128px;
+    div[class='icon'] {
+      span {
+        width: 96px;
+        height: 96px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 106px;
+      height: 106px;
+      div[class='icon'] {
+        span {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
       width: 64px;
       height: 64px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 48px;
           height: 48px;
         }
       }
     }
-    &[class*='fou_'] {
+    @media screen and (max-width: 360px) {
       width: 42px;
       height: 42px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 32px;
           height: 32px;
         }
       }
     }
-    &[class*='par_'] {
+  }
+  &[class*='par_'] {
+    width: 96px;
+    height: 96px;
+    div[class='icon'] {
+      span {
+        width: 72px;
+        height: 72px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+      div[class='icon'] {
+        span {
+          width: 61px;
+          height: 61px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 48px;
+      height: 48px;
+      div[class='icon'] {
+        span {
+          width: 37px;
+          height: 37px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
       width: 32px;
       height: 32px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 24px;
           height: 24px;
         }
+      }
+    }
+  }
+  &[class*='_alt'] {
+    div[class='icon'] {
+      span {
+        width: 100%; //--|🠈 The picture covers the entire square, not the centre cell 🠈|--\\
+        height: 100%;
       }
     }
   }
@@ -264,126 +268,128 @@
     &[class*='one_'] {
       width: 128px;
       height: 128px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 96px;
           height: 96px;
         }
       }
-    }
-    &[class*='fou_'] {
-      width: 84px;
-      height: 84px;
-      .fore {
-        span {
-          width: 63px;
-          height: 63px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      width: 64px;
-      height: 64px;
-      .fore {
-        span {
-          width: 48px;
-          height: 48px;
-        }
-      }
-    }
-    @media screen and (max-width: 1920px) {
-      &[class*='one_'] {
+      @media screen and (max-width: 1920px) {
         width: 96px;
         height: 96px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 72px;
             height: 72px;
           }
         }
       }
-      &[class*='fou_'] {
+      @media screen and (max-width: 1366px) {
         width: 64px;
         height: 64px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 48px;
             height: 48px;
           }
         }
       }
-      &[class*='par_'] {
+      @media screen and (max-width: 854px) {
         width: 48px;
         height: 48px;
-        .fore {
-          span {
-            width: 37px;
-            height: 37px;
-          }
-        }
-      }
-    }
-    @media screen and (max-width: 1366px) {
-      &[class*='one_'] {
-        width: 64px;
-        height: 64px;
-        .fore {
-          span {
-            width: 48px;
-            height: 48px;
-          }
-        }
-      }
-      &[class*='fou_'] {
-        width: 42px;
-        height: 42px;
-        .fore {
-          span {
-            width: 32px;
-            height: 32px;
-          }
-        }
-      }
-      &[class*='par_'] {
-        width: 32px;
-        height: 32px;
-        .fore {
-          span {
-            width: 24px;
-            height: 24px;
-          }
-        }
-      }
-    }
-    @media screen and (max-width: 854px) {
-      &[class*='one_'] {
-        width: 48px;
-        height: 48px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 36px;
             height: 36px;
           }
         }
       }
-      &[class*='fou_'] {
+    }
+    &[class*='fou_'] {
+      width: 84px;
+      height: 84px;
+      div[class='icon'] {
+        span {
+          width: 63px;
+          height: 63px;
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        width: 64px;
+        height: 64px;
+        div[class='icon'] {
+          span {
+            width: 48px;
+            height: 48px;
+          }
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        width: 42px;
+        height: 42px;
+        div[class='icon'] {
+          span {
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
         width: 32px;
         height: 32px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 25px;
             height: 25px;
           }
         }
       }
-      &[class*='par_'] {
+    }
+    &[class*='par_'] {
+      width: 64px;
+      height: 64px;
+      div[class='icon'] {
+        span {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        width: 48px;
+        height: 48px;
+        div[class='icon'] {
+          span {
+            width: 37px;
+            height: 37px;
+          }
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        width: 32px;
+        height: 32px;
+        div[class='icon'] {
+          span {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
         width: 24px;
         height: 24px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 18px;
             height: 18px;
           }
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='icon'] {
+        span {
+          width: 100%; //--|🠈 The picture covers the entire square, not the centre cell 🠈|--\\
+          height: 100%;
         }
       }
     }
@@ -393,126 +399,128 @@
     &[class*='one_'] {
       width: 192px;
       height: 192px;
-      .fore {
+      div[class='icon'] {
         span {
           width: 144px;
           height: 144px;
         }
       }
-    }
-    &[class*='fou_'] {
-      width: 128px;
-      height: 128px;
-      .fore {
-        span {
-          width: 96px;
-          height: 96px;
-        }
-      }
-    }
-    &[class*='par_'] {
-      width: 96px;
-      height: 96px;
-      .fore {
-        span {
-          width: 72px;
-          height: 72px;
-        }
-      }
-    }
-    @media screen and (max-height: 1920px) {
-      &[class*='one_'] {
+      @media screen and (max-height: 1920px) {
         width: 160px;
         height: 160px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 120px;
             height: 120px;
           }
         }
       }
-      &[class*='fou_'] {
-        width: 106px;
-        height: 106px;
-        .fore {
-          span {
-            width: 80px;
-            height: 80px;
-          }
-        }
-      }
-      &[class*='par_'] {
-        width: 80px;
-        height: 80px;
-        .fore {
-          span {
-            width: 61px;
-            height: 61px;
-          }
-        }
-      }
-    }
-    @media screen and (max-height: 1366px) {
-      &[class*='one_'] {
+      @media screen and (max-height: 1366px) {
         width: 96px;
         height: 96px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 72px;
             height: 72px;
           }
         }
       }
-      &[class*='fou_'] {
+      @media screen and (max-height: 854px) {
         width: 64px;
         height: 64px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 48px;
             height: 48px;
-          }
-        }
-      }
-      &[class*='par_'] {
-        width: 48px;
-        height: 48px;
-        .fore {
-          span {
-            width: 37px;
-            height: 37px;
           }
         }
       }
     }
-    @media screen and (max-height: 854px) {
-      &[class*='one_'] {
+    &[class*='fou_'] {
+      width: 128px;
+      height: 128px;
+      div[class='icon'] {
+        span {
+          width: 96px;
+          height: 96px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        width: 106px;
+        height: 106px;
+        div[class='icon'] {
+          span {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
         width: 64px;
         height: 64px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 48px;
             height: 48px;
           }
         }
       }
-      &[class*='fou_'] {
+      @media screen and (max-height: 854px) {
         width: 42px;
         height: 42px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 32px;
             height: 32px;
           }
         }
       }
-      &[class*='par_'] {
+    }
+    &[class*='par_'] {
+      width: 96px;
+      height: 96px;
+      div[class='icon'] {
+        span {
+          width: 72px;
+          height: 72px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        width: 80px;
+        height: 80px;
+        div[class='icon'] {
+          span {
+            width: 61px;
+            height: 61px;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        width: 48px;
+        height: 48px;
+        div[class='icon'] {
+          span {
+            width: 37px;
+            height: 37px;
+          }
+        }
+      }
+      @media screen and (max-height: 854px) {
         width: 32px;
         height: 32px;
-        .fore {
+        div[class='icon'] {
           span {
             width: 24px;
             height: 24px;
           }
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='icon'] {
+        span {
+          width: 100%; //--|🠈 The picture covers the entire square, not the centre cell 🠈|--\\
+          height: 100%;
         }
       }
     }

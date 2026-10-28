@@ -31,7 +31,7 @@ How code is written in this repository. Every rule here exists because breaking 
 
 ### Deliberate Choices
 
-- **`<ButtonDefault>` text hover.** The background changes shade when you hover the button, but the text colour only flips when the cursor is on the text itself (`.text *:hover`). It's snappy on purpose and part of the project's identity. Improve the contrast in the in-between state if needed; never "fix" the behaviour.
+- **`<ButtonDefault>` text hover.** The background changes shade when you hover the button, but the text colour only flips when the cursor is on the text itself (`div[class='text'] *:hover`). It's snappy on purpose and part of the project's identity. Improve the contrast in the in-between state if needed; never "fix" the behaviour.
 
 ---
 
@@ -89,7 +89,7 @@ State classes are intentionally simple. They act like a contract between the scr
 | **Operating State** | `.active` · `.asleep`                           | `.running` · `.disabled`  | Whether a page (`#${pageName}-body`) is in use                        |
 | **Preview State**   | `.visible` · `.hidden`                          | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`             |
 | **Indexed State**   | `.expanded` · `.collapsed`                      | `.unfolded` · `.squaring` | Blocks that open and close while staying part of the page             |
-| **Emphasize State** | `.highlight` · `.downplay`                      |                           | Draw attention to, or away from, a `<ButtonDefault>` during testing   |
+| **Emphasize State** | `.highlight` · `.downplay`                      |                           | On a `<button>`: `.highlight` swaps it to the opposite shade, `.downplay` keeps its own |
 | **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely |
 | **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM    |
 
@@ -121,15 +121,40 @@ Components are the building blocks in `source/layouts/components/`. Every compon
 components/Button/default/
 ├── Button.default.tsx          # Markup and props
 ├── Button.default.scss         # Imports the pipeline and applies it per screen
-├── Button_default.ts           # createClass() turns props into class abbreviations
+├── Button_default.ts           # createClass() and the shared StyleProps type
 └── pipeline/
-    ├── Button_size.scss        # Font and element sizing
+    ├── Button_flex.scss        # Flex alignment and padding
     ├── Button_grid.scss        # Grid placement (top, bottom, left, right, center)
-    ├── Button_flex.scss        # Flex alignment
-    ├── Button_tint.scss        # Colours and shades, from styles/Palettes.scss
-    ├── Button_move.scss        # Hover, press and transition states
-    └── Button_corn.scss        # Corner radii
+    ├── Button_size.scss        # Font and element sizing
+    ├── Button_tint.scss        # Colours, shades and transitions, from styles/Palettes.scss
+    └── Button_corn.scss        # Corner radii and border widths
 ```
+
+`<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline.
+
+### Pipeline Files
+
+- **One order everywhere:** flex, grid, size, tint, corn. The `@use` lines, the global includes and every orientation block follow it.
+- **Every file is always there.** Each one exports `desktop-*`, `mobile-*` and `tablet-*`, and each mixin opens with its flag: `//--|🠋 Desktop (Flex) 🠋|--\\`. A mixin with nothing to do stays, with a `/*--|🠋 … 🠉|--*/` note saying where the other variants handle that part.
+- **Global mixins** (`${variant}-flexbox`, `${variant}-gridbox`, `${variant}-colors`) hold what never changes per screen. They're included outside the media queries, and a `//--|===|--\\` divider separates them from `desktop-*`.
+- **Inner layers are selected by exact class:** `div[class='text']`, never `.text`. Two things follow from that:
+  - The layers can't carry a second class: `class="text visible"` no longer matches. State classes (`.highlight`, `.hidden`…) only ever go on the `<button>` itself.
+  - Every pipeline file has the same specificity, so the include order decides who wins. Colour belongs to `*_tint.scss` alone. Other files set `border-*-width` and `border-style`, never the `border:` shorthand, which quietly resets the colour.
+- **No outer shadows or glows.** Neighbouring containers paint over anything that reaches outside a button, so it looks clipped. Inset shadows (the bevel) and text glow are fine.
+
+### Error Messages
+
+Errors keep the props' own wrappers, so they read like the prop that caused them:
+
+```ts
+throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stripBrackets(color, '()')}) 🠈|`);
+//--|🠈 |🠊 Error: Invalid ~dark~ or (red) 🠈| 🠈|--\\
+```
+
+### Props and Events
+
+- **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `info.labelAria` is optional and is read aloud when a button has no visible text.
+- **Every `<Button>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
 
 Smaller components keep everything in one `.scss` file and split it with placeholders instead: `%desk-flex`, `%desk-grid`, `%desk-tint` and their `mobi-` and `tabl-` versions (see [Scaling Pattern](#6-scaling-pattern)).
 
@@ -140,7 +165,7 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 
 ### Declaration Order
 
-Every `.tsx` file in `components/` and `containers/` declares its functions by how deep they sit in the call chain, so the keyword tells you where you are:
+Every `.ts` and `.tsx` file in `components/` and `containers/` declares its functions by how deep they sit in the call chain, so the keyword tells you where you are:
 
 | Keyword    | Depth  | Role                                                                     |
 | ---------- | ------ | ------------------------------------------------------------------------ |
@@ -149,7 +174,14 @@ Every `.tsx` file in `components/` and `containers/` declares its functions by h
 | `let`      | Third  | Called by a `const`                                                      |
 | `var`      | Fourth | Called by a `let`. Best avoided; no file has needed to go this deep yet  |
 
-`<DivisionConveyor>` is the reference: `function DivisionConveyor` renders `const DivisionAxis`. Older files are being moved to this order as they're refactored.
+- **One main function, exported twice.** A file with one main function declares it as `export function`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
+- **Several main functions, no default.** A file of equal utilities (like `scripts.ts`) uses named exports only, so a default export always means "the one this file is about".
+- **Values inside a function.** A flag worked out once per render is a `let` with its type written out, and its reason as a trailing comment: `let styleImage: boolean = /\.(png|jpe?g)$/i.test(…); //--|🠈 … 🠈|--\\`. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
+- **Types are shared, not copied.** `Button_default.ts` exports `StyleProps` by name, and `Button.default.tsx` imports it.
+
+`<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. Older files are being moved to this order as they're refactored.
+
+Inside the `<button>` tag, attributes come in three groups split by `//--|===|--\\`: identity (`id`, `className`), events (`onClick` … `onDoubleClick`), then accessibility (`aria-label`).
 
 ---
 
@@ -166,9 +198,21 @@ Props are written with brackets that show their type at a glance. `stripBrackets
 | `~ ~`   | `style.shade` | `'~dark~'` · `'~light~'`      | `dar` · `lig`       |
 | `( )`   | `style.color` | `'(blue)'` · `'(mono)'`       | `blu` · `mon`       |
 | `( )`   | `style.role`  | `'(manager)'`                 | `manager`           |
-| `{ }`   | `style.type`  | `'{button}'` · `'{submit}'`   | `button` · `submit` |
+| `{ }`   | `style.type`  | `'{toggle}'` · `'{select}'`   | `toggle` · `select` |
 
-For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `class="default-button thr_lef_dar_blu_def"`. Without an image, the suffix is `_alt`.
+For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `class="default-button thr_lef_dar_blu_def"`. The last part of the class is a toggle between a variant's two looks:
+
+| Variant           | `.svg`                 | `.png` / `.jpg`            | No image        |
+| ----------------- | ---------------------- | -------------------------- | --------------- |
+| `<ButtonDefault>` | `_def`, silhouette     | `_def`, the picture        | `_alt`, no icon |
+| `<ButtonRouting>` | `_rou`, silhouette     | `_alt`, picture fills the square | `_alt`, empty |
+| `<ButtonProfile>` | `_alt`, silhouette     | `_pro`, the picture        | `_pro`, empty   |
+
+A silhouette is the `.svg` used as a mask, painted in the button's colours. A picture is shown as it is.
+
+There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>` has no `style.type`: the browser's default `type` is fine.
+
+`<ButtonRouting>` places itself with a position instead of a `- -` view: `'top-lef'`, `'mid-cen'`, `'bot-rig'` and so on, row then column, three letters each. Every position name in the project uses that form.
 
 ---
 
@@ -243,6 +287,23 @@ Inside each mixin, styles are grouped into `flex`, `grid` and `tint` placeholder
 
 Components with a `pipeline/` folder follow the same rule per file: `Button_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`, and `Button.profile.scss` includes them in the same three blocks.
 
+**Where breakpoints sit.** A breakpoint goes directly inside the deepest `&[class*='…']` it belongs to and wraps the elements it changes. It never repeats inside each element, and never wraps several variants from above:
+
+```scss
+&[class*='one_'] {
+  h1 {
+    padding: 4px 16px;
+  }
+  @media screen and (max-height: 480px) {
+    h1 {
+      padding: 2px 8px;
+    }
+  }
+}
+```
+
+In `tablet-*` mixins, the landscape/portrait split comes first, right under the flag, and everything else sits inside the `//--|🠊 Desktop 🠈|--\\` and `//--|🠊 Mobile 🠈|--\\` branches (see `routing/pipeline/Button_grid.scss`).
+
 The reference implementation is `source/layouts/components/Aside/characters/Aside.characters.scss`.
 
 ---
@@ -251,20 +312,20 @@ The reference implementation is `source/layouts/components/Aside/characters/Asid
 
 ### The Ten Colours
 
-`styles/Palettes.scss` holds every colour, in this order. New colour lists follow it. The existing component lists (types, maps, mixins) still use their older order, `mon · red · gre · blu · yel · pur · ora · pin · bro · tur`. Keep that order inside those files until they're reordered in a step of their own.
+`styles/Palettes.scss` holds every colour, in this order. Mono comes first because it's the default colour. Every colour list (types, maps, includes, mixins) follows the same order: `mon · red · gre · blu · pur · ora · pin · yel · bro · tur`. `<Button>` already does; other components are moved over as they're refactored.
 
 | #  | Colour    | In `.tsx`       | Class   | In `.scss`              |
 | -- | --------- | --------------- | ------- | ----------------------- |
-| 1  | Red       | `'(red)'`       | `_red`  | `Palettes.$red-*`       |
-| 2  | Green     | `'(green)'`     | `_gre`  | `Palettes.$green-*`     |
-| 3  | Blue      | `'(blue)'`      | `_blu`  | `Palettes.$blue-*`      |
-| 4  | Purple    | `'(purple)'`    | `_pur`  | `Palettes.$purple-*`    |
-| 5  | Orange    | `'(orange)'`    | `_ora`  | `Palettes.$orange-*`    |
-| 6  | Pink      | `'(pink)'`      | `_pin`  | `Palettes.$pink-*`      |
-| 7  | Yellow    | `'(yellow)'`    | `_yel`  | `Palettes.$yellow-*`    |
-| 8  | Brown     | `'(brown)'`     | `_bro`  | `Palettes.$brown-*`     |
-| 9  | Turquoise | `'(turquoise)'` | `_tur`  | `Palettes.$turquoise-*` |
-| 10 | Mono      | `'(mono)'`      | `_mon`  | `Palettes.$gray-*`      |
+| 1  | Mono      | `'(mono)'`      | `_mon`  | `Palettes.$gray-*`      |
+| 2  | Red       | `'(red)'`       | `_red`  | `Palettes.$red-*`       |
+| 3  | Green     | `'(green)'`     | `_gre`  | `Palettes.$green-*`     |
+| 4  | Blue      | `'(blue)'`      | `_blu`  | `Palettes.$blue-*`      |
+| 5  | Purple    | `'(purple)'`    | `_pur`  | `Palettes.$purple-*`    |
+| 6  | Orange    | `'(orange)'`    | `_ora`  | `Palettes.$orange-*`    |
+| 7  | Pink      | `'(pink)'`      | `_pin`  | `Palettes.$pink-*`      |
+| 8  | Yellow    | `'(yellow)'`    | `_yel`  | `Palettes.$yellow-*`    |
+| 9  | Brown     | `'(brown)'`     | `_bro`  | `Palettes.$brown-*`     |
+| 10 | Turquoise | `'(turquoise)'` | `_tur`  | `Palettes.$turquoise-*` |
 
 **Mono and gray are the same colour.** Write `(mono)` in `.tsx` and `.ts` files, and `gray` in `.scss` files. Never `(gray)` in a prop.
 
@@ -293,7 +354,7 @@ Every colour's tint recipe is identical; only the palette names change. To add o
 
 ### Colour Changes and Fades
 
-Text colour, text glow, shadows and the icon background fade smoothly when the colour changes. The gradients on `::before` and `::after` snap, because browsers can't blend one gradient into another. That's accepted for now (see [Parked for Later](#10-parked-for-later)).
+Text colour, text glow and the icon background fade smoothly when the colour changes, on the `$tint-fade` curve that each `*-colors` mixin declares. The gradients on `::before` and `::after` snap, because browsers can't blend one gradient into another. That's accepted for now (see [Parked for Later](#10-parked-for-later)).
 
 ---
 

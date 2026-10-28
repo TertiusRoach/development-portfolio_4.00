@@ -17,7 +17,7 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FieldsetCode from '../../Fieldset/code/Fieldset.code';
-import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
+/* import ButtonDefault from '../../Button/default/Button.default'; */
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -109,12 +109,14 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="verify-form" onSubmit={(event) => handleVerify(event)}>
       <div className="verify-header">
+        {/*
         <ButtonDefault
           text={''}
           type="button"
           onClick={() => closeLeftbar(pageName)}
           style={defineButton('close', { pageName, blockName })}
         />
+        */}
         <div className="verify-text">
           <h4>Check your email for verification code.</h4>
         </div>
@@ -127,12 +129,14 @@ const FormVerify: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="verify-footer">
         <menu className="verify-action">
+          {/*
           <ButtonDefault
             type="submit"
             disabled={submit}
             text={submit ? 'Verifying...' : 'Verify'}
             style={defineButton('verify', { pageName, blockName })}
           />
+          */}
         </menu>
       </div>
     </form>

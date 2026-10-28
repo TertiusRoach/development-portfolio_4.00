@@ -136,7 +136,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -154,7 +153,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -172,7 +170,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -190,7 +187,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -208,7 +204,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -226,7 +221,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -244,7 +238,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -265,7 +258,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -283,7 +275,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -301,7 +292,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -319,7 +309,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -337,7 +326,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -355,7 +343,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -373,7 +360,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h1.svg' as string,
             }}
@@ -397,7 +383,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -415,7 +400,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -433,7 +417,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -451,7 +434,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -469,7 +451,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -487,7 +468,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -505,7 +485,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -526,7 +505,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -544,7 +522,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -562,7 +539,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -580,7 +556,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -598,7 +573,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -616,7 +590,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -634,7 +607,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h2.svg' as string,
             }}
@@ -658,7 +630,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -676,7 +647,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -694,7 +664,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -712,7 +681,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -730,7 +698,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -748,7 +715,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -766,7 +732,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -787,7 +752,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -805,7 +769,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -823,7 +786,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -841,7 +803,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -859,7 +820,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -877,7 +837,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -895,7 +854,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h3.svg' as string,
             }}
@@ -919,7 +877,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -937,7 +894,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -955,7 +911,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -973,7 +928,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -991,7 +945,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1009,7 +962,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1027,7 +979,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1048,7 +999,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1066,7 +1016,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1084,7 +1033,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1102,7 +1050,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1120,7 +1067,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1138,7 +1084,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1156,7 +1101,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h4.svg' as string,
             }}
@@ -1180,7 +1124,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1198,7 +1141,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1216,7 +1158,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1234,7 +1175,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1252,7 +1192,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1270,7 +1209,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1288,7 +1226,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1309,7 +1246,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1327,7 +1263,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1345,7 +1280,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1363,7 +1297,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1381,7 +1314,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1399,7 +1331,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1417,7 +1348,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h5.svg' as string,
             }}
@@ -1441,7 +1371,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1459,7 +1388,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1477,7 +1405,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1495,7 +1422,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1513,7 +1439,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1531,7 +1456,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1549,7 +1473,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1570,7 +1493,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1588,7 +1510,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1606,7 +1527,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
@@ -1625,7 +1545,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1643,7 +1562,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1661,7 +1579,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1679,7 +1596,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/h6.svg' as string,
             }}
@@ -1703,7 +1619,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1721,7 +1636,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1739,7 +1653,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1757,7 +1670,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1775,7 +1687,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1793,7 +1704,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1811,7 +1721,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1832,7 +1741,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1850,7 +1758,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1868,7 +1775,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1887,7 +1793,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1905,7 +1810,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1924,7 +1828,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}
@@ -1942,7 +1845,6 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: 'https://raw.githubusercontent.com/TertiusRoach/p.svg' as string,
             }}

@@ -17,7 +17,7 @@ import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
-import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
+/* import ButtonDefault from '../../Button/default/Button.default'; */
 //--|🠉 Components 🠉|--//
 
 interface InfoProps {
@@ -167,35 +167,43 @@ const FormLogin: React.FC<InfoProps> = ({ info }) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        {/*
         <ButtonDefault
           text={''}
           type="button"
           onClick={() => viewPass('login')}
           style={defineButton('observe', { pageName, blockName })}
         />
+        */}
       </div>
       <div className="login-footer">
         <menu className="login-action">
+          {/*
           <ButtonDefault
             type="submit"
             disabled={submit}
             text={submit ? 'Logging in...' : 'Login'}
             style={defineButton('login', { pageName, blockName })}
           />
+          */}
         </menu>
         <nav id="login-buttons">
+          {/*
           <ButtonDefault
             type="button"
             text={'Register Account'}
             onClick={() => viewBlock('register')}
             style={defineButton('register', { pageName, blockName })}
           />
+          */}
+          {/*
           <ButtonDefault
             type="button"
             text={'Forgot Password'}
             onClick={() => viewBlock('password')}
             style={defineButton('password', { pageName, blockName })}
           />
+          */}
         </nav>
       </div>
     </form>

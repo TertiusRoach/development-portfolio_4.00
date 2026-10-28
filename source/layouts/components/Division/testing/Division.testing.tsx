@@ -16,7 +16,7 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    shade: '~dark~' | '~medium~' | '~light~';
+    shade: '~dark~' | '~light~';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
 }
@@ -34,7 +34,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-center-',
-          type: '{button}',
           text: '<Main>',
           shade: style.shade,
           color: style.color,
@@ -54,7 +53,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-center-',
-          type: '{button}',
           text: '<Header>',
           shade: style.shade,
           color: style.color,
@@ -73,7 +71,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-center-',
-          type: '{button}',
           text: '<Footer>',
           shade: style.shade,
           color: style.color,
@@ -93,7 +90,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-center-',
-          type: '{button}',
           text: '<Overlay>',
           shade: style.shade,
           color: style.color,
@@ -112,7 +108,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-left-',
-          type: '{button}',
           text: '<Leftbar>',
           shade: style.shade,
           color: style.color,
@@ -131,7 +126,6 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
         style={{
           size: '<h3>',
           view: '-right-',
-          type: '{button}',
           text: '<Rightbar>',
           shade: style.shade,
           color: style.color,

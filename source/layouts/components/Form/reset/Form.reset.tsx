@@ -16,7 +16,7 @@ import { usePassword } from '../../../../modules/context/PasswordContext';
 //--|🠉 Context 🠉|--//
 //--|🠋 Components 🠋|--//
 import FieldsetCode from '../../Fieldset/code/Fieldset.code';
-import ButtonDefault from '../../Button/ARCHIVE/default/Button.default';
+/* import ButtonDefault from '../../Button/default/Button.default'; */
 //--|🠉 Components 🠉|--//
 
 //--|🠋 Functions 🠋|--//
@@ -94,12 +94,14 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
   return (
     <form className="reset-form" onSubmit={(event) => handleReset(event)}>
       <div className="reset-header">
+        {/*
         <ButtonDefault
           text={''}
           type="button"
           onClick={() => closeRightbar(pageName)}
           style={defineButton('close', { pageName, blockName })}
         />
+        */}
         <div className="reset-text">
           <h4>Reset your password.</h4>
         </div>
@@ -109,6 +111,7 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="reset-inputs">
         <FieldsetCode info={info} />
+        {/*
         <ButtonDefault
           text={''}
           type="button"
@@ -118,12 +121,15 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
           }}
           style={defineButton('generate', { pageName, blockName })}
         />
+        */}
+        {/*
         <ButtonDefault
           text={''}
           type="button"
           onClick={() => viewPass('reset')}
           style={defineButton('observe', { pageName, blockName })}
         />
+        */}
         <input
           required
           id="password"
@@ -137,12 +143,14 @@ const FormReset: React.FC<InfoProps> = ({ info }) => {
       </div>
       <div className="reset-footer">
         <menu className="reset-action">
+          {/*
           <ButtonDefault
             type="submit"
             disabled={submit}
             text={submit ? 'Resetting...' : 'Reset'}
             style={defineButton('reset', { pageName, blockName })}
           />
+          */}
         </menu>
       </div>
     </form>

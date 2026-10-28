@@ -1,161 +1,175 @@
 //--|🠊 profile/pipeline/Button_flex.scss 🠈|--\\
 
 @mixin profile-flexbox {
-  /*
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-
-  .fore,
-  .icon,
-  .back {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    &[class='fore'] span,
-    &[class='back'] span {
-      width: 100%;
-      height: 100%;
-      display: flex;
-    }
-    &[class='icon'] img {
-      width: inherit;
-      height: inherit;
-    }
-  }
-  */
+  //--|🠋 Global (Flex) 🠋|--\\
+  /*--|🠋
+    <ButtonProfile> is laid out by Button_grid.scss and has no text, so it
+    needs no flex rules. <ButtonDefault> uses this file for the padding
+    around its text and icon.
+  🠉|--*/
 }
-
+//--|===|--\\
 @mixin desktop-flex {
   //--|🠋 Desktop (Flex) 🠋|--\\
-  .fore {
+  div[class='fore'] {
     z-index: 2;
     cursor: pointer;
+    border-style: solid; //--|🠈 No colour here: Button_tint.scss owns it 🠈|--\\
 
-    border: 6px solid;
-    @media screen and (max-height: 768px) {
-      border: 4px solid;
-    }
-    @media screen and (max-height: 480px) {
-      border: 3px solid;
-    }
-    @media screen and (max-height: 360px) {
-      border: 2px solid;
-    }
+    border-width: 6px;
   }
-  .icon {
+  div[class='icon'] {
     z-index: 1;
   }
-  .back {
+  div[class='back'] {
     z-index: 0;
     padding: 3px;
-    @media screen and (max-height: 768px) {
+  }
+  @media screen and (max-height: 768px) {
+    div[class='fore'] {
+      border-width: 4px;
+    }
+    div[class='back'] {
       padding: 2px;
     }
-    @media screen and (max-height: 480px) {
+  }
+  @media screen and (max-height: 480px) {
+    div[class='fore'] {
+      border-width: 3px;
+    }
+    div[class='back'] {
       padding: 1.5px;
     }
-    @media screen and (max-height: 360px) {
+  }
+  @media screen and (max-height: 360px) {
+    div[class='fore'] {
+      border-width: 2px;
+    }
+    div[class='back'] {
       padding: 1px;
     }
   }
 }
 @mixin mobile-flex {
   //--|🠋 Mobile (Flex) 🠋|--\\
-  .fore {
+  div[class='fore'] {
     z-index: 2;
     cursor: pointer;
-    border: 6px solid;
-    @media screen and (max-width: 768px) {
-      border: 4px solid;
-    }
-    @media screen and (max-width: 480px) {
-      border: 3px solid;
-    }
-    @media screen and (max-width: 360px) {
-      border: 2px solid;
-    }
+    border-style: solid; //--|🠈 No colour here: Button_tint.scss owns it 🠈|--\\
+    border-width: 6px;
   }
-  .icon {
+  div[class='icon'] {
     z-index: 1;
   }
-  .back {
+  div[class='back'] {
     z-index: 0;
     padding: 3px;
-    @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 768px) {
+    div[class='fore'] {
+      border-width: 4px;
+    }
+    div[class='back'] {
       padding: 2px;
     }
-    @media screen and (max-width: 480px) {
+  }
+  @media screen and (max-width: 480px) {
+    div[class='fore'] {
+      border-width: 3px;
+    }
+    div[class='back'] {
       padding: 1.5px;
     }
-    @media screen and (max-width: 360px) {
+  }
+  @media screen and (max-width: 360px) {
+    div[class='fore'] {
+      border-width: 2px;
+    }
+    div[class='back'] {
       padding: 1px;
     }
   }
 }
 @mixin tablet-flex {
   //--|🠋 Tablet (Flex) 🠋|--\\
-  .fore {
-    z-index: 2;
-    cursor: pointer;
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    div[class='fore'] {
+      z-index: 2;
+      cursor: pointer;
+      border-style: solid; //--|🠈 No colour here: Button_tint.scss owns it 🠈|--\\
 
-    @media screen and (orientation: landscape) {
-      //--|🠊 Desktop 🠈|--\\
-      border: 6px solid;
-      @media screen and (max-width: 1920px) {
-        border: 4px solid;
-      }
-      @media screen and (max-width: 1366px) {
-        border: 3px solid;
-      }
-      @media screen and (max-width: 854px) {
-        border: 2px solid;
-      }
+      border-width: 6px;
     }
-    @media screen and (orientation: portrait) {
-      //--|🠊 Mobile 🠈|--\\
-      border: 6px solid;
-      @media screen and (max-height: 1920px) {
-        border: 4px solid;
-      }
-      @media screen and (max-height: 1366px) {
-        border: 3px solid;
-      }
-      @media screen and (max-height: 854px) {
-        border: 2px solid;
-      }
+    div[class='icon'] {
+      z-index: 1;
     }
-  }
-  .icon {
-    z-index: 1;
-  }
-  .back {
-    z-index: 0;
-    @media screen and (orientation: landscape) {
-      //--|🠊 Desktop 🠈|--\\
+    div[class='back'] {
+      z-index: 0;
       padding: 3px;
-      @media screen and (max-width: 1920px) {
+    }
+    @media screen and (max-width: 1920px) {
+      div[class='fore'] {
+        border-width: 4px;
+      }
+      div[class='back'] {
         padding: 2px;
       }
-      @media screen and (max-width: 1366px) {
+    }
+    @media screen and (max-width: 1366px) {
+      div[class='fore'] {
+        border-width: 3px;
+      }
+      div[class='back'] {
         padding: 1.5px;
       }
-      @media screen and (max-width: 854px) {
+    }
+    @media screen and (max-width: 854px) {
+      div[class='fore'] {
+        border-width: 2px;
+      }
+      div[class='back'] {
         padding: 1px;
       }
     }
-    @media screen and (orientation: portrait) {
-      //--|🠊 Mobile 🠈|--\\
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    div[class='fore'] {
+      z-index: 2;
+      cursor: pointer;
+      border-style: solid; //--|🠈 No colour here: Button_tint.scss owns it 🠈|--\\
+
+      border-width: 6px;
+    }
+    div[class='icon'] {
+      z-index: 1;
+    }
+    div[class='back'] {
+      z-index: 0;
       padding: 3px;
-      @media screen and (max-height: 1920px) {
+    }
+    @media screen and (max-height: 1920px) {
+      div[class='fore'] {
+        border-width: 4px;
+      }
+      div[class='back'] {
         padding: 2px;
       }
-      @media screen and (max-height: 1366px) {
+    }
+    @media screen and (max-height: 1366px) {
+      div[class='fore'] {
+        border-width: 3px;
+      }
+      div[class='back'] {
         padding: 1.5px;
       }
-      @media screen and (max-height: 854px) {
+    }
+    @media screen and (max-height: 854px) {
+      div[class='fore'] {
+        border-width: 2px;
+      }
+      div[class='back'] {
         padding: 1px;
       }
     }

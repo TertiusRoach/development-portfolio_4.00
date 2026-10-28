@@ -27,10 +27,10 @@ const FigureRotation: React.FC<InfoProps> = ({ style }) => {
     <figure className={`rotation-figure ${fadeView}`}>
       <figcaption className="fade-left" style={{ zIndex: 4 }}></figcaption>
 
-      <svg className="top-right" style={{ zIndex: 3 }}></svg>
-      <svg className="bot-right" style={{ zIndex: 2 }}></svg>
-      <svg className="bot-left" style={{ zIndex: 1 }}></svg>
-      <svg className="top-left" style={{ zIndex: 0 }}></svg>
+      <svg className="top-rig" style={{ zIndex: 3 }}></svg>
+      <svg className="bot-rig" style={{ zIndex: 2 }}></svg>
+      <svg className="bot-lef" style={{ zIndex: 1 }}></svg>
+      <svg className="top-lef" style={{ zIndex: 0 }}></svg>
 
       <figcaption className="fade-right" style={{ zIndex: 4 }}></figcaption>
     </figure>

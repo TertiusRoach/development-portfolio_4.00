@@ -1,9 +1,15 @@
 //--|🠊 default/pipeline/Button_flex.scss 🠈|--\\
 @mixin default-flexbox {
+  //--|🠋 Global (Flex) 🠋|--\\
   div[class='icon'] {
     display: flex;
     align-items: center;
     //--|🠊 justify-content: center; 🠈|--\\
+  }
+  &[class*='_alt'] {
+    div[class='icon'] {
+      display: none; //--|🠈 No image, no icon layer: its crossfade would stretch over the whole button 🠈|--\\
+    }
   }
   div[class='text'],
   div[class='icon'],
@@ -21,17 +27,17 @@
     canvas {
       display: none;
     }
-    &.text {
+    &[class='text'] {
       z-index: 3;
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
-    &.icon {
+    &[class='icon'] {
       z-index: 2;
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
-    &.back {
+    &[class='back'] {
       z-index: 1;
       overflow: hidden;
     }
@@ -46,42 +52,54 @@
       &[class*='one_'] {
         h1 {
           padding: 4px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 0 4px;
-          }
         }
         img {
           margin: 4px;
+        }
+        @media screen and (max-height: 768px) {
+          h1 {
+            padding: 4px 16px;
+          }
+        }
+        @media screen and (max-height: 480px) {
+          h1 {
+            padding: 2px 8px;
+          }
+        }
+        @media screen and (max-height: 360px) {
+          h1 {
+            padding: 0 4px;
+          }
         }
       }
       &[class*='two_'] {
         h2 {
           padding: 6px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 6px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          h2 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 5px 6px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          h2 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 4px 6px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          h2 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 3px 6px;
           }
         }
@@ -89,25 +107,31 @@
       &[class*='thr_'] {
         h3 {
           padding: 6px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 8px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          h3 {
+            padding: 8px 16px;
+          }
+          img {
             margin: 4px 8px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          h3 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 3px 8px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          h3 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 8px;
           }
         }
@@ -115,25 +139,31 @@
       &[class*='fou_'] {
         h4 {
           padding: 6px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 10px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          h4 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 6px 10px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          h4 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 4px 10px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          h4 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 10px;
           }
         }
@@ -141,25 +171,31 @@
       &[class*='fiv_'] {
         h5 {
           padding: 6px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 7px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 4px 4px;
-          }
         }
         img {
           margin: 12px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          h5 {
+            padding: 7px 16px;
+          }
+          img {
             margin: 6px 12px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          h5 {
+            padding: 4px 8px;
+          }
+          img {
             margin: 3px 12px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          h5 {
+            padding: 4px 4px;
+          }
+          img {
             margin: 0 12px;
           }
         }
@@ -167,25 +203,31 @@
       &[class*='six_'] {
         h6 {
           padding: 6px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 4px 14px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          h6 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 4px 14px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          h6 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 2px 14px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          h6 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 0 14px;
           }
         }
@@ -193,25 +235,31 @@
       &[class*='par_'] {
         p {
           padding: 4px 16px;
-          @media screen and (max-height: 768px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-height: 480px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-height: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 2px 16px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          p {
+            padding: 4px 16px;
+          }
+          img {
             margin: 2px 16px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          p {
+            padding: 2px 8px;
+          }
+          img {
             margin: 0 12px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          p {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 6px;
           }
         }
@@ -224,85 +272,91 @@
     &[class*='_alt'] {
       h1 {
         padding: 4px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 2px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 0 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 0 4px;
-        }
       }
       h2 {
         padding: 10px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 2px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 2px 4px;
-        }
       }
       h3 {
         padding: 12px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 8px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 5px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 3px 4px;
-        }
       }
       h4 {
         padding: 14px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 8px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 5px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 3px 4px;
-        }
       }
       h5 {
         padding: 16px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 12px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 6px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 3px 4px;
-        }
       }
       h6 {
         padding: 18px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 11px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 7px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 4px 4px;
-        }
       }
       p {
         padding: 16px 16px;
-        @media screen and (max-height: 768px) {
+      }
+      @media screen and (max-height: 768px) {
+        h1 {
+          padding: 2px 8px;
+        }
+        h2 {
+          padding: 4px 8px;
+        }
+        h3 {
+          padding: 8px 8px;
+        }
+        h4 {
+          padding: 8px 8px;
+        }
+        h5 {
           padding: 12px 8px;
         }
-        @media screen and (max-height: 480px) {
+        h6 {
+          padding: 11px 8px;
+        }
+        p {
+          padding: 12px 8px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 2px 4px;
+        }
+        h3 {
+          padding: 5px 4px;
+        }
+        h4 {
+          padding: 5px 4px;
+        }
+        h5 {
+          padding: 6px 4px;
+        }
+        h6 {
           padding: 7px 4px;
         }
-        @media screen and (max-height: 360px) {
+        p {
+          padding: 7px 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 2px 4px;
+        }
+        h3 {
+          padding: 3px 4px;
+        }
+        h4 {
+          padding: 3px 4px;
+        }
+        h5 {
+          padding: 3px 4px;
+        }
+        h6 {
+          padding: 4px 4px;
+        }
+        p {
           padding: 4px 4px;
         }
       }
@@ -312,85 +366,91 @@
     &[class*='_def'] {
       h1 {
         padding: 12px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 16px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 10px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 8px 4px;
-        }
       }
       h2 {
         padding: 14px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 18px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 12px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 10px 4px;
-        }
       }
       h3 {
         padding: 20px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 20px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 14px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 10px 4px;
-        }
       }
       h4 {
         padding: 22px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 24px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 14px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 10px 4px;
-        }
       }
       h5 {
         padding: 26px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 28px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 16px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 10px 4px;
-        }
       }
       h6 {
         padding: 26px 32px;
-        @media screen and (max-height: 768px) {
-          padding: 26px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 16px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 12px 4px;
-        }
       }
       p {
         padding: 25px 32px;
-        @media screen and (max-height: 768px) {
+      }
+      @media screen and (max-height: 768px) {
+        h1 {
+          padding: 16px 16px;
+        }
+        h2 {
+          padding: 18px 16px;
+        }
+        h3 {
+          padding: 20px 16px;
+        }
+        h4 {
+          padding: 24px 16px;
+        }
+        h5 {
+          padding: 28px 16px;
+        }
+        h6 {
           padding: 26px 16px;
         }
-        @media screen and (max-height: 480px) {
+        p {
+          padding: 26px 16px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        h1 {
+          padding: 10px 8px;
+        }
+        h2 {
+          padding: 12px 8px;
+        }
+        h3 {
+          padding: 14px 8px;
+        }
+        h4 {
+          padding: 14px 8px;
+        }
+        h5 {
           padding: 16px 8px;
         }
-        @media screen and (max-height: 360px) {
+        h6 {
+          padding: 16px 8px;
+        }
+        p {
+          padding: 16px 8px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        h1 {
+          padding: 8px 4px;
+        }
+        h2 {
+          padding: 10px 4px;
+        }
+        h3 {
+          padding: 10px 4px;
+        }
+        h4 {
+          padding: 10px 4px;
+        }
+        h5 {
+          padding: 10px 4px;
+        }
+        h6 {
+          padding: 12px 4px;
+        }
+        p {
           padding: 12px 4px;
         }
       }
@@ -398,92 +458,98 @@
   }
   &[class*='_tex_'] {
     &[class*='_def'] {
-      .icon {
+      div[class='icon'] {
         opacity: 0;
         display: none;
         background: none;
       }
       h1 {
         padding: 2px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 4px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 2px 4px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 0 4px;
-        }
       }
       h2 {
         padding: 6px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 6px 8px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 3px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 1px 4px;
-        }
       }
       h3 {
         padding: 6px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 6px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 2px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 1px 4px;
-        }
       }
       h4 {
         padding: 6px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 6px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 3px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 1px 4px;
-        }
       }
       h5 {
         padding: 8px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 8px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 2px 4px;
-        }
       }
       h6 {
         padding: 8px 16px;
-        @media screen and (max-height: 768px) {
-          padding: 8px 16px;
-        }
-        @media screen and (max-height: 480px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-height: 360px) {
-          padding: 2px 4px;
-        }
       }
       p {
         padding: 5px 16px;
-        @media screen and (max-height: 768px) {
+      }
+      @media screen and (max-height: 768px) {
+        h1 {
+          padding: 4px 16px;
+        }
+        h2 {
+          padding: 6px 8px;
+        }
+        h3 {
+          padding: 6px 16px;
+        }
+        h4 {
+          padding: 6px 16px;
+        }
+        h5 {
+          padding: 8px 16px;
+        }
+        h6 {
+          padding: 8px 16px;
+        }
+        p {
           padding: 5px 16px;
         }
-        @media screen and (max-height: 480px) {
+      }
+      @media screen and (max-height: 480px) {
+        h1 {
+          padding: 2px 4px;
+        }
+        h2 {
+          padding: 3px 8px;
+        }
+        h3 {
           padding: 2px 8px;
         }
-        @media screen and (max-height: 360px) {
+        h4 {
+          padding: 3px 8px;
+        }
+        h5 {
+          padding: 4px 8px;
+        }
+        h6 {
+          padding: 4px 8px;
+        }
+        p {
+          padding: 2px 8px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 1px 4px;
+        }
+        h3 {
+          padding: 1px 4px;
+        }
+        h4 {
+          padding: 1px 4px;
+        }
+        h5 {
+          padding: 2px 4px;
+        }
+        h6 {
+          padding: 2px 4px;
+        }
+        p {
           padding: 0 4px;
         }
       }
@@ -491,7 +557,7 @@
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         opacity: 0;
         display: none;
         background: none;
@@ -500,13 +566,19 @@
       &[class*='one_'] {
         img {
           margin: 0 8px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 2px;
           }
         }
@@ -514,13 +586,19 @@
       &[class*='two_'] {
         img {
           margin: 0 7px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 5px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -528,13 +606,19 @@
       &[class*='thr_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -542,13 +626,19 @@
       &[class*='fou_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -556,13 +646,19 @@
       &[class*='fiv_'] {
         img {
           margin: 0 6px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -570,13 +666,19 @@
       &[class*='six_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -584,13 +686,19 @@
       &[class*='par_'] {
         img {
           margin: 0 6px;
-          @media screen and (max-height: 768px) {
+        }
+        @media screen and (max-height: 768px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-height: 480px) {
+        }
+        @media screen and (max-height: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-height: 360px) {
+        }
+        @media screen and (max-height: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -606,42 +714,54 @@
       &[class*='one_'] {
         h1 {
           padding: 4px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 0 4px;
-          }
         }
         img {
           margin: 4px;
+        }
+        @media screen and (max-width: 768px) {
+          h1 {
+            padding: 4px 16px;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          h1 {
+            padding: 2px 8px;
+          }
+        }
+        @media screen and (max-width: 360px) {
+          h1 {
+            padding: 0 4px;
+          }
         }
       }
       &[class*='two_'] {
         h2 {
           padding: 6px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 6px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          h2 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 5px 6px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          h2 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 4px 6px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          h2 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 3px 6px;
           }
         }
@@ -649,25 +769,31 @@
       &[class*='thr_'] {
         h3 {
           padding: 6px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 8px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          h3 {
+            padding: 8px 16px;
+          }
+          img {
             margin: 4px 8px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          h3 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 3px 8px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          h3 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 8px;
           }
         }
@@ -675,25 +801,31 @@
       &[class*='fou_'] {
         h4 {
           padding: 6px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 10px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          h4 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 6px 10px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          h4 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 4px 10px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          h4 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 10px;
           }
         }
@@ -701,25 +833,31 @@
       &[class*='fiv_'] {
         h5 {
           padding: 6px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 7px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 4px 4px;
-          }
         }
         img {
           margin: 12px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          h5 {
+            padding: 7px 16px;
+          }
+          img {
             margin: 6px 12px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          h5 {
+            padding: 4px 8px;
+          }
+          img {
             margin: 3px 12px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          h5 {
+            padding: 4px 4px;
+          }
+          img {
             margin: 0 12px;
           }
         }
@@ -727,25 +865,31 @@
       &[class*='six_'] {
         h6 {
           padding: 6px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 4px 14px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          h6 {
+            padding: 6px 16px;
+          }
+          img {
             margin: 4px 14px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          h6 {
+            padding: 3px 8px;
+          }
+          img {
             margin: 2px 14px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          h6 {
+            padding: 1px 4px;
+          }
+          img {
             margin: 0 14px;
           }
         }
@@ -753,25 +897,31 @@
       &[class*='par_'] {
         p {
           padding: 4px 16px;
-          @media screen and (max-width: 768px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-width: 480px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-width: 360px) {
-            padding: 1px 4px;
-          }
         }
         img {
           margin: 2px 16px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          p {
+            padding: 4px 16px;
+          }
+          img {
             margin: 2px 16px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          p {
+            padding: 2px 8px;
+          }
+          img {
             margin: 0 12px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          p {
+            padding: 1px 4px;
+          }
+          img {
             margin: 2px 6px;
           }
         }
@@ -784,97 +934,103 @@
     &[class*='_alt'] {
       img {
         margin-top: 4px;
-        @media screen and (max-width: 768px) {
-          margin-top: 3px;
-        }
-        @media screen and (max-width: 480px) {
-          margin-top: 2px;
-        }
-        @media screen and (max-width: 360px) {
-          margin-top: 0;
-        }
       }
       h1 {
         padding: 4px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 2px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 0 4px;
-        }
       }
       h2 {
         padding: 10px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 2px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 2px 4px;
-        }
       }
       h3 {
         padding: 12px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 8px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 5px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 3px 4px;
-        }
       }
       h4 {
         padding: 14px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 8px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 5px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 3px 4px;
-        }
       }
       h5 {
         padding: 16px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 12px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 6px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 3px 4px;
-        }
       }
       h6 {
         padding: 18px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 11px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 7px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 4px 4px;
-        }
       }
       p {
         padding: 16px 16px;
-        @media screen and (max-width: 768px) {
+      }
+      @media screen and (max-width: 768px) {
+        img {
+          margin-top: 3px;
+        }
+        h1 {
+          padding: 2px 8px;
+        }
+        h2 {
+          padding: 4px 8px;
+        }
+        h3 {
+          padding: 8px 8px;
+        }
+        h4 {
+          padding: 8px 8px;
+        }
+        h5 {
           padding: 12px 8px;
         }
-        @media screen and (max-width: 480px) {
+        h6 {
+          padding: 11px 8px;
+        }
+        p {
+          padding: 12px 8px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        img {
+          margin-top: 2px;
+        }
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 2px 4px;
+        }
+        h3 {
+          padding: 5px 4px;
+        }
+        h4 {
+          padding: 5px 4px;
+        }
+        h5 {
+          padding: 6px 4px;
+        }
+        h6 {
           padding: 7px 4px;
         }
-        @media screen and (max-width: 360px) {
+        p {
+          padding: 7px 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        img {
+          margin-top: 0;
+        }
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 2px 4px;
+        }
+        h3 {
+          padding: 3px 4px;
+        }
+        h4 {
+          padding: 3px 4px;
+        }
+        h5 {
+          padding: 3px 4px;
+        }
+        h6 {
+          padding: 4px 4px;
+        }
+        p {
           padding: 4px 4px;
         }
       }
@@ -884,97 +1040,103 @@
     &[class*='_def'] {
       img {
         margin-top: 4px;
-        @media screen and (max-width: 768px) {
-          margin-top: 2px;
-        }
-        @media screen and (max-width: 480px) {
-          margin-top: 2px;
-        }
-        @media screen and (max-width: 360px) {
-          margin-top: 1px;
-        }
       }
       h1 {
         padding: 12px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 12px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 6px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 6px 4px;
-        }
       }
       h2 {
         padding: 16px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 16px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 8px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 6px 4px;
-        }
       }
       h3 {
         padding: 20px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 18px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 10px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 9px 4px;
-        }
       }
       h4 {
         padding: 22px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 20px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 10px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 8px 4px;
-        }
       }
       h5 {
         padding: 26px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 24px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 12px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 10px 4px;
-        }
       }
       h6 {
         padding: 26px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 24px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 14px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 10px 4px;
-        }
       }
       p {
         padding: 25px 16px;
-        @media screen and (max-width: 768px) {
+      }
+      @media screen and (max-width: 768px) {
+        img {
+          margin-top: 2px;
+        }
+        h1 {
+          padding: 12px 8px;
+        }
+        h2 {
+          padding: 16px 8px;
+        }
+        h3 {
+          padding: 18px 8px;
+        }
+        h4 {
+          padding: 20px 8px;
+        }
+        h5 {
           padding: 24px 8px;
         }
-        @media screen and (max-width: 480px) {
+        h6 {
+          padding: 24px 8px;
+        }
+        p {
+          padding: 24px 8px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        img {
+          margin-top: 2px;
+        }
+        h1 {
+          padding: 6px 4px;
+        }
+        h2 {
+          padding: 8px 4px;
+        }
+        h3 {
+          padding: 10px 4px;
+        }
+        h4 {
+          padding: 10px 4px;
+        }
+        h5 {
           padding: 12px 4px;
         }
-        @media screen and (max-width: 360px) {
+        h6 {
+          padding: 14px 4px;
+        }
+        p {
+          padding: 12px 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        img {
+          margin-top: 1px;
+        }
+        h1 {
+          padding: 6px 4px;
+        }
+        h2 {
+          padding: 6px 4px;
+        }
+        h3 {
+          padding: 9px 4px;
+        }
+        h4 {
+          padding: 8px 4px;
+        }
+        h5 {
+          padding: 10px 4px;
+        }
+        h6 {
+          padding: 10px 4px;
+        }
+        p {
           padding: 10px 4px;
         }
       }
@@ -982,92 +1144,98 @@
   }
   &[class*='_tex_'] {
     &[class*='_def'] {
-      .icon {
+      div[class='icon'] {
         opacity: 0;
         display: none;
         background: none;
       }
       h1 {
         padding: 2px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 4px 16px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 2px 4px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 0 4px;
-        }
       }
       h2 {
         padding: 6px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 6px 8px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 3px 8px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 1px 4px;
-        }
       }
       h3 {
         padding: 6px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 6px 16px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 2px 8px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 1px 4px;
-        }
       }
       h4 {
         padding: 6px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 6px 16px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 3px 8px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 1px 4px;
-        }
       }
       h5 {
         padding: 8px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 8px 16px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 2px 4px;
-        }
       }
       h6 {
         padding: 8px 16px;
-        @media screen and (max-width: 768px) {
-          padding: 8px 16px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 4px 8px;
-        }
-        @media screen and (max-width: 360px) {
-          padding: 2px 4px;
-        }
       }
       p {
         padding: 5px 16px;
-        @media screen and (max-width: 768px) {
+      }
+      @media screen and (max-width: 768px) {
+        h1 {
+          padding: 4px 16px;
+        }
+        h2 {
+          padding: 6px 8px;
+        }
+        h3 {
+          padding: 6px 16px;
+        }
+        h4 {
+          padding: 6px 16px;
+        }
+        h5 {
+          padding: 8px 16px;
+        }
+        h6 {
+          padding: 8px 16px;
+        }
+        p {
           padding: 5px 16px;
         }
-        @media screen and (max-width: 480px) {
+      }
+      @media screen and (max-width: 480px) {
+        h1 {
+          padding: 2px 4px;
+        }
+        h2 {
+          padding: 3px 8px;
+        }
+        h3 {
           padding: 2px 8px;
         }
-        @media screen and (max-width: 360px) {
+        h4 {
+          padding: 3px 8px;
+        }
+        h5 {
+          padding: 4px 8px;
+        }
+        h6 {
+          padding: 4px 8px;
+        }
+        p {
+          padding: 2px 8px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        h1 {
+          padding: 0 4px;
+        }
+        h2 {
+          padding: 1px 4px;
+        }
+        h3 {
+          padding: 1px 4px;
+        }
+        h4 {
+          padding: 1px 4px;
+        }
+        h5 {
+          padding: 2px 4px;
+        }
+        h6 {
+          padding: 2px 4px;
+        }
+        p {
           padding: 0 4px;
         }
       }
@@ -1075,7 +1243,7 @@
   }
   &[class*='_ico_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         opacity: 0;
         display: none;
         background: none;
@@ -1084,13 +1252,19 @@
       &[class*='one_'] {
         img {
           margin: 0 8px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 2px;
           }
         }
@@ -1098,13 +1272,19 @@
       &[class*='two_'] {
         img {
           margin: 0 7px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 5px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1112,13 +1292,19 @@
       &[class*='thr_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1126,13 +1312,19 @@
       &[class*='fou_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1140,13 +1332,19 @@
       &[class*='fiv_'] {
         img {
           margin: 0 6px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 4px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1154,13 +1352,19 @@
       &[class*='six_'] {
         img {
           margin: 0 4px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1168,13 +1372,19 @@
       &[class*='par_'] {
         img {
           margin: 0 6px;
-          @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 768px) {
+          img {
             margin: 0 3px;
           }
-          @media screen and (max-width: 480px) {
+        }
+        @media screen and (max-width: 480px) {
+          img {
             margin: 0 2px;
           }
-          @media screen and (max-width: 360px) {
+        }
+        @media screen and (max-width: 360px) {
+          img {
             margin: 0 1px;
           }
         }
@@ -1192,42 +1402,54 @@
         &[class*='one_'] {
           h1 {
             padding: 4px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 4px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 2px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 0 4px;
-            }
           }
           img {
             margin: 4px;
+          }
+          @media screen and (max-width: 1920px) {
+            h1 {
+              padding: 4px 16px;
+            }
+          }
+          @media screen and (max-width: 1366px) {
+            h1 {
+              padding: 2px 8px;
+            }
+          }
+          @media screen and (max-width: 854px) {
+            h1 {
+              padding: 0 4px;
+            }
           }
         }
         &[class*='two_'] {
           h2 {
             padding: 6px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 6px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            h2 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 5px 6px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            h2 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 4px 6px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            h2 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 3px 6px;
             }
           }
@@ -1235,25 +1457,31 @@
         &[class*='thr_'] {
           h3 {
             padding: 6px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 8px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 8px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            h3 {
+              padding: 8px 16px;
+            }
+            img {
               margin: 4px 8px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            h3 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 3px 8px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            h3 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 8px;
             }
           }
@@ -1261,25 +1489,31 @@
         &[class*='fou_'] {
           h4 {
             padding: 6px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 10px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            h4 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 6px 10px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            h4 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 4px 10px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            h4 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 10px;
             }
           }
@@ -1287,25 +1521,31 @@
         &[class*='fiv_'] {
           h5 {
             padding: 6px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 7px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 4px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 4px 4px;
-            }
           }
           img {
             margin: 12px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            h5 {
+              padding: 7px 16px;
+            }
+            img {
               margin: 6px 12px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            h5 {
+              padding: 4px 8px;
+            }
+            img {
               margin: 3px 12px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            h5 {
+              padding: 4px 4px;
+            }
+            img {
               margin: 0 12px;
             }
           }
@@ -1313,25 +1553,31 @@
         &[class*='six_'] {
           h6 {
             padding: 6px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 4px 14px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            h6 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 4px 14px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            h6 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 2px 14px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            h6 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 0 14px;
             }
           }
@@ -1339,25 +1585,31 @@
         &[class*='par_'] {
           p {
             padding: 4px 16px;
-            @media screen and (max-width: 1920px) {
-              padding: 4px 16px;
-            }
-            @media screen and (max-width: 1366px) {
-              padding: 2px 8px;
-            }
-            @media screen and (max-width: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 2px 16px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            p {
+              padding: 4px 16px;
+            }
+            img {
               margin: 2px 16px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            p {
+              padding: 2px 8px;
+            }
+            img {
               margin: 0 12px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            p {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 6px;
             }
           }
@@ -1370,85 +1622,91 @@
       &[class*='_alt'] {
         h1 {
           padding: 4px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 0 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 0 4px;
-          }
         }
         h2 {
           padding: 10px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 2px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 2px 4px;
-          }
         }
         h3 {
           padding: 12px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 8px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 5px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 3px 4px;
-          }
         }
         h4 {
           padding: 14px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 8px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 5px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 3px 4px;
-          }
         }
         h5 {
           padding: 16px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 12px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 6px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 3px 4px;
-          }
         }
         h6 {
           padding: 18px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 11px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 7px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 4px 4px;
-          }
         }
         p {
           padding: 16px 16px;
-          @media screen and (max-width: 1920px) {
+        }
+        @media screen and (max-width: 1920px) {
+          h1 {
+            padding: 2px 8px;
+          }
+          h2 {
+            padding: 4px 8px;
+          }
+          h3 {
+            padding: 8px 8px;
+          }
+          h4 {
+            padding: 8px 8px;
+          }
+          h5 {
             padding: 12px 8px;
           }
-          @media screen and (max-width: 1366px) {
+          h6 {
+            padding: 11px 8px;
+          }
+          p {
+            padding: 12px 8px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 2px 4px;
+          }
+          h3 {
+            padding: 5px 4px;
+          }
+          h4 {
+            padding: 5px 4px;
+          }
+          h5 {
+            padding: 6px 4px;
+          }
+          h6 {
             padding: 7px 4px;
           }
-          @media screen and (max-width: 854px) {
+          p {
+            padding: 7px 4px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 2px 4px;
+          }
+          h3 {
+            padding: 3px 4px;
+          }
+          h4 {
+            padding: 3px 4px;
+          }
+          h5 {
+            padding: 3px 4px;
+          }
+          h6 {
+            padding: 4px 4px;
+          }
+          p {
             padding: 4px 4px;
           }
         }
@@ -1458,85 +1716,91 @@
       &[class*='_def'] {
         h1 {
           padding: 12px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 16px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 10px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 8px 4px;
-          }
         }
         h2 {
           padding: 14px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 18px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 12px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 10px 4px;
-          }
         }
         h3 {
           padding: 20px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 20px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 14px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 10px 4px;
-          }
         }
         h4 {
           padding: 22px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 24px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 14px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 10px 4px;
-          }
         }
         h5 {
           padding: 26px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 28px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 16px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 10px 4px;
-          }
         }
         h6 {
           padding: 26px 32px;
-          @media screen and (max-width: 1920px) {
-            padding: 26px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 16px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 12px 4px;
-          }
         }
         p {
           padding: 25px 32px;
-          @media screen and (max-width: 1920px) {
+        }
+        @media screen and (max-width: 1920px) {
+          h1 {
+            padding: 16px 16px;
+          }
+          h2 {
+            padding: 18px 16px;
+          }
+          h3 {
+            padding: 20px 16px;
+          }
+          h4 {
+            padding: 24px 16px;
+          }
+          h5 {
+            padding: 28px 16px;
+          }
+          h6 {
             padding: 26px 16px;
           }
-          @media screen and (max-width: 1366px) {
+          p {
+            padding: 26px 16px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          h1 {
+            padding: 10px 8px;
+          }
+          h2 {
+            padding: 12px 8px;
+          }
+          h3 {
+            padding: 14px 8px;
+          }
+          h4 {
+            padding: 14px 8px;
+          }
+          h5 {
             padding: 16px 8px;
           }
-          @media screen and (max-width: 854px) {
+          h6 {
+            padding: 16px 8px;
+          }
+          p {
+            padding: 16px 8px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          h1 {
+            padding: 8px 4px;
+          }
+          h2 {
+            padding: 10px 4px;
+          }
+          h3 {
+            padding: 10px 4px;
+          }
+          h4 {
+            padding: 10px 4px;
+          }
+          h5 {
+            padding: 10px 4px;
+          }
+          h6 {
+            padding: 12px 4px;
+          }
+          p {
             padding: 12px 4px;
           }
         }
@@ -1546,85 +1810,91 @@
       &[class*='_def'] {
         h1 {
           padding: 2px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 2px 4px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 0 4px;
-          }
         }
         h2 {
           padding: 6px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 6px 8px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 1px 4px;
-          }
         }
         h3 {
           padding: 6px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 1px 4px;
-          }
         }
         h4 {
           padding: 6px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 1px 4px;
-          }
         }
         h5 {
           padding: 8px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 2px 4px;
-          }
         }
         h6 {
           padding: 8px 16px;
-          @media screen and (max-width: 1920px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-width: 1366px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-width: 854px) {
-            padding: 2px 4px;
-          }
         }
         p {
           padding: 5px 16px;
-          @media screen and (max-width: 1920px) {
+        }
+        @media screen and (max-width: 1920px) {
+          h1 {
+            padding: 4px 16px;
+          }
+          h2 {
+            padding: 6px 8px;
+          }
+          h3 {
+            padding: 6px 16px;
+          }
+          h4 {
+            padding: 6px 16px;
+          }
+          h5 {
+            padding: 8px 16px;
+          }
+          h6 {
+            padding: 8px 16px;
+          }
+          p {
             padding: 5px 16px;
           }
-          @media screen and (max-width: 1366px) {
+        }
+        @media screen and (max-width: 1366px) {
+          h1 {
+            padding: 2px 4px;
+          }
+          h2 {
+            padding: 3px 8px;
+          }
+          h3 {
             padding: 2px 8px;
           }
-          @media screen and (max-width: 854px) {
+          h4 {
+            padding: 3px 8px;
+          }
+          h5 {
+            padding: 4px 8px;
+          }
+          h6 {
+            padding: 4px 8px;
+          }
+          p {
+            padding: 2px 8px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 1px 4px;
+          }
+          h3 {
+            padding: 1px 4px;
+          }
+          h4 {
+            padding: 1px 4px;
+          }
+          h5 {
+            padding: 2px 4px;
+          }
+          h6 {
+            padding: 2px 4px;
+          }
+          p {
             padding: 0 4px;
           }
         }
@@ -1635,13 +1905,19 @@
         &[class*='one_'] {
           img {
             margin: 0 8px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 2px;
             }
           }
@@ -1649,13 +1925,19 @@
         &[class*='two_'] {
           img {
             margin: 0 7px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 5px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1663,13 +1945,19 @@
         &[class*='thr_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1677,13 +1965,19 @@
         &[class*='fou_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1691,13 +1985,19 @@
         &[class*='fiv_'] {
           img {
             margin: 0 6px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1705,13 +2005,19 @@
         &[class*='six_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1719,13 +2025,19 @@
         &[class*='par_'] {
           img {
             margin: 0 6px;
-            @media screen and (max-width: 1920px) {
+          }
+          @media screen and (max-width: 1920px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-width: 1366px) {
+          }
+          @media screen and (max-width: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-width: 854px) {
+          }
+          @media screen and (max-width: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -1741,42 +2053,54 @@
         &[class*='one_'] {
           h1 {
             padding: 4px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 4px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 2px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 0 4px;
-            }
           }
           img {
             margin: 4px;
+          }
+          @media screen and (max-height: 1920px) {
+            h1 {
+              padding: 4px 16px;
+            }
+          }
+          @media screen and (max-height: 1366px) {
+            h1 {
+              padding: 2px 8px;
+            }
+          }
+          @media screen and (max-height: 854px) {
+            h1 {
+              padding: 0 4px;
+            }
           }
         }
         &[class*='two_'] {
           h2 {
             padding: 6px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 6px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            h2 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 5px 6px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            h2 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 4px 6px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            h2 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 3px 6px;
             }
           }
@@ -1784,25 +2108,31 @@
         &[class*='thr_'] {
           h3 {
             padding: 6px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 8px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 8px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            h3 {
+              padding: 8px 16px;
+            }
+            img {
               margin: 4px 8px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            h3 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 3px 8px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            h3 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 8px;
             }
           }
@@ -1810,25 +2140,31 @@
         &[class*='fou_'] {
           h4 {
             padding: 6px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 10px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            h4 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 6px 10px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            h4 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 4px 10px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            h4 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 10px;
             }
           }
@@ -1836,25 +2172,31 @@
         &[class*='fiv_'] {
           h5 {
             padding: 6px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 7px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 4px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 4px 4px;
-            }
           }
           img {
             margin: 12px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            h5 {
+              padding: 7px 16px;
+            }
+            img {
               margin: 6px 12px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            h5 {
+              padding: 4px 8px;
+            }
+            img {
               margin: 3px 12px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            h5 {
+              padding: 4px 4px;
+            }
+            img {
               margin: 0 12px;
             }
           }
@@ -1862,25 +2204,31 @@
         &[class*='six_'] {
           h6 {
             padding: 6px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 6px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 3px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 4px 14px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            h6 {
+              padding: 6px 16px;
+            }
+            img {
               margin: 4px 14px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            h6 {
+              padding: 3px 8px;
+            }
+            img {
               margin: 2px 14px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            h6 {
+              padding: 1px 4px;
+            }
+            img {
               margin: 0 14px;
             }
           }
@@ -1888,25 +2236,31 @@
         &[class*='par_'] {
           p {
             padding: 4px 16px;
-            @media screen and (max-height: 1920px) {
-              padding: 4px 16px;
-            }
-            @media screen and (max-height: 1366px) {
-              padding: 2px 8px;
-            }
-            @media screen and (max-height: 854px) {
-              padding: 1px 4px;
-            }
           }
           img {
             margin: 2px 16px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            p {
+              padding: 4px 16px;
+            }
+            img {
               margin: 2px 16px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            p {
+              padding: 2px 8px;
+            }
+            img {
               margin: 0 12px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            p {
+              padding: 1px 4px;
+            }
+            img {
               margin: 2px 6px;
             }
           }
@@ -1919,97 +2273,103 @@
       &[class*='_alt'] {
         img {
           margin-top: 4px;
-          @media screen and (max-height: 1920px) {
-            margin-top: 3px;
-          }
-          @media screen and (max-height: 1366px) {
-            margin-top: 2px;
-          }
-          @media screen and (max-height: 854px) {
-            margin-top: 0;
-          }
         }
         h1 {
           padding: 4px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 0 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 0 4px;
-          }
         }
         h2 {
           padding: 10px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 2px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 2px 4px;
-          }
         }
         h3 {
           padding: 12px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 8px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 5px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 3px 4px;
-          }
         }
         h4 {
           padding: 14px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 8px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 5px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 3px 4px;
-          }
         }
         h5 {
           padding: 16px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 12px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 6px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 3px 4px;
-          }
         }
         h6 {
           padding: 18px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 11px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 7px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 4px 4px;
-          }
         }
         p {
           padding: 16px 16px;
-          @media screen and (max-height: 1920px) {
+        }
+        @media screen and (max-height: 1920px) {
+          img {
+            margin-top: 3px;
+          }
+          h1 {
+            padding: 2px 8px;
+          }
+          h2 {
+            padding: 4px 8px;
+          }
+          h3 {
+            padding: 8px 8px;
+          }
+          h4 {
+            padding: 8px 8px;
+          }
+          h5 {
             padding: 12px 8px;
           }
-          @media screen and (max-height: 1366px) {
+          h6 {
+            padding: 11px 8px;
+          }
+          p {
+            padding: 12px 8px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          img {
+            margin-top: 2px;
+          }
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 2px 4px;
+          }
+          h3 {
+            padding: 5px 4px;
+          }
+          h4 {
+            padding: 5px 4px;
+          }
+          h5 {
+            padding: 6px 4px;
+          }
+          h6 {
             padding: 7px 4px;
           }
-          @media screen and (max-height: 854px) {
+          p {
+            padding: 7px 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          img {
+            margin-top: 0;
+          }
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 2px 4px;
+          }
+          h3 {
+            padding: 3px 4px;
+          }
+          h4 {
+            padding: 3px 4px;
+          }
+          h5 {
+            padding: 3px 4px;
+          }
+          h6 {
+            padding: 4px 4px;
+          }
+          p {
             padding: 4px 4px;
           }
         }
@@ -2019,97 +2379,103 @@
       &[class*='_def'] {
         img {
           margin-top: 4px;
-          @media screen and (max-height: 1920px) {
-            margin-top: 2px;
-          }
-          @media screen and (max-height: 1366px) {
-            margin-top: 2px;
-          }
-          @media screen and (max-height: 854px) {
-            margin-top: 1px;
-          }
         }
         h1 {
           padding: 12px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 12px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 6px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 6px 4px;
-          }
         }
         h2 {
           padding: 16px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 16px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 8px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 6px 4px;
-          }
         }
         h3 {
           padding: 20px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 18px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 10px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 9px 4px;
-          }
         }
         h4 {
           padding: 22px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 20px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 10px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 8px 4px;
-          }
         }
         h5 {
           padding: 26px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 24px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 12px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 10px 4px;
-          }
         }
         h6 {
           padding: 26px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 24px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 14px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 10px 4px;
-          }
         }
         p {
           padding: 25px 16px;
-          @media screen and (max-height: 1920px) {
+        }
+        @media screen and (max-height: 1920px) {
+          img {
+            margin-top: 2px;
+          }
+          h1 {
+            padding: 12px 8px;
+          }
+          h2 {
+            padding: 16px 8px;
+          }
+          h3 {
+            padding: 18px 8px;
+          }
+          h4 {
+            padding: 20px 8px;
+          }
+          h5 {
             padding: 24px 8px;
           }
-          @media screen and (max-height: 1366px) {
+          h6 {
+            padding: 24px 8px;
+          }
+          p {
+            padding: 24px 8px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          img {
+            margin-top: 2px;
+          }
+          h1 {
+            padding: 6px 4px;
+          }
+          h2 {
+            padding: 8px 4px;
+          }
+          h3 {
+            padding: 10px 4px;
+          }
+          h4 {
+            padding: 10px 4px;
+          }
+          h5 {
             padding: 12px 4px;
           }
-          @media screen and (max-height: 854px) {
+          h6 {
+            padding: 14px 4px;
+          }
+          p {
+            padding: 12px 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          img {
+            margin-top: 1px;
+          }
+          h1 {
+            padding: 6px 4px;
+          }
+          h2 {
+            padding: 6px 4px;
+          }
+          h3 {
+            padding: 9px 4px;
+          }
+          h4 {
+            padding: 8px 4px;
+          }
+          h5 {
+            padding: 10px 4px;
+          }
+          h6 {
+            padding: 10px 4px;
+          }
+          p {
             padding: 10px 4px;
           }
         }
@@ -2119,85 +2485,91 @@
       &[class*='_def'] {
         h1 {
           padding: 2px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 4px 16px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 2px 4px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 0 4px;
-          }
         }
         h2 {
           padding: 6px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 6px 8px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 1px 4px;
-          }
         }
         h3 {
           padding: 6px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 2px 8px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 1px 4px;
-          }
         }
         h4 {
           padding: 6px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 6px 16px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 3px 8px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 1px 4px;
-          }
         }
         h5 {
           padding: 8px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 2px 4px;
-          }
         }
         h6 {
           padding: 8px 16px;
-          @media screen and (max-height: 1920px) {
-            padding: 8px 16px;
-          }
-          @media screen and (max-height: 1366px) {
-            padding: 4px 8px;
-          }
-          @media screen and (max-height: 854px) {
-            padding: 2px 4px;
-          }
         }
         p {
           padding: 5px 16px;
-          @media screen and (max-height: 1920px) {
+        }
+        @media screen and (max-height: 1920px) {
+          h1 {
+            padding: 4px 16px;
+          }
+          h2 {
+            padding: 6px 8px;
+          }
+          h3 {
+            padding: 6px 16px;
+          }
+          h4 {
+            padding: 6px 16px;
+          }
+          h5 {
+            padding: 8px 16px;
+          }
+          h6 {
+            padding: 8px 16px;
+          }
+          p {
             padding: 5px 16px;
           }
-          @media screen and (max-height: 1366px) {
+        }
+        @media screen and (max-height: 1366px) {
+          h1 {
+            padding: 2px 4px;
+          }
+          h2 {
+            padding: 3px 8px;
+          }
+          h3 {
             padding: 2px 8px;
           }
-          @media screen and (max-height: 854px) {
+          h4 {
+            padding: 3px 8px;
+          }
+          h5 {
+            padding: 4px 8px;
+          }
+          h6 {
+            padding: 4px 8px;
+          }
+          p {
+            padding: 2px 8px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          h1 {
+            padding: 0 4px;
+          }
+          h2 {
+            padding: 1px 4px;
+          }
+          h3 {
+            padding: 1px 4px;
+          }
+          h4 {
+            padding: 1px 4px;
+          }
+          h5 {
+            padding: 2px 4px;
+          }
+          h6 {
+            padding: 2px 4px;
+          }
+          p {
             padding: 0 4px;
           }
         }
@@ -2208,13 +2580,19 @@
         &[class*='one_'] {
           img {
             margin: 0 8px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 2px;
             }
           }
@@ -2222,13 +2600,19 @@
         &[class*='two_'] {
           img {
             margin: 0 7px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 5px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -2236,13 +2620,19 @@
         &[class*='thr_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -2250,13 +2640,19 @@
         &[class*='fou_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -2264,13 +2660,19 @@
         &[class*='fiv_'] {
           img {
             margin: 0 6px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 4px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -2278,13 +2680,19 @@
         &[class*='six_'] {
           img {
             margin: 0 4px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }
@@ -2292,13 +2700,19 @@
         &[class*='par_'] {
           img {
             margin: 0 6px;
-            @media screen and (max-height: 1920px) {
+          }
+          @media screen and (max-height: 1920px) {
+            img {
               margin: 0 3px;
             }
-            @media screen and (max-height: 1366px) {
+          }
+          @media screen and (max-height: 1366px) {
+            img {
               margin: 0 2px;
             }
-            @media screen and (max-height: 854px) {
+          }
+          @media screen and (max-height: 854px) {
+            img {
               margin: 0 1px;
             }
           }

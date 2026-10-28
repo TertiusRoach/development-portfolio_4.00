@@ -1,87 +1,88 @@
 //--|🠊 default/pipeline/Button_grid.scss 🠈|--\\
 @mixin default-gridbox {
+  //--|🠋 Global (Grid) 🠋|--\\
   width: 100%;
   height: 100%;
   display: grid;
   //--|🠊 Placement: Global, so [MobilePortrait] & [TabletSquaring] get it too (Lost in 3adc1ea1) 🠈|--\\
   &[class*='_top_'] {
-    .text,
-    .back {
+    div[class='text'],
+    div[class='back'] {
       grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    .icon {
+    div[class='icon'] {
       grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   &[class*='_bot_'] {
-    .text,
-    .back {
+    div[class='text'],
+    div[class='back'] {
       grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    .icon {
+    div[class='icon'] {
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   &[class*='_lef_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         grid-area: 2 / 3 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
-      .icon {
+      div[class='icon'] {
         grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
-      .back {
+      div[class='back'] {
         grid-area: 2 / 1 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         grid-area: 2 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }
   &[class*='_rig_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
-      .icon {
+      div[class='icon'] {
         grid-area: 2 / 5 / 3 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
-      .back {
+      div[class='back'] {
         grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }
   &[class*='_cen_'] {
-    .text {
+    div[class='text'] {
       grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    .icon {
+    div[class='icon'] {
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    .back {
+    div[class='back'] {
       grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   &[class*='_tex_'] {
-    .text,
-    .back {
+    div[class='text'],
+    div[class='back'] {
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
   &[class*='_ico_'] {
-    .icon,
-    .back {
+    div[class='icon'],
+    div[class='back'] {
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }

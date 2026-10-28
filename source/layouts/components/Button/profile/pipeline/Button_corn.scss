@@ -2,28 +2,49 @@
 @mixin desktop-corn {
   //--|🠋 Desktop (Corners) 🠋|--\\
   &[class*='_squ_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       &,
       img {
         border-radius: 8px;
-        @media screen and (max-height: 768px) {
+      }
+    }
+    @media screen and (max-height: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 6px;
         }
-        @media screen and (max-height: 480px) {
+      }
+    }
+    @media screen and (max-height: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 4px;
         }
-        @media screen and (max-height: 360px) {
+      }
+    }
+    @media screen and (max-height: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 3px;
         }
       }
     }
   }
   &[class*='_cir_'] {
-    .fore,
-    .icon img,
-    .back span {
+    div[class='fore'],
+    div[class='icon'] img,
+    div[class='back'] span {
       border-radius: 50%;
     }
   }
@@ -31,75 +52,153 @@
 @mixin mobile-corn {
   //--|🠋 Mobile (Corners) 🠋|--\\
   &[class*='_squ_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       &,
       img {
         border-radius: 8px;
-        @media screen and (max-width: 768px) {
+      }
+    }
+    @media screen and (max-width: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 6px;
         }
-        @media screen and (max-width: 480px) {
+      }
+    }
+    @media screen and (max-width: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 4px;
         }
-        @media screen and (max-width: 360px) {
+      }
+    }
+    @media screen and (max-width: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
           border-radius: 3px;
         }
       }
     }
   }
   &[class*='_cir_'] {
-    .fore,
-    .icon img,
-    .back span {
+    div[class='fore'],
+    div[class='icon'] img,
+    div[class='back'] span {
       border-radius: 50%;
     }
   }
 }
 @mixin tablet-corn {
   //--|🠋 Tablet (Corners) 🠋|--\\
-  &[class*='_squ_'] {
-    @media screen and (orientation: landscape) {
-      .fore,
-      .icon,
-      .back {
-        //--|🠊 Desktop 🠈|--\\
-        border-radius: 8px;
-        @media screen and (max-width: 1920px) {
-          border-radius: 6px;
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    &[class*='_squ_'] {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
+          border-radius: 8px;
         }
-        @media screen and (max-width: 1366px) {
-          border-radius: 4px;
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 6px;
+          }
         }
-        @media screen and (max-width: 854px) {
-          border-radius: 3px;
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 4px;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 3px;
+          }
         }
       }
     }
-    @media screen and (orientation: portrait) {
-      .fore,
-      .icon,
-      .back {
-        //--|🠊 Mobile 🠈|--\\
-        border-radius: 8px;
-        @media screen and (max-height: 1920px) {
-          border-radius: 6px;
-        }
-        @media screen and (max-height: 1366px) {
-          border-radius: 4px;
-        }
-        @media screen and (max-height: 854px) {
-          border-radius: 3px;
-        }
+    &[class*='_cir_'] {
+      div[class='fore'],
+      div[class='icon'] img,
+      div[class='back'] span {
+        border-radius: 50%;
       }
     }
   }
-  &[class*='_cir_'] {
-    .fore,
-    .icon img,
-    .back span {
-      border-radius: 50%;
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    &[class*='_squ_'] {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
+        &,
+        img {
+          border-radius: 8px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 6px;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 4px;
+          }
+        }
+      }
+      @media screen and (max-height: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
+          &,
+          img {
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+    &[class*='_cir_'] {
+      div[class='fore'],
+      div[class='icon'] img,
+      div[class='back'] span {
+        border-radius: 50%;
+      }
     }
   }
 }

@@ -390,7 +390,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -409,7 +408,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -428,7 +426,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -447,7 +444,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -466,7 +462,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -485,7 +480,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -504,7 +498,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -528,7 +521,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -547,7 +539,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -566,7 +557,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -585,7 +575,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -604,7 +593,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -623,7 +611,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -642,7 +629,6 @@ let ViewOne = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconOne as string,
             }}
@@ -671,7 +657,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
               image: iconTwo as string,
             }}
@@ -690,7 +675,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -710,7 +694,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -730,7 +713,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -750,7 +732,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -770,7 +751,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -790,7 +770,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -815,7 +794,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -835,7 +813,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -855,7 +832,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -875,7 +851,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -895,7 +870,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -915,7 +889,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -935,7 +908,6 @@ let ViewTwo = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconTwo as string,
@@ -965,9 +937,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -985,7 +955,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1005,9 +974,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -1025,9 +992,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -1045,7 +1010,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1065,7 +1029,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1085,7 +1048,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1110,9 +1072,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -1130,9 +1090,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -1150,9 +1108,7 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
-
               image: iconThr as string,
             }}
             onClick={(event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -1170,7 +1126,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1190,7 +1145,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1210,7 +1164,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1230,7 +1183,6 @@ let ViewThr = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconThr as string,
@@ -1260,7 +1212,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1280,7 +1231,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1300,7 +1250,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1320,7 +1269,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1340,7 +1288,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1360,7 +1307,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1380,7 +1326,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1405,7 +1350,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1422,7 +1366,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1439,7 +1382,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1456,7 +1398,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1473,7 +1414,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1490,7 +1430,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1507,7 +1446,6 @@ let ViewFou = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFou as string,
@@ -1534,7 +1472,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1554,7 +1491,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1574,7 +1510,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1594,7 +1529,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1614,7 +1548,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1634,7 +1567,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1654,7 +1586,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1679,7 +1610,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1699,7 +1629,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1719,7 +1648,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1739,7 +1667,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1759,7 +1686,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1779,7 +1705,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1799,7 +1724,6 @@ let ViewFiv = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconFiv as string,
@@ -1829,7 +1753,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1849,7 +1772,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1869,7 +1791,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1889,7 +1810,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1909,7 +1829,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1929,7 +1848,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1949,7 +1867,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1974,7 +1891,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -1994,7 +1910,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2014,7 +1929,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2034,7 +1948,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2054,7 +1967,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2074,7 +1986,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2094,7 +2005,6 @@ let ViewSix = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconSix as string,
@@ -2124,7 +2034,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2144,7 +2053,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2164,7 +2072,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2184,7 +2091,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2204,7 +2110,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2224,7 +2129,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2244,7 +2148,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~dark~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2269,7 +2172,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-top-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2289,7 +2191,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-bottom-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2309,7 +2210,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-left-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2329,7 +2229,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-right-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2349,7 +2248,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-center-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2369,7 +2267,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-text-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,
@@ -2389,7 +2286,6 @@ let ViewSev = ({ info }: InfoProps) => {
               view: '-icon-',
               shade: '~light~',
               color: '(mono)',
-              type: '{button}',
               text: 'Button Here',
 
               image: iconPar as string,

@@ -66,7 +66,6 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       info={{ pageName: info.pageName, blockName: info.blockName }}
                       style={{
                         view: '-square-',
-                        type: '{button}',
                         shade: style.shade,
                         color: style.color,
                         size: index === 0 ? '<h1>' : '<p>',
@@ -100,7 +99,6 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       info={{ pageName: info.pageName, blockName: info.blockName }}
                       style={{
                         view: '-square-',
-                        type: '{button}',
                         shade: style.shade,
                         color: style.color,
                         size: index === 0 ? '<h1>' : '<p>',

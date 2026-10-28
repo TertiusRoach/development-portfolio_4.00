@@ -3,65 +3,65 @@
   //--|🠋 Desktop (Corners) 🠋|--\\
   &[class*='_lef_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         border-radius: 0 8px 8px 0;
       }
-      .icon,
-      .back {
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-height: 768px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 6px 6px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-height: 480px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 4px 4px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-height: 360px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 2px 2px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-height: 768px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-height: 480px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-height: 360px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
@@ -69,65 +69,65 @@
   }
   &[class*='_rig_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         border-radius: 8px 0 0 8px;
       }
-      .icon,
-      .back {
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-height: 768px) {
-        .text {
+        div[class='text'] {
           border-radius: 6px 0 0 6px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-height: 480px) {
-        .text {
+        div[class='text'] {
           border-radius: 4px 0 0 4px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-height: 360px) {
-        .text {
+        div[class='text'] {
           border-radius: 2px 0 0 2px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-height: 768px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-height: 480px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-height: 360px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
@@ -138,16 +138,25 @@
   &[class*='_cen_'],
   &[class*='_tex_'],
   &[class*='_ico_'] {
-    .text,
-    .back {
+    div[class='text'],
+    div[class='back'] {
       border-radius: 8px;
-      @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 768px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 6px;
       }
-      @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 480px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 4px;
       }
-      @media screen and (max-height: 360px) {
+    }
+    @media screen and (max-height: 360px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 2px;
       }
     }
@@ -157,65 +166,65 @@
   //--|🠋 Mobile (Corners) 🠋|--\\
   &[class*='_lef_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         border-radius: 0 8px 8px 0;
       }
-      .icon,
-      .back {
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-width: 768px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 6px 6px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-width: 480px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 4px 4px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-width: 360px) {
-        .text {
+        div[class='text'] {
           border-radius: 0 2px 2px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-width: 768px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-width: 480px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-width: 360px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
@@ -223,65 +232,65 @@
   }
   &[class*='_rig_'] {
     &[class*='_def'] {
-      .text {
+      div[class='text'] {
         border-radius: 8px 0 0 8px;
       }
-      .icon,
-      .back {
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-width: 768px) {
-        .text {
+        div[class='text'] {
           border-radius: 6px 0 0 6px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-width: 480px) {
-        .text {
+        div[class='text'] {
           border-radius: 4px 0 0 4px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-width: 360px) {
-        .text {
+        div[class='text'] {
           border-radius: 2px 0 0 2px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
     }
     &[class*='_alt'] {
-      .text,
-      .icon,
-      .back {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
         border-radius: 8px;
       }
       @media screen and (max-width: 768px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 6px;
         }
       }
       @media screen and (max-width: 480px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 4px;
         }
       }
       @media screen and (max-width: 360px) {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
@@ -292,16 +301,25 @@
   &[class*='_cen_'],
   &[class*='_tex_'],
   &[class*='_ico_'] {
-    .text,
-    .back {
+    div[class='text'],
+    div[class='back'] {
       border-radius: 8px;
-      @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 768px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 6px;
       }
-      @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 480px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 4px;
       }
-      @media screen and (max-width: 360px) {
+    }
+    @media screen and (max-width: 360px) {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 2px;
       }
     }
@@ -313,65 +331,65 @@
     //--|🠊 Desktop 🠈|--\\
     &[class*='_lef_'] {
       &[class*='_def'] {
-        .text {
+        div[class='text'] {
           border-radius: 0 8px 8px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-width: 1920px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 6px 6px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-width: 1366px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 4px 4px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-width: 854px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 2px 2px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
       }
       &[class*='_alt'] {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-width: 1920px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-width: 1366px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-width: 854px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
@@ -379,65 +397,65 @@
     }
     &[class*='_rig_'] {
       &[class*='_def'] {
-        .text {
+        div[class='text'] {
           border-radius: 8px 0 0 8px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-width: 1920px) {
-          .text {
+          div[class='text'] {
             border-radius: 6px 0 0 6px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-width: 1366px) {
-          .text {
+          div[class='text'] {
             border-radius: 4px 0 0 4px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-width: 854px) {
-          .text {
+          div[class='text'] {
             border-radius: 2px 0 0 2px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
       }
       &[class*='_alt'] {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-width: 1920px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-width: 1366px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-width: 854px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
@@ -448,16 +466,25 @@
     &[class*='_cen_'],
     &[class*='_tex_'],
     &[class*='_ico_'] {
-      .text,
-      .back {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 8px;
-        @media screen and (max-width: 1920px) {
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 6px;
         }
-        @media screen and (max-width: 1366px) {
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 4px;
         }
-        @media screen and (max-width: 854px) {
+      }
+      @media screen and (max-width: 854px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }
@@ -467,65 +494,65 @@
     //--|🠊 Mobile 🠈|--\\
     &[class*='_lef_'] {
       &[class*='_def'] {
-        .text {
+        div[class='text'] {
           border-radius: 0 8px 8px 0;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-height: 1920px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 6px 6px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-height: 1366px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 4px 4px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-height: 854px) {
-          .text {
+          div[class='text'] {
             border-radius: 0 2px 2px 0;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
       }
       &[class*='_alt'] {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-height: 1920px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-height: 1366px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-height: 854px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
@@ -533,65 +560,65 @@
     }
     &[class*='_rig_'] {
       &[class*='_def'] {
-        .text {
+        div[class='text'] {
           border-radius: 8px 0 0 8px;
         }
-        .icon,
-        .back {
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-height: 1920px) {
-          .text {
+          div[class='text'] {
             border-radius: 6px 0 0 6px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-height: 1366px) {
-          .text {
+          div[class='text'] {
             border-radius: 4px 0 0 4px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-height: 854px) {
-          .text {
+          div[class='text'] {
             border-radius: 2px 0 0 2px;
           }
-          .icon,
-          .back {
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
       }
       &[class*='_alt'] {
-        .text,
-        .icon,
-        .back {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
           border-radius: 8px;
         }
         @media screen and (max-height: 1920px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 6px;
           }
         }
         @media screen and (max-height: 1366px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 4px;
           }
         }
         @media screen and (max-height: 854px) {
-          .text,
-          .icon,
-          .back {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
             border-radius: 2px;
           }
         }
@@ -602,16 +629,25 @@
     &[class*='_cen_'],
     &[class*='_tex_'],
     &[class*='_ico_'] {
-      .text,
-      .back {
+      div[class='text'],
+      div[class='back'] {
         border-radius: 8px;
-        @media screen and (max-height: 1920px) {
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 6px;
         }
-        @media screen and (max-height: 1366px) {
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 4px;
         }
-        @media screen and (max-height: 854px) {
+      }
+      @media screen and (max-height: 854px) {
+        div[class='text'],
+        div[class='back'] {
           border-radius: 2px;
         }
       }

@@ -2,60 +2,96 @@
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   &[class*='one_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 180px;
       height: 180px;
-      @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 135px;
         height: 135px;
       }
-      @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 90px;
         height: 90px;
       }
-      @media screen and (max-height: 360px) {
+    }
+    @media screen and (max-height: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 68px;
         height: 68px;
       }
     }
   }
   &[class*='fou_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 128px;
       height: 128px;
-      @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 96px;
         height: 96px;
       }
-      @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 64px;
         height: 64px;
       }
-      @media screen and (max-height: 360px) {
+    }
+    @media screen and (max-height: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 48px;
         height: 48px;
       }
     }
   }
   &[class*='par_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 90px;
       height: 90px;
-      @media screen and (max-height: 768px) {
+    }
+    @media screen and (max-height: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 75px;
         height: 75px;
       }
-      @media screen and (max-height: 480px) {
+    }
+    @media screen and (max-height: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 50px;
         height: 50px;
       }
-      @media screen and (max-height: 360px) {
+    }
+    @media screen and (max-height: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 25px;
         height: 25px;
       }
@@ -65,60 +101,96 @@
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
   &[class*='one_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 270px;
       height: 270px;
-      @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 225px;
         height: 225px;
       }
-      @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 135px;
         height: 135px;
       }
-      @media screen and (max-width: 360px) {
+    }
+    @media screen and (max-width: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 90px;
         height: 90px;
       }
     }
   }
   &[class*='fou_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 192px;
       height: 192px;
-      @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 160px;
         height: 160px;
       }
-      @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 96px;
         height: 96px;
       }
-      @media screen and (max-width: 360px) {
+    }
+    @media screen and (max-width: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 64px;
         height: 64px;
       }
     }
   }
   &[class*='par_'] {
-    .fore,
-    .icon,
-    .back {
+    div[class='fore'],
+    div[class='icon'],
+    div[class='back'] {
       width: 90px;
       height: 90px;
-      @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 768px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 75px;
         height: 75px;
       }
-      @media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 480px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 50px;
         height: 50px;
       }
-      @media screen and (max-width: 360px) {
+    }
+    @media screen and (max-width: 360px) {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 25px;
         height: 25px;
       }
@@ -126,63 +198,100 @@
   }
 }
 @mixin tablet-size {
+  //--|🠋 Tablet (Size) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     &[class*='one_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 180px;
         height: 180px;
-        @media screen and (max-width: 1920px) {
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 135px;
           height: 135px;
         }
-        @media screen and (max-width: 1366px) {
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 90px;
           height: 90px;
         }
-        @media screen and (max-width: 854px) {
+      }
+      @media screen and (max-width: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 68px;
           height: 68px;
         }
       }
     }
     &[class*='fou_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 128px;
         height: 128px;
-        @media screen and (max-width: 1920px) {
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 96px;
           height: 96px;
         }
-        @media screen and (max-width: 1366px) {
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 64px;
           height: 64px;
         }
-        @media screen and (max-width: 854px) {
+      }
+      @media screen and (max-width: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 48px;
           height: 48px;
         }
       }
     }
     &[class*='par_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 90px;
         height: 90px;
-        @media screen and (max-width: 1920px) {
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 75px;
           height: 75px;
         }
-        @media screen and (max-width: 1366px) {
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 50px;
           height: 50px;
         }
-        @media screen and (max-width: 854px) {
+      }
+      @media screen and (max-width: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 25px;
           height: 25px;
         }
@@ -192,60 +301,96 @@
   @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     &[class*='one_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 270px;
         height: 270px;
-        @media screen and (max-height: 1920px) {
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 225px;
           height: 225px;
         }
-        @media screen and (max-height: 1366px) {
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 135px;
           height: 135px;
         }
-        @media screen and (max-height: 854px) {
+      }
+      @media screen and (max-height: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 90px;
           height: 90px;
         }
       }
     }
     &[class*='fou_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 192px;
         height: 192px;
-        @media screen and (max-height: 1920px) {
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 160px;
           height: 160px;
         }
-        @media screen and (max-height: 1366px) {
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 96px;
           height: 96px;
         }
-        @media screen and (max-height: 854px) {
+      }
+      @media screen and (max-height: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 64px;
           height: 64px;
         }
       }
     }
     &[class*='par_'] {
-      .fore,
-      .icon,
-      .back {
+      div[class='fore'],
+      div[class='icon'],
+      div[class='back'] {
         width: 90px;
         height: 90px;
-        @media screen and (max-height: 1920px) {
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 75px;
           height: 75px;
         }
-        @media screen and (max-height: 1366px) {
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 50px;
           height: 50px;
         }
-        @media screen and (max-height: 854px) {
+      }
+      @media screen and (max-height: 854px) {
+        div[class='fore'],
+        div[class='icon'],
+        div[class='back'] {
           width: 25px;
           height: 25px;
         }
