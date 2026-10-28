@@ -1,7 +1,7 @@
 //--|🠊 Section.demonstration.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../styles/Palettes.scss' as Palettes;
-
+//--|===|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Demonstration) 🠋|--\\
   width: 100%;
@@ -17,12 +17,6 @@
       display: flex;
       justify-content: center;
       img {
-        /*
-        color: rgba(gray, 0);
-        width: 100%;
-        height: 100%;
-        */
-
         background: white;
 
         //--|🠊 Frame the Icon Mask 🠈|--\\
@@ -130,12 +124,6 @@
       display: flex;
       justify-content: center;
       img {
-        /*
-        color: rgba(gray, 0);
-        width: 100%;
-        height: 100%;
-        */
-
         background: white;
 
         //--|🠊 Frame the Icon Mask 🠈|--\\
@@ -371,6 +359,7 @@
     }
   }
 }
+
 //--|===|--\\
 @mixin demonstration-colors {
   //--|🠋 Global (Tint) 🠋|--\\
@@ -413,6 +402,7 @@
     }
   }
 }
+
 @mixin mon-tint {
   $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
@@ -863,7 +853,7 @@
     }
   }
 }
-
+//--|===|--\\
 section[class*='demonstration-default'] {
   @include demonstration-colors();
   //--|🠋 Desktop (Landscape) 🠋|--\\

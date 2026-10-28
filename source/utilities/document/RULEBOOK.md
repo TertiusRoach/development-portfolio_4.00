@@ -93,7 +93,19 @@ State classes are intentionally simple. They act like a contract between the scr
 | **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely |
 | **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM    |
 
-`.running` and `.conceal` are reserved names; they aren't used in the code yet.
+`.running` is a reserved name; it isn't used in the code yet. `.conceal` blurs a `<SectionDemonstration>` card away while a character preview slides in.
+
+### No Inline Styles
+
+Use SASS wherever possible. Scripts never write `element.style.*` and elements never get a `style="…"` attribute, unless there's truly no other way (a value that only exists at runtime, such as a measured pixel position). An inline style beats every SCSS selector, so it works like `!important`: it sticks to the element, and the scaling mixins can no longer override it.
+
+When a script needs something to look different, give the look a state class in SCSS and have the script add, remove or swap that class:
+
+```ts
+demoCard.classList.add('conceal'); //--|🠈 not demoCard.style.opacity = '0' 🠈|--\\
+```
+
+The `style={{ … }}` props on components (`color`, `view`, `shade`, `image`) aren't inline styles. They're turned into class names, so they're fine.
 
 ### Git
 

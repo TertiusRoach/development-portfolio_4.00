@@ -21,9 +21,10 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 3. **Match the existing code exactly:** naming, comment flags (`//--|🠊 … 🠈|--\\`), file layout and order. No new patterns or abstractions.
 4. **Readability beats brevity.** Repetition is fine; clever shortcuts are not.
 5. **Every component scales through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** See RULEBOOK.md, Scaling Pattern.
-6. **Don't "fix" deliberate design.** Check RULEBOOK.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
-7. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
-8. **Don't run Git commands that change history or the remote** (commit, push, tag, delete) unless asked.
+6. **No inline styles.** Use SASS and state classes; never `element.style.*` or a `style="…"` attribute unless truly necessary. See RULEBOOK.md, No Inline Styles.
+7. **Don't "fix" deliberate design.** Check RULEBOOK.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
+8. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
+9. **Don't run Git commands that change history or the remote** (commit, push, tag, delete) unless asked.
 
 ## Commands
 

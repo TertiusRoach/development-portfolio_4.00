@@ -7,12 +7,24 @@ export interface DemonstrationSelection {
   branding: string;
   description: string;
 }
+//--|🠋 Configure Container 🠋|--\\
+type StyleProps = {
+  shade: '~dark~' | '~light~';
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+};
 function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin' | string): {
   appName: string;
   branding: string;
   description: string;
 } {
   switch (selectInfo) {
+    default:
+    case 'tralogfin':
+      return {
+        appName: 'TraLogFin',
+        branding: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
+        description: `Three applications working in tandem to solve specific roadblocks. Track a Day logs overtime to keep records transparent and stress-free. Log a Ticket cuts through the noise with clear statuses for every request. Find a Link is your ultimate launchpad the moment you sit down to work.`,
+      };
     case 'track-a-day':
       return {
         appName: 'Track a Day',
@@ -31,22 +43,8 @@ function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' |
         branding: loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
         description: `Instantly access all essential resources on a single page. It brings professional and personal links together into one seamless hub disguised as a single document. Designed to tame information overload, whether it’s spreadsheets, policies, reports, approvals, or bookmarks.`,
       };
-    default:
-    case 'tralogfin':
-      return {
-        appName: 'TraLogFin',
-        branding: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
-        description: `Three applications working in tandem to solve specific roadblocks. Track a Day logs overtime to keep records transparent and stress-free. Log a Ticket cuts through the noise with clear statuses for every request. Find a Link is your ultimate launchpad the moment you sit down to work.`,
-      };
   }
 }
-
-//--|🠋 Configure Container 🠋|--\\
-type StyleProps = {
-  shade: '~dark~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
-};
-
 export function createClass(style: StyleProps): string {
   //--|🠊 Class Build for <SectionDemonstration> 🠈|--\\
   const colorMap: Record<string, string> = {
@@ -70,5 +68,6 @@ export function createClass(style: StyleProps): string {
   };
   return `${shadeMap[style.shade]}_${colorMap[style.color]}`;
 }
+export function randomApps(selectApps: string | Array<string>) {}
 
 export default returnInfo;

@@ -88,6 +88,16 @@
     section[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+    section[class*='demonstration'] {
+      opacity: 1;
+      filter: blur(0);
+      transition: filter 750ms, opacity 250ms; //--|🠈 Sharpens slowly while a character preview slides out 🠈|--\\
+      &.conceal {
+        opacity: 0;
+        filter: blur(8px);
+        transition: filter 250ms, opacity 750ms; //--|🠈 Blurs quickly while a character preview slides in 🠈|--\\
+      }
+    }
   }
   div[class*='footer-back'] {
     background: rgba(darkblue, 0.75);
