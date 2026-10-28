@@ -400,6 +400,97 @@
       @extend %titles-x-desktop;
       @extend %showing-x-desktop;
     }
+    height: 128px; //--|🠈 128px for Squares 🠈|--\\
+    &[class*='-X-'] {
+      li[class*='showing'] {
+        aside {
+          height: 128px; //--|🠈 128px for Squares 🠈|--\\
+        }
+      }
+      &[class*='cen_'] li[class*='showing'] {
+        aside h3 {
+          display: none;
+        }
+      }
+      &[class*='def_'] li[class*='showing'] {
+        padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
+        aside {
+          justify-content: center;
+          //--|🠊 display: flex; 🠈|--\\
+        }
+      }
+      &[class*='lef_'] li[class*='showing'] {
+        padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-start;
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] {
+        padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-end;
+        }
+      }
+    }
+    @media screen and (max-height: 768px) {
+      height: 96px; //--|🠈 96px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 96px; //--|🠈 96px for Squares 🠈|--\\
+          }
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(96px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(96px * 2) 0 0;
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 96px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 64px; //--|🠈 64px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 64px; //--|🠈 64px for Squares 🠈|--\\
+          }
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 64px;
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(64px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(64px * 2) 0 0;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 48px; //--|🠈 48px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 48px; //--|🠈 48px for Squares 🠈|--\\
+          }
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 48px;
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(48px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(48px * 2) 0 0;
+        }
+      }
+    }
   }
   ol[class*='vert-Y-scroll'] {
     height: 100%;
@@ -549,9 +640,18 @@
     li[class*='showing'] {
       @extend %titles-y-desktop;
     }
+    width: 128px; //--|🠈 128px for Squares 🠈|--\\
+    @media screen and (max-height: 768px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px; //--|🠈 48px for Squares 🠈|--\\
+    }
   }
 }
-//--|===|--\\
 @mixin mobile-portrait {
   //--|🠊 Mobile (Elements) 🠈|--\\
   $bold-weight: 650;
@@ -949,6 +1049,97 @@
       @extend %titles-x-mobile;
       @extend %showing-x-mobile;
     }
+    height: 192px; //--|🠈 192px for Squares 🠈|--\\
+    &[class*='-X-'] {
+      li[class*='showing'] {
+        aside {
+          height: 192px; //--|🠈 192px for Squares 🠈|--\\
+        }
+      }
+      &[class*='cen_'] li[class*='showing'] {
+        aside h3 {
+          display: none;
+        }
+      }
+      &[class*='def_'] li[class*='showing'] {
+        padding: 0 192px; //--|🠈 top & bot / lef & rig 🠈|--\\
+        aside {
+          justify-content: center;
+          //--|🠊 display: flex; 🠈|--\\
+        }
+      }
+      &[class*='lef_'] li[class*='showing'] {
+        padding: 0 0 0 calc(192px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-start;
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] {
+        padding: 0 calc(192px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
+        aside {
+          //--|🠊 display: flex; 🠈|--\\
+          justify-content: flex-end;
+        }
+      }
+    }
+    @media screen and (max-width: 768px) {
+      height: 160px; //--|🠈 160px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 160px; //--|🠈 160px for Squares 🠈|--\\
+          }
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(160px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(160px * 2) 0 0;
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 160px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 96px; //--|🠈 96px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 96px; //--|🠈 96px for Squares 🠈|--\\
+          }
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 96px;
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(96px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(96px * 2) 0 0;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 64px; //--|🠈 64px for Squares 🠈|--\\
+      &[class*='-X-'] {
+        li[class*='showing'] {
+          aside {
+            height: 64px; //--|🠈 64px for Squares 🠈|--\\
+          }
+        }
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 64px;
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(64px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(64px * 2) 0 0;
+        }
+      }
+    }
   }
   ol[class*='vert-Y-scroll'] {
     height: 100%;
@@ -1098,9 +1289,18 @@
     li[class*='showing'] {
       @extend %titles-y-mobile;
     }
+    width: 192px; //--|🠈 192px for Squares 🠈|--\\
+    @media screen and (max-width: 768px) {
+      width: 160px; //--|🠈 160px for Squares 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+    }
   }
 }
-//--|===|--\\
 @mixin tablet-squaring {
   //--|🠊 Tablet (Elements) 🠈|--\\
   @media screen and (orientation: landscape) {
@@ -1206,6 +1406,56 @@
       }
       li[class*='preview'] {
         @extend %buttons-x-tablet-desktop;
+      }
+      &[class*='-X-'] {
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 96px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(96px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(96px * 2) 0 0;
+          }
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 64px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(64px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(64px * 2) 0 0;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 48px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(48px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(48px * 2) 0 0;
+          }
+        }
       }
     }
     ol[class*='vert-Y-scroll'] {
@@ -1416,6 +1666,56 @@
       li[class*='preview'] {
         @extend %buttons-x-tablet-mobile;
       }
+      &[class*='-X-'] {
+        &[class*='def_'] li[class*='showing'] {
+          padding: 0 192px; //--|🠈 top & bot / lef & rig 🠈|--\\
+        }
+        &[class*='lef_'] li[class*='showing'] {
+          padding: 0 0 0 calc(192px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
+        }
+        &[class*='rig_'] li[class*='showing'] {
+          padding: 0 calc(192px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 160px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(160px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(160px * 2) 0 0;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 96px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(96px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(96px * 2) 0 0;
+          }
+        }
+      }
+      @media screen and (max-height: 854px) {
+        &[class*='-X-'] {
+          &[class*='def_'] li[class*='showing'] {
+            padding: 0 64px;
+          }
+          &[class*='lef_'] li[class*='showing'] {
+            padding: 0 0 0 calc(64px * 2);
+          }
+          &[class*='rig_'] li[class*='showing'] {
+            padding: 0 calc(64px * 2) 0 0;
+          }
+        }
+      }
     }
     ol[class*='vert-Y-scroll'] {
       %buttons-y-tablet-mobile {
@@ -1522,336 +1822,19 @@
     }
   }
 }
+//--|===|--\\
 menu[class*='scroll'] {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    ul[class*='vert-X-scroll'] {
-      height: 128px; //--|🠈 128px for Squares 🠈|--\\
-      &[class*='-X-'] {
-        li[class*='showing'] {
-          aside {
-            height: 128px; //--|🠈 128px for Squares 🠈|--\\
-          }
-        }
-        &[class*='cen_'] li[class*='showing'] {
-          aside h3 {
-            display: none;
-          }
-        }
-        &[class*='def_'] li[class*='showing'] {
-          padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
-          aside {
-            justify-content: center;
-            //--|🠊 display: flex; 🠈|--\\
-          }
-        }
-        &[class*='lef_'] li[class*='showing'] {
-          padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-start;
-          }
-        }
-        &[class*='rig_'] li[class*='showing'] {
-          padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-end;
-          }
-        }
-      }
-      @media screen and (max-height: 768px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 96px; //--|🠈 96px for Squares 🠈|--\\
-            }
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(96px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(96px * 2) 0 0;
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 96px;
-          }
-        }
-      }
-      @media screen and (max-height: 480px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 64px; //--|🠈 64px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 64px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(64px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(64px * 2) 0 0;
-          }
-        }
-      }
-      @media screen and (max-height: 360px) {
-        height: 48px; //--|🠈 48px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 48px; //--|🠈 48px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 48px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(48px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(48px * 2) 0 0;
-          }
-        }
-      }
-    }
-    ol[class*='vert-Y-scroll'] {
-      width: 128px; //--|🠈 128px for Squares 🠈|--\\
-      @media screen and (max-height: 768px) {
-        width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      }
-      @media screen and (max-height: 480px) {
-        width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      }
-      @media screen and (max-height: 360px) {
-        width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      }
-    }
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    ul[class*='vert-X-scroll'] {
-      height: 192px; //--|🠈 192px for Squares 🠈|--\\
-      &[class*='-X-'] {
-        li[class*='showing'] {
-          aside {
-            height: 192px; //--|🠈 192px for Squares 🠈|--\\
-          }
-        }
-        &[class*='cen_'] li[class*='showing'] {
-          aside h3 {
-            display: none;
-          }
-        }
-        &[class*='def_'] li[class*='showing'] {
-          padding: 0 192px; //--|🠈 top & bot / lef & rig 🠈|--\\
-          aside {
-            justify-content: center;
-            //--|🠊 display: flex; 🠈|--\\
-          }
-        }
-        &[class*='lef_'] li[class*='showing'] {
-          padding: 0 0 0 calc(192px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-start;
-          }
-        }
-        &[class*='rig_'] li[class*='showing'] {
-          padding: 0 calc(192px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
-          aside {
-            //--|🠊 display: flex; 🠈|--\\
-            justify-content: flex-end;
-          }
-        }
-      }
-      @media screen and (max-width: 768px) {
-        height: 160px; //--|🠈 160px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 160px; //--|🠈 160px for Squares 🠈|--\\
-            }
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(160px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(160px * 2) 0 0;
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 160px;
-          }
-        }
-      }
-      @media screen and (max-width: 480px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 96px; //--|🠈 96px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 96px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(96px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(96px * 2) 0 0;
-          }
-        }
-      }
-      @media screen and (max-width: 360px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        &[class*='-X-'] {
-          li[class*='showing'] {
-            aside {
-              height: 64px; //--|🠈 64px for Squares 🠈|--\\
-            }
-          }
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 64px;
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(64px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(64px * 2) 0 0;
-          }
-        }
-      }
-    }
-    ol[class*='vert-Y-scroll'] {
-      width: 192px; //--|🠈 192px for Squares 🠈|--\\
-      @media screen and (max-width: 768px) {
-        width: 160px; //--|🠈 160px for Squares 🠈|--\\
-      }
-      @media screen and (max-width: 480px) {
-        width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      }
-      @media screen and (max-width: 360px) {
-        width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      }
-    }
   }
   //--|🠋 Tablet (Squaring) 🠋|--\\
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
     @include tablet-squaring();
-    @media screen and (orientation: landscape) {
-      //--|🠊 Desktop 🠈|--\\
-      ul[class*='vert-X-scroll'] {
-        &[class*='-X-'] {
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 128px; //--|🠈 top & bot / lef & rig 🠈|--\\
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(128px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(128px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
-          }
-        }
-        @media screen and (max-width: 1920px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 96px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(96px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(96px * 2) 0 0;
-            }
-          }
-        }
-        @media screen and (max-width: 1366px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 64px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(64px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(64px * 2) 0 0;
-            }
-          }
-        }
-        @media screen and (max-width: 854px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 48px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(48px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(48px * 2) 0 0;
-            }
-          }
-        }
-      }
-    }
-    @media screen and (orientation: portrait) {
-      //--|🠊 Mobile 🠈|--\\
-      ul[class*='vert-X-scroll'] {
-        &[class*='-X-'] {
-          &[class*='def_'] li[class*='showing'] {
-            padding: 0 192px; //--|🠈 top & bot / lef & rig 🠈|--\\
-          }
-          &[class*='lef_'] li[class*='showing'] {
-            padding: 0 0 0 calc(192px * 2); //--|🠈 top / rig / bot / lef 🠈|--\\
-          }
-          &[class*='rig_'] li[class*='showing'] {
-            padding: 0 calc(192px * 2) 0 0; //--|🠈 top / rig / bot / lef 🠈|--\\
-          }
-        }
-        @media screen and (max-height: 1920px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 160px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(160px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(160px * 2) 0 0;
-            }
-          }
-        }
-        @media screen and (max-height: 1366px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 96px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(96px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(96px * 2) 0 0;
-            }
-          }
-        }
-        @media screen and (max-height: 854px) {
-          &[class*='-X-'] {
-            &[class*='def_'] li[class*='showing'] {
-              padding: 0 64px;
-            }
-            &[class*='lef_'] li[class*='showing'] {
-              padding: 0 0 0 calc(64px * 2);
-            }
-            &[class*='rig_'] li[class*='showing'] {
-              padding: 0 calc(64px * 2) 0 0;
-            }
-          }
-        }
-      }
-    }
   }
   //--|===|--\\
   &[class*='scroll'] {

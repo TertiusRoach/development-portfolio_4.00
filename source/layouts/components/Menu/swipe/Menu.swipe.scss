@@ -130,7 +130,7 @@
     li[class*='preview'] {
       @extend %buttons-x-desktop;
     }
-
+    //--|===|--\\
     %titles-x-desktop {
       z-index: 0;
       width: 100%;
@@ -172,6 +172,69 @@
     }
     li[class*='showing'] {
       @extend %titles-x-desktop;
+    }
+    height: 128px; //--|🠈 128px for Squares 🠈|--\\
+    &[class*='lef_'] li[class*='showing'] {
+      aside {
+        justify-content: flex-start;
+        //--|🠊 display: flex; 🠈|--\\
+        padding-left: calc(128px * 2);
+      }
+    }
+    &[class*='rig_'] li[class*='showing'] {
+      aside {
+        justify-content: flex-end;
+        //--|🠊 display: flex; 🠈|--\\
+        padding-right: calc(128px * 2);
+      }
+    }
+    &[class*='cen_'] li[class*='showing'] {
+      h3 {
+        display: none;
+      }
+    }
+    &[class*='def_'] li[class*='showing'] {
+      aside {
+        padding: 0 128px;
+        justify-content: center;
+        //--|🠊 display: flex; 🠈|--\\
+      }
+    }
+    @media screen and (max-height: 768px) {
+      height: 96px; //--|🠈 96px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(96px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(96px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 96px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 64px; //--|🠈 64px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(64px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(64px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 64px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 48px; //--|🠈 48px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(48px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(48px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 48px;
+      }
     }
   }
   ol[class*='hori-Y-swipe'] {
@@ -296,7 +359,7 @@
     li[class*='preview'] {
       @extend %buttons-y-desktop;
     }
-
+    //--|===|--\\
     %titles-y-desktop {
       z-index: 0;
       display: flex;
@@ -581,9 +644,18 @@
       @extend %titles-y-desktop;
       @extend %showing-y-desktop;
     }
+    width: 128px; //--|🠈 128px for Squares 🠈|--\\
+    @media screen and (max-height: 768px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      width: 48px; //--|🠈 48px for Squares 🠈|--\\
+    }
   }
 }
-//--|===|--\\
 @mixin mobile-portrait {
   //--|🠋 Mobile (Swipe) 🠋|--\\
   $bold-weight: 650;
@@ -713,7 +785,7 @@
     li[class*='preview'] {
       @extend %buttons-x-mobile;
     }
-
+    //--|===|--\\
     %titles-x-mobile {
       z-index: 0;
       width: 100%;
@@ -754,6 +826,69 @@
     }
     li[class*='showing'] {
       @extend %titles-x-mobile;
+    }
+    height: 192px; //--|🠈 192px for Squares 🠈|--\\
+    &[class*='lef_'] li[class*='showing'] {
+      aside {
+        justify-content: flex-start;
+        //--|🠊 display: flex; 🠈|--\\
+        padding-left: calc(192px * 2);
+      }
+    }
+    &[class*='rig_'] li[class*='showing'] {
+      aside {
+        justify-content: flex-end;
+        //--|🠊 display: flex; 🠈|--\\
+        padding-right: calc(192px * 2);
+      }
+    }
+    &[class*='cen_'] li[class*='showing'] {
+      h3 {
+        display: none;
+      }
+    }
+    &[class*='def_'] li[class*='showing'] {
+      aside {
+        padding: 0 192px;
+        justify-content: center;
+        //--|🠊 display: flex; 🠈|--\\
+      }
+    }
+    @media screen and (max-width: 768px) {
+      height: 160px; //--|🠈 160px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(160px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(160px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 160px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 96px; //--|🠈 96px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(96px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(96px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 96px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 64px; //--|🠈 64px for Squares 🠈|--\\
+      &[class*='lef_'] li[class*='showing'] aside {
+        padding-left: calc(64px * 2);
+      }
+      &[class*='rig_'] li[class*='showing'] aside {
+        padding-right: calc(64px * 2);
+      }
+      &[class*='def_'] li[class*='showing'] aside {
+        padding: 0 64px;
+      }
     }
   }
   ol[class*='hori-Y-swipe'] {
@@ -878,7 +1013,7 @@
     li[class*='preview'] {
       @extend %buttons-y-mobile;
     }
-
+    //--|===|--\\
     %titles-y-mobile {
       z-index: 0;
       display: flex;
@@ -1162,9 +1297,18 @@
       @extend %titles-y-mobile;
       @extend %showing-y-mobile;
     }
+    width: 192px; //--|🠈 192px for Squares 🠈|--\\
+    @media screen and (max-width: 768px) {
+      width: 160px; //--|🠈 160px for Squares 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      width: 96px; //--|🠈 96px for Squares 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      width: 64px; //--|🠈 64px for Squares 🠈|--\\
+    }
   }
 }
-//--|===|--\\
 @mixin tablet-squaring {
   //--|🠋 Tablet (Swipe) 🠋|--\\
   @media screen and (orientation: landscape) {
@@ -1270,6 +1414,54 @@
       }
       li[class*='preview'] {
         @extend %buttons-x-tablet-desktop;
+      }
+      &[class*='lef_'] li[class*='showing'] {
+        aside {
+          padding-left: calc(128px * 2);
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] {
+        aside {
+          padding-right: calc(128px * 2);
+        }
+      }
+      &[class*='def_'] li[class*='showing'] {
+        aside {
+          padding: 0 128px;
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(96px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(96px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 96px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(64px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(64px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 64px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(48px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(48px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 48px;
+        }
       }
     }
     ol[class*='hori-Y-swipe'] {
@@ -1480,6 +1672,54 @@
       li[class*='preview'] {
         @extend %buttons-x-tablet-mobile;
       }
+      &[class*='lef_'] li[class*='showing'] {
+        aside {
+          padding-left: calc(192px * 2);
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] {
+        aside {
+          padding-right: calc(192px * 2);
+        }
+      }
+      &[class*='def_'] li[class*='showing'] {
+        aside {
+          padding: 0 192px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(160px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(160px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 160px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(96px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(96px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 96px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        &[class*='lef_'] li[class*='showing'] aside {
+          padding-left: calc(64px * 2);
+        }
+        &[class*='rig_'] li[class*='showing'] aside {
+          padding-right: calc(64px * 2);
+        }
+        &[class*='def_'] li[class*='showing'] aside {
+          padding: 0 64px;
+        }
+      }
     }
     ol[class*='hori-Y-swipe'] {
       %buttons-y-tablet-mobile {
@@ -1586,277 +1826,19 @@
     }
   }
 }
-
+//--|===|--\\
 menu[class*='swipe'] {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    ul[class*='hori-X-swipe'] {
-      height: 128px; //--|🠈 128px for Squares 🠈|--\\
-      &[class*='lef_'] li[class*='showing'] {
-        aside {
-          justify-content: flex-start;
-          //--|🠊 display: flex; 🠈|--\\
-          padding-left: calc(128px * 2);
-        }
-      }
-      &[class*='rig_'] li[class*='showing'] {
-        aside {
-          justify-content: flex-end;
-          //--|🠊 display: flex; 🠈|--\\
-          padding-right: calc(128px * 2);
-        }
-      }
-      &[class*='cen_'] li[class*='showing'] {
-        h3 {
-          display: none;
-        }
-      }
-      &[class*='def_'] li[class*='showing'] {
-        aside {
-          padding: 0 128px;
-          justify-content: center;
-          //--|🠊 display: flex; 🠈|--\\
-        }
-      }
-      @media screen and (max-height: 768px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(96px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(96px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 96px;
-        }
-      }
-      @media screen and (max-height: 480px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(64px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(64px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 64px;
-        }
-      }
-      @media screen and (max-height: 360px) {
-        height: 48px; //--|🠈 48px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(48px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(48px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 48px;
-        }
-      }
-    }
-    ol[class*='hori-Y-swipe'] {
-      width: 128px; //--|🠈 128px for Squares 🠈|--\\
-      @media screen and (max-height: 768px) {
-        width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      }
-      @media screen and (max-height: 480px) {
-        width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      }
-      @media screen and (max-height: 360px) {
-        width: 48px; //--|🠈 48px for Squares 🠈|--\\
-      }
-    }
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    ul[class*='hori-X-swipe'] {
-      height: 192px; //--|🠈 192px for Squares 🠈|--\\
-      &[class*='lef_'] li[class*='showing'] {
-        aside {
-          justify-content: flex-start;
-          //--|🠊 display: flex; 🠈|--\\
-          padding-left: calc(192px * 2);
-        }
-      }
-      &[class*='rig_'] li[class*='showing'] {
-        aside {
-          justify-content: flex-end;
-          //--|🠊 display: flex; 🠈|--\\
-          padding-right: calc(192px * 2);
-        }
-      }
-      &[class*='cen_'] li[class*='showing'] {
-        h3 {
-          display: none;
-        }
-      }
-      &[class*='def_'] li[class*='showing'] {
-        aside {
-          padding: 0 192px;
-          justify-content: center;
-          //--|🠊 display: flex; 🠈|--\\
-        }
-      }
-      @media screen and (max-width: 768px) {
-        height: 160px; //--|🠈 160px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(160px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(160px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 160px;
-        }
-      }
-      @media screen and (max-width: 480px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(96px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(96px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 96px;
-        }
-      }
-      @media screen and (max-width: 360px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\
-        &[class*='lef_'] li[class*='showing'] aside {
-          padding-left: calc(64px * 2);
-        }
-        &[class*='rig_'] li[class*='showing'] aside {
-          padding-right: calc(64px * 2);
-        }
-        &[class*='def_'] li[class*='showing'] aside {
-          padding: 0 64px;
-        }
-      }
-    }
-    ol[class*='hori-Y-swipe'] {
-      width: 192px; //--|🠈 192px for Squares 🠈|--\\
-      @media screen and (max-width: 768px) {
-        width: 160px; //--|🠈 160px for Squares 🠈|--\\
-      }
-      @media screen and (max-width: 480px) {
-        width: 96px; //--|🠈 96px for Squares 🠈|--\\
-      }
-      @media screen and (max-width: 360px) {
-        width: 64px; //--|🠈 64px for Squares 🠈|--\\
-      }
-    }
   }
   //--|🠋 Tablet (Squaring) 🠋|--\\
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
     @include tablet-squaring();
-    @media screen and (orientation: landscape) {
-      //--|🠊 Desktop 🠈|--\\
-      ul[class*='hori-X-swipe'] {
-        &[class*='lef_'] li[class*='showing'] {
-          aside {
-            padding-left: calc(128px * 2);
-          }
-        }
-        &[class*='rig_'] li[class*='showing'] {
-          aside {
-            padding-right: calc(128px * 2);
-          }
-        }
-        &[class*='def_'] li[class*='showing'] {
-          aside {
-            padding: 0 128px;
-          }
-        }
-        @media screen and (max-width: 1920px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(96px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(96px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 96px;
-          }
-        }
-        @media screen and (max-width: 1366px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(64px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(64px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 64px;
-          }
-        }
-        @media screen and (max-width: 854px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(48px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(48px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 48px;
-          }
-        }
-      }
-    }
-    @media screen and (orientation: portrait) {
-      //--|🠊 Mobile 🠈|--\\
-      ul[class*='hori-X-swipe'] {
-        &[class*='lef_'] li[class*='showing'] {
-          aside {
-            padding-left: calc(192px * 2);
-          }
-        }
-        &[class*='rig_'] li[class*='showing'] {
-          aside {
-            padding-right: calc(192px * 2);
-          }
-        }
-        &[class*='def_'] li[class*='showing'] {
-          aside {
-            padding: 0 192px;
-          }
-        }
-        @media screen and (max-height: 1920px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(160px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(160px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 160px;
-          }
-        }
-        @media screen and (max-height: 1366px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(96px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(96px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 96px;
-          }
-        }
-        @media screen and (max-height: 854px) {
-          &[class*='lef_'] li[class*='showing'] aside {
-            padding-left: calc(64px * 2);
-          }
-          &[class*='rig_'] li[class*='showing'] aside {
-            padding-right: calc(64px * 2);
-          }
-          &[class*='def_'] li[class*='showing'] aside {
-            padding: 0 64px;
-          }
-        }
-      }
-    }
   }
   //--|===|--\\
   &[class*='swipe'] {
