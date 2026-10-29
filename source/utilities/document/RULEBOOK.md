@@ -142,6 +142,14 @@ components/Button/default/
   - Every pipeline file has the same specificity, so the include order decides who wins. Colour belongs to `*_tint.scss` alone. Other files set `border-*-width` and `border-style`, never the `border:` shorthand, which quietly resets the colour.
 - **No outer shadows or glows.** Neighbouring containers paint over anything that reaches outside a button, so it looks clipped. Inset shadows (the bevel) and text glow are fine.
 
+### Style Imports
+
+- **Every component's `.scss` is loaded from `styles/Barrel.scss`, never from its own `.tsx`.** A `.tsx` has no `//--|🠋 Styles 🠋|--\\` import. A new component gets one `@use` line in the Barrel instead: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`.
+- **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
+- **Check the path letter by letter.** A wrong folder or file name stops the whole build with `Can't find stylesheet to import`, pointing at `Barrel.scss` and `index.scss` rather than at the component.
+
+Older files still import their own `.scss` (`Label.toggle.tsx`, the `Form` components and others). They're moved to the Barrel as they're refactored.
+
 ### Error Messages
 
 Errors keep the props' own wrappers, so they read like the prop that caused them:

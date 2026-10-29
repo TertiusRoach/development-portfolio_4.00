@@ -3,29 +3,50 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Colourize) 🠋|--\\
+  height: 100%;
+  flex-direction: column;
+  background: rgba(darkred, 0.25);
+
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
-  height: 100%;
-  width: calc($misc-desk * 2);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background: rgba(darkred, 0.25);
+  width: calc($high-desk * 2);
+  @media screen and (max-height: 768px) {
+    width: calc($test-desk * 2);
+  }
+  @media screen and (max-height: 480px) {
+    width: calc($misc-desk * 2);
+  }
+  @media screen and (max-height: 360px) {
+    width: calc($tiny-desk * 2);
+  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Colourize) 🠋|--\\
+  width: 100%;
+  flex-direction: row;
+
   $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
   $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
   background: rgba(darkblue, 0.25);
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+    height: calc($misc-mobi / 2);
+  }
+  @media screen and (max-width: 360px) {
+  }
 }
 
 div[class*='colourize'] {
+  display: flex;
+  justify-content: space-around;
+
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }

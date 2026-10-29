@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
+import { updateArticle } from './UpdatesFunctions';
 import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
 
 //--|🠋 Components 🠋|--\\
@@ -32,6 +33,9 @@ function UpdatesArticle({ info }: InfoProps) {
           }}
           style={{
             shade: '~dark~',
+          }}
+          cases={{
+            task: [(tint) => updateArticle(tint)], //--|🠈 Recolors <ArticleUpdates> with the tint from the toggles 🠈|--\\
           }}
         />
         <ArticleUpdates

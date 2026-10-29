@@ -1806,6 +1806,36 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
     return '|🠊 Failed to copy code 🠈|';
   }
 }
+//--|🠋 Button Colors Toggle 🠋|--\\
+export const toggleColors = (section: HTMLElement): Promise<string> => {
+  const findTint = ([red, green, blue]: Array<boolean>): string => {
+    let tintMap: Record<string, string> = {
+      'true-false-false': 'red',
+      'false-true-false': 'gre',
+      'false-false-true': 'blu',
+      'true-true-false': 'yel',
+      'true-false-true': 'pur',
+      'false-true-true': 'tur',
+    };
+    let key: string = `${red}-${green}-${blue}`;
+    let tint: string = tintMap[key] ?? 'mon';
+
+    updateButtons(tint);
+    return tint;
+  };
+
+  return new Promise((resolve) => {
+    let booleans: Array<boolean> = [];
+    setTimeout(() => {
+      for (let i = 0; i < 3; i++) {
+        const label = section.childNodes[i] as HTMLLabelElement;
+        const input = label.childNodes[0] as HTMLInputElement;
+        booleans.push(input.checked);
+      }
+      resolve(findTint(booleans));
+    }, 125);
+  });
+};
 //--|🠋 Fullscreen & Menu Chain 🠋|--\\
 export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-next') => {
   const fullscreen = element.querySelector('li') as HTMLElement;
@@ -1847,36 +1877,7 @@ export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-
       break;
   }
 };
-//--|🠋 Button Colors Toggle 🠋|--\\
-export const toggleColors = (section: HTMLElement): Promise<string> => {
-  const findTint = ([red, green, blue]: Array<boolean>): string => {
-    let tintMap: Record<string, string> = {
-      'true-false-false': 'red',
-      'false-true-false': 'gre',
-      'false-false-true': 'blu',
-      'true-true-false': 'yel',
-      'true-false-true': 'pur',
-      'false-true-true': 'tur',
-    };
-    let key: string = `${red}-${green}-${blue}`;
-    let tint: string = tintMap[key] ?? 'mon';
 
-    updateButtons(tint);
-    return tint;
-  };
-
-  return new Promise((resolve) => {
-    let booleans: Array<boolean> = [];
-    setTimeout(() => {
-      for (let i = 0; i < 3; i++) {
-        const label = section.childNodes[i] as HTMLLabelElement;
-        const input = label.childNodes[0] as HTMLInputElement;
-        booleans.push(input.checked);
-      }
-      resolve(findTint(booleans));
-    }, 125);
-  });
-};
 let updateButtons = (color: string) => {
   const wrapperDarkside = document.querySelectorAll(
     '#components-main .default-darkside-main_container button[class*="default-button"]',

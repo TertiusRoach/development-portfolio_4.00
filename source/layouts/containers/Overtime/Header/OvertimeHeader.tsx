@@ -1,4 +1,4 @@
-//--|🠊 OvertimeHeader.tsx 🠈|--//
+//--|🠊 OvertimeHeader.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
@@ -34,8 +34,8 @@ function OvertimeHeader({ info }: InfoProps) {
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
+    //--|🠊 console.log(TrackTime().PickPage[0]); 🠈|--\\
     //--|🟩|--\\
-    console.log(TrackTime().PickPage[0]);
 
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);

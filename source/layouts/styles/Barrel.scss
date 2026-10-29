@@ -13,9 +13,10 @@
 
 //--|🠋 <Division> 🠋|--\\
 @use '../components/Division/testing/Division.testing.scss' as DivisionTesting;
-@use '../components/Division/fullscreen/Division.fullscreen.scss' as DivisionFullscreen;
 @use '../components/Division/sweeping/Division.sweeping.scss' as DivisionSweeping;
 @use '../components/Division/conveyor/Division.conveyor.scss' as DivisionConveyor;
+@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;
+@use '../components/Division/fullscreen/Division.fullscreen.scss' as DivisionFullscreen;
 @use '../components/Division/placeholder/Division.placeholder.scss' as DivisionPlaceholder;
 
 //--|🠋 <Figure> 🠋|--\\

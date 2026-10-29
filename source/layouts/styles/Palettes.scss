@@ -339,10 +339,10 @@ $yellow-darkMode:
     color.mix($yellow-dark, $yellow-medium, 82%) 100%
   );
 
-$brown-neon: #ff6600; //--|🠈 rgba() 🠈|--\\
+$brown-neon: #d9a066; //--|🠈 rgba() 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
-$brown-light: #f3d7c2; //--|🠈 rgba() 🠈|--\\
-$brown-medium: #8a461e; //--|🠈 rgba() 🠈|--\\
+$brown-light: #f0dcc8; //--|🠈 rgba() 🠈|--\\
+$brown-medium: #7b4a2e; //--|🠈 rgba() 🠈|--\\
 $brown-lightMode:
   linear-gradient(180deg, rgba($brown-neon, 0.22) 0%, rgba($brown-light, 0) 52%, rgba(#000, 0.4) 100%),
   linear-gradient(135deg, rgba($brown-neon, 0.14) 0%, rgba($brown-light, 0) 45%, rgba($brown-light, 0.38) 100%),
