@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
 
 //--|🠋 Components 🠋|--\\
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 interface InfoProps {
   info: {
@@ -15,15 +16,24 @@ interface InfoProps {
     labelName: string;
   };
 }
-const UpdatesArticle: React.FC<InfoProps> = ({ info }) => {
+function UpdatesArticle({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
-  //--|🠊 Random color, so all ten are tested 🠈|--\\
-  const colors = ['(mono)', '(red)', '(green)', '(blue)', '(yellow)', '(purple)', '(orange)', '(pink)', '(brown)', '(turquoise)'] as const;
+
   return (
     <aside className="updates-article">
       <section className={`${blockName}-foreground`}>
+        <DivisionColourize
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            shade: '~dark~',
+          }}
+        />
         <ArticleUpdates
           info={{
             pageName: pageName,
@@ -33,7 +43,7 @@ const UpdatesArticle: React.FC<InfoProps> = ({ info }) => {
           style={{
             size: '<h6>',
             shade: '~dark~',
-            color: colors[Math.floor(Math.random() * colors.length)],
+            color: '(mono)',
             view: '-justify-',
           }}
           cases={{
@@ -49,5 +59,5 @@ const UpdatesArticle: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default UpdatesArticle;

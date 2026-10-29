@@ -1,0 +1,35 @@
+//--|🠊 Division.colourize.scss 🠈|--\\
+@use '../../../styles/Palettes.scss';
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Colourize) 🠋|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+
+  height: 100%;
+  width: calc($misc-desk * 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: rgba(darkred, 0.25);
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Colourize) 🠋|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+
+  background: rgba(darkblue, 0.25);
+}
+
+div[class*='colourize'] {
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+}
