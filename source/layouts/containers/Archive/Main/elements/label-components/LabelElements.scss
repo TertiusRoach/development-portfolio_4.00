@@ -1,0 +1,28 @@
+//--|🠊 LabelElements.scss 🠈|--\\
+@use './toggle-label/ToggleLabel.scss';
+@use './select-label/SelectLabel.scss';
+
+section[class*='label-main'] {
+  div[class*='fullscreen'] {
+    div.label-main_container {
+      aside[class*='label'] {
+        @media screen and (orientation: landscape) {
+          &[class*='toggle'] {
+            @include ToggleLabel.desktop-landscape;
+          }
+          &[class*='select'] {
+            @include SelectLabel.desktop-landscape;
+          }
+        }
+        @media screen and (orientation: portrait) {
+          &[class*='toggle'] {
+            @include ToggleLabel.mobile-portrait;
+          }
+          &[class*='select'] {
+            @include SelectLabel.mobile-portrait;
+          }
+        }
+      }
+    }
+  }
+}

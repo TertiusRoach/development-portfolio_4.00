@@ -262,6 +262,23 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
+      {/*--|🠊 <Label> 🠈|--*/}
+      <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Label_Toggle>', '<Label_Select>'] as Array<string>,
+        }}
+        info={{
+          labelName: 'label',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
+        }}
+      />
       {/*--|🠊 <Menu> 🠈|--*/}
       <MenuSwipe
         cases={{

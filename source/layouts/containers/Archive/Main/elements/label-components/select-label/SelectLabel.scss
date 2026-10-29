@@ -1,0 +1,129 @@
+//--|🠊 SelectLabel.scss 🠈|--\\
+@use '../../../../../../styles/Palettes.scss' as Palettes;
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="select-label"> 🠈|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    display: grid;
+    div[class*='darkside'] {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    div[class*='lightside'] {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+      grid-area: 2 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      / 48px 1fr 1fr 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-height: 768px) {
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        / 16px 1fr 1fr 16px; //--|🠈 columns 🠈|--\\
+    }
+  }
+  //--|===|--\\
+  figure[class*='main-mid'] {
+  }
+  div[class*='main-back'] {
+    display: grid;
+    grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr; //--|🠈 No picker yet, so the halves meet in the middle 🠈|--\\
+
+    .left-side {
+      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
+    }
+    .right-side {
+      grid-column: 2 / 3; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
+    }
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="select-label"> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    display: grid;
+    div[class*='darkside'] {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-around;
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    div[class*='lightside'] {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-around;
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      6rem 1fr 1fr 6rem //--|🠈 rows 🠈|--//
+      / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 768px) {
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        5rem 1fr 1fr 5rem //--|🠈 rows 🠈|--//
+        / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        3rem 1fr 1fr 3rem //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        2rem 1fr 1fr 2rem //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+    }
+  }
+  //--|===|--\\
+  figure[class*='main-mid'] {
+  }
+  div[class*='main-back'] {
+    display: grid;
+    grid-column: 1 / 2; //--|🠈 col-start col-end 🠈|--\\
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr; //--|🠈 No picker yet, so the halves meet in the middle 🠈|--\\
+
+    .left-side {
+      grid-row: 1 / 2; //--|🠈 row-start / row-end (Top in Portrait) 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+      filter: drop-shadow(0px 1rem 1rem rgba(white, 0.25));
+    }
+    .right-side {
+      grid-row: 2 / 3; //--|🠈 row-start / row-end (Bottom in Portrait) 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+      filter: drop-shadow(0px -1rem 1rem rgba(black, 0.25));
+    }
+  }
+}

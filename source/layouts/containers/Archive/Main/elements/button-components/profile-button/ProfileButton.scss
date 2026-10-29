@@ -159,22 +159,22 @@
     }
 
     //--| Dark Side |--\\
-    button[class*='one_squ_lig'] {
+    button[class*='one_squ_dar'] {
       grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='fou_squ_lig'] {
+    button[class*='fou_squ_dar'] {
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='par_squ_lig'] {
+    button[class*='par_squ_dar'] {
       grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='one_cir_lig'] {
+    button[class*='one_cir_dar'] {
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='fou_cir_lig'] {
+    button[class*='fou_cir_dar'] {
       grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='par_cir_lig'] {
+    button[class*='par_cir_dar'] {
       grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
@@ -184,22 +184,22 @@
       grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
-    button[class*='one_squ_dar'] {
+    button[class*='one_squ_lig'] {
       grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='fou_squ_dar'] {
+    button[class*='fou_squ_lig'] {
       grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='par_squ_dar'] {
+    button[class*='par_squ_lig'] {
       grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='one_cir_dar'] {
+    button[class*='one_cir_lig'] {
       grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='fou_cir_dar'] {
+    button[class*='fou_cir_lig'] {
       grid-area: 6 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    button[class*='par_cir_dar'] {
+    button[class*='par_cir_lig'] {
       grid-area: 6 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 

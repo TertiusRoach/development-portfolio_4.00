@@ -14,6 +14,7 @@ import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';
 import AsideElements from './elements/aside-components/AsideElements';
+import LabelElements from './elements/label-components/LabelElements';
 import FigureElements from './elements/figure-components/FigureElements';
 import ButtonElements from './elements/button-components/ButtonElements';
 import ArticleElements from './elements/article-components/ArticleElements';
@@ -113,6 +114,13 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName,
           blockName: blockName,
           labelName: 'figure' as string,
+        }}
+      />
+      <LabelElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'label' as string,
         }}
       />
       <MenuElements

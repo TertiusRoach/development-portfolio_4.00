@@ -60,13 +60,14 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
                 align: '-bot-',
                 view: 'mid-rig',
                 color: '(mono)',
-                shade: '~light~',
+                shade: '~dark~',
                 image: [
                   loadAsset('-svg-', '/project-pages/components-page/article-element'),
                   loadAsset('-svg-', '/project-pages/components-page/aside-element'),
                   loadAsset('-svg-', '/project-pages/components-page/button-element'),
                   loadAsset('-svg-', '/project-pages/components-page/division-element'),
                   loadAsset('-svg-', '/project-pages/components-page/figure-element'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/tags'),
                   loadAsset('-svg-', '/project-pages/components-page/menu-element'),
                   loadAsset('-svg-', '/project-pages/components-page/navigation-element'),
                   loadAsset('-svg-', '/project-pages/components-page/section-element'),
@@ -75,9 +76,21 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
                 ],
               }}
               cases={{
-                pages: 10,
+                pages: 11,
                 axis: '[y]',
-                link: ['article', 'aside', 'button', 'division', 'figure', 'menu', 'navigation', 'section', 'table', 'time'] as Array<string>,
+                link: [
+                  'article',
+                  'aside',
+                  'button',
+                  'division',
+                  'figure',
+                  'label',
+                  'menu',
+                  'navigation',
+                  'section',
+                  'table',
+                  'time',
+                ] as Array<string>,
               }}
             />
           </section>
