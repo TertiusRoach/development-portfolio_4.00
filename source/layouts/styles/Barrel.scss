@@ -21,6 +21,10 @@
 
 //--|🠋 <Figure> 🠋|--\\
 
+//--|🠋 <Label> 🠋|--\\
+@use '../components/Label/select/Label.select.scss' as LabelSelect;
+@use '../components/Label/toggle/Label.toggle.scss' as LabelToggle;
+
 //--|🠋 <Menu> 🠋|--\\
 @use '../components/Menu/swipe/Menu.swipe.scss' as MenuSwipe;
 @use '../components/Menu/scroll/Menu.scroll.scss' as MenuScroll;

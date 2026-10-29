@@ -19,15 +19,15 @@
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-      padding: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
+      margin: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
       @media screen and (max-height: 768px) {
-        padding: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+        margin: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 480px) {
-        padding: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+        margin: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 360px) {
-        padding: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+        margin: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
     }
     div[class*='fullscreen'] {

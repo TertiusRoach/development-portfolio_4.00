@@ -20,15 +20,15 @@
     //--|🠊 display: grid; 🠈|--\\
     div[class*='colourize'] {
       //--|🠊 display: flex; 🠈|--\\
-      padding: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
+      margin: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
       @media screen and (max-height: 768px) {
-        padding: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+        margin: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 480px) {
-        padding: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+        margin: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 360px) {
-        padding: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+        margin: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
     }
   }
@@ -121,15 +121,15 @@
     //--|🠊 display: grid; 🠈|--\\
     div[class*='colourize'] {
       //--|🠊 display: flex; 🠈|--\\
-      padding: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+      margin: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       @media screen and (max-width: 768px) {
-        padding: 0 48px; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+        margin: 0 48px; //--|🠈 48px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-width: 480px) {
-        padding: 0 32px; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+        margin: 0 32px; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-width: 360px) {
-        padding: 0 24px; //--|🠈 24px (Left & Right) for Design 🠈|--\\
+        margin: 0 24px; //--|🠈 24px (Left & Right) for Design 🠈|--\\
       }
     }
   }

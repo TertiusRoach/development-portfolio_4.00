@@ -17,15 +17,15 @@
       justify-self: center; //--|🠈 Centres the fixed-width division in the 1fr column 🠈|--\\
       grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-      padding: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
+      margin: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
       @media screen and (max-height: 768px) {
-        padding: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
+        margin: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
       }
       @media screen and (max-height: 480px) {
-        padding: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
+        margin: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
       }
       @media screen and (max-height: 360px) {
-        padding: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
+        margin: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
       }
     }
     aside[class*='_lig_'] {
@@ -66,19 +66,19 @@
     }
     div[class*='colourize'] {
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
-      height: 100%; //--|🠈 Full column, not the component's row height 🠈|--\\
+      height: auto; //--|🠈 Stretches over the full column, minus the margins 🠈|--\\
       flex-direction: column; //--|🠈 The middle column is narrow, so the toggles stack 🠈|--\\
       grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-      padding: $high-mobi 0; //--|🠈 Height: 1920px 🠈|--\\
+      margin: $high-mobi 0; //--|🠈 Height: 1920px 🠈|--\\
       @media screen and (max-width: 768px) {
-        padding: $test-mobi 0; //--|🠈 Height: 1366px 🠈|--\\
+        margin: $test-mobi 0; //--|🠈 Height: 1366px 🠈|--\\
       }
       @media screen and (max-width: 480px) {
-        padding: $misc-mobi 0; //--|🠈 Height: 854px 🠈|--\\
+        margin: $misc-mobi 0; //--|🠈 Height: 854px 🠈|--\\
       }
       @media screen and (max-width: 360px) {
-        padding: $tiny-mobi 0; //--|🠈 Height: 640px 🠈|--\\
+        margin: $tiny-mobi 0; //--|🠈 Height: 640px 🠈|--\\
       }
     }
     aside[class*='_lig_'] {

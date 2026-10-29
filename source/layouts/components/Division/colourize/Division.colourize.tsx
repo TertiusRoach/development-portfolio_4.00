@@ -40,22 +40,10 @@ const DivisionColourize: React.FC<TheseProps> = ({ info, style, cases }) => {
         cases.task[0](toggleColors(event.currentTarget));
       }}
     >
-      <LabelToggle
-        style={{ type: '{toggle}', shade: style.shade, color: '(mono)' }}
-        info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-      />
-      <LabelToggle
-        style={{ type: '{toggle}', shade: style.shade, color: '(red)' }}
-        info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-      />
-      <LabelToggle
-        style={{ type: '{toggle}', shade: style.shade, color: '(green)' }}
-        info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-      />
-      <LabelToggle
-        style={{ type: '{toggle}', shade: style.shade, color: '(blue)' }}
-        info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-      />
+      <LabelToggle style={{ shade: style.shade, color: '(mono)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelToggle style={{ shade: style.shade, color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelToggle style={{ shade: style.shade, color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelToggle style={{ shade: style.shade, color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
     </div>
   );
 };

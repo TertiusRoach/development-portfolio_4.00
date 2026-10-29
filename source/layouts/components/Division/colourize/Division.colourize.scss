@@ -3,7 +3,6 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Colourize) 🠋|--\\
-  height: 100%;
   flex-direction: column;
   //--|===|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
@@ -24,7 +23,6 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Colourize) 🠋|--\\
-  width: 100%;
   flex-direction: row;
   //--|===|--\\
   $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\

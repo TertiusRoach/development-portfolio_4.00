@@ -1,11 +1,8 @@
 //--|🠊 Label.toggle.tsx 🠈|--\\
-import React, { useEffect } from 'react';
-//--|🠋 Styles 🠋|--\\
-import './Label.toggle.scss';
-//--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../components';
+import React from 'react';
 
-import { createClass } from './Label_toggle';
+//--|🠋 Functions 🠋|--\\
+import createClass, { StyleProps } from './Label_toggle';
 
 interface TheseProps {
   info: {
@@ -13,27 +10,20 @@ interface TheseProps {
     blockName: string;
     labelName: string;
   };
-  style: {
-    type: '{toggle}';
-    shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
-  };
-  onClick?: () => void;
+  style: StyleProps;
+  onClick?: (event: React.MouseEvent<HTMLLabelElement>) => void;
 }
 
-const LabelToggle: React.FC<TheseProps> = ({ info, style, onClick }) => {
-  const pageName = info.pageName as string;
-  const blockName = info.blockName as string;
-  const labelName = info.labelName as string;
-
-  useEffect(() => {}, [pageName, blockName, labelName]);
-
+export function LabelToggle({ info, style, onClick }: TheseProps) {
   return (
-    <label onClick={onClick} className={`${labelName}-${blockName}_label-toggle ${createClass(style.shade, style.color)}`}>
+    <label
+      className={`${info.labelName}-${info.blockName}_toggle-default ${createClass(style)}`}
+      //--|===|--\\
+      onClick={onClick}
+    >
       <input className="event" type="checkbox" />
       <span className="switch"></span>
     </label>
   );
-};
-
+}
 export default LabelToggle;

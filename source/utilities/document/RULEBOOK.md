@@ -68,6 +68,28 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 
 The full explanation is in [CONTAINERS.md](CONTAINERS.md#naming).
 
+### Component Classes
+
+A component's outer element gets two classes: who placed it, then what it looks like.
+
+```tsx
+<label className={`${info.labelName}-${info.blockName}_select-default ${createClass(style)}`}>
+//--|🠈 default-main_select-default dar_red 🠈|--\\
+```
+
+| Part                             | Example           | Comes from                                      |
+| -------------------------------- | ----------------- | ----------------------------------------------- |
+| `${labelName}-${blockName}`      | `default-main`    | The caller's `info`                             |
+| `_${variant}-default`            | `_select-default` | The component's own folder name                 |
+| `${createClass(style)}`          | `dar_red`         | The style props, always the **second** class    |
+
+- **The colour class stays second.** The `*Functions.ts` files swap colours with `classList[1]`, so nothing may be added between the two classes.
+- **The root selector matches the variant part, not just the variant name:** `label[class*='select-default']`, never `label[class*='select']`. The first half of the class comes from the caller, so a `labelName` like `select` would otherwise pull the wrong styles onto a `<LabelToggle>`.
+- **`labelName` is required** (`labelName: string`) wherever it builds the class, and callers write it bare: `'default'`, not `'(default)'`. Components don't strip its brackets, so they'd end up in the class.
+- **Repeating a class is fine.** `<DivisionColourize>` renders four `<LabelToggle>`s with the same class. That's why components don't use `labelName` as an `id`.
+
+**The exception is `<Button>`:** its class is `${variant}-button` (`default-button thr_lef_dar_blu_def`) and `info.labelName` becomes its `id`. The three `_division-${variant}` names (`colourize`, `testing`, `placeholder`) are older and are renamed one at a time (see [Parked for Later](#10-parked-for-later)).
+
 ### Files
 
 | File                                  | Example                     | Holds                                          |
@@ -148,7 +170,7 @@ components/Button/default/
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
 - **Check the path letter by letter.** A wrong folder or file name stops the whole build with `Can't find stylesheet to import`, pointing at `Barrel.scss` and `index.scss` rather than at the component.
 
-Older files still import their own `.scss` (`Label.toggle.tsx`, the `Form` components and others). They're moved to the Barrel as they're refactored.
+Older files still import their own `.scss` (the `Form` components and others). They're moved to the Barrel as they're refactored.
 
 ### Error Messages
 
@@ -161,7 +183,7 @@ throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stri
 
 ### Props and Events
 
-- **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `info.labelAria` is optional and is read aloud when a button has no visible text.
+- **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). `info.labelAria` is optional and is read aloud when a button has no visible text; other components add it when they need it.
 - **Every `<Button>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
 
 Smaller components keep everything in one `.scss` file and split it with placeholders instead: `%desk-flex`, `%desk-grid`, `%desk-tint` and their `mobi-` and `tabl-` versions (see [Scaling Pattern](#6-scaling-pattern)).
@@ -430,6 +452,8 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | Smooth fades between colours            | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first |
 | `(opaque)`                              | Mixing several colour toggles at once, on `<Button>`                                                  |
 | `<ButtonRouting>` effects               | Special animations when it's inside `<NavigationDefault>`                                             |
+| `_division-${variant}` classes          | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
+| Bracketed `labelName`s                  | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored  |
 | Log a Ticket                            | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                          |
 | Login status                            | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow)) |
 | Server secrets path                     | `landing.js` looks for `.env` in the wrong folder ([MODULES.md](MODULES.md#5-run-the-server))           |
