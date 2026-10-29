@@ -10,8 +10,8 @@ import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
-import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 interface InfoProps {
@@ -80,25 +80,19 @@ function RoutingButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonRouting> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <MenuScroll
               //--|🠊 <menu class="routing-lightside-main_scroll-default"/> 🠈|--\\
@@ -191,25 +185,19 @@ function RoutingButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonRouting> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <MenuScroll
               //--|🠊 <menu class="routing-lightside-main_scroll-default"/> 🠈|--\\
@@ -862,8 +850,7 @@ let ViewPar = ({ info }: InfoProps) => {
               color: '(mono)',
               shade: '~dark~',
               view: 'top-lef',
-              image: loadAsset('-png-', '/archive-images/character-testing/original/aelin-darrow'),
-              // image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
             info={{
               pageName: info.pageName,

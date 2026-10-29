@@ -3,14 +3,14 @@
 import { arabicToRoman, romanToArabic } from '../../../../../../../scripts';
 
 //--|🠋 Article Colors Toggle 🠋|--\\
-export const updateArticle = (tint: string): void => {
+function toggleColors(tint: string): void {
   const article = document.querySelector('#components-main .updates-article article[class*="updates-default"]') as HTMLElement;
 
   let prevClass: string = article.classList[1] as string; //--|🠈 Example: 'dar_mon' 🠈|--\\
   let nextClass: string = `${prevClass.split('_')[0]}_${tint}`; //--|🠈 Keeps the shade, swaps the color: 'dar_red' 🠈|--\\
 
   article.classList.replace(prevClass, nextClass);
-};
+}
 
 //--|🠋 Button Colors Toggle 🠋|--\\
 /*
@@ -43,5 +43,5 @@ function toggleColors(section: HTMLElement): Promise<string> {
     }, 125);
   });
 }
-export default toggleColors;
 */
+export default toggleColors;

@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonProfile from '../../../../../../components/Button/profile/Button.profile';
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './ProfileFunctions';
@@ -97,25 +97,19 @@ function ProfileButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonProfile> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <ButtonProfile
               info={{ pageName: info.pageName, blockName: info.blockName }}
@@ -247,25 +241,19 @@ function ProfileButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonProfile> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <ButtonProfile
               info={{ pageName: info.pageName, blockName: info.blockName }}

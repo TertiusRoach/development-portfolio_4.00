@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Styles 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { updateArticle } from './UpdatesFunctions';
+import toggleColors from './UpdatesFunctions';
 import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
 
 //--|🠋 Components 🠋|--\\
@@ -17,6 +17,7 @@ interface InfoProps {
     labelName: string;
   };
 }
+
 function UpdatesArticle({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
@@ -35,7 +36,7 @@ function UpdatesArticle({ info }: InfoProps) {
             shade: '~dark~',
           }}
           cases={{
-            task: [(tint) => updateArticle(tint)], //--|🠈 Recolors <ArticleUpdates> with the tint from the toggles 🠈|--\\
+            task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ArticleUpdates> with the tint from the toggles 🠈|--\\
           }}
         />
         <ArticleUpdates

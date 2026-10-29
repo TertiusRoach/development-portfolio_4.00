@@ -1,22 +1,7 @@
 //--|🠊 routing-button/RoutingFunctions.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-export function toggleColors(section: HTMLElement): Promise<string> {
-  const findTint = ([red, green, blue]: Array<boolean>): string => {
-    let tintMap: Record<string, string> = {
-      'true-false-false': 'red',
-      'false-true-false': 'gre',
-      'false-false-true': 'blu',
-      'true-true-false': 'yel',
-      'true-false-true': 'pur',
-      'false-true-true': 'tur',
-    };
-    let key: string = `${red}-${green}-${blue}`;
-    let tint: string = tintMap[key] ?? 'mon';
-
-    updateButtons(tint);
-    return tint;
-  };
+export function toggleColors(tint: string): void {
   const updateButtons = (color: string) => {
     const wrapperDarkside = document.querySelectorAll('#components-main .routing-darkside-main_container button[class*="routing-button"]') as NodeListOf<HTMLButtonElement>;
     const wrapperLightside = document.querySelectorAll('#components-main .routing-lightside-main_container button[class*="routing-button"]') as NodeListOf<HTMLButtonElement>;
@@ -32,15 +17,5 @@ export function toggleColors(section: HTMLElement): Promise<string> {
       wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
     }
   };
-  return new Promise((resolve) => {
-    let booleans: Array<boolean> = [];
-    setTimeout(() => {
-      for (let i = 0; i < 3; i++) {
-        const label = section.childNodes[i] as HTMLLabelElement;
-        const input = label.childNodes[0] as HTMLInputElement;
-        booleans.push(input.checked);
-      }
-      resolve(findTint(booleans));
-    }, 125);
-  });
+  updateButtons(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into every <ButtonRouting> 🠈|--\\
 }

@@ -18,17 +18,17 @@
 
   %desk-flex {
     //--|🠊 display: grid; 🠈|--\\
-    div[class*='colors'] {
-      //--|🠊 display: grid; 🠈|--\\
-      margin: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
+    div[class*='colourize'] {
+      //--|🠊 display: flex; 🠈|--\\
+      padding: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
       @media screen and (max-height: 768px) {
-        margin: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+        padding: $test-desk 0; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 480px) {
-        margin: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+        padding: $misc-desk 0; //--|🠈 48px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-height: 360px) {
-        margin: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+        padding: $tiny-desk 0; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
     }
   }
@@ -77,19 +77,9 @@
       grid-area: 5 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
-    div[class*='colors'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    div[class*='colourize'] {
+      display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 2 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(3, 1fr) / 1fr; //--|🠈 rows / cols 🠈|--\\
-      label:nth-child(1) {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(2) {
-        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(3) {
-        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
     }
 
     //--| Light Side |--\\
@@ -129,17 +119,17 @@
   $tiny-mobi: 64px; //--|🠈 4rem for Squares 🠈|--\\
   %mobi-flex {
     //--|🠊 display: grid; 🠈|--\\
-    div[class*='colors'] {
-      //--|🠊 display: grid; 🠈|--\\
-      margin: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
+    div[class*='colourize'] {
+      //--|🠊 display: flex; 🠈|--\\
+      padding: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       @media screen and (max-width: 768px) {
-        margin: 0 48px; //--|🠈 48px (Left & Right) for Design 🠈|--\\
+        padding: 0 48px; //--|🠈 48px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-width: 480px) {
-        margin: 0 32px; //--|🠈 32px (Left & Right) for Design 🠈|--\\
+        padding: 0 32px; //--|🠈 32px (Left & Right) for Design 🠈|--\\
       }
       @media screen and (max-width: 360px) {
-        margin: 0 24px; //--|🠈 24px (Left & Right) for Design 🠈|--\\
+        padding: 0 24px; //--|🠈 24px (Left & Right) for Design 🠈|--\\
       }
     }
   }
@@ -188,19 +178,10 @@
       grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
 
-    div[class*='colors'] {
+    div[class*='colourize'] {
       z-index: 1;
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
+      display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      label:nth-child(1) {
-        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(2) {
-        grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(3) {
-        grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
     }
 
     button[class*='one_squ_dar'] {

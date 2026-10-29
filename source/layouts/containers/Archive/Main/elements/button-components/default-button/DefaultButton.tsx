@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
-import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
@@ -80,25 +80,19 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonDefault> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <MenuScroll
               //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
@@ -191,25 +185,19 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
 
-            <div
-              className="toggle-colors"
-              onClick={(event: React.MouseEvent<HTMLElement>): void => {
-                toggleColors(event.currentTarget as HTMLElement);
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
               }}
-            >
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(red)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(green)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-              <LabelToggle
-                style={{ type: '{toggle}', shade: '~dark~', color: '(blue)' }}
-                info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
-              />
-            </div>
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <ButtonDefault> with the tint from the toggles 🠈|--\\
+              }}
+            />
 
             <MenuScroll
               //--|🠊 <menu class="default-lightside-main_scroll-default"/> 🠈|--\\

@@ -32,15 +32,15 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  height: calc($high-mobi / 2);
+  height: $high-mobi;
   @media screen and (max-width: 768px) {
-    height: calc($test-mobi / 2);
+    height: $test-mobi;
   }
   @media screen and (max-width: 480px) {
-    height: calc($misc-mobi / 2);
+    height: $misc-mobi;
   }
   @media screen and (max-width: 360px) {
-    height: calc($tiny-mobi / 2);
+    height: $tiny-mobi;
   }
 }
 
