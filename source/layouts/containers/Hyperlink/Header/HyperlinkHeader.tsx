@@ -200,11 +200,12 @@ function HyperlinkHeader({ info }: InfoProps) {
         <header
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          onMouseEnter={(event) => {
-            unfoldHeaders(event.currentTarget as HTMLElement);
+          //--|🠊 AI Code: Review Please 🠈|--\\
+          onClick={(event) => {
+            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold 🠈|--\\
           }}
           onMouseLeave={(event) => {
-            squareHeaders(event.currentTarget as HTMLElement);
+            squareHeaders(event.currentTarget as HTMLElement); //--|🠈 The expanded footer covers <main>, so tapping it folds the header back 🠈|--\\
           }}
         >
           <section className={`${blockName}-foreground`}>

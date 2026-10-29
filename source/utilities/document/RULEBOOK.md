@@ -44,7 +44,7 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 | **RULEBOOK.md** (this page)      | How code is written: naming, files, scaling, colours, comments                        |
 | [GUIDELINES.md](GUIDELINES.md)   | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
 | [TOGGLES.md](TOGGLES.md)         | Which page each toggle opens (Vocation, Position, Occupation)                        |
-| [CONTAINERS.md](CONTAINERS.md)   | The six containers every page is built from, and what each one does per app          |
+| [CONTAINERS.md](CONTAINERS.md)   | The six containers every page is built from, how they pair and flip, and what each one does per app |
 | [CHARACTERS.md](CHARACTERS.md)   | The 18 test characters, their facts, their psychology and the rules they test        |
 | [TABLE.md](TABLE.md)             | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB       |
 | [MODULES.md](MODULES.md)         | Setting up the database, secrets, test emails and the server on any OS               |
@@ -192,6 +192,7 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
 - **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](TABLE.md#5-how-data-reaches-a-table).
+- **Components survive the flip.** Turning the screen unmounts one orientation's markup and mounts the other's, so a listener or timer a component starts is returned from its `useEffect`, and anything added to one orientation gets its mirror in the other. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip).
 
 ### Declaration Order
 

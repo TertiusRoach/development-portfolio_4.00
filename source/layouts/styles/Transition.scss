@@ -295,6 +295,10 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
       }
       &[class*='squaring'] {
+        //--|🠊 AI Code: Review Please 🠈|--\\
+        section[class='header-foreground'] {
+          pointer-events: none; //--|🠈 First tap unfolds the header, the second tap reaches its buttons 🠈|--\\
+        }
         transition: clip-path 500ms ease-in-out;
         clip-path: inset(0 calc(100% - 12rem) calc(100% - 12rem) 0); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-width: 768px) {
@@ -433,6 +437,10 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
       }
       &[class*='squaring'] {
+        //--|🠊 AI Code: Review Please 🠈|--\\
+        section[class='footer-foreground'] {
+          pointer-events: none; //--|🠈 First tap unfolds the footer, the second tap reaches its buttons 🠈|--\\
+        }
         clip-path: inset(calc(100% - 12rem) 0 0 calc(100% - 12rem)); //--|🠈 top / right / bottom / left 🠈|--\\
         @media screen and (max-width: 768px) {
           clip-path: inset(calc(100% - 10rem) 0 0 calc(100% - 10rem)); //--|🠈 top / right / bottom / left 🠈|--\\
@@ -642,4 +650,91 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
     }
   }
+}
+
+//--|🠊 AI Code: Review Please 🠈|--\\
+//--|🠋 <Mobile> Snapping 🠋|--\\
+/*--|🠋
+  Same selectors and order as the mixins above, with every duration and delay at 0ms.
+  Skeleton.scss includes these under (orientation: portrait) so mobile snaps instead of animating.
+🠉|--*/
+//--|🠋 div[id*="body"] 🠋|--\\
+@mixin body-snapping {
+  &[id*='body'] {
+    main[class*='main'],
+    aside[class*='bar'],
+    header[class*='header'],
+    footer[class*='footer'] {
+      &[class*='main'] {
+        transition: filter 0ms ease-in-out;
+      }
+
+      &[class*='left'],
+      &[class*='right'],
+      &[class*='header'],
+      &[class*='footer'] {
+        transition:
+          filter 0ms ease-in-out,
+          opacity 0ms ease-in-out,
+          clip-path 0ms ease-in-out;
+      }
+    }
+
+    transition:
+      height 0ms ease-in-out,
+      filter 0ms ease-in-out,
+      opacity 0ms ease-in-out,
+      clip-path 0ms ease-in-out;
+    &[class*='active'] {
+      transition-delay: 0ms, 0ms, 0ms, 0ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
+    }
+    &[class*='asleep'] {
+      transition-delay: 0ms, 0ms, 0ms, 0ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
+    }
+  }
+}
+//--|🠋 section[id*="overlay"] 🠋|--\\
+@mixin overlay-snapping {
+  section[class*='overlay'] {
+    &[class*='visible'],
+    &[class*='loading'],
+    &[class*='updates'],
+    &[class*='hidden'] {
+      transition:
+        visibility 0ms 0ms,
+        filter 0ms ease-in-out,
+        opacity 0ms ease-in-out;
+      figure[class='overlay-midground'] {
+        article[class*='loading'],
+        article[class*='updates'] {
+          transition:
+            visibility 0ms 0ms,
+            filter 0ms ease-in-out,
+            opacity 0ms ease-in-out;
+        }
+      }
+    }
+  }
+}
+//--|🠋 header[id*="header"] 🠋|--\\
+@mixin header-snapping {
+  header {
+    &[class*='squaring'] {
+      transition: clip-path 0ms ease-in-out;
+    }
+  }
+}
+//--|🠋 footer[id*="footer"] 🠋|--\\
+@mixin footer-snapping {
+  /*--|🠋 The footer has no transition of its own; body-snapping covers its clip-path 🠉|--*/
+}
+//--|🠋 main[id*="main"] 🠋|--\\
+@mixin main-snapping {
+  main {
+    transition: filter 0ms ease-in-out;
+  }
+}
+//--|🠋 aside[id*="bar"] 🠋|--\\
+@mixin sidebar-snapping {
+  /*--|🠋 The sidebars have no transition of their own; body-snapping covers their clip-path 🠉|--*/
 }

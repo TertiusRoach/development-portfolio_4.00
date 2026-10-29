@@ -9,7 +9,7 @@ import DivisionConveyor from '../../../components/Division/conveyor/Division.con
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { freezeHeaders, unfoldHeaders, squareHeaders } from './ArchiveFunctions';
+import { freezeHeaders, unfoldHeaders } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -98,11 +98,9 @@ function ArchiveHeader({ info }: InfoProps): JSX.Element {
         <header
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          onMouseEnter={(event) => {
-            unfoldHeaders(event.currentTarget as HTMLElement);
-          }}
-          onMouseLeave={(event) => {
-            squareHeaders(event.currentTarget as HTMLElement);
+          //--|🠊 AI Code: Review Please 🠈|--\\
+          onClick={(event) => {
+            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -257,6 +255,24 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         info={{
           labelName: 'figure',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
+        }}
+      />
+      {/*--|🠊 AI Code: Review Please 🠈|--*/}
+      {/*--|🠊 <Label> 🠈|--*/}
+      <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Label_Toggle>', '<Label_Select>'] as Array<string>,
+        }}
+        info={{
+          labelName: 'label',
           blockName: blockName as 'header',
           pageName: pageName as 'components',
         }}

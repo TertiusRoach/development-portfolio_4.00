@@ -110,7 +110,13 @@ body {
         inset: 0;
         content: '';
         position: fixed;
+        //--|🠊 Desktop 🠈|--\\
         animation: overlay-fade 1.5s ease-in-out 1.5s both;
+        //--|🠊 AI Code: Review Please 🠈|--\\
+        @media screen and (orientation: portrait) {
+          //--|🠊 Mobile 🠈|--\\
+          animation: overlay-fade 0ms ease-in-out 0ms both; //--|🠈 duration, delay 🠈|--\\
+        }
       }
       &[class*='ante'] {
         background: Palettes.$indexLand-lightMode;
@@ -135,6 +141,7 @@ body {
     }
   }
   %transition {
+    //--|🠊 Desktop 🠈|--\\
     @include Transition.body-transition();
     //--|===|--\\
     @include Transition.overlay-transition();
@@ -143,6 +150,19 @@ body {
     @include Transition.header-transition();
     @include Transition.main-transition();
     @include Transition.footer-transition();
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      /*--|🠋 Desktop stays outside the query because it also holds the portrait clip-paths; these only override the timing 🠉|--*/
+      @include Transition.body-snapping();
+      //--|===|--\\
+      @include Transition.overlay-snapping();
+      @include Transition.sidebar-snapping();
+      //--|===|--\\
+      @include Transition.header-snapping();
+      @include Transition.main-snapping();
+      @include Transition.footer-snapping();
+    }
   }
 
   //--|===|--\\

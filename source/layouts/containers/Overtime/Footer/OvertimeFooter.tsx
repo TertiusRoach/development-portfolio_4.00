@@ -117,8 +117,9 @@ function OvertimeFooter({ info }: InfoProps) {
         <footer
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          onMouseEnter={(event) => {
-            unfoldFooters(event.currentTarget);
+          //--|🠊 AI Code: Review Please 🠈|--\\
+          onClick={(event) => {
+            unfoldFooters(event.currentTarget); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}
         >
           <section className={`${blockName}-foreground`}>

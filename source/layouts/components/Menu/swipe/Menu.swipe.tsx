@@ -38,8 +38,9 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
     /*--|🠋
 
     🠉|--*/
-    reloadElements(pageName, blockName, labelName);
     modifyingController(pageName, blockName, labelName);
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    return reloadElements(pageName, blockName, labelName); //--|🠈 Removes the resize listener when this menu unmounts 🠈|--\\
   }, [pageName, blockName, labelName]);
 
   let stateView = 'downplay' as 'downplay' | 'highlight';

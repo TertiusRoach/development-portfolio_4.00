@@ -38,6 +38,10 @@ function OvertimeMain({ info }: InfoProps) {
       onMouseEnter={(event) => {
         revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
+      //--|🠊 AI Code: Review Please 🠈|--\\
+      onClick={(event) => {
+        revertBlocks(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
+      }}
     >
       <section className={`${blockName}-foreground`}>
         <DivisionTesting

@@ -90,8 +90,9 @@ function LandingHeader({ info }: InfoProps) {
         <header
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          onMouseEnter={(event) => {
-            unfoldHeaders(event.currentTarget as HTMLElement);
+          //--|🠊 AI Code: Review Please 🠈|--\\
+          onClick={(event) => {
+            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}
         >
           <section className={`${blockName}-foreground`}>

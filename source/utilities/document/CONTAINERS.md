@@ -50,6 +50,49 @@ Each page lives in `source/layouts/containers/${PageName}/`, where `${PageName}.
 
 ---
 
+## Pairs and the Flip
+
+### Two Fixed Pairs
+
+The four outer containers work in two pairs, and a pair always moves as one: it unfolds together, freezes together and folds back together.
+
+| Pair                      | Unfolds through                      | Freezes through                     |
+| ------------------------- | ------------------------------------ | ----------------------------------- |
+| `<header>` + `<leftbar>`  | `Header/${PageName}Functions.ts`     | `freezeToggle()` in `scripts/Header.ts` |
+| `<footer>` + `<rightbar>` | `Footer/${PageName}Functions.ts`     | `freezeToggle()` in `scripts/Footer.ts` |
+
+`<main>` belongs to neither pair. It's where both pairs fold back: `revertBlocks()` in `scripts/Main.ts` squares the header and footer and collapses both bars in one go. `<overlay>` sits above all of them and isn't part of a pair.
+
+The pairs never change. A header never unfolds with the right bar, and a footer never freezes the left bar.
+
+### The Flip
+
+What the pairs **hold** changes with the screen's orientation. Every container except `<main>` renders through `switch (getOrientation)`, with one `case 'landscape'` (Desktop) and one `case 'portrait'` (Mobile), and the content swaps from one pair to the other. On the Archive page:
+
+| Pair                      | Desktop (landscape)                                    | Mobile (portrait)                                      |
+| ------------------------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| `<header>` + `<leftbar>`  | Signature (freeze), component previews, element menu   | TraLogFin (home) and the app menu; the left bar is empty |
+| `<footer>` + `<rightbar>` | TraLogFin (home) and the app menu; the right bar is empty | Signature (freeze), component previews, element menu |
+
+Each pair keeps its edge of the screen; only the jobs move. `checkScreen()` in `source/scripts.ts` watches `(orientation: landscape)` and nothing else, so `tablet-squaring` never causes a flip.
+
+**How a pair unfolds depends on the orientation, too.** Desktop unfolds on hover (`onMouseEnter`). Mobile has no hover, so every page unfolds on a tap (`onClick`), and `<main>` folds it back on a tap as well. While a portrait header or footer is `.squaring`, its foreground ignores taps (`pointer-events: none` in `styles/Transition.scss`), so the tap that unfolds it never presses the button underneath.
+
+On Track a Day, Log a Ticket and Find a Link the portrait footer starts `.expanded` and covers `<main>`, so there's no `<main>` to tap. Their headers keep `onMouseLeave` → `squareHeaders()`: a tap anywhere outside the header folds it back.
+
+**Mobile snaps.** Every container transition, and the page's fade-in, runs at `0ms` in portrait. The `*-snapping` mixins at the end of `styles/Transition.scss` mirror the desktop ones with the timing zeroed, and `styles/Skeleton.scss` includes them under `(orientation: portrait)`. To bring an animation back on Mobile, change its value there.
+
+### What the Flip Costs
+
+The flip swaps markup rather than restyling it, and that's the limitation to keep in mind:
+
+1. **Everything is written twice.** Each orientation is its own block of JSX. Something added to one orientation needs its mirror in the other, usually in the other pair: the `<Label>` previews went into the Footer's `MenuSwipes` for Mobile, and the Header's `MenuSwipes` for Desktop needed them too.
+2. **Every flip unmounts one side and mounts the other.** Anything a component starts (a `resize` listener, a timer) must be returned from its `useEffect` so React can stop it on unmount. If it isn't, it keeps running and looks for elements that no longer exist. `<MenuSwipe>` returns `reloadElements()` for exactly this reason.
+3. **Scripts can't assume which pair holds a component.** The previews live in the header on Desktop and in the footer on Mobile. Look a component up in both, the way `findTags()` in `Menu_swipe.ts` tries `#${pageName}-header` and then `#${pageName}-footer`, never in just one.
+4. **The pair holding home and the app menu sits on top.** `%position` in `styles/Skeleton.scss` swaps the layers with the flip: on Desktop the footer is `z-index: 9` and the header `6`, on Mobile the other way round.
+
+---
+
 ## Shared by Every App
 
 | Container                           | States                          |
