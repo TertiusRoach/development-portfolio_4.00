@@ -142,11 +142,6 @@
           grid-area: 1 / 4 / 2 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
-      button[id*='copy'] {
-        .icon {
-          padding: 4px;
-        }
-      }
     }
     & {
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
@@ -308,11 +303,6 @@
         }
         #copy-vert-cen {
           grid-area: 2 / 7 / 3 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        }
-      }
-      button[id*='copy'] {
-        .icon {
-          padding: 4px;
         }
       }
     }

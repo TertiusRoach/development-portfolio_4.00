@@ -43,14 +43,14 @@
   @include tur-tint();
   //--|🠋 Fades 🠋|--\\
   span[class='switch'] {
+    //--|🠊 AI Code: Review Please 2026-10-29 14:40 · Slide and colour share 250ms and one easing, so the colour never trails the knob 🠈|--\\
     transition:
-      filter 500ms $tint-fade,
-      background 500ms $tint-fade;
+      filter 250ms $tint-fade,
+      background 250ms $tint-fade;
     &::after {
-      //--|🠊 transform: The slide is motion, not colour, so it keeps ease-in-out 🠈|--\\
       transition:
-        transform 250ms ease-in-out,
-        filter 500ms $tint-fade;
+        transform 250ms $tint-fade,
+        filter 250ms $tint-fade;
     }
   }
 }
@@ -62,7 +62,8 @@
     /*--|🠋
       Every size comes from the height (h): width = h × 35/18, padding = h / 12,
       knob = h × 5/6, slide = h × 17/18, rounded to whole pixels. The code wins
-      over the maths: 40px uses a 34px knob, 16px a 32px width and a 14px knob.
+      over the maths: 44px uses a 36px knob, 40px a 34px knob, 16px a 32px width,
+      a 14px knob and a 16px slide, so the gap around the knob is equal everywhere.
     🠉|--*/
     @at-root label[class*='toggle-default'] {
       input[class='event'] {
@@ -77,8 +78,8 @@
         &::after {
           top: 4px;
           left: 4px;
-          width: 37px;
-          height: 37px;
+          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          height: 36px;
         }
       }
       @media screen and (max-height: 768px) {
@@ -120,7 +121,7 @@
       @media screen and (max-height: 360px) {
         input[class='event'] {
           &:checked + span[class='switch']::after {
-            transform: translateX(15px);
+            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
           }
         }
         span[class='switch'] {
@@ -171,8 +172,8 @@
         &::after {
           top: 4px;
           left: 4px;
-          width: 37px;
-          height: 37px;
+          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          height: 36px;
         }
       }
       @media screen and (max-width: 768px) {
@@ -214,7 +215,7 @@
       @media screen and (max-width: 360px) {
         input[class='event'] {
           &:checked + span[class='switch']::after {
-            transform: translateX(15px);
+            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
           }
         }
         span[class='switch'] {
@@ -267,8 +268,8 @@
           &::after {
             top: 4px;
             left: 4px;
-            width: 37px;
-            height: 37px;
+            width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+            height: 36px;
           }
         }
         @media screen and (max-width: 1920px) {
@@ -310,7 +311,7 @@
         @media screen and (max-width: 854px) {
           input[class='event'] {
             &:checked + span[class='switch']::after {
-              transform: translateX(15px);
+              transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
             }
           }
           span[class='switch'] {
@@ -340,8 +341,8 @@
           &::after {
             top: 4px;
             left: 4px;
-            width: 37px;
-            height: 37px;
+            width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+            height: 36px;
           }
         }
         @media screen and (max-height: 1920px) {
@@ -383,7 +384,7 @@
         @media screen and (max-height: 854px) {
           input[class='event'] {
             &:checked + span[class='switch']::after {
-              transform: translateX(15px);
+              transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
             }
           }
           span[class='switch'] {
@@ -419,9 +420,12 @@
   @extend %tabl-tint;
 }
 //--|===|--\\
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_mon'] {
@@ -429,35 +433,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$gray-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$gray-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-light, 0) 0%,
-          rgba(Palettes.$gray-light, 0.28) 55%,
-          rgba(Palettes.$gray-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -467,42 +471,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$gray-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$gray-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-dark, 0) 0%,
-          rgba(Palettes.$gray-dark, 0.3) 55%,
-          rgba(Palettes.$gray-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_red'] {
@@ -510,35 +517,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$red-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$red-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$red-light, 0) 0%,
-          rgba(Palettes.$red-light, 0.28) 55%,
-          rgba(Palettes.$red-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -548,37 +555,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$red-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$red-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(180deg, rgba(Palettes.$red-dark, 0) 0%, rgba(Palettes.$red-dark, 0.3) 55%, rgba(Palettes.$red-dark, 0.64) 100%);
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_gre'] {
@@ -586,35 +601,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$green-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$green-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-light, 0) 0%,
-          rgba(Palettes.$green-light, 0.28) 55%,
-          rgba(Palettes.$green-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -624,42 +639,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$green-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$green-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-dark, 0) 0%,
-          rgba(Palettes.$green-dark, 0.3) 55%,
-          rgba(Palettes.$green-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_blu'] {
@@ -667,35 +685,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$blue-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$blue-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-light, 0) 0%,
-          rgba(Palettes.$blue-light, 0.28) 55%,
-          rgba(Palettes.$blue-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -705,42 +723,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$blue-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$blue-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-dark, 0) 0%,
-          rgba(Palettes.$blue-dark, 0.3) 55%,
-          rgba(Palettes.$blue-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_pur'] {
@@ -748,35 +769,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$purple-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$purple-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-light, 0) 0%,
-          rgba(Palettes.$purple-light, 0.28) 55%,
-          rgba(Palettes.$purple-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -786,42 +807,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$purple-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$purple-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-dark, 0) 0%,
-          rgba(Palettes.$purple-dark, 0.3) 55%,
-          rgba(Palettes.$purple-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_ora'] {
@@ -829,35 +853,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$orange-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$orange-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-light, 0) 0%,
-          rgba(Palettes.$orange-light, 0.28) 55%,
-          rgba(Palettes.$orange-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -867,42 +891,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$orange-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$orange-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-dark, 0) 0%,
-          rgba(Palettes.$orange-dark, 0.3) 55%,
-          rgba(Palettes.$orange-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_pin'] {
@@ -910,35 +937,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$pink-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$pink-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-light, 0) 0%,
-          rgba(Palettes.$pink-light, 0.28) 55%,
-          rgba(Palettes.$pink-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -948,42 +975,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$pink-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$pink-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-dark, 0) 0%,
-          rgba(Palettes.$pink-dark, 0.3) 55%,
-          rgba(Palettes.$pink-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_yel'] {
@@ -991,35 +1021,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$yellow-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$yellow-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-light, 0) 0%,
-          rgba(Palettes.$yellow-light, 0.28) 55%,
-          rgba(Palettes.$yellow-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -1029,42 +1059,45 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$yellow-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$yellow-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-dark, 0) 0%,
-          rgba(Palettes.$yellow-dark, 0.3) 55%,
-          rgba(Palettes.$yellow-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_bro'] {
@@ -1072,35 +1105,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$brown-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$brown-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-light, 0) 0%,
-          rgba(Palettes.$brown-light, 0.28) 55%,
-          rgba(Palettes.$brown-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -1110,79 +1143,81 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$brown-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$brown-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-dark, 0) 0%,
-          rgba(Palettes.$brown-dark, 0.3) 55%,
-          rgba(Palettes.$brown-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
 }
+//--|🠊 AI Code: Review Please 2026-10-29 14:40 · Flat track + Button colours, the knob alone carries the depth 🠈|--\\
 @mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
 
   //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_tur'] {
     input[class='event'] {
       &:not(:checked) + span[class='switch'] {
-        background:
-          linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$turquoise-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$turquoise-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-light, 0) 0%,
-          rgba(Palettes.$turquoise-light, 0.28) 55%,
-          rgba(Palettes.$turquoise-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
@@ -1192,35 +1227,35 @@
       &:not(:checked) + span[class='switch'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
         box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+          inset 0 1px 2px rgba(#000, 0.2),
+          0 0 0 1px Palettes.$turquoise-medium;
+        &::after {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
       &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
         box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-light, 0.18);
+          inset 0 1px 2px rgba(#000, 0.3),
+          0 0 0 1px Palettes.$turquoise-medium;
+        &::after {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow:
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
       }
     }
     span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-dark, 0) 0%,
-          rgba(Palettes.$turquoise-dark, 0.3) 55%,
-          rgba(Palettes.$turquoise-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
       &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
+        filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
       }
     }
   }
